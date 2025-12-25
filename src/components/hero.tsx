@@ -77,21 +77,21 @@ export function HeroSection({ stats }: HeroProps) {
                 href="/devis"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200"
               >
-                Demander un devis
+                Planifier un sprint
                 <FiArrowRight className="text-black/60" />
               </Link>
               <Link
                 href="/configurateur"
                 className="inline-flex items-center rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
-                Configurer mon projet
+                Essayer le configurateur
               </Link>
               <Link
                 href="/cahier-des-charges.pdf"
                 className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
                 <FiPlayCircle />
-                Cahier des charges PDF
+                Télécharger le pack
               </Link>
             </div>
             <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.35em] text-white/60">

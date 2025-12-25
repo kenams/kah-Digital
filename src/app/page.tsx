@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/hero";
@@ -130,10 +131,85 @@ const stats = [
   { label: "Delai moyen", value: "4 semaines" },
 ];
 
+const assetShots = [
+  {
+    title: "Brief configurateur live",
+    description: "Timeline sticky, modules MVP, export PDF direct.",
+    image: "/mockups/global-dashboard.svg",
+    chips: ["Site + MVP", "4 étapes"],
+    cta: { label: "Tester le configurateur", href: "/configurateur" },
+  },
+  {
+    title: "Dashboard MVP FairBuild",
+    description: "Double onboarding, scoring automatique et badges status.",
+    image: "/mockups/fairbuild-mvp.svg",
+    chips: ["Webhooks Make", "Supabase"],
+    cta: { label: "Voir l'étude de cas", href: "/projets/fairbuild-mvp" },
+  },
+  {
+    title: "Player PulseLearn",
+    description: "Lecteur audio, quiz, timeline de progression mobile.",
+    image: "/mockups/pulselearn.svg",
+    chips: ["React Native", "Stripe Checkout"],
+    cta: { label: "Découvrir PulseLearn", href: "/projets/pulselearn" },
+  },
+];
+
 export default function Home() {
   return (
     <div className="space-y-24">
       <HeroSection stats={stats} />
+
+      <Reveal>
+        <section id="assets" className="section-shell space-y-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-white/60">Assets & maquettes</p>
+              <h2 className="mt-2 text-3xl font-semibold text-white">Un pack d’assets prêt à décliner.</h2>
+              <p className="mt-2 max-w-3xl text-white/70">
+                On livre les mockups web, les scènes mobile et les dashboards prêtés à la presse ou aux investisseurs.
+                Chaque case contient déjà un storytelling Figma-like pour alimenter portfolio, deck et onboarding.
+              </p>
+            </div>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+            >
+              Explorer toutes les études de cas
+            </Link>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {assetShots.map((asset) => (
+              <div
+                key={asset.title}
+                className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-5 text-white shadow-[0_30px_80px_rgba(5,5,5,0.55)]"
+              >
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
+                  <span>Asset</span>
+                  <span className="rounded-full border border-white/15 px-3 py-1 text-[0.6rem] text-white/70">
+                    {asset.chips.join(" · ")}
+                  </span>
+                </div>
+                <Image
+                  src={asset.image}
+                  alt={asset.title}
+                  width={520}
+                  height={320}
+                  className="mt-4 h-48 w-full rounded-2xl border border-white/15 bg-black/30 object-cover"
+                />
+                <p className="mt-5 text-lg font-semibold">{asset.title}</p>
+                <p className="mt-2 text-sm text-white/70">{asset.description}</p>
+                <Link
+                  href={asset.cta.href}
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-white/70"
+                >
+                  {asset.cta.label}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
       <Reveal>
 <section id="services" className="section-shell space-y-6">
@@ -171,6 +247,20 @@ export default function Home() {
                   </Reveal>
                 ))}
               </div>
+              <div className="mt-8 flex flex-wrap gap-4 text-sm">
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  Voir des exemples précis
+                </Link>
+                <Link
+                  href="/devis"
+                  className="inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  Lancer un devis express
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -207,8 +297,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-              <div className="grid gap-6 md:grid-cols-2">
-                {mvpServices.map((service, index) => (
+            <div className="grid gap-6 md:grid-cols-2">
+              {mvpServices.map((service, index) => (
                   <Reveal key={service.title} delay={index * 0.08}>
                     <motion.div
                       className="rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur"
@@ -271,6 +361,20 @@ export default function Home() {
                   <p className="mt-2 text-slate-700">{item.detail}</p>
                 </motion.div>
               ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4 text-sm">
+              <Link
+                href="/devis/mvp"
+                className="inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+              >
+                Briefer mon app mobile
+              </Link>
+              <Link
+                href="/projets"
+                className="inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+              >
+                Voir les MVP livrés
+              </Link>
             </div>
           </div>
         </section>
