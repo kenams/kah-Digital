@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { FiArrowRight, FiCheckCircle, FiClock, FiPlayCircle } from "react-icons/fi";
@@ -110,17 +109,40 @@ export function HeroSection({ stats }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <div className="hero-panel mb-6 overflow-hidden">
-              <div className="mb-4 text-xs uppercase tracking-[0.4em] text-white/60">Command room</div>
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-                <Image
-                  src="/mockups/global-dashboard.png"
-                  alt="Dashboard projets Kah-Digital"
-                  width={720}
-                  height={480}
-                  className="h-48 w-full object-cover"
-                  loading="lazy"
-                />
+            <div className="hero-panel mb-6 space-y-4">
+              <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/60">
+                <span>Command room</span>
+                <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] text-white/70">Live</span>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { label: "Devis en cours", value: "08", tone: "text-emerald-200" },
+                  { label: "Demandes MVP", value: "03", tone: "text-sky-200" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">{item.label}</p>
+                    <p className={`mt-2 text-3xl font-semibold ${item.tone}`}>{item.value}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
+                  <span>Sprints actifs</span>
+                  <span>Qualité</span>
+                </div>
+                <div className="mt-4 flex items-end gap-3">
+                  {[85, 65, 95].map((height, index) => (
+                    <div key={height} className="flex-1">
+                      <div className="relative h-24 w-full overflow-hidden rounded-full border border-white/15 bg-white/5">
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#a855f7] to-[#22d3ee]"
+                          style={{ height: `${height}%` }}
+                        />
+                      </div>
+                      <p className="mt-1 text-center text-xs text-white/50">Week {index + 1}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="hero-panel mb-6 space-y-3">

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { AmbientAudioToggleButton } from "./global-audio-provider";
 
 const navLinks = [
   { label: "Sites web", href: "/#services" },
@@ -17,18 +18,21 @@ export function SiteHeader() {
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const ctaButton = (
-    <Link
-      href="/cahier-des-charges.pdf"
-      className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
-    >
-      Télécharger le PDF
-    </Link>
+  const ctaButton = useMemo(
+    () => (
+      <Link
+        href="/cahier-des-charges.pdf"
+        className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
+      >
+        Télécharger le PDF
+      </Link>
+    ),
+    [],
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-black/80 text-white backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+    <header className="site-header sticky top-0 z-50 bg-black/80 text-white backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-[90rem] items-center justify-between px-8 py-4">
         <Link
           href="/"
           className="text-lg font-semibold tracking-tight text-white"
@@ -38,16 +42,15 @@ export function SiteHeader() {
         </Link>
         <nav className="hidden items-center gap-6 text-sm md:flex">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-white/80 transition hover:text-white"
-            >
+            <Link key={link.href} href={link.href} className="text-white/80 transition hover:text-white">
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:block">{ctaButton}</div>
+        <div className="hidden items-center gap-3 md:flex">
+          <AmbientAudioToggleButton />
+          {ctaButton}
+        </div>
         <button
           className="md:hidden"
           type="button"
@@ -56,9 +59,9 @@ export function SiteHeader() {
         >
           <span className="sr-only">Menu</span>
           <div className="space-y-1.5">
-            <span className="block h-0.5 w-6 bg-white"></span>
-            <span className="block h-0.5 w-6 bg-white"></span>
-            <span className="block h-0.5 w-6 bg-white"></span>
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
           </div>
         </button>
       </div>
@@ -75,6 +78,7 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
+            <AmbientAudioToggleButton />
             {ctaButton}
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function ProjectsPage() {
         </Link>
       </div>
       <Reveal>
-        <div className="rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-8 text-white">
+        <div className="surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-8 text-white">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Portfolio</p>
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
           <Reveal key={project.slug} delay={index * 0.05}>
             <Link
               href={`/projets/${project.slug}`}
-              className="relative overflow-hidden rounded-3xl p-6 text-white transition duration-500 hover:-translate-y-1"
+              className="surface-dark dark-card relative overflow-hidden rounded-3xl p-6 text-white transition duration-500 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})`,
               }}
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
       </div>
 
       <Reveal>
-        <section className="space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-8 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)]">
+        <section className="surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-8 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)]">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-white/60">AssetShots</p>

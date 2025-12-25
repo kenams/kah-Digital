@@ -2,7 +2,6 @@
 
 import { GlobalAudioProvider } from "./global-audio-provider";
 import { ScrollManager } from "./scroll-manager";
-
 type Props = {
   children: React.ReactNode;
 };

@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { Reveal } from "@/components/reveal";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
+import { ConfiguratorPreview } from "@/components/configurator-preview";
 import type { QuoteRequest } from "@/lib/quote";
+import type { ConfigSummary } from "@/types/configurator";
 
 type SiteType = {
   id: string;
@@ -32,12 +33,6 @@ type ToggleOption = {
   id: string;
   title: string;
   description: string;
-};
-
-type ConfigSummary = {
-  type: string;
-  strategy: string;
-  mood: string;
 };
 
 type FinalFormProps = {
@@ -470,6 +465,19 @@ export default function ConfigurateurPage() {
     return { type: typeLabel, strategy: strategyLabel, mood: moodLabel };
   }, [selectedType, selectedStrategy, selectedMood, availableStrategies]);
 
+  const selectedFeatureLabels = useMemo(
+    () => selectedFeatures.map((featureId) => featureOptions.find((item) => item.id === featureId)?.title ?? featureId),
+    [selectedFeatures],
+  );
+
+  const selectedIntegrationLabels = useMemo(
+    () =>
+      selectedIntegrations.map(
+        (integrationId) => integrationOptions.find((item) => item.id === integrationId)?.title ?? integrationId,
+      ),
+    [selectedIntegrations],
+  );
+
   const stepStatus = [
     Boolean(selectedType),
     Boolean(selectedStrategy),
@@ -477,6 +485,7 @@ export default function ConfigurateurPage() {
     selectedFeatures.length > 0 || selectedIntegrations.length > 0,
   ];
   const completedSteps = stepStatus.filter(Boolean).length;
+  const configuratorProgress = stepStatus.length ? completedSteps / stepStatus.length : 0;
   const timelineMessage =
     completedSteps === 0
       ? "Commence par choisir un format (site ou MVP)."
@@ -840,8 +849,8 @@ export default function ConfigurateurPage() {
               <div className="space-y-4">
                 <ConfiguratorFinalForm
                   summary={summary}
-                  features={selectedFeatures.map((featureId) => featureOptions.find((item) => item.id === featureId)?.title ?? featureId)}
-                  integrations={selectedIntegrations.map((integrationId) => integrationOptions.find((item) => item.id === integrationId)?.title ?? integrationId)}
+                  features={selectedFeatureLabels}
+                  integrations={selectedIntegrationLabels}
                   ready={isConfiguratorReady}
                 />
                 <div className="flex flex-wrap gap-3 text-sm">
@@ -860,12 +869,11 @@ export default function ConfigurateurPage() {
                 </div>
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                <Image
-                  src="/mockups/global-dashboard.svg"
-                  alt="Apercu briefing configurateur"
-                  width={760}
-                  height={520}
-                  className="h-full w-full rounded-2xl object-cover"
+                <ConfiguratorPreview
+                  summary={summary}
+                  features={selectedFeatureLabels}
+                  integrations={selectedIntegrationLabels}
+                  ready={isConfiguratorReady}
                 />
               </div>
             </div>
@@ -873,7 +881,7 @@ export default function ConfigurateurPage() {
         </section>
       </div>
       <div className="sticky top-32 hidden lg:block lg:w-72">
-        <StickyTimelineIndicator sections={configuratorSections} />
+        <StickyTimelineIndicator sections={configuratorSections} progressOverride={configuratorProgress} />
       </div>
     </div>
   );

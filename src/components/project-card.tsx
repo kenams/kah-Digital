@@ -13,7 +13,7 @@ type ProjectCardProps = {
 export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.div
-      className="portfolio-card group relative overflow-hidden rounded-3xl p-6 text-white transition duration-500"
+      className="portfolio-card dark-card group relative overflow-hidden rounded-3xl p-6 text-white transition duration-500"
       style={{
         background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})`,
       }}

@@ -12,9 +12,33 @@ type TimelineSection = {
 type StickyTimelineIndicatorProps = {
   sections: readonly TimelineSection[];
   className?: string;
+  progressOverride?: number;
 };
 
-export function StickyTimelineIndicator({ sections, className = "" }: StickyTimelineIndicatorProps) {
+const progressGradient = [
+  { stop: 0, color: "#cfd8ea" }, // argent froid
+  { stop: 0.5, color: "#d9c4ff" },
+  { stop: 1, color: "#f7d17f" }, // or chaud
+];
+
+function getProgressColor(value: number) {
+  if (value <= progressGradient[0].stop) return progressGradient[0].color;
+  if (value >= progressGradient.at(-1)!.stop) return progressGradient.at(-1)!.color;
+  for (let index = 0; index < progressGradient.length - 1; index += 1) {
+    const current = progressGradient[index];
+    const next = progressGradient[index + 1];
+    if (value >= current.stop && value <= next.stop) {
+      const ratio = (value - current.stop) / (next.stop - current.stop || 1);
+      const lerp = (a: number, b: number) => Math.round(a + (b - a) * ratio);
+      const [r1, g1, b1] = current.color.match(/\w\w/g)!.map((hex) => parseInt(hex, 16));
+      const [r2, g2, b2] = next.color.match(/\w\w/g)!.map((hex) => parseInt(hex, 16));
+      return `rgb(${lerp(r1, r2)}, ${lerp(g1, g2)}, ${lerp(b1, b2)})`;
+    }
+  }
+  return progressGradient[0].color;
+}
+
+export function StickyTimelineIndicator({ sections, className = "", progressOverride }: StickyTimelineIndicatorProps) {
   const stableSections = useMemo(() => sections, [sections]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -23,18 +47,23 @@ export function StickyTimelineIndicator({ sections, className = "" }: StickyTime
     if (typeof window === "undefined") return;
 
     const handleScroll = () => {
-      const scrollY = window.scrollY + window.innerHeight * 0.2;
       const doc = document.documentElement;
-      const total = doc.scrollHeight - window.innerHeight;
-      const ratio = total > 0 ? Math.min(1, Math.max(0, scrollY / total)) : 0;
-      setProgress(ratio);
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0) {
+        setProgress(1);
+      } else {
+        const clamped = Math.min(Math.max(window.scrollY, 0), maxScroll);
+        const ratio =
+          window.scrollY + window.innerHeight >= doc.scrollHeight - 2 ? 1 : clamped / maxScroll;
+        setProgress(ratio);
+      }
 
       let nextActive = 0;
       stableSections.forEach((section, index) => {
         const node = document.getElementById(section.id);
         if (!node) return;
         const offset = node.getBoundingClientRect().top + window.scrollY;
-        if (scrollY >= offset - 120) {
+        if (window.scrollY + window.innerHeight * 0.2 >= offset - 120) {
           nextActive = index;
         }
       });
@@ -50,15 +79,52 @@ export function StickyTimelineIndicator({ sections, className = "" }: StickyTime
     };
   }, [stableSections]);
 
-  const progressLabel = `${Math.round(progress * 100)}%`;
+  const resolvedProgress =
+    typeof progressOverride === "number" ? Math.min(1, Math.max(0, progressOverride)) : progress;
+  const progressPercent = Math.round(resolvedProgress * 100);
+  const progressLabel = `${progressPercent}%`;
+  const progressColor = getProgressColor(resolvedProgress);
+  const isComplete = resolvedProgress >= 0.999;
+  const auraShadow = isComplete
+    ? "0 35px 90px rgba(247, 209, 127, 0.6), 0 0 40px rgba(255, 241, 210, 0.55)"
+    : "0 25px 70px rgba(125, 138, 184, 0.45), 0 0 30px rgba(255,255,255,0.25)";
 
   return (
     <div
-      className={`rounded-[32px] border border-white/10 bg-black/60 p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl ${className}`}
+      className={`sticky-timeline-indicator rounded-[32px] border border-white/10 bg-black/60 p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl ${className}`}
+      data-role="timeline-indicator"
     >
-      <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/60">
-        <span>Timeline</span>
-        <span>{progressLabel}</span>
+      <div className="flex items-center gap-4">
+        <div
+          className="k-progress-indicator"
+          style={{
+            boxShadow: auraShadow,
+            borderColor: isComplete ? "rgba(247, 209, 127, 0.8)" : "rgba(255, 255, 255, 0.25)",
+            background: isComplete
+              ? "linear-gradient(135deg, rgba(247, 209, 127, 0.35), rgba(255, 255, 255, 0.15))"
+              : "linear-gradient(135deg, rgba(209, 225, 255, 0.25), rgba(255, 255, 255, 0.08))",
+          }}
+        >
+          <span className="k-progress-letter">K</span>
+          <motion.div
+            className="k-progress-fill"
+            style={{ height: progressLabel, background: `linear-gradient(180deg, ${progressColor}, ${progressColor})` }}
+            transition={{ type: "spring", stiffness: 160, damping: 26 }}
+          />
+          {isComplete && (
+            <motion.div
+              className="k-progress-star"
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            />
+          )}
+        </div>
+        <div className="flex-1">
+          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Timeline configurateur</p>
+          <p className="text-3xl font-semibold text-white">{progressLabel}</p>
+          <p className="text-sm text-white/60">Progression du brief</p>
+        </div>
       </div>
       <div className="mt-6 space-y-4">
         {stableSections.map((section, index) => {
@@ -104,7 +170,7 @@ export function StickyTimelineIndicator({ sections, className = "" }: StickyTime
       <div className="mt-6 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-white via-[#a855f7] to-[#22d3ee]"
-          style={{ width: progressLabel }}
+          style={{ width: `${resolvedProgress * 100}%` }}
         />
       </div>
     </div>

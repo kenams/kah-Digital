@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { FlashInteractions } from "@/components/flash-interactions";
 import { SiteProviders } from "@/components/site-providers";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { GlobalScrollProgress } from "@/components/global-scroll-progress";
 
 const SITE_URL = "https://kah-digital.vercel.app";
 
@@ -108,9 +109,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} bg-black text-white antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}>
         <script
           type="application/ld+json"
           suppressHydrationWarning
@@ -120,10 +119,11 @@ export default function RootLayout({
           <ScrollToTop />
           <FlashInteractions />
           <SiteHeader />
-          <main className="min-h-screen bg-gradient-to-b from-black via-[#040404] to-[#050505]">
+          <main className="main-surface min-h-screen">
             {children}
           </main>
           <SiteFooter />
+          <GlobalScrollProgress />
         </SiteProviders>
       </body>
     </html>

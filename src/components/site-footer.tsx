@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 const footerLinks = [
@@ -9,8 +11,8 @@ const footerLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-black text-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 md:flex-row md:items-center md:justify-between">
+    <footer className="site-footer border-t border-white/10 bg-black text-white">
+      <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 px-8 py-12 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-lg font-semibold">Kah-Digital</p>
           <p className="text-sm text-white/70">
@@ -18,7 +20,7 @@ export function SiteFooter() {
           </p>
           <p className="mt-2 text-sm text-white/70">
             Contact :{" "}
-            <Link href="mailto:hello@kah-digital.com" className="underline">
+            <Link href="mailto:hello@kah-digital.com" className="underline hover:text-white">
               hello@kah-digital.com
             </Link>{" "}
             · +33 6 00 00 00 00
@@ -26,11 +28,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-wrap gap-4 text-sm text-white/70">
           {footerLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="transition hover:text-white"
-            >
+            <Link key={link.label} href={link.href} className="transition hover:text-white">
               {link.label}
             </Link>
           ))}

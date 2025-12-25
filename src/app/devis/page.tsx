@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
 import { QuoteForm } from "@/components/quote-form";
+import { ContactCard } from "@/components/contact-card";
 
 const devisSections = [
   { id: "devis-hero", label: "Brief rapide" },
@@ -54,14 +55,17 @@ export default function DevisPage() {
         <section id="devis-form" className="section-shell space-y-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
             <QuoteForm />
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-              <Image
-                src="/mockups/global-dashboard.svg"
-                alt="Aperçu du workspace briefing"
-                width={760}
-                height={520}
-                className="h-full w-full rounded-2xl object-cover"
-              />
+            <div className="space-y-4">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                <Image
+                  src="/mockups/global-dashboard.svg"
+                  alt="Aperçu du workspace briefing"
+                  width={760}
+                  height={520}
+                  className="h-full w-full rounded-2xl object-cover"
+                />
+              </div>
+              <ContactCard title="Hotline produit" />
             </div>
           </div>
         </section>

@@ -111,7 +111,7 @@ export function QuoteForm() {
 
   return (
     <form
-      className="rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-black/30 backdrop-blur"
+      className="quote-form rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-black/30 backdrop-blur"
       onSubmit={handleSubmit}
     >
       <div className="grid gap-5 md:grid-cols-2">
