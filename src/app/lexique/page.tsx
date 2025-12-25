@@ -288,6 +288,41 @@ export default function LexiquePage() {
             ))}
           </div>
         </section>
+
+        <section className="section-shell">
+          <div className="accent-section">
+            <div className="content space-y-6 px-6 py-10 text-white">
+              <div>
+                <p className="text-sm uppercase tracking-[0.35em] text-white/60">Prochaines etapes</p>
+                <h2 className="mt-3 text-3xl font-semibold">Pret a cadrer ton sprint ou ton MVP ?</h2>
+                <p className="mt-2 max-w-3xl text-white/70">
+                  On transforme ces definitions en actions concretes: sprint cahier des charges, configurateur guidant les
+                  modules et devis express pour enclencher la prod.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <Link
+                  href="/devis"
+                  className="rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  Planifier un sprint
+                </Link>
+                <Link
+                  href="/configurateur"
+                  className="rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  Composer ton MVP
+                </Link>
+                <Link
+                  href="/cahier-des-charges"
+                  className="rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  Telecharger le pack
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <div className="sticky top-32 hidden lg:block lg:w-72">
         <StickyTimelineIndicator sections={lexiqueSections} />

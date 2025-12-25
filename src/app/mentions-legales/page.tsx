@@ -111,6 +111,34 @@ export default function MentionsLegalesPage() {
           médiateur de la consommation.
         </p>
       </div>
+      <div className="light-surface space-y-5 px-8 py-10">
+        <div>
+          <p className="text-sm uppercase tracking-[0.35em] text-slate-500">CTA</p>
+          <h2 className="mt-3 text-3xl font-semibold text-slate-900">Toujours alignes sur la conformite et l&apos;action.</h2>
+          <p className="mt-2 max-w-3xl text-slate-600">Formalise ton projet tout en gardant un fil conducteur legal: configurateur, devis express et relecture cahier des charges restent dispo pour enclencher la suite.</p>
+        </div>
+        <div className="flex flex-wrap gap-3 text-sm text-slate-900">
+          <Link
+            href="/devis"
+            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
+          >
+            Lancer un devis
+          </Link>
+          <Link
+            href="/configurateur"
+            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
+          >
+            Composer un MVP
+          </Link>
+          <Link
+            href="/portfolio"
+            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
+          >
+            Voir des cas concrets
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }

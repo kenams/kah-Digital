@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AssetGrid } from "@/components/asset-grid";
 import { Reveal } from "@/components/reveal";
+import { assetShots } from "@/data/asset-shots";
 import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata = {
@@ -79,6 +81,28 @@ export default function ProjectsPage() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal>
+        <section className="space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-8 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)]">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-white/60">AssetShots</p>
+              <h2 className="text-3xl font-semibold">Scenes Figma exportees pour chaque projet.</h2>
+              <p className="mt-2 max-w-3xl text-white/70">
+                On livre aussi les mockups HD et versions 3D des ecrans clefs pour alimenter portfolio, deck investisseur
+                et case study. Disponible en formats light et dark selon les pages.
+              </p>
+            </div>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+            >
+              Voir tout le pack
+            </Link>
+          </div>
+          <AssetGrid assets={assetShots.slice(0, 4)} columns="dense" />
+        </section>
+      </Reveal>
     </div>
   );
 }

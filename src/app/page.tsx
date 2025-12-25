@@ -1,14 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { AssetGrid } from "@/components/asset-grid";
 import { HeroSection } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
 import { Testimonials } from "@/components/testimonials";
 import { FloatingCTA } from "@/components/floating-cta";
 import { portfolioProjects } from "@/data/portfolio";
+import { assetShots } from "@/data/asset-shots";
 
 const services = [
   {
@@ -131,29 +132,6 @@ const stats = [
   { label: "Delai moyen", value: "4 semaines" },
 ];
 
-const assetShots = [
-  {
-    title: "Brief configurateur live",
-    description: "Timeline sticky, modules MVP, export PDF direct.",
-    image: "/mockups/global-dashboard.svg",
-    chips: ["Site + MVP", "4 étapes"],
-    cta: { label: "Tester le configurateur", href: "/configurateur" },
-  },
-  {
-    title: "Dashboard MVP FairBuild",
-    description: "Double onboarding, scoring automatique et badges status.",
-    image: "/mockups/fairbuild-mvp.svg",
-    chips: ["Webhooks Make", "Supabase"],
-    cta: { label: "Voir l'étude de cas", href: "/projets/fairbuild-mvp" },
-  },
-  {
-    title: "Player PulseLearn",
-    description: "Lecteur audio, quiz, timeline de progression mobile.",
-    image: "/mockups/pulselearn.svg",
-    chips: ["React Native", "Stripe Checkout"],
-    cta: { label: "Découvrir PulseLearn", href: "/projets/pulselearn" },
-  },
-];
 
 export default function Home() {
   return (
@@ -178,36 +156,7 @@ export default function Home() {
               Explorer toutes les études de cas
             </Link>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {assetShots.map((asset) => (
-              <div
-                key={asset.title}
-                className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-5 text-white shadow-[0_30px_80px_rgba(5,5,5,0.55)]"
-              >
-                <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
-                  <span>Asset</span>
-                  <span className="rounded-full border border-white/15 px-3 py-1 text-[0.6rem] text-white/70">
-                    {asset.chips.join(" · ")}
-                  </span>
-                </div>
-                <Image
-                  src={asset.image}
-                  alt={asset.title}
-                  width={520}
-                  height={320}
-                  className="mt-4 h-48 w-full rounded-2xl border border-white/15 bg-black/30 object-cover"
-                />
-                <p className="mt-5 text-lg font-semibold">{asset.title}</p>
-                <p className="mt-2 text-sm text-white/70">{asset.description}</p>
-                <Link
-                  href={asset.cta.href}
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-white/70"
-                >
-                  {asset.cta.label}
-                </Link>
-              </div>
-            ))}
-          </div>
+          <AssetGrid assets={assetShots} />
         </section>
       </Reveal>
 
