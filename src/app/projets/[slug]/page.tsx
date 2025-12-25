@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { ProjectSceneRender } from "@/components/project-scene";
+import { AssetGrid } from "@/components/asset-grid";
+import { assetShots } from "@/data/asset-shots";
 import { portfolioProjects } from "@/data/portfolio";
 
 type ProjectPageProps = {
@@ -28,6 +30,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!project) {
     return notFound();
   }
+  const relatedAssets = assetShots.filter((asset) => asset.cta.href.includes(`/projets/${project.slug}`));
+  const gridAssets = relatedAssets.length > 0 ? relatedAssets : assetShots.slice(0, 3);
 
   return (
     <div className="section-shell space-y-10">
@@ -153,6 +157,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
         </div>
+      </Reveal>
+
+      <Reveal>
+        <section className="rounded-[36px] border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-8 text-white shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-3">
+              <p className="text-sm uppercase tracking-[0.35em] text-white/60">Asset grid</p>
+              <h2 className="text-3xl font-semibold">Scenes exports pour prolonger le storytelling.</h2>
+              <p className="text-white/70 max-w-2xl">
+                Chaque projet shippe avec ses mockups HD et ses variantes claires/sombres pour alimenter portfolio, deck
+                investisseur ou onboarding. Voici les extraits lies a ce cas, que tu peux reuploader partout.
+              </p>
+            </div>
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+            >
+              Voir plus de scenes
+            </Link>
+          </div>
+          <div className="mt-8">
+            <AssetGrid assets={gridAssets} columns="dense" />
+          </div>
+        </section>
       </Reveal>
     </div>
   );
