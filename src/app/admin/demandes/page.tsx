@@ -1,0 +1,338 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import type { QuoteRecord } from "@/lib/quote";
+
+const feasibilityOptions = [
+  { value: "pending", label: "À qualifier" },
+  { value: "feasible", label: "Faisable" },
+  { value: "blocked", label: "Non faisable" },
+] as const;
+
+const depositOptions = [
+  { value: "none", label: "Non défini" },
+  { value: "deposit", label: "Acompte validé" },
+  { value: "servers", label: "Serveurs / outils réglés" },
+] as const;
+
+type ItemStatus = {
+  feasibility: (typeof feasibilityOptions)[number]["value"];
+  deposit: (typeof depositOptions)[number]["value"];
+};
+
+const feasibilityBadges: Record<ItemStatus["feasibility"], string> = {
+  pending: "bg-amber-100/15 text-amber-200 border border-amber-200/30",
+  feasible: "bg-emerald-100/15 text-emerald-200 border border-emerald-200/30",
+  blocked: "bg-rose-100/15 text-rose-200 border border-rose-200/30",
+};
+
+const depositBadges: Record<ItemStatus["deposit"], string> = {
+  none: "bg-white/10 text-white/70 border border-white/15",
+  deposit: "bg-sky-100/15 text-sky-200 border border-sky-200/30",
+  servers: "bg-purple-100/20 text-purple-100 border border-purple-200/40",
+};
+
+const feasibilityLabels: Record<ItemStatus["feasibility"], string> = {
+  pending: "À qualifier",
+  feasible: "Faisable",
+  blocked: "Non faisable",
+};
+
+const depositLabels: Record<ItemStatus["deposit"], string> = {
+  none: "Statut paiement",
+  deposit: "Acompte validé",
+  servers: "Infra en place",
+};
+
+export default function AdminDemandesPage() {
+  const [items, setItems] = useState<QuoteRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [statusMap, setStatusMap] = useState<Record<string, ItemStatus>>({});
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function load() {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/quote", { cache: "no-store" });
+        const data = await response.json();
+        if (!ignore) {
+          setItems(data.items ?? []);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
+    const interval = setInterval(load, 10000);
+
+    return () => {
+      ignore = true;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const resolvedStatus = useMemo(() => {
+    const record: Record<string, ItemStatus> = { ...statusMap };
+    items.forEach((item) => {
+      const key = item.submittedAt;
+      if (!record[key]) {
+        record[key] = { feasibility: "pending", deposit: "none" };
+      }
+    });
+    return record;
+  }, [items, statusMap]);
+
+  const insights = useMemo(() => {
+    const feasibility = { pending: 0, feasible: 0, blocked: 0 };
+    const deposit = { none: 0, deposit: 0, servers: 0 };
+    items.forEach((item) => {
+      const status = resolvedStatus[item.submittedAt];
+      if (!status) return;
+      feasibility[status.feasibility] += 1;
+      deposit[status.deposit] += 1;
+    });
+
+    return {
+      total: items.length,
+      feasibility,
+      deposit,
+    };
+  }, [items, resolvedStatus]);
+
+  const updateStatus = (id: string, patch: Partial<ItemStatus>) => {
+    setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
+  };
+
+  return (
+    <div className="section-shell space-y-10">
+      <motion.div
+        className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className="rounded-[32px] border border-white/15 bg-gradient-to-br from-white/5 to-white/0 p-8 text-white shadow-[0_35px_90px_rgba(0,0,0,0.55)]">
+          <p className="text-xs uppercase tracking-[0.35em] text-white/60">Admin</p>
+          <h1 className="mt-3 text-4xl font-semibold">Demandes reçues</h1>
+          <p className="mt-3 text-white/70 max-w-2xl">
+            Vue pipeline des demandes issues du configurateur + devis classique. Les badges ci-dessous sont locaux pour
+            qualifier rapidement avant de pousser l&apos;info vers Notion, Airtable ou ton CRM.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm">
+            <Link
+              href="/"
+              className="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+            >
+              ← Accueil
+            </Link>
+            <Link
+              href="/configurateur"
+              className="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
+            >
+              Configurateur
+            </Link>
+            <Link
+              href="/devis"
+              className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200"
+            >
+              Devis classique
+            </Link>
+          </div>
+          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/50">Actualisation continue · toutes les 10s</p>
+        </div>
+        <div className="rounded-[32px] border border-white/10 bg-white/5 p-1">
+          <div className="rounded-[28px] bg-black/70 p-6">
+            <Image
+              src="/mockups/global-dashboard.svg"
+              alt="Aperçu dashboard demandes"
+              width={640}
+              height={400}
+              className="h-full w-full rounded-2xl border border-white/10 object-cover"
+              priority={false}
+            />
+            <div className="mt-6 grid gap-4 text-xs text-white/70 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50">Faisables</p>
+                <p className="mt-1 text-2xl font-semibold text-white">{insights.feasibility.feasible}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50">À qualifier</p>
+                <p className="mt-1 text-2xl font-semibold text-white">{insights.feasibility.pending}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Demandes</p>
+          <p className="mt-2 text-3xl font-semibold">{insights.total}</p>
+          <p className="text-sm text-white/60">total reçues</p>
+        </div>
+        <div className="rounded-3xl border border-amber-200/30 bg-amber-100/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">À qualifier</p>
+          <p className="mt-2 text-3xl font-semibold text-amber-100">{insights.feasibility.pending}</p>
+          <p className="text-sm text-white/60">en attente de tri</p>
+        </div>
+        <div className="rounded-3xl border border-emerald-200/30 bg-emerald-100/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Faisables</p>
+          <p className="mt-2 text-3xl font-semibold text-emerald-100">{insights.feasibility.feasible}</p>
+          <p className="text-sm text-white/60">validées</p>
+        </div>
+        <div className="rounded-3xl border border-sky-200/30 bg-sky-100/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Acompte</p>
+          <p className="mt-2 text-3xl font-semibold text-sky-100">{insights.deposit.deposit + insights.deposit.servers}</p>
+          <p className="text-sm text-white/60">clients engagés</p>
+        </div>
+      </div>
+
+      {loading && <p className="text-white/60">Chargement des dernières demandes...</p>}
+
+      {!loading && items.length === 0 && (
+        <div className="rounded-3xl border border-dashed border-white/20 bg-black/20 p-8 text-white/70">
+          Aucune demande pour le moment.
+        </div>
+      )}
+
+      <div className="space-y-6">
+        {items.map((item, index) => {
+          const status = resolvedStatus[item.submittedAt];
+          const feasibilityClass = feasibilityBadges[status?.feasibility ?? "pending"];
+          const depositClass = depositBadges[status?.deposit ?? "none"];
+          return (
+            <motion.article
+              key={item.submittedAt}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.03 }}
+              className="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/8 to-white/0 p-6 text-white shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+            >
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+                    {new Date(item.submittedAt).toLocaleString("fr-FR")}
+                  </p>
+                  <h2 className="text-2xl font-semibold">{item.name || "Sans nom"}</h2>
+                  <p className="text-sm text-white/70">
+                    {item.projectType} · {item.clientType ?? "Client"}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className={`rounded-full px-3 py-1 font-medium ${feasibilityClass}`}>
+                    {feasibilityLabels[status?.feasibility ?? "pending"]}
+                  </span>
+                  <span className={`rounded-full px-3 py-1 font-medium ${depositClass}`}>
+                    {depositLabels[status?.deposit ?? "none"]}
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr,0.7fr]">
+                <div className="grid gap-3 text-sm text-white/80 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Budget</p>
+                    <p className="mt-1 text-white">{item.budget}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Délai</p>
+                    <p className="mt-1 text-white">{item.timeline}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Entreprise</p>
+                    <p className="mt-1 text-white">{item.companyName ?? "N/A"}</p>
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Contact</p>
+                  <p className="mt-1">{item.email}</p>
+                  {item.phone && <p>{item.phone}</p>}
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <label className="text-sm text-white/70">
+                  Faisabilité
+                  <select
+                    value={status?.feasibility}
+                    onChange={(event) =>
+                      updateStatus(item.submittedAt, { feasibility: event.target.value as ItemStatus["feasibility"] })
+                    }
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+                  >
+                    {feasibilityOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="text-sm text-white/70">
+                  Avance / serveurs
+                  <select
+                    value={status?.deposit}
+                    onChange={(event) =>
+                      updateStatus(item.submittedAt, { deposit: event.target.value as ItemStatus["deposit"] })
+                    }
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+                  >
+                    {depositOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              {item.configurator && (
+                <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                  <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Configurateur</p>
+                    <p>Type : {item.configurator.siteType ?? "-"}</p>
+                    <p>Vision : {item.configurator.strategy ?? "-"}</p>
+                    <p>Style : {item.configurator.mood ?? "-"}</p>
+                    <p>Options : {item.configurator.features?.join(", ") || "-"}</p>
+                    <p>Intégrations : {item.configurator.integrations?.join(", ") || "-"}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c0f2c] to-[#1f1244] p-4 text-sm text-white/80">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Focus</p>
+                    <p>Projet : {item.projectFocus === "mobile" ? "MVP Mobile" : "Web / site"}</p>
+                    {item.projectFocus === "mobile" && (
+                      <>
+                        <p>Plateformes : {item.mobilePlatforms?.length ? item.mobilePlatforms.join(", ") : "-"}</p>
+                        <p>Fonctionnalités : {item.mobileFeatures?.length ? item.mobileFeatures.join(", ") : "-"}</p>
+                        <p>Stores : {item.storeSupport ?? "-"}</p>
+                      </>
+                    )}
+                    {item.projectFocus !== "mobile" && (
+                      <p>Intention : {item.goal ?? "Brief classique"}</p>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {item.message && (
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Message</p>
+                  <p className="mt-2 whitespace-pre-line">{item.message}</p>
+                </div>
+              )}
+            </motion.article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
