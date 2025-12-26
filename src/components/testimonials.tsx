@@ -2,26 +2,26 @@ import { Reveal } from "@/components/reveal";
 
 const testimonials = [
   {
-    name: "Laura F.",
-    role: "CEO, Atelier Nomade",
+    name: "Clara M.",
+    role: "Directrice Marketing, Lumea Skin",
     quote:
-      "Brief clair, planning simple, résultat fidèle à l’agence. On peut envoyer un dossier en 3 minutes.",
+      "Execution rapide, finitions irreprochables. Le site est plus rapide et plus premium des la mise en ligne.",
   },
   {
-    name: "Nassim C.",
-    role: "CMO, Lumea Skin",
+    name: "Jonathan P.",
+    role: "Founder, NovaPay",
     quote:
-      "Ils ont expliqué chaque choix technique (Next.js, Stripe) sans jargon et le taux de conversion a doublé.",
+      "Process court et clair. Ils ont compris l'image premium et ont livre en avance.",
   },
   {
-    name: "Gaelle B.",
-    role: "Partner, Valoris Conseil",
+    name: "Marion L.",
+    role: "Head of Brand, Atelier Nomade",
     quote:
-      "Le CMS + export PDF nous fait gagner des heures. L’équipe nous a guidés pas à pas.",
+      "Direction artistique solide, storytelling net et resultats concrets sur les leads.",
   },
 ];
 
-const logos = ["NovaPay", "Pulse Studio", "OKO Energy", "Valoris Conseil"];
+const logos = ["NovaPay", "Pulse Studio", "OKO Energy", "Atelier Nomade"];
 
 export function Testimonials() {
   return (
@@ -32,7 +32,7 @@ export function Testimonials() {
             Confiance
           </p>
           <h2 className="text-3xl font-semibold text-white">
-            50+ marques accompagnées
+            Marques exigeantes accompagnees
           </h2>
         </div>
       </Reveal>
@@ -51,7 +51,7 @@ export function Testimonials() {
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-white">
               <p className="text-white/80">&ldquo;{testimonial.quote}&rdquo;</p>
               <div className="mt-4 text-sm text-white/60">
-                {testimonial.name} · {testimonial.role}
+                {testimonial.name} | {testimonial.role}
               </div>
             </div>
           </Reveal>

@@ -16,9 +16,9 @@ type StickyTimelineIndicatorProps = {
 };
 
 const progressGradient = [
-  { stop: 0, color: "#cfd8ea" }, // argent froid
-  { stop: 0.5, color: "#d9c4ff" },
-  { stop: 1, color: "#f7d17f" }, // or chaud
+  { stop: 0, color: "#d9d2c2" }, // warm stone
+  { stop: 0.5, color: "#c3d2d9" }, // steel mist
+  { stop: 1, color: "#f0c980" }, // gold glow
 ];
 
 function getProgressColor(value: number) {
@@ -86,8 +86,8 @@ export function StickyTimelineIndicator({ sections, className = "", progressOver
   const progressColor = getProgressColor(resolvedProgress);
   const isComplete = resolvedProgress >= 0.999;
   const auraShadow = isComplete
-    ? "0 35px 90px rgba(247, 209, 127, 0.6), 0 0 40px rgba(255, 241, 210, 0.55)"
-    : "0 25px 70px rgba(125, 138, 184, 0.45), 0 0 30px rgba(255,255,255,0.25)";
+    ? "0 35px 90px rgba(214, 179, 106, 0.6), 0 0 40px rgba(255, 241, 210, 0.55)"
+    : "0 25px 70px rgba(134, 150, 168, 0.45), 0 0 30px rgba(255,255,255,0.25)";
 
   return (
     <div
@@ -99,10 +99,10 @@ export function StickyTimelineIndicator({ sections, className = "", progressOver
           className="k-progress-indicator"
           style={{
             boxShadow: auraShadow,
-            borderColor: isComplete ? "rgba(247, 209, 127, 0.8)" : "rgba(255, 255, 255, 0.25)",
+            borderColor: isComplete ? "rgba(214, 179, 106, 0.8)" : "rgba(255, 255, 255, 0.25)",
             background: isComplete
-              ? "linear-gradient(135deg, rgba(247, 209, 127, 0.35), rgba(255, 255, 255, 0.15))"
-              : "linear-gradient(135deg, rgba(209, 225, 255, 0.25), rgba(255, 255, 255, 0.08))",
+              ? "linear-gradient(135deg, rgba(214, 179, 106, 0.35), rgba(255, 255, 255, 0.15))"
+              : "linear-gradient(135deg, rgba(195, 210, 217, 0.25), rgba(255, 255, 255, 0.08))",
           }}
         >
           <span className="k-progress-letter">K</span>
@@ -169,7 +169,7 @@ export function StickyTimelineIndicator({ sections, className = "", progressOver
       </div>
       <div className="mt-6 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-white via-[#a855f7] to-[#22d3ee]"
+          className="h-full rounded-full bg-gradient-to-r from-white via-[#d6b36a] to-[#7fb8c7]"
           style={{ width: `${resolvedProgress * 100}%` }}
         />
       </div>

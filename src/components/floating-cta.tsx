@@ -23,10 +23,10 @@ export function FloatingCTA() {
     >
       <Link
         href="/devis"
-        className="inline-flex items-center gap-3 rounded-full bg-white/90 px-6 py-3 text-black shadow-2xl shadow-black/30 backdrop-blur hover:bg-white"
+        className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-[#f6efe3]/95 px-6 py-3 text-[#15120e] shadow-2xl shadow-black/30 backdrop-blur transition hover:bg-[#f6efe3]"
       >
-        <span className="h-2 w-2 rounded-full bg-emerald-500" />
-        Devis rapide
+        <span className="h-2 w-2 rounded-full bg-[#d6b36a]" />
+        Devis premium
       </Link>
     </div>
   );

@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05060f;
-  --foreground: #f4f2ff;
-  --accent: #a855f7;
-  --accent-secondary: #22d3ee;
-  --muted: #9ea3c5;
-  --accent-tertiary: #ff8fb3;
+  --background: #0a0908;
+  --foreground: #f5f1e8;
+  --accent: #d6b36a;
+  --accent-secondary: #7fb8c7;
+  --muted: #b7b1a5;
+  --accent-tertiary: #d28a68;
 }
 
 @theme inline {
@@ -17,9 +17,9 @@
 }
 
 body {
-  background: radial-gradient(circle at 15% 25%, rgba(168, 85, 247, 0.2), transparent 45%),
-    radial-gradient(circle at 80% -10%, rgba(34, 211, 238, 0.25), transparent 40%),
-    #05060f;
+  background: radial-gradient(circle at 12% 18%, rgba(214, 179, 106, 0.18), transparent 52%),
+    radial-gradient(circle at 80% 0%, rgba(127, 184, 199, 0.18), transparent 48%),
+    #0a0908;
   color: var(--foreground);
   min-height: 100vh;
   font-feature-settings: "liga" 1, "calt" 1;
@@ -64,8 +64,8 @@ h4 {
 }
 
 .gradient-pill {
-  background: linear-gradient(120deg, rgba(168, 85, 247, 0.25), rgba(34, 211, 238, 0.05));
-  border: 1px solid rgba(168, 85, 247, 0.5);
+  background: linear-gradient(120deg, rgba(214, 179, 106, 0.25), rgba(127, 184, 199, 0.12));
+  border: 1px solid rgba(214, 179, 106, 0.5);
   color: var(--foreground);
 }
 
@@ -73,26 +73,26 @@ h4 {
   position: relative;
   border-radius: 32px;
   padding: 2px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(34, 211, 238, 0.35));
+  background: linear-gradient(135deg, rgba(214, 179, 106, 0.45), rgba(127, 184, 199, 0.3));
 }
 
 .accent-section > .content {
   border-radius: 30px;
-  background: rgba(5, 5, 5, 0.9);
+  background: rgba(10, 9, 8, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .service-accent {
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.04), rgba(34, 211, 238, 0.12));
-  border: 1px solid rgba(34, 211, 238, 0.3);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), rgba(127, 184, 199, 0.12));
+  border: 1px solid rgba(127, 184, 199, 0.3);
 }
 
 .process-accent:nth-child(odd) {
-  background: linear-gradient(140deg, rgba(168, 85, 247, 0.12), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(140deg, rgba(214, 179, 106, 0.18), rgba(255, 255, 255, 0.02));
 }
 
 .process-accent:nth-child(even) {
-  background: linear-gradient(140deg, rgba(34, 211, 238, 0.12), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(140deg, rgba(127, 184, 199, 0.18), rgba(255, 255, 255, 0.02));
 }
 
 .faq-item {
@@ -110,8 +110,8 @@ h4 {
 }
 
 .hero-grid {
-  background: radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.2), transparent 50%),
-    radial-gradient(circle at 80% 0%, rgba(34, 211, 238, 0.18), transparent 40%),
+  background: radial-gradient(circle at 10% 20%, rgba(214, 179, 106, 0.18), transparent 50%),
+    radial-gradient(circle at 80% 0%, rgba(127, 184, 199, 0.15), transparent 45%),
     rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
@@ -123,7 +123,7 @@ h4 {
   content: "";
   position: absolute;
   inset: -35% 0 0 35%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent 60%);
+  background: radial-gradient(circle, rgba(214, 179, 106, 0.45), transparent 60%);
   filter: blur(80px);
   animation: heroGlow 12s ease-in-out infinite alternate;
   pointer-events: none;
@@ -136,9 +136,9 @@ h4 {
 .hero-visual {
   position: relative;
   border-radius: 30px;
-  background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.45), transparent 55%),
-    radial-gradient(circle at 80% 10%, rgba(34, 211, 238, 0.35), transparent 50%),
-    rgba(6, 9, 26, 0.85);
+  background: radial-gradient(circle at 20% 20%, rgba(214, 179, 106, 0.4), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(127, 184, 199, 0.3), transparent 50%),
+    rgba(10, 9, 8, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
@@ -223,8 +223,8 @@ h4 {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-secondary);
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.8);
 }
 
 .divider-label {
@@ -252,7 +252,7 @@ h4 {
 .mesh-pill {
   border-radius: 999px;
   padding: 14px 22px;
-  background: linear-gradient(120deg, rgba(168, 85, 247, 0.3), rgba(34, 211, 238, 0.15));
+  background: linear-gradient(120deg, rgba(214, 179, 106, 0.25), rgba(127, 184, 199, 0.12));
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.4);
 }
@@ -260,9 +260,9 @@ h4 {
 .light-surface {
   border-radius: 40px;
   border: 1px solid rgba(15, 18, 41, 0.15);
-  background: linear-gradient(135deg, #fff7ec, #ffe4ef);
-  box-shadow: 0 35px 120px rgba(255, 205, 188, 0.45);
-  color: #0f1229;
+  background: linear-gradient(135deg, #fff6e9, #f3e3cf);
+  box-shadow: 0 35px 120px rgba(231, 200, 150, 0.45);
+  color: #2b2214;
 }
 
 .light-outline {
@@ -326,12 +326,12 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), transparent 60%),
-    linear-gradient(120deg, rgba(168, 85, 247, 0), rgba(34, 211, 238, 0.9), rgba(168, 85, 247, 0));
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), transparent 60%),
+    linear-gradient(120deg, rgba(214, 179, 106, 0), rgba(127, 184, 199, 0.8), rgba(214, 179, 106, 0));
   opacity: 0;
   pointer-events: none;
   mix-blend-mode: screen;
-  filter: drop-shadow(0 0 20px rgba(255, 206, 136, 0.5));
+  filter: drop-shadow(0 0 20px rgba(214, 179, 106, 0.5));
 }
 
 :where(a, button, [role='button'], input[type='submit'], input[type='button']).flash-trigger::after,
@@ -340,7 +340,7 @@ textarea {
 }
 
 .glow-card {
-  box-shadow: 0 25px 60px rgba(34, 211, 238, 0.12), 0 0 30px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 25px 60px rgba(127, 184, 199, 0.15), 0 0 30px rgba(214, 179, 106, 0.35);
   border-color: rgba(255, 255, 255, 0.85) !important;
 }
 
@@ -350,13 +350,13 @@ textarea {
 }
 
 .progress-widget-flash {
-  box-shadow: 0 0 35px rgba(168, 85, 247, 0.45), 0 40px 80px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 0 35px rgba(214, 179, 106, 0.35), 0 40px 80px rgba(0, 0, 0, 0.65);
 }
 
 .progress-widget .progress-burst {
   position: absolute;
   inset: -40%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.7), rgba(255, 255, 255, 0));
+  background: radial-gradient(circle, rgba(214, 179, 106, 0.6), rgba(255, 255, 255, 0));
   opacity: 0;
   animation: progressBurst 1.2s ease-out forwards;
   mix-blend-mode: screen;

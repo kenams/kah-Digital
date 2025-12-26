@@ -9,15 +9,15 @@ type HeroProps = {
   stats: { label: string; value: string }[];
 };
 
-const orbitItems = ["Next.js + Tailwind", "React Native + Expo", "Supabase + Stripe", "Deck + landing pack"];
+const orbitItems = ["Design system", "Vercel Edge", "QA pixel perfect", "Conciergerie senior"];
 const quickWins = [
   {
     title: "Sprint 0",
-    detail: "Kick-off sous 48 h, workspace Notion + Slack partagé.",
+    detail: "Kick-off sous 48h, roadmap et priorites verrouillees.",
   },
   {
-    title: "MVP mobile",
-    detail: "Build Expo, auth, paiement, push + deck investisseur.",
+    title: "Signature launch",
+    detail: "Design premium, dev rapide et mise en ligne controlee.",
   },
 ];
 
@@ -33,11 +33,11 @@ export function HeroSection({ stats }: HeroProps) {
     <section className="section-shell space-y-6 pb-8 pt-10 text-white" ref={containerRef}>
       <div className="relative overflow-hidden rounded-[46px] border border-white/10 bg-black">
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-[#08061d] via-[#0f092b] to-[#1e0f3a]"
+          className="absolute inset-0 bg-gradient-to-br from-[#0b0a08] via-[#15120e] to-[#1c1711]"
           style={{ y: parallaxY }}
         />
         <motion.div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(168,85,247,0.35),transparent_55%)]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(214,179,106,0.32),transparent_55%)]"
           style={{ y: parallaxY }}
         />
         <div className="relative grid gap-12 px-8 py-16 md:grid-cols-[1.35fr,0.9fr]">
@@ -49,26 +49,26 @@ export function HeroSection({ stats }: HeroProps) {
           >
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
               <span className="gradient-pill rounded-full px-4 py-1 text-xs uppercase tracking-[0.25em]">
-                Studio Next.js & React Native
+                Studio digital haut de gamme
               </span>
-              <span>Réponse sous 24 h • Ship room Vercel</span>
+              <span>Reponse sous 24h | Lancement 4-6 semaines</span>
             </div>
             <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
-              On conçoit des expériences web premium{" "}
-              <span className="gradient-text">et des MVP mobiles prêts à être pitchés</span>.
+              Sites ultra-rapides et experiences digitales de{" "}
+              <span className="gradient-text">luxe pour marques exigeantes</span>.
             </h1>
             <p className="text-lg text-white/75">
-              Brand system, Next.js App Router, SEO, automatisations métier. Puis MVP iOS/Android (React Native + Expo,
-              Supabase, auth, paiement, push) pour tester ton idée et convaincre investisseurs ou clients pilotes.
+              Direction artistique, design system et performance technique. Next.js, SEO et integrations
+              business pour livrer vite sans compromis sur la finition.
             </p>
             <div className="grid gap-3 text-sm text-white/80 md:grid-cols-2">
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
                 <FiCheckCircle className="text-white/80" />
-                <span>Brief express + deck + landing compris</span>
+                <span>Core Web Vitals au vert + QA pixel perfect</span>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
                 <FiClock className="text-white/80" />
-                <span>Kick-off sous 48 h, livraisons en 4 semaines</span>
+                <span>Kick-off sous 48h, livraison 4-6 semaines</span>
               </div>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -76,21 +76,21 @@ export function HeroSection({ stats }: HeroProps) {
                 href="/devis"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200"
               >
-                Planifier un sprint
+                Demander un devis premium
                 <FiArrowRight className="text-black/60" />
               </Link>
               <Link
-                href="/configurateur"
+                href="/projets"
                 className="inline-flex items-center rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
-                Essayer le configurateur
+                Voir le portfolio
               </Link>
               <Link
                 href="/cahier-des-charges.pdf"
                 className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
                 <FiPlayCircle />
-                Télécharger le pack
+                Recevoir le dossier
               </Link>
             </div>
             <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.35em] text-white/60">
@@ -111,13 +111,13 @@ export function HeroSection({ stats }: HeroProps) {
           >
             <div className="hero-panel mb-6 space-y-4">
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/60">
-                <span>Command room</span>
+                <span>Executive room</span>
                 <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] text-white/70">Live</span>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
-                  { label: "Devis en cours", value: "08", tone: "text-emerald-200" },
-                  { label: "Demandes MVP", value: "03", tone: "text-sky-200" },
+                  { label: "Demandes qualifiees", value: "08", tone: "text-amber-200" },
+                  { label: "Sprints actifs", value: "03", tone: "text-slate-200" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
                     <p className="text-xs uppercase tracking-[0.3em] text-white/50">{item.label}</p>
@@ -128,14 +128,14 @@ export function HeroSection({ stats }: HeroProps) {
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
                   <span>Sprints actifs</span>
-                  <span>Qualité</span>
+                  <span>Qualite</span>
                 </div>
                 <div className="mt-4 flex items-end gap-3">
                   {[85, 65, 95].map((height, index) => (
                     <div key={height} className="flex-1">
                       <div className="relative h-24 w-full overflow-hidden rounded-full border border-white/15 bg-white/5">
                         <motion.div
-                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#a855f7] to-[#22d3ee]"
+                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#d6b36a] to-[#7fb8c7]"
                           style={{ height: `${height}%` }}
                         />
                       </div>
@@ -146,7 +146,7 @@ export function HeroSection({ stats }: HeroProps) {
               </div>
             </div>
             <div className="hero-panel mb-6 space-y-3">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/60">Sprint piloté</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-white/60">Sprint pilote</p>
               {quickWins.map((item) => (
                 <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
                   <p className="text-sm text-white/60">{item.title}</p>
@@ -157,9 +157,9 @@ export function HeroSection({ stats }: HeroProps) {
             <div className="hero-panel mb-6 space-y-4">
               <p className="text-xs uppercase tracking-[0.3em] text-white/60">Fast briefing</p>
               <div className="space-y-3 text-sm text-white/80">
-                <p>1. Questionnaire configurateur ou call 15 min.</p>
-                <p>2. Roadmap + budget envoyés sous 48 h.</p>
-                <p>3. Releases hebdo + QA, deck + landing synchronisés.</p>
+                <p>1. Appel 15 min ou configurateur.</p>
+                <p>2. Roadmap + budget envoyes sous 48h.</p>
+                <p>3. Releases hebdo + QA, reporting clair.</p>
               </div>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
@@ -183,7 +183,7 @@ export function HeroSection({ stats }: HeroProps) {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-4 text-sm text-white/70">
         <p className="text-white/80">
-          Clients : Atelier Nomade • Lumea Skin • NovaPay • Pulse Studio • FairBuild • PulseLearn
+          Maisons et studios: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn
         </p>
         <div className="scroll-cue">
           <span />

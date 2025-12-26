@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const progressGradient = [
-  { stop: 0, color: "#cfd8ea" },
-  { stop: 0.5, color: "#d9c4ff" },
-  { stop: 1, color: "#f7d17f" },
+  { stop: 0, color: "#d9d2c2" },
+  { stop: 0.5, color: "#c3d2d9" },
+  { stop: 1, color: "#f0c980" },
 ];
 
 function getProgressColor(value: number) {
@@ -86,15 +86,15 @@ export function GlobalScrollProgress() {
       <div
         className="k-progress-indicator"
         style={{
-          borderColor: percent >= 99 ? "rgba(247, 209, 127, 0.8)" : "rgba(255, 255, 255, 0.25)",
+          borderColor: percent >= 99 ? "rgba(214, 179, 106, 0.8)" : "rgba(255, 255, 255, 0.25)",
           boxShadow:
             percent >= 99
-              ? "0 35px 90px rgba(247, 209, 127, 0.6), 0 0 40px rgba(255, 241, 210, 0.55)"
-              : "0 20px 60px rgba(125, 138, 184, 0.45), 0 0 30px rgba(255,255,255,0.25)",
+              ? "0 35px 90px rgba(214, 179, 106, 0.6), 0 0 40px rgba(255, 241, 210, 0.55)"
+              : "0 20px 60px rgba(134, 150, 168, 0.45), 0 0 30px rgba(255,255,255,0.25)",
           background:
             percent >= 99
-              ? "linear-gradient(135deg, rgba(247, 209, 127, 0.35), rgba(255, 255, 255, 0.15))"
-              : "linear-gradient(135deg, rgba(209, 225, 255, 0.25), rgba(255, 255, 255, 0.08))",
+              ? "linear-gradient(135deg, rgba(214, 179, 106, 0.35), rgba(255, 255, 255, 0.15))"
+              : "linear-gradient(135deg, rgba(195, 210, 217, 0.25), rgba(255, 255, 255, 0.08))",
         }}
       >
         <span className="k-progress-letter">K</span>

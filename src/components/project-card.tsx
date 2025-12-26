@@ -51,9 +51,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           href={`/projets/${project.slug}`}
           className="inline-flex w-fit items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm text-white transition hover:border-white hover:bg-white/10"
         >
-          Étude de cas
+          Etude de cas
           <span aria-hidden="true" className="transition duration-300 group-hover:translate-x-1">
-            →
+            -&gt;
           </span>
         </Link>
       </div>
