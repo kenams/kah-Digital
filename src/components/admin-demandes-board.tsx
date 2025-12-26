@@ -170,6 +170,50 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     });
   }, [items, resolvedStatus, searchTerm, feasibilityFilter, depositFilter]);
 
+  const kpis = useMemo(() => {
+    const now = Date.now();
+    const dayMs = 24 * 60 * 60 * 1000;
+    const weekMs = dayMs * 7;
+    const monthMs = dayMs * 30;
+    let last24h = 0;
+    let last7d = 0;
+    let last30d = 0;
+    let webCount = 0;
+    let mobileCount = 0;
+    let configuratorCount = 0;
+
+    filteredItems.forEach((item) => {
+      const submittedAtMs = Date.parse(item.submittedAt);
+      if (!Number.isNaN(submittedAtMs)) {
+        const delta = now - submittedAtMs;
+        if (delta <= dayMs) last24h += 1;
+        if (delta <= weekMs) last7d += 1;
+        if (delta <= monthMs) last30d += 1;
+      }
+
+      const focus = item.projectFocus ?? "web";
+      if (focus === "mobile") {
+        mobileCount += 1;
+      } else {
+        webCount += 1;
+      }
+
+      if (item.configurator) {
+        configuratorCount += 1;
+      }
+    });
+
+    return {
+      last24h,
+      last7d,
+      last30d,
+      webCount,
+      mobileCount,
+      configuratorCount,
+      classicCount: Math.max(0, filteredItems.length - configuratorCount),
+    };
+  }, [filteredItems]);
+
   const updateStatus = (id: string, patch: Partial<ItemStatus>) => {
     setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
   };
@@ -370,6 +414,28 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
             {insights.deposit.deposit + insights.deposit.servers}
           </p>
           <p className="text-sm text-white/60">clients engagés</p>
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Nouveaux</p>
+          <p className="mt-2 text-3xl font-semibold">{kpis.last24h}</p>
+          <p className="text-sm text-white/60">derniere 24h</p>
+        </div>
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">7 jours</p>
+          <p className="mt-2 text-3xl font-semibold">{kpis.last7d}</p>
+          <p className="text-sm text-white/60">derniere semaine</p>
+        </div>
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Focus</p>
+          <p className="mt-2 text-3xl font-semibold">
+            {kpis.webCount} web / {kpis.mobileCount} mobile
+          </p>
+          <p className="text-sm text-white/60">
+            {kpis.configuratorCount} configurateur / {kpis.classicCount} devis
+          </p>
         </div>
       </div>
 
