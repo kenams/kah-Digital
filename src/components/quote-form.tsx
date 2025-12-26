@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type QuotePayload = {
@@ -47,6 +48,7 @@ const timelineOptions = [
 ];
 
 export function QuoteForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
 
@@ -101,8 +103,11 @@ export function QuoteForm() {
       }
 
       setStatus("success");
-      setServerMessage("Merci, demande envoy?e ?");
+      setServerMessage("Merci, demande envoyee. Redirection en cours...");
       formElement.reset();
+      window.setTimeout(() => {
+        router.push("/merci");
+      }, 800);
     } catch (error) {
       console.error(error);
       setStatus("error");

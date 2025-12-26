@@ -10,6 +10,8 @@ type AdminDemandesBoardProps = {
   initialItems: QuoteRecord[];
 };
 
+const statusStorageKey = "kah-admin-status-map";
+
 const feasibilityOptions = [
   { value: "pending", label: "À qualifier" },
   { value: "feasible", label: "Faisable" },
@@ -55,10 +57,32 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   const [items, setItems] = useState<QuoteRecord[]>(initialItems);
   const [loading, setLoading] = useState(false);
   const [statusMap, setStatusMap] = useState<Record<string, ItemStatus>>({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const [feasibilityFilter, setFeasibilityFilter] = useState<ItemStatus["feasibility"] | "all">("all");
+  const [depositFilter, setDepositFilter] = useState<ItemStatus["deposit"] | "all">("all");
 
   useEffect(() => {
     setItems(initialItems);
   }, [initialItems]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const stored = window.localStorage.getItem(statusStorageKey);
+      if (!stored) return;
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === "object") {
+        setStatusMap(parsed as Record<string, ItemStatus>);
+      }
+    } catch (error) {
+      console.warn("[admin] Failed to read status cache", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(statusStorageKey, JSON.stringify(statusMap));
+  }, [statusMap]);
 
   useEffect(() => {
     let ignore = false;
@@ -116,8 +140,104 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     };
   }, [items, resolvedStatus]);
 
+  const filteredItems = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+
+    return items.filter((item) => {
+      const status = resolvedStatus[item.submittedAt];
+      if (feasibilityFilter !== "all" && status?.feasibility !== feasibilityFilter) {
+        return false;
+      }
+      if (depositFilter !== "all" && status?.deposit !== depositFilter) {
+        return false;
+      }
+
+      if (!query) return true;
+
+      const haystack = [
+        item.name,
+        item.email,
+        item.phone,
+        item.companyName,
+        item.projectType,
+        item.goal,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return haystack.includes(query);
+    });
+  }, [items, resolvedStatus, searchTerm, feasibilityFilter, depositFilter]);
+
   const updateStatus = (id: string, patch: Partial<ItemStatus>) => {
     setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
+  };
+
+  const exportCsv = () => {
+    if (typeof window === "undefined") return;
+    if (filteredItems.length === 0) return;
+
+    const escapeValue = (value: string) => `"${value.replace(/"/g, "\"\"")}"`;
+    const header = [
+      "submittedAt",
+      "name",
+      "email",
+      "phone",
+      "clientType",
+      "companyName",
+      "projectType",
+      "budget",
+      "timeline",
+      "projectFocus",
+      "goal",
+      "pages",
+      "mobilePlatforms",
+      "mobileFeatures",
+      "storeSupport",
+      "techPreferences",
+      "inspirations",
+      "message",
+      "feasibility",
+      "deposit",
+    ];
+
+    const rows = filteredItems.map((item) => {
+      const status = resolvedStatus[item.submittedAt];
+      const values = [
+        item.submittedAt,
+        item.name ?? "",
+        item.email ?? "",
+        item.phone ?? "",
+        item.clientType ?? "",
+        item.companyName ?? "",
+        item.projectType ?? "",
+        item.budget ?? "",
+        item.timeline ?? "",
+        item.projectFocus ?? "",
+        item.goal ?? "",
+        item.pages?.join(", ") ?? "",
+        item.mobilePlatforms?.join(", ") ?? "",
+        item.mobileFeatures?.join(", ") ?? "",
+        item.storeSupport ?? "",
+        item.techPreferences ?? "",
+        item.inspirations ?? "",
+        item.message ?? "",
+        status?.feasibility ?? "pending",
+        status?.deposit ?? "none",
+      ];
+
+      return values.map((value) => escapeValue(String(value))).join(",");
+    });
+
+    const csv = [header.join(","), ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `kah-digital-demandes-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -155,7 +275,53 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
               Devis classique
             </Link>
           </div>
-          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/50">Rechargement auto toutes les 60s</p>
+          <div className="mt-6 grid gap-3 text-sm md:grid-cols-[1.4fr,1fr,1fr]">
+            <input
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Recherche (nom, email, societe)"
+              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+            />
+            <select
+              value={feasibilityFilter}
+              onChange={(event) =>
+                setFeasibilityFilter(event.target.value as ItemStatus["feasibility"] | "all")
+              }
+              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+            >
+              <option value="all">Toutes faisabilites</option>
+              {feasibilityOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <select
+              value={depositFilter}
+              onChange={(event) => setDepositFilter(event.target.value as ItemStatus["deposit"] | "all")}
+              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+            >
+              <option value="all">Tous paiements</option>
+              {depositOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/50">
+            <button
+              type="button"
+              onClick={exportCsv}
+              className="rounded-full border border-white/20 px-4 py-2 text-[0.65rem] font-semibold text-white/70 transition hover:border-white hover:text-white"
+            >
+              Export CSV
+            </button>
+            <span>
+              Affiche {filteredItems.length} / {items.length}
+            </span>
+            <span>Rechargement auto toutes les 60s</span>
+          </div>
           {loading && <p className="mt-2 text-sm text-white/50">Mise à jour en cours...</p>}
         </div>
         <div className="rounded-[32px] border border-white/10 bg-white/5 p-1">
@@ -213,8 +379,14 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
         </div>
       )}
 
+      {!loading && items.length > 0 && filteredItems.length === 0 && (
+        <div className="rounded-3xl border border-dashed border-white/20 bg-black/20 p-8 text-white/70">
+          Aucun resultat avec ces filtres.
+        </div>
+      )}
+
       <div className="space-y-6">
-        {items.map((item, index) => {
+        {filteredItems.map((item, index) => {
           const status = resolvedStatus[item.submittedAt];
           const feasibilityClass = feasibilityBadges[status?.feasibility ?? "pending"];
           const depositClass = depositBadges[status?.deposit ?? "none"];

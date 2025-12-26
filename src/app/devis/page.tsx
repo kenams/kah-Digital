@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
 import { QuoteForm } from "@/components/quote-form";
 import { ContactCard } from "@/components/contact-card";
+
+export const metadata: Metadata = {
+  title: "Devis rapide",
+  description: "Formulaire express pour estimer un site ou une experience digitale.",
+};
 
 const devisSections = [
   { id: "devis-hero", label: "Brief rapide" },

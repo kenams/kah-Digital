@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { MvpQuoteForm } from "@/components/mvp-quote-form";
+
+export const metadata: Metadata = {
+  title: "Devis MVP mobile",
+  description: "Formulaire express pour cadrer un MVP mobile iOS ou Android.",
+};
 
 export default function DevisMvpPage() {
   return (

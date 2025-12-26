@@ -58,11 +58,16 @@ async function sendWebhookBackup(quote: QuoteRecord) {
     return;
   }
 
-  await fetch(webhookUrl, {
+  const response = await fetch(webhookUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(quote),
   });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(`Webhook backup failed (${response.status}) ${body}`.trim());
+  }
 }
 
 export async function notifyQuote(quote: QuoteRecord) {

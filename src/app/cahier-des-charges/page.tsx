@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { InteractiveBrief } from "@/components/interactive-brief";
+
+export const metadata: Metadata = {
+  title: "Cahier des charges",
+  description: "Brief interactif et export PDF pour cadrer un projet digital.",
+};
 
 export default function CahierDesChargesPage() {
   return (

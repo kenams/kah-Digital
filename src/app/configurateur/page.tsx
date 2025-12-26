@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { Reveal } from "@/components/reveal";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
@@ -262,6 +263,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
+  const router = useRouter();
 
   const summaryText = [
     `Type: ${summary.type}`,
@@ -320,6 +322,9 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
       if (!response.ok) throw new Error();
       setStatus("success");
       setServerMessage("Demande envoyee. On revient vers toi sous 24h.");
+      window.setTimeout(() => {
+        router.push("/merci");
+      }, 800);
       setCompanyName("");
       setName("");
       setEmail("");

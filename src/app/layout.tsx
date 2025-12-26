@@ -8,7 +8,7 @@ import { SiteProviders } from "@/components/site-providers";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { GlobalScrollProgress } from "@/components/global-scroll-progress";
 
-const SITE_URL = "https://kah-digital.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -3,6 +3,7 @@ const PHONE_FALLBACK = "+33 6 00 00 00 00";
 
 const rawEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? EMAIL_FALLBACK;
 const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? PHONE_FALLBACK;
+const rawCalendly = process.env.NEXT_PUBLIC_CALENDLY_URL ?? "";
 
 function toPhoneHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "");
@@ -17,4 +18,5 @@ export const brandContact = {
   email: rawEmail,
   phone: rawPhone,
   phoneHref: toPhoneHref(rawPhone),
+  calendlyUrl: rawCalendly || undefined,
 };
