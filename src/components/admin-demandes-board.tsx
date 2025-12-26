@@ -81,7 +81,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
       }
     }
 
-    const interval = setInterval(load, 10000);
+    const interval = setInterval(load, 60000);
     return () => {
       ignore = true;
       clearInterval(interval);
@@ -155,7 +155,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
               Devis classique
             </Link>
           </div>
-          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/50">Rechargement auto toutes les 10s</p>
+          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/50">Rechargement auto toutes les 60s</p>
           {loading && <p className="mt-2 text-sm text-white/50">Mise à jour en cours...</p>}
         </div>
         <div className="rounded-[32px] border border-white/10 bg-white/5 p-1">

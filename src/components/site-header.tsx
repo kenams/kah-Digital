@@ -49,6 +49,12 @@ export function SiteHeader() {
         </nav>
         <div className="hidden items-center gap-3 md:flex">
           <AmbientAudioToggleButton />
+          <Link
+            href="/admin/demandes"
+            className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
+          >
+            Admin
+          </Link>
           {ctaButton}
         </div>
         <button
@@ -78,6 +84,13 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/admin/demandes"
+              className="rounded-full border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Admin
+            </Link>
             <AmbientAudioToggleButton />
             {ctaButton}
           </div>

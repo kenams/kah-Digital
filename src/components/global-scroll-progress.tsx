@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const progressGradient = [
   { stop: 0, color: "#cfd8ea" },
@@ -26,11 +27,13 @@ function getProgressColor(value: number) {
 }
 
 export function GlobalScrollProgress() {
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
   const [progress, setProgress] = useState(0);
   const [hasTimeline, setHasTimeline] = useState(false);
 
   useEffect(() => {
-    if (typeof document === "undefined") return undefined;
+    if (isAdmin || typeof document === "undefined") return undefined;
 
     const checkTimeline = () => {
       const exists = Boolean(document.querySelector("[data-role='timeline-indicator']"));
@@ -42,10 +45,10 @@ export function GlobalScrollProgress() {
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isAdmin]);
 
   useEffect(() => {
-    if (hasTimeline || typeof window === "undefined") return undefined;
+    if (isAdmin || hasTimeline || typeof window === "undefined") return undefined;
 
     const handleScroll = () => {
       const doc = document.documentElement;
@@ -66,9 +69,9 @@ export function GlobalScrollProgress() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [hasTimeline]);
+  }, [hasTimeline, isAdmin]);
 
-  if (hasTimeline) return null;
+  if (isAdmin || hasTimeline) return null;
 
   const percent = Math.round(progress * 100);
   const color = getProgressColor(progress);
@@ -104,7 +107,6 @@ export function GlobalScrollProgress() {
         />
         {percent >= 99 && <div className="k-progress-star" />}
       </div>
-      <span className="rounded-full border border-white/20 px-3 py-1 text-[0.65rem] text-white/60">{percent}%</span>
     </button>
   );
 }

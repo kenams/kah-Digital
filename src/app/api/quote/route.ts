@@ -22,6 +22,10 @@ export async function GET(request: NextRequest) {
 export async function POST(request: Request) {
   try {
     const payload = await request.json();
+    const websiteField = typeof payload?.website === "string" ? payload.website.trim() : "";
+    if (websiteField) {
+      return NextResponse.json({ ok: true });
+    }
     const parsed = quoteSchema.safeParse(payload);
 
     if (!parsed.success) {

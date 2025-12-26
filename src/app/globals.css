@@ -389,6 +389,18 @@ textarea {
   text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
+.k-progress-letter--admin {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 8px;
+  line-height: 1.1;
+  white-space: normal;
+  word-break: break-word;
+}
+
 .k-progress-fill {
   position: absolute;
   left: 0;

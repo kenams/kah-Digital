@@ -20,6 +20,7 @@ type QuotePayload = {
   storeSupport?: string;
   techPreferences?: string;
   projectFocus?: "web" | "mobile";
+  website?: string;
 };
 
 const pageOptions = [
@@ -56,6 +57,7 @@ export function QuoteForm() {
 
     const rawClientType = String(formData.get("clientType") ?? "").trim();
     const selectedPages = formData.getAll("pages").map((value) => String(value));
+    const website = String(formData.get("website") ?? "").trim();
 
     if (selectedPages.length === 0) {
       setServerMessage("S?lectionne au moins une page pour ton site.");
@@ -81,6 +83,7 @@ export function QuoteForm() {
       storeSupport: undefined,
       techPreferences: undefined,
       projectFocus: "web",
+      website: website || undefined,
     };
 
     setStatus("loading");
@@ -114,6 +117,15 @@ export function QuoteForm() {
       className="quote-form rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-black/30 backdrop-blur"
       onSubmit={handleSubmit}
     >
+      <input
+        type="text"
+        name="website"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        defaultValue=""
+      />
       <div className="grid gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="clientType" className="text-sm text-white/70">

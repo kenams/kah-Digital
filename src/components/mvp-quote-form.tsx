@@ -20,6 +20,7 @@ type MvpQuotePayload = {
   clientType?: "entreprise" | "particulier";
   companyName?: string;
   projectFocus: "web" | "mobile";
+  website?: string;
 };
 
 const mobilePlatformOptions = ["iOS", "Android", "Les deux"];
@@ -51,6 +52,7 @@ export function MvpQuoteForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value));
+    const website = String(formData.get("website") ?? "").trim();
 
     if (selectedPlatforms.length === 0) {
       setServerMessage("Sélectionne au moins une plateforme.");
@@ -82,6 +84,7 @@ export function MvpQuoteForm() {
         .filter(Boolean)
         .join("\n"),
       projectFocus: "mobile",
+      website: website || undefined,
     };
 
     if (!payload.goal || payload.goal.length < 5) {
@@ -121,6 +124,15 @@ export function MvpQuoteForm() {
       className="rounded-[36px] border border-white/15 bg-gradient-to-br from-[#0b0c23] via-[#170f32] to-[#2a1854] p-6 text-white shadow-[0_35px_120px_rgba(72,33,128,0.45)]"
       onSubmit={handleSubmit}
     >
+      <input
+        type="text"
+        name="website"
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        defaultValue=""
+      />
       <div className="grid gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="clientType" className="text-sm text-white/70">Tu es *</label>

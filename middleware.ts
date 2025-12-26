@@ -4,6 +4,10 @@ import { NextResponse } from "next/server";
 const adminUser = process.env.ADMIN_BASIC_USER;
 const adminPass = process.env.ADMIN_BASIC_PASSWORD;
 
+function missingConfigResponse() {
+  return new NextResponse("Configuration admin manquante", { status: 503 });
+}
+
 function unauthorizedResponse() {
   return new NextResponse("Authentification requise", {
     status: 401,
@@ -13,19 +17,39 @@ function unauthorizedResponse() {
   });
 }
 
-export function middleware(request: NextRequest) {
-  if (!adminUser || !adminPass) {
-    return NextResponse.next();
+function parseBasicAuth(authHeader: string | null) {
+  if (!authHeader || !authHeader.startsWith("Basic ")) {
+    return null;
   }
 
-  const authHeader = request.headers.get("authorization");
-  if (!authHeader?.startsWith("Basic ")) {
+  try {
+    const encoded = authHeader.replace("Basic ", "").trim();
+    const decoded = atob(encoded);
+    const separatorIndex = decoded.indexOf(":");
+    if (separatorIndex === -1) {
+      return null;
+    }
+    return {
+      user: decoded.slice(0, separatorIndex),
+      pass: decoded.slice(separatorIndex + 1),
+    };
+  } catch (error) {
+    console.error("[middleware] Failed to decode Basic auth header", error);
+    return null;
+  }
+}
+
+export function middleware(request: NextRequest) {
+  if (!adminUser || !adminPass) {
+    return missingConfigResponse();
+  }
+
+  const credentials = parseBasicAuth(request.headers.get("authorization"));
+  if (!credentials) {
     return unauthorizedResponse();
   }
 
-  const decoded = Buffer.from(authHeader.replace("Basic ", ""), "base64").toString();
-  const [user, pass] = decoded.split(":");
-  if (user !== adminUser || pass !== adminPass) {
+  if (credentials.user !== adminUser || credentials.pass !== adminPass) {
     return unauthorizedResponse();
   }
 
