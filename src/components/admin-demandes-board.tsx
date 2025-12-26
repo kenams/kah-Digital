@@ -218,9 +218,9 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
   };
 
-  const exportCsv = () => {
+  const exportCsv = (records: QuoteRecord[], label: string) => {
     if (typeof window === "undefined") return;
-    if (filteredItems.length === 0) return;
+    if (records.length === 0) return;
 
     const escapeValue = (value: string) => `"${value.replace(/"/g, "\"\"")}"`;
     const header = [
@@ -246,7 +246,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
       "deposit",
     ];
 
-    const rows = filteredItems.map((item) => {
+    const rows = records.map((item) => {
       const status = resolvedStatus[item.submittedAt];
       const values = [
         item.submittedAt,
@@ -279,10 +279,17 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `kah-digital-demandes-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.download = `kah-digital-demandes-${label}-${new Date().toISOString().slice(0, 10)}.csv`;
     link.click();
     window.URL.revokeObjectURL(url);
   };
+
+  const focusTotal = kpis.webCount + kpis.mobileCount;
+  const focusWebPct = focusTotal ? Math.round((kpis.webCount / focusTotal) * 100) : 0;
+  const focusMobilePct = focusTotal ? 100 - focusWebPct : 0;
+  const sourceTotal = kpis.configuratorCount + kpis.classicCount;
+  const configuratorPct = sourceTotal ? Math.round((kpis.configuratorCount / sourceTotal) * 100) : 0;
+  const classicPct = sourceTotal ? 100 - configuratorPct : 0;
 
   return (
     <div className="section-shell space-y-10">
@@ -356,10 +363,17 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           <div className="mt-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/50">
             <button
               type="button"
-              onClick={exportCsv}
+              onClick={() => exportCsv(filteredItems, "filtre")}
               className="rounded-full border border-white/20 px-4 py-2 text-[0.65rem] font-semibold text-white/70 transition hover:border-white hover:text-white"
             >
-              Export CSV
+              Export CSV (filtre)
+            </button>
+            <button
+              type="button"
+              onClick={() => exportCsv(items, "toutes")}
+              className="rounded-full border border-white/20 px-4 py-2 text-[0.65rem] font-semibold text-white/70 transition hover:border-white hover:text-white"
+            >
+              Export CSV (tout)
             </button>
             <span>
               Affiche {filteredItems.length} / {items.length}
@@ -417,7 +431,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-white/60">Nouveaux</p>
           <p className="mt-2 text-3xl font-semibold">{kpis.last24h}</p>
@@ -429,6 +443,11 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           <p className="text-sm text-white/60">derniere semaine</p>
         </div>
         <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">30 jours</p>
+          <p className="mt-2 text-3xl font-semibold">{kpis.last30d}</p>
+          <p className="text-sm text-white/60">dernier mois</p>
+        </div>
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-white/60">Focus</p>
           <p className="mt-2 text-3xl font-semibold">
             {kpis.webCount} web / {kpis.mobileCount} mobile
@@ -436,6 +455,48 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           <p className="text-sm text-white/60">
             {kpis.configuratorCount} configurateur / {kpis.classicCount} devis
           </p>
+        </div>
+      </div>
+
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Repartition</p>
+        <div className="mt-4 space-y-4 text-sm text-white/70">
+          <div>
+            <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+              <span>Focus</span>
+              <span>{kpis.webCount} web / {kpis.mobileCount} mobile</span>
+            </div>
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="flex h-full">
+                <span
+                  className="h-full bg-emerald-300/80"
+                  style={{ width: `${focusWebPct}%` }}
+                />
+                <span
+                  className="h-full bg-sky-200/80"
+                  style={{ width: `${focusMobilePct}%` }}
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+              <span>Source</span>
+              <span>{kpis.configuratorCount} configurateur / {kpis.classicCount} devis</span>
+            </div>
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="flex h-full">
+                <span
+                  className="h-full bg-purple-200/80"
+                  style={{ width: `${configuratorPct}%` }}
+                />
+                <span
+                  className="h-full bg-amber-200/80"
+                  style={{ width: `${classicPct}%` }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
