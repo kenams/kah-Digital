@@ -290,6 +290,59 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   const sourceTotal = kpis.configuratorCount + kpis.classicCount;
   const configuratorPct = sourceTotal ? Math.round((kpis.configuratorCount / sourceTotal) * 100) : 0;
   const classicPct = sourceTotal ? 100 - configuratorPct : 0;
+  const activityMax = Math.max(kpis.last24h, kpis.last7d, kpis.last30d, 1);
+  const activityBars = [
+    { label: "24h", value: kpis.last24h },
+    { label: "7j", value: kpis.last7d },
+    { label: "30j", value: kpis.last30d },
+  ];
+
+  const focusBars = [
+    { label: "Web", value: kpis.webCount },
+    { label: "Mobile", value: kpis.mobileCount },
+    { label: "Config", value: kpis.configuratorCount },
+    { label: "Devis", value: kpis.classicCount },
+  ];
+  const focusMax = Math.max(...focusBars.map((bar) => bar.value), 1);
+
+  const dailySeries = useMemo(() => {
+    const days = 30;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const buckets = Array.from({ length: days }, (_, index) => {
+      const date = new Date(today);
+      date.setDate(today.getDate() - (days - 1 - index));
+      return {
+        date,
+        key: date.toISOString().slice(0, 10),
+        label: date.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" }),
+        count: 0,
+      };
+    });
+
+    const indexByKey = new Map(buckets.map((bucket, index) => [bucket.key, index]));
+
+    filteredItems.forEach((item) => {
+      const submittedAt = new Date(item.submittedAt);
+      if (Number.isNaN(submittedAt.getTime())) return;
+      submittedAt.setHours(0, 0, 0, 0);
+      const key = submittedAt.toISOString().slice(0, 10);
+      const bucketIndex = indexByKey.get(key);
+      if (bucketIndex === undefined) return;
+      buckets[bucketIndex].count += 1;
+    });
+
+    return buckets;
+  }, [filteredItems]);
+
+  const seriesMax = Math.max(1, ...dailySeries.map((entry) => entry.count));
+  const sparklinePoints = dailySeries
+    .map((entry, index) => {
+      const x = dailySeries.length === 1 ? 0 : (index / (dailySeries.length - 1)) * 100;
+      const y = 100 - (entry.count / seriesMax) * 100;
+      return `${x},${y}`;
+    })
+    .join(" ");
 
   return (
     <div className="section-shell space-y-10">
@@ -455,6 +508,60 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           <p className="text-sm text-white/60">
             {kpis.configuratorCount} configurateur / {kpis.classicCount} devis
           </p>
+        </div>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Activite recente</p>
+          <div className="mt-6 flex items-end gap-6 text-xs text-white/60">
+            {activityBars.map((bar) => (
+              <div key={bar.label} className="flex flex-1 flex-col items-center gap-2">
+                <div className="flex h-24 w-10 items-end overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="w-full bg-emerald-200/80"
+                    style={{
+                      height: `${Math.max(6, (bar.value / activityMax) * 100)}%`,
+                    }}
+                  />
+                </div>
+                <span className="uppercase tracking-[0.2em]">{bar.label}</span>
+                <span className="text-sm text-white">{bar.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Sparkline 30 jours</p>
+            <div className="mt-3 h-20 w-full rounded-2xl border border-white/10 bg-black/30 p-3">
+              <svg viewBox="0 0 100 100" className="h-full w-full" preserveAspectRatio="none">
+                <polyline
+                  points={sparklinePoints}
+                  fill="none"
+                  stroke="rgba(148, 163, 255, 0.9)"
+                  strokeWidth="2"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Focus & source</p>
+          <div className="mt-6 grid gap-4">
+            {focusBars.map((bar) => (
+              <div key={bar.label} className="space-y-2">
+                <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+                  <span>{bar.label}</span>
+                  <span className="text-white">{bar.value}</span>
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-sky-200/80"
+                    style={{ width: `${(bar.value / focusMax) * 100}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
