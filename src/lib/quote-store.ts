@@ -49,3 +49,28 @@ export async function getRecentQuotes(limit = 50) {
 
   return data as QuoteRecord[];
 }
+
+export async function updateQuoteStatus(params: {
+  id?: string | null;
+  submittedAt: string;
+  feasibility: "pending" | "feasible" | "blocked";
+  deposit: "none" | "deposit" | "servers";
+}) {
+  const client = requireSupabaseClient();
+  let query = client.from("quotes").update({
+    feasibility: params.feasibility,
+    deposit: params.deposit,
+  });
+
+  if (params.id) {
+    query = query.eq("id", params.id);
+  } else {
+    query = query.eq("submittedAt", params.submittedAt);
+  }
+
+  const { error } = await query;
+  if (error) {
+    console.error("[quote-store] Failed to update quote status", error);
+    throw new Error("Impossible de mettre à jour le statut.");
+  }
+}

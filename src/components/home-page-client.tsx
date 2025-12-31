@@ -87,7 +87,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.35em] text-white/60">Assets & mise en scene</p>
-                <h2 className="mt-2 text-3xl font-semibold text-white">Un pack d'assets premium pret a decliner.</h2>
+                <h2 className="mt-2 text-3xl font-semibold text-white">Un pack d&apos;assets premium pret a decliner.</h2>
                 <p className="mt-2 max-w-3xl text-white/70">
                   Mockups web, scenes mobile et dashboards prets pour la presse, les boards et les collections.
                 </p>
@@ -119,7 +119,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     href="/devis?type=web"
                     className="hidden rounded-full border border-white/30 px-5 py-2 text-sm text-white/70 transition hover:border-white hover:text-white md:inline-flex"
                   >
-                    Parler d'un projet
+                    Parler d&apos;un projet
                   </Link>
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -184,7 +184,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       href="/devis?type=mvp"
                       className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
                     >
-                      Parler d'un MVP
+                      Parler d&apos;un MVP
                     </Link>
                     <Link
                       href="/configurateur"
@@ -452,7 +452,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     <li>- Budget ligne par ligne (design, dev, QA).</li>
                     <li>- Plan de sprint (kick-off a recette) avec responsabilites.</li>
                     <li>- Checklist onboarding (acces, outils, Slack prive).</li>
-                    <li>- Modeles d'emails pour valider en interne.</li>
+                    <li>- Modeles d&apos;emails pour valider en interne.</li>
                     <li>- Coordonnees directes apres validation.</li>
                   </ul>
                 </div>

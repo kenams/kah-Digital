@@ -3,6 +3,7 @@ import { quoteSchema, type QuoteRecord } from "@/lib/quote";
 import { notifyQuote } from "@/lib/notifications";
 import { getRecentQuotes, isSupabaseConfigured, saveQuoteRecord } from "@/lib/quote-store";
 import { getRequestIp, rateLimit } from "@/lib/rate-limit";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 const adminToken = process.env.ADMIN_API_TOKEN;
 const quoteRateLimit = { windowMs: 10 * 60 * 1000, max: 6 };
@@ -35,7 +36,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
   }
 
+  if (!process.env.TURNSTILE_SECRET_KEY) {
+    return NextResponse.json({ error: "Captcha non configure" }, { status: 503 });
+  }
+
   const ip = getRequestIp(request);
+  const remoteIp = ip === "unknown" ? null : ip;
   const rate = rateLimit(`quote:${ip}`, quoteRateLimit);
   const rateHeaders = {
     "X-RateLimit-Limit": String(quoteRateLimit.max),
@@ -52,11 +58,29 @@ export async function POST(request: NextRequest) {
 
   try {
     const payload = await request.json();
+    const turnstileToken = typeof payload?.turnstileToken === "string" ? payload.turnstileToken.trim() : "";
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { error: "Captcha manquant" },
+        { status: 400, headers: rateHeaders }
+      );
+    }
+
+    const verification = await verifyTurnstile(turnstileToken, remoteIp);
+    if (!verification.success) {
+      return NextResponse.json(
+        { error: "Captcha invalide", details: verification["error-codes"] ?? [] },
+        { status: 400, headers: rateHeaders }
+      );
+    }
+
     const websiteField = typeof payload?.website === "string" ? payload.website.trim() : "";
     if (websiteField) {
       return NextResponse.json({ ok: true }, { headers: rateHeaders });
     }
-    const parsed = quoteSchema.safeParse(payload);
+    const sanitized = { ...payload };
+    delete sanitized.turnstileToken;
+    const parsed = quoteSchema.safeParse(sanitized);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -67,6 +91,8 @@ export async function POST(request: NextRequest) {
 
     const quote: QuoteRecord = {
       ...parsed.data,
+      feasibility: "pending",
+      deposit: "none",
       submittedAt: new Date().toISOString(),
     };
     await saveQuoteRecord(quote);

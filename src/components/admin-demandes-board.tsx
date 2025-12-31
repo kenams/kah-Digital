@@ -10,8 +10,6 @@ type AdminDemandesBoardProps = {
   initialItems: QuoteRecord[];
 };
 
-const statusStorageKey = "kah-admin-status-map";
-
 const feasibilityOptions = [
   { value: "pending", label: "À qualifier" },
   { value: "feasible", label: "Faisable" },
@@ -56,7 +54,7 @@ const depositLabels: Record<ItemStatus["deposit"], string> = {
 export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   const [items, setItems] = useState<QuoteRecord[]>(initialItems);
   const [loading, setLoading] = useState(false);
-  const [statusMap, setStatusMap] = useState<Record<string, ItemStatus>>({});
+  const [saveError, setSaveError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [feasibilityFilter, setFeasibilityFilter] = useState<ItemStatus["feasibility"] | "all">("all");
   const [depositFilter, setDepositFilter] = useState<ItemStatus["deposit"] | "all">("all");
@@ -64,25 +62,6 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   useEffect(() => {
     setItems(initialItems);
   }, [initialItems]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const stored = window.localStorage.getItem(statusStorageKey);
-      if (!stored) return;
-      const parsed = JSON.parse(stored);
-      if (parsed && typeof parsed === "object") {
-        setStatusMap(parsed as Record<string, ItemStatus>);
-      }
-    } catch (error) {
-      console.warn("[admin] Failed to read status cache", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(statusStorageKey, JSON.stringify(statusMap));
-  }, [statusMap]);
 
   useEffect(() => {
     let ignore = false;
@@ -112,22 +91,25 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     };
   }, []);
 
+  const getItemKey = (item: QuoteRecord) => item.id ?? item.submittedAt;
+
   const resolvedStatus = useMemo(() => {
-    const record: Record<string, ItemStatus> = { ...statusMap };
+    const record: Record<string, ItemStatus> = {};
     items.forEach((item) => {
-      const key = item.submittedAt;
-      if (!record[key]) {
-        record[key] = { feasibility: "pending", deposit: "none" };
-      }
+      const key = getItemKey(item);
+      record[key] = {
+        feasibility: item.feasibility ?? "pending",
+        deposit: item.deposit ?? "none",
+      };
     });
     return record;
-  }, [items, statusMap]);
+  }, [items]);
 
   const insights = useMemo(() => {
     const feasibility = { pending: 0, feasible: 0, blocked: 0 };
     const deposit = { none: 0, deposit: 0, servers: 0 };
     items.forEach((item) => {
-      const status = resolvedStatus[item.submittedAt];
+      const status = resolvedStatus[getItemKey(item)];
       if (!status) return;
       feasibility[status.feasibility] += 1;
       deposit[status.deposit] += 1;
@@ -144,7 +126,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     const query = searchTerm.trim().toLowerCase();
 
     return items.filter((item) => {
-      const status = resolvedStatus[item.submittedAt];
+      const status = resolvedStatus[getItemKey(item)];
       if (feasibilityFilter !== "all" && status?.feasibility !== feasibilityFilter) {
         return false;
       }
@@ -214,8 +196,36 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     };
   }, [filteredItems]);
 
-  const updateStatus = (id: string, patch: Partial<ItemStatus>) => {
-    setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
+  const updateStatus = async (item: QuoteRecord, patch: Partial<ItemStatus>) => {
+    const key = getItemKey(item);
+    const current = resolvedStatus[key] ?? { feasibility: "pending", deposit: "none" };
+    const nextStatus = { ...current, ...patch };
+
+    setItems((prev) =>
+      prev.map((entry) => (getItemKey(entry) === key ? { ...entry, ...nextStatus } : entry))
+    );
+    setSaveError("");
+
+    try {
+      const response = await fetch("/api/admin/quotes", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: item.id ?? null,
+          submittedAt: item.submittedAt,
+          ...nextStatus,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error();
+      }
+    } catch (error) {
+      console.error(error);
+      setSaveError("Impossible d'enregistrer le statut.");
+      setItems((prev) =>
+        prev.map((entry) => (getItemKey(entry) === key ? { ...entry, ...current } : entry))
+      );
+    }
   };
 
   const exportCsv = (records: QuoteRecord[], label: string) => {
@@ -247,7 +257,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     ];
 
     const rows = records.map((item) => {
-      const status = resolvedStatus[item.submittedAt];
+      const status = resolvedStatus[getItemKey(item)];
       const values = [
         item.submittedAt,
         item.name ?? "",
@@ -437,6 +447,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
             <span>Rechargement auto toutes les 60s</span>
           </div>
           {loading && <p className="mt-2 text-sm text-white/50">Mise à jour en cours...</p>}
+          {saveError && <p className="mt-2 text-sm text-rose-200">{saveError}</p>}
         </div>
         <div className="rounded-[32px] border border-white/10 bg-white/5 p-1">
           <div className="rounded-[28px] bg-black/70 p-6">
@@ -651,12 +662,12 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
 
       <div className="space-y-6">
         {filteredItems.map((item, index) => {
-          const status = resolvedStatus[item.submittedAt];
+          const status = resolvedStatus[getItemKey(item)];
           const feasibilityClass = feasibilityBadges[status?.feasibility ?? "pending"];
           const depositClass = depositBadges[status?.deposit ?? "none"];
           return (
             <motion.article
-              key={item.submittedAt}
+              key={item.id ?? item.submittedAt}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -711,7 +722,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                   <select
                     value={status?.feasibility}
                     onChange={(event) =>
-                      updateStatus(item.submittedAt, { feasibility: event.target.value as ItemStatus["feasibility"] })
+                      updateStatus(item, { feasibility: event.target.value as ItemStatus["feasibility"] })
                     }
                     className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
                   >
@@ -727,7 +738,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                   <select
                     value={status?.deposit}
                     onChange={(event) =>
-                      updateStatus(item.submittedAt, { deposit: event.target.value as ItemStatus["deposit"] })
+                      updateStatus(item, { deposit: event.target.value as ItemStatus["deposit"] })
                     }
                     className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
                   >

@@ -50,4 +50,9 @@ export const quoteSchema = z
   });
 
 export type QuoteRequest = z.infer<typeof quoteSchema>;
-export type QuoteRecord = QuoteRequest & { submittedAt: string };
+export type QuoteStatus = {
+  feasibility?: "pending" | "feasible" | "blocked";
+  deposit?: "none" | "deposit" | "servers";
+};
+
+export type QuoteRecord = QuoteRequest & QuoteStatus & { id?: string; submittedAt: string };

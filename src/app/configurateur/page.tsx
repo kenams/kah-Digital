@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState, type Dispatch, type SetStateAction } from "react";
+import { useCallback, useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { Reveal } from "@/components/reveal";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
 import { ConfiguratorPreview } from "@/components/configurator-preview";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 import type { QuoteRequest } from "@/lib/quote";
 import type { ConfigSummary } from "@/types/configurator";
 
@@ -263,6 +264,10 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
+  const [captchaError, setCaptchaError] = useState("");
   const router = useRouter();
 
   const summaryText = [
@@ -275,6 +280,11 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
 
   const isSubmitting = status === "loading";
 
+  const handleCaptchaVerify = useCallback((token: string) => {
+    setCaptchaToken(token);
+    setCaptchaError("");
+  }, []);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (clientType === "entreprise" && !companyName.trim()) {
@@ -283,7 +293,19 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
       return;
     }
 
-    const payload: QuoteRequest = {
+    if (!siteKey) {
+      setStatus("error");
+      setServerMessage("Captcha non configure. Contacte-nous directement.");
+      return;
+    }
+
+    if (!captchaToken) {
+      setStatus("error");
+      setServerMessage("Valide le captcha avant d'envoyer.");
+      return;
+    }
+
+    const payload: QuoteRequest & { turnstileToken: string } = {
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim() || undefined,
@@ -308,6 +330,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
         features,
         integrations,
       },
+      turnstileToken: captchaToken,
     };
 
     setStatus("loading");
@@ -330,6 +353,8 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
       setEmail("");
       setPhone("");
       setNotes("");
+      setCaptchaToken("");
+      setCaptchaReset((prev) => prev + 1);
     } catch (error) {
       console.error(error);
       setStatus("error");
@@ -423,6 +448,26 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
             placeholder="Budget interne, contraintes, disponibilites..."
           />
+        </div>
+        <div className="md:col-span-2 space-y-2 text-sm text-white/70">
+          <p>Verification anti-spam</p>
+          {siteKey ? (
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <TurnstileWidget
+                siteKey={siteKey}
+                onVerify={handleCaptchaVerify}
+                onExpire={() => setCaptchaToken("")}
+                onError={() => {
+                  setCaptchaToken("");
+                  setCaptchaError("Verification impossible. Reessaye.");
+                }}
+                resetKey={String(captchaReset)}
+              />
+            </div>
+          ) : (
+            <p className="text-amber-300">Captcha non configure.</p>
+          )}
+          {captchaError && <p className="text-rose-200">{captchaError}</p>}
         </div>
         <div className="md:col-span-2 flex flex-col gap-3">
           <button

@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 type MvpQuotePayload = {
   name: string;
@@ -22,6 +23,7 @@ type MvpQuotePayload = {
   companyName?: string;
   projectFocus: "web" | "mobile";
   website?: string;
+  turnstileToken?: string;
 };
 
 const mobilePlatformOptions = ["iOS", "Android", "Les deux"];
@@ -46,8 +48,17 @@ const storeSupportOptions = [
 
 export function MvpQuoteForm() {
   const router = useRouter();
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
+  const [captchaError, setCaptchaError] = useState("");
+
+  const handleCaptchaVerify = useCallback((token: string) => {
+    setCaptchaToken(token);
+    setCaptchaError("");
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,6 +69,18 @@ export function MvpQuoteForm() {
 
     if (selectedPlatforms.length === 0) {
       setServerMessage("Sélectionne au moins une plateforme.");
+      setStatus("error");
+      return;
+    }
+
+    if (!siteKey) {
+      setServerMessage("Captcha non configure. Contacte-nous directement.");
+      setStatus("error");
+      return;
+    }
+
+    if (!captchaToken) {
+      setServerMessage("Valide le captcha avant d'envoyer.");
       setStatus("error");
       return;
     }
@@ -87,6 +110,7 @@ export function MvpQuoteForm() {
         .join("\n"),
       projectFocus: "mobile",
       website: website || undefined,
+      turnstileToken: captchaToken,
     };
 
     if (!payload.goal || payload.goal.length < 5) {
@@ -112,6 +136,8 @@ export function MvpQuoteForm() {
       setStatus("success");
       setServerMessage("Merci, demande envoyee. Redirection en cours...");
       form.reset();
+      setCaptchaToken("");
+      setCaptchaReset((prev) => prev + 1);
       window.setTimeout(() => {
         router.push("/merci");
       }, 800);
@@ -335,6 +361,26 @@ export function MvpQuoteForm() {
             placeholder="Contraintes, équipe, roadmap, etc."
           />
         </div>
+      </div>
+      <div className="mt-6 space-y-2 text-sm text-white/70">
+        <p>Verification anti-spam</p>
+        {siteKey ? (
+          <div className="rounded-2xl border border-white/15 bg-white/5 p-4">
+            <TurnstileWidget
+              siteKey={siteKey}
+              onVerify={handleCaptchaVerify}
+              onExpire={() => setCaptchaToken("")}
+              onError={() => {
+                setCaptchaToken("");
+                setCaptchaError("Verification impossible. Reessaye.");
+              }}
+              resetKey={String(captchaReset)}
+            />
+          </div>
+        ) : (
+          <p className="text-amber-200">Captcha non configure.</p>
+        )}
+        {captchaError && <p className="text-rose-200">{captchaError}</p>}
       </div>
       <div className="mt-6 flex flex-col gap-3">
         <button

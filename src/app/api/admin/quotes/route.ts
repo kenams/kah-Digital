@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getRecentQuotes, isSupabaseConfigured } from "@/lib/quote-store";
+import { getRecentQuotes, isSupabaseConfigured, updateQuoteStatus } from "@/lib/quote-store";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +35,9 @@ function parseBasicAuth(authHeader: string | null) {
   }
 }
 
+const feasibilityValues = new Set(["pending", "feasible", "blocked"]);
+const depositValues = new Set(["none", "deposit", "servers"]);
+
 export async function GET(request: NextRequest) {
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
@@ -55,5 +58,44 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("[api/admin/quotes] Failed to fetch quotes", error);
     return NextResponse.json({ error: "Erreur de lecture des demandes" }, { status: 500 });
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
+  }
+
+  if (!adminUser || !adminPass) {
+    return missingConfigResponse();
+  }
+
+  const credentials = parseBasicAuth(request.headers.get("authorization"));
+  if (!credentials || credentials.user !== adminUser || credentials.pass !== adminPass) {
+    return unauthorizedResponse();
+  }
+
+  try {
+    const body = await request.json();
+    const id = typeof body?.id === "string" && body.id.trim() ? body.id.trim() : null;
+    const submittedAt = typeof body?.submittedAt === "string" ? body.submittedAt.trim() : "";
+    const feasibility = typeof body?.feasibility === "string" ? body.feasibility.trim() : "";
+    const deposit = typeof body?.deposit === "string" ? body.deposit.trim() : "";
+
+    if (!submittedAt || !feasibilityValues.has(feasibility) || !depositValues.has(deposit)) {
+      return NextResponse.json({ error: "Parametres invalides" }, { status: 400 });
+    }
+
+    await updateQuoteStatus({
+      id,
+      submittedAt,
+      feasibility: feasibility as "pending" | "feasible" | "blocked",
+      deposit: deposit as "none" | "deposit" | "servers",
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("[api/admin/quotes] Failed to update status", error);
+    return NextResponse.json({ error: "Erreur de mise a jour" }, { status: 500 });
   }
 }
