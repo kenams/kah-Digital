@@ -71,7 +71,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       <p className="text-base font-semibold text-white">{deal.budget}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/50">Delai</p>
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/50">Délai</p>
                       <p className="text-base font-semibold text-white">{deal.timeline}</p>
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
 
         <Reveal>
           <section id="results" className="section-shell space-y-6">
-            <div className="divider-label">Resultats</div>
+            <div className="divider-label">Résultats</div>
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">Avant / Apres</p>

@@ -26,7 +26,7 @@ export function ContactCard({ title = "Conciergerie privee", className = "" }: C
           </Link>
         </p>
         <p className="text-xs text-white/60">
-          Reponse sous 24h. Brief express possible par Slack ou WhatsApp.
+          Réponse sous 24h. Brief express possible par Slack ou WhatsApp.
         </p>
       </div>
     </div>

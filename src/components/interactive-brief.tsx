@@ -55,7 +55,7 @@ const fields: BriefField[] = [
   { id: "appFeatures", label: "Fonctionnalités MVP (mobile)", placeholder: "Auth, push, paiement, offline...", type: "textarea" },
   { id: "style", label: "Style visuel souhaité", placeholder: "Épuré, premium, lumineux..." },
   { id: "references", label: "Références ou inspirations", placeholder: "https://site-1.com, https://site-2.com", type: "textarea" },
-  { id: "budget", label: "Budget estimé", placeholder: "4 000 € - 6 000 €" },
+  { id: "budget", label: "Budget estimé", placeholder: "2 000 EUR - 6 000 EUR" },
   { id: "deadline", label: "Deadline idéale", placeholder: "Fin Q2, ASAP..." },
   { id: "integrations", label: "Intégrations / outils", placeholder: "CRM, paiement, automation...", type: "textarea" },
   { id: "notes", label: "Notes complémentaires", placeholder: "Contraintes techniques, tonalité de contenu...", type: "textarea" },
@@ -82,9 +82,9 @@ export function InteractiveBrief() {
       const baseFont = "helvetica";
       doc.setFont(baseFont, "normal");
       doc.setFontSize(18);
-      doc.text("Kah-Digital — Cahier des charges", 20, 20);
+      doc.text("Kah-Digital - Cahier des charges", 20, 20);
       doc.setFontSize(11);
-      doc.text("Contact : hello@kah-digital.com · +33 6 00 00 00 00", 20, 30);
+      doc.text("Contact : hello@kah-digital.com - +33 6 00 00 00 00", 20, 30);
       let y = 45;
 
       Object.entries(formState).forEach(([key, value]) => {

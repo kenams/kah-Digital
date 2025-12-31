@@ -36,10 +36,10 @@ const pageOptions = [
 ];
 
 const budgetOptions = [
-  "Moins de 3 000 ?",
-  "3 000 ? - 6 000 ?",
-  "6 000 ? - 12 000 ?",
-  "12 000 ? +",
+  "Moins de 2 000 EUR",
+  "2 000 EUR - 6 000 EUR",
+  "6 000 EUR - 12 000 EUR",
+  "12 000 EUR +",
 ];
 
 const timelineOptions = [

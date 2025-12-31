@@ -34,12 +34,12 @@ function parseBasicAuth(authHeader: string | null) {
       pass: decoded.slice(separatorIndex + 1),
     };
   } catch (error) {
-    console.error("[middleware] Failed to decode Basic auth header", error);
+    console.error("[proxy] Failed to decode Basic auth header", error);
     return null;
   }
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (!adminUser || !adminPass) {
     return missingConfigResponse();
   }

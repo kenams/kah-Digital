@@ -51,7 +51,7 @@ export function HeroSection({ stats }: HeroProps) {
               <span className="gradient-pill rounded-full px-4 py-1 text-xs uppercase tracking-[0.25em]">
                 Studio digital haut de gamme
               </span>
-              <span>Reponse sous 24h | Lancement 4-6 semaines</span>
+              <span>Réponse sous 24h | Lancement 4-6 semaines</span>
             </div>
             <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
               Sites ultra-rapides et experiences digitales de{" "}

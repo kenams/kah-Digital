@@ -396,7 +396,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
             <input
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Recherche (nom, email, societe)"
+              placeholder="Recherche (nom, email, société)"
               className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
             />
             <select

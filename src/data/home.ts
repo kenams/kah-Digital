@@ -119,27 +119,27 @@ const faqs = [
 const stats = [
   { label: "Projets premium", value: "70+" },
   { label: "Satisfaction", value: "9.6/10" },
-  { label: "Delai moyen", value: "4-6 semaines" },
+  { label: "Délai moyen", value: "4-6 semaines" },
 ];
 
 const fastDeals = [
   {
     title: "Signature landing",
-    budget: "18 000 EUR",
+    budget: "3 500 EUR",
     timeline: "3 semaines (incl. QA)",
     stack: "Next.js, Resend, Notion CMS",
     deliverable: "Storytelling premium + CTA calendrier",
   },
   {
     title: "Portail membres prive",
-    budget: "28 000 EUR",
+    budget: "8 000 EUR",
     timeline: "5 semaines",
     stack: "Next.js, Supabase, Stripe Billing",
     deliverable: "Acces securise, dashboards, paiement recurrent",
   },
   {
     title: "Configurator + deck",
-    budget: "36 000 EUR",
+    budget: "12 000 EUR",
     timeline: "6 semaines",
     stack: "React Native + Expo, Next.js marketing",
     deliverable: "App TestFlight + deck investisseur",
@@ -147,9 +147,9 @@ const fastDeals = [
 ];
 
 const closingHighlights = [
-  { label: "Budget indicatif", value: "12K EUR - 30K EUR" },
+  { label: "Budget indicatif", value: "3K EUR - 15K EUR" },
   { label: "Sprint moyen", value: "4 a 6 semaines" },
-  { label: "Reponse", value: "-24h" },
+  { label: "Réponse", value: "-24h" },
 ];
 
 const resultsShowcase = [
@@ -182,7 +182,7 @@ const homeSections = [
   { id: "studio-lumiere", label: "Palette" },
   { id: "portfolio", label: "Portfolio" },
   { id: "process", label: "Process" },
-  { id: "results", label: "Resultats" },
+  { id: "results", label: "Résultats" },
   { id: "testimonials", label: "Clients" },
   { id: "closing", label: "Pack" },
   { id: "cta", label: "Contact" },

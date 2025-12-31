@@ -38,7 +38,12 @@ const mobileFeatureOptions = [
   "Intégration capteurs (GPS, caméra)",
 ];
 
-const budgetOptions = ["Moins de 10 000 €", "10 000 € - 20 000 €", "20 000 € - 35 000 €", "35 000 € +"];
+const budgetOptions = [
+  "Moins de 10 000 EUR",
+  "10 000 EUR - 20 000 EUR",
+  "20 000 EUR - 30 000 EUR",
+  "30 000 EUR +",
+];
 const timelineOptions = ["ASAP", "4-6 semaines", "6-10 semaines", "3 mois et +"];
 const storeSupportOptions = [
   "Prototype TestFlight / Android Beta",
@@ -114,7 +119,7 @@ export function MvpQuoteForm() {
     };
 
     if (!payload.goal || payload.goal.length < 5) {
-      setServerMessage("Décris rapidement ton idée pour que l’on puisse te répondre.");
+      setServerMessage("Décris rapidement ton idée pour que l'on puisse te répondre.");
       setStatus("error");
       return;
     }
@@ -144,7 +149,7 @@ export function MvpQuoteForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d’envoyer la demande. Vérifie ta connexion ou écris-nous.");
+      setServerMessage("Impossible d'envoyer la demande. Vérifie ta connexion ou écris-nous.");
     }
   }
 

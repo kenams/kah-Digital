@@ -289,7 +289,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
     event.preventDefault();
     if (clientType === "entreprise" && !companyName.trim()) {
       setStatus("error");
-      setServerMessage("Ajoute le nom de la societe pour continuer.");
+      setServerMessage("Ajoute le nom de la société pour continuer.");
       return;
     }
 
@@ -400,7 +400,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm text-white/70">
-            Nom de societe {clientType === "entreprise" ? "*" : "(optionnel)"}
+            Nom de société {clientType === "entreprise" ? "*" : "(optionnel)"}
           </label>
           <input
             value={companyName}
@@ -728,7 +728,7 @@ export default function ConfigurateurPage() {
           </Reveal>
           {!selectedType && (
             <div className="rounded-3xl border border-dashed border-white/20 bg-black/30 p-6 text-white/60">
-              Selectionne d&apos;abord un type de site.
+              Sélectionne d&apos;abord un type de site.
             </div>
           )}
           {selectedType && (
@@ -795,7 +795,7 @@ export default function ConfigurateurPage() {
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">Etape 4</p>
                 <h2 className="mt-2 text-3xl font-semibold text-white">Fonctionnalites & integrations</h2>
-                <p className="mt-2 max-w-2xl text-white/70">Selectionne ce dont tu as besoin pour eviter les surprises au devis.</p>
+                <p className="mt-2 max-w-2xl text-white/70">Sélectionne ce dont tu as besoin pour éviter les surprises au devis.</p>
               </div>
               <button
                 type="button"

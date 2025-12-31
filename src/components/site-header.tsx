@@ -51,6 +51,7 @@ export function SiteHeader() {
           <AmbientAudioToggleButton />
           <Link
             href="/admin/demandes"
+            prefetch={false}
             className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
           >
             Admin
@@ -86,6 +87,7 @@ export function SiteHeader() {
             ))}
             <Link
               href="/admin/demandes"
+              prefetch={false}
               className="rounded-full border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
               onClick={() => setIsMenuOpen(false)}
             >
