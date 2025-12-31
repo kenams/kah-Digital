@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { quoteSchema, type QuoteRecord } from "@/lib/quote";
 import { notifyQuote } from "@/lib/notifications";
-import { getRecentQuotes, saveQuoteRecord } from "@/lib/quote-store";
+import { getRecentQuotes, isSupabaseConfigured, saveQuoteRecord } from "@/lib/quote-store";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 const adminToken = process.env.ADMIN_API_TOKEN;
+const quoteRateLimit = { windowMs: 10 * 60 * 1000, max: 6 };
 
 export async function GET(request: NextRequest) {
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
+  }
+
   if (!adminToken) {
     return NextResponse.json({ error: "Admin token absent" }, { status: 503 });
   }
@@ -15,23 +21,47 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const items = await getRecentQuotes();
-  return NextResponse.json({ items });
+  try {
+    const items = await getRecentQuotes();
+    return NextResponse.json({ items });
+  } catch (error) {
+    console.error("[api/quote] Failed to fetch quotes", error);
+    return NextResponse.json({ error: "Erreur de lecture des demandes" }, { status: 500 });
+  }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
+  }
+
+  const ip = getRequestIp(request);
+  const rate = rateLimit(`quote:${ip}`, quoteRateLimit);
+  const rateHeaders = {
+    "X-RateLimit-Limit": String(quoteRateLimit.max),
+    "X-RateLimit-Remaining": String(rate.remaining),
+    "X-RateLimit-Reset": String(Math.ceil(rate.resetAt / 1000)),
+  };
+
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { error: `Trop de demandes. Réessaie dans ${rate.retryAfter}s.` },
+      { status: 429, headers: { ...rateHeaders, "Retry-After": String(rate.retryAfter) } }
+    );
+  }
+
   try {
     const payload = await request.json();
     const websiteField = typeof payload?.website === "string" ? payload.website.trim() : "";
     if (websiteField) {
-      return NextResponse.json({ ok: true });
+      return NextResponse.json({ ok: true }, { headers: rateHeaders });
     }
     const parsed = quoteSchema.safeParse(payload);
 
     if (!parsed.success) {
       return NextResponse.json(
         { error: "Données invalides", details: parsed.error.flatten() },
-        { status: 400 }
+        { status: 400, headers: rateHeaders }
       );
     }
 
@@ -43,9 +73,9 @@ export async function POST(request: Request) {
 
     await notifyQuote(quote);
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { headers: rateHeaders });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500, headers: rateHeaders });
   }
 }

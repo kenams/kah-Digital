@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getRecentQuotes } from "@/lib/quote-store";
+import { getRecentQuotes, isSupabaseConfigured } from "@/lib/quote-store";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +36,10 @@ function parseBasicAuth(authHeader: string | null) {
 }
 
 export async function GET(request: NextRequest) {
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
+  }
+
   if (!adminUser || !adminPass) {
     return missingConfigResponse();
   }
@@ -45,6 +49,11 @@ export async function GET(request: NextRequest) {
     return unauthorizedResponse();
   }
 
-  const items = await getRecentQuotes();
-  return NextResponse.json({ items });
+  try {
+    const items = await getRecentQuotes();
+    return NextResponse.json({ items });
+  } catch (error) {
+    console.error("[api/admin/quotes] Failed to fetch quotes", error);
+    return NextResponse.json({ error: "Erreur de lecture des demandes" }, { status: 500 });
+  }
 }

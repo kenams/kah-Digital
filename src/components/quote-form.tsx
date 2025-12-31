@@ -62,7 +62,7 @@ export function QuoteForm() {
     const website = String(formData.get("website") ?? "").trim();
 
     if (selectedPages.length === 0) {
-      setServerMessage("S?lectionne au moins une page pour ton site.");
+      setServerMessage("Sélectionne au moins une page pour ton site.");
       setStatus("error");
       return;
     }
@@ -111,7 +111,7 @@ export function QuoteForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d?envoyer la demande. R?essaie dans un instant.");
+      setServerMessage("Impossible d'envoyer la demande. Réessaie dans un instant.");
     }
   }
 
@@ -150,7 +150,7 @@ export function QuoteForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="companyName" className="text-sm text-white/70">
-            Nom de soci?t? (si entreprise)
+            Nom de société (si entreprise)
           </label>
           <input
             id="companyName"
@@ -181,7 +181,7 @@ export function QuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm text-white/70">T?l?phone (optionnel)</label>
+          <label htmlFor="phone" className="text-sm text-white/70">Téléphone (optionnel)</label>
           <input
             id="phone"
             name="phone"
@@ -211,11 +211,11 @@ export function QuoteForm() {
             required
             rows={3}
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="Ex : Pr?senter l'agence et g?n?rer des demandes qualifi?es."
+            placeholder="Ex : Présenter l'agence et générer des demandes qualifiées."
           />
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
-          <p className="text-sm text-white/70">Pages souhait?es *</p>
+          <p className="text-sm text-white/70">Pages souhaitées *</p>
           <div className="grid gap-3 md:grid-cols-3">
             {pageOptions.map((page) => (
               <label key={page} className="flex items-center gap-2 text-sm text-white/80">
@@ -247,7 +247,7 @@ export function QuoteForm() {
             required
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
           >
-            <option value="" disabled>S?lectionne</option>
+            <option value="" disabled>Sélectionne</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -256,7 +256,7 @@ export function QuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="timeline" className="text-sm text-white/70">D?lai *</label>
+          <label htmlFor="timeline" className="text-sm text-white/70">Délai *</label>
           <select
             id="timeline"
             name="timeline"
