@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 const timeline = [
   {
@@ -51,7 +51,7 @@ export default function MentionsLegalesPage() {
               <strong>Email :</strong> kah-digital@hotmail.com
             </p>
             <p>
-              <strong>Téléphone :</strong> +33 6 52 41 11 22
+              <strong>Téléphone :</strong> 07 59 55 84 14
             </p>
           </div>
           <div className="space-y-3">
@@ -142,3 +142,4 @@ export default function MentionsLegalesPage() {
     </div>
   );
 }
+

@@ -1,5 +1,5 @@
 const EMAIL_FALLBACK = "kah-digital@hotmail.com";
-const PHONE_FALLBACK = "+33 6 00 00 00 00";
+const PHONE_FALLBACK = "07 59 55 84 14";
 
 const rawEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? EMAIL_FALLBACK;
 const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? PHONE_FALLBACK;

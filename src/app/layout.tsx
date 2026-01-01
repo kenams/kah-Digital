@@ -84,7 +84,7 @@ const structuredData = {
   name: "Kah-Digital",
   image: `${SITE_URL}/og-kah-digital.png`,
   url: SITE_URL,
-  telephone: "+33 6 00 00 00 00",
+  telephone: "+33 7 59 55 84 14",
   address: {
     "@type": "PostalAddress",
     streetAddress: "10 rue de la Création",

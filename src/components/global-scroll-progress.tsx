@@ -29,6 +29,7 @@ function getProgressColor(value: number) {
 export function GlobalScrollProgress() {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
+  const isHome = pathname === "/";
   const [progress, setProgress] = useState(0);
   const [hasTimeline, setHasTimeline] = useState(false);
 
@@ -71,7 +72,7 @@ export function GlobalScrollProgress() {
     };
   }, [hasTimeline, isAdmin]);
 
-  if (isAdmin || hasTimeline) return null;
+  if (isAdmin || hasTimeline || !isHome) return null;
 
   const percent = Math.round(progress * 100);
   const color = getProgressColor(progress);
