@@ -20,6 +20,11 @@ const quickWins = [
     detail: "Design premium, dev rapide et mise en ligne controlee.",
   },
 ];
+const sprintPulse = [
+  { label: "Site vitrine", status: "Design", progress: 72 },
+  { label: "MVP mobile", status: "Build", progress: 54 },
+  { label: "E-commerce", status: "QA", progress: 88 },
+];
 
 export function HeroSection({ stats }: HeroProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -128,18 +133,24 @@ export function HeroSection({ stats }: HeroProps) {
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
                   <span>Sprints actifs</span>
-                  <span>Qualite</span>
+                  <span>Progression</span>
                 </div>
-                <div className="mt-4 flex items-end gap-3">
-                  {[85, 65, 95].map((height, index) => (
-                    <div key={height} className="flex-1">
-                      <div className="relative h-24 w-full overflow-hidden rounded-full border border-white/15 bg-white/5">
-                        <motion.div
-                          className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#d6b36a] to-[#7fb8c7]"
-                          style={{ height: `${height}%` }}
+                <div className="mt-4 space-y-3">
+                  {sprintPulse.map((item) => (
+                    <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-3">
+                      <div className="flex items-center justify-between text-xs text-white/70">
+                        <span className="text-sm font-semibold text-white/90">{item.label}</span>
+                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] text-white/70">
+                          {item.status}
+                        </span>
+                      </div>
+                      <div className="mt-2 h-2 w-full rounded-full bg-white/10">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-[#d6b36a] to-[#7fb8c7]"
+                          style={{ width: `${item.progress}%` }}
                         />
                       </div>
-                      <p className="mt-1 text-center text-xs text-white/50">Week {index + 1}</p>
+                      <p className="mt-1 text-[0.65rem] text-white/50">{item.progress}%</p>
                     </div>
                   ))}
                 </div>
