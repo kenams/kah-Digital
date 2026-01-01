@@ -21,10 +21,16 @@ const quickWins = [
   },
 ];
 const sprintPulse = [
-  { label: "Site vitrine", status: "Design", progress: 72 },
-  { label: "MVP mobile", status: "Build", progress: 54 },
-  { label: "E-commerce", status: "QA", progress: 88 },
+  { label: "Sprint Web", status: "Design", progress: 68 },
+  { label: "Sprint MVP", status: "Build", progress: 46 },
+  { label: "Sprint E-commerce", status: "QA", progress: 86 },
 ];
+
+const sprintTone: Record<string, string> = {
+  Design: "border-[#7fb8c7]/40 bg-[#7fb8c7]/15 text-[#d7f2f6]",
+  Build: "border-[#d6b36a]/40 bg-[#d6b36a]/15 text-[#f4dfb3]",
+  QA: "border-white/20 bg-white/10 text-white/80",
+};
 
 export function HeroSection({ stats }: HeroProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -137,10 +143,12 @@ export function HeroSection({ stats }: HeroProps) {
                 </div>
                 <div className="mt-4 space-y-3">
                   {sprintPulse.map((item) => (
-                    <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-3">
+                    <div key={item.label} className="rounded-2xl border border-white/10 bg-black/35 p-3">
                       <div className="flex items-center justify-between text-xs text-white/70">
                         <span className="text-sm font-semibold text-white/90">{item.label}</span>
-                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] text-white/70">
+                        <span
+                          className={`rounded-full border px-2 py-0.5 text-[0.65rem] uppercase tracking-[0.2em] ${sprintTone[item.status] ?? "border-white/20 bg-white/10 text-white/80"}`}
+                        >
                           {item.status}
                         </span>
                       </div>
@@ -150,7 +158,10 @@ export function HeroSection({ stats }: HeroProps) {
                           style={{ width: `${item.progress}%` }}
                         />
                       </div>
-                      <p className="mt-1 text-[0.65rem] text-white/50">{item.progress}%</p>
+                      <div className="mt-1 flex items-center justify-between text-[0.65rem] text-white/50">
+                        <span>Progression</span>
+                        <span>{item.progress}%</span>
+                      </div>
                     </div>
                   ))}
                 </div>
