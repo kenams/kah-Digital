@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -28,14 +28,14 @@ type MvpQuotePayload = {
 
 const mobilePlatformOptions = ["iOS", "Android", "Les deux"];
 const mobileFeatureOptions = [
-  "Authentification / rôles",
+  "Authentification / roles",
   "Paiement in-app",
-  "Réservation / planning",
-  "Chat / communauté",
+  "Reservation / planning",
+  "Chat / communaute",
   "Notifications push",
   "Mode offline",
   "Suivi analytics",
-  "Intégration capteurs (GPS, caméra)",
+  "Integration capteurs (GPS, camera)",
 ];
 
 const budgetOptions = [
@@ -80,7 +80,7 @@ export function MvpQuoteForm() {
     const website = String(formData.get("website") ?? "").trim();
 
     if (selectedPlatforms.length === 0) {
-      setServerMessage("Sélectionne au moins une plateforme.");
+      setServerMessage("Selectionne au moins une plateforme.");
       setStatus("error");
       return;
     }
@@ -126,7 +126,7 @@ export function MvpQuoteForm() {
     };
 
     if (!payload.goal || payload.goal.length < 5) {
-      setServerMessage("Décris rapidement ton idée pour que l'on puisse te répondre.");
+      setServerMessage("Decris rapidement ton idee pour que l'on puisse te repondre.");
       setStatus("error");
       return;
     }
@@ -143,7 +143,7 @@ export function MvpQuoteForm() {
 
       if (!response.ok) {
         const errorPayload = await response.json().catch(() => null);
-        const fallbackMessage = "Impossible d'envoyer la demande. Vérifie ta connexion ou écris-nous.";
+        const fallbackMessage = "Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
         if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
           setCaptchaToken("");
@@ -165,7 +165,7 @@ export function MvpQuoteForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d'envoyer la demande. Vérifie ta connexion ou écris-nous.");
+      setServerMessage("Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.");
     }
   }
 
@@ -201,7 +201,7 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="companyName" className="text-sm text-white/70">Nom de société (si entreprise)</label>
+          <label htmlFor="companyName" className="text-sm text-white/70">Nom de societe (si entreprise)</label>
           <input
             id="companyName"
             name="companyName"
@@ -231,7 +231,7 @@ export function MvpQuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm text-white/70">Téléphone</label>
+          <label htmlFor="phone" className="text-sm text-white/70">Telephone</label>
           <input
             id="phone"
             name="phone"
@@ -240,7 +240,7 @@ export function MvpQuoteForm() {
           />
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="idea" className="text-sm text-white/70">Ton idée / la promesse *</label>
+          <label htmlFor="idea" className="text-sm text-white/70">Ton idee / la promesse *</label>
           <textarea
             id="idea"
             name="idea"
@@ -251,7 +251,7 @@ export function MvpQuoteForm() {
           />
         </div>
         <div className="md:col-span-2 space-y-3 rounded-3xl border border-white/15 bg-white/5 p-4 text-sm text-white/80">
-          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Plateformes ciblées *</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Plateformes ciblees *</p>
           <div className="flex flex-wrap gap-3">
             {mobilePlatformOptions.map((platform) => (
               <label key={platform} className="flex items-center gap-2">
@@ -267,7 +267,7 @@ export function MvpQuoteForm() {
           </div>
         </div>
         <div className="md:col-span-2 space-y-3 rounded-3xl border border-white/15 bg-white/5 p-4 text-sm text-white/80">
-          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Fonctionnalités clés</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-white/60">Fonctionnalites cles</p>
           <div className="grid gap-3 md:grid-cols-2">
             {mobileFeatureOptions.map((feature) => (
               <label key={feature} className="flex items-center gap-2">
@@ -283,14 +283,14 @@ export function MvpQuoteForm() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="flows" className="text-sm text-white/70">Comment ça fonctionne ? *</label>
+          <label htmlFor="flows" className="text-sm text-white/70">Comment ca fonctionne ? *</label>
           <textarea
             id="flows"
             name="flows"
             required
             rows={3}
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="Ex : onboarding 3 étapes, feed personnalisé, réservation coach."
+            placeholder="Ex : onboarding 3 etapes, feed personnalise, reservation coach."
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -304,7 +304,7 @@ export function MvpQuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="techStack" className="text-sm text-white/70">Technologies ou APIs souhaitées</label>
+          <label htmlFor="techStack" className="text-sm text-white/70">Technologies ou APIs souhaitees</label>
           <input
             id="techStack"
             name="techStack"
@@ -330,7 +330,7 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="inspirations" className="text-sm text-white/70">Apps de référence</label>
+          <label htmlFor="inspirations" className="text-sm text-white/70">Apps de reference</label>
           <input
             id="inspirations"
             name="inspirations"
@@ -347,7 +347,7 @@ export function MvpQuoteForm() {
             className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-black"
             defaultValue=""
           >
-            <option value="" disabled>Sélectionne</option>
+            <option value="" disabled>Selectionne</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -356,7 +356,7 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="timeline" className="text-sm text-white/70">Délai *</label>
+          <label htmlFor="timeline" className="text-sm text-white/70">Delai *</label>
           <select
             id="timeline"
             name="timeline"
@@ -379,7 +379,7 @@ export function MvpQuoteForm() {
             name="notes"
             rows={4}
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="Contraintes, équipe, roadmap, etc."
+            placeholder="Contraintes, equipe, roadmap, etc."
           />
         </div>
       </div>
@@ -422,4 +422,5 @@ export function MvpQuoteForm() {
     </form>
   );
 }
+
 

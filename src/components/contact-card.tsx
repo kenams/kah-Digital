@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { brandContact } from "@/config/brand";
 
 type ContactCardProps = {
@@ -26,7 +26,7 @@ export function ContactCard({ title = "Conciergerie privee", className = "" }: C
           </Link>
         </p>
         <p className="text-xs text-white/60">
-          Réponse sous 24h. Brief express possible par Slack ou WhatsApp.
+          Reponse sous 24h. Brief express possible par Slack ou WhatsApp.
         </p>
       </div>
     </div>

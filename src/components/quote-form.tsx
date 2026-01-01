@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -28,7 +28,7 @@ type QuotePayload = {
 
 const pageOptions = [
   "Accueil",
-  "? propos",
+  "A propos",
   "Services",
   "Portfolio",
   "Blog",
@@ -80,13 +80,13 @@ export function QuoteForm() {
     const website = String(formData.get("website") ?? "").trim();
 
     if (selectedPages.length === 0) {
-      setServerMessage("Sélectionne au moins une page pour ton site.");
+      setServerMessage("Selectionne au moins une page pour ton site.");
       setStatus("error");
       return;
     }
 
     if (!siteKey) {
-      setServerMessage("Captcha non configuré. Contacte-nous directement.");
+      setServerMessage("Captcha non configure. Contacte-nous directement.");
       setStatus("error");
       return;
     }
@@ -131,7 +131,7 @@ export function QuoteForm() {
 
       if (!response.ok) {
         const errorPayload = await response.json().catch(() => null);
-        const fallbackMessage = "Impossible d'envoyer la demande. Réessaie dans un instant.";
+        const fallbackMessage = "Impossible d'envoyer la demande. Reessaie dans un instant.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
         if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
           setCaptchaToken("");
@@ -153,7 +153,7 @@ export function QuoteForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d'envoyer la demande. Réessaie dans un instant.");
+      setServerMessage("Impossible d'envoyer la demande. Reessaie dans un instant.");
     }
   }
 
@@ -192,7 +192,7 @@ export function QuoteForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="companyName" className="text-sm text-white/70">
-            Nom de société (si entreprise)
+            Nom de societe (si entreprise)
           </label>
           <input
             id="companyName"
@@ -223,7 +223,7 @@ export function QuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm text-white/70">Téléphone (optionnel)</label>
+          <label htmlFor="phone" className="text-sm text-white/70">Telephone (optionnel)</label>
           <input
             id="phone"
             name="phone"
@@ -253,11 +253,11 @@ export function QuoteForm() {
             required
             rows={3}
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="Ex : Présenter l'agence et générer des demandes qualifiées."
+            placeholder="Ex : Presenter l'agence et generer des demandes qualifiees."
           />
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
-          <p className="text-sm text-white/70">Pages souhaitées *</p>
+          <p className="text-sm text-white/70">Pages souhaitees *</p>
           <div className="grid gap-3 md:grid-cols-3">
             {pageOptions.map((page) => (
               <label key={page} className="flex items-center gap-2 text-sm text-white/80">
@@ -289,7 +289,7 @@ export function QuoteForm() {
             required
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
           >
-            <option value="" disabled>Sélectionne</option>
+            <option value="" disabled>Selectionne</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -298,7 +298,7 @@ export function QuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="timeline" className="text-sm text-white/70">Délai *</label>
+          <label htmlFor="timeline" className="text-sm text-white/70">Delai *</label>
           <select
             id="timeline"
             name="timeline"
@@ -363,3 +363,4 @@ export function QuoteForm() {
     </form>
   );
 }
+
