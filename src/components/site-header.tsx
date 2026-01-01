@@ -33,7 +33,7 @@ export function SiteHeader() {
 
   return (
     <header className="site-header sticky top-0 z-50 bg-black/80 text-white backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[90rem] items-center justify-between px-8 py-4">
+      <div className="mx-auto flex w-full max-w-[90rem] items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
         <Link
           href="/"
           className="text-lg font-semibold tracking-tight text-white"

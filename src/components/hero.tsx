@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
@@ -40,7 +40,7 @@ export function HeroSection({ stats }: HeroProps) {
           className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(214,179,106,0.32),transparent_55%)]"
           style={{ y: parallaxY }}
         />
-        <div className="relative grid gap-12 px-8 py-16 md:grid-cols-[1.35fr,0.9fr]">
+        <div className="relative grid gap-10 px-5 py-10 sm:px-8 sm:py-16 md:grid-cols-[1.35fr,0.9fr]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,13 +51,13 @@ export function HeroSection({ stats }: HeroProps) {
               <span className="gradient-pill rounded-full px-4 py-1 text-xs uppercase tracking-[0.25em]">
                 Studio digital haut de gamme
               </span>
-              <span>Réponse sous 24h | Lancement 4-6 semaines</span>
+              <span>Reponse sous 24h | Lancement 4-6 semaines</span>
             </div>
-            <h1 className="text-4xl font-semibold leading-tight md:text-6xl">
+            <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
               Sites ultra-rapides et experiences digitales de{" "}
               <span className="gradient-text">luxe pour marques exigeantes</span>.
             </h1>
-            <p className="text-lg text-white/75">
+            <p className="text-base text-white/75 sm:text-lg">
               Direction artistique, design system et performance technique. Next.js, SEO et integrations
               business pour livrer vite sans compromis sur la finition.
             </p>
@@ -104,7 +104,7 @@ export function HeroSection({ stats }: HeroProps) {
           </motion.div>
 
           <motion.div
-            className="hero-visual p-6"
+            className="hero-visual p-4 sm:p-6"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -181,7 +181,7 @@ export function HeroSection({ stats }: HeroProps) {
           </motion.div>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-4 text-sm text-white/70">
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 sm:px-6 sm:py-4">
         <p className="text-white/80">
           Maisons et studios: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn
         </p>

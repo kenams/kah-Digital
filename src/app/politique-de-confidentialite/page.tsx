@@ -48,7 +48,7 @@ export default function PolitiqueConfidentialitePage() {
         </Link>
       </div>
 
-      <div className="light-surface px-8 py-12">
+      <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Confidentialité</p>
         <h1 className="mt-4 text-4xl font-semibold text-slate-900">Politique de confidentialité</h1>
         <p className="mt-4 text-slate-700">

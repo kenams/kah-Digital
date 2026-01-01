@@ -34,24 +34,24 @@ export default function DevisPage() {
               Ouvrir le configurateur
             </Link>
           </div>
-          <div className="light-surface px-8 py-12">
+          <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
             <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Devis rapide</p>
-            <h1 className="mt-4 text-4xl font-semibold text-slate-900">Vision du projet en 1-2 minutes.</h1>
-            <p className="mt-4 max-w-3xl text-lg text-slate-700">
+            <h1 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">Vision du projet en 1-2 minutes.</h1>
+            <p className="mt-4 max-w-3xl text-base text-slate-700 sm:text-lg">
               Chaque demande declenche un email automatique (et un backup webhook optionnel). Reponse detaillee sous 24 h avec
               budget, planning et recommandations.
             </p>
-            <div className="mt-4 grid gap-4 text-sm text-slate-600 md:grid-cols-3">
+            <div className="mt-4 grid gap-4 text-sm text-slate-600 sm:grid-cols-2 md:grid-cols-3">
               <div className="light-outline p-4 text-slate-900">
-                <p className="text-2xl font-semibold">4-6 semaines</p>
+                <p className="text-xl font-semibold sm:text-2xl">4-6 semaines</p>
                 <p>Livraison moyenne</p>
               </div>
               <div className="light-outline p-4 text-slate-900">
-                <p className="text-2xl font-semibold">+70 projets</p>
+                <p className="text-xl font-semibold sm:text-2xl">+70 projets</p>
                 <p>Sites & produits digitaux</p>
               </div>
               <div className="light-outline p-4 text-slate-900">
-                <p className="text-2xl font-semibold">Support</p>
+                <p className="text-xl font-semibold sm:text-2xl">Support</p>
                 <p>Slack dedie + Notion partagee</p>
               </div>
             </div>

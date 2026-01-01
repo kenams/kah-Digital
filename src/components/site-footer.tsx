@@ -13,7 +13,7 @@ const footerLinks = [
 export function SiteFooter() {
   return (
     <footer className="site-footer border-t border-white/10 bg-black text-white">
-      <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 px-8 py-12 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex w-full max-w-[90rem] flex-col gap-6 px-4 py-8 sm:px-6 sm:py-10 md:flex-row md:items-center md:justify-between lg:px-8 lg:py-12">
         <div>
           <p className="text-lg font-semibold">Kah-Digital</p>
           <p className="text-sm text-white/70">

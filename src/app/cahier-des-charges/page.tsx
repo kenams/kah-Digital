@@ -24,7 +24,7 @@ export default function CahierDesChargesPage() {
           Ouvrir le configurateur
         </Link>
       </div>
-      <div className="light-surface px-8 py-12 text-slate-900">
+      <div className="light-surface px-6 py-8 sm:px-8 sm:py-12 text-slate-900">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Cahier des charges</p>
         <h1 className="mt-4 text-4xl font-semibold">Tout est prêt pour cadrer ton projet.</h1>
         <p className="mt-4 max-w-3xl text-lg text-slate-700">
