@@ -43,11 +43,11 @@ export function HomePageClient({ data }: HomePageClientProps) {
         </section>
 
         <section id="fast-track" className="section-shell space-y-6">
-          <div className="divider-label">Offres signature</div>
+          <div className="divider-label">Offres claires</div>
           <div className="rounded-[32px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.3em] text-white/60">Signature</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-white/60">Offres claires</p>
                 <h2 className="mt-3 text-3xl font-semibold">3 offres claires pour decider vite.</h2>
                 <p className="mt-2 text-white/70 max-w-3xl">
                   Budgets, delais et livrables clairs pour valider un go sans iterations inutiles.

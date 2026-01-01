@@ -1,4 +1,4 @@
-const services = [
+﻿const services = [
   {
     title: "Site vitrine haut de gamme",
     description:
@@ -119,37 +119,37 @@ const faqs = [
 const stats = [
   { label: "Projets premium", value: "70+" },
   { label: "Satisfaction", value: "9.6/10" },
-  { label: "Délai moyen", value: "4-6 semaines" },
+  { label: "Delai moyen", value: "4-6 semaines" },
 ];
 
 const fastDeals = [
   {
-    title: "Signature landing",
+    title: "Landing conversion",
     budget: "3 500 EUR",
     timeline: "3 semaines (incl. QA)",
-    stack: "Next.js, Resend, Notion CMS",
-    deliverable: "Storytelling premium + CTA calendrier",
+    stack: "Next.js, SEO, Email",
+    deliverable: "Page unique + formulaire + calendrier",
   },
   {
     title: "Portail membres prive",
     budget: "8 000 EUR",
     timeline: "5 semaines",
-    stack: "Next.js, Supabase, Stripe Billing",
-    deliverable: "Acces securise, dashboards, paiement recurrent",
+    stack: "Supabase Auth, Stripe, Dashboard",
+    deliverable: "Espace login + contenus + paiements recurrents",
   },
   {
-    title: "Configurator + deck",
+    title: "Configurateur + deck",
     budget: "12 000 EUR",
     timeline: "6 semaines",
-    stack: "React Native + Expo, Next.js marketing",
-    deliverable: "App TestFlight + deck investisseur",
+    stack: "Next.js, PDF, Notion/CRM",
+    deliverable: "Configurateur devis + deck PDF auto",
   },
 ];
 
 const closingHighlights = [
   { label: "Budget indicatif", value: "3K EUR - 15K EUR" },
   { label: "Sprint moyen", value: "4 a 6 semaines" },
-  { label: "Réponse", value: "-24h" },
+  { label: "Reponse", value: "-24h" },
 ];
 
 const resultsShowcase = [
@@ -175,14 +175,14 @@ const resultsShowcase = [
 
 const homeSections = [
   { id: "hero", label: "Accueil" },
-  { id: "fast-track", label: "Signature" },
+  { id: "fast-track", label: "Offres" },
   { id: "assets", label: "Assets" },
   { id: "services", label: "Services" },
   { id: "apps", label: "MVP" },
   { id: "studio-lumiere", label: "Palette" },
   { id: "portfolio", label: "Portfolio" },
   { id: "process", label: "Process" },
-  { id: "results", label: "Résultats" },
+  { id: "results", label: "Resultats" },
   { id: "testimonials", label: "Clients" },
   { id: "closing", label: "Pack" },
   { id: "cta", label: "Contact" },
@@ -205,3 +205,5 @@ export const homeData = {
 } as const;
 
 export type HomePageData = typeof homeData;
+
+
