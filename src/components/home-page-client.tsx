@@ -108,12 +108,19 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="divider-label">Services signature</div>
             <div className="accent-section surface-dark">
               <div className="content px-6 py-10">
-                <div className="mb-8 flex items-end justify-between">
+                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div>
                     <p className="text-sm uppercase tracking-[0.3em] text-white/60">Services</p>
                     <h2 className="mt-3 text-3xl font-semibold text-white">
                       Sites premium, e-commerce et portails prives, livres vite.
                     </h2>
+                    <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
+                      {["Audit express", "Design system", "Build Next.js"].map((item) => (
+                        <span key={item} className="rounded-full border border-white/20 px-3 py-1 text-white/70">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   <Link
                     href="/devis?type=web"
@@ -424,6 +431,13 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <p className="text-white/70">
                     Budget, planning et livrables clairs. Ideal pour valider vite avec un board ou une direction marketing.
                   </p>
+                  <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
+                    {["Kick-off 48h", "1 interlocuteur", "Reporting hebdo"].map((item) => (
+                      <span key={item} className="rounded-full border border-white/20 px-3 py-1 text-white/70">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                   <div className="grid gap-4 sm:grid-cols-3">
                     {closingHighlights.map((item) => (
                       <div key={item.label} className="rounded-3xl border border-white/10 bg-black/30 p-4">
