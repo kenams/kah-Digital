@@ -56,6 +56,7 @@ export default function DevisMvpPage() {
             alt="Apercu MVP mobile"
             width={760}
             height={520}
+            sizes="(min-width: 1024px) 40vw, 100vw"
             className="h-full w-full rounded-2xl object-cover"
           />
         </div>

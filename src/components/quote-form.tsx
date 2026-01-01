@@ -349,6 +349,7 @@ export function QuoteForm() {
         >
           {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
         </button>
+        <p className="text-xs text-white/60">Devis gratuit, reponse sous 24h. Aucun engagement.</p>
         {serverMessage && (
           <p
             className={`text-sm ${

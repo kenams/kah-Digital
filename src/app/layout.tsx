@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   ],
   category: "technology",
   openGraph: {
+    type: "website",
+    locale: "fr_FR",
     title: "Kah-Digital — sites & solutions digitales premium",
     description:
       "Création de sites, landing pages et expériences digitales. Devis rapide et réponse sous 24h.",

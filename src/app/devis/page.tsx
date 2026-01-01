@@ -68,6 +68,7 @@ export default function DevisPage() {
                   alt="Collage d'ecrans d'apps et sites"
                   width={1200}
                   height={860}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
                   className="h-full w-full rounded-2xl object-cover"
                 />
               </div>
