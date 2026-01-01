@@ -129,6 +129,7 @@ const fastDeals = [
     timeline: "3 semaines (incl. QA)",
     stack: "Next.js, SEO, Email",
     deliverable: "Page unique + formulaire + calendrier",
+    href: "/offres#landing-conversion",
   },
   {
     title: "Portail membres prive",
@@ -136,6 +137,7 @@ const fastDeals = [
     timeline: "5 semaines",
     stack: "Supabase Auth, Stripe, Dashboard",
     deliverable: "Espace login + contenus + paiements recurrents",
+    href: "/offres#portail-membres",
   },
   {
     title: "Configurateur + deck",
@@ -143,6 +145,7 @@ const fastDeals = [
     timeline: "6 semaines",
     stack: "Next.js, PDF, Notion/CRM",
     deliverable: "Configurateur devis + deck PDF auto",
+    href: "/offres#configurateur-deck",
   },
 ];
 

@@ -76,6 +76,12 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     </div>
                   </div>
                   <p className="mt-3 text-white/70">{deal.deliverable}</p>
+                  <Link
+                    href={deal.href}
+                    className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-white/70 transition hover:text-white"
+                  >
+                    En savoir plus
+                  </Link>
                 </div>
               ))}
             </div>
