@@ -4,8 +4,8 @@ import Link from "next/link";
 import { brandContact } from "@/config/brand";
 
 const footerLinks = [
-  { label: "Mentions légales", href: "/mentions-legales" },
-  { label: "Politique de confidentialité", href: "/politique-de-confidentialite" },
+  { label: "Mentions legales", href: "/mentions-legales" },
+  { label: "Politique de confidentialite", href: "/politique-de-confidentialite" },
   { label: "LinkedIn", href: "https://www.linkedin.com" },
   { label: "Instagram", href: "https://www.instagram.com" },
 ];
@@ -17,14 +17,14 @@ export function SiteFooter() {
         <div>
           <p className="text-lg font-semibold">Kah-Digital</p>
           <p className="text-sm text-white/70">
-            Création de sites & solutions digitales — réponse sous 24h.
+            Creation de sites & solutions digitales - reponse sous 24h.
           </p>
           <p className="mt-2 text-sm text-white/70">
-            Contact :{" "}
+            Contact:{" "}
             <Link href={`mailto:${brandContact.email}`} className="underline hover:text-white">
               {brandContact.email}
             </Link>{" "}
-            · {brandContact.phone}
+            - {brandContact.phone} <span className="text-white/50">(numero temporaire)</span>
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm text-white/70">

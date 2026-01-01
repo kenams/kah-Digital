@@ -228,7 +228,7 @@ export function QuoteForm() {
             id="phone"
             name="phone"
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="+33 6 00 00 00 00"
+            placeholder="+33 7 59 55 84 14"
           />
         </div>
         <div className="flex flex-col gap-2">
