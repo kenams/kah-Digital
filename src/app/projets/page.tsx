@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { AssetGrid } from "@/components/asset-grid";
 import { Reveal } from "@/components/reveal";
@@ -7,7 +7,7 @@ import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata = {
   title: "Projets Kah-Digital",
-  description: "Selection d&apos;etudes de cas shippees par Kah-Digital.",
+  description: "Selection d&apos;etudes de cas livrees par Kah-Digital.",
 };
 
 export default function ProjectsPage() {
@@ -18,7 +18,7 @@ export default function ProjectsPage() {
           href="/"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Retour à l&apos;accueil
+          Retour a l&apos;accueil
         </Link>
         <Link
           href="/configurateur"
@@ -28,22 +28,23 @@ export default function ProjectsPage() {
         </Link>
       </div>
       <Reveal>
-        <div className="surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-8 text-white">
+        <div className="surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-6 text-white sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Portfolio</p>
-              <h1 className="text-4xl font-semibold">Nos projets récents</h1>
+              <h1 className="text-4xl font-semibold">Nos projets recents</h1>
               <p className="text-white/70 max-w-3xl">
-                De vitrines narratives à des parcours e-commerce aboutis : voici des cas représentatifs de notre studio Next.js
+                De vitrines narratives a des parcours e-commerce aboutis : voici des cas representatifs de notre studio Next.js
                 + React Native.
               </p>
             </div>
             <div className="rounded-3xl border border-white/15 bg-white/5 p-4">
               <Image
                 src="/mockups/global-dashboard.svg"
-                alt="Aper\u00e7u portfolio Kah-Digital"
+                alt="Apercu portfolio Kah-Digital"
                 width={520}
                 height={360}
+                sizes="(min-width: 1024px) 260px, 70vw"
                 className="h-40 w-full rounded-2xl object-cover"
               />
             </div>
@@ -83,7 +84,7 @@ export default function ProjectsPage() {
       </div>
 
       <Reveal>
-        <section className="surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-8 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)]">
+        <section className="surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-6 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)] sm:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-white/60">AssetShots</p>
@@ -106,3 +107,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+

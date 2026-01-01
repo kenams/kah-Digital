@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
 
   return (
     <div className="lg:flex lg:items-start lg:gap-10">
-      <div className="flex-1 space-y-24">
+      <div className="flex-1 space-y-16 sm:space-y-24">
         <section id="hero">
           <HeroSection stats={stats} />
         </section>
@@ -48,7 +48,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">Signature</p>
-                <h2 className="mt-3 text-3xl font-semibold">3 offres premium pour decider vite.</h2>
+                <h2 className="mt-3 text-3xl font-semibold">3 offres claires pour decider vite.</h2>
                 <p className="mt-2 text-white/70 max-w-3xl">
                   Budgets, delais et livrables clairs pour valider un go sans iterations inutiles.
                 </p>
@@ -57,7 +57,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 href="/devis"
                 className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
               >
-                Demander un creneau
+                Demander un devis
               </Link>
             </div>
             <div className="mt-6 grid gap-4 lg:grid-cols-3">
@@ -71,7 +71,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       <p className="text-base font-semibold text-white">{deal.budget}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/50">Délai</p>
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/50">Delai</p>
                       <p className="text-base font-semibold text-white">{deal.timeline}</p>
                     </div>
                   </div>
@@ -87,7 +87,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.35em] text-white/60">Assets & mise en scene</p>
-                <h2 className="mt-2 text-3xl font-semibold text-white">Un pack d&apos;assets premium pret a decliner.</h2>
+                <h2 className="mt-2 text-3xl font-semibold text-white">Un pack d&apos;assets premium pret a utiliser.</h2>
                 <p className="mt-2 max-w-3xl text-white/70">
                   Mockups web, scenes mobile et dashboards prets pour la presse, les boards et les collections.
                 </p>
@@ -96,7 +96,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 href="/projets"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
               >
-                Explorer les etudes de cas
+                Voir les etudes de cas
               </Link>
             </div>
             <AssetGrid assets={assetShots} />
@@ -150,7 +150,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     href="/devis"
                     className="inline-flex items-center rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
                   >
-                    Demander un devis premium
+                    Demander un devis
                   </Link>
                 </div>
               </div>
@@ -238,7 +238,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 <div className="space-y-4">
                   <p className="text-sm uppercase tracking-[0.4em] text-slate-500">Palette alternative</p>
                   <h2 className="text-3xl font-semibold text-slate-900">
-                    Mode lumiere: une declinaison chaude pour les pages campagnes.
+                    Mode lumiere: declinaison chaude pour les pages campagnes.
                   </h2>
                   <p className="text-slate-700 max-w-2xl">
                     Fond creme, touches or, typographies noires pour une image luxe. Ideal pour beauty, lifestyle, hospitality
@@ -357,7 +357,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
 
         <Reveal>
           <section id="results" className="section-shell space-y-6">
-            <div className="divider-label">Résultats</div>
+            <div className="divider-label">Resultats</div>
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">Avant / Apres</p>
@@ -384,6 +384,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       alt={result.title}
                       width={480}
                       height={320}
+                      sizes="(min-width: 1024px) 320px, 70vw"
                       className="h-48 w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20" />
@@ -477,7 +478,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     href="/devis"
                     className="inline-flex items-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200"
                   >
-                    Devis premium
+                    Demander un devis
                   </Link>
                   <Link
                     href="/cahier-des-charges"
@@ -527,3 +528,4 @@ export function HomePageClient({ data }: HomePageClientProps) {
     </div>
   );
 }
+

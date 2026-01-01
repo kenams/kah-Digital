@@ -29,6 +29,7 @@ export function AssetGrid({ assets, columns = "default" }: AssetGridProps) {
             alt={asset.title}
             width={520}
             height={320}
+            sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
             className="mt-4 h-48 w-full rounded-2xl border border-white/15 bg-black/30 object-cover"
           />
           <p className="mt-5 text-lg font-semibold">{asset.title}</p>
