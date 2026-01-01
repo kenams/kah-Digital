@@ -284,6 +284,13 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
     setCaptchaToken(token);
     setCaptchaError("");
   }, []);
+  const handleCaptchaExpire = useCallback(() => {
+    setCaptchaToken("");
+  }, []);
+  const handleCaptchaError = useCallback(() => {
+    setCaptchaToken("");
+    setCaptchaError("Verification impossible. Reessaye.");
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -342,7 +349,18 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!response.ok) throw new Error();
+      if (!response.ok) {
+        const errorPayload = await response.json().catch(() => null);
+        const fallbackMessage = "Impossible d'envoyer la demande. Ecris-nous sur kah-digital@hotmail.com.";
+        const errorMessage = errorPayload?.error ?? fallbackMessage;
+        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
+          setCaptchaToken("");
+          setCaptchaReset((prev) => prev + 1);
+        }
+        setStatus("error");
+        setServerMessage(errorMessage);
+        return;
+      }
       setStatus("success");
       setServerMessage("Demande envoyee. On revient vers toi sous 24h.");
       window.setTimeout(() => {
@@ -358,7 +376,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d&apos;envoyer la demande. Ecris-nous sur hello@kah-digital.com.");
+      setServerMessage("Impossible d&apos;envoyer la demande. Ecris-nous sur kah-digital@hotmail.com.");
     }
   }
 
@@ -452,15 +470,12 @@ function ConfiguratorFinalForm({ summary, features, integrations, ready }: Final
         <div className="md:col-span-2 space-y-2 text-sm text-white/70">
           <p>Verification anti-spam</p>
           {siteKey ? (
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
               <TurnstileWidget
                 siteKey={siteKey}
                 onVerify={handleCaptchaVerify}
-                onExpire={() => setCaptchaToken("")}
-                onError={() => {
-                  setCaptchaToken("");
-                  setCaptchaError("Verification impossible. Reessaye.");
-                }}
+                onExpire={handleCaptchaExpire}
+                onError={handleCaptchaError}
                 resetKey={String(captchaReset)}
               />
             </div>

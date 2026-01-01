@@ -84,7 +84,7 @@ export function InteractiveBrief() {
       doc.setFontSize(18);
       doc.text("Kah-Digital - Cahier des charges", 20, 20);
       doc.setFontSize(11);
-      doc.text("Contact : hello@kah-digital.com - +33 6 00 00 00 00", 20, 30);
+      doc.text("Contact : kah-digital@hotmail.com - +33 6 00 00 00 00", 20, 30);
       let y = 45;
 
       Object.entries(formState).forEach(([key, value]) => {

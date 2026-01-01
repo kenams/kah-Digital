@@ -26,14 +26,14 @@ Puis ouvrir http://localhost:3000.
 2. Renseigne les clés :
 ```
 RESEND_API_KEY=""
-QUOTE_NOTIFICATION_EMAIL="hello@kah-digital.com"
+QUOTE_NOTIFICATION_EMAIL="kah-digital@hotmail.com"
 GOOGLE_SHEET_WEBHOOK=""          # optionnel
 ADMIN_BASIC_USER=""              # accès /admin
 ADMIN_BASIC_PASSWORD=""
 ADMIN_API_TOKEN=""               # protège GET /api/quote
 SUPABASE_URL=""                  # optionnel, table `quotes`
 SUPABASE_SERVICE_ROLE_KEY=""     # optionnel
-NEXT_PUBLIC_CONTACT_EMAIL="hello@kah-digital.com"
+NEXT_PUBLIC_CONTACT_EMAIL="kah-digital@hotmail.com"
 NEXT_PUBLIC_CONTACT_PHONE="+33 6 00 00 00 00"
 ```
 
@@ -66,3 +66,4 @@ Sans ces variables, l’API répond quand même OK (les notifications sont simpl
 - PDF prêt à remplir : `public/cahier-des-charges.pdf`
 - Cahier interactif : `src/components/interactive-brief.tsx`
 - SEO/meta : `public/og-kah-digital.png`, `public/favicon.svg`, `src/app/layout.tsx`
+

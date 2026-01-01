@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import { brandContact } from "@/config/brand";
 
 const footerLinks = [
   { label: "Mentions légales", href: "/mentions-legales" },
@@ -20,10 +21,10 @@ export function SiteFooter() {
           </p>
           <p className="mt-2 text-sm text-white/70">
             Contact :{" "}
-            <Link href="mailto:hello@kah-digital.com" className="underline hover:text-white">
-              hello@kah-digital.com
+            <Link href={`mailto:${brandContact.email}`} className="underline hover:text-white">
+              {brandContact.email}
             </Link>{" "}
-            · +33 6 00 00 00 00
+            · {brandContact.phone}
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm text-white/70">

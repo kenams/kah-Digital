@@ -25,7 +25,7 @@ export default function DevisPage() {
               href="/"
               className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
             >
-              Retour à l&apos;accueil
+              Retour a l&apos;accueil
             </Link>
             <Link
               href="/configurateur"
@@ -38,7 +38,7 @@ export default function DevisPage() {
             <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Devis rapide</p>
             <h1 className="mt-4 text-4xl font-semibold text-slate-900">Vision du projet en 1-2 minutes.</h1>
             <p className="mt-4 max-w-3xl text-lg text-slate-700">
-              Chaque demande déclenche un email automatique (et un backup webhook optionnel). Réponse détaillée sous 24 h avec
+              Chaque demande declenche un email automatique (et un backup webhook optionnel). Reponse detaillee sous 24 h avec
               budget, planning et recommandations.
             </p>
             <div className="mt-4 grid gap-4 text-sm text-slate-600 md:grid-cols-3">
@@ -52,7 +52,7 @@ export default function DevisPage() {
               </div>
               <div className="light-outline p-4 text-slate-900">
                 <p className="text-2xl font-semibold">Support</p>
-                <p>Slack dédié + Notion partagée</p>
+                <p>Slack dedie + Notion partagee</p>
               </div>
             </div>
           </div>
@@ -64,10 +64,10 @@ export default function DevisPage() {
             <div className="space-y-4">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
                 <Image
-                  src="/mockups/global-dashboard.svg"
-                  alt="Aperçu du workspace briefing"
-                  width={760}
-                  height={520}
+                  src="/mockups/devis-collage.png"
+                  alt="Collage d'ecrans d'apps et sites"
+                  width={1200}
+                  height={860}
                   className="h-full w-full rounded-2xl object-cover"
                 />
               </div>

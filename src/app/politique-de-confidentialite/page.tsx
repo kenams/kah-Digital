@@ -68,7 +68,7 @@ export default function PolitiqueConfidentialitePage() {
 
       <div className="light-outline p-6">
         <h2 className="text-xl font-semibold text-slate-900">Vos droits</h2>
-        <p className="mt-4 text-slate-700">Vous pouvez exercer à tout moment les droits suivants auprès de hello@kah-digital.com :</p>
+        <p className="mt-4 text-slate-700">Vous pouvez exercer à tout moment les droits suivants auprès de kah-digital@hotmail.com :</p>
         <ul className="mt-4 list-disc space-y-2 pl-6 text-slate-700">
           {rights.map((item) => (
             <li key={item}>{item}</li>

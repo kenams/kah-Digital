@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { quoteSchema, type QuoteRecord } from "@/lib/quote";
 import { notifyQuote } from "@/lib/notifications";
 import { getRecentQuotes, isSupabaseConfigured, saveQuoteRecord } from "@/lib/quote-store";
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
 
   const header = request.headers.get("authorization");
   if (!header || header !== `Bearer ${adminToken}`) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return NextResponse.json({ error: "Non autorise" }, { status: 401 });
   }
 
   try {
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 
   if (!rate.allowed) {
     return NextResponse.json(
-      { error: `Trop de demandes. Réessaie dans ${rate.retryAfter}s.` },
+      { error: `Trop de demandes. Reessaie dans ${rate.retryAfter}s.` },
       { status: 429, headers: { ...rateHeaders, "Retry-After": String(rate.retryAfter) } }
     );
   }
@@ -68,8 +68,10 @@ export async function POST(request: NextRequest) {
 
     const verification = await verifyTurnstile(turnstileToken, remoteIp);
     if (!verification.success) {
+      const errorCodes = verification["error-codes"] ?? [];
+      const errorSuffix = errorCodes.length ? ` (codes: ${errorCodes.join(", ")})` : "";
       return NextResponse.json(
-        { error: "Captcha invalide", details: verification["error-codes"] ?? [] },
+        { error: `Captcha invalide${errorSuffix}`, details: errorCodes },
         { status: 400, headers: rateHeaders }
       );
     }
@@ -84,7 +86,7 @@ export async function POST(request: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Données invalides", details: parsed.error.flatten() },
+        { error: "Donnees invalides", details: parsed.error.flatten() },
         { status: 400, headers: rateHeaders }
       );
     }

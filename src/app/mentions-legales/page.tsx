@@ -48,7 +48,7 @@ export default function MentionsLegalesPage() {
               <strong>Responsable de la publication :</strong> Karim Haddad
             </p>
             <p>
-              <strong>Email :</strong> hello@kah-digital.com
+              <strong>Email :</strong> kah-digital@hotmail.com
             </p>
             <p>
               <strong>Téléphone :</strong> +33 6 52 41 11 22
@@ -106,7 +106,7 @@ export default function MentionsLegalesPage() {
       <div className="light-outline p-6">
         <h2 className="text-xl font-semibold text-slate-900">Contact et médiation</h2>
         <p className="mt-4 text-slate-700">
-          Pour toute question, réclamation ou signalement concernant les contenus publiés, écrivez à hello@kah-digital.com ou
+          Pour toute question, réclamation ou signalement concernant les contenus publiés, écrivez à kah-digital@hotmail.com ou
           adressez un courrier au siège social. Si un litige persiste, une solution amiable pourra être recherchée via un
           médiateur de la consommation.
         </p>
