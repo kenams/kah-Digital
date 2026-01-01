@@ -54,8 +54,8 @@ export function HeroSection({ stats }: HeroProps) {
               <span>Reponse sous 24h | Lancement 4-6 semaines</span>
             </div>
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
-              Sites ultra-rapides et experiences digitales de{" "}
-              <span className="gradient-text">luxe pour marques exigeantes</span>.
+              Design premium, vitesse d&apos;execution,{" "}
+              <span className="gradient-text">resultats clairs</span>.
             </h1>
             <p className="text-base text-white/75 sm:text-lg">
               Direction artistique, design system et performance technique. Next.js, SEO et integrations
