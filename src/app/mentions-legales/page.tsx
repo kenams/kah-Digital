@@ -36,6 +36,9 @@ export default function MentionsLegalesPage() {
       <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Mentions legales</p>
         <h1 className="mt-4 text-4xl font-semibold text-slate-900">Informations legales</h1>
+        <p className="mt-2 text-sm text-slate-500">
+          Informations en cours d&apos;actualisation (SIREN, siege, TVA).
+        </p>
         <div className="mt-6 grid gap-8 text-sm text-slate-700 md:grid-cols-2">
           <div className="space-y-3">
             <p>

@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Apps MVP", href: "/#apps" },
   { label: "Portfolio", href: "/#portfolio" },
   { label: "Configurateur", href: "/configurateur" },
+  { label: "Offres", href: "/offres" },
   { label: "Devis", href: "/devis" },
   { label: "FAQ", href: "/#faq" },
   { label: "Lexique", href: "/lexique" },
