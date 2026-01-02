@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { TurnstileWidget } from "@/components/turnstile-widget";
+import { trackEvent } from "@/lib/analytics";
 
 type QuotePayload = {
   name: string;
@@ -144,6 +145,7 @@ export function QuoteForm() {
 
       setStatus("success");
       setServerMessage("Merci, demande envoyee. Redirection en cours...");
+      trackEvent("generate_lead", { form_name: "devis", destination: "devis" });
       formElement.reset();
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);

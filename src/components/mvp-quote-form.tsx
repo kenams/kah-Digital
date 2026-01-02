@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { TurnstileWidget } from "@/components/turnstile-widget";
+import { trackEvent } from "@/lib/analytics";
 
 type MvpQuotePayload = {
   name: string;
@@ -156,6 +157,7 @@ export function MvpQuoteForm() {
 
       setStatus("success");
       setServerMessage("Merci, demande envoyee. Redirection en cours...");
+      trackEvent("generate_lead", { form_name: "mvp", destination: "devis_mvp" });
       form.reset();
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);
