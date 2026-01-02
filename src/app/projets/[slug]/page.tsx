@@ -164,10 +164,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.35em] text-white/60">Asset grid</p>
-              <h2 className="text-3xl font-semibold">Scenes exports pour prolonger le storytelling.</h2>
+              <h2 className="text-3xl font-semibold">Scenes exportees pour prolonger le storytelling.</h2>
               <p className="text-white/70 max-w-2xl">
-                Chaque projet shippe avec ses mockups HD et ses variantes claires/sombres pour alimenter portfolio, deck
-                investisseur ou onboarding. Voici les extraits lies a ce cas, que tu peux reuploader partout.
+                Chaque projet est livre avec ses mockups HD et ses variantes claires/sombres pour alimenter portfolio, deck
+                investisseur ou onboarding. Voici les extraits lies a ce cas, que tu peux reutiliser partout.
               </p>
             </div>
             <Link
