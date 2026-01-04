@@ -1,13 +1,40 @@
-﻿import Image from "next/image";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AssetGrid } from "@/components/asset-grid";
 import { Reveal } from "@/components/reveal";
 import { assetShots } from "@/data/asset-shots";
 import { portfolioProjects } from "@/data/portfolio";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Projets Kah-Digital",
-  description: "Selection d&apos;etudes de cas livrees par Kah-Digital.",
+  description: "Selection d'etudes de cas livrees par Kah-Digital.",
+  alternates: {
+    canonical: "/projets",
+    languages: {
+      en: "/en/projets",
+    },
+  },
+  openGraph: {
+    type: "website",
+    title: "Projets Kah-Digital",
+    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    url: "/projets",
+    images: [
+      {
+        url: "/og-kah-digital.png",
+        width: 1200,
+        height: 630,
+        alt: "Kah-Digital projets",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projets Kah-Digital",
+    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    images: ["/og-kah-digital.png"],
+  },
 };
 
 export default function ProjectsPage() {
@@ -24,11 +51,11 @@ export default function ProjectsPage() {
           href="/configurateur"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Configurateur
+          Devis rapide
         </Link>
       </div>
       <Reveal>
-        <div className="surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-6 text-white sm:p-8">
+        <div className="premium-card surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-6 text-white sm:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Portfolio</p>
@@ -38,7 +65,7 @@ export default function ProjectsPage() {
                 + React Native.
               </p>
             </div>
-            <div className="rounded-3xl border border-white/15 bg-white/5 p-4">
+            <div className="premium-card rounded-3xl border border-white/15 bg-white/5 p-4">
               <Image
                 src="/mockups/global-dashboard.svg"
                 alt="Apercu portfolio Kah-Digital"
@@ -56,7 +83,7 @@ export default function ProjectsPage() {
           <Reveal key={project.slug} delay={index * 0.05}>
             <Link
               href={`/projets/${project.slug}`}
-              className="surface-dark dark-card relative overflow-hidden rounded-3xl p-6 text-white transition duration-500 hover:-translate-y-1"
+              className="premium-card surface-dark dark-card relative overflow-hidden rounded-3xl p-6 text-white transition duration-500 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})`,
               }}
@@ -84,18 +111,18 @@ export default function ProjectsPage() {
       </div>
 
       <Reveal>
-        <section className="surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-6 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)] sm:p-8">
+        <section className="premium-card surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-6 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)] sm:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-white/60">AssetShots</p>
               <h2 className="text-3xl font-semibold">Scenes Figma exportees pour chaque projet.</h2>
               <p className="mt-2 max-w-3xl text-white/70">
-                On livre aussi les mockups HD et versions 3D des ecrans clefs pour alimenter portfolio, deck investisseur
+                On livre aussi les mockups HD et versions 3D des ecrans clefs pour alimenter portfolio, dossier investisseur
                 et case study. Disponible en formats light et dark selon les pages.
               </p>
             </div>
             <Link
-              href="/portfolio"
+              href="/projets"
               className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
             >
               Voir tout le pack
@@ -107,4 +134,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

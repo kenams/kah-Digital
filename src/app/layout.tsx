@@ -48,7 +48,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    title: "Kah-Digital — sites & solutions digitales premium",
+    alternateLocale: ["en_US"],
+    title: "Kah-Digital - sites & solutions digitales premium",
     description:
       "Création de sites, landing pages et expériences digitales. Devis rapide et réponse sous 24h.",
     url: SITE_URL,
@@ -74,6 +75,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      fr: SITE_URL,
+      en: `${SITE_URL}/en`,
+    },
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

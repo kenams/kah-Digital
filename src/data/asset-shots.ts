@@ -53,3 +53,48 @@ export const assetShots: AssetShot[] = [
     cta: { label: "Voir Lumea Skin", href: "/projets/lumea-skin" },
   },
 ];
+
+export const assetShotsEn: AssetShot[] = [
+  {
+    title: "Configurator brief live",
+    description: "Sticky timeline, MVP modules, direct PDF export.",
+    image: "/mockups/global-dashboard.svg",
+    chips: ["Site + MVP", "4 steps"],
+    cta: { label: "Try the configurator", href: "/en/configurateur" },
+  },
+  {
+    title: "FairBuild MVP dashboard",
+    description: "Double onboarding, auto scoring, and status badges.",
+    image: "/mockups/fairbuild-mvp.svg",
+    chips: ["Make webhooks", "Supabase"],
+    cta: { label: "View the case study", href: "/en/projets/fairbuild-mvp" },
+  },
+  {
+    title: "PulseLearn player",
+    description: "Audio player, quizzes, and mobile progress timeline.",
+    image: "/mockups/pulselearn.svg",
+    chips: ["React Native", "Stripe Checkout"],
+    cta: { label: "Discover PulseLearn", href: "/en/projets/pulselearn" },
+  },
+  {
+    title: "NovaPay mobile scene",
+    description: "Finance hero, sticky timeline, and embedded meeting CTA.",
+    image: "/mockups/global-dashboard.png",
+    chips: ["Finance landing", "Sticky CTA"],
+    cta: { label: "See NovaPay", href: "/en/projets/novapay" },
+  },
+  {
+    title: "OKO investor kit",
+    description: "Impact timeline, map, and pitch-ready number board.",
+    image: "/mockups/fairbuild-mvp.png",
+    chips: ["Mapbox", "Storytelling"],
+    cta: { label: "Explore OKO Energy", href: "/en/projets/oko-energy" },
+  },
+  {
+    title: "Lumea e-commerce board",
+    description: "3D product cards, routine quiz, and Stripe checkout.",
+    image: "/mockups/pulselearn.png",
+    chips: ["E-commerce", "Stripe"],
+    cta: { label: "See Lumea Skin", href: "/en/projets/lumea-skin" },
+  },
+];

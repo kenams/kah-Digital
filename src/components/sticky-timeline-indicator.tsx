@@ -91,7 +91,7 @@ export function StickyTimelineIndicator({ sections, className = "", progressOver
 
   return (
     <div
-      className={`sticky-timeline-indicator rounded-[32px] border border-white/10 bg-black/60 p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl ${className}`}
+      className={`premium-card sticky-timeline-indicator rounded-[32px] border border-white/10 bg-black/60 p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,0.65)] backdrop-blur-xl ${className}`}
       data-role="timeline-indicator"
     >
       <div className="flex items-center gap-4">

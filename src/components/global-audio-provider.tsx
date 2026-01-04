@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { FiVolume2, FiVolumeX } from "react-icons/fi";
+import { useLocale } from "@/lib/locale";
 
 type AmbientAudioContextValue = {
   isPlaying: boolean;
@@ -50,7 +51,7 @@ export function GlobalAudioProvider({ children }: GlobalAudioProviderProps) {
     if (typeof Audio === "undefined") {
       return null;
     }
-    const audio = new Audio("/hero-ambient.wav");
+    const audio = new Audio("/Cy.mp3");
     audio.loop = true;
     audio.volume = 0.3;
     const markReady = () => setIsReady(true);
@@ -98,11 +99,30 @@ export function GlobalAudioProvider({ children }: GlobalAudioProviderProps) {
 type AudioToggleProps = {
   className?: string;
   variant?: "dark" | "light";
+  compact?: boolean;
 };
 
-export function AmbientAudioToggleButton({ className = "", variant = "dark" }: AudioToggleProps) {
+export function AmbientAudioToggleButton({
+  className = "",
+  variant = "dark",
+  compact = false,
+}: AudioToggleProps) {
   const { isPlaying, isReady, showHint, toggle, dismissHint } = useAmbientAudio();
-  const label = isPlaying ? "Ambiance active" : isReady ? "Activer l’ambiance" : "Préparer l’ambiance";
+  const { isEnglish } = useLocale();
+  const compactLabel = isEnglish ? "Ambient" : "Ambiance";
+  const label = compact
+    ? compactLabel
+    : isPlaying
+      ? isEnglish
+        ? "Ambient on"
+        : "Ambiance active"
+      : isReady
+        ? isEnglish
+          ? "Enable ambient"
+          : "Activer l'ambiance"
+        : isEnglish
+          ? "Preparing ambient"
+          : "Preparer l'ambiance";
 
   const baseColors =
     variant === "light"
@@ -115,11 +135,19 @@ export function AmbientAudioToggleButton({ className = "", variant = "dark" }: A
     <div className={`flex flex-col gap-1 ${className}`}>
       <button
         type="button"
-        aria-label={isPlaying ? "Couper l’ambiance sonore" : "Activer l’ambiance sonore"}
+        aria-label={
+          isPlaying
+            ? isEnglish
+              ? "Mute ambient sound"
+              : "Couper l'ambiance sonore"
+            : isEnglish
+              ? "Enable ambient sound"
+              : "Activer l'ambiance sonore"
+        }
         onClick={toggle}
         className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition ${
           isPlaying ? activeColors : baseColors
-        }`}
+        } ${compact ? "px-3 text-[0.6rem] tracking-[0.18em]" : ""}`}
       >
         {isPlaying ? <FiVolume2 className="text-base" /> : <FiVolumeX className="text-base" />}
         {label}
@@ -130,7 +158,7 @@ export function AmbientAudioToggleButton({ className = "", variant = "dark" }: A
           onClick={dismissHint}
           className="text-[0.65rem] text-white/70 underline-offset-4 hover:text-white/90"
         >
-          Autorise l’audio dans ton navigateur
+          {isEnglish ? "Allow audio in your browser" : "Autorise l'audio dans ton navigateur"}
         </button>
       )}
     </div>

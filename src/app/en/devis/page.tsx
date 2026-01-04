@@ -1,0 +1,183 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
+import { QuoteForm } from "@/components/quote-form";
+import { ContactCard } from "@/components/contact-card";
+import { aiBusinessGuide } from "@/data/home.en";
+
+export const metadata: Metadata = {
+  title: "Quick quote",
+  description: "Short form to estimate a website or digital experience.",
+  alternates: {
+    canonical: "/en/devis",
+    languages: {
+      fr: "/devis",
+    },
+  },
+  openGraph: {
+    type: "website",
+    title: "Quick quote",
+    description: "Short form to estimate a website or digital experience.",
+    url: "/en/devis",
+    images: [
+      {
+        url: "/mockups/devis-collage.png",
+        width: 1200,
+        height: 860,
+        alt: "Kah-Digital quote preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quick quote",
+    description: "Short form to estimate a website or digital experience.",
+    images: ["/mockups/devis-collage.png"],
+  },
+};
+
+const devisSections = [
+  { id: "devis-hero", label: "Quick brief" },
+  { id: "devis-ai", label: "AI modules" },
+  { id: "devis-form", label: "Form & assets" },
+] as const;
+
+export default function DevisPageEn() {
+  return (
+    <div className="lg:flex lg:items-start lg:gap-10">
+      <div className="flex-1 space-y-12">
+        <section id="devis-hero" className="section-shell space-y-12">
+          <div className="flex flex-wrap gap-3 text-sm text-white/70">
+            <Link
+              href="/en"
+              className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
+            >
+              Back to home
+            </Link>
+            <Link
+              href="/en/configurateur"
+              className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
+            >
+              Open quick quote
+            </Link>
+          </div>
+          <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Quick quote</p>
+            <h1 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+              Project overview in 1-2 minutes.
+            </h1>
+            <p className="mt-4 max-w-3xl text-base text-slate-700 sm:text-lg">
+              Each request triggers an automatic email (and an optional webhook backup). Detailed reply within 24h with
+              budget, timeline, and recommendations.
+            </p>
+            <div className="mt-4 grid gap-4 text-sm text-slate-600 sm:grid-cols-2 md:grid-cols-3">
+              <div className="premium-card light-outline p-4 text-slate-900">
+                <p className="text-xl font-semibold sm:text-2xl">4-6 weeks</p>
+                <p>Average delivery</p>
+              </div>
+              <div className="premium-card light-outline p-4 text-slate-900">
+                <p className="text-xl font-semibold sm:text-2xl">70+ projects</p>
+                <p>Websites & digital products</p>
+              </div>
+              <div className="premium-card light-outline p-4 text-slate-900">
+                <p className="text-xl font-semibold sm:text-2xl">Support</p>
+                <p>Dedicated Slack + shared Notion</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="devis-ai" className="section-shell space-y-6">
+          <div className="premium-card rounded-[32px] border border-white/10 bg-gradient-to-br from-[#0b0a08] via-[#15120e] to-[#1c1711] p-8 text-white shadow-[0_30px_120px_rgba(32,22,8,0.35)]">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-white/60">Premium AI modules</p>
+                <h2 className="mt-3 text-3xl font-semibold text-white">
+                  5 AI modules to plug into your project.
+                </h2>
+                <p className="mt-2 max-w-3xl text-white/70">
+                  Automation, assistants, and scoring to accelerate outcomes. Clear scoping and clean integration.
+                </p>
+              </div>
+              <Link
+                href="/en/lexique"
+                className="rounded-full border border-white/30 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+              >
+                AI glossary
+              </Link>
+            </div>
+            <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {aiBusinessGuide.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="premium-card group relative overflow-hidden rounded-3xl border border-amber-200/30 bg-gradient-to-br from-amber-500/10 via-black/40 to-black/20 p-4 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition hover:border-amber-200/60"
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(214,179,106,0.22),transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="relative overflow-hidden rounded-2xl border border-amber-200/20">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-40 w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20" />
+                  </div>
+                  <div className="mt-4">
+                    <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.3em] text-amber-100/80">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                      Premium AI
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Option {index + 1}</p>
+                    <h3 className="mt-2 text-xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm text-white/70">{item.description}</p>
+                    <div className="mt-4 grid gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
+                      <div>
+                        <span className="text-white/40">Pricing</span>
+                        <p className="text-sm normal-case text-white/80">{item.pricing}</p>
+                      </div>
+                      <div>
+                        <span className="text-white/40">Timeline</span>
+                        <p className="text-sm normal-case text-white/80">{item.timeline}</p>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
+                      {item.tools.map((tool) => (
+                        <span key={tool} className="rounded-full border border-white/20 px-3 py-1 text-white/70">
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="devis-form" className="section-shell space-y-8">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
+            <QuoteForm />
+            <div className="space-y-4">
+              <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-4">
+                <Image
+                  src="/mockups/devis-collage.png"
+                  alt="Collage of app and website screens"
+                  width={1200}
+                  height={860}
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="h-full w-full rounded-2xl object-cover"
+                />
+              </div>
+              <ContactCard title="Product hotline" />
+            </div>
+          </div>
+        </section>
+      </div>
+      <div className="sticky top-32 hidden lg:block lg:w-72">
+        <StickyTimelineIndicator sections={devisSections} />
+      </div>
+    </div>
+  );
+}

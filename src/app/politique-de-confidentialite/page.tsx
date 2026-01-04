@@ -2,32 +2,32 @@ import Link from "next/link";
 
 const sections = [
   {
-    title: "Finalités et base juridique",
+    title: "Finalites et base juridique",
     content:
-      "Les données collectées via les formulaires (devis, configurateur, cahier des charges ou contact) nous permettent de qualifier votre projet, répondre à vos demandes et vous envoyer une proposition commerciale. La base légale est l’exécution de mesures précontractuelles (art. 6.1.b RGPD).",
+      "Les donnees collectees via les formulaires (devis, configurateur, cahier des charges ou contact) nous permettent de qualifier votre projet, repondre a vos demandes et vous envoyer une proposition commerciale. La base legale est l'execution de mesures precontractuelles (art. 6.1.b RGPD).",
   },
   {
-    title: "Durée de conservation",
+    title: "Duree de conservation",
     content:
-      "Les informations sont conservées pendant 24 mois maximum après le dernier échange, puis archivées ou supprimées. Les devis acceptés sont gardés le temps nécessaire à l’exécution de la mission et au respect des obligations comptables.",
+      "Les informations sont conservees pendant 24 mois maximum apres le dernier echange, puis archivees ou supprimees. Les devis acceptes sont gardes le temps necessaire a l'execution de la mission et au respect des obligations comptables.",
   },
   {
-    title: "Hébergement et sécurité",
+    title: "Hebergement et securite",
     content:
-      "Le site est hébergé chez Vercel (UE/USA) et les données sont stockées sur des services sécurisés (Resend pour l’emailing, Google Workspace ou Notion pour le suivi interne). Chaque outil est configuré avec authentification forte, journalisation des accès et chiffrement en transit.",
+      "Le site est heberge chez Vercel (UE/USA) et les donnees sont stockees sur des services securises (Resend pour l'emailing, Google Workspace ou Notion pour le suivi interne). Chaque outil est configure avec authentification forte, journalisation des acces et chiffrement en transit.",
   },
   {
     title: "Partage et sous-traitance",
     content:
-      "Seuls les membres de Kah-Digital et, le cas échéant, des partenaires dûment contractés peuvent accéder à vos informations. Nous ne revendons ni ne louons vos données. En cas de sous-traitance (freelance, studio partenaire), un accord de confidentialité est signé en amont.",
+      "Seuls les membres de Kah-Digital et, le cas echeant, des partenaires dument contractes peuvent acceder a vos informations. Nous ne revendons ni ne louons vos donnees. En cas de sous-traitance (freelance, studio partenaire), un accord de confidentialite est signe en amont.",
   },
 ];
 
 const rights = [
-  "Droit d’accès et de rectification",
-  "Droit à l’effacement (droit à l’oubli)",
-  "Droit à la limitation et à l’opposition",
-  "Droit à la portabilité des données",
+  "Droit d'acces et de rectification",
+  "Droit a l'effacement (droit a l'oubli)",
+  "Droit a la limitation et a l'opposition",
+  "Droit a la portabilite des donnees",
 ];
 
 export default function PolitiqueConfidentialitePage() {
@@ -38,21 +38,21 @@ export default function PolitiqueConfidentialitePage() {
           href="/"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Retour à l&apos;accueil
+          Retour a l&apos;accueil
         </Link>
         <Link
           href="/mentions-legales"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Mentions légales
+          Mentions legales
         </Link>
       </div>
 
       <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Confidentialité</p>
-        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Politique de confidentialité</h1>
+        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Confidentialite</p>
+        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Politique de confidentialite</h1>
         <p className="mt-4 text-slate-700">
-          Cette page détaille la manière dont Kah-Digital collecte, utilise et protège les données transmises via
+          Cette page detaille la maniere dont Kah-Digital collecte, utilise et protege les donnees transmises via
           kah-digital.com. Nous respectons le RGPD et les recommandations de la CNIL.
         </p>
       </div>
@@ -68,24 +68,24 @@ export default function PolitiqueConfidentialitePage() {
 
       <div className="light-outline p-6">
         <h2 className="text-xl font-semibold text-slate-900">Vos droits</h2>
-        <p className="mt-4 text-slate-700">Vous pouvez exercer à tout moment les droits suivants auprès de kah-digital@hotmail.com :</p>
+        <p className="mt-4 text-slate-700">Vous pouvez exercer a tout moment les droits suivants aupres de kah-digital@hotmail.com :</p>
         <ul className="mt-4 list-disc space-y-2 pl-6 text-slate-700">
           {rights.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
         <p className="mt-4 text-slate-700">
-          Pour des raisons de sécurité, nous pouvons vous demander de confirmer votre identité avant de traiter la requête.
-          Vous disposez également du droit d’introduire une réclamation auprès de la CNIL.
+          Pour des raisons de securite, nous pouvons vous demander de confirmer votre identite avant de traiter la requete.
+          Vous disposez egalement du droit d&apos;introduire une reclamation aupres de la CNIL.
         </p>
       </div>
 
       <div className="light-outline p-6">
-        <h2 className="text-xl font-semibold text-slate-900">Cookies & mesure d’audience</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Cookies & mesure d&apos;audience</h2>
         <p className="mt-4 text-slate-700">
-          Le site utilise un outil de mesure d’audience (Plausible ou Google Analytics) configuré sans cookies marketing. Les
-          données collectées sont anonymisées et servent uniquement à améliorer l’expérience utilisateur. Vous pouvez bloquer
-          ces mesures via les réglages de votre navigateur.
+          Le site utilise un outil de mesure d&apos;audience (Plausible ou Google Analytics) configure sans cookies marketing. Les
+          donnees collectees sont anonymisees et servent uniquement a ameliorer l&apos;experience utilisateur. Vous pouvez bloquer
+          ces mesures via les reglages de votre navigateur.
         </p>
       </div>
     </div>

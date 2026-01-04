@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint && node scripts/check-i18n.js",
     "preview": "vercel",
     "deploy": "vercel --prod"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.89.0",
     "framer-motion": "^12.23.26",
     "jspdf": "^3.0.4",

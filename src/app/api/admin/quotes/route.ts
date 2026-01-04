@@ -1,55 +1,81 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getRecentQuotes, isSupabaseConfigured, updateQuoteStatus } from "@/lib/quote-store";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { isAdminUser } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-const adminUser = process.env.ADMIN_BASIC_USER;
-const adminPass = process.env.ADMIN_BASIC_PASSWORD;
-
-function missingConfigResponse() {
-  return NextResponse.json({ error: "Configuration admin manquante" }, { status: 503 });
+function authNotConfiguredResponse() {
+  return NextResponse.json({ error: "Configuration Supabase Auth manquante" }, { status: 503 });
 }
 
 function unauthorizedResponse() {
   return NextResponse.json({ error: "Non autorise" }, { status: 401 });
 }
 
-function parseBasicAuth(authHeader: string | null) {
-  if (!authHeader || !authHeader.startsWith("Basic ")) {
-    return null;
+function forbiddenResponse() {
+  return NextResponse.json({ error: "Acces interdit" }, { status: 403 });
+}
+
+function mfaRequiredResponse() {
+  return NextResponse.json({ error: "MFA requise" }, { status: 403 });
+}
+
+function logAdminApiEvent(status: string) {
+  console.warn(`[api/admin] ${status}`);
+}
+
+async function requireAdmin() {
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) {
+    logAdminApiEvent("auth-config-missing");
+    return { status: "missing" } as const;
   }
 
-  try {
-    const decoded = Buffer.from(authHeader.replace("Basic ", ""), "base64").toString("utf-8");
-    const separatorIndex = decoded.indexOf(":");
-    if (separatorIndex === -1) {
-      return null;
-    }
-    return {
-      user: decoded.slice(0, separatorIndex),
-      pass: decoded.slice(separatorIndex + 1),
-    };
-  } catch (error) {
-    console.error("[api/admin/quotes] Failed to decode Basic auth header", error);
-    return null;
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    logAdminApiEvent("unauthorized");
+    return { status: "unauthorized" } as const;
   }
+
+  if (!isAdminUser(user)) {
+    logAdminApiEvent("forbidden");
+    return { status: "forbidden" } as const;
+  }
+
+  const { data: mfaData, error: mfaError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (mfaError || mfaData?.currentLevel !== "aal2") {
+    logAdminApiEvent("mfa-required");
+    return { status: "mfa" } as const;
+  }
+
+  return { status: "ok", user } as const;
 }
 
 const feasibilityValues = new Set(["pending", "feasible", "blocked"]);
 const depositValues = new Set(["none", "deposit", "servers"]);
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
   }
 
-  if (!adminUser || !adminPass) {
-    return missingConfigResponse();
+  const adminUser = await requireAdmin();
+  if (adminUser.status === "missing") {
+    return authNotConfiguredResponse();
   }
-
-  const credentials = parseBasicAuth(request.headers.get("authorization"));
-  if (!credentials || credentials.user !== adminUser || credentials.pass !== adminPass) {
+  if (adminUser.status === "unauthorized") {
     return unauthorizedResponse();
+  }
+  if (adminUser.status === "forbidden") {
+    return forbiddenResponse();
+  }
+  if (adminUser.status === "mfa") {
+    return mfaRequiredResponse();
   }
 
   try {
@@ -66,13 +92,18 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
   }
 
-  if (!adminUser || !adminPass) {
-    return missingConfigResponse();
+  const adminUser = await requireAdmin();
+  if (adminUser.status === "missing") {
+    return authNotConfiguredResponse();
   }
-
-  const credentials = parseBasicAuth(request.headers.get("authorization"));
-  if (!credentials || credentials.user !== adminUser || credentials.pass !== adminPass) {
+  if (adminUser.status === "unauthorized") {
     return unauthorizedResponse();
+  }
+  if (adminUser.status === "forbidden") {
+    return forbiddenResponse();
+  }
+  if (adminUser.status === "mfa") {
+    return mfaRequiredResponse();
   }
 
   try {

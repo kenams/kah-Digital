@@ -31,6 +31,8 @@ async function sendEmailNotification(quote: QuoteRecord) {
     quote.mobileFeatures && quote.mobileFeatures.length > 0
       ? quote.mobileFeatures.join(", ")
       : "-";
+  const aiModulesLine =
+    quote.aiModules && quote.aiModules.length > 0 ? quote.aiModules.join(", ") : "-";
   const mobileSummary =
     quote.projectFocus === "mobile"
       ? `\n\nMVP mobile:\n- Plateformes: ${platformsLine}\n- Fonctions: ${featuresLine}\n- Stores: ${
@@ -46,7 +48,7 @@ async function sendEmailNotification(quote: QuoteRecord) {
       quote.clientType ?? "-"
     } ${quote.companyName ? `/ ${quote.companyName}` : ""}\nObjectif: ${quote.goal}\nPages: ${pagesLine}\nInspirations: ${
       quote.inspirations ?? "-"
-    }\nVision: ${
+    }\nModules IA: ${aiModulesLine}\nVision: ${
       quote.message ?? "-"
     }\nContact: ${quote.email} ${quote.phone ?? ""}${mobileSummary}${configuratorSummary}`,
   });

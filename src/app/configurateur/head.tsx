@@ -1,10 +1,10 @@
 export default function Head() {
   return (
     <>
-      <title>Configurateur</title>
+      <title>Devis rapide</title>
       <meta
         name="description"
-        content="Compose ton brief en quelques etapes pour obtenir un devis precis."
+        content="Decris ton site ou ton app en quelques etapes pour obtenir un devis clair."
       />
     </>
   );

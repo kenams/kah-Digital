@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
@@ -18,9 +19,38 @@ export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = portfolioProjects.find((item) => item.slug === slug);
   if (!project) return {};
+  const ogImage = project.mockups?.primary ?? "/og-kah-digital.png";
+  const title = `${project.name} | Kah-Digital`;
+  const description = project.shortDescription;
   return {
-    title: `${project.name}  Kah-Digital`,
-    description: project.shortDescription,
+    title,
+    description,
+    alternates: {
+      canonical: `/projets/${slug}`,
+      languages: {
+        en: `/en/projets/${slug}`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      url: `/projets/${slug}`,
+      title,
+      description,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 900,
+          alt: `${project.name} mockup`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -32,6 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
   const relatedAssets = assetShots.filter((asset) => asset.cta.href.includes(`/projets/${project.slug}`));
   const gridAssets = relatedAssets.length > 0 ? relatedAssets : assetShots.slice(0, 3);
+  const screens = project.mockups?.gallery ?? (project.mockups?.primary ? [project.mockups.primary] : []);
 
   return (
     <div className="section-shell space-y-10">
@@ -40,7 +71,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           href="/projets"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          ← Retour aux projets
+          Retour aux projets
         </Link>
         <Link
           href="/"
@@ -51,7 +82,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
       <Reveal>
         <div
-          className="relative overflow-hidden rounded-[40px] p-8 text-white"
+          className="premium-card relative overflow-hidden rounded-[40px] p-8 text-white"
           style={{ background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})` }}
         >
           <div
@@ -74,7 +105,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </Reveal>
 
       <Reveal>
-        <div className="grid gap-6 rounded-[32px] border border-white/10 bg-white/5 p-8 md:grid-cols-[2fr,1fr]">
+        <div className="premium-card grid gap-6 rounded-[32px] border border-white/10 bg-white/5 p-8 md:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Mission</p>
@@ -114,7 +145,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="grid gap-6 md:grid-cols-3">
           {project.metrics.map((metric) => (
             <Reveal key={metric.label}>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center">
+              <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6 text-center">
                 <p className="text-3xl font-semibold text-white">{metric.value}</p>
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">{metric.label}</p>
               </div>
@@ -124,8 +155,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </Reveal>
 
       <Reveal>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Avant</p>
+            <p className="mt-3 text-white/80">{project.challenge}</p>
+          </div>
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Apres</p>
+            <p className="mt-3 text-white/80">{project.solution}</p>
+          </div>
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Resultat</p>
+            <p className="mt-3 text-white/80">{project.result}</p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
             <p className="text-sm uppercase tracking-[0.3em] text-white/60">Points forts</p>
             <ul className="mt-4 space-y-3 text-white/75">
               {project.highlights.map((highlight) => (
@@ -136,10 +184,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </ul>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Et ensuite -</p>
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Et ensuite</p>
             <p className="mt-4 text-white/70">
-              Besoin d&apos;un site dans la meme energie - On adapte ce niveau de qualite a ton univers, avec un process en 4 a 6 semaines et des notifications des le brief.
+              Besoin d&apos;un site dans la meme energie ? On adapte ce niveau de qualite a ton univers, avec un process en 4 a 6
+              semaines et des notifications des le brief.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link
@@ -159,19 +208,55 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </Reveal>
 
+      {screens.length > 0 && (
+        <Reveal>
+          <section className="premium-card rounded-[36px] border border-white/10 bg-white/5 p-8 text-white">
+            <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.35em] text-white/60">Ecrans</p>
+                <h2 className="text-3xl font-semibold">Visuels livres pour ce projet.</h2>
+                <p className="mt-2 max-w-2xl text-white/70">
+                  Des ecrans propres et partageables pour les decks, la presse et les presentoirs.
+                </p>
+              </div>
+              <Link
+                href="/devis"
+                className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+              >
+                Demander un devis
+              </Link>
+            </div>
+            <div className={`mt-6 grid gap-4 ${screens.length > 1 ? "md:grid-cols-2" : ""}`}>
+              {screens.map((src, index) => (
+                <div key={`${src}-${index}`} className="premium-card overflow-hidden rounded-3xl border border-white/10 bg-black/40">
+                  <Image
+                    src={src}
+                    alt={`${project.name} visuel ${index + 1}`}
+                    width={1200}
+                    height={900}
+                    sizes="(min-width: 1024px) 520px, 90vw"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </Reveal>
+      )}
+
       <Reveal>
-        <section className="rounded-[36px] border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-8 text-white shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
+        <section className="premium-card rounded-[36px] border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-8 text-white shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.35em] text-white/60">Asset grid</p>
               <h2 className="text-3xl font-semibold">Scenes exportees pour prolonger le storytelling.</h2>
               <p className="text-white/70 max-w-2xl">
-                Chaque projet est livre avec ses mockups HD et ses variantes claires/sombres pour alimenter portfolio, deck
+                Chaque projet est livre avec ses mockups HD et ses variantes claires/sombres pour alimenter portfolio, dossier
                 investisseur ou onboarding. Voici les extraits lies a ce cas, que tu peux reutiliser partout.
               </p>
             </div>
             <Link
-              href="/portfolio"
+              href="/projets"
               className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
             >
               Voir plus de scenes
@@ -185,4 +270,3 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     </div>
   );
 }
-

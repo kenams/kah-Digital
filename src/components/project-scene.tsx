@@ -1,6 +1,7 @@
 "use client";
 
 import type { PortfolioProject } from "@/data/portfolio";
+import { useLocale } from "@/lib/locale";
 
 type ProjectScene = {
   badge: string;
@@ -13,7 +14,7 @@ type ProjectScene = {
   footer: string;
 };
 
-const projectSceneMap: Record<string, ProjectScene> = {
+const projectSceneMapFr: Record<string, ProjectScene> = {
   "atelier-nomade": {
     badge: "Manifesto",
     hero: "Portfolio immersif + timeline chantier",
@@ -33,7 +34,7 @@ const projectSceneMap: Record<string, ProjectScene> = {
     footer: "Next.js / Commerce Layer",
   },
   novapay: {
-    badge: "Fintech deck",
+    badge: "Fintech dossier",
     hero: "Landing claire + chiffres animes",
     statLabel: "Demos",
     statValue: "x2",
@@ -88,15 +89,91 @@ const projectSceneMap: Record<string, ProjectScene> = {
   },
 };
 
+const projectSceneMapEn: Record<string, ProjectScene> = {
+  "atelier-nomade": {
+    badge: "Manifesto",
+    hero: "Immersive portfolio + build timeline",
+    statLabel: "Conversion",
+    statValue: "+40%",
+    chip: "5 weeks",
+    callout: "Story, moodboard, pre-filled briefs.",
+    footer: "7 pages / Sanity",
+  },
+  "lumea-skin": {
+    badge: "Shopflow",
+    hero: "Personalized routine + smart cart",
+    statLabel: "Avg order",
+    statValue: "+22%",
+    chip: "E-commerce scale",
+    callout: "Skincare quiz, bundles, Stripe + Klaviyo.",
+    footer: "Next.js / Commerce Layer",
+  },
+  novapay: {
+    badge: "Fintech pack",
+    hero: "Clear landing + animated numbers",
+    statLabel: "Demos",
+    statValue: "x2",
+    chip: "3 weeks",
+    callout: "Manifesto video, clear pricing, sticky CTA.",
+    footer: "HubSpot / Framer Motion",
+  },
+  "valoris-conseil": {
+    badge: "Editorial",
+    hero: "Bilingual site + instant PDF exports",
+    statLabel: "Prod time",
+    statValue: "x3",
+    chip: "6 weeks",
+    callout: "Multi-criteria filters + mission sheets.",
+    footer: "Contentful / Next.js",
+  },
+  "pulse-studio": {
+    badge: "Events",
+    hero: "Fullscreen portfolio + connected brief",
+    statLabel: "Pipeline",
+    statValue: "x1.8",
+    chip: "4 weeks",
+    callout: "GSAP carousel + multi-step form.",
+    footer: "GSAP / Airtable / Slack",
+  },
+  "oko-energy": {
+    badge: "Cleantech",
+    hero: "Impact timeline + live Mapbox map",
+    statLabel: "Perf score",
+    statValue: "94",
+    chip: "4 chapters",
+    callout: "Data viz, site map, data room link.",
+    footer: "Next.js / GSAP / Mapbox",
+  },
+  "fairbuild-mvp": {
+    badge: "MVP",
+    hero: "Dual onboarding for builders",
+    statLabel: "Pilot deals",
+    statValue: "12",
+    chip: "5 weeks",
+    callout: "Auto scoring, Make webhooks, scoring dashboard.",
+    footer: "Next.js / Supabase",
+  },
+  pulselearn: {
+    badge: "Cohorts",
+    hero: "Audio platform + lightweight quizzes",
+    statLabel: "Completion",
+    statValue: "+35%",
+    chip: "4 weeks",
+    callout: "Progressive player, offline PWA, Stripe checkout.",
+    footer: "Supabase / Stripe",
+  },
+};
+
 export type ProjectSceneVariant = "card" | "hero";
 
-const fallbackScene = (project: PortfolioProject): ProjectScene => ({
+const fallbackScene = (project: PortfolioProject, isEnglish: boolean): ProjectScene => ({
   badge: project.type,
   hero: project.tagline,
-  statLabel: "Resultat",
+  statLabel: isEnglish ? "Result" : "Resultat",
   statValue: project.result,
   chip: project.timeline,
   callout: project.shortDescription,
+  calloutLabel: "Modules",
   footer: project.stack.slice(0, 2).join(" / "),
 });
 
@@ -106,8 +183,10 @@ type ProjectSceneRenderProps = {
 };
 
 export function ProjectSceneRender({ project, variant = "card" }: ProjectSceneRenderProps) {
+  const { isEnglish } = useLocale();
   const palette = project.palette;
-  const scene = projectSceneMap[project.slug] ?? fallbackScene(project);
+  const sceneMap = isEnglish ? projectSceneMapEn : projectSceneMapFr;
+  const scene = sceneMap[project.slug] ?? fallbackScene(project, isEnglish);
   const height = variant === "hero" ? "h-64" : "h-48";
 
   return (

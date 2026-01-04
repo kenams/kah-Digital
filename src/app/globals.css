@@ -345,6 +345,31 @@ textarea {
   border-color: rgba(255, 255, 255, 0.85) !important;
 }
 
+.premium-card {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(214, 179, 106, 0.25), transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.premium-card:hover {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45), 0 0 30px rgba(214, 179, 106, 0.25);
+  border-color: rgba(214, 179, 106, 0.5);
+}
+
+.premium-card:hover::after {
+  opacity: 1;
+}
+
 .progress-widget {
   position: relative;
   overflow: hidden;

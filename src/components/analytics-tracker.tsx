@@ -3,7 +3,16 @@
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
 
-const trackedPaths = new Set(["/devis", "/devis/mvp", "/configurateur", "/offres"]);
+const trackedPaths = new Set([
+  "/devis",
+  "/devis/mvp",
+  "/configurateur",
+  "/offres",
+  "/en/devis",
+  "/en/devis/mvp",
+  "/en/configurateur",
+  "/en/offres",
+]);
 
 export function AnalyticsTracker() {
   useEffect(() => {

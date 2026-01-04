@@ -15,7 +15,7 @@ export default function CahierDesChargesPage() {
           href="/"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Retour à l&apos;accueil
+          Retour a l&apos;accueil
         </Link>
         <Link
           href="/configurateur"
@@ -26,18 +26,21 @@ export default function CahierDesChargesPage() {
       </div>
       <div className="light-surface px-6 py-8 sm:px-8 sm:py-12 text-slate-900">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Cahier des charges</p>
-        <h1 className="mt-4 text-4xl font-semibold">Tout est prêt pour cadrer ton projet.</h1>
+        <h1 className="mt-4 text-4xl font-semibold">Tout est pret pour cadrer ton projet.</h1>
         <p className="mt-4 max-w-3xl text-lg text-slate-700">
-          Télécharge le PDF pré-rempli ou remplis la version interactive ci-dessous. Tu peux ensuite partager le
-          document avec ton équipe ou nous l’envoyer directement.
+          Telecharge le PDF pre-rempli ou remplis la version interactive ci-dessous. Tu peux ensuite partager le
+          document avec ton equipe ou nous l&apos;envoyer directement.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
-          <Link
+          <a
             href="/cahier-des-charges.pdf"
+            target="_blank"
+            rel="noreferrer"
+            download
             className="inline-flex items-center rounded-full bg-slate-900 px-6 py-3 text-white transition hover:bg-slate-800"
           >
-            Télécharger le PDF
-          </Link>
+            Telecharger le PDF
+          </a>
           <Link
             href="/devis"
             className="inline-flex items-center rounded-full border border-slate-900/20 px-6 py-3 text-slate-900 transition hover:border-slate-900"

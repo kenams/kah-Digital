@@ -4,20 +4,32 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef } from "react";
 import { FiArrowRight, FiCheckCircle, FiClock, FiPlayCircle } from "react-icons/fi";
+import { useLocale } from "@/lib/locale";
 
 type HeroProps = {
   stats: { label: string; value: string }[];
 };
 
-const orbitItems = ["Design system", "Vercel Edge", "QA pixel perfect", "Conciergerie senior"];
-const quickWins = [
+const orbitItemsFr = ["Site web", "App mobile", "SEO de base", "Support"];
+const orbitItemsEn = ["Website", "Mobile app", "Basic SEO", "Support"];
+const quickWinsFr = [
   {
-    title: "Sprint 0",
-    detail: "Kick-off sous 48h, roadmap et priorites verrouillees.",
+    title: "Plan simple",
+    detail: "Kick-off sous 48h, pages et priorites claires.",
   },
   {
-    title: "Signature launch",
-    detail: "Design premium, dev rapide et mise en ligne controlee.",
+    title: "Mise en ligne",
+    detail: "Design propre, dev rapide et mise en ligne controlee.",
+  },
+];
+const quickWinsEn = [
+  {
+    title: "Simple plan",
+    detail: "Kick-off within 48h, clear pages and priorities.",
+  },
+  {
+    title: "Launch",
+    detail: "Clean design, fast build, and controlled release.",
   },
 ];
 const sprintPulse = [
@@ -33,12 +45,21 @@ const sprintTone: Record<string, string> = {
 };
 
 export function HeroSection({ stats }: HeroProps) {
+  const { isEnglish, prefix } = useLocale();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const orbitItems = isEnglish ? orbitItemsEn : orbitItemsFr;
+  const quickWins = isEnglish ? quickWinsEn : quickWinsFr;
+  const pdfHref = isEnglish ? "/cahier-des-charges.en.pdf" : "/cahier-des-charges.pdf";
+  const withPrefix = (path: string) => {
+    if (!path.startsWith("/")) return path;
+    if (path.endsWith(".pdf")) return path;
+    return prefix ? `${prefix}${path}` : path;
+  };
 
   return (
     <section className="section-shell space-y-6 pb-8 pt-10 text-white" ref={containerRef}>
@@ -60,49 +81,59 @@ export function HeroSection({ stats }: HeroProps) {
           >
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
               <span className="gradient-pill rounded-full px-4 py-1 text-xs uppercase tracking-[0.25em]">
-                Studio digital haut de gamme
+                {isEnglish ? "Premium digital studio" : "Studio digital haut de gamme"}
               </span>
-              <span>Reponse sous 24h | Lancement 4-6 semaines</span>
+              <span>
+                {isEnglish ? "Reply within 24h | Launch in 4-6 weeks" : "Reponse sous 24h | Lancement 4-6 semaines"}
+              </span>
             </div>
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
-              Design premium, vitesse d&apos;execution,{" "}
-              <span className="gradient-text">resultats clairs</span>.
+              {isEnglish ? "Premium design, fast execution," : "Design premium, vitesse d'execution,"}{" "}
+              <span className="gradient-text">{isEnglish ? "clear results" : "resultats clairs"}</span>.
             </h1>
             <p className="text-base text-white/75 sm:text-lg">
-              Direction artistique, design system et performance technique. Next.js, SEO et integrations
-              business pour livrer vite sans compromis sur la finition.
+              {isEnglish
+                ? "We build websites and mobile apps. Design, development, launch, and follow-up without jargon."
+                : "On cree des sites web et des apps mobiles. Design, developpement, mise en ligne et suivi, sans jargon inutile."}
             </p>
             <div className="grid gap-3 text-sm text-white/80 md:grid-cols-2">
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
                 <FiCheckCircle className="text-white/80" />
-                <span>Core Web Vitals au vert + QA pixel perfect</span>
+                <span>
+                  {isEnglish ? "Core Web Vitals green + pixel-perfect QA" : "Core Web Vitals au vert + QA pixel perfect"}
+                </span>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
                 <FiClock className="text-white/80" />
-                <span>Kick-off sous 48h, livraison 4-6 semaines</span>
+                <span>
+                  {isEnglish ? "Kick-off within 48h, delivery 4-6 weeks" : "Kick-off sous 48h, livraison 4-6 semaines"}
+                </span>
               </div>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/devis"
+                href={withPrefix("/devis")}
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200"
               >
-                Demander un devis
+                {isEnglish ? "Get a quote" : "Demander un devis"}
                 <FiArrowRight className="text-black/60" />
               </Link>
               <Link
-                href="/projets"
+                href={withPrefix("/projets")}
                 className="inline-flex items-center rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
-                Voir le portfolio
+                {isEnglish ? "View portfolio" : "Voir le portfolio"}
               </Link>
-              <Link
-                href="/cahier-des-charges.pdf"
+              <a
+                href={pdfHref}
+                target="_blank"
+                rel="noreferrer"
+                download
                 className="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-white transition hover:border-white"
               >
                 <FiPlayCircle />
-                Recevoir le dossier
-              </Link>
+                {isEnglish ? "Get the pack" : "Recevoir le dossier"}
+              </a>
             </div>
             <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.35em] text-white/60">
               {orbitItems.map((item) => (
@@ -122,13 +153,17 @@ export function HeroSection({ stats }: HeroProps) {
           >
             <div className="hero-panel mb-6 space-y-4">
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.4em] text-white/60">
-                <span>Executive room</span>
+                <span>{isEnglish ? "Executive room" : "Executive room"}</span>
                 <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] text-white/70">Live</span>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
-                  { label: "Demandes qualifiees", value: "08", tone: "text-amber-200" },
-                  { label: "Sprints actifs", value: "03", tone: "text-slate-200" },
+                  {
+                    label: isEnglish ? "Qualified leads" : "Demandes qualifiees",
+                    value: "08",
+                    tone: "text-amber-200",
+                  },
+                  { label: isEnglish ? "Active sprints" : "Sprints actifs", value: "03", tone: "text-slate-200" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
                     <p className="text-xs uppercase tracking-[0.3em] text-white/50">{item.label}</p>
@@ -138,8 +173,8 @@ export function HeroSection({ stats }: HeroProps) {
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
                 <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
-                  <span>Sprints actifs</span>
-                  <span>Progression</span>
+                  <span>{isEnglish ? "Active sprints" : "Sprints actifs"}</span>
+                  <span>{isEnglish ? "Progress" : "Progression"}</span>
                 </div>
                 <div className="mt-4 space-y-3">
                   {sprintPulse.map((item) => (
@@ -159,7 +194,7 @@ export function HeroSection({ stats }: HeroProps) {
                         />
                       </div>
                       <div className="mt-1 flex items-center justify-between text-[0.65rem] text-white/50">
-                        <span>Progression</span>
+                        <span>{isEnglish ? "Progress" : "Progression"}</span>
                         <span>{item.progress}%</span>
                       </div>
                     </div>
@@ -168,7 +203,9 @@ export function HeroSection({ stats }: HeroProps) {
               </div>
             </div>
             <div className="hero-panel mb-6 space-y-3">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/60">Sprint pilote</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-white/60">
+                {isEnglish ? "Pilot sprint" : "Sprint pilote"}
+              </p>
               {quickWins.map((item) => (
                 <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
                   <p className="text-sm text-white/60">{item.title}</p>
@@ -177,11 +214,13 @@ export function HeroSection({ stats }: HeroProps) {
               ))}
             </div>
             <div className="hero-panel mb-6 space-y-4">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Fast briefing</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+                {isEnglish ? "Fast briefing" : "Fast briefing"}
+              </p>
               <div className="space-y-3 text-sm text-white/80">
-                <p>1. Appel 15 min ou configurateur.</p>
-                <p>2. Roadmap + budget envoyes sous 48h.</p>
-                <p>3. Releases hebdo + QA, reporting clair.</p>
+                <p>{isEnglish ? "1. 15-min call or quick quote." : "1. Appel 15 min ou devis rapide."}</p>
+                <p>{isEnglish ? "2. Plan + budget within 48h." : "2. Plan + budget envoyes sous 48h."}</p>
+                <p>{isEnglish ? "3. Step-by-step progress + clear updates." : "3. Avance par etapes + points clairs."}</p>
               </div>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
@@ -203,13 +242,15 @@ export function HeroSection({ stats }: HeroProps) {
           </motion.div>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 sm:px-6 sm:py-4">
+      <div className="premium-card flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 sm:px-6 sm:py-4">
         <p className="text-white/80">
-          Maisons et studios: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn
+          {isEnglish
+            ? "Studios and teams: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn"
+            : "Maisons et studios: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn"}
         </p>
         <div className="scroll-cue">
           <span />
-          <p>scroll</p>
+          <p>{isEnglish ? "scroll" : "scroll"}</p>
         </div>
       </div>
     </section>

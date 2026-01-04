@@ -16,7 +16,7 @@ export function AssetGrid({ assets, columns = "default" }: AssetGridProps) {
       {assets.map((asset) => (
         <div
           key={asset.title}
-          className="relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-5 text-white shadow-[0_30px_80px_rgba(5,5,5,0.55)]"
+          className="premium-card relative overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-5 text-white shadow-[0_30px_80px_rgba(5,5,5,0.55)]"
         >
           <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
             <span>Asset</span>

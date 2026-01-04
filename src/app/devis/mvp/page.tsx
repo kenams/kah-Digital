@@ -22,10 +22,10 @@ export default function DevisMvpPage() {
           href="/configurateur"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Configurateur web
+          Devis rapide web
         </Link>
       </div>
-      <div className="rounded-[36px] border border-white/10 bg-gradient-to-br from-[#090b21] via-[#141036] to-[#2a1a55] px-6 py-8 text-white sm:px-8 sm:py-12">
+      <div className="premium-card rounded-[36px] border border-white/10 bg-gradient-to-br from-[#090b21] via-[#141036] to-[#2a1a55] px-6 py-8 text-white sm:px-8 sm:py-12">
         <p className="text-sm uppercase tracking-[0.3em] text-white/60">Apps mobiles MVP</p>
         <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">Parle-nous de ton application iOS / Android.</h1>
         <p className="mt-4 max-w-3xl text-base text-white/80 sm:text-lg">
@@ -50,7 +50,7 @@ export default function DevisMvpPage() {
       </div>
       <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
         <MvpQuoteForm />
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+        <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-4">
           <Image
             src="/mockups/pulselearn.png"
             alt="Apercu MVP mobile"

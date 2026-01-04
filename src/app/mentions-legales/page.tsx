@@ -4,7 +4,7 @@ const timeline = [
   {
     year: "2021",
     title: "Creation de Kah-Digital",
-    detail: "Studio independant lance par Karim Haddad pour piloter des projets premium Next.js / React Native.",
+    detail: "Studio independant lance par Keita Namake pour piloter des projets premium Next.js / React Native.",
   },
   {
     year: "2023",
@@ -29,7 +29,7 @@ export default function MentionsLegalesPage() {
           href="/configurateur"
           className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
         >
-          Configurateur
+          Devis rapide
         </Link>
       </div>
 
@@ -48,8 +48,9 @@ export default function MentionsLegalesPage() {
               <strong>Forme :</strong> Entreprise individuelle
             </p>
             <p>
-              <strong>Responsable de la publication :</strong> Karim Haddad
+              <strong>Responsable de la publication :</strong> Keita Namake
             </p>
+            {/* i18n:critical:publisher */}
             <p>
               <strong>Email :</strong> kah-digital@hotmail.com
             </p>
@@ -119,7 +120,7 @@ export default function MentionsLegalesPage() {
           <p className="text-sm uppercase tracking-[0.35em] text-slate-500">CTA</p>
           <h2 className="mt-3 text-3xl font-semibold text-slate-900">Toujours alignes sur la conformite et l&apos;action.</h2>
           <p className="mt-2 max-w-3xl text-slate-600">
-            Formalise ton projet tout en gardant un fil conducteur legal: configurateur, devis express et relecture cahier des
+            Formalise ton projet tout en gardant un fil conducteur legal: devis rapide, devis express et relecture cahier des
             charges restent dispo pour enclencher la suite.
           </p>
         </div>
@@ -134,10 +135,10 @@ export default function MentionsLegalesPage() {
             href="/configurateur"
             className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
           >
-            Composer un MVP
+            Devis rapide
           </Link>
           <Link
-            href="/portfolio"
+            href="/projets"
             className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
           >
             Voir des cas concrets

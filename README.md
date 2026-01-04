@@ -28,14 +28,22 @@ Puis ouvrir http://localhost:3000.
 RESEND_API_KEY=""
 QUOTE_NOTIFICATION_EMAIL="kah-digital@hotmail.com"
 GOOGLE_SHEET_WEBHOOK=""          # optionnel
-ADMIN_BASIC_USER=""              # accès /admin
-ADMIN_BASIC_PASSWORD=""
 ADMIN_API_TOKEN=""               # protège GET /api/quote
 SUPABASE_URL=""                  # optionnel, table `quotes`
+NEXT_PUBLIC_SUPABASE_URL=""      # requis pour login admin
+NEXT_PUBLIC_SUPABASE_ANON_KEY="" # requis pour login admin
 SUPABASE_SERVICE_ROLE_KEY=""     # optionnel
 NEXT_PUBLIC_CONTACT_EMAIL="kah-digital@hotmail.com"
 NEXT_PUBLIC_CONTACT_PHONE="+33 6 00 00 00 00"
 ```
+
+### Acces admin (Supabase Auth)
+1. Active Email/Password dans Supabase (Authentication -> Providers)
+2. Cree un utilisateur (Authentication -> Users)
+3. Dans l'utilisateur, ajoute `app_metadata: { "role": "admin" }`
+4. Connecte-toi sur `/admin/login`
+5. Active MFA dans Supabase (Authentication -> Multi-Factor)
+6. A la premiere connexion, scanne le QR code et valide le code MFA
 
 ### Brancher Resend
 1. Crée un compte (https://resend.com) et valide le domaine d’envoi

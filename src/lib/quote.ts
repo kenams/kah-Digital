@@ -18,6 +18,7 @@ export const quoteSchema = z
     projectType: z.string().min(2),
     goal: z.string().min(5),
     pages: z.array(z.string()).optional().default([]),
+    aiModules: z.array(z.string()).optional().default([]),
     mobilePlatforms: z.array(z.string()).optional().default([]),
     mobileFeatures: z.array(z.string()).optional().default([]),
     storeSupport: z.string().optional(),

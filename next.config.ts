@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  compress: true,
+  poweredByHeader: false,
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
@@ -12,6 +15,20 @@ const nextConfig: NextConfig = {
         hostname: "plus.unsplash.com",
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/portfolio",
+        destination: "/projets",
+        permanent: true,
+      },
+      {
+        source: "/en/portfolio",
+        destination: "/en/projets",
+        permanent: true,
+      },
+    ];
   },
   turbopack: {
     root: process.cwd(),
