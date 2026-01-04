@@ -9,6 +9,7 @@ import { ConfiguratorPreview } from "@/components/configurator-preview";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 import { useLocale } from "@/lib/locale";
 import type { QuoteRequest } from "@/lib/quote";
+import { countryDialCodesSorted } from "@/data/country-dial-codes";
 import type { ConfigSummary } from "@/types/configurator";
 
 type SiteType = {
@@ -566,6 +567,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneCountry, setPhoneCountry] = useState("+41");
   const [notes, setNotes] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
@@ -609,9 +611,9 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         summaryIntegrations: "Integrations",
         summaryAiModules: "AI modules",
         companyPlaceholder: "Ex: Atelier Nova",
-        namePlaceholder: "Full name",
+        namePlaceholder: "e.g. Kenams KEITA",
         emailPlaceholder: "hello@company.com",
-        phonePlaceholder: "+33 7 59 55 84 14",
+        phonePlaceholder: "00 00 00 00 00",
         summaryFallback: "Configurator",
         budget: "Defined via configurator",
         timeline: "To define",
@@ -649,9 +651,9 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         summaryIntegrations: "Integrations",
         summaryAiModules: "Modules IA",
         companyPlaceholder: "Ex: Atelier Nova",
-        namePlaceholder: "Nom Prenom",
+        namePlaceholder: "Ex : Kenams KEITA",
         emailPlaceholder: "contact@entreprise.com",
-        phonePlaceholder: "+33 7 59 55 84 14",
+        phonePlaceholder: "00 00 00 00 00",
         summaryFallback: "Configurateur",
         budget: "A definir via configurateur",
         timeline: "A definir",
@@ -702,10 +704,11 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
     }
 
     const fallbackType = summary.type !== "-" ? summary.type : text.summaryFallback;
+    const fullPhone = phone.trim() ? `${phoneCountry} ${phone.trim()}`.trim() : "";
     const payload: QuoteRequest & { turnstileToken: string } = {
       name: name.trim(),
       email: email.trim(),
-      phone: phone.trim() || undefined,
+      phone: fullPhone || undefined,
       clientType,
       companyName: clientType === "entreprise" ? companyName.trim() || undefined : undefined,
       projectType: fallbackType,
@@ -761,6 +764,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
       setName("");
       setEmail("");
       setPhone("");
+      setPhoneCountry("+41");
       setNotes("");
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);
@@ -839,12 +843,26 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm text-white/70">{text.phone}</label>
-          <input
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
-            placeholder={text.phonePlaceholder}
-          />
+          <div className="flex flex-wrap gap-3">
+            <select
+              value={phoneCountry}
+              onChange={(event) => setPhoneCountry(event.target.value)}
+              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white focus:border-white/60"
+            >
+              {countryDialCodesSorted.map((entry) => (
+                <option key={entry.iso} value={entry.code} className="text-black">
+                  {entry.country} ({entry.code})
+                </option>
+              ))}
+            </select>
+            <input
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              inputMode="tel"
+              className="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+              placeholder={text.phonePlaceholder}
+            />
+          </div>
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
           <label className="text-sm text-white/70">{text.notes}</label>

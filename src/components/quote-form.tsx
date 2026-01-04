@@ -6,6 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
+import { countryDialCodesSorted } from "@/data/country-dial-codes";
 
 type QuotePayload = {
   name: string;
@@ -94,12 +95,15 @@ export function QuoteForm() {
     const formData = new FormData(formRef.current);
     const selectedPages = formData.getAll("pages").map((value) => String(value)).filter(Boolean);
     const selectedAiModules = formData.getAll("aiModules").map((value) => String(value)).filter(Boolean);
+    const phoneCountry = String(formData.get("phoneCountry") ?? "").trim();
+    const phoneRaw = String(formData.get("phone") ?? "").trim();
+    const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
     const values: Array<[string, string]> = [
       [isEnglish ? "Client type" : "Type de client", String(formData.get("clientType") ?? "")],
       [isEnglish ? "Company name" : "Nom de societe", String(formData.get("companyName") ?? "")],
       [isEnglish ? "Full name" : "Nom complet", String(formData.get("name") ?? "")],
       ["Email", String(formData.get("email") ?? "")],
-      [isEnglish ? "Phone" : "Telephone", String(formData.get("phone") ?? "")],
+      [isEnglish ? "Phone" : "Telephone", phoneValue],
       [isEnglish ? "Project type" : "Type de projet", String(formData.get("projectType") ?? "")],
       [isEnglish ? "Goal" : "Objectif", String(formData.get("goal") ?? "")],
       [isEnglish ? "Pages" : "Pages", selectedPages.join(", ")],
@@ -156,6 +160,9 @@ export function QuoteForm() {
     const selectedPages = formData.getAll("pages").map((value) => String(value));
     const selectedAiModules = formData.getAll("aiModules").map((value) => String(value)).filter(Boolean);
     const website = String(formData.get("website") ?? "").trim();
+    const phoneCountry = String(formData.get("phoneCountry") ?? "").trim();
+    const phoneRaw = String(formData.get("phone") ?? "").trim();
+    const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
 
     if (selectedPages.length === 0) {
       setServerMessage(isEnglish ? "Select at least one page." : "Selectionne au moins une page pour ton site.");
@@ -178,7 +185,7 @@ export function QuoteForm() {
     const payload: QuotePayload = {
       name: String(formData.get("name") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
-      phone: String(formData.get("phone") ?? "").trim() || undefined,
+      phone: phoneValue || undefined,
       clientType: rawClientType === "entreprise" ? "entreprise" : rawClientType === "particulier" ? "particulier" : undefined,
       companyName: String(formData.get("companyName") ?? "").trim() || undefined,
       projectType: String(formData.get("projectType") ?? (isEnglish ? "Showcase website" : "Site vitrine")),
@@ -299,7 +306,7 @@ export function QuoteForm() {
             name="name"
             required
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Karim Haddad" : "Ex : Karim Haddad"}
+            placeholder={isEnglish ? "e.g. Kenams KEITA" : "Ex : Kenams KEITA"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -317,12 +324,27 @@ export function QuoteForm() {
           <label htmlFor="phone" className="text-sm text-white/70">
             {isEnglish ? "Phone (optional)" : "Telephone (optionnel)"}
           </label>
-          <input
-            id="phone"
-            name="phone"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="+33 7 59 55 84 14"
-          />
+          <div className="flex flex-wrap gap-3">
+            <select
+              id="phoneCountry"
+              name="phoneCountry"
+              defaultValue="+41"
+              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white focus:border-white/60 focus:outline-none"
+            >
+              {countryDialCodesSorted.map((entry) => (
+                <option key={entry.iso} value={entry.code} className="text-black">
+                  {entry.country} ({entry.code})
+                </option>
+              ))}
+            </select>
+            <input
+              id="phone"
+              name="phone"
+              inputMode="tel"
+              className="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+              placeholder="00 00 00 00 00"
+            />
+          </div>
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="projectType" className="text-sm text-white/70">{isEnglish ? "Project type *" : "Type de projet *"}</label>

@@ -6,6 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
+import { countryDialCodesSorted } from "@/data/country-dial-codes";
 
 type MvpQuotePayload = {
   name: string;
@@ -101,12 +102,15 @@ export function MvpQuoteForm() {
     const formData = new FormData(formRef.current);
     const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value)).filter(Boolean);
     const selectedFeatures = formData.getAll("mobileFeatures").map((value) => String(value)).filter(Boolean);
+    const phoneCountry = String(formData.get("phoneCountry") ?? "").trim();
+    const phoneRaw = String(formData.get("phone") ?? "").trim();
+    const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
     const values: Array<[string, string]> = [
       [isEnglish ? "Client type" : "Type de client", String(formData.get("clientType") ?? "")],
       [isEnglish ? "Company name" : "Nom de societe", String(formData.get("companyName") ?? "")],
       [isEnglish ? "Full name" : "Nom complet", String(formData.get("name") ?? "")],
       ["Email", String(formData.get("email") ?? "")],
-      [isEnglish ? "Phone" : "Telephone", String(formData.get("phone") ?? "")],
+      [isEnglish ? "Phone" : "Telephone", phoneValue],
       [isEnglish ? "Idea / promise" : "Idee / promesse", String(formData.get("idea") ?? "")],
       [isEnglish ? "Platforms" : "Plateformes", selectedPlatforms.join(", ")],
       [isEnglish ? "Key features" : "Fonctionnalites cles", selectedFeatures.join(", ")],
@@ -163,6 +167,9 @@ export function MvpQuoteForm() {
     const formData = new FormData(form);
     const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value));
     const website = String(formData.get("website") ?? "").trim();
+    const phoneCountry = String(formData.get("phoneCountry") ?? "").trim();
+    const phoneRaw = String(formData.get("phone") ?? "").trim();
+    const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
 
     if (selectedPlatforms.length === 0) {
       setServerMessage(isEnglish ? "Select at least one platform." : "Selectionne au moins une plateforme.");
@@ -185,7 +192,7 @@ export function MvpQuoteForm() {
     const payload: MvpQuotePayload = {
       name: String(formData.get("name") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
-      phone: String(formData.get("phone") ?? "").trim() || undefined,
+      phone: phoneValue || undefined,
       clientType: String(formData.get("clientType") ?? "").trim() as "entreprise" | "particulier" | undefined,
       companyName: String(formData.get("companyName") ?? "").trim() || undefined,
       projectType: isEnglish ? "Mobile MVP app" : "Application mobile MVP",
@@ -315,7 +322,7 @@ export function MvpQuoteForm() {
             name="name"
             required
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Aya Benali" : "Ex : Aya Benali"}
+            placeholder={isEnglish ? "e.g. Kenams KEITA" : "Ex : Kenams KEITA"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -331,12 +338,27 @@ export function MvpQuoteForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="phone" className="text-sm text-white/70">{isEnglish ? "Phone" : "Telephone"}</label>
-          <input
-            id="phone"
-            name="phone"
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="+33 7 59 55 84 14"
-          />
+          <div className="flex flex-wrap gap-3">
+            <select
+              id="phoneCountry"
+              name="phoneCountry"
+              defaultValue="+41"
+              className="min-w-[170px] rounded-2xl border border-white/20 bg-white/5 px-3 py-3 text-white focus:border-white/60 focus:outline-none"
+            >
+              {countryDialCodesSorted.map((entry) => (
+                <option key={entry.iso} value={entry.code} className="text-black">
+                  {entry.country} ({entry.code})
+                </option>
+              ))}
+            </select>
+            <input
+              id="phone"
+              name="phone"
+              inputMode="tel"
+              className="min-w-[200px] flex-1 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+              placeholder="00 00 00 00 00"
+            />
+          </div>
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
           <label htmlFor="idea" className="text-sm text-white/70">{isEnglish ? "Your idea / promise *" : "Ton idee / la promesse *"}</label>

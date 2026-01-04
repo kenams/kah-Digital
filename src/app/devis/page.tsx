@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "/devis",
     images: [
       {
-        url: "/mockups/devis-collage.png",
+        url: "/mockups/global-dashboard.png",
         width: 1200,
         height: 860,
         alt: "Apercu devis Kah-Digital",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Devis rapide",
     description: "Formulaire express pour estimer un site ou une experience digitale.",
-    images: ["/mockups/devis-collage.png"],
+    images: ["/mockups/global-dashboard.png"],
   },
 };
 
@@ -158,15 +158,41 @@ export default function DevisPage() {
           <div className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
             <QuoteForm />
             <div className="space-y-4">
-              <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-4">
-                <Image
-                  src="/mockups/devis-collage.png"
-                  alt="Collage d'ecrans d'apps et sites"
-                  width={1200}
-                  height={860}
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="h-full w-full rounded-2xl object-cover"
-                />
+              <div className="premium-card overflow-hidden rounded-3xl border border-white/10 bg-black/40 p-0">
+                <div className="grid gap-0">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/mockups/global-dashboard.png"
+                      alt="Dashboard produit premium"
+                      width={1200}
+                      height={900}
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="h-56 w-full object-cover sm:h-64"
+                    />
+                  </div>
+                  <div className="grid gap-0 sm:grid-cols-2">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src="/mockups/mvp-minimum-viable-product-concept-260nw-2207922401.webp"
+                        alt="Concept MVP minimal"
+                        width={900}
+                        height={720}
+                        sizes="(min-width: 1024px) 20vw, 100vw"
+                        className="h-40 w-full object-cover"
+                      />
+                    </div>
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src="/mockups/pulselearn.png"
+                        alt="Ecran d'application mobile"
+                        width={900}
+                        height={720}
+                        sizes="(min-width: 1024px) 20vw, 100vw"
+                        className="h-40 w-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
               <ContactCard title="Hotline produit" />
             </div>

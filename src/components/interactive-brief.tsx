@@ -48,7 +48,7 @@ const defaultState: BriefState = {
 const fieldsFr: BriefField[] = [
   { id: "company", label: "Entreprise / Organisation", placeholder: "Nom de la structure" },
   { id: "contact", label: "Contact principal", placeholder: "Nom + role" },
-  { id: "email", label: "Email / Telephone", placeholder: "hello@entreprise.com / +33..." },
+  { id: "email", label: "Email / Telephone", placeholder: "hello@entreprise.com / +41 00 000 00 00" },
   { id: "goals", label: "Objectifs principaux", placeholder: "Generer des leads, presenter nos offres...", type: "textarea" },
   { id: "audience", label: "Cible / utilisateurs", placeholder: "Startups, TPE, talents..." },
   { id: "pages", label: "Pages et fonctionnalites cles (site)", placeholder: "Accueil, Services, Portfolio...", type: "textarea" },
@@ -65,7 +65,7 @@ const fieldsFr: BriefField[] = [
 const fieldsEn: BriefField[] = [
   { id: "company", label: "Company / Organization", placeholder: "Company name" },
   { id: "contact", label: "Main contact", placeholder: "Name + role" },
-  { id: "email", label: "Email / Phone", placeholder: "hello@company.com / +1..." },
+  { id: "email", label: "Email / Phone", placeholder: "hello@company.com / +41 00 000 00 00" },
   { id: "goals", label: "Main goals", placeholder: "Generate leads, present our offer...", type: "textarea" },
   { id: "audience", label: "Audience / users", placeholder: "Startups, SMBs, talent..." },
   { id: "pages", label: "Key pages and features (site)", placeholder: "Home, Services, Portfolio...", type: "textarea" },
