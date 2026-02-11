@@ -54,7 +54,11 @@ export const portfolioProjects: PortfolioProject[] = [
       secondary: "#A08752",
       accent: "#E38903",
     },
-    website: "https://aurea-cleaning.vercel.app",
+    website: "http://localhost:3333/",
+    mockups: {
+      primary: "/mockups/aurea-site.png",
+      gallery: ["/mockups/aurea-site.png"],
+    },
   },
   {
     slug: "atelier-nomade",

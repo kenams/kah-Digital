@@ -11,6 +11,13 @@ export type AssetShot = {
 
 export const assetShots: AssetShot[] = [
   {
+    title: "Auréa premium scene",
+    description: "Landing luxe, palettes or/teal et parcours grand compte.",
+    image: "/mockups/aurea-site.png",
+    chips: ["Nettoyage", "Premium"],
+    cta: { label: "Voir Auréa", href: "/projets/aurea" },
+  },
+  {
     title: "Brief configurateur live",
     description: "Timeline sticky, modules MVP, export PDF direct.",
     image: "/mockups/global-dashboard.svg",
@@ -55,6 +62,13 @@ export const assetShots: AssetShot[] = [
 ];
 
 export const assetShotsEn: AssetShot[] = [
+  {
+    title: "Auréa premium scene",
+    description: "Luxury landing, gold/teal palette, enterprise journey.",
+    image: "/mockups/aurea-site.png",
+    chips: ["Cleaning", "Premium"],
+    cta: { label: "See Auréa", href: "/en/projets/aurea" },
+  },
   {
     title: "Configurator brief live",
     description: "Sticky timeline, MVP modules, direct PDF export.",
