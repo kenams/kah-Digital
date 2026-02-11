@@ -2,6 +2,35 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsEn: PortfolioProject[] = [
   {
+    slug: "aurea",
+    name: "Auréa",
+    type: "Premium cleaning",
+    tagline: "High-end website for enterprises and individuals.",
+    shortDescription:
+      "Luxury showcase site with qualified forms, admin space, and recruitment flow.",
+    description:
+      "Designed a premium site aligned with luxury codes, structured for enterprise clients and individuals with clear inquiry flows.",
+    challenge: "Reflect a high-end positioning while keeping quote and hiring requests simple.",
+    solution:
+      "Gold/teal art direction, clear information architecture, connected forms, and a Node back-office for centralized requests.",
+    stack: ["HTML/CSS", "Node.js", "Express", "SQLite"],
+    result: "Fast launch + operational back office",
+    timeline: "3 weeks",
+    deliverables: ["Art direction", "Showcase website", "Connected forms", "Admin back-office"],
+    metrics: [
+      { label: "Sections", value: "12+" },
+      { label: "Forms", value: "6" },
+      { label: "Portal", value: "Admin" },
+    ],
+    highlights: ["Enterprise + individual journeys", "Qualified forms", "Admin exports"],
+    palette: {
+      primary: "#075A72",
+      secondary: "#A08752",
+      accent: "#E38903",
+    },
+    website: "https://aurea-cleaning.vercel.app",
+  },
+  {
     slug: "atelier-nomade",
     name: "Atelier Nomade",
     type: "Architecture studio",

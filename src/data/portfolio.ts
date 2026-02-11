@@ -18,6 +18,7 @@ export type PortfolioProject = {
     secondary: string;
     accent: string;
   };
+  website?: string;
   mockups?: {
     primary?: string;
     gallery?: string[];
@@ -25,6 +26,36 @@ export type PortfolioProject = {
 };
 
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    slug: "aurea",
+    name: "Auréa",
+    type: "Nettoyage premium",
+    tagline: "Site haut de gamme pour grands comptes et particuliers.",
+    shortDescription:
+      "Site vitrine luxe avec formulaires qualifies, espace admin et parcours recrutement.",
+    description:
+      "Conception d'un site premium inspire des codes luxe du secteur, structure pour les grands comptes et les particuliers avec des parcours de demande clairs.",
+    challenge:
+      "Refleter un positionnement haut de gamme tout en simplifiant les demandes de devis et le recrutement.",
+    solution:
+      "Direction artistique doree/teal, architecture claire, formulaires connectes et back-office Node pour centraliser les demandes.",
+    stack: ["HTML/CSS", "Node.js", "Express", "SQLite"],
+    result: "Lancement rapide + back-office operationnel",
+    timeline: "3 semaines",
+    deliverables: ["Direction artistique", "Site vitrine", "Formulaires connectes", "Back-office admin"],
+    metrics: [
+      { label: "Sections", value: "12+" },
+      { label: "Formulaires", value: "6" },
+      { label: "Portail", value: "Admin" },
+    ],
+    highlights: ["Parcours grands comptes + particuliers", "Formulaires qualifies", "Exports admin"],
+    palette: {
+      primary: "#075A72",
+      secondary: "#A08752",
+      accent: "#E38903",
+    },
+    website: "https://aurea-cleaning.vercel.app",
+  },
   {
     slug: "atelier-nomade",
     name: "Atelier Nomade",

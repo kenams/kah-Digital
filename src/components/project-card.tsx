@@ -19,6 +19,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const href = prefix ? `${prefix}/projets/${project.slug}` : `/projets/${project.slug}`;
   const gallery = project.mockups?.gallery ?? (project.mockups?.primary ? [project.mockups.primary] : []);
   const hasGallery = gallery.length > 0;
+  const websiteLabel = isEnglish ? "Visit site" : "Voir le site";
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeImage = gallery[activeIndex] ?? gallery[0];
@@ -159,6 +160,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 -&gt;
               </span>
             </Link>
+            {project.website && (
+              <a
+                href={project.website}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+              >
+                {websiteLabel}
+              </a>
+            )}
             {hasGallery && (
               <button
                 type="button"

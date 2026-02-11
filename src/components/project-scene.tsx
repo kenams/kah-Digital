@@ -15,6 +15,15 @@ type ProjectScene = {
 };
 
 const projectSceneMapFr: Record<string, ProjectScene> = {
+  aurea: {
+    badge: "Premium",
+    hero: "Site luxe + formulaires qualifies",
+    statLabel: "Lancement",
+    statValue: "3 sem.",
+    chip: "Grands comptes",
+    callout: "Parcours entreprises + particuliers, devis rapide et recrutement.",
+    footer: "Node / Express / SQLite",
+  },
   "atelier-nomade": {
     badge: "Manifesto",
     hero: "Portfolio immersif + timeline chantier",
@@ -90,6 +99,15 @@ const projectSceneMapFr: Record<string, ProjectScene> = {
 };
 
 const projectSceneMapEn: Record<string, ProjectScene> = {
+  aurea: {
+    badge: "Premium",
+    hero: "Luxury site + qualified forms",
+    statLabel: "Launch",
+    statValue: "3 wks",
+    chip: "Enterprise",
+    callout: "Enterprise + individual journeys, quick quote and hiring flows.",
+    footer: "Node / Express / SQLite",
+  },
   "atelier-nomade": {
     badge: "Manifesto",
     hero: "Immersive portfolio + build timeline",
