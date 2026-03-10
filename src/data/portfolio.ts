@@ -304,4 +304,43 @@ export const portfolioProjects: PortfolioProject[] = [
       gallery: ["/mockups/portfolio-pulselearn.png"],
     },
   },
+  {
+    slug: "assistant-pme",
+    name: "Assistant Support IT",
+    type: "MVP Support PME",
+    tagline: "Assistant IA pour reduire les tickets IT repetitifs.",
+    shortDescription:
+      "Chat support, base de connaissances et creation de tickets GLPI pour les equipes IT.",
+    description:
+      "Un assistant support pour PME qui guide les utilisateurs, propose des procedures, puis cree un ticket structure si le probleme persiste.",
+    challenge:
+      "Trop de tickets simples, peu d'informations utiles et un temps perdu sur des demandes repetitives.",
+    solution:
+      "Parcours conversationnel clair, recherche de procedures, ticket auto, et panneau admin pour suivre l'activite.",
+    stack: ["Node.js", "Express", "HTML/CSS", "GLPI", "OpenAI"],
+    result: "MVP pret pour demos client",
+    timeline: "4 semaines",
+    deliverables: [
+      "UI support utilisateur",
+      "Workflow ticket",
+      "Dashboard admin",
+      "Base de connaissances",
+    ],
+    metrics: [
+      { label: "Canaux", value: "Chat + Ticket" },
+      { label: "Langues", value: "FR/EN/ES" },
+      { label: "Mode", value: "MVP" },
+    ],
+    highlights: ["Tickets structures", "Guides rapides", "GLPI-ready"],
+    palette: {
+      primary: "#1f2a3a",
+      secondary: "#2f3b52",
+      accent: "#f2c14f",
+    },
+    website: "https://github.com/kenams/Assistant-PME",
+    mockups: {
+      primary: "/mockups/assistant-pme.svg",
+      gallery: ["/mockups/assistant-pme.svg"],
+    },
+  },
 ];
