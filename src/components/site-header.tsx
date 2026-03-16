@@ -1,202 +1,91 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { AmbientAudioToggleButton } from "./global-audio-provider";
-import { AdminSignOutButton } from "@/components/admin-signout-button";
-import { getAlternateLocalePath, useLocale } from "@/lib/locale";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { BrandLockup } from "@/components/brand-lockup";
 
 export function SiteHeader() {
-  const { isEnglish, prefix, pathname } = useLocale();
-  const alternateLocale = getAlternateLocalePath(pathname ?? "/");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const pdfHref = isEnglish ? "/cahier-des-charges.en.pdf" : "/cahier-des-charges.pdf";
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-
-  const navLinks = useMemo(
-    () =>
-      isEnglish
-        ? [
-            { label: "Websites", href: `${prefix}/#services` },
-            { label: "Mobile apps", href: `${prefix}/#apps` },
-            { label: "Portfolio", href: `${prefix}/#portfolio` },
-            { label: "Offers", href: `${prefix}/offres` },
-            { label: "Quote", href: `${prefix}/devis` },
-            { label: "FAQ", href: `${prefix}/#faq` },
-            { label: "Glossary", href: `${prefix}/lexique` },
-          ]
-        : [
-            { label: "Sites web", href: `${prefix}/#services` },
-            { label: "Apps MVP", href: `${prefix}/#apps` },
-            { label: "Portfolio", href: `${prefix}/#portfolio` },
-            { label: "Offres", href: `${prefix}/offres` },
-            { label: "Devis", href: `${prefix}/devis` },
-            { label: "FAQ", href: `${prefix}/#faq` },
-            { label: "Lexique", href: `${prefix}/lexique` },
-          ],
-    [isEnglish, prefix],
-  );
-
-  const ctaButton = useMemo(
-    () => (
-      <a
-        href={pdfHref}
-        target="_blank"
-        rel="noreferrer"
-        download
-        className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
-      >
-        {isEnglish ? "Download the PDF" : "Telecharger le PDF"}
-      </a>
-    ),
-    [isEnglish, pdfHref],
-  );
-
-  useEffect(() => {
-    let active = true;
-
-    const loadStatus = async () => {
-      try {
-        const response = await fetch("/api/admin/auth/status", { credentials: "include" });
-        if (!response.ok) {
-          if (active) setIsAdmin(false);
-          return;
-        }
-        const data = await response.json().catch(() => ({}));
-        if (active) {
-          setIsAdmin(Boolean(data?.isAdmin && data?.mfaActive));
-        }
-      } catch {
-        if (active) setIsAdmin(false);
-      }
-    };
-
-    void loadStatus();
-    const handleFocus = () => {
-      void loadStatus();
-    };
-    window.addEventListener("focus", handleFocus);
-
-    return () => {
-      active = false;
-      window.removeEventListener("focus", handleFocus);
-    };
-  }, []);
+  const navLinks = [
+    { label: "Accueil", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "GLPI", href: "/services/glpi" },
+    { label: "Devis", href: "/devis" },
+    { label: "Factures", href: "/factures" },
+    { label: "Contact", href: "/contact" },
+  ];
 
   return (
-    <header className="site-header sticky top-0 z-50 bg-black/80 text-white backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[90rem] items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
-        <Link
-          href={prefix || "/"}
-          className="text-lg font-semibold tracking-tight text-white"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Kah-Digital
-        </Link>
-        <nav className="hidden items-center gap-6 text-sm md:flex">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-white/80 transition hover:text-white">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href={`${prefix}/configurateur`}
-            className="rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 transition hover:border-white hover:text-white"
-          >
-            {isEnglish ? "Quick quote" : "Devis express"}
+    <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link href="/" className="shrink-0" aria-label="KAH-Digital - Accueil">
+            <BrandLockup compact subtitle="Digital studio" />
           </Link>
-          <AmbientAudioToggleButton compact />
-          {isAdmin && (
-            <>
-              <Link
-                href="/admin/demandes"
-                prefetch={false}
-                className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
-              >
-                Admin
-              </Link>
-              <AdminSignOutButton
-                redirectTo={prefix || "/"}
-                label={isEnglish ? "Sign out" : "Deconnexion"}
-                className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white/60 transition hover:border-white hover:text-white"
-              />
-            </>
-          )}
-          <Link
-            href={alternateLocale.path}
-            className="rounded-full border border-white/20 px-3 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/70 transition hover:border-white hover:text-white"
-          >
-            {alternateLocale.locale === "en" ? "EN" : "FR"}
-          </Link>
-          {ctaButton}
-        </div>
-        <button
-          className="md:hidden"
-          type="button"
-          aria-label="Ouvrir le menu"
-          onClick={toggleMenu}
-        >
-          <span className="sr-only">Menu</span>
-          <div className="space-y-1.5">
-            <span className="block h-0.5 w-6 bg-white" />
-            <span className="block h-0.5 w-6 bg-white" />
-            <span className="block h-0.5 w-6 bg-white" />
-          </div>
-        </button>
-      </div>
-      {isMenuOpen && (
-        <div className="border-t border-white/10 bg-black/95 px-6 py-4 md:hidden">
-          <div className="flex flex-col gap-4 text-sm">
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/80 transition hover:text-white"
-                onClick={() => setIsMenuOpen(false)}
+                className="text-white/80 hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
             <Link
-              href={`${prefix}/configurateur`}
-              className="rounded-full border border-white/20 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-white/70 transition hover:border-white hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
+              href="/devis"
+              className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition-colors"
             >
-              {isEnglish ? "Quick quote" : "Devis express"}
+              Demander un devis
             </Link>
-            {isAdmin && (
-              <>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-white"
+          >
+            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t border-white/10">
+            <nav className="flex flex-col space-y-4">
+              <Link href="/" className="pb-2" onClick={() => setIsMenuOpen(false)} aria-label="KAH-Digital - Accueil">
+                <BrandLockup compact subtitle="Digital studio" />
+              </Link>
+              {navLinks.map((link) => (
                 <Link
-                  href="/admin/demandes"
-                  prefetch={false}
-                  className="rounded-full border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white/80 transition hover:border-white hover:text-white"
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/80 hover:text-white transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Admin
+                  {link.label}
                 </Link>
-                <AdminSignOutButton
-                  redirectTo={prefix || "/"}
-                  label={isEnglish ? "Sign out" : "Deconnexion"}
-                  className="rounded-full border border-white/20 px-4 py-2 text-center text-sm font-semibold text-white/60 transition hover:border-white hover:text-white"
-                />
-              </>
-            )}
-            <AmbientAudioToggleButton />
-            <Link
-              href={alternateLocale.path}
-              className="rounded-full border border-white/20 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-white/70 transition hover:border-white hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {alternateLocale.locale === "en" ? "EN" : "FR"}
-            </Link>
-            {ctaButton}
+              ))}
+              <Link
+                href="/devis"
+                className="bg-white text-black px-4 py-2 rounded-full font-semibold text-center hover:bg-gray-200 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Demander un devis
+              </Link>
+            </nav>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 }

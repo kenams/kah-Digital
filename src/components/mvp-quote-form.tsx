@@ -3,9 +3,10 @@
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
+import { drawKahDigitalPdfLogo } from "@/lib/pdf-branding";
 import { countryDialCodesSorted } from "@/data/country-dial-codes";
 
 type MvpQuotePayload = {
@@ -35,6 +36,8 @@ export function MvpQuoteForm() {
   const { isEnglish, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
+  const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
+  const pendingFormRef = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
@@ -88,13 +91,20 @@ export function MvpQuoteForm() {
   const handleCaptchaVerify = useCallback((token: string) => {
     setCaptchaToken(token);
     setCaptchaError("");
+    const pendingForm = pendingFormRef.current;
+    if (pendingForm) {
+      pendingFormRef.current = null;
+      void submitMvpRequest(pendingForm, token);
+    }
   }, []);
   const handleCaptchaExpire = useCallback(() => {
     setCaptchaToken("");
+    pendingFormRef.current = null;
   }, []);
   const handleCaptchaError = useCallback(() => {
     setCaptchaToken("");
     setCaptchaError(isEnglish ? "Verification failed. Try again." : "Verification impossible. Reessaye.");
+    pendingFormRef.current = null;
   }, [isEnglish]);
 
   const exportPdf = () => {
@@ -125,16 +135,17 @@ export function MvpQuoteForm() {
     ];
 
     const doc = new jsPDF();
+    drawKahDigitalPdfLogo(doc, 16, 10);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text(isEnglish ? "Kah-Digital - MVP request" : "Kah-Digital - Demande MVP", 16, 18);
+    doc.text(isEnglish ? "MVP request" : "Demande MVP", 16, 42);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text(isEnglish ? "Generated from the MVP form" : "Genere depuis le formulaire MVP", 16, 26);
+    doc.text(isEnglish ? "Generated from the MVP form" : "Genere depuis le formulaire MVP", 16, 49);
     doc.setDrawColor(210);
-    doc.line(16, 30, 194, 30);
+    doc.line(16, 53, 194, 53);
 
-    let y = 38;
+    let y = 61;
     doc.setFontSize(11);
     values.forEach(([label, value]) => {
       if (y > 270) {
@@ -161,9 +172,7 @@ export function MvpQuoteForm() {
     doc.save(isEnglish ? "kah-digital-mvp.pdf" : "devis-mvp-kah-digital.pdf");
   };
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
+  async function submitMvpRequest(form: HTMLFormElement, token: string) {
     const formData = new FormData(form);
     const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value));
     const website = String(formData.get("website") ?? "").trim();
@@ -179,12 +188,6 @@ export function MvpQuoteForm() {
 
     if (!siteKey) {
       setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configure. Contacte-nous directement.");
-      setStatus("error");
-      return;
-    }
-
-    if (!captchaToken) {
-      setServerMessage(isEnglish ? "Please validate the captcha." : "Valide le captcha avant d'envoyer.");
       setStatus("error");
       return;
     }
@@ -214,7 +217,7 @@ export function MvpQuoteForm() {
         .join("\n"),
       projectFocus: "mobile",
       website: website || undefined,
-      turnstileToken: captchaToken,
+      turnstileToken: token,
     };
 
     if (!payload.goal || payload.goal.length < 5) {
@@ -239,10 +242,8 @@ export function MvpQuoteForm() {
           ? "Unable to send the request. Check your connection or contact us."
           : "Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
-        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
-          setCaptchaToken("");
-          setCaptchaReset((prev) => prev + 1);
-        }
+        setCaptchaToken("");
+        setCaptchaReset((prev) => prev + 1);
         setStatus("error");
         setServerMessage(errorMessage);
         return;
@@ -262,6 +263,35 @@ export function MvpQuoteForm() {
       setStatus("error");
       setServerMessage(isEnglish ? "Unable to send the request. Check your connection or contact us." : "Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.");
     }
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value));
+
+    if (selectedPlatforms.length === 0) {
+      setServerMessage(isEnglish ? "Select at least one platform." : "Selectionne au moins une plateforme.");
+      setStatus("error");
+      return;
+    }
+
+    if (!siteKey) {
+      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configure. Contacte-nous directement.");
+      setStatus("error");
+      return;
+    }
+
+    if (!captchaToken) {
+      pendingFormRef.current = form;
+      setServerMessage("");
+      setCaptchaError("");
+      widgetRef.current?.execute();
+      return;
+    }
+
+    void submitMvpRequest(form, captchaToken);
   }
 
   const isSubmitting = status === "loading";
@@ -322,7 +352,7 @@ export function MvpQuoteForm() {
             name="name"
             required
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Kenams KEITA" : "Ex : Kenams KEITA"}
+            placeholder={isEnglish ? "e.g. Alex Martin" : "Ex : Alex Martin"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -521,6 +551,7 @@ export function MvpQuoteForm() {
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/15 bg-white/5 p-4 flex items-center">
             <TurnstileWidget
+              ref={widgetRef}
               siteKey={siteKey}
               onVerify={handleCaptchaVerify}
               onExpire={handleCaptchaExpire}

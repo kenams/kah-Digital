@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useState, type Dispatch, type SetStateAction } from "react";
+import { useCallback, useMemo, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { Reveal } from "@/components/reveal";
 import { StickyTimelineIndicator } from "@/components/sticky-timeline-indicator";
 import { ConfiguratorPreview } from "@/components/configurator-preview";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { useLocale } from "@/lib/locale";
 import type { QuoteRequest } from "@/lib/quote";
 import { countryDialCodesSorted } from "@/data/country-dial-codes";
@@ -575,6 +575,8 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaReset, setCaptchaReset] = useState(0);
   const [captchaError, setCaptchaError] = useState("");
+  const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
+  const pendingSubmitRef = useRef(false);
   const router = useRouter();
 
   const text = isEnglish
@@ -603,7 +605,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         companyRequired: "Add the company name to continue.",
         captchaNotConfigured: "Captcha not configured. Contact us directly.",
         captchaNeeded: "Please validate the captcha before sending.",
-        sendError: "Unable to send the request. Email us at kah-digital@hotmail.com.",
+        sendError: "Unable to send the request. Email us at kahdigital42@gmail.com.",
         summaryType: "Type",
         summaryVision: "Vision",
         summaryStyle: "Style",
@@ -611,7 +613,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         summaryIntegrations: "Integrations",
         summaryAiModules: "AI modules",
         companyPlaceholder: "Ex: Atelier Nova",
-        namePlaceholder: "e.g. Kenams KEITA",
+        namePlaceholder: "e.g. Alex Martin",
         emailPlaceholder: "hello@company.com",
         phonePlaceholder: "00 00 00 00 00",
         summaryFallback: "Configurator",
@@ -643,7 +645,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         companyRequired: "Ajoute le nom de la societe pour continuer.",
         captchaNotConfigured: "Captcha non configure. Contacte-nous directement.",
         captchaNeeded: "Valide le captcha avant d'envoyer.",
-        sendError: "Impossible d'envoyer la demande. Ecris-nous sur kah-digital@hotmail.com.",
+        sendError: "Impossible d'envoyer la demande. Ecris-nous sur kahdigital42@gmail.com.",
         summaryType: "Type",
         summaryVision: "Vision",
         summaryStyle: "Style",
@@ -651,7 +653,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         summaryIntegrations: "Integrations",
         summaryAiModules: "Modules IA",
         companyPlaceholder: "Ex: Atelier Nova",
-        namePlaceholder: "Ex : Kenams KEITA",
+        namePlaceholder: "Ex : Alex Martin",
         emailPlaceholder: "contact@entreprise.com",
         phonePlaceholder: "00 00 00 00 00",
         summaryFallback: "Configurateur",
@@ -674,17 +676,22 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
   const handleCaptchaVerify = useCallback((token: string) => {
     setCaptchaToken(token);
     setCaptchaError("");
+    if (pendingSubmitRef.current) {
+      pendingSubmitRef.current = false;
+      void submitConfiguratorRequest(token);
+    }
   }, []);
   const handleCaptchaExpire = useCallback(() => {
     setCaptchaToken("");
+    pendingSubmitRef.current = false;
   }, []);
   const handleCaptchaError = useCallback(() => {
     setCaptchaToken("");
     setCaptchaError(text.captchaFail);
+    pendingSubmitRef.current = false;
   }, [text.captchaFail]);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function submitConfiguratorRequest(token: string) {
     if (clientType === "entreprise" && !companyName.trim()) {
       setStatus("error");
       setServerMessage(text.companyRequired);
@@ -694,12 +701,6 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
     if (!siteKey) {
       setStatus("error");
       setServerMessage(text.captchaNotConfigured);
-      return;
-    }
-
-    if (!captchaToken) {
-      setStatus("error");
-      setServerMessage(text.captchaNeeded);
       return;
     }
 
@@ -731,7 +732,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         features,
         integrations,
       },
-      turnstileToken: captchaToken,
+      turnstileToken: token,
     };
 
     setStatus("loading");
@@ -747,10 +748,8 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         const errorPayload = await response.json().catch(() => null);
         const fallbackMessage = text.sendError;
         const errorMessage = errorPayload?.error ?? fallbackMessage;
-        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
-          setCaptchaToken("");
-          setCaptchaReset((prev) => prev + 1);
-        }
+        setCaptchaToken("");
+        setCaptchaReset((prev) => prev + 1);
         setStatus("error");
         setServerMessage(errorMessage);
         return;
@@ -773,6 +772,31 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
       setStatus("error");
       setServerMessage(text.sendError);
     }
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (clientType === "entreprise" && !companyName.trim()) {
+      setStatus("error");
+      setServerMessage(text.companyRequired);
+      return;
+    }
+
+    if (!siteKey) {
+      setStatus("error");
+      setServerMessage(text.captchaNotConfigured);
+      return;
+    }
+
+    if (!captchaToken) {
+      pendingSubmitRef.current = true;
+      setServerMessage("");
+      setCaptchaError("");
+      widgetRef.current?.execute();
+      return;
+    }
+
+    void submitConfiguratorRequest(captchaToken);
   }
 
   return (
@@ -879,6 +903,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           {siteKey ? (
             <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
               <TurnstileWidget
+                ref={widgetRef}
                 siteKey={siteKey}
                 onVerify={handleCaptchaVerify}
                 onExpire={handleCaptchaExpire}

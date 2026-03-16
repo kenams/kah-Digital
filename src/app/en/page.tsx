@@ -3,7 +3,7 @@ import { HomePageClient } from "@/components/home-page-client";
 import { homeDataEn } from "@/data/home.en";
 
 export const metadata: Metadata = {
-  title: "Kah-Digital | Premium websites & mobile apps",
+  title: "Premium websites & mobile apps",
   description: "Premium digital studio. Websites, e-commerce and custom experiences with a clear process.",
 };
 

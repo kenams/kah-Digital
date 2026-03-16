@@ -1,148 +1,107 @@
-﻿import Link from "next/link";
+import { Metadata } from "next";
+import { companyConfig } from "@/config/company";
 
-const timeline = [
-  {
-    year: "2021",
-    title: "Creation de Kah-Digital",
-    detail: "Studio independant lance par Keita Namake pour piloter des projets premium Next.js / React Native.",
-  },
-  {
-    year: "2023",
-    title: "Deploiement Vercel",
-    detail: "Infrastructure mutualisee (Vercel, Supabase, Stripe) avec monitoring et backup integres.",
-  },
-  {
-    year: "2024",
-    title: "Process RGPD renforce",
-    detail: "Gestion des consentements, suppression sur demande, journal des acces aux donnees.",
-  },
-];
+export const metadata: Metadata = {
+  title: "Mentions legales",
+  description: "Mentions legales de KAH-Digital. Informations juridiques et administratives.",
+};
 
 export default function MentionsLegalesPage() {
+  const displayName = companyConfig.brandName || "KAH-Digital";
+
   return (
-    <div className="section-shell space-y-8">
-      <div className="flex flex-wrap gap-3 text-sm text-white/70">
-        <Link href="/" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
-          Retour a l&apos;accueil
-        </Link>
-        <Link
-          href="/configurateur"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
-          Devis rapide
-        </Link>
-      </div>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Mentions legales</h1>
 
-      <div className="light-surface px-6 py-8 sm:px-8 sm:py-12">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Mentions legales</p>
-        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Informations legales</h1>
-        <p className="mt-2 text-sm text-slate-500">
-          Informations en cours d&apos;actualisation (SIREN, siege, TVA).
-        </p>
-        <div className="mt-6 grid gap-8 text-sm text-slate-700 md:grid-cols-2">
-          <div className="space-y-3">
-            <p>
-              <strong>Raison sociale :</strong> Kah-Digital
-            </p>
-            <p>
-              <strong>Forme :</strong> Entreprise individuelle
-            </p>
-            <p>
-              <strong>Responsable de la publication :</strong> Keita Namake
-            </p>
-            {/* i18n:critical:publisher */}
-            <p>
-              <strong>Email :</strong> kah-digital@hotmail.com
-            </p>
-            <p>
-              <strong>Telephone :</strong> +33 7 59 55 84 14 (numero temporaire)
-            </p>
-          </div>
-          <div className="space-y-3">
-            <p>
-              <strong>Siege social :</strong> 10 rue de la Creation, 75000 Paris
-            </p>
-            <p>
-              <strong>SIREN :</strong> 901 234 567
-            </p>
-            <p>
-              <strong>TVA intracommunautaire :</strong> FR42 901234567
-            </p>
-            <p>
-              <strong>Hebergement :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789 (USA)
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="light-outline p-6">
-          <h2 className="text-xl font-semibold text-slate-900">Propriete intellectuelle</h2>
-          <p className="mt-4 text-slate-700">
-            L&apos;ensemble des contenus (textes, visuels, videos, elements graphiques et code) presents sur kah-digital.com est
-            protege par le droit d&apos;auteur et demeure la propriete exclusive de Kah-Digital ou de ses partenaires. Toute
-            reproduction ou reutilisation requiert un accord ecrit prealable.
-          </p>
-        </div>
-        <div className="light-outline p-6">
-          <h2 className="text-xl font-semibold text-slate-900">Responsabilite</h2>
-          <p className="mt-4 text-slate-700">
-            Kah-Digital met tout en oeuvre pour fournir des informations exactes mais ne saurait etre tenu responsable des
-            erreurs, omissions ou indisponibilites du site. Les liens externes renvoient vers des ressources dont nous ne
-            maitrisons pas le contenu.
-          </p>
-        </div>
-      </div>
-
-      <div className="light-outline p-6">
-        <h2 className="text-xl font-semibold text-slate-900">Timeline conformite</h2>
-        <div className="mt-6 space-y-4">
-          {timeline.map((step) => (
-            <div key={step.year} className="rounded-2xl border border-slate-900/10 bg-white/80 p-4">
-              <p className="text-sm font-semibold text-slate-500">{step.year}</p>
-              <p className="text-lg font-semibold text-slate-900">{step.title}</p>
-              <p className="text-slate-700">{step.detail}</p>
+        <div className="space-y-8">
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Editeur du site</h2>
+            <div className="text-gray-700 space-y-2">
+              <p><strong>Nom commercial :</strong> {companyConfig.brandName}</p>
+              <p><strong>Raison sociale :</strong> {companyConfig.legalName}</p>
+              <p><strong>Statut :</strong> {companyConfig.registrationStatus}</p>
+              <p><strong>Adresse :</strong> {companyConfig.address}</p>
+              <p><strong>Ville :</strong> {companyConfig.postalCode} {companyConfig.city}, {companyConfig.country}</p>
+              <p><strong>Email :</strong> {companyConfig.email}</p>
+              <p><strong>Telephone :</strong> {companyConfig.phone}</p>
+              {companyConfig.uid ? <p><strong>Numero IDE/UID :</strong> {companyConfig.uid}</p> : null}
+              {companyConfig.vatNumber ? <p><strong>Numero TVA :</strong> {companyConfig.vatNumber}</p> : null}
             </div>
-          ))}
-        </div>
-      </div>
+          </section>
 
-      <div className="light-outline p-6">
-        <h2 className="text-xl font-semibold text-slate-900">Contact et mediation</h2>
-        <p className="mt-4 text-slate-700">
-          Pour toute question, reclamation ou signalement concernant les contenus publies, ecrivez a kah-digital@hotmail.com ou
-          adressez un courrier au siege social. Si un litige persiste, une solution amiable pourra etre recherchee via un
-          mediateur de la consommation.
-        </p>
-      </div>
-      <div className="light-surface space-y-5 px-8 py-10">
-        <div>
-          <p className="text-sm uppercase tracking-[0.35em] text-slate-500">CTA</p>
-          <h2 className="mt-3 text-3xl font-semibold text-slate-900">Toujours alignes sur la conformite et l&apos;action.</h2>
-          <p className="mt-2 max-w-3xl text-slate-600">
-            Formalise ton projet tout en gardant un fil conducteur legal: devis rapide, devis express et relecture cahier des
-            charges restent dispo pour enclencher la suite.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-3 text-sm text-slate-900">
-          <Link
-            href="/devis"
-            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
-          >
-            Lancer un devis
-          </Link>
-          <Link
-            href="/configurateur"
-            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
-          >
-            Devis rapide
-          </Link>
-          <Link
-            href="/projets"
-            className="rounded-full border border-slate-900/20 px-5 py-2 transition hover:border-slate-900 hover:bg-white"
-          >
-            Voir des cas concrets
-          </Link>
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Directeur de la publication</h2>
+            <p className="text-gray-700">{companyConfig.legalName}</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Hebergement</h2>
+            <div className="text-gray-700 space-y-2">
+              <p><strong>Vercel Inc.</strong></p>
+              <p>{companyConfig.hosting}</p>
+              <p>
+                <strong>Site web :</strong>{" "}
+                <a href="https://vercel.com" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">
+                  vercel.com
+                </a>
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Propriete intellectuelle</h2>
+            <p className="text-gray-700">
+              L'ensemble du contenu de ce site (textes, images, graphismes, logos, icones, sons, logiciels) est protege par le droit d'auteur.
+              Toute reproduction, distribution, modification ou publication, meme partielle, de ces differents elements est strictement interdite
+              sans l'accord prealable ecrit de {displayName}.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Donnees personnelles</h2>
+            <p className="text-gray-700">
+              Conformement a la Loi federale sur la protection des donnees (LPD), les informations recueillies via les formulaires de contact
+              sont utilisees uniquement pour repondre a vos demandes. Elles ne sont ni vendues ni transmises a des tiers.
+              Consultez notre <a href="/confidentialite" className="text-blue-600 underline">politique de confidentialite</a> pour plus de details.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Cookies</h2>
+            <p className="text-gray-700">
+              Ce site n'utilise pas de cookies de suivi ou de marketing. Seuls des cookies techniques necessaires au fonctionnement du site
+              peuvent etre utilises (par exemple pour la navigation ou les formulaires).
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Responsabilite</h2>
+            <p className="text-gray-700">
+              {displayName} s'efforce d'assurer l'exactitude des informations diffusees sur ce site, mais ne peut etre tenu responsable
+              d'eventuelles erreurs ou omissions. L'utilisation des informations et outils disponibles sur ce site se fait sous la
+              responsabilite exclusive de l'utilisateur.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Droit applicable</h2>
+            <p className="text-gray-700">
+              Les presentes mentions legales sont soumises au droit suisse. Tout litige relatif a l'utilisation de ce site sera
+              de la competence exclusive des tribunaux suisses.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Contact</h2>
+            <p className="text-gray-700">
+              Pour toute question concernant ces mentions legales, vous pouvez nous contacter a l'adresse suivante : {companyConfig.email}
+            </p>
+          </section>
+
+          <div className="text-center text-sm text-gray-500 mt-12 pt-8 border-t border-gray-200">
+            Derniere mise a jour : {new Date().toLocaleDateString("fr-FR")}
+          </div>
         </div>
       </div>
     </div>

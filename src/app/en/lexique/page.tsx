@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LexiquePage from "@/app/lexique/page";
 
 export const metadata: Metadata = {
-  title: "Glossary | Kah-Digital",
+  title: "Glossary",
   description: "Clear definitions for web, product, and mobile terms in 5 minutes.",
 };
 

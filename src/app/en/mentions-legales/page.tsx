@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Legal notice | Kah-Digital",
+  title: "Legal notice",
   description: "Legal information about Kah-Digital and site publishing details.",
 };
 
@@ -10,7 +10,7 @@ const timeline = [
   {
     year: "2021",
     title: "Kah-Digital created",
-    detail: "Independent studio founded by Keita Namake to lead premium Next.js and React Native projects.",
+    detail: "Independent studio created to lead premium Next.js and React Native projects.",
   },
   {
     year: "2023",
@@ -52,11 +52,11 @@ export default function MentionsLegalesPageEn() {
               <strong>Entity type:</strong> Sole proprietorship
             </p>
             <p>
-              <strong>Publisher:</strong> Keita Namake
+              <strong>Publisher:</strong> KAH-Digital
             </p>
             {/* i18n:critical:publisher */}
             <p>
-              <strong>Email:</strong> kah-digital@hotmail.com
+              <strong>Email:</strong> kahdigital42@gmail.com
             </p>
             <p>
               <strong>Phone:</strong> +33 7 59 55 84 14 (temporary number)
@@ -64,7 +64,7 @@ export default function MentionsLegalesPageEn() {
           </div>
           <div className="space-y-3">
             <p>
-              <strong>Registered office:</strong> 10 rue de la Creation, 75000 Paris
+              <strong>Registered office:</strong> Rue du Simplon 4, 1006 Lausanne, Switzerland
             </p>
             <p>
               <strong>Registration:</strong> 901 234 567
@@ -113,7 +113,7 @@ export default function MentionsLegalesPageEn() {
       <div className="light-outline p-6">
         <h2 className="text-xl font-semibold text-slate-900">Contact and mediation</h2>
         <p className="mt-4 text-slate-700">
-          For any question, complaint, or report related to published content, write to kah-digital@hotmail.com or
+          For any question, complaint, or report related to published content, write to kahdigital42@gmail.com or
           send mail to the registered office. If a dispute remains, an amicable solution can be sought through a
           consumer mediator.
         </p>

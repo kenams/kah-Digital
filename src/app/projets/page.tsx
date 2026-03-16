@@ -7,7 +7,7 @@ import { assetShots } from "@/data/asset-shots";
 import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: "Projets Kah-Digital",
+  title: "Projets",
   description: "Selection d'etudes de cas livrees par Kah-Digital.",
   alternates: {
     canonical: "/projets",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Projets Kah-Digital",
+    title: "Projets",
     description: "Selection d'etudes de cas livrees par Kah-Digital.",
     url: "/projets",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projets Kah-Digital",
+    title: "Projets",
     description: "Selection d'etudes de cas livrees par Kah-Digital.",
     images: ["/og-kah-digital.png"],
   },

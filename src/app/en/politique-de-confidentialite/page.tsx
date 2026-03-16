@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy policy | Kah-Digital",
+  title: "Privacy policy",
   description: "How Kah-Digital collects and protects personal data.",
 };
 
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPageEn() {
 
       <div className="light-outline p-6">
         <h2 className="text-xl font-semibold text-slate-900">Your rights</h2>
-        <p className="mt-4 text-slate-700">You can exercise the following rights at any time by emailing kah-digital@hotmail.com:</p>
+        <p className="mt-4 text-slate-700">You can exercise the following rights at any time by emailing kahdigital42@gmail.com:</p>
         <ul className="mt-4 list-disc space-y-2 pl-6 text-slate-700">
           {rights.map((item) => (
             <li key={item}>{item}</li>

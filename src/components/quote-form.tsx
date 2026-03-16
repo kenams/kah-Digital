@@ -3,9 +3,10 @@
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
-import { TurnstileWidget } from "@/components/turnstile-widget";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
+import { drawKahDigitalPdfLogo } from "@/lib/pdf-branding";
 import { countryDialCodesSorted } from "@/data/country-dial-codes";
 
 type QuotePayload = {
@@ -36,6 +37,8 @@ export function QuoteForm() {
   const { isEnglish, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
+  const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
+  const pendingFormRef = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
@@ -81,13 +84,20 @@ export function QuoteForm() {
   const handleCaptchaVerify = useCallback((token: string) => {
     setCaptchaToken(token);
     setCaptchaError("");
+    const pendingForm = pendingFormRef.current;
+    if (pendingForm) {
+      pendingFormRef.current = null;
+      void submitQuoteRequest(pendingForm, token);
+    }
   }, []);
   const handleCaptchaExpire = useCallback(() => {
     setCaptchaToken("");
+    pendingFormRef.current = null;
   }, []);
   const handleCaptchaError = useCallback(() => {
     setCaptchaToken("");
     setCaptchaError(isEnglish ? "Verification failed. Try again." : "Verification impossible. Reessaye.");
+    pendingFormRef.current = null;
   }, [isEnglish]);
 
   const exportPdf = () => {
@@ -115,16 +125,17 @@ export function QuoteForm() {
     ];
 
     const doc = new jsPDF();
+    drawKahDigitalPdfLogo(doc, 16, 10);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text(isEnglish ? "Kah-Digital - Quote request" : "Kah-Digital - Demande de devis", 16, 18);
+    doc.text(isEnglish ? "Quote request" : "Demande de devis", 16, 42);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text(isEnglish ? "Generated from the online form" : "Genere depuis le formulaire en ligne", 16, 26);
+    doc.text(isEnglish ? "Generated from the online form" : "Genere depuis le formulaire en ligne", 16, 49);
     doc.setDrawColor(210);
-    doc.line(16, 30, 194, 30);
+    doc.line(16, 53, 194, 53);
 
-    let y = 38;
+    let y = 61;
     doc.setFontSize(11);
     values.forEach(([label, value]) => {
       if (y > 270) {
@@ -151,9 +162,7 @@ export function QuoteForm() {
     doc.save(isEnglish ? "kah-digital-quote.pdf" : "devis-kah-digital.pdf");
   };
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formElement = event.currentTarget;
+  async function submitQuoteRequest(formElement: HTMLFormElement, token: string) {
     const formData = new FormData(formElement);
 
     const rawClientType = String(formData.get("clientType") ?? "").trim();
@@ -172,12 +181,6 @@ export function QuoteForm() {
 
     if (!siteKey) {
       setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configure. Contacte-nous directement.");
-      setStatus("error");
-      return;
-    }
-
-    if (!captchaToken) {
-      setServerMessage(isEnglish ? "Please validate the captcha." : "Valide le captcha avant d'envoyer.");
       setStatus("error");
       return;
     }
@@ -202,7 +205,7 @@ export function QuoteForm() {
       techPreferences: undefined,
       projectFocus: "web",
       website: website || undefined,
-      turnstileToken: captchaToken,
+      turnstileToken: token,
     };
 
     setStatus("loading");
@@ -221,10 +224,8 @@ export function QuoteForm() {
           ? "Unable to send the request. Please try again."
           : "Impossible d'envoyer la demande. Reessaie dans un instant.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
-        if (typeof errorMessage === "string" && errorMessage.toLowerCase().includes("captcha")) {
-          setCaptchaToken("");
-          setCaptchaReset((prev) => prev + 1);
-        }
+        setCaptchaToken("");
+        setCaptchaReset((prev) => prev + 1);
         setStatus("error");
         setServerMessage(errorMessage);
         return;
@@ -244,6 +245,36 @@ export function QuoteForm() {
       setStatus("error");
       setServerMessage(isEnglish ? "Unable to send the request. Please try again." : "Impossible d'envoyer la demande. Reessaie dans un instant.");
     }
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formElement = event.currentTarget;
+
+    const formData = new FormData(formElement);
+    const selectedPages = formData.getAll("pages").map((value) => String(value));
+
+    if (selectedPages.length === 0) {
+      setServerMessage(isEnglish ? "Select at least one page." : "Selectionne au moins une page pour ton site.");
+      setStatus("error");
+      return;
+    }
+
+    if (!siteKey) {
+      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configure. Contacte-nous directement.");
+      setStatus("error");
+      return;
+    }
+
+    if (!captchaToken) {
+      pendingFormRef.current = formElement;
+      setServerMessage("");
+      setCaptchaError("");
+      widgetRef.current?.execute();
+      return;
+    }
+
+    void submitQuoteRequest(formElement, captchaToken);
   }
 
   const isSubmitting = status === "loading";
@@ -306,7 +337,7 @@ export function QuoteForm() {
             name="name"
             required
             className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Kenams KEITA" : "Ex : Kenams KEITA"}
+            placeholder={isEnglish ? "e.g. Alex Martin" : "Ex : Alex Martin"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -472,6 +503,7 @@ export function QuoteForm() {
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
             <TurnstileWidget
+              ref={widgetRef}
               siteKey={siteKey}
               onVerify={handleCaptchaVerify}
               onExpire={handleCaptchaExpire}
