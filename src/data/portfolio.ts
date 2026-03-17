@@ -30,25 +30,25 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Label / production musicale",
-    tagline: "L'un des projets produits par KAH-Digital pour porter un univers musique, image et production.",
+    tagline: "Une realisation KAH-Digital pour un label independant construit autour de l'image, des artistes et des sorties.",
     shortDescription:
-      "Site vitrine premium pour KAH Prod, pense comme une base claire, rapide et evolutive pour presenter le label et ses activites.",
+      "Site label premium avec navigation Le Label, Artistes, Sorties, Clips, Evenements, Reseaux et Contact.",
     description:
-      "KAH Prod fait partie des projets portes par KAH-Digital. Cette realisation sert de base web propre et premium pour presenter l'identite du label, clarifier son univers et structurer les prises de contact autour d'une image plus nette.",
+      "KAH Prod fait partie des projets portes par KAH-Digital. Le site en ligne sert de base claire pour presenter le label, mettre en avant les artistes, montrer les sorties et clips, exposer les evenements, et centraliser les points de contact metier autour d'une image plus propre.",
     challenge:
-      "Poser un site plus fort visuellement, plus lisible commercialement, et plus propre techniquement pour faire exister le label avec une vraie base serieuse.",
+      "Donner au label un site plus fort visuellement et plus lisible, capable de presenter son identite, ses artistes et ses sorties sans melanger l'information ni perdre l'image premium.",
     solution:
-      "Refonte de la home, clarification des sections, CTA mieux places, structure plus simple et base Next.js / Vercel maintenable pour faire evoluer le projet sans repartir de zero.",
+      "Mise en place d'une home plus nette, d'une navigation directe par univers, d'un bloc sorties/clips plus lisible, d'une section evenements, d'un bloc reseaux et de contacts separes pour management, booking, presse et communication.",
     stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
-    result: "Base web premium, propre et exploitable pour le developpement du label",
+    result: "Site label en ligne, plus clair a parcourir et plus propre pour presenter l'univers KAH Prod",
     timeline: "2 semaines",
-    deliverables: ["Direction artistique", "Home premium", "Pages vitrines", "Formulaires et CTA"],
+    deliverables: ["Direction artistique", "Home premium", "Sections artistes et sorties", "Contacts metier"],
     metrics: [
-      { label: "Pages clefs", value: "6+" },
-      { label: "Delai", value: "2 semaines" },
-      { label: "Objectif", value: "Image + leads" },
+      { label: "Sections visibles", value: "7" },
+      { label: "Contacts metier", value: "4" },
+      { label: "Base", value: "Vercel" },
     ],
-    highlights: ["Projet KAH-Digital", "Base evolutive", "Production Vercel"],
+    highlights: ["Le Label / Artistes / Sorties / Clips", "Evenements + reseaux", "Management / Booking / Presse / Communication"],
     palette: {
       primary: "#07111f",
       secondary: "#12304e",

@@ -15,6 +15,15 @@ type ProjectScene = {
 };
 
 const projectSceneMapFr: Record<string, ProjectScene> = {
+  "kah-prod": {
+    badge: "Label",
+    hero: "Label, artistes, sorties, clips et contacts metier",
+    statLabel: "Sections",
+    statValue: "7",
+    chip: "Label independant",
+    callout: "Navigation claire pour presenter l'univers du label et separer management, booking, presse et communication.",
+    footer: "Next.js / Vercel",
+  },
   aurea: {
     badge: "Premium",
     hero: "Site luxe + formulaires qualifies",
@@ -99,6 +108,15 @@ const projectSceneMapFr: Record<string, ProjectScene> = {
 };
 
 const projectSceneMapEn: Record<string, ProjectScene> = {
+  "kah-prod": {
+    badge: "Label",
+    hero: "Label, artists, releases, clips, and business contacts",
+    statLabel: "Sections",
+    statValue: "7",
+    chip: "Independent label",
+    callout: "Clear navigation to present the label universe and separate management, booking, press, and communication.",
+    footer: "Next.js / Vercel",
+  },
   aurea: {
     badge: "Premium",
     hero: "Luxury site + qualified forms",
