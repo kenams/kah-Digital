@@ -371,7 +371,7 @@ export const portfolioProjects: PortfolioProject[] = [
       secondary: "#2f3b52",
       accent: "#f2c14f",
     },
-    website: "https://github.com/kenams/Assistant-PME",
+    website: "https://assistant-pme.vercel.app/",
     mockups: {
       primary: "/mockups/assistant-pme.svg",
       gallery: ["/mockups/assistant-pme.svg"],
