@@ -61,6 +61,40 @@ export const portfolioProjects: PortfolioProject[] = [
     },
   },
   {
+    slug: "kah-prod",
+    name: "KAH Prod",
+    type: "Label / production musicale",
+    tagline: "Site vitrine premium pour un univers musique, image et production.",
+    shortDescription:
+      "Site de label avec direction visuelle marquee, pages claires et base propre pour presenter l'identite, les projets et les demandes.",
+    description:
+      "Mise en place d'un site premium pour porter l'image de KAH Prod avec une structure plus nette, un rendu plus propre et une base evolutive pour la suite.",
+    challenge:
+      "Poser une image forte et moderne pour le label tout en gardant un site lisible, rapide et exploitable.",
+    solution:
+      "Refonte de la home, clarifications des sections, CTA mieux places et base Next.js / Vercel propre pour accompagner la suite du projet.",
+    stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
+    result: "Base web propre, premium et prete pour evoluer",
+    timeline: "2 semaines",
+    deliverables: ["Direction artistique", "Pages vitrines", "CTA et formulaires", "Base de production"],
+    metrics: [
+      { label: "Pages clefs", value: "6+" },
+      { label: "Delai", value: "2 semaines" },
+      { label: "Objectif", value: "Image + leads" },
+    ],
+    highlights: ["Positionnement clarifie", "Base evolutive", "Production Vercel"],
+    palette: {
+      primary: "#07111f",
+      secondary: "#12304e",
+      accent: "#47b8ff",
+    },
+    website: "https://kah-prod.vercel.app/",
+    mockups: {
+      primary: "/mockups/global-dashboard.png",
+      gallery: ["/mockups/global-dashboard.png"],
+    },
+  },
+  {
     slug: "atelier-nomade",
     name: "Atelier Nomade",
     type: "Maison d'architecture",

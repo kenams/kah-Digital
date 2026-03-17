@@ -35,6 +35,40 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     },
   },
   {
+    slug: "kah-prod",
+    name: "KAH Prod",
+    type: "Music label / production",
+    tagline: "Premium website for a music, image, and production universe.",
+    shortDescription:
+      "Label website with strong visual direction, clear service structure, and a clean foundation to present identity, work, and inbound requests.",
+    description:
+      "Built a premium website for KAH Prod to carry the label image with a sharper structure, cleaner rendering, and an evolutive base for the next steps.",
+    challenge:
+      "Create a stronger and more modern image for the label while keeping the site readable, fast, and usable.",
+    solution:
+      "Homepage rewrite, clearer sections, stronger CTAs, and a clean Next.js / Vercel foundation to support future iterations.",
+    stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
+    result: "Clean premium web base ready to evolve",
+    timeline: "2 weeks",
+    deliverables: ["Art direction", "Showcase pages", "CTAs and forms", "Production-ready base"],
+    metrics: [
+      { label: "Key pages", value: "6+" },
+      { label: "Timeline", value: "2 weeks" },
+      { label: "Goal", value: "Image + leads" },
+    ],
+    highlights: ["Clearer positioning", "Scalable base", "Vercel production"],
+    palette: {
+      primary: "#07111f",
+      secondary: "#12304e",
+      accent: "#47b8ff",
+    },
+    website: "https://kah-prod.vercel.app/",
+    mockups: {
+      primary: "/mockups/global-dashboard.png",
+      gallery: ["/mockups/global-dashboard.png"],
+    },
+  },
+  {
     slug: "atelier-nomade",
     name: "Atelier Nomade",
     type: "Architecture studio",
