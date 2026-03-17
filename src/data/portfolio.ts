@@ -91,7 +91,7 @@ export const portfolioProjects: PortfolioProject[] = [
     website: "https://kah-prod.vercel.app/",
     mockups: {
       primary: "/mockups/global-dashboard.png",
-      gallery: ["/mockups/global-dashboard.png"],
+      gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
     },
   },
   {
@@ -121,7 +121,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-atelier-nomade.png",
-      gallery: ["/mockups/portfolio-atelier-nomade.png"],
+      gallery: ["/mockups/atelier-nomade.svg", "/mockups/portfolio-atelier-nomade.png"],
     },
   },
   {
@@ -151,7 +151,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-lumea-skin.png",
-      gallery: ["/mockups/portfolio-lumea-skin.png"],
+      gallery: ["/mockups/lumea-skin.svg", "/mockups/portfolio-lumea-skin.png"],
     },
   },
   {
@@ -180,7 +180,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-novapay.png",
-      gallery: ["/mockups/portfolio-novapay.png"],
+      gallery: ["/mockups/novapay.svg", "/mockups/portfolio-novapay.png"],
     },
   },
   {
@@ -210,7 +210,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-valoris-conseil.png",
-      gallery: ["/mockups/portfolio-valoris-conseil.png"],
+      gallery: ["/mockups/valoris-conseil.svg", "/mockups/portfolio-valoris-conseil.png"],
     },
   },
   {
@@ -240,7 +240,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-pulse-studio.png",
-      gallery: ["/mockups/portfolio-pulse-studio.png"],
+      gallery: ["/mockups/pulse-studio.svg", "/mockups/portfolio-pulse-studio.png"],
     },
   },
   {
@@ -270,7 +270,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-oko-energy.png",
-      gallery: ["/mockups/portfolio-oko-energy.png"],
+      gallery: ["/mockups/oko-energy.svg", "/mockups/portfolio-oko-energy.png"],
     },
   },
   {
@@ -335,7 +335,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-pulselearn.png",
-      gallery: ["/mockups/portfolio-pulselearn.png"],
+      gallery: ["/mockups/pulselearn.svg", "/mockups/portfolio-pulselearn.png"],
     },
   },
   {
