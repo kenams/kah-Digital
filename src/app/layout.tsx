@@ -35,15 +35,24 @@ export const metadata: Metadata = {
     template: "%s | KAH-Digital",
   },
   description:
-    "Agence digitale premium. Sites vitrines, e-commerce et experiences sur mesure avec un process limpide.",
-  keywords: ["agence web", "site vitrine", "Next.js", "landing page", "design system", "KAH-Digital"],
+    "Agence web basée à Lausanne. Sites vitrines, applications web et solutions digitales sur mesure pour la Suisse et l'international.",
+  keywords: [
+    "agence web suisse",
+    "agence web lausanne",
+    "site vitrine suisse",
+    "création site web suisse",
+    "application web suisse",
+    "développement application web",
+    "KAH-Digital",
+  ],
   category: "technology",
   openGraph: {
     type: "website",
-    locale: "fr_FR",
+    locale: "fr_CH",
     alternateLocale: ["en_US"],
     title: "KAH-Digital",
-    description: "Creation de sites, landing pages et experiences digitales. Devis rapide et reponse sous 24h.",
+    description:
+      "Création de sites vitrines et développement d'applications web depuis Lausanne, pour la Suisse et au-delà.",
     url: SITE_URL,
     siteName: "KAH-Digital",
     images: [
@@ -58,7 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "KAH-Digital",
-    description: "Sites et solutions digitales avec process express.",
+    description: "Sites vitrines et applications web sur mesure depuis la Suisse.",
     images: ["/og-kah-digital.png"],
   },
   robots: {
@@ -90,11 +99,11 @@ const structuredData = {
     streetAddress: companyConfig.address,
     addressLocality: companyConfig.city,
     postalCode: companyConfig.postalCode,
-    addressCountry: companyConfig.country,
+    addressCountry: "CH",
   },
-  sameAs: ["https://www.linkedin.com", "https://www.instagram.com"],
-  areaServed: "Global",
-  serviceType: ["Site vitrine", "Landing page", "E-commerce"],
+  areaServed: ["Switzerland", "France", "Europe"],
+  availableLanguage: ["French", "English"],
+  serviceType: ["Site vitrine", "Application web sur mesure", "Landing page", "E-commerce"],
 };
 
 export default function RootLayout({

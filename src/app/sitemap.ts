@@ -7,7 +7,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.v
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
+    "/contact",
     "/offres",
+    "/services",
+    "/services/site-web",
+    "/services/applications",
+    "/services/glpi",
     "/devis",
     "/devis/mvp",
     "/configurateur",
@@ -15,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projets",
     "/lexique",
     "/mentions-legales",
+    "/confidentialite",
     "/politique-de-confidentialite",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
@@ -23,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routesEn = [
     "/en",
+    "/en/contact",
     "/en/offres",
     "/en/devis",
     "/en/devis/mvp",
