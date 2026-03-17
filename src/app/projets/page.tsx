@@ -46,11 +46,11 @@ export default function ProjectsPage() {
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Projets</p>
               <h1 className="mt-3 text-4xl font-bold text-slate-950 sm:text-5xl">
-                Des references plus lisibles, plus proches de ce que nous livrons vraiment.
+                KAH Prod, l'un des projets portes par KAH-Digital.
               </h1>
               <p className="mt-5 max-w-3xl text-lg text-slate-600">
-                Sites vitrines, applications web, MVP mobiles et outils support PME : cette page montre des cas concrets,
-                avec une logique plus claire et plus coherente avec le reste du site.
+                Cette page met en avant KAH Prod comme reference officielle sur cette version du site, avec une presentation
+                plus claire et plus coherente avec le reste de l'univers KAH-Digital.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link

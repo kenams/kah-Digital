@@ -46,11 +46,11 @@ export default function ProjectsPageEn() {
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Projects</p>
               <h1 className="mt-3 text-4xl font-bold text-slate-950 sm:text-5xl">
-                A cleaner project page, aligned with the rest of the site.
+                KAH Prod, one of the projects produced by KAH-Digital.
               </h1>
               <p className="mt-5 max-w-3xl text-lg text-slate-600">
-                Showcase websites, web apps, mobile MVPs, and SMB support tools: this page now presents case studies in a
-                clearer way, closer to how the rest of the public site works.
+                This page now puts KAH Prod forward as the official featured reference on this version of the site, with a
+                presentation aligned with the rest of the KAH-Digital public experience.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
