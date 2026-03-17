@@ -36,6 +36,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
+  const visibleProjects = portfolioProjects.filter((project) => project.slug === "kah-prod");
+
   return (
     <div className="space-y-16 sm:space-y-20">
       <section className="bg-white py-16">
@@ -92,9 +94,9 @@ export default function ProjectsPage() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="text-white">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Etudes de cas</p>
-              <h2 className="mt-3 text-3xl font-bold">Une selection de projets homogene avec le reste du site.</h2>
+              <h2 className="mt-3 text-3xl font-bold">Le projet mis en avant sur cette version du site.</h2>
               <p className="mt-3 max-w-3xl text-white/70">
-                Meme niveau de lecture, meme logique de presentation, et acces direct aux cas qui comptent le plus.
+                Cette page met uniquement en avant KAH Prod pour garder une lecture simple et directe.
               </p>
             </div>
             <Link
@@ -106,7 +108,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {portfolioProjects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>
