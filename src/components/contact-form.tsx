@@ -48,7 +48,7 @@ export function ContactForm() {
       return;
     }
 
-    if (!captchaToken) {
+    if (!token) {
       setStatus("error");
       setServerMessage("Valide le captcha avant d'envoyer.");
       return;
