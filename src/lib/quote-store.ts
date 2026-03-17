@@ -28,7 +28,16 @@ function requireSupabaseClient() {
 
 export async function saveQuoteRecord(quote: QuoteRecord) {
   const client = requireSupabaseClient();
-  const { error } = await client.from("quotes").insert({ ...quote });
+  const payload = { ...quote };
+  let { error } = await client.from("quotes").insert(payload);
+
+  if (error?.code === "PGRST204" && error.message?.includes("'aiModules'")) {
+    // Older Supabase schemas may not yet expose aiModules on quotes.
+    const fallbackPayload = { ...payload };
+    delete (fallbackPayload as Partial<QuoteRecord>).aiModules;
+    ({ error } = await client.from("quotes").insert(fallbackPayload));
+  }
+
   if (error) {
     console.error("[quote-store] Failed to persist quote to Supabase", error);
     throw new Error("Impossible de persister la demande.");
