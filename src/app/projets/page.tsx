@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { AssetGrid } from "@/components/asset-grid";
+import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
-import { assetShots } from "@/data/asset-shots";
 import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata: Metadata = {
   title: "Projets",
-  description: "Selection d'etudes de cas livrees par Kah-Digital.",
+  description: "Sites web, applications et solutions support livres par KAH-Digital depuis la Suisse.",
   alternates: {
     canonical: "/projets",
     languages: {
@@ -17,120 +15,136 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Projets",
-    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    title: "Projets | KAH-Digital",
+    description: "Sites web, applications et solutions support livres par KAH-Digital depuis la Suisse.",
     url: "/projets",
     images: [
       {
         url: "/og-kah-digital.png",
         width: 1200,
         height: 630,
-        alt: "Kah-Digital projets",
+        alt: "KAH-Digital projets",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projets",
-    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    title: "Projets | KAH-Digital",
+    description: "Sites web, applications et solutions support livres par KAH-Digital depuis la Suisse.",
     images: ["/og-kah-digital.png"],
   },
 };
 
 export default function ProjectsPage() {
   return (
-    <div className="section-shell space-y-8">
-      <div className="flex flex-wrap gap-3 text-sm text-white/70">
-        <Link
-          href="/"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
-          Retour a l&apos;accueil
-        </Link>
-        <Link
-          href="/configurateur"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
-          Devis rapide
-        </Link>
-      </div>
-      <Reveal>
-        <div className="premium-card surface-dark rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#0f0d21] to-[#1d1338] p-6 text-white sm:p-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/60">Portfolio</p>
-              <h1 className="text-4xl font-semibold">Nos projets recents</h1>
-              <p className="text-white/70 max-w-3xl">
-                De vitrines narratives a des parcours e-commerce aboutis : voici des cas representatifs de notre studio Next.js
-                + React Native.
+    <div className="space-y-16 sm:space-y-20">
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Projets</p>
+              <h1 className="mt-3 text-4xl font-bold text-slate-950 sm:text-5xl">
+                Des references plus lisibles, plus proches de ce que nous livrons vraiment.
+              </h1>
+              <p className="mt-5 max-w-3xl text-lg text-slate-600">
+                Sites vitrines, applications web, MVP mobiles et outils support PME : cette page montre des cas concrets,
+                avec une logique plus claire et plus coherente avec le reste du site.
               </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/devis"
+                  className="inline-flex items-center rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  Demander un devis
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white"
+                >
+                  Voir les services
+                </Link>
+              </div>
             </div>
-            <div className="premium-card rounded-3xl border border-white/15 bg-white/5 p-4">
-              <Image
-                src="/mockups/global-dashboard.svg"
-                alt="Apercu portfolio Kah-Digital"
-                width={520}
-                height={360}
-                sizes="(min-width: 1024px) 260px, 70vw"
-                className="h-40 w-full rounded-2xl object-cover"
-              />
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Sites web</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950">Vitrine</p>
+                <p className="mt-2 text-sm text-slate-600">Positionnement, pages services, SEO local et conversion.</p>
+              </div>
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Applications</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950">Web / mobile</p>
+                <p className="mt-2 text-sm text-slate-600">Portails, outils metier, MVP et parcours utilisateurs plus clairs.</p>
+              </div>
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Support PME</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950">IA + GLPI</p>
+                <p className="mt-2 text-sm text-slate-600">Assistant support, knowledge base et escalation ticket propre.</p>
+              </div>
             </div>
           </div>
         </div>
-      </Reveal>
-      <div className="grid gap-6 md:grid-cols-2">
-        {portfolioProjects.map((project, index) => (
-          <Reveal key={project.slug} delay={index * 0.05}>
-            <Link
-              href={`/projets/${project.slug}`}
-              className="premium-card surface-dark dark-card relative overflow-hidden rounded-3xl p-6 text-white transition duration-500 hover:-translate-y-1"
-              style={{
-                background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})`,
-              }}
-            >
-              <div
-                className="pointer-events-none absolute inset-0 opacity-40"
-                style={{ background: `radial-gradient(circle at 10% 10%, ${project.palette.accent}, transparent 60%)` }}
-              />
-              <div className="relative space-y-3">
-                <p className="text-xs uppercase tracking-[0.4em] text-white/70">{project.type}</p>
-                <p className="text-2xl font-semibold">{project.name}</p>
-                <p className="text-sm text-white/75">{project.tagline}</p>
-                <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
-                  {project.stack.slice(0, 4).map((tech) => (
-                    <span key={tech} className="rounded-full border border-white/20 px-3 py-1">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-sm font-medium text-white">{project.result}</p>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
-      </div>
+      </section>
 
-      <Reveal>
-        <section className="premium-card surface-dark space-y-6 rounded-[38px] border border-white/10 bg-gradient-to-br from-[#070818] via-[#110b26] to-[#23123d] p-6 text-white shadow-[0_25px_80px_rgba(11,6,32,0.45)] sm:p-8">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-white/60">AssetShots</p>
-              <h2 className="text-3xl font-semibold">Scenes Figma exportees pour chaque projet.</h2>
-              <p className="mt-2 max-w-3xl text-white/70">
-                On livre aussi les mockups HD et versions 3D des ecrans clefs pour alimenter portfolio, dossier investisseur
-                et case study. Disponible en formats light et dark selon les pages.
+      <section className="bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.12),transparent_35%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="text-white">
+              <p className="text-sm uppercase tracking-[0.3em] text-white/55">Etudes de cas</p>
+              <h2 className="mt-3 text-3xl font-bold">Une selection de projets homogene avec le reste du site.</h2>
+              <p className="mt-3 max-w-3xl text-white/70">
+                Meme niveau de lecture, meme logique de presentation, et acces direct aux cas qui comptent le plus.
               </p>
             </div>
             <Link
-              href="/projets"
-              className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+              href="/contact"
+              className="inline-flex items-center rounded-full border border-white/20 px-5 py-2 font-semibold text-white/80 transition-colors hover:border-white hover:text-white"
             >
-              Voir tout le pack
+              Parler de votre projet
             </Link>
           </div>
-          <AssetGrid assets={assetShots.slice(0, 4)} columns="dense" />
-        </section>
-      </Reveal>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {portfolioProjects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-100 py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="rounded-[32px] bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] ring-1 ring-slate-200">
+              <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Suite logique</p>
+                  <h2 className="mt-3 text-3xl font-bold text-slate-950">Vous avez vu les references. Le plus utile maintenant, c'est le cadrage.</h2>
+                  <p className="mt-4 text-lg text-slate-600">
+                    Si vous avez un site a refaire, une application a structurer ou une logique support PME a clarifier,
+                    le plus rapide est de partir sur un brief simple et un devis cadre.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <Link
+                    href="/devis"
+                    className="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                  >
+                    Demander un devis
+                  </Link>
+                  <Link
+                    href="/cahier-des-charges"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white"
+                  >
+                    Ouvrir le cahier des charges
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 }
