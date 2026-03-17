@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 import { brandContact } from "@/config/brand";
+import { getResendClient } from "@/lib/resend";
 
-const resendClient = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const notificationEmails = (process.env.QUOTE_NOTIFICATION_EMAIL ?? brandContact.email ?? "")
   .split(",")
   .map((email) => email.trim())
@@ -49,6 +48,7 @@ function buildSummary(fields: BriefFields, locale: "fr" | "en") {
 }
 
 export async function POST(request: NextRequest) {
+  const resendClient = getResendClient();
   const ip = getRequestIp(request);
   const limit = rateLimit(`brief:${ip}`, rateConfig);
   if (!limit.allowed) {

@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isAdminUser } from "@/lib/auth";
 import { brandContact } from "@/config/brand";
+import { getResendClient } from "@/lib/resend";
 
 export const dynamic = "force-dynamic";
 
-const resendClient = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const replyFrom = "Kah-Digital <notifications@kah-digital.io>";
 const replyTo = brandContact.email;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,6 +90,7 @@ async function requireAdmin() {
 }
 
 export async function POST(request: NextRequest) {
+  const resendClient = getResendClient();
   const rateLimit = consumeRateLimit(getClientIp(request));
   if (!rateLimit.ok) {
     return NextResponse.json(

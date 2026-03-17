@@ -27,7 +27,7 @@ export const companyConfig: CompanyConfig = {
   city: "Lausanne",
   country: "Switzerland",
   email: "kahdigital42@gmail.com",
-  phone: "+33 7 59 55 84 14 (numéro temporaire)",
+  phone: "+33 7 59 55 84 14 (numero temporaire)",
   siren: "901 234 567",
   vatNumber: "FR42 901234567",
   hosting: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789 (USA)",

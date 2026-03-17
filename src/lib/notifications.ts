@@ -1,14 +1,12 @@
-import { Resend } from "resend";
 import type { QuoteRecord } from "@/lib/quote";
-
-const resendClient = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
+import { getResendClient } from "@/lib/resend";
 
 const notificationEmail = process.env.QUOTE_NOTIFICATION_EMAIL;
 const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK;
 
 async function sendEmailNotification(quote: QuoteRecord) {
+  const resendClient = getResendClient();
+
   if (!resendClient || !notificationEmail) {
     console.warn("[notifyQuote] Email notification skipped: missing RESEND_API_KEY or QUOTE_NOTIFICATION_EMAIL");
     return;

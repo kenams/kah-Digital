@@ -3,9 +3,9 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { brandContact } from "@/config/brand";
 import { getRequestIp, rateLimit } from "@/lib/rate-limit";
+import { getResendClient } from "@/lib/resend";
 import { verifyTurnstile } from "@/lib/turnstile";
 
-const resendClient = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const notificationEmail = process.env.QUOTE_NOTIFICATION_EMAIL ?? brandContact.email;
 const contactRateLimit = { windowMs: 10 * 60 * 1000, max: 6 };
 
@@ -21,6 +21,8 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  const resendClient = getResendClient();
+
   if (!resendClient || !notificationEmail) {
     return NextResponse.json({ error: "Service email indisponible" }, { status: 503 });
   }

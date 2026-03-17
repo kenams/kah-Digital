@@ -1,11 +1,20 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#22d3ee"/>
+    <linearGradient id="kah-digital-favicon-k" x1="28" y1="12" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#72CBFF" />
+      <stop offset="1" stop-color="#1F91F3" />
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#05060f"/>
-  <path d="M18 43L12 21h9l5 18 5-18h9l-11 34h-8z" fill="url(#grad)"/>
-  <circle cx="46" cy="23" r="9" stroke="url(#grad)" stroke-width="4" fill="none" />
+  <rect width="64" height="64" rx="18" fill="#050814" />
+  <rect x="6" y="22" width="7" height="7" rx="1.5" fill="#8AD4FF" opacity="0.74" />
+  <rect x="14" y="14" width="7" height="7" rx="1.5" fill="#8AD4FF" opacity="0.8" />
+  <rect x="14" y="30" width="7" height="7" rx="1.5" fill="#4DB8FF" opacity="0.96" />
+  <rect x="22" y="22" width="7" height="7" rx="1.5" fill="#2EA8FF" />
+  <rect x="22" y="38" width="7" height="7" rx="1.5" fill="#4DB8FF" opacity="0.9" />
+  <rect x="30" y="6" width="7" height="7" rx="1.5" fill="#8AD4FF" opacity="0.72" />
+  <rect x="30" y="22" width="7" height="7" rx="1.5" fill="#56BCFF" opacity="0.98" />
+  <rect x="30" y="38" width="7" height="7" rx="1.5" fill="#2EA8FF" />
+  <rect x="30" y="46" width="7" height="7" rx="1.5" fill="#56BCFF" opacity="0.88" />
+  <rect x="38" y="14" width="7" height="7" rx="1.5" fill="#8AD4FF" opacity="0.76" />
+  <path d="M31 12H39V30L49 12H58L45 29L59 52H50L39 35V52H31V12Z" fill="url(#kah-digital-favicon-k)" />
 </svg>
