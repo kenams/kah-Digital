@@ -68,8 +68,8 @@ export function MvpQuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under 10,000 EUR", "10,000 EUR - 20,000 EUR", "20,000 EUR - 30,000 EUR", "30,000 EUR +"]
-    : ["Moins de 10 000 EUR", "10 000 EUR - 20 000 EUR", "20 000 EUR - 30 000 EUR", "30 000 EUR +"];
+    ? ["Under 15,000 CHF", "15,000 CHF - 30,000 CHF", "30,000 CHF - 50,000 CHF", "50,000 CHF +"]
+    : ["Moins de 15 000 CHF", "15 000 CHF - 30 000 CHF", "30 000 CHF - 50 000 CHF", "50 000 CHF +"];
 
   const timelineOptions = isEnglish ? ["ASAP", "4-6 weeks", "6-10 weeks", "3 months +"] : ["ASAP", "4-6 semaines", "6-10 semaines", "3 mois et +"];
 

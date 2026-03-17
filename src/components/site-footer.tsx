@@ -20,7 +20,7 @@ export function SiteFooter() {
           <div className="col-span-1 md:col-span-2">
             <BrandLockup subtitle="Suisse et international" className="mb-4" />
             <p className="text-white/70 mb-4">
-              Solutions digitales rapides pour la Suisse et l'international. Sites web, applications et support IT.
+              Solutions digitales pour la Suisse et l'international. Sites web, applications web et mobiles, support IT et GLPI.
             </p>
             <p className="text-sm text-white/50">
               {registrationStatus}

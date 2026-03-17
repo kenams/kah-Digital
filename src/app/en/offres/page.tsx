@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Clear offers",
-  description: "Simple offer details, budgets, and deliverables.",
+  title: "Web, mobile and SMB offers",
+  description: "KAH-Digital offers calibrated for the Swiss market: websites, web apps, mobile MVPs, and SMB support solutions.",
   alternates: {
     canonical: "/en/offres",
     languages: {
@@ -12,97 +12,110 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Clear offers",
-    description: "Simple offer details, budgets, and deliverables.",
+    title: "Web, mobile and SMB offers",
+    description: "KAH-Digital offers calibrated for the Swiss market: websites, web apps, mobile MVPs, and SMB support solutions.",
     url: "/en/offres",
     images: [
       {
         url: "/og-kah-digital.png",
         width: 1200,
         height: 630,
-        alt: "Kah-Digital offers",
+        alt: "KAH-Digital offers",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clear offers",
-    description: "Simple offer details, budgets, and deliverables.",
+    title: "Web, mobile and SMB offers",
+    description: "KAH-Digital offers calibrated for the Swiss market: websites, web apps, mobile MVPs, and SMB support solutions.",
     images: ["/og-kah-digital.png"],
   },
 };
 
 const offers = [
   {
-    id: "landing-conversion",
-    title: "Conversion landing",
-    price: "1,900 EUR",
-    timeline: "3 weeks",
-    summary: "A single, fast page focused on capturing qualified leads.",
-    why: "The budget covers messaging strategy, custom design, form integration, and QA before launch.",
+    id: "swiss-showcase-site",
+    title: "Showcase website for SMBs",
+    price: "From 3,500 CHF",
+    timeline: "3 to 5 weeks",
+    summary: "A clear website to present the business, build trust, and capture qualified requests.",
+    why: "Calibrated for the Swiss market: message scoping, visual direction, service pages, basic local SEO, and a clean launch.",
     includes: [
-      "Quick workshop + message structure",
-      "Premium design + light animations",
-      "Form + basic tracking",
-      "Launch + QA",
+      "Message structure and sitemap",
+      "Responsive design and service pages",
+      "Contact or quote form",
+      "Basic SEO and launch",
     ],
-    ideal: ["Product campaign", "Brand launch", "Premium offer"],
+    ideal: ["Swiss SMBs", "Consultancies", "Craft businesses", "B2B services"],
+    ctaHref: "/en/devis",
   },
   {
-    id: "portail-membres",
-    title: "Private member portal",
-    price: "5,900 EUR",
-    timeline: "5 weeks",
-    summary: "Secure space for content, subscriptions, and internal dashboards.",
-    why: "The price includes authentication, roles, database setup, and recurring payments.",
+    id: "business-web-app",
+    title: "Business web application",
+    price: "From 9,000 CHF",
+    timeline: "6 to 10 weeks",
+    summary: "A client portal, dashboard, or internal tool to structure a real operational workflow.",
+    why: "The budget covers authentication, permissions, data modelling, business screens, and core backend logic.",
     includes: [
-      "Auth + roles + account management",
-      "Member dashboards",
-      "Recurring payments (Stripe)",
-      "Simple back-office",
+      "Functional scoping",
+      "Auth, roles, and permissions",
+      "Dashboard or client portal",
+      "Database and automations",
     ],
-    ideal: ["Communities", "Training", "B2B SaaS"],
+    ideal: ["Growing SMBs", "Internal operations", "Client portals", "Team tools"],
+    ctaHref: "/en/devis",
   },
   {
-    id: "configurateur-deck",
-    title: "Interactive quote + PDF pack",
-    price: "7,900 EUR",
-    timeline: "6 weeks",
-    summary: "A simple path to estimate a project and generate a clear PDF.",
-    why: "The budget covers the flow, the quote logic, and automatic PDF generation.",
+    id: "mobile-mvp",
+    title: "Mobile MVP",
+    price: "From 14,000 CHF",
+    timeline: "6 to 10 weeks",
+    summary: "An iOS / Android application to test a service, a product, or a mobile-first experience with a controlled scope.",
+    why: "The budget covers mobile design, React Native build, backend logic, and beta / store preparation.",
     includes: [
-      "Multi-step flow",
-      "Quote summary + PDF export",
-      "CRM / Notion connection",
-      "PDF pack template",
+      "MVP scoping and key screens",
+      "React Native / Expo build",
+      "API and database",
+      "TestFlight / Android beta",
     ],
-    ideal: ["Agencies", "Studios", "Sales teams"],
+    ideal: ["Mobile products", "Investor MVPs", "Client apps", "Field operations"],
+    ctaHref: "/en/devis/mvp",
+  },
+  {
+    id: "it-support-glpi",
+    title: "IT support, AI and GLPI",
+    price: "From 4,500 CHF",
+    timeline: "3 to 6 weeks",
+    summary: "First-line AI support, knowledge base, and GLPI ticket escalation when the assistant cannot solve the issue.",
+    why: "The budget covers support scoping, response knowledge, GLPI integration, and workflow safeguards.",
+    includes: [
+      "Support audit",
+      "Knowledge base / procedures",
+      "First-line AI assistant",
+      "GLPI ticket creation and follow-up",
+    ],
+    ideal: ["SMBs with internal IT", "Agency IT teams", "User support", "Helpdesk teams"],
+    ctaHref: "/en/devis",
   },
 ];
 
-export default function OffresPageEn() {
+export default function OffersPageEn() {
   return (
     <div className="section-shell space-y-10">
       <div className="flex flex-wrap gap-3 text-sm text-white/70">
-        <Link
-          href="/en"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
+        <Link href="/en" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
           Back to home
         </Link>
-        <Link
-          href="/en/devis"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
+        <Link href="/en/devis" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
           Request a quote
         </Link>
       </div>
 
       <header className="premium-card rounded-[36px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-10">
-        <p className="text-sm uppercase tracking-[0.3em] text-white/60">Clear offers</p>
-        <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">What each offer includes, and why.</h1>
+        <p className="text-sm uppercase tracking-[0.3em] text-white/60">KAH-Digital offers</p>
+        <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Pricing ranges aligned with the Swiss market.</h1>
         <p className="mt-3 max-w-3xl text-white/70">
-          Goal: make budgets transparent. Each offer lists what is included and the typical delivery time.
+          These ranges are designed for Switzerland-first projects and international projects scoped from Switzerland. Final pricing depends on scope, integrations, and finish level.
         </p>
       </header>
 
@@ -128,7 +141,7 @@ export default function OffresPageEn() {
 
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Why this price</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Why this pricing</p>
                 <p className="mt-3 text-white/70">{offer.why}</p>
               </div>
               <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-5">
@@ -150,17 +163,14 @@ export default function OffresPageEn() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              <Link
-                href="/en/devis"
-                className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200"
-              >
-                Request a quote
+              <Link href={offer.ctaHref} className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200">
+                {offer.ctaHref === "/en/devis/mvp" ? "Request a mobile quote" : "Request a quote"}
               </Link>
               <Link
                 href="/en/configurateur"
                 className="rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
               >
-                Open quick quote
+                Open configurator
               </Link>
             </div>
           </section>

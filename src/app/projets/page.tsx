@@ -8,7 +8,7 @@ import { portfolioProjects } from "@/data/portfolio";
 
 export const metadata: Metadata = {
   title: "Projets",
-  description: "Selection d'etudes de cas livrees par Kah-Digital.",
+  description: "Selection de projets livres par KAH-Digital: sites web, applications et solutions PME depuis la Suisse.",
   alternates: {
     canonical: "/projets",
     languages: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "Projets",
-    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    description: "Selection de projets livres par KAH-Digital: sites web, applications et solutions PME depuis la Suisse.",
     url: "/projets",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Projets",
-    description: "Selection d'etudes de cas livrees par Kah-Digital.",
+    description: "Selection de projets livres par KAH-Digital: sites web, applications et solutions PME depuis la Suisse.",
     images: ["/og-kah-digital.png"],
   },
 };
@@ -59,10 +59,9 @@ export default function ProjectsPage() {
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Portfolio</p>
-              <h1 className="text-4xl font-semibold">Nos projets recents</h1>
+              <h1 className="text-4xl font-semibold">Sites web, applications et solutions PME</h1>
               <p className="text-white/70 max-w-3xl">
-                De vitrines narratives a des parcours e-commerce aboutis : voici des cas representatifs de notre studio Next.js
-                + React Native.
+                De la vitrine professionnelle a l'application metier, jusqu'aux outils support IT relies a GLPI: voici des projets representatifs livres depuis la Suisse.
               </p>
             </div>
             <div className="premium-card rounded-3xl border border-white/15 bg-white/5 p-4">

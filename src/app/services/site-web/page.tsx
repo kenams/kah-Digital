@@ -33,7 +33,7 @@ export default function SiteWebPage() {
   const packages = [
     {
       name: "Site vitrine essentiel",
-      price: "À partir de 2'500 CHF",
+      price: "A partir de 3'500 CHF",
       features: [
         "Site vitrine de 5 à 8 pages",
         "Structure SEO de base",
@@ -43,7 +43,7 @@ export default function SiteWebPage() {
     },
     {
       name: "Site vitrine business",
-      price: "À partir de 5'000 CHF",
+      price: "A partir de 6'500 CHF",
       features: [
         "Pages services approfondies",
         "Blog ou actualités",
@@ -54,7 +54,7 @@ export default function SiteWebPage() {
     },
     {
       name: "Plateforme sur mesure",
-      price: "À partir de 8'000 CHF",
+      price: "A partir de 12'000 CHF",
       features: [
         "Expérience sur mesure",
         "E-commerce ou espace client",

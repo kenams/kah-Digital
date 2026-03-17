@@ -65,8 +65,8 @@ export function QuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under 2,000 EUR", "2,000 EUR - 6,000 EUR", "6,000 EUR - 12,000 EUR", "12,000 EUR +"]
-    : ["Moins de 2 000 EUR", "2 000 EUR - 6 000 EUR", "6 000 EUR - 12 000 EUR", "12 000 EUR +"];
+    ? ["Under 5,000 CHF", "5,000 CHF - 12,000 CHF", "12,000 CHF - 25,000 CHF", "25,000 CHF +"]
+    : ["Moins de 5 000 CHF", "5 000 CHF - 12 000 CHF", "12 000 CHF - 25 000 CHF", "25 000 CHF +"];
 
   const timelineOptions = isEnglish ? ["ASAP", "2-4 weeks", "1-2 months", "3 months +"] : ["ASAP", "2-4 semaines", "1-2 mois", "3 mois et +"];
   const trustItems = isEnglish

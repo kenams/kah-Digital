@@ -20,19 +20,19 @@ export default function ServicesPage() {
     },
     {
       icon: FiSmartphone,
-      title: "Développement d'applications web",
+      title: "Applications web et mobiles",
       description:
-        "Des applications métier, dashboards, espaces clients et outils internes pour automatiser ce qui vous ralentit.",
+        "Des applications metier, dashboards, espaces clients et MVP mobiles pour automatiser ce qui vous ralentit.",
       href: "/services/applications",
-      features: ["Architecture évolutive", "Interface simple à prendre en main", "Intégrations API", "Support continu"],
+      features: ["Architecture evolutive", "Portails et dashboards", "MVP mobile iOS / Android", "Integrations API"],
     },
     {
       icon: FiTool,
-      title: "GLPI et portail de tickets IT",
+      title: "Support IT intelligent / GLPI",
       description:
-        "La mise en place d'un support IT structuré avec GLPI pour suivre vos tickets, équipements et demandes internes.",
+        "La mise en place d'un support IT structure avec GLPI, base de connaissances et assistant IA de premier niveau.",
       href: "/services/glpi",
-      features: ["Installation complète", "Configuration personnalisée", "Formation équipe", "Maintenance préventive"],
+      features: ["Installation complete", "Base de connaissances", "Assistant IA + escalation ticket", "Maintenance preventive"],
     },
   ];
 

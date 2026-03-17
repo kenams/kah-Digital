@@ -35,6 +35,40 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     },
   },
   {
+    slug: "kah-prod",
+    name: "KAH Prod",
+    type: "Video / production studio",
+    tagline: "Premium website base for a visual production business.",
+    shortDescription:
+      "Corporate website and production showcase with clear service pages, form flows, and a scalable foundation.",
+    description:
+      "This project contributed to the production foundation of KAH Prod's web presence. The goal was to build a cleaner, sharper website able to present offers, references, and inbound requests without losing a premium feel.",
+    challenge:
+      "Align the studio image with a stronger execution level and a website structure that could evolve quickly.",
+    solution:
+      "Homepage rewrite, sharper service sections, stronger CTAs, and a clean Next.js / Vercel base to keep iterating.",
+    stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
+    result: "Clean web foundation, usable in production and ready to evolve",
+    timeline: "2 weeks",
+    deliverables: ["Homepage direction", "Service pages", "CTAs and forms", "Production-ready base"],
+    metrics: [
+      { label: "Key pages", value: "6+" },
+      { label: "Timeline", value: "2 weeks" },
+      { label: "Goal", value: "Lead ready" },
+    ],
+    highlights: ["Clearer positioning", "Scalable base", "Vercel production"],
+    palette: {
+      primary: "#07111f",
+      secondary: "#12304e",
+      accent: "#47b8ff",
+    },
+    website: "https://kah-prod.vercel.app/",
+    mockups: {
+      primary: "/mockups/global-dashboard.png",
+      gallery: ["/mockups/global-dashboard.png"],
+    },
+  },
+  {
     slug: "atelier-nomade",
     name: "Atelier Nomade",
     type: "Architecture studio",
@@ -281,30 +315,30 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     slug: "assistant-pme",
     name: "Assistant Support IT",
     type: "IT Support MVP",
-    tagline: "AI assistant to reduce repetitive IT tickets.",
+    tagline: "AI assistant + GLPI to reduce repetitive IT tickets.",
     shortDescription:
-      "Support chat, knowledge base, and GLPI ticket creation for IT teams.",
+      "Support chat, knowledge base, and GLPI ticket creation for IT teams and end users.",
     description:
-      "An IT support assistant for SMBs that guides users, suggests procedures, then creates a structured ticket if the issue persists.",
+      "An IT support solution for SMBs where users can talk to a first-line AI assistant, follow procedures, then escalate to a structured GLPI ticket if the issue remains open.",
     challenge:
-      "Too many simple tickets, not enough context, and time wasted on repetitive requests.",
+      "Too many simple tickets, not enough context in requests, and too much time lost on repetitive incidents.",
     solution:
-      "Clear conversational flow, procedure search, auto ticketing, and an admin panel to track activity.",
+      "Clear conversational flow, procedure search, GLPI escalation, and an admin panel to track recurring support patterns.",
     stack: ["Node.js", "Express", "HTML/CSS", "GLPI", "OpenAI"],
-    result: "MVP ready for client demos",
+    result: "MVP ready for client demos and SMB support scoping",
     timeline: "4 weeks",
     deliverables: [
       "User support UI",
-      "Ticket workflow",
+      "AI + ticket workflow",
       "Admin dashboard",
       "Knowledge base",
     ],
     metrics: [
-      { label: "Channels", value: "Chat + Ticket" },
+      { label: "Channels", value: "AI + Ticket" },
       { label: "Languages", value: "FR/EN/ES" },
       { label: "Stage", value: "MVP" },
     ],
-    highlights: ["Structured tickets", "Quick guides", "GLPI-ready"],
+    highlights: ["AI assistant", "Structured tickets", "GLPI-ready"],
     palette: {
       primary: "#1f2a3a",
       secondary: "#2f3b52",

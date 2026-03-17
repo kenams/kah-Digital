@@ -1,223 +1,203 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { FiCheck, FiClock, FiShield, FiUsers, FiTool, FiTrendingUp } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiClock, FiCpu, FiLifeBuoy, FiShield, FiTool, FiUsers } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "GLPI - Systeme de tickets IT pour PME",
-  description: "Installation et configuration de GLPI pour structurer votre support informatique. Solution idéale pour PME suisses.",
+  title: "Support IT, GLPI et assistant IA en Suisse",
+  description:
+    "Mise en place de GLPI, base de connaissances et assistant IA pour reduire les tickets repetitifs dans les PME suisses.",
 };
 
 export default function GLPIPage() {
-  const whatIsGLPI = [
-    "Logiciel open source de gestion des services informatiques",
-    "Système de tickets pour suivre les demandes et incidents",
-    "Base de connaissances intégrée",
-    "Gestion des équipements et contrats",
-    "Rapports et statistiques détaillés",
+  const pillars = [
+    "Base de connaissances et procedures support",
+    "Assistant IA de premier niveau pour guider l'utilisateur",
+    "Creation de ticket GLPI si le probleme persiste",
+    "Suivi des demandes, priorites et historique",
+    "Vision plus claire du support et des points de friction",
   ];
 
   const benefits = [
     {
       icon: FiClock,
-      title: "Traitement rapide des demandes",
-      description: "Suivi structuré et priorisation des interventions IT.",
+      title: "Moins de tickets repetitifs",
+      description: "Les demandes simples sont absorbees par les procedures et l'assistant avant d'arriver a l'equipe IT.",
     },
     {
       icon: FiUsers,
-      title: "Collaboration équipe",
-      description: "Visibilité pour tous les intervenants sur l'état des tickets.",
+      title: "Utilisateurs mieux guides",
+      description: "Le support est plus simple a utiliser, plus lisible et moins frustrant pour les equipes.",
     },
     {
       icon: FiShield,
-      title: "Traçabilité complète",
-      description: "Historique détaillé de toutes les interventions.",
+      title: "Tickets mieux qualifies",
+      description: "Quand un ticket GLPI est cree, les informations utiles sont deja structurees pour accelerer le traitement.",
     },
     {
-      icon: FiTrendingUp,
-      title: "Amélioration continue",
-      description: "Statistiques pour optimiser vos processus IT.",
+      icon: FiLifeBuoy,
+      title: "Support PME plus mature",
+      description: "Tu gardes une logique d'escalade simple, comprensible et adaptee a une PME, pas un systeme trop lourd.",
     },
   ];
 
-  const services = [
+  const offers = [
     {
-      title: "Installation complète",
-      description: "Mise en place de GLPI sur votre serveur ou dans le cloud.",
-      price: "À partir de 1'200 CHF",
+      title: "Audit support + cadrage",
+      description: "Analyse des demandes frequentes, parcours utilisateur, et plan de mise en place.",
+      price: "A partir de 1'500 CHF",
     },
     {
-      title: "Configuration personnalisée",
-      description: "Adaptation aux processus spécifiques de votre entreprise.",
-      price: "À partir de 800 CHF",
+      title: "GLPI + base de connaissances",
+      description: "Structuration des tickets, procedures, categories, priorites et documentation support.",
+      price: "A partir de 4'500 CHF",
     },
     {
-      title: "Formation équipe",
-      description: "Sessions de formation pour vos techniciens et utilisateurs.",
-      price: "À partir de 600 CHF",
+      title: "Assistant IA + escalation GLPI",
+      description: "Assistant support, reponses guidees, puis creation de ticket GLPI si l'utilisateur n'est pas depanne.",
+      price: "A partir de 8'500 CHF",
     },
     {
-      title: "Maintenance & support",
-      description: "Mises à jour, sauvegardes et support technique continu.",
-      price: "À partir de 150 CHF/mois",
+      title: "Maintenance et optimisation",
+      description: "Suivi, ajustements, nouvelles procedures et supervision des cas repetitifs.",
+      price: "A partir de 290 CHF / mois",
     },
   ];
 
   const useCases = [
-    "Support technique pour employés",
-    "Gestion des incidents informatiques",
-    "Suivi des demandes d'évolution",
-    "Inventaire des équipements",
-    "Gestion des contrats de maintenance",
-    "Rapports d'activité IT",
+    "Support utilisateurs internes dans une PME",
+    "Premiere ligne IT avec assistant IA + knowledge base",
+    "Creation de tickets GLPI apres echec du self-service",
+    "Reduction du temps passe sur les demandes recurrentes",
+    "Qualification plus propre des incidents et demandes",
+    "Visibilite sur les themes qui reviennent le plus souvent",
   ];
 
   return (
     <>
-        {/* Hero */}
-        <section className="bg-gradient-to-r from-green-600 to-teal-600 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-              GLPI : Système de tickets IT pour PME
-            </h1>
-            <p className="text-xl max-w-2xl mb-8">
-              Structurez votre support informatique avec une solution professionnelle, simple et efficace.
+      <section className="bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900 py-20 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <p className="text-sm uppercase tracking-[0.3em] text-emerald-200/80">Support IT pour PME suisses</p>
+            <h1 className="mt-4 text-4xl font-bold sm:text-5xl">GLPI, knowledge base et assistant IA de support</h1>
+            <p className="mt-6 max-w-3xl text-xl text-emerald-50">
+              L'objectif n'est pas seulement d'installer GLPI. L'objectif est de faire gagner du temps aux utilisateurs et a l'equipe IT, avec un premier niveau guide par IA puis une creation de ticket propre si le probleme reste ouvert.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/devis"
-                className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                className="rounded-full bg-white px-8 py-3 font-semibold text-slate-950 transition-colors hover:bg-slate-100"
               >
-                Obtenir un devis
+                Demander un devis GLPI
               </Link>
               <Link
-                href="#services"
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors"
+                href="/projets/assistant-pme"
+                className="inline-flex items-center rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-slate-950"
               >
-                Voir les services
+                Voir le cas support IT <FiArrowRight className="ml-2" />
               </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* What is GLPI */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Qu'est-ce que GLPI ?</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Un outil complet de gestion des services informatiques adapté aux PME
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {whatIsGLPI.map((feature, index) => (
-                <div key={index} className="flex items-start bg-gray-50 rounded-lg p-6">
-                  <FiCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" size={20} />
-                  <span className="text-gray-800">{feature}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Bénéfices pour votre PME</h2>
-              <p className="text-xl text-gray-600">Une organisation IT professionnelle sans complexité</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="text-center bg-white rounded-lg p-6 shadow-md">
-                  <benefit.icon className="text-green-600 mx-auto mb-4" size={48} />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Use Cases */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Cas d'usage courants</h2>
-              <p className="text-xl text-gray-600">Comment GLPI améliore votre quotidien</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {useCases.map((useCase, index) => (
-                <div key={index} className="bg-gray-50 rounded-lg p-6">
-                  <FiTool className="text-green-600 mb-3" size={24} />
-                  <p className="text-gray-800 font-medium">{useCase}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Nos services GLPI</h2>
-              <p className="text-xl text-gray-600">Accompagnement complet de A à Z</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <div key={index} className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <p className="text-green-600 font-semibold text-lg">{service.price}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Pourquoi nous choisir ?</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <FiUsers className="text-green-600 mx-auto mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Expertise PME</h3>
-                <p className="text-gray-600">Nous connaissons les contraintes des petites structures et proposons des solutions adaptées.</p>
-              </div>
-              <div className="text-center">
-                <FiClock className="text-green-600 mx-auto mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Rapidité d'intervention</h3>
-                <p className="text-gray-600">Installation et configuration rapides pour une mise en service dans les meilleurs délais.</p>
-              </div>
-              <div className="text-center">
-                <FiShield className="text-green-600 mx-auto mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Support continu</h3>
-                <p className="text-gray-600">Accompagnement post-déploiement et maintenance pour assurer le bon fonctionnement.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 bg-green-600 text-white">
-          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-4">
-              Prêt à structurer votre support IT ?
-            </h2>
-            <p className="text-xl mb-8">
-              Découvrez comment GLPI peut transformer l'organisation informatique de votre PME.
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-950">Ce que nous mettons en place</h2>
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-slate-600">
+              Une solution de support plus utile pour les PME: moins de friction pour les utilisateurs, plus de structure pour l'IT.
             </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {pillars.map((item) => (
+              <div key={item} className="flex items-start rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <FiCheck className="mt-1 mr-3 flex-shrink-0 text-emerald-600" size={20} />
+                <span className="text-slate-800">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-100 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-950">Benefices concrets</h2>
+            <p className="mt-4 text-lg text-slate-600">Une logique support plus claire, plus rapide, plus exploitable.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 text-center">
+                <benefit.icon className="mx-auto mb-4 text-emerald-600" size={46} />
+                <h3 className="text-xl font-semibold text-slate-950">{benefit.title}</h3>
+                <p className="mt-3 text-slate-600">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-950">Cas d'usage les plus frequents</h2>
+            <p className="mt-4 text-lg text-slate-600">Le bon point de depart: un vrai probleme support a simplifier.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {useCases.map((useCase) => (
+              <div key={useCase} className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+                <FiTool className="mb-3 text-emerald-600" size={24} />
+                <p className="font-medium text-slate-800">{useCase}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-100 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Cadres d'intervention</p>
+            <h2 className="mt-3 text-3xl font-bold text-slate-950">Offres support IT et GLPI</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {offers.map((offer) => (
+              <div key={offer.title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+                <div className="mb-4 inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs uppercase tracking-[0.3em] text-emerald-700">
+                  <FiCpu className="mr-2" />
+                  Support
+                </div>
+                <h3 className="text-xl font-semibold text-slate-950">{offer.title}</h3>
+                <p className="mt-3 text-slate-600">{offer.description}</p>
+                <p className="mt-5 text-lg font-semibold text-emerald-700">{offer.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-emerald-600 py-16 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold">Pret a structurer le support de votre PME ?</h2>
+          <p className="mt-4 text-xl">
+            On peut partir d'un GLPI simple, d'une base de connaissances utile, ou d'un assistant IA connecte a votre workflow.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/devis"
-              className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              className="rounded-full bg-white px-8 py-3 font-semibold text-emerald-700 transition-colors hover:bg-slate-100"
             >
-              Demander un devis GLPI
+              Demander un devis
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-emerald-700"
+            >
+              Nous contacter
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
     </>
-    );
-  }
+  );
+}

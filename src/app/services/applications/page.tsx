@@ -3,15 +3,15 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiCode, FiDatabase, FiLayers, FiMapPin, FiSmartphone } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Développement d'application web en Suisse",
+  title: "Developpement d'applications web et mobiles en Suisse",
   description:
-    "Développement d'application web sur mesure en Suisse romande : outils métier, tableaux de bord, espaces clients et automatisations connectées à vos processus.",
+    "Developpement d'applications web et mobiles en Suisse romande : outils metier, tableaux de bord, espaces clients, MVP mobiles et automatisations connectees a vos processus.",
   keywords: [
-    "développement application web suisse",
+    "developpement application web suisse",
     "application web lausanne",
-    "outil métier sur mesure",
+    "application mobile suisse",
+    "outil metier sur mesure",
     "dashboard sur mesure suisse",
-    "développeur application web suisse romande",
   ],
 };
 
@@ -21,6 +21,7 @@ export default function ApplicationsPage() {
     "Espaces clients et portails sécurisés",
     "Outils de réservation, planning ou affectation",
     "Applications internes pour équipes commerciales ou opérationnelles",
+    "MVP mobile pour tester un service ou un produit",
     "Automatisation de tâches administratives répétitives",
     "Connexions entre vos outils métiers existants",
   ];
@@ -65,10 +66,10 @@ export default function ApplicationsPage() {
             <FiMapPin className="mr-2" />
             Applications web conçues depuis Lausanne
           </span>
-          <h1 className="mt-6 text-4xl font-bold sm:text-5xl">Développement d'application web en Suisse</h1>
+          <h1 className="mt-6 text-4xl font-bold sm:text-5xl">Developpement d'applications web et mobiles en Suisse</h1>
           <p className="mt-6 max-w-3xl text-xl text-indigo-50">
-            Nous développons des applications web sur mesure pour simplifier vos opérations, centraliser les
-            informations utiles et éliminer les tâches manuelles qui coûtent du temps.
+            Nous developpons des applications web sur mesure, des portails clients et des MVP mobiles pour simplifier vos operations, centraliser les
+            informations utiles et eliminer les taches manuelles qui coutent du temps.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link

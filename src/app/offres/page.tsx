@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Offres claires",
-  description: "Details simples des offres, du budget et des livrables.",
+  title: "Offres web, mobile et solutions PME",
+  description: "Offres Kah-Digital basees sur le marche suisse pour les sites web, applications et solutions PME.",
   alternates: {
     canonical: "/offres",
     languages: {
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Offres claires",
-    description: "Details simples des offres, du budget et des livrables.",
+    title: "Offres web, mobile et solutions PME",
+    description: "Offres Kah-Digital basees sur le marche suisse pour les sites web, applications et solutions PME.",
     url: "/offres",
     images: [
       {
@@ -26,57 +26,76 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Offres claires",
-    description: "Details simples des offres, du budget et des livrables.",
+    title: "Offres web, mobile et solutions PME",
+    description: "Offres Kah-Digital basees sur le marche suisse pour les sites web, applications et solutions PME.",
     images: ["/og-kah-digital.png"],
   },
 };
 
 const offers = [
   {
-    id: "landing-conversion",
-    title: "Landing conversion",
-    price: "1 900 EUR",
-    timeline: "3 semaines",
-    summary: "Une page unique, rapide et orientee conversion pour capter des leads qualifies.",
-    why: "Le budget couvre la strategie de message, un design sur mesure, l'integration du formulaire et la QA avant mise en ligne.",
+    id: "site-vitrine-suisse",
+    title: "Site vitrine PME",
+    price: "Des 3'500 CHF",
+    timeline: "3 a 5 semaines",
+    summary: "Un site clair pour presenter l'activite, rassurer les prospects et capter des demandes qualifiees.",
+    why: "Calibre pour le marche suisse: cadrage, direction visuelle, pages services, SEO local de base et mise en ligne propre.",
     includes: [
-      "Workshop express + structure du message",
-      "Design premium + animations legeres",
-      "Formulaire + tracking basique",
-      "Mise en ligne + QA",
+      "Arborescence + message principal",
+      "Design responsive et pages services",
+      "Formulaire de contact ou devis",
+      "SEO de base + mise en ligne",
     ],
-    ideal: ["Campagne produit", "Lancement marque", "Offre premium"],
+    ideal: ["PME suisses", "Cabinets", "Artisans", "Services B2B"],
+    ctaHref: "/devis",
   },
   {
-    id: "portail-membres",
-    title: "Portail membres priv\u00e9",
-    price: "5 900 EUR",
-    timeline: "5 semaines",
-    summary: "Espace securise pour contenus, abonnements et tableaux de bord internes.",
-    why: "Le prix inclut l'authentification, la gestion des roles, la base de donnees et les paiements recurrents.",
+    id: "application-metier",
+    title: "Application web metier",
+    price: "Des 9'000 CHF",
+    timeline: "6 a 10 semaines",
+    summary: "Un portail client, dashboard ou outil interne pour structurer un process concret dans l'entreprise.",
+    why: "Le budget couvre l'authentification, les roles, la base de donnees, les ecrans metier et la logique back-end.",
     includes: [
-      "Auth + roles + gestion comptes",
-      "Dashboard et pages membres",
-      "Paiements recurrents (Stripe)",
-      "Back-office simple",
+      "Cadrage fonctionnel",
+      "Auth + roles + permissions",
+      "Dashboard / espace client",
+      "Base de donnees et automatisations",
     ],
-    ideal: ["Communautes", "Formations", "SaaS B2B"],
+    ideal: ["PME en croissance", "Operations internes", "Portails clients", "Outils equipe"],
+    ctaHref: "/devis",
   },
   {
-    id: "configurateur-deck",
-    title: "Devis interactif + dossier PDF",
-    price: "7 900 EUR",
-    timeline: "6 semaines",
-    summary: "Un parcours simple pour estimer un projet et generer un PDF clair.",
-    why: "Le budget couvre les ecrans, le calcul du devis et la generation automatique du PDF.",
+    id: "mvp-mobile",
+    title: "MVP mobile",
+    price: "Des 14'000 CHF",
+    timeline: "6 a 10 semaines",
+    summary: "Une application iOS / Android pour tester un service, un produit ou une experience mobile avec un scope propre.",
+    why: "Le budget couvre le design mobile, le build React Native, la logique serveur et la preparation beta / stores.",
     includes: [
-      "Parcours en quelques etapes",
-      "Synthese devis + export PDF",
-      "Connexion CRM / Notion",
-      "Modele de dossier PDF",
+      "Cadrage MVP et ecrans critiques",
+      "Build React Native / Expo",
+      "API / base de donnees",
+      "Beta TestFlight / Android",
     ],
-    ideal: ["Agences", "Studios", "Equipes sales"],
+    ideal: ["Produit mobile", "MVP investisseur", "App client", "Service terrain"],
+    ctaHref: "/devis/mvp",
+  },
+  {
+    id: "support-it-glpi",
+    title: "Support IT, IA et GLPI",
+    price: "Des 4'500 CHF",
+    timeline: "3 a 6 semaines",
+    summary: "Assistant support de premier niveau, base de connaissances et escalation vers tickets GLPI si l'IA ne suffit pas.",
+    why: "Le budget couvre le cadrage support, la base de reponses, l'integration GLPI et les garde-fous de workflow.",
+    includes: [
+      "Audit du support existant",
+      "Base de connaissances / procedures",
+      "Assistant IA de premier niveau",
+      "Creation de tickets GLPI et suivi",
+    ],
+    ideal: ["PME avec support interne", "IT d'agence", "Support utilisateur", "Equipes helpdesk"],
+    ctaHref: "/devis",
   },
 ];
 
@@ -84,25 +103,19 @@ export default function OffresPage() {
   return (
     <div className="section-shell space-y-10">
       <div className="flex flex-wrap gap-3 text-sm text-white/70">
-        <Link
-          href="/"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
-          Retour a l&apos;accueil
+        <Link href="/" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
+          Retour a l'accueil
         </Link>
-        <Link
-          href="/devis"
-          className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white"
-        >
+        <Link href="/devis" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
           Demander un devis
         </Link>
       </div>
 
       <header className="premium-card rounded-[36px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-10">
-        <p className="text-sm uppercase tracking-[0.3em] text-white/60">Offres claires</p>
-        <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Ce que couvre chaque offre, et pourquoi.</h1>
+        <p className="text-sm uppercase tracking-[0.3em] text-white/60">Offres Kah-Digital</p>
+        <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">Des offres coherentes avec le marche suisse.</h1>
         <p className="mt-3 max-w-3xl text-white/70">
-          Objectif: rendre les budgets transparents. Chaque offre liste ce qui est inclus et le temps de production moyen.
+          Ces fourchettes sont pensees pour la Suisse romande et les projets internationaux cadres depuis la Suisse. Le scope final reste affine selon le projet, les integrations et le niveau de finition.
         </p>
       </header>
 
@@ -150,11 +163,8 @@ export default function OffresPage() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              <Link
-                href="/devis"
-                className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200"
-              >
-                Demander un devis
+              <Link href={offer.ctaHref} className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200">
+                {offer.ctaHref === "/devis/mvp" ? "Demander un devis mobile" : "Demander un devis"}
               </Link>
               <Link
                 href="/configurateur"

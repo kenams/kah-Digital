@@ -61,6 +61,40 @@ export const portfolioProjects: PortfolioProject[] = [
     },
   },
   {
+    slug: "kah-prod",
+    name: "KAH Prod",
+    type: "Studio video / production",
+    tagline: "Base de site premium pour une activite de production visuelle.",
+    shortDescription:
+      "Site corporate et vitrine de production avec direction visuelle, pages services, formulaire et base evolutive pour la suite.",
+    description:
+      "Ce projet a servi de base de production pour la presence web de KAH Prod. L'objectif etait de poser un site propre, plus lisible, capable de presenter les offres, les references et les demandes entrantes sans perdre l'image premium.",
+    challenge:
+      "Aligner l'image du studio avec une execution plus nette, plus moderne, et une structure capable d'evoluer rapidement.",
+    solution:
+      "Refonte de la structure, hero plus fort, sections de services plus claires, CTA mieux places et base Next.js / Vercel propre pour continuer a iterer.",
+    stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
+    result: "Base web propre, exploitable et prete pour la suite",
+    timeline: "2 semaines",
+    deliverables: ["Direction de home", "Pages services", "CTA et formulaires", "Base de production"],
+    metrics: [
+      { label: "Pages clefs", value: "6+" },
+      { label: "Delai", value: "2 semaines" },
+      { label: "Objectif", value: "Lead ready" },
+    ],
+    highlights: ["Positionnement clarifie", "Base evolutive", "Production Vercel"],
+    palette: {
+      primary: "#07111f",
+      secondary: "#12304e",
+      accent: "#47b8ff",
+    },
+    website: "https://kah-prod.vercel.app/",
+    mockups: {
+      primary: "/mockups/global-dashboard.png",
+      gallery: ["/mockups/global-dashboard.png"],
+    },
+  },
+  {
     slug: "atelier-nomade",
     name: "Atelier Nomade",
     type: "Maison d'architecture",
@@ -308,30 +342,30 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: "assistant-pme",
     name: "Assistant Support IT",
     type: "MVP Support PME",
-    tagline: "Assistant IA pour reduire les tickets IT repetitifs.",
+    tagline: "Assistant IA + GLPI pour reduire les tickets IT repetitifs.",
     shortDescription:
-      "Chat support, base de connaissances et creation de tickets GLPI pour les equipes IT.",
+      "Chat support, base de connaissances et creation de tickets GLPI pour les equipes IT et les utilisateurs.",
     description:
-      "Un assistant support pour PME qui guide les utilisateurs, propose des procedures, puis cree un ticket structure si le probleme persiste.",
+      "Une solution support pour PME qui laisse l'utilisateur dialoguer avec une IA de premier niveau, suivre une procedure, puis basculer vers un ticket GLPI structure si le probleme reste ouvert.",
     challenge:
-      "Trop de tickets simples, peu d'informations utiles et un temps perdu sur des demandes repetitives.",
+      "Trop de tickets simples, peu d'informations utiles dans les demandes, et trop de temps perdu sur des incidents repetitifs.",
     solution:
-      "Parcours conversationnel clair, recherche de procedures, ticket auto, et panneau admin pour suivre l'activite.",
+      "Parcours conversationnel clair, recherche de procedures, escalation ticket GLPI et panneau admin pour suivre les themes les plus frequents.",
     stack: ["Node.js", "Express", "HTML/CSS", "GLPI", "OpenAI"],
-    result: "MVP pret pour demos client",
+    result: "MVP pret pour demos client et cadrage PME",
     timeline: "4 semaines",
     deliverables: [
       "UI support utilisateur",
-      "Workflow ticket",
+      "Workflow IA + ticket",
       "Dashboard admin",
       "Base de connaissances",
     ],
     metrics: [
-      { label: "Canaux", value: "Chat + Ticket" },
+      { label: "Canaux", value: "IA + Ticket" },
       { label: "Langues", value: "FR/EN/ES" },
       { label: "Mode", value: "MVP" },
     ],
-    highlights: ["Tickets structures", "Guides rapides", "GLPI-ready"],
+    highlights: ["Assistant IA", "Tickets structures", "GLPI-ready"],
     palette: {
       primary: "#1f2a3a",
       secondary: "#2f3b52",

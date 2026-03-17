@@ -1,7 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowRight, FiCheckCircle, FiClock, FiGlobe, FiMapPin, FiSmartphone } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiCheckCircle,
+  FiClock,
+  FiGlobe,
+  FiLifeBuoy,
+  FiMapPin,
+  FiSmartphone,
+} from "react-icons/fi";
 import { ContactCard } from "@/components/contact-card";
 import { ProjectCard } from "@/components/project-card";
 import { Testimonials } from "@/components/testimonials";
@@ -17,7 +25,12 @@ type HomePageClientProps = {
 export function HomePageClient({ data }: HomePageClientProps) {
   const { services, processSteps, stats, fastDeals } = data;
   const { isEnglish, prefix } = useLocale();
-  const projects = (isEnglish ? portfolioProjectsEn : portfolioProjects).slice(0, 3);
+  const projectPool = isEnglish ? portfolioProjectsEn : portfolioProjects;
+  const preferredSlugs = ["kah-prod", "assistant-pme", "fairbuild-mvp"];
+  const projects = preferredSlugs
+    .map((slug) => projectPool.find((project) => project.slug === slug))
+    .filter((project): project is (typeof projectPool)[number] => Boolean(project));
+  const visibleProjects = projects.length > 0 ? projects : projectPool.slice(0, 3);
 
   const withPrefix = (path: string) => {
     if (!path.startsWith("/")) return path;
@@ -27,8 +40,8 @@ export function HomePageClient({ data }: HomePageClientProps) {
   };
 
   const heroBadges = isEnglish
-    ? ["Lausanne, Switzerland", "Sites vitrines", "Applications web", "Delivery with clear scope"]
-    : ["Lausanne, Suisse", "Sites vitrines", "Applications web", "Livraison avec cadrage clair"];
+    ? ["Lausanne, Switzerland", "Showcase websites", "Web & mobile apps", "SMB support tools"]
+    : ["Lausanne, Suisse", "Sites vitrines", "Applications web et mobiles", "Outils support PME"];
 
   const highlights = isEnglish
     ? [
@@ -69,14 +82,14 @@ export function HomePageClient({ data }: HomePageClientProps) {
 
               <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                 {isEnglish
-                  ? "Websites and digital tools aligned with the rest of your business."
-                  : "Des sites et outils digitaux enfin alignes avec le reste de ton business."}
+                  ? "Websites, apps, and digital tools aligned with real business needs."
+                  : "Des sites, des applications et des outils digitaux alignes avec de vrais besoins business."}
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg text-blue-50 sm:text-xl">
                 {isEnglish
-                  ? "KAH-Digital designs showcase websites, web applications, client portals, and structured digital projects from Lausanne, for Switzerland and beyond."
-                  : "KAH-Digital conçoit des sites vitrines, des applications web, des portails clients et des projets digitaux structures depuis Lausanne, pour la Suisse et au-dela."}
+                  ? "KAH-Digital builds showcase websites, web and mobile applications, client portals, and support tools for SMBs from Lausanne, for Switzerland first and international projects with clear scope."
+                  : "KAH-Digital conçoit des sites vitrines, des applications web et mobiles, des portails clients et des outils support pour les PME depuis Lausanne, avec un cadrage pense d'abord pour la Suisse puis pour l'international."}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
@@ -137,10 +150,11 @@ export function HomePageClient({ data }: HomePageClientProps) {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {services.slice(0, 3).map((service, index) => {
-              const icon = index === 0 ? FiGlobe : index === 1 ? FiSmartphone : FiClock;
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service, index) => {
+              const icon = index === 0 ? FiGlobe : index === 1 ? FiSmartphone : index === 2 ? FiClock : FiLifeBuoy;
               const Icon = icon;
+
               return (
                 <article key={service.title} className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
                   <Icon className="text-blue-600" size={34} />
@@ -191,7 +205,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 </div>
                 <p className="mt-4 text-slate-600">{deal.deliverable}</p>
                 <Link
-                  href={withPrefix("/devis")}
+                  href={withPrefix(deal.href)}
                   className="mt-6 inline-flex items-center rounded-full border border-slate-300 px-5 py-2 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white"
                 >
                   {isEnglish ? "Request this format" : "Demander ce format"}
@@ -247,7 +261,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>

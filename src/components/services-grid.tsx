@@ -13,14 +13,14 @@ export function ServicesGrid() {
     },
     {
       icon: FiSmartphone,
-      title: "Développement d'applications",
-      description: "Applications web métier, dashboards et outils internes pour automatiser vos opérations.",
+      title: "Applications web et mobiles",
+      description: "Applications metier, portails clients et MVP mobiles pour digitaliser une partie concrete de votre activite.",
       href: "/services/applications",
     },
     {
       icon: FiTool,
-      title: "GLPI / Portail de tickets IT",
-      description: "Système de support informatique structuré pour gérer vos tickets, équipements et interventions.",
+      title: "Support IT / GLPI",
+      description: "Assistant IA, base de connaissances et tickets GLPI pour mieux gerer le support des PME.",
       href: "/services/glpi",
     },
   ];

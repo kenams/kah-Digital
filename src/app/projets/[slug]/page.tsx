@@ -197,8 +197,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6">
             <p className="text-sm uppercase tracking-[0.3em] text-white/60">Et ensuite</p>
             <p className="mt-4 text-white/70">
-              Besoin d&apos;un site dans la meme energie ? On adapte ce niveau de qualite a ton univers, avec un process en 4 a 6
-              semaines et des notifications des le brief.
+              Besoin d&apos;une solution dans la meme energie ? On adapte ce niveau de qualite a ton univers, que ce soit pour un site, une application, un outil interne ou une logique support PME.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Link

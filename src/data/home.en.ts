@@ -2,25 +2,25 @@ import type { HomePageData } from "@/data/home";
 
 const services = [
   {
-    title: "Showcase website (business website)",
+    title: "Showcase website for SMBs",
     description:
-      "A clear site to present your business, your offers, and collect inquiries.",
-    tech: "Pages, form, SEO, launch.",
+      "A clear site to present the business, explain the offer, and collect qualified inquiries in Switzerland.",
+    tech: "UX, local SEO, forms, launch.",
   },
   {
-    title: "Online store (e-commerce)",
-    description: "Catalog, cart, and payments to sell online simply.",
-    tech: "Shopify or Stripe, emails, sales tracking.",
+    title: "Web app / client portal",
+    description: "A business tool, client portal, or dashboard to structure a real operational workflow.",
+    tech: "Auth, roles, database, automations.",
   },
   {
-    title: "Client portal / web app",
-    description: "Private area for clients: accounts, content, invoices, or tracking.",
-    tech: "Login, roles, database.",
+    title: "Mobile MVP",
+    description: "An iOS / Android version to test a service, a product, or a mobile-first experience quickly.",
+    tech: "React Native, API, database, stores.",
   },
   {
-    title: "Sales page / landing",
-    description: "A single page to explain an offer and capture leads.",
-    tech: "Clear copy, form, analytics.",
+    title: "IT support assistant / GLPI",
+    description: "AI assistant, knowledge base, and GLPI ticket creation to reduce support load for SMBs.",
+    tech: "OpenAI, GLPI, workflows, ticket escalation.",
   },
 ];
 
@@ -128,33 +128,33 @@ const stats = [
 
 const fastDeals = [
   {
-    title: "Conversion landing",
-    budget: "1,900 EUR",
-    timeline: "3 weeks (incl. QA)",
-    stack: "Next.js, SEO, Email",
-    deliverable: "Single page + form + calendar",
-    href: "/offres#landing-conversion",
+    title: "Showcase website for SMBs",
+    budget: "From 3,500 CHF",
+    timeline: "3 to 5 weeks",
+    stack: "UX, local SEO, form",
+    deliverable: "Business website + service pages + contact",
+    href: "/devis",
   },
   {
-    title: "Private member portal",
-    budget: "5,900 EUR",
-    timeline: "5 weeks",
-    stack: "Supabase Auth, Stripe, Dashboard",
-    deliverable: "Login area + content + recurring payments",
-    href: "/offres#portail-membres",
+    title: "Business web application",
+    budget: "From 9,000 CHF",
+    timeline: "6 to 10 weeks",
+    stack: "Auth, dashboard, database",
+    deliverable: "Client portal, internal tool, or team workspace",
+    href: "/devis",
   },
   {
-    title: "Interactive quote + PDF pack",
-    budget: "7,900 EUR",
-    timeline: "6 weeks",
-    stack: "Next.js, PDF, CRM",
-    deliverable: "Quote simulator + PDF pack",
-    href: "/offres#configurateur-deck",
+    title: "Mobile MVP",
+    budget: "From 14,000 CHF",
+    timeline: "6 to 10 weeks",
+    stack: "React Native, API, stores",
+    deliverable: "iOS / Android application + scalable technical base",
+    href: "/devis/mvp",
   },
 ];
 
 const closingHighlights = [
-  { label: "Indicative budget", value: "2K EUR - 10K EUR" },
+  { label: "Indicative budget", value: "3.5K CHF - 30K+ CHF" },
   { label: "Average sprint", value: "4 to 6 weeks" },
   { label: "Reply within 24h", value: "-24h" },
 ];
@@ -184,7 +184,7 @@ export const aiBusinessGuide = [
   {
     title: "Client automation layer",
     description: "Automated replies, quotes, and follow-ups with brand tone.",
-    pricing: "Indicative budget: 2,900 - 6,900 EUR",
+    pricing: "Indicative budget: 3,500 - 7,500 CHF",
     timeline: "Setup: 2-4 weeks",
     tools: ["ChatGPT", "Make/Zapier", "CRM"],
     image:
@@ -193,7 +193,7 @@ export const aiBusinessGuide = [
   {
     title: "Industry chatbot & support",
     description: "Assistant trained on your content to answer 24/7 and filter requests.",
-    pricing: "Indicative budget: 3,500 - 9,000 EUR",
+    pricing: "Indicative budget: 4,500 - 9,500 CHF",
     timeline: "Setup: 3-5 weeks",
     tools: ["Knowledge base", "Web widget", "Analytics"],
     image:
@@ -202,7 +202,7 @@ export const aiBusinessGuide = [
   {
     title: "Lead qualification & scoring",
     description: "Smart forms, scoring, and routing for sales teams.",
-    pricing: "Indicative budget: 2,400 - 5,900 EUR",
+    pricing: "Indicative budget: 3,000 - 6,500 CHF",
     timeline: "Setup: 2-3 weeks",
     tools: ["Emailing", "CRM", "AI scoring"],
     image:
@@ -211,7 +211,7 @@ export const aiBusinessGuide = [
   {
     title: "AI content & assets pack",
     description: "Templates, copy, and scripts aligned with your brand to move faster.",
-    pricing: "Indicative budget: 1,800 - 4,500 EUR",
+    pricing: "Indicative budget: 2,500 - 5,500 CHF",
     timeline: "Setup: 1-2 weeks",
     tools: ["Notion", "Templates", "Brand kit"],
     image:
@@ -220,7 +220,7 @@ export const aiBusinessGuide = [
   {
     title: "Custom AI micro-tool",
     description: "Internal tool for summaries, extraction, or decision support.",
-    pricing: "Indicative budget: 4,900 - 12,000 EUR",
+    pricing: "Indicative budget: 6,000 - 15,000 CHF",
     timeline: "MVP: 4-6 weeks",
     tools: ["Next.js", "AI API", "Security"],
     image:

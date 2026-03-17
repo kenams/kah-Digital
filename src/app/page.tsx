@@ -5,7 +5,7 @@ import { homeData } from "@/data/home";
 export const metadata: Metadata = {
   title: "Solutions digitales pour la Suisse et l'international",
   description:
-    "Sites premium, apps mobiles, portails clients et modules IA. KAH-Digital accompagne les projets en Suisse et a l'international.",
+    "Sites web, applications web et mobiles, portails clients et solutions PME basees en Suisse. KAH-Digital accompagne la Suisse romande et l'international.",
 };
 
 export default function Home() {
