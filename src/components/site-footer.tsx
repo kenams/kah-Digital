@@ -33,6 +33,7 @@ export function SiteFooter() {
             <ul className="space-y-2">
               <li><Link href="/" className="text-white/70 hover:text-white transition-colors">Accueil</Link></li>
               <li><Link href="/services" className="text-white/70 hover:text-white transition-colors">Services</Link></li>
+              <li><Link href="/projets" className="text-white/70 hover:text-white transition-colors">Projets</Link></li>
               <li><Link href="/services/glpi" className="text-white/70 hover:text-white transition-colors">GLPI</Link></li>
               <li><Link href="/devis" className="text-white/70 hover:text-white transition-colors">Devis</Link></li>
               <li><Link href="/contact" className="text-white/70 hover:text-white transition-colors">Contact</Link></li>

@@ -11,6 +11,7 @@ export function SiteHeader() {
   const navLinks = [
     { label: "Accueil", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Projets", href: "/projets" },
     { label: "GLPI", href: "/services/glpi" },
     { label: "Devis", href: "/devis" },
     { label: "Factures", href: "/factures" },
