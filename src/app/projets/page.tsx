@@ -94,9 +94,9 @@ export default function ProjectsPage() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="text-white">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Etudes de cas</p>
-              <h2 className="mt-3 text-3xl font-bold">Le projet mis en avant sur cette version du site.</h2>
+              <h2 className="mt-3 text-3xl font-bold">KAH Prod, une realisation KAH-Digital pour un univers musique et production.</h2>
               <p className="mt-3 max-w-3xl text-white/70">
-                Cette page met uniquement en avant KAH Prod pour garder une lecture simple et directe.
+                Une reference claire pour montrer le niveau de direction, de structure et de rendu que KAH-Digital peut produire.
               </p>
             </div>
             <Link
