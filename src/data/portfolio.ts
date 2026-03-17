@@ -303,7 +303,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     mockups: {
       primary: "/mockups/portfolio-fairbuild-mvp.png",
-      gallery: ["/mockups/portfolio-fairbuild-mvp.png"],
+      gallery: ["/mockups/fairbuild-mvp.svg", "/mockups/portfolio-fairbuild-mvp.png"],
     },
   },
   {
