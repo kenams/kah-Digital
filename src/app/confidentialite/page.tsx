@@ -86,6 +86,16 @@ export default function ConfidentialitePage() {
           </section>
 
           <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Confidentialite des echanges projet</h2>
+            <p className="text-gray-700">
+              Les informations fonctionnelles, techniques, commerciales ou organisationnelles partagees dans le cadre d'un
+              contact, d'un brief, d'une demonstration, d'un devis ou d'un cadrage sont traitees comme des informations
+              confidentielles dans la limite de ce qui est raisonnablement necessaire a l'etude du projet, a l'execution
+              d'une mission ou au respect de nos obligations legales.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Securite</h2>
             <p className="text-gray-700">
               Nous mettons en oeuvre des mesures techniques et organisationnelles appropriees pour proteger vos donnees

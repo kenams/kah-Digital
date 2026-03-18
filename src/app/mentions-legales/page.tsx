@@ -59,6 +59,27 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Solutions, methodes et systemes proprietaires</h2>
+            <p className="text-gray-700">
+              Les solutions, architectures, methodes de cadrage, parcours support, mecanismes d'assistance, logiques
+              d'orientation, regles d'escalade, documentations, scripts, maquettes, schemas fonctionnels et contenus
+              presentes, decrits ou demonstres par {displayName} restent, sauf accord ecrit contraire, la propriete
+              exclusive de {displayName}. Leur reproduction, adaptation, extraction, retroconception ou reutilisation
+              totale ou partielle sans autorisation ecrite prealable est interdite.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Devis, propositions et demonstrations</h2>
+            <p className="text-gray-700">
+              Les devis, propositions commerciales, audits, maquettes, demonstrations, prototypes, parcours fonctionnels,
+              documents de conception et livrables de presentation communiques avant contractualisation ou en phase de
+              cadrage restent la propriete de {displayName}. Sauf mention contraire expresse, leur transmission ne vaut
+              ni cession de droits, ni autorisation de reproduction, ni autorisation d'exploitation.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Donnees personnelles</h2>
             <p className="text-gray-700">
               Conformement a la Loi federale sur la protection des donnees (LPD), les informations recueillies via les formulaires de contact

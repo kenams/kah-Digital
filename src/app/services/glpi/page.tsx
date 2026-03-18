@@ -81,6 +81,9 @@ export default function GLPIPage() {
             Nous ne gerons pas GLPI a la place de votre equipe. Nous concevons un parcours plus fluide autour de votre
             support, avec une aide virtuelle en premier niveau et une escalation vers ticket quand c'est necessaire.
           </p>
+          <p className="text-sm uppercase tracking-[0.3em] text-white/70">
+            Solution proprietaire KAH-Digital, adaptee a votre organisation support
+          </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/devis"
