@@ -7,20 +7,20 @@ export function ServicesGrid() {
   const services = [
     {
       icon: FiGlobe,
-      title: "Création de sites web",
-      description: "Sites vitrines professionnels, e-commerce et plateformes sur mesure pour votre PME.",
+      title: "Creation de sites web",
+      description: "Sites vitrines professionnels, e-commerce et plateformes sur mesure pour votre entreprise.",
       href: "/services/site-web",
     },
     {
       icon: FiSmartphone,
-      title: "Développement d'applications",
-      description: "Applications web métier, tableaux de bord et outils internes adaptés à vos besoins.",
+      title: "Developpement d'applications",
+      description: "Applications web metier, tableaux de bord et outils internes adaptes a vos besoins.",
       href: "/services/applications",
     },
     {
       icon: FiTool,
-      title: "GLPI / Portail de tickets IT",
-      description: "Système de support informatique structuré pour gérer vos demandes et interventions.",
+      title: "Parcours support connecte a GLPI",
+      description: "Aide virtuelle, orientation des demandes et escalade propre vers votre support et vos tickets.",
       href: "/services/glpi",
     },
   ];
@@ -31,7 +31,7 @@ export function ServicesGrid() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Nos services</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des solutions digitales complètes pour accompagner la croissance de votre entreprise.
+            Des solutions digitales completes pour accompagner la croissance de votre entreprise.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

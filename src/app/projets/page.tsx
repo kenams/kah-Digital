@@ -81,8 +81,8 @@ export default function ProjectsPage() {
               </div>
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Support PME</p>
-                <p className="mt-2 text-2xl font-semibold text-slate-950">IA + GLPI</p>
-                <p className="mt-2 text-sm text-slate-600">Assistant support, knowledge base et escalation ticket propre.</p>
+                <p className="mt-2 text-2xl font-semibold text-slate-950">Aide virtuelle + GLPI</p>
+                <p className="mt-2 text-sm text-slate-600">Parcours support plus clair, base de reponse et escalation ticket propre.</p>
               </div>
             </div>
           </div>

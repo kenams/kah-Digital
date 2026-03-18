@@ -14,14 +14,14 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Solutions digitales rapides
+            KAH-Digital
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-              pour la Suisse et au-dela
+              sites, applications et solutions pour entreprises
             </span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Sites web, applications sur mesure et système de tickets IT GLPI.
-            Accompagnement professionnel à distance pour vos projets digitaux.
+            Sites web, applications sur mesure et solutions de support plus claires.
+            Un accompagnement propre, du cadrage a la mise en ligne, pour la Suisse et l&apos;international.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

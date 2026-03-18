@@ -9,8 +9,9 @@ import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata: Metadata = {
-  title: "Solutions digitales pour la Suisse et l'international",
-  description: "Sites web, applications et système GLPI pour PME. Accompagnement professionnel à distance pour votre transformation digitale.",
+  title: "KAH-Digital | Sites, applications et solutions pour entreprises",
+  description:
+    "Sites web, applications et solutions de support pour entreprises. Accompagnement professionnel a distance depuis la Suisse vers l'international.",
 };
 
 export default function Home() {
