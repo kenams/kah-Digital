@@ -9,7 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteProviders } from "@/components/site-providers";
 import { companyConfig } from "@/config/company";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US"],
     title: "KAH-Digital",
     description: "Creation de sites, landing pages et experiences digitales. Devis rapide et reponse sous 24h.",
-    url: SITE_URL,
+    url: "/",
     siteName: "KAH-Digital",
     images: [
       {
@@ -66,10 +66,10 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: "/",
     languages: {
-      fr: SITE_URL,
-      en: `${SITE_URL}/en`,
+      fr: "/",
+      en: "/en",
     },
   },
   icons: {

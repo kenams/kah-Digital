@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
