@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { PortfolioProject } from "@/data/portfolio";
 
@@ -52,10 +51,63 @@ function splitDeliverables(deliverables: string[]) {
   return deliverables.slice(0, 4);
 }
 
+function KahProdHeroPreview({ locale }: { locale: "fr" | "en" }) {
+  const content =
+    locale === "en"
+      ? {
+          badge: "Independent label - Toulouse / France",
+          lead:
+            "Premium production, cinematic image, and tailored digital direction for ambitious French-speaking artists.",
+          primary: "Discover artists",
+          secondary: "View releases",
+        }
+      : {
+          badge: "Label independant - Toulouse / France",
+          lead:
+            "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
+          primary: "Decouvrir les artistes",
+          secondary: "Voir les sorties",
+        };
+
+  return (
+    <div className="relative overflow-hidden rounded-[30px] border border-[#6f5530] bg-[linear-gradient(135deg,#121318_0%,#1b1716_35%,#2a1f19_58%,#0f1014_100%)] p-7 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(211,129,76,0.34),transparent_24%),radial-gradient(circle_at_22%_24%,rgba(255,214,140,0.12),transparent_18%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 flex items-start justify-center pt-6 text-[8.5rem] font-black uppercase tracking-[0.22em] text-white/[0.035]">
+        K P
+      </div>
+
+      <div className="relative">
+        <span className="inline-flex rounded-full border border-[#8d6a35] bg-[linear-gradient(180deg,rgba(88,69,41,0.7),rgba(53,42,29,0.6))] px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[#e5c46f]">
+          {content.badge}
+        </span>
+
+        <div className="mt-6 flex items-end gap-2 text-[clamp(3.4rem,9vw,7rem)] font-light uppercase leading-none tracking-[-0.08em] text-[#f5efe6]">
+          <span className="font-extralight">KAH</span>
+          <span className="text-[#d6ab59]">-</span>
+          <span className="bg-[linear-gradient(90deg,#f7ecd8_0%,#d4ab5b_45%,#cf875e_100%)] bg-clip-text text-transparent">
+            PROD
+          </span>
+        </div>
+
+        <p className="mt-6 max-w-2xl text-lg leading-9 text-white/72">{content.lead}</p>
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          <span className="inline-flex items-center rounded-full bg-[#d6a74e] px-6 py-3 font-semibold text-[#14161d] shadow-[0_10px_30px_rgba(214,167,78,0.32)]">
+            {content.primary}
+          </span>
+          <span className="inline-flex items-center rounded-full border border-white/14 px-6 py-3 font-semibold text-white/82">
+            {content.secondary}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightProps) {
   const text = copy[locale];
-  const primaryMockup = project.mockups?.primary ?? "/mockups/global-dashboard.png";
-  const secondaryMockup = project.mockups?.gallery?.[0] ?? primaryMockup;
   const metrics = project.metrics.slice(0, 3);
   const deliverables = splitDeliverables(project.deliverables);
 
@@ -104,49 +156,18 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
           <div className="absolute right-6 top-0 h-36 w-36 rounded-full bg-sky-400/20 blur-3xl" />
 
           <div className="relative mx-auto max-w-3xl">
-            <div className="relative rounded-[32px] border border-white/14 bg-white/8 p-3 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm">
-              <div className="flex items-center justify-between rounded-[24px] border border-white/10 bg-[#08101a] px-4 py-3 text-white/65">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
-                </div>
+            <div className="relative rounded-[34px] border border-white/14 bg-white/8 p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm">
+              <div className="mb-4 flex items-center justify-between px-1 text-white/60">
                 <span className="text-[0.65rem] uppercase tracking-[0.35em]">{text.previewLabel}</span>
+                <span className="h-px w-16 bg-white/15" />
               </div>
-
-              <div className="mt-3 overflow-hidden rounded-[26px] border border-white/10 bg-[#08111f]">
-                <div className="relative aspect-[16/10]">
-                  <Image
-                    src={primaryMockup}
-                    alt={`${project.name} preview`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 44vw, 100vw"
-                    priority
-                  />
-                </div>
-              </div>
+              <KahProdHeroPreview locale={locale} />
             </div>
 
-            <div className="absolute -bottom-8 -left-4 w-[48%] rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(241,245,249,0.92))] p-4 text-slate-900 shadow-[0_25px_70px_rgba(0,0,0,0.32)] backdrop-blur-md sm:-left-8">
+            <div className="absolute -bottom-10 left-4 w-[52%] rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(241,245,249,0.92))] p-4 text-slate-900 shadow-[0_25px_70px_rgba(0,0,0,0.32)] backdrop-blur-md sm:left-8">
               <p className="text-[0.62rem] uppercase tracking-[0.38em] text-slate-500">{text.previewKicker}</p>
               <p className="mt-3 text-xl font-semibold leading-tight">{project.name}</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">{project.shortDescription}</p>
-            </div>
-
-            <div className="absolute -right-2 top-10 w-[42%] rounded-[26px] border border-white/12 bg-white/10 p-3 text-white shadow-[0_25px_70px_rgba(0,0,0,0.28)] backdrop-blur-md sm:-right-6">
-              <p className="text-[0.62rem] uppercase tracking-[0.38em] text-white/55">{text.secondaryPreviewLabel}</p>
-              <div className="mt-3 overflow-hidden rounded-[20px] border border-white/10 bg-[#0a1320]">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={secondaryMockup}
-                    alt={`${project.name} secondary preview`}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 18vw, 45vw"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
