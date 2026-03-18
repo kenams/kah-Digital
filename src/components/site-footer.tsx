@@ -6,7 +6,7 @@ import { companyConfig } from "@/config/company";
 import { useLocale } from "@/lib/locale";
 
 export function SiteFooter() {
-  const { isEnglish, prefix } = useLocale();
+  const { locale, prefix } = useLocale();
   const brandName =
     companyConfig.brandName !== "[A_REMPLACER_NOM_COMMERCIAL]" ? companyConfig.brandName : "KAH-Digital";
   const registrationStatus =
@@ -15,58 +15,93 @@ export function SiteFooter() {
       : "Entreprise en cours d'inscription au registre du commerce suisse";
   const homeHref = prefix || "/";
 
-  const navLinks = isEnglish
-    ? [
-        { label: "Home", href: homeHref },
-        { label: "Services", href: `${prefix}/services` },
-        { label: "Projects", href: `${prefix}/projets` },
-        { label: "GLPI", href: `${prefix}/services/glpi` },
-        { label: "Quote", href: `${prefix}/devis` },
-        { label: "Contact", href: `${prefix}/contact` },
-      ]
-    : [
+  const copy = {
+    fr: {
+      subtitle: "Suisse et international",
+      body: "Solutions digitales rapides pour la Suisse et l'international. Sites web, applications et support IT.",
+      navTitle: "Navigation",
+      legalTitle: "Legal",
+      nav: [
         { label: "Accueil", href: "/" },
         { label: "Services", href: "/services" },
         { label: "Projets", href: "/projets" },
         { label: "GLPI", href: "/services/glpi" },
         { label: "Devis", href: "/devis" },
         { label: "Contact", href: "/contact" },
-      ];
-
-  const legalLinks = isEnglish
-    ? [
+      ],
+      legal: [
+        { label: "Mentions legales", href: "/mentions-legales" },
+        { label: "Confidentialite", href: "/confidentialite" },
+        { label: "Factures", href: "/factures" },
+      ],
+      phone: "Telephone",
+      rights: "Tous droits reserves.",
+      homeLabel: "KAH-Digital - Accueil",
+    },
+    en: {
+      subtitle: "Switzerland and international",
+      body: "Digital solutions for Switzerland and international markets. Websites, applications, and support workflows.",
+      navTitle: "Navigation",
+      legalTitle: "Legal",
+      nav: [
+        { label: "Home", href: "/en" },
+        { label: "Services", href: "/en/services" },
+        { label: "Projects", href: "/en/projets" },
+        { label: "GLPI", href: "/en/services/glpi" },
+        { label: "Quote", href: "/en/devis" },
+        { label: "Contact", href: "/en/contact" },
+      ],
+      legal: [
         { label: "Legal notice", href: "/en/mentions-legales" },
         { label: "Privacy", href: "/en/politique-de-confidentialite" },
         { label: "Invoices", href: "/en/factures" },
-      ]
-    : [
-        { label: "Mentions légales", href: "/mentions-legales" },
-        { label: "Confidentialité", href: "/confidentialite" },
-        { label: "Factures", href: "/factures" },
-      ];
+      ],
+      phone: "Phone",
+      rights: "All rights reserved.",
+      homeLabel: "KAH-Digital - Home",
+    },
+    de: {
+      subtitle: "Schweiz und international",
+      body: "Digitale Loesungen fuer die Schweiz und internationale Maerkte. Websites, Anwendungen und Support-Workflows.",
+      navTitle: "Navigation",
+      legalTitle: "Rechtliches",
+      nav: [
+        { label: "Start", href: "/de" },
+        { label: "Leistungen", href: "/de/services" },
+        { label: "Projekte", href: "/de/projets" },
+        { label: "GLPI", href: "/de/services/glpi" },
+        { label: "Anfrage", href: "/de/devis" },
+        { label: "Kontakt", href: "/de/contact" },
+      ],
+      legal: [
+        { label: "Impressum", href: "/de/mentions-legales" },
+        { label: "Datenschutz", href: "/de/politique-de-confidentialite" },
+        { label: "Rechnungen", href: "/de/factures" },
+      ],
+      phone: "Telefon",
+      rights: "Alle Rechte vorbehalten.",
+      homeLabel: "KAH-Digital - Start",
+    },
+  }[locale];
 
   return (
-    <footer className="bg-black text-white border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="border-t border-white/10 bg-black text-white">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="col-span-1 md:col-span-2">
-            <Link href={homeHref} aria-label="KAH-Digital - Home">
-              <BrandLockup subtitle={isEnglish ? "Switzerland and international" : "Suisse et international"} className="mb-4" />
+            <Link href={homeHref} aria-label={copy.homeLabel}>
+              <BrandLockup subtitle={copy.subtitle} className="mb-4" />
             </Link>
-            <p className="text-white/70 mb-4">
-              {isEnglish
-                ? "Digital solutions for Switzerland and international markets. Websites, applications, and support workflows."
-                : "Solutions digitales rapides pour la Suisse et l'international. Sites web, applications et support IT."}
-            </p>
+            <p className="mb-4 text-white/70">{copy.body}</p>
             <p className="text-sm text-white/50">{registrationStatus}</p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">{isEnglish ? "Navigation" : "Navigation"}</h4>
+            <h4 className="mb-4 text-lg font-semibold">{copy.navTitle}</h4>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
+              {copy.nav.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-white/70 transition-colors hover:text-white">
                     {link.label}
                   </Link>
                 </li>
@@ -75,11 +110,11 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">{isEnglish ? "Legal" : "Légal"}</h4>
+            <h4 className="mb-4 text-lg font-semibold">{copy.legalTitle}</h4>
             <ul className="space-y-2">
-              {legalLinks.map((link) => (
+              {copy.legal.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  <Link href={link.href} className="text-white/70 transition-colors hover:text-white">
                     {link.label}
                   </Link>
                 </li>
@@ -88,28 +123,28 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-white/70 mb-4 md:mb-0">
-              <Link href={homeHref} aria-label="KAH-Digital - Home">
+        <div className="mt-8 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            <div className="mb-4 text-sm text-white/70 md:mb-0">
+              <Link href={homeHref} aria-label={copy.homeLabel}>
                 <BrandLockup compact className="mb-3" />
               </Link>
-              {companyConfig.address !== "[A_REMPLACER_ADRESSE_OFFICIELLE]" && (
+              {companyConfig.address !== "[A_REMPLACER_ADRESSE_OFFICIELLE]" ? (
                 <p>
                   {companyConfig.address}, {companyConfig.city}, {companyConfig.country}
                 </p>
-              )}
-              {companyConfig.email !== "[A_REMPLACER_EMAIL]" && (
+              ) : null}
+              {companyConfig.email !== "[A_REMPLACER_EMAIL]" ? (
                 <p>
                   Email:{" "}
                   <Link href={`mailto:${companyConfig.email}`} className="underline hover:text-white">
                     {companyConfig.email}
                   </Link>
                 </p>
-              )}
-              {companyConfig.phone !== "[A_REMPLACER_TELEPHONE]" && <p>{isEnglish ? "Phone" : "Téléphone"}: {companyConfig.phone}</p>}
+              ) : null}
+              {companyConfig.phone !== "[A_REMPLACER_TELEPHONE]" ? <p>{copy.phone}: {companyConfig.phone}</p> : null}
             </div>
-            <div className="text-sm text-white/50">© 2026 {brandName}. {isEnglish ? "All rights reserved." : "Tous droits réservés."}</div>
+            <div className="text-sm text-white/50">Copyright 2026 {brandName}. {copy.rights}</div>
           </div>
         </div>
       </div>

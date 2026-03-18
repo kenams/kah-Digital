@@ -2,26 +2,52 @@
 
 import { usePathname } from "next/navigation";
 
-export type Locale = "fr" | "en";
+export type Locale = "fr" | "en" | "de";
 
 export function getLocaleFromPathname(pathname: string | null): Locale {
   if (!pathname) return "fr";
-  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "fr";
+  if (pathname === "/en" || pathname.startsWith("/en/")) return "en";
+  if (pathname === "/de" || pathname.startsWith("/de/")) return "de";
+  return "fr";
 }
 
 export function getLocalePrefix(locale: Locale) {
-  return locale === "en" ? "/en" : "";
+  if (locale === "en") return "/en";
+  if (locale === "de") return "/de";
+  return "";
 }
 
 export function stripLocalePrefix(pathname: string | null) {
   if (!pathname) return "/";
-  if (pathname === "/en") return "/";
+  if (pathname === "/en" || pathname === "/de") return "/";
   if (pathname.startsWith("/en/")) return pathname.replace(/^\/en/, "") || "/";
+  if (pathname.startsWith("/de/")) return pathname.replace(/^\/de/, "") || "/";
   return pathname;
 }
 
 export function localizePath(pathname: string | null, locale: Locale) {
   const basePath = stripLocalePrefix(pathname);
+  const germanRouteMap: Record<string, string> = {
+    "/": "/de",
+    "/services": "/de/services",
+    "/services/site-web": "/de/services/site-web",
+    "/services/applications": "/de/services/applications",
+    "/services/glpi": "/de/services/glpi",
+    "/contact": "/de/contact",
+    "/factures": "/de/factures",
+    "/devis": "/de/devis",
+    "/devis/mvp": "/de/devis/mvp",
+    "/projets": "/de/projets",
+    "/projets/kah-prod": "/de/projets/kah-prod",
+    "/mentions-legales": "/de/mentions-legales",
+    "/politique-de-confidentialite": "/de/politique-de-confidentialite",
+    "/confidentialite": "/de/politique-de-confidentialite",
+    "/merci": "/de/merci",
+    "/offres": "/de/services",
+    "/configurateur": "/de/devis",
+    "/cahier-des-charges": "/de/devis",
+    "/lexique": "/de/services/glpi",
+  };
 
   if (locale === "fr") {
     if (basePath === "/politique-de-confidentialite" || basePath === "/confidentialite") {
@@ -30,30 +56,24 @@ export function localizePath(pathname: string | null, locale: Locale) {
     return basePath;
   }
 
-  if (basePath === "/confidentialite" || basePath === "/politique-de-confidentialite") {
-    return "/en/politique-de-confidentialite";
-  }
-
-  return basePath === "/" ? "/en" : `/en${basePath}`;
-}
-
-export function getAlternateLocalePath(pathname: string | null): { locale: Locale; path: string } {
-  const current = pathname ?? "/";
-  const locale = getLocaleFromPathname(current);
-  const basePath = locale === "en" ? current.replace(/^\/en(\/|$)/, "/") : current;
-  const normalized = basePath === "" ? "/" : basePath;
   if (locale === "en") {
-    return { locale: "fr", path: normalized };
+    if (basePath === "/confidentialite" || basePath === "/politique-de-confidentialite") {
+      return "/en/politique-de-confidentialite";
+    }
+    return basePath === "/" ? "/en" : `/en${basePath}`;
   }
-  return { locale: "en", path: normalized === "/" ? "/en" : `/en${normalized}` };
+
+  return germanRouteMap[basePath] ?? "/de";
 }
 
 export function useLocale() {
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
+
   return {
     locale,
     isEnglish: locale === "en",
+    isGerman: locale === "de",
     prefix: getLocalePrefix(locale),
     pathname,
   };

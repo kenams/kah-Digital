@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
+import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
@@ -49,6 +50,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
+  const routesDe = [
+    "/de",
+    "/de/services",
+    "/de/services/site-web",
+    "/de/services/applications",
+    "/de/services/glpi",
+    "/de/contact",
+    "/de/factures",
+    "/de/devis",
+    "/de/devis/mvp",
+    "/de/projets",
+    "/de/mentions-legales",
+    "/de/politique-de-confidentialite",
+    "/de/merci",
+  ].map((path) => ({
+    url: `${SITE_URL}${path}`,
+    lastModified: new Date(),
+  }));
+
   const projectRoutes = portfolioProjects.map((project) => ({
     url: `${SITE_URL}/projets/${project.slug}`,
     lastModified: new Date(),
@@ -59,5 +79,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...routes, ...routesEn, ...projectRoutes, ...projectRoutesEn];
+  const projectRoutesDe = portfolioProjectsDe.map((project) => ({
+    url: `${SITE_URL}/de/projets/${project.slug}`,
+    lastModified: new Date(),
+  }));
+
+  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn, ...projectRoutesDe];
 }

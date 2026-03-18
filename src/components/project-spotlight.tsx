@@ -3,7 +3,7 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 type ProjectSpotlightProps = {
   project: PortfolioProject;
-  locale?: "fr" | "en";
+  locale?: "fr" | "en" | "de";
 };
 
 const copy = {
@@ -45,13 +45,32 @@ const copy = {
     detailTwoBody:
       "A more premium presence, with stronger visual hierarchy and a cleaner base to present the project image properly.",
   },
+  de: {
+    eyebrow: "Case Study",
+    title: "KAH Prod, ein KAH-Digital Projekt mit echtem Markencharakter.",
+    intro:
+      "Ziel war keine einfache Projektkarte. Es ging darum, ein ganzes Universum, eine klare visuelle Richtung und eine Website zu zeigen, die Label, Artists, Releases und Business-Kontakte sauber praesentiert.",
+    primaryCta: "Website ansehen",
+    secondaryCta: "Projekt besprechen",
+    previewLabel: "Live-Vorschau",
+    previewKicker: "Art Direction / unabhängiges Label",
+    secondaryPreviewLabel: "Strukturierte Navigation",
+    metricsEyebrow: "Projektmarker",
+    detailOneTitle: "Was die Website klar macht",
+    detailTwoTitle: "Was den Unterschied schafft",
+    detailThreeTitle: "Gelieferter Umfang",
+    detailOneBody:
+      "Ein klareres Musik-Universum mit direkter Navigation zwischen Label, Artists, Releases, Clips, Events, Netzwerken und Business-Kontakten.",
+    detailTwoBody:
+      "Eine hochwertigere Praesenz mit staerkerer visueller Hierarchie und einer saubereren Basis fuer das Projektbild.",
+  },
 } as const;
 
 function splitDeliverables(deliverables: string[]) {
   return deliverables.slice(0, 4);
 }
 
-function KahProdHeroPreview({ locale }: { locale: "fr" | "en" }) {
+function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
   const content =
     locale === "en"
       ? {
@@ -61,6 +80,14 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" }) {
           primary: "Discover artists",
           secondary: "View releases",
         }
+      : locale === "de"
+        ? {
+            badge: "Unabhaengiges Label - Toulouse / Frankreich",
+            lead:
+              "Premium-Produktion, cineastisches Bild und massgeschneiderte digitale Ausrichtung fuer ambitionierte frankophone Artists.",
+            primary: "Artists entdecken",
+            secondary: "Releases ansehen",
+          }
       : {
           badge: "Label independant - Toulouse / France",
           lead:
@@ -143,7 +170,7 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
               {text.primaryCta}
             </Link>
             <Link
-              href={locale === "en" ? "/en/contact" : "/contact"}
+              href={locale === "en" ? "/en/contact" : locale === "de" ? "/de/contact" : "/contact"}
               className="inline-flex items-center rounded-full border border-white/18 bg-white/5 px-6 py-3 font-semibold text-white transition-colors hover:border-white/35 hover:bg-white/10"
             >
               {text.secondaryCta}

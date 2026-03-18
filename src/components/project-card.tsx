@@ -15,19 +15,48 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
-  const { isEnglish, prefix } = useLocale();
+  const { locale, prefix } = useLocale();
   const href = prefix ? `${prefix}/projets/${project.slug}` : `/projets/${project.slug}`;
   const gallery = project.mockups?.gallery ?? (project.mockups?.primary ? [project.mockups.primary] : []);
   const hasGallery = gallery.length > 0;
   const primaryMockup = project.mockups?.primary ?? gallery[0];
-  const websiteLabel = isEnglish ? "Visit site" : "Voir le site";
+  const copy = {
+    fr: {
+      website: "Voir le site",
+      preview: "Visuel",
+      close: "Fermer",
+      caseStudy: "Etude de cas",
+      prev: "Precedent",
+      next: "Suivant",
+      scope: "Perimetre",
+      stack: "Stack",
+    },
+    en: {
+      website: "Visit site",
+      preview: "Preview",
+      close: "Close",
+      caseStudy: "Case study",
+      prev: "Prev",
+      next: "Next",
+      scope: "Scope",
+      stack: "Stack",
+    },
+    de: {
+      website: "Website ansehen",
+      preview: "Vorschau",
+      close: "Schliessen",
+      caseStudy: "Case Study",
+      prev: "Zurueck",
+      next: "Weiter",
+      scope: "Umfang",
+      stack: "Stack",
+    },
+  }[locale];
+  const previewLabel = copy.preview;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeImage = gallery[activeIndex] ?? gallery[0];
   const lightboxId = `project-lightbox-${project.slug}`;
-  const previewLabel = isEnglish ? "Preview" : "Visuel";
-  const closeLabel = isEnglish ? "Close" : "Fermer";
-  const caseStudyLabel = isEnglish ? "Case study" : "Etude de cas";
   const canUseDOM = typeof document !== "undefined";
 
   useEffect(() => {
@@ -77,7 +106,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               onClick={() => setLightboxOpen(false)}
               className="absolute right-3 top-3 rounded-full bg-black/70 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:bg-black/90 hover:text-white"
             >
-              {closeLabel}
+              {copy.close}
             </button>
             <div className="relative mx-auto w-full max-h-[80vh] aspect-[4/3]">
               <Image
@@ -95,7 +124,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     onClick={() => setActiveIndex((prev) => (prev - 1 + gallery.length) % gallery.length)}
                     className="rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] transition hover:border-white hover:text-white"
                   >
-                    {isEnglish ? "Prev" : "Precedent"}
+                    {copy.prev}
                   </button>
                   <p className="text-xs uppercase tracking-[0.3em]">
                     {activeIndex + 1} / {gallery.length}
@@ -105,7 +134,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     onClick={() => setActiveIndex((prev) => (prev + 1) % gallery.length)}
                     className="rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] transition hover:border-white hover:text-white"
                   >
-                    {isEnglish ? "Next" : "Suivant"}
+                    {copy.next}
                   </button>
                 </div>
               )}
@@ -172,11 +201,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
-              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{isEnglish ? "Scope" : "Perimetre"}</p>
+              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{copy.scope}</p>
               <p className="mt-3 text-sm leading-6 text-white/75">{project.shortDescription}</p>
             </div>
             <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
-              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{isEnglish ? "Stack" : "Stack"}</p>
+              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{copy.stack}</p>
               <div className="mt-3 flex flex-wrap gap-2 text-[0.68rem] uppercase tracking-[0.26em] text-white/62">
                 {project.stack.slice(0, 4).map((tech) => (
                   <span key={tech} className="rounded-full border border-white/15 px-3 py-1.5">
@@ -192,7 +221,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={href}
               className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-white/90"
             >
-              {caseStudyLabel}
+              {copy.caseStudy}
               <span aria-hidden="true" className="transition duration-300 group-hover:translate-x-1">
                 -&gt;
               </span>
@@ -204,7 +233,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-white/80 transition hover:border-white hover:bg-white/8 hover:text-white"
               >
-                {websiteLabel}
+                {copy.website}
               </a>
             )}
             {hasGallery && (
@@ -218,7 +247,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 aria-haspopup="dialog"
                 aria-controls={lightboxId}
               >
-                {previewLabel}
+                {copy.preview}
               </button>
             )}
           </div>

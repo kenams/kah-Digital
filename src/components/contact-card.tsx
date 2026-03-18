@@ -10,8 +10,31 @@ type ContactCardProps = {
 };
 
 export function ContactCard({ title, className = "" }: ContactCardProps) {
-  const { isEnglish } = useLocale();
-  const resolvedTitle = title ?? (isEnglish ? "Direct contact" : "Conciergerie privee");
+  const { locale } = useLocale();
+  const copy = {
+    fr: {
+      title: "Conciergerie privee",
+      email: "Email direct:",
+      phone: "Telephone direct:",
+      note: "Numero temporaire avant activation du numero suisse.",
+      reply: "Reponse sous 24h. Brief express possible par Slack ou WhatsApp.",
+    },
+    en: {
+      title: "Direct contact",
+      email: "Direct email:",
+      phone: "Direct phone:",
+      note: "Temporary number before Swiss line activation.",
+      reply: "Reply within 24h. Quick brief possible via Slack or WhatsApp.",
+    },
+    de: {
+      title: "Direkter Kontakt",
+      email: "Direkte E-Mail:",
+      phone: "Direkte Telefonnummer:",
+      note: "Temporäre Nummer, bis die Schweizer Linie aktiv ist.",
+      reply: "Antwort innerhalb von 24 Stunden. Kurzes Briefing per Slack oder WhatsApp möglich.",
+    },
+  }[locale];
+  const resolvedTitle = title ?? copy.title;
 
   return (
     <div
@@ -20,25 +43,19 @@ export function ContactCard({ title, className = "" }: ContactCardProps) {
       <p className="text-xs uppercase tracking-[0.3em] text-white/60">{resolvedTitle}</p>
       <div className="mt-3 space-y-2 text-sm text-white/80">
         <p>
-          {isEnglish ? "Direct email:" : "Email direct:"}{" "}
+          {copy.email}{" "}
           <Link href={`mailto:${brandContact.email}`} className="font-semibold text-white hover:underline">
             {brandContact.email}
           </Link>
         </p>
         <p>
-          {isEnglish ? "Direct phone:" : "Telephone direct:"}{" "}
+          {copy.phone}{" "}
           <Link href={`tel:${brandContact.phoneHref}`} className="font-semibold text-white hover:underline">
             {brandContact.phone}
           </Link>
         </p>
-        <p className="text-xs text-white/50">
-          {isEnglish ? "Temporary number before Swiss line activation." : "Numero temporaire avant activation du numero suisse."}
-        </p>
-        <p className="text-xs text-white/60">
-          {isEnglish
-            ? "Reply within 24h. Quick brief possible via Slack or WhatsApp."
-            : "Reponse sous 24h. Brief express possible par Slack ou WhatsApp."}
-        </p>
+        <p className="text-xs text-white/50">{copy.note}</p>
+        <p className="text-xs text-white/60">{copy.reply}</p>
       </div>
     </div>
   );

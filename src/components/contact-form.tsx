@@ -10,8 +10,109 @@ type ContactStatus = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
   const router = useRouter();
-  const { isEnglish, prefix } = useLocale();
+  const { locale, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+  const copy = {
+    fr: {
+      verificationFailed: "Verification impossible. Reessaie.",
+      captchaMissing: "Captcha non configure. Ecris-nous sur",
+      captchaBeforeSend: "Valide le captcha avant d'envoyer.",
+      sendError: "Impossible d'envoyer le message. Reessaie dans un instant.",
+      success: "Merci, message envoye. Redirection en cours...",
+      response: "Reponse",
+      responseDetail: "Sous 24h avec retour concret.",
+      channel: "Canal",
+      channelDetail: "Email direct, sans tunnel inutile.",
+      scoping: "Cadrage",
+      scopingDetail: "Sujet clair, demande exploitable.",
+      firstName: "Prenom *",
+      firstNamePlaceholder: "Ex : Alex",
+      lastName: "Nom *",
+      lastNamePlaceholder: "Ex : Martin",
+      company: "Societe",
+      companyPlaceholder: "Ex : Studio Nova",
+      subject: "Sujet *",
+      subjectPlaceholder: "Selectionnez un sujet",
+      quote: "Demande de devis",
+      info: "Demande d'information",
+      support: "Support technique",
+      other: "Autre",
+      message: "Message *",
+      messagePlaceholder: "Decris ta demande, ton contexte et ce que tu attends.",
+      antiSpam: "Verification anti-spam",
+      privacyIntro: "J'accepte que mes donnees soient utilisees pour repondre a ma demande. Consultez notre ",
+      privacyLink: "politique de confidentialite",
+      sending: "Envoi en cours...",
+      send: "Envoyer le message",
+      captchaNotConfigured: "Captcha non configure.",
+    },
+    en: {
+      verificationFailed: "Verification failed. Try again.",
+      captchaMissing: "Captcha is not configured. Write to us at",
+      captchaBeforeSend: "Validate the captcha before sending.",
+      sendError: "Unable to send the message. Try again in a moment.",
+      success: "Thanks, message sent. Redirecting...",
+      response: "Response",
+      responseDetail: "Within 24h with a concrete reply.",
+      channel: "Channel",
+      channelDetail: "Direct email, no useless funnel.",
+      scoping: "Scoping",
+      scopingDetail: "Clear subject, actionable request.",
+      firstName: "First name *",
+      firstNamePlaceholder: "Ex: Alex",
+      lastName: "Last name *",
+      lastNamePlaceholder: "Ex: Martin",
+      company: "Company",
+      companyPlaceholder: "Ex: Studio Nova",
+      subject: "Subject *",
+      subjectPlaceholder: "Select a subject",
+      quote: "Quote request",
+      info: "Information request",
+      support: "Technical support",
+      other: "Other",
+      message: "Message *",
+      messagePlaceholder: "Describe your request, your context, and what you expect.",
+      antiSpam: "Anti-spam verification",
+      privacyIntro: "I agree that my data may be used to answer my request. Read our ",
+      privacyLink: "privacy policy",
+      sending: "Sending...",
+      send: "Send message",
+      captchaNotConfigured: "Captcha is not configured.",
+    },
+    de: {
+      verificationFailed: "Verifizierung fehlgeschlagen. Bitte erneut versuchen.",
+      captchaMissing: "Captcha ist nicht konfiguriert. Schreibe uns an",
+      captchaBeforeSend: "Bitte das Captcha vor dem Senden bestaetigen.",
+      sendError: "Die Nachricht konnte nicht gesendet werden. Bitte gleich erneut versuchen.",
+      success: "Danke, Nachricht gesendet. Weiterleitung laeuft...",
+      response: "Antwort",
+      responseDetail: "Innerhalb von 24 Stunden mit klarer Rueckmeldung.",
+      channel: "Kanal",
+      channelDetail: "Direkte E-Mail, ohne unnoetigen Funnel.",
+      scoping: "Briefing",
+      scopingDetail: "Klares Thema, direkt nutzbare Anfrage.",
+      firstName: "Vorname *",
+      firstNamePlaceholder: "Bsp.: Alex",
+      lastName: "Nachname *",
+      lastNamePlaceholder: "Bsp.: Martin",
+      company: "Unternehmen",
+      companyPlaceholder: "Bsp.: Studio Nova",
+      subject: "Betreff *",
+      subjectPlaceholder: "Bitte Thema waehlen",
+      quote: "Projektanfrage",
+      info: "Informationsanfrage",
+      support: "Technischer Support",
+      other: "Anderes",
+      message: "Nachricht *",
+      messagePlaceholder: "Beschreibe dein Anliegen, den Kontext und was du erwartest.",
+      antiSpam: "Anti-Spam-Verifizierung",
+      privacyIntro: "Ich stimme zu, dass meine Daten zur Beantwortung meiner Anfrage verwendet werden. Zur ",
+      privacyLink: "Datenschutzerklaerung",
+      sending: "Wird gesendet...",
+      send: "Nachricht senden",
+      captchaNotConfigured: "Captcha ist nicht konfiguriert.",
+    },
+  }[locale];
   const [status, setStatus] = useState<ContactStatus>("idle");
   const [serverMessage, setServerMessage] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
@@ -37,24 +138,22 @@ export function ContactForm() {
 
   const handleCaptchaFailure = useCallback(() => {
     setCaptchaToken("");
-    setCaptchaError(isEnglish ? "Verification failed. Try again." : "Verification impossible. Reessaie.");
+    setCaptchaError(copy.verificationFailed);
     pendingFormRef.current = null;
-  }, [isEnglish]);
+  }, [copy.verificationFailed]);
 
   async function submitContactRequest(form: HTMLFormElement, token: string) {
     const formData = new FormData(form);
 
     if (!siteKey) {
       setStatus("error");
-      setServerMessage(
-        isEnglish ? `Captcha is not configured. Write to us at ${companyConfig.email}.` : `Captcha non configure. Ecris-nous sur ${companyConfig.email}.`,
-      );
+      setServerMessage(`${copy.captchaMissing} ${companyConfig.email}.`);
       return;
     }
 
     if (!captchaToken) {
       setStatus("error");
-      setServerMessage(isEnglish ? "Validate the captcha before sending." : "Valide le captcha avant d'envoyer.");
+      setServerMessage(copy.captchaBeforeSend);
       return;
     }
 
@@ -82,11 +181,7 @@ export function ContactForm() {
       const data = await response.json().catch(() => null);
       if (!response.ok) {
         const errorMessage =
-          typeof data?.error === "string"
-            ? data.error
-            : isEnglish
-              ? "Unable to send the message. Try again in a moment."
-              : "Impossible d'envoyer le message. Reessaie dans un instant.";
+          typeof data?.error === "string" ? data.error : copy.sendError;
         setCaptchaToken("");
         setCaptchaReset((prev) => prev + 1);
         setStatus("error");
@@ -95,7 +190,7 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      setServerMessage(isEnglish ? "Thanks, message sent. Redirecting..." : "Merci, message envoye. Redirection en cours...");
+      setServerMessage(copy.success);
       form.reset();
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);
@@ -105,9 +200,7 @@ export function ContactForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage(
-        isEnglish ? "Unable to send the message. Try again in a moment." : "Impossible d'envoyer le message. Reessaie dans un instant.",
-      );
+      setServerMessage(copy.sendError);
     }
   }
 
@@ -117,9 +210,7 @@ export function ContactForm() {
 
     if (!siteKey) {
       setStatus("error");
-      setServerMessage(
-        isEnglish ? `Captcha is not configured. Write to us at ${companyConfig.email}.` : `Captcha non configure. Ecris-nous sur ${companyConfig.email}.`,
-      );
+      setServerMessage(`${copy.captchaMissing} ${companyConfig.email}.`);
       return;
     }
 
@@ -155,31 +246,31 @@ export function ContactForm() {
 
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Response" : "Reponse"}</p>
-          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Within 24h with a concrete reply." : "Sous 24h avec retour concret."}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.response}</p>
+          <p className="mt-2 text-sm text-white/75">{copy.responseDetail}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Channel" : "Canal"}</p>
-          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Direct email, no useless funnel." : "Email direct, sans tunnel inutile."}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.channel}</p>
+          <p className="mt-2 text-sm text-white/75">{copy.channelDetail}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Scoping" : "Cadrage"}</p>
-          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Clear subject, actionable request." : "Sujet clair, demande exploitable."}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.scoping}</p>
+          <p className="mt-2 text-sm text-white/75">{copy.scopingDetail}</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="firstName" className="text-sm font-medium text-white/90">
-            {isEnglish ? "First name *" : "Prenom *"}
+            {copy.firstName}
           </label>
-          <input id="firstName" name="firstName" required className={fieldClassName} placeholder={isEnglish ? "Ex: Alex" : "Ex : Alex"} />
+          <input id="firstName" name="firstName" required className={fieldClassName} placeholder={copy.firstNamePlaceholder} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="lastName" className="text-sm font-medium text-white/90">
-            {isEnglish ? "Last name *" : "Nom *"}
+            {copy.lastName}
           </label>
-          <input id="lastName" name="lastName" required className={fieldClassName} placeholder={isEnglish ? "Ex: Martin" : "Ex : Martin"} />
+          <input id="lastName" name="lastName" required className={fieldClassName} placeholder={copy.lastNamePlaceholder} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="text-sm font-medium text-white/90">
@@ -189,45 +280,41 @@ export function ContactForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="company" className="text-sm font-medium text-white/90">
-            {isEnglish ? "Company" : "Societe"}
+            {copy.company}
           </label>
-          <input id="company" name="company" className={fieldClassName} placeholder={isEnglish ? "Ex: Studio Nova" : "Ex : Studio Nova"} />
+          <input id="company" name="company" className={fieldClassName} placeholder={copy.companyPlaceholder} />
         </div>
         <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
           <label htmlFor="subject" className="text-sm font-medium text-white/95">
-            {isEnglish ? "Subject *" : "Sujet *"}
+            {copy.subject}
           </label>
           <select id="subject" name="subject" required className={`${fieldClassName} text-white`} defaultValue="">
             <option value="" disabled>
-              {isEnglish ? "Select a subject" : "Selectionnez un sujet"}
+              {copy.subjectPlaceholder}
             </option>
-            <option value="devis">{isEnglish ? "Quote request" : "Demande de devis"}</option>
-            <option value="information">{isEnglish ? "Information request" : "Demande d'information"}</option>
-            <option value="support">{isEnglish ? "Technical support" : "Support technique"}</option>
-            <option value="autre">{isEnglish ? "Other" : "Autre"}</option>
+            <option value="devis">{copy.quote}</option>
+            <option value="information">{copy.info}</option>
+            <option value="support">{copy.support}</option>
+            <option value="autre">{copy.other}</option>
           </select>
         </div>
         <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
           <label htmlFor="message" className="text-sm font-medium text-white/95">
-            {isEnglish ? "Message *" : "Message *"}
+            {copy.message}
           </label>
           <textarea
             id="message"
             name="message"
             required
             rows={6}
-            placeholder={
-              isEnglish
-                ? "Describe your request, your context, and what you expect."
-                : "Decris ta demande, ton contexte et ce que tu attends."
-            }
+            placeholder={copy.messagePlaceholder}
             className={`${fieldClassName} min-h-[180px]`}
           />
         </div>
       </div>
 
       <div className="mt-6 space-y-3 rounded-2xl border border-white/12 bg-white/5 p-4">
-        <p className="text-sm font-medium text-white/95">{isEnglish ? "Anti-spam verification" : "Verification anti-spam"}</p>
+        <p className="text-sm font-medium text-white/95">{copy.antiSpam}</p>
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/15 bg-slate-950/45 p-4 flex items-center">
             <TurnstileWidget
@@ -240,7 +327,7 @@ export function ContactForm() {
             />
           </div>
         ) : (
-          <p className="text-sm text-amber-200">{isEnglish ? "Captcha is not configured." : "Captcha non configure."}</p>
+          <p className="text-sm text-amber-200">{copy.captchaNotConfigured}</p>
         )}
         {captchaError ? <p className="text-sm text-rose-200">{captchaError}</p> : null}
       </div>
@@ -248,11 +335,12 @@ export function ContactForm() {
       <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
         <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent" />
         <label htmlFor="privacy" className="text-sm text-white/75">
-          {isEnglish
-            ? "I agree that my data may be used to answer my request. Read our "
-            : "J'accepte que mes donnees soient utilisees pour repondre a ma demande. Consultez notre "}
-          <a href={isEnglish ? "/en/politique-de-confidentialite" : "/confidentialite"} className="underline hover:text-white">
-            {isEnglish ? "privacy policy" : "politique de confidentialite"}
+          {copy.privacyIntro}
+          <a
+            href={locale === "en" ? "/en/politique-de-confidentialite" : locale === "de" ? "/de/politique-de-confidentialite" : "/confidentialite"}
+            className="underline hover:text-white"
+          >
+            {copy.privacyLink}
           </a>
           .
         </label>
@@ -264,7 +352,7 @@ export function ContactForm() {
           disabled={isSubmitting}
           className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? (isEnglish ? "Sending..." : "Envoi en cours...") : isEnglish ? "Send message" : "Envoyer le message"}
+          {isSubmitting ? copy.sending : copy.send}
         </button>
 
         {serverMessage ? (

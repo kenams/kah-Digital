@@ -11,7 +11,7 @@ interface InvoiceItem {
 }
 
 interface InvoicePreviewProps {
-  locale?: "fr" | "en";
+  locale?: "fr" | "en" | "de";
   clientName?: string;
   clientCompany?: string;
   items?: InvoiceItem[];
@@ -33,65 +33,135 @@ export function InvoicePreview({
   const signatureName = companyConfig.legalName || brandName;
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
   const isEnglish = locale === "en";
-  const clientNameFallback = isEnglish ? "[Client name]" : clientName;
-  const clientCompanyFallback = isEnglish ? "[Company]" : clientCompany;
+  const isGerman = locale === "de";
+  const copy = {
+    fr: {
+      invoice: "Facture",
+      document: "Document de facturation KAH-Digital",
+      issuer: "Emetteur",
+      phone: "Tel",
+      client: "Client",
+      invoiceNumber: "Numero de facture",
+      issueDate: "Date d'emission",
+      due: "Echeance",
+      dueValue: "30 jours",
+      description: "Description",
+      qty: "Qte",
+      unitPrice: "Prix unit.",
+      subtotalCol: "Total HT",
+      subtotal: "Total HT",
+      vat: "TVA (0% - non assujetti)",
+      total: "Total TTC",
+      paymentTerms: "Modalites de paiement :",
+      paymentWithin: "Paiement a 30 jours apres reception de la facture",
+      bankOnRequest: "Coordonnees bancaires transmises sur la facture finale ou sur demande.",
+      bankTransfer: "Virement bancaire sur le compte suivant :",
+      reference: "Reference",
+      notes: "Notes :",
+      notesBody: "Merci pour votre confiance. En cas de question, n'hesitez pas a nous contacter.",
+      signature: "Signature et date",
+      clientName: clientName,
+      clientCompany: clientCompany,
+      items: [
+        { description: "Developpement site web vitrine", quantity: 1, unitPrice: 2500, total: 2500 },
+        { description: "Formation et accompagnement", quantity: 1, unitPrice: 300, total: 300 },
+      ],
+    },
+    en: {
+      invoice: "Invoice",
+      document: "KAH-Digital billing document",
+      issuer: "Issuer",
+      phone: "Phone",
+      client: "Client",
+      invoiceNumber: "Invoice number",
+      issueDate: "Issue date",
+      due: "Due",
+      dueValue: "30 days",
+      description: "Description",
+      qty: "Qty",
+      unitPrice: "Unit price",
+      subtotalCol: "Subtotal",
+      subtotal: "Subtotal",
+      vat: "VAT (0% - not subject)",
+      total: "Total incl. VAT",
+      paymentTerms: "Payment terms:",
+      paymentWithin: "Payment within 30 days of invoice receipt",
+      bankOnRequest: "Bank details provided on the final invoice or on request.",
+      bankTransfer: "Bank transfer to the following account:",
+      reference: "Reference",
+      notes: "Notes:",
+      notesBody: "Thank you for your trust. If you have any questions, feel free to contact us.",
+      signature: "Signature and date",
+      clientName: "[Client name]",
+      clientCompany: "[Company]",
+      items: [
+        { description: "Showcase website development", quantity: 1, unitPrice: 2500, total: 2500 },
+        { description: "Training and support", quantity: 1, unitPrice: 300, total: 300 },
+      ],
+    },
+    de: {
+      invoice: "Rechnung",
+      document: "KAH-Digital Rechnungsdokument",
+      issuer: "Aussteller",
+      phone: "Telefon",
+      client: "Kunde",
+      invoiceNumber: "Rechnungsnummer",
+      issueDate: "Ausstellungsdatum",
+      due: "Faelligkeit",
+      dueValue: "30 Tage",
+      description: "Beschreibung",
+      qty: "Menge",
+      unitPrice: "Einzelpreis",
+      subtotalCol: "Zwischensumme",
+      subtotal: "Zwischensumme",
+      vat: "MwSt. (0% - nicht steuerpflichtig)",
+      total: "Gesamtbetrag",
+      paymentTerms: "Zahlungsbedingungen:",
+      paymentWithin: "Zahlbar innerhalb von 30 Tagen nach Rechnungserhalt",
+      bankOnRequest: "Bankdaten werden auf der finalen Rechnung oder auf Anfrage uebermittelt.",
+      bankTransfer: "Bankueberweisung auf folgendes Konto:",
+      reference: "Referenz",
+      notes: "Hinweise:",
+      notesBody: "Vielen Dank fuer Ihr Vertrauen. Bei Fragen koennen Sie uns jederzeit kontaktieren.",
+      signature: "Unterschrift und Datum",
+      clientName: "[Kundenname]",
+      clientCompany: "[Unternehmen]",
+      items: [
+        { description: "Entwicklung einer Unternehmenswebsite", quantity: 1, unitPrice: 2500, total: 2500 },
+        { description: "Schulung und Begleitung", quantity: 1, unitPrice: 300, total: 300 },
+      ],
+    },
+  }[locale];
+  const clientNameFallback = isEnglish || isGerman ? copy.clientName : clientName;
+  const clientCompanyFallback = isEnglish || isGerman ? copy.clientCompany : clientCompany;
   const invoiceItems =
-    items ??
-    (isEnglish
-      ? [
-          {
-            description: "Showcase website development",
-            quantity: 1,
-            unitPrice: 2500,
-            total: 2500,
-          },
-          {
-            description: "Training and support",
-            quantity: 1,
-            unitPrice: 300,
-            total: 300,
-          },
-        ]
-      : [
-          {
-            description: "Developpement site web vitrine",
-            quantity: 1,
-            unitPrice: 2500,
-            total: 2500,
-          },
-          {
-            description: "Formation et accompagnement",
-            quantity: 1,
-            unitPrice: 300,
-            total: 300,
-          },
-        ]);
+    items ?? copy.items;
 
   return (
     <div className="mx-auto max-w-4xl rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_24px_80px_rgba(15,23,42,0.08)] sm:p-8">
       <div className="mb-8 flex flex-col gap-6 border-b border-slate-200 pb-8 md:flex-row md:items-start md:justify-between">
         <KahDigitalDocumentLogo />
         <div className="text-left md:text-right">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500">{isEnglish ? "Invoice" : "Facture"}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500">{copy.invoice}</p>
           <h2 className="mt-2 text-2xl font-bold text-slate-900">{brandName}</h2>
-          <p className="mt-1 text-slate-600">{isEnglish ? "KAH-Digital billing document" : "Document de facturation KAH-Digital"}</p>
+          <p className="mt-1 text-slate-600">{copy.document}</p>
         </div>
       </div>
 
       <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{isEnglish ? "Issuer" : "Emetteur"}</h3>
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.issuer}</h3>
           <p className="font-semibold text-slate-900">{brandName}</p>
           <p className="text-slate-700">{companyConfig.address}</p>
           <p className="text-slate-700">
             {companyConfig.city}, {companyConfig.country}
           </p>
           <p className="text-slate-700">Email: {companyConfig.email}</p>
-          <p className="text-slate-700">{isEnglish ? "Phone" : "Tel"}: {companyConfig.phone}</p>
+          <p className="text-slate-700">{copy.phone}: {companyConfig.phone}</p>
           {companyConfig.uid ? <p className="text-slate-700">IDE: {companyConfig.uid}</p> : null}
         </div>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-          <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{isEnglish ? "Client" : "Client"}</h3>
+          <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.client}</h3>
           <p className="font-semibold text-slate-900">{clientNameFallback}</p>
           <p className="text-slate-700">{clientCompanyFallback}</p>
         </div>
@@ -100,16 +170,16 @@ export function InvoicePreview({
       <div className="mb-8">
         <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="rounded-2xl border border-slate-200 p-4">
-            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{isEnglish ? "Invoice number" : "Numero de facture"}</span>
+            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{copy.invoiceNumber}</span>
             <p className="mt-2 text-slate-900">{companyConfig.invoicePrefix}2026-001</p>
           </div>
           <div className="rounded-2xl border border-slate-200 p-4">
-            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{isEnglish ? "Issue date" : "Date d'emission"}</span>
-            <p className="mt-2 text-slate-900">{new Date().toLocaleDateString(isEnglish ? "en-GB" : "fr-FR")}</p>
+            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{copy.issueDate}</span>
+            <p className="mt-2 text-slate-900">{new Date().toLocaleDateString(isEnglish ? "en-GB" : isGerman ? "de-CH" : "fr-FR")}</p>
           </div>
           <div className="rounded-2xl border border-slate-200 p-4">
-            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{isEnglish ? "Due" : "Echeance"}</span>
-            <p className="mt-2 text-slate-900">{isEnglish ? "30 days" : "30 jours"}</p>
+            <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{copy.due}</span>
+            <p className="mt-2 text-slate-900">{copy.dueValue}</p>
           </div>
         </div>
 
@@ -117,10 +187,10 @@ export function InvoicePreview({
           <table className="min-w-[680px] w-full border-collapse">
             <thead>
               <tr className="bg-slate-50">
-                <th className="border-b border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-700">{isEnglish ? "Description" : "Description"}</th>
-                <th className="border-b border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700">{isEnglish ? "Qty" : "Qte"}</th>
-                <th className="border-b border-slate-200 px-4 py-3 text-right text-sm font-semibold text-slate-700">{isEnglish ? "Unit price" : "Prix unit."}</th>
-                <th className="border-b border-slate-200 px-4 py-3 text-right text-sm font-semibold text-slate-700">{isEnglish ? "Subtotal" : "Total HT"}</th>
+                <th className="border-b border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-700">{copy.description}</th>
+                <th className="border-b border-slate-200 px-4 py-3 text-center text-sm font-semibold text-slate-700">{copy.qty}</th>
+                <th className="border-b border-slate-200 px-4 py-3 text-right text-sm font-semibold text-slate-700">{copy.unitPrice}</th>
+                <th className="border-b border-slate-200 px-4 py-3 text-right text-sm font-semibold text-slate-700">{copy.subtotalCol}</th>
               </tr>
             </thead>
             <tbody>
@@ -140,7 +210,7 @@ export function InvoicePreview({
             <tfoot>
               <tr className="bg-slate-50">
                 <td colSpan={3} className="border-b border-slate-200 px-4 py-3 text-right font-semibold text-slate-800">
-                  {isEnglish ? "Subtotal" : "Total HT"}
+                  {copy.subtotal}
                 </td>
                 <td className="border-b border-slate-200 px-4 py-3 text-right font-semibold text-slate-900">
                   {total.toLocaleString("fr-CH")} CHF
@@ -148,13 +218,13 @@ export function InvoicePreview({
               </tr>
               <tr>
                 <td colSpan={3} className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">
-                  {isEnglish ? "VAT (0% - not subject)" : "TVA (0% - non assujetti)"}
+                  {copy.vat}
                 </td>
                 <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">{vat.toLocaleString("fr-CH")} CHF</td>
               </tr>
               <tr className="bg-slate-100">
                 <td colSpan={3} className="px-4 py-3 text-right font-bold text-slate-900">
-                  {isEnglish ? "Total incl. VAT" : "Total TTC"}
+                  {copy.total}
                 </td>
                 <td className="px-4 py-3 text-right font-bold text-slate-900">{totalWithVat.toLocaleString("fr-CH")} CHF</td>
               </tr>
@@ -164,38 +234,36 @@ export function InvoicePreview({
       </div>
 
       <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-        <h3 className="mb-2 font-semibold text-slate-900">{isEnglish ? "Payment terms:" : "Modalites de paiement :"}</h3>
+        <h3 className="mb-2 font-semibold text-slate-900">{copy.paymentTerms}</h3>
         <ul className="space-y-1 text-sm text-slate-700">
-          <li>{isEnglish ? "Payment within 30 days of invoice receipt" : "Paiement a 30 jours apres reception de la facture"}</li>
+          <li>{copy.paymentWithin}</li>
           {hasIban ? (
             <>
-              <li>{isEnglish ? "Bank transfer to the following account:" : "Virement bancaire sur le compte suivant :"}</li>
+              <li>{copy.bankTransfer}</li>
               <li>IBAN: {companyConfig.iban}</li>
             </>
           ) : (
-            <li>{isEnglish ? "Bank details provided on the final invoice or on request." : "Coordonnees bancaires transmises sur la facture finale ou sur demande."}</li>
+            <li>{copy.bankOnRequest}</li>
           )}
-          <li>{isEnglish ? "Reference" : "Reference"}: {companyConfig.invoicePrefix}2026-001</li>
+          <li>{copy.reference}: {companyConfig.invoicePrefix}2026-001</li>
         </ul>
       </div>
 
       <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-        <h3 className="mb-2 font-semibold text-slate-900">{isEnglish ? "Notes:" : "Notes :"}</h3>
-        <p className="text-sm text-slate-700">
-          {isEnglish ? "Thank you for your trust. If you have any questions, feel free to contact us." : "Merci pour votre confiance. En cas de question, n'hesitez pas a nous contacter."}
-        </p>
+        <h3 className="mb-2 font-semibold text-slate-900">{copy.notes}</h3>
+        <p className="text-sm text-slate-700">{copy.notesBody}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 p-5">
-          <p className="mb-4 text-sm text-slate-600">{isEnglish ? "Client" : "Client"}</p>
+          <p className="mb-4 text-sm text-slate-600">{copy.client}</p>
           <div className="h-12 border-b border-slate-300" />
-          <p className="mt-1 text-xs text-slate-500">{isEnglish ? "Signature and date" : "Signature et date"}</p>
+          <p className="mt-1 text-xs text-slate-500">{copy.signature}</p>
         </div>
         <div className="rounded-2xl border border-slate-200 p-5">
           <p className="mb-4 text-sm text-slate-600">{signatureName}</p>
           <div className="h-12 border-b border-slate-300" />
-          <p className="mt-1 text-xs text-slate-500">{isEnglish ? "Signature and date" : "Signature et date"}</p>
+          <p className="mt-1 text-xs text-slate-500">{copy.signature}</p>
         </div>
       </div>
     </div>

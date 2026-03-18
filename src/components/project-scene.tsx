@@ -200,16 +200,28 @@ const projectSceneMapEn: Record<string, ProjectScene> = {
   },
 };
 
+const projectSceneMapDe: Record<string, ProjectScene> = {
+  "kah-prod": {
+    badge: "Label",
+    hero: "Label, Artists, Releases, Clips und Business-Kontakte",
+    statLabel: "Bereiche",
+    statValue: "7",
+    chip: "Unabhaengiges Label",
+    callout: "Klare Navigation, um das Label-Universum zu zeigen und Management, Booking, Presse und Kommunikation sauber zu trennen.",
+    footer: "Next.js / Vercel",
+  },
+};
+
 export type ProjectSceneVariant = "card" | "hero";
 
-const fallbackScene = (project: PortfolioProject, isEnglish: boolean): ProjectScene => ({
+const fallbackScene = (project: PortfolioProject, locale: "fr" | "en" | "de"): ProjectScene => ({
   badge: project.type,
   hero: project.tagline,
-  statLabel: isEnglish ? "Result" : "Resultat",
+  statLabel: locale === "en" ? "Result" : locale === "de" ? "Ergebnis" : "Resultat",
   statValue: project.result,
   chip: project.timeline,
   callout: project.shortDescription,
-  calloutLabel: "Modules",
+  calloutLabel: locale === "de" ? "Module" : "Modules",
   footer: project.stack.slice(0, 2).join(" / "),
 });
 
@@ -219,10 +231,10 @@ type ProjectSceneRenderProps = {
 };
 
 export function ProjectSceneRender({ project, variant = "card" }: ProjectSceneRenderProps) {
-  const { isEnglish } = useLocale();
+  const { locale } = useLocale();
   const palette = project.palette;
-  const sceneMap = isEnglish ? projectSceneMapEn : projectSceneMapFr;
-  const scene = sceneMap[project.slug] ?? fallbackScene(project, isEnglish);
+  const sceneMap = locale === "en" ? projectSceneMapEn : locale === "de" ? projectSceneMapDe : projectSceneMapFr;
+  const scene = sceneMap[project.slug] ?? fallbackScene(project, locale);
   const height = variant === "hero" ? "h-64" : "h-48";
 
   return (
