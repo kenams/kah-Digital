@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectSpotlight } from "@/components/project-spotlight";
 import { Reveal } from "@/components/reveal";
 import { portfolioProjects } from "@/data/portfolio";
 
@@ -94,9 +94,9 @@ export default function ProjectsPage() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="text-white">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Etudes de cas</p>
-              <h2 className="mt-3 text-3xl font-bold">KAH Prod, une realisation KAH-Digital pour un univers musique et production.</h2>
+              <h2 className="mt-3 text-3xl font-bold">Une mise en avant plus forte, plus visuelle et plus coherente avec le niveau KAH-Digital.</h2>
               <p className="mt-3 max-w-3xl text-white/70">
-                Une reference claire pour montrer le niveau de direction, de structure et de rendu que KAH-Digital peut produire.
+                KAH Prod merite un vrai traitement editorial, avec une presence plus premium qu'une simple carte projet.
               </p>
             </div>
             <Link
@@ -107,11 +107,9 @@ export default function ProjectsPage() {
             </Link>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            {visibleProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </div>
+          {visibleProjects.map((project) => (
+            <ProjectSpotlight key={project.slug} project={project} locale="fr" />
+          ))}
         </div>
       </section>
 
