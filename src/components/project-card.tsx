@@ -19,6 +19,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const href = prefix ? `${prefix}/projets/${project.slug}` : `/projets/${project.slug}`;
   const gallery = project.mockups?.gallery ?? (project.mockups?.primary ? [project.mockups.primary] : []);
   const hasGallery = gallery.length > 0;
+  const primaryMockup = project.mockups?.primary ?? gallery[0];
   const websiteLabel = isEnglish ? "Visit site" : "Voir le site";
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,6 +27,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const lightboxId = `project-lightbox-${project.slug}`;
   const previewLabel = isEnglish ? "Preview" : "Visuel";
   const closeLabel = isEnglish ? "Close" : "Fermer";
+  const caseStudyLabel = isEnglish ? "Case study" : "Etude de cas";
   const canUseDOM = typeof document !== "undefined";
 
   useEffect(() => {
@@ -116,9 +118,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <>
       <motion.div
-        className="premium-card portfolio-card dark-card group relative overflow-hidden rounded-3xl p-6 text-white transition duration-500"
+        className="group relative overflow-hidden rounded-[30px] border border-white/10 p-5 text-white shadow-[0_28px_80px_rgba(2,6,23,0.32)] transition duration-500"
         style={{
-          background: `linear-gradient(135deg, ${project.palette.primary}, ${project.palette.secondary})`,
+          background: `linear-gradient(155deg, ${project.palette.primary} 0%, ${project.palette.secondary} 52%, #08111f 100%)`,
         }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -126,36 +128,71 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         transition={{ duration: 0.4, delay: index * 0.05 }}
       >
         <div
-          className="pointer-events-none absolute inset-0 opacity-40 transition duration-500 group-hover:opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-35 transition duration-500 group-hover:opacity-55"
           style={{
             background: `radial-gradient(circle at 20% 20%, ${project.palette.accent}, transparent 55%)`,
           }}
         />
-        <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-30">
-          <div className="absolute inset-x-4 top-4 h-px bg-white/40" />
-          <div className="absolute inset-y-4 left-4 w-px bg-white/40" />
-        </div>
-        <div className="relative flex flex-col gap-4">
-          <ProjectSceneRender project={project} />
-          <p className="text-xs uppercase tracking-[0.4em] text-white/70">{project.type}</p>
-          <p className="text-2xl font-semibold">{project.name}</p>
-          <p className="text-sm text-white/70">{project.tagline}</p>
-          <p className="text-sm text-white/70">{project.shortDescription}</p>
-          <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
-            {project.stack.slice(0, 3).map((tech) => (
-              <span key={tech} className="rounded-full border border-white/20 px-3 py-1">
-                {tech}
-              </span>
-            ))}
-            {project.stack.length > 3 ? <span>+{project.stack.length - 3}</span> : null}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(251,191,36,0.12),transparent_22%)] opacity-80" />
+        <div className="relative flex h-full flex-col gap-5">
+          <div className="overflow-hidden rounded-[26px] border border-white/10 bg-black/25 backdrop-blur-sm">
+            {primaryMockup ? (
+              <div className="relative aspect-[16/10]">
+                <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 py-3 text-[0.62rem] uppercase tracking-[0.34em] text-white/65">
+                  <span>{project.type}</span>
+                  <span>{project.timeline}</span>
+                </div>
+                <Image
+                  src={primaryMockup}
+                  alt={`${project.name} preview`}
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 90vw"
+                  className="object-cover object-top transition duration-700 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.18),transparent_28%,rgba(2,6,23,0.4))]" />
+              </div>
+            ) : (
+              <div className="p-3">
+                <ProjectSceneRender project={project} />
+              </div>
+            )}
           </div>
-          <div className="text-sm font-medium text-white">{project.result}</div>
-          <div className="flex flex-wrap gap-3">
+
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-[0.68rem] uppercase tracking-[0.38em] text-white/50">{project.type}</p>
+              <p className="mt-3 text-2xl font-semibold">{project.name}</p>
+            </div>
+            <span className="rounded-full border border-white/15 bg-white/8 px-3 py-2 text-xs uppercase tracking-[0.28em] text-white/65">
+              {project.result}
+            </span>
+          </div>
+
+          <p className="text-sm leading-7 text-white/72">{project.tagline}</p>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
+              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{isEnglish ? "Scope" : "Perimetre"}</p>
+              <p className="mt-3 text-sm leading-6 text-white/75">{project.shortDescription}</p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
+              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{isEnglish ? "Stack" : "Stack"}</p>
+              <div className="mt-3 flex flex-wrap gap-2 text-[0.68rem] uppercase tracking-[0.26em] text-white/62">
+                {project.stack.slice(0, 4).map((tech) => (
+                  <span key={tech} className="rounded-full border border-white/15 px-3 py-1.5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-auto flex flex-wrap gap-3">
             <Link
               href={href}
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm text-white transition hover:border-white hover:bg-white/10"
+              className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-white/90"
             >
-              {isEnglish ? "Case study" : "Etude de cas"}
+              {caseStudyLabel}
               <span aria-hidden="true" className="transition duration-300 group-hover:translate-x-1">
                 -&gt;
               </span>
@@ -165,7 +202,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.website}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-white/80 transition hover:border-white hover:bg-white/8 hover:text-white"
               >
                 {websiteLabel}
               </a>
@@ -177,7 +214,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   setActiveIndex(0);
                   setLightboxOpen(true);
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-white/80 transition hover:border-white hover:bg-white/8 hover:text-white"
                 aria-haspopup="dialog"
                 aria-controls={lightboxId}
               >
@@ -186,7 +223,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             )}
           </div>
         </div>
-        <div className="pointer-events-none absolute -bottom-6 right-4 hidden h-32 w-40 rounded-2xl bg-white/20 blur-xl md:block" />
+        <div className="pointer-events-none absolute -bottom-8 right-6 hidden h-28 w-36 rounded-full bg-amber-300/15 blur-3xl md:block" />
       </motion.div>
       {lightbox}
     </>
