@@ -156,13 +156,23 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
           <div className="absolute right-6 top-0 h-36 w-36 rounded-full bg-sky-400/20 blur-3xl" />
 
           <div className="relative mx-auto max-w-3xl">
-            <div className="relative rounded-[34px] border border-white/14 bg-white/8 p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm">
-              <div className="mb-4 flex items-center justify-between px-1 text-white/60">
-                <span className="text-[0.65rem] uppercase tracking-[0.35em]">{text.previewLabel}</span>
-                <span className="h-px w-16 bg-white/15" />
+            <Link
+              href={project.website ?? "/projets/kah-prod"}
+              target={project.website ? "_blank" : undefined}
+              rel={project.website ? "noreferrer" : undefined}
+              aria-label={`${text.primaryCta} - ${project.name}`}
+              className="group block transition-transform duration-300 hover:-translate-y-1"
+            >
+              <div className="relative rounded-[34px] border border-white/14 bg-white/8 p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] backdrop-blur-sm">
+                <div className="mb-4 flex items-center justify-between px-1 text-white/60">
+                  <span className="text-[0.65rem] uppercase tracking-[0.35em]">{text.previewLabel}</span>
+                  <span className="h-px w-16 bg-white/15 transition-colors duration-300 group-hover:bg-amber-300/60" />
+                </div>
+                <div className="transition-transform duration-500 group-hover:scale-[1.01]">
+                  <KahProdHeroPreview locale={locale} />
+                </div>
               </div>
-              <KahProdHeroPreview locale={locale} />
-            </div>
+            </Link>
 
             <div className="absolute -bottom-10 left-4 w-[52%] rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(241,245,249,0.92))] p-4 text-slate-900 shadow-[0_25px_70px_rgba(0,0,0,0.32)] backdrop-blur-md sm:left-8">
               <p className="text-[0.62rem] uppercase tracking-[0.38em] text-slate-500">{text.previewKicker}</p>
