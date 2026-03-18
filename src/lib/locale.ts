@@ -13,6 +13,30 @@ export function getLocalePrefix(locale: Locale) {
   return locale === "en" ? "/en" : "";
 }
 
+export function stripLocalePrefix(pathname: string | null) {
+  if (!pathname) return "/";
+  if (pathname === "/en") return "/";
+  if (pathname.startsWith("/en/")) return pathname.replace(/^\/en/, "") || "/";
+  return pathname;
+}
+
+export function localizePath(pathname: string | null, locale: Locale) {
+  const basePath = stripLocalePrefix(pathname);
+
+  if (locale === "fr") {
+    if (basePath === "/politique-de-confidentialite" || basePath === "/confidentialite") {
+      return "/confidentialite";
+    }
+    return basePath;
+  }
+
+  if (basePath === "/confidentialite" || basePath === "/politique-de-confidentialite") {
+    return "/en/politique-de-confidentialite";
+  }
+
+  return basePath === "/" ? "/en" : `/en${basePath}`;
+}
+
 export function getAlternateLocalePath(pathname: string | null): { locale: Locale; path: string } {
   const current = pathname ?? "/";
   const locale = getLocaleFromPathname(current);

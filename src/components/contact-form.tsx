@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { companyConfig } from "@/config/company";
+import { useLocale } from "@/lib/locale";
 
 type ContactStatus = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
   const router = useRouter();
+  const { isEnglish, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const [status, setStatus] = useState<ContactStatus>("idle");
   const [serverMessage, setServerMessage] = useState("");
@@ -35,22 +37,24 @@ export function ContactForm() {
 
   const handleCaptchaFailure = useCallback(() => {
     setCaptchaToken("");
-    setCaptchaError("Verification impossible. Reessaie.");
+    setCaptchaError(isEnglish ? "Verification failed. Try again." : "Verification impossible. Reessaie.");
     pendingFormRef.current = null;
-  }, []);
+  }, [isEnglish]);
 
   async function submitContactRequest(form: HTMLFormElement, token: string) {
     const formData = new FormData(form);
 
     if (!siteKey) {
       setStatus("error");
-      setServerMessage(`Captcha non configure. Ecris-nous sur ${companyConfig.email}.`);
+      setServerMessage(
+        isEnglish ? `Captcha is not configured. Write to us at ${companyConfig.email}.` : `Captcha non configure. Ecris-nous sur ${companyConfig.email}.`,
+      );
       return;
     }
 
     if (!captchaToken) {
       setStatus("error");
-      setServerMessage("Valide le captcha avant d'envoyer.");
+      setServerMessage(isEnglish ? "Validate the captcha before sending." : "Valide le captcha avant d'envoyer.");
       return;
     }
 
@@ -80,7 +84,9 @@ export function ContactForm() {
         const errorMessage =
           typeof data?.error === "string"
             ? data.error
-            : "Impossible d'envoyer le message. Reessaie dans un instant.";
+            : isEnglish
+              ? "Unable to send the message. Try again in a moment."
+              : "Impossible d'envoyer le message. Reessaie dans un instant.";
         setCaptchaToken("");
         setCaptchaReset((prev) => prev + 1);
         setStatus("error");
@@ -89,17 +95,19 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      setServerMessage("Merci, message envoye. Redirection en cours...");
+      setServerMessage(isEnglish ? "Thanks, message sent. Redirecting..." : "Merci, message envoye. Redirection en cours...");
       form.reset();
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);
       window.setTimeout(() => {
-        router.push("/merci");
+        router.push(prefix ? `${prefix}/merci` : "/merci");
       }, 800);
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage("Impossible d'envoyer le message. Reessaie dans un instant.");
+      setServerMessage(
+        isEnglish ? "Unable to send the message. Try again in a moment." : "Impossible d'envoyer le message. Reessaie dans un instant.",
+      );
     }
   }
 
@@ -109,7 +117,9 @@ export function ContactForm() {
 
     if (!siteKey) {
       setStatus("error");
-      setServerMessage(`Captcha non configure. Ecris-nous sur ${companyConfig.email}.`);
+      setServerMessage(
+        isEnglish ? `Captcha is not configured. Write to us at ${companyConfig.email}.` : `Captcha non configure. Ecris-nous sur ${companyConfig.email}.`,
+      );
       return;
     }
 
@@ -145,31 +155,31 @@ export function ContactForm() {
 
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Reponse</p>
-          <p className="mt-2 text-sm text-white/75">Sous 24h avec retour concret.</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Response" : "Reponse"}</p>
+          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Within 24h with a concrete reply." : "Sous 24h avec retour concret."}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Canal</p>
-          <p className="mt-2 text-sm text-white/75">Email direct, sans tunnel inutile.</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Channel" : "Canal"}</p>
+          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Direct email, no useless funnel." : "Email direct, sans tunnel inutile."}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Cadrage</p>
-          <p className="mt-2 text-sm text-white/75">Sujet clair, demande exploitable.</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{isEnglish ? "Scoping" : "Cadrage"}</p>
+          <p className="mt-2 text-sm text-white/75">{isEnglish ? "Clear subject, actionable request." : "Sujet clair, demande exploitable."}</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="firstName" className="text-sm font-medium text-white/90">
-            Prenom *
+            {isEnglish ? "First name *" : "Prenom *"}
           </label>
-          <input id="firstName" name="firstName" required className={fieldClassName} placeholder="Ex : Alex" />
+          <input id="firstName" name="firstName" required className={fieldClassName} placeholder={isEnglish ? "Ex: Alex" : "Ex : Alex"} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="lastName" className="text-sm font-medium text-white/90">
-            Nom *
+            {isEnglish ? "Last name *" : "Nom *"}
           </label>
-          <input id="lastName" name="lastName" required className={fieldClassName} placeholder="Ex : Martin" />
+          <input id="lastName" name="lastName" required className={fieldClassName} placeholder={isEnglish ? "Ex: Martin" : "Ex : Martin"} />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="text-sm font-medium text-white/90">
@@ -179,41 +189,45 @@ export function ContactForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="company" className="text-sm font-medium text-white/90">
-            Societe
+            {isEnglish ? "Company" : "Societe"}
           </label>
-          <input id="company" name="company" className={fieldClassName} placeholder="Ex : Studio Nova" />
+          <input id="company" name="company" className={fieldClassName} placeholder={isEnglish ? "Ex: Studio Nova" : "Ex : Studio Nova"} />
         </div>
         <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
           <label htmlFor="subject" className="text-sm font-medium text-white/95">
-            Sujet *
+            {isEnglish ? "Subject *" : "Sujet *"}
           </label>
           <select id="subject" name="subject" required className={`${fieldClassName} text-white`} defaultValue="">
             <option value="" disabled>
-              Selectionnez un sujet
+              {isEnglish ? "Select a subject" : "Selectionnez un sujet"}
             </option>
-            <option value="devis">Demande de devis</option>
-            <option value="information">Demande d'information</option>
-            <option value="support">Support technique</option>
-            <option value="autre">Autre</option>
+            <option value="devis">{isEnglish ? "Quote request" : "Demande de devis"}</option>
+            <option value="information">{isEnglish ? "Information request" : "Demande d'information"}</option>
+            <option value="support">{isEnglish ? "Technical support" : "Support technique"}</option>
+            <option value="autre">{isEnglish ? "Other" : "Autre"}</option>
           </select>
         </div>
         <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
           <label htmlFor="message" className="text-sm font-medium text-white/95">
-            Message *
+            {isEnglish ? "Message *" : "Message *"}
           </label>
           <textarea
             id="message"
             name="message"
             required
             rows={6}
-            placeholder="Decris ta demande, ton contexte et ce que tu attends."
+            placeholder={
+              isEnglish
+                ? "Describe your request, your context, and what you expect."
+                : "Decris ta demande, ton contexte et ce que tu attends."
+            }
             className={`${fieldClassName} min-h-[180px]`}
           />
         </div>
       </div>
 
       <div className="mt-6 space-y-3 rounded-2xl border border-white/12 bg-white/5 p-4">
-        <p className="text-sm font-medium text-white/95">Verification anti-spam</p>
+        <p className="text-sm font-medium text-white/95">{isEnglish ? "Anti-spam verification" : "Verification anti-spam"}</p>
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/15 bg-slate-950/45 p-4 flex items-center">
             <TurnstileWidget
@@ -226,7 +240,7 @@ export function ContactForm() {
             />
           </div>
         ) : (
-          <p className="text-sm text-amber-200">Captcha non configure.</p>
+          <p className="text-sm text-amber-200">{isEnglish ? "Captcha is not configured." : "Captcha non configure."}</p>
         )}
         {captchaError ? <p className="text-sm text-rose-200">{captchaError}</p> : null}
       </div>
@@ -234,9 +248,11 @@ export function ContactForm() {
       <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
         <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent" />
         <label htmlFor="privacy" className="text-sm text-white/75">
-          J'accepte que mes donnees soient utilisees pour repondre a ma demande. Consultez notre{" "}
-          <a href="/confidentialite" className="underline hover:text-white">
-            politique de confidentialite
+          {isEnglish
+            ? "I agree that my data may be used to answer my request. Read our "
+            : "J'accepte que mes donnees soient utilisees pour repondre a ma demande. Consultez notre "}
+          <a href={isEnglish ? "/en/politique-de-confidentialite" : "/confidentialite"} className="underline hover:text-white">
+            {isEnglish ? "privacy policy" : "politique de confidentialite"}
           </a>
           .
         </label>
@@ -248,7 +264,7 @@ export function ContactForm() {
           disabled={isSubmitting}
           className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
+          {isSubmitting ? (isEnglish ? "Sending..." : "Envoi en cours...") : isEnglish ? "Send message" : "Envoyer le message"}
         </button>
 
         {serverMessage ? (
