@@ -30,13 +30,6 @@ export function LanguageSwitcher() {
           </Link>
         );
       })}
-      <span
-        className="rounded-full px-3 py-1 text-white/35"
-        aria-label="Version allemande a venir"
-        title="Version allemande a venir"
-      >
-        DE
-      </span>
     </div>
   );
 }
