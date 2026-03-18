@@ -173,17 +173,17 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
                 </div>
               </div>
             </Link>
-
-            <div className="absolute -bottom-10 left-4 w-[52%] rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(241,245,249,0.92))] p-4 text-slate-900 shadow-[0_25px_70px_rgba(0,0,0,0.32)] backdrop-blur-md sm:left-8">
-              <p className="text-[0.62rem] uppercase tracking-[0.38em] text-slate-500">{text.previewKicker}</p>
-              <p className="mt-3 text-xl font-semibold leading-tight">{project.name}</p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{project.shortDescription}</p>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative mt-16 grid gap-4 lg:grid-cols-[1.15fr_1.15fr_0.9fr]">
+      <div className="relative mt-10 grid gap-4 lg:grid-cols-[1.15fr_1.15fr_0.9fr]">
+        <div className="rounded-[28px] border border-white/10 bg-white/6 p-6 text-white/80 backdrop-blur-sm">
+          <p className="text-[0.68rem] uppercase tracking-[0.35em] text-white/45">{text.previewKicker}</p>
+          <p className="mt-3 text-2xl font-semibold text-white">{project.name}</p>
+          <p className="mt-3 text-base leading-7 text-white/72">{project.shortDescription}</p>
+        </div>
+
         <div className="rounded-[28px] border border-white/10 bg-white/6 p-6 text-white/80 backdrop-blur-sm">
           <p className="text-[0.68rem] uppercase tracking-[0.35em] text-white/45">{text.detailOneTitle}</p>
           <p className="mt-4 text-base leading-7 text-white/78">{text.detailOneBody}</p>
