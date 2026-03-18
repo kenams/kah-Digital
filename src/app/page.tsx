@@ -9,9 +9,9 @@ import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata: Metadata = {
-  title: "KAH-Digital | Sites, applications et solutions pour entreprises",
+  title: "KAH-Digital | Sites web, applications et solutions pour entreprises",
   description:
-    "Sites web, applications et solutions de support pour entreprises. Accompagnement professionnel a distance depuis la Suisse vers l'international.",
+    "KAH-Digital concoit des sites web, des applications et des parcours support pour entreprises. Base a Lausanne, actif en Suisse et a l'international.",
 };
 
 export default function Home() {

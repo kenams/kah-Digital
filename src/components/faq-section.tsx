@@ -8,19 +8,24 @@ export function FAQSection() {
 
   const faqs = [
     {
-      question: "Travaillez-vous a distance ?",
+      question: "Travaillez-vous uniquement en Suisse ?",
       answer:
-        "Oui, nous travaillons principalement a distance, ce qui nous permet de collaborer efficacement avec des clients en Suisse et a l'international.",
+        "Non. La Suisse est un marche naturel pour KAH-Digital, mais nous restons ouverts a des projets internationaux quand le cadre est bon et que le besoin est clair.",
     },
     {
       question: "Proposez-vous des devis personnalises ?",
       answer:
-        "Oui. Chaque projet est cadre selon vos besoins, vos priorites et vos delais, avec une proposition claire et des livrables lisibles.",
+        "Oui. Chaque projet est cadre selon vos priorites, votre niveau d'urgence et le perimetre reel a produire, avec une proposition lisible.",
     },
     {
-      question: "Intervenez-vous pour les entreprises suisses ?",
+      question: "Quel type de site web pouvez-vous produire ?",
       answer:
-        "Oui, la Suisse fait partie de notre marche naturel, mais notre positionnement reste ouvert a des projets internationaux quand le cadre est bon.",
+        "Sites vitrines, sites corporate, pages de lancement, plateformes de presentation ou bases plus evolutives connectees a d'autres outils.",
+    },
+    {
+      question: "Pouvez-vous developper une application metier ?",
+      answer:
+        "Oui. Nous pouvons cadrer un outil interne, un portail, un tableau de bord ou une application web/mobile sur mesure selon le besoin.",
     },
     {
       question: "Le parcours support connecte a GLPI convient-il a une PME ?",
@@ -28,14 +33,9 @@ export function FAQSection() {
         "Oui. Le but est justement de simplifier l'entree dans le support, d'aider l'utilisateur au bon moment et de garder un passage propre vers ticket quand c'est necessaire.",
     },
     {
-      question: "Combien de temps pour creer un site ?",
+      question: "Combien de temps faut-il pour demarrer ?",
       answer:
-        "Selon la complexite, un site vitrine peut etre realise en 2 a 4 semaines, et une application en plusieurs sprints selon le perimetre.",
-    },
-    {
-      question: "Peut-on demarrer rapidement ?",
-      answer:
-        "Oui, si le besoin est clair. Le plus rapide est de partir sur un brief simple, puis de valider un cadrage et un devis.",
+        "Si le besoin est clair, le demarrage peut etre rapide. Le plus efficace reste de valider un brief simple, puis un cadrage et un devis.",
     },
   ];
 
@@ -48,11 +48,11 @@ export function FAQSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Questions frequentes</h2>
-          <p className="text-xl text-gray-600">Tout ce que vous devez savoir sur notre approche.</p>
+          <p className="text-xl text-gray-600">Les points les plus utiles avant de lancer un site, une application ou un parcours support.</p>
         </div>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md">
+            <div key={faq.question} className="bg-white rounded-lg shadow-md">
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50"
