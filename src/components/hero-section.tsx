@@ -20,8 +20,8 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Sites web, applications sur mesure et solutions de support plus claires.
-            Un accompagnement propre, du cadrage a la mise en ligne, pour la Suisse et l&apos;international.
+            Sites web, applications sur mesure et parcours support plus clairs.
+            Depuis Lausanne, KAH-Digital accompagne les entreprises en Suisse et a l&apos;international, du cadrage a la mise en ligne.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
