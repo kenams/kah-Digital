@@ -4,7 +4,12 @@ import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { FiArrowUpRight, FiMessageSquare, FiSend } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
-import type { AssistantSession, AssistantStructuredOutput } from "@/lib/assistant/schema";
+import {
+  assistantSessionSchema,
+  assistantStructuredOutputSchema,
+  type AssistantSession,
+  type AssistantStructuredOutput,
+} from "@/lib/assistant/schema";
 
 type AssistantProgress = {
   current: number;
@@ -129,9 +134,21 @@ function readStoredState(storageKey: string) {
 
   try {
     const parsed = JSON.parse(raw) as { session?: AssistantSession | null; summary?: AssistantStructuredOutput | null };
+    const session = parsed.session ? assistantSessionSchema.safeParse(parsed.session) : null;
+    const summary = parsed.summary
+      ? assistantStructuredOutputSchema.safeParse(parsed.summary)
+      : parsed.session?.summary
+        ? assistantStructuredOutputSchema.safeParse(parsed.session.summary)
+        : null;
+
+    if ((parsed.session && !session?.success) || ((parsed.summary || parsed.session?.summary) && !summary?.success)) {
+      window.localStorage.removeItem(storageKey);
+      return { session: null, summary: null };
+    }
+
     return {
-      session: parsed.session ?? null,
-      summary: parsed.summary ?? parsed.session?.summary ?? null,
+      session: session?.success ? session.data : null,
+      summary: summary?.success ? summary.data : null,
     };
   } catch {
     window.localStorage.removeItem(storageKey);
@@ -162,7 +179,11 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const transcript = useMemo(() => session?.transcript ?? [], [session?.transcript]);
 
   useEffect(() => {
-    if (!session) return;
+    if (!session && !summary) {
+      window.localStorage.removeItem(storageKey);
+      return;
+    }
+
     window.localStorage.setItem(storageKey, JSON.stringify({ session, summary }));
   }, [session, summary, storageKey]);
 
@@ -205,7 +226,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         const result = await postJson<AssistantMessageResponse>("/api/assistant/message", {
           message: nextMessage,
           locale,
-          session,
+          session: session ? assistantSessionSchema.parse(session) : undefined,
         });
 
         setSession(result.session);
