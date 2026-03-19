@@ -83,7 +83,7 @@ export function SiteHeader() {
             <LanguageSwitcher />
             <Link
               href={localeCopy.nav[4]?.href ?? `${prefix}/contact`}
-              className="rounded-full bg-white px-4 py-2 font-semibold text-black transition-colors hover:bg-gray-200"
+              className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}
             </Link>
@@ -119,7 +119,7 @@ export function SiteHeader() {
               ))}
               <Link
                 href={localeCopy.nav[4]?.href ?? `${prefix}/contact`}
-                className="rounded-full bg-white px-4 py-2 text-center font-semibold text-black transition-colors hover:bg-gray-200"
+                className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 text-center font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {localeCopy.cta}
