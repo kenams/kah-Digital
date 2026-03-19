@@ -25,6 +25,11 @@ type AssistantMessageResponse = {
   humanNeeded: boolean;
 };
 
+type AssistantStreamEvent =
+  | { type: "text"; payload: { delta: string } }
+  | { type: "done"; payload: AssistantMessageResponse }
+  | { type: "error"; payload: { error?: string } };
+
 const storagePrefix = "kah-assistant-session";
 
 const widgetCopy = {
@@ -113,6 +118,114 @@ async function postJson<T>(url: string, body: unknown) {
   return payload;
 }
 
+function parseStreamBlocks(buffer: string) {
+  const parts = buffer.split("\n\n");
+  return {
+    blocks: parts.slice(0, -1),
+    rest: parts[parts.length - 1] ?? "",
+  };
+}
+
+function parseStreamEvent(block: string): AssistantStreamEvent | null {
+  const lines = block
+    .split("\n")
+    .map((line) => line.trimEnd())
+    .filter(Boolean);
+
+  const eventLine = lines.find((line) => line.startsWith("event:"));
+  const dataLines = lines.filter((line) => line.startsWith("data:"));
+
+  if (!eventLine || dataLines.length === 0) {
+    return null;
+  }
+
+  const event = eventLine.slice(6).trim();
+  const raw = dataLines.map((line) => line.slice(5).trim()).join("\n");
+
+  try {
+    const payload = JSON.parse(raw) as AssistantStreamEvent["payload"];
+    if (event === "text" || event === "done" || event === "error") {
+      return { type: event, payload } as AssistantStreamEvent;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+async function streamAssistantMessage(body: {
+  message: string;
+  locale: "fr" | "en" | "de";
+  session?: AssistantSession;
+  onText: (delta: string) => void;
+}) {
+  const response = await fetch("/api/assistant/message/stream", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      message: body.message,
+      locale: body.locale,
+      session: body.session,
+    }),
+  });
+
+  if (!response.ok || !response.body) {
+    const fallback = await postJson<AssistantMessageResponse>("/api/assistant/message", {
+      message: body.message,
+      locale: body.locale,
+      session: body.session,
+    });
+    body.onText(fallback.reply);
+    return fallback;
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let donePayload: AssistantMessageResponse | null = null;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      buffer += decoder.decode();
+      break;
+    }
+
+    buffer += decoder.decode(value, { stream: true });
+    const parsed = parseStreamBlocks(buffer);
+    buffer = parsed.rest;
+
+    for (const block of parsed.blocks) {
+      const event = parseStreamEvent(block);
+      if (!event) continue;
+
+      if (event.type === "text") {
+        body.onText(event.payload.delta ?? "");
+      } else if (event.type === "done") {
+        donePayload = event.payload;
+      } else if (event.type === "error") {
+        throw new Error(event.payload.error || "Erreur serveur");
+      }
+    }
+  }
+
+  if (!donePayload && buffer.trim()) {
+    const trailing = parseStreamEvent(buffer);
+    if (trailing?.type === "done") {
+      donePayload = trailing.payload;
+    } else if (trailing?.type === "error") {
+      throw new Error(trailing.payload.error || "Erreur serveur");
+    }
+  }
+
+  if (!donePayload) {
+    throw new Error("Reponse incomplete");
+  }
+
+  return donePayload;
+}
+
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("fr-CH").format(value);
 }
@@ -175,6 +288,9 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const [statusMessage, setStatusMessage] = useState("");
   const [messagePending, startMessageTransition] = useTransition();
   const [actionPending, startActionTransition] = useTransition();
+  const [streamingReply, setStreamingReply] = useState("");
+  const [pendingUserMessage, setPendingUserMessage] = useState("");
+  const [isStreaming, setIsStreaming] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
   const transcript = useMemo(() => session?.transcript ?? [], [session?.transcript]);
 
@@ -191,7 +307,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [transcript, open, summary]);
 
-  const canSend = message.trim().length > 0 && !messagePending;
+  const canSend = message.trim().length > 0 && !messagePending && !isStreaming;
   const canTriggerActions = Boolean(summary) && consent && !actionPending;
 
   const summaryCards = useMemo(() => {
@@ -220,13 +336,19 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     const nextMessage = message.trim();
     setMessage("");
     setStatusMessage("");
+    setPendingUserMessage(nextMessage);
+    setStreamingReply("");
+    setIsStreaming(true);
 
     startMessageTransition(async () => {
       try {
-        const result = await postJson<AssistantMessageResponse>("/api/assistant/message", {
+        const result = await streamAssistantMessage({
           message: nextMessage,
           locale,
           session: session ? assistantSessionSchema.parse(session) : undefined,
+          onText(delta) {
+            setStreamingReply((current) => `${current}${delta}`);
+          },
         });
 
         setSession(result.session);
@@ -241,6 +363,10 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         }
       } catch (error) {
         setStatusMessage(error instanceof Error ? error.message : "Erreur reseau");
+      } finally {
+        setPendingUserMessage("");
+        setStreamingReply("");
+        setIsStreaming(false);
       }
     });
   };
@@ -328,6 +454,22 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                   </div>
                 </div>
               ))}
+
+              {pendingUserMessage ? (
+                <div className="pl-8">
+                  <div className="rounded-[1.6rem] rounded-br-md bg-[linear-gradient(135deg,rgba(214,179,106,0.18),rgba(127,184,199,0.18))] px-4 py-3 text-sm text-white">
+                    {pendingUserMessage}
+                  </div>
+                </div>
+              ) : null}
+
+              {isStreaming ? (
+                <div className="pr-8">
+                  <div className="rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86">
+                    {streamingReply || "..."}
+                  </div>
+                </div>
+              ) : null}
 
               {summary ? (
                 <div className="rounded-[1.8rem] border border-[#d6b36a]/28 bg-[linear-gradient(135deg,rgba(214,179,106,0.14),rgba(18,22,38,0.82))] p-4">
