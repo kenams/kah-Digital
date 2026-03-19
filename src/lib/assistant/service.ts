@@ -36,25 +36,30 @@ const notificationEmail = process.env.QUOTE_NOTIFICATION_EMAIL ?? brandContact.e
 
 const localeCopy = {
   fr: {
-    summaryReady:
-      "J'ai prepare un resume structure. Si tu veux, je peux te l'envoyer par email ou te mettre en relation avec un humain.",
-    humanEscalation: "Je prepare un resume et je te mets en relation avec un expert.",
-    startProject: "Je peux t'aider a cadrer un projet.",
-    startSupport: "Je peux qualifier un sujet support.",
+    summaryReady: "Voici la premiere synthese exploitable.",
+    humanEscalation: "Je prepare un resume exploitable et je passe la suite a un humain.",
+    startProject: "On va cadrer ca proprement.",
+    startSupport: "On va qualifier ca rapidement.",
     nextStepQuote: "Devis structure avec reprise humaine conseillee.",
     nextStepSupport: "Resume support pret pour ticket ou reprise humaine.",
     nextStepInfo: "Orientation vers le bon service KAH-Digital.",
     projectFlowLabel: "Qualification projet",
     supportFlowLabel: "Qualification support",
     generalFlowLabel: "Orientation",
-    faqFollowUp: "Si tu veux, je peux aussi t'aider a transformer ca en demande concrete.",
+    faqFollowUp: "Si tu veux une fourchette utile ou une suite concrete, je passe au cadrage.",
     invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le resume.",
     summarySent: "Le resume a ete envoye par email.",
     leadSent: "Le resume a ete transmis a KAH-Digital pour reprise humaine.",
     glpiCreated: "Le ticket support a ete prepare et transmis.",
     glpiFallback: "GLPI n'est pas configure ici. Je transmets plutot vers un humain avec resume.",
     fallbackAnswer:
-      "Je peux t'aider a cadrer un projet, qualifier un sujet support, ou te repondre sur les services KAH-Digital.",
+      "Pour avancer, choisis un axe : site, application, support, GLPI ou besoin de cadrage. Ensuite je pose seulement les questions utiles.",
+    recadrageBudget:
+      "Je prefere etre transparent : sans perimetre clair, je peux donner une fourchette, pas un prix ferme.",
+    recadrageTimeline: "Je peux tester la faisabilite, pas promettre un delai ferme sans cadrage.",
+    recadrageMvp:
+      "Pour eviter de partir sur quelque chose d'irrealisable, il faut definir les fonctions indispensables au depart.",
+    recapIntro: "Voici ce que j'ai compris :",
     faqAnswers: {
       delai: assistantKnowledge.faq[0].answerFr,
       services: assistantKnowledge.faq[1].answerFr,
@@ -79,25 +84,29 @@ const localeCopy = {
     },
   },
   en: {
-    summaryReady:
-      "I have prepared a structured summary. If you want, I can email it to you or route you to a human expert.",
-    humanEscalation: "I am preparing a summary and routing you to an expert.",
-    startProject: "I can help frame a project.",
-    startSupport: "I can qualify a support issue.",
+    summaryReady: "Here is the first usable summary.",
+    humanEscalation: "I am preparing a usable summary and handing this to a human expert.",
+    startProject: "Let's frame this properly.",
+    startSupport: "Let's qualify this quickly.",
     nextStepQuote: "Structured quote with human follow-up recommended.",
     nextStepSupport: "Support summary ready for ticket creation or human follow-up.",
     nextStepInfo: "Route toward the right KAH-Digital service.",
     projectFlowLabel: "Project qualification",
     supportFlowLabel: "Support qualification",
     generalFlowLabel: "Routing",
-    faqFollowUp: "If you want, I can also turn that into a concrete request.",
+    faqFollowUp: "If you want a useful range or next step, I can switch to qualification.",
     invalidConsent: "I need your consent before storing or sending the summary.",
     summarySent: "The summary was sent by email.",
     leadSent: "The summary was forwarded to KAH-Digital for human follow-up.",
     glpiCreated: "The support ticket was prepared and sent.",
     glpiFallback: "GLPI is not configured here. I am routing the summary to a human instead.",
     fallbackAnswer:
-      "I can help frame a project, qualify a support issue, or answer questions about KAH-Digital services.",
+      "Pick one lane: website, application, support, GLPI, or discovery. Then I will ask only what is needed.",
+    recadrageBudget:
+      "To be transparent, without a clear scope I can give you a range, not a fixed price.",
+    recadrageTimeline: "I can test feasibility, but not promise a fixed timeline without framing.",
+    recadrageMvp: "To avoid an unrealistic scope, we need to define the must-have features first.",
+    recapIntro: "Here is what I understood:",
     faqAnswers: {
       delai: assistantKnowledge.faq[0].answerEn,
       services: assistantKnowledge.faq[1].answerEn,
@@ -122,25 +131,29 @@ const localeCopy = {
     },
   },
   de: {
-    summaryReady:
-      "Ich habe eine strukturierte Zusammenfassung vorbereitet. Wenn du willst, kann ich sie per E-Mail senden oder an einen Experten uebergeben.",
-    humanEscalation: "Ich bereite eine Zusammenfassung vor und verbinde dich mit einem Experten.",
-    startProject: "Ich kann helfen, ein Projekt sauber zu qualifizieren.",
-    startSupport: "Ich kann ein Support-Thema qualifizieren.",
+    summaryReady: "Hier ist die erste brauchbare Zusammenfassung.",
+    humanEscalation: "Ich bereite eine brauchbare Zusammenfassung vor und uebergebe an einen Experten.",
+    startProject: "Wir grenzen das jetzt sauber ein.",
+    startSupport: "Wir qualifizieren das jetzt schnell.",
     nextStepQuote: "Strukturiertes Angebot mit menschlicher Rueckmeldung empfohlen.",
     nextStepSupport: "Support-Zusammenfassung bereit fuer Ticket oder menschliche Uebernahme.",
     nextStepInfo: "Weiterleitung zum passenden KAH-Digital Service.",
     projectFlowLabel: "Projektqualifizierung",
     supportFlowLabel: "Supportqualifizierung",
     generalFlowLabel: "Orientierung",
-    faqFollowUp: "Wenn du willst, mache ich daraus direkt eine konkrete Anfrage.",
+    faqFollowUp: "Wenn du eine belastbare Spanne oder den naechsten Schritt willst, gehe ich direkt ins Cadrage.",
     invalidConsent: "Ich brauche deine Zustimmung, bevor ich die Zusammenfassung speichere oder versende.",
     summarySent: "Die Zusammenfassung wurde per E-Mail versendet.",
     leadSent: "Die Zusammenfassung wurde an KAH-Digital fuer eine menschliche Rueckmeldung weitergeleitet.",
     glpiCreated: "Das Support-Ticket wurde vorbereitet und uebermittelt.",
     glpiFallback: "GLPI ist hier nicht konfiguriert. Ich leite die Zusammenfassung stattdessen an einen Menschen weiter.",
     fallbackAnswer:
-      "Ich kann ein Projekt qualifizieren, ein Support-Thema einordnen oder Fragen zu den Leistungen von KAH-Digital beantworten.",
+      "Waehle zuerst eine Richtung: Website, Anwendung, Support, GLPI oder Cadrage. Danach frage ich nur das Noetige.",
+    recadrageBudget:
+      "Ich bin lieber direkt: Ohne klaren Umfang kann ich eine Spanne nennen, aber keinen festen Preis.",
+    recadrageTimeline: "Ich kann die Machbarkeit pruefen, aber keinen festen Termin ohne Cadrage versprechen.",
+    recadrageMvp: "Damit das nicht unrealistisch wird, muessen zuerst die Pflichtfunktionen festgelegt werden.",
+    recapIntro: "Das habe ich verstanden:",
     faqAnswers: {
       delai: assistantKnowledge.faq[0].answerDe,
       services: assistantKnowledge.faq[1].answerDe,
@@ -189,6 +202,9 @@ const projectBuildPhrases = [
   "workflow support",
 ];
 const activeIssuePhrases = ["ne fonctionne", "ne marche", "bloque", "bloqué", "down", "incident", "erreur", "panne", "ticket"];
+const unrealisticKeywords = ["uber", "airbnb", "amazon", "doctolib", "booking", "uber eats"];
+const lowBudgetKeywords = ["petit budget", "pas cher", "100", "200", "300", "500", "1000"];
+const urgentKeywords = ["vite", "urgent", "rapidement", "demain", "cette semaine", "asap"];
 
 function getCopy(locale: Locale) {
   return localeCopy[locale];
@@ -415,6 +431,9 @@ Never promise fixed prices or fixed delivery.
 Allowed intents: project_quote, support_glpi, faq, general_info, unknown.
 Allowed project types: showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, unknown.
 Allowed complexity: low, medium, high.
+Act like a pre-project lead, not a generic chatbot.
+Be direct, concise, structured, and commercially useful.
+Flag vague requests, unrealistic expectations, and missing essentials clearly.
 `;
 
   const output = await generateOpenAIJson<AssistantStructuredOutput>({
@@ -444,9 +463,230 @@ function detectEscalation(summary: AssistantStructuredOutput, session: Assistant
 }
 
 function acknowledgeAndAsk(locale: Locale, question: string) {
-  if (locale === "en") return `Noted. ${question}`;
-  if (locale === "de") return `Verstanden. ${question}`;
-  return `C'est note. ${question}`;
+  if (locale === "en") return `Next point: ${question}`;
+  if (locale === "de") return `Naechster Punkt: ${question}`;
+  return `Point suivant : ${question}`;
+}
+
+function detectUnrealisticRequest(message: string) {
+  const text = message.toLowerCase();
+  return keywordMatch(text, unrealisticKeywords) && keywordMatch(text, lowBudgetKeywords);
+}
+
+function detectUrgentRequest(message: string) {
+  return keywordMatch(message.toLowerCase(), urgentKeywords);
+}
+
+function formatProjectTypeLabel(projectType: AssistantProjectType, locale: Locale) {
+  const labels = {
+    fr: {
+      showcase_website: "site vitrine",
+      corporate_website: "site corporate",
+      ecommerce: "e-commerce",
+      web_app: "application web",
+      mobile_app: "application mobile",
+      dashboard_portal: "dashboard ou portail",
+      glpi_assistant: "solution connectee a GLPI",
+      unknown: "projet digital",
+    },
+    en: {
+      showcase_website: "showcase website",
+      corporate_website: "corporate website",
+      ecommerce: "e-commerce",
+      web_app: "web application",
+      mobile_app: "mobile application",
+      dashboard_portal: "dashboard or portal",
+      glpi_assistant: "GLPI-connected solution",
+      unknown: "digital project",
+    },
+    de: {
+      showcase_website: "Unternehmenswebsite",
+      corporate_website: "Corporate-Website",
+      ecommerce: "E-Commerce",
+      web_app: "Web-Anwendung",
+      mobile_app: "Mobile-App",
+      dashboard_portal: "Dashboard oder Portal",
+      glpi_assistant: "GLPI-nahe Loesung",
+      unknown: "Digitalprojekt",
+    },
+  } as const;
+
+  return labels[locale][projectType];
+}
+
+function estimateCalendarRange(days: number, locale: Locale) {
+  if (locale === "en") {
+    if (days <= 5) return "about 1 week";
+    if (days <= 15) return "about 2 to 4 weeks";
+    return "several weeks with validation checkpoints";
+  }
+
+  if (locale === "de") {
+    if (days <= 5) return "etwa 1 Woche";
+    if (days <= 15) return "etwa 2 bis 4 Wochen";
+    return "mehrere Wochen mit Abstimmungsschritten";
+  }
+
+  if (days <= 5) return "environ 1 semaine";
+  if (days <= 15) return "environ 2 a 4 semaines";
+  return "plusieurs semaines avec validations intermediaires";
+}
+
+function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMissing: string) {
+  const copy = getCopy(locale);
+  const projectType = session.projectType;
+  const objective = session.collected.objective?.toLowerCase() ?? "";
+
+  if (nextMissing === "features") {
+    if (projectType === "showcase_website" || projectType === "corporate_website") {
+      return locale === "en"
+        ? "To answer seriously, I need the minimum useful scope: roughly how many pages, and do you need lead capture, SEO, multilingual content, or a premium visual direction?"
+        : locale === "de"
+          ? "Damit ich serioes antworten kann, brauche ich den minimal noetigen Scope: ungefaehr wie viele Seiten, und brauchst du Lead-Erfassung, SEO, Mehrsprachigkeit oder eine hochwertige visuelle Richtung?"
+          : "Pour te repondre serieusement, il me faut le minimum utile : combien de pages environ, et est-ce qu'il faut capture de contacts, SEO, multilingue ou une direction visuelle premium ?";
+    }
+
+    if (projectType === "web_app" || projectType === "mobile_app") {
+      return locale === "en"
+        ? "Let's frame the useful scope: do you need user accounts, payments, a dashboard, API integrations, or geolocation?"
+        : locale === "de"
+          ? "Lass uns den scope eingrenzen: brauchst du Benutzerkonten, Zahlung, Dashboard, API-Integrationen oder Geolokalisierung?"
+          : "On cadre le scope utile : il faut des comptes utilisateurs, du paiement, un dashboard, des integrations API ou de la geolocalisation ?";
+    }
+
+    if (projectType === "glpi_assistant") {
+      return locale === "en"
+        ? "For version 1 around GLPI, what must exist from day one: user guidance, request qualification, automatic ticket creation, knowledge base, or dashboard?"
+        : locale === "de"
+          ? "Fuer eine Version 1 autour de GLPI: was ist zwingend noetig - Nutzerhilfe, Qualifizierung, automatische Ticketerstellung, Wissensbasis oder Dashboard?"
+          : "Pour une version 1 autour de GLPI, qu'est-ce qui doit exister des le depart : aide utilisateur, qualification des demandes, creation automatique de ticket, base de connaissance ou dashboard ?";
+    }
+  }
+
+  if (nextMissing === "timeline") {
+    if (detectUrgentRequest(objective)) {
+      return locale === "en"
+        ? `${copy.recadrageTimeline} What is the hard deadline, and what is strictly required for launch?`
+        : locale === "de"
+          ? `${copy.recadrageTimeline} Was ist die vraie deadline, und was ist fuer den Start wirklich unverzichtbar?`
+          : `${copy.recadrageTimeline} Quelle est la vraie date limite, et qu'est-ce qui est strictement indispensable au lancement ?`;
+    }
+    return copy.questions.timeline;
+  }
+
+  if (nextMissing === "budget") {
+    return locale === "en"
+      ? `${copy.recadrageBudget} What range do you have in mind, even roughly?`
+      : locale === "de"
+        ? `${copy.recadrageBudget} Welche Spanne hast du im Kopf, selbst grob?`
+        : `${copy.recadrageBudget} Quelle fourchette tu envisages, meme approximative ?`;
+  }
+
+  if (nextMissing === "objective" && (projectType === "showcase_website" || projectType === "corporate_website")) {
+    return locale === "en"
+      ? "Key point first: is the site meant to present the business, generate leads, or sell?"
+      : locale === "de"
+        ? "Der Schluesselpunkt zuerst: soll die Seite das Unternehmen praesentieren, Kontakte erzeugen oder verkaufen?"
+        : "Le point cle d'abord : le site sert a presenter l'activite, generer des contacts ou vendre ?";
+  }
+
+  return copy.questions[nextMissing as keyof typeof copy.questions];
+}
+
+function buildSupportQuestion(session: AssistantSession, locale: Locale, nextMissing: string) {
+  const copy = getCopy(locale);
+
+  if (nextMissing === "urgency") {
+    return locale === "en"
+      ? "Go straight to the point: is the activity blocked, degraded, or just inconvenient?"
+      : locale === "de"
+        ? "Direkt zur Dringlichkeit: ist der Betrieb blockiert, eingeschraenkt oder nur gestoert?"
+        : "Allons droit au but : l'activite est bloquee, degradee ou simplement genante ?";
+  }
+
+  if (nextMissing === "impact") {
+    return locale === "en"
+      ? "What is the exact impact: no access, errors, data issue, payment blocked, or something else?"
+      : locale === "de"
+        ? "Was ist der genaue Impact: kein Zugriff, Fehlermeldungen, Datenproblem, Zahlung blockiert oder etwas anderes?"
+        : "Quel est l'impact exact : plus d'acces, erreurs, probleme de donnees, paiement bloque ou autre chose ?";
+  }
+
+  return copy.questions[nextMissing as keyof typeof copy.questions];
+}
+
+function buildFirstReply(session: AssistantSession, locale: Locale, message: string) {
+  const copy = getCopy(locale);
+
+  if (session.intent === "project_quote") {
+    if (detectUnrealisticRequest(message)) {
+      return locale === "en"
+        ? `${copy.recadrageMvp} A project like that implies real-time logic, user accounts, and a solid backend. Start with version 1: what is strictly essential, and what budget is actually possible?`
+        : locale === "de"
+          ? `${copy.recadrageMvp} So ein Projekt braucht Echtzeitlogik, Benutzerkonten und ein solides Backend. Starten wir mit Version 1: was ist wirklich unverzichtbar, und welches Budget ist realistisch?`
+          : `${copy.recadrageMvp} Un projet de ce niveau implique temps reel, comptes utilisateurs et backend solide. On part sur une version 1 : qu'est-ce qui est vraiment indispensable, et quel budget est realistement possible ?`;
+    }
+
+    const nextMissing = getRequiredFields(session.intent).find((field) => !session.collected[field]);
+    if (!nextMissing) return copy.summaryReady;
+    return `${copy.startProject} ${buildProjectQuestion(session, locale, nextMissing)}`;
+  }
+
+  if (session.intent === "support_glpi") {
+    const nextMissing = getRequiredFields(session.intent).find((field) => !session.collected[field]);
+    if (!nextMissing) return copy.summaryReady;
+    return `${copy.startSupport} ${buildSupportQuestion(session, locale, nextMissing)}`;
+  }
+
+  return copy.fallbackAnswer;
+}
+
+function buildFollowUpReply(session: AssistantSession, locale: Locale, nextMissing: string) {
+  if (session.intent === "project_quote") {
+    return acknowledgeAndAsk(locale, buildProjectQuestion(session, locale, nextMissing));
+  }
+
+  if (session.intent === "support_glpi") {
+    return acknowledgeAndAsk(locale, buildSupportQuestion(session, locale, nextMissing));
+  }
+
+  const copy = getCopy(locale);
+  return acknowledgeAndAsk(locale, copy.questions[nextMissing as keyof typeof copy.questions]);
+}
+
+function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, humanNeeded: boolean) {
+  const copy = getCopy(locale);
+  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary) : "n/a";
+
+  const lines =
+    locale === "en"
+      ? [
+          copy.recapIntro,
+          `- project: ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
+          `- complexity: ${summary.complexity}`,
+          `- budget range: ${budget}`,
+          `- likely timeline: ${estimateCalendarRange(summary.estimated_days, locale)}`,
+          humanNeeded ? "Next step: human review recommended." : "Next step: summary ready for follow-up.",
+        ]
+      : locale === "de"
+        ? [
+            copy.recapIntro,
+            `- Projekt: ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
+            `- Komplexitaet: ${summary.complexity}`,
+            `- Budgetspanne: ${budget}`,
+            `- wahrscheinlicher Zeitrahmen: ${estimateCalendarRange(summary.estimated_days, locale)}`,
+            humanNeeded ? "Naechster Schritt: menschliche Rueckmeldung empfohlen." : "Naechster Schritt: Zusammenfassung bereit zur Weitergabe.",
+          ]
+        : [
+            copy.recapIntro,
+            `- type de projet : ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
+            `- complexite estimee : ${summary.complexity}`,
+            `- fourchette budget : ${budget}`,
+            `- delai probable : ${estimateCalendarRange(summary.estimated_days, locale)}`,
+            humanNeeded ? "Suite : reprise humaine recommandee." : "Suite : resume pret a transmettre.",
+          ];
+
+  return lines.join("\n");
 }
 
 function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
@@ -559,14 +799,11 @@ export async function runAssistantTurn(params: {
 
   if (nextMissing) {
     session.lastAskedField = nextMissing;
-    const question = copy.questions[nextMissing];
     const previousAssistantMessages = session.transcript.filter((item) => item.role === "assistant").length;
     const reply =
-      previousAssistantMessages === 0 && session.intent === "project_quote"
-        ? `${copy.startProject} ${question}`
-        : previousAssistantMessages === 0 && session.intent === "support_glpi"
-          ? `${copy.startSupport} ${question}`
-          : acknowledgeAndAsk(params.locale, question);
+      previousAssistantMessages === 0
+        ? buildFirstReply(session, params.locale, message)
+        : buildFollowUpReply(session, params.locale, nextMissing);
 
     session.transcript = appendTranscript(session.transcript, "assistant", reply);
 
@@ -597,7 +834,7 @@ export async function runAssistantTurn(params: {
     humanNeeded,
   };
 
-  const reply = humanNeeded ? copy.humanEscalation : copy.summaryReady;
+  const reply = `${buildReadyReply(summary, params.locale, humanNeeded)}\n\n${humanNeeded ? copy.humanEscalation : copy.summaryReady}`;
   session.transcript = appendTranscript(session.transcript, "assistant", reply);
 
   return {
