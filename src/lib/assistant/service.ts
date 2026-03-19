@@ -172,6 +172,23 @@ const supportQuestionOrder = ["problem", "urgency", "impact", "affectedUsers", "
 const faqIntentKeywords = ["faq", "comment", "combien", "how", "what", "do you", "wie", "was", "wann"];
 const projectIntentKeywords = ["site", "website", "landing", "ecommerce", "application", "app", "mvp", "dashboard", "portail", "portal", "refonte", "outil", "tool"];
 const supportIntentKeywords = ["support", "ticket", "incident", "bug", "probleme", "problem", "erreur", "glpi", "panne", "issue"];
+const projectBuildPhrases = [
+  "je veux",
+  "j'ai besoin",
+  "besoin de",
+  "lancer",
+  "creer",
+  "développer",
+  "developper",
+  "build",
+  "refonte",
+  "mettre en place",
+  "connecte a glpi",
+  "connecté à glpi",
+  "connecte au glpi",
+  "workflow support",
+];
+const activeIssuePhrases = ["ne fonctionne", "ne marche", "bloque", "bloqué", "down", "incident", "erreur", "panne", "ticket"];
 
 function getCopy(locale: Locale) {
   return localeCopy[locale];
@@ -211,8 +228,14 @@ function inferProjectType(input: string): AssistantProjectType {
 
 function inferIntent(input: string): AssistantIntent {
   const text = input.toLowerCase();
-  if (keywordMatch(text, supportIntentKeywords)) return "support_glpi";
-  if (keywordMatch(text, projectIntentKeywords)) return "project_quote";
+  const looksLikeProject = keywordMatch(text, projectIntentKeywords) || keywordMatch(text, projectBuildPhrases);
+  const looksLikeIssue = keywordMatch(text, activeIssuePhrases);
+  const looksLikeSupport = keywordMatch(text, supportIntentKeywords) || looksLikeIssue;
+  const looksLikeGlpiBuild = text.includes("glpi") && (looksLikeProject || text.includes("assistant") || text.includes("parcours"));
+
+  if (looksLikeGlpiBuild) return "project_quote";
+  if (looksLikeProject && !looksLikeIssue) return "project_quote";
+  if (looksLikeSupport) return "support_glpi";
   if (keywordMatch(text, faqIntentKeywords)) return "faq";
   return "unknown";
 }
@@ -449,6 +472,8 @@ You classify KAH-Digital inbound messages.
 Return only JSON with keys: intent, project_type.
 Allowed intents: project_quote, support_glpi, faq, general_info, unknown.
 Allowed project types: showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, unknown.
+If the user wants to build, frame, connect, redesign, or implement a solution around GLPI, classify as project_quote.
+Use support_glpi only for active incidents, bugs, blocked users, ticket handling, or operational support issues.
 `;
 
   return generateOpenAIJson<{ intent: AssistantIntent; project_type: AssistantProjectType }>({
@@ -494,6 +519,19 @@ export async function runAssistantTurn(params: {
     session.intent = inferredIntent;
     session.projectType = inferredProjectType;
     session.status = "collecting";
+
+    if (inferredIntent === "project_quote") {
+      if (!session.collected.type && inferredProjectType !== "unknown") {
+        session.collected.type = inferredProjectType;
+      }
+      if (!session.collected.objective) {
+        session.collected.objective = message;
+      }
+    }
+
+    if (inferredIntent === "support_glpi" && !session.collected.problem) {
+      session.collected.problem = message;
+    }
 
     if (inferredIntent === "faq" || inferredIntent === "general_info" || inferredIntent === "unknown") {
       const faqAnswer = findFaqAnswer(message, params.locale);
