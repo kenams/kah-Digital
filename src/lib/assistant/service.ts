@@ -680,6 +680,7 @@ function buildSupportQuestion(session: AssistantSession, locale: Locale, nextMis
 
 function buildFirstReply(session: AssistantSession, locale: Locale, message: string) {
   const copy = getCopy(locale);
+  const text = message.toLowerCase();
 
   if (session.intent === "project_quote") {
     if (detectUnrealisticRequest(message)) {
@@ -688,6 +689,40 @@ function buildFirstReply(session: AssistantSession, locale: Locale, message: str
         : locale === "de"
           ? `${copy.recadrageMvp} So ein Projekt braucht Echtzeitlogik, Benutzerkonten und ein solides Backend. Starten wir mit Version 1: was ist wirklich unverzichtbar, und welches Budget ist realistisch?`
           : `${copy.recadrageMvp} Un projet de ce niveau implique temps reel, comptes utilisateurs et backend solide. On part sur une version 1 : qu'est-ce qui est vraiment indispensable, et quel budget est realistement possible ?`;
+    }
+
+    if (session.projectType === "unknown") {
+      if (/(devis|quote)/.test(text)) {
+        return locale === "en"
+          ? "Yes, but for a usable quote I need the minimum useful scope: project type, objective, main features, and target timeline. Start with the project type."
+          : locale === "de"
+            ? "Ja, aber fuer ein brauchbares Angebot brauche ich den minimal noetigen Rahmen: Projekttyp, Ziel, Hauptfunktionen und Zieltermin. Starte mit dem Projekttyp."
+            : "Oui, mais pour qu'un devis soit exploitable, il me faut le minimum utile : type de projet, objectif, fonctionnalites principales et delai vise. Commence par le type de projet.";
+      }
+
+      if (/(digitaliser|digitalize|digitalisieren)/.test(text)) {
+        return locale === "en"
+          ? "Good. Let's make it concrete: what is your current activity, is the goal to get clients, automate work, sell online, or improve internal follow-up, and do you already have tools in place?"
+          : locale === "de"
+            ? "Gut. Jetzt machen wir es konkret: was ist deine aktuelle Aktivitaet, ist das Ziel mehr Kunden, Automatisierung, Online-Verkauf oder besseres internes Follow-up, und gibt es schon Tools?"
+            : "Tres bien. Maintenant on rend ca concret : ton activite actuelle, ton objectif principal - plus de clients, automatisation, vente en ligne ou meilleur suivi interne - et est-ce que tu as deja des outils en place ?";
+      }
+
+      if (/(voir ce que vous proposez|voir ce que tu proposes|services|offres|offer)/.test(text)) {
+        return locale === "en"
+          ? "I can orient you quickly, but let's avoid the generic catalog answer: are you looking for a website, an application, support, or a GLPI-related workflow, and is your need already defined or are you still exploring?"
+          : locale === "de"
+            ? "Ich kann dich schnell orientieren, aber ohne Standardkatalog: suchst du eher eine Website, eine Anwendung, Support oder einen GLPI-nahen Workflow, und ist der Bedarf schon definiert oder noch offen?"
+            : "Je peux t'orienter rapidement, mais sans reponse catalogue : tu cherches plutot un site, une application, du support ou un parcours type GLPI, et ton besoin est deja defini ou tu explores encore ?";
+      }
+
+      if (detectUrgentRequest(text)) {
+        return locale === "en"
+          ? "Understood. To know if the timeline is realistic, I need three things: what exactly has to be delivered, what is the hard deadline, and what is strictly required for launch?"
+          : locale === "de"
+            ? "Verstanden. Um zu voir si der Zeitrahmen realistisch ist, brauche ich drei Punkte: was genau geliefert werden muss, was die feste Deadline ist, und was zum Start wirklich unverzichtbar ist."
+            : "C'est note. Pour savoir si le delai est realiste, il me faut trois points : ce qu'il faut livrer exactement, la date limite ferme, et ce qui est strictement indispensable au lancement.";
+      }
     }
 
     const nextMissing = getRequiredFields(session.intent).find((field) => !session.collected[field]);
