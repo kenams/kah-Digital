@@ -231,8 +231,14 @@ function inferIntent(input: string): AssistantIntent {
   const looksLikeProject = keywordMatch(text, projectIntentKeywords) || keywordMatch(text, projectBuildPhrases);
   const looksLikeIssue = keywordMatch(text, activeIssuePhrases);
   const looksLikeSupport = keywordMatch(text, supportIntentKeywords) || looksLikeIssue;
+  const looksLikeOperationalGlpi =
+    text.includes("glpi") &&
+    looksLikeIssue &&
+    /(ticket|probleme|problem|incident|bug|erreur|panne)/.test(text) &&
+    !/(assistant|connecte|connecté|mettre en place|workflow|parcours|solution|outil|integr)/.test(text);
   const looksLikeGlpiBuild = text.includes("glpi") && (looksLikeProject || text.includes("assistant") || text.includes("parcours"));
 
+  if (looksLikeOperationalGlpi) return "support_glpi";
   if (looksLikeGlpiBuild) return "project_quote";
   if (looksLikeProject && !looksLikeIssue) return "project_quote";
   if (looksLikeSupport) return "support_glpi";
