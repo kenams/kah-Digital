@@ -36,24 +36,24 @@ const notificationEmail = process.env.QUOTE_NOTIFICATION_EMAIL ?? brandContact.e
 
 const localeCopy = {
   fr: {
-    summaryReady: "Voici la premiere synthese exploitable.",
-    humanEscalation: "Je prepare un resume exploitable et je passe la suite a un humain.",
-    startProject: "On va cadrer ca proprement.",
-    startSupport: "On va qualifier ca rapidement.",
+    summaryReady: "Base solide. Je peux maintenant sortir un resume exploitable.",
+    humanEscalation: "La base est suffisante. Je prepare un resume net et je passe la suite a un expert KAH-Digital.",
+    startProject: "On cadre ca proprement.",
+    startSupport: "On va qualifier ca vite et bien.",
     nextStepQuote: "Devis structure avec reprise humaine conseillee.",
     nextStepSupport: "Resume support pret pour ticket ou reprise humaine.",
     nextStepInfo: "Orientation vers le bon service KAH-Digital.",
     projectFlowLabel: "Qualification projet",
     supportFlowLabel: "Qualification support",
     generalFlowLabel: "Orientation",
-    faqFollowUp: "Si tu veux une fourchette utile ou une suite concrete, je passe au cadrage.",
+    faqFollowUp: "Si tu veux une fourchette utile ou une suite claire, on peut cadrer maintenant.",
     invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le resume.",
     summarySent: "Le resume a ete envoye par email.",
     leadSent: "Le resume a ete transmis a KAH-Digital pour reprise humaine.",
     glpiCreated: "Le ticket support a ete prepare et transmis.",
     glpiFallback: "GLPI n'est pas configure ici. Je transmets plutot vers un humain avec resume.",
     fallbackAnswer:
-      "Pour avancer, choisis un axe : site, application, support, GLPI ou besoin de cadrage. Ensuite je pose seulement les questions utiles.",
+      "Dis-moi simplement si on parle d'un site, d'une application, de support, de GLPI ou d'un besoin de cadrage. Je prends ensuite le relais avec les bonnes questions.",
     recadrageBudget:
       "Je prefere etre transparent : sans perimetre clair, je peux donner une fourchette, pas un prix ferme.",
     recadrageTimeline: "Je peux tester la faisabilite, pas promettre un delai ferme sans cadrage.",
@@ -84,24 +84,24 @@ const localeCopy = {
     },
   },
   en: {
-    summaryReady: "Here is the first usable summary.",
-    humanEscalation: "I am preparing a usable summary and handing this to a human expert.",
+    summaryReady: "The base is solid. I can now turn this into a usable summary.",
+    humanEscalation: "The base is strong enough. I am preparing a clean summary and handing it to a KAH-Digital expert.",
     startProject: "Let's frame this properly.",
-    startSupport: "Let's qualify this quickly.",
+    startSupport: "Let's qualify this quickly and cleanly.",
     nextStepQuote: "Structured quote with human follow-up recommended.",
     nextStepSupport: "Support summary ready for ticket creation or human follow-up.",
     nextStepInfo: "Route toward the right KAH-Digital service.",
     projectFlowLabel: "Project qualification",
     supportFlowLabel: "Support qualification",
     generalFlowLabel: "Routing",
-    faqFollowUp: "If you want a useful range or next step, I can switch to qualification.",
+    faqFollowUp: "If you want a useful range or a clear next step, we can frame it now.",
     invalidConsent: "I need your consent before storing or sending the summary.",
     summarySent: "The summary was sent by email.",
     leadSent: "The summary was forwarded to KAH-Digital for human follow-up.",
     glpiCreated: "The support ticket was prepared and sent.",
     glpiFallback: "GLPI is not configured here. I am routing the summary to a human instead.",
     fallbackAnswer:
-      "Pick one lane: website, application, support, GLPI, or discovery. Then I will ask only what is needed.",
+      "Tell me whether this is about a website, an application, support, GLPI, or general framing. I will take it from there with the right questions.",
     recadrageBudget:
       "To be transparent, without a clear scope I can give you a range, not a fixed price.",
     recadrageTimeline: "I can test feasibility, but not promise a fixed timeline without framing.",
@@ -131,24 +131,24 @@ const localeCopy = {
     },
   },
   de: {
-    summaryReady: "Hier ist die erste brauchbare Zusammenfassung.",
-    humanEscalation: "Ich bereite eine brauchbare Zusammenfassung vor und uebergebe an einen Experten.",
+    summaryReady: "Die Basis ist solide. Ich kann daraus jetzt eine brauchbare Zusammenfassung machen.",
+    humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und uebergebe an einen KAH-Digital Experten.",
     startProject: "Wir grenzen das jetzt sauber ein.",
-    startSupport: "Wir qualifizieren das jetzt schnell.",
+    startSupport: "Wir qualifizieren das jetzt schnell und sauber.",
     nextStepQuote: "Strukturiertes Angebot mit menschlicher Rueckmeldung empfohlen.",
     nextStepSupport: "Support-Zusammenfassung bereit fuer Ticket oder menschliche Uebernahme.",
     nextStepInfo: "Weiterleitung zum passenden KAH-Digital Service.",
     projectFlowLabel: "Projektqualifizierung",
     supportFlowLabel: "Supportqualifizierung",
     generalFlowLabel: "Orientierung",
-    faqFollowUp: "Wenn du eine belastbare Spanne oder den naechsten Schritt willst, gehe ich direkt ins Cadrage.",
+    faqFollowUp: "Wenn du eine belastbare Spanne oder den naechsten klaren Schritt willst, koennen wir jetzt sauber eingrenzen.",
     invalidConsent: "Ich brauche deine Zustimmung, bevor ich die Zusammenfassung speichere oder versende.",
     summarySent: "Die Zusammenfassung wurde per E-Mail versendet.",
     leadSent: "Die Zusammenfassung wurde an KAH-Digital fuer eine menschliche Rueckmeldung weitergeleitet.",
     glpiCreated: "Das Support-Ticket wurde vorbereitet und uebermittelt.",
     glpiFallback: "GLPI ist hier nicht konfiguriert. Ich leite die Zusammenfassung stattdessen an einen Menschen weiter.",
     fallbackAnswer:
-      "Waehle zuerst eine Richtung: Website, Anwendung, Support, GLPI oder Cadrage. Danach frage ich nur das Noetige.",
+      "Sag mir einfach, ob es um eine Website, eine Anwendung, Support, GLPI oder um erstes Cadrage geht. Danach stelle ich nur die wirklich noetigen Fragen.",
     recadrageBudget:
       "Ich bin lieber direkt: Ohne klaren Umfang kann ich eine Spanne nennen, aber keinen festen Preis.",
     recadrageTimeline: "Ich kann die Machbarkeit pruefen, aber keinen festen Termin ohne Cadrage versprechen.",
@@ -480,9 +480,9 @@ function detectEscalation(summary: AssistantStructuredOutput, session: Assistant
 }
 
 function acknowledgeAndAsk(locale: Locale, question: string) {
-  if (locale === "en") return `Next point: ${question}`;
-  if (locale === "de") return `Naechster Punkt: ${question}`;
-  return `Point suivant : ${question}`;
+  if (locale === "en") return `Let's tighten one point: ${question}`;
+  if (locale === "de") return `Wir schaerfen einen Punkt nach: ${question}`;
+  return `On affine un point : ${question}`;
 }
 
 function detectUnrealisticRequest(message: string) {
@@ -764,7 +764,7 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
           `- complexity: ${summary.complexity}`,
           `- budget range: ${budget}`,
           `- likely timeline: ${estimateCalendarRange(summary.estimated_days, locale)}`,
-          humanNeeded ? "Next step: human review recommended." : "Next step: summary ready for follow-up.",
+          humanNeeded ? "Next step: human review makes sense here." : "Next step: the summary is ready to move forward.",
         ]
       : locale === "de"
         ? [
@@ -773,7 +773,7 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
             `- Komplexitaet: ${summary.complexity}`,
             `- Budgetspanne: ${budget}`,
             `- wahrscheinlicher Zeitrahmen: ${estimateCalendarRange(summary.estimated_days, locale)}`,
-            humanNeeded ? "Naechster Schritt: menschliche Rueckmeldung empfohlen." : "Naechster Schritt: Zusammenfassung bereit zur Weitergabe.",
+            humanNeeded ? "Naechster Schritt: menschliche Rueckmeldung ist hier sinnvoll." : "Naechster Schritt: die Zusammenfassung ist bereit fuer den naechsten Schritt.",
           ]
         : [
             copy.recapIntro,
@@ -781,7 +781,7 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
             `- complexite estimee : ${summary.complexity}`,
             `- fourchette budget : ${budget}`,
             `- delai probable : ${estimateCalendarRange(summary.estimated_days, locale)}`,
-            humanNeeded ? "Suite : reprise humaine recommandee." : "Suite : resume pret a transmettre.",
+            humanNeeded ? "Suite : une reprise humaine a du sens ici." : "Suite : le resume est pret pour avancer.",
           ];
 
   return lines.join("\n");
