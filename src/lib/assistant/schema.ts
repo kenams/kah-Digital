@@ -94,6 +94,7 @@ export const assistantEmailRequestSchema = z.object({
   email: z.string().email(),
   name: z.string().optional(),
   summary: assistantStructuredOutputSchema,
+  transcript: z.array(assistantTranscriptItemSchema).default([]),
 });
 
 export const assistantGlpiRequestSchema = z.object({
@@ -111,3 +112,34 @@ export type AssistantComplexity = z.infer<typeof assistantComplexitySchema>;
 export type AssistantTranscriptItem = z.infer<typeof assistantTranscriptItemSchema>;
 export type AssistantStructuredOutput = z.infer<typeof assistantStructuredOutputSchema>;
 export type AssistantSession = z.infer<typeof assistantSessionSchema>;
+
+export const assistantLeadScoreSchema = z.enum([
+  "hot",
+  "medium",
+  "low",
+  "support_urgent",
+  "out_of_scope",
+]);
+
+export type AssistantLeadScore = z.infer<typeof assistantLeadScoreSchema>;
+
+export const assistantRecordSchema = z.object({
+  id: z.string().optional(),
+  submittedAt: z.string(),
+  locale: z.enum(["fr", "en", "de"]),
+  action: z.enum(["summary_email", "human_followup", "glpi_ticket"]),
+  intent: assistantIntentSchema,
+  projectType: assistantProjectTypeSchema,
+  score: assistantLeadScoreSchema,
+  scoreLabel: z.string(),
+  scoreReason: z.string(),
+  humanNeeded: z.boolean(),
+  email: z.string().email().optional(),
+  name: z.string().optional(),
+  consent: z.boolean(),
+  summary: assistantStructuredOutputSchema,
+  transcript: z.array(assistantTranscriptItemSchema).default([]),
+  status: z.enum(["new", "processed"]).default("new"),
+});
+
+export type AssistantRecord = z.infer<typeof assistantRecordSchema>;

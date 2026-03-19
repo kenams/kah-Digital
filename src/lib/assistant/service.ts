@@ -2,6 +2,8 @@ import { Resend } from "resend";
 import { pricingRules, type PricingFeature, type PricingProjectType } from "@/config/pricing-rules";
 import { brandContact } from "@/config/brand";
 import { assistantKnowledge } from "@/lib/assistant/knowledge";
+import { saveAssistantRecord } from "@/lib/assistant-store";
+import { buildAssistantRecord } from "@/lib/assistant/scoring";
 import { generateOpenAIJson } from "@/lib/assistant/openai";
 import {
   assistantSessionSchema,
@@ -649,6 +651,7 @@ export async function sendEmail(input: {
   name?: string;
   summary: AssistantStructuredOutput;
   consent: boolean;
+  transcript?: AssistantTranscriptItem[];
 }) {
   const copy = getCopy(input.locale);
   if (!input.consent) {
@@ -669,6 +672,21 @@ export async function sendEmail(input: {
           ? "Deine KAH-Digital Zusammenfassung"
           : "Votre resume assistant KAH-Digital",
     text: formatSummaryText(input.summary, input.locale),
+  });
+
+  await saveAssistantRecord(
+    buildAssistantRecord({
+      locale: input.locale,
+      action: "summary_email",
+      summary: input.summary,
+      transcript: input.transcript ?? [],
+      consent: input.consent,
+      email: input.email,
+      name: input.name,
+      humanNeeded: false,
+    })
+  ).catch((error) => {
+    console.warn("[assistant] Email summary not persisted", error);
   });
 
   return { ok: true, message: copy.summarySent };
@@ -704,6 +722,21 @@ ${formatSummaryText(input.summary, input.locale)}
 
 Transcript:
 ${transcript}`,
+  });
+
+  await saveAssistantRecord(
+    buildAssistantRecord({
+      locale: input.locale,
+      action: "human_followup",
+      summary: input.summary,
+      transcript: input.transcript,
+      consent: input.consent,
+      email: input.email,
+      name: input.name,
+      humanNeeded: true,
+    })
+  ).catch((error) => {
+    console.warn("[assistant] Lead not persisted", error);
   });
 
   return { ok: true, message: copy.leadSent };
@@ -820,6 +853,21 @@ ${transcript}`;
       }
       return { ok: true, message: copy.glpiFallback };
     }
+
+    await saveAssistantRecord(
+      buildAssistantRecord({
+        locale: input.locale,
+        action: "glpi_ticket",
+        summary: input.summary,
+        transcript: input.transcript,
+        consent: input.consent,
+        email: input.email,
+        name: input.name,
+        humanNeeded: true,
+      })
+    ).catch((error) => {
+      console.warn("[assistant] GLPI ticket not persisted", error);
+    });
 
     return { ok: true, message: copy.glpiCreated };
   } catch (error) {
