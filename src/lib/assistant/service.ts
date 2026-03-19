@@ -183,7 +183,24 @@ const projectQuestionOrder = ["type", "objective", "features", "timeline", "budg
 const supportQuestionOrder = ["problem", "urgency", "impact", "affectedUsers", "sinceWhen", "actionsTried"] as const;
 
 const faqIntentKeywords = ["faq", "comment", "combien", "how", "what", "do you", "wie", "was", "wann"];
-const projectIntentKeywords = ["site", "website", "landing", "ecommerce", "application", "app", "mvp", "dashboard", "portail", "portal", "refonte", "outil", "tool"];
+const projectIntentKeywords = [
+  "site",
+  "website",
+  "landing",
+  "ecommerce",
+  "application",
+  "app",
+  "mvp",
+  "dashboard",
+  "portail",
+  "portal",
+  "plateforme",
+  "platform",
+  "refonte",
+  "outil",
+  "tool",
+  "devis",
+];
 const supportIntentKeywords = ["support", "ticket", "incident", "bug", "probleme", "problem", "erreur", "glpi", "panne", "issue"];
 const projectBuildPhrases = [
   "je veux",
@@ -234,7 +251,7 @@ function inferProjectType(input: string): AssistantProjectType {
   const text = input.toLowerCase();
   if (text.includes("glpi")) return "glpi_assistant";
   if (text.includes("mobile")) return "mobile_app";
-  if (text.includes("dashboard") || text.includes("portail") || text.includes("portal")) return "dashboard_portal";
+  if (text.includes("dashboard") || text.includes("portail") || text.includes("portal") || text.includes("plateforme") || text.includes("platform")) return "dashboard_portal";
   if (text.includes("app") || text.includes("application")) return "web_app";
   if (text.includes("ecommerce") || text.includes("boutique") || text.includes("shop")) return "ecommerce";
   if (text.includes("corporate")) return "corporate_website";
@@ -593,6 +610,52 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
   return copy.questions[nextMissing as keyof typeof copy.questions];
 }
 
+function buildDiscoveryReply(message: string, locale: Locale) {
+  const text = message.toLowerCase();
+
+  if (/(devis|quote)/.test(text)) {
+    return locale === "en"
+      ? "Yes, but for a usable quote I need the minimum useful scope: project type, objective, main features, and target timeline. Start with the project type."
+      : locale === "de"
+        ? "Ja, aber fuer ein brauchbares Angebot brauche ich den minimal noetigen Rahmen: Projekttyp, Ziel, Hauptfunktionen und Zieltermin. Starte mit dem Projekttyp."
+        : "Oui, mais pour qu'un devis soit exploitable, il me faut le minimum utile : type de projet, objectif, fonctionnalites principales et delai vise. Commence par le type de projet.";
+  }
+
+  if (/(digitaliser|digitalize|digitalisieren)/.test(text)) {
+    return locale === "en"
+      ? "Good. Let's make it concrete: what is your current activity, is the goal to get clients, automate work, sell online, or improve internal follow-up, and do you already have tools in place?"
+      : locale === "de"
+        ? "Gut. Jetzt machen wir es konkret: was ist deine aktuelle Aktivitaet, ist das Ziel mehr Kunden, Automatisierung, Online-Verkauf oder besseres internes Follow-up, und gibt es schon Tools?"
+        : "Tres bien. Maintenant on rend ca concret : ton activite actuelle, ton objectif principal - plus de clients, automatisation, vente en ligne ou meilleur suivi interne - et est-ce que tu as deja des outils en place ?";
+  }
+
+  if (/(voir ce que vous proposez|voir ce que tu proposes|vos services|vos offres|what do you offer|leistungen)/.test(text)) {
+    return locale === "en"
+      ? "I can orient you quickly, but let's avoid the generic catalog answer: are you looking for a website, an application, support, or a GLPI-related workflow, and is your need already defined or are you still exploring?"
+      : locale === "de"
+        ? "Ich kann dich schnell orientieren, aber ohne Standardkatalog: suchst du eher eine Website, eine Anwendung, Support oder einen GLPI-nahen Workflow, und ist der Bedarf schon definiert oder noch offen?"
+        : "Je peux t'orienter rapidement, mais sans reponse catalogue : tu cherches plutot un site, une application, du support ou un parcours type GLPI, et ton besoin est deja defini ou tu explores encore ?";
+  }
+
+  if (/(budget)/.test(text)) {
+    return locale === "en"
+      ? "No problem. I can give you a first range, but I need to place the scope first: simple website or more advanced project, which features are must-have, and are you aiming for a quick base or something more complete from the start?"
+      : locale === "de"
+        ? "Kein Problem. Ich kann eine erste Spanne geben, aber zuerst muss der Umfang klar sein: einfache Website oder avanciertes Projekt, welche Funktionen sind Pflicht, und willst du eine schnelle Basis oder direkt etwas Vollstaendigeres?"
+        : "Pas de souci. Je peux te donner une premiere fourchette, mais il faut d'abord situer le perimetre : site simple ou projet plus avance, quelles fonctions sont indispensables, et tu veux une base rapide ou quelque chose de plus complet des le depart ?";
+  }
+
+  if (detectUrgentRequest(text)) {
+    return locale === "en"
+      ? "Understood. To know if the timeline is realistic, I need three things: what exactly has to be delivered, what is the hard deadline, and what is strictly required for launch?"
+      : locale === "de"
+        ? "Verstanden. Um zu sehen, ob der Zeitrahmen realistisch ist, brauche ich drei Punkte: was genau geliefert werden muss, was die feste Deadline ist, und was zum Start wirklich unverzichtbar ist."
+        : "C'est note. Pour savoir si le delai est realiste, il me faut trois points : ce qu'il faut livrer exactement, la date limite ferme, et ce qui est strictement indispensable au lancement.";
+  }
+
+  return getCopy(locale).fallbackAnswer;
+}
+
 function buildSupportQuestion(session: AssistantSession, locale: Locale, nextMissing: string) {
   const copy = getCopy(locale);
 
@@ -773,6 +836,9 @@ export async function runAssistantTurn(params: {
       if (!session.collected.objective) {
         session.collected.objective = message;
       }
+      if (!session.collected.features && inferFeatures({ objective: message }).length > 0) {
+        session.collected.features = message;
+      }
     }
 
     if (inferredIntent === "support_glpi" && !session.collected.problem) {
@@ -781,7 +847,7 @@ export async function runAssistantTurn(params: {
 
     if (inferredIntent === "faq" || inferredIntent === "general_info" || inferredIntent === "unknown") {
       const faqAnswer = findFaqAnswer(message, params.locale);
-      const reply = faqAnswer ? `${faqAnswer} ${copy.faqFollowUp}` : copy.fallbackAnswer;
+      const reply = faqAnswer ? `${faqAnswer} ${copy.faqFollowUp}` : buildDiscoveryReply(message, params.locale);
       session.transcript = appendTranscript(session.transcript, "assistant", reply);
 
       return {
