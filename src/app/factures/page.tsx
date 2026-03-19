@@ -29,27 +29,27 @@ export default function FacturesPage() {
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">1</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Devis detaille</h3>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Devis et echeancier</h3>
               <p className="text-gray-600">
-                Envoi d'un devis complet avec planning et conditions avant tout commencement de travaux.
+                Envoi d'un devis complet en CHF avec planning, conditions et modalites de paiement avant le lancement.
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">2</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Facturation a l'achevement</h3>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Virement bancaire en CHF</h3>
               <p className="text-gray-600">
-                Emission de la facture finale une fois le projet termine et valide par vos soins.
+                Le reglement se fait par virement bancaire, en une fois ou selon l'echeancier precise sur le devis.
               </p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">3</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Paiement securise</h3>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Coordonnees et reference</h3>
               <p className="text-gray-600">
-                Reglement par virement bancaire avec un delai de paiement de 30 jours.
+                Les coordonnees bancaires et la reference de paiement sont communiquees sur le devis valide ou la facture finale.
               </p>
             </div>
           </div>
@@ -103,6 +103,13 @@ export default function FacturesPage() {
               <h3 className="mb-2 text-lg font-semibold text-gray-900">Envoi numerique</h3>
               <p className="text-sm text-gray-600">Factures envoyees par email et archivees.</p>
             </div>
+          </div>
+          <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-green-100 bg-white p-6 text-center shadow-sm">
+            <p className="text-sm uppercase tracking-[0.3em] text-green-700">Paiement</p>
+            <p className="mt-3 text-lg text-gray-700">
+              KAH-Digital ne propose pas encore de paiement en ligne public sur le site. Le client regle donc par
+              virement bancaire, avec les coordonnees transmises au moment de la validation du devis ou sur la facture.
+            </p>
           </div>
         </div>
       </section>

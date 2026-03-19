@@ -39,6 +39,7 @@ export function QuotePreview({
   validUntil = "30 jours",
 }: QuotePreviewProps) {
   const brandName = companyConfig.brandName || "KAH-Digital";
+  const currency = companyConfig.currency || "CHF";
   const signatureName =
     companyConfig.legalName && companyConfig.legalName !== "[A_REMPLACER_NOM_LEGAL_COMPLET]"
       ? companyConfig.legalName
@@ -108,10 +109,10 @@ export function QuotePreview({
                   <td className="border-b border-slate-200 px-4 py-3 text-slate-800">{item.description}</td>
                   <td className="border-b border-slate-200 px-4 py-3 text-center text-slate-700">{item.quantity}</td>
                   <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">
-                    {item.unitPrice.toLocaleString("fr-CH")} CHF
+                    {item.unitPrice.toLocaleString("fr-CH")} {currency}
                   </td>
                   <td className="border-b border-slate-200 px-4 py-3 text-right font-medium text-slate-900">
-                    {item.total.toLocaleString("fr-CH")} CHF
+                    {item.total.toLocaleString("fr-CH")} {currency}
                   </td>
                 </tr>
               ))}
@@ -122,20 +123,20 @@ export function QuotePreview({
                   Total HT
                 </td>
                 <td className="border-b border-slate-200 px-4 py-3 text-right font-semibold text-slate-900">
-                  {total.toLocaleString("fr-CH")} CHF
+                  {total.toLocaleString("fr-CH")} {currency}
                 </td>
               </tr>
               <tr>
                 <td colSpan={3} className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">
                   TVA (non applicable)
                 </td>
-                <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">0.00 CHF</td>
+                <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">0.00 {currency}</td>
               </tr>
               <tr className="bg-slate-100">
                 <td colSpan={3} className="px-4 py-3 text-right font-bold text-slate-900">
                   Total TTC
                 </td>
-                <td className="px-4 py-3 text-right font-bold text-slate-900">{total.toLocaleString("fr-CH")} CHF</td>
+                <td className="px-4 py-3 text-right font-bold text-slate-900">{total.toLocaleString("fr-CH")} {currency}</td>
               </tr>
             </tfoot>
           </table>
@@ -145,10 +146,11 @@ export function QuotePreview({
       <div className="mb-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
         <h3 className="mb-2 font-semibold text-slate-900">Conditions :</h3>
         <ul className="space-y-1 text-sm text-slate-700">
-          <li>Paiement a 30 jours apres acceptation du devis</li>
+          <li>Tous les montants sont etablis en {currency}.</li>
+          <li>Paiement par virement bancaire sur les coordonnees transmises avec le devis valide ou la facture.</li>
+          <li>Pour les projets plus longs, un echeancier peut etre precise directement sur le devis (acompte + solde).</li>
           <li>Livraison sous 4-6 semaines selon la complexite</li>
-          <li>Formation utilisateur incluse</li>
-          <li>Support technique 3 mois offert</li>
+          <li>Le lancement du projet intervient apres validation du devis et reception du premier versement si applicable.</li>
         </ul>
       </div>
 

@@ -27,22 +27,22 @@ export default function InvoicesPageEn() {
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">1</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Detailed quote</h3>
-              <p className="text-gray-600">A full quote with schedule and conditions before any production starts.</p>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Quote and payment schedule</h3>
+              <p className="text-gray-600">A full CHF quote with scope, timing, and payment terms before production starts.</p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">2</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Billing at completion</h3>
-              <p className="text-gray-600">Final invoice issued once the project is complete and validated.</p>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Bank transfer in CHF</h3>
+              <p className="text-gray-600">Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote.</p>
             </div>
             <div className="rounded-lg bg-white p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <span className="text-xl font-bold text-green-600">3</span>
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Secure payment</h3>
-              <p className="text-gray-600">Bank transfer with a 30-day payment term.</p>
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">Bank details and reference</h3>
+              <p className="text-gray-600">Bank details and the payment reference are shared on the approved quote or final invoice.</p>
             </div>
           </div>
         </div>
@@ -56,6 +56,13 @@ export default function InvoicesPageEn() {
             <p className="text-lg text-slate-600">A clearer, cleaner document adapted to desktop and mobile reading.</p>
           </div>
           <InvoicePreview locale="en" />
+          <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-green-100 bg-white p-6 text-center shadow-sm">
+            <p className="text-sm uppercase tracking-[0.3em] text-green-700">Payment</p>
+            <p className="mt-3 text-lg text-gray-700">
+              KAH-Digital does not currently expose public online checkout on the site. Clients pay by bank transfer,
+              with the bank details shared when the quote is approved or on the invoice itself.
+            </p>
+          </div>
         </div>
       </section>
     </>

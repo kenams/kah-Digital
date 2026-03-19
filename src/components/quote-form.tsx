@@ -34,7 +34,7 @@ type QuotePayload = {
 
 export function QuoteForm() {
   const router = useRouter();
-  const { isEnglish, prefix } = useLocale();
+  const { isEnglish, isGerman, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
   const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
@@ -65,8 +65,10 @@ export function QuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under 2,000 EUR", "2,000 EUR - 6,000 EUR", "6,000 EUR - 12,000 EUR", "12,000 EUR +"]
-    : ["Moins de 2 000 EUR", "2 000 EUR - 6 000 EUR", "6 000 EUR - 12 000 EUR", "12 000 EUR +"];
+    ? ["Under CHF 2,000", "CHF 2,000 - 6,000", "CHF 6,000 - 12,000", "CHF 12,000 +"]
+    : isGerman
+      ? ["Unter CHF 2'000", "CHF 2'000 - 6'000", "CHF 6'000 - 12'000", "CHF 12'000 +"]
+      : ["Moins de 2 000 CHF", "2 000 CHF - 6 000 CHF", "6 000 CHF - 12 000 CHF", "12 000 CHF +"];
 
   const timelineOptions = isEnglish ? ["ASAP", "2-4 weeks", "1-2 months", "3 months +"] : ["ASAP", "2-4 semaines", "1-2 mois", "3 mois et +"];
   const trustItems = isEnglish
@@ -532,7 +534,18 @@ export function QuoteForm() {
           {isEnglish ? "Export to PDF" : "Exporter en PDF"}
         </button>
         <p className="text-xs text-white/60">
-          {isEnglish ? "Free estimate, reply within 24h. No commitment." : "Devis gratuit, reponse sous 24h. Aucun engagement."}
+          {isEnglish
+            ? "Free estimate, reply within 24h. No commitment."
+            : isGerman
+              ? "Kostenlose Anfrage, Rueckmeldung innerhalb von 24h. Unverbindlich."
+              : "Devis gratuit, reponse sous 24h. Aucun engagement."}
+        </p>
+        <p className="text-xs text-white/55">
+          {isEnglish
+            ? "Quotes and invoices are issued in CHF. Payment is made by bank transfer, with details shared on the approved quote or invoice."
+            : isGerman
+              ? "Angebote und Rechnungen werden in CHF erstellt. Die Zahlung erfolgt per Bankueberweisung, mit Kontodaten auf dem bestaetigten Angebot oder der Rechnung."
+              : "Les devis et factures sont emis en CHF. Le paiement se fait par virement bancaire, avec coordonnees transmises sur le devis valide ou la facture."}
         </p>
         {serverMessage && (
           <p

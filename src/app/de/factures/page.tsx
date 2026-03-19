@@ -24,6 +24,13 @@ export default function InvoicesPageDe() {
             <p className="text-lg text-slate-600">Ein klareres Dokument, gut lesbar auf Desktop und Mobil.</p>
           </div>
           <InvoicePreview locale="de" />
+          <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-green-100 bg-white p-6 text-center shadow-sm">
+            <p className="text-sm uppercase tracking-[0.3em] text-green-700">Zahlung</p>
+            <p className="mt-3 text-lg text-gray-700">
+              KAH-Digital bietet aktuell keinen oeffentlichen Online-Checkout auf der Website an. Die Zahlung erfolgt
+              per Bankueberweisung, mit Kontodaten auf dem bestaetigten Angebot oder direkt auf der Rechnung.
+            </p>
+          </div>
         </div>
       </section>
     </>

@@ -33,7 +33,7 @@ type MvpQuotePayload = {
 
 export function MvpQuoteForm() {
   const router = useRouter();
-  const { isEnglish, prefix } = useLocale();
+  const { isEnglish, isGerman, prefix } = useLocale();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
   const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
@@ -68,8 +68,10 @@ export function MvpQuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under 10,000 EUR", "10,000 EUR - 20,000 EUR", "20,000 EUR - 30,000 EUR", "30,000 EUR +"]
-    : ["Moins de 10 000 EUR", "10 000 EUR - 20 000 EUR", "20 000 EUR - 30 000 EUR", "30 000 EUR +"];
+    ? ["Under CHF 10,000", "CHF 10,000 - 20,000", "CHF 20,000 - 30,000", "CHF 30,000 +"]
+    : isGerman
+      ? ["Unter CHF 10'000", "CHF 10'000 - 20'000", "CHF 20'000 - 30'000", "CHF 30'000 +"]
+      : ["Moins de 10 000 CHF", "10 000 CHF - 20 000 CHF", "20 000 CHF - 30 000 CHF", "30 000 CHF +"];
 
   const timelineOptions = isEnglish ? ["ASAP", "4-6 weeks", "6-10 weeks", "3 months +"] : ["ASAP", "4-6 semaines", "6-10 semaines", "3 mois et +"];
 
@@ -580,7 +582,18 @@ export function MvpQuoteForm() {
           {isEnglish ? "Export to PDF" : "Exporter en PDF"}
         </button>
         <p className="text-xs text-white/60">
-          {isEnglish ? "Free estimate, reply within 24h. No commitment." : "Devis gratuit, reponse sous 24h. Aucun engagement."}
+          {isEnglish
+            ? "Free estimate, reply within 24h. No commitment."
+            : isGerman
+              ? "Kostenlose Anfrage, Rueckmeldung innerhalb von 24h. Unverbindlich."
+              : "Devis gratuit, reponse sous 24h. Aucun engagement."}
+        </p>
+        <p className="text-xs text-white/55">
+          {isEnglish
+            ? "MVP quotes are issued in CHF. Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote."
+            : isGerman
+              ? "MVP-Angebote werden in CHF erstellt. Die Zahlung erfolgt per Bankueberweisung, entweder einmalig oder gemaess dem im Angebot definierten Zahlungsplan."
+              : "Les devis MVP sont emis en CHF. Le paiement se fait par virement bancaire, en une fois ou selon l'echeancier precise sur le devis."}
         </p>
         {serverMessage && (
           <p

@@ -30,6 +30,7 @@ export function InvoicePreview({
   totalWithVat = 2800,
 }: InvoicePreviewProps) {
   const brandName = companyConfig.brandName || "KAH-Digital";
+  const currency = companyConfig.currency || "CHF";
   const signatureName = companyConfig.legalName || brandName;
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
   const isEnglish = locale === "en";
@@ -54,6 +55,8 @@ export function InvoicePreview({
       total: "Total TTC",
       paymentTerms: "Modalites de paiement :",
       paymentWithin: "Paiement a 30 jours apres reception de la facture",
+      paymentCurrency: "Reglement par virement bancaire en CHF.",
+      milestoneNote: "Si un echeancier a ete defini sur le devis, il s'applique a la place du paiement unique.",
       bankOnRequest: "Coordonnees bancaires transmises sur la facture finale ou sur demande.",
       bankTransfer: "Virement bancaire sur le compte suivant :",
       reference: "Reference",
@@ -86,6 +89,8 @@ export function InvoicePreview({
       total: "Total incl. VAT",
       paymentTerms: "Payment terms:",
       paymentWithin: "Payment within 30 days of invoice receipt",
+      paymentCurrency: "Payment by bank transfer in CHF.",
+      milestoneNote: "If a milestone schedule was defined on the quote, it applies instead of a single payment.",
       bankOnRequest: "Bank details provided on the final invoice or on request.",
       bankTransfer: "Bank transfer to the following account:",
       reference: "Reference",
@@ -118,6 +123,8 @@ export function InvoicePreview({
       total: "Gesamtbetrag",
       paymentTerms: "Zahlungsbedingungen:",
       paymentWithin: "Zahlbar innerhalb von 30 Tagen nach Rechnungserhalt",
+      paymentCurrency: "Zahlung per Bankueberweisung in CHF.",
+      milestoneNote: "Falls im Angebot ein Zahlungsplan definiert wurde, gilt dieser anstelle einer Einmalzahlung.",
       bankOnRequest: "Bankdaten werden auf der finalen Rechnung oder auf Anfrage uebermittelt.",
       bankTransfer: "Bankueberweisung auf folgendes Konto:",
       reference: "Referenz",
@@ -199,10 +206,10 @@ export function InvoicePreview({
                   <td className="border-b border-slate-200 px-4 py-3 text-slate-800">{item.description}</td>
                   <td className="border-b border-slate-200 px-4 py-3 text-center text-slate-700">{item.quantity}</td>
                   <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">
-                    {item.unitPrice.toLocaleString("fr-CH")} CHF
+                    {item.unitPrice.toLocaleString("fr-CH")} {currency}
                   </td>
                   <td className="border-b border-slate-200 px-4 py-3 text-right font-medium text-slate-900">
-                    {item.total.toLocaleString("fr-CH")} CHF
+                    {item.total.toLocaleString("fr-CH")} {currency}
                   </td>
                 </tr>
               ))}
@@ -213,20 +220,20 @@ export function InvoicePreview({
                   {copy.subtotal}
                 </td>
                 <td className="border-b border-slate-200 px-4 py-3 text-right font-semibold text-slate-900">
-                  {total.toLocaleString("fr-CH")} CHF
+                  {total.toLocaleString("fr-CH")} {currency}
                 </td>
               </tr>
               <tr>
                 <td colSpan={3} className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">
                   {copy.vat}
                 </td>
-                <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">{vat.toLocaleString("fr-CH")} CHF</td>
+                <td className="border-b border-slate-200 px-4 py-3 text-right text-slate-700">{vat.toLocaleString("fr-CH")} {currency}</td>
               </tr>
               <tr className="bg-slate-100">
                 <td colSpan={3} className="px-4 py-3 text-right font-bold text-slate-900">
                   {copy.total}
                 </td>
-                <td className="px-4 py-3 text-right font-bold text-slate-900">{totalWithVat.toLocaleString("fr-CH")} CHF</td>
+                <td className="px-4 py-3 text-right font-bold text-slate-900">{totalWithVat.toLocaleString("fr-CH")} {currency}</td>
               </tr>
             </tfoot>
           </table>
@@ -237,6 +244,8 @@ export function InvoicePreview({
         <h3 className="mb-2 font-semibold text-slate-900">{copy.paymentTerms}</h3>
         <ul className="space-y-1 text-sm text-slate-700">
           <li>{copy.paymentWithin}</li>
+          <li>{copy.paymentCurrency}</li>
+          <li>{copy.milestoneNote}</li>
           {hasIban ? (
             <>
               <li>{copy.bankTransfer}</li>

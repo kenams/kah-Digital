@@ -36,7 +36,7 @@ const offers = [
   {
     id: "landing-conversion",
     title: "Landing conversion",
-    price: "1 900 EUR",
+    price: "1'900 CHF",
     timeline: "3 semaines",
     summary: "Une page unique, rapide et orientee conversion pour capter des leads qualifies.",
     why: "Le budget couvre la strategie de message, un design sur mesure, l'integration du formulaire et la QA avant mise en ligne.",
@@ -51,7 +51,7 @@ const offers = [
   {
     id: "portail-membres",
     title: "Portail membres priv\u00e9",
-    price: "5 900 EUR",
+    price: "5'900 CHF",
     timeline: "5 semaines",
     summary: "Espace securise pour contenus, abonnements et tableaux de bord internes.",
     why: "Le prix inclut l'authentification, la gestion des roles, la base de donnees et les paiements recurrents.",
@@ -66,7 +66,7 @@ const offers = [
   {
     id: "configurateur-deck",
     title: "Devis interactif + dossier PDF",
-    price: "7 900 EUR",
+    price: "7'900 CHF",
     timeline: "6 semaines",
     summary: "Un parcours simple pour estimer un projet et generer un PDF clair.",
     why: "Le budget couvre les ecrans, le calcul du devis et la generation automatique du PDF.",
@@ -120,7 +120,7 @@ export default function OffresPage() {
                 <p className="mt-2 max-w-2xl text-white/70">{offer.summary}</p>
               </div>
               <div className="premium-card rounded-3xl border border-white/15 bg-white/5 p-4 text-sm">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Budget indicatif</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/60">Budget indicatif en CHF</p>
                 <p className="mt-1 text-2xl font-semibold">{offer.price}</p>
                 <p className="mt-1 text-white/60">Delai moyen: {offer.timeline}</p>
               </div>

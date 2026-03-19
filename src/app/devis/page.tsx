@@ -27,6 +27,20 @@ export default function DevisPage() {
             </p>
           </div>
           <QuoteForm />
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Devise</p>
+              <p className="mt-3 text-lg font-semibold text-white">Tous les montants sont emis en CHF.</p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Paiement</p>
+              <p className="mt-3 text-lg font-semibold text-white">Reglement par virement bancaire.</p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Coordonnees</p>
+              <p className="mt-3 text-lg font-semibold text-white">Transmises sur devis valide ou facture finale.</p>
+            </div>
+          </div>
         </div>
       </section>
 
