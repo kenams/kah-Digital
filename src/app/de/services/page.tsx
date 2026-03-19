@@ -12,23 +12,23 @@ export default function ServicesPageDe() {
     {
       icon: FiGlobe,
       title: "Unternehmenswebsites",
-      description: "Praesentationswebsites, Corporate Sites und klare digitale Grundlagen fuer Unternehmen.",
+      description: "Praesentationswebsites, Corporate Sites und saubere digitale Grundlagen fuer Unternehmen.",
       href: "/de/services/site-web",
-      features: ["Responsives Design", "Klare Struktur", "Saubere SEO-Basis", "Begleiteter Launch"],
+      features: ["Responsives Design", "Klarer Seitenaufbau", "Saubere SEO-Basis", "Begleiteter Launch"],
     },
     {
       icon: FiSmartphone,
       title: "Web- und Mobile-Anwendungen",
-      description: "Portale, Dashboards, interne Tools und massgeschneiderte Anwendungen.",
+      description: "Portale, Dashboards, interne Tools und massgeschneiderte Anwendungen fuer echte Prozesse.",
       href: "/de/services/applications",
-      features: ["Skalierbare Architektur", "Nuetzliche Oberflaeche", "Moegliche Integrationen", "Projektbegleitung"],
+      features: ["Skalierbare Architektur", "Nuetzliche Oberflaeche", "Sinnvolle Integrationen", "Klare Projektbegleitung"],
     },
     {
       icon: FiTool,
       title: "GLPI-verbundener Support-Workflow",
-      description: "Virtuelle Hilfe, Anfragefuehrung und saubere Uebergabe an GLPI-Tickets, wenn Support uebernehmen muss.",
+      description: "Virtuelle Hilfe, gefuehrte Anfragen und saubere Uebergabe an GLPI-Tickets, wenn Support uebernehmen muss.",
       href: "/de/services/glpi",
-      features: ["Klarerer Ablauf", "Saubere Eskalation", "Wissensbasis", "Passend zu eurem Support-Setup"],
+      features: ["Klarerer Ablauf", "Saubere Eskalation", "Wissensbasis", "Passend zu eurem Setup"],
     },
   ];
 
@@ -36,10 +36,11 @@ export default function ServicesPageDe() {
     <>
       <section className="bg-gradient-to-r from-blue-600 to-slate-900 py-20 text-white">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/70">Schweiz, international, KMU und wachsende Teams</p>
+          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/70">Schweiz als Basis, international offen</p>
           <h1 className="mb-6 text-4xl font-bold sm:text-5xl">Digitale Leistungen mit echtem Nutzen fuer Unternehmen</h1>
           <p className="mx-auto max-w-3xl text-xl text-white/90">
-            KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Ablaufe aus Lausanne, mit einem sauberen und pragmatischen Produktionsansatz.
+            KAH-Digital entwickelt Websites, Anwendungen und klarere digitale Ablaeufe aus Lausanne - mit einem pragmatischen,
+            sauberen und gut lesbaren Produktionsansatz.
           </p>
         </div>
       </section>

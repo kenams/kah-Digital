@@ -32,7 +32,8 @@ export default function ContactPageDe() {
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">Direkter Kontakt</p>
               <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Lass uns konkret ueber dein Vorhaben sprechen.</h2>
               <p className="mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
-                Wir arbeiten mit Unternehmen in der Schweiz und international, mit klarer Struktur, gutem Tempo und ohne unnoetige Reibung.
+                Wir arbeiten mit Unternehmen in der Schweiz und international - mit klarer Struktur, gutem Tempo und ohne
+                unnoetige Reibung.
               </p>
             </div>
 

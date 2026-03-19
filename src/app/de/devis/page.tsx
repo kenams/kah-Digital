@@ -41,7 +41,7 @@ export default function QuotePageDe() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-slate-700 sm:text-lg">
             Wenn du eine Website, eine Anwendung oder einen strukturierteren Support-Workflow planst, reicht eine kurze
-            Anfrage. Wir melden uns mit einem klaren Rahmen zu Budget, Timing und naechsten Schritten.
+            Anfrage. Wir melden uns mit einem klaren Rahmen zu Budget, Timing und den naechsten Schritten.
           </p>
           <div className="mt-6 grid gap-4 text-sm text-slate-600 sm:grid-cols-3">
             <div className="premium-card light-outline p-4 text-slate-900">
@@ -54,7 +54,7 @@ export default function QuotePageDe() {
             </div>
             <div className="premium-card light-outline p-4 text-slate-900">
               <p className="text-xl font-semibold sm:text-2xl">Klar</p>
-              <p>Direkter Scope statt Agentur-Floskeln</p>
+              <p>Direkter Scope statt langer Agenturprozesse</p>
             </div>
           </div>
         </div>

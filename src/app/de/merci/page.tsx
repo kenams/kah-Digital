@@ -12,9 +12,9 @@ export default function MerciPageDe() {
     <div className="section-shell">
       <div className="light-surface p-10 text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Danke</p>
-        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Anfrage gesendet.</h1>
+        <h1 className="mt-4 text-4xl font-semibold text-slate-900">Anfrage erfolgreich gesendet.</h1>
         <p className="mt-4 text-lg text-slate-700">
-          Wir melden uns schnell mit einem klaren Rahmen, Empfehlungen und einem realistischen Timing.
+          Wir melden uns zeitnah mit einem klaren Rahmen, Empfehlungen und einem realistischen Timing.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm">
           <Link

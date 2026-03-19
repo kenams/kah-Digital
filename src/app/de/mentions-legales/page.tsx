@@ -55,7 +55,7 @@ export default function MentionsLegalesPageDe() {
           <h2 className="text-xl font-semibold text-slate-900">Urheberrecht</h2>
           <p className="mt-4 text-slate-700">
             Inhalte, Texte, Visuals, Markenbestandteile und Code bleiben Eigentum von KAH-Digital oder der jeweiligen
-            Rechteinhaber. Jede Wiederverwendung braucht eine vorherige schriftliche Freigabe.
+            Rechteinhaber. Jede Wiederverwendung erfordert eine vorherige schriftliche Freigabe.
           </p>
         </div>
         <div className="light-outline p-6">

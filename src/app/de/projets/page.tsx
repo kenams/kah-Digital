@@ -30,8 +30,8 @@ export default function ProjectsPageDe() {
                 KAH Prod ist eines der von KAH-Digital entwickelten Projekte.
               </h1>
               <p className="mt-5 max-w-3xl text-lg text-slate-600">
-                Diese Seite stellt KAH Prod als sichtbare Referenz in den Vordergrund, mit einer praeziseren und hochwertigeren
-                Praesentation als eine einfache Projektkarte.
+                Hier steht KAH Prod als sichtbare Referenz im Fokus - nicht als einfache Projektkarte, sondern als sauber
+                praesentierte Case Study mit klarer visueller Qualitaet.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -77,7 +77,7 @@ export default function ProjectsPageDe() {
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Case Study</p>
               <h2 className="mt-3 text-3xl font-bold">Eine staerkere und visuellere Referenz im KAH-Digital Standard.</h2>
               <p className="mt-3 max-w-3xl text-white/70">
-                KAH Prod verdient eine editoriale Praesentation, nicht nur eine generische Projektkarte.
+                KAH Prod zeigt, wie KAH-Digital ein Markenuniversum in eine hochwertige, klar gefuehrte Website uebersetzt.
               </p>
             </div>
             <Link
@@ -102,11 +102,11 @@ export default function ProjectsPageDe() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Naechster Schritt</p>
                   <h2 className="mt-3 text-3xl font-bold text-slate-950">
-                    Referenz gesehen. Der sinnvolle naechste Schritt ist das Briefing.
+                    Referenz gesehen. Der sinnvolle naechste Schritt ist ein klares Briefing.
                   </h2>
                   <p className="mt-4 text-lg text-slate-600">
                     Wenn du eine neue Website, eine strukturierte Anwendung oder einen klareren digitalen Workflow brauchst,
-                    starten wir mit einem sauberen Scope und einem passenden Angebot.
+                    starten wir mit einem sauberen Scope und einem passenden Angebotsrahmen.
                   </p>
                 </div>
                 <div className="flex flex-col gap-4">

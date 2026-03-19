@@ -37,21 +37,21 @@ export default function DevisMvpPageDe() {
         <p className="text-sm uppercase tracking-[0.3em] text-white/60">MVP / Produktstart</p>
         <h1 className="mt-4 text-3xl font-semibold sm:text-4xl">Erzaehle uns von deinem MVP.</h1>
         <p className="mt-4 max-w-3xl text-base text-white/80 sm:text-lg">
-          Ob Web-App, Kundenportal oder mobile Anwendung: wir helfen, die erste produktive Version sauber zu strukturieren,
-          priorisieren und realistisch zu budgetieren.
+          Ob Web-App, Kundenportal oder mobile Anwendung: Wir helfen, die erste produktive Version sauber zu strukturieren,
+          sinnvoll zu priorisieren und realistisch zu budgetieren.
         </p>
-        <div className="mt-4 grid gap-4 text-sm text-white/70 sm:grid-cols-2 lg:grid-cols-3)">
+        <div className="mt-4 grid gap-4 text-sm text-white/70 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
             <p className="text-xl font-semibold text-white sm:text-2xl">Scope zuerst</p>
             <p>Kernfunktionen klar vor Add-ons.</p>
           </div>
           <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
             <p className="text-xl font-semibold text-white sm:text-2xl">4 bis 8 Wochen</p>
-            <p>Abhaengig von Komplexitaet und Integrationen.</p>
+            <p>Je nach Komplexitaet, Nutzerlogik und Integrationen.</p>
           </div>
           <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
             <p className="text-xl font-semibold text-white sm:text-2xl">Klarer Stack</p>
-            <p>Next.js, React Native, Supabase, APIs.</p>
+            <p>Next.js, React Native, Supabase und passende APIs.</p>
           </div>
         </div>
       </div>

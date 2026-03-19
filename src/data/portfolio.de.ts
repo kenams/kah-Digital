@@ -5,17 +5,17 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Musiklabel / Produktion",
-    tagline: "Eine KAH-Digital Realisierung fuer ein unabhaengiges Label, aufgebaut rund um Bild, Artists und Releases.",
+    tagline: "Eine KAH-Digital Realisierung fuer ein unabhaengiges Label mit Fokus auf Bild, Artists und Releases.",
     shortDescription:
-      "Premium-Label-Website mit echten Bereichen fuer Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
+      "Premium-Website fuer ein Label mit klaren Bereichen fuer Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
     description:
-      "KAH Prod gehoert zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website dient als klare Basis, um die Identitaet des Labels, die Artists, Releases und Clips, Events sowie die Business-Kontakte mit einer schaerferen visuellen Richtung zu praesentieren.",
+      "KAH Prod gehoert zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identitaet, Artists, Releases, Clips, Events und Business-Kontakte in einem staerkeren visuellen Rahmen zu praesentieren.",
     challenge:
       "Dem Label eine staerkere visuelle Praesenz und eine klarere Struktur geben, damit Identitaet, Artists und Releases ohne Informationschaos und mit hochwertiger Wahrnehmung praesentiert werden.",
     solution:
-      "Klare Startseite, direkte Navigation nach Inhalt, besser lesbare Bereiche fuer Releases und Clips, sichtbare Events, Netzwerke sowie getrennte Kontakte fuer Management, Booking, Presse und Kommunikation.",
+      "Klare Startseite, direkte Navigation nach Inhalten, besser lesbare Bereiche fuer Releases und Clips, sichtbare Events und Netzwerke sowie getrennte Kontakte fuer Management, Booking, Presse und Kommunikation.",
     stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
-    result: "Live-Label-Website mit klarerer Struktur und staerkerer Darstellung des KAH-Prod-Universums",
+    result: "Live-Label-Website mit klarerer Struktur und einer staerkeren Darstellung des KAH-Prod Universums",
     timeline: "2 Wochen",
     deliverables: ["Art Direction", "Premium-Startseite", "Artists- und Release-Bereiche", "Business-Kontakte"],
     metrics: [
@@ -23,7 +23,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       { label: "Business-Kontakte", value: "4" },
       { label: "Basis", value: "Vercel" },
     ],
-    highlights: ["Label / Artists / Releases / Clips", "Events + Netzwerke", "Management / Booking / Presse / Kommunikation"],
+    highlights: ["Label / Artists / Releases / Clips", "Events und Netzwerke", "Management / Booking / Presse / Kommunikation"],
     palette: {
       primary: "#07111f",
       secondary: "#12304e",

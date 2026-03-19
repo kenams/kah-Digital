@@ -46,23 +46,23 @@ const copy = {
       "A more premium presence, with stronger visual hierarchy and a cleaner base to present the project image properly.",
   },
   de: {
-    eyebrow: "Case Study",
-    title: "KAH Prod, ein KAH-Digital Projekt mit echtem Markencharakter.",
+    eyebrow: "Referenz",
+    title: "KAH Prod, ein KAH-Digital Projekt mit klarem Markencharakter.",
     intro:
-      "Ziel war keine einfache Projektkarte. Es ging darum, ein ganzes Universum, eine klare visuelle Richtung und eine Website zu zeigen, die Label, Artists, Releases und Business-Kontakte sauber praesentiert.",
+      "Es ging nicht um eine einfache Projektkarte, sondern um eine echte Markenpraesenz: ein klares Universum, eine saubere visuelle Richtung und eine Website, die Label, Artists, Releases und Business-Kontakte hochwertig praesentiert.",
     primaryCta: "Website ansehen",
     secondaryCta: "Projekt besprechen",
     previewLabel: "Live-Vorschau",
-    previewKicker: "Art Direction / unabhängiges Label",
+    previewKicker: "Art Direction / unabhaengiges Label",
     secondaryPreviewLabel: "Strukturierte Navigation",
     metricsEyebrow: "Projektmarker",
-    detailOneTitle: "Was die Website klar macht",
-    detailTwoTitle: "Was den Unterschied schafft",
+    detailOneTitle: "Was die Website sofort klar macht",
+    detailTwoTitle: "Was den eigentlichen Unterschied schafft",
     detailThreeTitle: "Gelieferter Umfang",
     detailOneBody:
-      "Ein klareres Musik-Universum mit direkter Navigation zwischen Label, Artists, Releases, Clips, Events, Netzwerken und Business-Kontakten.",
+      "Ein klareres Musikuniversum mit direkter Navigation zwischen Label, Artists, Releases, Clips, Events, Netzwerken und Business-Kontakten.",
     detailTwoBody:
-      "Eine hochwertigere Praesenz mit staerkerer visueller Hierarchie und einer saubereren Basis fuer das Projektbild.",
+      "Eine deutlich wertigere Praesenz mit staerkerer visueller Hierarchie und einer saubereren Basis fuer das Markenbild.",
   },
 } as const;
 
@@ -75,8 +75,7 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
     locale === "en"
       ? {
           badge: "Independent label - Toulouse / France",
-          lead:
-            "Premium production, cinematic image, and tailored digital direction for ambitious French-speaking artists.",
+          lead: "Premium production, cinematic image, and tailored digital direction for ambitious French-speaking artists.",
           primary: "Discover artists",
           secondary: "View releases",
         }
@@ -84,17 +83,16 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
         ? {
             badge: "Unabhaengiges Label - Toulouse / Frankreich",
             lead:
-              "Premium-Produktion, cineastisches Bild und massgeschneiderte digitale Ausrichtung fuer ambitionierte frankophone Artists.",
+              "Premium-Produktion, cineastische Bildsprache und eine massgeschneiderte digitale Ausrichtung fuer ambitionierte frankophone Artists.",
             primary: "Artists entdecken",
             secondary: "Releases ansehen",
           }
-      : {
-          badge: "Label independant - Toulouse / France",
-          lead:
-            "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
-          primary: "Decouvrir les artistes",
-          secondary: "Voir les sorties",
-        };
+        : {
+            badge: "Label independant - Toulouse / France",
+            lead: "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
+            primary: "Decouvrir les artistes",
+            secondary: "Voir les sorties",
+          };
 
   return (
     <div className="relative overflow-hidden rounded-[30px] border border-[#6f5530] bg-[linear-gradient(135deg,#121318_0%,#1b1716_35%,#2a1f19_58%,#0f1014_100%)] p-7 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
@@ -113,9 +111,7 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
         <div className="mt-6 flex items-end gap-2 text-[clamp(3.4rem,9vw,7rem)] font-light uppercase leading-none tracking-[-0.08em] text-[#f5efe6]">
           <span className="font-extralight">KAH</span>
           <span className="text-[#d6ab59]">-</span>
-          <span className="bg-[linear-gradient(90deg,#f7ecd8_0%,#d4ab5b_45%,#cf875e_100%)] bg-clip-text text-transparent">
-            PROD
-          </span>
+          <span className="bg-[linear-gradient(90deg,#f7ecd8_0%,#d4ab5b_45%,#cf875e_100%)] bg-clip-text text-transparent">PROD</span>
         </div>
 
         <p className="mt-6 max-w-2xl text-lg leading-9 text-white/72">{content.lead}</p>
@@ -146,9 +142,7 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
       <div className="relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <div className="text-white">
           <p className="text-xs uppercase tracking-[0.45em] text-white/45">{text.eyebrow}</p>
-          <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight text-white sm:text-4xl">
-            {text.title}
-          </h3>
+          <h3 className="mt-4 max-w-2xl text-3xl font-semibold leading-tight text-white sm:text-4xl">{text.title}</h3>
           <p className="mt-5 max-w-2xl text-base leading-8 text-white/72 sm:text-lg">{text.intro}</p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
