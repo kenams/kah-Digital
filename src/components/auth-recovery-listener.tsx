@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 function clearHash() {
   if (typeof window === "undefined") return;
-  const nextUrl = `${window.location.pathname}${window.location.search}`;
+  const nextUrl = window.location.pathname;
   window.history.replaceState({}, document.title, nextUrl);
 }
 
@@ -17,19 +17,24 @@ export function AuthRecoveryListener() {
     let active = true;
 
     const syncRecoverySession = async () => {
-      if (typeof window === "undefined" || !window.location.hash) return;
+      if (typeof window === "undefined") return;
 
-      const params = new URLSearchParams(window.location.hash.slice(1));
-      const type = params.get("type");
-      const accessToken = params.get("access_token");
-      const refreshToken = params.get("refresh_token");
+      const searchParams = new URLSearchParams(window.location.search);
+      const code = searchParams.get("code");
+      const tokenHash = searchParams.get("token_hash");
+      const searchType = searchParams.get("type");
 
-      if (type !== "recovery") {
+      const hashParams = new URLSearchParams(window.location.hash.slice(1));
+      const accessToken = hashParams.get("access_token");
+      const refreshToken = hashParams.get("refresh_token");
+      const hashType = hashParams.get("type");
+
+      if (!code && !(tokenHash && searchType === "recovery") && !accessToken) {
         return;
       }
 
       const supabase = createSupabaseBrowserClient();
-      if (!supabase || !accessToken || !refreshToken) {
+      if (!supabase) {
         clearHash();
         if (active) {
           router.replace("/admin/login?error=session");
@@ -37,10 +42,28 @@ export function AuthRecoveryListener() {
         return;
       }
 
-      const { error } = await supabase.auth.setSession({
-        access_token: accessToken,
-        refresh_token: refreshToken,
-      });
+      let error: Error | null = null;
+
+      if (code) {
+        const result = await supabase.auth.exchangeCodeForSession(code);
+        error = result.error;
+      } else if (tokenHash && searchType === "recovery") {
+        const result = await supabase.auth.verifyOtp({
+          token_hash: tokenHash,
+          type: "recovery",
+        });
+        error = result.error;
+      } else if (accessToken && refreshToken) {
+        const result = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        error = result.error;
+      } else if (hashType === "recovery") {
+        error = new Error("Session de recuperation incomplete.");
+      } else {
+        return;
+      }
 
       clearHash();
 
