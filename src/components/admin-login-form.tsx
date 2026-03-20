@@ -270,7 +270,11 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
         : "";
 
   const infoMessage =
-    infoParam === "mfa-reset" ? "MFA reinitialise. Reconnecte-toi pour le reconfigurer." : "";
+    infoParam === "mfa-reset"
+      ? "MFA reinitialise. Reconnecte-toi pour le reconfigurer."
+      : infoParam === "password-reset"
+        ? "Mot de passe mis a jour. Connecte-toi puis configure le MFA si besoin."
+        : "";
 
   const handleMfaVerify = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
