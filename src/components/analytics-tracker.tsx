@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
 
 const trackedPaths = new Set([
@@ -12,9 +13,30 @@ const trackedPaths = new Set([
   "/en/devis/mvp",
   "/en/configurateur",
   "/en/offres",
+  "/de/devis",
+  "/de/devis/mvp",
+  "/de/configurateur",
+  "/de/offres",
 ]);
 
+function getLocaleFromPath(pathname: string) {
+  if (pathname.startsWith("/en")) return "en";
+  if (pathname.startsWith("/de")) return "de";
+  return "fr";
+}
+
 export function AnalyticsTracker() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!pathname) return;
+
+    trackEvent("page_view", {
+      page_path: pathname,
+      page_locale: getLocaleFromPath(pathname),
+    });
+  }, [pathname]);
+
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement | null;
@@ -37,6 +59,7 @@ export function AnalyticsTracker() {
       trackEvent("cta_click", {
         cta_destination: url.pathname,
         cta_text: label || undefined,
+        cta_locale: getLocaleFromPath(url.pathname),
       });
     };
 

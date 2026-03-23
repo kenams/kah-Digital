@@ -3,7 +3,7 @@ import { QuotePageContent } from "@/components/pages/quote-page-content";
 
 export const metadata: Metadata = {
   title: "Quick quote",
-  description: "Short form to estimate a website or digital experience.",
+  description: "Request a clear estimate for your website, app, or AI project. Structured reply within 24 hours.",
   alternates: {
     canonical: "/en/devis",
     languages: {

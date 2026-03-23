@@ -3,6 +3,7 @@ import { assistantRecordSchema, type AssistantRecord } from "@/lib/assistant/sch
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseConfigured = Boolean(supabaseUrl && supabaseKey);
 
 const supabase: SupabaseClient | null =
   supabaseUrl && supabaseKey
@@ -13,6 +14,10 @@ const supabase: SupabaseClient | null =
         },
       })
     : null;
+
+export function isSupabaseConfigured() {
+  return supabaseConfigured;
+}
 
 function requireSupabaseClient() {
   if (!supabase) {

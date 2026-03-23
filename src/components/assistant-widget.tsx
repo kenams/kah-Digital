@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { FiArrowUpRight, FiMessageSquare, FiRotateCcw, FiSend } from "react-icons/fi";
+import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
 import {
   assistantSessionSchema,
@@ -546,9 +547,9 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     });
   };
 
-  const handleAction = (mode: "email" | "lead" | "glpi") => {
-    if (!summary) return;
-    setStatusMessage("");
+    const handleAction = (mode: "email" | "lead" | "glpi") => {
+      if (!summary) return;
+      setStatusMessage("");
     setLastActivityAt(Date.now());
 
     startActionTransition(async () => {
@@ -567,12 +568,18 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         const url =
           mode === "email" ? "/api/assistant/email" : mode === "glpi" ? "/api/assistant/glpi" : "/api/assistant/lead";
 
-        const result = await postJson<{ message?: string }>(url, body);
-        setLastActivityAt(Date.now());
-        setStatusMessage(result.message || "OK");
-      } catch (error) {
-        setStatusMessage(error instanceof Error ? error.message : "Erreur reseau");
-      }
+          const result = await postJson<{ message?: string }>(url, body);
+          setLastActivityAt(Date.now());
+          setStatusMessage(result.message || "OK");
+          trackEvent("assistant_handoff", {
+            handoff_mode: mode,
+            assistant_intent: summary.intent,
+            assistant_project_type: summary.project_type,
+            assistant_locale: locale,
+          });
+        } catch (error) {
+          setStatusMessage(error instanceof Error ? error.message : "Erreur reseau");
+        }
     });
   };
 
@@ -595,11 +602,12 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     });
 
     setSession(seededSession);
-    setSummary(null);
-    setProgress({ current: 1, total: 1, label: copy.progress });
-    setLastActivityAt(Date.now());
-    setStatusMessage("");
-  };
+      setSummary(null);
+      setProgress({ current: 1, total: 1, label: copy.progress });
+      setLastActivityAt(Date.now());
+      setStatusMessage("");
+      trackEvent("assistant_start", { assistant_locale: locale });
+    };
 
   return (
     <div className="pointer-events-none fixed inset-x-4 bottom-4 z-[80] flex justify-end sm:inset-x-6 sm:bottom-6">

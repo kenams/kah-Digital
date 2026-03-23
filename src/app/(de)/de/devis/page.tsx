@@ -3,7 +3,7 @@ import { QuotePageContent } from "@/components/pages/quote-page-content";
 
 export const metadata: Metadata = {
   title: "Projektanfrage",
-  description: "Kurze Anfrage fuer Website-, App- oder Support-Projekte mit KAH-Digital.",
+  description: "Schnelle Anfrage fuer Website-, App- oder KI-Projekte mit klarer Rueckmeldung innerhalb von 24 Stunden.",
   alternates: {
     canonical: "/de/devis",
     languages: {

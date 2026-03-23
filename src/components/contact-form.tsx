@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { companyConfig } from "@/config/company";
+import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
 
 type ContactStatus = "idle" | "loading" | "success" | "error";
@@ -170,6 +171,11 @@ export function ContactForm() {
 
       setStatus("success");
       setServerMessage(copy.success);
+      trackEvent("generate_lead", {
+        form_name: "contact",
+        destination: "contact",
+        subject: payload.subject,
+      });
       form.reset();
       setCaptchaToken("");
       setCaptchaReset((prev) => prev + 1);

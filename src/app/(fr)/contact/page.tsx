@@ -3,7 +3,7 @@ import { ContactPageContent } from "@/components/pages/contact-page-content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contactez KAH-Digital pour vos projets digitaux. Reponse sous 24h.",
+  description: "Parle-nous de ton besoin digital. Réponse claire sous 24h pour site web, application, IA ou support.",
 };
 
 export default function ContactPage() {
