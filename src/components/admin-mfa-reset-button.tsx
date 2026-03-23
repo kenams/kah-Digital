@@ -9,7 +9,7 @@ export function AdminMfaResetButton() {
   const [message, setMessage] = useState("");
 
   const handleReset = async () => {
-    if (typeof window !== "undefined" && !window.confirm("Reinitialiser le MFA ?")) {
+    if (typeof window !== "undefined" && !window.confirm("Réinitialiser le MFA ?")) {
       return;
     }
 
@@ -22,7 +22,7 @@ export function AdminMfaResetButton() {
 
     if (!response.ok) {
       const data = await response.json().catch(() => ({}));
-      setMessage(data?.error || "Erreur pendant la reinitialisation MFA.");
+      setMessage(data?.error || "Erreur pendant la réinitialisation MFA.");
       setLoading(false);
       return;
     }

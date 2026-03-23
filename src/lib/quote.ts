@@ -51,9 +51,49 @@ export const quoteSchema = z
   });
 
 export type QuoteRequest = z.infer<typeof quoteSchema>;
+export type QuotePaymentStatus = "none" | "pending" | "partial" | "paid" | "expired";
+export type QuotePaymentMode = "deposit" | "full";
+export type QuotePipelineStatus = "new" | "qualified" | "quote" | "negotiation" | "won" | "lost";
 export type QuoteStatus = {
   feasibility?: "pending" | "feasible" | "blocked";
   deposit?: "none" | "deposit" | "servers";
+  pipeline?: QuotePipelineStatus;
 };
 
-export type QuoteRecord = QuoteRequest & QuoteStatus & { id?: string; submittedAt: string };
+export type QuotePaymentState = {
+  paymentStatus?: QuotePaymentStatus;
+  paymentCurrency?: string;
+  paymentTotalAmount?: number;
+  paymentDepositAmount?: number;
+  paymentPaidAmount?: number;
+  paymentLastSessionId?: string;
+  paymentLastSessionUrl?: string;
+  paymentLastSessionMode?: QuotePaymentMode;
+  paymentLastSessionCreatedAt?: string;
+  paymentLastSessionExpiresAt?: string;
+  paymentPaidAt?: string;
+  paymentProcessedSessions?: string[];
+};
+
+export type QuoteRecord = QuoteRequest &
+  QuoteStatus &
+  QuotePaymentState & { id?: string; submittedAt: string };
+
+export type QuoteActivityAction =
+  | "qualification_updated"
+  | "pipeline_updated"
+  | "payment_link_created"
+  | "payment_received"
+  | "payment_link_expired";
+
+export type QuoteActivityRecord = {
+  id: string;
+  quoteId?: string | null;
+  quoteSubmittedAt: string;
+  createdAt: string;
+  actorUserId?: string | null;
+  actorEmail?: string | null;
+  action: QuoteActivityAction;
+  summary: string;
+  payload?: Record<string, unknown> | null;
+};

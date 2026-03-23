@@ -2,7 +2,7 @@
 import { quoteSchema, type QuoteRecord } from "@/lib/quote";
 import { notifyQuote } from "@/lib/notifications";
 import { getRecentQuotes, isSupabaseConfigured, saveQuoteRecord } from "@/lib/quote-store";
-import { getRequestIp, rateLimit } from "@/lib/rate-limit";
+import { getRateLimitHeaders, getRequestIp, rateLimit } from "@/lib/rate-limit";
 import { verifyTurnstile } from "@/lib/turnstile";
 
 const adminToken = process.env.ADMIN_API_TOKEN;
@@ -43,11 +43,7 @@ export async function POST(request: NextRequest) {
   const ip = getRequestIp(request);
   const remoteIp = ip === "unknown" ? null : ip;
   const rate = rateLimit(`quote:${ip}`, quoteRateLimit);
-  const rateHeaders = {
-    "X-RateLimit-Limit": String(quoteRateLimit.max),
-    "X-RateLimit-Remaining": String(rate.remaining),
-    "X-RateLimit-Reset": String(Math.ceil(rate.resetAt / 1000)),
-  };
+  const rateHeaders = getRateLimitHeaders(rate, quoteRateLimit.max);
 
   if (!rate.allowed) {
     return NextResponse.json(

@@ -3,11 +3,12 @@ import { Resend } from "resend";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isAdminUser } from "@/lib/auth";
 import { brandContact } from "@/config/brand";
+import { getResendFromAddress } from "@/lib/mail";
 
 export const dynamic = "force-dynamic";
 
 const resendClient = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const replyFrom = "Kah-Digital <notifications@kah-digital.io>";
+const replyFrom = getResendFromAddress();
 const replyTo = brandContact.email;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const maxSubjectLength = 200;

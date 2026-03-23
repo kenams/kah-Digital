@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { QuoteRecord } from "@/lib/quote";
 import { AdminMfaResetButton } from "@/components/admin-mfa-reset-button";
 import { AdminSignOutButton } from "@/components/admin-signout-button";
 import { brandContact } from "@/config/brand";
+import { formatChfFromCents, getQuotePaymentStatusLabel } from "@/lib/quote-payments";
 
 type AdminDemandesBoardProps = {
   initialItems: QuoteRecord[];
+  view: "pipeline" | "payments";
 };
 
 const feasibilityOptions = [
@@ -27,10 +28,10 @@ const depositOptions = [
 
 const pipelineOptions = [
   { value: "new", label: "Nouveau" },
-  { value: "qualified", label: "Qualifie" },
-  { value: "quote", label: "Devis envoye" },
-  { value: "negotiation", label: "Negociation" },
-  { value: "won", label: "Gagne" },
+  { value: "qualified", label: "Qualifié" },
+  { value: "quote", label: "Devis envoyé" },
+  { value: "negotiation", label: "Négociation" },
+  { value: "won", label: "Gagné" },
   { value: "lost", label: "Perdu" },
 ] as const;
 
@@ -48,14 +49,12 @@ type AdminNote = {
 };
 
 type AdminMeta = {
-  pipeline: PipelineStatus;
   notes: AdminNote[];
 };
 
 const ADMIN_META_STORAGE_KEY = "kah-admin-meta-v1";
 
 const createDefaultMeta = (): AdminMeta => ({
-  pipeline: "new",
   notes: [],
 });
 
@@ -94,12 +93,22 @@ const depositLabels: Record<ItemStatus["deposit"], string> = {
 
 const pipelineLabels: Record<PipelineStatus, string> = {
   new: "Nouveau",
-  qualified: "Qualifie",
-  quote: "Devis envoye",
-  negotiation: "Negociation",
-  won: "Gagne",
+  qualified: "Qualifié",
+  quote: "Devis envoyé",
+  negotiation: "Négociation",
+  won: "Gagné",
   lost: "Perdu",
 };
+
+const paymentStatusBadges = {
+  none: "bg-white/10 text-white/70 border border-white/15",
+  pending: "bg-amber-100/15 text-amber-200 border border-amber-200/30",
+  partial: "bg-sky-100/15 text-sky-200 border border-sky-200/30",
+  paid: "bg-emerald-100/15 text-emerald-200 border border-emerald-200/30",
+  expired: "bg-rose-100/15 text-rose-200 border border-rose-200/30",
+} as const;
+
+type PaymentStatusFilter = keyof typeof paymentStatusBadges | "all";
 
 type ReplyTemplateId = "feasible" | "need-info" | "budget-low" | "not-feasible" | "changes";
 type ReplyVariant = "short" | "full";
@@ -204,6 +213,27 @@ const formatCsvList = (value?: unknown) => {
   return "";
 };
 
+const formatPaymentDraft = (value?: number) => {
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    return "";
+  }
+
+  return (value / 100).toFixed(2);
+};
+
+const getLeadSummary = (item: QuoteRecord) => {
+  const parts = [item.goal, item.message, item.configurator?.strategy, item.configurator?.siteType]
+    .map((value) => (typeof value === "string" ? value.trim() : ""))
+    .filter(Boolean);
+
+  if (parts.length === 0) {
+    return "Aucun résumé client saisi pour cette demande.";
+  }
+
+  const summary = parts[0];
+  return summary.length > 180 ? `${summary.slice(0, 177)}...` : summary;
+};
+
 const projectReplyProfiles: ProjectReplyProfile[] = [
   {
     key: "landing",
@@ -225,9 +255,9 @@ const projectReplyProfiles: ProjectReplyProfile[] = [
     key: "ecommerce",
     label: "E-commerce / boutique",
     match: ["e-commerce", "ecommerce", "boutique", "shop", "store"],
-    short: "- Catalogue, fiches produits, paiement\n- Tunnel optimise + emails transactionnels",
+    short: "- Catalogue, fiches produits, paiement\n- Tunnel optimisé + emails transactionnels",
     full:
-      "- Catalogue, fiches, filtres, paiement\n- Tunnel optimise, emails, tracking\n- Connexion logistique si besoin",
+      "- Catalogue, fiches, filtres, paiement\n- Tunnel optimisé, emails, tracking\n- Connexion logistique si besoin",
   },
   {
     key: "marketplace",
@@ -235,7 +265,7 @@ const projectReplyProfiles: ProjectReplyProfile[] = [
     match: ["marketplace", "place de marche", "multi-vendeurs", "multi vendeurs"],
     short: "- Catalogue multi-offres + recherche\n- Paiement + commission",
     full:
-      "- Onboarding vendeurs + catalogue\n- Recherche, filtres, paiement\n- Commission, back-office et moderation",
+      "- Onboarding vendeurs + catalogue\n- Recherche, filtres, paiement\n- Commission, back-office et modération",
   },
   {
     key: "mvp",
@@ -281,9 +311,9 @@ const projectReplyProfiles: ProjectReplyProfile[] = [
     key: "ai",
     label: "IA / assistants",
     match: ["ia", "ai", "intelligence artificielle", "assistant", "chatbot", "agent", "llm"],
-    short: "- Cas d'usage IA + prompt\n- Integration API + garde-fous",
+    short: "- Cas d'usage IA + prompt\n- Intégration API + garde-fous",
     full:
-      "- Cadrage des cas d'usage IA\n- Integration API (OpenAI/Claude)\n- Securite, garde-fous et suivi",
+      "- Cadrage des cas d'usage IA\n- Intégration API (OpenAI/Claude)\n- Sécurité, garde-fous et suivi",
   },
   {
     key: "automation",
@@ -371,7 +401,7 @@ const projectReplyProfiles: ProjectReplyProfile[] = [
     match: ["ong", "association", "caritatif", "don", "donation", "fondation", "humanitaire"],
     short: "- Parcours don fluide\n- Transparence et impact",
     full:
-      "- Parcours don simple + recurrent\n- Pages impact, transparence\n- CRM/collecte et analytics",
+      "- Parcours don simple + récurrent\n- Pages impact, transparence\n- CRM/collecte et analytics",
   },
   {
     key: "general",
@@ -515,7 +545,7 @@ const replyTemplates: ReplyTemplate[] = [
   },
 ];
 
-export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
+export function AdminDemandesBoard({ initialItems, view }: AdminDemandesBoardProps) {
   const [items, setItems] = useState<QuoteRecord[]>(initialItems);
   const [loading, setLoading] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -525,6 +555,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   const [depositFilter, setDepositFilter] = useState<ItemStatus["deposit"] | "all">("all");
   const [pipelineFilter, setPipelineFilter] = useState<PipelineStatus | "all">("all");
   const [sourceFilter, setSourceFilter] = useState<"all" | "configurator" | "classic">("all");
+  const [paymentStatusFilter, setPaymentStatusFilter] = useState<PaymentStatusFilter>("all");
   const [sortOrder, setSortOrder] = useState<"recent" | "oldest">("recent");
   const [replyTargetKey, setReplyTargetKey] = useState<string | null>(null);
   const [replyTemplateId, setReplyTemplateId] = useState<ReplyTemplateId>("feasible");
@@ -538,6 +569,10 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
   const [replySuccess, setReplySuccess] = useState("");
   const [adminMeta, setAdminMeta] = useState<Record<string, AdminMeta>>({});
   const [noteDrafts, setNoteDrafts] = useState<Record<string, string>>({});
+  const [paymentDrafts, setPaymentDrafts] = useState<Record<string, { total: string; deposit: string }>>({});
+  const [paymentLoadingKey, setPaymentLoadingKey] = useState<string | null>(null);
+  const [paymentMessages, setPaymentMessages] = useState<Record<string, { tone: "success" | "error"; body: string }>>({});
+  const [expandedCardKeys, setExpandedCardKeys] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     setItems(initialItems);
@@ -589,39 +624,56 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     };
   }, []);
 
-  useEffect(() => {
-    let ignore = false;
-
-    async function load() {
-      try {
-        setLoading(true);
-        const response = await fetch("/api/admin/quotes", { cache: "no-store" });
-        if (!response.ok) return;
-        const data = await response.json();
-        if (!ignore && Array.isArray(data.items)) {
-          setItems(data.items);
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (!ignore) {
-          setLoading(false);
-        }
+  const loadItems = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/admin/quotes", { cache: "no-store" });
+      if (!response.ok) return;
+      const data = await response.json();
+      if (Array.isArray(data.items)) {
+        setItems(data.items);
       }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  }, []);
 
-    const interval = setInterval(load, 60000);
+  useEffect(() => {
+    let active = true;
+
+    const load = async () => {
+      if (!active) return;
+      await loadItems();
+    };
+
+    const interval = setInterval(() => {
+      void load();
+    }, 60000);
+
     return () => {
-      ignore = true;
+      active = false;
       clearInterval(interval);
     };
-  }, []);
+  }, [loadItems]);
 
   const getItemKey = (item: QuoteRecord) => {
     if (item.id) return item.id;
     const email = item.email?.trim() || item.name?.trim() || "unknown";
     return `${item.submittedAt}-${email}`;
   };
+
+  const getMetaForKey = useCallback((key: string) => adminMeta[key] ?? createDefaultMeta(), [adminMeta]);
+  const getPipelineForItem = useCallback((item: QuoteRecord) => item.pipeline ?? "new", []);
+  const getPaymentDraft = useCallback(
+    (item: QuoteRecord) =>
+      paymentDrafts[getItemKey(item)] ?? {
+        total: formatPaymentDraft(item.paymentTotalAmount),
+        deposit: formatPaymentDraft(item.paymentDepositAmount),
+      },
+    [paymentDrafts]
+  );
 
   const resolvedStatus = useMemo(() => {
     const record: Record<string, ItemStatus> = {};
@@ -657,7 +709,8 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
 
     return items.filter((item) => {
       const status = resolvedStatus[getItemKey(item)];
-      const pipeline = getMetaForKey(getItemKey(item)).pipeline;
+      const pipeline = getPipelineForItem(item);
+      const paymentStatus = item.paymentStatus ?? "none";
       if (feasibilityFilter !== "all" && status?.feasibility !== feasibilityFilter) {
         return false;
       }
@@ -665,6 +718,9 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
         return false;
       }
       if (pipelineFilter !== "all" && pipeline !== pipelineFilter) {
+        return false;
+      }
+      if (paymentStatusFilter !== "all" && paymentStatus !== paymentStatusFilter) {
         return false;
       }
       if (sourceFilter === "configurator" && !item.configurator) {
@@ -690,17 +746,41 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
 
       return haystack.includes(query);
     });
-  }, [items, resolvedStatus, adminMeta, searchTerm, feasibilityFilter, depositFilter, pipelineFilter, sourceFilter]);
+  }, [
+    items,
+    resolvedStatus,
+    getPipelineForItem,
+    searchTerm,
+    feasibilityFilter,
+    depositFilter,
+    pipelineFilter,
+    paymentStatusFilter,
+    sourceFilter,
+  ]);
+
+  const paymentItems = useMemo(() => {
+    return filteredItems.filter((item) => {
+      return (
+        Boolean(item.paymentLastSessionUrl) ||
+        (item.paymentTotalAmount ?? 0) > 0 ||
+        (item.paymentDepositAmount ?? 0) > 0 ||
+        (item.paymentPaidAmount ?? 0) > 0 ||
+        (item.paymentStatus ?? "none") !== "none"
+      );
+    });
+  }, [filteredItems]);
+
+  const visibleItems = view === "payments" ? paymentItems : filteredItems;
 
   const sortedItems = useMemo(() => {
-    const sorted = [...filteredItems];
+    const sorted = [...visibleItems];
     sorted.sort((a, b) => {
       const aTime = Date.parse(a.submittedAt) || 0;
       const bTime = Date.parse(b.submittedAt) || 0;
       return sortOrder === "recent" ? bTime - aTime : aTime - bTime;
     });
     return sorted;
-  }, [filteredItems, sortOrder]);
+  }, [visibleItems, sortOrder]);
 
   const kpis = useMemo(() => {
     const now = Date.now();
@@ -714,7 +794,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     let mobileCount = 0;
     let configuratorCount = 0;
 
-    filteredItems.forEach((item) => {
+    visibleItems.forEach((item) => {
       const submittedAtMs = Date.parse(item.submittedAt);
       if (!Number.isNaN(submittedAtMs)) {
         const delta = now - submittedAtMs;
@@ -742,9 +822,26 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
       webCount,
       mobileCount,
       configuratorCount,
-      classicCount: Math.max(0, filteredItems.length - configuratorCount),
+      classicCount: Math.max(0, visibleItems.length - configuratorCount),
     };
-  }, [filteredItems]);
+  }, [visibleItems]);
+
+  const paymentOverview = useMemo(() => {
+    return paymentItems.reduce(
+      (acc, item) => {
+        const paidAmount = item.paymentPaidAmount ?? 0;
+        const totalAmount = item.paymentTotalAmount ?? 0;
+        acc.configured += 1;
+        acc.collected += paidAmount;
+        acc.remaining += Math.max(0, totalAmount - paidAmount);
+        if (item.paymentLastSessionUrl) acc.links += 1;
+        if ((item.paymentStatus ?? "none") === "partial") acc.partial += 1;
+        if ((item.paymentStatus ?? "none") === "paid") acc.paid += 1;
+        return acc;
+      },
+      { configured: 0, collected: 0, remaining: 0, links: 0, partial: 0, paid: 0 }
+    );
+  }, [paymentItems]);
 
   const updateStatus = async (item: QuoteRecord, patch: Partial<ItemStatus>) => {
     const key = getItemKey(item);
@@ -778,9 +875,93 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     }
   };
 
-  function getMetaForKey(key: string) {
-    return adminMeta[key] ?? createDefaultMeta();
-  }
+  const createPaymentLink = async (item: QuoteRecord, paymentMode: "deposit" | "full") => {
+    const itemKey = getItemKey(item);
+    const draft = getPaymentDraft(item);
+
+    setPaymentLoadingKey(itemKey);
+    setPaymentMessages((prev) => {
+      const next = { ...prev };
+      delete next[itemKey];
+      return next;
+    });
+
+    try {
+      const response = await fetch("/api/admin/quotes/payment-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          id: item.id ?? null,
+          submittedAt: item.submittedAt,
+          paymentMode,
+          paymentTotalAmount: draft.total,
+          paymentDepositAmount: draft.deposit,
+          locale: "fr",
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error ?? "Impossible de creer le lien.");
+      }
+
+      await loadItems();
+      setPaymentMessages((prev) => ({
+        ...prev,
+        [itemKey]: {
+          tone: "success",
+          body: paymentMode === "deposit" ? "Lien Stripe d'acompte généré." : "Lien Stripe total / solde généré.",
+        },
+      }));
+    } catch (error) {
+      console.error(error);
+      setPaymentMessages((prev) => ({
+        ...prev,
+        [itemKey]: {
+          tone: "error",
+          body: error instanceof Error ? error.message : "Erreur Stripe.",
+        },
+      }));
+    } finally {
+      setPaymentLoadingKey(null);
+    }
+  };
+
+  const copyPaymentLink = async (item: QuoteRecord) => {
+    const itemKey = getItemKey(item);
+    const url = item.paymentLastSessionUrl?.trim();
+    if (!url || typeof navigator === "undefined" || !navigator.clipboard) {
+      setPaymentMessages((prev) => ({
+        ...prev,
+        [itemKey]: {
+          tone: "error",
+          body: "Aucun lien a copier pour cette demande.",
+        },
+      }));
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      setPaymentMessages((prev) => ({
+        ...prev,
+        [itemKey]: {
+          tone: "success",
+          body: "Lien Stripe copie dans le presse-papiers.",
+        },
+      }));
+    } catch (error) {
+      console.error(error);
+      setPaymentMessages((prev) => ({
+        ...prev,
+        [itemKey]: {
+          tone: "error",
+          body: "Impossible de copier le lien.",
+        },
+      }));
+    }
+  };
 
   const addHistoryEntry = (key: string, body: string) => {
     const trimmed = body.trim();
@@ -803,24 +984,56 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     });
   };
 
-  const updatePipeline = (key: string, nextPipeline: PipelineStatus) => {
+  const updatePipeline = async (item: QuoteRecord, nextPipeline: PipelineStatus) => {
+    const key = getItemKey(item);
+    const currentPipeline = getPipelineForItem(item);
+    if (currentPipeline === nextPipeline) return;
+
+    setItems((prev) =>
+      prev.map((entry) => (getItemKey(entry) === key ? { ...entry, pipeline: nextPipeline } : entry))
+    );
+
+    const historyEntry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      body: `Pipeline -> ${pipelineLabels[nextPipeline]}`,
+      createdAt: new Date().toISOString(),
+    };
+
     setAdminMeta((prev) => {
       const current = prev[key] ?? createDefaultMeta();
-      if (current.pipeline === nextPipeline) return prev;
-      const historyEntry = {
-        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        body: `Pipeline -> ${pipelineLabels[nextPipeline]}`,
-        createdAt: new Date().toISOString(),
-      };
       return {
         ...prev,
         [key]: {
           ...current,
-          pipeline: nextPipeline,
           notes: [historyEntry, ...(current.notes ?? [])],
         },
       };
     });
+
+    try {
+      const response = await fetch("/api/admin/quotes", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          id: item.id ?? null,
+          submittedAt: item.submittedAt,
+          feasibility: item.feasibility ?? "pending",
+          deposit: item.deposit ?? "none",
+          pipeline: nextPipeline,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Impossible de mettre a jour le pipeline.");
+      }
+    } catch (error) {
+      console.error(error);
+      setSaveError("Impossible d'enregistrer le pipeline.");
+      setItems((prev) =>
+        prev.map((entry) => (getItemKey(entry) === key ? { ...entry, pipeline: currentPipeline } : entry))
+      );
+    }
   };
 
   const addNote = (key: string) => {
@@ -828,6 +1041,13 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     if (!draft) return;
     addHistoryEntry(key, draft);
     setNoteDrafts((prev) => ({ ...prev, [key]: "" }));
+  };
+
+  const toggleExpandedCard = (key: string) => {
+    setExpandedCardKeys((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   const exportCsv = (records: QuoteRecord[], label: string) => {
@@ -862,7 +1082,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
 
     const rows = records.map((item) => {
       const status = resolvedStatus[getItemKey(item)];
-      const pipeline = getMetaForKey(getItemKey(item)).pipeline;
+      const pipeline = getPipelineForItem(item);
       const values = [
         item.submittedAt,
         item.name ?? "",
@@ -1010,7 +1230,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
 
     const indexByKey = new Map(buckets.map((bucket, index) => [bucket.key, index]));
 
-    filteredItems.forEach((item) => {
+    visibleItems.forEach((item) => {
       const submittedAt = new Date(item.submittedAt);
       if (Number.isNaN(submittedAt.getTime())) return;
       submittedAt.setHours(0, 0, 0, 0);
@@ -1021,7 +1241,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
     });
 
     return buckets;
-  }, [filteredItems]);
+  }, [visibleItems]);
 
   const seriesMax = Math.max(1, ...dailySeries.map((entry) => entry.count));
   const sparklinePoints = dailySeries
@@ -1031,9 +1251,24 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
       return `${x},${y}`;
     })
     .join(" ");
-  const hasData = filteredItems.length > 0;
+  const hasData = visibleItems.length > 0;
   const sparklineStartLabel = dailySeries[0]?.label ?? "";
   const sparklineEndLabel = dailySeries.at(-1)?.label ?? "";
+  const isPaymentsView = view === "payments";
+  const pageTitle = isPaymentsView ? "Paiements clients" : "Demandes reçues";
+  const pageBody = isPaymentsView
+    ? "Vue opérable pour générer les liens Stripe, suivre l'encaissement et voir ce qu'il reste à relancer ou solder."
+    : "Vue pipeline des demandes issues du configurateur + devis classique. Les badges ci-dessous sont locaux pour qualifier rapidement avant de pousser l&apos;info vers Notion, Airtable ou ton CRM.";
+  const visibleCountLabel = isPaymentsView ? paymentItems.length : filteredItems.length;
+  const emptyStateLabel = isPaymentsView ? "Aucun dossier paiement pour le moment." : "Aucune demande pour le moment.";
+  const emptyFilterStateLabel = isPaymentsView
+    ? "Aucun dossier paiement avec ces filtres."
+    : "Aucun resultat avec ces filtres.";
+  const heroLeadValue = isPaymentsView ? formatChfFromCents(paymentOverview.collected) : String(insights.feasibility.pending);
+  const heroLeadLabel = isPaymentsView ? "Encaisse" : "A qualifier";
+  const heroSubLabel = isPaymentsView
+    ? `${paymentOverview.links} liens actifs et ${formatChfFromCents(paymentOverview.remaining)} a solder`
+    : `${visibleCountLabel} demandes visibles, ${insights.feasibility.feasible} faisables`;
 
   return (
     <div className="section-shell space-y-10">
@@ -1058,11 +1293,8 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
               </span>
             )}
           </div>
-          <h1 className="mt-3 text-4xl font-semibold">Demandes reçues</h1>
-          <p className="mt-3 text-white/70 max-w-2xl">
-            Vue pipeline des demandes issues du configurateur + devis classique. Les badges ci-dessous sont locaux pour qualifier
-            rapidement avant de pousser l&apos;info vers Notion, Airtable ou ton CRM.
-          </p>
+          <h1 className="mt-3 text-4xl font-semibold">{pageTitle}</h1>
+          <p className="mt-3 max-w-2xl text-white/70">{pageBody}</p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm">
             <Link
               href="/"
@@ -1085,51 +1317,83 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
             <AdminSignOutButton />
             <AdminMfaResetButton />
           </div>
-          <div className="mt-6 grid gap-3 text-sm md:grid-cols-2 xl:grid-cols-[1.2fr,1fr,1fr,1fr,1fr,1fr]">
+          {isPaymentsView ? (
+            <div className="mt-4 inline-flex rounded-full border border-sky-200/30 bg-sky-100/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.28em] text-sky-100">
+              Vue paiements active
+            </div>
+          ) : (
+            <div className="mt-4 inline-flex rounded-full border border-amber-200/30 bg-amber-100/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.28em] text-amber-100">
+              Vue pipeline active
+            </div>
+          )}
+          <div
+            className={`mt-6 grid gap-3 text-sm ${
+              isPaymentsView
+                ? "md:grid-cols-2 xl:grid-cols-[1.4fr,1fr,1fr,1fr]"
+                : "md:grid-cols-2 xl:grid-cols-[1.2fr,1fr,1fr,1fr,1fr,1fr]"
+            }`}
+          >
             <input
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Recherche (nom, email, société)"
               className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
             />
-            <select
-              value={feasibilityFilter}
-              onChange={(event) =>
-                setFeasibilityFilter(event.target.value as ItemStatus["feasibility"] | "all")
-              }
-              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
-            >
-              <option value="all">Toutes faisabilites</option>
-              {feasibilityOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <select
-              value={depositFilter}
-              onChange={(event) => setDepositFilter(event.target.value as ItemStatus["deposit"] | "all")}
-              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
-            >
-              <option value="all">Tous paiements</option>
-              {depositOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            <select
-              value={pipelineFilter}
-              onChange={(event) => setPipelineFilter(event.target.value as PipelineStatus | "all")}
-              className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
-            >
-              <option value="all">Tous pipelines</option>
-              {pipelineOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            {!isPaymentsView ? (
+              <>
+                <select
+                  value={feasibilityFilter}
+                  onChange={(event) =>
+                    setFeasibilityFilter(event.target.value as ItemStatus["feasibility"] | "all")
+                  }
+                  className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+                >
+                  <option value="all">Toutes faisabilites</option>
+                  {feasibilityOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={depositFilter}
+                  onChange={(event) => setDepositFilter(event.target.value as ItemStatus["deposit"] | "all")}
+                  className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+                >
+                  <option value="all">Tous acomptes</option>
+                  {depositOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={pipelineFilter}
+                  onChange={(event) => setPipelineFilter(event.target.value as PipelineStatus | "all")}
+                  className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+                >
+                  <option value="all">Tous pipelines</option>
+                  {pipelineOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </>
+            ) : (
+              <select
+                value={paymentStatusFilter}
+                onChange={(event) => setPaymentStatusFilter(event.target.value as PaymentStatusFilter)}
+                className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white focus:border-white/40 focus:outline-none"
+              >
+                <option value="all">Tous statuts Stripe</option>
+                <option value="none">Non configuré</option>
+                <option value="pending">Lien envoye</option>
+                <option value="partial">Acompte reçu</option>
+                <option value="paid">Réglé</option>
+                <option value="expired">Expiré</option>
+              </select>
+            )}
             <select
               value={sourceFilter}
               onChange={(event) => setSourceFilter(event.target.value as "all" | "configurator" | "classic")}
@@ -1156,6 +1420,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                 setFeasibilityFilter("all");
                 setDepositFilter("all");
                 setPipelineFilter("all");
+                setPaymentStatusFilter("all");
                 setSourceFilter("all");
                 setSortOrder("recent");
               }}
@@ -1165,7 +1430,7 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
             </button>
             <button
               type="button"
-              onClick={() => exportCsv(filteredItems, "filtre")}
+              onClick={() => exportCsv(visibleItems, "filtre")}
               className="rounded-full border border-white/20 px-4 py-2 text-[0.65rem] font-semibold text-white/70 transition hover:border-white hover:text-white"
             >
               Export CSV (filtre)
@@ -1178,44 +1443,100 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
               Export CSV (tout)
             </button>
             <span>
-              Affiche {filteredItems.length} / {items.length}
+              Affiche {visibleCountLabel} / {items.length}
             </span>
             <span>Rechargement auto toutes les 60s</span>
           </div>
           {loading && <p className="mt-2 text-sm text-white/50">Mise à jour en cours...</p>}
           {saveError && <p className="mt-2 text-sm text-rose-200">{saveError}</p>}
         </div>
-        <div className="premium-card rounded-[32px] border border-white/10 bg-white/5 p-1">
-          <div className="rounded-[28px] bg-black/70 p-4">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/60">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0c0f2c]/70 via-black/10 to-[#1f1244]/70" />
-              <Image
-                src="/og-kah-digital.png"
-                alt="Aperçu visuel admin"
-                width={640}
-                height={360}
-                className="relative h-44 w-full object-cover opacity-85 sm:h-52"
-                priority={false}
-              />
-              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/60 px-3 py-2 text-[0.6rem] uppercase tracking-[0.3em] text-white/70 backdrop-blur">
-                <Image src="/favicon.svg" alt="Kah-Digital" width={16} height={16} />
-                Dashboard
-              </div>
+        <div className="premium-card rounded-[32px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Lecture rapide</p>
+              <p className="mt-3 text-4xl font-semibold text-white">{heroLeadValue}</p>
+              <p className="mt-2 text-xs uppercase tracking-[0.28em] text-white/45">{heroLeadLabel}</p>
+              <p className="mt-4 max-w-sm text-sm text-white/65">{heroSubLabel}</p>
             </div>
-            <div className="mt-5 grid gap-4 text-xs text-white/70 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50">Faisables</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{insights.feasibility.feasible}</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-[0.7rem] uppercase tracking-[0.3em] text-white/50">À qualifier</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{insights.feasibility.pending}</p>
-              </div>
+            <div className="rounded-full border border-white/15 bg-black/30 px-3 py-2 text-[0.65rem] uppercase tracking-[0.3em] text-white/60">
+              {isPaymentsView ? "Stripe" : "Pipeline"}
             </div>
+          </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
+              <p className="text-[0.68rem] uppercase tracking-[0.3em] text-white/45">
+                {isPaymentsView ? "A encaisser" : "Faisables"}
+              </p>
+              <p className="mt-2 text-2xl font-semibold text-white">
+                {isPaymentsView ? formatChfFromCents(paymentOverview.remaining) : insights.feasibility.feasible}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
+              <p className="text-[0.68rem] uppercase tracking-[0.3em] text-white/45">
+                {isPaymentsView ? "Liens actifs" : "Recents 7j"}
+              </p>
+              <p className="mt-2 text-2xl font-semibold text-white">
+                {isPaymentsView ? paymentOverview.links : kpis.last7d}
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href={isPaymentsView ? "/admin/demandes?section=demandes&view=pipeline" : "/admin/demandes?section=demandes&view=payments"}
+              className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75 transition hover:border-white hover:text-white"
+            >
+              {isPaymentsView ? "Voir pipeline" : "Voir paiements"}
+            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchTerm("");
+                setFeasibilityFilter("all");
+                setDepositFilter("all");
+                setPipelineFilter("all");
+                setPaymentStatusFilter("all");
+                setSourceFilter("all");
+                setSortOrder("recent");
+              }}
+              className="rounded-full border border-white/10 bg-black/25 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/60 transition hover:border-white/25 hover:text-white"
+            >
+              Reset vue
+            </button>
           </div>
         </div>
       </motion.div>
 
+      {isPaymentsView && (
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Dossiers paiement</p>
+            <p className="mt-2 text-3xl font-semibold">{paymentOverview.configured}</p>
+            <p className="text-sm text-white/60">cartes suivies dans cet onglet</p>
+          </div>
+          <div className="premium-card rounded-3xl border border-sky-200/30 bg-sky-100/5 p-5 text-white">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Liens actifs</p>
+            <p className="mt-2 text-3xl font-semibold text-sky-100">{paymentOverview.links}</p>
+            <p className="text-sm text-white/60">checkout déjà généré</p>
+          </div>
+          <div className="premium-card rounded-3xl border border-emerald-200/30 bg-emerald-100/5 p-5 text-white">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Encaisse</p>
+            <p className="mt-2 text-3xl font-semibold text-emerald-100">
+              {formatChfFromCents(paymentOverview.collected)}
+            </p>
+            <p className="text-sm text-white/60">{paymentOverview.partial + paymentOverview.paid} dossiers encaisses</p>
+          </div>
+          <div className="premium-card rounded-3xl border border-amber-200/30 bg-amber-100/5 p-5 text-white">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Reste</p>
+            <p className="mt-2 text-3xl font-semibold text-amber-100">
+              {formatChfFromCents(paymentOverview.remaining)}
+            </p>
+            <p className="text-sm text-white/60">a solder ou relancer</p>
+          </div>
+        </div>
+      )}
+
+      {!isPaymentsView && (
+        <>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-5 text-white">
           <p className="text-xs uppercase tracking-[0.3em] text-white/60">Demandes</p>
@@ -1390,16 +1711,18 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           </div>
         )}
       </div>
+        </>
+      )}
 
       {!loading && items.length === 0 && (
         <div className="premium-card rounded-3xl border border-dashed border-white/20 bg-black/20 p-8 text-white/70">
-          Aucune demande pour le moment.
+          {emptyStateLabel}
         </div>
       )}
 
-      {!loading && items.length > 0 && filteredItems.length === 0 && (
+      {!loading && items.length > 0 && visibleItems.length === 0 && (
         <div className="premium-card rounded-3xl border border-dashed border-white/20 bg-black/20 p-8 text-white/70">
-          Aucun resultat avec ces filtres.
+          {emptyFilterStateLabel}
         </div>
       )}
 
@@ -1408,10 +1731,15 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
           const itemKey = getItemKey(item);
           const status = resolvedStatus[itemKey];
           const meta = getMetaForKey(itemKey);
-          const pipeline = meta.pipeline;
+          const paymentDraft = getPaymentDraft(item);
+          const pipeline = getPipelineForItem(item);
           const feasibilityClass = feasibilityBadges[status?.feasibility ?? "pending"];
           const depositClass = depositBadges[status?.deposit ?? "none"];
           const pipelineClass = pipelineBadges[pipeline];
+          const paymentStatus = item.paymentStatus ?? "none";
+          const paymentStatusClass = paymentStatusBadges[paymentStatus];
+          const isExpanded = expandedCardKeys[itemKey] ?? false;
+          const leadSummary = getLeadSummary(item);
           const isReplyOpen = replyTargetKey === itemKey;
           const replyTemplate = replyTemplates.find((entry) => entry.id === replyTemplateId) ?? replyTemplates[0];
           const replySubject = replyTemplate.subject(item);
@@ -1465,6 +1793,9 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                   <span className={`rounded-full px-3 py-1 font-medium ${pipelineClass}`}>
                     {pipelineLabels[pipeline]}
                   </span>
+                  <span className={`rounded-full px-3 py-1 font-medium ${paymentStatusClass}`}>
+                    {getQuotePaymentStatusLabel(paymentStatus)}
+                  </span>
                 </div>
               </div>
 
@@ -1487,6 +1818,40 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                   <p className="text-xs uppercase tracking-[0.3em] text-white/60">Contact</p>
                   <p className="mt-1">{item.email}</p>
                   {item.phone && <p>{item.phone}</p>}
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-white/10 bg-black/25 p-4 text-sm text-white/78">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/55">Lecture rapide</p>
+                    <p className="mt-2 max-w-3xl text-white/80">{leadSummary}</p>
+                  </div>
+                  {!isPaymentsView ? (
+                    <div className="flex flex-wrap gap-2">
+                      {item.id ? (
+                        <Link
+                          href={`/admin/demandes/${item.id}`}
+                          className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/75 transition hover:border-white hover:text-white"
+                        >
+                          Ouvrir fiche
+                        </Link>
+                      ) : null}
+                      <Link
+                        href="/admin/demandes?section=demandes&view=payments"
+                        className="rounded-full border border-[#7fb8c7]/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#cce9f0] transition hover:border-[#7fb8c7]/60"
+                      >
+                        Paiement
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => toggleExpandedCard(itemKey)}
+                        className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/75 transition hover:border-white hover:text-white"
+                      >
+                        {isExpanded ? "Masquer details" : "Voir details"}
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               </div>
 
@@ -1525,13 +1890,143 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                 </label>
               </div>
 
+              {isPaymentsView && (
+                <div className="mt-4 rounded-2xl border border-[#7fb8c7]/20 bg-[#08101a] p-4 text-sm text-white/80">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-[#7fb8c7]">Paiement client</p>
+                    <p className="mt-1 text-white/70">Lien Stripe admin pour acompte ou paiement total.</p>
+                  </div>
+                  <span className={`rounded-full px-3 py-1 text-xs font-medium ${paymentStatusClass}`}>
+                    {getQuotePaymentStatusLabel(paymentStatus)}
+                  </span>
+                </div>
+
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <label className="text-sm text-white/70">
+                    Total projet (CHF)
+                    <input
+                      type="text"
+                      inputMode="decimal"
+                      value={paymentDraft.total}
+                      onChange={(event) =>
+                        setPaymentDrafts((prev) => ({
+                          ...prev,
+                          [itemKey]: {
+                            ...getPaymentDraft(item),
+                            total: event.target.value,
+                          },
+                        }))
+                      }
+                      placeholder="2500.00"
+                      className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                    />
+                  </label>
+                  <label className="text-sm text-white/70">
+                    Acompte (CHF)
+                    <input
+                      type="text"
+                      inputMode="decimal"
+                      value={paymentDraft.deposit}
+                      onChange={(event) =>
+                        setPaymentDrafts((prev) => ({
+                          ...prev,
+                          [itemKey]: {
+                            ...getPaymentDraft(item),
+                            deposit: event.target.value,
+                          },
+                        }))
+                      }
+                      placeholder="800.00"
+                      className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                    />
+                  </label>
+                </div>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Total</p>
+                    <p className="mt-1 text-white">{formatChfFromCents(item.paymentTotalAmount)}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Encaisse</p>
+                    <p className="mt-1 text-white">{formatChfFromCents(item.paymentPaidAmount ?? 0)}</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Reste</p>
+                    <p className="mt-1 text-white">
+                      {formatChfFromCents(
+                        Math.max(0, (item.paymentTotalAmount ?? 0) - (item.paymentPaidAmount ?? 0))
+                      )}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => createPaymentLink(item, "deposit")}
+                    disabled={paymentLoadingKey === itemKey}
+                    className="rounded-full bg-[#d6b36a] px-4 py-2 text-xs font-semibold text-[#17120a] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Creer lien acompte
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => createPaymentLink(item, "full")}
+                    disabled={paymentLoadingKey === itemKey}
+                    className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/80 transition hover:border-white hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Creer lien total / solde
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => copyPaymentLink(item)}
+                    disabled={!item.paymentLastSessionUrl}
+                    className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/80 transition hover:border-white hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Copier dernier lien
+                  </button>
+                  {item.paymentLastSessionUrl ? (
+                    <a
+                      href={item.paymentLastSessionUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-[#7fb8c7]/35 px-4 py-2 text-xs font-semibold text-[#cce9f0] transition hover:border-[#7fb8c7]/60"
+                    >
+                      Ouvrir le lien
+                    </a>
+                  ) : null}
+                </div>
+
+                {item.paymentLastSessionExpiresAt ? (
+                  <p className="mt-3 text-xs text-white/50">
+                    Dernier lien généré le {new Date(item.paymentLastSessionCreatedAt ?? item.paymentLastSessionExpiresAt).toLocaleString("fr-FR")} et
+                    expire le {new Date(item.paymentLastSessionExpiresAt).toLocaleString("fr-FR")}.
+                  </p>
+                ) : null}
+
+                {paymentMessages[itemKey] ? (
+                  <p
+                    className={`mt-3 text-sm ${
+                      paymentMessages[itemKey].tone === "success" ? "text-emerald-200" : "text-rose-200"
+                    }`}
+                  >
+                    {paymentMessages[itemKey].body}
+                  </p>
+                ) : null}
+                </div>
+              )}
+
+              {(!isPaymentsView && isExpanded) && (
+                <>
               <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr,0.9fr]">
                 <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="text-xs uppercase tracking-[0.3em] text-white/60">Suivi interne</p>
                     <select
                       value={pipeline}
-                      onChange={(event) => updatePipeline(itemKey, event.target.value as PipelineStatus)}
+                      onChange={(event) => void updatePipeline(item, event.target.value as PipelineStatus)}
                       className="rounded-full border border-white/20 bg-black/50 px-3 py-2 text-xs text-white focus:border-white/40 focus:outline-none"
                     >
                       {pipelineOptions.map((option) => (
@@ -1761,6 +2256,8 @@ export function AdminDemandesBoard({ initialItems }: AdminDemandesBoardProps) {
                   <p className="text-xs uppercase tracking-[0.3em] text-white/60">Message</p>
                   <p className="mt-2 whitespace-pre-line">{item.message}</p>
                 </div>
+              )}
+                </>
               )}
             </motion.article>
           );

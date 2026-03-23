@@ -72,6 +72,8 @@ export function buildAssistantRecord(input: {
   consent: boolean;
   email?: string;
   name?: string;
+  phone?: string;
+  company?: string;
   humanNeeded?: boolean;
   session?: Partial<AssistantSession>;
 }): AssistantRecord {
@@ -98,6 +100,8 @@ export function buildAssistantRecord(input: {
     humanNeeded: input.humanNeeded ?? false,
     email: input.email,
     name: input.name,
+    phone: input.phone,
+    company: input.company,
     consent: input.consent,
     summary: input.summary,
     transcript: input.transcript,

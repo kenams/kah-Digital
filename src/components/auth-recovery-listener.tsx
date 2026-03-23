@@ -60,7 +60,7 @@ export function AuthRecoveryListener() {
         });
         error = result.error;
       } else if (hashType === "recovery") {
-        error = new Error("Session de recuperation incomplete.");
+        error = new Error("Session de récupération incomplète.");
       } else {
         return;
       }

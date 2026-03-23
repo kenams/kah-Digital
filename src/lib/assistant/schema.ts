@@ -30,6 +30,8 @@ export const assistantTranscriptItemSchema = z.object({
 export const assistantCollectedSchema = z.object({
   name: z.string().optional(),
   email: z.string().optional(),
+  phone: z.string().optional(),
+  company: z.string().optional(),
   type: z.string().optional(),
   objective: z.string().optional(),
   features: z.string().optional(),
@@ -84,6 +86,8 @@ export const assistantLeadRequestSchema = z.object({
   consent: z.boolean(),
   email: z.string().email().optional(),
   name: z.string().optional(),
+  phone: z.string().optional(),
+  company: z.string().optional(),
   summary: assistantStructuredOutputSchema,
   transcript: z.array(assistantTranscriptItemSchema).default([]),
 });
@@ -93,6 +97,8 @@ export const assistantEmailRequestSchema = z.object({
   consent: z.boolean(),
   email: z.string().email(),
   name: z.string().optional(),
+  phone: z.string().optional(),
+  company: z.string().optional(),
   summary: assistantStructuredOutputSchema,
   transcript: z.array(assistantTranscriptItemSchema).default([]),
 });
@@ -102,6 +108,8 @@ export const assistantGlpiRequestSchema = z.object({
   consent: z.boolean(),
   email: z.string().email().optional(),
   name: z.string().optional(),
+  phone: z.string().optional(),
+  company: z.string().optional(),
   summary: assistantStructuredOutputSchema,
   transcript: z.array(assistantTranscriptItemSchema).default([]),
 });
@@ -136,6 +144,8 @@ export const assistantRecordSchema = z.object({
   humanNeeded: z.boolean(),
   email: z.string().email().nullish().transform((value) => value ?? undefined),
   name: z.string().nullish().transform((value) => value ?? undefined),
+  phone: z.string().nullish().transform((value) => value ?? undefined),
+  company: z.string().nullish().transform((value) => value ?? undefined),
   consent: z.boolean(),
   summary: assistantStructuredOutputSchema,
   transcript: z.array(assistantTranscriptItemSchema).default([]),

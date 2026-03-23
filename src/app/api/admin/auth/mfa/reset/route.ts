@@ -26,6 +26,13 @@ export async function POST(request: NextRequest) {
     return json;
   }
 
+  const { data: mfaData, error: mfaError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (mfaError || mfaData?.currentLevel !== "aal2") {
+    const json = NextResponse.json({ error: "MFA requise" }, { status: 403 });
+    applySupabaseCookies(response, json);
+    return json;
+  }
+
   const { data, error: listError } = await supabase.auth.mfa.listFactors();
   if (listError) {
     const json = NextResponse.json({ error: "Impossible de charger les facteurs MFA." }, { status: 500 });

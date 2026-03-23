@@ -9,6 +9,7 @@ create table if not exists public.quotes (
   "projectType" text not null,
   goal text not null,
   pages text[] not null default '{}',
+  "aiModules" text[] not null default '{}',
   "mobilePlatforms" text[] not null default '{}',
   "mobileFeatures" text[] not null default '{}',
   "storeSupport" text,
@@ -22,7 +23,20 @@ create table if not exists public.quotes (
   "projectFocus" text,
   configurator jsonb,
   feasibility text not null default 'pending',
-  deposit text not null default 'none'
+  deposit text not null default 'none',
+  pipeline text not null default 'new',
+  "paymentStatus" text not null default 'none',
+  "paymentCurrency" text not null default 'CHF',
+  "paymentTotalAmount" integer,
+  "paymentDepositAmount" integer,
+  "paymentPaidAmount" integer not null default 0,
+  "paymentLastSessionId" text,
+  "paymentLastSessionUrl" text,
+  "paymentLastSessionMode" text,
+  "paymentLastSessionCreatedAt" timestamptz,
+  "paymentLastSessionExpiresAt" timestamptz,
+  "paymentPaidAt" timestamptz,
+  "paymentProcessedSessions" text[] not null default '{}'
 );
 
 do $$
@@ -78,6 +92,7 @@ alter table public.quotes
   add column if not exists "projectType" text,
   add column if not exists "mobilePlatforms" text[] default '{}',
   add column if not exists "mobileFeatures" text[] default '{}',
+  add column if not exists "aiModules" text[] default '{}',
   add column if not exists "storeSupport" text,
   add column if not exists "techPreferences" text,
   add column if not exists "clientType" text,
@@ -86,6 +101,34 @@ alter table public.quotes
   add column if not exists configurator jsonb,
   add column if not exists feasibility text default 'pending',
   add column if not exists deposit text default 'none',
-  add column if not exists pages text[] default '{}';
+  add column if not exists pipeline text default 'new',
+  add column if not exists pages text[] default '{}',
+  add column if not exists "paymentStatus" text default 'none',
+  add column if not exists "paymentCurrency" text default 'CHF',
+  add column if not exists "paymentTotalAmount" integer,
+  add column if not exists "paymentDepositAmount" integer,
+  add column if not exists "paymentPaidAmount" integer default 0,
+  add column if not exists "paymentLastSessionId" text,
+  add column if not exists "paymentLastSessionUrl" text,
+  add column if not exists "paymentLastSessionMode" text,
+  add column if not exists "paymentLastSessionCreatedAt" timestamptz,
+  add column if not exists "paymentLastSessionExpiresAt" timestamptz,
+  add column if not exists "paymentPaidAt" timestamptz,
+  add column if not exists "paymentProcessedSessions" text[] default '{}';
 
 create index if not exists quotes_submitted_at_idx on public.quotes ("submittedAt" desc);
+
+create table if not exists public.quote_activity (
+  id uuid primary key default gen_random_uuid(),
+  "quoteId" uuid references public.quotes(id) on delete cascade,
+  "quoteSubmittedAt" timestamptz not null,
+  "createdAt" timestamptz not null default now(),
+  "actorUserId" text,
+  "actorEmail" text,
+  action text not null,
+  summary text not null,
+  payload jsonb not null default '{}'::jsonb
+);
+
+create index if not exists quote_activity_quote_id_idx on public.quote_activity ("quoteId", "createdAt" desc);
+create index if not exists quote_activity_submitted_at_idx on public.quote_activity ("quoteSubmittedAt", "createdAt" desc);

@@ -21,18 +21,21 @@ export function isSupabaseConfigured() {
 
 function requireSupabaseClient() {
   if (!supabase) {
-    throw new Error("Supabase non configuré (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).");
+    throw new Error("Supabase non configure (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).");
   }
+
   return supabase;
 }
 
 export async function saveQuoteRecord(quote: QuoteRecord) {
   const client = requireSupabaseClient();
-  const { error } = await client.from("quotes").insert({ ...quote });
-  if (error) {
+  const { data, error } = await client.from("quotes").insert({ ...quote }).select("*").single();
+  if (error || !data) {
     console.error("[quote-store] Failed to persist quote to Supabase", error);
     throw new Error("Impossible de persister la demande.");
   }
+
+  return data as QuoteRecord;
 }
 
 export async function getRecentQuotes(limit = 50) {
@@ -42,6 +45,7 @@ export async function getRecentQuotes(limit = 50) {
     .select("*")
     .order("submittedAt", { ascending: false })
     .limit(limit);
+
   if (error || !data) {
     console.error("[quote-store] Failed to read quotes from Supabase", error);
     throw new Error("Impossible de charger les demandes.");
@@ -50,27 +54,57 @@ export async function getRecentQuotes(limit = 50) {
   return data as QuoteRecord[];
 }
 
+export async function getQuoteRecord(params: { id?: string | null; submittedAt: string }) {
+  const client = requireSupabaseClient();
+  const { data, error } = await (params.id
+    ? client.from("quotes").select("*").eq("id", params.id).limit(1).maybeSingle()
+    : client
+        .from("quotes")
+        .select("*")
+        .eq("submittedAt", params.submittedAt)
+        .limit(1)
+        .maybeSingle());
+
+  if (error) {
+    console.error("[quote-store] Failed to read quote from Supabase", error);
+    throw new Error("Impossible de charger la demande.");
+  }
+
+  return (data as QuoteRecord | null) ?? null;
+}
+
+export async function updateQuoteRecord(params: {
+  id?: string | null;
+  submittedAt: string;
+  patch: Partial<QuoteRecord>;
+}) {
+  const client = requireSupabaseClient();
+  const payload = Object.fromEntries(
+    Object.entries(params.patch).filter(([, value]) => value !== undefined)
+  );
+  const { error } = await (params.id
+    ? client.from("quotes").update(payload).eq("id", params.id)
+    : client.from("quotes").update(payload).eq("submittedAt", params.submittedAt));
+  if (error) {
+    console.error("[quote-store] Failed to update quote", error);
+    throw new Error("Impossible de mettre a jour la demande.");
+  }
+}
+
 export async function updateQuoteStatus(params: {
   id?: string | null;
   submittedAt: string;
   feasibility: "pending" | "feasible" | "blocked";
   deposit: "none" | "deposit" | "servers";
+  pipeline?: "new" | "qualified" | "quote" | "negotiation" | "won" | "lost";
 }) {
-  const client = requireSupabaseClient();
-  let query = client.from("quotes").update({
-    feasibility: params.feasibility,
-    deposit: params.deposit,
+  await updateQuoteRecord({
+    id: params.id,
+    submittedAt: params.submittedAt,
+    patch: {
+      feasibility: params.feasibility,
+      deposit: params.deposit,
+      pipeline: params.pipeline,
+    },
   });
-
-  if (params.id) {
-    query = query.eq("id", params.id);
-  } else {
-    query = query.eq("submittedAt", params.submittedAt);
-  }
-
-  const { error } = await query;
-  if (error) {
-    console.error("[quote-store] Failed to update quote status", error);
-    throw new Error("Impossible de mettre à jour le statut.");
-  }
 }

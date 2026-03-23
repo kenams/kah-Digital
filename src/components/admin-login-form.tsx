@@ -128,7 +128,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
 
     if (response.status === 403) {
       const data = await response.json().catch(() => ({}));
-      setErrorMessage(data?.error || "Compte non autorise.");
+      setErrorMessage(data?.error || "Compte non autorisé.");
       return "error";
     }
 
@@ -197,7 +197,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
     setMfaQrCode(null);
 
     if (missingConfig) {
-      setErrorMessage("Supabase Auth n'est pas configure.");
+      setErrorMessage("Supabase Auth n'est pas configuré.");
       return;
     }
 
@@ -206,7 +206,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
     if (attemptState.lockUntil && attemptState.lockUntil > now) {
       setLockUntil(attemptState.lockUntil);
       setErrorMessage(
-        `Trop de tentatives. Reessaie dans ${formatRemaining(attemptState.lockUntil - now)}.`,
+          `Trop de tentatives. Réessaie dans ${formatRemaining(attemptState.lockUntil - now)}.`,
       );
       return;
     }
@@ -217,7 +217,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
       didTimeout = true;
       setRequestTimedOut(true);
       setLoading(false);
-      setErrorMessage("Connexion trop lente. Reessaie dans quelques secondes.");
+      setErrorMessage("Connexion trop lente. Réessaie dans quelques secondes.");
     }, 12000);
 
     const loginResponse = await fetch("/api/admin/auth/login", {
@@ -239,7 +239,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
       if (nextState.lockUntil && nextState.lockUntil > now) {
         setLockUntil(nextState.lockUntil);
         setErrorMessage(
-          `Trop de tentatives. Reessaie dans ${formatRemaining(nextState.lockUntil - now)}.`,
+          `Trop de tentatives. Réessaie dans ${formatRemaining(nextState.lockUntil - now)}.`,
         );
       } else {
         setErrorMessage(data?.error || "Identifiants invalides.");
@@ -262,18 +262,18 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
 
   const bannerMessage =
     errorParam === "forbidden"
-      ? "Compte non autorise. Verifie le role admin."
+      ? "Compte non autorisé. Vérifie le rôle admin."
       : errorParam === "mfa"
-        ? "MFA requis pour acceder a l'admin."
+        ? "MFA requis pour accéder à l'admin."
         : errorParam === "session"
-          ? "Session expiree ou non connectee."
-        : "";
+          ? "Session expirée ou non connectée."
+          : "";
 
   const infoMessage =
     infoParam === "mfa-reset"
-      ? "MFA reinitialise. Reconnecte-toi pour le reconfigurer."
+      ? "MFA réinitialisé. Reconnecte-toi pour le reconfigurer."
       : infoParam === "password-reset"
-        ? "Mot de passe mis a jour. Connecte-toi puis configure le MFA si besoin."
+        ? "Mot de passe mis à jour. Connecte-toi puis configure le MFA si besoin."
         : "";
 
   const handleMfaVerify = async (event: FormEvent<HTMLFormElement>) => {
@@ -313,7 +313,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
             <div className="absolute inset-0 bg-gradient-to-br from-[#0c0f2c]/60 via-black/10 to-[#1f1244]/70" />
             <Image
               src="/mockups/global-dashboard.svg"
-              alt="Apercu dashboard Kah-Digital"
+              alt="Aperçu dashboard Kah-Digital"
               width={640}
               height={320}
               className="relative h-32 w-full object-cover opacity-80"
@@ -330,7 +330,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
             </div>
           </div>
           <p className="mt-3 text-sm text-white/70">
-            Connecte-toi avec un compte Supabase ayant le role <span className="font-semibold">admin</span>.
+            Connecte-toi avec un compte Supabase ayant le rôle <span className="font-semibold">admin</span>.
           </p>
         </div>
 
@@ -422,7 +422,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
                 </>
               ) : (
                 <>
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Verification MFA</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Vérification MFA</p>
                   <p className="mt-2">Entre le code de ton application d&apos;authentification.</p>
                 </>
               )}
@@ -444,7 +444,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
               disabled={mfaLoading || !mfaFactorId}
               className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {mfaLoading ? "Verification..." : "Valider le code"}
+              {mfaLoading ? "Vérification..." : "Valider le code"}
             </button>
           </form>
         )}
@@ -452,7 +452,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
 
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
           <Link href="/" className="transition hover:text-white">
-            Retour accueil
+            Retour à l'accueil
           </Link>
           <Link href="/devis" className="transition hover:text-white">
             Devis

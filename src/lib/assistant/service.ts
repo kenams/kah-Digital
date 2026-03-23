@@ -2,9 +2,13 @@ import { Resend } from "resend";
 import { pricingRules, type PricingFeature, type PricingProjectType } from "@/config/pricing-rules";
 import { brandContact } from "@/config/brand";
 import { assistantKnowledge } from "@/lib/assistant/knowledge";
+import { sendAdminWhatsAppNotification } from "@/lib/admin-alerts";
+import { getSiteUrl, renderBrandedEmail } from "@/lib/email-template";
+import { getResendFromAddress } from "@/lib/mail";
 import { saveAssistantRecord } from "@/lib/assistant-store";
 import { buildAssistantRecord } from "@/lib/assistant/scoring";
 import { generateOpenAIJson } from "@/lib/assistant/openai";
+import type { QuoteRecord } from "@/lib/quote";
 import {
   assistantSessionSchema,
   assistantStructuredOutputSchema,
@@ -14,6 +18,7 @@ import {
   type AssistantStructuredOutput,
   type AssistantTranscriptItem,
 } from "@/lib/assistant/schema";
+import { saveQuoteRecord } from "@/lib/quote-store";
 
 type Locale = "fr" | "en" | "de";
 
@@ -33,32 +38,33 @@ type AssistantTurnResponse = {
 
 const resendClient = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const notificationEmail = process.env.QUOTE_NOTIFICATION_EMAIL ?? brandContact.email;
+const adminAssistantUrl = `${getSiteUrl()}/admin/assistant`;
 
 const localeCopy = {
   fr: {
-    summaryReady: "Base solide. Je peux maintenant sortir un resume exploitable.",
-    humanEscalation: "La base est suffisante. Je prepare un resume net et je passe la suite a un expert KAH-Digital.",
-    startProject: "On cadre ca proprement.",
-    startSupport: "On va qualifier ca vite et bien.",
-    nextStepQuote: "Devis structure avec reprise humaine conseillee.",
-    nextStepSupport: "Resume support pret pour ticket ou reprise humaine.",
+    summaryReady: "Base solide. Je peux maintenant sortir un résumé exploitable.",
+    humanEscalation: "La base est suffisante. Je prépare un résumé net et je passe la suite à un expert KAH-Digital.",
+    startProject: "On cadre ça proprement.",
+    startSupport: "On va qualifier ça vite et bien.",
+    nextStepQuote: "Devis structuré avec reprise humaine conseillée.",
+    nextStepSupport: "Résumé support prêt pour ticket ou reprise humaine.",
     nextStepInfo: "Orientation vers le bon service KAH-Digital.",
     projectFlowLabel: "Qualification projet",
     supportFlowLabel: "Qualification support",
     generalFlowLabel: "Orientation",
     faqFollowUp: "Si tu veux une fourchette utile ou une suite claire, on peut cadrer maintenant.",
-    invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le resume.",
-    summarySent: "Le resume a ete envoye par email.",
-    leadSent: "Le resume a ete transmis a KAH-Digital pour reprise humaine.",
-    glpiCreated: "Le ticket support a ete prepare et transmis.",
-    glpiFallback: "GLPI n'est pas configure ici. Je transmets plutot vers un humain avec resume.",
+    invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le résumé.",
+    summarySent: "Le résumé a été envoyé par email.",
+    leadSent: "Le résumé a été transmis à KAH-Digital pour reprise humaine.",
+    glpiCreated: "Le ticket support a été préparé et transmis.",
+    glpiFallback: "GLPI n'est pas configuré ici. Je transmets plutôt vers un humain avec résumé.",
     fallbackAnswer:
       "Dis-moi simplement si on parle d'un site, d'une application, de support, de GLPI ou d'un besoin de cadrage. Je prends ensuite le relais avec les bonnes questions.",
     recadrageBudget:
-      "Je prefere etre transparent : sans perimetre clair, je peux donner une fourchette, pas un prix ferme.",
-    recadrageTimeline: "Je peux tester la faisabilite, pas promettre un delai ferme sans cadrage.",
+      "Je préfère être transparent : sans périmètre clair, je peux donner une fourchette, pas un prix ferme.",
+    recadrageTimeline: "Je peux tester la faisabilité, pas promettre un délai ferme sans cadrage.",
     recadrageMvp:
-      "Pour eviter de partir sur quelque chose d'irrealisable, il faut definir les fonctions indispensables au depart.",
+      "Pour éviter de partir sur quelque chose d'irréaliste, il faut définir les fonctions indispensables au départ.",
     recapIntro: "Voici ce que j'ai compris :",
     faqAnswers: {
       delai: assistantKnowledge.faq[0].answerFr,
@@ -67,20 +73,20 @@ const localeCopy = {
       method: assistantKnowledge.faq[3].answerFr,
     },
     questions: {
-      type: "Quel type de projet veux-tu lancer ? Site, application, outil metier, GLPI, autre ?",
+      type: "Quel type de projet veux-tu lancer ? Site, application, outil métier, GLPI, autre ?",
       objective: "Quel est l'objectif principal du projet ?",
-      features: "Quelles fonctionnalites ou blocs sont indispensables ?",
-      timeline: "Quel delai vises-tu ?",
-      budget: "As-tu deja une fourchette de budget ?",
-      users: "Combien d'utilisateurs ou quel volume prevois-tu ?",
-      countriesLanguages: "Quels pays ou quelles langues sont concernes ?",
-      technicalNeeds: "Y a-t-il des besoins specifiques : admin, paiement, API, design premium, autre ?",
-      problem: "Quel est le probleme principal a resoudre ?",
+      features: "Quelles fonctionnalités ou quels blocs sont indispensables ?",
+      timeline: "Quel délai vises-tu ?",
+      budget: "As-tu déjà une fourchette de budget ?",
+      users: "Combien d'utilisateurs ou quel volume prévois-tu ?",
+      countriesLanguages: "Quels pays ou quelles langues sont concernés ?",
+      technicalNeeds: "Y a-t-il des besoins spécifiques : admin, paiement, API, design premium, autre ?",
+      problem: "Quel est le problème principal à résoudre ?",
       urgency: "Quel est le niveau d'urgence ?",
-      impact: "Quel est l'impact sur l'activite ou les utilisateurs ?",
-      affectedUsers: "Combien d'utilisateurs sont touches ?",
-      sinceWhen: "Depuis quand le probleme existe-t-il ?",
-      actionsTried: "Quelles actions ont deja ete tentees ?",
+      impact: "Quel est l'impact sur l'activité ou les utilisateurs ?",
+      affectedUsers: "Combien d'utilisateurs sont touchés ?",
+      sinceWhen: "Depuis quand le problème existe-t-il ?",
+      actionsTried: "Quelles actions ont déjà été tentées ?",
     },
   },
   en: {
@@ -568,7 +574,7 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
         ? "Let's frame the useful scope: do you need user accounts, payments, a dashboard, API integrations, or geolocation?"
         : locale === "de"
           ? "Lass uns den scope eingrenzen: brauchst du Benutzerkonten, Zahlung, Dashboard, API-Integrationen oder Geolokalisierung?"
-          : "On cadre le scope utile : il faut des comptes utilisateurs, du paiement, un dashboard, des integrations API ou de la geolocalisation ?";
+          : "On cadre le scope utile : il faut des comptes utilisateurs, du paiement, un dashboard, des intégrations API ou de la géolocalisation ?";
     }
 
     if (projectType === "glpi_assistant") {
@@ -634,7 +640,7 @@ function buildDiscoveryReply(message: string, locale: Locale) {
       ? "I can orient you quickly, but let's avoid the generic catalog answer: are you looking for a website, an application, support, or a GLPI-related workflow, and is your need already defined or are you still exploring?"
       : locale === "de"
         ? "Ich kann dich schnell orientieren, aber ohne Standardkatalog: suchst du eher eine Website, eine Anwendung, Support oder einen GLPI-nahen Workflow, und ist der Bedarf schon definiert oder noch offen?"
-        : "Je peux t'orienter rapidement, mais sans reponse catalogue : tu cherches plutot un site, une application, du support ou un parcours type GLPI, et ton besoin est deja defini ou tu explores encore ?";
+        : "Je peux t'orienter rapidement, mais sans réponse catalogue : tu cherches plutôt un site, une application, du support ou un parcours type GLPI, et ton besoin est déjà défini ou tu explores encore ?";
   }
 
   if (/(budget)/.test(text)) {
@@ -713,7 +719,7 @@ function buildFirstReply(session: AssistantSession, locale: Locale, message: str
           ? "I can orient you quickly, but let's avoid the generic catalog answer: are you looking for a website, an application, support, or a GLPI-related workflow, and is your need already defined or are you still exploring?"
           : locale === "de"
             ? "Ich kann dich schnell orientieren, aber ohne Standardkatalog: suchst du eher eine Website, eine Anwendung, Support oder einen GLPI-nahen Workflow, und ist der Bedarf schon definiert oder noch offen?"
-            : "Je peux t'orienter rapidement, mais sans reponse catalogue : tu cherches plutot un site, une application, du support ou un parcours type GLPI, et ton besoin est deja defini ou tu explores encore ?";
+            : "Je peux t'orienter rapidement, mais sans réponse catalogue : tu cherches plutôt un site, une application, du support ou un parcours type GLPI, et ton besoin est déjà défini ou tu explores encore ?";
       }
 
       if (detectUrgentRequest(text)) {
@@ -781,7 +787,7 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
             `- complexite estimee : ${summary.complexity}`,
             `- fourchette budget : ${budget}`,
             `- delai probable : ${estimateCalendarRange(summary.estimated_days, locale)}`,
-            humanNeeded ? "Suite : une reprise humaine a du sens ici." : "Suite : le resume est pret pour avancer.",
+            humanNeeded ? "Suite : une reprise humaine a du sens ici." : "Suite : le résumé est prêt pour avancer.",
           ];
 
   return lines.join("\n");
@@ -1027,10 +1033,102 @@ Infos manquantes: ${summary.missing_info.join(", ") || "-"}
 Next step: ${summary.next_step}`;
 }
 
+function formatAssistantBudget(summary: AssistantStructuredOutput) {
+  if (summary.budget_range.max > 0) {
+    return `${summary.budget_range.min.toLocaleString("fr-CH")} - ${summary.budget_range.max.toLocaleString("fr-CH")} CHF`;
+  }
+
+  return "A definir";
+}
+
+function formatAssistantTimeline(summary: AssistantStructuredOutput) {
+  if (summary.estimated_days > 0) {
+    return `${summary.estimated_days} jours estimes`;
+  }
+
+  return "A confirmer";
+}
+
+function mapAssistantProjectType(projectType: AssistantStructuredOutput["project_type"]) {
+  switch (projectType) {
+    case "showcase_website":
+      return "Site vitrine";
+    case "corporate_website":
+      return "Site corporate";
+    case "ecommerce":
+      return "E-commerce";
+    case "web_app":
+      return "Application web";
+    case "mobile_app":
+      return "Application mobile";
+    case "dashboard_portal":
+      return "Dashboard / portail";
+    case "glpi_assistant":
+      return "Workflow GLPI";
+    default:
+      return "Projet assistant";
+  }
+}
+
+function buildAssistantQuote(input: {
+  email?: string;
+  name?: string;
+  phone?: string;
+  company?: string;
+  summary: AssistantStructuredOutput;
+  transcript: AssistantTranscriptItem[];
+}): QuoteRecord | null {
+  if (input.summary.intent !== "project_quote") {
+    return null;
+  }
+
+  const email = input.email?.trim();
+  if (!email) {
+    return null;
+  }
+
+  const userMessages = input.transcript
+    .filter((entry) => entry.role === "user")
+    .map((entry) => entry.content.trim())
+    .filter(Boolean);
+  const primaryNeed = userMessages[0] ?? input.summary.next_step;
+  const transcriptPreview = userMessages.slice(0, 4).join("\n\n");
+
+  return {
+    submittedAt: new Date().toISOString(),
+    name: input.name?.trim() || input.company?.trim() || "Lead assistant",
+    email,
+    phone: input.phone?.trim() || undefined,
+    projectType: mapAssistantProjectType(input.summary.project_type),
+    goal: primaryNeed,
+    pages: [],
+    aiModules: [],
+    mobilePlatforms: [],
+    mobileFeatures: [],
+    storeSupport: undefined,
+    techPreferences: undefined,
+    inspirations: undefined,
+    budget: formatAssistantBudget(input.summary),
+    timeline: formatAssistantTimeline(input.summary),
+    message:
+      transcriptPreview ||
+      `Lead assistant.\n\n${formatSummaryText(input.summary, "fr")}`,
+    clientType: input.company?.trim() ? "entreprise" : "particulier",
+    companyName: input.company?.trim() || undefined,
+    projectFocus: input.summary.project_type === "mobile_app" ? "mobile" : "web",
+    configurator: undefined,
+    feasibility: "pending",
+    deposit: "none",
+    pipeline: "new",
+  };
+}
+
 export async function sendEmail(input: {
   locale: Locale;
   email: string;
   name?: string;
+  phone?: string;
+  company?: string;
   summary: AssistantStructuredOutput;
   consent: boolean;
   transcript?: AssistantTranscriptItem[];
@@ -1044,16 +1142,77 @@ export async function sendEmail(input: {
     return { ok: false, error: "Service email indisponible" };
   }
 
+  const html = renderBrandedEmail({
+    eyebrow:
+      input.locale === "en"
+        ? "Assistant summary"
+        : input.locale === "de"
+          ? "Assistent Zusammenfassung"
+          : "Resume assistant",
+    title:
+      input.locale === "en"
+        ? "Your project summary is ready"
+        : input.locale === "de"
+          ? "Deine Zusammenfassung ist bereit"
+          : "Votre résumé projet est prêt",
+    intro:
+      input.locale === "en"
+        ? "Here is the structured summary produced from your exchange with the KAH-Digital assistant."
+        : input.locale === "de"
+          ? "Hier ist die strukturierte Zusammenfassung aus deinem Austausch mit dem KAH-Digital Assistenten."
+          : "Voici le résumé structuré produit à partir de votre échange avec l'assistant KAH-Digital.",
+    metrics: [
+      { label: "Projet", value: input.summary.project_type },
+      { label: "Budget", value: formatAssistantBudget(input.summary) },
+      { label: "Complexite", value: input.summary.complexity },
+    ],
+    sections: [
+      {
+        title: input.locale === "en" ? "Contact" : input.locale === "de" ? "Kontakt" : "Contact",
+        items: [
+          { label: "Nom", value: input.name ?? "-" },
+          { label: "Email", value: input.email },
+          { label: "Telephone", value: input.phone ?? "-" },
+          { label: "Entreprise", value: input.company ?? "-" },
+        ],
+      },
+      {
+        title: input.locale === "en" ? "Summary" : input.locale === "de" ? "Zusammenfassung" : "Synthese",
+        items: [
+          { label: "Intent", value: input.summary.intent },
+          { label: "Type de projet", value: input.summary.project_type },
+          { label: "Clarte", value: `${input.summary.clarity_score}/100` },
+          { label: "Budget", value: formatAssistantBudget(input.summary) },
+          { label: "Jours estimes", value: String(input.summary.estimated_days) },
+          { label: "Roles", value: input.summary.roles.join(", ") || "-" },
+          { label: "Infos manquantes", value: input.summary.missing_info.join(", ") || "-" },
+          { label: "Suite", value: input.summary.next_step },
+        ],
+      },
+    ],
+    footer:
+      input.locale === "en"
+        ? "A KAH-Digital expert can take over from this summary."
+        : input.locale === "de"
+          ? "Ein KAH-Digital Experte kann auf Basis dieser Zusammenfassung uebernehmen."
+          : "Un expert KAH-Digital peut reprendre à partir de ce résumé.",
+  });
+
   await resendClient.emails.send({
-    from: "Kah-Digital <notifications@kah-digital.io>",
+    from: getResendFromAddress(),
     to: input.email,
     subject:
       input.locale === "en"
         ? "Your KAH-Digital assistant summary"
         : input.locale === "de"
           ? "Deine KAH-Digital Zusammenfassung"
-          : "Votre resume assistant KAH-Digital",
-    text: formatSummaryText(input.summary, input.locale),
+          : "Votre résumé assistant KAH-Digital",
+    html,
+    text: `Contact: ${input.name ?? "-"} / ${input.email}
+Phone: ${input.phone ?? "-"}
+Company: ${input.company ?? "-"}
+
+${formatSummaryText(input.summary, input.locale)}`,
   });
 
   await saveAssistantRecord(
@@ -1079,6 +1238,8 @@ export async function createLead(input: {
   consent: boolean;
   email?: string;
   name?: string;
+  phone?: string;
+  company?: string;
   summary: AssistantStructuredOutput;
   transcript: AssistantTranscriptItem[];
 }) {
@@ -1092,18 +1253,71 @@ export async function createLead(input: {
   }
 
   const transcript = input.transcript.map((item) => `${item.role}: ${item.content}`).join("\n");
+  const html = renderBrandedEmail({
+    eyebrow: "Lead assistant",
+    title: `${input.name ?? input.company ?? "Nouveau lead"} demande une reprise humaine`,
+    intro: "Le chatbot a produit un lead qualifié. Les informations structurées et le transcript utile sont résumés ci-dessous.",
+    metrics: [
+      { label: "Projet", value: input.summary.project_type },
+      { label: "Budget", value: formatAssistantBudget(input.summary) },
+      { label: "Jours estimes", value: String(input.summary.estimated_days) },
+    ],
+    sections: [
+      {
+        title: "Contact",
+        items: [
+          { label: "Nom", value: input.name ?? "-" },
+          { label: "Email", value: input.email ?? "-" },
+          { label: "Telephone", value: input.phone ?? "-" },
+          { label: "Entreprise", value: input.company ?? "-" },
+        ],
+      },
+      {
+        title: "Qualification",
+        items: [
+          { label: "Intent", value: input.summary.intent },
+          { label: "Type de projet", value: input.summary.project_type },
+          { label: "Clarte", value: `${input.summary.clarity_score}/100` },
+          { label: "Complexite", value: input.summary.complexity },
+          { label: "Roles", value: input.summary.roles.join(", ") || "-" },
+          { label: "Infos manquantes", value: input.summary.missing_info.join(", ") || "-" },
+          { label: "Suite", value: input.summary.next_step },
+        ],
+      },
+      {
+        title: "Transcript",
+        items: [{ label: "Echange", value: transcript || "-" }],
+      },
+    ],
+    ctaLabel: "Ouvrir l'admin assistant",
+    ctaUrl: adminAssistantUrl,
+    footer: `Reply-to configure sur ${input.email ?? "l'email du lead"}.`,
+  });
 
   await resendClient.emails.send({
-    from: "Kah-Digital <notifications@kah-digital.io>",
+    from: getResendFromAddress(),
     to: notificationEmail.split(",").map((item) => item.trim()),
     replyTo: input.email,
     subject: `Assistant lead - ${input.summary.project_type}`,
+    html,
     text: `Contact: ${input.name ?? "-"} / ${input.email ?? "-"}
+Phone: ${input.phone ?? "-"}
+Company: ${input.company ?? "-"}
 
 ${formatSummaryText(input.summary, input.locale)}
 
 Transcript:
 ${transcript}`,
+  });
+
+  await sendAdminWhatsAppNotification({
+    title: `Nouveau lead assistant - ${input.name ?? input.company ?? input.summary.project_type}`,
+    source: "assistant",
+    summary: `${input.summary.project_type} | Budget ${formatAssistantBudget(input.summary)} | ${input.summary.next_step}`,
+    email: input.email,
+    phone: input.phone,
+    company: input.company,
+    adminPath: "/admin/assistant",
   });
 
   await saveAssistantRecord(
@@ -1120,6 +1334,13 @@ ${transcript}`,
   ).catch((error) => {
     console.warn("[assistant] Lead not persisted", error);
   });
+
+  const quote = buildAssistantQuote(input);
+  if (quote) {
+    await saveQuoteRecord(quote).catch((error) => {
+      console.warn("[assistant] Lead quote not persisted", error);
+    });
+  }
 
   return { ok: true, message: copy.leadSent };
 }
@@ -1179,6 +1400,8 @@ export async function createGlpiTicket(input: {
   consent: boolean;
   email?: string;
   name?: string;
+  phone?: string;
+  company?: string;
   summary: AssistantStructuredOutput;
   transcript: AssistantTranscriptItem[];
 }) {
@@ -1189,6 +1412,8 @@ export async function createGlpiTicket(input: {
 
   const transcript = input.transcript.map((item) => `${item.role}: ${item.content}`).join("\n");
   const content = `Contact: ${input.name ?? "-"} / ${input.email ?? "-"}
+Phone: ${input.phone ?? "-"}
+Company: ${input.company ?? "-"}
 
 ${formatSummaryText(input.summary, input.locale)}
 

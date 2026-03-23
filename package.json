@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint && node scripts/check-i18n.js",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "preview": "vercel",
     "deploy": "vercel --prod"
   },
@@ -20,9 +22,11 @@
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0",
     "resend": "^6.6.0",
+    "stripe": "^20.4.1",
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

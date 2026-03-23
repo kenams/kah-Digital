@@ -79,38 +79,71 @@ const fieldsEn: BriefField[] = [
   { id: "notes", label: "Additional notes", placeholder: "Technical constraints, content tone...", type: "textarea" },
 ];
 
+const fieldsDe: BriefField[] = [
+  { id: "company", label: "Unternehmen / Organisation", placeholder: "Name des Unternehmens" },
+  { id: "contact", label: "Hauptkontakt", placeholder: "Name + Rolle" },
+  { id: "email", label: "E-Mail / Telefon", placeholder: "hello@firma.com / +41 00 000 00 00" },
+  { id: "goals", label: "Hauptziele", placeholder: "Leads generieren, Angebot praesentieren...", type: "textarea" },
+  { id: "audience", label: "Zielgruppe / Nutzer", placeholder: "Startups, KMU, Talente..." },
+  { id: "pages", label: "Wichtige Seiten und Funktionen (Website)", placeholder: "Startseite, Services, Portfolio...", type: "textarea" },
+  { id: "appPlatforms", label: "Plattformen (bei mobiler App)", placeholder: "iOS, Android, Tablet..." },
+  { id: "appFeatures", label: "MVP-Funktionen (Mobile)", placeholder: "Auth, Push, Zahlung, Offline...", type: "textarea" },
+  { id: "style", label: "Gewuenschter Stil", placeholder: "Minimal, premium, hell..." },
+  { id: "references", label: "Referenzen oder Inspirationen", placeholder: "https://site-1.com, https://site-2.com", type: "textarea" },
+  { id: "budget", label: "Geschaetztes Budget", placeholder: "CHF 2'000 - 6'000" },
+  { id: "deadline", label: "Idealer Termin", placeholder: "Ende Q2, ASAP..." },
+  { id: "integrations", label: "Integrationen / Tools", placeholder: "CRM, Zahlung, Automationen...", type: "textarea" },
+  { id: "notes", label: "Zusaetzliche Hinweise", placeholder: "Technische Constraints, Tonalitaet, Inhalte...", type: "textarea" },
+];
+
 export function InteractiveBrief() {
-  const { isEnglish } = useLocale();
-  const fields = isEnglish ? fieldsEn : fieldsFr;
-  const textCopy = isEnglish
-    ? {
-        title: "Fillable version",
-        reset: "Reset",
-        export: "Export my version to PDF",
-        send: "Send by email",
-        sending: "Sending...",
-        pdfTitle: "Kah-Digital - Project brief",
-        pdfContact: "Contact: kahdigital42@gmail.com - +33 7 59 55 84 14 (temporary number)",
-        success: "PDF version generated successfully.",
-        sendSuccess: "PDF sent by email.",
-        sendError: "Unable to send the PDF right now.",
-        sendMissingEmail: "Add a valid email to send the PDF.",
-        error: "Unable to generate the PDF right now.",
-      }
-    : {
-        title: "Version remplissable",
-        reset: "Reinitialiser",
-        export: "Exporter ma version en PDF",
-        send: "Envoyer par email",
-        sending: "Envoi...",
-        pdfTitle: "Kah-Digital - Cahier des charges",
-        pdfContact: "Contact : kahdigital42@gmail.com - +33 7 59 55 84 14 (numero temporaire)",
-        success: "Version PDF generee avec succes.",
-        sendSuccess: "PDF envoye par email.",
-        sendError: "Impossible d'envoyer le PDF pour le moment.",
-        sendMissingEmail: "Ajoute un email valide pour envoyer le PDF.",
-        error: "Impossible de generer le PDF pour le moment.",
-      };
+  const { locale } = useLocale();
+  const fields = locale === "en" ? fieldsEn : locale === "de" ? fieldsDe : fieldsFr;
+  const textCopy =
+    locale === "en"
+      ? {
+          title: "Fillable version",
+          reset: "Reset",
+          export: "Export my version to PDF",
+          send: "Send by email",
+          sending: "Sending...",
+          pdfTitle: "Kah-Digital - Project brief",
+          pdfContact: "Contact: kahdigital42@gmail.com - +33 7 59 55 84 14 (temporary number)",
+          success: "PDF version generated successfully.",
+          sendSuccess: "PDF sent by email.",
+          sendError: "Unable to send the PDF right now.",
+          sendMissingEmail: "Add a valid email to send the PDF.",
+          error: "Unable to generate the PDF right now.",
+        }
+      : locale === "de"
+        ? {
+            title: "Ausfuellbare Version",
+            reset: "Zuruecksetzen",
+            export: "Meine Version als PDF exportieren",
+            send: "Per E-Mail senden",
+            sending: "Versand...",
+            pdfTitle: "Kah-Digital - Projektbriefing",
+            pdfContact: "Kontakt: kahdigital42@gmail.com - +33 7 59 55 84 14 (vorlaeufige Nummer)",
+            success: "PDF-Version erfolgreich erstellt.",
+            sendSuccess: "PDF per E-Mail versendet.",
+            sendError: "Das PDF kann gerade nicht versendet werden.",
+            sendMissingEmail: "Fuege eine gueltige E-Mail-Adresse hinzu, um das PDF zu senden.",
+            error: "Das PDF kann gerade nicht erstellt werden.",
+          }
+        : {
+            title: "Version remplissable",
+            reset: "Reinitialiser",
+            export: "Exporter ma version en PDF",
+            send: "Envoyer par email",
+            sending: "Envoi...",
+            pdfTitle: "Kah-Digital - Cahier des charges",
+            pdfContact: "Contact : kahdigital42@gmail.com - +33 7 59 55 84 14 (numero temporaire)",
+            success: "Version PDF generee avec succes.",
+            sendSuccess: "PDF envoye par email.",
+            sendError: "Impossible d'envoyer le PDF pour le moment.",
+            sendMissingEmail: "Ajoute un email valide pour envoyer le PDF.",
+            error: "Impossible de generer le PDF pour le moment.",
+          };
   const [formState, setFormState] = useState<BriefState>(defaultState);
   const [message, setMessage] = useState<string>("");
   const [state, setState] = useState<"idle" | "success" | "error">("idle");
@@ -194,7 +227,7 @@ export function InteractiveBrief() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          locale: isEnglish ? "en" : "fr",
+          locale,
           fields: formState,
           pdfBase64: base64,
         }),

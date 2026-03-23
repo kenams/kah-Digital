@@ -43,10 +43,10 @@ export function localizePath(pathname: string | null, locale: Locale) {
     "/politique-de-confidentialite": "/de/politique-de-confidentialite",
     "/confidentialite": "/de/politique-de-confidentialite",
     "/merci": "/de/merci",
-    "/offres": "/de/services",
-    "/configurateur": "/de/devis",
-    "/cahier-des-charges": "/de/devis",
-    "/lexique": "/de/services/glpi",
+    "/offres": "/de/offres",
+    "/configurateur": "/de/configurateur",
+    "/cahier-des-charges": "/de/cahier-des-charges",
+    "/lexique": "/de/lexique",
   };
 
   if (locale === "fr") {

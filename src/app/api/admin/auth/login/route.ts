@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminUser } from "@/lib/auth";
-import { getRequestIp, rateLimit } from "@/lib/rate-limit";
+import { getRateLimitHeaders, getRequestIp, rateLimit } from "@/lib/rate-limit";
 import { applySupabaseCookies, createSupabaseRouteClient } from "@/lib/supabase/route-client";
 
 const LOGIN_RATE_LIMIT = { windowMs: 10 * 60 * 1000, max: 6 };
@@ -22,31 +22,31 @@ export async function POST(request: NextRequest) {
 
   const ip = getRequestIp(request);
   const limit = rateLimit(`admin-login:${ip}:${email.toLowerCase()}`, LOGIN_RATE_LIMIT);
+  const rateHeaders = getRateLimitHeaders(limit, LOGIN_RATE_LIMIT.max);
   if (!limit.allowed) {
     const json = NextResponse.json(
       { error: "Trop de tentatives. Reessaie plus tard.", retryAfter: limit.retryAfter },
-      { status: 429 },
+      { status: 429, headers: { ...rateHeaders, "Retry-After": String(limit.retryAfter) } },
     );
-    json.headers.set("Retry-After", String(limit.retryAfter));
     applySupabaseCookies(response, json);
     return json;
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
-    const json = NextResponse.json({ error: "Identifiants invalides" }, { status: 401 });
+    const json = NextResponse.json({ error: "Identifiants invalides" }, { status: 401, headers: rateHeaders });
     applySupabaseCookies(response, json);
     return json;
   }
 
   if (!isAdminUser(data?.user ?? null)) {
     await supabase.auth.signOut();
-    const json = NextResponse.json({ error: "Compte non autorise." }, { status: 403 });
+    const json = NextResponse.json({ error: "Compte non autorise." }, { status: 403, headers: rateHeaders });
     applySupabaseCookies(response, json);
     return json;
   }
 
-  const json = NextResponse.json({ ok: true });
+  const json = NextResponse.json({ ok: true }, { headers: rateHeaders });
   applySupabaseCookies(response, json);
   return json;
 }

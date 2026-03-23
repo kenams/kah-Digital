@@ -22,7 +22,7 @@ export function AdminResetPasswordForm() {
       const supabase = createSupabaseBrowserClient();
       if (!supabase) {
         if (!active) return;
-        setErrorMessage("Supabase Auth n'est pas configure.");
+        setErrorMessage("Supabase Auth n'est pas configuré.");
         setCheckingSession(false);
         return;
       }
@@ -31,7 +31,7 @@ export function AdminResetPasswordForm() {
       if (!active) return;
 
       if (error || !data.session) {
-        setErrorMessage("Lien de recuperation invalide ou expire.");
+        setErrorMessage("Lien de récupération invalide ou expiré.");
         setCheckingSession(false);
         return;
       }
@@ -53,12 +53,12 @@ export function AdminResetPasswordForm() {
     setSuccessMessage("");
 
     if (!sessionReady) {
-      setErrorMessage("Session de recuperation introuvable.");
+      setErrorMessage("Session de récupération introuvable.");
       return;
     }
 
     if (password.length < 10) {
-      setErrorMessage("Choisis un mot de passe d'au moins 10 caracteres.");
+      setErrorMessage("Choisis un mot de passe d'au moins 10 caractères.");
       return;
     }
 
@@ -69,7 +69,7 @@ export function AdminResetPasswordForm() {
 
     const supabase = createSupabaseBrowserClient();
     if (!supabase) {
-      setErrorMessage("Supabase Auth n'est pas configure.");
+      setErrorMessage("Supabase Auth n'est pas configuré.");
       return;
     }
 
@@ -77,13 +77,13 @@ export function AdminResetPasswordForm() {
     const { error } = await supabase.auth.updateUser({ password });
 
     if (error) {
-      setErrorMessage(error.message || "Impossible de mettre a jour le mot de passe.");
+      setErrorMessage(error.message || "Impossible de mettre à jour le mot de passe.");
       setLoading(false);
       return;
     }
 
     await supabase.auth.signOut();
-    setSuccessMessage("Mot de passe mis a jour. Reconnecte-toi pour acceder a l'admin.");
+    setSuccessMessage("Mot de passe mis à jour. Reconnecte-toi pour accéder à l'admin.");
     setLoading(false);
     window.setTimeout(() => {
       router.replace("/admin/login?info=password-reset");
@@ -98,7 +98,7 @@ export function AdminResetPasswordForm() {
           <p className="text-xs uppercase tracking-[0.35em] text-white/60">Admin</p>
           <h1 className="mt-2 text-2xl font-semibold">Nouveau mot de passe</h1>
           <p className="mt-3 text-sm text-white/70">
-            Definis un nouveau mot de passe pour ton acces admin KAH-Digital.
+            Définis un nouveau mot de passe pour ton accès admin KAH-Digital.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export function AdminResetPasswordForm() {
 
         {checkingSession ? (
           <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/70">
-            Verification du lien de recuperation...
+            Vérification du lien de récupération...
           </div>
         ) : sessionReady ? (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -127,7 +127,7 @@ export function AdminResetPasswordForm() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
-                placeholder="Au moins 10 caracteres"
+                placeholder="Au moins 10 caractères"
                 required
               />
             </label>
@@ -147,14 +147,14 @@ export function AdminResetPasswordForm() {
               disabled={loading}
               className="w-full rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {loading ? "Mise a jour..." : "Mettre a jour le mot de passe"}
+              {loading ? "Mise à jour..." : "Mettre à jour le mot de passe"}
             </button>
           </form>
         ) : null}
 
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/50">
           <Link href="/admin/login" className="transition hover:text-white">
-            Retour admin
+            Retour à l'admin
           </Link>
           <Link href="/" className="transition hover:text-white">
             Accueil

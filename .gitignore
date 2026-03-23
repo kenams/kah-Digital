@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
 
 # next.js
 /.next/
@@ -42,3 +44,7 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# local scratch files
+.tmp-*.sql
+supabase/.temp/

@@ -1,46 +1,107 @@
 "use client";
 
 import { FiClock, FiFileText, FiMapPin, FiShield } from "react-icons/fi";
+import { useLocale } from "@/lib/locale";
 
 export function SwissTrustSection() {
-  const trustPoints = [
-    {
-      icon: FiMapPin,
-      title: "Base a Lausanne",
-      description: "Ancrage Suisse pour le cadrage, la langue, les attentes et le niveau de formalisation des projets.",
+  const { locale } = useLocale();
+  const copy = {
+    fr: {
+      title: "Ancrage suisse, exécution ouverte",
+      body:
+        "KAH-Digital travaille avec un ancrage local utile pour la Suisse, tout en gardant un positionnement adapté à des projets plus larges.",
+      items: [
+        {
+          icon: FiMapPin,
+          title: "Base à Lausanne",
+          description: "Ancrage suisse pour le cadrage, la langue, les attentes et le niveau de formalisation des projets.",
+        },
+        {
+          icon: FiClock,
+          title: "Communication claire",
+          description: "Réponses rapides, points réguliers et vision nette de l'avancement sans opacité technique.",
+        },
+        {
+          icon: FiFileText,
+          title: "Devis structurés",
+          description: "Budgets, périmètres et livrables présentés de façon lisible pour faciliter la décision.",
+        },
+        {
+          icon: FiShield,
+          title: "Approche professionnelle",
+          description: "Un niveau d'exécution propre pour la Suisse, sans fermer la porte à des projets internationaux.",
+        },
+      ],
     },
-    {
-      icon: FiClock,
-      title: "Communication claire",
-      description: "Reponses rapides, points reguliers et vision nette de l'avancement sans opacite technique.",
+    en: {
+      title: "Swiss foundation, open execution",
+      body:
+        "KAH-Digital works from a local Swiss base that stays useful for expectations, while remaining adapted to broader projects.",
+      items: [
+        {
+          icon: FiMapPin,
+          title: "Based in Lausanne",
+          description: "A Swiss anchor for scoping, language, expectations, and the level of project structure.",
+        },
+        {
+          icon: FiClock,
+          title: "Clear communication",
+          description: "Fast replies, regular checkpoints, and clear progress without technical opacity.",
+        },
+        {
+          icon: FiFileText,
+          title: "Structured quotes",
+          description: "Budgets, scope, and deliverables presented in a readable way to make decisions easier.",
+        },
+        {
+          icon: FiShield,
+          title: "Professional approach",
+          description: "A clean level of execution for Swiss standards, while staying open to international work.",
+        },
+      ],
     },
-    {
-      icon: FiFileText,
-      title: "Devis structures",
-      description: "Budgets, perimetres et livrables presents de facon lisible pour faciliter la decision.",
+    de: {
+      title: "Schweizer Basis, offene Umsetzung",
+      body:
+        "KAH-Digital arbeitet mit einer lokalen Schweizer Basis, die fuer Erwartungen und Arbeitsweise hilfreich bleibt und trotzdem fuer breitere Projekte passt.",
+      items: [
+        {
+          icon: FiMapPin,
+          title: "Basis in Lausanne",
+          description: "Schweizer Verankerung fuer Briefing, Sprache, Erwartungen und den richtigen Formalisierungsgrad.",
+        },
+        {
+          icon: FiClock,
+          title: "Klare Kommunikation",
+          description: "Schnelle Antworten, regelmaessige Punkte und ein klarer Blick auf den Fortschritt ohne technische Nebelwand.",
+        },
+        {
+          icon: FiFileText,
+          title: "Saubere Offerten",
+          description: "Budgets, Scope und Deliverables werden lesbar dargestellt, damit Entscheidungen leichter fallen.",
+        },
+        {
+          icon: FiShield,
+          title: "Professioneller Ansatz",
+          description: "Saubere Ausfuehrung auf Schweizer Niveau, ohne internationale Projekte auszuschliessen.",
+        },
+      ],
     },
-    {
-      icon: FiShield,
-      title: "Approche professionnelle",
-      description: "Un niveau d'execution propre pour la Suisse, sans fermer la porte a des projets internationaux.",
-    },
-  ];
+  }[locale];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ancrage Suisse, execution ouverte</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            KAH-Digital travaille avec un ancrage local utile pour la Suisse, tout en gardant un positionnement adapte a des projets plus larges.
-          </p>
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
+          <p className="mx-auto max-w-3xl text-xl text-gray-600">{copy.body}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {trustPoints.map((point) => (
-            <div key={point.title} className="text-center">
-              <point.icon className="text-green-600 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{point.title}</h3>
-              <p className="text-gray-600">{point.description}</p>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {copy.items.map((item) => (
+            <div key={item.title} className="text-center">
+              <item.icon className="mx-auto mb-4 text-green-600" size={48} />
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">{item.title}</h3>
+              <p className="text-gray-600">{item.description}</p>
             </div>
           ))}
         </div>

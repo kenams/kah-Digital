@@ -32,7 +32,7 @@ export const portfolioProjects: PortfolioProject[] = [
     type: "Label / production musicale",
     tagline: "Une realisation KAH-Digital pour un label independant construit autour de l'image, des artistes et des sorties.",
     shortDescription:
-      "Site label premium avec navigation Le Label, Artistes, Sorties, Clips, Evenements, Reseaux et Contact.",
+      "Site label premium avec navigation Le Label, Artistes, Sorties, Clips, Événements, Réseaux et Contact.",
     description:
       "KAH Prod fait partie des projets portes par KAH-Digital. Le site en ligne sert de base claire pour presenter le label, mettre en avant les artistes, montrer les sorties et clips, exposer les evenements, et centraliser les points de contact metier autour d'une image plus propre.",
     challenge:
@@ -48,7 +48,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: "Contacts metier", value: "4" },
       { label: "Base", value: "Vercel" },
     ],
-    highlights: ["Le Label / Artistes / Sorties / Clips", "Evenements + reseaux", "Management / Booking / Presse / Communication"],
+    highlights: ["Le Label / Artistes / Sorties / Clips", "Événements + réseaux", "Management / Booking / Presse / Communication"],
     palette: {
       primary: "#07111f",
       secondary: "#12304e",

@@ -63,12 +63,12 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   {isEnglish ? "Clear offers" : "Offres claires"}
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold">
-                  {isEnglish ? "3 simple offers to decide fast." : "3 offres claires pour decider vite."}
+                  {isEnglish ? "3 simple offers to decide fast." : "3 offres claires pour décider vite."}
                 </h2>
                 <p className="mt-2 text-white/70 max-w-3xl">
                   {isEnglish
                     ? "Clear budgets, timelines, and deliverables to move fast without wasted loops."
-                    : "Budgets, delais et livrables clairs pour valider un go sans iterations inutiles."}
+                    : "Budgets, délais et livrables clairs pour valider un go sans itérations inutiles."}
                 </p>
               </div>
               <Link
@@ -92,7 +92,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                        {isEnglish ? "Timeline" : "Delai"}
+                        {isEnglish ? "Timeline" : "Délai"}
                       </p>
                       <p className="text-base font-semibold text-white">{deal.timeline}</p>
                     </div>
@@ -115,10 +115,10 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm uppercase tracking-[0.35em] text-white/60">
-                  {isEnglish ? "Assets & visuals" : "Assets & mise en scene"}
+                  {isEnglish ? "Assets & visuals" : "Assets & mise en scène"}
                 </p>
                 <h2 className="mt-2 text-3xl font-semibold text-white">
-                  {isEnglish ? "A premium asset pack ready to use." : "Un pack d'assets premium pret a utiliser."}
+                  {isEnglish ? "A premium asset pack ready to use." : "Un pack d'assets premium prêt à utiliser."}
                 </h2>
                 <p className="mt-2 max-w-3xl text-white/70">
                   {isEnglish
@@ -130,7 +130,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 href={withPrefix("/projets")}
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-sm text-white/80 transition hover:border-white hover:text-white"
               >
-                {isEnglish ? "See case studies" : "Voir les etudes de cas"}
+                {isEnglish ? "See case studies" : "Voir les études de cas"}
               </Link>
             </div>
             <AssetGrid assets={assets} />
@@ -150,7 +150,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     <h2 className="mt-3 text-3xl font-semibold text-white">
                       {isEnglish
                         ? "Premium websites, e-commerce, and client portals, delivered fast."
-                        : "Sites premium, e-commerce et portails prives, livres vite."}
+                        : "Sites premium, e-commerce et portails privés, livrés vite."}
                     </h2>
                     <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
                       {(isEnglish
@@ -223,7 +223,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <p className="mt-3 max-w-2xl text-white/70">
                     {isEnglish
                       ? "React Native + Expo, Supabase, and automations to deliver a clean product, ready to share and pitch."
-                      : "React Native + Expo, Supabase et automatisations marketing pour livrer un produit propre, partageable, et pret a etre pitche."}
+                      : "React Native + Expo, Supabase et automatisations marketing pour livrer un produit propre, partageable, et prêt à être pitché."}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
                     {mvpPills.map((pill) => (
@@ -295,12 +295,12 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <h2 className="text-3xl font-semibold text-slate-900">
                     {isEnglish
                       ? "Light mode: warm variant for campaign pages."
-                      : "Mode lumiere: declinaison chaude pour les pages campagnes."}
+                      : "Mode lumière : déclinaison chaude pour les pages campagnes."}
                   </h2>
                   <p className="text-slate-700 max-w-2xl">
                     {isEnglish
                       ? "Cream base, gold accents, and dark type for a premium feel."
-                      : "Fond creme, touches or, typographies noires pour une image luxe. Ideal pour beauty, lifestyle, hospitality ou collections capsules."}
+                      : "Fond crème, touches or, typographies noires pour une image luxe. Idéal pour beauty, lifestyle, hospitality ou collections capsules."}
                   </p>
                   <div className="flex flex-wrap gap-3 text-sm">
                     <span className="mesh-pill text-slate-900">
@@ -348,7 +348,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   href={withPrefix("/projets")}
                   className="inline-flex items-center rounded-full border border-slate-900/20 px-5 py-2 text-slate-900/80 transition hover:border-slate-900 hover:text-slate-900 hover:bg-white/80"
                 >
-                  {isEnglish ? "See delivered MVPs" : "Voir les MVP livres"}
+                  {isEnglish ? "See delivered MVPs" : "Voir les MVP livrés"}
                 </Link>
               </div>
             </div>
@@ -364,7 +364,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   {isEnglish ? "Portfolio" : "Portfolio"}
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold text-white">
-                  {isEnglish ? "Recent premium projects" : "Projets premium recents"}
+                  {isEnglish ? "Recent premium projects" : "Projets premium récents"}
                 </h2>
                 <p className="text-white/60 max-w-2xl">
                   {isEnglish
@@ -446,7 +446,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <p className="mt-2 max-w-3xl text-white/70">
                     {isEnglish
                       ? "Automation, assistants, and scoring. We scope the use cases, integrate, secure, and track results."
-                      : "Automatisation, assistants et scoring. On cadre les use cases, on integre, on securise et on suit les resultats."}
+                    : "Automatisation, assistants et scoring. On cadre les use cases, on intègre, on sécurise et on suit les résultats."}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 text-sm">
@@ -475,13 +475,13 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     transition={{ duration: 0.35, delay: index * 0.05 }}
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(214,179,106,0.22),transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-                    <div className="relative overflow-hidden rounded-2xl border border-amber-200/20">
-                      <img
+                    <div className="relative h-40 overflow-hidden rounded-2xl border border-amber-200/20">
+                      <Image
                         src={item.image}
                         alt={item.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-40 w-full object-cover"
+                        fill
+                        sizes="(min-width: 1280px) 20rem, (min-width: 768px) 45vw, 100vw"
+                        className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20" />
                     </div>
@@ -501,7 +501,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                           <p className="text-sm normal-case text-white/80">{item.pricing}</p>
                         </div>
                         <div>
-                          <span className="text-white/40">{isEnglish ? "Timeline" : "Delai"}</span>
+                          <span className="text-white/40">{isEnglish ? "Timeline" : "Délai"}</span>
                           <p className="text-sm normal-case text-white/80">{item.timeline}</p>
                         </div>
                       </div>
@@ -543,12 +543,12 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   {isEnglish ? "Before / After" : "Avant / Apres"}
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold text-white">
-                  {isEnglish ? "KPIs delivered in the last 6 months." : "KPIs livres ces 6 derniers mois."}
+                  {isEnglish ? "KPIs delivered in the last 6 months." : "KPIs livrés ces 6 derniers mois."}
                 </h2>
                 <p className="text-white/70 max-w-2xl">
                   {isEnglish
                     ? "Concrete gains: conversion, leads, and perceived speed."
-                    : "Exemples de gains concrets: conversion, leads et vitesse percue."}
+                    : "Exemples de gains concrets : conversion, leads et vitesse perçue."}
                 </p>
               </div>
               <p className="text-sm text-white/60">{isEnglish ? "Swipe to browse" : "Glisser pour parcourir"}</p>
@@ -575,7 +575,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <p className="text-xs uppercase tracking-[0.3em] text-white/70">
-                        {isEnglish ? "Before / after" : "Avant / apres"}
+                        {isEnglish ? "Before / after" : "Avant / après"}
                       </p>
                       <p className="text-lg font-semibold">{result.title}</p>
                     </div>
@@ -614,12 +614,12 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     {isEnglish ? "Premium pack" : "Dossier premium"}
                   </p>
                   <h2 className="text-3xl font-semibold">
-                    {isEnglish ? "Everything to get a yes in one meeting." : "Tout pour dire oui en une reunion."}
+                    {isEnglish ? "Everything to get a yes in one meeting." : "Tout pour dire oui en une réunion."}
                   </h2>
                   <p className="text-white/70">
                     {isEnglish
                       ? "Clear budget, timeline, and deliverables. Ideal to validate fast with leadership."
-                      : "Budget, planning et livrables clairs. Ideal pour valider vite avec un board ou une direction marketing."}
+                      : "Budget, planning et livrables clairs. Idéal pour valider vite avec un board ou une direction marketing."}
                   </p>
                   <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
                     {(isEnglish ? ["Kick-off 48h", "1 point of contact", "Weekly updates"] : ["Kick-off 48h", "1 interlocuteur", "Reporting hebdo"]).map((item) => (
@@ -641,13 +641,13 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       href="/pack-closing.pdf"
                       className="rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200"
                     >
-                      {isEnglish ? "Download the pack" : "Telecharger le pack"}
+                      {isEnglish ? "Download the pack" : "Télécharger le pack"}
                     </Link>
                     <Link
                       href={withPrefix("/devis")}
                       className="rounded-full border border-white/30 px-5 py-2 text-white/80 transition hover:border-white hover:text-white"
                     >
-                      {isEnglish ? "Book a call" : "Programmer un echange"}
+                      {isEnglish ? "Book a call" : "Programmer un échange"}
                     </Link>
                   </div>
                 </div>
@@ -667,10 +667,10 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     ) : (
                       <>
                         <li>- Budget ligne par ligne (design, dev, QA).</li>
-                        <li>- Plan de sprint (kick-off a recette) avec responsabilites.</li>
-                        <li>- Checklist onboarding (acces, outils, Slack prive).</li>
-                        <li>- Modeles d&apos;emails pour valider en interne.</li>
-                        <li>- Coordonnees directes apres validation.</li>
+                        <li>- Plan de sprint (kick-off à recette) avec responsabilités.</li>
+                        <li>- Checklist onboarding (accès, outils, Slack privé).</li>
+                        <li>- Modèles d&apos;emails pour valider en interne.</li>
+                        <li>- Coordonnées directes après validation.</li>
                       </>
                     )}
                   </ul>
@@ -688,7 +688,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   {isEnglish ? "Shall we talk?" : "On en parle ?"}
                 </p>
                 <h3 className="mt-4 text-3xl font-semibold text-white">
-                  {isEnglish ? "Ready to launch a fast premium site?" : "Pret a lancer un site premium et ultra-rapide ?"}
+                  {isEnglish ? "Ready to launch a fast premium site?" : "Prêt à lancer un site premium et ultra-rapide ?"}
                 </h3>
                 <p className="mt-3 text-white/70">
                   {isEnglish
@@ -724,7 +724,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="mb-10">
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">FAQ</p>
               <h2 className="mt-3 text-3xl font-semibold text-white">
-                {isEnglish ? "Frequently asked questions" : "Questions frequentes"}
+                {isEnglish ? "Frequently asked questions" : "Questions fréquentes"}
               </h2>
             </div>
             <div className="space-y-4">

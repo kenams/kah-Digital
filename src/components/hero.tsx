@@ -15,11 +15,11 @@ const orbitItemsEn = ["Website", "Mobile app", "Basic SEO", "Support"];
 const quickWinsFr = [
   {
     title: "Plan simple",
-    detail: "Kick-off sous 48h, pages et priorites claires.",
+    detail: "Kick-off sous 48h, pages et priorités claires.",
   },
   {
     title: "Mise en ligne",
-    detail: "Design propre, dev rapide et mise en ligne controlee.",
+    detail: "Design propre, dev rapide et mise en ligne contrôlée.",
   },
 ];
 const quickWinsEn = [
@@ -84,17 +84,17 @@ export function HeroSection({ stats }: HeroProps) {
                 {isEnglish ? "Premium digital studio" : "Studio digital haut de gamme"}
               </span>
               <span>
-                {isEnglish ? "Reply within 24h | Launch in 4-6 weeks" : "Reponse sous 24h | Lancement 4-6 semaines"}
+                {isEnglish ? "Reply within 24h | Launch in 4-6 weeks" : "Réponse sous 24h | Lancement 4-6 semaines"}
               </span>
             </div>
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
-              {isEnglish ? "Premium design, fast execution," : "Design premium, vitesse d'execution,"}{" "}
-              <span className="gradient-text">{isEnglish ? "clear results" : "resultats clairs"}</span>.
+              {isEnglish ? "Premium design, fast execution," : "Design premium, vitesse d’exécution,"}{" "}
+              <span className="gradient-text">{isEnglish ? "clear results" : "résultats clairs"}</span>.
             </h1>
             <p className="text-base text-white/75 sm:text-lg">
               {isEnglish
                 ? "We build websites and mobile apps. Design, development, launch, and follow-up without jargon."
-                : "On cree des sites web et des apps mobiles. Design, developpement, mise en ligne et suivi, sans jargon inutile."}
+                : "On crée des sites web et des apps mobiles. Design, développement, mise en ligne et suivi, sans jargon inutile."}
             </p>
             <div className="grid gap-3 text-sm text-white/80 md:grid-cols-2">
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
@@ -159,7 +159,7 @@ export function HeroSection({ stats }: HeroProps) {
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
                   {
-                    label: isEnglish ? "Qualified leads" : "Demandes qualifiees",
+                    label: isEnglish ? "Qualified leads" : "Demandes qualifiées",
                     value: "08",
                     tone: "text-amber-200",
                   },
@@ -219,8 +219,8 @@ export function HeroSection({ stats }: HeroProps) {
               </p>
               <div className="space-y-3 text-sm text-white/80">
                 <p>{isEnglish ? "1. 15-min call or quick quote." : "1. Appel 15 min ou devis rapide."}</p>
-                <p>{isEnglish ? "2. Plan + budget within 48h." : "2. Plan + budget envoyes sous 48h."}</p>
-                <p>{isEnglish ? "3. Step-by-step progress + clear updates." : "3. Avance par etapes + points clairs."}</p>
+                <p>{isEnglish ? "2. Plan + budget within 48h." : "2. Plan + budget envoyés sous 48h."}</p>
+                <p>{isEnglish ? "3. Step-by-step progress + clear updates." : "3. Avancée par étapes + points clairs."}</p>
               </div>
             </div>
             <div className="grid gap-3 md:grid-cols-3">

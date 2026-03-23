@@ -13,11 +13,11 @@ export function ContactCard({ title, className = "" }: ContactCardProps) {
   const { locale } = useLocale();
   const copy = {
     fr: {
-      title: "Conciergerie privee",
+      title: "Conciergerie privée",
       email: "Email direct:",
-      phone: "Telephone direct:",
-      note: "Numero temporaire avant activation du numero suisse.",
-      reply: "Reponse sous 24h. Brief express possible par Slack ou WhatsApp.",
+      phone: "Téléphone direct:",
+      note: "Numéro temporaire avant activation du numéro suisse.",
+      reply: "Réponse sous 24h. Brief express possible par Slack ou WhatsApp.",
     },
     en: {
       title: "Direct contact",

@@ -1,8 +1,7 @@
 const services = [
   {
-    title: "Site vitrine (site de presentation)",
-    description:
-      "Un site clair pour presenter votre activite, vos offres et recuperer des demandes.",
+    title: "Site vitrine (site de présentation)",
+    description: "Un site clair pour présenter votre activité, vos offres et récupérer des demandes.",
     tech: "Pages, formulaire, SEO, mise en ligne.",
   },
   {
@@ -12,12 +11,12 @@ const services = [
   },
   {
     title: "Espace client / application web",
-    description: "Zone privee pour vos clients: comptes, contenu, factures ou suivi.",
-    tech: "Connexion, roles, base de donnees.",
+    description: "Zone privée pour vos clients : comptes, contenu, factures ou suivi.",
+    tech: "Connexion, rôles, base de données.",
   },
   {
     title: "Page de vente / landing",
-    description: "Une seule page pour expliquer une offre et recuperer des leads.",
+    description: "Une seule page pour expliquer une offre et récupérer des leads.",
     tech: "Texte clair, formulaire, analytics.",
   },
 ];
@@ -25,7 +24,7 @@ const services = [
 const mvpPills = [
   "App iOS + Android",
   "Prototype testable",
-  "Connexion + base de donnees",
+  "Connexion + base de données",
   "TestFlight & Android beta",
 ];
 
@@ -39,8 +38,8 @@ const mvpStats = [
 const mvpServices = [
   {
     title: "Cadrage simple",
-    description: "On clarifie l'idee et les ecrans indispensables.",
-    bullets: ["Atelier 60 min", "Liste des ecrans", "Plan de sprint"],
+    description: "On clarifie l'idée et les écrans indispensables.",
+    bullets: ["Atelier 60 min", "Liste des écrans", "Plan de sprint"],
   },
   {
     title: "Design mobile",
@@ -48,8 +47,8 @@ const mvpServices = [
     bullets: ["Design UI", "Prototype cliquable", "Validation rapide"],
   },
   {
-    title: "Dossier de presentation",
-    description: "Un PDF simple pour presenter le projet.",
+    title: "Dossier de présentation",
+    description: "Un PDF simple pour présenter le projet.",
     bullets: ["Pitch clair", "Slides utiles", "Roadmap simple"],
   },
 ];
@@ -57,7 +56,7 @@ const mvpServices = [
 const contrastThemes = [
   {
     title: "Palette champagne",
-    detail: "Fond creme, noirs profonds, touches or pour des marques luxe.",
+    detail: "Fond crème, noirs profonds, touches or pour des marques luxe.",
   },
   {
     title: "Landing lumineuse",
@@ -65,7 +64,7 @@ const contrastThemes = [
   },
   {
     title: "Support print",
-    detail: "Declinaison claire pour dossiers PDF et brochures haut de gamme.",
+    detail: "Déclinaison claire pour dossiers PDF et brochures haut de gamme.",
   },
 ];
 
@@ -77,7 +76,7 @@ const processSteps = [
   { title: "Direction artistique", detail: "Style, couleurs, typographies et exemples." },
   {
     title: "Build",
-    detail: "Developpement + tests sur mobile et desktop.",
+    detail: "Développement + tests sur mobile et desktop.",
   },
   {
     title: "Lancement",
@@ -88,40 +87,34 @@ const processSteps = [
 const faqs = [
   {
     question: "Quel niveau de finition puis-je attendre ?",
-    answer:
-      "Un rendu propre: design clair, micro-interactions, et un site rapide (Core Web Vitals).",
+    answer: "Un rendu propre : design clair, micro-interactions, et un site rapide (Core Web Vitals).",
   },
   {
-    question: "Pouvez-vous livrer vite sans perdre la qualite ?",
-    answer:
-      "Oui. Le process en sprints garde une qualite constante tout en accelerant les validations.",
+    question: "Pouvez-vous livrer vite sans perdre la qualité ?",
+    answer: "Oui. Le process en sprints garde une qualité constante tout en accélérant les validations.",
   },
   {
-    question: "Quelle est la difference entre un site et une app ?",
-    answer:
-      "Un site s'ouvre dans le navigateur. Une app s'installe sur iOS/Android et peut envoyer des notifications.",
+    question: "Quelle est la différence entre un site et une app ?",
+    answer: "Un site s'ouvre dans le navigateur. Une app s'installe sur iOS/Android et peut envoyer des notifications.",
   },
   {
     question: "Fournissez-vous textes et visuels ?",
-    answer:
-      "Oui. Nous pouvons gerer la redaction, la selection d'images et les icones.",
+    answer: "Oui. Nous pouvons gérer la rédaction, la sélection d'images et les icônes.",
   },
   {
-    question: "Gerez-vous SEO, hebergement et suivi ?",
-    answer:
-      "Oui. Mise en ligne, SEO de base, analytics et optimisations si besoin.",
+    question: "Gérez-vous SEO, hébergement et suivi ?",
+    answer: "Oui. Mise en ligne, SEO de base, analytics et optimisations si besoin.",
   },
   {
-    question: "Que se passe-t-il apres la mise en ligne ?",
-    answer:
-      "30 jours de support inclus, puis un forfait maintenance si tu veux garder le rythme.",
+    question: "Que se passe-t-il après la mise en ligne ?",
+    answer: "30 jours de support inclus, puis un forfait maintenance si tu veux garder le rythme.",
   },
 ];
 
 const stats = [
   { label: "Projets premium", value: "70+" },
   { label: "Satisfaction", value: "9.6/10" },
-  { label: "Delai moyen", value: "4-6 semaines" },
+  { label: "Délai moyen", value: "4-6 semaines" },
 ];
 
 const fastDeals = [
@@ -134,11 +127,11 @@ const fastDeals = [
     href: "/offres#landing-conversion",
   },
   {
-    title: "Portail membres priv\u00e9",
+    title: "Portail membres privé",
     budget: "5'900 CHF",
     timeline: "5 semaines",
     stack: "Supabase Auth, Stripe, Dashboard",
-    deliverable: "Espace login + contenus + paiements recurrents",
+    deliverable: "Espace login + contenus + paiements récurrents",
     href: "/offres#portail-membres",
   },
   {
@@ -154,18 +147,18 @@ const fastDeals = [
 const closingHighlights = [
   { label: "Budget indicatif", value: "2'000 CHF - 12'000 CHF" },
   { label: "Sprint moyen", value: "4 a 6 semaines" },
-  { label: "Reponse sous 24h", value: "-24h" },
+  { label: "Réponse sous 24h", value: "-24h" },
 ];
 
 const resultsShowcase = [
   {
-    title: "Portail immobilier prive",
+    title: "Portail immobilier privé",
     before: "3 leads/semaine",
     after: "14 leads + 2 deals/mois",
     image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
   },
   {
-    title: "MVP sante premium",
+    title: "MVP santé premium",
     before: "MVP Figma",
     after: "TestFlight + 400 beta-users",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
@@ -181,7 +174,7 @@ const resultsShowcase = [
 export const aiBusinessGuide = [
   {
     title: "Automatisation relation client",
-    description: "Reponses, devis et relances automatiques sans perdre le ton de la marque.",
+    description: "Réponses, devis et relances automatiques sans perdre le ton de la marque.",
     pricing: "Budget indicatif: 2'900 - 6'900 CHF",
     timeline: "Mise en place: 2-4 semaines",
     tools: ["ChatGPT", "Make/Zapier", "CRM"],
@@ -189,8 +182,8 @@ export const aiBusinessGuide = [
       "https://kripesh.b-cdn.net/wp-content/uploads/2023/08/Benefits-of-AI-Tools-for-small-business.jpg",
   },
   {
-    title: "Chatbot metier & support",
-    description: "Assistant entraine sur vos contenus pour repondre 24/7 et filtrer les demandes.",
+    title: "Chatbot métier & support",
+    description: "Assistant entraîné sur vos contenus pour répondre 24/7 et filtrer les demandes.",
     pricing: "Budget indicatif: 3'500 - 9'000 CHF",
     timeline: "Mise en place: 3-5 semaines",
     tools: ["Base de connaissance", "Widget web", "Analytics"],
@@ -199,7 +192,7 @@ export const aiBusinessGuide = [
   },
   {
     title: "Qualification & lead scoring",
-    description: "Formulaires intelligents, scoring et routage des leads vers l'equipe.",
+    description: "Formulaires intelligents, scoring et routage des leads vers l'équipe.",
     pricing: "Budget indicatif: 2'400 - 5'900 CHF",
     timeline: "Mise en place: 2-3 semaines",
     tools: ["Emailing", "CRM", "Scoring IA"],
@@ -208,7 +201,7 @@ export const aiBusinessGuide = [
   },
   {
     title: "Contenu & assets IA",
-    description: "Templates, contenus et scripts alignes a votre marque pour gagner du temps.",
+    description: "Templates, contenus et scripts alignés à votre marque pour gagner du temps.",
     pricing: "Budget indicatif: 1'800 - 4'500 CHF",
     timeline: "Mise en place: 1-2 semaines",
     tools: ["Notion", "Templates", "Brand kit"],
@@ -217,10 +210,10 @@ export const aiBusinessGuide = [
   },
   {
     title: "Micro-outil IA sur-mesure",
-    description: "Outil interne: resume, extraction, tri ou aide a la decision.",
+    description: "Outil interne : résumé, extraction, tri ou aide à la décision.",
     pricing: "Budget indicatif: 4'900 - 12'000 CHF",
     timeline: "MVP: 4-6 semaines",
-    tools: ["Next.js", "API IA", "Securite"],
+    tools: ["Next.js", "API IA", "Sécurité"],
     image:
       "https://cdn.dribbble.com/userupload/18350565/file/original-9e4dbb6e38b8ac5eac4089ecf1e2f1c5.png",
   },
@@ -236,7 +229,7 @@ const homeSections = [
   { id: "portfolio", label: "Portfolio" },
   { id: "process", label: "Process" },
   { id: "ai-guide", label: "Modules IA" },
-  { id: "results", label: "Resultats" },
+  { id: "results", label: "Résultats" },
   { id: "testimonials", label: "Clients" },
   { id: "closing", label: "Pack" },
   { id: "cta", label: "Contact" },

@@ -33,6 +33,9 @@ SUPABASE_URL=""                  # optionnel, table `quotes`
 NEXT_PUBLIC_SUPABASE_URL=""      # requis pour login admin
 NEXT_PUBLIC_SUPABASE_ANON_KEY="" # requis pour login admin
 SUPABASE_SERVICE_ROLE_KEY=""     # optionnel
+NEXT_PUBLIC_SITE_URL="https://kah-digital.ch"
+STRIPE_SECRET_KEY=""             # paiement admin -> checkout
+STRIPE_WEBHOOK_SECRET=""         # webhook Stripe -> statut paiement
 NEXT_PUBLIC_CONTACT_EMAIL="kah-digital@hotmail.com"
 NEXT_PUBLIC_CONTACT_PHONE="+33 6 00 00 00 00"
 ```
@@ -57,6 +60,15 @@ NEXT_PUBLIC_CONTACT_PHONE="+33 6 00 00 00 00"
 3. Chaque devis postera un JSON (utile si Resend tombe ou pour un reporting rapide)
 
 Sans ces variables, l’API répond quand même OK (les notifications sont simplement loggées côté serveur).
+
+### Paiement Stripe
+1. Ajoute `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` et `NEXT_PUBLIC_SITE_URL`
+2. Dans Stripe, crée un webhook vers `/api/stripe/webhook`
+3. Active au minimum l’evenement `checkout.session.completed`
+4. Optionnel mais utile: ajoute aussi `checkout.session.expired`
+5. Dans Supabase, rejoue `supabase/quotes.sql` pour ajouter les colonnes de paiement sur `quotes`
+
+Le board admin permet ensuite de saisir un total, un acompte, puis de generer un lien Stripe d’acompte ou de solde pour chaque demande.
 
 ## Tests
 - `npm run lint`

@@ -2,39 +2,60 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLocale } from "@/lib/locale";
 
 export function HeroSection() {
+  const { locale, prefix } = useLocale();
+  const copy = {
+    fr: {
+      title: "sites, applications et solutions pour entreprises",
+      body:
+        "Sites web, applications sur mesure et parcours support plus clairs. Depuis Lausanne, KAH-Digital accompagne les entreprises en Suisse et à l'international, du cadrage à la mise en ligne.",
+      primary: "Demander un devis",
+      secondary: "Voir nos solutions",
+    },
+    en: {
+      title: "websites, apps, and digital solutions for companies",
+      body:
+        "Websites, custom applications, and clearer support workflows. From Lausanne, KAH-Digital helps companies in Switzerland and internationally from scoping to launch.",
+      primary: "Request a quote",
+      secondary: "See our services",
+    },
+    de: {
+      title: "Websites, Apps und digitale Loesungen fuer Unternehmen",
+      body:
+        "Websites, massgeschneiderte Anwendungen und klarere Support-Ablaufe. Aus Lausanne begleitet KAH-Digital Unternehmen in der Schweiz und international vom Briefing bis zum Launch.",
+      primary: "Projekt anfragen",
+      secondary: "Leistungen ansehen",
+    },
+  }[locale];
+
+  const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
+    <section className="relative flex min-h-screen items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
             KAH-Digital
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-              sites, applications et solutions pour entreprises
+            <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+              {copy.title}
             </span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Sites web, applications sur mesure et parcours support plus clairs.
-            Depuis Lausanne, KAH-Digital accompagne les entreprises en Suisse et a l&apos;international, du cadrage a la mise en ligne.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-300">{copy.body}</p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/devis"
-              className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors"
+              href={withPrefix("/devis")}
+              className="rounded-full bg-white px-8 py-3 font-semibold text-black transition-colors hover:bg-gray-200"
             >
-              Demander un devis
+              {copy.primary}
             </Link>
             <Link
-              href="/services"
-              className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-colors"
+              href={withPrefix("/services")}
+              className="rounded-full border border-white px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-black"
             >
-              Voir nos solutions
+              {copy.secondary}
             </Link>
           </div>
         </motion.div>

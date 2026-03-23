@@ -15,6 +15,14 @@ export type RateLimitResult = {
   retryAfter: number;
 };
 
+export function getRateLimitHeaders(result: RateLimitResult, max: number) {
+  return {
+    "X-RateLimit-Limit": String(max),
+    "X-RateLimit-Remaining": String(result.remaining),
+    "X-RateLimit-Reset": String(Math.ceil(result.resetAt / 1000)),
+  };
+}
+
 declare global {
   var __rateLimitBuckets: Map<string, RateLimitBucket> | undefined;
   var __rateLimitLastCleanup: number | undefined;

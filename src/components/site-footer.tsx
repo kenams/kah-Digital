@@ -20,7 +20,7 @@ export function SiteFooter() {
       subtitle: "Suisse et international",
       body: "Solutions digitales rapides pour la Suisse et l'international. Sites web, applications et support IT.",
       navTitle: "Navigation",
-      legalTitle: "Legal",
+      legalTitle: "Légal",
       nav: [
         { label: "Accueil", href: "/" },
         { label: "Services", href: "/services" },
@@ -30,12 +30,12 @@ export function SiteFooter() {
         { label: "Contact", href: "/contact" },
       ],
       legal: [
-        { label: "Mentions legales", href: "/mentions-legales" },
-        { label: "Confidentialite", href: "/confidentialite" },
+        { label: "Mentions légales", href: "/mentions-legales" },
+        { label: "Confidentialité", href: "/confidentialite" },
         { label: "Factures", href: "/factures" },
       ],
-      phone: "Telephone",
-      rights: "Tous droits reserves.",
+      phone: "Téléphone",
+      rights: "Tous droits réservés.",
       homeLabel: "KAH-Digital - Accueil",
     },
     en: {

@@ -14,37 +14,37 @@ export function ContactForm() {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const copy = {
     fr: {
-      verificationFailed: "Verification impossible. Reessaie.",
-      captchaMissing: "Captcha non configure. Ecris-nous sur",
+      verificationFailed: "Vérification impossible. Réessaie.",
+      captchaMissing: "Captcha non configuré. Écris-nous sur",
       captchaBeforeSend: "Valide le captcha avant d'envoyer.",
-      sendError: "Impossible d'envoyer le message. Reessaie dans un instant.",
-      success: "Merci, message envoye. Redirection en cours...",
-      response: "Reponse",
+      sendError: "Impossible d'envoyer le message. Réessaie dans un instant.",
+      success: "Merci, message envoyé. Redirection en cours...",
+      response: "Réponse",
       responseDetail: "Sous 24h avec retour concret.",
       channel: "Canal",
       channelDetail: "Email direct, sans tunnel inutile.",
       scoping: "Cadrage",
       scopingDetail: "Sujet clair, demande exploitable.",
-      firstName: "Prenom *",
+      firstName: "Prénom *",
       firstNamePlaceholder: "Ex : Alex",
       lastName: "Nom *",
       lastNamePlaceholder: "Ex : Martin",
-      company: "Societe",
+      company: "Société",
       companyPlaceholder: "Ex : Studio Nova",
       subject: "Sujet *",
-      subjectPlaceholder: "Selectionnez un sujet",
+      subjectPlaceholder: "Sélectionnez un sujet",
       quote: "Demande de devis",
       info: "Demande d'information",
       support: "Support technique",
       other: "Autre",
       message: "Message *",
-      messagePlaceholder: "Decris ta demande, ton contexte et ce que tu attends.",
-      antiSpam: "Verification anti-spam",
-      privacyIntro: "J'accepte que mes donnees soient utilisees pour repondre a ma demande. Consultez notre ",
-      privacyLink: "politique de confidentialite",
+      messagePlaceholder: "Décris ta demande, ton contexte et ce que tu attends.",
+      antiSpam: "Vérification anti-spam",
+      privacyIntro: "J'accepte que mes données soient utilisées pour répondre à ma demande. Consultez notre ",
+      privacyLink: "politique de confidentialité",
       sending: "Envoi en cours...",
       send: "Envoyer le message",
-      captchaNotConfigured: "Captcha non configure.",
+      captchaNotConfigured: "Captcha non configuré.",
     },
     en: {
       verificationFailed: "Verification failed. Try again.",
@@ -121,28 +121,7 @@ export function ContactForm() {
   const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
   const pendingFormRef = useRef<HTMLFormElement | null>(null);
 
-  const handleCaptchaVerify = useCallback((token: string) => {
-    setCaptchaToken(token);
-    setCaptchaError("");
-    const pendingForm = pendingFormRef.current;
-    if (pendingForm) {
-      pendingFormRef.current = null;
-      void submitContactRequest(pendingForm, token);
-    }
-  }, []);
-
-  const handleCaptchaExpire = useCallback(() => {
-    setCaptchaToken("");
-    pendingFormRef.current = null;
-  }, []);
-
-  const handleCaptchaFailure = useCallback(() => {
-    setCaptchaToken("");
-    setCaptchaError(copy.verificationFailed);
-    pendingFormRef.current = null;
-  }, [copy.verificationFailed]);
-
-  async function submitContactRequest(form: HTMLFormElement, token: string) {
+  const submitContactRequest = useCallback(async (form: HTMLFormElement, token: string) => {
     const formData = new FormData(form);
 
     if (!siteKey) {
@@ -151,7 +130,7 @@ export function ContactForm() {
       return;
     }
 
-    if (!captchaToken) {
+    if (!token) {
       setStatus("error");
       setServerMessage(copy.captchaBeforeSend);
       return;
@@ -202,7 +181,28 @@ export function ContactForm() {
       setStatus("error");
       setServerMessage(copy.sendError);
     }
-  }
+  }, [copy, prefix, router, siteKey]);
+
+  const handleCaptchaVerify = useCallback((token: string) => {
+    setCaptchaToken(token);
+    setCaptchaError("");
+    const pendingForm = pendingFormRef.current;
+    if (pendingForm) {
+      pendingFormRef.current = null;
+      void submitContactRequest(pendingForm, token);
+    }
+  }, [submitContactRequest]);
+
+  const handleCaptchaExpire = useCallback(() => {
+    setCaptchaToken("");
+    pendingFormRef.current = null;
+  }, []);
+
+  const handleCaptchaFailure = useCallback(() => {
+    setCaptchaToken("");
+    setCaptchaError(copy.verificationFailed);
+    pendingFormRef.current = null;
+  }, [copy.verificationFailed]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
