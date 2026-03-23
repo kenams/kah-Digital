@@ -1263,11 +1263,11 @@ export function AdminDemandesBoard({ initialItems, view }: AdminDemandesBoardPro
   const emptyStateLabel = isPaymentsView ? "Aucun dossier paiement pour le moment." : "Aucune demande pour le moment.";
   const emptyFilterStateLabel = isPaymentsView
     ? "Aucun dossier paiement avec ces filtres."
-    : "Aucun resultat avec ces filtres.";
+    : "Aucun résultat avec ces filtres.";
   const heroLeadValue = isPaymentsView ? formatChfFromCents(paymentOverview.collected) : String(insights.feasibility.pending);
-  const heroLeadLabel = isPaymentsView ? "Encaisse" : "A qualifier";
+  const heroLeadLabel = isPaymentsView ? "Encaissé" : "À qualifier";
   const heroSubLabel = isPaymentsView
-    ? `${paymentOverview.links} liens actifs et ${formatChfFromCents(paymentOverview.remaining)} a solder`
+    ? `${paymentOverview.links} liens actifs et ${formatChfFromCents(paymentOverview.remaining)} à solder`
     : `${visibleCountLabel} demandes visibles, ${insights.feasibility.feasible} faisables`;
 
   return (
@@ -1465,7 +1465,7 @@ export function AdminDemandesBoard({ initialItems, view }: AdminDemandesBoardPro
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
               <p className="text-[0.68rem] uppercase tracking-[0.3em] text-white/45">
-                {isPaymentsView ? "A encaisser" : "Faisables"}
+                {isPaymentsView ? "À encaisser" : "Faisables"}
               </p>
               <p className="mt-2 text-2xl font-semibold text-white">
                 {isPaymentsView ? formatChfFromCents(paymentOverview.remaining) : insights.feasibility.feasible}
@@ -1519,18 +1519,18 @@ export function AdminDemandesBoard({ initialItems, view }: AdminDemandesBoardPro
             <p className="text-sm text-white/60">checkout déjà généré</p>
           </div>
           <div className="premium-card rounded-3xl border border-emerald-200/30 bg-emerald-100/5 p-5 text-white">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Encaisse</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">Encaissé</p>
             <p className="mt-2 text-3xl font-semibold text-emerald-100">
               {formatChfFromCents(paymentOverview.collected)}
             </p>
-            <p className="text-sm text-white/60">{paymentOverview.partial + paymentOverview.paid} dossiers encaisses</p>
+            <p className="text-sm text-white/60">{paymentOverview.partial + paymentOverview.paid} dossiers encaissés</p>
           </div>
           <div className="premium-card rounded-3xl border border-amber-200/30 bg-amber-100/5 p-5 text-white">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Reste</p>
             <p className="mt-2 text-3xl font-semibold text-amber-100">
               {formatChfFromCents(paymentOverview.remaining)}
             </p>
-            <p className="text-sm text-white/60">a solder ou relancer</p>
+            <p className="text-sm text-white/60">à solder ou relancer</p>
           </div>
         </div>
       )}
@@ -1949,7 +1949,7 @@ export function AdminDemandesBoard({ initialItems, view }: AdminDemandesBoardPro
                     <p className="mt-1 text-white">{formatChfFromCents(item.paymentTotalAmount)}</p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
-                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Encaisse</p>
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">Encaissé</p>
                     <p className="mt-1 text-white">{formatChfFromCents(item.paymentPaidAmount ?? 0)}</p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-black/25 p-3">

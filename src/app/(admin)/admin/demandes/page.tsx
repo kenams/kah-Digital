@@ -49,6 +49,9 @@ function AdminWorkspaceTabs(props: { section: AdminSection; demandesView: Demand
           On sépare maintenant les flux : qualification commerciale, suivi paiement et résumés assistant.
         </p>
         <div className="mt-6 flex flex-wrap gap-3 text-sm">
+          <Link href="/admin" className={getTabClass(false)}>
+            Dashboard
+          </Link>
           <Link
             href={`/admin/demandes?section=demandes&view=${props.demandesView}`}
             className={getTabClass(props.section === "demandes")}

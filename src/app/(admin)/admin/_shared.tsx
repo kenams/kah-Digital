@@ -73,9 +73,9 @@ export function handleAdminAccessState(access: AdminAccessState) {
     return (
       <AdminStateCard
         tone="rose"
-        eyebrow="Erreur d&apos;authentification"
+        eyebrow="Erreur d'authentification"
         title="Impossible de vérifier la session admin"
-        body="Reconnecte-toi puis recharge la page. Si le problème continue, vérifie les cookies ou l&apos;état Supabase."
+        body="Reconnecte-toi puis recharge la page. Si le problème continue, vérifie les cookies ou l'état Supabase."
       />
     );
   }
@@ -86,7 +86,7 @@ export function handleAdminAccessState(access: AdminAccessState) {
         tone="amber"
         eyebrow="Configuration requise"
         title="Supabase Auth non configuré"
-        body="Ajoute NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY pour activer l&apos;auth admin."
+        body="Ajoute NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY pour activer l'auth admin."
       />
     );
   }
