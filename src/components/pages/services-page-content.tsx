@@ -9,10 +9,10 @@ type ServicesPageContentProps = {
 
 const copy = {
   fr: {
-    eyebrow: "Suisse, international, PME et structures en croissance",
+    eyebrow: "Francophone, anglophone, PME et structures en croissance",
     title: "Des solutions digitales utiles pour les entreprises",
     intro:
-      "KAH-Digital conçoit des sites web, des applications et des parcours support plus lisibles. Depuis Lausanne, avec une logique de production claire, rapide et exploitable.",
+      "KAH-Digital conçoit des sites web, des applications et des parcours support plus lisibles pour entreprises qui veulent vendre mieux, s'organiser plus clairement ou fluidifier leur support.",
     sectionTitle: "Un positionnement simple",
     sectionBody:
       "Nous ne cherchons pas à tout promettre. Nous construisons des bases utiles, propres et crédibles pour aider une entreprise à mieux se présenter, mieux s'organiser ou mieux accompagner ses utilisateurs.",
@@ -48,10 +48,10 @@ const copy = {
     ],
   },
   en: {
-    eyebrow: "Switzerland, international, SMBs, and growing teams",
+    eyebrow: "French-speaking, English-speaking, SMBs, and growing teams",
     title: "Useful digital services for companies",
     intro:
-      "KAH-Digital designs websites, applications, and clearer support workflows from Lausanne, with a production approach that stays clean and practical.",
+      "KAH-Digital designs websites, applications, and clearer support workflows for companies that need clearer positioning, smoother operations, or better support.",
     sectionTitle: "A simple positioning",
     sectionBody:
       "We do not try to promise everything. We build useful, clean, credible foundations to help a company present itself better, operate more smoothly, or support its users more clearly.",
@@ -87,10 +87,10 @@ const copy = {
     ],
   },
   de: {
-    eyebrow: "Schweiz, international, KMU und wachsende Teams",
+    eyebrow: "Frankophon, englischsprachig, KMU und wachsende Teams",
     title: "Digitale Leistungen mit echtem Nutzen fuer Unternehmen",
     intro:
-      "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Ablaufe aus Lausanne, mit einer klaren, schnellen und sauber lesbaren Produktionslogik.",
+      "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Ablaufe fuer Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
       "Wir versprechen nicht alles. Wir bauen nuetzliche, saubere und glaubwuerdige Grundlagen, damit Unternehmen sich besser praesentieren, besser organisieren oder Nutzer klarer begleiten koennen.",
@@ -168,40 +168,71 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
         </div>
       </section>
 
-      {locale === "fr" ? (
-        <section className="bg-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-gray-900">Pages locales pour la Suisse romande</h2>
-              <p className="mx-auto max-w-3xl text-lg text-gray-600">
-                Des pages ciblees pour capter des besoins autour de Lausanne, Geneve, des applications web et de
-                l'automatisation IA en Suisse.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {[
-                { title: "Site web a Geneve", href: "/site-web-geneve" },
-                { title: "Site web a Lausanne", href: "/site-web-lausanne" },
-                { title: "Application web en Suisse", href: "/application-web-suisse" },
-                { title: "Automatisation IA en Suisse", href: "/automatisation-ia-suisse" },
-              ].map((page) => (
-                <div key={page.href} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
-                  <h3 className="text-xl font-semibold text-gray-900">{page.title}</h3>
-                  <p className="mt-3 text-sm text-gray-600">
-                    Requete locale orientee acquisition pour attirer des demandes qualifiees en Suisse.
-                  </p>
-                  <Link
-                    href={page.href}
-                    className="mt-5 inline-flex items-center rounded-full bg-blue-600 px-5 py-2 font-semibold text-white transition-colors hover:bg-blue-700"
-                  >
-                    Voir la page <FiArrowRight className="ml-2" />
-                  </Link>
-                </div>
-              ))}
-            </div>
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-gray-900">
+              {locale === "fr"
+                ? "Pages d'entree utiles"
+                : locale === "en"
+                  ? "Useful entry pages"
+                  : "Nuetzliche Einstiegsseiten"}
+            </h2>
+            <p className="mx-auto max-w-3xl text-lg text-gray-600">
+              {locale === "fr"
+                ? "Des pages plus generales pour capter des besoins autour des sites web, de la refonte, des applications et de l'automatisation."
+                : locale === "en"
+                  ? "More general entry pages to capture needs around websites, redesigns, applications, and automation."
+                  : "Allgemeinere Einstiegsseiten fuer Bedarf rund um Websites, Refonte, Anwendungen und Automatisierung."}
+            </p>
           </div>
-        </section>
-      ) : null}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              {
+                title:
+                  locale === "fr" ? "Site web entreprise" : locale === "en" ? "Business website" : "Unternehmenswebsite",
+                href: "/site-web-entreprise",
+              },
+              {
+                title:
+                  locale === "fr" ? "Refonte site web" : locale === "en" ? "Website redesign" : "Website-Refonte",
+                href: "/refonte-site-web",
+              },
+              {
+                title:
+                  locale === "fr" ? "Application web sur mesure" : locale === "en" ? "Custom web app" : "Individuelle Web-App",
+                href: "/application-web-sur-mesure",
+              },
+              {
+                title:
+                  locale === "fr"
+                    ? "Automatisation IA entreprise"
+                    : locale === "en"
+                      ? "AI automation for business"
+                      : "KI-Automatisierung fuer Unternehmen",
+                href: "/automatisation-ia-entreprise",
+              },
+            ].map((page) => (
+              <div key={page.href} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                <h3 className="text-xl font-semibold text-gray-900">{page.title}</h3>
+                <p className="mt-3 text-sm text-gray-600">
+                  {locale === "fr"
+                    ? "Page d'acquisition plus universelle pour attirer des demandes qualifiees au-dela d'un territoire unique."
+                    : locale === "en"
+                      ? "A more universal acquisition page designed to attract qualified requests beyond one location."
+                      : "Allgemeinere Akquisitionsseite fuer qualifizierte Anfragen ueber einen einzelnen Standort hinaus."}
+                </p>
+                <Link
+                  href={withLocalePrefix(page.href, locale)}
+                  className="mt-5 inline-flex items-center rounded-full bg-blue-600 px-5 py-2 font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  {locale === "fr" ? "Voir la page" : locale === "en" ? "Open page" : "Seite ansehen"} <FiArrowRight className="ml-2" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white py-16">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">

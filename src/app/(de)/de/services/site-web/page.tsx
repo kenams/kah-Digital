@@ -3,7 +3,7 @@ import { ServiceDetailPageContent } from "@/components/pages/service-detail-page
 
 export const metadata: Metadata = {
   title: "Unternehmenswebsites",
-  description: "Klare Business-Websites, Corporate Sites und Praesentationsplattformen fuer Unternehmen in der Schweiz und international.",
+  description: "Klare Business-Websites, Corporate Sites und Praesentationsplattformen fuer Unternehmen in verschiedenen Maerkten.",
 };
 
 export default function SiteWebPageDe() {

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   FiCheck,
   FiClock,
@@ -26,10 +26,10 @@ const content = {
   fr: {
     "site-web": {
       heroClassName: "bg-gradient-to-r from-blue-600 to-sky-500 py-20 text-white",
-      eyebrow: "Sites vitrines, sites corporate et plateformes de présentation",
-      title: "Des sites web clairs, crédibles et utiles pour votre entreprise",
+      eyebrow: "Sites vitrines, sites corporate et plateformes de prÃ©sentation",
+      title: "Des sites web clairs, crÃ©dibles et utiles pour votre entreprise",
       body:
-        "Depuis Lausanne, KAH-Digital conçoit des sites web pour entreprises en Suisse et à l'international. L'objectif n'est pas juste d'être en ligne, mais de mieux présenter votre activité, rassurer vos clients et faciliter la prise de contact.",
+        "KAH-Digital conÃ§oit des sites web pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'Ãªtre en ligne, mais de mieux prÃ©senter votre activitÃ©, rassurer vos clients et faciliter la prise de contact.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/projets/kah-prod",
@@ -41,18 +41,18 @@ const content = {
           leftIcon: FiTrendingUp,
           leftItems: [
             "Site absent, ancien ou peu convaincant",
-            "Image de marque qui ne reflète pas le niveau réel de l'entreprise",
+            "Image de marque qui ne reflÃ¨te pas le niveau rÃ©el de l'entreprise",
             "Peu de demandes entrantes depuis le web",
-            "Contenu difficile à faire évoluer en interne",
+            "Contenu difficile Ã  faire Ã©voluer en interne",
           ],
           rightTitle: "Ce que le projet doit vraiment apporter",
           rightIcon: FiCheck,
           rightItems: [
-            "Présentation plus claire de l'offre et du positionnement",
-            "Site plus propre, rapide et plus facile à faire vivre",
+            "PrÃ©sentation plus claire de l'offre et du positionnement",
+            "Site plus propre, rapide et plus facile Ã  faire vivre",
             "Parcours de contact et de devis plus direct",
             "Paiement en ligne possible si le projet le demande",
-            "Base solide pour mieux travailler votre visibilité en ligne",
+            "Base solide pour mieux travailler votre visibilitÃ© en ligne",
           ],
         },
         {
@@ -60,46 +60,46 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Formats de projet",
           body:
-            "Des bases claires pour les budgets habituels en Suisse, avec une adaptation possible selon le niveau de contenu, de design et de fonctionnalités.",
+            "Des bases claires pour des projets web bien cadres, avec une adaptation possible selon le niveau de contenu, de design et de fonctionnalitÃ©s.",
           items: [
             {
               title: "Essentiel",
-              price: "À partir de 2'900 CHF",
+              price: "Ã€ partir de 2'900 CHF",
               points: [
-                "Site vitrine 4 à 6 pages",
+                "Site vitrine 4 Ã  6 pages",
                 "Design responsive",
                 "Formulaire de contact",
                 "Base SEO propre",
                 "Paiement simple possible en option",
                 "Mise en ligne et prise en main",
               ],
-              cta: "Échanger sur ce format",
+              cta: "Ã‰changer sur ce format",
             },
             {
               title: "Business",
-              price: "À partir de 5'500 CHF",
+              price: "Ã€ partir de 5'500 CHF",
               points: [
                 "Site corporate plus complet",
-                "Pages services structurées",
-                "CMS ou zone d'édition",
+                "Pages services structurÃ©es",
+                "CMS ou zone d'Ã©dition",
                 "Suivi analytics",
-                "Acompte, réservation ou paiement simple possible",
+                "Acompte, rÃ©servation ou paiement simple possible",
                 "Accompagnement au lancement",
               ],
-              cta: "Échanger sur ce format",
+              cta: "Ã‰changer sur ce format",
             },
             {
               title: "Sur mesure",
-              price: "À partir de 9'500 CHF",
+              price: "Ã€ partir de 9'500 CHF",
               points: [
                 "Direction plus premium",
-                "Parcours conversion travaillé",
-                "Connexions à vos outils",
-                "Fonctionnalités métier spécifiques",
+                "Parcours conversion travaillÃ©",
+                "Connexions Ã  vos outils",
+                "FonctionnalitÃ©s mÃ©tier spÃ©cifiques",
                 "Stripe Checkout ou paiement sur mesure possible",
                 "Support de lancement prioritaire",
               ],
-              cta: "Échanger sur ce format",
+              cta: "Ã‰changer sur ce format",
             },
           ],
         },
@@ -111,7 +111,7 @@ const content = {
               icon: FiMonitor,
               title: "Presentation et confiance",
               body:
-                "Une structure propre, des contenus lisibles et une image plus sérieuse pour vos clients, partenaires ou futurs recrutements.",
+                "Une structure propre, des contenus lisibles et une image plus sÃ©rieuse pour vos clients, partenaires ou futurs recrutements.",
             },
             {
               icon: FiCompass,
@@ -123,17 +123,17 @@ const content = {
               icon: FiCheck,
               title: "Base durable",
               body:
-                "Le site reste évolutif et peut servir de base à d'autres outils, contenus, campagnes ou automatisations plus tard.",
+                "Le site reste Ã©volutif et peut servir de base Ã  d'autres outils, contenus, campagnes ou automatisations plus tard.",
             },
           ],
-          timelineTitle: "Méthode de travail",
+          timelineTitle: "MÃ©thode de travail",
           timelineBody: "Un cadre simple, lisible et sans surproduction inutile.",
           timeline: [
-            { step: "01", title: "Cadrage", description: "Objectifs, structure du site, pages utiles et priorités business." },
-            { step: "02", title: "Direction", description: "Univers visuel, rythme, contenus et expérience attendue." },
-            { step: "03", title: "Production", description: "Intégration, développement, optimisation et connecteurs utiles." },
+            { step: "01", title: "Cadrage", description: "Objectifs, structure du site, pages utiles et prioritÃ©s business." },
+            { step: "02", title: "Direction", description: "Univers visuel, rythme, contenus et expÃ©rience attendue." },
+            { step: "03", title: "Production", description: "IntÃ©gration, dÃ©veloppement, optimisation et connecteurs utiles." },
             { step: "04", title: "Mise en ligne", description: "Validation, domaine, SEO de base et derniers ajustements." },
-            { step: "05", title: "Suivi", description: "Corrections, évolutions et support selon le besoin." },
+            { step: "05", title: "Suivi", description: "Corrections, Ã©volutions et support selon le besoin." },
           ],
         },
       ],
@@ -141,7 +141,7 @@ const content = {
         className: "bg-blue-600 py-16 text-white",
         title: "Besoin d'un site plus propre pour votre entreprise ?",
         body:
-          "Nous pouvons cadrer un site vitrine ou corporate solide, avec un niveau de finition adapté à votre marché, à votre rythme et à votre budget, et ajouter un paiement simple si le projet le demande.",
+          "Nous pouvons cadrer un site vitrine ou corporate solide, avec un niveau de finition adaptÃ© Ã  votre marchÃ©, Ã  votre rythme et Ã  votre budget, et ajouter un paiement simple si le projet le demande.",
         label: "Demander un devis gratuit",
       },
     },
@@ -150,7 +150,7 @@ const content = {
       eyebrow: "Applications web, outils metier et experiences mobiles",
       title: "Des applications utiles, pas des usines a gaz",
       body:
-        "KAH-Digital conçoit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activité. Depuis la Suisse, avec une logique de production simple et exploitable.",
+        "KAH-Digital conÃ§oit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activitÃ©, avec une logique de production simple et exploitable.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/contact",
@@ -161,11 +161,11 @@ const content = {
           sectionClassName: "bg-white py-16",
           title: "Cas d'usage frequents",
           body:
-            "Des projets souvent demandés par des PME, des structures en croissance ou des équipes qui veulent mieux faire circuler l'information.",
+            "Des projets souvent demandÃ©s par des PME, des structures en croissance ou des Ã©quipes qui veulent mieux faire circuler l'information.",
           items: [
             "Portails clients et extranet",
             "Tableaux de bord et reporting",
-            "Outils internes pour équipes terrain ou back-office",
+            "Outils internes pour Ã©quipes terrain ou back-office",
             "Applications de suivi, reservation ou planification",
             "Mini-CRM, back-office et espaces membres",
             "Automatisation de taches administratives ou commerciales",
@@ -183,7 +183,7 @@ const content = {
             "Outils adaptes a votre fonctionnement reel",
             "Gain de temps sur les operations repetitives",
             "Meilleure circulation de l'information",
-            "Base évolutive pour de futurs modules",
+            "Base Ã©volutive pour de futurs modules",
           ],
         },
         {
@@ -199,7 +199,7 @@ const content = {
             },
             {
               icon: FiDatabase,
-              title: "Architecture de données propre",
+              title: "Architecture de donnÃ©es propre",
               body: "Structure, droits et logique de stockage adaptes a vos usages et a votre croissance.",
             },
             {
@@ -219,25 +219,25 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Ordres de grandeur",
           body:
-            "Des bases de prix realistes pour des projets web et applicatifs en Suisse, a affiner selon le perimetre, les utilisateurs et les integrations necessaires.",
+            "Des bases de prix realistes pour des projets web et applicatifs bien cadres, a affiner selon le perimetre, les utilisateurs et les integrations necessaires.",
           items: [
             {
               title: "Application metier",
               price: "A partir de 4'500 CHF",
               description:
-                "Pour remplacer un process manuel, structurer une activité ou centraliser l'opérationnel.",
+                "Pour remplacer un process manuel, structurer une activitÃ© ou centraliser l'opÃ©rationnel.",
             },
             {
               title: "Portail ou espace client",
               price: "A partir de 7'500 CHF",
               description:
-                "Pour donner un accès utile à des documents, états, demandes ou suivis côté client.",
+                "Pour donner un accÃ¨s utile Ã  des documents, Ã©tats, demandes ou suivis cÃ´tÃ© client.",
             },
             {
               title: "Application plus complete",
               price: "A partir de 12'000 CHF",
               description:
-                "Pour un produit plus riche avec comptes, données, workflows et intégrations multiples.",
+                "Pour un produit plus riche avec comptes, donnÃ©es, workflows et intÃ©grations multiples.",
             },
           ],
         },
@@ -246,7 +246,7 @@ const content = {
         className: "bg-blue-700 py-16 text-white",
         title: "Besoin d'un outil plus adapte a votre facon de travailler ?",
         body:
-          "Nous pouvons cadrer une application claire, évolutive et utile pour vos équipes ou vos clients.",
+          "Nous pouvons cadrer une application claire, Ã©volutive et utile pour vos Ã©quipes ou vos clients.",
         label: "Obtenir un devis personnalise",
       },
     },
@@ -255,7 +255,7 @@ const content = {
       eyebrow: "Parcours support, aide virtuelle et tickets GLPI",
       title: "Un support plus simple autour de GLPI",
       body:
-        "KAH-Digital ne remplace pas votre équipe GLPI et ne vend pas une infogérance déguisée. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une création de ticket quand le besoin doit être repris proprement.",
+        "KAH-Digital ne remplace pas votre Ã©quipe GLPI et ne vend pas une infogÃ©rance dÃ©guisÃ©e. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une crÃ©ation de ticket quand le besoin doit Ãªtre repris proprement.",
       heroNote: "Solution proprietaire KAH-Digital, adaptee a votre organisation support",
       primaryHref: "/devis",
       primaryLabel: "Obtenir un devis",
@@ -273,7 +273,7 @@ const content = {
             "Une couche de parcours et d'assistance en amont de GLPI",
             "Une entree plus simple pour les utilisateurs qui ont besoin d'aide",
             "Une aide virtuelle discrete pour orienter et debloquer les demandes simples",
-            "Une création de ticket quand la reprise par le support devient nécessaire",
+            "Une crÃ©ation de ticket quand la reprise par le support devient nÃ©cessaire",
             "Une adaptation au fonctionnement de votre support existant",
           ],
         },
@@ -281,7 +281,7 @@ const content = {
           kind: "icon-grid",
           sectionClassName: "bg-gray-50 py-16",
           title: "Ce que cela apporte concretement",
-          body: "Un support plus lisible pour les utilisateurs et plus propre pour l'équipe.",
+          body: "Un support plus lisible pour les utilisateurs et plus propre pour l'Ã©quipe.",
           items: [
             {
               icon: FiClock,
@@ -296,7 +296,7 @@ const content = {
             {
               icon: FiShield,
               title: "Positionnement discret",
-              body: "La solution peut être présentée comme une aide virtuelle et un parcours support renforcé, sans surpromesse.",
+              body: "La solution peut Ãªtre prÃ©sentÃ©e comme une aide virtuelle et un parcours support renforcÃ©, sans surpromesse.",
             },
             {
               icon: FiTrendingUp,
@@ -312,12 +312,12 @@ const content = {
           body: "Des situations ou une aide en amont change vraiment l'experience support.",
           itemIcon: FiTool,
           items: [
-            "Aide utilisateur avant création de ticket",
+            "Aide utilisateur avant crÃ©ation de ticket",
             "Qualification plus propre des demandes internes",
             "Reduction des tickets repetitifs ou incomplets",
             "Point d'entree plus simple pour les PME",
             "Passage fluide vers GLPI quand le support doit reprendre",
-            "Support plus lisible pour des équipes qui veulent gagner du temps",
+            "Support plus lisible pour des Ã©quipes qui veulent gagner du temps",
           ],
         },
         {
@@ -344,13 +344,13 @@ const content = {
               title: "Connexion vers ticket GLPI",
               price: "A partir de 1'200 CHF",
               description:
-                "Passage propre de l'assistance vers la création de ticket lorsque le besoin doit être repris par l'équipe support.",
+                "Passage propre de l'assistance vers la crÃ©ation de ticket lorsque le besoin doit Ãªtre repris par l'Ã©quipe support.",
             },
             {
               title: "Suivi et ajustements",
               price: "A partir de 180 CHF/mois",
               description:
-                "Évolution du parcours, des réponses et des points de passage selon le retour terrain.",
+                "Ã‰volution du parcours, des rÃ©ponses et des points de passage selon le retour terrain.",
             },
           ],
         },
@@ -371,7 +371,7 @@ const content = {
             },
             {
               icon: FiShield,
-              title: "Nous ne remplaçons pas votre équipe GLPI",
+              title: "Nous ne remplaÃ§ons pas votre Ã©quipe GLPI",
               body: "L'exploitation GLPI reste chez vous ou chez votre prestataire. Nous intervenons en complement.",
             },
           ],
@@ -392,7 +392,7 @@ const content = {
       eyebrow: "Showcase websites, corporate sites, and presentation platforms",
       title: "Clear, credible, useful websites for companies",
       body:
-        "From Lausanne, KAH-Digital builds websites for companies in Switzerland and internationally. The goal is not just to be online, but to present the business more clearly, reassure prospects, and make contact easier.",
+        "KAH-Digital builds websites for French-speaking, English-speaking, and international companies. The goal is not just to be online, but to present the business more clearly, reassure prospects, and make contact easier.",
       primaryHref: "/devis",
       primaryLabel: "Request a quote",
       secondaryHref: "/projets/kah-prod",
@@ -422,7 +422,7 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Project formats",
           body:
-            "Clear starting points for typical Swiss budgets, adjustable depending on content, design depth, and functional scope.",
+            "Clear starting points for well-scoped website projects, adjustable depending on content, design depth, and functional scope.",
           items: [
             {
               title: "Essential",
@@ -488,7 +488,7 @@ const content = {
       eyebrow: "Web applications, business tools, and mobile experiences",
       title: "Useful applications, not overbuilt machinery",
       body:
-        "KAH-Digital builds web and mobile applications for companies that need to organise, automate, or simplify part of their activity from Switzerland, with a production logic that stays clear and usable.",
+        "KAH-Digital builds web and mobile applications for companies that need to organise, automate, or simplify part of their activity, with a production logic that stays clear and usable.",
       primaryHref: "/devis",
       primaryLabel: "Request a quote",
       secondaryHref: "/contact",
@@ -541,7 +541,7 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Budget ranges",
           body:
-            "Realistic starting points for web and application projects in Switzerland, to be refined according to scope, users, and integrations.",
+            "Realistic starting points for web and application projects, to be refined according to scope, users, and integrations.",
           items: [
             { title: "Business application", price: "From CHF 4,500", description: "To replace manual processes, structure an activity, or centralise operations." },
             { title: "Portal or client area", price: "From CHF 7,500", description: "To give access to documents, statuses, requests, or follow-up features." },
@@ -649,7 +649,7 @@ const content = {
       eyebrow: "Corporate Websites und Praesentationsplattformen",
       title: "Klare, glaubwuerdige und nuetzliche Websites fuer Unternehmen",
       body:
-        "Aus Lausanne entwickelt KAH-Digital Websites fuer Unternehmen in der Schweiz und international. Ziel ist nicht nur online zu sein, sondern das Unternehmen klarer zu praesentieren und den Kontakt zu vereinfachen.",
+        "KAH-Digital entwickelt Websites fuer frankophone, englischsprachige und internationale Unternehmen. Ziel ist nicht nur online zu sein, sondern das Unternehmen klarer zu praesentieren und den Kontakt zu vereinfachen.",
       primaryHref: "/devis",
       primaryLabel: "Projekt anfragen",
       secondaryHref: "/projets/kah-prod",
@@ -679,7 +679,7 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Projektformate",
           body:
-            "Klare Startpunkte fuer typische Schweizer Budgets, je nach Inhalt, Design-Tiefe und Funktionsumfang anpassbar.",
+            "Klare Startpunkte fuer sauber eingegrenzte Website-Projekte, je nach Inhalt, Design-Tiefe und Funktionsumfang anpassbar.",
           items: [
             {
               title: "Essential",
@@ -783,7 +783,7 @@ const content = {
           kind: "pricing",
           sectionClassName: "bg-gray-50 py-16",
           title: "Budgetrahmen",
-          body: "Realistische Startpunkte fuer Web- und Anwendungsprojekte in der Schweiz - je nach Scope, Nutzern und Integrationen.",
+          body: "Realistische Startpunkte fuer Web- und Anwendungsprojekte - je nach Scope, Nutzern und Integrationen.",
           items: [
             { title: "Business-Anwendung", price: "Ab CHF 4'500", description: "Um manuelle Prozesse zu ersetzen, eine Aktivitaet zu strukturieren oder Operationen zu zentralisieren." },
             { title: "Portal oder Kundenbereich", price: "Ab CHF 7'500", description: "Fuer Dokumente, Status, Anfragen oder Follow-up-Funktionen." },
@@ -1121,3 +1121,4 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
     </>
   );
 }
+

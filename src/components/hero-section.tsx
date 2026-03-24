@@ -10,21 +10,21 @@ export function HeroSection() {
     fr: {
       title: "sites, applications et solutions pour entreprises",
       body:
-        "Sites web, applications sur mesure et parcours support plus clairs. Depuis Lausanne, KAH-Digital accompagne les entreprises en Suisse et à l'international, du cadrage à la mise en ligne.",
+        "Sites web, applications sur mesure et parcours support plus clairs. KAH-Digital accompagne les entreprises francophones, anglophones et internationales, du cadrage à la mise en ligne.",
       primary: "Demander un devis",
       secondary: "Voir nos solutions",
     },
     en: {
       title: "websites, apps, and digital solutions for companies",
       body:
-        "Websites, custom applications, and clearer support workflows. From Lausanne, KAH-Digital helps companies in Switzerland and internationally from scoping to launch.",
+        "Websites, custom applications, and clearer support workflows. KAH-Digital works with French-speaking, English-speaking, and international companies from scoping to launch.",
       primary: "Request a quote",
       secondary: "See our services",
     },
     de: {
       title: "Websites, Apps und digitale Loesungen fuer Unternehmen",
       body:
-        "Websites, massgeschneiderte Anwendungen und klarere Support-Ablaufe. Aus Lausanne begleitet KAH-Digital Unternehmen in der Schweiz und international vom Briefing bis zum Launch.",
+        "Websites, massgeschneiderte Anwendungen und klarere Support-Ablaufe. KAH-Digital begleitet frankophone, englischsprachige und internationale Unternehmen vom Briefing bis zum Launch.",
       primary: "Projekt anfragen",
       secondary: "Leistungen ansehen",
     },

@@ -4,14 +4,14 @@ import { FAQSection } from "@/components/faq-section";
 import { HeroSection } from "@/components/hero-section";
 import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
-import { SwissTrustSection } from "@/components/swiss-trust-section";
+import { GlobalTrustSection } from "@/components/global-trust-section";
 import { TrustBar } from "@/components/trust-bar";
 import { WhyChooseSection } from "@/components/why-choose-section";
 
 export const metadata: Metadata = {
   title: "Premium websites, apps, and digital solutions",
   description:
-    "KAH-Digital builds websites, applications, and clearer support journeys. Based in Lausanne, active in Switzerland and internationally.",
+    "KAH-Digital builds websites, applications, and clearer support journeys for French-speaking, English-speaking, and international companies.",
   keywords: ["web agency", "business website", "Next.js", "landing page", "digital studio", "KAH-Digital"],
   alternates: {
     canonical: "/en",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     alternateLocale: ["fr_FR", "de_CH"],
     title: "KAH-Digital",
     description:
-      "Websites, applications, and digital solutions with a clear process for companies in Switzerland and beyond.",
+      "Websites, applications, and digital solutions with a clear process for international companies and teams.",
     url: "/en",
     siteName: "KAH-Digital",
     images: [
@@ -54,7 +54,7 @@ export default function HomePageEn() {
       <ServicesGrid />
       <WhyChooseSection />
       <ProcessSection />
-      <SwissTrustSection />
+      <GlobalTrustSection />
       <FAQSection />
       <CTASection />
     </>

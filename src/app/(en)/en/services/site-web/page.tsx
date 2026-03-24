@@ -3,7 +3,8 @@ import { ServiceDetailPageContent } from "@/components/pages/service-detail-page
 
 export const metadata: Metadata = {
   title: "Business websites",
-  description: "Showcase websites, corporate websites, and custom presentation platforms for companies in Switzerland and internationally.",
+  description:
+    "Showcase websites, corporate websites, and custom presentation platforms for French-speaking, English-speaking, and international companies.",
 };
 
 export default function SiteWebPageEn() {

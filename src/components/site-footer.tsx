@@ -17,8 +17,8 @@ export function SiteFooter() {
 
   const copy = {
     fr: {
-      subtitle: "Suisse et international",
-      body: "Solutions digitales rapides pour la Suisse et l'international. Sites web, applications et support IT.",
+      subtitle: "Francophone, anglophone, international",
+      body: "Sites web, applications et parcours support pour entreprises, equipes et offres digitales.",
       navTitle: "Navigation",
       legalTitle: "Légal",
       nav: [
@@ -39,8 +39,8 @@ export function SiteFooter() {
       homeLabel: "KAH-Digital - Accueil",
     },
     en: {
-      subtitle: "Switzerland and international",
-      body: "Digital solutions for Switzerland and international markets. Websites, applications, and support workflows.",
+      subtitle: "French-speaking, English-speaking, international",
+      body: "Websites, applications, and support workflows for companies, teams, and digital offers.",
       navTitle: "Navigation",
       legalTitle: "Legal",
       nav: [
@@ -61,8 +61,8 @@ export function SiteFooter() {
       homeLabel: "KAH-Digital - Home",
     },
     de: {
-      subtitle: "Schweiz und international",
-      body: "Digitale Loesungen fuer die Schweiz und internationale Maerkte. Websites, Anwendungen und Support-Workflows.",
+      subtitle: "Frankophon, englischsprachig, international",
+      body: "Websites, Anwendungen und Support-Workflows fuer Unternehmen, Teams und digitale Angebote.",
       navTitle: "Navigation",
       legalTitle: "Rechtliches",
       nav: [

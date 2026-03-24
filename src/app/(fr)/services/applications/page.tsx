@@ -4,7 +4,7 @@ import { ServiceDetailPageContent } from "@/components/pages/service-detail-page
 export const metadata: Metadata = {
   title: "Applications web et mobiles | KAH-Digital",
   description:
-    "Developpement d'applications web et mobiles pour entreprises en Suisse et a l'international. Outils metier, portails, automatisation et interfaces sur mesure.",
+    "Developpement d'applications web et mobiles pour entreprises francophones, anglophones et internationales. Outils metier, portails, automatisation et interfaces sur mesure.",
 };
 
 export default function ApplicationsPage() {

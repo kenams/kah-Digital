@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { ProjectsPageContent } from "@/components/pages/projects-page-content";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
 
+const projectsDescription =
+  "Websites, applications, and support solutions delivered by KAH-Digital for French-speaking, English-speaking, and international companies.";
+
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Websites, applications, and support solutions delivered by KAH-Digital from Switzerland.",
+  description: projectsDescription,
   alternates: {
     canonical: "/en/projets",
     languages: {
@@ -15,14 +18,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "Projects | KAH-Digital",
-    description: "Websites, applications, and support solutions delivered by KAH-Digital from Switzerland.",
+    description: projectsDescription,
     url: "/en/projets",
     images: [{ url: "/og-kah-digital.png", width: 1200, height: 630, alt: "KAH-Digital projects" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Projects | KAH-Digital",
-    description: "Websites, applications, and support solutions delivered by KAH-Digital from Switzerland.",
+    description: projectsDescription,
     images: ["/og-kah-digital.png"],
   },
 };

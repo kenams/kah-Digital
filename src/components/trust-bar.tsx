@@ -7,21 +7,21 @@ export function TrustBar() {
   const { locale } = useLocale();
   const trustItems = {
     fr: [
-      { icon: FiMapPin, text: "Basé à Lausanne, ouvert à l'international" },
+      { icon: FiMapPin, text: "Disponible a distance pour projets francophones et internationaux" },
       { icon: FiClock, text: "Réponse sous 24h ouvrables" },
-      { icon: FiUsers, text: "Conçu pour PME et structures en croissance" },
+      { icon: FiUsers, text: "Conçu pour PME, marques et structures en croissance" },
       { icon: FiCheckCircle, text: "Approche claire, rapide et exploitable" },
     ],
     en: [
-      { icon: FiMapPin, text: "Based in Lausanne, open internationally" },
+      { icon: FiMapPin, text: "Remote-ready for English-speaking and international projects" },
       { icon: FiClock, text: "Reply within 24 business hours" },
-      { icon: FiUsers, text: "Built for SMBs and growing teams" },
+      { icon: FiUsers, text: "Built for SMBs, brands, and growing teams" },
       { icon: FiCheckCircle, text: "Clear, fast, and actionable approach" },
     ],
     de: [
-      { icon: FiMapPin, text: "Basis in Lausanne, offen fuer international" },
+      { icon: FiMapPin, text: "Remote verfuegbar fuer internationale Projekte" },
       { icon: FiClock, text: "Antwort innerhalb von 24 Arbeitsstunden" },
-      { icon: FiUsers, text: "Fuer KMU und wachsende Strukturen gedacht" },
+      { icon: FiUsers, text: "Fuer KMU, Marken und wachsende Teams gedacht" },
       { icon: FiCheckCircle, text: "Klare, schnelle und nutzbare Arbeitsweise" },
     ],
   }[locale];

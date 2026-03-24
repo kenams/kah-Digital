@@ -14,9 +14,9 @@ export function FAQSection() {
       body: "Les points les plus utiles avant de lancer un site, une application ou un parcours support.",
       faqs: [
         {
-          question: "Travaillez-vous uniquement en Suisse ?",
+          question: "Travaillez-vous avec des clients hors de votre marche local ?",
           answer:
-            "Non. La Suisse est un marché naturel pour KAH-Digital, mais nous restons ouverts à des projets internationaux quand le cadre est bon et que le besoin est clair.",
+            "Oui. KAH-Digital peut travailler avec des clients francophones, anglophones et internationaux quand le cadre est clair, le besoin utile et la collaboration bien posee.",
         },
         {
           question: "Proposez-vous des devis personnalisés ?",
@@ -50,9 +50,9 @@ export function FAQSection() {
       body: "The most useful points to know before launching a website, an app, or a support workflow.",
       faqs: [
         {
-          question: "Do you work only in Switzerland?",
+          question: "Do you work with clients outside your local market?",
           answer:
-            "No. Switzerland is a natural market for KAH-Digital, but we stay open to international projects when the setup is right and the need is clear.",
+            "Yes. KAH-Digital can work with French-speaking, English-speaking, and international clients when the setup is clear and the project has a real need.",
         },
         {
           question: "Do you provide tailored quotes?",
@@ -86,9 +86,9 @@ export function FAQSection() {
       body: "Die nuetzlichsten Punkte vor dem Start einer Website, einer App oder eines Support-Workflows.",
       faqs: [
         {
-          question: "Arbeitet ihr nur in der Schweiz?",
+          question: "Arbeitet ihr auch mit Kunden ausserhalb eures lokalen Marktes?",
           answer:
-            "Nein. Die Schweiz ist ein natuerlicher Markt fuer KAH-Digital, aber wir bleiben offen fuer internationale Projekte, wenn Rahmen und Bedarf klar sind.",
+            "Ja. KAH-Digital kann mit frankophonen, englischsprachigen und internationalen Kunden arbeiten, wenn Rahmen und Bedarf klar sind.",
         },
         {
           question: "Erstellt ihr individuelle Angebote?",

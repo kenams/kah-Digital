@@ -14,7 +14,7 @@ const copy = {
     direct: "Contact direct",
     directTitle: "Parlons concrètement de ton besoin.",
     directBody:
-      "Nous accompagnons des clients en Suisse et à l'international, avec une organisation simple, rapide et sans friction inutile.",
+      "Nous accompagnons des clients francophones, anglophones et internationaux, avec une organisation simple, rapide et sans friction inutile.",
     canSend: "Ce que tu peux envoyer",
     canSendItems: [
       "Demande de devis ou cadrage rapide",
@@ -42,7 +42,7 @@ const copy = {
     direct: "Direct contact",
     directTitle: "Let's talk concretely about your need.",
     directBody:
-      "We work with clients in Switzerland and internationally, with a simple setup, a fast pace, and no useless friction.",
+      "We work with French-speaking, English-speaking, and international clients with a simple setup, a fast pace, and no useless friction.",
     canSend: "What you can send",
     canSendItems: [
       "Quote request or quick scoping need",
@@ -70,7 +70,7 @@ const copy = {
     direct: "Direkter Kontakt",
     directTitle: "Lass uns konkret ueber dein Vorhaben sprechen.",
     directBody:
-      "Wir begleiten Kunden in der Schweiz und international, mit einer einfachen Organisation, gutem Tempo und ohne unnoetige Reibung.",
+      "Wir begleiten frankophone, englischsprachige und internationale Kunden mit einer einfachen Organisation, gutem Tempo und ohne unnoetige Reibung.",
     canSend: "Was du schicken kannst",
     canSendItems: [
       "Projektanfrage oder schnelles Briefing",
