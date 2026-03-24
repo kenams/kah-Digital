@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { FiClock, FiFileText, FiMapPin, FiShield } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function SwissTrustSection() {
-  const { locale } = useLocale();
+  const { locale, prefix } = useLocale();
   const copy = {
     fr: {
       title: "Ancrage suisse, exécution ouverte",
@@ -105,6 +106,26 @@ export function SwissTrustSection() {
             </div>
           ))}
         </div>
+        {locale === "fr" ? (
+          <div className="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Pages locales utiles</p>
+            <div className="mt-5 flex flex-wrap justify-center gap-3">
+              {[
+                { label: "Site web a Geneve", href: "/site-web-geneve" },
+                { label: "Site web a Lausanne", href: "/site-web-lausanne" },
+                { label: "Application web en Suisse", href: "/application-web-suisse" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={prefix ? `${prefix}${item.href}` : item.href}
+                  className="rounded-full border border-slate-300 px-5 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

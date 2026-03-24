@@ -168,6 +168,41 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
         </div>
       </section>
 
+      {locale === "fr" ? (
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="mb-4 text-3xl font-bold text-gray-900">Pages locales pour la Suisse romande</h2>
+              <p className="mx-auto max-w-3xl text-lg text-gray-600">
+                Des pages ciblees pour capter des besoins autour de Lausanne, Geneve, des applications web et de
+                l'automatisation IA en Suisse.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {[
+                { title: "Site web a Geneve", href: "/site-web-geneve" },
+                { title: "Site web a Lausanne", href: "/site-web-lausanne" },
+                { title: "Application web en Suisse", href: "/application-web-suisse" },
+                { title: "Automatisation IA en Suisse", href: "/automatisation-ia-suisse" },
+              ].map((page) => (
+                <div key={page.href} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">{page.title}</h3>
+                  <p className="mt-3 text-sm text-gray-600">
+                    Requete locale orientee acquisition pour attirer des demandes qualifiees en Suisse.
+                  </p>
+                  <Link
+                    href={page.href}
+                    className="mt-5 inline-flex items-center rounded-full bg-blue-600 px-5 py-2 font-semibold text-white transition-colors hover:bg-blue-700"
+                  >
+                    Voir la page <FiArrowRight className="ml-2" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="bg-white py-16">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-3xl font-bold text-gray-900">{content.sectionTitle}</h2>
