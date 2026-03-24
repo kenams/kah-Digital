@@ -276,8 +276,9 @@ async function streamAssistantMessage(body: {
   return donePayload;
 }
 
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat("fr-CH").format(value);
+function formatBudgetNumber(value: number, locale: string) {
+  const resolvedLocale = locale === "de" ? "de-DE" : locale === "en" ? "en-US" : "fr-FR";
+  return new Intl.NumberFormat(resolvedLocale).format(value);
 }
 
 function splitStoredName(value?: string) {
@@ -483,7 +484,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         label: copy.budget,
         value:
           summary.budget_range.max > 0
-            ? `${formatCurrency(summary.budget_range.min)} - ${formatCurrency(summary.budget_range.max)} CHF`
+            ? `${formatBudgetNumber(summary.budget_range.min, locale)} - ${formatBudgetNumber(summary.budget_range.max, locale)}`
             : "n/a",
       },
       {
@@ -495,7 +496,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         value: summary.roles.join(", ") || "-",
       },
     ];
-  }, [summary, copy.budget, copy.days, copy.roles]);
+  }, [summary, copy.budget, copy.days, copy.roles, locale]);
 
   const handleSend = () => {
     if (!canSend) return;

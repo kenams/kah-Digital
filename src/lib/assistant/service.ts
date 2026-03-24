@@ -760,7 +760,7 @@ function buildFollowUpReply(session: AssistantSession, locale: Locale, nextMissi
 
 function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, humanNeeded: boolean) {
   const copy = getCopy(locale);
-  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary) : "n/a";
+  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary, locale) : "n/a";
 
   const lines =
     locale === "en"
@@ -992,13 +992,20 @@ export async function estimateResources(input: string, locale: Locale) {
   };
 }
 
-function formatBudgetRange(summary: AssistantStructuredOutput) {
+function getNumberLocale(locale: Locale) {
+  if (locale === "en") return "en-US";
+  if (locale === "de") return "de-DE";
+  return "fr-FR";
+}
+
+function formatBudgetRange(summary: AssistantStructuredOutput, locale: Locale) {
   if (!summary.budget_range.max) return "n/a";
-  return `${summary.budget_range.min.toLocaleString("fr-CH")} - ${summary.budget_range.max.toLocaleString("fr-CH")} ${pricingRules.dailyRate.currency}`;
+  const numberLocale = getNumberLocale(locale);
+  return `${summary.budget_range.min.toLocaleString(numberLocale)} - ${summary.budget_range.max.toLocaleString(numberLocale)}`;
 }
 
 function formatSummaryText(summary: AssistantStructuredOutput, locale: Locale) {
-  const budget = formatBudgetRange(summary);
+  const budget = formatBudgetRange(summary, locale);
   if (locale === "en") {
     return `Intent: ${summary.intent}
 Project type: ${summary.project_type}
@@ -1035,7 +1042,7 @@ Next step: ${summary.next_step}`;
 
 function formatAssistantBudget(summary: AssistantStructuredOutput) {
   if (summary.budget_range.max > 0) {
-    return `${summary.budget_range.min.toLocaleString("fr-CH")} - ${summary.budget_range.max.toLocaleString("fr-CH")} CHF`;
+    return `${summary.budget_range.min.toLocaleString("fr-FR")} - ${summary.budget_range.max.toLocaleString("fr-FR")}`;
   }
 
   return "A definir";
