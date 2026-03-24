@@ -25,9 +25,9 @@ const copy = {
         icon: FiGlobe,
         title: "Sites web pour entreprises",
         description:
-          "Sites vitrines, sites corporate et plateformes de présentation pour mieux positionner votre entreprise en ligne.",
+          "Sites vitrines, sites corporate et plateformes de présentation, avec paiement simple possible selon le besoin.",
         href: "/services/site-web",
-        features: ["Design responsive", "Structure claire", "SEO de base propre", "Mise en ligne accompagnée"],
+        features: ["Design responsive", "Structure claire", "SEO de base propre", "Paiement simple en option", "Mise en ligne accompagnée"],
       },
       {
         icon: FiSmartphone,

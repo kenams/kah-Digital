@@ -27,11 +27,12 @@ const copy = {
         price: "1'900 CHF",
         timeline: "3 semaines",
         summary: "Une page unique, rapide et orientée conversion pour capter des leads qualifiés.",
-        why: "Le budget couvre la stratégie de message, un design sur mesure, l'intégration du formulaire et la QA avant mise en ligne.",
+        why: "Le budget couvre la stratégie de message, un design sur mesure, l'intégration du formulaire et la QA avant mise en ligne. Un acompte Stripe ou un paiement simple peut s'ajouter si besoin.",
         includes: [
           "Workshop express + structure du message",
           "Design premium + animations légères",
           "Formulaire + tracking basique",
+          "Paiement simple en option",
           "Mise en ligne + QA",
         ],
         ideal: ["Campagne produit", "Lancement marque", "Offre premium"],

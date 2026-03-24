@@ -594,10 +594,10 @@ export function QuoteForm() {
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
-            ? "Quotes and invoices are issued in CHF. Payment is made by bank transfer, with details shared on the approved quote or invoice."
+            ? "Quotes and invoices are issued in CHF. Payment is usually made by bank transfer, with secure Stripe payment possible when the project requires it."
             : isGerman
-              ? "Angebote und Rechnungen werden in CHF erstellt. Die Zahlung erfolgt per Bankueberweisung, mit Kontodaten auf dem bestaetigten Angebot oder der Rechnung."
-              : "Les devis et factures sont émis en CHF. Le paiement se fait par virement bancaire, avec coordonnées transmises sur le devis validé ou la facture."}
+              ? "Angebote und Rechnungen werden in CHF erstellt. Die Zahlung erfolgt meist per Bankueberweisung, mit sicherem Stripe-Link wenn das Projekt es braucht."
+              : "Les devis et factures sont émis en CHF. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
         </p>
         {serverMessage && (
           <p

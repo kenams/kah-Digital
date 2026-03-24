@@ -16,7 +16,8 @@ export function ServicesGrid() {
         {
           icon: FiGlobe,
           title: "Sites web pour entreprises",
-          description: "Sites vitrines, sites corporate et présences digitales plus propres pour mieux présenter votre activité.",
+          description:
+            "Sites vitrines, sites corporate et présences digitales plus propres, avec paiement simple possible selon le besoin.",
           href: "/services/site-web",
         },
         {
