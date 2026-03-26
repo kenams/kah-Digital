@@ -7,29 +7,25 @@ type Props = {
 
 const copy = {
   fr: {
-    title: "Politique de confidentialite",
-    eyebrow: "Protection des donnees",
-    intro:
-      "KAH-Digital s'engage a proteger la confidentialite et les donnees personnelles de ses utilisateurs conformement a la loi suisse sur la protection des donnees et au RGPD lorsque celui-ci s'applique.",
+    title: "Politique de confidentialité",
+    intro: "KAH-Digital s'engage à protéger la confidentialité et les données personnelles de ses utilisateurs conformément à la Loi fédérale sur la protection des données (LPD) et au RGPD lorsque celui-ci s'applique.",
     sections: [
-      { title: "Donnees collectees", list: ["Contact : nom, prenom, email, telephone, societe", "Devis : informations de projet, budget, delais souhaites", "Donnees techniques : IP, navigateur et pages visitees via analytics anonymes"] },
-      { title: "Finalite du traitement", list: ["Repondre a vos demandes", "Fournir nos services web et produit", "Ameliorer le site et nos services", "Respecter nos obligations legales et contractuelles"] },
-      { title: "Base legale", list: ["Votre consentement explicite", "L'execution de mesures precontractuelles", "Nos interets legitimes", "Le respect d'obligations legales"] },
-      { title: "Duree de conservation", list: ["Contact : jusqu'a 3 ans apres le dernier echange", "Projet : duree de la relation contractuelle + 10 ans si necessaire", "Technique : jusqu'a 13 mois"] },
-      { title: "Partage des donnees", list: ["Sous-traitants techniques pour hebergement, emails ou outils projet", "Partenaires dans le cadre de projets", "Autorites legales en cas d'obligation"] },
-      { title: "Confidentialite des echanges projet", body: "Les informations fonctionnelles, techniques, commerciales ou organisationnelles partagees lors d'un contact, brief, demo, devis ou cadrage sont traitees comme confidentielles dans la limite de ce qui est necessaire a l'etude du projet, a l'execution d'une mission ou au respect de nos obligations." },
-      { title: "Securite", body: "Nous mettons en oeuvre des mesures techniques et organisationnelles appropriees pour proteger vos donnees contre l'acces non autorise, la perte, l'alteration ou la divulgation." },
-      { title: "Vos droits", body: `Vous disposez de droits d'acces, de rectification, d'effacement, de portabilite et d'opposition. Pour les exercer, contactez-nous a : ${companyConfig.email}` },
+      { title: "Données collectées", list: ["Contact : nom, prénom, email, téléphone, société", "Devis : informations de projet, budget, délais souhaités", "Données techniques : IP, navigateur et pages visitées via analytics anonymes"] },
+      { title: "Finalité du traitement", list: ["Répondre à vos demandes", "Fournir nos services web et produit", "Améliorer le site et nos services", "Respecter nos obligations légales et contractuelles"] },
+      { title: "Base légale", list: ["Votre consentement explicite", "L'exécution de mesures précontractuelles", "Nos intérêts légitimes", "Le respect d'obligations légales"] },
+      { title: "Durée de conservation", list: ["Contact : jusqu'à 3 ans après le dernier échange", "Projet : durée de la relation contractuelle + 10 ans si nécessaire", "Technique : jusqu'à 13 mois"] },
+      { title: "Partage des données", list: ["Sous-traitants techniques pour hébergement, emails ou outils projet", "Partenaires dans le cadre de projets", "Autorités légales en cas d'obligation"] },
+      { title: "Confidentialité des échanges projet", body: "Les informations fonctionnelles, techniques, commerciales ou organisationnelles partagées lors d'un contact, brief, démo, devis ou cadrage sont traitées comme confidentielles dans la limite de ce qui est nécessaire à l'étude du projet, à l'exécution d'une mission ou au respect de nos obligations." },
+      { title: "Sécurité", body: "Nous mettons en oeuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre l'accès non autorisé, la perte, l'altération ou la divulgation." },
+      { title: "Vos droits", body: `Vous disposez de droits d'accès, de rectification, d'effacement, de portabilité et d'opposition. Pour les exercer, contactez-nous à : ${companyConfig.email}` },
       { title: "Cookies", body: "Notre site n'utilise pas de cookies publicitaires ou marketing. Nous pouvons utiliser des cookies techniques essentiels au fonctionnement du site et des formulaires." },
       { title: "Contact", body: `Pour toute question sur cette politique : ${companyConfig.email}, ${companyConfig.address}, ${companyConfig.city}, ${companyConfig.country}.` },
-      { title: "Modifications", body: "Cette politique peut etre mise a jour. La version actuelle est toujours disponible sur cette page." },
+      { title: "Modifications", body: "Cette politique peut être mise à jour. La version actuelle est toujours disponible sur cette page." },
     ],
-    updatedAt: "Derniere mise a jour",
-    introLabel: "Introduction",
+    updatedAt: "Dernière mise à jour",
   },
   en: {
     title: "Privacy policy",
-    eyebrow: "Data protection",
     intro: "KAH-Digital is committed to protecting the privacy and personal data of its users in line with Swiss data protection law and GDPR where applicable.",
     sections: [
       { title: "Collected data", list: ["Contact: first name, last name, email, phone, company", "Quote forms: project information, budget, preferred timeline", "Technical data: IP address, browser, and visited pages through privacy-friendly analytics"] },
@@ -45,11 +41,9 @@ const copy = {
       { title: "Changes", body: "This policy may be updated. The latest version is always available on this page." },
     ],
     updatedAt: "Last update",
-    introLabel: "Introduction",
   },
   de: {
     title: "Datenschutzerklaerung",
-    eyebrow: "Datenschutz",
     intro: "KAH-Digital verpflichtet sich zum Schutz der Privatsphaere und der personenbezogenen Daten seiner Nutzer gemaess Schweizer Datenschutzrecht und, soweit anwendbar, der DSGVO.",
     sections: [
       { title: "Erhobene Daten", list: ["Kontakt: Vorname, Nachname, E-Mail, Telefon, Unternehmen", "Anfrageformulare: Projektinformationen, Budget und gewuenschter Zeitrahmen", "Technische Daten: IP-Adresse, Browser und besuchte Seiten ueber datenschutzfreundliche Analytics"] },
@@ -65,7 +59,6 @@ const copy = {
       { title: "Aenderungen", body: "Diese Richtlinie kann aktualisiert werden. Die jeweils aktuelle Version steht immer auf dieser Seite." },
     ],
     updatedAt: "Letzte Aktualisierung",
-    introLabel: "Einleitung",
   },
 } as const;
 
@@ -73,55 +66,32 @@ export function PrivacyPolicyPageContent({ locale }: Props) {
   const content = copy[locale];
 
   return (
-    <>
-      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
-          <div className="relative text-white">
-            <p className="text-sm uppercase tracking-[0.35em] text-white/52">{content.eyebrow}</p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl lg:text-6xl">{content.title}</h1>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.intro}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="space-y-6">
-          <section className="premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">{content.introLabel}</h2>
-            <p className="mt-4 leading-8 text-white/72">{content.intro}</p>
+    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="rounded-lg bg-white p-8 shadow-lg">
+        <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">{content.title}</h1>
+        <div className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-2xl font-semibold text-gray-900">{locale === "en" ? "Introduction" : locale === "de" ? "Einleitung" : "Introduction"}</h2>
+            <p className="text-gray-700">{content.intro}</p>
           </section>
-          {content.sections.map((section, index) => (
-            <section
-              key={section.title}
-              className={`rounded-[32px] border border-white/10 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8 ${
-                index % 2 === 0
-                  ? "accent-section"
-                  : "premium-card bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))]"
-              }`}
-            >
-              <div className={index % 2 === 0 ? "content" : ""}>
-                <h2 className="text-2xl font-semibold text-white sm:text-3xl">{section.title}</h2>
-                {"body" in section && section.body ? <p className="mt-4 leading-8 text-white/72">{section.body}</p> : null}
-                {"list" in section && section.list ? (
-                  <ul className="mt-5 space-y-3 text-white/72">
-                    {section.list.map((item) => (
-                      <li key={item} className="flex gap-3">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </div>
+          {content.sections.map((section) => (
+            <section key={section.title}>
+              <h2 className="mb-4 text-2xl font-semibold text-gray-900">{section.title}</h2>
+              {"body" in section && section.body ? <p className="text-gray-700">{section.body}</p> : null}
+              {"list" in section && section.list ? (
+                <ul className="ml-4 mt-4 list-disc space-y-2 text-gray-700">
+                  {section.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
             </section>
           ))}
+          <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
+            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
+          </div>
         </div>
-
-        <div className="mt-10 text-center text-sm text-white/45">
-          {content.updatedAt}: {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
-        </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }

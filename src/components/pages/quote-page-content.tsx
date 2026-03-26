@@ -8,52 +8,49 @@ type QuotePageContentProps = {
 
 const copy = {
   fr: {
-    heroTitle: "Demande de devis claire, rapide, exploitable.",
-    heroBody:
-      "Le but n'est pas d'envoyer une demande vague. Ce formulaire sert a cadrer ton besoin pour recevoir un retour utile sur budget, delai, niveau de complexite et piste recommandee.",
+    heroTitle: "Demande de devis gratuit",
+    heroBody: "Remplissez ce formulaire et recevez un retour clair avec budget, délai et recommandations.",
     eyebrow: "Devis express",
-    title: "Decris ton projet proprement, on te repond avec une vraie direction.",
-    body: "Tu peux t'en servir pour un site premium, une refonte, un assistant IA, un outil metier ou une combinaison plus utile.",
+    title: "Décris ton projet clairement, on te répond vite.",
+    body: "Budget, délai, recommandations et cadrage initial dans un format simple à relire.",
     cards: [
-      { eyebrow: "Budget", body: "Tous les montants sont emis en CHF." },
-      { eyebrow: "Paiement", body: "Virement bancaire par defaut, Stripe si le projet le demande." },
-      { eyebrow: "Retour", body: "Reponse rapide avec niveau de complexite, pas seulement un prix." },
+      { eyebrow: "Devise", body: "Tous les montants sont émis en CHF." },
+      { eyebrow: "Paiement", body: "Règlement par virement bancaire." },
+      { eyebrow: "Coordonnées", body: "Transmises sur devis validé ou facture finale." },
     ],
-    previewEyebrow: "Apercu",
-    previewTitle: "Le type de devis que tu peux recevoir",
-    previewBody: "Un format plus lisible, plus defendable et plus facile a partager en interne.",
+    previewEyebrow: "Aperçu",
+    previewTitle: "Exemple de devis KAH-Digital",
+    previewBody: "Un format plus clair, plus professionnel et plus facile à lire sur desktop comme sur mobile.",
   },
   en: {
-    heroTitle: "A quote request that is clear, fast, and usable.",
-    heroBody:
-      "The point is not to send a vague request. This form helps frame your need so you get a useful reply on budget, timeline, complexity level, and the recommended direction.",
+    heroTitle: "Free quote request",
+    heroBody: "Fill in the form and receive a clear reply with budget, timeline, and recommendations.",
     eyebrow: "Quick quote",
-    title: "Describe the project properly, we answer with a real direction.",
-    body: "You can use it for a premium website, redesign, AI assistant, business tool, or a more useful combination.",
+    title: "Describe your project clearly, we reply fast.",
+    body: "Budget, timeline, recommendations, and initial scoping in a simple format you can review easily.",
     cards: [
-      { eyebrow: "Budget", body: "All amounts are issued in CHF." },
-      { eyebrow: "Payment", body: "Bank transfer by default, Stripe when the project needs it." },
-      { eyebrow: "Reply", body: "Fast answer with complexity level, not just a price tag." },
+      { eyebrow: "Currency", body: "All amounts are issued in CHF." },
+      { eyebrow: "Payment", body: "Payment by bank transfer." },
+      { eyebrow: "Details", body: "Shared on approved quote or final invoice." },
     ],
     previewEyebrow: "Preview",
-    previewTitle: "The kind of quote you can receive",
-    previewBody: "A clearer, more defensible format that stays easy to share internally.",
+    previewTitle: "KAH-Digital quote example",
+    previewBody: "A clearer, more professional format that stays easy to read on desktop and mobile.",
   },
   de: {
-    heroTitle: "Eine Projektanfrage, die klar, schnell und nutzbar ist.",
-    heroBody:
-      "Es geht nicht darum, eine vage Anfrage zu senden. Dieses Formular hilft, den Bedarf sauber zu rahmen, damit du eine nutzbare Rueckmeldung zu Budget, Timing, Komplexitaet und empfohlener Richtung bekommst.",
+    heroTitle: "Kostenlose Projektanfrage",
+    heroBody: "Fuelle dieses Formular aus und erhalte eine klare Rueckmeldung mit Budget, Timing und Empfehlungen.",
     eyebrow: "Schnelle Anfrage",
-    title: "Beschreibe das Projekt sauber, wir antworten mit einer echten Richtung.",
-    body: "Du kannst es fuer eine Premium-Website, ein Redesign, einen KI-Assistenten, ein Business-Tool oder eine sinnvollere Kombination nutzen.",
+    title: "Beschreibe dein Projekt klar, wir antworten schnell.",
+    body: "Budget, Timing, Empfehlungen und ein erstes Briefing in einem einfachen Format zum Nachlesen.",
     cards: [
-      { eyebrow: "Budget", body: "Alle Betraege werden in CHF ausgewiesen." },
-      { eyebrow: "Zahlung", body: "Standardmaessig Bankueberweisung, Stripe wenn das Projekt es braucht." },
-      { eyebrow: "Rueckmeldung", body: "Schnelle Antwort mit Komplexitaetseinschaetzung statt nur einem Preis." },
+      { eyebrow: "Waehrung", body: "Alle Betraege werden in CHF ausgewiesen." },
+      { eyebrow: "Zahlung", body: "Zahlung per Bankueberweisung." },
+      { eyebrow: "Kontaktdaten", body: "Werden auf dem bestaetigten Angebot oder der Schlussrechnung uebermittelt." },
     ],
     previewEyebrow: "Vorschau",
-    previewTitle: "Welche Art Offerte du erhalten kannst",
-    previewBody: "Ein lesbareres, besser verteidigbares Format, das sich intern leichter teilen laesst.",
+    previewTitle: "Beispiel einer KAH-Digital-Offerte",
+    previewBody: "Ein klareres, professionelleres Format, das auf Desktop und Mobile gut lesbar bleibt.",
   },
 } as const;
 
@@ -62,48 +59,40 @@ export function QuotePageContent({ locale }: QuotePageContentProps) {
 
   return (
     <>
-      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(214,179,106,0.16),transparent_28%),radial-gradient(circle_at_84%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
-          <div className="relative grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-end">
-            <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-white/55">{content.eyebrow}</p>
-              <h1 className="mt-5 max-w-4xl text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">{content.heroTitle}</h1>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.heroBody}</p>
-            </div>
-            <div className="grid gap-3">
-              {content.cards.map((card, index) => (
-                <div key={card.eyebrow} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
-                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">0{index + 1} / {card.eyebrow}</p>
-                  <p className="mt-3 text-sm leading-7">{card.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 text-white">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-6 text-4xl font-bold sm:text-5xl">{content.heroTitle}</h1>
+          <p className="text-xl">{content.heroBody}</p>
         </div>
       </section>
 
-      <section className="section-shell">
-        <div className="mx-auto max-w-5xl text-center text-white">
-          <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.eyebrow}</p>
-          <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">{content.title}</h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">{content.body}</p>
-        </div>
-        <div className="mt-8">
+      <section className="bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.2),transparent_40%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center text-white">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/60">{content.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{content.title}</h2>
+            <p className="mt-4 text-base text-white/70 sm:text-lg">{content.body}</p>
+          </div>
           <QuoteForm />
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {content.cards.map((card) => (
+              <div key={card.eyebrow} className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/50">{card.eyebrow}</p>
+                <p className="mt-3 text-lg font-semibold text-white">{card.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-shell">
-        <div className="accent-section">
-          <div className="content px-6 py-10 sm:px-8">
-            <div className="mx-auto mb-10 max-w-3xl text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.previewEyebrow}</p>
-              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{content.previewTitle}</h2>
-              <p className="mt-4 text-base leading-7 text-white/68 sm:text-lg">{content.previewBody}</p>
-            </div>
-            <QuotePreview />
+      <section className="bg-slate-100 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{content.previewEyebrow}</p>
+            <h2 className="mb-4 mt-3 text-3xl font-bold text-slate-900">{content.previewTitle}</h2>
+            <p className="text-lg text-slate-600">{content.previewBody}</p>
           </div>
+          <QuotePreview />
         </div>
       </section>
     </>

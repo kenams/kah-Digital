@@ -1,104 +1,86 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowRight, FiGlobe, FiMessageSquare, FiTool } from "react-icons/fi";
+import { FiArrowRight, FiGlobe, FiSmartphone, FiTool } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function ServicesGrid() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      title: "3 leviers clairs pour comprendre KAH-Digital en quelques secondes",
+      title: "Nos services",
       body:
-        "La home doit se lire vite. KAH-Digital s'organise donc autour de trois missions simples a comprendre, a expliquer et a vendre.",
-      cta: "Voir le cadre",
+        "Trois axes simples : mieux présenter votre entreprise, mieux structurer un outil, ou mieux fluidifier un support.",
+      cta: "En savoir plus",
       items: [
         {
           icon: FiGlobe,
-          stage: "01 Capter",
-          title: "Site premium et pages d'acquisition",
+          title: "Sites web pour entreprises",
           description:
-            "Pour rendre l'offre plus lisible, inspirer confiance des la premiere seconde et transformer plus de visites en demandes utiles.",
-          chips: ["Site vitrine", "Landing page", "SEO propre", "Parcours de conversion"],
+            "Sites vitrines, sites corporate et présences digitales plus propres, avec paiement simple possible selon le besoin.",
           href: "/services/site-web",
         },
         {
-          icon: FiMessageSquare,
-          stage: "02 Automatiser",
-          title: "Assistant IA et support intelligent",
-          description: "Pour absorber les questions repetitives, qualifier les demandes et garder un passage propre vers l'humain.",
-          chips: ["Assistant IA", "Qualification", "FAQ vivante", "Routage support"],
-          href: "/automatisation-ia-entreprise",
+          icon: FiSmartphone,
+          title: "Applications web et mobiles",
+          description: "Outils métier, portails, tableaux de bord et expériences sur mesure adaptés à votre fonctionnement.",
+          href: "/services/applications",
         },
         {
           icon: FiTool,
-          stage: "03 Operer",
-          title: "Portail client, outil metier, workflow",
-          description: "Pour remplacer les allers-retours manuels par un systeme plus propre, plus rapide et plus simple a suivre.",
-          chips: ["Portail prive", "Dashboard", "GLPI", "Automatisation metier"],
-          href: "/services/applications",
+          title: "Parcours support connecté à GLPI",
+          description: "Aide virtuelle, orientation des demandes et passage vers ticket quand le support humain doit reprendre.",
+          href: "/services/glpi",
         },
       ],
     },
     en: {
-      title: "3 clear levers to understand KAH-Digital in seconds",
-      body: "The homepage should be understood quickly. KAH-Digital is therefore built around three missions that are easy to grasp, explain, and sell.",
-      cta: "See the frame",
+      title: "Our services",
+      body: "Three simple directions: present your company better, structure a tool better, or make support flows smoother.",
+      cta: "Learn more",
       items: [
         {
           icon: FiGlobe,
-          stage: "01 Capture",
-          title: "Premium website and acquisition pages",
-          description: "To make the offer clearer, build trust faster, and turn more visits into qualified requests.",
-          chips: ["Showcase site", "Landing page", "Clean SEO", "Conversion path"],
+          title: "Business websites",
+          description: "Showcase sites, corporate websites, and cleaner digital presences to present your business more clearly.",
           href: "/services/site-web",
         },
         {
-          icon: FiMessageSquare,
-          stage: "02 Automate",
-          title: "AI assistant and smart support",
-          description: "To absorb repetitive questions, qualify requests, and keep a clean path to a human when needed.",
-          chips: ["AI assistant", "Qualification", "Living FAQ", "Support routing"],
-          href: "/automatisation-ia-entreprise",
+          icon: FiSmartphone,
+          title: "Web and mobile apps",
+          description: "Business tools, portals, dashboards, and custom experiences adapted to the way your team works.",
+          href: "/services/applications",
         },
         {
           icon: FiTool,
-          stage: "03 Operate",
-          title: "Client portal, business tool, workflow",
-          description: "To replace manual back-and-forth with a cleaner system that is easier to run and easier to monitor.",
-          chips: ["Private portal", "Dashboard", "GLPI", "Business automation"],
-          href: "/services/applications",
+          title: "GLPI-connected support flow",
+          description: "Virtual help, request routing, and clean ticket handoff when human support needs to step in.",
+          href: "/services/glpi",
         },
       ],
     },
     de: {
-      title: "3 klare Hebel, um KAH-Digital in wenigen Sekunden zu verstehen",
-      body: "Die Startseite soll schnell verstanden werden. Darum organisiert sich KAH-Digital um drei Missionen, die klar, erklaerbar und verkaufsstark sind.",
-      cta: "Rahmen ansehen",
+      title: "Unsere Leistungen",
+      body: "Drei klare Richtungen: das Unternehmen besser praesentieren, ein Tool besser strukturieren oder Support sauberer machen.",
+      cta: "Mehr erfahren",
       items: [
         {
           icon: FiGlobe,
-          stage: "01 Erfassen",
-          title: "Premium-Website und Akquise-Seiten",
-          description: "Um das Angebot klarer zu machen, schneller Vertrauen aufzubauen und mehr qualifizierte Anfragen zu erzeugen.",
-          chips: ["Unternehmenswebsite", "Landingpage", "Sauberes SEO", "Conversion-Pfad"],
+          title: "Unternehmenswebsites",
+          description: "Praesentationsseiten, Corporate Sites und saubere digitale Auftritte, um eure Aktivitaet klarer zu zeigen.",
           href: "/services/site-web",
         },
         {
-          icon: FiMessageSquare,
-          stage: "02 Automatisieren",
-          title: "KI-Assistent und smarter Support",
-          description: "Um repetitive Fragen zu absorbieren, Anfragen zu qualifizieren und Menschen sauber einzubinden.",
-          chips: ["KI-Assistent", "Qualifizierung", "Dynamische FAQ", "Support-Routing"],
-          href: "/automatisation-ia-entreprise",
+          icon: FiSmartphone,
+          title: "Web- und Mobile-Anwendungen",
+          description: "Business-Tools, Portale, Dashboards und massgeschneiderte Erlebnisse passend zu euren Prozessen.",
+          href: "/services/applications",
         },
         {
           icon: FiTool,
-          stage: "03 Umsetzen",
-          title: "Kundenportal, Business-Tool, Workflow",
-          description: "Um manuelle Schleifen durch ein saubereres System zu ersetzen, das einfacher laeuft und leichter steuerbar ist.",
-          chips: ["Privates Portal", "Dashboard", "GLPI", "Business-Automatisierung"],
-          href: "/services/applications",
+          title: "GLPI-verbundener Support-Flow",
+          description: "Virtuelle Hilfe, Routing von Anfragen und saubere Uebergabe an Tickets, wenn Support uebernehmen muss.",
+          href: "/services/glpi",
         },
       ],
     },
@@ -107,41 +89,24 @@ export function ServicesGrid() {
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
-    <section className="section-shell">
-      <div className="mb-10 text-center">
-        <p className="text-sm uppercase tracking-[0.35em] text-white/50">Offer map</p>
-        <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{copy.title}</h2>
-        <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">{copy.body}</p>
-      </div>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {copy.items.map((service) => (
-          <div
-            key={service.title}
-            className="premium-card group rounded-[28px] border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6 text-white shadow-[0_25px_70px_rgba(0,0,0,0.35)]"
-          >
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/6 text-[#f3ddb0]">
-                <service.icon size={22} />
-              </div>
-              <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[0.68rem] uppercase tracking-[0.28em] text-white/45">
-                {service.stage}
-              </span>
+    <section className="bg-gray-50 py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
+          <p className="mx-auto max-w-3xl text-xl text-gray-600">{copy.body}</p>
+        </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {copy.items.map((service) => (
+            <div key={service.title} className="rounded-lg bg-white p-6 shadow-lg transition-shadow hover:shadow-xl">
+              <service.icon className="mb-4 text-blue-600" size={48} />
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">{service.title}</h3>
+              <p className="mb-4 text-gray-600">{service.description}</p>
+              <Link href={withPrefix(service.href)} className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-800">
+                {copy.cta} <FiArrowRight className="ml-2" />
+              </Link>
             </div>
-            <h3 className="mt-6 text-2xl font-semibold text-white">{service.title}</h3>
-            <p className="mt-4 text-sm leading-7 text-white/70">{service.description}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {service.chips.map((chip) => (
-                <span key={chip} className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.22em] text-white/58">
-                  {chip}
-                </span>
-              ))}
-            </div>
-            <Link href={withPrefix(service.href)} className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#f3ddb0] transition group-hover:text-white">
-              {copy.cta}
-              <FiArrowRight className="transition group-hover:translate-x-1" />
-            </Link>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

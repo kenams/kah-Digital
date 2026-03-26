@@ -1,0 +1,185 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import type { QuoteRecord } from "@/lib/quote";
+
+const feasibilityOptions = [
+  { value: "pending", label: "À qualifier" },
+  { value: "feasible", label: "Faisable" },
+  { value: "blocked", label: "Non faisable" },
+] as const;
+
+const depositOptions = [
+  { value: "none", label: "Non défini" },
+  { value: "deposit", label: "Acompte validé" },
+  { value: "servers", label: "Serveurs / outils réglés" },
+] as const;
+
+type ItemStatus = {
+  feasibility: (typeof feasibilityOptions)[number]["value"];
+  deposit: (typeof depositOptions)[number]["value"];
+};
+
+const feasibilityBadges: Record<ItemStatus["feasibility"], string> = {
+  pending: "bg-amber-100/15 text-amber-200 border border-amber-200/30",
+  feasible: "bg-emerald-100/15 text-emerald-200 border border-emerald-200/30",
+  blocked: "bg-rose-100/15 text-rose-200 border border-rose-200/30",
+};
+
+export default function AdminDemandesPage() {
+  const [items, setItems] = useState<QuoteRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [statusMap, setStatusMap] = useState<Record<string, ItemStatus>>({});
+
+  useEffect(() => {
+    let ignore = false;
+    async function load() {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/quote", { cache: "no-store" });
+        const data = await response.json();
+        if (!ignore) {
+          setItems(data.items ?? []);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+    load();
+    const interval = setInterval(load, 10000);
+    return () => {
+      ignore = true;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const resolvedStatus = useMemo(() => {
+    const record: Record<string, ItemStatus> = { ...statusMap };
+    items.forEach((item) => {
+      const key = item.submittedAt;
+      if (!record[key]) {
+        record[key] = { feasibility: "pending", deposit: "none" };
+      }
+    });
+    return record;
+  }, [items, statusMap]);
+
+  const updateStatus = (id: string, patch: Partial<ItemStatus>) => {
+    setStatusMap((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
+  };
+
+  return (
+    <div className="section-shell space-y-10">
+      <div className="space-y-2">
+        <p className="text-sm uppercase tracking-[0.3em] text-white/60">Admin</p>
+        <h1 className="text-4xl font-semibold text-white">Demandes reçues</h1>
+        <p className="text-white/70 max-w-3xl">
+          Vue d’ensemble des demandes (devis classique + configurateur). Les statuts ci-dessous sont locaux à cette session pour
+          faciliter le tri rapide avant de pousser vers Notion/CRM.
+        </p>
+      </div>
+      {loading && <p className="text-white/60">Chargement…</p>}
+      {!loading && items.length === 0 && (
+        <div className="rounded-3xl border border-dashed border-white/20 bg-black/20 p-6 text-white/70">
+          Aucune demande pour le moment.
+        </div>
+      )}
+      <div className="space-y-4">
+        {items.map((item) => {
+          const status = resolvedStatus[item.submittedAt];
+          return (
+            <div
+              key={item.submittedAt}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+            >
+              <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-white/60">{new Date(item.submittedAt).toLocaleString()}</p>
+                  <h2 className="text-2xl font-semibold">{item.name}</h2>
+                  <p className="text-white/70">{item.projectType} · {item.clientType ?? "—"}</p>
+                </div>
+                <div className="text-sm text-white/70">
+                  <p>{item.email}</p>
+                  {item.phone && <p>{item.phone}</p>}
+                </div>
+              </div>
+              <div className="mt-4 grid gap-4 md:grid-cols-3">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Budget</p>
+                  <p>{item.budget}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Délai</p>
+                  <p>{item.timeline}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Entreprise</p>
+                  <p>{item.companyName ?? "-"}</p>
+                </div>
+              </div>
+              {item.configurator && (
+                <div className="mt-4 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Configurateur</p>
+                  <p>Type : {item.configurator.siteType ?? "-"}</p>
+                  <p>Vision : {item.configurator.strategy ?? "-"}</p>
+                  <p>Style : {item.configurator.mood ?? "-"}</p>
+                  <p>Options : {item.configurator.features?.join(", ") || "-"}</p>
+                  <p>Intégrations : {item.configurator.integrations?.join(", ") || "-"}</p>
+                </div>
+              )}
+              {item.projectFocus === "mobile" && (
+                <div className="mt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0c0f2c] to-[#1f1244] p-4 text-sm text-white/80">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">MVP mobile</p>
+                  <p>Plateformes : {item.mobilePlatforms?.length ? item.mobilePlatforms.join(", ") : "-"}</p>
+                  <p>Fonctionnalités : {item.mobileFeatures?.length ? item.mobileFeatures.join(", ") : "-"}</p>
+                  <p>Stores : {item.storeSupport ?? "-"}</p>
+                  <p>Stack / APIs : {item.techPreferences ?? "-"}</p>
+                </div>
+              )}
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div>
+                  <label className="text-xs uppercase tracking-[0.3em] text-white/60">Faisabilité</label>
+                  <select
+                    value={status?.feasibility}
+                    onChange={(event) => updateStatus(item.submittedAt, { feasibility: event.target.value as ItemStatus["feasibility"] })}
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white"
+                  >
+                    {feasibilityOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs uppercase tracking-[0.3em] text-white/60">Avance / serveurs</label>
+                  <select
+                    value={status?.deposit}
+                    onChange={(event) => updateStatus(item.submittedAt, { deposit: event.target.value as ItemStatus["deposit"] })}
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white"
+                  >
+                    {depositOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              {item.message && (
+                <div className="mt-4 text-sm text-white/80">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Message</p>
+                  <p className="mt-1 whitespace-pre-line">{item.message}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

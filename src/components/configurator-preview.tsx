@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import type { MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import type { Locale } from "@/lib/locales";
 import type { ConfigSummary } from "@/types/configurator";
 
 type ConfiguratorPreviewProps = {
@@ -12,7 +11,6 @@ type ConfiguratorPreviewProps = {
   integrations: string[];
   aiModules: string[];
   ready: boolean;
-  locale?: Locale;
 };
 
 type LayoutKind = "vitrine" | "blog" | "shop" | "saas" | "event" | "portal";
@@ -94,90 +92,21 @@ const pickPalette = (moodLabel: string): Palette => {
   };
 };
 
-export function ConfiguratorPreview({
-  summary,
-  features,
-  integrations,
-  aiModules,
-  ready,
-  locale = "fr",
-}: ConfiguratorPreviewProps) {
+export function ConfiguratorPreview({ summary, features, integrations, aiModules, ready }: ConfiguratorPreviewProps) {
   const [copied, setCopied] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const copy = {
-    fr: {
-      kicker: "Apercu configurateur",
-      title: "Brief pret a partager",
-      readyBody: "Tu peux le copier dans Notion, Slack ou le formulaire de devis.",
-      pendingBody: "Complete les etapes pour activer l'apercu complet.",
-      visualLabel: "Apercu visuel",
-      imageLabel: "Apercu dynamique du configurateur",
-      none: "Aucune option selectionnee.",
-      type: "Type",
-      vision: "Vision",
-      style: "Style",
-      features: "Fonctionnalites",
-      integrations: "Integrations",
-      aiModules: "Modules IA",
-      summary: "Resume",
-      copy: "Copier le brief",
-      copied: "Copie",
-      complete: "Brief complet",
-      waiting: "En attente de selection",
-    },
-    en: {
-      kicker: "Configurator preview",
-      title: "Brief ready to share",
-      readyBody: "You can paste it into Notion, Slack, or the quote form.",
-      pendingBody: "Complete the steps to unlock the full preview.",
-      visualLabel: "Visual preview",
-      imageLabel: "Dynamic configurator preview",
-      none: "No option selected yet.",
-      type: "Type",
-      vision: "Vision",
-      style: "Style",
-      features: "Features",
-      integrations: "Integrations",
-      aiModules: "AI modules",
-      summary: "Summary",
-      copy: "Copy the brief",
-      copied: "Copied",
-      complete: "Brief complete",
-      waiting: "Waiting for selection",
-    },
-    de: {
-      kicker: "Konfigurator-Vorschau",
-      title: "Briefing zum Teilen bereit",
-      readyBody: "Du kannst es in Notion, Slack oder in das Angebotsformular kopieren.",
-      pendingBody: "Schliesse die Schritte ab, um die volle Vorschau zu aktivieren.",
-      visualLabel: "Visuelle Vorschau",
-      imageLabel: "Dynamische Konfigurator-Vorschau",
-      none: "Noch keine Option ausgewaehlt.",
-      type: "Typ",
-      vision: "Vision",
-      style: "Stil",
-      features: "Funktionen",
-      integrations: "Integrationen",
-      aiModules: "KI-Module",
-      summary: "Zusammenfassung",
-      copy: "Briefing kopieren",
-      copied: "Kopiert",
-      complete: "Briefing komplett",
-      waiting: "Warten auf Auswahl",
-    },
-  }[locale];
 
   const shareText = useMemo(() => {
     const lines = [
-      `${copy.type}: ${summary.type}`,
-      `${copy.vision}: ${summary.strategy}`,
-      `${copy.style}: ${summary.mood}`,
-      `${copy.features}: ${features.length ? features.join(", ") : copy.none}`,
-      `${copy.integrations}: ${integrations.length ? integrations.join(", ") : copy.none}`,
-      `${copy.aiModules}: ${aiModules.length ? aiModules.join(", ") : copy.none}`,
+      `Type: ${summary.type}`,
+      `Vision: ${summary.strategy}`,
+      `Style: ${summary.mood}`,
+      `Fonctionnalités: ${features.length ? features.join(", ") : "Aucune"}`,
+      `Intégrations: ${integrations.length ? integrations.join(", ") : "Aucune"}`,
+      `Modules IA: ${aiModules.length ? aiModules.join(", ") : "Aucun"}`,
     ];
     return lines.join("\n");
-  }, [aiModules, copy.aiModules, copy.features, copy.integrations, copy.none, copy.style, copy.type, copy.vision, features, integrations, summary]);
+  }, [summary, features, integrations, aiModules]);
 
   const layout = useMemo(() => detectLayout(summary.type), [summary.type]);
   const palette = useMemo(() => pickPalette(summary.mood), [summary.mood]);
@@ -243,7 +172,7 @@ export function ConfiguratorPreview({
 
   const list = (items: string[]) =>
     items.length === 0 ? (
-      <p className="text-sm text-white/50">{copy.none}</p>
+      <p className="text-sm text-white/50">Aucune option sélectionnée.</p>
     ) : (
       <ul className="mt-3 space-y-2 text-white/80">
         {items.map((value) => (
@@ -258,15 +187,21 @@ export function ConfiguratorPreview({
   return (
     <div className="premium-card rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-6 text-white shadow-[0_25px_70px_rgba(0,0,0,0.45)]">
       <div className="flex flex-col gap-2">
-        <p className="text-xs uppercase tracking-[0.4em] text-white/60">{copy.kicker}</p>
-        <h3 className="text-2xl font-semibold">{copy.title}</h3>
-        <p className="text-sm text-white/70">{ready ? copy.readyBody : copy.pendingBody}</p>
+        <p className="text-xs uppercase tracking-[0.4em] text-white/60">Aperçu configurateur</p>
+        <h3 className="text-2xl font-semibold">Brief prêt à partager</h3>
+        <p className="text-sm text-white/70">
+          {ready
+            ? "Tu peux le copier/coller dans Notion, Slack ou le formulaire de devis."
+            : "Complète les étapes pour activer l'aperçu complet."}
+        </p>
       </div>
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
         <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
-          <span>{copy.visualLabel}</span>
-          <span className="rounded-full border border-white/20 px-3 py-1 text-[0.6rem] text-white/70">{summary.type}</span>
+          <span>Aperçu visuel</span>
+          <span className="rounded-full border border-white/20 px-3 py-1 text-[0.6rem] text-white/70">
+            {summary.type}
+          </span>
         </div>
         <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-3">
           <div
@@ -276,12 +211,15 @@ export function ConfiguratorPreview({
             onMouseEnter={handleEnter}
             style={{ perspective: "900px" }}
           >
-            <motion.div className="h-full w-full" style={{ rotateX: tiltXS, rotateY: tiltYS, transformStyle: "preserve-3d" }}>
+            <motion.div
+              className="h-full w-full"
+              style={{ rotateX: tiltXS, rotateY: tiltYS, transformStyle: "preserve-3d" }}
+            >
               <motion.svg
                 viewBox="0 0 640 400"
                 className="h-full w-full"
                 role="img"
-                aria-label={copy.imageLabel}
+                aria-label="Aperçu dynamique du configurateur"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <defs>
@@ -365,8 +303,24 @@ export function ConfiguratorPreview({
                                 animate={{ opacity: pulseOpacity }}
                                 transition={slowPulse}
                               />
-                              <rect x={x + 90} y={y + 14} width="60" height="8" rx="4" fill={palette.muted} opacity="0.6" />
-                              <rect x={x + 90} y={y + 28} width="50" height="6" rx="3" fill={palette.muted} opacity="0.4" />
+                              <rect
+                                x={x + 90}
+                                y={y + 14}
+                                width="60"
+                                height="8"
+                                rx="4"
+                                fill={palette.muted}
+                                opacity="0.6"
+                              />
+                              <rect
+                                x={x + 90}
+                                y={y + 28}
+                                width="50"
+                                height="6"
+                                rx="3"
+                                fill={palette.muted}
+                                opacity="0.4"
+                              />
                             </g>
                           );
                         })
@@ -450,7 +404,15 @@ export function ConfiguratorPreview({
                             animate={{ opacity: pulseOpacity }}
                             transition={{ ...fastPulse, delay: step * 0.3 }}
                           />
-                          <rect x={110 + step * 170} y="216" width="120" height="12" rx="6" fill={palette.muted} opacity="0.6" />
+                          <rect
+                            x={110 + step * 170}
+                            y="216"
+                            width="120"
+                            height="12"
+                            rx="6"
+                            fill={palette.muted}
+                            opacity="0.6"
+                          />
                         </g>
                       ))}
                       <rect x="52" y="252" width="536" height="90" rx="18" fill="#0f1118" opacity="0.45" />
@@ -514,7 +476,10 @@ export function ConfiguratorPreview({
         </div>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           {tags.map((tag) => (
-            <span key={tag} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/70">
+            <span
+              key={tag}
+              className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/70"
+            >
               {tag}
             </span>
           ))}
@@ -523,9 +488,9 @@ export function ConfiguratorPreview({
 
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         {[
-          { label: copy.type, value: summary.type },
-          { label: copy.vision, value: summary.strategy },
-          { label: copy.style, value: summary.mood },
+          { label: "Type", value: summary.type },
+          { label: "Vision", value: summary.strategy },
+          { label: "Style", value: summary.mood },
         ].map((item) => (
           <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">{item.label}</p>
@@ -535,20 +500,24 @@ export function ConfiguratorPreview({
       </div>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.features}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Fonctionnalités</p>
           {list(features)}
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.integrations}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Intégrations</p>
           {list(integrations)}
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.aiModules}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Modules IA</p>
           {list(aiModules)}
         </div>
       </div>
-      <motion.div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80" initial={{ opacity: 0.7 }} animate={{ opacity: ready ? 1 : 0.7 }}>
-        <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.summary}</p>
+      <motion.div
+        className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-white/80"
+        initial={{ opacity: 0.7 }}
+        animate={{ opacity: ready ? 1 : 0.7 }}
+      >
+        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Résumé</p>
         <pre className="mt-3 whitespace-pre-wrap text-white/90">{shareText}</pre>
       </motion.div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
@@ -558,10 +527,10 @@ export function ConfiguratorPreview({
           disabled={!ready}
           className="inline-flex items-center rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {copied ? copy.copied : copy.copy}
+          {copied ? "Copié" : "Copier le brief"}
         </button>
         <span className="inline-flex items-center rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
-          {ready ? copy.complete : copy.waiting}
+          {ready ? "Brief complet" : "En attente de sélection"}
         </span>
       </div>
     </div>

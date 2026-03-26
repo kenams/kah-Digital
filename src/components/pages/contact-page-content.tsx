@@ -1,8 +1,7 @@
 import { FiClock, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
-import { ContactCard } from "@/components/contact-card";
 import { ContactForm } from "@/components/contact-form";
-import { companyConfig } from "@/config/company";
 import type { Locale } from "@/lib/locales";
+import { companyConfig } from "@/config/company";
 
 type ContactPageContentProps = {
   locale: Locale;
@@ -10,57 +9,53 @@ type ContactPageContentProps = {
 
 const copy = {
   fr: {
-    heroTitle: "Parlons concretement de ton besoin.",
-    heroBody:
-      "Question, demande de devis ou besoin plus technique: le but est d'obtenir rapidement un cadrage utile, pas de te faire passer dans un tunnel inutile.",
+    heroTitle: "Contactez-nous",
+    heroBody: "Une question, un besoin ou un projet ? Réponse rapide et cadrage simple.",
     direct: "Contact direct",
-    directTitle: "Un premier echange simple, puis une suite claire.",
+    directTitle: "Parlons concrètement de ton besoin.",
     directBody:
-      "KAH-Digital travaille avec des clients francophones, anglophones et internationaux. Tu peux nous ecrire pour clarifier une offre, cadrer un projet IA, lancer un site, ou demander un point technique plus ponctuel.",
-    canSend: "Tu peux nous ecrire pour",
+      "Nous accompagnons des clients francophones, anglophones et internationaux, avec une organisation simple, rapide et sans friction inutile.",
+    canSend: "Ce que tu peux envoyer",
     canSendItems: [
-      "clarifier un projet web ou une refonte",
-      "demander une premiere orientation sur un assistant IA",
-      "poser une question sur un portail, un workflow ou GLPI",
-      "obtenir un retour rapide sur budget et delai",
+      "Demande de devis ou cadrage rapide",
+      "Question sur une refonte, un MVP ou une automatisation",
+      "Support, maintenance ou demande technique ponctuelle",
     ],
     approach: "Approche",
-    approachTitle: "Ce qu'on privilegie dans chaque prise de contact",
-    approachBody: "Un echange doit aider a avancer vite, avec une direction lisible et sans surpromesse.",
+    approachTitle: "Un contact simple, puis une suite claire.",
+    approachBody: "Chaque échange doit permettre d'avancer vite, sans jargon ni parcours inutile.",
     cards: [
-      { eyebrow: "Rapide", title: "Retour exploitable", body: "Pas une reponse de politesse. Un vrai point d'appui pour savoir quoi faire ensuite." },
-      { eyebrow: "Clair", title: "Cadrage utile", body: "On cherche le bon levier, le bon scope et le niveau de complexite reel." },
-      { eyebrow: "Direct", title: "Acces simple", body: "Tu peux nous parler business, support ou execution sans vocabulaire technique obligatoire." },
+      { eyebrow: "Rapide", title: "Réponse sous 24h", body: "Un premier retour concret pour lancer l'échange sans attente inutile." },
+      { eyebrow: "Clair", title: "Cadrage utile", body: "Un besoin bien compris avant toute proposition, devis ou plan d'action." },
+      { eyebrow: "Direct", title: "Échange humain", body: "Des messages simples, exploitables et centrés sur ce qu'il faut faire ensuite." },
     ],
     contactCards: [
       { icon: FiMail, title: "Email", value: companyConfig.email },
-      { icon: FiPhone, title: "Telephone", value: companyConfig.phone },
+      { icon: FiPhone, title: "Téléphone", value: companyConfig.phone },
       { icon: FiMapPin, title: "Localisation", value: `${companyConfig.city}, ${companyConfig.country}` },
-      { icon: FiClock, title: "Disponibilite", value: "Lundi - Vendredi, 9h - 18h" },
+      { icon: FiClock, title: "Disponibilité", value: "Lundi - Vendredi, 9h - 18h" },
     ],
   },
   en: {
-    heroTitle: "Let us talk concretely about your need.",
-    heroBody:
-      "Question, quote request, or more technical need: the goal is to get useful direction quickly, not to send you through a useless funnel.",
+    heroTitle: "Contact us",
+    heroBody: "A question, a need, or a project? Fast reply and simple scoping.",
     direct: "Direct contact",
-    directTitle: "A simple first exchange, then a clear next step.",
+    directTitle: "Let's talk concretely about your need.",
     directBody:
-      "KAH-Digital works with French-speaking, English-speaking, and international clients. You can write to clarify an offer, scope an AI project, launch a website, or discuss a more technical request.",
-    canSend: "You can write to us for",
+      "We work with French-speaking, English-speaking, and international clients with a simple setup, a fast pace, and no useless friction.",
+    canSend: "What you can send",
     canSendItems: [
-      "a website or redesign discussion",
-      "first direction on an AI assistant project",
-      "a question about a portal, workflow, or GLPI",
-      "a quick reply on budget and timing",
+      "Quote request or quick scoping need",
+      "Question about a redesign, MVP, or automation",
+      "Support, maintenance, or a one-off technical request",
     ],
     approach: "Approach",
-    approachTitle: "What we prioritize in every first contact",
-    approachBody: "Each exchange should create momentum with a readable direction and no inflated promise.",
+    approachTitle: "A simple first exchange, then a clear next step.",
+    approachBody: "Each exchange should help move quickly, without jargon or useless process.",
     cards: [
-      { eyebrow: "Fast", title: "Actionable reply", body: "Not a polite answer. A real next step you can use immediately." },
-      { eyebrow: "Clear", title: "Useful scoping", body: "We look for the right lever, the right scope, and the real level of complexity." },
-      { eyebrow: "Direct", title: "Simple access", body: "You can speak business, support, or execution without needing technical jargon." },
+      { eyebrow: "Fast", title: "Reply within 24h", body: "A first concrete answer to start the discussion without delay." },
+      { eyebrow: "Clear", title: "Useful scoping", body: "A properly understood need before any proposal, quote, or action plan." },
+      { eyebrow: "Direct", title: "Human exchange", body: "Simple, actionable messages focused on what should happen next." },
     ],
     contactCards: [
       { icon: FiMail, title: "Email", value: companyConfig.email },
@@ -70,27 +65,25 @@ const copy = {
     ],
   },
   de: {
-    heroTitle: "Lass uns konkret ueber dein Anliegen sprechen.",
-    heroBody:
-      "Frage, Projektanfrage oder technischer Bedarf: Das Ziel ist eine schnelle, nuetzliche Richtung und kein unnoetiger Funnel.",
+    heroTitle: "Kontakt",
+    heroBody: "Frage, Bedarf oder Projekt? Schnelle Rueckmeldung und klares Briefing.",
     direct: "Direkter Kontakt",
-    directTitle: "Ein einfacher erster Austausch, dann ein klarer naechster Schritt.",
+    directTitle: "Lass uns konkret ueber dein Vorhaben sprechen.",
     directBody:
-      "KAH-Digital arbeitet mit frankophonen, englischsprachigen und internationalen Kunden. Du kannst schreiben, um ein Angebot zu schaerfen, ein KI-Projekt zu briefen, eine Website zu starten oder eine technische Frage zu klaeren.",
-    canSend: "Du kannst uns schreiben fuer",
+      "Wir begleiten frankophone, englischsprachige und internationale Kunden mit einer einfachen Organisation, gutem Tempo und ohne unnoetige Reibung.",
+    canSend: "Was du schicken kannst",
     canSendItems: [
-      "ein Website- oder Redesign-Projekt",
-      "eine erste Richtung fuer einen KI-Assistenten",
-      "eine Frage zu Portal, Workflow oder GLPI",
-      "eine schnelle Rueckmeldung zu Budget und Timing",
+      "Projektanfrage oder schnelles Briefing",
+      "Frage zu Redesign, MVP oder Automatisierung",
+      "Support, Wartung oder punktuelle technische Anfrage",
     ],
     approach: "Vorgehen",
-    approachTitle: "Was wir bei jedem Erstkontakt priorisieren",
-    approachBody: "Jeder Austausch soll Bewegung erzeugen, mit klarer Richtung und ohne uebertriebene Versprechen.",
+    approachTitle: "Ein einfacher Kontakt, dann ein klarer naechster Schritt.",
+    approachBody: "Jeder Austausch soll helfen, schnell weiterzukommen, ohne Jargon oder unnoetige Schleifen.",
     cards: [
-      { eyebrow: "Schnell", title: "Nutzbare Rueckmeldung", body: "Keine Hoeflichkeitsantwort, sondern ein echter naechster Schritt." },
-      { eyebrow: "Klar", title: "Nuetzliches Briefing", body: "Wir suchen den richtigen Hebel, den passenden Scope und die reale Komplexitaet." },
-      { eyebrow: "Direkt", title: "Einfacher Zugang", body: "Du kannst ueber Business, Support oder Ausfuehrung sprechen, ohne Fachjargon zu brauchen." },
+      { eyebrow: "Schnell", title: "Antwort innerhalb von 24h", body: "Ein erster konkreter Ruecklauf, um den Austausch ohne Leerlauf zu starten." },
+      { eyebrow: "Klar", title: "Nuetzliches Briefing", body: "Ein sauber verstandener Bedarf, bevor Angebot, Offerte oder Plan geschrieben werden." },
+      { eyebrow: "Direkt", title: "Menschlicher Austausch", body: "Einfache, nutzbare Nachrichten mit Fokus auf den naechsten sinnvollen Schritt." },
     ],
     contactCards: [
       { icon: FiMail, title: "E-Mail", value: companyConfig.email },
@@ -106,79 +99,65 @@ export function ContactPageContent({ locale }: ContactPageContentProps) {
 
   return (
     <>
-      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(17,18,24,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_18%,rgba(214,179,106,0.16),transparent_28%),radial-gradient(circle_at_85%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
-          <div className="relative grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-end">
+      <section className="bg-gradient-to-r from-sky-600 via-blue-600 to-indigo-600 py-16 text-white">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-6 text-4xl font-bold sm:text-5xl">{content.heroTitle}</h1>
+          <p className="text-xl">{content.heroBody}</p>
+        </div>
+      </section>
+
+      <section className="bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_35%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr,1.1fr] lg:px-8">
+          <div className="space-y-6 text-white">
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-white/55">{content.direct}</p>
-              <h1 className="mt-5 max-w-4xl text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">{content.heroTitle}</h1>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.heroBody}</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-white/60">{content.direct}</p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{content.directTitle}</h2>
+              <p className="mt-4 max-w-2xl text-base text-white/70 sm:text-lg">{content.directBody}</p>
             </div>
-            <div className="grid gap-3">
+
+            <div className="grid gap-4 sm:grid-cols-2">
               {content.contactCards.map((card) => {
                 const Icon = card.icon;
                 return (
-                  <div key={card.title} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
-                    <div className="flex items-center gap-3">
-                      <Icon className="text-[#d6b36a]" size={18} />
-                      <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">{card.title}</p>
-                    </div>
-                    <p className="mt-3 text-sm leading-7">{card.value}</p>
+                  <div key={card.title} className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white shadow-[0_18px_50px_rgba(0,0,0,0.25)]">
+                    <Icon className="text-sky-300" size={28} />
+                    <p className="mt-4 text-xs uppercase tracking-[0.3em] text-white/55">{card.title}</p>
+                    <p className="mt-2 text-base font-medium text-white/85">{card.value}</p>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="section-shell">
-        <div className="grid gap-6 lg:grid-cols-[0.85fr,1.15fr] lg:items-start">
-          <div className="space-y-5 lg:sticky lg:top-28">
-            <div className="premium-card rounded-[30px] border border-white/10 bg-white/5 p-6 text-white">
-              <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.direct}</p>
-              <h2 className="mt-4 text-3xl font-semibold text-white">{content.directTitle}</h2>
-              <p className="mt-4 text-sm leading-7 text-white/70">{content.directBody}</p>
-            </div>
-            <div className="premium-card rounded-[30px] border border-white/10 bg-white/5 p-6 text-white">
-              <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.canSend}</p>
-              <div className="mt-5 space-y-3">
-                {content.canSendItems.map((item, index) => (
-                  <div key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
-                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#d6b36a]/30 bg-[#d6b36a]/10 text-xs font-semibold text-[#f3ddb0]">
-                      0{index + 1}
-                    </span>
-                    <span className="text-sm leading-7 text-white/72">{item}</span>
-                  </div>
+            <div className="rounded-3xl border border-white/10 bg-black/20 p-6">
+              <p className="text-sm uppercase tracking-[0.3em] text-white/55">{content.canSend}</p>
+              <ul className="mt-4 space-y-2 text-sm text-white/75">
+                {content.canSendItems.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
-              </div>
+              </ul>
             </div>
-            <ContactCard />
           </div>
 
           <ContactForm />
         </div>
       </section>
 
-      <section className="section-shell">
-        <div className="accent-section">
-          <div className="content px-6 py-10 sm:px-8">
-            <div className="mx-auto mb-10 max-w-3xl text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.approach}</p>
-              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{content.approachTitle}</h2>
-              <p className="mt-4 text-base leading-7 text-white/68 sm:text-lg">{content.approachBody}</p>
-            </div>
+      <section className="bg-slate-100 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{content.approach}</p>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900">{content.approachTitle}</h2>
+            <p className="mt-4 text-lg text-slate-600">{content.approachBody}</p>
+          </div>
 
-            <div className="grid gap-5 md:grid-cols-3">
-              {content.cards.map((card) => (
-                <div key={card.title} className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/45">{card.eyebrow}</p>
-                  <h3 className="mt-4 text-2xl font-semibold text-white">{card.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-white/68">{card.body}</p>
-                </div>
-              ))}
-            </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {content.cards.map((card) => (
+              <div key={card.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{card.eyebrow}</p>
+                <h3 className="mt-3 text-xl font-semibold text-slate-900">{card.title}</h3>
+                <p className="mt-3 text-slate-600">{card.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

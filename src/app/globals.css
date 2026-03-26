@@ -35,14 +35,13 @@ h4 {
 }
 
 .gradient-text {
-  background: linear-gradient(120deg, #f3ddb0, #d6b36a 45%, #7fb8c7 90%);
+  background: linear-gradient(120deg, #ff0000, rgba(255, 0, 0, 0.5));
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .section-shell {
   @apply mx-auto w-full max-w-[90rem] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20;
-  scroll-margin-top: 7rem;
 }
 
 .section-shell + .section-shell {
@@ -314,37 +313,6 @@ textarea {
   font: inherit;
 }
 
-.main-surface {
-  position: relative;
-  isolation: isolate;
-}
-
-.main-surface::before,
-.main-surface::after {
-  content: "";
-  position: fixed;
-  pointer-events: none;
-  z-index: -1;
-  filter: blur(90px);
-  opacity: 0.55;
-}
-
-.main-surface::before {
-  top: 7rem;
-  left: -8rem;
-  width: 22rem;
-  height: 22rem;
-  background: radial-gradient(circle, rgba(214, 179, 106, 0.16), transparent 68%);
-}
-
-.main-surface::after {
-  right: -6rem;
-  bottom: 12rem;
-  width: 20rem;
-  height: 20rem;
-  background: radial-gradient(circle, rgba(127, 184, 199, 0.14), transparent 70%);
-}
-
 .interactive-flash {
   position: relative;
   overflow: hidden;
@@ -400,39 +368,6 @@ textarea {
 
 .premium-card:hover::after {
   opacity: 1;
-}
-
-@media (max-width: 640px) {
-  .section-shell {
-    padding-top: 2.75rem;
-    padding-bottom: 2.75rem;
-  }
-
-  .section-shell + .section-shell::before {
-    left: 1rem;
-    right: 1rem;
-  }
-
-  .accent-section,
-  .premium-card,
-  .hero-visual,
-  .light-surface {
-    border-radius: 24px;
-  }
-
-  .accent-section > .content {
-    border-radius: 22px;
-  }
-
-  .hero-panel {
-    border-radius: 18px;
-    padding: 14px;
-  }
-
-  .orbit-badge {
-    padding: 5px 10px;
-    font-size: 0.78rem;
-  }
 }
 
 .progress-widget {

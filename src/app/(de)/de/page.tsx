@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { CTASection } from "@/components/cta-section";
 import { FAQSection } from "@/components/faq-section";
-import { GlobalTrustSection } from "@/components/global-trust-section";
 import { HeroSection } from "@/components/hero-section";
 import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
+import { GlobalTrustSection } from "@/components/global-trust-section";
 import { TrustBar } from "@/components/trust-bar";
 import { WhyChooseSection } from "@/components/why-choose-section";
 
 export const metadata: Metadata = {
-  title: "Premium-Websites, nuetzliche KI und Automatisierung",
+  title: "Websites, Apps und digitale Loesungen",
   description:
-    "KAH-Digital entwickelt Premium-Websites, KI-Assistenten und Automatisierungen, die Angebote schaerfen, manuellen Support reduzieren und die Umsetzung verbessern.",
-  keywords: ["Webagentur", "KI-Assistent", "Automatisierung", "Unternehmenswebsite", "Landingpage", "KAH-Digital"],
+    "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Parcours fuer frankophone, englischsprachige und internationale Unternehmen.",
+  keywords: ["Webagentur", "Unternehmenswebsite", "Next.js", "Landingpage", "Digitalstudio", "KAH-Digital"],
   alternates: {
     canonical: "/de",
     languages: {
@@ -25,7 +25,8 @@ export const metadata: Metadata = {
     locale: "de_CH",
     alternateLocale: ["fr_FR", "en_US"],
     title: "KAH-Digital",
-    description: "Premium-Websites, KI-Assistenten und Automatisierung mit klarem Prozess fuer internationale Unternehmen und Teams.",
+    description:
+      "Websites, Anwendungen und digitale Loesungen mit klarem Prozess fuer internationale Unternehmen und Teams.",
     url: "/de",
     siteName: "KAH-Digital",
     images: [
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "KAH-Digital",
-    description: "Premium-Websites, nuetzliche KI und Automatisierung mit klarem Prozess.",
+    description: "Websites, Anwendungen und digitale Loesungen mit klarem Prozess.",
     images: ["/og-kah-digital.png"],
   },
 };
