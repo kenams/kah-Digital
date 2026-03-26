@@ -2,102 +2,74 @@ import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
 import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
+import type { Locale } from "@/lib/locales";
+import { getLocalizedPath } from "@/lib/locales";
+import { SITE_URL } from "@/lib/shared-metadata";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
+const locales: Locale[] = ["fr", "en", "de"];
+
+const staticRoutes: Array<{
+  path: string;
+  priority: number;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+}> = [
+  { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/services", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/services/site-web", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/services/applications", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/services/glpi", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/site-web-entreprise", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/refonte-site-web", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/application-web-sur-mesure", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/automatisation-ia-entreprise", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/projets", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/lexique", priority: 0.5, changeFrequency: "monthly" },
+];
+
+function absoluteUrl(path: string, locale: Locale) {
+  return `${SITE_URL}${getLocalizedPath(path, locale)}`;
+}
+
+function languageAlternates(path: string) {
+  return {
+    languages: {
+      fr: absoluteUrl(path, "fr"),
+      en: absoluteUrl(path, "en"),
+      de: absoluteUrl(path, "de"),
+      "x-default": absoluteUrl(path, "fr"),
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/services",
-    "/services/site-web",
-    "/services/applications",
-    "/services/glpi",
-    "/contact",
-    "/site-web-entreprise",
-    "/refonte-site-web",
-    "/application-web-sur-mesure",
-    "/automatisation-ia-entreprise",
-    "/factures",
-    "/offres",
-    "/devis",
-    "/devis/mvp",
-    "/configurateur",
-    "/cahier-des-charges",
-    "/projets",
-    "/lexique",
-    "/mentions-legales",
-    "/politique-de-confidentialite",
-  ].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-  }));
+  const staticEntries = staticRoutes.flatMap((route) =>
+    locales.map((locale) => ({
+      url: absoluteUrl(route.path, locale),
+      lastModified: new Date(),
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      alternates: languageAlternates(route.path),
+    }))
+  );
 
-  const routesEn = [
-    "/en",
-    "/en/services",
-    "/en/services/site-web",
-    "/en/services/applications",
-    "/en/services/glpi",
-    "/en/contact",
-    "/en/site-web-entreprise",
-    "/en/refonte-site-web",
-    "/en/application-web-sur-mesure",
-    "/en/automatisation-ia-entreprise",
-    "/en/factures",
-    "/en/offres",
-    "/en/devis",
-    "/en/devis/mvp",
-    "/en/configurateur",
-    "/en/cahier-des-charges",
-    "/en/projets",
-    "/en/lexique",
-    "/en/mentions-legales",
-    "/en/politique-de-confidentialite",
-  ].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-  }));
+  const projectSlugs = Array.from(
+    new Set([
+      ...portfolioProjects.map((project) => project.slug),
+      ...portfolioProjectsEn.map((project) => project.slug),
+      ...portfolioProjectsDe.map((project) => project.slug),
+    ])
+  ).filter((slug) => slug !== "kah-prod");
 
-  const routesDe = [
-    "/de",
-    "/de/services",
-    "/de/services/site-web",
-    "/de/services/applications",
-    "/de/services/glpi",
-    "/de/contact",
-    "/de/site-web-entreprise",
-    "/de/refonte-site-web",
-    "/de/application-web-sur-mesure",
-    "/de/automatisation-ia-entreprise",
-    "/de/factures",
-    "/de/offres",
-    "/de/devis",
-    "/de/devis/mvp",
-    "/de/configurateur",
-    "/de/cahier-des-charges",
-    "/de/projets",
-    "/de/lexique",
-    "/de/mentions-legales",
-    "/de/politique-de-confidentialite",
-  ].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
-  }));
+  const projectEntries = projectSlugs.flatMap((slug) =>
+    locales.map((locale) => ({
+      url: absoluteUrl(`/projets/${slug}`, locale),
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.65,
+      alternates: languageAlternates(`/projets/${slug}`),
+    }))
+  );
 
-  const projectRoutes = portfolioProjects.map((project) => ({
-    url: `${SITE_URL}/projets/${project.slug}`,
-    lastModified: new Date(),
-  }));
-
-  const projectRoutesEn = portfolioProjectsEn.map((project) => ({
-    url: `${SITE_URL}/en/projets/${project.slug}`,
-    lastModified: new Date(),
-  }));
-
-  const projectRoutesDe = portfolioProjectsDe.map((project) => ({
-    url: `${SITE_URL}/de/projets/${project.slug}`,
-    lastModified: new Date(),
-  }));
-
-  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn, ...projectRoutesDe];
+  return [...staticEntries, ...projectEntries];
 }

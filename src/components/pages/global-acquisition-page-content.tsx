@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { FiArrowRight, FiCheck, FiGlobe, FiTrendingUp, FiUsers, FiZap } from "react-icons/fi";
+import { StructuredData } from "@/components/structured-data";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
+import { buildServiceStructuredData } from "@/lib/shared-metadata";
 
 type GlobalAcquisitionPageKey =
   | "site-web-entreprise"
@@ -385,6 +387,25 @@ const content = {
 
 export function GlobalAcquisitionPageContent({ locale, page }: Props) {
   const pageContent = content[locale][page];
+  const pagePathMap: Record<GlobalAcquisitionPageKey, string> = {
+    "site-web-entreprise": "/site-web-entreprise",
+    "refonte-site-web": "/refonte-site-web",
+    "application-web-sur-mesure": "/application-web-sur-mesure",
+    "automatisation-ia-entreprise": "/automatisation-ia-entreprise",
+  };
+  const serviceTypeMap: Record<GlobalAcquisitionPageKey, string> = {
+    "site-web-entreprise": "Business website development",
+    "refonte-site-web": "Website redesign",
+    "application-web-sur-mesure": "Custom web application development",
+    "automatisation-ia-entreprise": "AI automation for business",
+  };
+  const serviceStructuredData = buildServiceStructuredData({
+    locale,
+    path: pagePathMap[page],
+    name: pageContent.title,
+    description: pageContent.intro,
+    serviceType: serviceTypeMap[page],
+  });
   const copy =
     locale === "en"
       ? {
@@ -421,6 +442,7 @@ export function GlobalAcquisitionPageContent({ locale, page }: Props) {
 
   return (
     <>
+      <StructuredData data={serviceStructuredData} />
       <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
         <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />

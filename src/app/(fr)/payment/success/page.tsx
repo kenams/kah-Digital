@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { PaymentResultPageContent } from "@/components/pages/payment-result-page-content";
+
+export const metadata: Metadata = {
+  title: "Paiement confirme",
+  robots: { index: false, follow: false },
+};
 
 type PageProps = {
   searchParams: Promise<Record<string, string | string[] | undefined>>;

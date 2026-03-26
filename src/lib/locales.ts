@@ -6,6 +6,14 @@ export function getLocalePrefix(locale: Locale) {
   return "";
 }
 
+export function getLocalizedPath(path: string, locale: Locale) {
+  if (path === "/") {
+    return locale === "fr" ? "/" : `/${locale}`;
+  }
+
+  return withLocalePrefix(path, locale);
+}
+
 export function withLocalePrefix(path: string, locale: Locale) {
   if (!path.startsWith("/")) return path;
   const prefix = getLocalePrefix(locale);

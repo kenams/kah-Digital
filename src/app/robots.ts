@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
+import { SITE_URL } from "@/lib/shared-metadata";
 
 export default function robots(): MetadataRoute.Robots {
   return {
