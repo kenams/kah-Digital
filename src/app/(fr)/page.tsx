@@ -7,16 +7,12 @@ import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { TrustBar } from "@/components/trust-bar";
 import { WhyChooseSection } from "@/components/why-choose-section";
-import { buildPageMetadata } from "@/lib/shared-metadata";
 
-export const metadata: Metadata = buildPageMetadata({
-  locale: "fr",
-  path: "/",
+export const metadata: Metadata = {
   title: "Sites premium, IA utile et automatisation pour entreprises",
   description:
     "KAH-Digital concoit des sites premium, assistants IA et automatisations qui rendent les offres plus claires, reduisent le support manuel et accelerent l'execution.",
-  keywords: ["site web entreprise", "assistant IA entreprise", "automatisation IA", "agence web suisse"],
-});
+};
 
 export default function Home() {
   return (

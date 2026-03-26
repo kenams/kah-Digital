@@ -5,8 +5,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteProviders } from "@/components/site-providers";
-import { StructuredData } from "@/components/structured-data";
-import { GA_MEASUREMENT_ID, siteStructuredData } from "@/lib/shared-metadata";
+import { GA_MEASUREMENT_ID, structuredData } from "@/lib/shared-metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +34,11 @@ export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
-        <StructuredData data={siteStructuredData} />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         {GA_MEASUREMENT_ID ? (
           <>
             <Script
