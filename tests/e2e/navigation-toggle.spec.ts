@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("language toggle switches from FR to EN and DE", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/", { waitUntil: "domcontentloaded" });
 
   await page.getByRole("link", { name: "View the site in English" }).click();
   await expect(page).toHaveURL(/\/en$/);

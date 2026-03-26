@@ -1,9 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 test("assistant widget requires contact details before chat starts", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/", { waitUntil: "domcontentloaded" });
 
-  await page.getByRole("button", { name: /Assistant projet & support/i }).click();
+  const launcher = page.getByRole("button", { name: /Ouvrir Assistant projet & support/i });
+  await expect(launcher).toBeVisible();
+  await launcher.click({ force: true });
+  await expect(page.getByRole("button", { name: "Fermer" })).toBeVisible();
 
   await expect(page.getByText("Avant de commencer")).toBeVisible();
 

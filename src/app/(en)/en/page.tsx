@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { CTASection } from "@/components/cta-section";
 import { FAQSection } from "@/components/faq-section";
+import { GlobalTrustSection } from "@/components/global-trust-section";
 import { HeroSection } from "@/components/hero-section";
 import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
-import { GlobalTrustSection } from "@/components/global-trust-section";
 import { TrustBar } from "@/components/trust-bar";
 import { WhyChooseSection } from "@/components/why-choose-section";
 
 export const metadata: Metadata = {
-  title: "Premium websites, apps, and digital solutions",
+  title: "Premium websites, useful AI, and automation",
   description:
-    "KAH-Digital builds websites, applications, and clearer support journeys for French-speaking, English-speaking, and international companies.",
-  keywords: ["web agency", "business website", "Next.js", "landing page", "digital studio", "KAH-Digital"],
+    "KAH-Digital builds premium websites, AI assistants, and automation systems that sharpen offers, reduce manual support work, and improve execution.",
+  keywords: ["web agency", "ai assistant", "automation", "business website", "landing page", "KAH-Digital"],
   alternates: {
     canonical: "/en",
     languages: {
@@ -25,8 +25,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: ["fr_FR", "de_CH"],
     title: "KAH-Digital",
-    description:
-      "Websites, applications, and digital solutions with a clear process for international companies and teams.",
+    description: "Premium websites, AI assistants, and automation with a clear process for international companies and teams.",
     url: "/en",
     siteName: "KAH-Digital",
     images: [
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "KAH-Digital",
-    description: "Websites, applications, and digital solutions with a clear process.",
+    description: "Premium websites, useful AI, and automation with a clear process.",
     images: ["/og-kah-digital.png"],
   },
 };

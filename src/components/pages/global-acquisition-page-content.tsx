@@ -385,72 +385,124 @@ const content = {
 
 export function GlobalAcquisitionPageContent({ locale, page }: Props) {
   const pageContent = content[locale][page];
+  const copy =
+    locale === "en"
+      ? {
+          quote: "Request a quote",
+          discuss: "Discuss the project",
+          services: "See services",
+          markers: [
+            { label: "Positioning", value: "Clearer message, sharper offer, cleaner next step" },
+            { label: "Execution", value: "Premium website, useful structure, credible finish" },
+            { label: "Business", value: "More trust, better qualification, less friction" },
+          ],
+        }
+      : locale === "de"
+        ? {
+            quote: "Projekt anfragen",
+            discuss: "Projekt besprechen",
+            services: "Leistungen ansehen",
+            markers: [
+              { label: "Positionierung", value: "Klarere Botschaft, schaerferes Angebot, sauberer naechster Schritt" },
+              { label: "Umsetzung", value: "Premium-Website, nuetzliche Struktur, glaubwuerdiges Finish" },
+              { label: "Business", value: "Mehr Vertrauen, bessere Qualifizierung, weniger Reibung" },
+            ],
+          }
+        : {
+            quote: "Demander un devis",
+            discuss: "Echanger sur le projet",
+            services: "Voir les services",
+            markers: [
+              { label: "Positionnement", value: "Message plus clair, offre plus nette, prochaine etape lisible" },
+              { label: "Execution", value: "Site premium, structure utile, finition credible" },
+              { label: "Business", value: "Plus de confiance, meilleure qualification, moins de friction" },
+            ],
+          };
 
   return (
     <>
-      <section className="bg-gradient-to-r from-slate-950 via-blue-900 to-slate-950 py-20 text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/60">{pageContent.eyebrow}</p>
-          <h1 className="max-w-4xl text-4xl font-bold sm:text-5xl">{pageContent.title}</h1>
-          <p className="mt-6 max-w-3xl text-lg text-white/80 sm:text-xl">{pageContent.intro}</p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={withLocalePrefix("/devis", locale)}
-              className="rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-100"
-            >
-              {locale === "fr" ? "Demander un devis" : locale === "en" ? "Request a quote" : "Projekt anfragen"}
-            </Link>
-            <Link
-              href={withLocalePrefix("/contact", locale)}
-              className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
-            >
-              {locale === "fr" ? "Echanger sur le projet" : locale === "en" ? "Discuss the project" : "Projekt besprechen"}
-            </Link>
+      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-end">
+            <div className="text-white">
+              <p className="text-sm uppercase tracking-[0.35em] text-white/52">{pageContent.eyebrow}</p>
+              <h1 className="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl lg:text-6xl">{pageContent.title}</h1>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{pageContent.intro}</p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href={withLocalePrefix("/devis", locale)}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+                >
+                  {copy.quote}
+                </Link>
+                <Link
+                  href={withLocalePrefix("/contact", locale)}
+                  className="inline-flex items-center justify-center rounded-full border border-white/18 px-8 py-3 font-semibold text-white transition hover:border-white/40 hover:bg-white/8"
+                >
+                  {copy.discuss}
+                </Link>
+              </div>
+            </div>
+            <div className="grid gap-3">
+              {copy.markers.map((item, index) => (
+                <div key={item.label} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
+                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">
+                    0{index + 1} / {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-7">{item.value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-            <h2 className="text-2xl font-bold text-slate-900">{pageContent.benefitsTitle}</h2>
+      <section className="section-shell">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
+            <h2 className="text-2xl font-semibold text-white sm:text-3xl">{pageContent.benefitsTitle}</h2>
             <ul className="mt-6 space-y-4">
               {pageContent.benefits.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700">
-                  <FiCheck className="mt-1 shrink-0 text-emerald-600" size={18} />
+                <li key={item} className="flex items-start gap-3 text-white/72">
+                  <FiCheck className="mt-1 shrink-0 text-emerald-300" size={18} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-            <h2 className="text-2xl font-bold text-slate-900">{pageContent.profilesTitle}</h2>
-            <ul className="mt-6 space-y-4">
+          <div className="accent-section">
+            <div className="content rounded-[32px] px-6 py-8 sm:px-8">
+              <h2 className="text-2xl font-semibold text-white sm:text-3xl">{pageContent.profilesTitle}</h2>
+              <ul className="mt-6 space-y-4">
               {pageContent.profiles.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700">
-                  <FiArrowRight className="mt-1 shrink-0 text-blue-700" size={18} />
-                  <span>{item}</span>
-                </li>
+                  <li key={item} className="flex items-start gap-3 text-white/72">
+                    <FiArrowRight className="mt-1 shrink-0 text-[var(--brand-sky)]" size={18} />
+                    <span>{item}</span>
+                  </li>
               ))}
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-100 py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="section-shell">
+        <div className="premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">{pageContent.contextTitle}</h2>
-            <p className="mt-4 text-lg text-slate-600">{pageContent.contextBody}</p>
+            <h2 className="text-3xl font-semibold text-white sm:text-4xl">{pageContent.contextTitle}</h2>
+            <p className="mt-4 text-base leading-8 text-white/68 sm:text-lg">{pageContent.contextBody}</p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {pageContent.highlights.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
-                  <Icon className="text-blue-700" size={28} />
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="mt-3 text-slate-600">{item.body}</p>
+                <div key={item.title} className="rounded-[26px] border border-white/10 bg-black/20 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/6">
+                    <Icon className="text-[var(--brand-gold)]" size={24} />
+                  </div>
+                  <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-white/68">{item.body}</p>
                 </div>
               );
             })}
@@ -458,25 +510,27 @@ export function GlobalAcquisitionPageContent({ locale, page }: Props) {
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[32px] bg-slate-950 p-10 text-white">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/55">KAH-Digital</p>
-            <h2 className="mt-4 text-3xl font-bold">{pageContent.ctaTitle}</h2>
-            <p className="mt-4 max-w-3xl text-lg text-white/75">{pageContent.ctaBody}</p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href={withLocalePrefix("/devis", locale)}
-                className="rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-100"
-              >
-                {locale === "fr" ? "Demander un devis" : locale === "en" ? "Request a quote" : "Projekt anfragen"}
-              </Link>
-              <Link
-                href={withLocalePrefix("/services", locale)}
-                className="rounded-full border border-white/25 px-8 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
-              >
-                {locale === "fr" ? "Voir les services" : locale === "en" ? "See services" : "Leistungen ansehen"}
-              </Link>
+      <section className="section-shell">
+        <div className="accent-section">
+          <div className="content px-6 py-10 sm:px-8 lg:px-10">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-sm uppercase tracking-[0.35em] text-white/50">KAH-Digital</p>
+              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{pageContent.ctaTitle}</h2>
+              <p className="mt-4 text-base leading-8 text-white/68 sm:text-lg">{pageContent.ctaBody}</p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <Link
+                  href={withLocalePrefix("/devis", locale)}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+                >
+                  {copy.quote}
+                </Link>
+                <Link
+                  href={withLocalePrefix("/services", locale)}
+                  className="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-3 font-semibold text-white transition hover:border-white hover:bg-white/5"
+                >
+                  {copy.services}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

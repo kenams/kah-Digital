@@ -4,10 +4,10 @@ import { jsPDF } from "jspdf";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
+import { countryDialCodesSorted } from "@/data/country-dial-codes";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
 import { drawKahDigitalPdfLogo } from "@/lib/pdf-branding";
-import { countryDialCodesSorted } from "@/data/country-dial-codes";
 
 type QuotePayload = {
   name: string;
@@ -66,13 +66,13 @@ export function QuoteForm() {
           "AI-Content & Assets",
           "Individuelles AI-Mikro-Tool",
         ]
-    : [
-        "Automatisation relation client",
-        "Chatbot metier & support",
-        "Qualification & lead scoring",
-        "Contenu & assets IA",
-        "Micro-outil IA sur-mesure",
-      ];
+      : [
+          "Automatisation relation client",
+          "Chatbot metier & support",
+          "Qualification & lead scoring",
+          "Contenu & assets IA",
+          "Micro-outil IA sur-mesure",
+        ];
 
   const budgetOptions = isEnglish
     ? ["Under CHF 2,000", "CHF 2,000 - 6,000", "CHF 6,000 - 12,000", "CHF 12,000 +"]
@@ -98,10 +98,33 @@ export function QuoteForm() {
           { title: "Vertraulich", detail: "NDA auf Anfrage" },
         ]
       : [
-        { title: "Reponse 24h", detail: "Budget + planning" },
-        { title: "Sans engagement", detail: "Devis gratuit" },
-        { title: "Confidentiel", detail: "NDA sur demande" },
-      ];
+          { title: "Reponse 24h", detail: "Budget + planning" },
+          { title: "Sans engagement", detail: "Devis gratuit" },
+          { title: "Confidentiel", detail: "NDA sur demande" },
+        ];
+  const sectionLabels = isEnglish
+    ? {
+        identity: "Project base",
+        scope: "Scope and modules",
+        details: "Budget and context",
+      }
+    : isGerman
+      ? {
+          identity: "Projektbasis",
+          scope: "Umfang und Module",
+          details: "Budget und Kontext",
+        }
+      : {
+          identity: "Base du projet",
+          scope: "Perimetre et modules",
+          details: "Budget et contexte",
+        };
+  const fieldClassName =
+    "w-full rounded-2xl border border-white/12 bg-slate-950/55 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none";
+  const selectClassName = `${fieldClassName} appearance-none`;
+  const checkboxClassName = "h-4 w-4 rounded border-white/20 bg-transparent text-sky-300 focus:ring-sky-300/30";
+  const panelClassName = "rounded-[28px] border border-white/10 bg-black/20 p-5 sm:p-6";
+  const panelTitleClassName = "text-xs uppercase tracking-[0.3em] text-white/48";
 
   const exportPdf = () => {
     if (!formRef.current) return;
@@ -113,17 +136,17 @@ export function QuoteForm() {
     const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
     const values: Array<[string, string]> = [
       [isEnglish ? "Client type" : isGerman ? "Kundentyp" : "Type de client", String(formData.get("clientType") ?? "")],
-      [isEnglish ? "Company name" : isGerman ? "Firmenname" : "Nom de société", String(formData.get("companyName") ?? "")],
+      [isEnglish ? "Company name" : isGerman ? "Firmenname" : "Nom de societe", String(formData.get("companyName") ?? "")],
       [isEnglish ? "Full name" : isGerman ? "Vollstaendiger Name" : "Nom complet", String(formData.get("name") ?? "")],
       ["Email", String(formData.get("email") ?? "")],
-      [isEnglish ? "Phone" : isGerman ? "Telefon" : "Téléphone", phoneValue],
+      [isEnglish ? "Phone" : isGerman ? "Telefon" : "Telephone", phoneValue],
       [isEnglish ? "Project type" : isGerman ? "Projekttyp" : "Type de projet", String(formData.get("projectType") ?? "")],
       [isEnglish ? "Goal" : isGerman ? "Ziel" : "Objectif", String(formData.get("goal") ?? "")],
       [isEnglish ? "Pages" : "Pages", selectedPages.join(", ")],
       [isEnglish ? "AI modules" : isGerman ? "AI-Module" : "Modules IA", selectedAiModules.join(", ")],
       [isEnglish ? "Inspirations" : isGerman ? "Referenzen" : "Inspirations", String(formData.get("inspirations") ?? "")],
       [isEnglish ? "Budget" : "Budget", String(formData.get("budget") ?? "")],
-      [isEnglish ? "Timeline" : isGerman ? "Zeitplan" : "Délai", String(formData.get("timeline") ?? "")],
+      [isEnglish ? "Timeline" : isGerman ? "Zeitplan" : "Delai", String(formData.get("timeline") ?? "")],
       [isEnglish ? "Message" : isGerman ? "Nachricht" : "Message", String(formData.get("message") ?? "")],
     ];
 
@@ -135,7 +158,7 @@ export function QuoteForm() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.text(
-      isEnglish ? "Generated from the online form" : isGerman ? "Erstellt aus dem Online-Formular" : "Généré depuis le formulaire en ligne",
+      isEnglish ? "Generated from the online form" : isGerman ? "Erstellt aus dem Online-Formular" : "Genere depuis le formulaire en ligne",
       16,
       49
     );
@@ -182,7 +205,7 @@ export function QuoteForm() {
 
     if (selectedPages.length === 0) {
       setServerMessage(
-        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Sélectionne au moins une page pour ton site."
+        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Selectionne au moins une page pour ton site."
       );
       setStatus("error");
       return;
@@ -190,7 +213,7 @@ export function QuoteForm() {
 
     if (!siteKey) {
       setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
+        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configure. Contacte-nous directement."
       );
       setStatus("error");
       return;
@@ -281,14 +304,16 @@ export function QuoteForm() {
       void submitQuoteRequest(pendingForm, token);
     }
   }, [submitQuoteRequest]);
+
   const handleCaptchaExpire = useCallback(() => {
     setCaptchaToken("");
     pendingFormRef.current = null;
   }, []);
+
   const handleCaptchaError = useCallback(() => {
     setCaptchaToken("");
     setCaptchaError(
-      isEnglish ? "Verification failed. Try again." : isGerman ? "Verifizierung fehlgeschlagen. Bitte erneut versuchen." : "Vérification impossible. Réessaie."
+      isEnglish ? "Verification failed. Try again." : isGerman ? "Verifizierung fehlgeschlagen. Bitte erneut versuchen." : "Verification impossible. Reessaie."
     );
     pendingFormRef.current = null;
   }, [isEnglish, isGerman]);
@@ -302,7 +327,7 @@ export function QuoteForm() {
 
     if (selectedPages.length === 0) {
       setServerMessage(
-        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Sélectionne au moins une page pour ton site."
+        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Selectionne au moins une page pour ton site."
       );
       setStatus("error");
       return;
@@ -310,7 +335,7 @@ export function QuoteForm() {
 
     if (!siteKey) {
       setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
+        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configure. Contacte-nous directement."
       );
       setStatus("error");
       return;
@@ -332,18 +357,11 @@ export function QuoteForm() {
   return (
     <form
       ref={formRef}
-      className="quote-form premium-card rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-black/30 backdrop-blur"
+      className="quote-form premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur"
       onSubmit={handleSubmit}
     >
-      <input
-        type="text"
-        name="website"
-        className="hidden"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        defaultValue=""
-      />
+      <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" defaultValue="" />
+
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
         {trustItems.map((item) => (
           <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
@@ -352,210 +370,211 @@ export function QuoteForm() {
           </div>
         ))}
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="clientType" className="text-sm text-white/70">
-            {isEnglish ? "You are *" : isGerman ? "Du bist *" : "Tu es *"}
-          </label>
-          <select
-            id="clientType"
-            name="clientType"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
-            required
-            defaultValue=""
-          >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Choisir"}</option>
-            <option value="entreprise">{isEnglish ? "Company" : isGerman ? "Unternehmen" : "Entreprise"}</option>
-            <option value="particulier">{isEnglish ? "Individual" : isGerman ? "Privatperson" : "Particulier"}</option>
-          </select>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="companyName" className="text-sm text-white/70">
-            {isEnglish ? "Company name (if company)" : isGerman ? "Firmenname (falls Unternehmen)" : "Nom de société (si entreprise)"}
-          </label>
-          <input
-            id="companyName"
-            name="companyName"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Kah-Digital LLC" : isGerman ? "Bsp.: Kah-Digital GmbH" : "Ex : Kah-Digital SAS"}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm text-white/70">{isEnglish ? "Full name *" : isGerman ? "Vollstaendiger Name *" : "Nom complet *"}</label>
-          <input
-            id="name"
-            name="name"
-            required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Alex Martin" : isGerman ? "z. B. Alex Martin" : "Ex : Alex Martin"}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-sm text-white/70">Email *</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="contact@company.com"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm text-white/70">
-            {isEnglish ? "Phone (optional)" : isGerman ? "Telefon (optional)" : "Téléphone (optionnel)"}
-          </label>
-          <div className="flex flex-wrap gap-3">
-            <select
-              id="phoneCountry"
-              name="phoneCountry"
-              defaultValue="+41"
-              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white focus:border-white/60 focus:outline-none"
-            >
-              {countryDialCodesSorted.map((entry) => (
-                <option key={entry.iso} value={entry.code} className="text-black">
-                  {entry.country} ({entry.code})
+
+      <div className="space-y-5">
+        <div className={panelClassName}>
+          <p className={panelTitleClassName}>{sectionLabels.identity}</p>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="clientType" className="text-sm text-white/70">
+                {isEnglish ? "You are *" : isGerman ? "Du bist *" : "Tu es *"}
+              </label>
+              <select id="clientType" name="clientType" className={selectClassName} required defaultValue="">
+                <option value="" disabled className="text-black">
+                  {isEnglish ? "Select" : isGerman ? "Waehlen" : "Choisir"}
                 </option>
-              ))}
-            </select>
-            <input
-              id="phone"
-              name="phone"
-              inputMode="tel"
-              className="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-              placeholder="00 00 00 00 00"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="projectType" className="text-sm text-white/70">{isEnglish ? "Project type *" : isGerman ? "Projekttyp *" : "Type de projet *"}</label>
-          <select
-            id="projectType"
-            name="projectType"
-            required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
-          >
-            <option value={isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}>{isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}</option>
-            <option value="E-commerce">{isEnglish ? "E-commerce" : isGerman ? "E-Commerce" : "E-commerce"}</option>
-            <option value={isEnglish ? "Web application" : isGerman ? "Web-Anwendung" : "Application web"}>{isEnglish ? "Web application" : isGerman ? "Web-Anwendung" : "Application web"}</option>
-            <option value={isEnglish ? "Other" : isGerman ? "Sonstiges" : "Autre"}>{isEnglish ? "Other" : isGerman ? "Sonstiges" : "Autre"}</option>
-          </select>
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="goal" className="text-sm text-white/70">{isEnglish ? "Project goal *" : isGerman ? "Projektziel *" : "Objectif du site *"}</label>
-          <textarea
-            id="goal"
-            name="goal"
-            required
-            rows={3}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={
-              isEnglish
-                ? "e.g. Present the company and generate qualified leads."
-                : isGerman
-                  ? "z. B. Unternehmen klar praesentieren und qualifizierte Anfragen gewinnen."
-                  : "Ex : Présenter l'agence et générer des demandes qualifiées."
-            }
-          />
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <p className="text-sm text-white/70">{isEnglish ? "Pages needed *" : isGerman ? "Gewuenschte Seiten *" : "Pages souhaitees *"}</p>
-          <div className="grid gap-3 md:grid-cols-3">
-            {pageOptions.map((page) => (
-              <label key={page} className="flex items-center gap-2 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  name="pages"
-                  value={page}
-                  className="h-4 w-4 rounded border-white/20 bg-transparent text-black focus:ring-white/60"
-                />
-                {page}
+                <option value="entreprise" className="text-black">
+                  {isEnglish ? "Company" : isGerman ? "Unternehmen" : "Entreprise"}
+                </option>
+                <option value="particulier" className="text-black">
+                  {isEnglish ? "Individual" : isGerman ? "Privatperson" : "Particulier"}
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="companyName" className="text-sm text-white/70">
+                {isEnglish ? "Company name (if company)" : isGerman ? "Firmenname (falls Unternehmen)" : "Nom de societe (si entreprise)"}
               </label>
-            ))}
-          </div>
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <p className="text-sm text-white/70">{isEnglish ? "AI modules (optional)" : isGerman ? "AI-Module (optional)" : "Modules IA (optionnel)"}</p>
-          <div className="grid gap-3 md:grid-cols-2">
-            {aiModuleOptions.map((module) => (
-              <label key={module} className="flex items-center gap-2 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  name="aiModules"
-                  value={module}
-                  className="h-4 w-4 rounded border-white/20 bg-transparent text-black focus:ring-white/60"
-                />
-                {module}
+              <input
+                id="companyName"
+                name="companyName"
+                className={fieldClassName}
+                placeholder={isEnglish ? "e.g. Kah-Digital LLC" : isGerman ? "Bsp.: Kah-Digital GmbH" : "Ex : Kah-Digital SAS"}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="name" className="text-sm text-white/70">
+                {isEnglish ? "Full name *" : isGerman ? "Vollstaendiger Name *" : "Nom complet *"}
               </label>
-            ))}
+              <input
+                id="name"
+                name="name"
+                required
+                className={fieldClassName}
+                placeholder={isEnglish ? "e.g. Alex Martin" : isGerman ? "z. B. Alex Martin" : "Ex : Alex Martin"}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="text-sm text-white/70">
+                Email *
+              </label>
+              <input id="email" type="email" name="email" required className={fieldClassName} placeholder="contact@company.com" />
+            </div>
+            <div className="md:col-span-2 flex flex-col gap-2">
+              <label htmlFor="phone" className="text-sm text-white/70">
+                {isEnglish ? "Phone (optional)" : isGerman ? "Telefon (optional)" : "Telephone (optionnel)"}
+              </label>
+              <div className="flex flex-wrap gap-3">
+                <select id="phoneCountry" name="phoneCountry" defaultValue="+41" className={`${selectClassName} min-w-[170px] px-3`}>
+                  {countryDialCodesSorted.map((entry) => (
+                    <option key={entry.iso} value={entry.code} className="text-black">
+                      {entry.country} ({entry.code})
+                    </option>
+                  ))}
+                </select>
+                <input id="phone" name="phone" inputMode="tel" className={`${fieldClassName} min-w-[200px] flex-1`} placeholder="00 00 00 00 00" />
+              </div>
+            </div>
+            <div className="md:col-span-2 flex flex-col gap-2">
+              <label htmlFor="projectType" className="text-sm text-white/70">
+                {isEnglish ? "Project type *" : isGerman ? "Projekttyp *" : "Type de projet *"}
+              </label>
+              <select id="projectType" name="projectType" required className={selectClassName}>
+                <option className="text-black" value={isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}>
+                  {isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}
+                </option>
+                <option className="text-black" value="E-commerce">
+                  {isEnglish ? "E-commerce" : isGerman ? "E-Commerce" : "E-commerce"}
+                </option>
+                <option className="text-black" value={isEnglish ? "Web application" : isGerman ? "Web-Anwendung" : "Application web"}>
+                  {isEnglish ? "Web application" : isGerman ? "Web-Anwendung" : "Application web"}
+                </option>
+                <option className="text-black" value={isEnglish ? "Other" : isGerman ? "Sonstiges" : "Autre"}>
+                  {isEnglish ? "Other" : isGerman ? "Sonstiges" : "Autre"}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="inspirations" className="text-sm text-white/70">
-            {isEnglish ? "Inspirations (links)" : isGerman ? "Referenzen (Links)" : "Inspirations (liens)"}
-          </label>
-          <input
-            id="inspirations"
-            name="inspirations"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder="https://site-you-like.com"
-          />
+
+        <div className={panelClassName}>
+          <p className={panelTitleClassName}>{sectionLabels.scope}</p>
+          <div className="mt-5 grid gap-5">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="goal" className="text-sm text-white/70">
+                {isEnglish ? "Project goal *" : isGerman ? "Projektziel *" : "Objectif du site *"}
+              </label>
+              <textarea
+                id="goal"
+                name="goal"
+                required
+                rows={3}
+                className={fieldClassName}
+                placeholder={
+                  isEnglish
+                    ? "e.g. Present the company and generate qualified leads."
+                    : isGerman
+                      ? "z. B. Unternehmen klar praesentieren und qualifizierte Anfragen gewinnen."
+                      : "Ex : Presenter l'agence et generer des demandes qualifiees."
+                }
+              />
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-sm text-white/70">{isEnglish ? "Pages needed *" : isGerman ? "Gewuenschte Seiten *" : "Pages souhaitees *"}</p>
+              <div className="grid gap-3 md:grid-cols-3">
+                {pageOptions.map((page) => (
+                  <label
+                    key={page}
+                    className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/5 px-4 py-3 text-sm text-white/80 transition hover:border-white/25 hover:bg-white/8"
+                  >
+                    <input type="checkbox" name="pages" value={page} className={checkboxClassName} />
+                    <span>{page}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-sm text-white/70">{isEnglish ? "AI modules (optional)" : isGerman ? "AI-Module (optional)" : "Modules IA (optionnel)"}</p>
+              <div className="grid gap-3 md:grid-cols-2">
+                {aiModuleOptions.map((module) => (
+                  <label
+                    key={module}
+                    className="flex items-center gap-3 rounded-2xl border border-white/12 bg-white/5 px-4 py-3 text-sm text-white/80 transition hover:border-white/25 hover:bg-white/8"
+                  >
+                    <input type="checkbox" name="aiModules" value={module} className={checkboxClassName} />
+                    <span>{module}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="budget" className="text-sm text-white/70">Budget *</label>
-          <select
-            id="budget"
-            name="budget"
-            required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
-          >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Sélectionne"}</option>
-            {budgetOptions.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="timeline" className="text-sm text-white/70">{isEnglish ? "Timeline *" : isGerman ? "Zeitplan *" : "Délai *"}</label>
-          <select
-            id="timeline"
-            name="timeline"
-            required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
-          >
-            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Waehlen" : "Choisis"}</option>
-            {timelineOptions.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="message" className="text-sm text-white/70">
-            {isEnglish ? "Your vision (free text)" : isGerman ? "Deine Vision (Freitext)" : "Ta vision (message libre)"}
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={
-              isEnglish
-                ? "Share your universe, what matters most..."
-                : isGerman
-                  ? "Erzaehl uns mehr ueber dein Unternehmen, deine Prioritaeten und was wirklich zaehlt..."
-                  : "Parle-nous de ton univers, de ce qui compte vraiment..."
-            }
-          />
+
+        <div className={panelClassName}>
+          <p className={panelTitleClassName}>{sectionLabels.details}</p>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="inspirations" className="text-sm text-white/70">
+                {isEnglish ? "Inspirations (links)" : isGerman ? "Referenzen (Links)" : "Inspirations (liens)"}
+              </label>
+              <input id="inspirations" name="inspirations" className={fieldClassName} placeholder="https://site-you-like.com" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="budget" className="text-sm text-white/70">
+                Budget *
+              </label>
+              <select id="budget" name="budget" required className={selectClassName} defaultValue="">
+                <option value="" disabled className="text-black">
+                  {isEnglish ? "Select" : isGerman ? "Waehlen" : "Selectionne"}
+                </option>
+                {budgetOptions.map((value) => (
+                  <option key={value} value={value} className="text-black">
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="timeline" className="text-sm text-white/70">
+                {isEnglish ? "Timeline *" : isGerman ? "Zeitplan *" : "Delai *"}
+              </label>
+              <select id="timeline" name="timeline" required className={selectClassName} defaultValue="">
+                <option value="" disabled className="text-black">
+                  {isEnglish ? "Choose" : isGerman ? "Waehlen" : "Choisis"}
+                </option>
+                {timelineOptions.map((value) => (
+                  <option key={value} value={value} className="text-black">
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="md:col-span-2 flex flex-col gap-2">
+              <label htmlFor="message" className="text-sm text-white/70">
+                {isEnglish ? "Your vision (free text)" : isGerman ? "Deine Vision (Freitext)" : "Ta vision (message libre)"}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className={`${fieldClassName} min-h-[150px]`}
+                placeholder={
+                  isEnglish
+                    ? "Share your universe, what matters most..."
+                    : isGerman
+                      ? "Erzaehl uns mehr ueber dein Unternehmen, deine Prioritaeten und was wirklich zaehlt..."
+                      : "Parle-nous de ton univers, de ce qui compte vraiment..."
+                }
+              />
+            </div>
+          </div>
         </div>
       </div>
+
       <div className="mt-6 space-y-2 text-sm text-white/70">
-        <p>{isEnglish ? "Anti-spam verification" : isGerman ? "Anti-Spam-Verifizierung" : "Vérification anti-spam"}</p>
+        <p>{isEnglish ? "Anti-spam verification" : isGerman ? "Anti-Spam-Verifizierung" : "Verification anti-spam"}</p>
         {siteKey ? (
-          <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
+          <div className="flex min-h-[96px] items-center rounded-2xl border border-white/10 bg-white/5 p-4">
             <TurnstileWidget
               ref={widgetRef}
               siteKey={siteKey}
@@ -566,10 +585,11 @@ export function QuoteForm() {
             />
           </div>
         ) : (
-          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : isGerman ? "Captcha ist nicht konfiguriert." : "Captcha non configuré."}</p>
+          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : isGerman ? "Captcha ist nicht konfiguriert." : "Captcha non configure."}</p>
         )}
         {captchaError && <p className="text-rose-200">{captchaError}</p>}
       </div>
+
       <div className="mt-6 flex flex-col gap-3">
         <button
           type="submit"
@@ -581,7 +601,7 @@ export function QuoteForm() {
         <button
           type="button"
           onClick={exportPdf}
-          className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/80 transition hover:border-white hover:text-white"
+          className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/80 transition hover:border-white hover:bg-white/5 hover:text-white"
         >
           {isEnglish ? "Export to PDF" : isGerman ? "Als PDF exportieren" : "Exporter en PDF"}
         </button>
@@ -590,24 +610,16 @@ export function QuoteForm() {
             ? "Free estimate, reply within 24h. No commitment."
             : isGerman
               ? "Kostenlose Anfrage, Rueckmeldung innerhalb von 24h. Unverbindlich."
-              : "Devis gratuit, réponse sous 24h. Aucun engagement."}
+              : "Devis gratuit, reponse sous 24h. Aucun engagement."}
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
             ? "Quotes and invoices are issued in CHF. Payment is usually made by bank transfer, with secure Stripe payment possible when the project requires it."
             : isGerman
               ? "Angebote und Rechnungen werden in CHF erstellt. Die Zahlung erfolgt meist per Bankueberweisung, mit sicherem Stripe-Link wenn das Projekt es braucht."
-              : "Les devis et factures sont émis en CHF. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
+              : "Les devis et factures sont emis en CHF. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
         </p>
-        {serverMessage && (
-          <p
-            className={`text-sm ${
-              status === "error" ? "text-rose-200" : "text-emerald-200"
-            }`}
-          >
-            {serverMessage}
-          </p>
-        )}
+        {serverMessage && <p className={`text-sm ${status === "error" ? "text-rose-200" : "text-emerald-200"}`}>{serverMessage}</p>}
       </div>
     </form>
   );

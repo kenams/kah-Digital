@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { ContactCard } from "@/components/contact-card";
 import { useLocale } from "@/lib/locale";
 
 export function FAQSection() {
@@ -10,139 +11,179 @@ export function FAQSection() {
 
   const copy = {
     fr: {
-      title: "Questions fréquentes",
-      body: "Les points les plus utiles avant de lancer un site, une application ou un parcours support.",
+      title: "Questions utiles avant de signer",
+      body: "Les reponses qui comptent quand on veut un site plus fort, une automatisation utile et un projet qui reste simple a suivre.",
+      asideTitle: "Ce qu'on peut cadrer vite",
+      asideBullets: [
+        "clarifier une offre",
+        "poser une premiere architecture",
+        "identifier le bon use case IA",
+        "sortir un budget credible",
+      ],
       faqs: [
+        {
+          question: "Faites-vous uniquement de l'IA ?",
+          answer:
+            "Non. KAH-Digital travaille sur trois leviers ensemble: site qui convertit, automatisation utile et outil metier quand il faut structurer l'operation.",
+        },
+        {
+          question: "Comment savoir si l'IA est vraiment utile dans mon cas ?",
+          answer:
+            "Si tu repetes les memes reponses, qualifies tes leads a la main ou perds trop de temps sur des demandes simples, il y a probablement un bon point d'automatisation.",
+        },
+        {
+          question: "Proposez-vous des devis sur mesure ?",
+          answer:
+            "Oui. Le but est justement d'eviter le package flou. On part d'un besoin reel, d'un scope net et d'un budget lisible.",
+        },
+        {
+          question: "En combien de temps un projet peut-il commencer ?",
+          answer:
+            "Quand le besoin est clair, une premiere direction avec budget et prochaine etape peut partir sous 48h. Le sprint depend ensuite du perimetre choisi.",
+        },
+        {
+          question: "Pouvez-vous brancher l'assistant a notre support ou a GLPI ?",
+          answer:
+            "Oui. Si le cas d'usage le demande, l'assistant peut orienter, filtrer et transmettre proprement vers un humain, un email ou un ticket.",
+        },
         {
           question: "Travaillez-vous avec des clients hors de votre marche local ?",
           answer:
-            "Oui. KAH-Digital peut travailler avec des clients francophones, anglophones et internationaux quand le cadre est clair, le besoin utile et la collaboration bien posee.",
-        },
-        {
-          question: "Proposez-vous des devis personnalisés ?",
-          answer:
-            "Oui. Chaque projet est cadré selon vos priorités, votre niveau d'urgence et le périmètre réel à produire, avec une proposition lisible.",
-        },
-        {
-          question: "Quel type de site web pouvez-vous produire ?",
-          answer:
-            "Sites vitrines, sites corporate, pages de lancement, plateformes de présentation ou bases plus évolutives connectées à d'autres outils.",
-        },
-        {
-          question: "Pouvez-vous développer une application métier ?",
-          answer:
-            "Oui. Nous pouvons cadrer un outil interne, un portail, un tableau de bord ou une application web/mobile sur mesure selon le besoin.",
-        },
-        {
-          question: "Le parcours support connecté à GLPI convient-il à une PME ?",
-          answer:
-            "Oui. Le but est justement de simplifier l'entrée dans le support, d'aider l'utilisateur au bon moment et de garder un passage propre vers ticket quand c'est nécessaire.",
-        },
-        {
-          question: "Combien de temps faut-il pour démarrer ?",
-          answer:
-            "Si le besoin est clair, le démarrage peut être rapide. Le plus efficace reste de valider un brief simple, puis un cadrage et un devis.",
+            "Oui. Le site et le process sont penses pour travailler avec des equipes francophones, anglophones et internationales, a distance ou en mode hybride.",
         },
       ],
     },
     en: {
-      title: "Frequently asked questions",
-      body: "The most useful points to know before launching a website, an app, or a support workflow.",
+      title: "Useful questions before moving forward",
+      body: "The answers that matter when you want a stronger website, useful automation, and a project that stays easy to follow.",
+      asideTitle: "What we can scope quickly",
+      asideBullets: [
+        "clarify the offer",
+        "set the first architecture",
+        "identify the right AI use case",
+        "produce a credible budget",
+      ],
       faqs: [
         {
-          question: "Do you work with clients outside your local market?",
+          question: "Do you only do AI work?",
           answer:
-            "Yes. KAH-Digital can work with French-speaking, English-speaking, and international clients when the setup is clear and the project has a real need.",
+            "No. KAH-Digital works across three linked levers: websites that convert, useful automation, and business tools when operations need structure.",
+        },
+        {
+          question: "How do I know if AI is actually useful for my case?",
+          answer:
+            "If your team keeps answering the same questions, qualifying leads manually, or wasting time on simple requests, there is likely a solid automation angle.",
         },
         {
           question: "Do you provide tailored quotes?",
           answer:
-            "Yes. Each project is scoped around your priorities, urgency level, and the real perimeter to produce, with a readable proposal.",
+            "Yes. The goal is precisely to avoid vague packages. We start from a real need, a sharp scope, and a readable budget.",
         },
         {
-          question: "What kind of website can you build?",
+          question: "How fast can a project start?",
           answer:
-            "Showcase sites, corporate websites, launch pages, presentation platforms, or more scalable foundations connected to other tools.",
+            "When the need is clear, a first direction with budget and next step can be sent within 48h. The sprint then depends on the chosen scope.",
         },
         {
-          question: "Can you build a business application?",
+          question: "Can you connect the assistant to our support flow or GLPI?",
           answer:
-            "Yes. We can scope an internal tool, a portal, a dashboard, or a custom web/mobile app depending on the need.",
+            "Yes. When relevant, the assistant can route, filter, and hand off cleanly to a human, an email workflow, or a ticketing system.",
         },
         {
-          question: "Is the GLPI-connected support flow suitable for an SMB?",
+          question: "Do you work with clients outside your local market?",
           answer:
-            "Yes. The goal is precisely to simplify support entry, help the user at the right moment, and keep a clean handoff to tickets when needed.",
-        },
-        {
-          question: "How long does it take to get started?",
-          answer:
-            "If the need is clear, kickoff can be fast. The most effective path is still to validate a simple brief, then scoping and a quote.",
+            "Yes. The website and workflow are designed to support French-speaking, English-speaking, and international teams working remotely or hybrid.",
         },
       ],
     },
     de: {
-      title: "Haeufige Fragen",
-      body: "Die nuetzlichsten Punkte vor dem Start einer Website, einer App oder eines Support-Workflows.",
+      title: "Nuetzliche Fragen vor dem Start",
+      body: "Antworten, die zaehlen, wenn du eine staerkere Website, nuetzliche Automatisierung und einen klar gefuehrten Projektablauf willst.",
+      asideTitle: "Was wir schnell sauber briefen koennen",
+      asideBullets: [
+        "das Angebot schaerfen",
+        "eine erste Architektur setzen",
+        "den passenden KI-Use-Case finden",
+        "ein glaubwuerdiges Budget aufsetzen",
+      ],
       faqs: [
         {
-          question: "Arbeitet ihr auch mit Kunden ausserhalb eures lokalen Marktes?",
+          question: "Macht ihr nur KI-Projekte?",
           answer:
-            "Ja. KAH-Digital kann mit frankophonen, englischsprachigen und internationalen Kunden arbeiten, wenn Rahmen und Bedarf klar sind.",
+            "Nein. KAH-Digital arbeitet entlang von drei verbundenen Hebeln: Websites, die besser konvertieren, nuetzliche Automatisierung und Business-Tools mit Struktur.",
+        },
+        {
+          question: "Woher weiss ich, ob KI fuer meinen Fall wirklich sinnvoll ist?",
+          answer:
+            "Wenn dein Team immer wieder dieselben Fragen beantwortet, Leads manuell qualifiziert oder zu viel Zeit mit einfachen Anliegen verliert, gibt es meist einen guten Automatisierungs-Hebel.",
         },
         {
           question: "Erstellt ihr individuelle Angebote?",
           answer:
-            "Ja. Jedes Projekt wird nach Prioritaeten, Dringlichkeit und echtem Produktionsumfang sauber gebrieft und als lesbare Offerte dargestellt.",
+            "Ja. Genau darum geht es: keine vagen Pakete, sondern ein echter Bedarf, ein sauberer Scope und ein lesbares Budget.",
         },
         {
-          question: "Welche Art von Website koennt ihr bauen?",
+          question: "Wie schnell kann ein Projekt starten?",
           answer:
-            "Praesentationsseiten, Corporate Sites, Launch Pages, Plattformen oder weiter skalierbare Grundlagen mit Anbindung an andere Tools.",
+            "Wenn der Bedarf klar ist, kann eine erste Richtung mit Budget und naechstem Schritt innerhalb von 48h rausgehen. Der Sprint haengt danach vom Scope ab.",
         },
         {
-          question: "Koennt ihr eine Business-Anwendung entwickeln?",
+          question: "Koennt ihr den Assistenten an unseren Support oder GLPI anbinden?",
           answer:
-            "Ja. Wir koennen ein internes Tool, ein Portal, ein Dashboard oder eine massgeschneiderte Web-/Mobile-App passend zum Bedarf aufsetzen.",
+            "Ja. Wenn es sinnvoll ist, kann der Assistent sauber an Menschen, E-Mail-Flows oder ein Ticketsystem uebergeben.",
         },
         {
-          question: "Ist der GLPI-verbundene Support-Flow fuer ein KMU sinnvoll?",
+          question: "Arbeitet ihr mit Kunden ausserhalb eures lokalen Marktes?",
           answer:
-            "Ja. Das Ziel ist genau, den Einstieg in den Support zu vereinfachen, den Nutzer im richtigen Moment zu begleiten und Tickets sauber zu uebergeben.",
-        },
-        {
-          question: "Wie schnell kann es losgehen?",
-          answer:
-            "Wenn der Bedarf klar ist, kann der Start schnell erfolgen. Am effizientesten bleibt ein einfaches Briefing, dann Scoping und Offerte.",
+            "Ja. Website und Arbeitsweise sind fuer frankophone, englischsprachige und internationale Teams ausgelegt, remote oder hybrid.",
         },
       ],
     },
   }[locale];
 
   return (
-    <section className="bg-gray-50 py-16">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
-          <p className="text-xl text-gray-600">{copy.body}</p>
+    <section id="faq" className="section-shell">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 text-center">
+          <p className="text-sm uppercase tracking-[0.35em] text-white/50">FAQ</p>
+          <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{copy.title}</h2>
+          <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg">{copy.body}</p>
         </div>
-        <div className="space-y-4">
-          {copy.faqs.map((faq, index) => (
-            <div key={faq.question} className="rounded-lg bg-white shadow-md">
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-gray-50"
-              >
-                <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
-                {openIndex === index ? <FiChevronUp className="text-gray-500" size={24} /> : <FiChevronDown className="text-gray-500" size={24} />}
-              </button>
-              {openIndex === index ? (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              ) : null}
+        <div className="grid gap-6 lg:grid-cols-[0.85fr,1.15fr] lg:items-start">
+          <div className="space-y-5 lg:sticky lg:top-28">
+            <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 text-white">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/45">{copy.asideTitle}</p>
+              <div className="mt-5 grid gap-3">
+                {copy.asideBullets.map((item, index) => (
+                  <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#d6b36a]/30 bg-[#d6b36a]/10 text-xs font-semibold text-[#f3ddb0]">
+                      0{index + 1}
+                    </span>
+                    <span className="text-sm text-white/72">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+            <ContactCard />
+          </div>
+          <div className="space-y-4">
+            {copy.faqs.map((faq, index) => (
+              <div key={faq.question} className="premium-card overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="flex w-full items-center justify-between px-6 py-5 text-left hover:bg-white/[0.04]"
+                >
+                  <span className="pr-6 text-lg font-semibold text-white">{faq.question}</span>
+                  {openIndex === index ? <FiChevronUp className="text-white/55" size={24} /> : <FiChevronDown className="text-white/55" size={24} />}
+                </button>
+                {openIndex === index ? (
+                  <div className="px-6 pb-5">
+                    <p className="text-sm leading-7 text-white/70">{faq.answer}</p>
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

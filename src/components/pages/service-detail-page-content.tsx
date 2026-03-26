@@ -26,10 +26,10 @@ const content = {
   fr: {
     "site-web": {
       heroClassName: "bg-gradient-to-r from-blue-600 to-sky-500 py-20 text-white",
-      eyebrow: "Sites vitrines, sites corporate et plateformes de prÃ©sentation",
-      title: "Des sites web clairs, crÃ©dibles et utiles pour votre entreprise",
+      eyebrow: "Sites vitrines, sites corporate et plateformes de presentation",
+      title: "Des sites web clairs, credibles et utiles pour votre entreprise",
       body:
-        "KAH-Digital conÃ§oit des sites web pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'Ãªtre en ligne, mais de mieux prÃ©senter votre activitÃ©, rassurer vos clients et faciliter la prise de contact.",
+        "KAH-Digital concoit des sites web pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'etre en ligne, mais de mieux presenter votre activite, rassurer vos clients et faciliter la prise de contact.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/projets/kah-prod",
@@ -41,18 +41,18 @@ const content = {
           leftIcon: FiTrendingUp,
           leftItems: [
             "Site absent, ancien ou peu convaincant",
-            "Image de marque qui ne reflÃ¨te pas le niveau rÃ©el de l'entreprise",
+            "Image de marque qui ne reflete pas le niveau reel de l'entreprise",
             "Peu de demandes entrantes depuis le web",
-            "Contenu difficile Ã  faire Ã©voluer en interne",
+            "Contenu difficile a faire evoluer en interne",
           ],
           rightTitle: "Ce que le projet doit vraiment apporter",
           rightIcon: FiCheck,
           rightItems: [
-            "PrÃ©sentation plus claire de l'offre et du positionnement",
-            "Site plus propre, rapide et plus facile Ã  faire vivre",
+            "Presentation plus claire de l'offre et du positionnement",
+            "Site plus propre, rapide et plus facile a faire vivre",
             "Parcours de contact et de devis plus direct",
             "Paiement en ligne possible si le projet le demande",
-            "Base solide pour mieux travailler votre visibilitÃ© en ligne",
+            "Base solide pour mieux travailler votre visibilite en ligne",
           ],
         },
         {
@@ -60,46 +60,46 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Formats de projet",
           body:
-            "Des bases claires pour des projets web bien cadres, avec une adaptation possible selon le niveau de contenu, de design et de fonctionnalitÃ©s.",
+            "Des bases claires pour des projets web bien cadres, avec une adaptation possible selon le niveau de contenu, de design et de fonctionnalites.",
           items: [
             {
               title: "Essentiel",
-              price: "Ã€ partir de 2'900 CHF",
+              price: "A partir de 2'900 CHF",
               points: [
-                "Site vitrine 4 Ã  6 pages",
+                "Site vitrine 4 a 6 pages",
                 "Design responsive",
                 "Formulaire de contact",
                 "Base SEO propre",
                 "Paiement simple possible en option",
                 "Mise en ligne et prise en main",
               ],
-              cta: "Ã‰changer sur ce format",
+              cta: "Echanger sur ce format",
             },
             {
               title: "Business",
-              price: "Ã€ partir de 5'500 CHF",
+              price: "A partir de 5'500 CHF",
               points: [
                 "Site corporate plus complet",
-                "Pages services structurÃ©es",
-                "CMS ou zone d'Ã©dition",
+                "Pages services structurees",
+                "CMS ou zone d'edition",
                 "Suivi analytics",
-                "Acompte, rÃ©servation ou paiement simple possible",
+                "Acompte, reservation ou paiement simple possible",
                 "Accompagnement au lancement",
               ],
-              cta: "Ã‰changer sur ce format",
+              cta: "Echanger sur ce format",
             },
             {
               title: "Sur mesure",
-              price: "Ã€ partir de 9'500 CHF",
+              price: "A partir de 9'500 CHF",
               points: [
                 "Direction plus premium",
-                "Parcours conversion travaillÃ©",
-                "Connexions Ã  vos outils",
-                "FonctionnalitÃ©s mÃ©tier spÃ©cifiques",
+                "Parcours conversion travaille",
+                "Connexions a vos outils",
+                "Fonctionnalites metier specifiques",
                 "Stripe Checkout ou paiement sur mesure possible",
                 "Support de lancement prioritaire",
               ],
-              cta: "Ã‰changer sur ce format",
+              cta: "Echanger sur ce format",
             },
           ],
         },
@@ -111,7 +111,7 @@ const content = {
               icon: FiMonitor,
               title: "Presentation et confiance",
               body:
-                "Une structure propre, des contenus lisibles et une image plus sÃ©rieuse pour vos clients, partenaires ou futurs recrutements.",
+                "Une structure propre, des contenus lisibles et une image plus serieuse pour vos clients, partenaires ou futurs recrutements.",
             },
             {
               icon: FiCompass,
@@ -123,17 +123,17 @@ const content = {
               icon: FiCheck,
               title: "Base durable",
               body:
-                "Le site reste Ã©volutif et peut servir de base Ã  d'autres outils, contenus, campagnes ou automatisations plus tard.",
+                "Le site reste evolutif et peut servir de base a d'autres outils, contenus, campagnes ou automatisations plus tard.",
             },
           ],
-          timelineTitle: "MÃ©thode de travail",
+          timelineTitle: "Methode de travail",
           timelineBody: "Un cadre simple, lisible et sans surproduction inutile.",
           timeline: [
-            { step: "01", title: "Cadrage", description: "Objectifs, structure du site, pages utiles et prioritÃ©s business." },
-            { step: "02", title: "Direction", description: "Univers visuel, rythme, contenus et expÃ©rience attendue." },
-            { step: "03", title: "Production", description: "IntÃ©gration, dÃ©veloppement, optimisation et connecteurs utiles." },
+            { step: "01", title: "Cadrage", description: "Objectifs, structure du site, pages utiles et priorites business." },
+            { step: "02", title: "Direction", description: "Univers visuel, rythme, contenus et experience attendue." },
+            { step: "03", title: "Production", description: "Integration, developpement, optimisation et connecteurs utiles." },
             { step: "04", title: "Mise en ligne", description: "Validation, domaine, SEO de base et derniers ajustements." },
-            { step: "05", title: "Suivi", description: "Corrections, Ã©volutions et support selon le besoin." },
+            { step: "05", title: "Suivi", description: "Corrections, evolutions et support selon le besoin." },
           ],
         },
       ],
@@ -141,7 +141,7 @@ const content = {
         className: "bg-blue-600 py-16 text-white",
         title: "Besoin d'un site plus propre pour votre entreprise ?",
         body:
-          "Nous pouvons cadrer un site vitrine ou corporate solide, avec un niveau de finition adaptÃ© Ã  votre marchÃ©, Ã  votre rythme et Ã  votre budget, et ajouter un paiement simple si le projet le demande.",
+          "Nous pouvons cadrer un site vitrine ou corporate solide, avec un niveau de finition adapte a votre marche, a votre rythme et a votre budget, et ajouter un paiement simple si le projet le demande.",
         label: "Demander un devis gratuit",
       },
     },
@@ -150,7 +150,7 @@ const content = {
       eyebrow: "Applications web, outils metier et experiences mobiles",
       title: "Des applications utiles, pas des usines a gaz",
       body:
-        "KAH-Digital conÃ§oit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activitÃ©, avec une logique de production simple et exploitable.",
+        "KAH-Digital concoit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activite, avec une logique de production simple et exploitable.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/contact",
@@ -161,11 +161,11 @@ const content = {
           sectionClassName: "bg-white py-16",
           title: "Cas d'usage frequents",
           body:
-            "Des projets souvent demandÃ©s par des PME, des structures en croissance ou des Ã©quipes qui veulent mieux faire circuler l'information.",
+            "Des projets souvent demandes par des PME, des structures en croissance ou des equipes qui veulent mieux faire circuler l'information.",
           items: [
             "Portails clients et extranet",
             "Tableaux de bord et reporting",
-            "Outils internes pour Ã©quipes terrain ou back-office",
+            "Outils internes pour equipes terrain ou back-office",
             "Applications de suivi, reservation ou planification",
             "Mini-CRM, back-office et espaces membres",
             "Automatisation de taches administratives ou commerciales",
@@ -183,7 +183,7 @@ const content = {
             "Outils adaptes a votre fonctionnement reel",
             "Gain de temps sur les operations repetitives",
             "Meilleure circulation de l'information",
-            "Base Ã©volutive pour de futurs modules",
+            "Base evolutive pour de futurs modules",
           ],
         },
         {
@@ -199,7 +199,7 @@ const content = {
             },
             {
               icon: FiDatabase,
-              title: "Architecture de donnÃ©es propre",
+              title: "Architecture de donnees propre",
               body: "Structure, droits et logique de stockage adaptes a vos usages et a votre croissance.",
             },
             {
@@ -225,19 +225,19 @@ const content = {
               title: "Application metier",
               price: "A partir de 4'500 CHF",
               description:
-                "Pour remplacer un process manuel, structurer une activitÃ© ou centraliser l'opÃ©rationnel.",
+                "Pour remplacer un process manuel, structurer une activite ou centraliser l'operationnel.",
             },
             {
               title: "Portail ou espace client",
               price: "A partir de 7'500 CHF",
               description:
-                "Pour donner un accÃ¨s utile Ã  des documents, Ã©tats, demandes ou suivis cÃ´tÃ© client.",
+                "Pour donner un acces utile a des documents, etats, demandes ou suivis cote client.",
             },
             {
               title: "Application plus complete",
               price: "A partir de 12'000 CHF",
               description:
-                "Pour un produit plus riche avec comptes, donnÃ©es, workflows et intÃ©grations multiples.",
+                "Pour un produit plus riche avec comptes, donnees, workflows et integrations multiples.",
             },
           ],
         },
@@ -246,7 +246,7 @@ const content = {
         className: "bg-blue-700 py-16 text-white",
         title: "Besoin d'un outil plus adapte a votre facon de travailler ?",
         body:
-          "Nous pouvons cadrer une application claire, Ã©volutive et utile pour vos Ã©quipes ou vos clients.",
+          "Nous pouvons cadrer une application claire, evolutive et utile pour vos equipes ou vos clients.",
         label: "Obtenir un devis personnalise",
       },
     },
@@ -255,7 +255,7 @@ const content = {
       eyebrow: "Parcours support, aide virtuelle et tickets GLPI",
       title: "Un support plus simple autour de GLPI",
       body:
-        "KAH-Digital ne remplace pas votre Ã©quipe GLPI et ne vend pas une infogÃ©rance dÃ©guisÃ©e. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une crÃ©ation de ticket quand le besoin doit Ãªtre repris proprement.",
+        "KAH-Digital ne remplace pas votre equipe GLPI et ne vend pas une infogerance deguisee. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une creation de ticket quand le besoin doit etre repris proprement.",
       heroNote: "Solution proprietaire KAH-Digital, adaptee a votre organisation support",
       primaryHref: "/devis",
       primaryLabel: "Obtenir un devis",
@@ -273,7 +273,7 @@ const content = {
             "Une couche de parcours et d'assistance en amont de GLPI",
             "Une entree plus simple pour les utilisateurs qui ont besoin d'aide",
             "Une aide virtuelle discrete pour orienter et debloquer les demandes simples",
-            "Une crÃ©ation de ticket quand la reprise par le support devient nÃ©cessaire",
+            "Une creation de ticket quand la reprise par le support devient necessaire",
             "Une adaptation au fonctionnement de votre support existant",
           ],
         },
@@ -281,7 +281,7 @@ const content = {
           kind: "icon-grid",
           sectionClassName: "bg-gray-50 py-16",
           title: "Ce que cela apporte concretement",
-          body: "Un support plus lisible pour les utilisateurs et plus propre pour l'Ã©quipe.",
+          body: "Un support plus lisible pour les utilisateurs et plus propre pour l'equipe.",
           items: [
             {
               icon: FiClock,
@@ -296,7 +296,7 @@ const content = {
             {
               icon: FiShield,
               title: "Positionnement discret",
-              body: "La solution peut Ãªtre prÃ©sentÃ©e comme une aide virtuelle et un parcours support renforcÃ©, sans surpromesse.",
+              body: "La solution peut etre presentee comme une aide virtuelle et un parcours support renforce, sans surpromesse.",
             },
             {
               icon: FiTrendingUp,
@@ -312,12 +312,12 @@ const content = {
           body: "Des situations ou une aide en amont change vraiment l'experience support.",
           itemIcon: FiTool,
           items: [
-            "Aide utilisateur avant crÃ©ation de ticket",
+            "Aide utilisateur avant creation de ticket",
             "Qualification plus propre des demandes internes",
             "Reduction des tickets repetitifs ou incomplets",
             "Point d'entree plus simple pour les PME",
             "Passage fluide vers GLPI quand le support doit reprendre",
-            "Support plus lisible pour des Ã©quipes qui veulent gagner du temps",
+            "Support plus lisible pour des equipes qui veulent gagner du temps",
           ],
         },
         {
@@ -344,13 +344,13 @@ const content = {
               title: "Connexion vers ticket GLPI",
               price: "A partir de 1'200 CHF",
               description:
-                "Passage propre de l'assistance vers la crÃ©ation de ticket lorsque le besoin doit Ãªtre repris par l'Ã©quipe support.",
+                "Passage propre de l'assistance vers la creation de ticket lorsque le besoin doit etre repris par l'equipe support.",
             },
             {
               title: "Suivi et ajustements",
               price: "A partir de 180 CHF/mois",
               description:
-                "Ã‰volution du parcours, des rÃ©ponses et des points de passage selon le retour terrain.",
+                "Evolution du parcours, des reponses et des points de passage selon le retour terrain.",
             },
           ],
         },
@@ -371,7 +371,7 @@ const content = {
             },
             {
               icon: FiShield,
-              title: "Nous ne remplaÃ§ons pas votre Ã©quipe GLPI",
+              title: "Nous ne remplacons pas votre equipe GLPI",
               body: "L'exploitation GLPI reste chez vous ou chez votre prestataire. Nous intervenons en complement.",
             },
           ],
@@ -891,60 +891,96 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
 
   return (
     <>
-      <section className={pageContent.heroClassName}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/70">{pageContent.eyebrow}</p>
-          <h1 className="mb-6 text-4xl font-bold sm:text-5xl">{pageContent.title}</h1>
-          <p className="mb-8 max-w-3xl text-xl text-white/90">{pageContent.body}</p>
-          {"heroNote" in pageContent && pageContent.heroNote ? (
-            <p className="text-sm uppercase tracking-[0.3em] text-white/70">{pageContent.heroNote}</p>
-          ) : null}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={withLocalePrefix(pageContent.primaryHref, locale)}
-              className="rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-gray-100"
-            >
-              {pageContent.primaryLabel}
-            </Link>
-            <Link
-              href={withLocalePrefix(pageContent.secondaryHref, locale)}
-              className="rounded-full border-2 border-white px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-slate-900"
-            >
-              {pageContent.secondaryLabel}
-            </Link>
+      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.1fr,0.9fr] lg:items-end">
+            <div className="text-white">
+              <p className="text-sm uppercase tracking-[0.35em] text-white/52">{pageContent.eyebrow}</p>
+              <h1 className="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl lg:text-6xl">{pageContent.title}</h1>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{pageContent.body}</p>
+              {"heroNote" in pageContent && pageContent.heroNote ? (
+                <p className="mt-6 text-xs uppercase tracking-[0.3em] text-white/46">{pageContent.heroNote}</p>
+              ) : null}
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href={withLocalePrefix(pageContent.primaryHref, locale)}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+                >
+                  {pageContent.primaryLabel}
+                </Link>
+                <Link
+                  href={withLocalePrefix(pageContent.secondaryHref, locale)}
+                  className="inline-flex items-center justify-center rounded-full border border-white/18 px-8 py-3 font-semibold text-white transition hover:border-white/40 hover:bg-white/8"
+                >
+                  {pageContent.secondaryLabel}
+                </Link>
+              </div>
+            </div>
+            <div className="grid gap-3">
+              <div className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
+                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">01 / Positioning</p>
+                <p className="mt-3 text-sm leading-7">
+                  {locale === "en"
+                    ? "A focused service page built to explain the offer fast, frame the scope, and make the next step obvious."
+                    : locale === "de"
+                      ? "Eine fokussierte Leistungsseite, die Angebot, Umfang und naechsten Schritt schnell verstaendlich macht."
+                      : "Une page service plus nette pour faire comprendre l'offre, le perimetre et l'etape suivante en quelques secondes."}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
+                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">02 / Outcome</p>
+                <p className="mt-3 text-sm leading-7">
+                  {locale === "en"
+                    ? "The goal is not to stack features. The goal is to show a cleaner business result and a credible execution path."
+                    : locale === "de"
+                      ? "Nicht Features stapeln, sondern ein glaubwuerdiges Ergebnis und einen sauberen Umsetzungsweg zeigen."
+                      : "Le but n'est pas d'empiler des fonctions, mais de montrer un resultat utile et une execution credible."}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {pageContent.sections.map((section) => {
+        const sectionTone = "sectionClassName" in section ? section.sectionClassName : "";
+        const useAccent = sectionTone.includes("gray");
+        const frameClassName = useAccent
+          ? "accent-section"
+          : "premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] shadow-[0_24px_80px_rgba(0,0,0,0.35)]";
+        const contentClassName = useAccent ? "content px-6 py-10 sm:px-8 lg:px-10" : "px-6 py-10 sm:px-8 lg:px-10";
+
         if (section.kind === "split-list") {
           const LeftIcon = section.leftIcon;
           const RightIcon = section.rightIcon;
           return (
-            <section key={section.leftTitle} className="bg-white py-16">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                  <div>
-                    <h2 className="mb-6 text-3xl font-bold text-gray-900">{section.leftTitle}</h2>
-                    <ul className="space-y-4">
-                      {section.leftItems.map((item) => (
-                        <li key={item} className="flex items-start">
-                          <LeftIcon className="mr-3 mt-1 text-red-500" size={20} />
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h2 className="mb-6 text-3xl font-bold text-gray-900">{section.rightTitle}</h2>
-                    <ul className="space-y-4">
-                      {section.rightItems.map((item) => (
-                        <li key={item} className="flex items-start">
-                          <RightIcon className="mr-3 mt-1 text-green-500" size={20} />
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+            <section key={section.leftTitle} className="section-shell">
+              <div className={frameClassName}>
+                <div className={contentClassName}>
+                  <div className="grid gap-6 lg:grid-cols-2">
+                    <div className="rounded-[28px] border border-rose-400/18 bg-black/20 p-6">
+                      <h2 className="mb-6 text-3xl font-semibold text-white">{section.leftTitle}</h2>
+                      <ul className="space-y-4">
+                        {section.leftItems.map((item) => (
+                          <li key={item} className="flex items-start">
+                            <LeftIcon className="mr-3 mt-1 shrink-0 text-rose-300" size={20} />
+                            <span className="text-white/72">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="rounded-[28px] border border-emerald-400/18 bg-black/20 p-6">
+                      <h2 className="mb-6 text-3xl font-semibold text-white">{section.rightTitle}</h2>
+                      <ul className="space-y-4">
+                        {section.rightItems.map((item) => (
+                          <li key={item} className="flex items-start">
+                            <RightIcon className="mr-3 mt-1 shrink-0 text-emerald-300" size={20} />
+                            <span className="text-white/72">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -955,24 +991,26 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
         if (section.kind === "simple-cards") {
           const ItemIcon = "itemIcon" in section ? section.itemIcon : undefined;
           return (
-            <section key={section.title} className={section.sectionClassName}>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 text-center">
-                  <h2 className="mb-4 text-3xl font-bold text-gray-900">{section.title}</h2>
-                  <p className="mx-auto max-w-3xl text-xl text-gray-600">{section.body}</p>
-                </div>
-                <div className={`grid grid-cols-1 gap-6 md:grid-cols-2 ${section.items.length > 4 ? "lg:grid-cols-3" : ""}`}>
-                  {section.items.map((item) => (
-                    <div key={item} className="rounded-2xl bg-gray-50 p-6">
-                      <div className={"withCheck" in section && section.withCheck ? "flex items-start" : ""}>
-                        {"withCheck" in section && section.withCheck ? <FiCheck className="mr-3 mt-1 shrink-0 text-emerald-500" size={20} /> : null}
-                        <div>
-                          {ItemIcon ? <ItemIcon className="mb-3 text-emerald-600" size={24} /> : null}
-                          <p className="font-medium text-gray-800">{item}</p>
+            <section key={section.title} className="section-shell">
+              <div className={frameClassName}>
+                <div className={contentClassName}>
+                  <div className="mb-12 text-center">
+                    <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{section.title}</h2>
+                    <p className="mx-auto max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{section.body}</p>
+                  </div>
+                  <div className={`grid grid-cols-1 gap-6 md:grid-cols-2 ${section.items.length > 4 ? "lg:grid-cols-3" : ""}`}>
+                    {section.items.map((item) => (
+                      <div key={item} className="rounded-[26px] border border-white/10 bg-black/20 p-6">
+                        <div className={"withCheck" in section && section.withCheck ? "flex items-start" : ""}>
+                          {"withCheck" in section && section.withCheck ? <FiCheck className="mr-3 mt-1 shrink-0 text-emerald-300" size={20} /> : null}
+                          <div>
+                            {ItemIcon ? <ItemIcon className="mb-3 text-[var(--brand-gold)]" size={24} /> : null}
+                            <p className="font-medium leading-7 text-white/82">{item}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>
@@ -982,19 +1020,23 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
         if (section.kind === "benefit-cards") {
           const Icon = section.icon;
           return (
-            <section key={section.title} className={section.sectionClassName}>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 text-center">
-                  <h2 className="mb-4 text-3xl font-bold text-gray-900">{section.title}</h2>
-                  <p className="text-xl text-gray-600">{section.body}</p>
-                </div>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {section.items.map((item) => (
-                    <div key={item} className="rounded-2xl bg-white p-6 shadow-md">
-                      <Icon className="mb-4 text-green-500" size={32} />
-                      <p className="font-medium text-gray-800">{item}</p>
-                    </div>
-                  ))}
+            <section key={section.title} className="section-shell">
+              <div className={frameClassName}>
+                <div className={contentClassName}>
+                  <div className="mb-12 text-center">
+                    <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{section.title}</h2>
+                    <p className="mx-auto max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{section.body}</p>
+                  </div>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {section.items.map((item) => (
+                      <div key={item} className="rounded-[26px] border border-white/10 bg-black/20 p-6">
+                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/6">
+                          <Icon className="text-[var(--brand-gold)]" size={24} />
+                        </div>
+                        <p className="font-medium leading-7 text-white/82">{item}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>
@@ -1007,45 +1049,49 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
           const timelineBody = "timelineBody" in section ? String(section.timelineBody) : "";
           const timeline = "timeline" in section && Array.isArray(section.timeline) ? section.timeline : [];
           return (
-            <section key={section.title} className={section.sectionClassName}>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {section.title ? (
-                  <div className="mb-12 text-center">
-                    <h2 className="mb-4 text-3xl font-bold text-gray-900">{section.title}</h2>
-                    {"body" in section && section.body ? <p className="text-xl text-gray-600">{section.body}</p> : null}
-                  </div>
-                ) : null}
-                <div className={`grid grid-cols-1 gap-8 ${gridClassName} ${"timeline" in section && section.timeline ? "mb-14" : ""}`}>
-                  {section.items.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.title} className="rounded-2xl bg-gray-50 p-8 text-center">
-                        <Icon className="mx-auto mb-4 text-blue-700" size={48} />
-                        <h3 className="mb-3 text-xl font-semibold text-gray-900">{item.title}</h3>
-                        <p className="text-gray-600">{item.body}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-                {timeline.length > 0 ? (
-                  <>
-                    <div className="mb-12 mt-16 text-center">
-                      <h2 className="mb-4 text-3xl font-bold text-gray-900">{timelineTitle}</h2>
-                      <p className="text-xl text-gray-600">{timelineBody}</p>
+            <section key={section.title} className="section-shell">
+              <div className={frameClassName}>
+                <div className={contentClassName}>
+                  {section.title ? (
+                    <div className="mb-12 text-center">
+                      <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{section.title}</h2>
+                      {"body" in section && section.body ? <p className="mx-auto max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{section.body}</p> : null}
                     </div>
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-                      {timeline.map((item) => (
-                        <div key={item.step} className="text-center">
-                          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
-                            {item.step}
+                  ) : null}
+                  <div className={`grid grid-cols-1 gap-6 ${gridClassName} ${timeline.length > 0 ? "mb-14" : ""}`}>
+                    {section.items.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <div key={item.title} className="rounded-[26px] border border-white/10 bg-black/20 p-6 text-center">
+                          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/6">
+                            <Icon className="text-[var(--brand-sky)]" size={28} />
                           </div>
-                          <h3 className="mb-2 text-lg font-semibold text-gray-900">{item.title}</h3>
-                          <p className="text-sm text-gray-600">{item.description}</p>
+                          <h3 className="mb-3 text-xl font-semibold text-white">{item.title}</h3>
+                          <p className="text-sm leading-7 text-white/68">{item.body}</p>
                         </div>
-                      ))}
-                    </div>
-                  </>
-                ) : null}
+                      );
+                    })}
+                  </div>
+                  {timeline.length > 0 ? (
+                    <>
+                      <div className="mb-12 mt-16 text-center">
+                        <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{timelineTitle}</h2>
+                        <p className="mx-auto max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{timelineBody}</p>
+                      </div>
+                      <div className="grid grid-cols-1 gap-6 md:grid-cols-5">
+                        {timeline.map((item) => (
+                          <div key={item.step} className="rounded-[24px] border border-white/10 bg-black/20 p-5 text-center">
+                            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/12 bg-white text-sm font-semibold text-slate-900">
+                              {item.step}
+                            </div>
+                            <h3 className="mb-2 text-lg font-semibold text-white">{item.title}</h3>
+                            <p className="text-sm leading-6 text-white/64">{item.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
+                </div>
               </div>
             </section>
           );
@@ -1064,39 +1110,41 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
             >;
           };
           return (
-            <section key={pricingSection.title} id={pricingSection.id} className={pricingSection.sectionClassName}>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 text-center">
-                  <h2 className="mb-4 text-3xl font-bold text-gray-900">{pricingSection.title}</h2>
-                  <p className="mx-auto max-w-3xl text-xl text-gray-600">{pricingSection.body}</p>
-                </div>
-                <div className={`grid grid-cols-1 gap-8 ${pricingSection.columns === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"}`}>
-                  {pricingSection.items.map((item) => (
-                    <div key={item.title} className="rounded-2xl border border-gray-200 bg-white p-8 shadow-md transition-shadow hover:shadow-lg">
-                      <h3 className="mb-3 text-xl font-semibold text-gray-900">{item.title}</h3>
-                      <p className="mb-4 text-lg font-semibold text-blue-700">{item.price}</p>
-                      {"points" in item ? (
-                        <ul className="mb-8 space-y-3">
-                          {item.points.map((point) => (
-                            <li key={point} className="flex items-center text-gray-700">
-                              <FiCheck className="mr-3 text-green-500" size={16} />
-                              {point}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p className="text-gray-600">{item.description}</p>
-                      )}
-                      {"cta" in item ? (
-                        <Link
-                          href={withLocalePrefix(pageContent.primaryHref, locale)}
-                          className="block rounded-full bg-blue-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-blue-700"
-                        >
-                          {item.cta}
-                        </Link>
-                      ) : null}
-                    </div>
-                  ))}
+            <section key={pricingSection.title} id={pricingSection.id} className="section-shell">
+              <div className={frameClassName}>
+                <div className={contentClassName}>
+                  <div className="mb-12 text-center">
+                    <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{pricingSection.title}</h2>
+                    <p className="mx-auto max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{pricingSection.body}</p>
+                  </div>
+                  <div className={`grid grid-cols-1 gap-6 ${pricingSection.columns === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3"}`}>
+                    {pricingSection.items.map((item) => (
+                      <div key={item.title} className="rounded-[26px] border border-white/10 bg-black/20 p-6 transition hover:border-white/20 hover:bg-black/30">
+                        <h3 className="mb-3 text-xl font-semibold text-white">{item.title}</h3>
+                        <p className="mb-4 text-lg font-semibold text-[var(--brand-gold)]">{item.price}</p>
+                        {"points" in item ? (
+                          <ul className="mb-8 space-y-3">
+                            {item.points.map((point) => (
+                              <li key={point} className="flex items-center text-white/72">
+                                <FiCheck className="mr-3 text-emerald-300" size={16} />
+                                {point}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="leading-7 text-white/68">{item.description}</p>
+                        )}
+                        {"cta" in item ? (
+                          <Link
+                            href={withLocalePrefix(pageContent.primaryHref, locale)}
+                            className="mt-8 block rounded-full bg-white px-6 py-3 text-center font-semibold text-slate-900 transition hover:bg-neutral-200"
+                          >
+                            {item.cta}
+                          </Link>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </section>
@@ -1106,16 +1154,20 @@ export function ServiceDetailPageContent({ locale, page }: Props) {
         return null;
       })}
 
-      <section className={pageContent.cta.className}>
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-3xl font-bold">{pageContent.cta.title}</h2>
-          <p className="mb-8 text-xl text-white/90">{pageContent.cta.body}</p>
-          <Link
-            href={withLocalePrefix(pageContent.primaryHref, locale)}
-            className="rounded-full bg-white px-8 py-3 font-semibold text-blue-700 transition-colors hover:bg-gray-100"
-          >
-            {pageContent.cta.label}
-          </Link>
+      <section className="section-shell">
+        <div className="accent-section">
+          <div className="content px-6 py-10 text-center sm:px-8 lg:px-10">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="mb-4 text-3xl font-semibold text-white sm:text-4xl">{pageContent.cta.title}</h2>
+              <p className="mb-8 text-base leading-8 text-white/72 sm:text-lg">{pageContent.cta.body}</p>
+              <Link
+                href={withLocalePrefix(pageContent.primaryHref, locale)}
+                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+              >
+                {pageContent.cta.label}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

@@ -1,7 +1,6 @@
 import type { PortfolioProject } from "@/data/portfolio";
 import Link from "next/link";
 import { ProjectSpotlight } from "@/components/project-spotlight";
-import { Reveal } from "@/components/reveal";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
 
@@ -12,70 +11,79 @@ type Props = {
 
 const copy = {
   fr: {
-    eyebrow: "Projets",
-    title: "KAH Prod, l'un des projets portes par KAH-Digital.",
-    body: "Cette page met en avant KAH Prod comme référence officielle sur cette version du site, avec une présentation plus claire et plus cohérente avec le reste de l'univers KAH-Digital.",
+    eyebrow: "References",
+    title: "Des projets presentes comme des preuves, pas comme une galerie generique.",
+    body:
+      "Cette page doit rassurer vite. Le bon client ne cherche pas dix mini-vignettes sans contexte. Il veut comprendre le niveau d'execution, la direction visuelle et ce que KAH-Digital sait vraiment produire.",
     primaryLabel: "Demander un devis",
     secondaryLabel: "Voir les services",
-    cards: [
-      { eyebrow: "Sites web", title: "Vitrine", body: "Positionnement, pages services, SEO local et conversion." },
-      { eyebrow: "Applications", title: "Web / mobile", body: "Portails, outils metier, MVP et parcours utilisateurs plus clairs." },
-      { eyebrow: "Support PME", title: "Aide virtuelle + GLPI", body: "Parcours support plus clair, base de reponse et escalation ticket propre." },
+    spotlightCta: "Parler du projet",
+    markers: [
+      { label: "Narration", value: "Une reference mise en avant avec vrai contexte" },
+      { label: "Execution", value: "Direction visuelle, structure, parcours, rendu" },
+      { label: "Utilite", value: "Voir le niveau avant de parler budget" },
     ],
-    spotlightEyebrow: "Etudes de cas",
-    spotlightTitle: "Une mise en avant plus forte, plus visuelle et plus cohérente avec le niveau KAH-Digital.",
-    spotlightBody: "KAH Prod merite un vrai traitement editorial, avec une presence plus premium qu'une simple carte projet.",
-    spotlightCta: "Parler de votre projet",
+    spotlightEyebrow: "Case study mise en avant",
+    spotlightTitle: "Une reference traitee comme une vraie piece commerciale.",
+    spotlightBody:
+      "KAH Prod n'est pas seulement montre pour le style. La page sert a prouver qu'un univers de marque peut etre traduit en presence digitale plus nette, plus lisible et plus defendable.",
     nextEyebrow: "Suite logique",
-    nextTitle: "Vous avez vu les references. Le plus utile maintenant, c'est le cadrage.",
-    nextBody: "Si vous avez un site a refaire, une application a structurer ou une logique support PME a clarifier, le plus rapide est de partir sur un brief simple et un devis cadre.",
+    nextTitle: "Si le niveau te parle, le plus utile ensuite est de cadrer ton propre projet.",
+    nextBody:
+      "Un bon projet commence rarement par une longue reunion. Il commence par un cadre propre: besoin, intensite, priorites et prochaine etape claire.",
     nextPrimary: "Demander un devis",
     nextSecondary: "Ouvrir le cahier des charges",
     nextSecondaryHref: "/cahier-des-charges",
   },
   en: {
-    eyebrow: "Projects",
-    title: "KAH Prod, one of the projects produced by KAH-Digital.",
-    body: "This page now puts KAH Prod forward as the official featured reference on this version of the site, with a presentation aligned with the rest of the KAH-Digital public experience.",
+    eyebrow: "References",
+    title: "Projects shown as proof, not as a generic gallery.",
+    body:
+      "This page should reassure fast. The right client is not looking for ten tiny thumbnails with no context. They want to understand the level of execution, the visual direction, and what KAH-Digital can actually produce.",
     primaryLabel: "Request a quote",
     secondaryLabel: "See services",
-    cards: [
-      { eyebrow: "Websites", title: "Showcase", body: "Positioning, service pages, local SEO, and conversion logic." },
-      { eyebrow: "Applications", title: "Web / mobile", body: "Portals, internal tools, MVPs, and cleaner user journeys." },
-      { eyebrow: "SMB support", title: "AI + GLPI", body: "Support assistant, knowledge base, and proper ticket escalation." },
+    spotlightCta: "Talk about the project",
+    markers: [
+      { label: "Narrative", value: "A reference shown with real context" },
+      { label: "Execution", value: "Visual direction, structure, journey, output" },
+      { label: "Usefulness", value: "See the level before discussing budget" },
     ],
-    spotlightEyebrow: "Case studies",
-    spotlightTitle: "A stronger, more visual showcase aligned with the KAH-Digital standard.",
-    spotlightBody: "KAH Prod deserves a true editorial showcase, not a generic project card.",
-    spotlightCta: "Talk about your project",
-    nextEyebrow: "Next step",
-    nextTitle: "You have seen the references. The useful next move is the scoping step.",
-    nextBody: "If you need a website redesign, a structured application, or a clearer SMB support workflow, the fastest way forward is a scoped brief and a proper quote.",
+    spotlightEyebrow: "Featured case study",
+    spotlightTitle: "A reference treated like an actual commercial proof piece.",
+    spotlightBody:
+      "KAH Prod is not shown only for style. The page proves that a brand universe can be translated into a cleaner, sharper, more defensible digital presence.",
+    nextEyebrow: "Next move",
+    nextTitle: "If the level feels right, the useful next step is scoping your own project.",
+    nextBody:
+      "A strong project rarely starts with a long meeting. It starts with a clean frame: need, intensity, priorities, and one obvious next step.",
     nextPrimary: "Request a quote",
     nextSecondary: "Open the brief",
     nextSecondaryHref: "/cahier-des-charges",
   },
   de: {
-    eyebrow: "Projekte",
-    title: "KAH Prod ist eines der von KAH-Digital entwickelten Projekte.",
-    body: "Hier steht KAH Prod als sichtbare Referenz im Fokus - nicht als einfache Projektkarte, sondern als sauber praesentierte Case Study mit klarer visueller Qualitaet.",
+    eyebrow: "Referenzen",
+    title: "Projekte als Nachweis, nicht als generische Galerie.",
+    body:
+      "Diese Seite soll schnell Sicherheit geben. Der richtige Kunde sucht keine zehn kleinen Vorschaubilder ohne Kontext. Er will das Ausfuehrungsniveau, die visuelle Richtung und die tatsaechliche Leistungsfaehigkeit von KAH-Digital verstehen.",
     primaryLabel: "Projekt anfragen",
     secondaryLabel: "Leistungen ansehen",
-    cards: [
-      { eyebrow: "Websites", title: "Showcase", body: "Positionierung, Seitenstruktur, lokales SEO und Conversion." },
-      { eyebrow: "Anwendungen", title: "Web / Mobile", body: "Portale, interne Tools, MVPs und klarere Nutzerwege." },
-      { eyebrow: "Support", title: "GLPI Workflow", body: "Virtuelle Hilfe, Wissensbasis und saubere Ticket-Eskalation." },
+    spotlightCta: "Ueber das Projekt sprechen",
+    markers: [
+      { label: "Narrativ", value: "Eine Referenz mit echtem Kontext" },
+      { label: "Umsetzung", value: "Visuelle Richtung, Struktur, Journey, Ergebnis" },
+      { label: "Nutzen", value: "Das Niveau sehen, bevor ueber Budget gesprochen wird" },
     ],
-    spotlightEyebrow: "Case Study",
-    spotlightTitle: "Eine staerkere und visuellere Referenz im KAH-Digital Standard.",
-    spotlightBody: "KAH Prod zeigt, wie KAH-Digital ein Markenuniversum in eine hochwertige, klar gefuehrte Website uebersetzt.",
-    spotlightCta: "Ueber dein Projekt sprechen",
+    spotlightEyebrow: "Hervorgehobene Case Study",
+    spotlightTitle: "Eine Referenz als echte kommerzielle Beweisflaeche.",
+    spotlightBody:
+      "KAH Prod wird nicht nur wegen des Looks gezeigt. Die Seite beweist, dass ein Markenuniversum in eine klarere, schaerfere und besser verteidigbare digitale Praesenz uebersetzt werden kann.",
     nextEyebrow: "Naechster Schritt",
-    nextTitle: "Referenz gesehen. Der sinnvolle naechste Schritt ist ein klares Briefing.",
-    nextBody: "Wenn du eine neue Website, eine strukturierte Anwendung oder einen klareren digitalen Workflow brauchst, starten wir mit einem sauberen Scope und einem passenden Angebotsrahmen.",
+    nextTitle: "Wenn das Niveau passt, ist der sinnvolle naechste Schritt dein eigenes Scoping.",
+    nextBody:
+      "Ein starkes Projekt beginnt selten mit einem langen Meeting. Es beginnt mit einem klaren Rahmen: Bedarf, Intensitaet, Prioritaeten und ein sauberer naechster Schritt.",
     nextPrimary: "Projekt anfragen",
-    nextSecondary: "Direkt Kontakt aufnehmen",
-    nextSecondaryHref: "/contact",
+    nextSecondary: "Briefing oeffnen",
+    nextSecondaryHref: "/cahier-des-charges",
   },
 } as const;
 
@@ -84,30 +92,37 @@ export function ProjectsPageContent({ locale, projects }: Props) {
   const visibleProjects = projects.filter((project) => project.slug === "kah-prod");
 
   return (
-    <div className="space-y-16 sm:space-y-20">
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{content.eyebrow}</p>
-              <h1 className="mt-3 text-4xl font-bold text-slate-950 sm:text-5xl">{content.title}</h1>
-              <p className="mt-5 max-w-3xl text-lg text-slate-600">{content.body}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href={withLocalePrefix("/devis", locale)} className="inline-flex items-center rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700">
+    <>
+      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.05fr,0.95fr] lg:items-end">
+            <div className="text-white">
+              <p className="text-sm uppercase tracking-[0.35em] text-white/52">{content.eyebrow}</p>
+              <h1 className="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl lg:text-6xl">{content.title}</h1>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.body}</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href={withLocalePrefix("/devis", locale)}
+                  className="inline-flex items-center rounded-full bg-white px-6 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+                >
                   {content.primaryLabel}
                 </Link>
-                <Link href={withLocalePrefix("/services", locale)} className="inline-flex items-center rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white">
+                <Link
+                  href={withLocalePrefix("/services", locale)}
+                  className="inline-flex items-center rounded-full border border-white/18 px-6 py-3 font-semibold text-white transition hover:border-white/40 hover:bg-white/8"
+                >
                   {content.secondaryLabel}
                 </Link>
               </div>
             </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              {content.cards.map((card) => (
-                <div key={card.title} className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{card.eyebrow}</p>
-                  <p className="mt-2 text-2xl font-semibold text-slate-950">{card.title}</p>
-                  <p className="mt-2 text-sm text-slate-600">{card.body}</p>
+            <div className="grid gap-3">
+              {content.markers.map((item, index) => (
+                <div key={item.label} className="rounded-2xl border border-white/10 bg-black/25 px-4 py-4 text-white/78">
+                  <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/42">
+                    0{index + 1} / {item.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-7">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -115,48 +130,55 @@ export function ProjectsPageContent({ locale, projects }: Props) {
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.12),transparent_35%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="text-white">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/55">{content.spotlightEyebrow}</p>
-              <h2 className="mt-3 text-3xl font-bold">{content.spotlightTitle}</h2>
-              <p className="mt-3 max-w-3xl text-white/70">{content.spotlightBody}</p>
-            </div>
-            <Link href={withLocalePrefix("/contact", locale)} className="inline-flex items-center rounded-full border border-white/20 px-5 py-2 font-semibold text-white/80 transition-colors hover:border-white hover:text-white">
-              {content.spotlightCta}
-            </Link>
-          </div>
-
-          {visibleProjects.map((project) => (
-            <ProjectSpotlight key={project.slug} project={project} locale={locale} />
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-slate-100 py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <Reveal>
-            <div className="rounded-[32px] bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] ring-1 ring-slate-200">
-              <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{content.nextEyebrow}</p>
-                  <h2 className="mt-3 text-3xl font-bold text-slate-950">{content.nextTitle}</h2>
-                  <p className="mt-4 text-lg text-slate-600">{content.nextBody}</p>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <Link href={withLocalePrefix("/devis", locale)} className="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700">
-                    {content.nextPrimary}
-                  </Link>
-                  <Link href={withLocalePrefix(content.nextSecondaryHref, locale)} className="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white">
-                    {content.nextSecondary}
-                  </Link>
-                </div>
+      <section className="section-shell">
+        <div className="accent-section">
+          <div className="content px-6 py-10 sm:px-8 lg:px-10">
+            <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div className="text-white">
+                <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.spotlightEyebrow}</p>
+                <h2 className="mt-4 max-w-4xl text-3xl font-semibold sm:text-4xl">{content.spotlightTitle}</h2>
+                <p className="mt-4 max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{content.spotlightBody}</p>
               </div>
+              <Link
+                href={withLocalePrefix("/contact", locale)}
+                className="inline-flex items-center rounded-full border border-white/18 px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:border-white/35 hover:bg-white/8 hover:text-white"
+              >
+                {content.spotlightCta}
+              </Link>
             </div>
-          </Reveal>
+
+            {visibleProjects.map((project) => (
+              <ProjectSpotlight key={project.slug} project={project} locale={locale} />
+            ))}
+          </div>
         </div>
       </section>
-    </div>
+
+      <section className="section-shell">
+        <div className="premium-card rounded-[32px] border border-white/10 bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1fr,0.82fr] lg:items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.35em] text-white/50">{content.nextEyebrow}</p>
+              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">{content.nextTitle}</h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-white/68 sm:text-lg">{content.nextBody}</p>
+            </div>
+            <div className="grid gap-4">
+              <Link
+                href={withLocalePrefix("/devis", locale)}
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-slate-900 transition hover:bg-neutral-200"
+              >
+                {content.nextPrimary}
+              </Link>
+              <Link
+                href={withLocalePrefix(content.nextSecondaryHref, locale)}
+                className="inline-flex items-center justify-center rounded-full border border-white/18 px-6 py-3 font-semibold text-white/82 transition hover:border-white/35 hover:bg-white/8 hover:text-white"
+              >
+                {content.nextSecondary}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

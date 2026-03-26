@@ -4,17 +4,17 @@ const localeChecks = [
   {
     path: "/",
     lang: "fr",
-    marker: "Demander un devis",
+    marker: "Demander un cadrage",
   },
   {
     path: "/en",
     lang: "en",
-    marker: "Request a quote",
+    marker: "Request scoped guidance",
   },
   {
     path: "/de",
     lang: "de",
-    marker: "Projekt anfragen",
+    marker: "Sauberes Briefing anfragen",
   },
 ] as const;
 
@@ -24,7 +24,7 @@ for (const localeCheck of localeChecks) {
     expect(response.ok()).toBeTruthy();
     expect(response.headers()["content-language"]).toBe(localeCheck.lang);
 
-    await page.goto(localeCheck.path);
+    await page.goto(localeCheck.path, { waitUntil: "domcontentloaded" });
     await expect(page.locator("html")).toHaveAttribute("lang", localeCheck.lang);
     await expect(page.getByRole("main").getByRole("link", { name: localeCheck.marker, exact: false }).first()).toBeVisible();
   });

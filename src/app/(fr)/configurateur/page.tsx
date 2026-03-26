@@ -1926,6 +1926,7 @@ export default function ConfigurateurPage() {
                   integrations={selectedIntegrationLabels}
                   aiModules={selectedAiModuleLabels}
                   ready={isConfiguratorReady}
+                  locale={locale}
                 />
               </div>
             </div>

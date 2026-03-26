@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("German quote form uses German labels", async ({ page }) => {
-  await page.goto("/de/devis");
+  await page.goto("/de/devis", { waitUntil: "domcontentloaded" });
 
   await expect(page.getByLabel("Du bist *")).toBeVisible();
   await expect(page.getByLabel("Firmenname (falls Unternehmen)")).toBeVisible();
@@ -11,7 +11,7 @@ test("German quote form uses German labels", async ({ page }) => {
 });
 
 test("German MVP form uses German labels", async ({ page }) => {
-  await page.goto("/de/devis/mvp");
+  await page.goto("/de/devis/mvp", { waitUntil: "domcontentloaded" });
 
   await expect(page.getByLabel("Du bist *")).toBeVisible();
   await expect(page.getByLabel("Deine Idee / das Versprechen *")).toBeVisible();

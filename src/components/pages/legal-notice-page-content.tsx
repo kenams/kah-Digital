@@ -9,10 +9,13 @@ type Props = {
 
 const copy = {
   fr: {
-    title: "Mentions légales",
+    title: "Mentions legales",
+    eyebrow: "Cadre legal",
+    intro:
+      "Les informations juridiques et administratives de KAH-Digital sont centralisees ici dans un format plus lisible, sans habillage inutile.",
     sections: [
       {
-        title: "Éditeur du site",
+        title: "Editeur du site",
         lines: [
           ["Nom commercial", companyConfig.brandName],
           ["Raison sociale", companyConfig.legalName],
@@ -20,53 +23,52 @@ const copy = {
           ["Adresse", companyConfig.address],
           ["Ville", `${companyConfig.postalCode} ${companyConfig.city}, ${companyConfig.country}`],
           ["Email", companyConfig.email],
-          ["Téléphone", companyConfig.phone],
-          ["Numéro IDE/UID", companyConfig.uid],
-          ["Numéro TVA", companyConfig.vatNumber],
+          ["Telephone", companyConfig.phone],
+          ["Numero IDE/UID", companyConfig.uid],
+          ["Numero TVA", companyConfig.vatNumber],
           ["Directeur de la publication", companyConfig.legalName],
         ],
       },
       {
-        title: "Hébergement",
+        title: "Hebergement",
+        paragraphs: [`Vercel Inc. - ${companyConfig.hosting}`, "Site web : vercel.com"],
+      },
+      {
+        title: "Propriete intellectuelle",
         paragraphs: [
-          `Vercel Inc. - ${companyConfig.hosting}`,
-          "Site web : vercel.com",
+          `L'ensemble du contenu de ce site est protege par le droit d'auteur. Toute reproduction, distribution, modification ou publication, meme partielle, est interdite sans l'accord prealable ecrit de ${companyConfig.brandName}.`,
+          `Les solutions, architectures, methodes de cadrage, parcours support, mecanismes d'assistance, documentations, scripts, maquettes et schemas fonctionnels presentes par ${companyConfig.brandName} restent sa propriete exclusive sauf accord ecrit contraire.`,
+          `Les devis, propositions commerciales, audits, demonstrations, prototypes et livrables de presentation communiques avant contractualisation restent la propriete de ${companyConfig.brandName}.`,
         ],
       },
       {
-        title: "Propriété intellectuelle",
-        paragraphs: [
-          `L'ensemble du contenu de ce site est protégé par le droit d'auteur. Toute reproduction, distribution, modification ou publication, même partielle, est interdite sans l'accord préalable écrit de ${companyConfig.brandName}.`,
-          `Les solutions, architectures, méthodes de cadrage, parcours support, mécanismes d'assistance, documentations, scripts, maquettes et schémas fonctionnels présentés par ${companyConfig.brandName} restent sa propriété exclusive sauf accord écrit contraire.`,
-          `Les devis, propositions commerciales, audits, démonstrations, prototypes et livrables de présentation communiqués avant contractualisation restent la propriété de ${companyConfig.brandName}.`,
-        ],
-      },
-      {
-        title: "Données personnelles",
-        paragraphs: ["Les informations recueillies via les formulaires sont utilisées uniquement pour répondre à vos demandes. Consultez notre politique de confidentialité pour plus de détails."],
+        title: "Donnees personnelles",
+        paragraphs: ["Les informations recueillies via les formulaires sont utilisees uniquement pour repondre a vos demandes. Consultez notre politique de confidentialite pour plus de details."],
       },
       {
         title: "Cookies",
-        paragraphs: ["Ce site n'utilise pas de cookies de suivi ou de marketing. Seuls des cookies techniques nécessaires au fonctionnement du site peuvent être utilisés."],
+        paragraphs: ["Ce site n'utilise pas de cookies de suivi ou de marketing. Seuls des cookies techniques necessaires au fonctionnement du site peuvent etre utilises."],
       },
       {
-        title: "Responsabilité",
-        paragraphs: [`${companyConfig.brandName} s'efforce d'assurer l'exactitude des informations diffusées sur ce site, mais ne peut être tenu responsable d'éventuelles erreurs ou omissions.`],
+        title: "Responsabilite",
+        paragraphs: [`${companyConfig.brandName} s'efforce d'assurer l'exactitude des informations diffusees sur ce site, mais ne peut etre tenu responsable d'eventuelles erreurs ou omissions.`],
       },
       {
         title: "Droit applicable",
-        paragraphs: ["Les présentes mentions légales sont soumises au droit suisse. Tout litige relatif à l'utilisation de ce site relève de la compétence exclusive des tribunaux suisses."],
+        paragraphs: ["Les presentes mentions legales sont soumises au droit suisse. Tout litige relatif a l'utilisation de ce site releve de la competence exclusive des tribunaux suisses."],
       },
       {
         title: "Contact",
-        paragraphs: [`Pour toute question concernant ces mentions légales, vous pouvez nous contacter à l'adresse suivante : ${companyConfig.email}`],
+        paragraphs: [`Pour toute question concernant ces mentions legales, vous pouvez nous contacter a l'adresse suivante : ${companyConfig.email}`],
       },
     ],
-    privacyLabel: "politique de confidentialité",
-    updatedAt: "Dernière mise à jour",
+    privacyLabel: "politique de confidentialite",
+    updatedAt: "Derniere mise a jour",
   },
   en: {
     title: "Legal notice",
+    eyebrow: "Legal frame",
+    intro: "The legal and administrative information for KAH-Digital is centralised here in a cleaner, easier-to-read format.",
     sections: [
       {
         title: "Site publisher",
@@ -121,6 +123,8 @@ const copy = {
   },
   de: {
     title: "Impressum",
+    eyebrow: "Rechtlicher Rahmen",
+    intro: "Die rechtlichen und administrativen Informationen von KAH-Digital sind hier in einem klareren und lesbareren Format zusammengefasst.",
     sections: [
       {
         title: "Herausgeber der Website",
@@ -180,50 +184,68 @@ export function LegalNoticePageContent({ locale }: Props) {
   const privacyHref = locale === "fr" ? "/confidentialite" : withLocalePrefix("/politique-de-confidentialite", locale);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <div className="rounded-lg bg-white p-8 shadow-lg">
-        <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">{content.title}</h1>
-
-        <div className="space-y-8">
-          {content.sections.map((section) => (
-            <section key={section.title}>
-              <h2 className="mb-4 text-2xl font-semibold text-gray-900">{section.title}</h2>
-              {"lines" in section ? (
-                <div className="space-y-2 text-gray-700">
-                  {section.lines.filter(([, value]) => value).map(([label, value]) => (
-                    <p key={label}>
-                      <strong>{label} :</strong> {value}
-                    </p>
-                  ))}
-                </div>
-              ) : null}
-              {"paragraphs" in section ? (
-                <div className="space-y-4 text-gray-700">
-                  {section.paragraphs.map((paragraph, index) => (
-                    <p key={index}>
-                      {section.title === content.sections[3].title && index === 0 ? (
-                        <>
-                          {paragraph}{" "}
-                          <Link href={privacyHref} className="text-blue-600 underline">
-                            {content.privacyLabel}
-                          </Link>
-                          .
-                        </>
-                      ) : (
-                        paragraph
-                      )}
-                    </p>
-                  ))}
-                </div>
-              ) : null}
-            </section>
-          ))}
-
-          <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
+    <>
+      <section className="section-shell pt-8 sm:pt-10 lg:pt-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-[linear-gradient(135deg,rgba(9,8,7,0.96),rgba(18,14,28,0.96))] p-6 shadow-[0_40px_140px_rgba(0,0,0,0.45)] sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(214,179,106,0.16),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,184,199,0.14),transparent_24%)]" />
+          <div className="relative text-white">
+            <p className="text-sm uppercase tracking-[0.35em] text-white/52">{content.eyebrow}</p>
+            <h1 className="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl lg:text-6xl">{content.title}</h1>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">{content.intro}</p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="section-shell">
+        <div className="space-y-6">
+          {content.sections.map((section, index) => (
+            <section
+              key={section.title}
+              className={`rounded-[32px] border border-white/10 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8 ${
+                index % 2 === 0
+                  ? "premium-card bg-[linear-gradient(145deg,rgba(12,10,18,0.96),rgba(7,7,10,0.96))]"
+                  : "accent-section"
+              }`}
+            >
+              <div className={index % 2 === 0 ? "" : "content"}>
+                <h2 className="text-2xl font-semibold text-white sm:text-3xl">{section.title}</h2>
+                {"lines" in section ? (
+                  <div className="mt-5 space-y-3 text-white/72">
+                    {section.lines.filter(([, value]) => value).map(([label, value]) => (
+                      <p key={label} className="leading-7">
+                        <span className="font-semibold text-white">{label}:</span> {value}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+                {"paragraphs" in section ? (
+                  <div className="mt-5 space-y-4 text-white/72">
+                    {section.paragraphs.map((paragraph, paragraphIndex) => (
+                      <p key={paragraphIndex} className="leading-8">
+                        {section.title === content.sections[3].title && paragraphIndex === 0 ? (
+                          <>
+                            {paragraph}{" "}
+                            <Link href={privacyHref} className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+                              {content.privacyLabel}
+                            </Link>
+                            .
+                          </>
+                        ) : (
+                          paragraph
+                        )}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <div className="mt-10 text-center text-sm text-white/45">
+          {content.updatedAt}: {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
+        </div>
+      </section>
+    </>
   );
 }

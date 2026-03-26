@@ -1,17 +1,17 @@
 import { Metadata } from "next";
-import { HeroSection } from "@/components/hero-section";
-import { TrustBar } from "@/components/trust-bar";
-import { ServicesGrid } from "@/components/services-grid";
-import { WhyChooseSection } from "@/components/why-choose-section";
-import { ProcessSection } from "@/components/process-section";
-import { GlobalTrustSection } from "@/components/global-trust-section";
-import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
+import { FAQSection } from "@/components/faq-section";
+import { GlobalTrustSection } from "@/components/global-trust-section";
+import { HeroSection } from "@/components/hero-section";
+import { ProcessSection } from "@/components/process-section";
+import { ServicesGrid } from "@/components/services-grid";
+import { TrustBar } from "@/components/trust-bar";
+import { WhyChooseSection } from "@/components/why-choose-section";
 
 export const metadata: Metadata = {
-  title: "Sites web, applications et solutions pour entreprises",
+  title: "Sites premium, IA utile et automatisation pour entreprises",
   description:
-    "KAH-Digital conçoit des sites web, des applications et des parcours support pour entreprises francophones, anglophones et internationales.",
+    "KAH-Digital concoit des sites premium, assistants IA et automatisations qui rendent les offres plus claires, reduisent le support manuel et accelerent l'execution.",
 };
 
 export default function Home() {
