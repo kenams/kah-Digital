@@ -35,4 +35,55 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
     },
   },
+  {
+    slug: "minealert",
+    name: "MineAlert",
+    type: "SaaS / mining intelligence",
+    tagline:
+      "A KAH-Digital build focused on minerals, price tracking, market news, and user alerts.",
+    shortDescription:
+      "Business dashboard, Supabase auth, watchlist, alerts, live scraping, and Vercel deployment for a private beta-ready product.",
+    description:
+      "MineAlert is one of the products built by KAH-Digital. The goal was to create a mining intelligence cockpit able to centralize prices, news signals, watchlists, and alerts inside a cleaner and more actionable interface.",
+    challenge:
+      "Design an intelligence tool that stays clear, fast to scan, and strong enough to support real data sources, authentication, and monitoring logic without turning into a noisy interface.",
+    solution:
+      "The product was built on a modern Next.js base with Supabase email and Google auth, a scraping pipeline for prices and news, a usage-driven dashboard, and a free refresh model adapted to hosted beta conditions.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Playwright",
+      "Vercel",
+    ],
+    result:
+      "A live mining intelligence SaaS, automated, easier to read, and already usable as a KAH-Digital product reference.",
+    timeline: "3 weeks",
+    deliverables: [
+      "Product direction and dashboard UX",
+      "Supabase auth + Google OAuth",
+      "Price and news scraping pipeline",
+      "Monitoring and E2E testing base",
+    ],
+    metrics: [
+      { label: "Live sources", value: "2+" },
+      { label: "Auth flows", value: "Email + Google" },
+      { label: "Base", value: "Supabase + Vercel" },
+    ],
+    highlights: [
+      "Price / news / alerts dashboard",
+      "User watchlist and alerts",
+      "Free live sync + monitoring",
+    ],
+    palette: {
+      primary: "#07110f",
+      secondary: "#15382d",
+      accent: "#d4af37",
+    },
+    website: "https://mine-alert-kenams.vercel.app/",
+    mockups: {
+      primary: "/mockups/minealert.svg",
+      gallery: ["/mockups/minealert.svg"],
+    },
+  },
 ];

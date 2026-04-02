@@ -35,4 +35,55 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
     },
   },
+  {
+    slug: "minealert",
+    name: "MineAlert",
+    type: "SaaS / Mining Intelligence",
+    tagline:
+      "Ein KAH-Digital Produkt fuer Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
+    shortDescription:
+      "Business-Dashboard, Supabase Auth, Watchlist, Alerts, Live-Scraping und Vercel-Deployment fuer ein produktionsnahes Beta-Setup.",
+    description:
+      "MineAlert gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenfuehrt.",
+    challenge:
+      "Ein Intelligence-Tool entwickeln, das klar, schnell erfassbar und technisch stabil genug bleibt, um echte Datenquellen, Authentifizierung und Monitoring aufzunehmen, ohne unruhig zu wirken.",
+    solution:
+      "Die Basis wurde mit Next.js, Supabase Auth fuer E-Mail und Google, einer Scraping-Pipeline fuer Preise und News, einem nutzungsorientierten Dashboard und einem kostenlosen Refresh-Modell fuer Hosted-Beta-Szenarien aufgebaut.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Playwright",
+      "Vercel",
+    ],
+    result:
+      "Ein live erreichbares Mining-Intelligence-SaaS, automatisiert, lesbarer aufgebaut und bereits als KAH-Digital Referenz nutzbar.",
+    timeline: "3 Wochen",
+    deliverables: [
+      "Produktdirection und Dashboard-UX",
+      "Supabase Auth + Google OAuth",
+      "Preis- und News-Scraping-Pipeline",
+      "Monitoring und E2E-Testbasis",
+    ],
+    metrics: [
+      { label: "Live-Quellen", value: "2+" },
+      { label: "Auth-Flows", value: "Email + Google" },
+      { label: "Basis", value: "Supabase + Vercel" },
+    ],
+    highlights: [
+      "Dashboard fuer Preise / News / Alerts",
+      "Watchlist und Nutzer-Alerts",
+      "Kostenloser Live-Sync + Monitoring",
+    ],
+    palette: {
+      primary: "#07110f",
+      secondary: "#15382d",
+      accent: "#d4af37",
+    },
+    website: "https://mine-alert-kenams.vercel.app/",
+    mockups: {
+      primary: "/mockups/minealert.svg",
+      gallery: ["/mockups/minealert.svg"],
+    },
+  },
 ];

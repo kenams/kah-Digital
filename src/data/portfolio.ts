@@ -60,4 +60,55 @@ export const portfolioProjects: PortfolioProject[] = [
       gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
     },
   },
+  {
+    slug: "minealert",
+    name: "MineAlert",
+    type: "SaaS / veille miniere",
+    tagline:
+      "Une application KAH-Digital de veille sur les minerais, les prix, les actualites et les alertes utilisateur.",
+    shortDescription:
+      "Dashboard metiers, auth Supabase, watchlist, alertes, scraping live, et deploiement Vercel pour un produit exploitable en beta privee.",
+    description:
+      "MineAlert fait partie des projets portes par KAH-Digital. Le produit a ete pense comme un cockpit de veille miniere capable de centraliser les prix, les signaux news, la watchlist et les alertes dans une interface plus claire et plus actionnable.",
+    challenge:
+      "Structurer un outil de veille qui reste lisible, rapide a parcourir et suffisamment solide pour brancher des sources de donnees, de l'authentification et une logique de monitoring sans tomber dans une interface brouillonne.",
+    solution:
+      "Mise en place d'une base Next.js moderne, d'une auth Supabase email et Google, d'un pipeline de scraping pour les prix et les actualites, d'un dashboard oriente usage, puis d'un mode de rafraichissement gratuit adapte a une beta hebergee.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Playwright",
+      "Vercel",
+    ],
+    result:
+      "Un SaaS de veille miniere en ligne, automatise, lisible et deja exploitable comme reference produit KAH-Digital.",
+    timeline: "3 semaines",
+    deliverables: [
+      "Direction produit et UX dashboard",
+      "Auth Supabase + OAuth Google",
+      "Pipeline scraping prix et actualites",
+      "Monitoring et base de tests E2E",
+    ],
+    metrics: [
+      { label: "Sources live", value: "2+" },
+      { label: "Parcours auth", value: "Email + Google" },
+      { label: "Base", value: "Supabase + Vercel" },
+    ],
+    highlights: [
+      "Dashboard prix / news / alertes",
+      "Watchlist et alertes utilisateur",
+      "Sync live gratuit + monitoring",
+    ],
+    palette: {
+      primary: "#07110f",
+      secondary: "#15382d",
+      accent: "#d4af37",
+    },
+    website: "https://mine-alert-kenams.vercel.app/",
+    mockups: {
+      primary: "/mockups/minealert.svg",
+      gallery: ["/mockups/minealert.svg"],
+    },
+  },
 ];
