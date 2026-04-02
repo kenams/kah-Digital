@@ -15,8 +15,8 @@ type Props = {
 const copy = {
   fr: {
     eyebrow: "Projets",
-    title: "Des projets concrets portes et livres par KAH-Digital.",
-    body: "Cette page rassemble plusieurs realisations KAH-Digital dans un format plus clair : un projet mis en avant, puis des references consultables directement.",
+    title: "KAH Prod, l'un des projets portes par KAH-Digital.",
+    body: "Cette page met en avant KAH Prod comme reference officielle sur cette version du site, avec une presentation plus claire et plus coherente avec le reste de l'univers KAH-Digital.",
     primaryLabel: "Demander un devis",
     secondaryLabel: "Voir les services",
     cards: [
@@ -36,16 +36,16 @@ const copy = {
         body: "Parcours support plus clair, base de reponse et escalation ticket propre.",
       },
     ],
-    spotlightEyebrow: "Projet mis en avant",
+    spotlightEyebrow: "Etudes de cas",
     spotlightTitle:
       "Une mise en avant plus forte, plus visuelle et plus coherente avec le niveau KAH-Digital.",
     spotlightBody:
-      "KAH Prod reste la reference editoriale principale sur cette page, avec un traitement plus premium qu'une simple carte projet.",
+      "KAH Prod merite un vrai traitement editorial, avec une presence plus premium qu'une simple carte projet.",
     spotlightCta: "Parler de votre projet",
-    gridEyebrow: "Autres projets",
-    gridTitle: "D'autres projets deja signes KAH-Digital.",
+    gridEyebrow: "Autres references",
+    gridTitle: "D'autres produits et projets signes KAH-Digital.",
     gridBody:
-      "Applications, outils metier et produits plus structures, presentes dans un format plus direct.",
+      "MineAlert s'ajoute ici comme produit concu et realise par KAH-Digital, sans changer la mise en avant principale de cette page.",
     nextEyebrow: "Suite logique",
     nextTitle:
       "Vous avez vu les references. Le plus utile maintenant, c'est le cadrage.",
@@ -57,8 +57,8 @@ const copy = {
   },
   en: {
     eyebrow: "Projects",
-    title: "Real projects designed and shipped by KAH-Digital.",
-    body: "This page brings several KAH-Digital builds together in a clearer format: one featured project, then additional references you can review directly.",
+    title: "KAH Prod, one of the projects produced by KAH-Digital.",
+    body: "This page now puts KAH Prod forward as the official featured reference on this version of the site, with a presentation aligned with the rest of the KAH-Digital public experience.",
     primaryLabel: "Request a quote",
     secondaryLabel: "See services",
     cards: [
@@ -78,16 +78,16 @@ const copy = {
         body: "Support assistant, knowledge base, and proper ticket escalation.",
       },
     ],
-    spotlightEyebrow: "Featured project",
+    spotlightEyebrow: "Case studies",
     spotlightTitle:
       "A stronger, more visual showcase aligned with the KAH-Digital standard.",
     spotlightBody:
-      "KAH Prod remains the editorial flagship on this page, with a more premium treatment than a generic project card.",
+      "KAH Prod deserves a true editorial showcase, not a generic project card.",
     spotlightCta: "Talk about your project",
-    gridEyebrow: "More projects",
-    gridTitle: "More KAH-Digital builds already online.",
+    gridEyebrow: "More references",
+    gridTitle: "More products and projects built by KAH-Digital.",
     gridBody:
-      "Applications, business tools, and product builds presented in a more direct portfolio format.",
+      "MineAlert is now listed here as a product designed and delivered by KAH-Digital, without changing the main editorial spotlight.",
     nextEyebrow: "Next step",
     nextTitle:
       "You have seen the references. The useful next move is the scoping step.",
@@ -99,8 +99,8 @@ const copy = {
   },
   de: {
     eyebrow: "Projekte",
-    title: "Konkrete Projekte, entwickelt und geliefert von KAH-Digital.",
-    body: "Diese Seite bringt mehrere KAH-Digital Referenzen in ein klareres Format: ein hervorgehobenes Projekt und weitere Arbeiten, die direkt sichtbar sind.",
+    title: "KAH Prod ist eines der von KAH-Digital entwickelten Projekte.",
+    body: "Hier steht KAH Prod als sichtbare Referenz im Fokus - nicht als einfache Projektkarte, sondern als sauber praesentierte Case Study mit klarer visueller Qualitaet.",
     primaryLabel: "Projekt anfragen",
     secondaryLabel: "Leistungen ansehen",
     cards: [
@@ -120,16 +120,16 @@ const copy = {
         body: "Virtuelle Hilfe, Wissensbasis und saubere Ticket-Eskalation.",
       },
     ],
-    spotlightEyebrow: "Hervorgehobenes Projekt",
+    spotlightEyebrow: "Case Study",
     spotlightTitle:
       "Eine staerkere und visuellere Referenz im KAH-Digital Standard.",
     spotlightBody:
-      "KAH Prod bleibt die editoriale Hauptreferenz auf dieser Seite, mit deutlich hochwertigerem Fokus als eine einfache Projektkarte.",
+      "KAH Prod zeigt, wie KAH-Digital ein Markenuniversum in eine hochwertige, klar gefuehrte Website uebersetzt.",
     spotlightCta: "Ueber dein Projekt sprechen",
-    gridEyebrow: "Weitere Projekte",
-    gridTitle: "Weitere KAH-Digital Projekte.",
+    gridEyebrow: "Weitere Referenzen",
+    gridTitle: "Weitere Produkte und Projekte von KAH-Digital.",
     gridBody:
-      "Apps, interne Tools und Produktaufbauten in einem direkteren Portfolio-Format.",
+      "MineAlert wird hier als von KAH-Digital entwickeltes Produkt hinzugefuegt, ohne die bestehende Hauptreferenz zu verschieben.",
     nextEyebrow: "Naechster Schritt",
     nextTitle:
       "Referenz gesehen. Der sinnvolle naechste Schritt ist ein klares Briefing.",
@@ -145,9 +145,9 @@ export function ProjectsPageContent({ locale, projects }: Props) {
   const content = copy[locale];
   const featuredProject =
     projects.find((project) => project.slug === "kah-prod") ?? projects[0] ?? null;
-  const orderedProjects = featuredProject
-    ? [featuredProject, ...projects.filter((project) => project.slug !== featuredProject.slug)]
-    : projects;
+  const additionalProjects = projects.filter(
+    (project) => project.slug !== (featuredProject?.slug ?? "")
+  );
 
   return (
     <div className="space-y-16 sm:space-y-20">
@@ -237,7 +237,7 @@ export function ProjectsPageContent({ locale, projects }: Props) {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            {orderedProjects.map((project, index) => (
+            {additionalProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
           </div>
