@@ -1,13 +1,16 @@
 import { AdminLoginForm } from "@/components/admin-login-form";
 
 type AdminLoginPageProps = {
-  searchParams?: { error?: string; info?: string };
+  searchParams?: Promise<{ error?: string; info?: string }>;
 };
 
-export default function AdminLoginPage({ searchParams }: AdminLoginPageProps) {
-  const errorParam = typeof searchParams?.error === "string" ? searchParams.error : null;
+export default async function AdminLoginPage({ searchParams }: AdminLoginPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const errorParam =
+    typeof resolvedSearchParams?.error === "string" ? resolvedSearchParams.error : null;
 
-  const infoParam = typeof searchParams?.info === "string" ? searchParams.info : null;
+  const infoParam =
+    typeof resolvedSearchParams?.info === "string" ? resolvedSearchParams.info : null;
 
   return <AdminLoginForm errorParam={errorParam} infoParam={infoParam} />;
 }

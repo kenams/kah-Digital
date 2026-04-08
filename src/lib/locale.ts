@@ -63,6 +63,10 @@ export function localizePath(pathname: string | null, locale: Locale) {
     return basePath === "/" ? "/en" : `/en${basePath}`;
   }
 
+  if (basePath.startsWith("/projets/")) {
+    return `/de${basePath}`;
+  }
+
   return germanRouteMap[basePath] ?? "/de";
 }
 

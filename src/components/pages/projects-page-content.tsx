@@ -45,7 +45,7 @@ const copy = {
     gridEyebrow: "Autres references",
     gridTitle: "D'autres produits et projets signes KAH-Digital.",
     gridBody:
-      "MineAlert s'ajoute ici comme produit concu et realise par KAH-Digital, sans changer la mise en avant principale de cette page.",
+      "MineAlert et TechCash Academy s'ajoutent ici comme produits concus et realises par KAH-Digital, sans changer la mise en avant principale de cette page.",
     nextEyebrow: "Suite logique",
     nextTitle:
       "Vous avez vu les references. Le plus utile maintenant, c'est le cadrage.",
@@ -87,7 +87,7 @@ const copy = {
     gridEyebrow: "More references",
     gridTitle: "More products and projects built by KAH-Digital.",
     gridBody:
-      "MineAlert is now listed here as a product designed and delivered by KAH-Digital, without changing the main editorial spotlight.",
+      "MineAlert and TechCash Academy are now listed here as products designed and delivered by KAH-Digital, without changing the main editorial spotlight.",
     nextEyebrow: "Next step",
     nextTitle:
       "You have seen the references. The useful next move is the scoping step.",
@@ -129,7 +129,7 @@ const copy = {
     gridEyebrow: "Weitere Referenzen",
     gridTitle: "Weitere Produkte und Projekte von KAH-Digital.",
     gridBody:
-      "MineAlert wird hier als von KAH-Digital entwickeltes Produkt hinzugefuegt, ohne die bestehende Hauptreferenz zu verschieben.",
+      "MineAlert und TechCash Academy werden hier als von KAH-Digital entwickelte Produkte hinzugefuegt, ohne die bestehende Hauptreferenz zu verschieben.",
     nextEyebrow: "Naechster Schritt",
     nextTitle:
       "Referenz gesehen. Der sinnvolle naechste Schritt ist ein klares Briefing.",
