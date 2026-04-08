@@ -86,4 +86,45 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       gallery: ["/mockups/minealert.svg"],
     },
   },
+  {
+    slug: "techcash-academy",
+    name: "TechCash Academy",
+    type: "Trainingsplattform / Stripe Checkout",
+    tagline:
+      "Eine KAH-Digital Plattform, um digitale Trainingsangebote mit Katalog, Mitgliederbereich und produktbezogenem Zugang zu verkaufen.",
+    shortDescription:
+      "Multi-Produkt-Katalog, Supabase Auth, Stripe Checkout, Member-Dashboard sowie Text-, PDF-, Ressourcen-, Video- und Coming-soon-Inhalte.",
+    description:
+      "TechCash Academy gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
+    challenge:
+      "Eine klarere Academy-Plattform aufbauen, die mehrere Angebote ohne unruhigen Funnel verkaufen kann und gleichzeitig einen lesbaren Mitgliederbereich, einen stabilen Checkout und eine einfache, erweiterbare Zugangslogik behaelt.",
+    solution:
+      "Aufgesetzt wurde ein Multi-Produkt-Katalog, ein Stripe Checkout pro Angebot, eine Supabase-Basis fuer Authentifizierung und Kaeufe, ein trainingsbezogenes Member-Dashboard sowie eine Admin-Schicht zur Pflege von Katalog und Modulen.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
+    result:
+      "Eine glaubwuerdigere Online-Trainingsplattform, sauber strukturiert fuer Verkauf und produktbezogenen Mitgliederzugang.",
+    timeline: "1 Woche",
+    deliverables: [
+      "Produktdirection und Academy-Funnel",
+      "Multi-Training-Katalog",
+      "Stripe Checkout + Webhook",
+      "Member-Dashboard + Content-Admin",
+    ],
+    metrics: [
+      { label: "Live-Trainings", value: "5" },
+      { label: "Zugang", value: "Pro Produkt" },
+      { label: "Basis", value: "Supabase + Stripe" },
+    ],
+    highlights: [
+      "Multi-Produkt-Katalog",
+      "Stripe Checkout + Member-Zugang",
+      "Text / PDF / Ressourcen / Video / Coming soon",
+    ],
+    palette: {
+      primary: "#08111f",
+      secondary: "#1b365d",
+      accent: "#d7a93b",
+    },
+    website: "https://techcash-academy.vercel.app/",
+  },
 ];

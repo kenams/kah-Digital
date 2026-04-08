@@ -86,4 +86,45 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       gallery: ["/mockups/minealert.svg"],
     },
   },
+  {
+    slug: "techcash-academy",
+    name: "TechCash Academy",
+    type: "Training platform / Stripe checkout",
+    tagline:
+      "A KAH-Digital platform built to sell digital training products with a catalog, member area, and product-based access.",
+    shortDescription:
+      "Multi-product catalog, Supabase auth, Stripe checkout, member dashboard, and text, PDF, resource, video, or coming-soon content.",
+    description:
+      "TechCash Academy is one of the products designed by KAH-Digital. The platform was built as a cleaner base to sell multiple digital training offers, structure the catalog, reassure before checkout, and unlock member access one product at a time.",
+    challenge:
+      "Build a clearer academy platform able to sell multiple offers without a messy funnel, while keeping the member area readable, checkout reliable, and access logic simple enough to evolve.",
+    solution:
+      "The product was structured with a multi-offer catalog, Stripe checkout tied to the correct product, a Supabase base for auth and purchases, a training-specific member dashboard, and an admin layer to manage catalog items and modules.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
+    result:
+      "A more credible online training platform, structured to sell cleanly and deliver product-by-product member access.",
+    timeline: "1 week",
+    deliverables: [
+      "Product direction and academy funnel",
+      "Multi-training catalog",
+      "Stripe checkout + webhook",
+      "Member dashboard + content admin",
+    ],
+    metrics: [
+      { label: "Live trainings", value: "5" },
+      { label: "Access model", value: "Per product" },
+      { label: "Base", value: "Supabase + Stripe" },
+    ],
+    highlights: [
+      "Multi-product catalog",
+      "Stripe checkout + member access",
+      "Text / PDF / resources / video / coming soon",
+    ],
+    palette: {
+      primary: "#08111f",
+      secondary: "#1b365d",
+      accent: "#d7a93b",
+    },
+    website: "https://techcash-academy.vercel.app/",
+  },
 ];
