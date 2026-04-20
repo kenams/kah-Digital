@@ -11,3 +11,8 @@ export function withLocalePrefix(path: string, locale: Locale) {
   const prefix = getLocalePrefix(locale);
   return prefix ? `${prefix}${path}` : path;
 }
+
+export function getLocalizedPath(path: string, locale: Locale) {
+  if (path === "/") return getLocalePrefix(locale) || "/";
+  return withLocalePrefix(path, locale);
+}
