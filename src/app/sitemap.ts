@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
 import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
-
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app").trim().replace(/\/+$/, "");
+import { SITE_URL } from "@/lib/shared-metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -17,12 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/refonte-site-web",
     "/application-web-sur-mesure",
     "/automatisation-ia-entreprise",
-    "/factures",
-    "/offres",
-    "/devis",
-    "/devis/mvp",
-    "/configurateur",
-    "/cahier-des-charges",
     "/projets",
     "/lexique",
     "/mentions-legales",
@@ -43,12 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/refonte-site-web",
     "/en/application-web-sur-mesure",
     "/en/automatisation-ia-entreprise",
-    "/en/factures",
-    "/en/offres",
-    "/en/devis",
-    "/en/devis/mvp",
-    "/en/configurateur",
-    "/en/cahier-des-charges",
     "/en/projets",
     "/en/lexique",
     "/en/mentions-legales",
@@ -69,12 +56,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/de/refonte-site-web",
     "/de/application-web-sur-mesure",
     "/de/automatisation-ia-entreprise",
-    "/de/factures",
-    "/de/offres",
-    "/de/devis",
-    "/de/devis/mvp",
-    "/de/configurateur",
-    "/de/cahier-des-charges",
     "/de/projets",
     "/de/lexique",
     "/de/mentions-legales",
@@ -84,17 +65,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  const projectRoutes = portfolioProjects.map((project) => ({
+  const projectRoutes = portfolioProjects.filter((project) => project.slug !== "kah-prod").map((project) => ({
     url: `${SITE_URL}/projets/${project.slug}`,
     lastModified: new Date(),
   }));
 
-  const projectRoutesEn = portfolioProjectsEn.map((project) => ({
+  const projectRoutesEn = portfolioProjectsEn.filter((project) => project.slug !== "kah-prod").map((project) => ({
     url: `${SITE_URL}/en/projets/${project.slug}`,
     lastModified: new Date(),
   }));
 
-  const projectRoutesDe = portfolioProjectsDe.map((project) => ({
+  const projectRoutesDe = portfolioProjectsDe.filter((project) => project.slug !== "kah-prod").map((project) => ({
     url: `${SITE_URL}/de/projets/${project.slug}`,
     lastModified: new Date(),
   }));

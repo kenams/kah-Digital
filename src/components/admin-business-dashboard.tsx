@@ -139,6 +139,9 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
             <Link href="/admin/demandes?section=assistant" className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">
               Traiter l'assistant
             </Link>
+            <Link href="/admin/prospection" className="rounded-full border border-violet-500/50 bg-violet-500/10 px-5 py-3 text-sm font-semibold text-violet-300 transition hover:border-violet-400 hover:bg-violet-500/20">
+              Prospection IA
+            </Link>
           </div>
         </div>
 

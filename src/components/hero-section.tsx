@@ -3,60 +3,112 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
+import { FiArrowRight, FiZap } from "react-icons/fi";
 
 export function HeroSection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      title: "sites, applications et solutions pour entreprises",
-      body:
-        "Sites web, applications sur mesure et parcours support plus clairs. KAH-Digital accompagne les entreprises francophones, anglophones et internationales, du cadrage à la mise en ligne.",
-      primary: "Demander un devis",
-      secondary: "Voir nos solutions",
+      badge: "Studio digital · IA & web",
+      title1: "Sites, apps &",
+      title2: "solutions IA",
+      title3: "pour entreprises",
+      body: "KAH-Digital conçoit des sites web, des applications sur mesure et des outils IA qui automatisent et font grandir votre business.",
+      primary: "Demander un devis gratuit",
+      secondary: "Voir nos services",
+      stats: [
+        { value: "24h", label: "Délai de réponse" },
+        { value: "3+", label: "Langues couvertes" },
+        { value: "100%", label: "Remote & dispo" },
+      ],
     },
     en: {
-      title: "websites, apps, and digital solutions for companies",
-      body:
-        "Websites, custom applications, and clearer support workflows. KAH-Digital works with French-speaking, English-speaking, and international companies from scoping to launch.",
-      primary: "Request a quote",
+      badge: "Digital studio · AI & web",
+      title1: "Websites, apps &",
+      title2: "AI solutions",
+      title3: "for companies",
+      body: "KAH-Digital builds websites, custom applications, and AI tools that automate and grow your business.",
+      primary: "Request a free quote",
       secondary: "See our services",
+      stats: [
+        { value: "24h", label: "Response time" },
+        { value: "3+", label: "Languages covered" },
+        { value: "100%", label: "Remote & available" },
+      ],
     },
     de: {
-      title: "Websites, Apps und digitale Loesungen fuer Unternehmen",
-      body:
-        "Websites, massgeschneiderte Anwendungen und klarere Support-Ablaufe. KAH-Digital begleitet frankophone, englischsprachige und internationale Unternehmen vom Briefing bis zum Launch.",
-      primary: "Projekt anfragen",
+      badge: "Digital Studio · KI & Web",
+      title1: "Websites, Apps &",
+      title2: "KI-Loesungen",
+      title3: "fuer Unternehmen",
+      body: "KAH-Digital entwickelt Websites, massgeschneiderte Anwendungen und KI-Tools, die dein Business automatisieren und skalieren.",
+      primary: "Kostenloses Angebot",
       secondary: "Leistungen ansehen",
+      stats: [
+        { value: "24h", label: "Antwortzeit" },
+        { value: "3+", label: "Sprachen" },
+        { value: "100%", label: "Remote verfuegbar" },
+      ],
     },
   }[locale];
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            KAH-Digital
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              {copy.title}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950">
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Gradient orbs */}
+      <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-purple-600/15 blur-3xl" />
+
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          {/* Badge */}
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-300 backdrop-blur-sm">
+            <FiZap size={13} className="text-blue-400" />
+            {copy.badge}
+          </div>
+
+          {/* Title */}
+          <h1 className="mb-6 text-5xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <span className="block">{copy.title1}</span>
+            <span className="block bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent">
+              {copy.title2}
             </span>
+            <span className="block text-gray-300">{copy.title3}</span>
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-300">{copy.body}</p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+
+          {/* Body */}
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400">
+            {copy.body}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href={withPrefix("/devis")}
-              className="rounded-full bg-white px-8 py-3 font-semibold text-black transition-colors hover:bg-gray-200"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-semibold text-gray-950 transition-all hover:bg-gray-100 hover:gap-3"
             >
               {copy.primary}
+              <FiArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={withPrefix("/services")}
-              className="rounded-full border border-white px-8 py-3 font-semibold text-white transition-colors hover:bg-white hover:text-black"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
             >
               {copy.secondary}
             </Link>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-16 flex flex-wrap justify-center gap-10">
+            {copy.stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-3xl font-extrabold text-white">{s.value}</p>
+                <p className="mt-0.5 text-sm text-gray-500">{s.label}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

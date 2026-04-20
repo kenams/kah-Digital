@@ -1,86 +1,129 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowRight, FiGlobe, FiSmartphone, FiTool } from "react-icons/fi";
+import { FiArrowRight, FiGlobe, FiSmartphone, FiTool, FiZap } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function ServicesGrid() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      title: "Nos services",
-      body:
-        "Trois axes simples : mieux présenter votre entreprise, mieux structurer un outil, ou mieux fluidifier un support.",
+      badge: "Nos services",
+      title: "Tout ce qu'il faut pour développer votre présence digitale",
+      body: "Trois axes clairs : présenter votre activité, outiller votre équipe, ou fluidifier votre support.",
       cta: "En savoir plus",
       items: [
         {
           icon: FiGlobe,
+          accent: "#3b82f6",
           title: "Sites web pour entreprises",
-          description:
-            "Sites vitrines, sites corporate et présences digitales plus propres, avec paiement simple possible selon le besoin.",
+          description: "Sites vitrines et corporate ultra-propres, rapides et optimisés SEO. Design sur mesure, paiement intégré si besoin.",
+          tags: ["Vitrine", "Corporate", "SEO", "Paiement"],
           href: "/services/site-web",
         },
         {
           icon: FiSmartphone,
-          title: "Applications web et mobiles",
-          description: "Outils métier, portails, tableaux de bord et expériences sur mesure adaptés à votre fonctionnement.",
+          accent: "#8b5cf6",
+          title: "Applications web & mobiles",
+          description: "Outils métier, portails clients, tableaux de bord et apps sur mesure adaptés à vos process et votre équipe.",
+          tags: ["Web", "Mobile", "Dashboard", "Sur mesure"],
           href: "/services/applications",
         },
         {
           icon: FiTool,
-          title: "Parcours support connecté à GLPI",
-          description: "Aide virtuelle, orientation des demandes et passage vers ticket quand le support humain doit reprendre.",
+          accent: "#10b981",
+          title: "Support connecté GLPI",
+          description: "Assistant virtuel, orientation des demandes et passage fluide au ticket GLPI quand le support humain doit reprendre.",
+          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
           href: "/services/glpi",
+        },
+        {
+          icon: FiZap,
+          accent: "#f59e0b",
+          title: "Outils IA & automatisation",
+          description: "Prospection automatique, agents IA, workflows no-code/low-code pour libérer votre équipe des tâches répétitives.",
+          tags: ["IA", "Automation", "Claude", "Emails"],
+          href: "/services",
         },
       ],
     },
     en: {
-      title: "Our services",
-      body: "Three simple directions: present your company better, structure a tool better, or make support flows smoother.",
+      badge: "Our services",
+      title: "Everything you need to grow your digital presence",
+      body: "Three clear directions: showcase your business, equip your team, or smooth out your support.",
       cta: "Learn more",
       items: [
         {
           icon: FiGlobe,
+          accent: "#3b82f6",
           title: "Business websites",
-          description: "Showcase sites, corporate websites, and cleaner digital presences to present your business more clearly.",
+          description: "Clean, fast, SEO-optimised showcase and corporate websites. Custom design, integrated payments if needed.",
+          tags: ["Showcase", "Corporate", "SEO", "Payments"],
           href: "/services/site-web",
         },
         {
           icon: FiSmartphone,
-          title: "Web and mobile apps",
-          description: "Business tools, portals, dashboards, and custom experiences adapted to the way your team works.",
+          accent: "#8b5cf6",
+          title: "Web & mobile apps",
+          description: "Business tools, client portals, dashboards, and custom apps adapted to your workflows and team.",
+          tags: ["Web", "Mobile", "Dashboard", "Custom"],
           href: "/services/applications",
         },
         {
           icon: FiTool,
-          title: "GLPI-connected support flow",
-          description: "Virtual help, request routing, and clean ticket handoff when human support needs to step in.",
+          accent: "#10b981",
+          title: "GLPI-connected support",
+          description: "Virtual assistant, request routing, and clean ticket handoff to GLPI when human support needs to step in.",
+          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
           href: "/services/glpi",
+        },
+        {
+          icon: FiZap,
+          accent: "#f59e0b",
+          title: "AI tools & automation",
+          description: "Automated outreach, AI agents, no-code/low-code workflows to free your team from repetitive tasks.",
+          tags: ["AI", "Automation", "Claude", "Emails"],
+          href: "/services",
         },
       ],
     },
     de: {
-      title: "Unsere Leistungen",
-      body: "Drei klare Richtungen: das Unternehmen besser praesentieren, ein Tool besser strukturieren oder Support sauberer machen.",
+      badge: "Unsere Leistungen",
+      title: "Alles fuer eine starke digitale Praesenz",
+      body: "Drei klare Richtungen: Unternehmen praesentieren, Team ausruesten oder Support optimieren.",
       cta: "Mehr erfahren",
       items: [
         {
           icon: FiGlobe,
+          accent: "#3b82f6",
           title: "Unternehmenswebsites",
-          description: "Praesentationsseiten, Corporate Sites und saubere digitale Auftritte, um eure Aktivitaet klarer zu zeigen.",
+          description: "Saubere, schnelle und SEO-optimierte Praesentationsseiten. Custom-Design, integrierte Zahlungen falls noetig.",
+          tags: ["Vitrine", "Corporate", "SEO", "Zahlung"],
           href: "/services/site-web",
         },
         {
           icon: FiSmartphone,
-          title: "Web- und Mobile-Anwendungen",
-          description: "Business-Tools, Portale, Dashboards und massgeschneiderte Erlebnisse passend zu euren Prozessen.",
+          accent: "#8b5cf6",
+          title: "Web- & Mobile-Anwendungen",
+          description: "Business-Tools, Kundenportale, Dashboards und Apps passend zu euren Prozessen und eurer Arbeitsweise.",
+          tags: ["Web", "Mobile", "Dashboard", "Custom"],
           href: "/services/applications",
         },
         {
           icon: FiTool,
-          title: "GLPI-verbundener Support-Flow",
-          description: "Virtuelle Hilfe, Routing von Anfragen und saubere Uebergabe an Tickets, wenn Support uebernehmen muss.",
+          accent: "#10b981",
+          title: "GLPI-verbundener Support",
+          description: "Virtueller Assistent, Routing von Anfragen und saubere Uebergabe an GLPI-Tickets.",
+          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
           href: "/services/glpi",
+        },
+        {
+          icon: FiZap,
+          accent: "#f59e0b",
+          title: "KI-Tools & Automatisierung",
+          description: "Automatisierte Akquise, KI-Agenten, No-Code-Workflows fuer weniger Routinearbeit.",
+          tags: ["KI", "Automation", "Claude", "Emails"],
+          href: "/services",
         },
       ],
     },
@@ -89,22 +132,48 @@ export function ServicesGrid() {
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gray-950 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">{copy.body}</p>
+        <div className="mb-14 text-center">
+          <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+            {copy.badge}
+          </span>
+          <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white">{copy.title}</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-400">{copy.body}</p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {copy.items.map((service) => (
-            <div key={service.title} className="rounded-lg bg-white p-6 shadow-lg transition-shadow hover:shadow-xl">
-              <service.icon className="mb-4 text-blue-600" size={48} />
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">{service.title}</h3>
-              <p className="mb-4 text-gray-600">{service.description}</p>
-              <Link href={withPrefix(service.href)} className="inline-flex items-center font-semibold text-blue-600 hover:text-blue-800">
-                {copy.cta} <FiArrowRight className="ml-2" />
-              </Link>
-            </div>
+            <Link
+              key={service.title}
+              href={withPrefix(service.href)}
+              className="group relative rounded-2xl border border-white/10 bg-gray-900 p-6 transition-all hover:border-white/20 hover:bg-gray-800/80"
+            >
+              {/* Accent glow */}
+              <div
+                className="absolute inset-x-0 top-0 h-px rounded-t-2xl transition-opacity group-hover:opacity-100 opacity-0"
+                style={{ background: `linear-gradient(to right, transparent, ${service.accent}, transparent)` }}
+              />
+
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10"
+                style={{ background: `${service.accent}18` }}>
+                <service.icon size={22} style={{ color: service.accent }} />
+              </div>
+
+              <h3 className="mb-2 text-lg font-bold text-white">{service.title}</h3>
+              <p className="mb-4 text-sm leading-relaxed text-gray-400">{service.description}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span key={tag} className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-gray-500">{tag}</span>
+                ))}
+              </div>
+
+              <div className="mt-4 flex items-center gap-1 text-sm font-semibold transition-colors"
+                style={{ color: service.accent }}>
+                {copy.cta} <FiArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </div>
+            </Link>
           ))}
         </div>
       </div>

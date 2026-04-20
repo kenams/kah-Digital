@@ -13,6 +13,7 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.89.0",
     "framer-motion": "^12.23.26",

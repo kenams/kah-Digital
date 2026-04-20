@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { companyConfig } from "@/config/company";
 import type { Locale } from "@/lib/locales";
+import { getLocalizedPath } from "@/lib/locales";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app")
-  .trim()
-  .replace(/\/+$/, "");
+const DEFAULT_SITE_URL = "https://kah-digital.ch";
+const rawSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL).trim().replace(/\/+$/, "");
+
+export const SITE_URL = /^https:\/\/kah-digital-site(?:-[^./]+)?\.vercel\.app$/i.test(rawSiteUrl)
+  ? DEFAULT_SITE_URL
+  : rawSiteUrl;
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 
@@ -68,6 +72,93 @@ const baseMetadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
   },
 } satisfies Metadata;
+
+function sanitizePageTitle(title: string) {
+  return title.replace(/\s*\|\s*KAH-Digital\s*$/i, "").trim();
+}
+
+function mergeKeywords(locale: Locale, keywords: string[] = []) {
+  return Array.from(new Set([...localeMetadata[locale].keywords, ...keywords].map((value) => value.trim())));
+}
+
+export function buildPageMetadata({
+  locale,
+  path,
+  title,
+  description,
+  keywords = [],
+}: {
+  locale: Locale;
+  path: string;
+  title: string;
+  description: string;
+  keywords?: string[];
+}): Metadata {
+  const content = localeMetadata[locale];
+  const canonical = getLocalizedPath(path, locale);
+
+  return {
+    title: sanitizePageTitle(title),
+    description,
+    keywords: mergeKeywords(locale, keywords),
+    alternates: {
+      canonical,
+      languages: {
+        fr: getLocalizedPath(path, "fr"),
+        en: getLocalizedPath(path, "en"),
+        de: getLocalizedPath(path, "de"),
+        "x-default": getLocalizedPath(path, "fr"),
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: content.openGraphLocale,
+      alternateLocale: content.alternateLocales,
+      title: sanitizePageTitle(title),
+      description,
+      url: canonical,
+      siteName: "KAH-Digital",
+      images: [
+        {
+          url: "/og-kah-digital.png",
+          width: 1200,
+          height: 630,
+          alt: content.openGraphAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: sanitizePageTitle(title),
+      description,
+      images: ["/og-kah-digital.png"],
+    },
+  };
+}
+
+export function buildNoIndexMetadata({
+  locale,
+  path,
+  title,
+  description,
+}: {
+  locale: Locale;
+  path: string;
+  title: string;
+  description?: string;
+}): Metadata {
+  return {
+    title: sanitizePageTitle(title),
+    description,
+    robots: {
+      index: false,
+      follow: true,
+    },
+    alternates: {
+      canonical: getLocalizedPath(path, locale),
+    },
+  };
+}
 
 export function getSiteMetadata(locale: Locale): Metadata {
   const content = localeMetadata[locale];
