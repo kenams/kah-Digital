@@ -52,11 +52,8 @@ async function fetchWebsiteContent(url: string): Promise<string> {
   }
 }
 
-export function getScreenshotUrl(siteUrl: string): string | null {
-  const key = process.env.SCREENSHOTONE_API_KEY;
-  if (!key) return null;
-  const normalized = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`;
-  return `https://api.screenshotone.com/take?access_key=${key}&url=${encodeURIComponent(normalized)}&viewport_width=1280&viewport_height=800&format=jpg&image_quality=80&cache=true`;
+export function getScreenshotUrl(_siteUrl: string): string | null {
+  return null; // Screenshot désactivé — mockup HTML inclus dans l'email
 }
 
 const AUDIT_PROMPT: Record<string, string> = {
