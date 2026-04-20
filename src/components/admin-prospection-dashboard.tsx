@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { FiPlus, FiZap, FiSend, FiTrash2, FiEdit2, FiEye, FiX, FiCheck, FiAlertCircle, FiClock, FiRefreshCw } from "react-icons/fi";
+import { FiPlus, FiZap, FiSend, FiTrash2, FiEdit2, FiEye, FiX, FiCheck, FiAlertCircle, FiClock, FiRefreshCw, FiBell, FiActivity, FiPlay } from "react-icons/fi";
 
 type ProspectAuditProblem = { title: string; detail: string; severity: "critical" | "medium" | "low" };
 type ProspectAuditRecommendation = { title: string; detail: string; estimatedValue: string };
@@ -44,7 +44,14 @@ const SEVERITY_COLOR: Record<string, string> = {
   low:      "text-blue-600 bg-blue-50 border-blue-200",
 };
 
+type LiveStats = {
+  stats: { total: number; sent: number; opened: number; clicked: number; replied: number; openRate: number; clickRate: number };
+  batches: Array<{ id: string; runAt: string; slot: string; found: number; sent: number; errors: string[] }>;
+  hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null }>;
+};
+
 export function ProspectionDashboard() {
+  const [activeTab, setActiveTab] = useState<"prospects" | "live" | "batches">("live");
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Prospect | null>(null);
@@ -53,10 +60,37 @@ export function ProspectionDashboard() {
   const [analyzing, setAnalyzing] = useState<string | null>(null);
   const [sending, setSending] = useState<string | null>(null);
   const [editEmail, setEditEmail] = useState<{ subject: string; body: string } | null>(null);
+  const [liveStats, setLiveStats] = useState<LiveStats | null>(null);
+  const [cronRunning, setCronRunning] = useState(false);
 
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
   const [addLoading, setAddLoading] = useState(false);
+
+  const fetchLiveStats = useCallback(async () => {
+    const res = await fetch("/api/prospection/stats");
+    const data = await res.json() as LiveStats;
+    setLiveStats(data);
+  }, []);
+
+  useEffect(() => {
+    void fetchLiveStats();
+    const interval = setInterval(() => void fetchLiveStats(), 30000); // refresh every 30s
+    return () => clearInterval(interval);
+  }, [fetchLiveStats]);
+
+  async function handleManualCron() {
+    setCronRunning(true);
+    try {
+      const res = await fetch("/api/cron/prospection", { method: "POST" });
+      const data = await res.json() as { sent?: number; found?: number; errors?: number };
+      alert(`Batch terminé : ${data.sent ?? 0} emails envoyés sur ${data.found ?? 0} leads trouvés (${data.errors ?? 0} erreurs)`);
+      void fetchLiveStats();
+      void fetchProspects();
+    } finally {
+      setCronRunning(false);
+    }
+  }
 
   const fetchProspects = useCallback(async () => {
     setLoading(true);
@@ -180,40 +214,199 @@ export function ProspectionDashboard() {
       <div className="border-b border-white/10 bg-gray-900 px-6 py-4">
         <div className="mx-auto max-w-7xl flex items-center justify-between gap-4">
           <div>
-            <h1 className="text-xl font-bold">Prospection IA</h1>
-            <p className="text-sm text-gray-400">Claude analyse les sites web et génère des emails personnalisés</p>
+            <h1 className="text-xl font-bold flex items-center gap-2">
+              Prospection IA
+              {liveStats && liveStats.hotProspects.length > 0 && (
+                <span className="animate-pulse rounded-full bg-red-500 px-2 py-0.5 text-xs font-bold">
+                  {liveStats.hotProspects.filter((p) => p.clickedAt).length} chaud
+                </span>
+              )}
+            </h1>
+            <p className="text-sm text-gray-400">Autonome — 15 emails/jour · 3 batches · multilingue · mondial</p>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={() => void fetchProspects()} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5">
-              <FiRefreshCw size={14} /> Actualiser
+            <button
+              onClick={() => void handleManualCron()}
+              disabled={cronRunning}
+              className="flex items-center gap-2 rounded-lg bg-violet-600 px-3 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
+            >
+              <FiPlay size={13} /> {cronRunning ? "En cours..." : "Lancer batch"}
+            </button>
+            <button onClick={() => { void fetchProspects(); void fetchLiveStats(); }} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5">
+              <FiRefreshCw size={14} />
             </button>
             <button
               onClick={() => setAddOpen(true)}
               className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold hover:bg-blue-700"
             >
-              <FiPlus size={16} /> Ajouter un prospect
+              <FiPlus size={16} /> Ajouter
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Stats */}
-      <div className="border-b border-white/10 bg-gray-900/50 px-6 py-3">
-        <div className="mx-auto max-w-7xl flex gap-6 text-sm">
+        {/* Tabs */}
+        <div className="mx-auto max-w-7xl flex gap-1 mt-4">
           {[
-            { label: "Total", value: stats.total, color: "text-white" },
-            { label: "Analysés", value: stats.analyzed, color: "text-indigo-400" },
-            { label: "Envoyés", value: stats.sent, color: "text-green-400" },
-            { label: "Réponses", value: stats.replied, color: "text-emerald-400" },
-          ].map((s) => (
-            <div key={s.label} className="flex items-center gap-2">
-              <span className={`text-xl font-bold ${s.color}`}>{s.value}</span>
-              <span className="text-gray-500">{s.label}</span>
-            </div>
+            { id: "live" as const, label: "Live & Notifications", icon: FiBell },
+            { id: "prospects" as const, label: "Prospects", icon: FiZap },
+            { id: "batches" as const, label: "Historique batches", icon: FiActivity },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                activeTab === tab.id ? "bg-white/10 text-white" : "text-gray-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <tab.icon size={14} /> {tab.label}
+            </button>
           ))}
         </div>
       </div>
 
+      {/* KPI bar */}
+      {liveStats && (
+        <div className="border-b border-white/10 bg-gray-900/50 px-6 py-3">
+          <div className="mx-auto max-w-7xl flex flex-wrap gap-6 text-sm">
+            {[
+              { label: "Envoyés", value: liveStats.stats.sent, color: "text-white" },
+              { label: "Ouverts", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
+              { label: "Cliqués", value: `${liveStats.stats.clicked} (${liveStats.stats.clickRate}%)`, color: "text-orange-400" },
+              { label: "Réponses", value: liveStats.stats.replied, color: "text-green-400" },
+            ].map((s) => (
+              <div key={s.label} className="flex items-center gap-2">
+                <span className={`text-xl font-bold ${s.color}`}>{s.value}</span>
+                <span className="text-gray-500">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── TAB: LIVE ────────────────────────────────────────────────────────── */}
+      {activeTab === "live" && (
+        <div className="mx-auto max-w-7xl px-6 py-6 space-y-6">
+          {!liveStats ? (
+            <div className="text-center text-gray-500 py-12">Chargement...</div>
+          ) : (
+            <>
+              {/* Hot prospects (opened/clicked) */}
+              <div>
+                <h2 className="mb-3 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                  <FiBell size={14} className="text-orange-400" /> Prospects actifs
+                </h2>
+                {liveStats.hotProspects.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-gray-500">
+                    Aucun prospect actif pour l&apos;instant — les notifications apparaîtront ici
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                    {liveStats.hotProspects.map((p) => (
+                      <div key={p.id} className={`rounded-xl border p-4 ${p.clickedAt ? "border-orange-500/40 bg-orange-500/5" : "border-blue-500/20 bg-blue-500/5"}`}>
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <div>
+                            <p className="font-semibold text-sm">{p.businessName ?? p.website}</p>
+                            <p className="text-xs text-gray-400">{p.sector} · {p.country}</p>
+                          </div>
+                          <div className="flex flex-col items-end gap-1">
+                            {p.clickedAt && <span className="rounded-full bg-orange-500 px-2 py-0.5 text-xs font-bold text-white">🔥 CLIQUÉ</span>}
+                            {p.openedAt && !p.clickedAt && <span className="rounded-full bg-blue-500 px-2 py-0.5 text-xs font-bold text-white">👁 OUVERT</span>}
+                          </div>
+                        </div>
+                        {p.email && <p className="text-xs text-gray-300 font-mono">{p.email}</p>}
+                        {p.clickedAt && (
+                          <p className="mt-2 text-xs text-orange-300 font-semibold">
+                            → Contacte-le maintenant !
+                          </p>
+                        )}
+                        <div className="mt-3 flex gap-2">
+                          <a
+                            href={`mailto:${p.email ?? ""}?subject=Suite à votre intérêt pour KAH-Digital`}
+                            className="flex-1 text-center rounded-lg bg-white/10 px-2 py-1.5 text-xs font-semibold hover:bg-white/15"
+                          >
+                            Répondre
+                          </a>
+                          <button
+                            onClick={() => { setActiveTab("prospects"); setFilterStatus("replied"); }}
+                            className="rounded-lg bg-white/5 px-2 py-1.5 text-xs text-gray-400 hover:bg-white/10"
+                          >
+                            Voir fiche
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Prochain batch */}
+              <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
+                <h3 className="font-semibold text-violet-300 mb-2 flex items-center gap-2">
+                  <FiClock size={14} /> Batches automatiques (Vercel Cron)
+                </h3>
+                <div className="grid grid-cols-3 gap-3 text-center text-sm">
+                  {[
+                    { slot: "Matin", time: "09h00 (Europe)", icon: "🌅" },
+                    { slot: "Midi", time: "13h00 (Europe)", icon: "☀️" },
+                    { slot: "Soir", time: "19h00 (Europe)", icon: "🌙" },
+                  ].map((b) => (
+                    <div key={b.slot} className="rounded-lg bg-white/5 p-3">
+                      <div className="text-xl mb-1">{b.icon}</div>
+                      <div className="font-semibold text-white text-xs">{b.slot}</div>
+                      <div className="text-gray-400 text-xs">{b.time}</div>
+                      <div className="text-violet-300 text-xs mt-1">5 emails</div>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => void handleManualCron()}
+                  disabled={cronRunning}
+                  className="mt-4 w-full flex items-center justify-center gap-2 rounded-lg bg-violet-600 py-2.5 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
+                >
+                  <FiPlay size={13} /> {cronRunning ? "Batch en cours..." : "Lancer un batch maintenant (test)"}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* ── TAB: BATCHES ─────────────────────────────────────────────────────── */}
+      {activeTab === "batches" && (
+        <div className="mx-auto max-w-4xl px-6 py-6">
+          <h2 className="mb-4 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+            <FiActivity size={14} /> Historique des batches
+          </h2>
+          {!liveStats || liveStats.batches.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-gray-500">
+              Aucun batch exécuté — lance le premier batch pour voir l&apos;historique
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {liveStats.batches.map((b) => (
+                <div key={b.id} className="rounded-xl border border-white/10 bg-gray-900 p-4 flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-semibold capitalize">{b.slot === "morning" ? "🌅 Matin" : b.slot === "noon" ? "☀️ Midi" : "🌙 Soir"}</span>
+                      <span className="text-xs text-gray-400">{new Date(b.runAt).toLocaleString("fr-FR")}</span>
+                    </div>
+                    {b.errors.length > 0 && (
+                      <p className="mt-1 text-xs text-red-400">{b.errors.length} erreur(s)</p>
+                    )}
+                  </div>
+                  <div className="flex gap-4 text-sm text-right">
+                    <div><span className="text-white font-bold">{b.found}</span><span className="text-gray-500 ml-1">leads</span></div>
+                    <div><span className="text-green-400 font-bold">{b.sent}</span><span className="text-gray-500 ml-1">envoyés</span></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ── TAB: PROSPECTS ───────────────────────────────────────────────────── */}
+      {activeTab === "prospects" && (
       <div className="mx-auto max-w-7xl px-6 py-6 flex gap-6">
         {/* List */}
         <div className="w-96 shrink-0">
@@ -433,6 +626,7 @@ export function ProspectionDashboard() {
           )}
         </div>
       </div>
+      )} {/* end tab prospects */}
 
       {/* Add modal */}
       {addOpen && (

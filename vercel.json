@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/prospection",
+      "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/cron/prospection",
+      "schedule": "0 11 * * *"
+    },
+    {
+      "path": "/api/cron/prospection",
+      "schedule": "0 17 * * *"
+    }
+  ]
+}
