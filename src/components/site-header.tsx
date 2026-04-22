@@ -67,11 +67,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
-          <Link
-            href={homeHref}
-            className="group -m-2 inline-flex min-w-0 shrink-0 rounded-md p-2 outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#d0a762]/70"
-            aria-label={localeCopy.homeLabel}
-          >
+          <Link href={homeHref} className="shrink-0" aria-label={localeCopy.homeLabel}>
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
@@ -105,12 +101,7 @@ export function SiteHeader() {
         {isMenuOpen ? (
           <div className="border-t border-white/10 py-4 md:hidden">
             <nav className="flex flex-col space-y-4">
-              <Link
-                href={homeHref}
-                className="inline-flex min-w-0 rounded-md pb-2 outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[#d0a762]/70"
-                onClick={() => setIsMenuOpen(false)}
-                aria-label={localeCopy.homeLabel}
-              >
+              <Link href={homeHref} className="pb-2" onClick={() => setIsMenuOpen(false)} aria-label={localeCopy.homeLabel}>
                 <BrandLockup compact subtitle={localeCopy.subtitle} />
               </Link>
               <div className="pb-2">
