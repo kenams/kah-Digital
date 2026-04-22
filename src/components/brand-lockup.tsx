@@ -13,13 +13,12 @@ export function BrandLockup({
   subtitle,
   theme = "dark",
 }: BrandLockupProps) {
-  const iconSizeClassName = compact ? "h-11 w-11" : "h-16 w-16";
+  const iconSizeClassName = compact ? "h-11 w-11 sm:h-12 sm:w-12" : "h-16 w-16";
   const subtitleClassName = theme === "dark" ? "text-[#c7b38b]/70" : "text-[#7f6240]";
   const titleStyle = {
     fontFamily: '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif',
   } as const;
-  const wordmarkSizeClassName = compact ? "text-[1.35rem]" : "text-[2.15rem]";
-  const trackingClassName = compact ? "tracking-[0.18em]" : "tracking-[0.22em]";
+  const wordmarkSizeClassName = compact ? "text-[1.18rem] sm:text-[1.38rem]" : "text-[2.15rem]";
   const frameStroke = theme === "dark" ? "rgba(234, 214, 176, 0.32)" : "rgba(108, 78, 41, 0.28)";
   const glowOpacity = theme === "dark" ? "0.95" : "0.78";
   const smallGlowOpacity = theme === "dark" ? "0.55" : "0.42";
@@ -28,7 +27,7 @@ export function BrandLockup({
   const titleTone = theme === "dark" ? "text-[#f8f3ea]" : "text-[#20160c]";
 
   return (
-    <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
+    <div className={`inline-flex min-w-0 items-center gap-3 ${className}`.trim()}>
       <svg
         aria-hidden="true"
         className={`${iconSizeClassName} shrink-0`}
@@ -64,17 +63,17 @@ export function BrandLockup({
         <path d="M15 46H35" stroke={innerBorderColor} strokeLinecap="round" />
       </svg>
 
-      <div className="min-w-0">
+      <div className="flex min-w-0 flex-col justify-center">
         <p
-          className={`${wordmarkSizeClassName} ${trackingClassName} font-semibold uppercase leading-none ${titleTone}`}
+          className={`${wordmarkSizeClassName} whitespace-nowrap font-semibold uppercase leading-[0.92] ${titleTone}`}
           style={titleStyle}
         >
           <span>KAH</span>
-          <span className="mx-[0.16em] inline-block align-middle text-[#d0a762]">-</span>
+          <span className="mx-1 inline-block align-middle text-[#d0a762]">-</span>
           <span className={theme === "dark" ? "text-[#dfc18a]" : "text-[#9b6f36]"}>DIGITAL</span>
         </p>
         {subtitle ? (
-          <p className={`mt-1 text-[10px] font-medium uppercase tracking-[0.34em] ${subtitleClassName}`}>
+          <p className={`mt-1.5 text-[9px] font-medium uppercase leading-none tracking-[0.22em] sm:text-[10px] ${subtitleClassName}`}>
             {subtitle}
           </p>
         ) : null}
