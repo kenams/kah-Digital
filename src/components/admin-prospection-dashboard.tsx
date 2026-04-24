@@ -19,11 +19,14 @@ type Prospect = {
   businessName: string | null;
   website: string;
   email: string | null;
+  phone: string | null;
   sector: string | null;
   status: "pending" | "analyzing" | "analyzed" | "draft" | "sent" | "replied" | "rejected";
   audit: ProspectAudit | null;
   emailSubject: string | null;
   emailBody: string | null;
+  draftReply: string | null;
+  emailGuessed: boolean | null;
   sentAt: string | null;
   notes: string | null;
 };
@@ -34,7 +37,7 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   analyzed:  { label: "Analysé",     color: "bg-indigo-100 text-indigo-700" },
   draft:     { label: "Brouillon",   color: "bg-yellow-100 text-yellow-700" },
   sent:      { label: "Envoyé",      color: "bg-green-100 text-green-700" },
-  replied:   { label: "Répondu",     color: "bg-emerald-100 text-emerald-700" },
+  replied:   { label: "🔥 Chaud",      color: "bg-emerald-100 text-emerald-700" },
   rejected:  { label: "Rejeté",      color: "bg-red-100 text-red-700" },
 };
 
@@ -44,14 +47,17 @@ const SEVERITY_COLOR: Record<string, string> = {
   low:      "text-blue-600 bg-blue-50 border-blue-200",
 };
 
+type NoEmailProspect = { id: string; businessName: string | null; website: string; sector: string | null; country: string | null; audit: ProspectAudit | null; createdAt: string };
+
 type LiveStats = {
-  stats: { total: number; sent: number; opened: number; clicked: number; replied: number; openRate: number; clickRate: number };
-  batches: Array<{ id: string; runAt: string; slot: string; found: number; sent: number; errors: string[] }>;
-  hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null }>;
+  stats: { total: number; sent: number; opened: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
+  batches: Array<{ id: string; createdAt: string; slot: string; found: number; sent: number; errors: string[] }>;
+  hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null; draftReply: string | null }>;
+  noEmailProspects: NoEmailProspect[];
 };
 
 export function ProspectionDashboard() {
-  const [activeTab, setActiveTab] = useState<"prospects" | "live" | "batches">("live");
+  const [activeTab, setActiveTab] = useState<"prospects" | "live" | "batches" | "noemail">("live");
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Prospect | null>(null);
@@ -62,6 +68,9 @@ export function ProspectionDashboard() {
   const [editEmail, setEditEmail] = useState<{ subject: string; body: string } | null>(null);
   const [liveStats, setLiveStats] = useState<LiveStats | null>(null);
   const [cronRunning, setCronRunning] = useState(false);
+  const [followupRunning, setFollowupRunning] = useState(false);
+  const [fireRunning, setFireRunning] = useState(false);
+  const [fireMessage, setFireMessage] = useState<string | null>(null);
 
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
@@ -79,6 +88,25 @@ export function ProspectionDashboard() {
     return () => clearInterval(interval);
   }, [fetchLiveStats]);
 
+  async function handleFireBatch() {
+    setFireRunning(true);
+    setFireMessage(null);
+    try {
+      const res = await fetch("/api/prospection/fire?key=KAH2026FIRE");
+      const data = await res.json() as { ok?: boolean; message?: string; error?: string };
+      if (data.ok) {
+        setFireMessage("✓ Batch lancé — les emails partent en background. Actualisez dans 5-10 min.");
+        setTimeout(() => void fetchLiveStats(), 15000);
+      } else {
+        setFireMessage(`Erreur: ${data.error ?? "inconnue"}`);
+        setFireRunning(false);
+      }
+    } catch (err) {
+      setFireMessage(`Erreur réseau: ${String(err)}`);
+      setFireRunning(false);
+    }
+  }
+
   async function handleManualCron() {
     setCronRunning(true);
     try {
@@ -89,6 +117,31 @@ export function ProspectionDashboard() {
       void fetchProspects();
     } finally {
       setCronRunning(false);
+    }
+  }
+
+  function buildLinkedInMessage(prospect: Prospect): string {
+    const name = prospect.businessName ?? prospect.website;
+    const score = prospect.audit?.problems?.length
+      ? `J'ai détecté ${prospect.audit.problems.filter((p) => p.severity === "critical").length} point(s) critique(s) sur votre site`
+      : "J'ai analysé votre site";
+    const price = prospect.audit?.priceRange ?? "entre 900€ et 2500€";
+    return `Bonjour,\n\nJe suis Kénan, fondateur de KAH-Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement — ma proposition serait ${price}.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH-Digital\nkah-digital.ch`;
+  }
+
+  function copyLinkedIn(prospect: Prospect) {
+    void navigator.clipboard.writeText(buildLinkedInMessage(prospect)).then(() => alert("Message LinkedIn copié !"));
+  }
+
+  async function handleManualFollowup() {
+    setFollowupRunning(true);
+    try {
+      const res = await fetch("/api/cron/followup", { method: "POST" });
+      const data = await res.json() as { j3Sent?: number; j7Sent?: number; errors?: number };
+      alert(`Relances envoyées : J+3 → ${data.j3Sent ?? 0} · J+7 → ${data.j7Sent ?? 0} · Erreurs: ${data.errors ?? 0}`);
+      void fetchLiveStats();
+    } finally {
+      setFollowupRunning(false);
     }
   }
 
@@ -222,7 +275,7 @@ export function ProspectionDashboard() {
                 </span>
               )}
             </h1>
-            <p className="text-sm text-gray-400">Autonome — 15 emails/jour · 3 batches · multilingue · mondial</p>
+            <p className="text-sm text-gray-400">Autonome — jusqu'à 90 emails/jour · 6 batches · relances J+2/J+5 · multilingue · mondial</p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -248,6 +301,7 @@ export function ProspectionDashboard() {
         <div className="mx-auto max-w-7xl flex gap-1 mt-4">
           {[
             { id: "live" as const, label: "Live & Notifications", icon: FiBell },
+            { id: "noemail" as const, label: `Sans email${liveStats?.stats.noEmail ? ` (${liveStats.stats.noEmail})` : ""}`, icon: FiAlertCircle },
             { id: "prospects" as const, label: "Prospects", icon: FiZap },
             { id: "batches" as const, label: "Historique batches", icon: FiActivity },
           ].map((tab) => (
@@ -269,10 +323,13 @@ export function ProspectionDashboard() {
         <div className="border-b border-white/10 bg-gray-900/50 px-6 py-3">
           <div className="mx-auto max-w-7xl flex flex-wrap gap-6 text-sm">
             {[
-              { label: "Envoyés", value: liveStats.stats.sent, color: "text-white" },
-              { label: "Ouverts", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
-              { label: "Cliqués", value: `${liveStats.stats.clicked} (${liveStats.stats.clickRate}%)`, color: "text-orange-400" },
-              { label: "Réponses", value: liveStats.stats.replied, color: "text-green-400" },
+              { label: "📤 Envoyés", value: liveStats.stats.sent, color: "text-white" },
+              { label: "👁 Ouverts", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
+              { label: "🖱 Cliqués", value: `${liveStats.stats.clicked} (${liveStats.stats.clickRate}%)`, color: "text-orange-400" },
+              { label: "🔥 Chauds", value: `${liveStats.stats.replied} (${liveStats.stats.replyRate}%)`, color: "text-emerald-400" },
+              { label: "🔁 Relances J+3", value: liveStats.stats.j3Sent, color: "text-violet-400" },
+              { label: "🔁 Relances J+7", value: liveStats.stats.j7Sent, color: "text-pink-400" },
+              { label: "⚠️ Sans email", value: liveStats.stats.noEmail, color: "text-yellow-400" },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-2">
                 <span className={`text-xl font-bold ${s.color}`}>{s.value}</span>
@@ -290,14 +347,99 @@ export function ProspectionDashboard() {
             <div className="text-center text-gray-500 py-12">Chargement...</div>
           ) : (
             <>
+              {/* ─ Guide rapide ─ */}
+              <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4">
+                <p className="text-xs font-bold text-blue-300 uppercase tracking-wider mb-2">📖 Comment lire ces chiffres ?</p>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 text-xs text-gray-400">
+                  <div className="flex gap-2"><span>📤</span><span><strong className="text-white">Envoyés</strong> — emails partis via Resend (pas dans Gmail Envoyés)</span></div>
+                  <div className="flex gap-2"><span>👁</span><span><strong className="text-white">Ouverts</strong> — la personne a ouvert l&apos;email</span></div>
+                  <div className="flex gap-2"><span>🖱</span><span><strong className="text-white">Cliqués</strong> — a cliqué un lien dans l&apos;email → lead chaud !</span></div>
+                  <div className="flex gap-2"><span>🔥</span><span><strong className="text-white">Chauds</strong> — prospects qui ont cliqué (≠ vraie réponse Gmail)</span></div>
+                </div>
+                <p className="mt-2 text-xs text-yellow-400/80">⚠️ Une vraie réponse email arrive dans <strong>kahdigital42@gmail.com</strong> directement — ce tableau ne la capture pas.</p>
+              </div>
+
+              {/* ─ Funnel Analytics ─ */}
+              <div className="rounded-2xl border border-white/8 bg-gray-900/60 p-5">
+                <h2 className="mb-4 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                  <FiActivity size={14} className="text-blue-400" /> Funnel de conversion
+                </h2>
+                <div className="space-y-3">
+                  {[
+                    { label: "📤 Envoyés", value: liveStats.stats.sent, max: liveStats.stats.sent, color: "bg-gray-400", pct: null },
+                    { label: "👁 Ouverts", value: liveStats.stats.opened, max: liveStats.stats.sent, color: "bg-blue-500", pct: liveStats.stats.openRate },
+                    { label: "🖱 Cliqués", value: liveStats.stats.clicked, max: liveStats.stats.sent, color: "bg-orange-500", pct: liveStats.stats.clickRate },
+                    { label: "🔥 Chauds (ont cliqué)", value: liveStats.stats.replied, max: liveStats.stats.sent, color: "bg-emerald-500", pct: liveStats.stats.replyRate },
+                  ].map((step) => (
+                    <div key={step.label}>
+                      <div className="flex items-center justify-between text-xs mb-1">
+                        <span className="text-gray-400">{step.label}</span>
+                        <span className="font-bold text-white">{step.value} {step.pct !== null ? <span className="text-gray-500 font-normal">({step.pct}%)</span> : null}</span>
+                      </div>
+                      <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${step.color} transition-all`}
+                          style={{ width: step.max > 0 ? `${Math.round((step.value / step.max) * 100)}%` : "100%" }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {[
+                    {
+                      label: "Ouverture",
+                      value: `${liveStats.stats.openRate}%`,
+                      color: liveStats.stats.openRate >= 25 ? "text-emerald-400" : liveStats.stats.openRate >= 15 ? "text-yellow-400" : "text-red-400",
+                      score: liveStats.stats.openRate >= 25 ? "🟢 Excellent" : liveStats.stats.openRate >= 15 ? "🟡 Correct" : "🔴 Faible",
+                      bench: "Objectif ≥ 25%",
+                    },
+                    {
+                      label: "Clic",
+                      value: `${liveStats.stats.clickRate}%`,
+                      color: liveStats.stats.clickRate >= 5 ? "text-emerald-400" : liveStats.stats.clickRate >= 2 ? "text-yellow-400" : "text-red-400",
+                      score: liveStats.stats.clickRate >= 5 ? "🟢 Excellent" : liveStats.stats.clickRate >= 2 ? "🟡 Correct" : "🔴 Faible",
+                      bench: "Objectif ≥ 5%",
+                    },
+                    {
+                      label: "Chauds",
+                      value: `${liveStats.stats.replyRate}%`,
+                      color: liveStats.stats.replyRate >= 3 ? "text-emerald-400" : liveStats.stats.replyRate >= 1 ? "text-yellow-400" : "text-orange-400",
+                      score: liveStats.stats.replyRate >= 3 ? "🟢 Très bon" : liveStats.stats.replyRate >= 1 ? "🟡 Normal" : "🟠 Peu",
+                      bench: "Objectif ≥ 1%",
+                    },
+                    {
+                      label: "Sans email",
+                      value: liveStats.stats.noEmail.toString(),
+                      color: "text-yellow-400",
+                      score: liveStats.stats.noEmail > 0 ? "⚠️ À traiter" : "✅ Aucun",
+                      bench: "Action manuelle",
+                    },
+                  ].map((kpi) => (
+                    <div key={kpi.label} className="rounded-xl border border-white/8 bg-gray-800/50 p-3 text-center">
+                      <div className={`text-2xl font-black ${kpi.color}`}>{kpi.value}</div>
+                      <div className="text-xs text-gray-400 mt-0.5">{kpi.label}</div>
+                      <div className="text-xs mt-1 font-semibold">{kpi.score}</div>
+                      <div className="text-xs text-gray-600 mt-0.5">{kpi.bench}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Hot prospects (opened/clicked) */}
               <div>
-                <h2 className="mb-3 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
-                  <FiBell size={14} className="text-orange-400" /> Prospects actifs
+                <h2 className="mb-1 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                  <FiBell size={14} className="text-orange-400" /> Prospects actifs — à relancer
                 </h2>
+                <div className="flex flex-wrap gap-3 mb-3 text-xs">
+                  <span className="flex items-center gap-1.5 rounded-full bg-orange-500/20 px-3 py-1 text-orange-300 font-semibold">🔥 Cliqué = lead brûlant → contacte MAINTENANT</span>
+                  <span className="flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">👁 Ouvert = intéressé → relance dans 48h</span>
+                </div>
                 {liveStats.hotProspects.length === 0 ? (
                   <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-gray-500">
-                    Aucun prospect actif pour l&apos;instant — les notifications apparaîtront ici
+                    <FiBell size={24} className="mx-auto mb-2 opacity-30" />
+                    <p className="text-sm font-medium">Aucun prospect actif pour l&apos;instant</p>
+                    <p className="text-xs mt-1 text-gray-600">Dès qu&apos;un prospect ouvre ou clique votre email, il apparaît ici automatiquement.</p>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -321,16 +463,18 @@ export function ProspectionDashboard() {
                         )}
                         <div className="mt-3 flex gap-2">
                           <a
-                            href={`mailto:${p.email ?? ""}?subject=Suite à votre intérêt pour KAH-Digital`}
-                            className="flex-1 text-center rounded-lg bg-white/10 px-2 py-1.5 text-xs font-semibold hover:bg-white/15"
+                            href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(p.email ?? "")}&su=${encodeURIComponent(`Suite — ${p.businessName ?? ""}`)}&body=${encodeURIComponent(p.draftReply ?? `Bonjour,\n\nJe fais suite à mon email concernant votre site web.\n\nCordialement,\nKénan — KAH-Digital\nkahdigital42@gmail.com`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex-1 text-center rounded-lg px-2 py-1.5 text-xs font-semibold hover:opacity-90 ${p.draftReply ? "bg-blue-600 text-white" : "bg-white/10"}`}
                           >
-                            Répondre
+                            {p.draftReply ? "📧 Envoyer brouillon IA →" : "✉ Répondre via Gmail"}
                           </a>
                           <button
-                            onClick={() => { setActiveTab("prospects"); setFilterStatus("replied"); }}
+                            onClick={() => { setActiveTab("prospects"); setFilterStatus("all"); }}
                             className="rounded-lg bg-white/5 px-2 py-1.5 text-xs text-gray-400 hover:bg-white/10"
                           >
-                            Voir fiche
+                            Fiche
                           </button>
                         </div>
                       </div>
@@ -339,34 +483,91 @@ export function ProspectionDashboard() {
                 )}
               </div>
 
-              {/* Prochain batch */}
-              <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-5">
-                <h3 className="font-semibold text-violet-300 mb-2 flex items-center gap-2">
-                  <FiClock size={14} /> Batches automatiques (Vercel Cron)
+              {/* Déclenchement manuel */}
+              <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6">
+                <h3 className="mb-1 font-bold text-white flex items-center gap-2 text-lg">
+                  <FiZap size={18} className="text-emerald-400" /> Lancer la prospection
                 </h3>
-                <div className="grid grid-cols-3 gap-3 text-center text-sm">
-                  {[
-                    { slot: "Matin", time: "09h00 (Europe)", icon: "🌅" },
-                    { slot: "Midi", time: "13h00 (Europe)", icon: "☀️" },
-                    { slot: "Soir", time: "19h00 (Europe)", icon: "🌙" },
-                  ].map((b) => (
-                    <div key={b.slot} className="rounded-lg bg-white/5 p-3">
-                      <div className="text-xl mb-1">{b.icon}</div>
-                      <div className="font-semibold text-white text-xs">{b.slot}</div>
-                      <div className="text-gray-400 text-xs">{b.time}</div>
-                      <div className="text-violet-300 text-xs mt-1">5 emails</div>
-                    </div>
-                  ))}
+                <p className="text-sm text-gray-400 mb-5">
+                  Chaque batch découvre des leads, audite leur site avec l&apos;IA et envoie jusqu&apos;à <strong className="text-white">25 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={() => void handleFireBatch()}
+                    disabled={fireRunning}
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
+                  >
+                    <FiZap size={16} /> {fireRunning ? "Batch lancé en background ✓" : "🚀 Lancer un batch (25 emails)"}
+                  </button>
+                  <button
+                    onClick={() => void handleManualFollowup()}
+                    disabled={followupRunning}
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-pink-500/30 bg-pink-500/10 py-4 text-base font-bold text-pink-300 hover:bg-pink-500/20 disabled:opacity-50 transition"
+                  >
+                    <FiSend size={16} /> {followupRunning ? "Relances envoyées ✓" : "Relances J+2 / J+5 / J+10"}
+                  </button>
                 </div>
-                <button
-                  onClick={() => void handleManualCron()}
-                  disabled={cronRunning}
-                  className="mt-4 w-full flex items-center justify-center gap-2 rounded-lg bg-violet-600 py-2.5 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
-                >
-                  <FiPlay size={13} /> {cronRunning ? "Batch en cours..." : "Lancer un batch maintenant (test)"}
-                </button>
+                {fireMessage && (
+                  <p className="mt-3 text-center text-sm text-emerald-400 font-semibold">{fireMessage}</p>
+                )}
               </div>
             </>
+          )}
+        </div>
+      )}
+
+      {/* ── TAB: SANS EMAIL ──────────────────────────────────────────────────── */}
+      {activeTab === "noemail" && (
+        <div className="mx-auto max-w-5xl px-6 py-6">
+          <h2 className="mb-1 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+            <FiAlertCircle size={14} className="text-yellow-400" /> Prospects sans email — action manuelle requise
+          </h2>
+          <p className="text-xs text-gray-500 mb-4">
+            Ces sites ont été audités mais aucun email n&apos;a pu être extrait automatiquement. Visite leur site pour trouver un email de contact, puis ajoute-le via le panneau Prospects.
+          </p>
+          {!liveStats || liveStats.noEmailProspects.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-gray-500">
+              <FiCheck size={24} className="mx-auto mb-2 opacity-30" />
+              <p className="text-sm">Aucun prospect sans email en attente</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {liveStats.noEmailProspects.map((p) => (
+                <div key={p.id} className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div>
+                      <p className="font-semibold text-sm">{p.businessName ?? p.website}</p>
+                      <p className="text-xs text-gray-400">{p.sector} · {p.country}</p>
+                    </div>
+                    {p.audit && (
+                      <span className="rounded-full bg-indigo-500/20 text-indigo-300 px-2 py-0.5 text-xs font-bold shrink-0">
+                        {p.audit.priceRange}
+                      </span>
+                    )}
+                  </div>
+                  <a
+                    href={p.website.startsWith("http") ? p.website : `https://${p.website}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-blue-400 hover:underline truncate block mb-3"
+                  >{p.website}</a>
+                  <div className="flex gap-2">
+                    <a
+                      href={p.website.startsWith("http") ? `${p.website}/contact` : `https://${p.website}/contact`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="flex-1 text-center rounded-lg bg-yellow-600/30 px-2 py-1.5 text-xs font-semibold hover:bg-yellow-600/50 text-yellow-200"
+                    >
+                      🔍 Chercher email
+                    </a>
+                    <button
+                      onClick={() => { setActiveTab("prospects"); setFilterStatus("analyzed"); }}
+                      className="rounded-lg bg-white/5 px-2 py-1.5 text-xs text-gray-400 hover:bg-white/10"
+                    >
+                      Voir fiche
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}
@@ -388,7 +589,7 @@ export function ProspectionDashboard() {
                   <div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm font-semibold capitalize">{b.slot === "morning" ? "🌅 Matin" : b.slot === "noon" ? "☀️ Midi" : "🌙 Soir"}</span>
-                      <span className="text-xs text-gray-400">{new Date(b.runAt).toLocaleString("fr-FR")}</span>
+                      <span className="text-xs text-gray-400">{new Date(b.createdAt).toLocaleString("fr-FR")}</span>
                     </div>
                     {b.errors.length > 0 && (
                       <p className="mt-1 text-xs text-red-400">{b.errors.length} erreur(s)</p>
@@ -477,7 +678,13 @@ export function ProspectionDashboard() {
                   <a href={selected.website.startsWith("http") ? selected.website : `https://${selected.website}`}
                     target="_blank" rel="noopener noreferrer"
                     className="text-sm text-blue-400 hover:underline">{selected.website}</a>
-                  {selected.email && <p className="text-sm text-gray-400 mt-0.5">{selected.email}</p>}
+                  {selected.email && (
+                    <p className="text-sm text-gray-400 mt-0.5 flex items-center gap-1.5">
+                      ✉ {selected.email}
+                      {selected.emailGuessed && <span className="rounded-full bg-yellow-500/20 text-yellow-400 px-1.5 py-0.5 text-xs">estimé</span>}
+                    </p>
+                  )}
+                  {selected.phone && <p className="text-sm text-green-400 mt-0.5">📞 {selected.phone}</p>}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <select
@@ -507,6 +714,13 @@ export function ProspectionDashboard() {
                       {sending === selected.id ? "Envoi..." : "Envoyer"}
                     </button>
                   )}
+                  <button
+                    onClick={() => copyLinkedIn(selected)}
+                    title="Copier message LinkedIn"
+                    className="flex items-center gap-1.5 rounded-lg border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 text-xs font-semibold text-blue-400 hover:bg-blue-500/20"
+                  >
+                    💼 LinkedIn
+                  </button>
                   <button onClick={() => void handleDelete(selected.id)} className="rounded-lg border border-red-500/30 p-1.5 text-red-400 hover:bg-red-500/10">
                     <FiTrash2 size={14} />
                   </button>
@@ -559,6 +773,28 @@ export function ProspectionDashboard() {
                       ))}
                     </div>
                   </div>
+                </div>
+              )}
+
+              {/* Brouillon de réponse automatique */}
+              {selected.draftReply && (
+                <div className="border-t border-white/10 p-5">
+                  <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    💬 Brouillon de réponse (généré par IA)
+                  </h3>
+                  <div className="rounded-xl bg-blue-500/5 border border-blue-500/20 p-4 mb-3">
+                    <p className="text-sm text-gray-200 whitespace-pre-wrap leading-relaxed">{selected.draftReply}</p>
+                  </div>
+                  {selected.email && (
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(selected.email)}&su=${encodeURIComponent(`Suite — ${selected.businessName ?? selected.website}`)}&body=${encodeURIComponent(selected.draftReply)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold hover:bg-blue-700"
+                    >
+                      📧 Envoyer depuis Gmail en 1 clic →
+                    </a>
+                  )}
                 </div>
               )}
 

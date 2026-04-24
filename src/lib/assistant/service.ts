@@ -485,10 +485,19 @@ function detectEscalation(summary: AssistantStructuredOutput, session: Assistant
   return false;
 }
 
+const ACK_VARIANTS: Record<Locale, string[]> = {
+  fr: ["Compris.", "Noté.", "OK.", "C'est clair.", "Bien vu.", "Bien reçu.", "Je vois.", "Clair.", "Ça marche.", "Parfait."],
+  en: ["Got it.", "Understood.", "Makes sense.", "Clear.", "Noted.", "Perfect.", "OK.", "Alright."],
+  de: ["Verstanden.", "Klar.", "Alles klar.", "Notiert.", "OK.", "Gut.", "Prima."],
+};
+
+function pickAck(locale: Locale): string {
+  const list = ACK_VARIANTS[locale];
+  return list[Math.floor(Math.random() * list.length)] ?? list[0] ?? "OK.";
+}
+
 function acknowledgeAndAsk(locale: Locale, question: string) {
-  if (locale === "en") return `Let's tighten one point: ${question}`;
-  if (locale === "de") return `Wir schaerfen einen Punkt nach: ${question}`;
-  return `On affine un point : ${question}`;
+  return `${pickAck(locale)} ${question}`;
 }
 
 function detectUnrealisticRequest(message: string) {
@@ -684,6 +693,14 @@ function buildSupportQuestion(session: AssistantSession, locale: Locale, nextMis
   return copy.questions[nextMissing as keyof typeof copy.questions];
 }
 
+function buildProjectTypeOpener(session: AssistantSession, locale: Locale): string {
+  if (session.projectType === "unknown") return "";
+  const label = formatProjectTypeLabel(session.projectType, locale);
+  if (locale === "en") return `${label.charAt(0).toUpperCase()}${label.slice(1)} — noted.`;
+  if (locale === "de") return `${label} — verstanden.`;
+  return `${label.charAt(0).toUpperCase()}${label.slice(1)} — noté.`;
+}
+
 function buildFirstReply(session: AssistantSession, locale: Locale, message: string) {
   const copy = getCopy(locale);
   const text = message.toLowerCase();
@@ -691,49 +708,43 @@ function buildFirstReply(session: AssistantSession, locale: Locale, message: str
   if (session.intent === "project_quote") {
     if (detectUnrealisticRequest(message)) {
       return locale === "en"
-        ? `${copy.recadrageMvp} A project like that implies real-time logic, user accounts, and a solid backend. Start with version 1: what is strictly essential, and what budget is actually possible?`
+        ? `${copy.recadrageMvp} A project like that implies real-time logic, user accounts, and a solid backend. Let's start with version 1: what is strictly essential, and what budget is actually in play?`
         : locale === "de"
-          ? `${copy.recadrageMvp} So ein Projekt braucht Echtzeitlogik, Benutzerkonten und ein solides Backend. Starten wir mit Version 1: was ist wirklich unverzichtbar, und welches Budget ist realistisch?`
-          : `${copy.recadrageMvp} Un projet de ce niveau implique temps reel, comptes utilisateurs et backend solide. On part sur une version 1 : qu'est-ce qui est vraiment indispensable, et quel budget est realistement possible ?`;
-    }
-
-    if (session.projectType === "unknown") {
-      if (/(devis|quote)/.test(text)) {
-        return locale === "en"
-          ? "Yes, but for a usable quote I need the minimum useful scope: project type, objective, main features, and target timeline. Start with the project type."
-          : locale === "de"
-            ? "Ja, aber fuer ein brauchbares Angebot brauche ich den minimal noetigen Rahmen: Projekttyp, Ziel, Hauptfunktionen und Zieltermin. Starte mit dem Projekttyp."
-            : "Oui, mais pour qu'un devis soit exploitable, il me faut le minimum utile : type de projet, objectif, fonctionnalites principales et delai vise. Commence par le type de projet.";
-      }
-
-      if (/(digitaliser|digitalize|digitalisieren)/.test(text)) {
-        return locale === "en"
-          ? "Good. Let's make it concrete: what is your current activity, is the goal to get clients, automate work, sell online, or improve internal follow-up, and do you already have tools in place?"
-          : locale === "de"
-            ? "Gut. Jetzt machen wir es konkret: was ist deine aktuelle Aktivitaet, ist das Ziel mehr Kunden, Automatisierung, Online-Verkauf oder besseres internes Follow-up, und gibt es schon Tools?"
-            : "Tres bien. Maintenant on rend ca concret : ton activite actuelle, ton objectif principal - plus de clients, automatisation, vente en ligne ou meilleur suivi interne - et est-ce que tu as deja des outils en place ?";
-      }
-
-      if (/(voir ce que vous proposez|voir ce que tu proposes|services|offres|offer)/.test(text)) {
-        return locale === "en"
-          ? "I can orient you quickly, but let's avoid the generic catalog answer: are you looking for a website, an application, support, or a GLPI-related workflow, and is your need already defined or are you still exploring?"
-          : locale === "de"
-            ? "Ich kann dich schnell orientieren, aber ohne Standardkatalog: suchst du eher eine Website, eine Anwendung, Support oder einen GLPI-nahen Workflow, und ist der Bedarf schon definiert oder noch offen?"
-            : "Je peux t'orienter rapidement, mais sans réponse catalogue : tu cherches plutôt un site, une application, du support ou un parcours type GLPI, et ton besoin est déjà défini ou tu explores encore ?";
-      }
-
-      if (detectUrgentRequest(text)) {
-        return locale === "en"
-          ? "Understood. To know if the timeline is realistic, I need three things: what exactly has to be delivered, what is the hard deadline, and what is strictly required for launch?"
-          : locale === "de"
-            ? "Verstanden. Um zu voir si der Zeitrahmen realistisch ist, brauche ich drei Punkte: was genau geliefert werden muss, was die feste Deadline ist, und was zum Start wirklich unverzichtbar ist."
-            : "C'est note. Pour savoir si le delai est realiste, il me faut trois points : ce qu'il faut livrer exactement, la date limite ferme, et ce qui est strictement indispensable au lancement.";
-      }
+          ? `${copy.recadrageMvp} So ein Projekt braucht Echtzeitlogik, Benutzerkonten und ein solides Backend. Version 1 zuerst: was ist wirklich unverzichtbar, und welches Budget steht zur Verfuegung?`
+          : `${copy.recadrageMvp} Un projet de ce niveau implique temps réel, comptes utilisateurs et backend solide. On part sur une version 1 : qu'est-ce qui est vraiment indispensable, et quel budget est réalistement disponible ?`;
     }
 
     const nextMissing = getRequiredFields(session.intent).find((field) => !session.collected[field]);
     if (!nextMissing) return copy.summaryReady;
-    return `${copy.startProject} ${buildProjectQuestion(session, locale, nextMissing)}`;
+
+    const opener = buildProjectTypeOpener(session, locale);
+
+    if (!opener && session.projectType === "unknown") {
+      if (/(devis|quote)/.test(text)) {
+        return locale === "en"
+          ? "Sure. For a quote to be useful I need the basics: project type, goal, main features, and timeline. What kind of project is it?"
+          : locale === "de"
+            ? "Klar. Fuer ein brauchbares Angebot brauche ich das Wesentliche: Projekttyp, Ziel, Hauptfunktionen und Zeitrahmen. Welche Art Projekt ist das?"
+            : "Bien sûr. Pour qu'un devis soit exploitable j'ai besoin des bases : type de projet, objectif, fonctionnalités clés et délai. C'est quel type de projet ?";
+      }
+      if (/(digitaliser|digitalize|digitalisieren)/.test(text)) {
+        return locale === "en"
+          ? "Good start. To make it concrete: what's your current activity, is the goal more clients, automation, online sales, or better internal tracking, and do you have tools already in place?"
+          : locale === "de"
+            ? "Guter Einstieg. Konkret: was ist deine aktuelle Aktivitaet, mehr Kunden, Automatisierung, Online-Verkauf oder besseres internes Tracking — und gibt es schon Tools?"
+            : "Bon point de départ. Pour rendre ça concret : ton activité actuelle, ton objectif principal — plus de clients, automatisation, vente en ligne ou meilleur suivi interne — et est-ce qu'il y a déjà des outils en place ?";
+      }
+      if (detectUrgentRequest(text)) {
+        return locale === "en"
+          ? "Noted, it's urgent. To check if the timeline holds, I need three things: what exactly gets delivered, the hard deadline, and what's strictly required for launch."
+          : locale === "de"
+            ? "Notiert, es ist dringend. Um zu pruefen ob der Zeitrahmen haelt: was genau geliefert wird, die feste Deadline, und was zum Start wirklich unbedingt noetig ist."
+            : "Noté, c'est urgent. Pour voir si le délai tient, j'ai besoin de trois choses : ce qui est livré exactement, la date butoir ferme, et ce qui est strictement indispensable au lancement.";
+      }
+    }
+
+    const question = buildProjectQuestion(session, locale, nextMissing);
+    return opener ? `${opener} ${question}` : question;
   }
 
   if (session.intent === "support_glpi") {
@@ -759,38 +770,34 @@ function buildFollowUpReply(session: AssistantSession, locale: Locale, nextMissi
 }
 
 function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, humanNeeded: boolean) {
-  const copy = getCopy(locale);
-  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary, locale) : "n/a";
+  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary, locale) : null;
+  const type = formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale);
+  const timeline = estimateCalendarRange(summary.estimated_days, locale);
 
-  const lines =
-    locale === "en"
-      ? [
-          copy.recapIntro,
-          `- project: ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
-          `- complexity: ${summary.complexity}`,
-          `- budget range: ${budget}`,
-          `- likely timeline: ${estimateCalendarRange(summary.estimated_days, locale)}`,
-          humanNeeded ? "Next step: human review makes sense here." : "Next step: the summary is ready to move forward.",
-        ]
-      : locale === "de"
-        ? [
-            copy.recapIntro,
-            `- Projekt: ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
-            `- Komplexitaet: ${summary.complexity}`,
-            `- Budgetspanne: ${budget}`,
-            `- wahrscheinlicher Zeitrahmen: ${estimateCalendarRange(summary.estimated_days, locale)}`,
-            humanNeeded ? "Naechster Schritt: menschliche Rueckmeldung ist hier sinnvoll." : "Naechster Schritt: die Zusammenfassung ist bereit fuer den naechsten Schritt.",
-          ]
-        : [
-            copy.recapIntro,
-            `- type de projet : ${formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale)}`,
-            `- complexite estimee : ${summary.complexity}`,
-            `- fourchette budget : ${budget}`,
-            `- delai probable : ${estimateCalendarRange(summary.estimated_days, locale)}`,
-            humanNeeded ? "Suite : une reprise humaine a du sens ici." : "Suite : le résumé est prêt pour avancer.",
-          ];
+  if (locale === "en") {
+    const budgetStr = budget ? ` Budget range: ${budget} €.` : "";
+    const timelineStr = ` Timeline: ${timeline}.`;
+    const next = humanNeeded
+      ? " Given the scope, a human review makes sense here before going further."
+      : " The summary below is ready — you can send it or request a follow-up.";
+    return `Here's what I have: ${type}, ${summary.complexity} complexity.${budgetStr}${timelineStr}${next}`;
+  }
 
-  return lines.join("\n");
+  if (locale === "de") {
+    const budgetStr = budget ? ` Budgetspanne: ${budget} €.` : "";
+    const timelineStr = ` Zeitrahmen: ${timeline}.`;
+    const next = humanNeeded
+      ? " Beim diesem Umfang macht eine menschliche Rueckmeldung Sinn, bevor wir weitermachen."
+      : " Die Zusammenfassung ist bereit — du kannst sie versenden oder eine Rueckmeldung anfordern.";
+    return `Das habe ich: ${type}, Komplexitaet ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
+  }
+
+  const budgetStr = budget ? ` Fourchette budget : ${budget} €.` : "";
+  const timelineStr = ` Délai probable : ${timeline}.`;
+  const next = humanNeeded
+    ? " Vu le scope, une reprise humaine a du sens avant d'aller plus loin."
+    : " Le résumé ci-dessous est prêt — tu peux l'envoyer ou demander une suite avec quelqu'un.";
+  return `Voici ce que j'ai : ${type}, complexité ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
 }
 
 function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
@@ -879,6 +886,15 @@ export async function runAssistantTurn(params: {
       }
       if (!session.collected.features && inferFeatures({ objective: message }).length > 0) {
         session.collected.features = message;
+      }
+      // Extract budget hint from first message (e.g. "3000 CHF", "budget 5k")
+      if (!session.collected.budget) {
+        const budgetMatch = message.match(/(\d[\d\s.]*)\s*(eur|euros?|chf|fr\b|k€|kchf|\$)/i);
+        if (budgetMatch) session.collected.budget = budgetMatch[0].trim();
+      }
+      // Extract timeline hint from urgent keywords
+      if (!session.collected.timeline && detectUrgentRequest(message)) {
+        session.collected.timeline = message;
       }
     }
 

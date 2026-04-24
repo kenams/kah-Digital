@@ -1,146 +1,159 @@
 "use client";
 
 import { useState } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiChevronDown, FiPlus, FiMinus } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { locale } = useLocale();
 
   const copy = {
     fr: {
+      eyebrow: "FAQ",
       title: "Questions fréquentes",
-      body: "Les points les plus utiles avant de lancer un site, une application ou un parcours support.",
+      body: "Les points les plus utiles avant de lancer un site, une app ou un projet IA.",
       faqs: [
         {
-          question: "Travaillez-vous avec des clients hors de votre marche local ?",
+          question: "Combien coûte un site web ou une application ?",
           answer:
-            "Oui. KAH-Digital peut travailler avec des clients francophones, anglophones et internationaux quand le cadre est clair, le besoin utile et la collaboration bien posee.",
+            "Un site vitrine : € 800 à 2 500. Un site corporate ou e-commerce : € 2 000 à 6 000. Une application web sur mesure : € 4 000 à 15 000. Une app mobile : € 6 000 à 20 000. Ces fourchettes dépendent des fonctionnalités, du design et du contenu. Chaque projet est cadré avant tout devis.",
         },
         {
-          question: "Proposez-vous des devis personnalisés ?",
+          question: "Combien de temps faut-il pour livrer ?",
           answer:
-            "Oui. Chaque projet est cadré selon vos priorités, votre niveau d'urgence et le périmètre réel à produire, avec une proposition lisible.",
+            "Un site vitrine bien cadré : 3 à 4 semaines. Un site corporate ou une app simple : 4 à 8 semaines. Un projet plus complexe avec intégrations : 2 à 4 mois. Les délais sont fermes dès que le brief est validé.",
         },
         {
-          question: "Quel type de site web pouvez-vous produire ?",
+          question: "Travaillez-vous avec des clients en dehors de la Suisse ?",
           answer:
-            "Sites vitrines, sites corporate, pages de lancement, plateformes de présentation ou bases plus évolutives connectées à d'autres outils.",
+            "Oui. KAH-Digital travaille à distance avec des clients francophones, anglophones et internationaux. La langue, le pays et le fuseau horaire ne sont pas un obstacle.",
         },
         {
-          question: "Pouvez-vous développer une application métier ?",
+          question: "Quel type de projets prenez-vous en charge ?",
           answer:
-            "Oui. Nous pouvons cadrer un outil interne, un portail, un tableau de bord ou une application web/mobile sur mesure selon le besoin.",
+            "Sites vitrines, sites corporate, e-commerce, applications web et mobiles, dashboards, portails membres, automatisations IA et parcours support connectés à GLPI. Chaque besoin est qualifié avant engagement.",
         },
         {
-          question: "Le parcours support connecté à GLPI convient-il à une PME ?",
+          question: "Y a-t-il un engagement minimal ou un abonnement ?",
           answer:
-            "Oui. Le but est justement de simplifier l'entrée dans le support, d'aider l'utilisateur au bon moment et de garder un passage propre vers ticket quand c'est nécessaire.",
+            "Non. Chaque projet est traité sur devis accepté, sans abonnement obligatoire. Des formules de support et maintenance mensuelle sont disponibles après livraison, mais jamais imposées.",
         },
         {
-          question: "Combien de temps faut-il pour démarrer ?",
+          question: "Comment se passe le premier échange ?",
           answer:
-            "Si le besoin est clair, le démarrage peut être rapide. Le plus efficace reste de valider un brief simple, puis un cadrage et un devis.",
+            "Tu remplis le formulaire de devis ou tu utilises l'assistant projet. Je reviens sous 24h ouvrables avec un premier cadrage ou des questions de clarification. Pas de formulaire en 40 champs — juste les éléments utiles.",
         },
       ],
     },
     en: {
+      eyebrow: "FAQ",
       title: "Frequently asked questions",
-      body: "The most useful points to know before launching a website, an app, or a support workflow.",
+      body: "The most useful points before launching a website, an app, or an AI project.",
       faqs: [
         {
-          question: "Do you work with clients outside your local market?",
+          question: "How much does a website or app cost?",
           answer:
-            "Yes. KAH-Digital can work with French-speaking, English-speaking, and international clients when the setup is clear and the project has a real need.",
+            "A showcase site: € 800 to 2,500. A corporate site or e-commerce: € 2,000 to 6,000. A custom web app: € 4,000 to 15,000. A mobile app: € 6,000 to 20,000. These ranges depend on features, design, and content. Every project is scoped before any quote.",
         },
         {
-          question: "Do you provide tailored quotes?",
+          question: "How long does delivery take?",
           answer:
-            "Yes. Each project is scoped around your priorities, urgency level, and the real perimeter to produce, with a readable proposal.",
+            "A well-scoped showcase site: 3 to 4 weeks. A corporate site or simple app: 4 to 8 weeks. A more complex project with integrations: 2 to 4 months. Timelines are firm once the brief is validated.",
         },
         {
-          question: "What kind of website can you build?",
+          question: "Do you work with clients outside Switzerland?",
           answer:
-            "Showcase sites, corporate websites, launch pages, presentation platforms, or more scalable foundations connected to other tools.",
+            "Yes. KAH-Digital works remotely with French-speaking, English-speaking, and international clients. Language, country, and timezone are not a barrier.",
         },
         {
-          question: "Can you build a business application?",
+          question: "What types of projects do you handle?",
           answer:
-            "Yes. We can scope an internal tool, a portal, a dashboard, or a custom web/mobile app depending on the need.",
+            "Showcase sites, corporate websites, e-commerce, web and mobile apps, dashboards, member portals, AI automation, and GLPI-connected support workflows. Each need is qualified before any commitment.",
         },
         {
-          question: "Is the GLPI-connected support flow suitable for an SMB?",
+          question: "Is there a minimum commitment or subscription?",
           answer:
-            "Yes. The goal is precisely to simplify support entry, help the user at the right moment, and keep a clean handoff to tickets when needed.",
+            "No. Each project is handled on accepted quote, with no required subscription. Monthly support and maintenance plans are available after delivery, but never imposed.",
         },
         {
-          question: "How long does it take to get started?",
+          question: "What does the first exchange look like?",
           answer:
-            "If the need is clear, kickoff can be fast. The most effective path is still to validate a simple brief, then scoping and a quote.",
+            "You fill in the quote form or use the project assistant. I reply within 24 business hours with a first framing or clarifying questions. No 40-field form — just the useful elements.",
         },
       ],
     },
     de: {
+      eyebrow: "FAQ",
       title: "Haeufige Fragen",
-      body: "Die nuetzlichsten Punkte vor dem Start einer Website, einer App oder eines Support-Workflows.",
+      body: "Die nuetzlichsten Punkte vor dem Start einer Website, App oder eines KI-Projekts.",
       faqs: [
         {
-          question: "Arbeitet ihr auch mit Kunden ausserhalb eures lokalen Marktes?",
+          question: "Was kostet eine Website oder eine App?",
           answer:
-            "Ja. KAH-Digital kann mit frankophonen, englischsprachigen und internationalen Kunden arbeiten, wenn Rahmen und Bedarf klar sind.",
+            "Unternehmenswebsite: € 800 bis 2.500. Corporate Site oder E-Commerce: € 2.000 bis 6.000. Massgeschneiderte Web-App: € 4.000 bis 15.000. Mobile App: € 6.000 bis 20.000. Diese Spannen haengen von Funktionen, Design und Inhalt ab. Jedes Projekt wird vor der Offerte gescoped.",
         },
         {
-          question: "Erstellt ihr individuelle Angebote?",
+          question: "Wie lange dauert die Lieferung?",
           answer:
-            "Ja. Jedes Projekt wird nach Prioritaeten, Dringlichkeit und echtem Produktionsumfang sauber gebrieft und als lesbare Offerte dargestellt.",
+            "Eine gut gescropte Unternehmenswebsite: 3 bis 4 Wochen. Eine Corporate Site oder einfache App: 4 bis 8 Wochen. Komplexere Projekte mit Integrationen: 2 bis 4 Monate. Zeitrahmen sind verbindlich, sobald das Briefing validiert ist.",
         },
         {
-          question: "Welche Art von Website koennt ihr bauen?",
+          question: "Arbeitet ihr auch mit Kunden ausserhalb der Schweiz?",
           answer:
-            "Praesentationsseiten, Corporate Sites, Launch Pages, Plattformen oder weiter skalierbare Grundlagen mit Anbindung an andere Tools.",
+            "Ja. KAH-Digital arbeitet remote mit frankophonen, englischsprachigen und internationalen Kunden. Sprache, Land und Zeitzone sind kein Hindernis.",
         },
         {
-          question: "Koennt ihr eine Business-Anwendung entwickeln?",
+          question: "Welche Projektarten uebernehmt ihr?",
           answer:
-            "Ja. Wir koennen ein internes Tool, ein Portal, ein Dashboard oder eine massgeschneiderte Web-/Mobile-App passend zum Bedarf aufsetzen.",
+            "Praesantationsseiten, Corporate Sites, E-Commerce, Web- und Mobile-Apps, Dashboards, Mitgliederportale, KI-Automatisierungen und GLPI-verbundene Support-Workflows. Jeder Bedarf wird vor jeder Zusage qualifiziert.",
         },
         {
-          question: "Ist der GLPI-verbundene Support-Flow fuer ein KMU sinnvoll?",
+          question: "Gibt es eine Mindestbindung oder ein Abonnement?",
           answer:
-            "Ja. Das Ziel ist genau, den Einstieg in den Support zu vereinfachen, den Nutzer im richtigen Moment zu begleiten und Tickets sauber zu uebergeben.",
+            "Nein. Jedes Projekt wird auf akzeptierter Offerte abgewickelt, ohne Pflichtabonnement. Monatliche Support- und Wartungsplaene sind nach der Lieferung verfuegbar, aber nie verpflichtend.",
         },
         {
-          question: "Wie schnell kann es losgehen?",
+          question: "Wie laeuft der erste Kontakt ab?",
           answer:
-            "Wenn der Bedarf klar ist, kann der Start schnell erfolgen. Am effizientesten bleibt ein einfaches Briefing, dann Scoping und Offerte.",
+            "Du fuellst das Angebotsformular aus oder nutzt den Projektassistenten. Ich melde mich in 24 Arbeitsstunden mit einem ersten Briefing oder Klärungsfragen. Kein 40-Felder-Formular — nur das Wesentliche.",
         },
       ],
     },
   }[locale];
 
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gray-900 py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
-          <p className="text-xl text-gray-600">{copy.body}</p>
+        <div className="mb-14 text-center">
+          <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+            {copy.eyebrow}
+          </span>
+          <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white">{copy.title}</h2>
+          <p className="text-lg text-gray-400">{copy.body}</p>
         </div>
-        <div className="space-y-4">
+
+        <div className="space-y-3">
           {copy.faqs.map((faq, index) => (
-            <div key={faq.question} className="rounded-lg bg-white shadow-md">
+            <div
+              key={faq.question}
+              className="overflow-hidden rounded-2xl border border-white/8 bg-gray-950 transition-all"
+            >
               <button
+                type="button"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-gray-50"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               >
-                <span className="text-lg font-semibold text-gray-900">{faq.question}</span>
-                {openIndex === index ? <FiChevronUp className="text-gray-500" size={24} /> : <FiChevronDown className="text-gray-500" size={24} />}
+                <span className="font-semibold text-white">{faq.question}</span>
+                <span className="shrink-0 text-gray-500">
+                  {openIndex === index ? <FiMinus size={18} /> : <FiPlus size={18} />}
+                </span>
               </button>
-              {openIndex === index ? (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600">{faq.answer}</p>
+              {openIndex === index && (
+                <div className="border-t border-white/6 px-6 pb-5 pt-4">
+                  <p className="text-sm leading-relaxed text-gray-400">{faq.answer}</p>
                 </div>
-              ) : null}
+              )}
             </div>
           ))}
         </div>

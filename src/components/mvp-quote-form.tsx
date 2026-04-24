@@ -79,10 +79,10 @@ export function MvpQuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under CHF 10,000", "CHF 10,000 - 20,000", "CHF 20,000 - 30,000", "CHF 30,000 +"]
+    ? ["Under € 10,000", "€ 10,000 - 20,000", "€ 20,000 - 30,000", "€ 30,000 +"]
     : isGerman
-      ? ["Unter CHF 10'000", "CHF 10'000 - 20'000", "CHF 20'000 - 30'000", "CHF 30'000 +"]
-      : ["Moins de 10 000 CHF", "10 000 CHF - 20 000 CHF", "20 000 CHF - 30 000 CHF", "30 000 CHF +"];
+      ? ["Unter € 10'000", "€ 10'000 - 20'000", "€ 20'000 - 30'000", "€ 30'000 +"]
+      : ["Moins de 10 000 €", "10 000 € - 20 000 €", "20 000 € - 30 000 €", "30 000 € +"];
 
   const timelineOptions = isEnglish
     ? ["ASAP", "4-6 weeks", "6-10 weeks", "3 months +"]
@@ -625,10 +625,10 @@ export function MvpQuoteForm() {
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
-            ? "MVP quotes are issued in CHF. Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote."
+            ? "MVP quotes are issued in €. Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote."
             : isGerman
-              ? "MVP-Angebote werden in CHF erstellt. Die Zahlung erfolgt per Bankueberweisung, entweder einmalig oder gemaess dem im Angebot definierten Zahlungsplan."
-              : "Les devis MVP sont émis en CHF. Le paiement se fait par virement bancaire, en une fois ou selon l'échéancier précisé sur le devis."}
+              ? "MVP-Angebote werden in € erstellt. Die Zahlung erfolgt per Bankueberweisung, entweder einmalig oder gemaess dem im Angebot definierten Zahlungsplan."
+              : "Les devis MVP sont émis en €. Le paiement se fait par virement bancaire, en une fois ou selon l'échéancier précisé sur le devis."}
         </p>
         {serverMessage && (
           <p

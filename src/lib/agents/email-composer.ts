@@ -5,6 +5,29 @@
  */
 
 import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
+
+async function callLLMFast(prompt: string): Promise<string> {
+  if (process.env.ANTHROPIC_API_KEY) {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const msg = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 400,
+      messages: [{ role: "user", content: prompt }],
+    });
+    return msg.content[0].type === "text" ? msg.content[0].text : "";
+  }
+  if (process.env.OPENAI_API_KEY) {
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const resp = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      max_tokens: 400,
+      messages: [{ role: "user", content: prompt }],
+    });
+    return resp.choices[0]?.message?.content ?? "";
+  }
+  throw new Error("No AI provider");
+}
 import type { SiteAudit } from "./website-auditor";
 import type { DiscoveredLead } from "./lead-discovery";
 
@@ -18,7 +41,8 @@ export type ComposedEmail = {
 const COPY: Record<string, {
   currentSite: string; futureSite: string; problems: string; quote: string;
   ctaLabel: string; ctaAlt: string; greeting: string; footer: string;
-  from: string; signoff: string;
+  from: string; signoff: string; scoreBanner: string; analysisBadge: string;
+  mockupFeatures: string;
 }> = {
   fr: {
     greeting: "Bonjour",
@@ -31,6 +55,9 @@ const COPY: Record<string, {
     from: "Kénan — KAH-Digital",
     signoff: "Cordialement",
     footer: "Vous recevez cet email car votre site est publiquement accessible. Répondez STOP pour ne plus en recevoir.",
+    scoreBanner: "Score digital",
+    analysisBadge: "ANALYSE GRATUITE",
+    mockupFeatures: "📱 MOBILE · ⚡ RAPIDE · 🔍 SEO",
   },
   en: {
     greeting: "Hello",
@@ -43,6 +70,9 @@ const COPY: Record<string, {
     from: "Kenan — KAH-Digital",
     signoff: "Best regards",
     footer: "You received this email because your website is publicly accessible. Reply STOP to unsubscribe.",
+    scoreBanner: "Digital score",
+    analysisBadge: "FREE ANALYSIS",
+    mockupFeatures: "📱 MOBILE · ⚡ FAST · 🔍 SEO",
   },
   es: {
     greeting: "Hola",
@@ -55,6 +85,9 @@ const COPY: Record<string, {
     from: "Kenan — KAH-Digital",
     signoff: "Saludos cordiales",
     footer: "Recibió este email porque su sitio web es accesible públicamente. Responda STOP para darse de baja.",
+    scoreBanner: "Puntuación digital",
+    analysisBadge: "ANÁLISIS GRATUITO",
+    mockupFeatures: "📱 MÓVIL · ⚡ RÁPIDO · 🔍 SEO",
   },
   de: {
     greeting: "Guten Tag",
@@ -67,6 +100,9 @@ const COPY: Record<string, {
     from: "Kenan — KAH-Digital",
     signoff: "Mit freundlichen Gruessen",
     footer: "Sie erhalten diese E-Mail, weil Ihre Website oeffentlich zugaenglich ist. Antworten Sie mit STOP zum Abmelden.",
+    scoreBanner: "Digital-Score",
+    analysisBadge: "KOSTENLOSE ANALYSE",
+    mockupFeatures: "📱 MOBIL · ⚡ SCHNELL · 🔍 SEO",
   },
   it: {
     greeting: "Buongiorno",
@@ -79,6 +115,9 @@ const COPY: Record<string, {
     from: "Kenan — KAH-Digital",
     signoff: "Cordiali saluti",
     footer: "Hai ricevuto questa email perché il tuo sito è accessibile pubblicamente. Rispondi STOP per annullare l'iscrizione.",
+    scoreBanner: "Punteggio digitale",
+    analysisBadge: "ANALISI GRATUITA",
+    mockupFeatures: "📱 MOBILE · ⚡ VELOCE · 🔍 SEO",
   },
   nl: {
     greeting: "Goedendag",
@@ -91,6 +130,9 @@ const COPY: Record<string, {
     from: "Kenan — KAH-Digital",
     signoff: "Met vriendelijke groet",
     footer: "U ontvangt deze e-mail omdat uw website openbaar toegankelijk is. Antwoord STOP om u af te melden.",
+    scoreBanner: "Digitale score",
+    analysisBadge: "GRATIS ANALYSE",
+    mockupFeatures: "📱 MOBIEL · ⚡ SNEL · 🔍 SEO",
   },
 };
 
@@ -115,13 +157,10 @@ export async function composeProspectingEmail(
   trackingBaseUrl: string,
   prospectId: string
 ): Promise<ComposedEmail> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error("ANTHROPIC_API_KEY manquant");
-
-  const client = new Anthropic({ apiKey });
   const c = getCopy(audit.language);
   const pixelUrl = `${trackingBaseUrl}/api/tracking/open/${prospectId}`;
   const clickUrl = `${trackingBaseUrl}/api/tracking/click/${prospectId}`;
+  // URL devis avec données prospect pour prefill (traitées côté tracking/click)
   const quoteUrl = `${trackingBaseUrl}/devis`;
 
   // Claude génère l'intro et la conclusion personnalisées
@@ -136,12 +175,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
   let conclusion = `N'hésitez pas à répondre directement à cet email — je vous prépare un devis détaillé sous 24h.`;
 
   try {
-    const msg = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 400,
-      messages: [{ role: "user", content: introConclusionPrompt }],
-    });
-    const raw = msg.content[0].type === "text" ? msg.content[0].text : "";
+    const raw = await callLLMFast(introConclusionPrompt);
     const start = raw.indexOf("{"); const end = raw.lastIndexOf("}");
     if (start !== -1 && end !== -1) {
       const parsed = JSON.parse(raw.slice(start, end + 1)) as { intro?: string; conclusion?: string };
@@ -150,16 +184,54 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     }
   } catch { /* keep defaults */ }
 
-  // Génération du sujet
-  const subjectMap: Record<string, string> = {
-    fr: `${audit.businessName} — votre site web perd des clients (analyse gratuite)`,
-    en: `${audit.businessName} — your website is losing customers (free analysis)`,
-    es: `${audit.businessName} — su sitio web está perdiendo clientes (análisis gratuito)`,
-    de: `${audit.businessName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
-    it: `${audit.businessName} — il tuo sito perde clienti (analisi gratuita)`,
-    nl: `${audit.businessName} — uw website verliest klanten (gratis analyse)`,
+  // A/B test sujets — 5 variantes, rotation par jour
+  const abVariant = Math.floor(Date.now() / 86400000) % 5;
+  const SUBJECTS: Record<string, string[]> = {
+    fr: [
+      `${audit.businessName} — votre site web perd des clients (analyse gratuite)`,
+      `J'ai analysé le site de ${audit.businessName} — voici ce que j'ai trouvé`,
+      `${audit.businessName} : 3 problèmes qui coûtent des clients chaque semaine`,
+      `⚠️ Score ${audit.score}/100 pour ${audit.businessName} — rapport inclus`,
+      `Une question rapide sur ${audit.businessName}`,
+    ],
+    en: [
+      `${audit.businessName} — your website is losing customers (free analysis)`,
+      `I analysed ${audit.businessName}'s website — here's what I found`,
+      `${audit.businessName}: 3 issues costing you customers every week`,
+      `⚠️ Score ${audit.score}/100 for ${audit.businessName} — full report inside`,
+      `Quick question about ${audit.businessName}`,
+    ],
+    es: [
+      `${audit.businessName} — su sitio web está perdiendo clientes (análisis gratuito)`,
+      `Analicé el sitio de ${audit.businessName} — esto es lo que encontré`,
+      `${audit.businessName}: 3 problemas que le cuestan clientes cada semana`,
+      `⚠️ Puntuación ${audit.score}/100 para ${audit.businessName}`,
+      `Una pregunta rápida sobre ${audit.businessName}`,
+    ],
+    de: [
+      `${audit.businessName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
+      `Ich habe die Website von ${audit.businessName} analysiert — das habe ich gefunden`,
+      `${audit.businessName}: 3 Probleme, die jede Woche Kunden kosten`,
+      `⚠️ Score ${audit.score}/100 für ${audit.businessName} — Bericht anbei`,
+      `Kurze Frage zu ${audit.businessName}`,
+    ],
+    it: [
+      `${audit.businessName} — il tuo sito perde clienti (analisi gratuita)`,
+      `Ho analizzato il sito di ${audit.businessName} — ecco cosa ho trovato`,
+      `${audit.businessName}: 3 problemi che ti costano clienti ogni settimana`,
+      `⚠️ Punteggio ${audit.score}/100 per ${audit.businessName}`,
+      `Una domanda rapida su ${audit.businessName}`,
+    ],
+    nl: [
+      `${audit.businessName} — uw website verliest klanten (gratis analyse)`,
+      `Ik analyseerde de website van ${audit.businessName} — dit vond ik`,
+      `${audit.businessName}: 3 problemen die u elke week klanten kosten`,
+      `⚠️ Score ${audit.score}/100 voor ${audit.businessName}`,
+      `Korte vraag over ${audit.businessName}`,
+    ],
   };
-  const subject = subjectMap[audit.language] ?? subjectMap.fr;
+  const langSubjects = SUBJECTS[audit.language] ?? SUBJECTS.fr;
+  const subject = langSubjects[abVariant]!
 
   // HTML des problèmes
   const problemsHtml = audit.problems.map((p) => `
@@ -204,6 +276,15 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     </div>
   `;
 
+  const psScarcity: Record<string, string> = {
+    fr: "Je ne contacte que 3 entreprises par secteur et par ville — si un concurrent répond en premier, le créneau est pris. Répondez pour bloquer votre place.",
+    en: "I only contact 3 businesses per sector per city — if a competitor responds first, the slot is taken. Reply to secure yours.",
+    de: "Ich kontaktiere nur 3 Unternehmen pro Branche und Stadt — antwortet ein Konkurrent zuerst, ist der Platz vergeben.",
+    es: "Solo contacto a 3 empresas por sector y ciudad — si un competidor responde primero, el cupo está tomado.",
+    it: "Contatto solo 3 aziende per settore e città — se un concorrente risponde prima, il posto è preso.",
+  };
+  const psText = psScarcity[audit.language] ?? psScarcity.fr;
+
   const html = `<!DOCTYPE html>
 <html lang="${audit.language}">
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
@@ -223,7 +304,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
             <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:2px;">Studio digital — sites, apps &amp; IA</div>
           </td>
           <td align="right">
-            <div style="background:rgba(255,255,255,0.15);border-radius:9999px;padding:4px 12px;color:#ffffff;font-size:11px;font-weight:600;">ANALYSE GRATUITE</div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:9999px;padding:4px 12px;color:#ffffff;font-size:11px;font-weight:600;">${c.analysisBadge}</div>
           </td>
         </tr>
       </table>
@@ -236,7 +317,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td style="font-size:13px;color:#854d0e;">
-            <strong>Score digital de ${audit.businessName} :</strong>
+            <strong>${c.scoreBanner} — ${audit.businessName} :</strong>
             <strong style="color:${audit.score < 40 ? '#dc2626' : audit.score < 60 ? '#d97706' : '#16a34a'};font-size:18px;margin-left:8px;">${audit.score}/100</strong>
           </td>
         </tr>
@@ -312,15 +393,29 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     </td>
   </tr>
 
+  <!-- P.S. urgence -->
+  <tr>
+    <td style="background:#fef9c3;border-top:1px solid #fef08a;padding:14px 32px;">
+      <p style="margin:0;font-size:13px;color:#78350f;line-height:1.6;">
+        <strong>P.S.</strong> ${psText}
+      </p>
+    </td>
+  </tr>
+
   <!-- SIGNATURE -->
   <tr>
     <td style="border-top:1px solid #f3f4f6;padding:20px 32px;">
-      <table cellpadding="0" cellspacing="0">
+      <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a8a,#7c3aed);border-radius:50%;text-align:center;vertical-align:middle;color:#fff;font-size:16px;font-weight:800;">K</td>
           <td style="padding-left:12px;">
             <div style="font-weight:700;color:#111827;font-size:14px;">${c.from}</div>
-            <div style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com</div>
+            <div style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com &bull; kah-digital.ch</div>
+          </td>
+          <td align="right">
+            <a href="https://wa.me/33759558414" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;font-size:12px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:9999px;">
+              💬 WhatsApp
+            </a>
           </td>
         </tr>
       </table>
@@ -350,6 +445,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
 
 // Mockup HTML simulant le futur site (pure HTML, compatible email)
 function buildMockupHtml(audit: SiteAudit, lang: string): string {
+  const c = getCopy(lang);
   const colors = ["#1e3a8a", "#7c3aed", "#059669", "#d97706", "#dc2626"];
   const accentColor = colors[Math.abs(audit.businessName.charCodeAt(0)) % colors.length];
 
@@ -379,7 +475,7 @@ function buildMockupHtml(audit: SiteAudit, lang: string): string {
   </div>
   <!-- Footer hint -->
   <div style="background:${accentColor};padding:6px;text-align:center;">
-    <span style="color:#fff;font-size:9px;font-weight:700;">📱 MOBILE · ⚡ RAPIDE · 🔍 SEO</span>
+    <span style="color:#fff;font-size:9px;font-weight:700;">${c.mockupFeatures}</span>
   </div>
 </div>`;
 }

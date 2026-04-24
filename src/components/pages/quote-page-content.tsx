@@ -14,7 +14,7 @@ const copy = {
     title: "Décris ton projet clairement, on te répond vite.",
     body: "Budget, délai, recommandations et cadrage initial dans un format simple à relire.",
     cards: [
-      { eyebrow: "Devise", body: "Tous les montants sont émis en CHF." },
+      { eyebrow: "Devise", body: "Tous les montants sont émis en €." },
       { eyebrow: "Paiement", body: "Règlement par virement bancaire." },
       { eyebrow: "Coordonnées", body: "Transmises sur devis validé ou facture finale." },
     ],
@@ -29,7 +29,7 @@ const copy = {
     title: "Describe your project clearly, we reply fast.",
     body: "Budget, timeline, recommendations, and initial scoping in a simple format you can review easily.",
     cards: [
-      { eyebrow: "Currency", body: "All amounts are issued in CHF." },
+      { eyebrow: "Currency", body: "All amounts are issued in €." },
       { eyebrow: "Payment", body: "Payment by bank transfer." },
       { eyebrow: "Details", body: "Shared on approved quote or final invoice." },
     ],
@@ -44,7 +44,7 @@ const copy = {
     title: "Beschreibe dein Projekt klar, wir antworten schnell.",
     body: "Budget, Timing, Empfehlungen und ein erstes Briefing in einem einfachen Format zum Nachlesen.",
     cards: [
-      { eyebrow: "Waehrung", body: "Alle Betraege werden in CHF ausgewiesen." },
+      { eyebrow: "Waehrung", body: "Alle Betraege werden in € ausgewiesen." },
       { eyebrow: "Zahlung", body: "Zahlung per Bankueberweisung." },
       { eyebrow: "Kontaktdaten", body: "Werden auf dem bestaetigten Angebot oder der Schlussrechnung uebermittelt." },
     ],

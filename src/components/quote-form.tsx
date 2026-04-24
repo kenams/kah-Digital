@@ -75,10 +75,10 @@ export function QuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under CHF 2,000", "CHF 2,000 - 6,000", "CHF 6,000 - 12,000", "CHF 12,000 +"]
+    ? ["Under € 2,000", "€ 2,000 - 6,000", "€ 6,000 - 12,000", "€ 12,000 +"]
     : isGerman
-      ? ["Unter CHF 2'000", "CHF 2'000 - 6'000", "CHF 6'000 - 12'000", "CHF 12'000 +"]
-      : ["Moins de 2 000 CHF", "2 000 CHF - 6 000 CHF", "6 000 CHF - 12 000 CHF", "12 000 CHF +"];
+      ? ["Unter € 2'000", "€ 2'000 - 6'000", "€ 6'000 - 12'000", "€ 12'000 +"]
+      : ["Moins de 2 000 €", "2 000 € - 6 000 €", "6 000 € - 12 000 €", "12 000 € +"];
 
   const timelineOptions = isEnglish
     ? ["ASAP", "2-4 weeks", "1-2 months", "3 months +"]
@@ -594,10 +594,10 @@ export function QuoteForm() {
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
-            ? "Quotes and invoices are issued in CHF. Payment is usually made by bank transfer, with secure Stripe payment possible when the project requires it."
+            ? "Quotes and invoices are issued in €. Payment is usually made by bank transfer, with secure Stripe payment possible when the project requires it."
             : isGerman
-              ? "Angebote und Rechnungen werden in CHF erstellt. Die Zahlung erfolgt meist per Bankueberweisung, mit sicherem Stripe-Link wenn das Projekt es braucht."
-              : "Les devis et factures sont émis en CHF. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
+              ? "Angebote und Rechnungen werden in € erstellt. Die Zahlung erfolgt meist per Bankueberweisung, mit sicherem Stripe-Link wenn das Projekt es braucht."
+              : "Les devis et factures sont émis en €. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
         </p>
         {serverMessage && (
           <p

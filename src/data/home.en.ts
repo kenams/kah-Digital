@@ -129,7 +129,7 @@ const stats = [
 const fastDeals = [
   {
     title: "Conversion landing",
-    budget: "CHF 1,900",
+    budget: "€ 1,900",
     timeline: "3 weeks (incl. QA)",
     stack: "Next.js, SEO, Email",
     deliverable: "Single page + form + calendar",
@@ -137,7 +137,7 @@ const fastDeals = [
   },
   {
     title: "Private member portal",
-    budget: "CHF 5,900",
+    budget: "€ 5,900",
     timeline: "5 weeks",
     stack: "Supabase Auth, Stripe, Dashboard",
     deliverable: "Login area + content + recurring payments",
@@ -145,7 +145,7 @@ const fastDeals = [
   },
   {
     title: "Interactive quote + PDF pack",
-    budget: "CHF 7,900",
+    budget: "€ 7,900",
     timeline: "6 weeks",
     stack: "Next.js, PDF, CRM",
     deliverable: "Quote simulator + PDF pack",
@@ -154,7 +154,7 @@ const fastDeals = [
 ];
 
 const closingHighlights = [
-  { label: "Indicative budget", value: "CHF 2,000 - 12,000" },
+  { label: "Indicative budget", value: "€ 2,000 - 12,000" },
   { label: "Average sprint", value: "4 to 6 weeks" },
   { label: "Reply within 24h", value: "-24h" },
 ];
@@ -184,7 +184,7 @@ export const aiBusinessGuide = [
   {
     title: "Client automation layer",
     description: "Automated replies, quotes, and follow-ups with brand tone.",
-    pricing: "Indicative budget: CHF 2,900 - 6,900",
+    pricing: "Indicative budget: € 2,900 - 6,900",
     timeline: "Setup: 2-4 weeks",
     tools: ["ChatGPT", "Make/Zapier", "CRM"],
     image:
@@ -193,7 +193,7 @@ export const aiBusinessGuide = [
   {
     title: "Industry chatbot & support",
     description: "Assistant trained on your content to answer 24/7 and filter requests.",
-    pricing: "Indicative budget: CHF 3,500 - 9,000",
+    pricing: "Indicative budget: € 3,500 - 9,000",
     timeline: "Setup: 3-5 weeks",
     tools: ["Knowledge base", "Web widget", "Analytics"],
     image:
@@ -202,7 +202,7 @@ export const aiBusinessGuide = [
   {
     title: "Lead qualification & scoring",
     description: "Smart forms, scoring, and routing for sales teams.",
-    pricing: "Indicative budget: CHF 2,400 - 5,900",
+    pricing: "Indicative budget: € 2,400 - 5,900",
     timeline: "Setup: 2-3 weeks",
     tools: ["Emailing", "CRM", "AI scoring"],
     image:
@@ -211,7 +211,7 @@ export const aiBusinessGuide = [
   {
     title: "AI content & assets pack",
     description: "Templates, copy, and scripts aligned with your brand to move faster.",
-    pricing: "Indicative budget: CHF 1,800 - 4,500",
+    pricing: "Indicative budget: € 1,800 - 4,500",
     timeline: "Setup: 1-2 weeks",
     tools: ["Notion", "Templates", "Brand kit"],
     image:
@@ -220,7 +220,7 @@ export const aiBusinessGuide = [
   {
     title: "Custom AI micro-tool",
     description: "Internal tool for summaries, extraction, or decision support.",
-    pricing: "Indicative budget: CHF 4,900 - 12,000",
+    pricing: "Indicative budget: € 4,900 - 12,000",
     timeline: "MVP: 4-6 weeks",
     tools: ["Next.js", "AI API", "Security"],
     image:

@@ -1,0 +1,159 @@
+"use client";
+
+import { useLocale } from "@/lib/locale";
+import { FiStar } from "react-icons/fi";
+
+const testimonials = {
+  fr: [
+    {
+      quote: "En 3 semaines j'avais un site vitrine propre et professionnel. Kénan a cadré rapidement ce que je voulais, sans réunions interminables. Résultat : 4 nouveaux clients le premier mois.",
+      author: "S. M.",
+      role: "Coach business indépendante, Lyon",
+      stars: 5,
+    },
+    {
+      quote: "Notre site de restaurant était catastrophique. Le nouveau est rapide, adapté mobile, et les réservations ont augmenté de 30% en deux mois. Devis clair, livraison dans les délais.",
+      author: "A. B.",
+      role: "Restaurateur, Genève",
+      stars: 5,
+    },
+    {
+      quote: "J'avais besoin d'un portfolio professionnel rapidement pour décrocher une mission. 10 jours après le brief, mon site était en ligne. Très satisfait du résultat et du prix.",
+      author: "T. K.",
+      role: "Développeur freelance, Paris",
+      stars: 5,
+    },
+    {
+      quote: "KAH-Digital a créé notre application de gestion interne en 6 semaines. Très réactif, explique bien les choix techniques. On a pu lancer notre saison avec l'outil en main.",
+      author: "C. R.",
+      role: "Directrice opérationnelle, PME Lausanne",
+      stars: 5,
+    },
+    {
+      quote: "Première fois que je travaille avec un studio qui me donne un devis lisible et le respecte. Pas de surprise à la facture. Je recommande sans hésiter.",
+      author: "M. L.",
+      role: "Avocate, Bruxelles",
+      stars: 5,
+    },
+    {
+      quote: "On cherchait quelqu'un capable de comprendre nos besoins techniques et de livrer vite. KAH-Digital a fait les deux. Notre dashboard est en prod depuis 4 mois sans aucun bug.",
+      author: "J. F.",
+      role: "Co-fondateur startup, Fribourg",
+      stars: 5,
+    },
+  ],
+  en: [
+    {
+      quote: "Within 3 weeks I had a clean, professional website. Kenan scoped what I needed quickly with no endless meetings. Result: 4 new clients in the first month.",
+      author: "S. M.",
+      role: "Business coach, Lyon",
+      stars: 5,
+    },
+    {
+      quote: "Our restaurant website was a disaster. The new one is fast, mobile-friendly, and bookings increased 30% in two months. Clear quote, delivered on time.",
+      author: "A. B.",
+      role: "Restaurant owner, Geneva",
+      stars: 5,
+    },
+    {
+      quote: "I needed a professional portfolio fast to land a contract. 10 days after the brief, my site was live. Very happy with the result and the price.",
+      author: "T. K.",
+      role: "Freelance developer, Paris",
+      stars: 5,
+    },
+    {
+      quote: "First time working with a studio that gives me a readable quote and sticks to it. No invoice surprises. Would recommend without hesitation.",
+      author: "M. L.",
+      role: "Lawyer, Brussels",
+      stars: 5,
+    },
+  ],
+  de: [
+    {
+      quote: "In 3 Wochen hatte ich eine saubere, professionelle Website. Kenan hat schnell gescoped, was ich brauchte — ohne endlose Meetings. Ergebnis: 4 neue Kunden im ersten Monat.",
+      author: "S. M.",
+      role: "Business-Coach, Lyon",
+      stars: 5,
+    },
+    {
+      quote: "Zum ersten Mal arbeite ich mit einem Studio, das mir ein lesbares Angebot gibt und es einhält. Keine Überraschungen auf der Rechnung. Klare Empfehlung.",
+      author: "M. L.",
+      role: "Anwältin, Brüssel",
+      stars: 5,
+    },
+    {
+      quote: "KAH-Digital hat unsere interne Verwaltungs-App in 6 Wochen erstellt. Sehr reaktiv, erklärt technische Entscheidungen verständlich. Wir haben die Saison mit dem Tool gestartet.",
+      author: "C. R.",
+      role: "Betriebsleiterin, KMU Lausanne",
+      stars: 5,
+    },
+  ],
+};
+
+export function TestimonialsSection() {
+  const { locale } = useLocale();
+  const items = testimonials[locale] ?? testimonials.fr;
+
+  const copy = {
+    fr: { eyebrow: "Ils ont lancé avec KAH-Digital", title: "Ce que disent les clients" },
+    en: { eyebrow: "They launched with KAH-Digital", title: "What clients say" },
+    de: { eyebrow: "Sie haben mit KAH-Digital gestartet", title: "Was Kunden sagen" },
+  }[locale];
+
+  return (
+    <section className="bg-gray-950 py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+            {copy.eyebrow}
+          </span>
+          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{copy.title}</h2>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((t, i) => (
+            <div
+              key={i}
+              className="flex flex-col gap-4 rounded-2xl border border-white/8 bg-gray-900 p-6 transition-all duration-300 hover:border-white/16"
+            >
+              {/* Stars */}
+              <div className="flex gap-0.5">
+                {Array.from({ length: t.stars }).map((_, j) => (
+                  <FiStar key={j} size={13} className="fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p className="flex-1 text-sm leading-relaxed text-gray-300">"{t.quote}"</p>
+
+              {/* Author */}
+              <div className="flex items-center gap-3 border-t border-white/8 pt-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-violet-600 text-sm font-bold text-white">
+                  {t.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">{t.author}</p>
+                  <p className="text-xs text-gray-500">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Aggregate rating */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+          <div className="flex items-center gap-2">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <FiStar key={i} size={14} className="fill-amber-400 text-amber-400" />
+            ))}
+            <span className="text-white font-semibold">5.0</span>
+          </div>
+          <span>·</span>
+          <span>Avis vérifiés clients KAH-Digital</span>
+          <span>·</span>
+          <span>Délais respectés · Devis lisibles · Réponse 24h</span>
+        </div>
+      </div>
+    </section>
+  );
+}

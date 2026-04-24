@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { GlobalTrustSection } from "@/components/global-trust-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
 import { TrustBar } from "@/components/trust-bar";
 import { WhyChooseSection } from "@/components/why-choose-section";
 
@@ -24,6 +25,7 @@ export default function HomePageEn() {
       <TrustBar />
       <ServicesGrid />
       <WhyChooseSection />
+      <TestimonialsSection />
       <ProcessSection />
       <GlobalTrustSection />
       <FAQSection />
