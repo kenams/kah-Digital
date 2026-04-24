@@ -478,6 +478,17 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     }
   }, [hasStartedChat, open]);
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        trackEvent("assistant_closed", { assistant_locale: locale });
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open, locale]);
+
   const sendQuickReply = (text: string) => {
     if (!hasStartedChat || messagePending || isStreaming) return;
     setLastActivityAt(Date.now());
@@ -711,7 +722,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setOpen(false)}
+                    onClick={() => { setOpen(false); trackEvent("assistant_closed", { assistant_locale: locale }); }}
                     className="rounded-full border border-white/12 px-3 py-2 text-xs font-medium text-white/70 transition hover:border-white/25 hover:text-white"
                   >
                     {copy.close}
@@ -735,7 +746,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
               </div>
             </div>
 
-            <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4">
+            <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite" aria-atomic="false" aria-label={copy.title}>
               {!hasStartedChat ? (
                 <div className="space-y-4 rounded-[1.8rem] border border-white/12 bg-white/[0.03] p-4">
                   <div>
@@ -988,7 +999,10 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                   ref={inputRef}
                   type="text"
                   value={message}
-                  onChange={(event) => setMessage(event.target.value)}
+                  onChange={(event) => {
+                    const val = event.target.value;
+                    if (val.length <= 500) setMessage(val);
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !event.shiftKey) {
                       event.preventDefault();
@@ -996,6 +1010,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                     }
                   }}
                   placeholder={copy.placeholder}
+                  maxLength={500}
                   className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
                   disabled={!hasStartedChat}
                 />
@@ -1010,7 +1025,9 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                 </button>
               </div>
               <div className="mt-3 flex items-center justify-between gap-3 text-xs text-white/42">
-                <span>{copy.helper}</span>
+                <span className={message.length > 450 ? "text-amber-400" : ""}>
+                  {message.length > 400 ? `${500 - message.length}` : copy.helper}
+                </span>
                 <Link href={`/${locale === "fr" ? "" : locale}/contact`.replace("//", "/")} className="inline-flex items-center gap-1 text-white/62 hover:text-white">
                   {copy.contact}
                   <FiArrowUpRight />
@@ -1023,11 +1040,16 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         {!open ? (
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={() => { setOpen(true); trackEvent("assistant_opened", { assistant_locale: locale }); }}
             className="group ml-auto flex items-center gap-3 rounded-full border border-white/10 bg-[linear-gradient(135deg,rgba(9,9,8,0.92),rgba(10,23,38,0.92))] px-4 py-3 text-left shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition hover:border-[#d6b36a]/40"
+            aria-label={copy.button}
           >
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(214,179,106,0.92),rgba(127,184,199,0.92))] text-[#11131b] shadow-[0_10px_30px_rgba(214,179,106,0.28)]">
+            <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(214,179,106,0.92),rgba(127,184,199,0.92))] text-[#11131b] shadow-[0_10px_30px_rgba(214,179,106,0.28)]">
               <FiMessageSquare className="text-lg" />
+              <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
+              </span>
             </span>
             <span className="hidden min-w-0 sm:block">
               <span className="block text-[0.68rem] uppercase tracking-[0.32em] text-white/45">{copy.open}</span>
