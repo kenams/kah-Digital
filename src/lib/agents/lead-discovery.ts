@@ -659,7 +659,7 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   // Sélectionne 2 targets aléatoires depuis des parties différentes du tableau
   const shuffled = [...TARGETS].sort(() => Math.random() - 0.5);
   const target1 = shuffled[0];
-  const target2 = shuffled[Math.floor(TARGETS.length / 2) % shuffled.length];
+  const target2 = shuffled[1 + Math.floor(Math.random() * (shuffled.length - 1))];
 
   // Lance les 2 recherches DDG séquentiellement (évite le rate-limit)
   console.log(`[lead-discovery] DDG target 1: "${target1.query}"`);

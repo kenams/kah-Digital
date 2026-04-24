@@ -151,7 +151,10 @@ function getCopy(lang: string) {
   return FOLLOWUP_COPY[lang] ?? FOLLOWUP_COPY.fr;
 }
 
-function buildFollowupHtml(body: string, signoff: string, fromName: string, unsubscribe: string): string {
+function buildFollowupHtml(body: string, signoff: string, fromName: string, unsubscribe: string, unsubscribeUrl?: string): string {
+  const unsubscribeHtml = unsubscribeUrl
+    ? `${unsubscribe} &mdash; <a href="${unsubscribeUrl}" style="color:#9ca3af;text-decoration:underline;">Se désabonner</a>`
+    : unsubscribe;
   return `<!DOCTYPE html>
 <html><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
 <body style="margin:0;padding:0;background:#f4f6f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
@@ -169,7 +172,7 @@ function buildFollowupHtml(body: string, signoff: string, fromName: string, unsu
     <span style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com</span></div>
   </td></tr>
   <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:12px 28px;">
-    <p style="margin:0;font-size:11px;color:#9ca3af;">${unsubscribe}</p>
+    <p style="margin:0;font-size:11px;color:#9ca3af;">${unsubscribeHtml}</p>
   </td></tr>
 </table>
 </td></tr>

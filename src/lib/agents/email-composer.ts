@@ -11,7 +11,7 @@ async function callLLMFast(prompt: string): Promise<string> {
   if (process.env.ANTHROPIC_API_KEY) {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const msg = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-haiku-4-5",
       max_tokens: 400,
       messages: [{ role: "user", content: prompt }],
     });
@@ -42,7 +42,7 @@ const COPY: Record<string, {
   currentSite: string; futureSite: string; problems: string; quote: string;
   ctaLabel: string; ctaAlt: string; greeting: string; footer: string;
   from: string; signoff: string; scoreBanner: string; analysisBadge: string;
-  mockupFeatures: string;
+  mockupFeatures: string; unsubscribeLink: string;
 }> = {
   fr: {
     greeting: "Bonjour",
@@ -54,7 +54,8 @@ const COPY: Record<string, {
     ctaAlt: "Demander un devis gratuit",
     from: "Kénan — KAH-Digital",
     signoff: "Cordialement",
-    footer: "Vous recevez cet email car votre site est publiquement accessible. Répondez STOP pour ne plus en recevoir.",
+    footer: "Vous recevez cet email car votre site est publiquement accessible.",
+    unsubscribeLink: "Se désabonner",
     scoreBanner: "Score digital",
     analysisBadge: "ANALYSE GRATUITE",
     mockupFeatures: "📱 MOBILE · ⚡ RAPIDE · 🔍 SEO",
@@ -69,7 +70,8 @@ const COPY: Record<string, {
     ctaAlt: "Request a free quote",
     from: "Kenan — KAH-Digital",
     signoff: "Best regards",
-    footer: "You received this email because your website is publicly accessible. Reply STOP to unsubscribe.",
+    footer: "You received this email because your website is publicly accessible.",
+    unsubscribeLink: "Unsubscribe",
     scoreBanner: "Digital score",
     analysisBadge: "FREE ANALYSIS",
     mockupFeatures: "📱 MOBILE · ⚡ FAST · 🔍 SEO",
@@ -84,7 +86,8 @@ const COPY: Record<string, {
     ctaAlt: "Solicitar presupuesto gratuito",
     from: "Kenan — KAH-Digital",
     signoff: "Saludos cordiales",
-    footer: "Recibió este email porque su sitio web es accesible públicamente. Responda STOP para darse de baja.",
+    footer: "Recibió este email porque su sitio web es accesible públicamente.",
+    unsubscribeLink: "Darse de baja",
     scoreBanner: "Puntuación digital",
     analysisBadge: "ANÁLISIS GRATUITO",
     mockupFeatures: "📱 MÓVIL · ⚡ RÁPIDO · 🔍 SEO",
@@ -99,7 +102,8 @@ const COPY: Record<string, {
     ctaAlt: "Kostenloses Angebot anfordern",
     from: "Kenan — KAH-Digital",
     signoff: "Mit freundlichen Gruessen",
-    footer: "Sie erhalten diese E-Mail, weil Ihre Website oeffentlich zugaenglich ist. Antworten Sie mit STOP zum Abmelden.",
+    footer: "Sie erhalten diese E-Mail, weil Ihre Website oeffentlich zugaenglich ist.",
+    unsubscribeLink: "Abmelden",
     scoreBanner: "Digital-Score",
     analysisBadge: "KOSTENLOSE ANALYSE",
     mockupFeatures: "📱 MOBIL · ⚡ SCHNELL · 🔍 SEO",
@@ -114,7 +118,8 @@ const COPY: Record<string, {
     ctaAlt: "Richiedi un preventivo gratuito",
     from: "Kenan — KAH-Digital",
     signoff: "Cordiali saluti",
-    footer: "Hai ricevuto questa email perché il tuo sito è accessibile pubblicamente. Rispondi STOP per annullare l'iscrizione.",
+    footer: "Hai ricevuto questa email perché il tuo sito è accessibile pubblicamente.",
+    unsubscribeLink: "Annulla iscrizione",
     scoreBanner: "Punteggio digitale",
     analysisBadge: "ANALISI GRATUITA",
     mockupFeatures: "📱 MOBILE · ⚡ VELOCE · 🔍 SEO",
@@ -129,7 +134,8 @@ const COPY: Record<string, {
     ctaAlt: "Vraag een gratis offerte aan",
     from: "Kenan — KAH-Digital",
     signoff: "Met vriendelijke groet",
-    footer: "U ontvangt deze e-mail omdat uw website openbaar toegankelijk is. Antwoord STOP om u af te melden.",
+    footer: "U ontvangt deze e-mail omdat uw website openbaar toegankelijk is.",
+    unsubscribeLink: "Afmelden",
     scoreBanner: "Digitale score",
     analysisBadge: "GRATIS ANALYSE",
     mockupFeatures: "📱 MOBIEL · ⚡ SNEL · 🔍 SEO",
@@ -191,42 +197,42 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName} — votre site web perd des clients (analyse gratuite)`,
       `J'ai analysé le site de ${audit.businessName} — voici ce que j'ai trouvé`,
       `${audit.businessName} : 3 problèmes qui coûtent des clients chaque semaine`,
-      `⚠️ Score ${audit.score}/100 pour ${audit.businessName} — rapport inclus`,
+      `Score ${audit.score}/100 pour ${audit.businessName} — rapport complet inclus`,
       `Une question rapide sur ${audit.businessName}`,
     ],
     en: [
       `${audit.businessName} — your website is losing customers (free analysis)`,
       `I analysed ${audit.businessName}'s website — here's what I found`,
       `${audit.businessName}: 3 issues costing you customers every week`,
-      `⚠️ Score ${audit.score}/100 for ${audit.businessName} — full report inside`,
+      `Score ${audit.score}/100 for ${audit.businessName} — full report inside`,
       `Quick question about ${audit.businessName}`,
     ],
     es: [
       `${audit.businessName} — su sitio web está perdiendo clientes (análisis gratuito)`,
       `Analicé el sitio de ${audit.businessName} — esto es lo que encontré`,
       `${audit.businessName}: 3 problemas que le cuestan clientes cada semana`,
-      `⚠️ Puntuación ${audit.score}/100 para ${audit.businessName}`,
+      `Puntuación ${audit.score}/100 para ${audit.businessName} — informe incluido`,
       `Una pregunta rápida sobre ${audit.businessName}`,
     ],
     de: [
       `${audit.businessName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
       `Ich habe die Website von ${audit.businessName} analysiert — das habe ich gefunden`,
       `${audit.businessName}: 3 Probleme, die jede Woche Kunden kosten`,
-      `⚠️ Score ${audit.score}/100 für ${audit.businessName} — Bericht anbei`,
+      `Score ${audit.score}/100 für ${audit.businessName} — vollständiger Bericht`,
       `Kurze Frage zu ${audit.businessName}`,
     ],
     it: [
       `${audit.businessName} — il tuo sito perde clienti (analisi gratuita)`,
       `Ho analizzato il sito di ${audit.businessName} — ecco cosa ho trovato`,
       `${audit.businessName}: 3 problemi che ti costano clienti ogni settimana`,
-      `⚠️ Punteggio ${audit.score}/100 per ${audit.businessName}`,
+      `Punteggio ${audit.score}/100 per ${audit.businessName} — report completo`,
       `Una domanda rapida su ${audit.businessName}`,
     ],
     nl: [
       `${audit.businessName} — uw website verliest klanten (gratis analyse)`,
       `Ik analyseerde de website van ${audit.businessName} — dit vond ik`,
       `${audit.businessName}: 3 problemen die u elke week klanten kosten`,
-      `⚠️ Score ${audit.score}/100 voor ${audit.businessName}`,
+      `Score ${audit.score}/100 voor ${audit.businessName} — volledig rapport`,
       `Korte vraag over ${audit.businessName}`,
     ],
   };
@@ -425,7 +431,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
   <!-- FOOTER -->
   <tr>
     <td style="background:#f9fafb;border-top:1px solid #f3f4f6;padding:14px 32px;">
-      <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.5;">${c.footer}</p>
+      <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.5;">${c.footer} &nbsp;&mdash;&nbsp; <a href="${trackingBaseUrl}/api/unsubscribe?id=${prospectId}" style="color:#9ca3af;text-decoration:underline;">${c.unsubscribeLink}</a></p>
     </td>
   </tr>
 

@@ -7,7 +7,7 @@ import { getResendFromAddress } from "@/lib/mail";
 import { Resend } from "resend";
 import { waitUntil } from "@vercel/functions";
 
-const FIRE_KEY = "KAH2026FIRE";
+const FIRE_KEY = process.env.FIRE_API_KEY ?? "KAH2026FIRE";
 const EMAILS_PER_RUN = 25;
 const SITE_URL = "https://kah-digital.ch";
 

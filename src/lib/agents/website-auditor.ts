@@ -121,7 +121,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
 
   for (const u of attempts) {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 12000);
+    const t = setTimeout(() => ctrl.abort(), 20000);
     try {
       const res = await fetch(u, {
         signal: ctrl.signal,
