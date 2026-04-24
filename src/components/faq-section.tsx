@@ -44,6 +44,16 @@ export function FAQSection() {
           answer:
             "Tu remplis le formulaire de devis ou tu utilises l'assistant projet. Je reviens sous 24h ouvrables avec un premier cadrage ou des questions de clarification. Pas de formulaire en 40 champs — juste les éléments utiles.",
         },
+        {
+          question: "Pouvez-vous refaire ou améliorer un site existant ?",
+          answer:
+            "Oui. La refonte est l'un des services les plus demandés. On peut reprendre un site existant — WordPress, Wix, Squarespace ou autre — et le reconstruire proprement avec les bonnes performances, le bon SEO et une meilleure conversion. On garde ce qui fonctionne, on corrige ce qui coûte des clients.",
+        },
+        {
+          question: "Quelles garanties avez-vous sur les projets livrés ?",
+          answer:
+            "Chaque projet est livré avec un périmètre défini, testé sur desktop et mobile, et accompagné d'une période de corrections incluses après mise en ligne. Pas d'engagement caché : si quelque chose ne correspond pas au brief validé, on le corrige. Le devis est ferme, pas évolutif sans accord préalable.",
+        },
       ],
     },
     en: {
@@ -80,6 +90,16 @@ export function FAQSection() {
           question: "What does the first exchange look like?",
           answer:
             "You fill in the quote form or use the project assistant. I reply within 24 business hours with a first framing or clarifying questions. No 40-field form — just the useful elements.",
+        },
+        {
+          question: "Can you rebuild or improve an existing site?",
+          answer:
+            "Yes. Website redesign is one of the most requested services. We can take an existing site — WordPress, Wix, Squarespace or other — and rebuild it cleanly with proper performance, SEO, and better conversion. We keep what works and fix what's costing you clients.",
+        },
+        {
+          question: "What guarantees do you offer on delivered projects?",
+          answer:
+            "Every project is delivered with a defined scope, tested on desktop and mobile, and comes with an included correction period after launch. No hidden commitments: if something doesn't match the validated brief, we fix it. The quote is firm — it won't grow without prior agreement.",
         },
       ],
     },
