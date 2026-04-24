@@ -58,5 +58,25 @@ export const assistantKnowledge = {
       answerDe:
         "Der Ablauf ist bewusst einfach: Cadrage, strukturiertes Angebot, Umsetzung, Lieferung und danach Support. Ziel ist Tempo ohne Unklarheit.",
     },
+    {
+      key: "tarifs",
+      keywords: ["tarif", "tarifs", "prix", "price", "cost", "combien", "coût", "budget", "fourchette", "preis", "kosten", "how much"],
+      answerFr:
+        "Les fourchettes orientatives : landing / portfolio 300–600 €, site vitrine 900–1 500 €, site corporate 2 200–4 500 €, application web sur mesure 4 000–12 000 €, app mobile 6 000–20 000 €. Ces chiffres varient selon les fonctionnalités et le niveau de design. Un devis structuré est fourni après cadrage.",
+      answerEn:
+        "Indicative ranges: landing / portfolio € 300–600, showcase site € 900–1,500, corporate site € 2,200–4,500, custom web app € 4,000–12,000, mobile app € 6,000–20,000. These vary based on features and design level. A structured quote is provided after framing.",
+      answerDe:
+        "Richtwerte: Landing / Portfolio € 300–600, Unternehmenswebsite € 900–1.500, Corporate-Site € 2.200–4.500, massgeschneiderte Web-App € 4.000–12.000, Mobile-App € 6.000–20.000. Diese Werte haengen von Funktionsumfang und Design ab. Nach dem Cadrage wird ein strukturiertes Angebot erstellt.",
+    },
+    {
+      key: "glpi",
+      keywords: ["glpi", "ticket", "support", "helpdesk", "itil", "incident", "itsm"],
+      answerFr:
+        "KAH-Digital propose un parcours support connecté à GLPI : formulaire intelligent, qualification automatique, création de ticket, suivi en temps réel. Adapté aux équipes IT et aux entreprises qui gèrent des incidents ou des demandes en volume.",
+      answerEn:
+        "KAH-Digital offers a GLPI-connected support workflow: smart form, automatic qualification, ticket creation, real-time tracking. Suited for IT teams and companies handling incidents or service requests at scale.",
+      answerDe:
+        "KAH-Digital bietet einen GLPI-verbundenen Support-Workflow: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Echtzeit-Tracking. Geeignet fuer IT-Teams und Unternehmen, die Vorfaelle oder Anfragen in grossem Umfang bearbeiten.",
+    },
   ],
 } as const;

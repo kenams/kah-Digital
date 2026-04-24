@@ -48,6 +48,27 @@ NEXT_PUBLIC_CONTACT_PHONE="+33 6 00 00 00 00"
 5. Active MFA dans Supabase (Authentication -> Multi-Factor)
 6. A la premiere connexion, scanne le QR code et valide le code MFA
 
+### Compte admin de test
+Le projet contient un script qui cree ou reinitialise un compte admin Supabase pour les tests.
+Il utilise `SUPABASE_URL` et `SUPABASE_SERVICE_ROLE_KEY` depuis `.env.vercel.production` ou `.env.local`, sans afficher les cles.
+
+```bash
+npm run admin:create-test
+```
+
+Identifiants par defaut crees par le script :
+```
+Email: admin-test@kah-digital.io
+Mot de passe: KahDigital-Test-2026!
+```
+
+Pour utiliser d'autres identifiants :
+```bash
+ADMIN_TEST_EMAIL="admin@ton-domaine.com" ADMIN_TEST_PASSWORD="MotDePasseFort2026!" npm run admin:create-test
+```
+
+Apres les tests, change le mot de passe ou supprime ce compte depuis Supabase Auth si tu ne veux pas le garder.
+
 ### Brancher Resend
 1. Crée un compte (https://resend.com) et valide le domaine d’envoi
 2. Génère une API Key (Production) → `RESEND_API_KEY`

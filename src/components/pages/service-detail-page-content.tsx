@@ -64,7 +64,7 @@ const content = {
           items: [
             {
               title: "Essentiel",
-              price: "À partir de 2'900 CHF",
+              price: "À partir de 2'900 €",
               points: [
                 "Site vitrine 4 à 6 pages",
                 "Design responsive",
@@ -77,7 +77,7 @@ const content = {
             },
             {
               title: "Business",
-              price: "À partir de 5'500 CHF",
+              price: "À partir de 5'500 €",
               points: [
                 "Site corporate plus complet",
                 "Pages services structurées",
@@ -90,7 +90,7 @@ const content = {
             },
             {
               title: "Sur mesure",
-              price: "À partir de 9'500 CHF",
+              price: "À partir de 9'500 €",
               points: [
                 "Direction plus premium",
                 "Parcours conversion travaillé",
@@ -223,19 +223,19 @@ const content = {
           items: [
             {
               title: "Application metier",
-              price: "A partir de 4'500 CHF",
+              price: "A partir de 4'500 €",
               description:
                 "Pour remplacer un process manuel, structurer une activité ou centraliser l'opérationnel.",
             },
             {
               title: "Portail ou espace client",
-              price: "A partir de 7'500 CHF",
+              price: "A partir de 7'500 €",
               description:
                 "Pour donner un accès utile à des documents, états, demandes ou suivis côté client.",
             },
             {
               title: "Application plus complete",
-              price: "A partir de 12'000 CHF",
+              price: "A partir de 12'000 €",
               description:
                 "Pour un produit plus riche avec comptes, données, workflows et intégrations multiples.",
             },
@@ -330,25 +330,25 @@ const content = {
           items: [
             {
               title: "Cadrage du parcours support",
-              price: "A partir de 900 CHF",
+              price: "A partir de 900 €",
               description:
                 "Analyse des demandes frequentes, des points de blocage et des moments ou il faut passer au support humain.",
             },
             {
               title: "Aide virtuelle de premier niveau",
-              price: "A partir de 1'500 CHF",
+              price: "A partir de 1'500 €",
               description:
                 "Mise en place d'un point d'aide qui guide l'utilisateur sur vos contenus, procedures ou cas courants.",
             },
             {
               title: "Connexion vers ticket GLPI",
-              price: "A partir de 1'200 CHF",
+              price: "A partir de 1'200 €",
               description:
                 "Passage propre de l'assistance vers la création de ticket lorsque le besoin doit être repris par l'équipe support.",
             },
             {
               title: "Suivi et ajustements",
-              price: "A partir de 180 CHF/mois",
+              price: "A partir de 180 €/mois",
               description:
                 "Évolution du parcours, des réponses et des points de passage selon le retour terrain.",
             },
@@ -426,19 +426,19 @@ const content = {
           items: [
             {
               title: "Essential",
-              price: "From CHF 2,900",
+              price: "From € 2,900",
               points: ["4 to 6 page showcase site", "Responsive design", "Contact form", "Clean SEO basics", "Launch and handover"],
               cta: "Discuss this format",
             },
             {
               title: "Business",
-              price: "From CHF 5,500",
+              price: "From € 5,500",
               points: ["Full corporate website", "Structured service pages", "CMS or editing area", "Analytics tracking", "Launch support"],
               cta: "Discuss this format",
             },
             {
               title: "Custom",
-              price: "From CHF 9,500",
+              price: "From € 9,500",
               points: ["More premium direction", "Sharper conversion flow", "Connections to your tools", "Custom business features", "Priority launch support"],
               cta: "Discuss this format",
             },
@@ -543,9 +543,9 @@ const content = {
           body:
             "Realistic starting points for web and application projects, to be refined according to scope, users, and integrations.",
           items: [
-            { title: "Business application", price: "From CHF 4,500", description: "To replace manual processes, structure an activity, or centralise operations." },
-            { title: "Portal or client area", price: "From CHF 7,500", description: "To give access to documents, statuses, requests, or follow-up features." },
-            { title: "More complete application", price: "From CHF 12,000", description: "For a richer product with accounts, data, workflows, and multiple integrations." },
+            { title: "Business application", price: "From € 4,500", description: "To replace manual processes, structure an activity, or centralise operations." },
+            { title: "Portal or client area", price: "From € 7,500", description: "To give access to documents, statuses, requests, or follow-up features." },
+            { title: "More complete application", price: "From € 12,000", description: "For a richer product with accounts, data, workflows, and multiple integrations." },
           ],
         },
       ],
@@ -618,10 +618,10 @@ const content = {
           body: "From scoping to ticket handoff, without overselling the promise.",
           columns: 4,
           items: [
-            { title: "Support journey scoping", price: "From CHF 900", description: "Analysis of frequent requests, blocking points, and handoff moments to human support." },
-            { title: "First-level virtual help", price: "From CHF 1,500", description: "A useful assistance entry point connected to your content, procedures, or frequent questions." },
-            { title: "GLPI ticket handoff", price: "From CHF 1,200", description: "Clean transition from guided support to ticket creation when the support team must take over." },
-            { title: "Follow-up and tuning", price: "From CHF 180 / month", description: "Evolution of the journey, responses, and handoff points based on field feedback." },
+            { title: "Support journey scoping", price: "From € 900", description: "Analysis of frequent requests, blocking points, and handoff moments to human support." },
+            { title: "First-level virtual help", price: "From € 1,500", description: "A useful assistance entry point connected to your content, procedures, or frequent questions." },
+            { title: "GLPI ticket handoff", price: "From € 1,200", description: "Clean transition from guided support to ticket creation when the support team must take over." },
+            { title: "Follow-up and tuning", price: "From € 180 / month", description: "Evolution of the journey, responses, and handoff points based on field feedback." },
           ],
         },
         {
@@ -683,19 +683,19 @@ const content = {
           items: [
             {
               title: "Essential",
-              price: "Ab CHF 2'900",
+              price: "Ab € 2'900",
               points: ["4 bis 6 Seiten", "Responsives Design", "Kontaktformular", "Saubere SEO-Basis", "Launch und Uebergabe"],
               cta: "Dieses Format anfragen",
             },
             {
               title: "Business",
-              price: "Ab CHF 5'500",
+              price: "Ab € 5'500",
               points: ["Corporate Website", "Strukturierte Leistungsseiten", "CMS oder Bearbeitungsbereich", "Analytics", "Launch-Begleitung"],
               cta: "Dieses Format anfragen",
             },
             {
               title: "Custom",
-              price: "Ab CHF 9'500",
+              price: "Ab € 9'500",
               points: ["Staerkere Premium-Richtung", "Schaerferer Conversion-Flow", "Anbindung an eure Tools", "Individuelle Funktionen", "Priorisierter Launch"],
               cta: "Dieses Format anfragen",
             },
@@ -785,9 +785,9 @@ const content = {
           title: "Budgetrahmen",
           body: "Realistische Startpunkte fuer Web- und Anwendungsprojekte - je nach Scope, Nutzern und Integrationen.",
           items: [
-            { title: "Business-Anwendung", price: "Ab CHF 4'500", description: "Um manuelle Prozesse zu ersetzen, eine Aktivitaet zu strukturieren oder Operationen zu zentralisieren." },
-            { title: "Portal oder Kundenbereich", price: "Ab CHF 7'500", description: "Fuer Dokumente, Status, Anfragen oder Follow-up-Funktionen." },
-            { title: "Umfassendere Anwendung", price: "Ab CHF 12'000", description: "Fuer ein staerkeres Produkt mit Accounts, Daten, Workflows und mehreren Integrationen." },
+            { title: "Business-Anwendung", price: "Ab € 4'500", description: "Um manuelle Prozesse zu ersetzen, eine Aktivitaet zu strukturieren oder Operationen zu zentralisieren." },
+            { title: "Portal oder Kundenbereich", price: "Ab € 7'500", description: "Fuer Dokumente, Status, Anfragen oder Follow-up-Funktionen." },
+            { title: "Umfassendere Anwendung", price: "Ab € 12'000", description: "Fuer ein staerkeres Produkt mit Accounts, Daten, Workflows und mehreren Integrationen." },
           ],
         },
       ],
@@ -859,10 +859,10 @@ const content = {
           body: "Von Scoping bis Ticket-Uebergabe, ohne die Leistung zu ueberverkaufen.",
           columns: 4,
           items: [
-            { title: "Support-Journey Scoping", price: "Ab CHF 900", description: "Analyse haeufiger Anfragen, Blocker und der Punkte, an denen menschlicher Support uebernehmen soll." },
-            { title: "Virtuelle Ersthilfe", price: "Ab CHF 1'500", description: "Ein nuetzlicher Hilfepunkt, verbunden mit euren Inhalten, Prozessen oder haeufigen Fragen." },
-            { title: "GLPI Ticket-Uebergabe", price: "Ab CHF 1'200", description: "Sauberer Uebergang von gefuehrter Hilfe zur Ticket-Erstellung, wenn das Support-Team uebernehmen muss." },
-            { title: "Follow-up und Feintuning", price: "Ab CHF 180 / Monat", description: "Weiterentwicklung von Antworten, Journey und Uebergabepunkten basierend auf echtem Feedback." },
+            { title: "Support-Journey Scoping", price: "Ab € 900", description: "Analyse haeufiger Anfragen, Blocker und der Punkte, an denen menschlicher Support uebernehmen soll." },
+            { title: "Virtuelle Ersthilfe", price: "Ab € 1'500", description: "Ein nuetzlicher Hilfepunkt, verbunden mit euren Inhalten, Prozessen oder haeufigen Fragen." },
+            { title: "GLPI Ticket-Uebergabe", price: "Ab € 1'200", description: "Sauberer Uebergang von gefuehrter Hilfe zur Ticket-Erstellung, wenn das Support-Team uebernehmen muss." },
+            { title: "Follow-up und Feintuning", price: "Ab € 180 / Monat", description: "Weiterentwicklung von Antworten, Journey und Uebergabepunkten basierend auf echtem Feedback." },
           ],
         },
         {

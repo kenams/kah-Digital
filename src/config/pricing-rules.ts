@@ -2,7 +2,7 @@ export const pricingRules = {
   dailyRate: {
     min: 600,
     max: 800,
-    currency: "CHF",
+    currency: "EUR",
   },
   minimums: {
     showcase_website: 1200,

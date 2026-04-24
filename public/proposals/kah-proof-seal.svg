@@ -1,0 +1,19 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="120" cy="120" r="110" fill="#0F1229" stroke="#D6B36A" stroke-width="4"/>
+  <circle cx="120" cy="120" r="88" fill="none" stroke="#D6B36A" stroke-opacity="0.42" stroke-width="2" stroke-dasharray="6 8"/>
+  <path d="M72 64H94V106L138 64H164L116 110L168 176H140L94 128V176H72V64Z" fill="url(#gold)"/>
+  <path d="M120 28C149.784 28 177.565 39.7223 196 60.0573" stroke="#D6B36A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M46 82C55.1157 59.6348 72.4477 41.2485 94 31.1633" stroke="#D6B36A" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round"/>
+  <path d="M42 160C53.0123 186.351 74.6322 206.004 101 214.979" stroke="#D6B36A" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round"/>
+  <path d="M143 214C169.593 207.857 191.801 190.085 203.78 165.44" stroke="#D6B36A" stroke-width="3" stroke-linecap="round"/>
+  <text x="120" y="197" text-anchor="middle" fill="#F6E1B5" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3">KAH DIGITAL</text>
+  <text x="120" y="28" text-anchor="middle" fill="#F6E1B5" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="4">PROOF OF ORIGIN</text>
+  <defs>
+    <linearGradient id="gold" x1="72" y1="64" x2="164" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7EDD6"/>
+      <stop offset="0.34" stop-color="#E8CB8B"/>
+      <stop offset="0.68" stop-color="#C6934E"/>
+      <stop offset="1" stop-color="#8E632F"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -40,17 +40,19 @@ const widgetCopy = {
     title: "Assistant projet & support",
     subtitle: "Qualification rapide, résumé structuré, reprise humaine si nécessaire.",
     introTitle: "Avant de commencer",
-    introBody: "Laisse tes coordonnées pour que la conversation soit exploitable et qu&apos;on puisse te recontacter proprement si besoin.",
+    introBody: "Prénom, nom et email suffisent pour démarrer. Tu peux compléter les autres infos en cours de conversation.",
     firstName: "Prénom *",
     lastName: "Nom *",
-    phone: "Téléphone *",
-    company: "Société *",
+    phone: "Téléphone (optionnel)",
+    company: "Société (optionnel)",
     firstNamePlaceholder: "Ex : Alex",
     lastNamePlaceholder: "Ex : Martin",
     phonePlaceholder: "Ex : +41 79 000 00 00",
     companyPlaceholder: "Ex : Studio Nova",
     startChat: "Commencer le chat",
-    identityRequired: "Ajoute ton prénom, ton nom, ton email, ton téléphone et ta société pour commencer.",
+    identityRequired: "Ajoute ton prénom, ton nom et ton email pour commencer.",
+    welcome: "Bonjour ! Dis-moi ce que tu veux créer ou résoudre — je qualifie ton besoin et prépare un résumé exploitable.",
+    suggestions: ["Créer un site web", "Application sur mesure", "Support / Bug GLPI", "Demander un devis"],
     placeholder: "Décris ton besoin, ton projet ou ton problème...",
     send: "Envoyer",
     progress: "Progression",
@@ -79,17 +81,19 @@ const widgetCopy = {
     title: "Project & support assistant",
     subtitle: "Fast qualification, structured summary, human handoff when needed.",
     introTitle: "Before we start",
-    introBody: "Leave your contact details so the conversation stays actionable and we can follow up cleanly if needed.",
+    introBody: "First name, last name and email are enough to start. You can add other details during the conversation.",
     firstName: "First name *",
     lastName: "Last name *",
-    phone: "Phone *",
-    company: "Company *",
+    phone: "Phone (optional)",
+    company: "Company (optional)",
     firstNamePlaceholder: "e.g. Alex",
     lastNamePlaceholder: "e.g. Martin",
     phonePlaceholder: "e.g. +41 79 000 00 00",
     companyPlaceholder: "e.g. Studio Nova",
     startChat: "Start chat",
-    identityRequired: "Add your first name, last name, email, phone, and company to start.",
+    identityRequired: "Add your first name, last name and email to start.",
+    welcome: "Hello! Tell me what you want to build or solve — I'll qualify your need and prepare a structured summary.",
+    suggestions: ["Build a website", "Custom application", "GLPI support", "Get a quote"],
     placeholder: "Describe your need, project, or issue...",
     send: "Send",
     progress: "Progress",
@@ -118,17 +122,19 @@ const widgetCopy = {
     title: "Projekt- & Support-Assistent",
     subtitle: "Schnelle Qualifizierung, strukturierte Zusammenfassung, menschliche Uebergabe bei Bedarf.",
     introTitle: "Bevor es losgeht",
-    introBody: "Hinterlasse deine Kontaktdaten, damit die Unterhaltung nutzbar bleibt und wir sauber nachfassen koennen, falls noetig.",
+    introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben koennen waehrend der Unterhaltung ergaenzt werden.",
     firstName: "Vorname *",
     lastName: "Nachname *",
-    phone: "Telefon *",
-    company: "Unternehmen *",
+    phone: "Telefon (optional)",
+    company: "Unternehmen (optional)",
     firstNamePlaceholder: "z. B. Alex",
     lastNamePlaceholder: "z. B. Martin",
     phonePlaceholder: "z. B. +41 79 000 00 00",
     companyPlaceholder: "z. B. Studio Nova",
     startChat: "Chat starten",
-    identityRequired: "Bitte Vorname, Nachname, E-Mail, Telefon und Unternehmen angeben, um zu starten.",
+    identityRequired: "Bitte Vorname, Nachname und E-Mail angeben, um zu starten.",
+    welcome: "Hallo! Sag mir, was du erstellen oder loesen moechtest — ich qualifiziere deinen Bedarf und bereite eine strukturierte Zusammenfassung vor.",
+    suggestions: ["Website erstellen", "Individuelle App", "GLPI-Support", "Angebot anfordern"],
     placeholder: "Beschreibe dein Anliegen, Projekt oder Problem...",
     send: "Senden",
     progress: "Fortschritt",
@@ -391,6 +397,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const [pendingUserMessage, setPendingUserMessage] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const transcript = useMemo(() => session?.transcript ?? [], [session?.transcript]);
   const hasConversation = transcript.length > 0 || Boolean(summary) || Boolean(pendingUserMessage) || Boolean(streamingReply);
   const fullName = joinName(firstName, lastName);
@@ -465,17 +472,86 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     };
   }, [copy.sessionExpired, lastActivityAt, resetConversation]);
 
+  useEffect(() => {
+    if (hasStartedChat && open) {
+      setTimeout(() => inputRef.current?.focus(), 60);
+    }
+  }, [hasStartedChat, open]);
+
+  const sendQuickReply = (text: string) => {
+    if (!hasStartedChat || messagePending || isStreaming) return;
+    setLastActivityAt(Date.now());
+    setMessage("");
+    setStatusMessage("");
+    setPendingUserMessage(text);
+    setStreamingReply("");
+    setIsStreaming(true);
+    startMessageTransition(async () => {
+      try {
+        const result = await streamAssistantMessage({
+          message: text,
+          locale,
+          session: session ? assistantSessionSchema.parse(session) : undefined,
+          onText(delta) { setStreamingReply((c) => `${c}${delta}`); },
+        });
+        setSession(result.session);
+        setSummary(result.summary);
+        setProgress(result.progress);
+        setLastActivityAt(Date.now());
+        if (result.session.collected.email) setEmail(result.session.collected.email);
+        if (result.session.collected.name) {
+          const n = splitStoredName(result.session.collected.name);
+          setFirstName(n.firstName);
+          setLastName(n.lastName);
+        }
+        if (result.session.collected.phone) setPhone(result.session.collected.phone);
+        if (result.session.collected.company) setCompany(result.session.collected.company);
+      } catch (error) {
+        setStatusMessage(error instanceof Error ? error.message : "Erreur reseau");
+      } finally {
+        setPendingUserMessage("");
+        setStreamingReply("");
+        setIsStreaming(false);
+      }
+    });
+  };
+
   const canSend = message.trim().length > 0 && !messagePending && !isStreaming;
   const canTriggerActions = Boolean(summary) && consent && !actionPending;
   const canReset = !messagePending && !actionPending && !isStreaming;
   const canStartChat =
     fullName.length > 0 &&
     email.trim().length > 0 &&
-    phone.trim().length > 0 &&
-    company.trim().length > 0 &&
     !messagePending &&
     !actionPending &&
     !isStreaming;
+
+  const dynamicSuggestions = useMemo<string[]>(() => {
+    if (!hasStartedChat || transcript.length === 0 || summary || isStreaming || messagePending) return [];
+    const intent = session?.intent;
+    if (intent === "project_quote") {
+      return locale === "fr"
+        ? ["Site vitrine", "Application web", "App mobile", "Tableau de bord"]
+        : locale === "en"
+          ? ["Showcase site", "Web app", "Mobile app", "Dashboard"]
+          : ["Unternehmenswebsite", "Web-App", "Mobile App", "Dashboard"];
+    }
+    if (intent === "support_glpi") {
+      return locale === "fr"
+        ? ["Incident critique", "Demande de service", "Accès bloqué", "Autre problème"]
+        : locale === "en"
+          ? ["Critical incident", "Service request", "Blocked access", "Other issue"]
+          : ["Kritischer Vorfall", "Serviceanfrage", "Gesperrter Zugang", "Anderes Problem"];
+    }
+    if (intent === "faq") {
+      return locale === "fr"
+        ? ["Lancer un projet", "Voir les tarifs", "Parler à quelqu'un"]
+        : locale === "en"
+          ? ["Start a project", "See pricing", "Talk to someone"]
+          : ["Projekt starten", "Preise sehen", "Mit jemandem sprechen"];
+    }
+    return [];
+  }, [hasStartedChat, transcript.length, summary, isStreaming, messagePending, session?.intent, locale]);
 
   const summaryCards = useMemo(() => {
     if (!summary) return [];
@@ -484,7 +560,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         label: copy.budget,
         value:
           summary.budget_range.max > 0
-            ? `${formatBudgetNumber(summary.budget_range.min, locale)} - ${formatBudgetNumber(summary.budget_range.max, locale)}`
+            ? `€ ${formatBudgetNumber(summary.budget_range.min, locale)} – ${formatBudgetNumber(summary.budget_range.max, locale)}`
             : "n/a",
       },
       {
@@ -720,9 +796,25 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                     {copy.startChat}
                   </button>
                 </div>
-              ) : transcript.length === 0 ? (
-                <div className="rounded-3xl border border-dashed border-white/12 bg-white/[0.03] p-4 text-sm text-white/65">
-                  {copy.helper}
+              ) : transcript.length === 0 && !pendingUserMessage && !isStreaming ? (
+                <div className="space-y-3">
+                  <div className="pr-8">
+                    <div className="rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86">
+                      {copy.welcome}
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2 pr-8">
+                    {copy.suggestions.map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => sendQuickReply(s)}
+                        className="rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/68 transition hover:border-[#d6b36a]/50 hover:text-white"
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               ) : null}
 
@@ -751,8 +843,33 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
               {hasStartedChat && isStreaming ? (
                 <div className="pr-8">
                   <div className="rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86">
-                    {streamingReply || "..."}
+                    {streamingReply || (
+                      <span className="flex items-center gap-1">
+                        {[0, 1, 2].map((i) => (
+                          <span
+                            key={i}
+                            className="inline-block h-1.5 w-1.5 rounded-full bg-white/50 animate-bounce"
+                            style={{ animationDelay: `${i * 0.18}s`, animationDuration: "0.9s" }}
+                          />
+                        ))}
+                      </span>
+                    )}
                   </div>
+                </div>
+              ) : null}
+
+              {dynamicSuggestions.length > 0 ? (
+                <div className="flex flex-wrap gap-2 pr-8">
+                  {dynamicSuggestions.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => sendQuickReply(s)}
+                      className="rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/68 transition hover:border-[#d6b36a]/50 hover:text-white"
+                    >
+                      {s}
+                    </button>
+                  ))}
                 </div>
               ) : null}
 
@@ -868,6 +985,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
             <div className="border-t border-white/8 p-4">
               <div className="flex gap-2">
                 <input
+                  ref={inputRef}
                   type="text"
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}

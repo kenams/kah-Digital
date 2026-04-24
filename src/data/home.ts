@@ -120,7 +120,7 @@ const stats = [
 const fastDeals = [
   {
     title: "Landing conversion",
-    budget: "1'900 CHF",
+    budget: "1'900 €",
     timeline: "3 semaines (incl. QA)",
     stack: "Next.js, SEO, Email",
     deliverable: "Page unique + formulaire + calendrier",
@@ -128,7 +128,7 @@ const fastDeals = [
   },
   {
     title: "Portail membres privé",
-    budget: "5'900 CHF",
+    budget: "5'900 €",
     timeline: "5 semaines",
     stack: "Supabase Auth, Stripe, Dashboard",
     deliverable: "Espace login + contenus + paiements récurrents",
@@ -136,7 +136,7 @@ const fastDeals = [
   },
   {
     title: "Devis interactif + dossier PDF",
-    budget: "7'900 CHF",
+    budget: "7'900 €",
     timeline: "6 semaines",
     stack: "Next.js, PDF, CRM",
     deliverable: "Simulateur de devis + dossier PDF",
@@ -145,7 +145,7 @@ const fastDeals = [
 ];
 
 const closingHighlights = [
-  { label: "Budget indicatif", value: "2'000 CHF - 12'000 CHF" },
+  { label: "Budget indicatif", value: "2'000 € - 12'000 €" },
   { label: "Sprint moyen", value: "4 a 6 semaines" },
   { label: "Réponse sous 24h", value: "-24h" },
 ];
@@ -175,7 +175,7 @@ export const aiBusinessGuide = [
   {
     title: "Automatisation relation client",
     description: "Réponses, devis et relances automatiques sans perdre le ton de la marque.",
-    pricing: "Budget indicatif: 2'900 - 6'900 CHF",
+    pricing: "Budget indicatif: 2'900 - 6'900 €",
     timeline: "Mise en place: 2-4 semaines",
     tools: ["ChatGPT", "Make/Zapier", "CRM"],
     image:
@@ -184,7 +184,7 @@ export const aiBusinessGuide = [
   {
     title: "Chatbot métier & support",
     description: "Assistant entraîné sur vos contenus pour répondre 24/7 et filtrer les demandes.",
-    pricing: "Budget indicatif: 3'500 - 9'000 CHF",
+    pricing: "Budget indicatif: 3'500 - 9'000 €",
     timeline: "Mise en place: 3-5 semaines",
     tools: ["Base de connaissance", "Widget web", "Analytics"],
     image:
@@ -193,7 +193,7 @@ export const aiBusinessGuide = [
   {
     title: "Qualification & lead scoring",
     description: "Formulaires intelligents, scoring et routage des leads vers l'équipe.",
-    pricing: "Budget indicatif: 2'400 - 5'900 CHF",
+    pricing: "Budget indicatif: 2'400 - 5'900 €",
     timeline: "Mise en place: 2-3 semaines",
     tools: ["Emailing", "CRM", "Scoring IA"],
     image:
@@ -202,7 +202,7 @@ export const aiBusinessGuide = [
   {
     title: "Contenu & assets IA",
     description: "Templates, contenus et scripts alignés à votre marque pour gagner du temps.",
-    pricing: "Budget indicatif: 1'800 - 4'500 CHF",
+    pricing: "Budget indicatif: 1'800 - 4'500 €",
     timeline: "Mise en place: 1-2 semaines",
     tools: ["Notion", "Templates", "Brand kit"],
     image:
@@ -211,7 +211,7 @@ export const aiBusinessGuide = [
   {
     title: "Micro-outil IA sur-mesure",
     description: "Outil interne : résumé, extraction, tri ou aide à la décision.",
-    pricing: "Budget indicatif: 4'900 - 12'000 CHF",
+    pricing: "Budget indicatif: 4'900 - 12'000 €",
     timeline: "MVP: 4-6 semaines",
     tools: ["Next.js", "API IA", "Sécurité"],
     image:
