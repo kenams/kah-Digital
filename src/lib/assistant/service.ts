@@ -138,27 +138,27 @@ const localeCopy = {
   },
   de: {
     summaryReady: "Die Basis ist solide. Ich kann daraus jetzt eine brauchbare Zusammenfassung machen.",
-    humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und uebergebe an einen KAH-Digital Experten.",
+    humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und übergebe an einen KAH-Digital Experten.",
     startProject: "Wir grenzen das jetzt sauber ein.",
     startSupport: "Wir qualifizieren das jetzt schnell und sauber.",
-    nextStepQuote: "Strukturiertes Angebot mit menschlicher Rueckmeldung empfohlen.",
-    nextStepSupport: "Support-Zusammenfassung bereit fuer Ticket oder menschliche Uebernahme.",
+    nextStepQuote: "Strukturiertes Angebot mit menschlicher Rückmeldung empfohlen.",
+    nextStepSupport: "Support-Zusammenfassung bereit für Ticket oder menschliche Übernahme.",
     nextStepInfo: "Weiterleitung zum passenden KAH-Digital Service.",
     projectFlowLabel: "Projektqualifizierung",
     supportFlowLabel: "Supportqualifizierung",
     generalFlowLabel: "Orientierung",
-    faqFollowUp: "Wenn du eine belastbare Spanne oder den naechsten klaren Schritt willst, koennen wir jetzt sauber eingrenzen.",
+    faqFollowUp: "Wenn du eine belastbare Spanne oder den nächsten klaren Schritt willst, können wir jetzt sauber eingrenzen.",
     invalidConsent: "Ich brauche deine Zustimmung, bevor ich die Zusammenfassung speichere oder versende.",
     summarySent: "Die Zusammenfassung wurde per E-Mail versendet.",
-    leadSent: "Die Zusammenfassung wurde an KAH-Digital fuer eine menschliche Rueckmeldung weitergeleitet.",
-    glpiCreated: "Das Support-Ticket wurde vorbereitet und uebermittelt.",
+    leadSent: "Die Zusammenfassung wurde an KAH-Digital für eine menschliche Rückmeldung weitergeleitet.",
+    glpiCreated: "Das Support-Ticket wurde vorbereitet und übermittelt.",
     glpiFallback: "GLPI ist hier nicht konfiguriert. Ich leite die Zusammenfassung stattdessen an einen Menschen weiter.",
     fallbackAnswer:
-      "Sag mir einfach, ob es um eine Website, eine Anwendung, Support, GLPI oder um erstes Cadrage geht. Danach stelle ich nur die wirklich noetigen Fragen.",
+      "Sag mir einfach, ob es um eine Website, eine Anwendung, Support, GLPI oder um erstes Cadrage geht. Danach stelle ich nur die wirklich nötigen Fragen.",
     recadrageBudget:
       "Ich bin lieber direkt: Ohne klaren Umfang kann ich eine Spanne nennen, aber keinen festen Preis.",
-    recadrageTimeline: "Ich kann die Machbarkeit pruefen, aber keinen festen Termin ohne Cadrage versprechen.",
-    recadrageMvp: "Damit das nicht unrealistisch wird, muessen zuerst die Pflichtfunktionen festgelegt werden.",
+    recadrageTimeline: "Ich kann die Machbarkeit prüfen, aber keinen festen Termin ohne Cadrage versprechen.",
+    recadrageMvp: "Damit das nicht unrealistisch wird, müssen zuerst die Pflichtfunktionen festgelegt werden.",
     recapIntro: "Das habe ich verstanden:",
     faqAnswers: {
       delai: assistantKnowledge.faq[0].answerDe,
@@ -538,7 +538,7 @@ function formatProjectTypeLabel(projectType: AssistantProjectType, locale: Local
       web_app: "Web-Anwendung",
       mobile_app: "Mobile-App",
       dashboard_portal: "Dashboard oder Portal",
-      glpi_assistant: "GLPI-nahe Loesung",
+      glpi_assistant: "GLPI-nahe Lösung",
       unknown: "Digitalprojekt",
     },
   } as const;
@@ -574,7 +574,7 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
       return locale === "en"
         ? "To answer seriously, I need the minimum useful scope: roughly how many pages, and do you need lead capture, SEO, multilingual content, or a premium visual direction?"
         : locale === "de"
-          ? "Damit ich serioes antworten kann, brauche ich den minimal noetigen Scope: ungefaehr wie viele Seiten, und brauchst du Lead-Erfassung, SEO, Mehrsprachigkeit oder eine hochwertige visuelle Richtung?"
+          ? "Damit ich seriös antworten kann, brauche ich den minimal nötigen Scope: ungefähr wie viele Seiten, und brauchst du Lead-Erfassung, SEO, Mehrsprachigkeit oder eine hochwertige visuelle Richtung?"
           : "Pour te repondre serieusement, il me faut le minimum utile : combien de pages environ, et est-ce qu'il faut capture de contacts, SEO, multilingue ou une direction visuelle premium ?";
     }
 
@@ -590,7 +590,7 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
       return locale === "en"
         ? "For version 1 around GLPI, what must exist from day one: user guidance, request qualification, automatic ticket creation, knowledge base, or dashboard?"
         : locale === "de"
-          ? "Fuer eine Version 1 autour de GLPI: was ist zwingend noetig - Nutzerhilfe, Qualifizierung, automatische Ticketerstellung, Wissensbasis oder Dashboard?"
+          ? "Für eine Version 1 rund um GLPI: was ist zwingend nötig - Nutzerhilfe, Qualifizierung, automatische Ticketerstellung, Wissensbasis oder Dashboard?"
           : "Pour une version 1 autour de GLPI, qu'est-ce qui doit exister des le depart : aide utilisateur, qualification des demandes, creation automatique de ticket, base de connaissance ou dashboard ?";
     }
   }
@@ -600,7 +600,7 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
       return locale === "en"
         ? `${copy.recadrageTimeline} What is the hard deadline, and what is strictly required for launch?`
         : locale === "de"
-          ? `${copy.recadrageTimeline} Was ist die vraie deadline, und was ist fuer den Start wirklich unverzichtbar?`
+          ? `${copy.recadrageTimeline} Was ist die echte Deadline, und was ist für den Start wirklich unverzichtbar?`
           : `${copy.recadrageTimeline} Quelle est la vraie date limite, et qu'est-ce qui est strictement indispensable au lancement ?`;
     }
     return copy.questions.timeline;
@@ -632,7 +632,7 @@ function buildDiscoveryReply(message: string, locale: Locale) {
     return locale === "en"
       ? "Yes, but for a usable quote I need the minimum useful scope: project type, objective, main features, and target timeline. Start with the project type."
       : locale === "de"
-        ? "Ja, aber fuer ein brauchbares Angebot brauche ich den minimal noetigen Rahmen: Projekttyp, Ziel, Hauptfunktionen und Zieltermin. Starte mit dem Projekttyp."
+        ? "Ja, aber für ein brauchbares Angebot brauche ich den minimal nötigen Rahmen: Projekttyp, Ziel, Hauptfunktionen und Zieltermin. Starte mit dem Projekttyp."
         : "Oui, mais pour qu'un devis soit exploitable, il me faut le minimum utile : type de projet, objectif, fonctionnalites principales et delai vise. Commence par le type de projet.";
   }
 
@@ -724,7 +724,7 @@ function buildFirstReply(session: AssistantSession, locale: Locale, message: str
         return locale === "en"
           ? "Sure. For a quote to be useful I need the basics: project type, goal, main features, and timeline. What kind of project is it?"
           : locale === "de"
-            ? "Klar. Fuer ein brauchbares Angebot brauche ich das Wesentliche: Projekttyp, Ziel, Hauptfunktionen und Zeitrahmen. Welche Art Projekt ist das?"
+            ? "Klar. Für ein brauchbares Angebot brauche ich das Wesentliche: Projekttyp, Ziel, Hauptfunktionen und Zeitrahmen. Welche Art Projekt ist das?"
             : "Bien sûr. Pour qu'un devis soit exploitable j'ai besoin des bases : type de projet, objectif, fonctionnalités clés et délai. C'est quel type de projet ?";
       }
       if (/(digitaliser|digitalize|digitalisieren)/.test(text)) {
@@ -787,9 +787,9 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
     const budgetStr = budget ? ` Budgetspanne: ${budget} €.` : "";
     const timelineStr = ` Zeitrahmen: ${timeline}.`;
     const next = humanNeeded
-      ? " Beim diesem Umfang macht eine menschliche Rueckmeldung Sinn, bevor wir weitermachen."
-      : " Die Zusammenfassung ist bereit — du kannst sie versenden oder eine Rueckmeldung anfordern.";
-    return `Das habe ich: ${type}, Komplexitaet ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
+      ? " Bei diesem Umfang macht eine menschliche Rückmeldung Sinn, bevor wir weitermachen."
+      : " Die Zusammenfassung ist bereit — du kannst sie versenden oder eine Rückmeldung anfordern.";
+    return `Das habe ich: ${type}, Komplexität ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
   }
 
   const budgetStr = budget ? ` Fourchette budget : ${budget} €.` : "";
@@ -1227,7 +1227,7 @@ export async function sendEmail(input: {
       input.locale === "en"
         ? "A KAH-Digital expert can take over from this summary."
         : input.locale === "de"
-          ? "Ein KAH-Digital Experte kann auf Basis dieser Zusammenfassung uebernehmen."
+          ? "Ein KAH-Digital Experte kann auf Basis dieser Zusammenfassung übernehmen."
           : "Un expert KAH-Digital peut reprendre à partir de ce résumé.",
   });
 

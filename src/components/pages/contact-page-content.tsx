@@ -66,11 +66,11 @@ const copy = {
   },
   de: {
     heroTitle: "Kontakt",
-    heroBody: "Frage, Bedarf oder Projekt? Schnelle Rueckmeldung und klares Briefing.",
+    heroBody: "Frage, Bedarf oder Projekt? Schnelle Rückmeldung und klares Briefing.",
     direct: "Direkter Kontakt",
-    directTitle: "Lass uns konkret ueber dein Vorhaben sprechen.",
+    directTitle: "Lass uns konkret über dein Vorhaben sprechen.",
     directBody:
-      "Wir begleiten frankophone, englischsprachige und internationale Kunden mit einer einfachen Organisation, gutem Tempo und ohne unnoetige Reibung.",
+      "Wir begleiten frankophone, englischsprachige und internationale Kunden mit einer einfachen Organisation, gutem Tempo und ohne unnötige Reibung.",
     canSend: "Was du schicken kannst",
     canSendItems: [
       "Projektanfrage oder schnelles Briefing",
@@ -78,12 +78,12 @@ const copy = {
       "Support, Wartung oder punktuelle technische Anfrage",
     ],
     approach: "Vorgehen",
-    approachTitle: "Ein einfacher Kontakt, dann ein klarer naechster Schritt.",
-    approachBody: "Jeder Austausch soll helfen, schnell weiterzukommen, ohne Jargon oder unnoetige Schleifen.",
+    approachTitle: "Ein einfacher Kontakt, dann ein klarer nächster Schritt.",
+    approachBody: "Jeder Austausch soll helfen, schnell weiterzukommen, ohne Jargon oder unnötige Schleifen.",
     cards: [
-      { eyebrow: "Schnell", title: "Antwort innerhalb von 24h", body: "Ein erster konkreter Ruecklauf, um den Austausch ohne Leerlauf zu starten." },
-      { eyebrow: "Klar", title: "Nuetzliches Briefing", body: "Ein sauber verstandener Bedarf, bevor Angebot, Offerte oder Plan geschrieben werden." },
-      { eyebrow: "Direkt", title: "Menschlicher Austausch", body: "Einfache, nutzbare Nachrichten mit Fokus auf den naechsten sinnvollen Schritt." },
+      { eyebrow: "Schnell", title: "Antwort innerhalb von 24h", body: "Ein erster konkreter Rücklauf, um den Austausch ohne Leerlauf zu starten." },
+      { eyebrow: "Klar", title: "Nützliches Briefing", body: "Ein sauber verstandener Bedarf, bevor Angebot, Offerte oder Plan geschrieben werden." },
+      { eyebrow: "Direkt", title: "Menschlicher Austausch", body: "Einfache, nutzbare Nachrichten mit Fokus auf den nächsten sinnvollen Schritt." },
     ],
     contactCards: [
       { icon: FiMail, title: "E-Mail", value: companyConfig.email },

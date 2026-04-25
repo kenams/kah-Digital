@@ -49,11 +49,11 @@ const copy = {
     eyebrow: "Referenz",
     title: "KAH Prod, ein KAH-Digital Projekt mit klarem Markencharakter.",
     intro:
-      "Es ging nicht um eine einfache Projektkarte, sondern um eine echte Markenpraesenz: ein klares Universum, eine saubere visuelle Richtung und eine Website, die Label, Artists, Releases und Business-Kontakte hochwertig praesentiert.",
+      "Es ging nicht um eine einfache Projektkarte, sondern um eine echte Markenpräsenz: ein klares Universum, eine saubere visuelle Richtung und eine Website, die Label, Artists, Releases und Business-Kontakte hochwertig präsentiert.",
     primaryCta: "Website ansehen",
     secondaryCta: "Projekt besprechen",
     previewLabel: "Live-Vorschau",
-    previewKicker: "Art Direction / unabhaengiges Label",
+    previewKicker: "Art Direction / unabhängiges Label",
     secondaryPreviewLabel: "Strukturierte Navigation",
     metricsEyebrow: "Projektmarker",
     detailOneTitle: "Was die Website sofort klar macht",
@@ -62,7 +62,7 @@ const copy = {
     detailOneBody:
       "Ein klareres Musikuniversum mit direkter Navigation zwischen Label, Artists, Releases, Clips, Events, Netzwerken und Business-Kontakten.",
     detailTwoBody:
-      "Eine deutlich wertigere Praesenz mit staerkerer visueller Hierarchie und einer saubereren Basis fuer das Markenbild.",
+      "Eine deutlich wertigere Präsenz mit stärkerer visueller Hierarchie und einer saubereren Basis für das Markenbild.",
   },
 } as const;
 
@@ -81,9 +81,9 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
         }
       : locale === "de"
         ? {
-            badge: "Unabhaengiges Label - Toulouse / Frankreich",
+            badge: "Unabhängiges Label - Toulouse / Frankreich",
             lead:
-              "Premium-Produktion, cineastische Bildsprache und eine massgeschneiderte digitale Ausrichtung fuer ambitionierte frankophone Artists.",
+              "Premium-Produktion, cineastische Bildsprache und eine maßgeschneiderte digitale Ausrichtung für ambitionierte frankophone Artists.",
             primary: "Artists entdecken",
             secondary: "Releases ansehen",
           }

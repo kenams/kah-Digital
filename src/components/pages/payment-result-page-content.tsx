@@ -45,16 +45,16 @@ const copy = {
   },
   de: {
     success: {
-      eyebrow: "Zahlung bestaetigt",
+      eyebrow: "Zahlung bestätigt",
       title: "Die Zahlung wurde registriert",
-      body: "Danke. Die Zahlung wurde an KAH-Digital uebermittelt. Wir melden uns rasch mit den naechsten Schritten oder der Rechnungsbestaetigung.",
+      body: "Danke. Die Zahlung wurde an KAH-Digital übermittelt. Wir melden uns rasch mit den nächsten Schritten oder der Rechnungsbestätigung.",
       primary: "Zur Startseite",
       secondary: "Kontakt aufnehmen",
     },
     cancel: {
       eyebrow: "Zahlung unterbrochen",
       title: "Die Zahlung wurde nicht abgeschlossen",
-      body: "Es wurde keine endgueltige Belastung bestaetigt. Du kannst spaeter mit demselben Link fortfahren oder uns fuer eine andere Zahlungsart kontaktieren.",
+      body: "Es wurde keine endgültige Belastung bestätigt. Du kannst später mit demselben Link fortfahren oder uns für eine andere Zahlungsart kontaktieren.",
       primary: "Zur Startseite",
       secondary: "KAH-Digital kontaktieren",
     },

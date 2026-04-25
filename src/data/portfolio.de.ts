@@ -5,17 +5,17 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Musiklabel / Produktion",
-    tagline: "Eine KAH-Digital Realisierung fuer ein unabhaengiges Label mit Fokus auf Bild, Artists und Releases.",
+    tagline: "Eine KAH-Digital Realisierung für ein unabhängiges Label mit Fokus auf Bild, Artists und Releases.",
     shortDescription:
-      "Premium-Website fuer ein Label mit klaren Bereichen fuer Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
+      "Premium-Website für ein Label mit klaren Bereichen für Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
     description:
-      "KAH Prod gehoert zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identitaet, Artists, Releases, Clips, Events und Business-Kontakte in einem staerkeren visuellen Rahmen zu praesentieren.",
+      "KAH Prod gehört zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identität, Artists, Releases, Clips, Events und Business-Kontakte in einem stärkeren visuellen Rahmen zu präsentieren.",
     challenge:
-      "Dem Label eine staerkere visuelle Praesenz und eine klarere Struktur geben, damit Identitaet, Artists und Releases ohne Informationschaos und mit hochwertiger Wahrnehmung praesentiert werden.",
+      "Dem Label eine stärkere visuelle Präsenz und eine klarere Struktur geben, damit Identität, Artists und Releases ohne Informationschaos und mit hochwertiger Wahrnehmung präsentiert werden.",
     solution:
-      "Klare Startseite, direkte Navigation nach Inhalten, besser lesbare Bereiche fuer Releases und Clips, sichtbare Events und Netzwerke sowie getrennte Kontakte fuer Management, Booking, Presse und Kommunikation.",
+      "Klare Startseite, direkte Navigation nach Inhalten, besser lesbare Bereiche für Releases und Clips, sichtbare Events und Netzwerke sowie getrennte Kontakte für Management, Booking, Presse und Kommunikation.",
     stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
-    result: "Live-Label-Website mit klarerer Struktur und einer staerkeren Darstellung des KAH-Prod Universums",
+    result: "Live-Label-Website mit klarerer Struktur und einer stärkeren Darstellung des KAH-Prod Universums",
     timeline: "2 Wochen",
     deliverables: ["Art Direction", "Premium-Startseite", "Artists- und Release-Bereiche", "Business-Kontakte"],
     metrics: [
@@ -40,15 +40,15 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "MineAlert",
     type: "SaaS / Mining Intelligence",
     tagline:
-      "Ein KAH-Digital Produkt fuer Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
+      "Ein KAH-Digital Produkt für Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
     shortDescription:
-      "Business-Dashboard, Supabase Auth, Watchlist, Alerts, Live-Scraping und Vercel-Deployment fuer ein produktionsnahes Beta-Setup.",
+      "Business-Dashboard, Supabase Auth, Watchlist, Alerts, Live-Scraping und Vercel-Deployment für ein produktionsnahes Beta-Setup.",
     description:
-      "MineAlert gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenfuehrt.",
+      "MineAlert gehört zu den Produkten, die von KAH-Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenführt.",
     challenge:
       "Ein Intelligence-Tool entwickeln, das klar, schnell erfassbar und technisch stabil genug bleibt, um echte Datenquellen, Authentifizierung und Monitoring aufzunehmen, ohne unruhig zu wirken.",
     solution:
-      "Die Basis wurde mit Next.js, Supabase Auth fuer E-Mail und Google, einer Scraping-Pipeline fuer Preise und News, einem nutzungsorientierten Dashboard und einem kostenlosen Refresh-Modell fuer Hosted-Beta-Szenarien aufgebaut.",
+      "Die Basis wurde mit Next.js, Supabase Auth für E-Mail und Google, einer Scraping-Pipeline für Preise und News, einem nutzungsorientierten Dashboard und einem kostenlosen Refresh-Modell für Hosted-Beta-Szenarien aufgebaut.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -71,7 +71,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       { label: "Basis", value: "Supabase + Vercel" },
     ],
     highlights: [
-      "Dashboard fuer Preise / News / Alerts",
+      "Dashboard für Preise / News / Alerts",
       "Watchlist und Nutzer-Alerts",
       "Kostenloser Live-Sync + Monitoring",
     ],
@@ -95,14 +95,14 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     shortDescription:
       "Multi-Produkt-Katalog, Supabase Auth, Stripe Checkout, Member-Dashboard sowie Text-, PDF-, Ressourcen-, Video- und Coming-soon-Inhalte.",
     description:
-      "TechCash Academy gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
+      "TechCash Academy gehört zu den Produkten, die von KAH-Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
     challenge:
-      "Eine klarere Academy-Plattform aufbauen, die mehrere Angebote ohne unruhigen Funnel verkaufen kann und gleichzeitig einen lesbaren Mitgliederbereich, einen stabilen Checkout und eine einfache, erweiterbare Zugangslogik behaelt.",
+      "Eine klarere Academy-Plattform aufbauen, die mehrere Angebote ohne unruhigen Funnel verkaufen kann und gleichzeitig einen lesbaren Mitgliederbereich, einen stabilen Checkout und eine einfache, erweiterbare Zugangslogik behält.",
     solution:
-      "Aufgesetzt wurde ein Multi-Produkt-Katalog, ein Stripe Checkout pro Angebot, eine Supabase-Basis fuer Authentifizierung und Kaeufe, ein trainingsbezogenes Member-Dashboard sowie eine Admin-Schicht zur Pflege von Katalog und Modulen.",
+      "Aufgesetzt wurde ein Multi-Produkt-Katalog, ein Stripe Checkout pro Angebot, eine Supabase-Basis für Authentifizierung und Käufe, ein trainingsbezogenes Member-Dashboard sowie eine Admin-Schicht zur Pflege von Katalog und Modulen.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
     result:
-      "Eine glaubwuerdigere Online-Trainingsplattform, sauber strukturiert fuer Verkauf und produktbezogenen Mitgliederzugang.",
+      "Eine glaubwürdigere Online-Trainingsplattform, sauber strukturiert für Verkauf und produktbezogenen Mitgliederzugang.",
     timeline: "1 Woche",
     deliverables: [
       "Produktdirection und Academy-Funnel",

@@ -30,7 +30,7 @@ export function ContactCard({ title, className = "" }: ContactCardProps) {
       title: "Direkter Kontakt",
       email: "Direkte E-Mail:",
       phone: "Direkte Telefonnummer:",
-      note: "Direkte Nummer fuer Anruf, Nachricht oder schnelle Rueckmeldung.",
+      note: "Direkte Nummer für Anruf, Nachricht oder schnelle Rückmeldung.",
       reply: "Antwort innerhalb von 24 Stunden. Kurzes Briefing per Slack oder WhatsApp möglich.",
     },
   }[locale];

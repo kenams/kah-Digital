@@ -132,7 +132,7 @@ const siteTypesDe: SiteType[] = [
   {
     id: "blog",
     title: "Magazin / Blog",
-    summary: "Editoriale Plattform zum Publizieren und fuer SEO-Wachstum.",
+    summary: "Editoriale Plattform zum Publizieren und für SEO-Wachstum.",
     bullets: ["SEO-Templates", "Integrierter Newsletter", "Lese-Analytics"],
   },
   {
@@ -150,7 +150,7 @@ const siteTypesDe: SiteType[] = [
   {
     id: "event",
     title: "Event",
-    summary: "Landingpage fuer Kampagne oder Launch.",
+    summary: "Landingpage für Kampagne oder Launch.",
     bullets: ["Agenda + Speaker", "Ticketing", "Media Kit"],
   },
   {
@@ -410,7 +410,7 @@ const strategyMapDe: Record<string, StrategyOption[]> = {
       id: "pitch",
       title: "Schneller Pitch",
       summary: "Schneller One-Pager mit klarer Botschaft.",
-      deliverables: ["1 Seite + Anker", "CTA fuer Anfrage", "Basis-Tracking"],
+      deliverables: ["1 Seite + Anker", "CTA für Anfrage", "Basis-Tracking"],
     },
     {
       id: "story",
@@ -435,7 +435,7 @@ const strategyMapDe: Record<string, StrategyOption[]> = {
     {
       id: "playbook",
       title: "Playbook",
-      summary: "Longform-Guides fuer den Funnel.",
+      summary: "Longform-Guides für den Funnel.",
       deliverables: ["Inhaltsverzeichnis", "CTA-Block", "Scroll-Tracking"],
     },
     {
@@ -450,7 +450,7 @@ const strategyMapDe: Record<string, StrategyOption[]> = {
       id: "starter",
       title: "Shop Starter",
       summary: "Kleiner Katalog zum Testen des Angebots.",
-      deliverables: ["15 Produkte", "Stripe-Checkout", "Bestaetigungs-E-Mails"],
+      deliverables: ["15 Produkte", "Stripe-Checkout", "Bestätigungs-E-Mails"],
     },
     {
       id: "scale",
@@ -774,16 +774,16 @@ const mvpHighlightsDe = [
   {
     title: "Dein MVP strukturieren",
     description: "Priorisierter Funktionsumfang mit schnellen Workshops.",
-    bullets: ["Idea Audit", "Wireflows", "Roadmap fuer 6-8 Wochen"],
+    bullets: ["Idea Audit", "Wireflows", "Roadmap für 6-8 Wochen"],
   },
   {
     title: "Site + MVP Paket",
-    description: "Ein gemeinsames Briefing fuer Landingpage und Produkt.",
+    description: "Ein gemeinsames Briefing für Landingpage und Produkt.",
     bullets: ["Landing + Onboarding", "Gemeinsames UI-Kit", "Synchronisierte Angebote"],
   },
   {
     title: "Produkt-Coaching",
-    description: "Woechentliche Stand-ups fuer schnelle Entscheidungen.",
+    description: "Wöchentliche Stand-ups für schnelle Entscheidungen.",
     bullets: ["Notion-Board", "Investor-Checkliste", "KPI-Tracking"],
   },
 ];
@@ -1342,27 +1342,27 @@ export default function ConfigurateurPage() {
             heroSteps: "Zu den Schritten",
             heroClassic: "Zur klassischen Anfrage",
             timelineStart: "Starte mit der Wahl: Website oder mobile App.",
-            timelineDone: "Dein Recap ist bereit fuer die Anfrage.",
+            timelineDone: "Dein Recap ist bereit für die Anfrage.",
             timelineProgress: "Mach weiter, um dein Angebot zu verfeinern.",
             mvpKicker: "Mobile-App-Option",
             mvpTitle: "Beschreibe deine App in wenigen Punkten",
             mvpBody:
-              "Du willst eine Idee testen? Wir machen daraus ein klares Briefing mit Screens, Kernfunktionen und einer Roadmap fuer 6 bis 8 Wochen.",
+              "Du willst eine Idee testen? Wir machen daraus ein klares Briefing mit Screens, Kernfunktionen und einer Roadmap für 6 bis 8 Wochen.",
             mvpPrimary: "MVP-Briefing starten",
             mvpSecondary: "Produkt-Call planen",
             mvpPanelKicker: "Site + MVP",
             mvpPanelTitle: "Ein gemeinsamer roter Faden",
             mvpPanelBody:
-              "Dieser Konfigurator verbindet Identitaet, Marketingseiten und Produktoptionen. Ergebnis: ein gemeinsames Briefing fuer Marketing, Produkt und Tech.",
-            mvpDeliveryLabel: "Geschaetzte Lieferung",
+              "Dieser Konfigurator verbindet Identität, Marketingseiten und Produktoptionen. Ergebnis: ein gemeinsames Briefing für Marketing, Produkt und Tech.",
+            mvpDeliveryLabel: "Geschätzte Lieferung",
             mvpDeliveryValue: "6 bis 8 Wochen",
             mvpFormatLabel: "Format",
             mvpFormatValue: "Landingpage + interaktives MVP",
             step1Kicker: "Schritt 1",
             step1Title: "Welchen Website-Typ willst du starten?",
-            step1Reset: "Zuruecksetzen",
+            step1Reset: "Zurücksetzen",
             step2Kicker: "Schritt 2",
-            step2Title: "Vision und Lieferumfang schaerfen",
+            step2Title: "Vision und Lieferumfang schärfen",
             step2Body: "Jede Karte beschreibt Ton, Seiten und enthaltene Deliverables.",
             step2Empty: "Waehle zuerst einen Website-Typ.",
             step3Kicker: "Schritt 3",

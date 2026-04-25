@@ -786,19 +786,19 @@ const topicsDe: LexiqueTopic[] = [
   },
   {
     title: "Figma",
-    summary: "Kollaboratives Design-Tool fuer Mockups und Prototypen.",
+    summary: "Kollaboratives Design-Tool für Mockups und Prototypen.",
     bullets: [
-      "Geteilte UI-Mockups fuer das Team.",
+      "Geteilte UI-Mockups für das Team.",
       "Kommentare in Echtzeit.",
       "Klickbarer Prototyp zur Validierung von Screens.",
     ],
   },
   {
     title: "Development",
-    summary: "Der Code, der die Website antreibt: Frontend fuer das Sichtbare und Backend fuer den Server.",
+    summary: "Der Code, der die Website antreibt: Frontend für das Sichtbare und Backend für den Server.",
     bullets: [
-      "Next.js + React 19 fuer sehr schnelle Seiten.",
-      "Sichere APIs fuer CRM, Zahlungen und interne Tools.",
+      "Next.js + React 19 für sehr schnelle Seiten.",
+      "Sichere APIs für CRM, Zahlungen und interne Tools.",
       "Vercel-Pipeline: Jeder Push startet Build, Tests und Deployment.",
     ],
   },
@@ -813,20 +813,20 @@ const topicsDe: LexiqueTopic[] = [
   },
   {
     title: "Landing page",
-    summary: "Einzelne Seite fuer eine Kampagne oder einen Produktlaunch.",
+    summary: "Einzelne Seite für eine Kampagne oder einen Produktlaunch.",
     bullets: [
       "Kurze Struktur: Versprechen, Nutzen, Social Proof, Call-to-Action.",
-      "Praezises Tracking ueber Meta Pixel, GA4 oder LinkedIn.",
+      "Präzises Tracking über Meta Pixel, GA4 oder LinkedIn.",
       "Schnelle Lieferung, um ein Angebot oder einen Test sauber zu validieren.",
     ],
   },
   {
     title: "Online store",
-    summary: "Verkaufsoberflaeche mit Katalog, Warenkorb und sicherer Zahlung.",
+    summary: "Verkaufsoberfläche mit Katalog, Warenkorb und sicherer Zahlung.",
     bullets: [
       "Stripe, Shopify Headless oder Commerce Layer je nach Volumen und Markt.",
-      "Automatisierte E-Mails fuer Bestaetigung, Warenkorbabbruch und Versand.",
-      "Sales-Dashboard mit Margenblick fuer die Steuerung.",
+      "Automatisierte E-Mails für Bestätigung, Warenkorbabbruch und Versand.",
+      "Sales-Dashboard mit Margenblick für die Steuerung.",
     ],
   },
   {
@@ -843,13 +843,13 @@ const topicsDe: LexiqueTopic[] = [
     summary: "Wiederkehrende Aufgaben wie E-Mails, Angebote oder Support mit AI automatisieren.",
     bullets: [
       "Workflows mit CRM oder Google Sheets verbunden.",
-      "Chatbots fuer einfache Anfragen rund um die Uhr.",
-      "Sofortiger Zeitgewinn fuer kleine und mittlere Unternehmen.",
+      "Chatbots für einfache Anfragen rund um die Uhr.",
+      "Sofortiger Zeitgewinn für kleine und mittlere Unternehmen.",
     ],
   },
   {
     title: "Industry chatbot",
-    summary: "Konversationeller Assistent fuer eine konkrete Branche wie Support, HR, Immobilien oder Training.",
+    summary: "Konversationeller Assistent für eine konkrete Branche wie Support, HR, Immobilien oder Training.",
     bullets: [
       "Wissensbasis oder FAQ direkt mit dem Bot verbunden.",
       "Antworten im Ton der Marke.",
@@ -861,16 +861,16 @@ const topicsDe: LexiqueTopic[] = [
     summary: "Automatisierte Prospection mit personalisierten Nachrichten und CRM-Tracking.",
     bullets: [
       "LinkedIn- und E-Mail-Sequenzen, um Termine zu buchen.",
-      "Targeting nach Branche, Unternehmensgroesse und Rollen.",
-      "Klares Reporting zu Oeffnungen, Antworten und gebuchten Calls.",
+      "Targeting nach Branche, Unternehmensgröße und Rollen.",
+      "Klares Reporting zu Öffnungen, Antworten und gebuchten Calls.",
     ],
   },
   {
     title: "AI digital product",
     summary: "E-Books, Templates, Prompts oder Mini-Kurse, die mit AI schneller produziert werden.",
     bullets: [
-      "Fokussiertes Angebot fuer eine klare Nische.",
-      "Online-Verkauf ueber Stripe oder Gumroad.",
+      "Fokussiertes Angebot für eine klare Nische.",
+      "Online-Verkauf über Stripe oder Gumroad.",
       "Wiederkehrender Umsatz, wenn der Traffic stabil ist.",
     ],
   },
@@ -885,11 +885,11 @@ const topicsDe: LexiqueTopic[] = [
   },
   {
     title: "MVP",
-    summary: "Minimum viable product, um den Markt mit dem noetigen Kernumfang zu testen.",
+    summary: "Minimum viable product, um den Markt mit dem nötigen Kernumfang zu testen.",
     bullets: [
       "Nur die wirklich essenziellen Funktionen.",
       "Schneller Test mit realen Nutzern.",
-      "Iteration ohne grosses Startbudget.",
+      "Iteration ohne großes Startbudget.",
     ],
   },
   {
@@ -898,21 +898,21 @@ const topicsDe: LexiqueTopic[] = [
     bullets: [
       "Meist 1 bis 2 Wochen.",
       "Klares Deliverable am Ende.",
-      "Regelmaessige Check-ins fuer schnelles Vorankommen.",
+      "Regelmäßige Check-ins für schnelles Vorankommen.",
     ],
   },
   {
     title: "Dashboard",
-    summary: "Steuerungsoberflaeche, die die wichtigsten Informationen zusammenfasst.",
+    summary: "Steuerungsoberfläche, die die wichtigsten Informationen zusammenfasst.",
     bullets: [
       "KPIs und Zahlen auf einen Blick.",
-      "Wenn noetig mit Echtzeitdaten.",
-      "Schnelle Aktionen fuer das operative Geschaeft.",
+      "Wenn nötig mit Echtzeitdaten.",
+      "Schnelle Aktionen für das operative Geschäft.",
     ],
   },
   {
     title: "Onboarding",
-    summary: "Einstiegsfluss, der neue Nutzer beim Start fuehrt.",
+    summary: "Einstiegsfluss, der neue Nutzer beim Start führt.",
     bullets: [
       "Erste Screens und hilfreiche Nachrichten.",
       "Hilft, das Konto schnell zu aktivieren.",
@@ -923,25 +923,25 @@ const topicsDe: LexiqueTopic[] = [
     title: "SEO",
     summary: "Optimierung, damit Google und andere Suchmaschinen die Seite verstehen und einordnen.",
     bullets: [
-      "Saubere Titles, Descriptions und Struktur ueber H1 und H2.",
+      "Saubere Titles, Descriptions und Struktur über H1 und H2.",
       "Ladezeit unter 1,5 Sekunden dank Next.js und Vercel.",
-      "Sitemap, schema.org und strukturierte Inhalte fuer Suchanfragen.",
+      "Sitemap, schema.org und strukturierte Inhalte für Suchanfragen.",
     ],
   },
   {
     title: "Responsive",
     summary: "Eine Seite, die sich automatisch an Mobile, Tablet und grosse Screens anpasst.",
     bullets: [
-      "Tailwind CSS und Multi-Device-Tests fuer sichtbare CTAs auf jedem Geraet.",
-      "Fluide Grids und optimierte Bilder gegen uebermaessigen Datenverbrauch.",
-      "Vereinfachte Mobile-Navigation und zugaengliche Interaktionen.",
+      "Tailwind CSS und Multi-Device-Tests für sichtbare CTAs auf jedem Gerät.",
+      "Fluide Grids und optimierte Bilder gegen übermäßigen Datenverbrauch.",
+      "Vereinfachte Mobile-Navigation und zugängliche Interaktionen.",
     ],
   },
   {
     title: "API & Webhooks",
     summary: "Verbindungen zwischen deiner Website und externen Diensten wie CRM, Zahlung oder Newsletter.",
     bullets: [
-      "Next.js API-Routen fuer sichere zentrale Datenfluesse.",
+      "Next.js API-Routen für sichere zentrale Datenflüsse.",
       "Webhooks senden Signale, sobald bei Stripe, Airtable und Co. ein Ereignis eintritt.",
       "Logs und Secret Keys bleiben in `.env` unter Kontrolle.",
     ],
@@ -987,7 +987,7 @@ const topicsDe: LexiqueTopic[] = [
     summary: "Redaktionstool, um Inhalte, Cases oder Blog ohne Code zu pflegen.",
     bullets: [
       "Sanity, Storyblok oder Notion je nach Team und Arbeitsweise.",
-      "Rollenbasierte Rechte fuer sicheres Publizieren.",
+      "Rollenbasierte Rechte für sicheres Publizieren.",
       "Sofortige Vorschau vor dem Go-live.",
     ],
   },
@@ -996,8 +996,8 @@ const topicsDe: LexiqueTopic[] = [
     summary: "Lead-Management und automatisierte Follow-ups.",
     bullets: [
       "HubSpot, Pipedrive oder Notion CRM werden automatisch aus Formularen gespeist.",
-      "E-Mail-Szenarien fuer Danke, Follow-up oder Terminbuchung.",
-      "Tracking des Pipeline-Werts fuer die Priorisierung heisser Leads.",
+      "E-Mail-Szenarien für Danke, Follow-up oder Terminbuchung.",
+      "Tracking des Pipeline-Werts für die Priorisierung heißer Leads.",
     ],
   },
   {
@@ -1005,26 +1005,26 @@ const topicsDe: LexiqueTopic[] = [
     summary: "Schutz der Daten, die zwischen Nutzer und Website ausgetauscht werden.",
     bullets: [
       "Automatisches SSL auf Vercel mit Schloss im Browser.",
-      "Application Firewall und Anti-Bot-Filter fuer Formulare.",
-      "Verschluesselte Ablage von Secrets in `.env` und Vercel Environment.",
+      "Application Firewall und Anti-Bot-Filter für Formulare.",
+      "Verschlüsselte Ablage von Secrets in `.env` und Vercel Environment.",
     ],
   },
   {
     title: "Monitoring & Analytics",
-    summary: "Ueberwacht die Gesundheit der Seite und zeigt, was Besucher wirklich tun.",
+    summary: "Überwacht die Gesundheit der Seite und zeigt, was Besucher wirklich tun.",
     bullets: [
-      "Vercel-Alerts fuer Logs, 500er-Fehler und Antwortzeiten.",
-      "Plausible oder GA4 fuer Traffic, Conversions und Top-Seiten.",
-      "Heatmaps wie Hotjar zeigen, wo Besucher zoegern oder abbrechen.",
+      "Vercel-Alerts für Logs, 500er-Fehler und Antwortzeiten.",
+      "Plausible oder GA4 für Traffic, Conversions und Top-Seiten.",
+      "Heatmaps wie Hotjar zeigen, wo Besucher zögern oder abbrechen.",
     ],
   },
   {
     title: "KYC",
-    summary: "Know Your Customer: Identitaetspruefung von Nutzern.",
+    summary: "Know Your Customer: Identitätsprüfung von Nutzern.",
     bullets: [
-      "Wird fuer Finanz- oder sensible Services eingesetzt.",
-      "Prueft Dokumente und Informationen.",
-      "Staerkt Sicherheit und Compliance.",
+      "Wird für Finanz- oder sensible Services eingesetzt.",
+      "Prüft Dokumente und Informationen.",
+      "Stärkt Sicherheit und Compliance.",
     ],
   },
   {
@@ -1033,48 +1033,48 @@ const topicsDe: LexiqueTopic[] = [
     bullets: [
       "Beispiele: Conversion Rate, Lesezeit oder Leads.",
       "Misst ein konkretes Ziel.",
-      "Macht Entwicklungen ueber die Zeit sichtbar.",
+      "Macht Entwicklungen über die Zeit sichtbar.",
     ],
   },
   {
     title: "React Native",
-    summary: "Mobiles Framework auf React-Basis, um den Grossteil des Codes zwischen iOS und Android zu teilen.",
+    summary: "Mobiles Framework auf React-Basis, um den Großteil des Codes zwischen iOS und Android zu teilen.",
     bullets: [
-      "Eine Codebasis fuer zwei nativ kompilierte Apps.",
-      "Zugriff auf Sensoren wie Kamera, GPS oder Bluetooth ueber Expo oder Community-Module.",
+      "Eine Codebasis für zwei nativ kompilierte Apps.",
+      "Zugriff auf Sensoren wie Kamera, GPS oder Bluetooth über Expo oder Community-Module.",
       "Ideal, um ein MVP schnell zu starten und danach weiterzuentwickeln.",
     ],
   },
   {
     title: "PWA",
-    summary: "Eine Website, die sich wie eine App verhaelt.",
+    summary: "Eine Website, die sich wie eine App verhält.",
     bullets: [
       "Kann auf dem Smartphone wie eine App installiert werden.",
       "Funktioniert teilweise auch offline.",
-      "Laedt schnell und wirkt fluide.",
+      "Lädt schnell und wirkt flüssig.",
     ],
   },
   {
     title: "Expo",
     summary: "Toolchain, die React-Native-Entwicklung mit Cloud-Builds, OTA und nativen APIs vereinfacht.",
     bullets: [
-      "Expo Go fuer sofortige Vorschau auf iPhone und Android.",
+      "Expo Go für sofortige Vorschau auf iPhone und Android.",
       "TestFlight- oder Android-Beta-Pakete in wenigen Befehlen.",
-      "OTA-Updates fuer schnelle Fixes ohne Store-Wartezeit.",
+      "OTA-Updates für schnelle Fixes ohne Store-Wartezeit.",
     ],
   },
   {
     title: "Supabase",
-    summary: "Postgres-, Auth- und Storage-Backend, das sich schnell an ein Web- oder Mobile-MVP anschliessen laesst.",
+    summary: "Postgres-, Auth- und Storage-Backend, das sich schnell an ein Web- oder Mobile-MVP anschließen lässt.",
     bullets: [
-      "Sichere Auth mit OTP, Magic Link oder OAuth sowie Row-Level-Rules fuer Rollen.",
+      "Sichere Auth mit OTP, Magic Link oder OAuth sowie Row-Level-Rules für Rollen.",
       "REST- und GraphQL-APIs werden automatisch aus den Tabellen erzeugt.",
-      "Klares Dashboard und Realtime-Logs fuer Queries und Webhooks.",
+      "Klares Dashboard und Realtime-Logs für Queries und Webhooks.",
     ],
   },
   {
     title: "OAuth",
-    summary: "Login-Methode ueber einen Drittanbieter wie Google oder Apple.",
+    summary: "Login-Methode über einen Drittanbieter wie Google oder Apple.",
     bullets: [
       "Nutzer melden sich mit einem vorhandenen Konto an.",
       "Kein Passwort wird mit der App geteilt.",
@@ -1083,20 +1083,20 @@ const topicsDe: LexiqueTopic[] = [
   },
   {
     title: "SSO",
-    summary: "Single Sign-On: ein Login fuer mehrere Tools.",
+    summary: "Single Sign-On: ein Login für mehrere Tools.",
     bullets: [
-      "Ein Konto fuer mehrere Anwendungen.",
-      "Weniger Passwoerter zum Merken.",
-      "Zentrale Verwaltung der Zugaenge.",
+      "Ein Konto für mehrere Anwendungen.",
+      "Weniger Passwörter zum Merken.",
+      "Zentrale Verwaltung der Zugänge.",
     ],
   },
   {
     title: "TestFlight & Android Beta",
-    summary: "Apple- und Google-Kanaele, um Apps vor dem Public Release privat zu testen.",
+    summary: "Apple- und Google-Kanäle, um Apps vor dem Public Release privat zu testen.",
     bullets: [
-      "Tester koennen ueber einen einfachen Link eingeladen werden.",
+      "Tester können über einen einfachen Link eingeladen werden.",
       "Android Internal oder Closed Testing sammelt Feedback in sicherem Rahmen.",
-      "Wichtiger Schritt, um Performance, Crashs und Store-Konformitaet zu pruefen.",
+      "Wichtiger Schritt, um Performance, Crashs und Store-Konformität zu prüfen.",
     ],
   },
 ];
@@ -1277,15 +1277,15 @@ export default function LexiquePage() {
             heroKicker: "Lexikon",
             heroTitle: "Die wichtigsten Begriffe in 5 Minuten verstehen",
             heroBody:
-              "Eine einfache Seite, um Kunden, Vertrieb und Freelancer schnell auf denselben Stand zu bringen. Kein Ballast, nur das Wesentliche fuer schnelle Entscheidungen.",
+              "Eine einfache Seite, um Kunden, Vertrieb und Freelancer schnell auf denselben Stand zu bringen. Kein Ballast, nur das Wesentliche für schnelle Entscheidungen.",
             backHome: "Zur Startseite",
-            openConfigurator: "Konfigurator oeffnen",
+            openConfigurator: "Konfigurator öffnen",
             filterPlaceholder: "Suchen: SEO, API, responsive, React Native, Supabase...",
             noResults: "Kein Begriff gefunden. Versuche \"SEO\", \"CMS\" oder \"responsive\"...",
-            nextStepsKicker: "Naechste Schritte",
+            nextStepsKicker: "Nächste Schritte",
             nextStepsTitle: "Bereit, deinen Sprint oder dein MVP sauber zu scopen?",
             nextStepsBody:
-              "Wir uebersetzen diese Begriffe in konkrete Aktionen: Projektbriefing, gefuehrter Konfigurator und schnelle Anfrage fuer den Start der Produktion.",
+              "Wir übersetzen diese Begriffe in konkrete Aktionen: Projektbriefing, geführter Konfigurator und schnelle Anfrage für den Start der Produktion.",
             nextStepsCta1: "Sprint planen",
             nextStepsCta2: "MVP strukturieren",
             nextStepsCta3: "Briefing herunterladen",

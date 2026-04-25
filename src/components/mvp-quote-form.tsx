@@ -199,7 +199,7 @@ export function MvpQuoteForm() {
     }
 
     if (!token) {
-      setServerMessage(isEnglish ? "Validate the captcha before sending." : isGerman ? "Bitte bestaetige das Captcha vor dem Senden." : "Valide le captcha avant d'envoyer.");
+      setServerMessage(isEnglish ? "Validate the captcha before sending." : isGerman ? "Bitte bestätige das Captcha vor dem Senden." : "Valide le captcha avant d'envoyer.");
       setStatus("error");
       return;
     }
@@ -233,7 +233,7 @@ export function MvpQuoteForm() {
     };
 
     if (!payload.goal || payload.goal.length < 5) {
-      setServerMessage(isEnglish ? "Describe your idea briefly so we can reply." : isGerman ? "Beschreibe deine Idee kurz, damit wir konkret antworten koennen." : "Décris rapidement ton idée pour que l'on puisse te répondre.");
+      setServerMessage(isEnglish ? "Describe your idea briefly so we can reply." : isGerman ? "Beschreibe deine Idee kurz, damit wir konkret antworten können." : "Décris rapidement ton idée pour que l'on puisse te répondre.");
       setStatus("error");
       return;
     }
@@ -620,14 +620,14 @@ export function MvpQuoteForm() {
           {isEnglish
             ? "Free estimate, reply within 24h. No commitment."
             : isGerman
-              ? "Kostenlose Anfrage, Rueckmeldung innerhalb von 24h. Unverbindlich."
+              ? "Kostenlose Anfrage, Rückmeldung innerhalb von 24h. Unverbindlich."
               : "Devis gratuit, réponse sous 24h. Aucun engagement."}
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
             ? "MVP quotes are issued in €. Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote."
             : isGerman
-              ? "MVP-Angebote werden in € erstellt. Die Zahlung erfolgt per Bankueberweisung, entweder einmalig oder gemaess dem im Angebot definierten Zahlungsplan."
+              ? "MVP-Angebote werden in € erstellt. Die Zahlung erfolgt per Banküberweisung, entweder einmalig oder gemäß dem im Angebot definierten Zahlungsplan."
               : "Les devis MVP sont émis en €. Le paiement se fait par virement bancaire, en une fois ou selon l'échéancier précisé sur le devis."}
         </p>
         {serverMessage && (

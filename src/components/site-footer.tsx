@@ -161,7 +161,7 @@ export function SiteFooter() {
         title: "Leistungen",
         links: [
           { label: "Unternehmenswebsite", href: "/de/site-web-entreprise" },
-          { label: "Massgeschneiderte App", href: "/de/application-web-sur-mesure" },
+          { label: "Maßgeschneiderte App", href: "/de/application-web-sur-mesure" },
           { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
           { label: "GLPI-Support", href: "/de/services/glpi" },
           { label: "Schnellanfrage", href: "/de/devis" },

@@ -95,7 +95,7 @@ const COPY: Record<string, {
   de: {
     greeting: "Guten Tag",
     currentSite: "Ihre aktuelle Website",
-    futureSite: "Was KAH-Digital fuer Sie erstellen wuerde",
+    futureSite: "Was KAH-Digital für Sie erstellen würde",
     problems: "Was wir gefunden haben",
     quote: "Unser Angebot",
     ctaLabel: "Diese E-Mail beantworten",

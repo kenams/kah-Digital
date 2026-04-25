@@ -100,7 +100,7 @@ const copy = {
   de: {
     eyebrow: "Projekte",
     title: "KAH Prod ist eines der von KAH-Digital entwickelten Projekte.",
-    body: "Hier steht KAH Prod als sichtbare Referenz im Fokus - nicht als einfache Projektkarte, sondern als sauber praesentierte Case Study mit klarer visueller Qualitaet.",
+    body: "Hier steht KAH Prod als sichtbare Referenz im Fokus - nicht als einfache Projektkarte, sondern als sauber präsentierte Case Study mit klarer visueller Qualität.",
     primaryLabel: "Projekt anfragen",
     secondaryLabel: "Leistungen ansehen",
     cards: [

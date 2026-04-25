@@ -94,7 +94,7 @@ export function WhyChooseSection() {
           icon: FiZap,
           accent: "#3b82f6",
           title: "Schnelle Umsetzung",
-          description: "Kurzes Briefing, klare Entscheidungen. Eine Unternehmenswebsite in 3 Wochen, eine App in 6. Keine unnoetige Schleifen.",
+          description: "Kurzes Briefing, klare Entscheidungen. Eine Unternehmenswebsite in 3 Wochen, eine App in 6. Keine unnötigen Schleifen.",
           tag: "Durchschnitt: 3–6 Wochen",
         },
         {
@@ -118,7 +118,7 @@ export function WhyChooseSection() {
           icon: FiClock,
           accent: "#f59e0b",
           title: "Antwort in 24h garantiert",
-          description: "Angebotsanfrage, technische Frage oder Brief: erste Rueckmeldung am naechsten Werktag, ohne Ausnahme.",
+          description: "Angebotsanfrage, technische Frage oder Brief: erste Rückmeldung am nächsten Werktag, ohne Ausnahme.",
           tag: "Antwort in 24 Arbeitsstunden",
         },
       ],

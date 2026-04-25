@@ -76,7 +76,7 @@ export const assistantKnowledge = {
       answerEn:
         "KAH-Digital offers a GLPI-connected support workflow: smart form, automatic qualification, ticket creation, real-time tracking. Suited for IT teams and companies handling incidents or service requests at scale.",
       answerDe:
-        "KAH-Digital bietet einen GLPI-verbundenen Support-Workflow: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Echtzeit-Tracking. Geeignet fuer IT-Teams und Unternehmen, die Vorfaelle oder Anfragen in grossem Umfang bearbeiten.",
+        "KAH-Digital bietet einen GLPI-verbundenen Support-Workflow: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Echtzeit-Tracking. Geeignet für IT-Teams und Unternehmen, die Vorfälle oder Anfragen in großem Umfang bearbeiten.",
     },
   ],
 } as const;

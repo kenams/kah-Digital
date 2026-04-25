@@ -134,7 +134,7 @@ const copy = {
           ["Telefon", companyConfig.phone],
           ["UID-Nummer", companyConfig.uid],
           ["MWST-Nummer", companyConfig.vatNumber],
-          ["Verantwortlich fuer die Publikation", companyConfig.legalName],
+          ["Verantwortlich für die Publikation", companyConfig.legalName],
         ],
       },
       {
@@ -144,33 +144,33 @@ const copy = {
       {
         title: "Urheberrecht",
         paragraphs: [
-          `Alle Inhalte dieser Website sind urheberrechtlich geschuetzt. Jede Vervielfaeltigung, Verbreitung, Aenderung oder Veroeffentlichung bedarf der vorherigen schriftlichen Genehmigung von ${companyConfig.brandName}.`,
-          `Die von ${companyConfig.brandName} vorgestellten Loesungen, Architekturen, Support-Journeys, Dokumentationen, Skripte, Mockups und funktionalen Modelle bleiben, sofern nicht schriftlich anders geregelt, dessen exklusives Eigentum.`,
+          `Alle Inhalte dieser Website sind urheberrechtlich geschützt. Jede Vervielfältigung, Verbreitung, Änderung oder Veröffentlichung bedarf der vorherigen schriftlichen Genehmigung von ${companyConfig.brandName}.`,
+          `Die von ${companyConfig.brandName} vorgestellten Lösungen, Architekturen, Support-Journeys, Dokumentationen, Skripte, Mockups und funktionalen Modelle bleiben, sofern nicht schriftlich anders geregelt, dessen exklusives Eigentum.`,
           `Offerten, kommerzielle Vorschlaege, Audits, Demos, Prototypen und Konzeptdokumente, die vor Vertragsabschluss geteilt werden, bleiben Eigentum von ${companyConfig.brandName}.`,
         ],
       },
       {
         title: "Personenbezogene Daten",
-        paragraphs: ["Informationen aus Formularen werden nur zur Beantwortung eurer Anfragen verwendet. Weitere Details stehen in unserer Datenschutzerklaerung."],
+        paragraphs: ["Informationen aus Formularen werden nur zur Beantwortung eurer Anfragen verwendet. Weitere Details stehen in unserer Datenschutzerklärung."],
       },
       {
         title: "Cookies",
-        paragraphs: ["Diese Website nutzt keine Marketing- oder Tracking-Cookies. Es koennen nur technisch notwendige Cookies fuer den Betrieb der Website eingesetzt werden."],
+        paragraphs: ["Diese Website nutzt keine Marketing- oder Tracking-Cookies. Es können nur technisch notwendige Cookies für den Betrieb der Website eingesetzt werden."],
       },
       {
         title: "Haftung",
-        paragraphs: [`${companyConfig.brandName} bemueht sich um korrekte Informationen, kann jedoch nicht fuer Fehler, Auslassungen oder voruebergehende Nichtverfuegbarkeit haftbar gemacht werden.`],
+        paragraphs: [`${companyConfig.brandName} bemüht sich um korrekte Informationen, kann jedoch nicht für Fehler, Auslassungen oder vorübergehende Nichtverfügbarkeit haftbar gemacht werden.`],
       },
       {
         title: "Anwendbares Recht",
-        paragraphs: ["Dieses Impressum untersteht dem Schweizer Recht. Fuer Streitigkeiten im Zusammenhang mit der Nutzung dieser Website sind ausschliesslich Schweizer Gerichte zustaendig."],
+        paragraphs: ["Dieses Impressum untersteht dem Schweizer Recht. Für Streitigkeiten im Zusammenhang mit der Nutzung dieser Website sind ausschließlich Schweizer Gerichte zuständig."],
       },
       {
         title: "Kontakt",
         paragraphs: [`Bei Fragen zu diesem Impressum erreicht ihr uns unter: ${companyConfig.email}`],
       },
     ],
-    privacyLabel: "Datenschutzerklaerung",
+    privacyLabel: "Datenschutzerklärung",
     updatedAt: "Letzte Aktualisierung",
   },
 } as const;

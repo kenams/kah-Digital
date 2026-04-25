@@ -150,7 +150,7 @@ const AUDIT_PROMPT: Record<string, string> = {
   fr: `Tu es un expert en développement web et design digital. Analyse ce site pour une PME ou un commerce local.`,
   en: `You are a web development and digital design expert. Analyze this website for a local business or SME.`,
   es: `Eres un experto en desarrollo web y diseño digital. Analiza este sitio web para una pyme o negocio local.`,
-  de: `Du bist ein Experte fuer Webentwicklung und digitales Design. Analysiere diese Website fuer ein kleines Unternehmen.`,
+  de: `Du bist ein Experte für Webentwicklung und digitales Design. Analysiere diese Website für ein kleines Unternehmen.`,
   it: `Sei un esperto di sviluppo web e design digitale. Analizza questo sito web per una PMI o un negozio locale.`,
   nl: `Je bent een expert in webontwikkeling en digitaal design. Analyseer deze website voor een lokaal bedrijf.`,
 };
