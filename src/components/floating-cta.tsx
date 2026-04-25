@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
 
 export function FloatingCTA() {
-  const { isEnglish, prefix } = useLocale();
+  const { locale, prefix } = useLocale();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export function FloatingCTA() {
         className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-[#f6efe3]/95 px-6 py-3 text-[#15120e] shadow-2xl shadow-black/30 backdrop-blur transition hover:bg-[#f6efe3]"
       >
         <span className="h-2 w-2 rounded-full bg-[#d6b36a]" />
-        {isEnglish ? "Get a quote" : "Demander un devis"}
+        {locale === "en" ? "Get a free quote" : locale === "de" ? "Angebot anfordern" : "Demander un devis"}
       </Link>
     </div>
   );

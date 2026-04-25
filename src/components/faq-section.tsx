@@ -105,38 +105,48 @@ export function FAQSection() {
     },
     de: {
       eyebrow: "FAQ",
-      title: "Haeufige Fragen",
-      body: "Die nuetzlichsten Punkte vor dem Start einer Website, App oder eines KI-Projekts.",
+      title: "Häufige Fragen",
+      body: "Die nützlichsten Punkte vor dem Start einer Website, App oder eines KI-Projekts.",
       faqs: [
         {
           question: "Was kostet eine Website oder eine App?",
           answer:
-            "Unternehmenswebsite: € 800 bis 2.500. Corporate Site oder E-Commerce: € 2.000 bis 6.000. Massgeschneiderte Web-App: € 4.000 bis 15.000. Mobile App: € 6.000 bis 20.000. Diese Spannen haengen von Funktionen, Design und Inhalt ab. Jedes Projekt wird vor der Offerte gescoped.",
+            "Unternehmenswebsite: € 800 bis 2.500. Corporate Site oder E-Commerce: € 2.000 bis 6.000. Maßgeschneiderte Web-App: € 4.000 bis 15.000. Mobile App: € 6.000 bis 20.000. Diese Spannen hängen von Funktionen, Design und Inhalt ab. Jedes Projekt wird vor der Offerte eingegrenzt.",
         },
         {
           question: "Wie lange dauert die Lieferung?",
           answer:
-            "Eine gut gescropte Unternehmenswebsite: 3 bis 4 Wochen. Eine Corporate Site oder einfache App: 4 bis 8 Wochen. Komplexere Projekte mit Integrationen: 2 bis 4 Monate. Zeitrahmen sind verbindlich, sobald das Briefing validiert ist.",
+            "Eine gut eingegrenzte Unternehmenswebsite: 3 bis 4 Wochen. Eine Corporate Site oder einfache App: 4 bis 8 Wochen. Komplexere Projekte mit Integrationen: 2 bis 4 Monate. Zeitrahmen sind verbindlich, sobald das Briefing validiert ist.",
         },
         {
-          question: "Arbeitet ihr auch mit Kunden ausserhalb der Schweiz?",
+          question: "Arbeitet ihr auch mit Kunden außerhalb der Schweiz?",
           answer:
             "Ja. KAH-Digital arbeitet remote mit frankophonen, englischsprachigen und internationalen Kunden. Sprache, Land und Zeitzone sind kein Hindernis.",
         },
         {
-          question: "Welche Projektarten uebernehmt ihr?",
+          question: "Welche Projektarten übernehmt ihr?",
           answer:
-            "Praesantationsseiten, Corporate Sites, E-Commerce, Web- und Mobile-Apps, Dashboards, Mitgliederportale, KI-Automatisierungen und GLPI-verbundene Support-Workflows. Jeder Bedarf wird vor jeder Zusage qualifiziert.",
+            "Präsentationsseiten, Corporate Sites, E-Commerce, Web- und Mobile-Apps, Dashboards, Mitgliederportale, KI-Automatisierungen und GLPI-verbundene Support-Workflows. Jeder Bedarf wird vor jeder Zusage qualifiziert.",
         },
         {
           question: "Gibt es eine Mindestbindung oder ein Abonnement?",
           answer:
-            "Nein. Jedes Projekt wird auf akzeptierter Offerte abgewickelt, ohne Pflichtabonnement. Monatliche Support- und Wartungsplaene sind nach der Lieferung verfuegbar, aber nie verpflichtend.",
+            "Nein. Jedes Projekt wird auf akzeptierter Offerte abgewickelt, ohne Pflichtabonnement. Monatliche Support- und Wartungspläne sind nach der Lieferung verfügbar, aber nie verpflichtend.",
         },
         {
-          question: "Wie laeuft der erste Kontakt ab?",
+          question: "Wie läuft der erste Kontakt ab?",
           answer:
-            "Du fuellst das Angebotsformular aus oder nutzt den Projektassistenten. Ich melde mich in 24 Arbeitsstunden mit einem ersten Briefing oder Klärungsfragen. Kein 40-Felder-Formular — nur das Wesentliche.",
+            "Du füllst das Angebotsformular aus oder nutzt den Projektassistenten. Ich melde mich in 24 Arbeitsstunden mit einem ersten Briefing oder Klärungsfragen. Kein 40-Felder-Formular — nur das Wesentliche.",
+        },
+        {
+          question: "Könnt ihr eine bestehende Website überarbeiten oder verbessern?",
+          answer:
+            "Ja. Die Überarbeitung ist einer der am häufigsten nachgefragten Services. Wir können eine bestehende Website — WordPress, Wix, Squarespace oder andere — sauber neu aufbauen mit den richtigen Performances, dem richtigen SEO und einer besseren Conversion. Wir behalten, was funktioniert, und korrigieren, was Kunden kostet.",
+        },
+        {
+          question: "Welche Garantien gibt es auf gelieferte Projekte?",
+          answer:
+            "Jedes Projekt wird mit einem definierten Umfang geliefert, auf Desktop und Mobile getestet und mit einer Korrekturphase nach dem Launch geliefert. Kein versteckter Zusatz: Entspricht etwas nicht dem validierten Briefing, wird es korrigiert. Das Angebot ist verbindlich — es wächst nicht ohne vorherige Vereinbarung.",
         },
       ],
     },
@@ -162,15 +172,17 @@ export function FAQSection() {
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               >
                 <span className="font-semibold text-white">{faq.question}</span>
-                <span className="shrink-0 text-gray-500">
+                <span className="shrink-0 text-gray-500" aria-hidden="true">
                   {openIndex === index ? <FiMinus size={18} /> : <FiPlus size={18} />}
                 </span>
               </button>
               {openIndex === index && (
-                <div className="border-t border-white/6 px-6 pb-5 pt-4">
+                <div id={`faq-answer-${index}`} className="border-t border-white/6 px-6 pb-5 pt-4">
                   <p className="text-sm leading-relaxed text-gray-400">{faq.answer}</p>
                 </div>
               )}

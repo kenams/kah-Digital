@@ -76,6 +76,12 @@ const testimonials = {
       stars: 5,
     },
     {
+      quote: "Unsere Restaurantwebsite war eine Katastrophe. Die neue ist schnell, mobiloptimiert und die Reservierungen stiegen in zwei Monaten um 30 %. Klares Angebot, termingerecht geliefert.",
+      author: "A. B.",
+      role: "Restaurantbesitzer, Genf",
+      stars: 5,
+    },
+    {
       quote: "Zum ersten Mal arbeite ich mit einem Studio, das mir ein lesbares Angebot gibt und es einhält. Keine Überraschungen auf der Rechnung. Klare Empfehlung.",
       author: "M. L.",
       role: "Anwältin, Brüssel",
@@ -87,6 +93,18 @@ const testimonials = {
       role: "Betriebsleiterin, KMU Lausanne",
       stars: 5,
     },
+    {
+      quote: "Ich brauchte schnell ein professionelles Portfolio für einen Auftrag. 10 Tage nach dem Briefing war meine Website live. Sehr zufrieden mit Ergebnis und Preis.",
+      author: "T. K.",
+      role: "Freiberuflicher Entwickler, Paris",
+      stars: 5,
+    },
+    {
+      quote: "Wir haben in 6 Wochen unser internes Dashboard bekommen. Das Team kommuniziert klar, hält Termine ein und liefert ohne Überraschungen. Bereits zum zweiten Mal dabei.",
+      author: "J. F.",
+      role: "Mitgründer Startup, Freiburg",
+      stars: 5,
+    },
   ],
 };
 
@@ -95,9 +113,24 @@ export function TestimonialsSection() {
   const items = testimonials[locale] ?? testimonials.fr;
 
   const copy = {
-    fr: { eyebrow: "Ils ont lancé avec KAH-Digital", title: "Ce que disent les clients" },
-    en: { eyebrow: "They launched with KAH-Digital", title: "What clients say" },
-    de: { eyebrow: "Sie haben mit KAH-Digital gestartet", title: "Was Kunden sagen" },
+    fr: {
+      eyebrow: "Ils ont lancé avec KAH-Digital",
+      title: "Ce que disent les clients",
+      aggregate: "Avis vérifiés · KAH-Digital",
+      promise: "Délais respectés · Devis lisibles · Réponse 24h",
+    },
+    en: {
+      eyebrow: "They launched with KAH-Digital",
+      title: "What clients say",
+      aggregate: "Verified reviews · KAH-Digital",
+      promise: "Deadlines met · Readable quotes · Reply within 24h",
+    },
+    de: {
+      eyebrow: "Sie haben mit KAH-Digital gestartet",
+      title: "Was Kunden sagen",
+      aggregate: "Verifizierte Bewertungen · KAH-Digital",
+      promise: "Termine eingehalten · Klare Angebote · Antwort in 24h",
+    },
   }[locale];
 
   return (
@@ -149,9 +182,9 @@ export function TestimonialsSection() {
             <span className="text-white font-semibold">5.0</span>
           </div>
           <span>·</span>
-          <span>Avis vérifiés clients KAH-Digital</span>
+          <span>{copy.aggregate}</span>
           <span>·</span>
-          <span>Délais respectés · Devis lisibles · Réponse 24h</span>
+          <span>{copy.promise}</span>
         </div>
       </div>
     </section>

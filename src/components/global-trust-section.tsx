@@ -8,32 +8,36 @@ export function GlobalTrustSection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      title: "Base solide, execution ouverte",
-      body:
-        "KAH-Digital travaille avec une base stable, une execution lisible et une organisation adaptee a des projets francophones, anglophones et internationaux.",
+      eyebrow: "Pourquoi KAH-Digital",
+      title: "Base solide, exécution ouverte",
+      body: "KAH-Digital travaille avec une base stable, une exécution lisible et une organisation adaptée à des projets francophones, anglophones et internationaux.",
       items: [
         {
           icon: FiGlobe,
+          accent: "#3b82f6",
           title: "Organisation internationale",
-          description: "Une structure de travail adaptee aux projets a distance, aux equipes mixtes et a des marches varies.",
+          description: "Structure adaptée aux projets à distance, équipes mixtes et marchés variés.",
         },
         {
           icon: FiClock,
+          accent: "#8b5cf6",
           title: "Communication claire",
-          description: "Reponses rapides, points reguliers et vision nette de l'avancement sans opacite technique.",
+          description: "Réponses rapides, points réguliers et vision nette de l'avancement — sans opacité technique.",
         },
         {
           icon: FiFileText,
-          title: "Devis structures",
-          description: "Budgets, perimetres et livrables presentes de facon lisible pour faciliter la decision.",
+          accent: "#10b981",
+          title: "Devis structurés",
+          description: "Budgets, périmètres et livrables présentés de façon lisible pour faciliter la décision.",
         },
         {
           icon: FiShield,
-          title: "Execution professionnelle",
-          description: "Un niveau de livraison propre et exploitable, quel que soit le marche vise par le projet.",
+          accent: "#f59e0b",
+          title: "Approche professionnelle",
+          description: "Exécution soignée avec des livrables utilisables, quelle que soit l'origine du projet.",
         },
       ],
-      linksTitle: "Pages d'entree utiles",
+      linksTitle: "Pages de services",
       links: [
         { label: "Site web entreprise", href: "/site-web-entreprise" },
         { label: "Refonte site web", href: "/refonte-site-web" },
@@ -42,99 +46,120 @@ export function GlobalTrustSection() {
       ],
     },
     en: {
-      title: "Strong foundation, open execution",
-      body:
-        "KAH-Digital works with a stable base, readable execution, and a structure that fits French-speaking, English-speaking, and international projects.",
+      eyebrow: "Why KAH-Digital",
+      title: "Solid foundation, open execution",
+      body: "KAH-Digital works with a stable base, readable execution, and an organization adapted to French, English, and international projects.",
       items: [
         {
           icon: FiGlobe,
-          title: "International-ready setup",
-          description: "A work structure adapted to remote projects, mixed teams, and clients from different markets.",
+          accent: "#3b82f6",
+          title: "International organization",
+          description: "Adapted for remote projects, mixed teams, and varied markets.",
         },
         {
           icon: FiClock,
+          accent: "#8b5cf6",
           title: "Clear communication",
-          description: "Fast replies, regular checkpoints, and clear progress without technical opacity.",
+          description: "Fast replies, regular check-ins, and a clear view of progress — no technical opacity.",
         },
         {
           icon: FiFileText,
+          accent: "#10b981",
           title: "Structured quotes",
-          description: "Budgets, scope, and deliverables presented in a readable way to make decisions easier.",
+          description: "Budgets, scopes, and deliverables presented clearly to facilitate decisions.",
         },
         {
           icon: FiShield,
+          accent: "#f59e0b",
           title: "Professional approach",
-          description: "A clean level of delivery that stays useful whether the client is local or international.",
+          description: "Clean execution with usable deliverables, regardless of where the project comes from.",
         },
       ],
-      linksTitle: "Useful entry pages",
+      linksTitle: "Service pages",
       links: [
         { label: "Business website", href: "/site-web-entreprise" },
         { label: "Website redesign", href: "/refonte-site-web" },
-        { label: "Custom web app", href: "/application-web-sur-mesure" },
+        { label: "Custom web application", href: "/application-web-sur-mesure" },
         { label: "AI automation for business", href: "/automatisation-ia-entreprise" },
       ],
     },
     de: {
-      title: "Starke Basis, offene Umsetzung",
-      body:
-        "KAH-Digital arbeitet mit einer stabilen Basis, klarer Umsetzung und einer Struktur, die fuer frankophone, englischsprachige und internationale Projekte passt.",
+      eyebrow: "Warum KAH-Digital",
+      title: "Stabile Basis, offene Umsetzung",
+      body: "KAH-Digital arbeitet mit einer stabilen Basis, lesbarer Umsetzung und einer Organisation, die für deutsch-, französisch- und englischsprachige Projekte ausgelegt ist.",
       items: [
         {
           icon: FiGlobe,
-          title: "International aufgestellt",
-          description: "Eine Arbeitsstruktur fuer Remote-Projekte, gemischte Teams und unterschiedliche Maerkte.",
+          accent: "#3b82f6",
+          title: "Internationale Organisation",
+          description: "Für Remote-Projekte, gemischte Teams und verschiedene Märkte ausgelegt.",
         },
         {
           icon: FiClock,
+          accent: "#8b5cf6",
           title: "Klare Kommunikation",
-          description: "Schnelle Antworten, regelmaessige Punkte und ein klarer Blick auf den Fortschritt ohne technische Nebelwand.",
+          description: "Schnelle Antworten, regelmäßige Updates, klarer Fortschrittsblick — ohne technische Intransparenz.",
         },
         {
           icon: FiFileText,
-          title: "Saubere Offerten",
-          description: "Budgets, Scope und Deliverables werden lesbar dargestellt, damit Entscheidungen leichter fallen.",
+          accent: "#10b981",
+          title: "Strukturierte Angebote",
+          description: "Budgets, Umfang und Lieferables klar dargestellt, damit Entscheidungen leicht fallen.",
         },
         {
           icon: FiShield,
+          accent: "#f59e0b",
           title: "Professioneller Ansatz",
-          description: "Saubere Ausfuehrung mit brauchbaren Deliverables, egal aus welchem Markt die Anfrage kommt.",
+          description: "Saubere Umsetzung mit brauchbaren Deliverables, egal aus welchem Markt die Anfrage kommt.",
         },
       ],
-      linksTitle: "Nuetzliche Einstiegsseiten",
+      linksTitle: "Service-Seiten",
       links: [
         { label: "Unternehmenswebsite", href: "/site-web-entreprise" },
         { label: "Website-Refonte", href: "/refonte-site-web" },
         { label: "Individuelle Web-App", href: "/application-web-sur-mesure" },
-        { label: "KI-Automatisierung fuer Unternehmen", href: "/automatisation-ia-entreprise" },
+        { label: "KI-Automatisierung für Unternehmen", href: "/automatisation-ia-entreprise" },
       ],
     },
   }[locale];
 
   return (
-    <section className="bg-white py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-950 py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-900">{copy.title}</h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">{copy.body}</p>
+          <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+            {copy.eyebrow}
+          </span>
+          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">{copy.title}</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-400">{copy.body}</p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {copy.items.map((item) => (
-            <div key={item.title} className="text-center">
-              <item.icon className="mx-auto mb-4 text-green-600" size={48} />
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+            <div
+              key={item.title}
+              className="rounded-2xl border border-white/8 bg-gray-900/60 p-5 transition hover:border-white/16"
+            >
+              <div
+                className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl"
+                style={{ background: `${item.accent}20` }}
+              >
+                <item.icon size={20} style={{ color: item.accent }} />
+              </div>
+              <h3 className="mb-2 font-semibold text-white">{item.title}</h3>
+              <p className="text-sm leading-relaxed text-gray-400">{item.description}</p>
             </div>
           ))}
         </div>
-        <div className="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{copy.linksTitle}</p>
-          <div className="mt-5 flex flex-wrap justify-center gap-3">
+
+        <div className="mt-10 rounded-2xl border border-white/8 bg-white/[0.03] p-5 text-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-gray-500">{copy.linksTitle}</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
             {copy.links.map((item) => (
               <Link
                 key={item.href}
                 href={prefix ? `${prefix}${item.href}` : item.href}
-                className="rounded-full border border-slate-300 px-5 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 hover:text-slate-900"
+                className="rounded-full border border-white/10 px-4 py-2 text-sm text-gray-400 transition hover:border-white/25 hover:text-white"
               >
                 {item.label}
               </Link>

@@ -77,13 +77,15 @@ function AdminNavInner() {
               <Link
                 key={item.label}
                 href={item.href}
+                aria-label={item.label}
+                aria-current={active ? "page" : undefined}
                 className={`flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all ${
                   active
                     ? "bg-white/12 text-white"
                     : "text-white/45 hover:bg-white/6 hover:text-white/85"
                 }`}
               >
-                <Icon size={12} className="shrink-0" />
+                <Icon size={12} className="shrink-0" aria-hidden="true" />
                 <span className="hidden sm:block">{item.label}</span>
               </Link>
             );
