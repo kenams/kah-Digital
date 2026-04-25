@@ -360,7 +360,7 @@ export function QuoteForm() {
           <select
             id="clientType"
             name="clientType"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
+            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             required
             defaultValue=""
           >
@@ -410,7 +410,7 @@ export function QuoteForm() {
               id="phoneCountry"
               name="phoneCountry"
               defaultValue="+41"
-              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white [color-scheme:dark] focus:border-white/60 focus:outline-none"
+              className="min-w-[170px] rounded-2xl border border-white/10 bg-gray-900 px-3 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             >
               {countryDialCodesSorted.map((entry) => (
                 <option key={entry.iso} value={entry.code}>
@@ -433,7 +433,7 @@ export function QuoteForm() {
             id="projectType"
             name="projectType"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
+            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
           >
             <option value={isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}>{isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}</option>
             <option value="E-commerce">{isEnglish ? "E-commerce" : isGerman ? "E-Commerce" : "E-commerce"}</option>
@@ -507,9 +507,9 @@ export function QuoteForm() {
             id="budget"
             name="budget"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
+            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Sélectionne"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Sélectionne"}</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -523,7 +523,7 @@ export function QuoteForm() {
             id="timeline"
             name="timeline"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
+            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
           >
             <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Wählen" : "Choisis"}</option>
             {timelineOptions.map((value) => (

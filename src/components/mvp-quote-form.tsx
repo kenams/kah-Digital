@@ -359,10 +359,10 @@ export function MvpQuoteForm() {
             id="clientType"
             name="clientType"
             required
-            className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Choisir"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Choisir"}</option>
             <option value="entreprise">{isEnglish ? "Company" : isGerman ? "Unternehmen" : "Entreprise"}</option>
             <option value="particulier">{isEnglish ? "Individual" : isGerman ? "Privatperson" : "Particulier"}</option>
           </select>
@@ -406,10 +406,10 @@ export function MvpQuoteForm() {
               id="phoneCountry"
               name="phoneCountry"
               defaultValue="+41"
-              className="min-w-[170px] rounded-2xl border border-white/20 bg-white/5 px-3 py-3 text-white focus:border-white/60 focus:outline-none"
+              className="min-w-[170px] rounded-2xl border border-white/20 bg-gray-900 px-3 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             >
               {countryDialCodesSorted.map((entry) => (
-                <option key={entry.iso} value={entry.code} className="text-black">
+                <option key={entry.iso} value={entry.code}>
                   {entry.country} ({entry.code})
                 </option>
               ))}
@@ -518,10 +518,10 @@ export function MvpQuoteForm() {
             id="storeSupport"
             name="storeSupport"
             required
-            className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Choisir"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Choisir"}</option>
             {storeSupportOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -544,10 +544,10 @@ export function MvpQuoteForm() {
             id="budget"
             name="budget"
             required
-            className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Sélectionne"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Sélectionne"}</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -561,10 +561,10 @@ export function MvpQuoteForm() {
             id="timeline"
             name="timeline"
             required
-            className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Waehlen" : "Choisis"}</option>
+            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Wählen" : "Choisis"}</option>
             {timelineOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
