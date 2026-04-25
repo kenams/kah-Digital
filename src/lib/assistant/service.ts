@@ -805,6 +805,16 @@ function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
   return inferred === "unknown" ? "unknown" : inferred;
 }
 
+function isGenericProjectTypeAnswer(message: string) {
+  const text = message.toLowerCase().trim();
+  const compact = text.replace(/[.!?]/g, "").trim();
+  return (
+    /^(site|site web|site vitrine|website|showcase site|application|application web|web app|app mobile|mobile app|dashboard|tableau de bord|e-?commerce|boutique en ligne)$/.test(compact) ||
+    /^(creer|créer|build|faire|lancer)\s+(un\s+|une\s+)?(site|site web|site vitrine|website|application|application web|web app|app mobile|mobile app|dashboard|tableau de bord|e-?commerce|boutique en ligne)$/.test(compact) ||
+    /^(demander un devis|get a quote|angebot anfordern)$/.test(compact)
+  );
+}
+
 function setCollectedValue(session: AssistantSession, key: string, value: string) {
   if (!value.trim()) return session;
 
@@ -881,7 +891,7 @@ export async function runAssistantTurn(params: {
       if (!session.collected.type && inferredProjectType !== "unknown") {
         session.collected.type = inferredProjectType;
       }
-      if (!session.collected.objective) {
+      if (!session.collected.objective && !isGenericProjectTypeAnswer(message)) {
         session.collected.objective = message;
       }
       if (!session.collected.features && inferFeatures({ objective: message }).length > 0) {

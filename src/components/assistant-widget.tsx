@@ -120,9 +120,9 @@ const widgetCopy = {
   de: {
     button: "Projekt- & Support-Assistent",
     title: "Projekt- & Support-Assistent",
-    subtitle: "Schnelle Qualifizierung, strukturierte Zusammenfassung, menschliche Uebergabe bei Bedarf.",
+    subtitle: "Schnelle Qualifizierung, strukturierte Zusammenfassung, menschliche Übergabe bei Bedarf.",
     introTitle: "Bevor es losgeht",
-    introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben koennen waehrend der Unterhaltung ergaenzt werden.",
+    introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben können während der Unterhaltung ergänzt werden.",
     firstName: "Vorname *",
     lastName: "Nachname *",
     phone: "Telefon (optional)",
@@ -133,28 +133,28 @@ const widgetCopy = {
     companyPlaceholder: "z. B. Studio Nova",
     startChat: "Chat starten",
     identityRequired: "Bitte Vorname, Nachname und E-Mail angeben, um zu starten.",
-    welcome: "Hallo! Sag mir, was du erstellen oder loesen moechtest — ich qualifiziere deinen Bedarf und bereite eine strukturierte Zusammenfassung vor.",
+    welcome: "Hallo! Sag mir, was du erstellen oder lösen möchtest — ich qualifiziere deinen Bedarf und bereite eine strukturierte Zusammenfassung vor.",
     suggestions: ["Website erstellen", "Individuelle App", "GLPI-Support", "Angebot anfordern"],
     placeholder: "Beschreibe dein Anliegen, Projekt oder Problem...",
     send: "Senden",
     progress: "Fortschritt",
     summary: "Strukturierte Zusammenfassung",
     missing: "Fehlende Infos",
-    budget: "Geschaetztes Budget",
-    days: "Geschaetzte Tage",
+    budget: "Geschätztes Budget",
+    days: "Geschätzte Tage",
     roles: "Ressourcen",
     ctaEmail: "Zusammenfassung erhalten",
     ctaHuman: "Mit einem Menschen sprechen",
     ctaGlpi: "Ticket erstellen",
-    consent: "Ich stimme der Speicherung der Zusammenfassung fuer eine Rueckmeldung zu.",
+    consent: "Ich stimme der Speicherung der Zusammenfassung für eine Rückmeldung zu.",
     email: "E-Mail",
     name: "Name",
     reset: "Neue Unterhaltung",
-    resetConfirm: "Den Verlauf dieser Unterhaltung loeschen?",
-    retention: "Verlauf fuer 1h gespeichert",
-    sessionExpired: "Die vorherige Unterhaltung ist nach Inaktivitaet abgelaufen. Du kannst sauber neu starten.",
-    close: "Schliessen",
-    open: "Oeffnen",
+    resetConfirm: "Den Verlauf dieser Unterhaltung löschen?",
+    retention: "Verlauf für 1h gespeichert",
+    sessionExpired: "Die vorherige Unterhaltung ist nach Inaktivität abgelaufen. Du kannst sauber neu starten.",
+    close: "Schließen",
+    open: "Öffnen",
     contact: "KAH-Digital kontaktieren",
     helper: "Immer nur eine Frage. Klare Antworten. Menschlicher Fallback inklusive.",
   },
@@ -540,19 +540,83 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const dynamicSuggestions = useMemo<string[]>(() => {
     if (!hasStartedChat || transcript.length === 0 || summary || isStreaming || messagePending) return [];
     const intent = session?.intent;
-    if (intent === "project_quote") {
+    const activeField = session?.lastAskedField;
+    if (intent === "project_quote" && activeField === "type") {
       return locale === "fr"
         ? ["Site vitrine", "Application web", "App mobile", "Tableau de bord"]
         : locale === "en"
           ? ["Showcase site", "Web app", "Mobile app", "Dashboard"]
           : ["Unternehmenswebsite", "Web-App", "Mobile App", "Dashboard"];
     }
-    if (intent === "support_glpi") {
+    if (intent === "project_quote" && activeField === "objective") {
+      return locale === "fr"
+        ? ["Presenter mon activite", "Generer des demandes", "Vendre en ligne", "Automatiser un process"]
+        : locale === "en"
+          ? ["Present my business", "Generate leads", "Sell online", "Automate a process"]
+          : ["Unternehmen vorstellen", "Anfragen generieren", "Online verkaufen", "Prozess automatisieren"];
+    }
+    if (intent === "project_quote" && activeField === "features") {
+      return locale === "fr"
+        ? ["Pages + formulaire", "Paiement Stripe", "Espace client", "Admin + API"]
+        : locale === "en"
+          ? ["Pages + form", "Stripe payment", "Client area", "Admin + API"]
+          : ["Seiten + Formular", "Stripe-Zahlung", "Kundenbereich", "Admin + API"];
+    }
+    if (intent === "project_quote" && activeField === "timeline") {
+      return locale === "fr"
+        ? ["Des que possible", "Sous 2 semaines", "1 a 2 mois", "Pas urgent"]
+        : locale === "en"
+          ? ["As soon as possible", "Within 2 weeks", "1 to 2 months", "Not urgent"]
+          : ["So bald wie moeglich", "Innerhalb 2 Wochen", "1 bis 2 Monate", "Nicht dringend"];
+    }
+    if (intent === "project_quote" && activeField === "budget") {
+      return locale === "fr"
+        ? ["Moins de 1'000 CHF", "1'000 - 3'000 CHF", "3'000 - 8'000 CHF", "A definir"]
+        : locale === "en"
+          ? ["Under CHF 1,000", "CHF 1,000 - 3,000", "CHF 3,000 - 8,000", "To define"]
+          : ["Unter CHF 1'000", "CHF 1'000 - 3'000", "CHF 3'000 - 8'000", "Noch offen"];
+    }
+    if (intent === "project_quote" && activeField === "users") {
+      return locale === "fr"
+        ? ["1 admin", "Petite equipe", "Clients externes", "Grand volume"]
+        : locale === "en"
+          ? ["1 admin", "Small team", "External clients", "High volume"]
+          : ["1 Admin", "Kleines Team", "Externe Kunden", "Grosses Volumen"];
+    }
+    if (intent === "project_quote" && activeField === "countriesLanguages") {
+      return locale === "fr"
+        ? ["France", "Suisse", "FR + EN", "Multilingue"]
+        : locale === "en"
+          ? ["France", "Switzerland", "EN + FR", "Multilingual"]
+          : ["Frankreich", "Schweiz", "DE + FR", "Mehrsprachig"];
+    }
+    if (intent === "project_quote" && activeField === "technicalNeeds") {
+      return locale === "fr"
+        ? ["Design premium", "SEO", "API / CRM", "Hebergement inclus"]
+        : locale === "en"
+          ? ["Premium design", "SEO", "API / CRM", "Hosting included"]
+          : ["Premium Design", "SEO", "API / CRM", "Hosting inklusive"];
+    }
+    if (intent === "support_glpi" && activeField === "problem") {
       return locale === "fr"
         ? ["Incident critique", "Demande de service", "Accès bloqué", "Autre problème"]
         : locale === "en"
           ? ["Critical incident", "Service request", "Blocked access", "Other issue"]
           : ["Kritischer Vorfall", "Serviceanfrage", "Gesperrter Zugang", "Anderes Problem"];
+    }
+    if (intent === "support_glpi" && activeField === "urgency") {
+      return locale === "fr"
+        ? ["Bloquant", "Degrade", "Gene mineure", "A planifier"]
+        : locale === "en"
+          ? ["Blocked", "Degraded", "Minor issue", "Can be planned"]
+          : ["Blockiert", "Eingeschraenkt", "Kleines Problem", "Planbar"];
+    }
+    if (intent === "support_glpi" && activeField === "impact") {
+      return locale === "fr"
+        ? ["Plus d'acces", "Erreurs", "Donnees touchees", "Paiement bloque"]
+        : locale === "en"
+          ? ["No access", "Errors", "Data affected", "Payment blocked"]
+          : ["Kein Zugriff", "Fehler", "Daten betroffen", "Zahlung blockiert"];
     }
     if (intent === "faq") {
       return locale === "fr"
@@ -562,7 +626,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
           : ["Projekt starten", "Preise sehen", "Mit jemandem sprechen"];
     }
     return [];
-  }, [hasStartedChat, transcript.length, summary, isStreaming, messagePending, session?.intent, locale]);
+  }, [hasStartedChat, transcript.length, summary, isStreaming, messagePending, session?.intent, session?.lastAskedField, locale]);
 
   const summaryCards = useMemo(() => {
     if (!summary) return [];
@@ -713,7 +777,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                 <div className="flex flex-wrap items-center justify-end gap-2">
                   <button
                     type="button"
-                    onClick={() => resetConversation({ preserveContact: true })}
+                    onClick={() => resetConversation()}
                     disabled={!canReset}
                     className="inline-flex items-center gap-2 rounded-full border border-white/12 px-3 py-2 text-xs font-medium text-white/70 transition hover:border-white/25 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                   >
