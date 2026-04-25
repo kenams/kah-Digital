@@ -92,8 +92,8 @@ export function ProcessSection() {
     },
     de: {
       eyebrow: "Unsere Methode",
-      title: "5 Schritte fuer ein sauber geliefertes Projekt",
-      body: "Ein strukturierter Prozess, der Ueberraschungen eliminiert und ein Ergebnis garantiert, das Ihren Erwartungen entspricht.",
+      title: "5 Schritte für ein sauber geliefertes Projekt",
+      body: "Ein strukturierter Prozess, der Überraschungen eliminiert und ein Ergebnis garantiert, das Ihren Erwartungen entspricht.",
       steps: [
         {
           num: "01",
@@ -107,14 +107,14 @@ export function ProcessSection() {
           icon: FiFileText,
           accent: "#8b5cf6",
           title: "Klares Angebot & Scope",
-          description: "Ein lesbares Angebot mit Funktionen, Budget und Zeitplan. Sie wissen genau, was Sie kaufen — keine Ueberraschungsrechnung.",
+          description: "Ein lesbares Angebot mit Funktionen, Budget und Zeitplan. Sie wissen genau, was Sie kaufen — keine Überraschungsrechnung.",
         },
         {
           num: "03",
           icon: FiCode,
           accent: "#10b981",
           title: "Entwicklung & Validierung",
-          description: "Iterative Entwicklung mit regelmaessigen Checkpoints. Sie verfolgen den Fortschritt und validieren vor dem Launch.",
+          description: "Iterative Entwicklung mit regelmäßigen Checkpoints. Sie verfolgen den Fortschritt und validieren vor dem Launch.",
         },
         {
           num: "04",
@@ -128,7 +128,7 @@ export function ProcessSection() {
           icon: FiHeadphones,
           accent: "#ec4899",
           title: "Support nach dem Launch",
-          description: "Korrekturphase nach dem Launch inbegriffen. Support fuer Fragen, Weiterentwicklungen und kuenftige Verbesserungen.",
+          description: "Korrekturphase nach dem Launch inbegriffen. Support für Fragen, Weiterentwicklungen und künftige Verbesserungen.",
         },
       ],
     },

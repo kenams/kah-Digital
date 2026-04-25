@@ -104,7 +104,7 @@ export function ProblemSection() {
           color: "#3b82f6",
         },
       ],
-      solution: "KAH-Digital verwandelt diese Probleme in konkrete, messbare Loesungen — termingerecht geliefert.",
+      solution: "KAH-Digital verwandelt diese Probleme in konkrete, messbare Lösungen — termingerecht geliefert.",
       cta: "Unsere Methode ansehen",
     },
   }[locale];
