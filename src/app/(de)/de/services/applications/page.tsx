@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/services/applications",
   title: "Web- und Mobile-Anwendungen",
-  description: "Individuelle Web- und Mobile-Anwendungen fuer Unternehmen in verschiedenen Maerkten.",
+  description: "Individuelle Web- und Mobile-Anwendungen für Unternehmen in verschiedenen Märkten.",
 });
 
 export default function ApplicationsPageDe() {

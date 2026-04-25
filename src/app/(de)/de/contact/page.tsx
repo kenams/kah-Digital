@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/contact",
   title: "Kontakt",
-  description: "Beschreibe dein Website-, App-, KI- oder Support-Projekt. Klare Rueckmeldung innerhalb von 24 Stunden.",
+  description: "Beschreibe dein Website-, App-, KI- oder Support-Projekt. Klare Rückmeldung innerhalb von 24 Stunden.",
 });
 
 export default function ContactPageDe() {

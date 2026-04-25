@@ -5,9 +5,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/application-web-sur-mesure",
-  title: "Massgeschneiderte Web-Anwendung | KAH-Digital",
+  title: "Maßgeschneiderte Web-Anwendung | KAH-Digital",
   description:
-    "Massgeschneiderte Web-Anwendung fuer Portale, Dashboards, interne Tools, Kundenbereiche und Business-Workflows.",
+    "Maßgeschneiderte Web-Anwendung für Portale, Dashboards, interne Tools, Kundenbereiche und Business-Workflows.",
 });
 
 export default function ApplicationWebSurMesurePageDe() {

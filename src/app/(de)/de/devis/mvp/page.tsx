@@ -6,7 +6,7 @@ export const metadata: Metadata = buildNoIndexMetadata({
   locale: "de",
   path: "/devis/mvp",
   title: "MVP-Anfrage",
-  description: "Kurze Anfrage fuer ein mobiles MVP mit KAH-Digital.",
+  description: "Kurze Anfrage für ein mobiles MVP mit KAH-Digital.",
 });
 
 export default function DevisMvpPageDe() {

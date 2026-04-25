@@ -7,7 +7,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/site-web-entreprise",
   title: "Business-Website | KAH-Digital",
   description:
-    "Business-Website fuer KMU, Beratungen, Agenturen und Dienstleister mit klarerer Positionierung und sauberer Conversion.",
+    "Business-Website für KMU, Beratungen, Agenturen und Dienstleister mit klarerer Positionierung und sauberer Conversion.",
 });
 
 export default function SiteWebEntreprisePageDe() {

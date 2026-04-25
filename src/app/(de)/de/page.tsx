@@ -15,7 +15,7 @@ export const metadata = buildPageMetadata({
   path: "/",
   title: "Webagentur Lausanne — Websites, Apps & KI-Automatisierung | KAH-Digital",
   description:
-    "KAH-Digital entwickelt Websites, massgeschneiderte Anwendungen und KI-Automatisierungen, die konvertieren. Digitalstudio in Lausanne, remote verfuegbar. Kostenloses Angebot in 24h.",
+    "KAH-Digital entwickelt Websites, maßgeschneiderte Anwendungen und KI-Automatisierungen, die konvertieren. Digitalstudio in Lausanne, remote verfügbar. Kostenloses Angebot in 24h.",
   keywords: ["Webagentur Lausanne", "Unternehmenswebsite Schweiz", "KI-Automatisierung", "Digitalstudio", "KAH-Digital"],
 });
 

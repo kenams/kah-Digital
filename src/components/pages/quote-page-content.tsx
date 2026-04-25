@@ -39,14 +39,14 @@ const copy = {
   },
   de: {
     heroTitle: "Kostenlose Projektanfrage",
-    heroBody: "Fuelle dieses Formular aus und erhalte eine klare Rueckmeldung mit Budget, Timing und Empfehlungen.",
+    heroBody: "Fülle dieses Formular aus und erhalte eine klare Rückmeldung mit Budget, Timing und Empfehlungen.",
     eyebrow: "Schnelle Anfrage",
     title: "Beschreibe dein Projekt klar, wir antworten schnell.",
     body: "Budget, Timing, Empfehlungen und ein erstes Briefing in einem einfachen Format zum Nachlesen.",
     cards: [
-      { eyebrow: "Waehrung", body: "Alle Betraege werden in € ausgewiesen." },
-      { eyebrow: "Zahlung", body: "Zahlung per Bankueberweisung." },
-      { eyebrow: "Kontaktdaten", body: "Werden auf dem bestaetigten Angebot oder der Schlussrechnung uebermittelt." },
+      { eyebrow: "Währung", body: "Alle Beträge werden in € ausgewiesen." },
+      { eyebrow: "Zahlung", body: "Zahlung per Banküberweisung." },
+      { eyebrow: "Kontaktdaten", body: "Werden auf dem bestätigten Angebot oder der Schlussrechnung übermittelt." },
     ],
     previewEyebrow: "Vorschau",
     previewTitle: "Beispiel einer KAH-Digital-Offerte",
@@ -85,12 +85,12 @@ export function QuotePageContent({ locale }: QuotePageContentProps) {
         </div>
       </section>
 
-      <section className="bg-slate-100 py-16">
+      <section className="bg-gray-900 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{content.previewEyebrow}</p>
-            <h2 className="mb-4 mt-3 text-3xl font-bold text-slate-900">{content.previewTitle}</h2>
-            <p className="text-lg text-slate-600">{content.previewBody}</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-500">{content.previewEyebrow}</p>
+            <h2 className="mb-4 mt-3 text-3xl font-bold text-white">{content.previewTitle}</h2>
+            <p className="text-lg text-gray-400">{content.previewBody}</p>
           </div>
           <QuotePreview />
         </div>

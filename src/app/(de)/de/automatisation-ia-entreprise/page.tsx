@@ -5,9 +5,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/automatisation-ia-entreprise",
-  title: "KI-Automatisierung fuer Unternehmen | KAH-Digital",
+  title: "KI-Automatisierung für Unternehmen | KAH-Digital",
   description:
-    "KI-Automatisierung fuer Lead-Qualifizierung, Support, Routing, Zusammenfassungen und operativen Zeitgewinn.",
+    "KI-Automatisierung für Lead-Qualifizierung, Support, Routing, Zusammenfassungen und operativen Zeitgewinn.",
 });
 
 export default function AutomatisationIaEntreprisePageDe() {

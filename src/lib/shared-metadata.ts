@@ -35,13 +35,13 @@ const localeMetadata = {
   },
   de: {
     description:
-      "Digitalstudio mit Premium-Anspruch. Websites, Landingpages und individuelle digitale Loesungen mit klarem Prozess.",
+      "Digitalstudio mit Premium-Anspruch. Websites, Landingpages und individuelle digitale Lösungen mit klarem Prozess.",
     keywords: ["Webagentur", "Unternehmenswebsite", "Next.js", "Landingpage", "Digitalstudio", "KAH-Digital"],
     openGraphLocale: "de_CH",
     alternateLocales: ["fr_FR", "en_US"],
-    openGraphDescription: "Websites, Landingpages und digitale Loesungen mit klarem Ablauf und schneller Umsetzung.",
+    openGraphDescription: "Websites, Landingpages und digitale Lösungen mit klarem Ablauf und schneller Umsetzung.",
     openGraphAlt: "KAH-Digital - digitales Premium-Studio",
-    twitterDescription: "Websites und digitale Loesungen mit klarem Prozess.",
+    twitterDescription: "Websites und digitale Lösungen mit klarem Prozess.",
   },
 } satisfies Record<
   Locale,

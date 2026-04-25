@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/services/site-web",
   title: "Unternehmenswebsites",
-  description: "Klare Business-Websites, Corporate Sites und Praesentationsplattformen fuer Unternehmen in verschiedenen Maerkten.",
+  description: "Klare Business-Websites, Corporate Sites und Präsentationsplattformen für Unternehmen in verschiedenen Märkten.",
 });
 
 export default function SiteWebPageDe() {

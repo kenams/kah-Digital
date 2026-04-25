@@ -48,7 +48,7 @@ export function QuoteForm() {
   const pageOptions = isEnglish
     ? ["Home", "About", "Services", "Portfolio", "Blog", "Contact"]
     : isGerman
-      ? ["Start", "Ueber uns", "Leistungen", "Projekte", "Blog", "Kontakt"]
+      ? ["Start", "Über uns", "Leistungen", "Projekte", "Blog", "Kontakt"]
       : ["Accueil", "A propos", "Services", "Portfolio", "Blog", "Contact"];
   const aiModuleOptions = isEnglish
     ? [
@@ -63,8 +63,8 @@ export function QuoteForm() {
           "Kundenautomatisierung",
           "Branchen-Chatbot & Support",
           "Lead-Qualifizierung & Scoring",
-          "AI-Content & Assets",
-          "Individuelles AI-Mikro-Tool",
+          "KI-Inhalte & Assets",
+          "Individuelles KI-Mikro-Tool",
         ]
     : [
         "Automatisation relation client",
@@ -77,13 +77,13 @@ export function QuoteForm() {
   const budgetOptions = isEnglish
     ? ["Under € 2,000", "€ 2,000 - 6,000", "€ 6,000 - 12,000", "€ 12,000 +"]
     : isGerman
-      ? ["Unter € 2'000", "€ 2'000 - 6'000", "€ 6'000 - 12'000", "€ 12'000 +"]
+      ? ["Unter € 2.000", "€ 2.000 – 6.000", "€ 6.000 – 12.000", "€ 12.000 +"]
       : ["Moins de 2 000 €", "2 000 € - 6 000 €", "6 000 € - 12 000 €", "12 000 € +"];
 
   const timelineOptions = isEnglish
     ? ["ASAP", "2-4 weeks", "1-2 months", "3 months +"]
     : isGerman
-      ? ["ASAP", "2-4 Wochen", "1-2 Monate", "3 Monate +"]
+      ? ["So schnell wie möglich", "2–4 Wochen", "1–2 Monate", "3 Monate +"]
       : ["ASAP", "2-4 semaines", "1-2 mois", "3 mois et +"];
   const trustItems = isEnglish
     ? [
@@ -95,7 +95,7 @@ export function QuoteForm() {
       ? [
           { title: "Antwort in 24h", detail: "Budget + Zeitplan" },
           { title: "Unverbindlich", detail: "Kostenlose Offerte" },
-          { title: "Vertraulich", detail: "NDA auf Anfrage" },
+          { title: "Vertraulich", detail: "NDA auf Wunsch" },
         ]
       : [
         { title: "Reponse 24h", detail: "Budget + planning" },
@@ -114,7 +114,7 @@ export function QuoteForm() {
     const values: Array<[string, string]> = [
       [isEnglish ? "Client type" : isGerman ? "Kundentyp" : "Type de client", String(formData.get("clientType") ?? "")],
       [isEnglish ? "Company name" : isGerman ? "Firmenname" : "Nom de société", String(formData.get("companyName") ?? "")],
-      [isEnglish ? "Full name" : isGerman ? "Vollstaendiger Name" : "Nom complet", String(formData.get("name") ?? "")],
+      [isEnglish ? "Full name" : isGerman ? "Vollständiger Name" : "Nom complet", String(formData.get("name") ?? "")],
       ["Email", String(formData.get("email") ?? "")],
       [isEnglish ? "Phone" : isGerman ? "Telefon" : "Téléphone", phoneValue],
       [isEnglish ? "Project type" : isGerman ? "Projekttyp" : "Type de projet", String(formData.get("projectType") ?? "")],
@@ -182,7 +182,7 @@ export function QuoteForm() {
 
     if (selectedPages.length === 0) {
       setServerMessage(
-        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Sélectionne au moins une page pour ton site."
+        isEnglish ? "Select at least one page." : isGerman ? "Wähle mindestens eine Seite für deine Website." : "Sélectionne au moins une page pour ton site."
       );
       setStatus("error");
       return;
@@ -190,7 +190,7 @@ export function QuoteForm() {
 
     if (!siteKey) {
       setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
+        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha nicht konfiguriert. Bitte kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
       );
       setStatus("error");
       return;
@@ -198,7 +198,7 @@ export function QuoteForm() {
 
     if (!token) {
       setServerMessage(
-        isEnglish ? "Validate the captcha before sending." : isGerman ? "Bitte bestaetige das Captcha vor dem Senden." : "Valide le captcha avant d'envoyer."
+        isEnglish ? "Validate the captcha before sending." : isGerman ? "Bitte bestätige das Captcha vor dem Senden." : "Valide le captcha avant d'envoyer."
       );
       setStatus("error");
       return;
@@ -243,7 +243,7 @@ export function QuoteForm() {
           ? "Unable to send the request. Please try again."
           : isGerman
             ? "Die Anfrage konnte nicht gesendet werden. Bitte gleich erneut versuchen."
-            : "Impossible d'envoyer la demande. Reessaie dans un instant.";
+            : "Impossible d'envoyer la demande. Réessaie dans un instant.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
         setCaptchaToken("");
         setCaptchaReset((prev) => prev + 1);
@@ -254,7 +254,7 @@ export function QuoteForm() {
 
       setStatus("success");
       setServerMessage(
-        isEnglish ? "Thanks, request sent. Redirecting..." : isGerman ? "Danke, Anfrage gesendet. Weiterleitung laeuft..." : "Merci, demande envoyee. Redirection en cours..."
+        isEnglish ? "Thanks, request sent. Redirecting..." : isGerman ? "Danke, Anfrage gesendet. Weiterleitung läuft..." : "Merci, demande envoyée. Redirection en cours..."
       );
       trackEvent("generate_lead", { form_name: "devis", destination: "devis" });
       formElement.reset();
@@ -267,7 +267,7 @@ export function QuoteForm() {
       console.error(error);
       setStatus("error");
       setServerMessage(
-        isEnglish ? "Unable to send the request. Please try again." : isGerman ? "Die Anfrage konnte nicht gesendet werden. Bitte gleich erneut versuchen." : "Impossible d'envoyer la demande. Reessaie dans un instant."
+        isEnglish ? "Unable to send the request. Please try again." : isGerman ? "Die Anfrage konnte nicht gesendet werden. Bitte gleich erneut versuchen." : "Impossible d'envoyer la demande. Réessaie dans un instant."
       );
     }
   }, [isEnglish, isGerman, prefix, router, siteKey]);
@@ -302,7 +302,7 @@ export function QuoteForm() {
 
     if (selectedPages.length === 0) {
       setServerMessage(
-        isEnglish ? "Select at least one page." : isGerman ? "Waehle mindestens eine Seite fuer deine Website." : "Sélectionne au moins une page pour ton site."
+        isEnglish ? "Select at least one page." : isGerman ? "Wähle mindestens eine Seite für deine Website." : "Sélectionne au moins une page pour ton site."
       );
       setStatus("error");
       return;
@@ -310,7 +310,7 @@ export function QuoteForm() {
 
     if (!siteKey) {
       setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
+        isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha nicht konfiguriert. Bitte kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement."
       );
       setStatus("error");
       return;
@@ -360,11 +360,11 @@ export function QuoteForm() {
           <select
             id="clientType"
             name="clientType"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
             required
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Choisir"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Choisir"}</option>
             <option value="entreprise">{isEnglish ? "Company" : isGerman ? "Unternehmen" : "Entreprise"}</option>
             <option value="particulier">{isEnglish ? "Individual" : isGerman ? "Privatperson" : "Particulier"}</option>
           </select>
@@ -381,7 +381,7 @@ export function QuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm text-white/70">{isEnglish ? "Full name *" : isGerman ? "Vollstaendiger Name *" : "Nom complet *"}</label>
+          <label htmlFor="name" className="text-sm text-white/70">{isEnglish ? "Full name *" : isGerman ? "Vollständiger Name *" : "Nom complet *"}</label>
           <input
             id="name"
             name="name"
@@ -410,10 +410,10 @@ export function QuoteForm() {
               id="phoneCountry"
               name="phoneCountry"
               defaultValue="+41"
-              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white focus:border-white/60 focus:outline-none"
+              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white [color-scheme:dark] focus:border-white/60 focus:outline-none"
             >
               {countryDialCodesSorted.map((entry) => (
-                <option key={entry.iso} value={entry.code} className="text-black">
+                <option key={entry.iso} value={entry.code}>
                   {entry.country} ({entry.code})
                 </option>
               ))}
@@ -433,7 +433,7 @@ export function QuoteForm() {
             id="projectType"
             name="projectType"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
           >
             <option value={isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}>{isEnglish ? "Showcase website" : isGerman ? "Unternehmenswebsite" : "Site vitrine"}</option>
             <option value="E-commerce">{isEnglish ? "E-commerce" : isGerman ? "E-Commerce" : "E-commerce"}</option>
@@ -507,7 +507,7 @@ export function QuoteForm() {
             id="budget"
             name="budget"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
           >
             <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Waehlen" : "Sélectionne"}</option>
             {budgetOptions.map((value) => (
@@ -523,9 +523,9 @@ export function QuoteForm() {
             id="timeline"
             name="timeline"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-black"
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white [color-scheme:dark]"
           >
-            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Waehlen" : "Choisis"}</option>
+            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Wählen" : "Choisis"}</option>
             {timelineOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -553,7 +553,7 @@ export function QuoteForm() {
         </div>
       </div>
       <div className="mt-6 space-y-2 text-sm text-white/70">
-        <p>{isEnglish ? "Anti-spam verification" : isGerman ? "Anti-Spam-Verifizierung" : "Vérification anti-spam"}</p>
+        <p>{isEnglish ? "Anti-spam verification" : isGerman ? "Anti-Spam-Überprüfung" : "Vérification anti-spam"}</p>
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
             <TurnstileWidget
@@ -566,7 +566,7 @@ export function QuoteForm() {
             />
           </div>
         ) : (
-          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : isGerman ? "Captcha ist nicht konfiguriert." : "Captcha non configuré."}</p>
+          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : isGerman ? "Captcha nicht konfiguriert." : "Captcha non configuré."}</p>
         )}
         {captchaError && <p className="text-rose-200">{captchaError}</p>}
       </div>
@@ -576,7 +576,7 @@ export function QuoteForm() {
           disabled={isSubmitting}
           className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? (isEnglish ? "Sending..." : isGerman ? "Versand laeuft..." : "Envoi en cours...") : isEnglish ? "Send my request" : isGerman ? "Anfrage senden" : "Envoyer ma demande"}
+          {isSubmitting ? (isEnglish ? "Sending..." : isGerman ? "Wird gesendet..." : "Envoi en cours...") : isEnglish ? "Send my request" : isGerman ? "Anfrage absenden" : "Envoyer ma demande"}
         </button>
         <button
           type="button"
@@ -589,15 +589,15 @@ export function QuoteForm() {
           {isEnglish
             ? "Free estimate, reply within 24h. No commitment."
             : isGerman
-              ? "Kostenlose Anfrage, Rueckmeldung innerhalb von 24h. Unverbindlich."
+              ? "Kostenlose Anfrage, Rückmeldung in 24h. Unverbindlich."
               : "Devis gratuit, réponse sous 24h. Aucun engagement."}
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
             ? "Quotes and invoices are issued in €. Payment is usually made by bank transfer, with secure Stripe payment possible when the project requires it."
             : isGerman
-              ? "Angebote und Rechnungen werden in € erstellt. Die Zahlung erfolgt meist per Bankueberweisung, mit sicherem Stripe-Link wenn das Projekt es braucht."
-              : "Les devis et factures sont émis en €. Le paiement se fait en general par virement bancaire, avec lien Stripe securise possible si le projet le demande."}
+              ? "Angebote und Rechnungen werden in € erstellt. Zahlung per Banküberweisung, bei Bedarf mit Stripe-Zahlungslink."
+              : "Les devis et factures sont émis en €. Le paiement se fait en général par virement bancaire, avec lien Stripe sécurisé possible si le projet le demande."}
         </p>
         {serverMessage && (
           <p

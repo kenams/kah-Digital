@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
-import { FiCheck, FiArrowRight, FiZap } from "react-icons/fi";
+import { FiCheck, FiArrowRight, FiZap, FiRefreshCw } from "react-icons/fi";
 
 type OffersPageContentProps = {
   locale: Locale;
@@ -20,6 +20,34 @@ const copy = {
     timeline: "Délai",
     includes: "Ce qui est inclus",
     idealFor: "Idéal pour",
+    maintenance: {
+      eyebrow: "Support & maintenance",
+      title: "Après livraison, on reste là",
+      body: "Chaque projet livré peut être suivi par une formule mensuelle. Mises à jour, corrections, ajouts légers, suivi des performances.",
+      plans: [
+        {
+          name: "Essentiel",
+          price: "€ 90 / mois",
+          desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
+          items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
+        },
+        {
+          name: "Confort",
+          price: "€ 190 / mois",
+          desc: "Tout Essentiel + corrections mineures et ajouts de contenu.",
+          items: ["Tout du plan Essentiel", "2h de modifications / mois", "Ajouts textes et images", "Support prioritaire (24h)"],
+          popular: true,
+        },
+        {
+          name: "Pro",
+          price: "€ 390 / mois",
+          desc: "Tout Confort + développement léger et suivi analytique mensuel.",
+          items: ["Tout du plan Confort", "5h de développement / mois", "Rapport analytique mensuel", "Support dédié (réponse jour-même)"],
+        },
+      ],
+      note: "Formules sans engagement. Résiliable à tout moment. Disponibles après livraison de votre projet.",
+      cta: "Demander un devis",
+    },
     offers: [
       {
         id: "landing-portfolio",
@@ -136,6 +164,34 @@ const copy = {
     timeline: "Timeline",
     includes: "What's included",
     idealFor: "Ideal for",
+    maintenance: {
+      eyebrow: "Support & maintenance",
+      title: "After delivery, we stay with you",
+      body: "Every delivered project can be followed by a monthly plan. Updates, fixes, minor additions, performance monitoring.",
+      plans: [
+        {
+          name: "Essential",
+          price: "€ 90 / month",
+          desc: "Security updates, backups, uptime monitoring.",
+          items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
+        },
+        {
+          name: "Comfort",
+          price: "€ 190 / month",
+          desc: "Everything in Essential + minor fixes and content additions.",
+          items: ["Everything in Essential", "2h of changes / month", "Text and image updates", "Priority support (24h)"],
+          popular: true,
+        },
+        {
+          name: "Pro",
+          price: "€ 390 / month",
+          desc: "Everything in Comfort + light development and monthly analytics report.",
+          items: ["Everything in Comfort", "5h of development / month", "Monthly analytics report", "Dedicated support (same-day)"],
+        },
+      ],
+      note: "No-commitment plans. Cancel anytime. Available after your project is delivered.",
+      cta: "Request a quote",
+    },
     offers: [
       {
         id: "landing-portfolio",
@@ -242,16 +298,44 @@ const copy = {
   },
   de: {
     eyebrow: "Angebote & Preise",
-    title: "Klare Budgets. Definierter Scope. Keine Ueberraschungen.",
-    body: "Jedes Angebot zeigt was enthalten ist, die durchschnittliche Produktionsdauer und warum dieses Budget. Individuelle Offerte fuer jeden Sonderbedarf.",
-    popular: "Am haeuﬁgsten gefragt",
+    title: "Klare Budgets. Definierter Scope. Keine Überraschungen.",
+    body: "Jedes Angebot zeigt was enthalten ist, die durchschnittliche Produktionsdauer und warum dieses Budget. Individuelle Offerte für jeden Sonderbedarf.",
+    popular: "Am häufigsten gefragt",
     requestQuote: "Projekt anfragen",
     startChat: "Chat starten",
-    customNote: "Bedarf ausserhalb des Katalogs? Individuelle Offerte in 24h.",
+    customNote: "Bedarf außerhalb des Katalogs? Individuelle Offerte in 24h.",
     customCta: "Kontakt aufnehmen",
     timeline: "Dauer",
     includes: "Enthalten",
-    idealFor: "Ideal fuer",
+    idealFor: "Ideal für",
+    maintenance: {
+      eyebrow: "Support & Wartung",
+      title: "Nach der Lieferung bleiben wir dabei",
+      body: "Jedes gelieferte Projekt kann durch einen Monatsplan ergänzt werden. Updates, Korrekturen, kleine Ergänzungen, Performance-Monitoring.",
+      plans: [
+        {
+          name: "Basis",
+          price: "€ 90 / Monat",
+          desc: "Sicherheitsupdates, Backups, Uptime-Monitoring.",
+          items: ["CMS- / Abhängigkeits-Updates", "Wöchentliches Backup", "24/7 Uptime-Monitoring", "E-Mail-Support (48h)"],
+        },
+        {
+          name: "Komfort",
+          price: "€ 190 / Monat",
+          desc: "Alles aus Basis + kleinere Korrekturen und Inhaltsaktualisierungen.",
+          items: ["Alles aus Basis", "2h Änderungen / Monat", "Text- und Bildaktualisierungen", "Prioritäts-Support (24h)"],
+          popular: true,
+        },
+        {
+          name: "Pro",
+          price: "€ 390 / Monat",
+          desc: "Alles aus Komfort + leichte Entwicklung und monatlicher Analytics-Bericht.",
+          items: ["Alles aus Komfort", "5h Entwicklung / Monat", "Monatlicher Analytics-Bericht", "Dedizierter Support (am selben Tag)"],
+        },
+      ],
+      note: "Monatlich kündbar. Keine Mindestlaufzeit. Verfügbar nach Projektabschluss.",
+      cta: "Projekt anfragen",
+    },
     offers: [
       {
         id: "landing-portfolio",
@@ -259,14 +343,14 @@ const copy = {
         title: "Landing / Portfolio",
         price: "€ 300 – 600",
         timeline: "1 – 2 Wochen",
-        summary: "Eine Seite, sauberes Design, mobil optimiert. Ideal fuer ein persoenliches Portfolio, freiberufliche Taetigkeit oder ein Testprojekt.",
+        summary: "Eine Seite, sauberes Design, mobil optimiert. Ideal für ein persönliches Portfolio, freiberufliche Tätigkeit oder ein Testprojekt.",
         includes: [
           "1 bis 3 Sektionen auf einer Seite",
           "Individuelles responsives Design",
           "Kontaktformular oder E-Mail-Link",
           "Live auf Ihrer Domain",
         ],
-        idealFor: ["Privatpersonen", "Freelancer", "Persoenliche Projekte"],
+        idealFor: ["Privatpersonen", "Freelancer", "Persönliche Projekte"],
         accent: "from-pink-500/20 to-rose-600/10",
         border: "border-pink-500/20",
       },
@@ -276,7 +360,7 @@ const copy = {
         title: "Unternehmenswebsite",
         price: "€ 900 – 1.500",
         timeline: "2 – 3 Wochen",
-        summary: "Professionelle Online-Praesenz, sauberes Design, Basis-SEO und Kontaktformular.",
+        summary: "Professionelle Online-Präsenz, sauberes Design, Basis-SEO und Kontaktformular.",
         includes: [
           "5 bis 8 responsive Seiten",
           "Modernes individuelles Design",
@@ -284,24 +368,24 @@ const copy = {
           "Kontaktformular",
           "Live-Deployment auf Ihrer Domain",
         ],
-        idealFor: ["Selbststaendige", "Kleinbetriebe", "Freie Berufe"],
+        idealFor: ["Selbstständige", "Kleinbetriebe", "Freie Berufe"],
         accent: "from-sky-500/20 to-blue-600/10",
         border: "border-sky-500/20",
       },
       {
         id: "site-corporate",
-        tag: "Am haeuﬁgsten gefragt",
+        tag: "Am häufigsten gefragt",
         title: "Corporate-Website",
         price: "€ 2.200 – 4.500",
         timeline: "3 – 5 Wochen",
-        summary: "Vollstaendige Website mit Leistungsseiten, Blog oder News, Premium-Design und erweitertem SEO.",
+        summary: "Vollständige Website mit Leistungsseiten, Blog oder News, Premium-Design und erweitertem SEO.",
         includes: [
           "10 bis 20 responsive Seiten",
           "Premium-Design + Animationen",
           "Erweitertes SEO + Blog/News",
           "Formular + CRM-Integration",
           "Analytics + Conversion-Tracking",
-          "Deployment + vollstaendige QA",
+          "Deployment + vollständige QA",
         ],
         idealFor: ["KMU", "Kanzleien", "Wachsende Marken"],
         accent: "from-violet-500/20 to-purple-600/10",
@@ -310,10 +394,10 @@ const copy = {
       {
         id: "application-web",
         tag: null,
-        title: "Massgeschneiderte Web-App",
+        title: "Maßgeschneiderte Web-App",
         price: "€ 4.000 – 12.000",
         timeline: "4 – 10 Wochen",
-        summary: "Business-Tool, Portal, Dashboard oder SaaS mit Auth, Datenbank und Geschaftslogik.",
+        summary: "Business-Tool, Portal, Dashboard oder SaaS mit Auth, Datenbank und Geschäftslogik.",
         includes: [
           "Strukturierte technische Architektur",
           "Auth + Rollen + Kontoverwaltung",
@@ -340,17 +424,17 @@ const copy = {
           "Interface oder Webhook je nach Bedarf",
           "Dokumentation + Schulung",
         ],
-        idealFor: ["Fuehrungsebene", "Ops & Admin", "Kundensupport"],
+        idealFor: ["Führungsebene", "Ops & Admin", "Kundensupport"],
         accent: "from-amber-500/20 to-orange-600/10",
         border: "border-amber-500/20",
       },
     ],
     customOffers: {
-      title: "Projekt ausserhalb des Katalogs?",
-      body: "Mobile App, erweiterter E-Commerce, GLPI-Workflow, vollstaendige Neugestaltung — jeder Bedarf wird individuell bewertet.",
+      title: "Projekt außerhalb des Katalogs?",
+      body: "Mobile App, erweiterter E-Commerce, GLPI-Workflow, vollständige Neugestaltung — jeder Bedarf wird individuell bewertet.",
       items: [
         { label: "Mobile App", price: "€ 6.000 – 20.000" },
-        { label: "Vollstaendiger E-Commerce", price: "€ 3.500 – 9.000" },
+        { label: "Vollständiger E-Commerce", price: "€ 3.500 – 9.000" },
         { label: "GLPI-Support-Workflow", price: "€ 2.500 – 8.000" },
         { label: "Redesign + Migration", price: "Auf Anfrage" },
       ],
@@ -479,6 +563,66 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
               <FiArrowRight size={13} />
             </Link>
           </div>
+        </div>
+
+        {/* Maintenance section */}
+        <div className="mt-16">
+          <div className="mb-10 text-center">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm font-medium text-emerald-400">
+              <FiRefreshCw size={13} />
+              {content.maintenance.eyebrow}
+            </span>
+            <h2 className="mb-3 mt-4 text-3xl font-extrabold tracking-tight text-white">{content.maintenance.title}</h2>
+            <p className="mx-auto max-w-xl text-gray-400">{content.maintenance.body}</p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {content.maintenance.plans.map((plan) => {
+              const isPopular = "popular" in plan && plan.popular === true;
+              return (
+                <div
+                  key={plan.name}
+                  className={`relative flex flex-col rounded-2xl border p-6 ${
+                    isPopular
+                      ? "border-emerald-500/40 bg-gradient-to-b from-emerald-500/10 to-emerald-600/5 shadow-lg shadow-emerald-500/10"
+                      : "border-white/8 bg-gray-900"
+                  }`}
+                >
+                  {isPopular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-0.5 text-xs font-semibold text-emerald-300">
+                      Recommandé
+                    </div>
+                  )}
+                  <div className="mb-4">
+                    <h3 className="text-lg font-bold text-white">{plan.name}</h3>
+                    <p className="mt-0.5 text-2xl font-extrabold text-white">{plan.price}</p>
+                    <p className="mt-1 text-sm text-gray-400">{plan.desc}</p>
+                  </div>
+                  <ul className="mb-6 flex-1 space-y-2.5">
+                    {plan.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-gray-300">
+                        <FiCheck size={13} className="mt-0.5 shrink-0 text-emerald-400" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={quoteHref}
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-semibold transition-all ${
+                      isPopular
+                        ? "bg-emerald-500 text-white hover:bg-emerald-400"
+                        : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {content.maintenance.cta}
+                    <FiArrowRight size={13} />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-6 text-center text-sm text-gray-600">{content.maintenance.note}</p>
         </div>
 
       </div>

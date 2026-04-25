@@ -7,7 +7,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/refonte-site-web",
   title: "Website-Refonte | KAH-Digital",
   description:
-    "Website-Refonte fuer Unternehmen, die auf einer saubereren, glaubwuerdigeren digitalen Basis neu starten wollen.",
+    "Website-Refonte für Unternehmen, die auf einer saubereren, glaubwürdigeren digitalen Basis neu starten wollen.",
 });
 
 export default function RefonteSiteWebPageDe() {

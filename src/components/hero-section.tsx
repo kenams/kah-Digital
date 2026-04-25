@@ -41,11 +41,11 @@ export function HeroSection() {
       proof2: { label: "Reply in 24h guaranteed", desc: "Readable quote · no commitment" },
     },
     de: {
-      badge: "Digitalstudio · Lausanne, Schweiz · Remote verfuegbar",
+      badge: "Digitalstudio · Lausanne, Schweiz · Remote verfügbar",
       title1: "Websites, Apps &",
       title2: "KI-Automatisierung",
       title3: "die Ihr Unternehmen wirklich voranbringen",
-      body: "KAH-Digital unterstuetzt KMU, Selbststaendige und wachsende Unternehmen mit klaren, ergebnisorientierten digitalen Loesungen. Website, Business-App, KI-Automatisierung, GLPI-Support — sauber gescoped, termingerecht geliefert.",
+      body: "KAH-Digital unterstützt KMU, Selbstständige und wachsende Unternehmen mit klaren, ergebnisorientierten digitalen Lösungen. Website, Business-App, KI-Automatisierung, GLPI-Support — sauber gescoped, termingerecht geliefert.",
       primary: "Kostenloses Angebot anfordern",
       secondary: "Leistungen ansehen",
       stats: [
@@ -53,7 +53,7 @@ export function HeroSection() {
         { value: "DE · FR · EN", label: "Sprachen" },
         { value: "300€", label: "Websites ab" },
       ],
-      proof1: { label: "Website in 3 Wochen geliefert", desc: "Praesentation · klares Scope · keine Ueberraschungen" },
+      proof1: { label: "Website in 3 Wochen geliefert", desc: "Präsentation · klares Scope · keine Überraschungen" },
       proof2: { label: "Antwort in 24h garantiert", desc: "Lesbares Angebot · keine Verpflichtung" },
     },
   }[locale];

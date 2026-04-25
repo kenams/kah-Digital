@@ -1,11 +1,12 @@
 import { QuotePageContent } from "@/components/pages/quote-page-content";
-import { buildNoIndexMetadata } from "@/lib/shared-metadata";
+import { buildPageMetadata } from "@/lib/shared-metadata";
 
-export const metadata = buildNoIndexMetadata({
+export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/devis",
-  title: "Demande de devis",
-  description: "Demande un devis clair pour ton site web, ton application ou ton projet IA. Retour structuré sous 24h.",
+  title: "Devis gratuit — Site web, application ou IA | KAH-Digital",
+  description: "Demande un devis gratuit pour ton projet digital. Retour clair avec budget, délai et recommandations sous 24h. Sans engagement.",
+  keywords: ["devis site web gratuit", "devis agence web Lausanne", "demande devis application", "tarif création site web"],
 });
 
 export default function DevisPage() {

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { QuotePageContent } from "@/components/pages/quote-page-content";
-import { buildNoIndexMetadata } from "@/lib/shared-metadata";
+import { buildPageMetadata } from "@/lib/shared-metadata";
 
-export const metadata: Metadata = buildNoIndexMetadata({
+export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/devis",
-  title: "Projektanfrage",
-  description: "Schnelle Anfrage fuer Website-, App- oder KI-Projekte mit klarer Rueckmeldung innerhalb von 24 Stunden.",
+  title: "Kostenlose Offerte — Website, App oder KI | KAH-Digital",
+  description: "Kostenlose Offerte für dein digitales Projekt. Klare Rückmeldung mit Budget, Zeitplan und Empfehlungen in 24h. Unverbindlich.",
+  keywords: ["kostenlose Website Offerte", "Webagentur Angebot Schweiz", "Web-App Offerte", "KI-Projekt Anfrage"],
 });
 
 export default function QuotePageDe() {
