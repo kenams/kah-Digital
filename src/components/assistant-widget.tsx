@@ -75,6 +75,9 @@ const widgetCopy = {
     open: "Ouvrir",
     contact: "Contacter KAH-Digital",
     helper: "Une question à la fois. Réponse claire. Fallback humain prévu.",
+    qualStarted: "Démarrage",
+    qualCollecting: "Qualification",
+    qualReady: "Résumé en cours",
   },
   en: {
     button: "Project & support assistant",
@@ -116,6 +119,9 @@ const widgetCopy = {
     open: "Open",
     contact: "Contact KAH-Digital",
     helper: "One question at a time. Clear reply. Human fallback included.",
+    qualStarted: "Getting started",
+    qualCollecting: "Qualification",
+    qualReady: "Summary in progress",
   },
   de: {
     button: "Projekt- & Support-Assistent",
@@ -157,6 +163,9 @@ const widgetCopy = {
     open: "Öffnen",
     contact: "KAH-Digital kontaktieren",
     helper: "Immer nur eine Frage. Klare Antworten. Menschlicher Fallback inklusive.",
+    qualStarted: "Start",
+    qualCollecting: "Qualifizierung",
+    qualReady: "Zusammenfassung läuft",
   },
 } as const;
 
@@ -402,6 +411,26 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const hasConversation = transcript.length > 0 || Boolean(summary) || Boolean(pendingUserMessage) || Boolean(streamingReply);
   const fullName = joinName(firstName, lastName);
   const hasStartedChat = Boolean(session);
+
+  const qualScore = useMemo(() => {
+    const c = session?.collected ?? {};
+    const checks = [
+      !!(c.name || (firstName && lastName)),
+      !!(c.email || email),
+      !!(c.objective || c.problem || c.type),
+      !!(c.features || c.urgency || c.timeline),
+      !!(c.budget || c.impact || c.affectedUsers),
+      !!summary,
+    ];
+    const current = checks.filter(Boolean).length;
+    const total = checks.length;
+    const pct = Math.round((current / total) * 100);
+    let label: string = copy.qualStarted;
+    if (summary) label = copy.summary;
+    else if (current >= 4) label = copy.qualReady;
+    else if (current >= 2) label = copy.qualCollecting;
+    return { current, total, pct, label };
+  }, [session, firstName, lastName, email, summary, copy]);
 
   useEffect(() => {
     if (!session && !summary) {
@@ -796,16 +825,22 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
 
               <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
                 <div className="mb-2 flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/50">
-                  <span>{progress.label}</span>
-                  <span>
-                    {progress.current}/{progress.total}
-                  </span>
+                  <span>{qualScore.label}</span>
+                  <span>{qualScore.pct}%</span>
                 </div>
                 <div className="h-2 rounded-full bg-white/8">
                   <div
-                    className="h-full rounded-full bg-[linear-gradient(90deg,rgba(214,179,106,0.95),rgba(127,184,199,0.95))]"
-                    style={{ width: `${Math.min(100, (progress.current / progress.total) * 100)}%` }}
+                    className="h-full rounded-full bg-[linear-gradient(90deg,rgba(214,179,106,0.95),rgba(127,184,199,0.95))] transition-all duration-700 ease-out"
+                    style={{ width: `${qualScore.pct}%` }}
                   />
+                </div>
+                <div className="mt-2 flex gap-1">
+                  {Array.from({ length: qualScore.total }).map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-0.5 flex-1 rounded-full transition-all duration-500 ${i < qualScore.current ? "bg-[rgba(214,179,106,0.7)]" : "bg-white/10"}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
