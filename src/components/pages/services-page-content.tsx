@@ -88,14 +88,14 @@ const copy = {
   },
   de: {
     eyebrow: "Frankophon, englischsprachig, KMU und wachsende Teams",
-    title: "Digitale Leistungen mit echtem Nutzen fuer Unternehmen",
+    title: "Digitale Leistungen mit echtem Nutzen für Unternehmen",
     intro:
-      "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Ablaufe fuer Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
+      "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Abläufe für Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
-      "Wir versprechen nicht alles. Wir bauen nuetzliche, saubere und glaubwuerdige Grundlagen, damit Unternehmen sich besser praesentieren, besser organisieren oder Nutzer klarer begleiten koennen.",
-    ctaTitle: "Braucht ihr eine passende Loesung?",
-    ctaBody: "Lass uns ueber das richtige Niveau fuer Website, Anwendung oder Support-Workflow sprechen.",
+      "Wir versprechen nicht alles. Wir bauen nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen sich besser präsentieren, besser organisieren oder Nutzer klarer begleiten können.",
+    ctaTitle: "Braucht ihr eine passende Lösung?",
+    ctaBody: "Lass uns über das richtige Niveau für Website, Anwendung oder Support-Workflow sprechen.",
     ctaLabel: "Projekt anfragen",
     learnMore: "Mehr erfahren",
     services: [
@@ -103,7 +103,7 @@ const copy = {
         icon: FiGlobe,
         title: "Unternehmenswebsites",
         description:
-          "Praesentationswebsites, Corporate Sites und Plattformen, um das Unternehmen klarer online zu positionieren.",
+          "Präsentationswebsites, Corporate Sites und Plattformen, um das Unternehmen klarer online zu positionieren.",
         href: "/services/site-web",
         features: ["Responsives Design", "Klare Struktur", "Saubere SEO-Basis", "Begleiteter Launch"],
       },
@@ -111,15 +111,15 @@ const copy = {
         icon: FiSmartphone,
         title: "Web- und Mobile-Anwendungen",
         description:
-          "Business-Tools, Portale, Dashboards und massgeschneiderte Anwendungen fuer reibungslosere Prozesse.",
+          "Business-Tools, Portale, Dashboards und maßgeschneiderte Anwendungen für reibungslosere Prozesse.",
         href: "/services/applications",
-        features: ["Skalierbare Architektur", "Nuetzliche Oberflaeche", "Moegliche Integrationen", "Projektbegleitung"],
+        features: ["Skalierbare Architektur", "Nützliche Oberfläche", "Mögliche Integrationen", "Projektbegleitung"],
       },
       {
         icon: FiTool,
         title: "GLPI-verbundener Support-Workflow",
         description:
-          "Virtuelle Hilfe, Qualifizierung von Anfragen und saubere Uebergabe an GLPI, wenn First-Level-Support nicht mehr reicht.",
+          "Virtuelle Hilfe, Qualifizierung von Anfragen und saubere Übergabe an GLPI, wenn First-Level-Support nicht mehr reicht.",
         href: "/services/glpi",
         features: ["Klarerer Ablauf", "Saubere Eskalation", "Wissensbasis", "An euer Setup angepasst"],
       },
@@ -183,7 +183,7 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
                 ? "Des pages plus generales pour capter des besoins autour des sites web, de la refonte, des applications et de l'automatisation."
                 : locale === "en"
                   ? "More general entry pages to capture needs around websites, redesigns, applications, and automation."
-                  : "Allgemeinere Einstiegsseiten fuer Bedarf rund um Websites, Refonte, Anwendungen und Automatisierung."}
+                  : "Allgemeinere Einstiegsseiten für Bedarf rund um Websites, Refonte, Anwendungen und Automatisierung."}
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -209,7 +209,7 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
                     ? "Automatisation IA entreprise"
                     : locale === "en"
                       ? "AI automation for business"
-                      : "KI-Automatisierung fuer Unternehmen",
+                      : "KI-Automatisierung für Unternehmen",
                 href: "/automatisation-ia-entreprise",
               },
             ].map((page) => (
@@ -220,7 +220,7 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
                     ? "Page d'acquisition plus universelle pour attirer des demandes qualifiees au-dela d'un territoire unique."
                     : locale === "en"
                       ? "A more universal acquisition page designed to attract qualified requests beyond one location."
-                      : "Allgemeinere Akquisitionsseite fuer qualifizierte Anfragen ueber einen einzelnen Standort hinaus."}
+                      : "Allgemeinere Akquisitionsseite für qualifizierte Anfragen über einen einzelnen Standort hinaus."}
                 </p>
                 <Link
                   href={withLocalePrefix(page.href, locale)}
