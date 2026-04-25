@@ -306,8 +306,8 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
   };
 
   return (
-    <div className="section-shell">
-      <div className="mx-auto flex min-h-[60vh] w-full max-w-lg flex-col justify-center gap-6 rounded-[28px] border border-white/15 bg-gradient-to-br from-white/5 to-white/0 p-6 text-white shadow-[0_35px_90px_rgba(0,0,0,0.55)]">
+    <div className="flex min-h-screen items-center justify-center px-4 py-12">
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-6 rounded-[28px] border border-white/15 bg-gradient-to-br from-white/5 to-white/0 p-6 text-white shadow-[0_35px_90px_rgba(0,0,0,0.55)]">
         <div className="rounded-[24px] border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-4">
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40">
             <div className="absolute inset-0 bg-gradient-to-br from-[#0c0f2c]/60 via-black/10 to-[#1f1244]/70" />

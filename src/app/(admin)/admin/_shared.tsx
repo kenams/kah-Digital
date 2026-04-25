@@ -16,8 +16,8 @@ export function AdminStateCard(props: {
       : "border-amber-200/40 bg-amber-100/10 text-amber-200";
 
   return (
-    <div className="section-shell">
-      <div className={`premium-card rounded-3xl border p-6 text-white ${toneClass}`}>
+    <div className="mx-auto max-w-screen-xl px-4 py-10 sm:px-6">
+      <div className={`rounded-2xl border p-6 text-white ${toneClass}`}>
         <p className="text-xs uppercase tracking-[0.3em]">{props.eyebrow}</p>
         <p className="mt-2 text-lg font-semibold text-white">{props.title}</p>
         <p className="mt-2 text-sm text-white/70">{props.body}</p>

@@ -8,12 +8,6 @@ type Props = {
   assistantItems: AssistantRecord[];
 };
 
-type KpiCardProps = {
-  label: string;
-  value: string;
-  hint: string;
-};
-
 const pipelineLabels: Record<QuotePipelineStatus, string> = {
   new: "Nouveau",
   qualified: "Qualifié",
@@ -25,11 +19,25 @@ const pipelineLabels: Record<QuotePipelineStatus, string> = {
 
 const pipelineOrder: QuotePipelineStatus[] = ["new", "qualified", "quote", "negotiation", "won", "lost"];
 
+const pipelineBadge: Record<QuotePipelineStatus, string> = {
+  new: "border-white/12 text-white/55",
+  qualified: "border-amber-500/30 bg-amber-500/10 text-amber-300",
+  quote: "border-sky-500/30 bg-sky-500/10 text-sky-300",
+  negotiation: "border-violet-500/30 bg-violet-500/10 text-violet-300",
+  won: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+  lost: "border-rose-500/30 bg-rose-500/10 text-rose-300",
+};
+
+const scoreBadge: Record<string, string> = {
+  hot: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
+  medium: "border-amber-500/30 bg-amber-500/10 text-amber-300",
+  low: "border-white/12 text-white/50",
+  support_urgent: "border-rose-500/30 bg-rose-500/15 text-rose-300",
+  out_of_scope: "border-white/8 text-white/35",
+};
+
 function formatShortDate(value: string) {
-  return new Date(value).toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "2-digit",
-  });
+  return new Date(value).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
 }
 
 function formatDateTime(value: string) {
@@ -42,273 +50,400 @@ function formatDateTime(value: string) {
 }
 
 function isWithinDays(value: string, days: number) {
-  const submittedAt = new Date(value).getTime();
-  const threshold = Date.now() - days * 24 * 60 * 60 * 1000;
-  return Number.isFinite(submittedAt) && submittedAt >= threshold;
+  const t = new Date(value).getTime();
+  return Number.isFinite(t) && t >= Date.now() - days * 86400_000;
 }
 
 function getActivePipelineValue(item: QuoteRecord) {
-  const pipeline = item.pipeline ?? "new";
-  if (pipeline === "won" || pipeline === "lost") {
-    return 0;
-  }
+  const p = item.pipeline ?? "new";
+  if (p === "won" || p === "lost") return 0;
   return Math.max(0, item.paymentTotalAmount ?? 0);
 }
 
 function getRecentDemandes(quotes: QuoteRecord[]) {
-  return [...quotes].sort((a, b) => +new Date(b.submittedAt) - +new Date(a.submittedAt)).slice(0, 5);
+  return [...quotes].sort((a, b) => +new Date(b.submittedAt) - +new Date(a.submittedAt)).slice(0, 6);
 }
 
 function getRecentAssistant(assistantItems: AssistantRecord[]) {
-  return [...assistantItems].sort((a, b) => +new Date(b.submittedAt) - +new Date(a.submittedAt)).slice(0, 5);
+  return [...assistantItems].sort((a, b) => +new Date(b.submittedAt) - +new Date(a.submittedAt)).slice(0, 6);
 }
 
-function KpiCard({ label, value, hint }: KpiCardProps) {
-  return (
-    <div className="rounded-[26px] border border-white/12 bg-white/[0.04] p-5">
-      <p className="text-[0.7rem] uppercase tracking-[0.28em] text-white/45">{label}</p>
-      <p className="mt-3 text-3xl font-semibold text-white">{value}</p>
-      <p className="mt-2 text-sm text-white/60">{hint}</p>
+type KpiProps = {
+  label: string;
+  value: string;
+  hint: string;
+  tone?: "default" | "emerald" | "amber" | "rose" | "sky";
+  href?: string;
+};
+
+function KpiCard({ label, value, hint, tone = "default", href }: KpiProps) {
+  const border =
+    tone === "emerald" ? "border-emerald-500/20" :
+    tone === "amber" ? "border-amber-500/20" :
+    tone === "rose" ? "border-rose-500/20" :
+    tone === "sky" ? "border-sky-500/20" :
+    "border-white/8";
+
+  const valueCls =
+    tone === "emerald" ? "text-emerald-300" :
+    tone === "amber" ? "text-amber-300" :
+    tone === "rose" ? "text-rose-300" :
+    tone === "sky" ? "text-sky-300" :
+    "text-white";
+
+  const inner = (
+    <div className={`rounded-2xl border bg-white/[0.03] p-4 transition-all hover:bg-white/[0.055] ${border}`}>
+      <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/40">{label}</p>
+      <p className={`mt-3 text-3xl font-semibold tabular-nums ${valueCls}`}>{value}</p>
+      <p className="mt-2 text-xs leading-relaxed text-white/50">{hint}</p>
     </div>
   );
+
+  return href ? <Link href={href}>{inner}</Link> : inner;
 }
 
+type AlertItem = { label: string; count: number; href: string; tone: "rose" | "amber" | "sky" };
+
 export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
-  const quotes30d = quotes.filter((item) => isWithinDays(item.submittedAt, 30));
-  const assistant30d = assistantItems.filter((item) => isWithinDays(item.submittedAt, 30));
-  const wonQuotes = quotes.filter((item) => (item.pipeline ?? "new") === "won");
-  const qualifiedQuotes = quotes.filter((item) => ["qualified", "quote", "negotiation", "won"].includes(item.pipeline ?? "new"));
-  const activePipelineValue = quotes.reduce((sum, item) => sum + getActivePipelineValue(item), 0);
-  const collectedTotal = quotes.reduce((sum, item) => sum + Math.max(0, item.paymentPaidAmount ?? 0), 0);
+  const quotes30d = quotes.filter((q) => isWithinDays(q.submittedAt, 30));
+  const assistant30d = assistantItems.filter((a) => isWithinDays(a.submittedAt, 30));
+  const wonQuotes = quotes.filter((q) => (q.pipeline ?? "new") === "won");
+  const qualifiedQuotes = quotes.filter((q) =>
+    ["qualified", "quote", "negotiation", "won"].includes(q.pipeline ?? "new")
+  );
+  const activePipelineValue = quotes.reduce((s, q) => s + getActivePipelineValue(q), 0);
+  const collectedTotal = quotes.reduce((s, q) => s + Math.max(0, q.paymentPaidAmount ?? 0), 0);
   const remainingTotal = quotes.reduce(
-    (sum, item) => sum + Math.max(0, (item.paymentTotalAmount ?? 0) - (item.paymentPaidAmount ?? 0)),
+    (s, q) => s + Math.max(0, (q.paymentTotalAmount ?? 0) - (q.paymentPaidAmount ?? 0)),
     0
   );
-  const configuredPayments = quotes.filter((item) => (item.paymentTotalAmount ?? 0) > 0).length;
-  const activePaymentLinks = quotes.filter((item) => item.paymentStatus === "pending").length;
-  const hotLeads = assistantItems.filter((item) => item.score === "hot").length;
-  const urgentLeads = assistantItems.filter((item) => item.score === "support_urgent").length;
-  const newAssistant = assistantItems.filter((item) => item.status === "new").length;
+  const configuredPayments = quotes.filter((q) => (q.paymentTotalAmount ?? 0) > 0).length;
+  const activePaymentLinks = quotes.filter((q) => q.paymentStatus === "pending").length;
+  const hotLeads = assistantItems.filter((a) => a.score === "hot").length;
+  const urgentLeads = assistantItems.filter((a) => a.score === "support_urgent").length;
+  const newAssistant = assistantItems.filter((a) => a.status === "new").length;
   const avgWonTicket = wonQuotes.length
-    ? Math.round(wonQuotes.reduce((sum, item) => sum + Math.max(0, item.paymentTotalAmount ?? 0), 0) / wonQuotes.length)
+    ? Math.round(
+        wonQuotes.reduce((s, q) => s + Math.max(0, q.paymentTotalAmount ?? 0), 0) / wonQuotes.length
+      )
     : 0;
+  const conversionRate = quotes.length ? Math.round((qualifiedQuotes.length / quotes.length) * 100) : 0;
 
   const pipelineStats = pipelineOrder.map((status) => {
-    const items = quotes.filter((quote) => (quote.pipeline ?? "new") === status);
-    const totalValue = items.reduce((sum, item) => sum + Math.max(0, item.paymentTotalAmount ?? 0), 0);
-    return {
-      status,
-      count: items.length,
-      value: totalValue,
-    };
+    const items = quotes.filter((q) => (q.pipeline ?? "new") === status);
+    const totalValue = items.reduce((s, q) => s + Math.max(0, q.paymentTotalAmount ?? 0), 0);
+    return { status, count: items.length, value: totalValue };
   });
+  const maxPipelineCount = Math.max(1, ...pipelineStats.map((s) => s.count));
 
-  const focusStats = [
-    {
-      label: "Web",
-      count: quotes.filter((item) => (item.projectFocus ?? "web") === "web").length,
-    },
-    {
-      label: "Mobile",
-      count: quotes.filter((item) => item.projectFocus === "mobile").length,
-    },
-    {
-      label: "Assistant projet",
-      count: assistantItems.filter((item) => item.intent === "project_quote").length,
-    },
-  ];
+  const focusWeb = quotes.filter((q) => (q.projectFocus ?? "web") === "web").length;
+  const focusMobile = quotes.filter((q) => q.projectFocus === "mobile").length;
+  const focusAssistant = assistantItems.filter((a) => a.intent === "project_quote").length;
+
+  // Build alerts
+  const alerts: AlertItem[] = [];
+  if (urgentLeads > 0)
+    alerts.push({ label: `${urgentLeads} support urgent${urgentLeads > 1 ? "s" : ""} à traiter`, count: urgentLeads, href: "/admin/demandes?section=assistant", tone: "rose" });
+  if (hotLeads > 0)
+    alerts.push({ label: `${hotLeads} lead${hotLeads > 1 ? "s" : ""} chaud${hotLeads > 1 ? "s" : ""} en attente`, count: hotLeads, href: "/admin/demandes?section=assistant", tone: "amber" });
+  if (activePaymentLinks > 0)
+    alerts.push({ label: `${activePaymentLinks} lien${activePaymentLinks > 1 ? "s" : ""} paiement en attente`, count: activePaymentLinks, href: "/admin/demandes?section=demandes&view=payments", tone: "sky" });
+
+  const alertBand: Record<AlertItem["tone"], string> = {
+    rose: "border-rose-500/25 bg-rose-500/8 text-rose-300",
+    amber: "border-amber-500/25 bg-amber-500/8 text-amber-300",
+    sky: "border-sky-500/25 bg-sky-500/8 text-sky-300",
+  };
 
   return (
-    <section className="section-shell pt-10">
-      <div className="premium-card rounded-[32px] border border-white/15 bg-gradient-to-br from-white/5 to-white/0 p-6 text-white shadow-[0_35px_90px_rgba(0,0,0,0.55)]">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Pilotage business</p>
-            <h1 className="mt-3 text-3xl font-semibold">Vue claire sur demandes, pipeline, paiements et assistant</h1>
-            <p className="mt-3 max-w-3xl text-sm text-white/70">
-              On regroupe ici les chiffres utiles pour suivre le flux commercial réel, sans ouvrir trois vues différentes.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/admin/demandes?section=demandes&view=kanban" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200">
-              Ouvrir le CRM
-            </Link>
-            <Link href="/admin/demandes?section=demandes&view=payments" className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">
-              Suivre les paiements
-            </Link>
-            <Link href="/admin/demandes?section=assistant" className="rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:border-white">
-              Traiter l'assistant
-            </Link>
-            <Link href="/admin/prospection" className="rounded-full border border-violet-500/50 bg-violet-500/10 px-5 py-3 text-sm font-semibold text-violet-300 transition hover:border-violet-400 hover:bg-violet-500/20">
-              Prospection IA
-            </Link>
-          </div>
+    <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6">
+      {/* Page header */}
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-[0.68rem] uppercase tracking-[0.35em] text-white/40">Pilotage commercial</p>
+          <h1 className="mt-2 text-2xl font-semibold text-white">Tableau de bord</h1>
+          <p className="mt-1.5 max-w-xl text-sm text-white/55">
+            Vue unifiée — {quotes.length} demandes · {assistantItems.length} leads assistant · {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })}
+          </p>
         </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <KpiCard
-            label="Demandes 30 jours"
-            value={String(quotes30d.length)}
-            hint={`${qualifiedQuotes.length} dossiers déjà qualifiés sur ${quotes.length} au total.`}
-          />
-          <KpiCard
-            label="Pipeline actif"
-            value={formatChfFromCents(activePipelineValue)}
-            hint="Valeur cumulée des dossiers non gagnés et non perdus avec montant configuré."
-          />
-          <KpiCard
-            label="Encaissé"
-            value={formatChfFromCents(collectedTotal)}
-            hint={`${configuredPayments} dossiers paiement configurés, ${activePaymentLinks} liens actifs.`}
-          />
-          <KpiCard
-            label="Assistant à traiter"
-            value={String(newAssistant)}
-            hint={`${hotLeads} leads chauds, ${urgentLeads} urgents support, ${assistant30d.length} entrées sur 30 jours.`}
-          />
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/admin/demandes?section=demandes&view=kanban"
+            className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black transition hover:bg-neutral-200"
+          >
+            Ouvrir le CRM
+          </Link>
+          <Link
+            href="/admin/demandes?section=demandes&view=payments"
+            className="rounded-full border border-white/15 px-4 py-2 text-xs font-medium text-white/80 transition hover:border-white/30 hover:text-white"
+          >
+            Paiements
+          </Link>
+          <Link
+            href="/admin/demandes?section=assistant"
+            className="rounded-full border border-white/15 px-4 py-2 text-xs font-medium text-white/80 transition hover:border-white/30 hover:text-white"
+          >
+            Assistant IA
+          </Link>
+          <Link
+            href="/admin/prospection"
+            className="rounded-full border border-violet-500/40 bg-violet-500/8 px-4 py-2 text-xs font-medium text-violet-300 transition hover:border-violet-400 hover:bg-violet-500/15"
+          >
+            Prospection IA
+          </Link>
         </div>
+      </div>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <KpiCard
-            label="Reste à encaisser"
-            value={formatChfFromCents(remainingTotal)}
-            hint="Montant configuré non encore reçu."
-          />
-          <KpiCard
-            label="Dossiers gagnés"
-            value={String(wonQuotes.length)}
-            hint={`Panier moyen gagné : ${formatChfFromCents(avgWonTicket)}.`}
-          />
-          <KpiCard
-            label="Conversion qualifiée"
-            value={quotes.length ? `${Math.round((qualifiedQuotes.length / quotes.length) * 100)}%` : "0%"}
-            hint="Part des dossiers passés au moins au stade qualifié."
-          />
-          <KpiCard
-            label="Focus commercial"
-            value={focusStats.map((item) => `${item.label} ${item.count}`).join(" / ")}
-            hint="Répartition rapide des demandes par type dominant."
-          />
+      {/* Alert banners */}
+      {alerts.length > 0 && (
+        <div className="mb-6 space-y-2">
+          {alerts.map((alert) => (
+            <Link
+              key={alert.label}
+              href={alert.href}
+              className={`flex items-center justify-between rounded-xl border px-4 py-3 text-sm font-medium transition hover:brightness-110 ${alertBand[alert.tone]}`}
+            >
+              <span>{alert.label}</span>
+              <span className="text-xs opacity-70">Voir →</span>
+            </Link>
+          ))}
         </div>
+      )}
 
-        <div className="mt-8 grid gap-6 xl:grid-cols-[1.2fr,0.8fr]">
-          <div className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Pipeline</p>
-                <h2 className="mt-2 text-xl font-semibold">Répartition des dossiers</h2>
-              </div>
-              <Link href="/admin/demandes?section=demandes&view=kanban" className="text-xs uppercase tracking-[0.24em] text-white/60 transition hover:text-white">
-                Voir le CRM
-              </Link>
+      {/* KPIs row 1 */}
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <KpiCard
+          label="Demandes — 30 jours"
+          value={String(quotes30d.length)}
+          hint={`${qualifiedQuotes.length} dossiers qualifiés · ${quotes.length} au total`}
+          tone={quotes30d.length > 0 ? "sky" : "default"}
+          href="/admin/demandes?section=demandes&view=pipeline"
+        />
+        <KpiCard
+          label="Pipeline actif"
+          value={formatChfFromCents(activePipelineValue)}
+          hint="Valeur cumulée hors dossiers gagnés/perdus"
+          tone={activePipelineValue > 0 ? "emerald" : "default"}
+          href="/admin/demandes?section=demandes&view=kanban"
+        />
+        <KpiCard
+          label="Encaissé total"
+          value={formatChfFromCents(collectedTotal)}
+          hint={`${configuredPayments} dossiers configurés · ${activePaymentLinks} liens actifs`}
+          tone={collectedTotal > 0 ? "emerald" : "default"}
+          href="/admin/demandes?section=demandes&view=payments"
+        />
+        <KpiCard
+          label="Assistant — à traiter"
+          value={String(newAssistant)}
+          hint={`${hotLeads} chauds · ${urgentLeads} urgents · ${assistant30d.length} sur 30 j`}
+          tone={urgentLeads > 0 ? "rose" : hotLeads > 0 ? "amber" : newAssistant > 0 ? "sky" : "default"}
+          href="/admin/demandes?section=assistant"
+        />
+      </div>
+
+      {/* KPIs row 2 */}
+      <div className="mt-3 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <KpiCard
+          label="Reste à encaisser"
+          value={formatChfFromCents(remainingTotal)}
+          hint="Montant configuré non encore perçu"
+          tone={remainingTotal > 0 ? "amber" : "emerald"}
+          href="/admin/demandes?section=demandes&view=payments"
+        />
+        <KpiCard
+          label="Dossiers gagnés"
+          value={String(wonQuotes.length)}
+          hint={`Panier moyen : ${formatChfFromCents(avgWonTicket)}`}
+          tone={wonQuotes.length > 0 ? "emerald" : "default"}
+        />
+        <KpiCard
+          label="Taux de conversion"
+          value={`${conversionRate}%`}
+          hint="Part des demandes passées au stade qualifié"
+          tone={conversionRate >= 50 ? "emerald" : conversionRate >= 25 ? "amber" : "default"}
+        />
+        <KpiCard
+          label="Mix commercial"
+          value={`Web ${focusWeb} · Mobile ${focusMobile}`}
+          hint={`${focusAssistant} projets via assistant IA`}
+          tone="default"
+        />
+      </div>
+
+      {/* Pipeline + Payments */}
+      <div className="mt-6 grid gap-4 xl:grid-cols-[1.4fr,0.6fr]">
+        {/* Pipeline */}
+        <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/38">Pipeline</p>
+              <h2 className="mt-1.5 text-lg font-semibold">Répartition des dossiers</h2>
             </div>
-            <div className="mt-5 space-y-3">
-              {pipelineStats.map((stat) => (
-                <div key={stat.status} className="grid gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 md:grid-cols-[1fr,auto,auto]">
-                  <div>
-                    <p className="font-medium text-white">{pipelineLabels[stat.status]}</p>
-                    <p className="text-sm text-white/55">{stat.count} dossier(s)</p>
-                  </div>
-                  <p className="text-sm text-white/65">{formatChfFromCents(stat.value)}</p>
-                  <div className="text-right text-xs uppercase tracking-[0.24em] text-white/35">{stat.status}</div>
+            <Link
+              href="/admin/demandes?section=demandes&view=kanban"
+              className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45 transition hover:text-white"
+            >
+              Ouvrir le CRM →
+            </Link>
+          </div>
+          <div className="space-y-2.5">
+            {pipelineStats.map((stat) => (
+              <div key={stat.status} className="flex items-center gap-4">
+                <div className="w-28 shrink-0">
+                  <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[0.65rem] font-medium ${pipelineBadge[stat.status]}`}>
+                    {pipelineLabels[stat.status]}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Paiements</p>
-                <h2 className="mt-2 text-xl font-semibold">État d'encaissement</h2>
+                <div className="flex flex-1 items-center gap-3">
+                  <div className="h-1.5 flex-1 rounded-full bg-white/6">
+                    <div
+                      className="h-full rounded-full bg-white/25 transition-all"
+                      style={{ width: `${(stat.count / maxPipelineCount) * 100}%` }}
+                    />
+                  </div>
+                  <span className="w-5 shrink-0 text-right text-sm font-semibold text-white/80">
+                    {stat.count}
+                  </span>
+                </div>
+                <span className="w-24 shrink-0 text-right text-xs text-white/45 tabular-nums">
+                  {stat.value > 0 ? formatChfFromCents(stat.value) : "—"}
+                </span>
               </div>
-              <Link href="/admin/demandes?section=demandes&view=payments" className="text-xs uppercase tracking-[0.24em] text-white/60 transition hover:text-white">
-                Voir la vue paiements
-              </Link>
-            </div>
-            <div className="mt-5 space-y-3">
-              <div className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                <p className="text-sm text-white/60">Dossiers configurés</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{configuredPayments}</p>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                <p className="text-sm text-white/60">Liens en attente</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{activePaymentLinks}</p>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                <p className="text-sm text-white/60">Encaissement total</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{formatChfFromCents(collectedTotal)}</p>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                <p className="text-sm text-white/60">Reste à facturer / encaisser</p>
-                <p className="mt-1 text-2xl font-semibold text-white">{formatChfFromCents(remainingTotal)}</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 xl:grid-cols-2">
-          <div className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Demandes récentes</p>
-                <h2 className="mt-2 text-xl font-semibold">5 derniers dossiers</h2>
-              </div>
-              <Link href="/admin/demandes?section=demandes&view=pipeline" className="text-xs uppercase tracking-[0.24em] text-white/60 transition hover:text-white">
-                Ouvrir la liste
-              </Link>
+        {/* Payments summary */}
+        <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/38">Paiements</p>
+              <h2 className="mt-1.5 text-lg font-semibold">Encaissements</h2>
             </div>
-            <div className="mt-5 space-y-3">
-              {getRecentDemandes(quotes).map((item) => (
-                <div key={item.id ?? item.submittedAt} className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="font-medium text-white">{item.name}</p>
-                      <p className="mt-1 text-sm text-white/55">{item.companyName || "Sans société"} · {item.projectType}</p>
-                    </div>
-                    <p className="text-xs uppercase tracking-[0.24em] text-white/35">{formatShortDate(item.submittedAt)}</p>
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/70">
-                    <span className="rounded-full border border-white/10 px-3 py-1">{pipelineLabels[item.pipeline ?? "new"]}</span>
-                    <span className="rounded-full border border-white/10 px-3 py-1">{item.budget}</span>
-                    <span className="rounded-full border border-white/10 px-3 py-1">{item.timeline}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Link
+              href="/admin/demandes?section=demandes&view=payments"
+              className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45 transition hover:text-white"
+            >
+              Détails →
+            </Link>
           </div>
-
-          <div className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">Assistant récent</p>
-                <h2 className="mt-2 text-xl font-semibold">File de reprise humaine</h2>
+          <div className="space-y-2.5">
+            {[
+              { label: "Configurés", value: String(configuredPayments), tone: "default" },
+              { label: "Liens actifs", value: String(activePaymentLinks), tone: activePaymentLinks > 0 ? "sky" : "default" },
+              { label: "Encaissé", value: formatChfFromCents(collectedTotal), tone: collectedTotal > 0 ? "emerald" : "default" },
+              { label: "Reste à percevoir", value: formatChfFromCents(remainingTotal), tone: remainingTotal > 0 ? "amber" : "emerald" },
+            ].map((row) => (
+              <div key={row.label} className="flex items-center justify-between rounded-xl border border-white/6 bg-black/15 px-4 py-2.5">
+                <p className="text-xs text-white/55">{row.label}</p>
+                <p className={`text-sm font-semibold tabular-nums ${
+                  row.tone === "emerald" ? "text-emerald-300" :
+                  row.tone === "amber" ? "text-amber-300" :
+                  row.tone === "sky" ? "text-sky-300" :
+                  "text-white/85"
+                }`}>
+                  {row.value}
+                </p>
               </div>
-              <Link href="/admin/demandes?section=assistant" className="text-xs uppercase tracking-[0.24em] text-white/60 transition hover:text-white">
-                Ouvrir l'assistant
-              </Link>
-            </div>
-            <div className="mt-5 space-y-3">
-              {getRecentAssistant(assistantItems).map((item) => (
-                <div key={item.id ?? item.submittedAt} className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="font-medium text-white">{item.name || "Lead anonyme"}</p>
-                      <p className="mt-1 text-sm text-white/55">{item.company || "Sans société"} · {item.projectType.replaceAll("_", " ")}</p>
-                    </div>
-                    <p className="text-xs uppercase tracking-[0.24em] text-white/35">{formatDateTime(item.submittedAt)}</p>
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/70">
-                    <span className="rounded-full border border-white/10 px-3 py-1">{item.status === "new" ? "Nouveau" : "Traité"}</span>
-                    <span className="rounded-full border border-white/10 px-3 py-1">{item.scoreLabel}</span>
-                    <span className="rounded-full border border-white/10 px-3 py-1">{item.action.replaceAll("_", " ")}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+
+      {/* Recent items */}
+      <div className="mt-4 grid gap-4 xl:grid-cols-2">
+        {/* Recent demandes */}
+        <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/38">Demandes récentes</p>
+              <h2 className="mt-1.5 text-lg font-semibold">6 derniers dossiers</h2>
+            </div>
+            <Link
+              href="/admin/demandes?section=demandes&view=pipeline"
+              className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45 transition hover:text-white"
+            >
+              Tous →
+            </Link>
+          </div>
+          <div className="space-y-2">
+            {getRecentDemandes(quotes).map((item) => {
+              const pipeline = (item.pipeline ?? "new") as QuotePipelineStatus;
+              return (
+                <Link
+                  key={item.id ?? item.submittedAt}
+                  href={`/admin/demandes/${item.id ?? encodeURIComponent(item.submittedAt)}`}
+                  className="block rounded-xl border border-white/6 bg-black/10 px-4 py-3 transition hover:border-white/14 hover:bg-black/20"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="truncate font-medium text-white">{item.name}</p>
+                      <p className="mt-0.5 truncate text-xs text-white/45">
+                        {item.companyName || "—"} · {item.projectType}
+                      </p>
+                    </div>
+                    <p className="shrink-0 text-[0.65rem] text-white/30 tabular-nums">{formatShortDate(item.submittedAt)}</p>
+                  </div>
+                  <div className="mt-2.5 flex flex-wrap gap-1.5">
+                    <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[0.63rem] font-medium ${pipelineBadge[pipeline]}`}>
+                      {pipelineLabels[pipeline]}
+                    </span>
+                    {item.budget && (
+                      <span className="inline-block rounded-full border border-white/8 px-2.5 py-0.5 text-[0.63rem] text-white/45">
+                        {item.budget}
+                      </span>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Recent assistant */}
+        <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/38">Assistant IA</p>
+              <h2 className="mt-1.5 text-lg font-semibold">File de reprise</h2>
+            </div>
+            <Link
+              href="/admin/demandes?section=assistant"
+              className="text-[0.65rem] uppercase tracking-[0.24em] text-white/45 transition hover:text-white"
+            >
+              Tous →
+            </Link>
+          </div>
+          <div className="space-y-2">
+            {getRecentAssistant(assistantItems).map((item) => (
+              <Link
+                key={item.id ?? item.submittedAt}
+                href={`/admin/assistant/${item.id ?? encodeURIComponent(item.submittedAt)}`}
+                className="block rounded-xl border border-white/6 bg-black/10 px-4 py-3 transition hover:border-white/14 hover:bg-black/20"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="truncate font-medium text-white">{item.name || "Lead anonyme"}</p>
+                    <p className="mt-0.5 truncate text-xs text-white/45">
+                      {item.company || "—"} · {item.projectType.replaceAll("_", " ")}
+                    </p>
+                  </div>
+                  <p className="shrink-0 text-[0.65rem] text-white/30 tabular-nums">{formatDateTime(item.submittedAt)}</p>
+                </div>
+                <div className="mt-2.5 flex flex-wrap gap-1.5">
+                  <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[0.63rem] font-medium ${scoreBadge[item.score] ?? scoreBadge.low}`}>
+                    {item.scoreLabel}
+                  </span>
+                  <span className={`inline-block rounded-full border px-2.5 py-0.5 text-[0.63rem] ${item.status === "new" ? "border-white/12 text-white/55" : "border-white/6 text-white/30"}`}>
+                    {item.status === "new" ? "À traiter" : "Traité"}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
