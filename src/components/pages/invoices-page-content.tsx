@@ -30,6 +30,7 @@ const copy = {
     ],
     paymentLabel: "Paiement",
     paymentBody: "KAH-Digital peut maintenant envoyer un lien Stripe securise pour payer un acompte ou le solde, tout en gardant le virement bancaire comme alternative si besoin.",
+    paymentCta: "Payer en ligne",
     ctaTitle: "Questions sur la facturation ?",
     ctaBody: "Notre processus est transparent et adapte a des missions simples comme plus avancees.",
     ctaLabel: "Nous contacter",
@@ -56,6 +57,7 @@ const copy = {
     ],
     paymentLabel: "Payment",
     paymentBody: "KAH-Digital can now send a secure Stripe payment link for a deposit or the balance, while keeping bank transfer available when needed.",
+    paymentCta: "Pay online",
     ctaTitle: "Questions about billing?",
     ctaBody: "Our process stays transparent and suitable for both simple and more advanced missions.",
     ctaLabel: "Contact us",
@@ -82,6 +84,7 @@ const copy = {
     ],
     paymentLabel: "Zahlung",
     paymentBody: "KAH-Digital kann jetzt einen sicheren Stripe-Link fuer Anzahlung oder Restbetrag senden und behaelt die Bankueberweisung als Alternative bei.",
+    paymentCta: "Online bezahlen",
     ctaTitle: "Fragen zur Rechnungsstellung?",
     ctaBody: "Unser Prozess bleibt transparent und funktioniert fuer einfache wie auch anspruchsvollere Missionen.",
     ctaLabel: "Kontakt aufnehmen",
@@ -150,6 +153,12 @@ export function InvoicesPageContent({ locale }: Props) {
           <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-green-100 bg-white p-6 text-center shadow-sm">
             <p className="text-sm uppercase tracking-[0.3em] text-green-700">{content.paymentLabel}</p>
             <p className="mt-3 text-lg text-gray-700">{content.paymentBody}</p>
+            <Link
+              href={withLocalePrefix("/payer", locale)}
+              className="mt-5 inline-flex items-center justify-center rounded-full bg-green-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-green-700"
+            >
+              {content.paymentCta}
+            </Link>
           </div>
         </div>
       </section>
