@@ -35,38 +35,26 @@ const validUntilIso = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000).toISO
 const initialLines: QuoteLine[] = [
   {
     id: "line-1",
-    description: "Cadrage, direction artistique, intégration du logo, adaptation de la palette et préparation des assets client.",
+    description: "Prestation principale a renseigner",
     quantity: 1,
-    unitPrice: 300,
-  },
-  {
-    id: "line-2",
-    description: "Intégration vidéo hero, photos client, typographie complémentaire et section partenaires avec logos défilants.",
-    quantity: 1,
-    unitPrice: 250,
-  },
-  {
-    id: "line-3",
-    description: "Optimisation mobile/desktop, hiérarchie visuelle, ajustements premium et livraison quasi finale.",
-    quantity: 1,
-    unitPrice: 240,
+    unitPrice: 0,
   },
 ];
 
 const initialInfo: ClientInfo = {
-  clientName: "Ashanti",
-  companyName: "Ashanti Beauty",
+  clientName: "",
+  companyName: "",
   email: "",
   phone: "",
   address: "",
-  projectTitle: "Phase premium - Site vitrine Ashanti Beauty",
+  projectTitle: "Projet digital",
   quoteNumber: `DEV-${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}${String(today.getDate()).padStart(2, "0")}-001`,
   quoteDate: todayIso,
   validUntil: validUntilIso,
   paymentTerms:
-    "Paiement réparti en trois étapes : 300 € au lancement, 250 € après intégration des principaux éléments visuels, puis 240 € à la livraison de la version quasi finale. Paiement par virement bancaire avec RIB ou via lien de paiement sécurisé.",
+    "Paiement par virement bancaire avec RIB ou via lien de paiement securise. Le lancement intervient apres validation du devis et reception du premier reglement.",
   notes:
-    "Le devis inclut les éléments listés ci-dessus. Toute demande supplémentaire importante non prévue pourra faire l'objet d'un complément tarifaire après validation.",
+    "Le devis inclut les elements listes ci-dessus. Toute demande supplementaire importante non prevue pourra faire l'objet d'un complement tarifaire apres validation.",
 };
 
 function formatMoney(value: number) {
