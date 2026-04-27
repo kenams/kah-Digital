@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { QuoteForm } from "@/components/quote-form";
 import { QuotePreview } from "@/components/quote-preview";
 import type { Locale } from "@/lib/locales";
@@ -74,6 +76,23 @@ export function QuotePageContent({ locale }: QuotePageContentProps) {
             <p className="mt-4 text-base text-white/70 sm:text-lg">{content.body}</p>
           </div>
           <QuoteForm />
+          {locale === "fr" ? (
+            <div className="mt-6 rounded-3xl border border-sky-300/20 bg-sky-400/10 p-5 text-white shadow-[0_18px_60px_rgba(46,168,255,0.12)] sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-200">PDF client</p>
+                <p className="mt-2 text-lg font-bold">Tu veux envoyer un devis finalise ?</p>
+                <p className="mt-1 max-w-2xl text-sm leading-6 text-white/70">
+                  Remplis les informations du client, ajoute les prestations et telecharge un PDF pret a transmettre.
+                </p>
+              </div>
+              <Link
+                href="/devis/generateur"
+                className="mt-4 inline-flex shrink-0 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100 sm:mt-0"
+              >
+                Ouvrir le generateur PDF
+              </Link>
+            </div>
+          ) : null}
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {content.cards.map((card) => (
               <div key={card.eyebrow} className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">

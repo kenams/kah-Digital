@@ -20,6 +20,7 @@ export function SiteHeader() {
         { label: "Projets", href: "/projets" },
         { label: "GLPI", href: "/services/glpi" },
         { label: "Devis", href: "/devis" },
+        { label: "Devis PDF", href: "/devis/generateur" },
         { label: "Factures", href: "/factures" },
         { label: "Contact", href: "/contact" },
       ],
