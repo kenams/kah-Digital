@@ -20,7 +20,6 @@ export function SiteHeader() {
         { label: "Projets", href: "/projets" },
         { label: "GLPI", href: "/services/glpi" },
         { label: "Devis", href: "/devis" },
-        { label: "Devis PDF", href: "/devis/generateur" },
         { label: "Factures", href: "/factures" },
         { label: "Contact", href: "/contact" },
       ],
@@ -72,9 +71,13 @@ export function SiteHeader() {
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
-          <nav className="hidden space-x-6 lg:flex">
+          <nav className="hidden items-center gap-5 text-sm lg:flex xl:gap-6 xl:text-base">
             {localeCopy.nav.map((link) => (
-              <Link key={link.href} href={link.href} className="text-white/80 transition-colors hover:text-white">
+              <Link
+                key={link.href}
+                href={link.href}
+                className="whitespace-nowrap text-white/80 transition-colors hover:text-white"
+              >
                 {link.label}
               </Link>
             ))}
@@ -84,7 +87,7 @@ export function SiteHeader() {
             <LanguageSwitcher />
             <Link
               href={localeCopy.nav[4]?.href ?? `${prefix}/contact`}
-              className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
+              className="whitespace-nowrap rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}
             </Link>
