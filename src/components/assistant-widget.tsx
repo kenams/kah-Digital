@@ -71,13 +71,13 @@ const widgetCopy = {
     consent: "J&apos;accepte l&apos;enregistrement de mon résumé pour être recontacté.",
     email: "Email",
     name: "Nom",
-    reset: "Nouvelle conversation",
+    reset: "Nouveau chat",
     resetConfirm: "Effacer l&apos;historique de cette conversation ?",
     retention: "Historique conservé 1h",
     sessionExpired: "La conversation précédente a expiré après inactivité. Tu peux repartir de zéro.",
     close: "Fermer",
     open: "Ouvrir",
-    contact: "Contacter KAH-Digital",
+    contact: "Contact KAH",
     helper: "Une question à la fois. Prix cohérents. Suite claire.",
     qualStarted: "Démarrage",
     qualCollecting: "Qualification",
@@ -118,13 +118,13 @@ const widgetCopy = {
     consent: "I agree to store the summary so KAH-Digital can follow up.",
     email: "Email",
     name: "Name",
-    reset: "New conversation",
+    reset: "New chat",
     resetConfirm: "Clear this conversation history?",
     retention: "History kept for 1h",
     sessionExpired: "The previous conversation expired after inactivity. You can start again from zero.",
     close: "Close",
     open: "Open",
-    contact: "Contact KAH-Digital",
+    contact: "Contact KAH",
     helper: "One question at a time. Coherent prices. Clear next step.",
     qualStarted: "Getting started",
     qualCollecting: "Qualification",
@@ -165,13 +165,13 @@ const widgetCopy = {
     consent: "Ich stimme der Speicherung der Zusammenfassung für eine Rückmeldung zu.",
     email: "E-Mail",
     name: "Name",
-    reset: "Neue Unterhaltung",
+    reset: "Neuer Chat",
     resetConfirm: "Den Verlauf dieser Unterhaltung löschen?",
     retention: "Verlauf für 1h gespeichert",
     sessionExpired: "Die vorherige Unterhaltung ist nach Inaktivität abgelaufen. Du kannst sauber neu starten.",
     close: "Schließen",
     open: "Öffnen",
-    contact: "KAH-Digital kontaktieren",
+    contact: "Kontakt KAH",
     helper: "Immer eine Frage. Stimmige Preise. Klarer nächster Schritt.",
     qualStarted: "Start",
     qualCollecting: "Qualifizierung",
@@ -819,7 +819,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-4 bottom-4 z-[80] flex justify-end sm:inset-x-6 sm:bottom-6">
-      <div className="pointer-events-auto w-full max-w-[24rem]">
+      <div className="pointer-events-auto w-full max-w-[26rem]">
         {open ? (
           <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(10,9,8,0.98),rgba(8,16,28,0.98))] shadow-[0_30px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
             <div className="border-b border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(214,179,106,0.24),transparent_40%),radial-gradient(circle_at_top_right,rgba(127,184,199,0.22),transparent_38%)] p-5">
