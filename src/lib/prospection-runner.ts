@@ -8,6 +8,7 @@ import {
   compactProspectionError,
   createProspectionBatch,
   getProspectionSlot,
+  type ProspectionSlot,
   updateProspectionBatch,
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
@@ -239,14 +240,16 @@ async function discoverAnalyzeAndSend(params: {
   return { found, sent };
 }
 
-export async function runProspectionBatch(options: { source?: "cron" | "manual"; maxEmails?: number } = {}) {
+export async function runProspectionBatch(
+  options: { source?: "cron" | "manual"; maxEmails?: number; batchId?: string | null; slot?: ProspectionSlot } = {}
+) {
   const resendKey = process.env.RESEND_API_KEY;
   if (!resendKey) throw new Error("RESEND_API_KEY manquant");
 
   const supabase = getSupabase();
   const resend = new Resend(resendKey);
-  const slot = getProspectionSlot();
-  const batchId = await createProspectionBatch(supabase, slot);
+  const slot = options.slot ?? getProspectionSlot();
+  const batchId = typeof options.batchId === "undefined" ? await createProspectionBatch(supabase, slot) : options.batchId;
   const errors: string[] = [];
   const maxEmails = options.maxEmails ?? PROSPECTION_EMAILS_PER_RUN;
   let found = 0;

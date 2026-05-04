@@ -80,6 +80,22 @@ type LiveStats = {
   };
 };
 
+type LiveBatchProgress = {
+  batchId: string | null;
+  sent: number;
+  failed: number;
+  found: number;
+  tracking: boolean;
+};
+
+const EMPTY_LIVE_BATCH_PROGRESS: LiveBatchProgress = {
+  batchId: null,
+  sent: 0,
+  failed: 0,
+  found: 0,
+  tracking: false,
+};
+
 type ProspectFilters = {
   query: string;
   city: string;
@@ -201,11 +217,11 @@ export function ProspectionDashboard() {
   const [sending, setSending] = useState<string | null>(null);
   const [editEmail, setEditEmail] = useState<{ subject: string; body: string } | null>(null);
   const [liveStats, setLiveStats] = useState<LiveStats | null>(null);
-  const [cronRunning, setCronRunning] = useState(false);
   const [followupRunning, setFollowupRunning] = useState(false);
   const [fireRunning, setFireRunning] = useState(false);
   const [fireMessage, setFireMessage] = useState<string | null>(null);
   const [prospectFilters, setProspectFilters] = useState<ProspectFilters>(DEFAULT_PROSPECT_FILTERS);
+  const [liveBatch, setLiveBatch] = useState<LiveBatchProgress>(EMPTY_LIVE_BATCH_PROGRESS);
 
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
@@ -215,6 +231,19 @@ export function ProspectionDashboard() {
     const res = await fetch("/api/prospection/stats");
     const data = await res.json() as LiveStats;
     setLiveStats(data);
+    setLiveBatch((current) => {
+      if (!current.batchId) return current;
+
+      const batch = data.batches.find((item) => item.id === current.batchId);
+      if (!batch) return current;
+
+      return {
+        ...current,
+        found: batch.found,
+        sent: batch.sent,
+        failed: batch.errors.length,
+      };
+    });
   }, []);
 
   useEffect(() => {
@@ -223,35 +252,47 @@ export function ProspectionDashboard() {
     return () => clearInterval(interval);
   }, [fetchLiveStats]);
 
+  useEffect(() => {
+    if (!liveBatch.tracking || !liveBatch.batchId) return;
+
+    void fetchLiveStats();
+    const interval = setInterval(() => void fetchLiveStats(), 2000);
+    const timeout = setTimeout(() => {
+      setLiveBatch((current) => current.batchId === liveBatch.batchId ? { ...current, tracking: false } : current);
+    }, 10 * 60 * 1000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [fetchLiveStats, liveBatch.batchId, liveBatch.tracking]);
+
   async function handleFireBatch() {
     setFireRunning(true);
     setFireMessage(null);
+    setLiveBatch({ ...EMPTY_LIVE_BATCH_PROGRESS, tracking: true });
     try {
       const res = await fetch("/api/prospection/fire?key=KAH2026FIRE");
-      const data = await res.json() as { ok?: boolean; message?: string; error?: string };
+      const data = await res.json() as { ok?: boolean; batchId?: string | null; message?: string; error?: string };
       if (data.ok) {
-        setFireMessage("✓ Batch lancé — les emails partent en background. Actualisez dans 5-10 min.");
-        setTimeout(() => void fetchLiveStats(), 15000);
+        setLiveBatch({
+          ...EMPTY_LIVE_BATCH_PROGRESS,
+          batchId: data.batchId ?? null,
+          tracking: Boolean(data.batchId),
+        });
+        setFireMessage(data.batchId
+          ? "Batch lancé - compteur live actif."
+          : "Batch lancé - compteur live indisponible, historique en cours de refresh.");
+        void fetchLiveStats();
       } else {
+        setLiveBatch(EMPTY_LIVE_BATCH_PROGRESS);
         setFireMessage(`Erreur: ${data.error ?? "inconnue"}`);
-        setFireRunning(false);
       }
     } catch (err) {
+      setLiveBatch(EMPTY_LIVE_BATCH_PROGRESS);
       setFireMessage(`Erreur réseau: ${String(err)}`);
-      setFireRunning(false);
-    }
-  }
-
-  async function handleManualCron() {
-    setCronRunning(true);
-    try {
-      const res = await fetch("/api/cron/prospection", { method: "POST" });
-      const data = await res.json() as { sent?: number; found?: number; errors?: number };
-      alert(`Batch terminé : ${data.sent ?? 0} emails envoyés sur ${data.found ?? 0} leads trouvés (${data.errors ?? 0} erreurs)`);
-      void fetchLiveStats();
-      void fetchProspects();
     } finally {
-      setCronRunning(false);
+      setFireRunning(false);
     }
   }
 
@@ -478,6 +519,21 @@ export function ProspectionDashboard() {
       || prospectFilters.followup !== "all";
   }, [filterStatus, prospectFilters]);
 
+  const liveBatchRunning = fireRunning || liveBatch.tracking;
+  const renderLiveBatchCounter = () => liveBatch.batchId ? (
+    <div
+      aria-live="polite"
+      className="flex shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs"
+    >
+      <span className={`h-2 w-2 rounded-full ${liveBatch.tracking ? "animate-pulse bg-emerald-400" : "bg-gray-500"}`} />
+      <span className="font-semibold text-emerald-300">{liveBatch.sent}</span>
+      <span className="text-gray-500">envoyés</span>
+      <span className="text-gray-700">/</span>
+      <span className="font-semibold text-red-300">{liveBatch.failed}</span>
+      <span className="text-gray-500">échoués</span>
+    </div>
+  ) : null;
+
   const stats = {
     total: prospects.length,
     analyzed: prospects.filter((p) => ["analyzed","draft","sent","replied"].includes(p.status)).length,
@@ -504,13 +560,14 @@ export function ProspectionDashboard() {
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => void handleManualCron()}
-              disabled={cronRunning}
+              onClick={() => void handleFireBatch()}
+              disabled={liveBatchRunning}
               aria-label="Lancer un batch de prospection de 12 emails"
               className="flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
             >
-              <FiPlay size={13} /> {cronRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
+              <FiPlay size={13} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
             </button>
+            {renderLiveBatchCounter()}
             <button onClick={() => { void fetchProspects(); void fetchLiveStats(); }} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5">
               <FiRefreshCw size={14} />
             </button>
@@ -771,13 +828,16 @@ export function ProspectionDashboard() {
                   Chaque batch envoie d&apos;abord le backlog prêt, puis découvre et audite de nouveaux leads avec l&apos;IA, jusqu&apos;à <strong className="text-white">12 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={() => void handleFireBatch()}
-                    disabled={fireRunning}
-                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
-                  >
-                    <FiZap size={16} /> {fireRunning ? "Batch lancé en background ✓" : "🚀 Lancer un batch (12 emails)"}
-                  </button>
+                  <div className="flex flex-1 flex-col gap-2 sm:flex-row">
+                    <button
+                      onClick={() => void handleFireBatch()}
+                      disabled={liveBatchRunning}
+                      className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
+                    >
+                      <FiZap size={16} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
+                    </button>
+                    {renderLiveBatchCounter()}
+                  </div>
                   <button
                     onClick={() => void handleManualFollowup()}
                     disabled={followupRunning}
