@@ -295,9 +295,10 @@ export function ProspectionDashboard() {
             <button
               onClick={() => void handleManualCron()}
               disabled={cronRunning}
-              className="flex items-center gap-2 rounded-lg bg-violet-600 px-3 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
+              aria-label="Lancer un batch de prospection de 12 emails"
+              className="flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
             >
-              <FiPlay size={13} /> {cronRunning ? "En cours..." : "Lancer batch"}
+              <FiPlay size={13} /> {cronRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
             </button>
             <button onClick={() => { void fetchProspects(); void fetchLiveStats(); }} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5">
               <FiRefreshCw size={14} />
