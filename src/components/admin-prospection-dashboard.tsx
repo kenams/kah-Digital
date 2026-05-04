@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { FiPlus, FiZap, FiSend, FiTrash2, FiEdit2, FiEye, FiX, FiCheck, FiAlertCircle, FiClock, FiRefreshCw, FiBell, FiActivity, FiPlay } from "react-icons/fi";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { FiPlus, FiZap, FiSend, FiTrash2, FiEdit2, FiEye, FiX, FiCheck, FiAlertCircle, FiClock, FiRefreshCw, FiBell, FiActivity, FiPlay, FiFilter, FiMapPin, FiCalendar, FiSearch } from "react-icons/fi";
 
 type ProspectAuditProblem = { title: string; detail: string; severity: "critical" | "medium" | "low" };
 type ProspectAuditRecommendation = { title: string; detail: string; estimatedValue: string };
@@ -28,6 +28,16 @@ type Prospect = {
   draftReply: string | null;
   emailGuessed: boolean | null;
   sentAt: string | null;
+  openedAt?: string | null;
+  clickedAt?: string | null;
+  repliedAt?: string | null;
+  followup1SentAt?: string | null;
+  followup2SentAt?: string | null;
+  followup3SentAt?: string | null;
+  country?: string | null;
+  language?: string | null;
+  city?: string | null;
+  address?: string | null;
   notes: string | null;
 };
 
@@ -70,8 +80,118 @@ type LiveStats = {
   };
 };
 
+type ProspectFilters = {
+  query: string;
+  city: string;
+  country: string;
+  sentFrom: string;
+  sentTo: string;
+  sentHour: string;
+  sentDay: string;
+  sentYear: string;
+  followup: "all" | "with" | "without" | "j2" | "j5" | "j10";
+};
+
+const DEFAULT_PROSPECT_FILTERS: ProspectFilters = {
+  query: "",
+  city: "",
+  country: "",
+  sentFrom: "",
+  sentTo: "",
+  sentHour: "",
+  sentDay: "",
+  sentYear: "",
+  followup: "all",
+};
+
+const DAY_OPTIONS = [
+  { value: "1", label: "Lundi" },
+  { value: "2", label: "Mardi" },
+  { value: "3", label: "Mercredi" },
+  { value: "4", label: "Jeudi" },
+  { value: "5", label: "Vendredi" },
+  { value: "6", label: "Samedi" },
+  { value: "0", label: "Dimanche" },
+];
+
+const CITY_PATTERNS = [
+  ["paris", "Paris"], ["lyon", "Lyon"], ["marseille", "Marseille"], ["bordeaux", "Bordeaux"], ["toulouse", "Toulouse"],
+  ["nantes", "Nantes"], ["strasbourg", "Strasbourg"], ["nice", "Nice"], ["montpellier", "Montpellier"], ["rennes", "Rennes"],
+  ["grenoble", "Grenoble"], ["lille", "Lille"], ["clermont ferrand", "Clermont-Ferrand"], ["aix en provence", "Aix-en-Provence"],
+  ["angers", "Angers"], ["dijon", "Dijon"], ["caen", "Caen"], ["metz", "Metz"], ["rouen", "Rouen"],
+  ["geneve", "Geneve"], ["lausanne", "Lausanne"], ["fribourg", "Fribourg"], ["sion", "Sion"], ["zurich", "Zurich"],
+  ["basel", "Basel"], ["bale", "Basel"], ["lugano", "Lugano"], ["berne", "Berne"], ["bern", "Berne"],
+  ["bruxelles", "Bruxelles"], ["liege", "Liege"], ["charleroi", "Charleroi"], ["bruges", "Bruges"],
+  ["montreal", "Montreal"], ["quebec", "Quebec"], ["toronto", "Toronto"], ["vancouver", "Vancouver"],
+  ["casablanca", "Casablanca"], ["marrakech", "Marrakech"], ["rabat", "Rabat"], ["tunis", "Tunis"],
+  ["abidjan", "Abidjan"], ["dakar", "Dakar"], ["douala", "Douala"], ["bamako", "Bamako"],
+  ["london", "London"], ["manchester", "Manchester"], ["birmingham", "Birmingham"],
+  ["new york", "New York"], ["miami", "Miami"], ["los angeles", "Los Angeles"], ["chicago", "Chicago"],
+  ["berlin", "Berlin"], ["munchen", "Munich"], ["muenchen", "Munich"], ["hamburg", "Hamburg"],
+  ["roma", "Rome"], ["rome", "Rome"], ["milano", "Milan"], ["milan", "Milan"],
+  ["madrid", "Madrid"], ["barcelona", "Barcelona"], ["sevilla", "Seville"], ["sydney", "Sydney"], ["melbourne", "Melbourne"],
+] as const;
+
+function normalizeFilterText(value: string | null | undefined) {
+  return (value ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[-_./]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getSendDate(prospect: Prospect) {
+  if (!prospect.sentAt) return null;
+  const date = new Date(prospect.sentAt);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function hasFollowup(prospect: Prospect) {
+  return Boolean(prospect.followup1SentAt || prospect.followup2SentAt || prospect.followup3SentAt);
+}
+
+function getFollowupLabel(prospect: Prospect) {
+  if (prospect.followup3SentAt) return "J+10";
+  if (prospect.followup2SentAt) return "J+5";
+  if (prospect.followup1SentAt) return "J+2";
+  return "Aucune relance";
+}
+
+function inferProspectCity(prospect: Prospect) {
+  const explicitCity = prospect.city?.trim();
+  if (explicitCity) return explicitCity;
+
+  const explicitAddress = prospect.address?.trim();
+  if (explicitAddress && explicitAddress.length > 2 && explicitAddress !== prospect.country) return explicitAddress;
+
+  const haystack = normalizeFilterText([
+    prospect.businessName,
+    prospect.website,
+    prospect.sector,
+    prospect.notes,
+  ].filter(Boolean).join(" "));
+
+  return CITY_PATTERNS.find(([needle]) => haystack.includes(needle))?.[1] ?? "Ville non detectee";
+}
+
+function formatDateTime(value: string | null | undefined) {
+  if (!value) return "Non envoye";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Date inconnue";
+  return date.toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+function formatDay(value: string | null | undefined) {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return date.toLocaleDateString("fr-FR", { weekday: "long" });
+}
+
 export function ProspectionDashboard() {
-  const [activeTab, setActiveTab] = useState<"prospects" | "live" | "batches" | "noemail">("live");
+  const [activeTab, setActiveTab] = useState<"prospects" | "live" | "batches" | "noemail" | "segments">("live");
   const [prospects, setProspects] = useState<Prospect[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Prospect | null>(null);
@@ -85,6 +205,7 @@ export function ProspectionDashboard() {
   const [followupRunning, setFollowupRunning] = useState(false);
   const [fireRunning, setFireRunning] = useState(false);
   const [fireMessage, setFireMessage] = useState<string | null>(null);
+  const [prospectFilters, setProspectFilters] = useState<ProspectFilters>(DEFAULT_PROSPECT_FILTERS);
 
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
@@ -161,7 +282,9 @@ export function ProspectionDashboard() {
 
   const fetchProspects = useCallback(async () => {
     setLoading(true);
-    const url = filterStatus === "all" ? "/api/prospection/prospects" : `/api/prospection/prospects?status=${filterStatus}`;
+    const params = new URLSearchParams({ limit: "500" });
+    if (filterStatus !== "all") params.set("status", filterStatus);
+    const url = `/api/prospection/prospects?${params.toString()}`;
     const res = await fetch(url);
     const data = await res.json() as { prospects?: Prospect[] };
     setProspects(data.prospects ?? []);
@@ -266,7 +389,94 @@ export function ProspectionDashboard() {
     setSelected((s) => s?.id === prospect.id ? { ...s, status: status as Prospect["status"] } : s);
   }
 
-  const filtered = filterStatus === "all" ? prospects : prospects.filter((p) => p.status === filterStatus);
+  function updateProspectFilter<K extends keyof ProspectFilters>(key: K, value: ProspectFilters[K]) {
+    setProspectFilters((current) => ({ ...current, [key]: value }));
+  }
+
+  const countryOptions = useMemo(() => {
+    return [...new Set(prospects.map((p) => p.country).filter((country): country is string => Boolean(country)))].sort();
+  }, [prospects]);
+
+  const cityOptions = useMemo(() => {
+    return [...new Set(prospects.map(inferProspectCity).filter((city) => city !== "Ville non detectee"))].sort();
+  }, [prospects]);
+
+  const sentYearOptions = useMemo(() => {
+    return [...new Set(prospects.map((p) => getSendDate(p)?.getFullYear()).filter((year): year is number => Boolean(year)))].sort((a, b) => b - a);
+  }, [prospects]);
+
+  const filtered = useMemo(() => {
+    const query = normalizeFilterText(prospectFilters.query);
+    const city = normalizeFilterText(prospectFilters.city);
+    const startDate = prospectFilters.sentFrom ? new Date(`${prospectFilters.sentFrom}T00:00:00`) : null;
+    const endDate = prospectFilters.sentTo ? new Date(`${prospectFilters.sentTo}T23:59:59`) : null;
+
+    return prospects.filter((p) => {
+      if (filterStatus !== "all" && p.status !== filterStatus) return false;
+
+      const prospectCity = inferProspectCity(p);
+      if (query) {
+        const haystack = normalizeFilterText([
+          p.businessName,
+          p.website,
+          p.email,
+          p.sector,
+          p.country,
+          prospectCity,
+          p.notes,
+        ].filter(Boolean).join(" "));
+        if (!haystack.includes(query)) return false;
+      }
+
+      if (city && !normalizeFilterText(prospectCity).includes(city)) return false;
+      if (prospectFilters.country && p.country !== prospectFilters.country) return false;
+
+      const sentDate = getSendDate(p);
+      if (startDate && (!sentDate || sentDate < startDate)) return false;
+      if (endDate && (!sentDate || sentDate > endDate)) return false;
+      if (prospectFilters.sentHour && (!sentDate || String(sentDate.getHours()) !== prospectFilters.sentHour)) return false;
+      if (prospectFilters.sentDay && (!sentDate || String(sentDate.getDay()) !== prospectFilters.sentDay)) return false;
+      if (prospectFilters.sentYear && (!sentDate || String(sentDate.getFullYear()) !== prospectFilters.sentYear)) return false;
+
+      if (prospectFilters.followup === "with" && !hasFollowup(p)) return false;
+      if (prospectFilters.followup === "without" && (!p.sentAt || hasFollowup(p))) return false;
+      if (prospectFilters.followup === "j2" && !p.followup1SentAt) return false;
+      if (prospectFilters.followup === "j5" && !p.followup2SentAt) return false;
+      if (prospectFilters.followup === "j10" && !p.followup3SentAt) return false;
+
+      return true;
+    });
+  }, [prospects, filterStatus, prospectFilters]);
+
+  const segmentStats = useMemo(() => {
+    const cityCounts = new Map<string, number>();
+    for (const prospect of filtered) {
+      const city = inferProspectCity(prospect);
+      cityCounts.set(city, (cityCounts.get(city) ?? 0) + 1);
+    }
+
+    return {
+      total: filtered.length,
+      sent: filtered.filter((p) => p.sentAt).length,
+      withFollowup: filtered.filter(hasFollowup).length,
+      withoutFollowup: filtered.filter((p) => p.sentAt && !hasFollowup(p)).length,
+      replied: filtered.filter((p) => p.status === "replied" || p.repliedAt).length,
+      topCities: [...cityCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6),
+    };
+  }, [filtered]);
+
+  const hasActiveProspectFilters = useMemo(() => {
+    return filterStatus !== "all"
+      || prospectFilters.query !== ""
+      || prospectFilters.city !== ""
+      || prospectFilters.country !== ""
+      || prospectFilters.sentFrom !== ""
+      || prospectFilters.sentTo !== ""
+      || prospectFilters.sentHour !== ""
+      || prospectFilters.sentDay !== ""
+      || prospectFilters.sentYear !== ""
+      || prospectFilters.followup !== "all";
+  }, [filterStatus, prospectFilters]);
 
   const stats = {
     total: prospects.length,
@@ -274,6 +484,7 @@ export function ProspectionDashboard() {
     sent: prospects.filter((p) => p.status === "sent").length,
     replied: prospects.filter((p) => p.status === "replied").length,
   };
+
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -317,6 +528,7 @@ export function ProspectionDashboard() {
           {[
             { id: "live" as const, label: "Live & Notifications", icon: FiBell },
             { id: "noemail" as const, label: `Sans email${liveStats?.stats.noEmail ? ` (${liveStats.stats.noEmail})` : ""}`, icon: FiAlertCircle },
+            { id: "segments" as const, label: `Filtres & ciblage${hasActiveProspectFilters ? ` (${filtered.length})` : ""}`, icon: FiFilter },
             { id: "prospects" as const, label: "Prospects", icon: FiZap },
             { id: "batches" as const, label: "Historique batches", icon: FiActivity },
           ].map((tab) => (
@@ -584,6 +796,257 @@ export function ProspectionDashboard() {
       )}
 
       {/* ── TAB: SANS EMAIL ──────────────────────────────────────────────────── */}
+      {activeTab === "segments" && (
+        <div className="mx-auto max-w-7xl px-6 py-6 space-y-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-300 flex items-center gap-2">
+                <FiFilter size={14} className="text-violet-400" /> Filtres & ciblage prospects
+              </h2>
+              <p className="mt-1 text-xs text-gray-500">Vue dediee aux segments par envoi, ville, pays et relances.</p>
+            </div>
+            <button
+              onClick={() => {
+                setFilterStatus("all");
+                setProspectFilters(DEFAULT_PROSPECT_FILTERS);
+              }}
+              disabled={!hasActiveProspectFilters}
+              className="inline-flex items-center justify-center rounded-lg border border-white/10 px-3 py-2 text-xs font-semibold text-gray-300 hover:bg-white/5 disabled:opacity-40"
+            >
+              Reinitialiser les filtres
+            </button>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[360px_minmax(0,1fr)]">
+            <section className="rounded-2xl border border-white/10 bg-gray-900/70 p-5">
+              <div className="mb-5 flex items-center justify-between">
+                <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <FiSearch size={14} className="text-blue-400" /> Ciblage
+                </h3>
+                <span className="rounded-full bg-white/5 px-2 py-1 text-xs text-gray-400">{filtered.length} resultat(s)</span>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Recherche</label>
+                  <input
+                    value={prospectFilters.query}
+                    onChange={(e) => updateProspectFilter("query", e.target.value)}
+                    placeholder="Nom, site, email, secteur..."
+                    className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white placeholder:text-gray-600"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Statut</label>
+                    <select
+                      value={filterStatus}
+                      onChange={(e) => setFilterStatus(e.target.value)}
+                      className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                    >
+                      <option value="all">Tous</option>
+                      {Object.entries(STATUS_LABELS).map(([key, value]) => (
+                        <option key={key} value={key}>{value.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Relances</label>
+                    <select
+                      value={prospectFilters.followup}
+                      onChange={(e) => updateProspectFilter("followup", e.target.value as ProspectFilters["followup"])}
+                      className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                    >
+                      <option value="all">Toutes</option>
+                      <option value="with">Avec relance</option>
+                      <option value="without">Sans relance</option>
+                      <option value="j2">Relance J+2</option>
+                      <option value="j5">Relance J+5</option>
+                      <option value="j10">Relance J+10</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Ville</label>
+                    <input
+                      value={prospectFilters.city}
+                      onChange={(e) => updateProspectFilter("city", e.target.value)}
+                      list="prospect-city-options"
+                      placeholder="Paris, Geneve..."
+                      className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white placeholder:text-gray-600"
+                    />
+                    <datalist id="prospect-city-options">
+                      {cityOptions.map((city) => <option key={city} value={city} />)}
+                    </datalist>
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">Pays</label>
+                    <select
+                      value={prospectFilters.country}
+                      onChange={(e) => updateProspectFilter("country", e.target.value)}
+                      className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                    >
+                      <option value="">Tous</option>
+                      {countryOptions.map((country) => <option key={country} value={country}>{country}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-white/8 bg-black/20 p-4">
+                  <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                    <FiCalendar size={13} /> Envoi
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="mb-1.5 block text-xs text-gray-500">Du</label>
+                      <input
+                        type="date"
+                        value={prospectFilters.sentFrom}
+                        onChange={(e) => updateProspectFilter("sentFrom", e.target.value)}
+                        className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-xs text-gray-500">Au</label>
+                      <input
+                        type="date"
+                        value={prospectFilters.sentTo}
+                        onChange={(e) => updateProspectFilter("sentTo", e.target.value)}
+                        className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-xs text-gray-500">Heure</label>
+                      <select
+                        value={prospectFilters.sentHour}
+                        onChange={(e) => updateProspectFilter("sentHour", e.target.value)}
+                        className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                      >
+                        <option value="">Toutes</option>
+                        {Array.from({ length: 24 }, (_, hour) => (
+                          <option key={hour} value={String(hour)}>{String(hour).padStart(2, "0")}h</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-xs text-gray-500">Jour</label>
+                      <select
+                        value={prospectFilters.sentDay}
+                        onChange={(e) => updateProspectFilter("sentDay", e.target.value)}
+                        className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                      >
+                        <option value="">Tous</option>
+                        {DAY_OPTIONS.map((day) => <option key={day.value} value={day.value}>{day.label}</option>)}
+                      </select>
+                    </div>
+                    <div className="col-span-2">
+                      <label className="mb-1.5 block text-xs text-gray-500">Annee</label>
+                      <select
+                        value={prospectFilters.sentYear}
+                        onChange={(e) => updateProspectFilter("sentYear", e.target.value)}
+                        className="w-full rounded-lg border border-white/10 bg-gray-800 px-3 py-2 text-sm text-white"
+                      >
+                        <option value="">Toutes</option>
+                        {sentYearOptions.map((year) => <option key={year} value={String(year)}>{year}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="space-y-4">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+                {[
+                  { label: "Prospects", value: segmentStats.total, tone: "text-white" },
+                  { label: "Envoyes", value: segmentStats.sent, tone: "text-emerald-400" },
+                  { label: "Avec relance", value: segmentStats.withFollowup, tone: "text-violet-400" },
+                  { label: "Sans relance", value: segmentStats.withoutFollowup, tone: "text-yellow-400" },
+                  { label: "Reponses", value: segmentStats.replied, tone: "text-blue-400" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-xl border border-white/10 bg-gray-900/70 p-4">
+                    <div className={`text-2xl font-black ${item.tone}`}>{item.value}</div>
+                    <div className="mt-1 text-xs uppercase tracking-wider text-gray-500">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
+                <div className="rounded-xl border border-white/10 bg-gray-900/70 p-4">
+                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400 flex items-center gap-2">
+                    <FiMapPin size={13} className="text-emerald-400" /> Villes principales
+                  </h3>
+                  {segmentStats.topCities.length === 0 ? (
+                    <p className="text-sm text-gray-500">Aucune ville</p>
+                  ) : (
+                    <div className="space-y-2">
+                      {segmentStats.topCities.map(([city, count]) => (
+                        <button
+                          key={city}
+                          onClick={() => updateProspectFilter("city", city === "Ville non detectee" ? "" : city)}
+                          className="flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-left text-sm text-gray-300 hover:bg-white/5"
+                        >
+                          <span className="truncate">{city}</span>
+                          <span className="rounded-full bg-white/8 px-2 py-0.5 text-xs text-gray-400">{count}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="overflow-hidden rounded-xl border border-white/10 bg-gray-900/70">
+                  <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400">Resultats filtres</h3>
+                    <span className="text-xs text-gray-500">{filtered.length > 120 ? "120 premiers affiches" : `${filtered.length} affiches`}</span>
+                  </div>
+                  {loading ? (
+                    <div className="p-8 text-center text-sm text-gray-500">Chargement...</div>
+                  ) : filtered.length === 0 ? (
+                    <div className="p-8 text-center text-sm text-gray-500">Aucun prospect dans ce segment</div>
+                  ) : (
+                    <div className="divide-y divide-white/8">
+                      {filtered.slice(0, 120).map((prospect) => (
+                        <button
+                          key={prospect.id}
+                          onClick={() => {
+                            setSelected(prospect);
+                            setEditEmail(null);
+                            setActiveTab("prospects");
+                          }}
+                          className="grid w-full gap-3 px-4 py-3 text-left text-sm hover:bg-white/5 md:grid-cols-[minmax(0,1.6fr)_120px_120px_120px_110px]"
+                        >
+                          <div className="min-w-0">
+                            <div className="truncate font-semibold text-white">{prospect.businessName ?? prospect.website}</div>
+                            <div className="truncate text-xs text-gray-500">{prospect.website}</div>
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            <div className="truncate">{inferProspectCity(prospect)}</div>
+                            <div className="text-gray-600">{prospect.country ?? "-"}</div>
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            <div>{formatDateTime(prospect.sentAt)}</div>
+                            <div className="capitalize text-gray-600">{formatDay(prospect.sentAt)}</div>
+                          </div>
+                          <div className="text-xs text-gray-300">{getFollowupLabel(prospect)}</div>
+                          <div>
+                            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${STATUS_LABELS[prospect.status]?.color ?? ""}`}>
+                              {STATUS_LABELS[prospect.status]?.label ?? prospect.status}
+                            </span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
+
       {activeTab === "noemail" && (
         <div className="mx-auto max-w-5xl px-6 py-6">
           <h2 className="mb-1 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
@@ -725,6 +1188,11 @@ export function ProspectionDashboard() {
                     </span>
                   </div>
                   {p.sector && <p className="mt-1 text-xs text-gray-500">{p.sector}</p>}
+                  <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] text-gray-500">
+                    <span className="rounded-full bg-white/5 px-2 py-0.5">{inferProspectCity(p)}</span>
+                    <span className="rounded-full bg-white/5 px-2 py-0.5">{p.sentAt ? formatDateTime(p.sentAt) : "Non envoye"}</span>
+                    <span className="rounded-full bg-white/5 px-2 py-0.5">{getFollowupLabel(p)}</span>
+                  </div>
                   {p.audit && (
                     <p className="mt-1 text-xs text-indigo-400 font-medium">{p.audit.priceRange}</p>
                   )}
@@ -752,6 +1220,11 @@ export function ProspectionDashboard() {
                     </p>
                   )}
                   {selected.phone && <p className="text-sm text-green-400 mt-0.5">📞 {selected.phone}</p>}
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-400">
+                    <span className="rounded-full bg-white/5 px-2 py-1">{inferProspectCity(selected)}{selected.country ? ` - ${selected.country}` : ""}</span>
+                    <span className="rounded-full bg-white/5 px-2 py-1">Envoi: {formatDateTime(selected.sentAt)}</span>
+                    <span className="rounded-full bg-white/5 px-2 py-1">{getFollowupLabel(selected)}</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <select

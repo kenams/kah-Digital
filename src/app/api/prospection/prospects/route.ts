@@ -10,13 +10,15 @@ function getSupabase() {
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const status = searchParams.get("status");
+  const requestedLimit = Number(searchParams.get("limit") ?? 500);
+  const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 1000) : 500;
   const supabase = getSupabase();
 
   let query = supabase
     .from("prospects")
     .select("*")
     .order("createdAt", { ascending: false })
-    .limit(100);
+    .limit(limit);
 
   if (status) query = query.eq("status", status);
 
