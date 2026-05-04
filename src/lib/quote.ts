@@ -33,7 +33,8 @@ export const quoteSchema = z
     configurator: configuratorSchema,
   })
   .superRefine((data, ctx) => {
-    const focus = data.projectFocus ?? "web";
+    const focus = data.projectFocus;
+    if (!focus) return; // formulaire simplifié — pas de validation pages/platforms
     if (focus === "web" && (!data.pages || data.pages.length === 0)) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,

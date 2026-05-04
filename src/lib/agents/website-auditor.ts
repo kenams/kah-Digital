@@ -76,7 +76,7 @@ function ruleBasedAudit(lead: DiscoveredLead, html: string): SiteAudit {
 
   const finalScore = Math.max(10, Math.min(60, score));
   const quality = finalScore < 30 ? "poor" : finalScore < 45 ? "medium" : "ok";
-  const { price, range } = getCountryBasePrice(lead.country, quality);
+  const { price, range } = getCountryBasePrice(lead.country ?? "FR", quality);
 
   return {
     language: lead.language,
@@ -142,7 +142,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
   return `[Contenu non récupérable] URL: ${url}`;
 }
 
-export function getScreenshotUrl(_siteUrl: string): string | null {
+export function getScreenshotUrl(_url: string): string | null {
   return null; // Screenshot désactivé — mockup HTML inclus dans l'email
 }
 
@@ -159,38 +159,35 @@ const AUDIT_PROMPT: Record<string, string> = {
 function getPricingGuide(country: string): string {
   const guides: Record<string, string> = {
     CH: `Pricing in CHF (Swiss market — premium pricing applies):
-- Landing / single-page portfolio: CHF 500–900
-- Standard website (5-8 pages): CHF 1400–2800
-- Site with booking/menu/blog: CHF 2200–4200
-- E-commerce: CHF 3800–7500
-- Custom web app: CHF 6000–18000
-estimatedPrice should be the CHF mid-range value. priceRange in CHF (e.g. "CHF 1400 – CHF 2200").`,
+- Landing page (1 page): CHF 500–900
+- Professional website (5-8 pages): CHF 1200–2400
+- Business web tool: CHF 2300–4600
+- Mobile app / SaaS MVP: CHF 3800–12000
+estimatedPrice should be the CHF mid-range value. priceRange in CHF (e.g. "CHF 1200 – CHF 2400").`,
     GB: `Pricing in GBP (UK market):
-- Landing / single-page: £350–650
-- Standard website (5-8 pages): £750–1600
-- Site with booking/blog: £1300–2500
-- E-commerce: £2200–5000
-- Custom web app: £4000–12000
-estimatedPrice in GBP mid-range. priceRange in GBP (e.g. "£750 – £1600").`,
+- Landing page (1 page): £280–550
+- Professional website (5-8 pages): £700–1500
+- Business web tool: £1300–2500
+- Mobile app / SaaS MVP: £2200–7000
+estimatedPrice in GBP mid-range. priceRange in GBP (e.g. "£700 – £1500").`,
     US: `Pricing in USD (US market):
-- Landing / single-page: $400–700
-- Standard website (5-8 pages): $900–1800
-- Site with booking/blog: $1500–2800
-- E-commerce: $2500–5500
-- Custom web app: $4500–13000
-estimatedPrice in USD mid-range. priceRange in USD (e.g. "$900 – $1800").`,
+- Landing page (1 page): $320–600
+- Professional website (5-8 pages): $800–1600
+- Business web tool: £1400–2800
+- Mobile app / SaaS MVP: $2500–8000
+estimatedPrice in USD mid-range. priceRange in USD (e.g. "$800 – $1600").`,
     AU: `Pricing in AUD (Australian market):
-- Landing / single-page: AUD 500–900
-- Standard website (5-8 pages): AUD 1100–2200
-- Site with booking/blog: AUD 1800–3500
-- E-commerce: AUD 3000–7000
-estimatedPrice in AUD mid-range. priceRange in AUD (e.g. "AUD 1100 – AUD 2200").`,
+- Landing page (1 page): AUD 450–850
+- Professional website (5-8 pages): AUD 1100–2000
+- Business web tool: AUD 1800–3500
+- Mobile app / SaaS MVP: AUD 3000–8000
+estimatedPrice in AUD mid-range. priceRange in AUD (e.g. "AUD 1100 – AUD 2000").`,
     CA: `Pricing in CAD (Canadian market):
-- Landing / single-page: CAD 450–800
-- Standard website (5-8 pages): CAD 1000–2000
-- Site with booking/blog: CAD 1600–3000
-- E-commerce: CAD 2800–6000
-estimatedPrice in CAD mid-range. priceRange in CAD (e.g. "CAD 1000 – CAD 2000").`,
+- Landing page (1 page): CAD 400–750
+- Professional website (5-8 pages): CAD 1000–1900
+- Business web tool: CAD 1700–3200
+- Mobile app / SaaS MVP: CAD 2800–7500
+estimatedPrice in CAD mid-range. priceRange in CAD (e.g. "CAD 1000 – CAD 1900").`,
     MA: `Pricing in EUR adapted to Moroccan market (lower purchasing power):
 - Landing / single-page: 200–400€
 - Standard website: 400–900€
@@ -219,18 +216,17 @@ estimatedPrice and priceRange in EUR at these lower rates.`,
 estimatedPrice and priceRange in EUR at these lower rates.`,
   };
   // Default: European EUR market (FR, BE, DE, IT, ES, etc.)
-  return guides[country] ?? `Pricing in EUR (European market):
-- Landing / single-page portfolio: 300–600€
-- Standard website (5-8 pages): 900–1800€
-- Site with booking/menu/blog: 1500–2800€
-- E-commerce: 2500–5000€
-- Custom web app: 4000–12000€
-estimatedPrice is the EUR mid-range integer. priceRange in EUR (e.g. "entre 900€ et 1800€").`;
+  return guides[country] ?? `Pricing in EUR — KAH-Digital official rates:
+- Landing page (1 page): from 300€ (5-10 days)
+- Professional website (5-8 pages): from 800€, typically 800–1600€ (2-4 weeks)
+- Business web tool (internal tool, dashboard, admin): from 1500€, typically 1500–3000€ (3-6 weeks)
+- Mobile app or SaaS MVP: from 2500€ for mobile app, from 3000€ for SaaS, typically 3000–8000€
+estimatedPrice is the EUR mid-range integer for the most relevant offer. priceRange in EUR (e.g. "entre 800€ et 1600€").`;
 }
 
 // Prix fallback rule-based adapté au pays
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
-  const base = quality === "poor" ? 1800 : quality === "medium" ? 1400 : 1200;
+  const base = quality === "poor" ? 1400 : quality === "medium" ? 1100 : 900;
   const multipliers: Record<string, { mult: number; currency: string; symbol: string }> = {
     CH: { mult: 1.55, currency: "CHF", symbol: "CHF " },
     GB: { mult: 1.15, currency: "GBP", symbol: "£" },

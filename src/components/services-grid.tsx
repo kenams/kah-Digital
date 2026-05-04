@@ -1,129 +1,223 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowRight, FiGlobe, FiSmartphone, FiTool, FiZap } from "react-icons/fi";
+import { FiArrowRight, FiGlobe, FiSmartphone, FiBox, FiLayout, FiTool } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function ServicesGrid() {
   const { locale, prefix } = useLocale();
+
   const copy = {
     fr: {
-      badge: "Nos services",
-      title: "Tout ce qu'il faut pour développer votre présence digitale",
-      body: "Trois axes clairs : présenter votre activité, outiller votre équipe, ou fluidifier votre support.",
-      cta: "En savoir plus",
+      badge: "Nos offres",
+      title: "Ce que je crée pour vous",
+      body: "Des solutions digitales claires et accessibles, du site vitrine à l'application mobile, en passant par le SaaS et les outils métier.",
+      cta: "Demander un devis",
+      forLabel: "Pour qui",
+      fromLabel: "À partir de",
+      delayLabel: "Délai estimé",
       items: [
+        {
+          icon: FiLayout,
+          accent: "#10b981",
+          title: "Landing page",
+          eyebrow: "Offre 1",
+          forWho: "Entrepreneurs, coachs, freelances, restaurants, artisans, événements",
+          description: "Une page claire, percutante et optimisée pour présenter votre offre, collecter des prospects ou vendre un service.",
+          includes: ["Design personnalisé", "Formulaire de contact", "Optimisé mobile", "Mise en ligne incluse"],
+          price: "300 €",
+          delay: "5 à 10 jours",
+          href: "/devis",
+        },
         {
           icon: FiGlobe,
           accent: "#3b82f6",
-          title: "Sites web pour entreprises",
-          description: "Sites vitrines et corporate ultra-propres, rapides et optimisés SEO. Design sur mesure, paiement intégré si besoin.",
-          tags: ["Vitrine", "Corporate", "SEO", "Paiement"],
-          href: "/services/site-web",
+          title: "Site web professionnel",
+          eyebrow: "Offre 2",
+          forWho: "PME, indépendants, commerces, cabinets, associations, restaurants",
+          description: "Site vitrine moderne, responsive et rapide. Conçu pour donner confiance, apparaître sur Google et générer des contacts.",
+          includes: ["Design sur mesure", "SEO optimisé", "Responsive mobile", "Formulaire de contact"],
+          price: "800 €",
+          delay: "2 à 4 semaines",
+          href: "/devis",
         },
         {
           icon: FiSmartphone,
           accent: "#8b5cf6",
-          title: "Applications web & mobiles",
-          description: "Outils métier, portails clients, tableaux de bord et apps sur mesure adaptés à vos process et votre équipe.",
-          tags: ["Web", "Mobile", "Dashboard", "Sur mesure"],
-          href: "/services/applications",
+          title: "Application mobile",
+          eyebrow: "Offre 3",
+          forWho: "Startups, marketplaces, réservation, communauté, sport, outil métier",
+          description: "Application iOS et Android ou hybride selon votre besoin. Du MVP simple à la plateforme plus complète, selon votre budget.",
+          includes: ["iOS & Android", "Authentification", "Interface sur mesure", "Suivi post-lancement"],
+          price: "Sur devis · MVP dès 2 500 €",
+          delay: "Sur devis",
+          href: "/devis",
+        },
+        {
+          icon: FiBox,
+          accent: "#f59e0b",
+          title: "SaaS sur mesure",
+          eyebrow: "Offre 4",
+          forWho: "Entrepreneurs, entreprises qui veulent lancer un outil en ligne",
+          description: "Plateforme web avec espace client, abonnements, tableau de bord, gestion utilisateurs et paiements intégrés.",
+          includes: ["Espace client", "Paiement Stripe", "Dashboard admin", "Abonnements"],
+          price: "Sur devis · MVP dès 3 000 €",
+          delay: "Sur devis",
+          href: "/devis",
         },
         {
           icon: FiTool,
-          accent: "#10b981",
-          title: "Support connecté GLPI",
-          description: "Assistant virtuel, orientation des demandes et passage fluide au ticket GLPI quand le support humain doit reprendre.",
-          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
-          href: "/services/glpi",
-        },
-        {
-          icon: FiZap,
-          accent: "#f59e0b",
-          title: "Outils IA & automatisation",
-          description: "Prospection automatique, agents IA, workflows no-code/low-code pour libérer votre équipe des tâches répétitives.",
-          tags: ["IA", "Automation", "Claude", "Emails"],
-          href: "/services",
+          accent: "#ec4899",
+          title: "Outil web métier",
+          eyebrow: "Offre 5",
+          forWho: "PME, TPE, équipes qui veulent automatiser ou centraliser",
+          description: "Petites applications internes, formulaires intelligents, dashboards, CRM léger, gestion de demandes ou espace administrateur.",
+          includes: ["Interface admin", "Base de données", "Formulaires", "Rôles utilisateurs"],
+          price: "1 500 €",
+          delay: "3 à 6 semaines",
+          href: "/devis",
         },
       ],
     },
     en: {
-      badge: "Our services",
-      title: "Everything you need to grow your digital presence",
-      body: "Three clear directions: showcase your business, equip your team, or smooth out your support.",
-      cta: "Learn more",
+      badge: "Our offers",
+      title: "What I build for you",
+      body: "Clear, affordable digital solutions — from landing pages to mobile apps, SaaS and business tools.",
+      cta: "Request a quote",
+      forLabel: "For whom",
+      fromLabel: "Starting from",
+      delayLabel: "Estimated timeline",
       items: [
+        {
+          icon: FiLayout,
+          accent: "#10b981",
+          title: "Landing page",
+          eyebrow: "Offer 1",
+          forWho: "Entrepreneurs, coaches, freelancers, restaurants, events",
+          description: "A clear, impactful page optimised to present your offer, collect leads or sell a service.",
+          includes: ["Custom design", "Contact form", "Mobile optimised", "Deployment included"],
+          price: "€300",
+          delay: "5 to 10 days",
+          href: "/devis",
+        },
         {
           icon: FiGlobe,
           accent: "#3b82f6",
-          title: "Business websites",
-          description: "Clean, fast, SEO-optimised showcase and corporate websites. Custom design, integrated payments if needed.",
-          tags: ["Showcase", "Corporate", "SEO", "Payments"],
-          href: "/services/site-web",
+          title: "Professional website",
+          eyebrow: "Offer 2",
+          forWho: "SMEs, freelancers, shops, practices, associations",
+          description: "Modern, responsive and fast showcase site. Designed to build trust, appear on Google and generate enquiries.",
+          includes: ["Custom design", "SEO optimised", "Mobile responsive", "Contact form"],
+          price: "€800",
+          delay: "2 to 4 weeks",
+          href: "/devis",
         },
         {
           icon: FiSmartphone,
           accent: "#8b5cf6",
-          title: "Web & mobile apps",
-          description: "Business tools, client portals, dashboards, and custom apps adapted to your workflows and team.",
-          tags: ["Web", "Mobile", "Dashboard", "Custom"],
-          href: "/services/applications",
+          title: "Mobile application",
+          eyebrow: "Offer 3",
+          forWho: "Startups, marketplaces, booking, community, sport, business tools",
+          description: "iOS and Android or hybrid app. From simple MVP to fuller platform, depending on your budget.",
+          includes: ["iOS & Android", "Authentication", "Custom UI", "Post-launch support"],
+          price: "On quote · MVP from €2,500",
+          delay: "On quote",
+          href: "/devis",
+        },
+        {
+          icon: FiBox,
+          accent: "#f59e0b",
+          title: "Custom SaaS",
+          eyebrow: "Offer 4",
+          forWho: "Entrepreneurs and businesses wanting to launch an online tool",
+          description: "Web platform with client portal, subscriptions, dashboard, user management and integrated payments.",
+          includes: ["Client portal", "Stripe payments", "Admin dashboard", "Subscriptions"],
+          price: "On quote · MVP from €3,000",
+          delay: "On quote",
+          href: "/devis",
         },
         {
           icon: FiTool,
-          accent: "#10b981",
-          title: "GLPI-connected support",
-          description: "Virtual assistant, request routing, and clean ticket handoff to GLPI when human support needs to step in.",
-          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
-          href: "/services/glpi",
-        },
-        {
-          icon: FiZap,
-          accent: "#f59e0b",
-          title: "AI tools & automation",
-          description: "Automated outreach, AI agents, no-code/low-code workflows to free your team from repetitive tasks.",
-          tags: ["AI", "Automation", "Claude", "Emails"],
-          href: "/services",
+          accent: "#ec4899",
+          title: "Business web tool",
+          eyebrow: "Offer 5",
+          forWho: "SMEs and teams wanting to automate or centralise",
+          description: "Internal apps, smart forms, dashboards, lightweight CRM, request management or admin portal.",
+          includes: ["Admin interface", "Database", "Forms", "User roles"],
+          price: "€1,500",
+          delay: "3 to 6 weeks",
+          href: "/devis",
         },
       ],
     },
     de: {
-      badge: "Unsere Leistungen",
-      title: "Alles für eine starke digitale Präsenz",
-      body: "Drei klare Richtungen: Unternehmen präsentieren, Team ausrüsten oder Support optimieren.",
-      cta: "Mehr erfahren",
+      badge: "Unsere Angebote",
+      title: "Was ich für Sie erstelle",
+      body: "Klare, erschwingliche digitale Lösungen — von Landing Pages bis hin zu mobilen Apps, SaaS und Business-Tools.",
+      cta: "Angebot anfordern",
+      forLabel: "Für wen",
+      fromLabel: "Ab",
+      delayLabel: "Geschätzte Dauer",
       items: [
+        {
+          icon: FiLayout,
+          accent: "#10b981",
+          title: "Landing Page",
+          eyebrow: "Angebot 1",
+          forWho: "Unternehmer, Coaches, Freelancer, Restaurants, Veranstaltungen",
+          description: "Eine klare, wirkungsvolle Seite zur Präsentation Ihres Angebots, zur Lead-Generierung oder zum Verkauf eines Dienstleistung.",
+          includes: ["Individuelles Design", "Kontaktformular", "Mobile optimiert", "Deployment inklusive"],
+          price: "300 €",
+          delay: "5 bis 10 Tage",
+          href: "/devis",
+        },
         {
           icon: FiGlobe,
           accent: "#3b82f6",
-          title: "Unternehmenswebsites",
-          description: "Saubere, schnelle und SEO-optimierte Präsentationsseiten. Custom-Design, integrierte Zahlungen falls nötig.",
-          tags: ["Vitrine", "Corporate", "SEO", "Zahlung"],
-          href: "/services/site-web",
+          title: "Professionelle Website",
+          eyebrow: "Angebot 2",
+          forWho: "KMU, Selbstständige, Geschäfte, Praxen, Vereine",
+          description: "Moderne, responsive und schnelle Präsentationsseite. Vertrauenswürdig, Google-sichtbar und kontaktgenerierend.",
+          includes: ["Individuelles Design", "SEO optimiert", "Responsive", "Kontaktformular"],
+          price: "800 €",
+          delay: "2 bis 4 Wochen",
+          href: "/devis",
         },
         {
           icon: FiSmartphone,
           accent: "#8b5cf6",
-          title: "Web- & Mobile-Anwendungen",
-          description: "Business-Tools, Kundenportale, Dashboards und Apps passend zu euren Prozessen und eurer Arbeitsweise.",
-          tags: ["Web", "Mobile", "Dashboard", "Custom"],
-          href: "/services/applications",
+          title: "Mobile App",
+          eyebrow: "Angebot 3",
+          forWho: "Startups, Marktplätze, Buchung, Community, Sport, Business-Tools",
+          description: "iOS- und Android-App oder Hybrid je nach Bedarf. Vom einfachen MVP bis zur vollständigeren Plattform.",
+          includes: ["iOS & Android", "Authentifizierung", "Individuelles UI", "Post-Launch-Support"],
+          price: "Auf Anfrage · MVP ab 2.500 €",
+          delay: "Auf Anfrage",
+          href: "/devis",
+        },
+        {
+          icon: FiBox,
+          accent: "#f59e0b",
+          title: "Massgeschneidertes SaaS",
+          eyebrow: "Angebot 4",
+          forWho: "Unternehmer und Unternehmen, die ein Online-Tool starten möchten",
+          description: "Webplattform mit Kundenbereich, Abonnements, Dashboard, Benutzerverwaltung und integrierten Zahlungen.",
+          includes: ["Kundenbereich", "Stripe-Zahlung", "Admin-Dashboard", "Abonnements"],
+          price: "Auf Anfrage · MVP ab 3.000 €",
+          delay: "Auf Anfrage",
+          href: "/devis",
         },
         {
           icon: FiTool,
-          accent: "#10b981",
-          title: "GLPI-verbundener Support",
-          description: "Virtueller Assistent, Routing von Anfragen und saubere Übergabe an GLPI-Tickets.",
-          tags: ["GLPI", "Chatbot", "Support", "Tickets"],
-          href: "/services/glpi",
-        },
-        {
-          icon: FiZap,
-          accent: "#f59e0b",
-          title: "KI-Tools & Automatisierung",
-          description: "Automatisierte Akquise, KI-Agenten, No-Code-Workflows für weniger Routinearbeit.",
-          tags: ["KI", "Automation", "Claude", "Emails"],
-          href: "/services",
+          accent: "#ec4899",
+          title: "Business-Web-Tool",
+          eyebrow: "Angebot 5",
+          forWho: "KMU und Teams, die automatisieren oder zentralisieren möchten",
+          description: "Interne Apps, intelligente Formulare, Dashboards, leichtgewichtiges CRM, Anfragenverwaltung oder Admin-Portal.",
+          includes: ["Admin-Oberfläche", "Datenbank", "Formulare", "Benutzerrollen"],
+          price: "1.500 €",
+          delay: "3 bis 6 Wochen",
+          href: "/devis",
         },
       ],
     },
@@ -132,7 +226,7 @@ export function ServicesGrid() {
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
-    <section className="bg-gray-950 py-20">
+    <section className="bg-gray-900 py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center">
           <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
@@ -142,38 +236,73 @@ export function ServicesGrid() {
           <p className="mx-auto max-w-2xl text-lg text-gray-400">{copy.body}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {copy.items.map((service) => (
-            <Link
+            <div
               key={service.title}
-              href={withPrefix(service.href)}
-              className="group relative rounded-2xl border border-white/10 bg-gray-900 p-6 transition-all hover:border-white/20 hover:bg-gray-800/80"
+              className="group relative flex flex-col rounded-2xl border border-white/10 bg-gray-950 p-6 transition-all hover:border-white/20"
             >
-              {/* Accent glow */}
+              {/* Top accent line */}
               <div
-                className="absolute inset-x-0 top-0 h-px rounded-t-2xl transition-opacity group-hover:opacity-100 opacity-0"
+                className="absolute inset-x-0 top-0 h-px rounded-t-2xl opacity-60"
                 style={{ background: `linear-gradient(to right, transparent, ${service.accent}, transparent)` }}
               />
 
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/10"
-                style={{ background: `${service.accent}18` }}>
-                <service.icon size={22} style={{ color: service.accent }} />
+              {/* Eyebrow */}
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest" style={{ color: service.accent }}>
+                {service.eyebrow}
+              </p>
+
+              {/* Icon + title */}
+              <div className="mb-4 flex items-center gap-3">
+                <div
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10"
+                  style={{ background: `${service.accent}18` }}
+                >
+                  <service.icon size={20} style={{ color: service.accent }} />
+                </div>
+                <h3 className="text-xl font-bold text-white">{service.title}</h3>
               </div>
 
-              <h3 className="mb-2 text-lg font-bold text-white">{service.title}</h3>
-              <p className="mb-4 text-sm leading-relaxed text-gray-400">{service.description}</p>
+              {/* Pour qui */}
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-gray-500">{copy.forLabel}</p>
+              <p className="mb-4 text-sm text-gray-400">{service.forWho}</p>
 
-              <div className="flex flex-wrap gap-2">
-                {service.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-gray-500">{tag}</span>
+              {/* Description */}
+              <p className="mb-5 text-sm leading-relaxed text-gray-400">{service.description}</p>
+
+              {/* Inclus */}
+              <ul className="mb-6 space-y-1.5">
+                {service.includes.map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-gray-300">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: service.accent }} />
+                    {item}
+                  </li>
                 ))}
+              </ul>
+
+              {/* Prix + délai */}
+              <div className="mt-auto mb-5 flex flex-wrap items-end justify-between gap-3 border-t border-white/8 pt-5">
+                <div>
+                  <p className="text-xs text-gray-500">{copy.fromLabel}</p>
+                  <p className="text-lg font-bold text-white">{service.price}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-gray-500">{copy.delayLabel}</p>
+                  <p className="text-sm font-semibold text-gray-300">{service.delay}</p>
+                </div>
               </div>
 
-              <div className="mt-4 flex items-center gap-1 text-sm font-semibold transition-colors"
-                style={{ color: service.accent }}>
-                {copy.cta} <FiArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-              </div>
-            </Link>
+              {/* CTA */}
+              <Link
+                href={withPrefix(service.href)}
+                className="group/btn inline-flex items-center justify-center gap-2 rounded-full py-2.5 text-sm font-bold text-white transition-all"
+                style={{ background: `linear-gradient(135deg, ${service.accent}cc, ${service.accent})` }}
+              >
+                {copy.cta}
+                <FiArrowRight size={14} className="transition-transform group-hover/btn:translate-x-0.5" />
+              </Link>
+            </div>
           ))}
         </div>
       </div>

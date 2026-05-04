@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FiChevronDown, FiPlus, FiMinus } from "react-icons/fi";
+import { FiPlus, FiMinus } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
 export function FAQSection() {
@@ -12,141 +12,141 @@ export function FAQSection() {
     fr: {
       eyebrow: "FAQ",
       title: "Questions fréquentes",
-      body: "Les points les plus utiles avant de lancer un site, une app ou un projet IA.",
+      body: "Tout ce que vous voulez savoir avant de lancer votre projet.",
       faqs: [
         {
-          question: "Combien coûte un site web ou une application ?",
-          answer:
-            "Un site vitrine : € 800 à 2 500. Un site corporate ou e-commerce : € 2 000 à 6 000. Une application web sur mesure : € 4 000 à 15 000. Une app mobile : € 6 000 à 20 000. Ces fourchettes dépendent des fonctionnalités, du design et du contenu. Chaque projet est cadré avant tout devis.",
+          question: "Combien coûte une landing page ?",
+          answer: "Une landing page démarre à partir de 300 €. Le prix final dépend du nombre de sections, du design, des animations et des intégrations souhaitées (formulaire, paiement, etc.). Je vous donne une estimation claire dès le premier échange.",
         },
         {
-          question: "Combien de temps faut-il pour livrer ?",
-          answer:
-            "Un site vitrine bien cadré : 3 à 4 semaines. Un site corporate ou une app simple : 4 à 8 semaines. Un projet plus complexe avec intégrations : 2 à 4 mois. Les délais sont fermes dès que le brief est validé.",
+          question: "Combien coûte un site web professionnel ?",
+          answer: "Un site vitrine démarre à partir de 800 €. Un site plus complet (plusieurs pages, blog, galerie, espace membre) est généralement entre 1 500 et 3 500 €. Chaque projet est différent — je vous propose un devis précis après avoir compris votre besoin.",
         },
         {
-          question: "Travaillez-vous avec des clients en dehors de la Suisse ?",
-          answer:
-            "Oui. KAH-Digital travaille à distance avec des clients francophones, anglophones et internationaux. La langue, le pays et le fuseau horaire ne sont pas un obstacle.",
+          question: "Combien coûte une application mobile ?",
+          answer: "Un MVP (version minimale fonctionnelle) démarre à partir de 2 500 €. Le prix final dépend du nombre d'écrans, des fonctionnalités, des intégrations (paiement, géolocalisation, notifications) et de la plateforme (iOS, Android ou les deux). Je vous aide à définir le périmètre minimal pour lancer rapidement.",
         },
         {
-          question: "Quel type de projets prenez-vous en charge ?",
-          answer:
-            "Sites vitrines, sites corporate, e-commerce, applications web et mobiles, dashboards, portails membres, automatisations IA et parcours support connectés à GLPI. Chaque besoin est qualifié avant engagement.",
+          question: "Puis-je commencer avec un petit budget ?",
+          answer: "Oui. La landing page à 300 € est faite pour ça. L'idée est de commencer simple, valider votre offre, puis évoluer. Même pour une application, il est possible de définir un MVP minimal et d'ajouter des fonctionnalités ensuite. Je vous guide selon votre budget réel.",
         },
         {
-          question: "Y a-t-il un engagement minimal ou un abonnement ?",
-          answer:
-            "Non. Chaque projet est traité sur devis accepté, sans abonnement obligatoire. Des formules de support et maintenance mensuelle sont disponibles après livraison, mais jamais imposées.",
+          question: "Est-ce que vous pouvez créer un MVP ?",
+          answer: "Oui, c'est l'une de mes spécialités. Un MVP (Minimum Viable Product) est une version simplifiée de votre produit qui permet de le tester avec de vrais utilisateurs sans investir dans une version complète. Je vous aide à définir ce qui est vraiment nécessaire pour démarrer.",
         },
         {
-          question: "Comment se passe le premier échange ?",
-          answer:
-            "Tu remplis le formulaire de devis ou tu utilises l'assistant projet. Je reviens sous 24h ouvrables avec un premier cadrage ou des questions de clarification. Pas de formulaire en 40 champs — juste les éléments utiles.",
+          question: "Est-ce que vous gérez aussi le design ?",
+          answer: "Oui. Je m'occupe du design et du développement. Vous n'avez pas besoin de fournir de maquette. Si vous avez une charte graphique (logo, couleurs), je l'utilise. Sinon, je propose un design adapté à votre activité et à votre positionnement.",
         },
         {
-          question: "Pouvez-vous refaire ou améliorer un site existant ?",
-          answer:
-            "Oui. La refonte est l'un des services les plus demandés. On peut reprendre un site existant — WordPress, Wix, Squarespace ou autre — et le reconstruire proprement avec les bonnes performances, le bon SEO et une meilleure conversion. On garde ce qui fonctionne, on corrige ce qui coûte des clients.",
+          question: "Est-ce que vous pouvez refaire mon site actuel ?",
+          answer: "Oui. La refonte est l'un des services les plus demandés. Que vous ayez un site WordPress, Wix, Squarespace ou autre, je peux le reprendre et le reconstruire proprement : design plus moderne, meilleures performances, meilleur SEO et meilleure conversion.",
         },
         {
-          question: "Quelles garanties avez-vous sur les projets livrés ?",
-          answer:
-            "Chaque projet est livré avec un périmètre défini, testé sur desktop et mobile, et accompagné d'une période de corrections incluses après mise en ligne. Pas d'engagement caché : si quelque chose ne correspond pas au brief validé, on le corrige. Le devis est ferme, pas évolutif sans accord préalable.",
+          question: "Le site sera-t-il adapté mobile ?",
+          answer: "Oui, systématiquement. Tous les sites et applications que je crée sont responsive et optimisés pour mobile, tablette et desktop. C'est une base non négociable.",
+        },
+        {
+          question: "Est-ce que vous pouvez intégrer un système de paiement ?",
+          answer: "Oui. J'intègre Stripe pour les paiements en ligne, abonnements ou réservations. Cela peut s'appliquer aussi bien à un site vitrine qu'à une application mobile ou un SaaS.",
+        },
+        {
+          question: "Comment demander un devis ?",
+          answer: "Remplissez le formulaire de devis en précisant votre besoin, le type de projet, votre budget estimé et votre délai. Je vous réponds sous 24h ouvrables avec une première estimation claire. Aucun engagement, aucun formulaire en 40 champs.",
         },
       ],
     },
     en: {
       eyebrow: "FAQ",
       title: "Frequently asked questions",
-      body: "The most useful points before launching a website, an app, or an AI project.",
+      body: "Everything you want to know before launching your project.",
       faqs: [
         {
-          question: "How much does a website or app cost?",
-          answer:
-            "A showcase site: € 800 to 2,500. A corporate site or e-commerce: € 2,000 to 6,000. A custom web app: € 4,000 to 15,000. A mobile app: € 6,000 to 20,000. These ranges depend on features, design, and content. Every project is scoped before any quote.",
+          question: "How much does a landing page cost?",
+          answer: "A landing page starts from €300. The final price depends on the number of sections, design, animations and integrations (contact form, payment, etc.). I give you a clear estimate from the first exchange.",
         },
         {
-          question: "How long does delivery take?",
-          answer:
-            "A well-scoped showcase site: 3 to 4 weeks. A corporate site or simple app: 4 to 8 weeks. A more complex project with integrations: 2 to 4 months. Timelines are firm once the brief is validated.",
+          question: "How much does a professional website cost?",
+          answer: "A showcase site starts from €800. A more complete site (multiple pages, blog, gallery, member area) is typically between €1,500 and €3,500. Every project is different — I'll give you a precise quote after understanding your needs.",
         },
         {
-          question: "Do you work with clients outside Switzerland?",
-          answer:
-            "Yes. KAH-Digital works remotely with French-speaking, English-speaking, and international clients. Language, country, and timezone are not a barrier.",
+          question: "How much does a mobile app cost?",
+          answer: "An MVP (minimum viable product) starts from €2,500. The final price depends on the number of screens, features, integrations (payment, geolocation, notifications) and platform (iOS, Android or both). I help you define the minimal scope to launch quickly.",
         },
         {
-          question: "What types of projects do you handle?",
-          answer:
-            "Showcase sites, corporate websites, e-commerce, web and mobile apps, dashboards, member portals, AI automation, and GLPI-connected support workflows. Each need is qualified before any commitment.",
+          question: "Can I start with a small budget?",
+          answer: "Yes. The €300 landing page is made for that. The idea is to start simple, validate your offer, then grow. Even for an app, it's possible to define a minimal MVP and add features later. I guide you based on your real budget.",
         },
         {
-          question: "Is there a minimum commitment or subscription?",
-          answer:
-            "No. Each project is handled on accepted quote, with no required subscription. Monthly support and maintenance plans are available after delivery, but never imposed.",
+          question: "Can you build an MVP?",
+          answer: "Yes, that's one of my specialties. An MVP (Minimum Viable Product) is a simplified version of your product that lets you test it with real users without investing in a full version. I help you define what's truly necessary to get started.",
         },
         {
-          question: "What does the first exchange look like?",
-          answer:
-            "You fill in the quote form or use the project assistant. I reply within 24 business hours with a first framing or clarifying questions. No 40-field form — just the useful elements.",
+          question: "Do you handle design as well?",
+          answer: "Yes. I handle both design and development. You don't need to provide mockups. If you have a brand identity (logo, colours), I'll use it. Otherwise, I propose a design suited to your activity and positioning.",
         },
         {
-          question: "Can you rebuild or improve an existing site?",
-          answer:
-            "Yes. Website redesign is one of the most requested services. We can take an existing site — WordPress, Wix, Squarespace or other — and rebuild it cleanly with proper performance, SEO, and better conversion. We keep what works and fix what's costing you clients.",
+          question: "Can you redo my existing website?",
+          answer: "Yes. Redesign is one of the most requested services. Whether you have a WordPress, Wix, Squarespace or other site, I can take it over and rebuild it cleanly: more modern design, better performance, better SEO and better conversion.",
         },
         {
-          question: "What guarantees do you offer on delivered projects?",
-          answer:
-            "Every project is delivered with a defined scope, tested on desktop and mobile, and comes with an included correction period after launch. No hidden commitments: if something doesn't match the validated brief, we fix it. The quote is firm — it won't grow without prior agreement.",
+          question: "Will the site be mobile-friendly?",
+          answer: "Yes, always. Every site and app I build is responsive and optimised for mobile, tablet and desktop. That's a non-negotiable baseline.",
+        },
+        {
+          question: "Can you integrate a payment system?",
+          answer: "Yes. I integrate Stripe for online payments, subscriptions or bookings. This applies to showcase sites, mobile apps and SaaS platforms alike.",
+        },
+        {
+          question: "How do I request a quote?",
+          answer: "Fill in the quote form with your need, project type, estimated budget and timeline. I reply within 24 business hours with a clear first estimate. No commitment, no 40-field form.",
         },
       ],
     },
     de: {
       eyebrow: "FAQ",
       title: "Häufige Fragen",
-      body: "Die nützlichsten Punkte vor dem Start einer Website, App oder eines KI-Projekts.",
+      body: "Alles, was Sie vor dem Start Ihres Projekts wissen möchten.",
       faqs: [
         {
-          question: "Was kostet eine Website oder eine App?",
-          answer:
-            "Unternehmenswebsite: € 800 bis 2.500. Corporate Site oder E-Commerce: € 2.000 bis 6.000. Maßgeschneiderte Web-App: € 4.000 bis 15.000. Mobile App: € 6.000 bis 20.000. Diese Spannen hängen von Funktionen, Design und Inhalt ab. Jedes Projekt wird vor der Offerte eingegrenzt.",
+          question: "Was kostet eine Landing Page?",
+          answer: "Eine Landing Page beginnt ab 300 €. Der Endpreis hängt von der Anzahl der Abschnitte, dem Design, Animationen und gewünschten Integrationen (Kontaktformular, Zahlung usw.) ab. Ich gebe Ihnen beim ersten Austausch eine klare Schätzung.",
         },
         {
-          question: "Wie lange dauert die Lieferung?",
-          answer:
-            "Eine gut eingegrenzte Unternehmenswebsite: 3 bis 4 Wochen. Eine Corporate Site oder einfache App: 4 bis 8 Wochen. Komplexere Projekte mit Integrationen: 2 bis 4 Monate. Zeitrahmen sind verbindlich, sobald das Briefing validiert ist.",
+          question: "Was kostet eine professionelle Website?",
+          answer: "Eine Unternehmenswebsite beginnt ab 800 €. Eine umfangreichere Website (mehrere Seiten, Blog, Galerie, Mitgliederbereich) kostet in der Regel zwischen 1.500 und 3.500 €. Jedes Projekt ist anders — ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
         },
         {
-          question: "Arbeitet ihr auch mit Kunden außerhalb der Schweiz?",
-          answer:
-            "Ja. KAH-Digital arbeitet remote mit frankophonen, englischsprachigen und internationalen Kunden. Sprache, Land und Zeitzone sind kein Hindernis.",
+          question: "Was kostet eine mobile App?",
+          answer: "Ein MVP (Minimum Viable Product) beginnt ab 2.500 €. Der Endpreis hängt von Anzahl der Screens, Funktionen, Integrationen (Zahlung, Geolokalisierung, Push-Nachrichten) und Plattform (iOS, Android oder beides) ab. Ich helfe Ihnen, den minimalen Umfang für einen schnellen Launch zu definieren.",
         },
         {
-          question: "Welche Projektarten übernehmt ihr?",
-          answer:
-            "Präsentationsseiten, Corporate Sites, E-Commerce, Web- und Mobile-Apps, Dashboards, Mitgliederportale, KI-Automatisierungen und GLPI-verbundene Support-Workflows. Jeder Bedarf wird vor jeder Zusage qualifiziert.",
+          question: "Kann ich mit kleinem Budget starten?",
+          answer: "Ja. Die Landing Page für 300 € ist genau dafür gedacht. Die Idee ist, einfach zu starten, Ihr Angebot zu validieren und dann zu wachsen. Selbst für eine App kann ein minimales MVP definiert und Funktionen später hinzugefügt werden. Ich begleite Sie basierend auf Ihrem tatsächlichen Budget.",
         },
         {
-          question: "Gibt es eine Mindestbindung oder ein Abonnement?",
-          answer:
-            "Nein. Jedes Projekt wird auf akzeptierter Offerte abgewickelt, ohne Pflichtabonnement. Monatliche Support- und Wartungspläne sind nach der Lieferung verfügbar, aber nie verpflichtend.",
+          question: "Können Sie ein MVP erstellen?",
+          answer: "Ja, das ist eine meiner Spezialitäten. Ein MVP (Minimum Viable Product) ist eine vereinfachte Version Ihres Produkts, mit der Sie es mit echten Nutzern testen können, ohne in eine vollständige Version zu investieren. Ich helfe Ihnen zu definieren, was wirklich notwendig ist, um anzufangen.",
         },
         {
-          question: "Wie läuft der erste Kontakt ab?",
-          answer:
-            "Du füllst das Angebotsformular aus oder nutzt den Projektassistenten. Ich melde mich in 24 Arbeitsstunden mit einem ersten Briefing oder Klärungsfragen. Kein 40-Felder-Formular — nur das Wesentliche.",
+          question: "Übernehmen Sie auch das Design?",
+          answer: "Ja. Ich kümmere mich um Design und Entwicklung. Sie müssen keine Mockups liefern. Wenn Sie eine Corporate Identity haben (Logo, Farben), nutze ich diese. Sonst schlage ich ein zur Ihrer Tätigkeit passendes Design vor.",
         },
         {
-          question: "Könnt ihr eine bestehende Website überarbeiten oder verbessern?",
-          answer:
-            "Ja. Die Überarbeitung ist einer der am häufigsten nachgefragten Services. Wir können eine bestehende Website — WordPress, Wix, Squarespace oder andere — sauber neu aufbauen mit den richtigen Performances, dem richtigen SEO und einer besseren Conversion. Wir behalten, was funktioniert, und korrigieren, was Kunden kostet.",
+          question: "Können Sie meine bestehende Website überarbeiten?",
+          answer: "Ja. Die Website-Überarbeitung ist einer der am häufigsten nachgefragten Services. Egal ob WordPress, Wix, Squarespace oder andere — ich kann sie sauber neu aufbauen: moderneres Design, bessere Performance, besseres SEO und bessere Conversion.",
         },
         {
-          question: "Welche Garantien gibt es auf gelieferte Projekte?",
-          answer:
-            "Jedes Projekt wird mit einem definierten Umfang geliefert, auf Desktop und Mobile getestet und mit einer Korrekturphase nach dem Launch geliefert. Kein versteckter Zusatz: Entspricht etwas nicht dem validierten Briefing, wird es korrigiert. Das Angebot ist verbindlich — es wächst nicht ohne vorherige Vereinbarung.",
+          question: "Wird die Website mobilfreundlich sein?",
+          answer: "Ja, immer. Alle Websites und Apps, die ich erstelle, sind responsive und für Mobilgerät, Tablet und Desktop optimiert. Das ist eine nicht verhandelbare Grundlage.",
+        },
+        {
+          question: "Können Sie ein Zahlungssystem integrieren?",
+          answer: "Ja. Ich integriere Stripe für Online-Zahlungen, Abonnements oder Buchungen. Das gilt für Unternehmenswebsites, mobile Apps und SaaS-Plattformen gleichermaßen.",
+        },
+        {
+          question: "Wie fordere ich ein Angebot an?",
+          answer: "Füllen Sie das Angebotsformular mit Ihrem Bedarf, Projekttyp, geschätztem Budget und Zeitrahmen aus. Ich antworte innerhalb von 24 Arbeitsstunden mit einer klaren ersten Schätzung. Keine Verpflichtung, kein 40-Felder-Formular.",
         },
       ],
     },

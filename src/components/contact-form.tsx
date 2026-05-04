@@ -343,7 +343,7 @@ export function ContactForm() {
         <label htmlFor="privacy" className="text-sm text-white/75">
           {copy.privacyIntro}
           <a
-            href={locale === "en" ? "/en/politique-de-confidentialite" : locale === "de" ? "/de/politique-de-confidentialite" : "/confidentialite"}
+            href={locale === "en" ? "/en/politique-de-confidentialite" : "/confidentialite"}
             className="underline hover:text-white"
           >
             {copy.privacyLink}

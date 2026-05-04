@@ -46,28 +46,28 @@ export function SiteFooter() {
 
   const copy = {
     fr: {
-      tagline: "Studio digital — sites, apps & IA",
-      description: "Conception et développement de sites web, d'applications sur mesure et d'intégrations IA pour entreprises et indépendants.",
-      cta: "Prêt à lancer votre projet ?",
+      tagline: "Studio digital — sites, apps & SaaS",
+      description: "Je crée des sites web, landing pages, applications mobiles et SaaS sur mesure pour entrepreneurs, indépendants et PME.",
+      cta: "Vous avez un projet ?",
       ctaBtn: "Demander un devis gratuit",
       nav: {
         title: "Navigation",
         links: [
           { label: "Accueil", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Projets", href: "/projets" },
           { label: "Offres", href: "/offres" },
+          { label: "Réalisations", href: "/projets" },
+          { label: "Tarifs", href: "/devis" },
           { label: "Contact", href: "/contact" },
         ],
       },
       services: {
-        title: "Services",
+        title: "Mes offres",
         links: [
-          { label: "Site web entreprise", href: "/site-web-entreprise" },
-          { label: "Application sur mesure", href: "/application-web-sur-mesure" },
-          { label: "Automatisation IA", href: "/automatisation-ia-entreprise" },
-          { label: "Support GLPI", href: "/services/glpi" },
-          { label: "Devis express", href: "/devis" },
+          { label: "Landing page dès 300 €", href: "/devis" },
+          { label: "Site web professionnel", href: "/site-web-entreprise" },
+          { label: "Application mobile", href: "/application-web-sur-mesure" },
+          { label: "SaaS sur mesure", href: "/devis" },
+          { label: "Outil web métier", href: "/devis" },
         ],
       },
       zones: {
@@ -88,7 +88,7 @@ export function SiteFooter() {
         links: [
           { label: "Mentions légales", href: "/mentions-legales" },
           { label: "Confidentialité", href: "/confidentialite" },
-          { label: "Factures", href: "/factures" },
+          { label: "Audit gratuit", href: "/audit-gratuit" },
         ],
       },
       location: "Lausanne, Suisse",
@@ -96,28 +96,28 @@ export function SiteFooter() {
       madeWith: "Conçu avec IA · Déployé sur Vercel",
     },
     en: {
-      tagline: "Digital studio — websites, apps & AI",
-      description: "Design and development of websites, custom applications and AI integrations for businesses and freelancers.",
-      cta: "Ready to launch your project?",
+      tagline: "Digital studio — websites, apps & SaaS",
+      description: "I build websites, landing pages, mobile apps and custom SaaS for entrepreneurs, freelancers and SMEs.",
+      cta: "Have a project?",
       ctaBtn: "Get a free quote",
       nav: {
         title: "Navigation",
         links: [
           { label: "Home", href: "/en" },
-          { label: "Services", href: "/en/services" },
-          { label: "Projects", href: "/en/projets" },
           { label: "Offers", href: "/en/offres" },
+          { label: "Portfolio", href: "/en/projets" },
+          { label: "Pricing", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
         ],
       },
       services: {
-        title: "Services",
+        title: "My offers",
         links: [
-          { label: "Business website", href: "/en/site-web-entreprise" },
-          { label: "Custom application", href: "/en/application-web-sur-mesure" },
-          { label: "AI automation", href: "/en/automatisation-ia-entreprise" },
-          { label: "GLPI support", href: "/en/services/glpi" },
-          { label: "Quick quote", href: "/en/devis" },
+          { label: "Landing page from €300", href: "/en/devis" },
+          { label: "Professional website", href: "/en/site-web-entreprise" },
+          { label: "Mobile application", href: "/en/application-web-sur-mesure" },
+          { label: "Custom SaaS", href: "/en/devis" },
+          { label: "Business web tool", href: "/en/devis" },
         ],
       },
       zones: {
@@ -135,7 +135,7 @@ export function SiteFooter() {
         links: [
           { label: "Legal notice", href: "/en/mentions-legales" },
           { label: "Privacy", href: "/en/politique-de-confidentialite" },
-          { label: "Invoices", href: "/en/factures" },
+          { label: "Free audit", href: "/audit-gratuit" },
         ],
       },
       location: "Lausanne, Switzerland",
@@ -143,28 +143,28 @@ export function SiteFooter() {
       madeWith: "Built with AI · Deployed on Vercel",
     },
     de: {
-      tagline: "Digital-Studio — Websites, Apps & KI",
-      description: "Konzeption und Entwicklung von Websites, massgeschneiderten Anwendungen und KI-Integrationen für Unternehmen und Selbstständige.",
-      cta: "Bereit, Ihr Projekt zu starten?",
+      tagline: "Digital-Studio — Websites, Apps & SaaS",
+      description: "Ich erstelle Websites, Landing Pages, mobile Apps und massgeschneidertes SaaS für Unternehmer, Selbstständige und KMU.",
+      cta: "Sie haben ein Projekt?",
       ctaBtn: "Kostenloses Angebot anfordern",
       nav: {
         title: "Navigation",
         links: [
           { label: "Start", href: "/de" },
-          { label: "Leistungen", href: "/de/services" },
-          { label: "Projekte", href: "/de/projets" },
           { label: "Angebote", href: "/de/offres" },
+          { label: "Projekte", href: "/de/projets" },
+          { label: "Preise", href: "/de/devis" },
           { label: "Kontakt", href: "/de/contact" },
         ],
       },
       services: {
-        title: "Leistungen",
+        title: "Meine Angebote",
         links: [
-          { label: "Unternehmenswebsite", href: "/de/site-web-entreprise" },
-          { label: "Maßgeschneiderte App", href: "/de/application-web-sur-mesure" },
-          { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
-          { label: "GLPI-Support", href: "/de/services/glpi" },
-          { label: "Schnellanfrage", href: "/de/devis" },
+          { label: "Landing Page ab 300 €", href: "/de/devis" },
+          { label: "Professionelle Website", href: "/de/site-web-entreprise" },
+          { label: "Mobile App", href: "/de/application-web-sur-mesure" },
+          { label: "Massgeschneidertes SaaS", href: "/de/devis" },
+          { label: "Business-Web-Tool", href: "/de/devis" },
         ],
       },
       zones: {
@@ -182,7 +182,7 @@ export function SiteFooter() {
         links: [
           { label: "Impressum", href: "/de/mentions-legales" },
           { label: "Datenschutz", href: "/de/politique-de-confidentialite" },
-          { label: "Rechnungen", href: "/de/factures" },
+          { label: "Gratis-Audit", href: "/audit-gratuit" },
         ],
       },
       location: "Lausanne, Schweiz",

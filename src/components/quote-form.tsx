@@ -34,7 +34,8 @@ type QuotePayload = {
 
 export function QuoteForm() {
   const router = useRouter();
-  const { isEnglish, isGerman, prefix } = useLocale();
+  const { isEnglish, prefix } = useLocale();
+  const isGerman = false;
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
   const widgetRef = useRef<TurnstileWidgetHandle | null>(null);

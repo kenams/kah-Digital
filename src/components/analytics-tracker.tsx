@@ -9,15 +9,24 @@ const trackedPaths = new Set([
   "/devis/mvp",
   "/configurateur",
   "/offres",
+  "/audit-gratuit",
+  "/contact",
   "/en/devis",
   "/en/devis/mvp",
   "/en/configurateur",
   "/en/offres",
+  "/en/contact",
   "/de/devis",
   "/de/devis/mvp",
   "/de/configurateur",
   "/de/offres",
+  "/de/contact",
 ]);
+
+function isTrackedPath(pathname: string): boolean {
+  if (trackedPaths.has(pathname)) return true;
+  return /^\/(en\/|de\/)?(agence-web-|site-web-)[\w-]+$/.test(pathname);
+}
 
 function getLocaleFromPath(pathname: string) {
   if (pathname.startsWith("/en")) return "en";
@@ -53,7 +62,7 @@ export function AnalyticsTracker() {
         return;
       }
 
-      if (!trackedPaths.has(url.pathname)) return;
+      if (!isTrackedPath(url.pathname)) return;
 
       const label = (link.textContent ?? "").trim().slice(0, 80);
       trackEvent("cta_click", {

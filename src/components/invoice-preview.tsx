@@ -34,7 +34,7 @@ export function InvoicePreview({
   const signatureName = companyConfig.legalName || brandName;
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
   const isEnglish = locale === "en";
-  const isGerman = locale === "de";
+  const isGerman = false;
   const copy = {
     fr: {
       invoice: "Facture",

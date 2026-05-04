@@ -167,13 +167,15 @@ export async function composeProspectingEmail(
   const pixelUrl = `${trackingBaseUrl}/api/tracking/open/${prospectId}`;
   const clickUrl = `${trackingBaseUrl}/api/tracking/click/${prospectId}`;
   // URL devis avec données prospect pour prefill (traitées côté tracking/click)
-  const quoteUrl = `${trackingBaseUrl}/devis`;
+  const quoteUrl = `${trackingBaseUrl}/devis?utm_source=email&utm_campaign=prospection&utm_medium=email`;
 
   // Claude génère l'intro et la conclusion personnalisées
-  const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital).
+  const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital — sites web, apps mobiles, SaaS).
+Offres KAH-Digital : landing page dès 300€, site web professionnel dès 800€, outil web métier dès 1500€, app mobile MVP dès 2500€, SaaS MVP dès 3000€.
 Écris en "${audit.language}" :
 1. Une accroche d'intro (2-3 phrases) pour ${audit.businessName}, un commerce dans le secteur ${audit.sector}.
    Score actuel de leur site : ${audit.score}/100. Sois direct et bienveillant, mentionne le site (${lead.website}).
+   Si pertinent, ancre le prix estimé (${audit.priceRange}) dans l'intro.
 2. Une conclusion courte (1-2 phrases) qui incite à répondre ou demander un devis.
 Format JSON : { "intro": "...", "conclusion": "..." }`;
 
@@ -307,7 +309,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
         <tr>
           <td>
             <div style="color:#ffffff;font-size:20px;font-weight:800;letter-spacing:-0.5px;">KAH-Digital</div>
-            <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:2px;">Studio digital — sites, apps &amp; IA</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:2px;">Studio digital — sites, apps &amp; SaaS</div>
           </td>
           <td align="right">
             <div style="background:rgba(255,255,255,0.15);border-radius:9999px;padding:4px 12px;color:#ffffff;font-size:11px;font-weight:600;">${c.analysisBadge}</div>

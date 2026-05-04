@@ -81,20 +81,20 @@ export function HeroSection({ stats }: HeroProps) {
           >
             <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
               <span className="gradient-pill rounded-full px-4 py-1 text-xs uppercase tracking-[0.25em]">
-                {isEnglish ? "Premium digital studio" : "Studio digital haut de gamme"}
+                {isEnglish ? "Digital studio · France & Switzerland" : "Studio digital · France & Suisse"}
               </span>
               <span>
-                {isEnglish ? "Reply within 24h | Launch in 4-6 weeks" : "Réponse sous 24h | Lancement 4-6 semaines"}
+                {isEnglish ? "Reply within 24h | From 300 €" : "Réponse sous 24h | Dès 300 €"}
               </span>
             </div>
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
-              {isEnglish ? "Premium design, fast execution," : "Design premium, vitesse d’exécution,"}{" "}
-              <span className="gradient-text">{isEnglish ? "clear results" : "résultats clairs"}</span>.
+              {isEnglish ? "A website that works, for" : "Un site web qui travaille pour"}{" "}
+              <span className="gradient-text">{isEnglish ? "your business." : "votre activité."}</span>
             </h1>
             <p className="text-base text-white/75 sm:text-lg">
               {isEnglish
-                ? "We build websites and mobile apps. Design, development, launch, and follow-up without jargon."
-                : "On crée des sites web et des apps mobiles. Design, développement, mise en ligne et suivi, sans jargon inutile."}
+                ? "Sites, apps and SaaS for SMBs, artisans and startups. Clear process, honest pricing, real results."
+                : "Sites, apps et SaaS pour PME, artisans et startups. Process clair, tarifs honnêtes, résultats concrets."}
             </p>
             <div className="grid gap-3 text-sm text-white/80 md:grid-cols-2">
               <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-3">
@@ -245,8 +245,8 @@ export function HeroSection({ stats }: HeroProps) {
       <div className="premium-card flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 sm:px-6 sm:py-4">
         <p className="text-white/80">
           {isEnglish
-            ? "Studios and teams: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn"
-            : "Maisons et studios: Atelier Nomade | Lumea Skin | NovaPay | Pulse Studio | FairBuild | PulseLearn"}
+            ? "Trusted by: Ashanti Beauty · TechCash Academy · restaurants · artisans · local retailers · startups"
+            : "Ils nous font confiance : Ashanti Beauty · TechCash Academy · restaurants · artisans · commerces · startups"}
         </p>
         <div className="scroll-cue">
           <span />

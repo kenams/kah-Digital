@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
-import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
 import { SITE_URL } from "@/lib/shared-metadata";
 
@@ -42,11 +41,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agence-web-zurich",
     "/agence-web-basel",
     "/agence-web-lugano",
+    "/agence-web-grenoble",
+    "/agence-web-rouen",
+    "/agence-web-aix-en-provence",
+    "/agence-web-angers",
+    "/agence-web-dijon",
+    "/agence-web-caen",
+    "/agence-web-clermont-ferrand",
+    "/agence-web-metz",
     "/audit-gratuit",
     "/blog",
     "/blog/prix-site-web-professionnel",
     "/blog/refonte-site-web",
     "/blog/creation-site-web-pme",
+    "/blog/site-web-artisan",
+    "/blog/site-web-restaurant",
+    "/blog/agence-web-pme-comment-choisir",
+    "/blog/application-mobile-cout",
+    "/blog/landing-page-vs-site-vitrine",
     "/mentions-legales",
     "/politique-de-confidentialite",
   ].map((path) => ({
@@ -55,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: (path.includes("agence-web") || path.includes("site-web-"))
       ? ("weekly" as const)
       : ("monthly" as const),
-    priority: path === "" ? 1.0 : path.includes("lausanne") || path.includes("geneve") || path.includes("fribourg") || path.includes("zurich") || path.includes("basel") || path.includes("lugano") ? 0.9 : path.includes("agence-web") || path.includes("site-web-") ? 0.8 : 0.7,
+    priority: path === "" ? 1.0 : path === "/offres" ? 0.9 : path.includes("lausanne") || path.includes("geneve") || path.includes("fribourg") || path.includes("zurich") || path.includes("basel") || path.includes("lugano") ? 0.9 : path.includes("agence-web") || path.includes("site-web-") ? 0.8 : 0.7,
   }));
 
   const routesEn = [
@@ -79,27 +91,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "/en" ? 0.9 : 0.6,
   }));
 
-  const routesDe = [
-    "/de",
-    "/de/services",
-    "/de/services/site-web",
-    "/de/services/applications",
-    "/de/services/glpi",
-    "/de/offres",
-    "/de/contact",
-    "/de/site-web-entreprise",
-    "/de/refonte-site-web",
-    "/de/application-web-sur-mesure",
-    "/de/automatisation-ia-entreprise",
-    "/de/projets",
-    "/de/lexique",
-  ].map((path) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: path === "/de" ? 0.9 : 0.6,
-  }));
-
   const projectRoutes = portfolioProjects.filter((p) => p.slug !== "kah-prod").map((p) => ({
     url: `${SITE_URL}/projets/${p.slug}`,
     lastModified: now,
@@ -114,12 +105,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  const projectRoutesDe = portfolioProjectsDe.filter((p) => p.slug !== "kah-prod").map((p) => ({
-    url: `${SITE_URL}/de/projets/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
-  }));
-
-  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn, ...projectRoutesDe];
+  return [...routes, ...routesEn, ...projectRoutes, ...projectRoutesEn];
 }

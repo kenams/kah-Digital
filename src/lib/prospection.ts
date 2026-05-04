@@ -68,8 +68,8 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans markdown) respectant exactem
   "recommendations": [
     { "title": "solution", "detail": "ce que KAH-Digital ferait concrètement", "estimatedValue": "valeur apportée" }
   ],
-  "estimatedPrice": 1200,
-  "priceRange": "entre 900€ et 1800€",
+  "estimatedPrice": 1100,
+  "priceRange": "entre 800€ et 1600€",
   "emailSubject": "objet de l'email accrocheur et personnalisé",
   "emailBody": "corps de l'email complet en HTML (utilise <p>, <ul><li>, <strong>, pas de style inline). Commence par bonjour, présente 3 problèmes concrets du site, propose une solution KAH-Digital avec un prix ancré, ajoute un CTA clair."
 }
@@ -77,7 +77,8 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans markdown) respectant exactem
 Règles :
 - 3 à 5 problèmes, du plus critique au moins critique
 - 2 à 3 recommandations concrètes
-- Prix réaliste pour PME/commerçant français (site vitrine 800-2500€, refonte 1500-4500€, appli 3000-8000€)
+- Prix KAH-Digital à utiliser : landing page dès 300€ (5-10j), site web professionnel dès 800€ (2-4 semaines), outil web métier dès 1500€ (3-6 semaines), application mobile MVP dès 2500€, SaaS sur mesure MVP dès 3000€
+- estimatedPrice = valeur centrale réaliste selon le besoin détecté, priceRange = fourchette cohérente avec ces tarifs
 - Email chaleureux mais direct, pro mais pas froid, 200-350 mots
 - Mentionne des détails spécifiques du site pour montrer qu'on l'a vraiment analysé`;
 

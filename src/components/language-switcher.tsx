@@ -7,13 +7,11 @@ import { getLocaleFromPathname, localizePath, type Locale } from "@/lib/locale";
 const labels: Record<Locale, string> = {
   fr: "FR",
   en: "EN",
-  de: "DE",
 };
 
 const ariaLabels: Record<Locale, string> = {
   fr: "Afficher le site en francais",
   en: "View the site in English",
-  de: "Website auf Deutsch anzeigen",
 };
 
 export function LanguageSwitcher() {
@@ -22,7 +20,7 @@ export function LanguageSwitcher() {
 
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
-      {(["fr", "en", "de"] as const).map((locale) => {
+      {(["fr", "en"] as const).map((locale) => {
         const active = currentLocale === locale;
 
         return (

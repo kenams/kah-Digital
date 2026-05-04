@@ -191,6 +191,12 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
           >
             Prospection IA
           </Link>
+          <Link
+            href="/admin/devis-generateur"
+            className="rounded-full border border-sky-500/40 bg-sky-500/8 px-4 py-2 text-xs font-medium text-sky-300 transition hover:border-sky-400 hover:bg-sky-500/15"
+          >
+            Générateur PDF
+          </Link>
         </div>
       </div>
 

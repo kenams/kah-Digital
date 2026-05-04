@@ -33,7 +33,57 @@ const ARTICLES = [
     date: "24 avril 2026",
     tag: "Guide",
   },
+  {
+    slug: "site-web-artisan",
+    title: "Site web pour artisan : guide complet 2026",
+    excerpt: "Plombier, électricien, menuisier — un site simple et bien fait peut vous ramener des clients toutes les semaines. Prix, contenu essentiel, erreurs à éviter.",
+    readTime: "5 min",
+    date: "4 mai 2026",
+    tag: "Artisans",
+  },
+  {
+    slug: "site-web-restaurant",
+    title: "Site web pour restaurant : ce qu'il faut vraiment en 2026",
+    excerpt: "Menu introuvable, site non mobile, pas de réservation — voici les erreurs qui font fuir les clients avant même qu'ils arrivent.",
+    readTime: "5 min",
+    date: "4 mai 2026",
+    tag: "Restaurants",
+  },
+  {
+    slug: "agence-web-pme-comment-choisir",
+    title: "Comment choisir une agence web pour votre PME",
+    excerpt: "Les bons signes, les red flags à fuir, et les questions à poser avant de signer. Guide sans filtre.",
+    readTime: "6 min",
+    date: "4 mai 2026",
+    tag: "PME",
+  },
+  {
+    slug: "application-mobile-cout",
+    title: "Combien coûte une application mobile en 2026 ?",
+    excerpt: "PWA, MVP React Native, application complète, native — les vrais tarifs et comment garder le contrôle de votre budget.",
+    readTime: "7 min",
+    date: "4 mai 2026",
+    tag: "Mobile",
+  },
+  {
+    slug: "landing-page-vs-site-vitrine",
+    title: "Landing page vs site vitrine : lequel choisir ?",
+    excerpt: "Ce ne sont pas les mêmes outils. Voici comment décider en 2 minutes selon votre objectif, votre budget et votre situation.",
+    readTime: "5 min",
+    date: "4 mai 2026",
+    tag: "Stratégie",
+  },
 ];
+
+const TAG_COLORS: Record<string, string> = {
+  "Tarifs": "border-blue-500/30 bg-blue-500/10 text-blue-400",
+  "Stratégie": "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
+  "Guide": "border-violet-500/30 bg-violet-500/10 text-violet-400",
+  "Artisans": "border-orange-500/30 bg-orange-500/10 text-orange-400",
+  "Restaurants": "border-red-500/30 bg-red-500/10 text-red-400",
+  "PME": "border-blue-500/30 bg-blue-500/10 text-blue-400",
+  "Mobile": "border-violet-500/30 bg-violet-500/10 text-violet-400",
+};
 
 export default function BlogPage() {
   return (
@@ -55,7 +105,7 @@ export default function BlogPage() {
               className="group flex flex-col gap-3 rounded-2xl border border-white/8 bg-gray-900 p-6 transition hover:border-white/20"
             >
               <div className="flex items-center gap-3">
-                <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">{a.tag}</span>
+                <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${TAG_COLORS[a.tag] ?? "border-blue-500/30 bg-blue-500/10 text-blue-400"}`}>{a.tag}</span>
                 <span className="flex items-center gap-1 text-xs text-gray-600"><FiClock size={11} /> {a.readTime}</span>
                 <span className="ml-auto text-xs text-gray-600">{a.date}</span>
               </div>

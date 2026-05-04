@@ -3,58 +3,67 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiCheckCircle, FiZap } from "react-icons/fi";
+import { FiArrowRight, FiCheckCircle, FiClock, FiStar } from "react-icons/fi";
 
 export function HeroSection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
       badge: "Studio digital · Lausanne, Suisse · Disponible à distance",
-      title1: "Des sites web, apps &",
-      title2: "automatisations IA",
-      title3: "qui font vraiment avancer votre entreprise",
-      body: "KAH-Digital accompagne les PME, indépendants et structures en croissance avec des solutions digitales claires et orientées résultats. Site vitrine, application métier, automatisation IA, support GLPI — cadré proprement, livré dans les délais.",
+      title1: "Création de sites web,",
+      title2: "applications mobiles",
+      title3: "et SaaS sur mesure",
+      body: "J'aide les entrepreneurs, indépendants et PME à transformer leurs idées en solutions digitales concrètes : landing page, site vitrine, application mobile ou plateforme SaaS. Clair, rapide, accessible.",
       primary: "Demander un devis gratuit",
-      secondary: "Voir les services",
-      stats: [
-        { value: "24h", label: "Premier retour garanti" },
-        { value: "FR · EN · DE", label: "Langues parlées" },
-        { value: "300€", label: "Sites web dès" },
+      secondary: "Voir les offres",
+      badges: [
+        "Landing page dès 300 €",
+        "Site web dès 800 €",
+        "Réponse sous 24h",
+        "Livraison rapide",
+        "Accompagnement clair",
       ],
-      proof1: { label: "Site livré en 3 semaines", desc: "Vitrine · cadrage clair · zéro surprise" },
-      proof2: { label: "Réponse garantie sous 24h", desc: "Devis lisible · aucun engagement" },
+      proof1: { label: "Site livré en 2 à 4 semaines", desc: "Cadrage clair · zéro surprise" },
+      proof2: { label: "Réponse garantie sous 24h", desc: "Devis gratuit · sans engagement" },
+      proof3: { label: "MVP possible dès 2 500 €", desc: "App mobile · SaaS · outil métier" },
     },
     en: {
       badge: "Digital studio · Lausanne, Switzerland · Remote-friendly",
-      title1: "Websites, apps &",
-      title2: "AI automation",
-      title3: "that actually move your business forward",
-      body: "KAH-Digital helps SMEs, freelancers, and growing businesses with clear, result-oriented digital solutions. Showcase site, business app, AI automation, GLPI support — properly scoped, delivered on time.",
+      title1: "Website creation,",
+      title2: "mobile applications",
+      title3: "and custom SaaS",
+      body: "I help entrepreneurs, freelancers and SMEs turn their ideas into concrete digital solutions: landing pages, showcase sites, mobile apps or SaaS platforms. Clear, fast, affordable.",
       primary: "Request a free quote",
-      secondary: "See our services",
-      stats: [
-        { value: "24h", label: "First reply guaranteed" },
-        { value: "FR · EN · DE", label: "Languages" },
-        { value: "€300", label: "Websites from" },
+      secondary: "See our offers",
+      badges: [
+        "Landing page from €300",
+        "Website from €800",
+        "Reply within 24h",
+        "Fast delivery",
+        "Clear support",
       ],
-      proof1: { label: "Site delivered in 3 weeks", desc: "Showcase · clear scope · no surprises" },
-      proof2: { label: "Reply in 24h guaranteed", desc: "Readable quote · no commitment" },
+      proof1: { label: "Site delivered in 2–4 weeks", desc: "Clear scope · no surprises" },
+      proof2: { label: "Reply guaranteed within 24h", desc: "Free quote · no commitment" },
+      proof3: { label: "MVP from €2,500", desc: "Mobile app · SaaS · business tool" },
     },
     de: {
       badge: "Digitalstudio · Lausanne, Schweiz · Remote verfügbar",
-      title1: "Websites, Apps &",
-      title2: "KI-Automatisierung",
-      title3: "die Ihr Unternehmen wirklich voranbringen",
-      body: "KAH-Digital unterstützt KMU, Selbstständige und wachsende Unternehmen mit klaren, ergebnisorientierten digitalen Lösungen. Website, Business-App, KI-Automatisierung, GLPI-Support — sauber gescoped, termingerecht geliefert.",
+      title1: "Erstellung von Websites,",
+      title2: "mobilen Apps",
+      title3: "und massgeschneiderten SaaS",
+      body: "Ich helfe Unternehmern, Selbstständigen und KMU dabei, ihre Ideen in konkrete digitale Lösungen umzusetzen: Landing Pages, Websites, mobile Apps oder SaaS-Plattformen. Klar, schnell, erschwinglich.",
       primary: "Kostenloses Angebot anfordern",
       secondary: "Leistungen ansehen",
-      stats: [
-        { value: "24h", label: "Erste Antwort garantiert" },
-        { value: "DE · FR · EN", label: "Sprachen" },
-        { value: "300€", label: "Websites ab" },
+      badges: [
+        "Landing Page ab 300 €",
+        "Website ab 800 €",
+        "Antwort in 24h",
+        "Schnelle Lieferung",
+        "Klare Begleitung",
       ],
-      proof1: { label: "Website in 3 Wochen geliefert", desc: "Präsentation · klares Scope · keine Überraschungen" },
-      proof2: { label: "Antwort in 24h garantiert", desc: "Lesbares Angebot · keine Verpflichtung" },
+      proof1: { label: "Website in 2–4 Wochen geliefert", desc: "Klares Scope · keine Überraschungen" },
+      proof2: { label: "Antwort in 24h garantiert", desc: "Kostenloses Angebot · keine Verpflichtung" },
+      proof3: { label: "MVP ab 2.500 €", desc: "Mobile App · SaaS · Business-Tool" },
     },
   }[locale];
 
@@ -66,8 +75,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
       {/* Gradient orbs */}
       <div className="absolute -top-32 left-1/4 h-[32rem] w-[32rem] rounded-full bg-blue-600/20 blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-purple-600/15 blur-3xl" />
-      <div className="absolute top-1/3 right-1/3 h-48 w-48 rounded-full bg-violet-500/10 blur-2xl" />
+      <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-violet-600/15 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -109,22 +117,25 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="mt-16 flex flex-wrap justify-center gap-12">
-            {copy.stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-3xl font-extrabold text-white">{s.value}</p>
-                <p className="mt-0.5 text-sm text-gray-500">{s.label}</p>
-              </div>
+          {/* Badges de réassurance */}
+          <div className="mt-10 flex flex-wrap justify-center gap-2">
+            {copy.badges.map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-sm text-gray-300"
+              >
+                <FiCheckCircle size={13} className="text-green-400" />
+                {badge}
+              </span>
             ))}
           </div>
 
           {/* Proof cards */}
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.55, duration: 0.5 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
               className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm"
             >
               <FiCheckCircle size={15} className="shrink-0 text-green-400" />
@@ -134,15 +145,27 @@ export function HeroSection() {
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.5 }}
               className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm"
             >
-              <FiZap size={15} className="shrink-0 text-blue-400" />
+              <FiClock size={15} className="shrink-0 text-blue-400" />
               <div className="text-left">
                 <p className="text-xs font-semibold text-white">{copy.proof2.label}</p>
                 <p className="text-xs text-gray-500">{copy.proof2.desc}</p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm"
+            >
+              <FiStar size={15} className="shrink-0 text-violet-400" />
+              <div className="text-left">
+                <p className="text-xs font-semibold text-white">{copy.proof3.label}</p>
+                <p className="text-xs text-gray-500">{copy.proof3.desc}</p>
               </div>
             </motion.div>
           </div>

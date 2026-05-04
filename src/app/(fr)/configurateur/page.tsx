@@ -877,48 +877,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           budget: "Defined via configurator",
           timeline: "To define",
         }
-        : locale === "de"
-          ? {
-            validation: "Validierung",
-            title: "Deine Anfrage abschliessen",
-            description: "Lass deine Kontaktdaten da, um das Angebot auf Basis deiner Auswahl zu fixieren.",
-            missingSteps: "Beende die Schritte oben, um den Versand zu aktivieren.",
-            statusLabel: "Status *",
-            company: "Unternehmen",
-            individual: "Privatperson",
-            companyName: "Firmenname",
-            optional: "(optional)",
-            fullName: "Vollstaendiger Name *",
-            email: "E-Mail *",
-            phone: "Telefon",
-            notes: "Zusaetzliche Hinweise",
-            notesPlaceholder: "Internes Budget, Constraints, Verfuegbarkeit...",
-            captcha: "Anti-Spam-Verifizierung",
-            captchaMissing: "Captcha ist nicht konfiguriert.",
-            captchaFail: "Verifizierung fehlgeschlagen. Bitte erneut versuchen.",
-            sending: "Versand...",
-            send: "Anfrage senden",
-            missingItems: "Es fehlen Angaben (Typ, Vision oder Stil).",
-            success: "Anfrage gesendet. Wir melden uns innerhalb von 24h.",
-            companyRequired: "Fuege den Firmennamen hinzu, um weiterzumachen.",
-            captchaNotConfigured: "Captcha ist nicht konfiguriert. Kontaktiere uns direkt.",
-            captchaNeeded: "Bitte validiere das Captcha vor dem Senden.",
-            sendError: "Die Anfrage konnte nicht gesendet werden. Schreib uns an kahdigital42@gmail.com.",
-            summaryType: "Typ",
-            summaryVision: "Vision",
-            summaryStyle: "Stil",
-            summaryOptions: "Optionen",
-            summaryIntegrations: "Integrationen",
-            summaryAiModules: "AI-Module",
-            companyPlaceholder: "Bsp.: Atelier Nova",
-            namePlaceholder: "z. B. Alex Martin",
-            emailPlaceholder: "hello@firma.com",
-            phonePlaceholder: "00 00 00 00 00",
-            summaryFallback: "Konfigurator",
-            budget: "Wird ueber den Konfigurator definiert",
-            timeline: "Zu definieren",
-          }
-          : {
+        : {
             validation: "Validation",
             title: "Finaliser ta demande",
             description: "Laisse tes coordonnées pour verrouiller le devis selon tes options.",
@@ -960,7 +919,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           },
     [locale]
   );
-  const noneLabel = locale === "en" ? "None" : locale === "de" ? "Keine" : "Aucune";
+  const noneLabel = locale === "en" ? "None" : "Aucune";
   const companyLabelSuffix = clientType === "entreprise" ? "*" : text.optional;
   const summaryText = [
     `${text.summaryType}: ${summary.type}`,
@@ -1257,23 +1216,21 @@ type ToggleSetter = Dispatch<SetStateAction<string[]>>;
 export default function ConfigurateurPage() {
   const { locale, prefix } = useLocale();
   const pdfHref =
-    locale === "en" ? "/cahier-des-charges.en.pdf" : locale === "de" ? "/cahier-des-charges.de.pdf" : "/cahier-des-charges.pdf";
-  const siteTypes = locale === "en" ? siteTypesEn : locale === "de" ? siteTypesDe : siteTypesFr;
-  const strategyMap = locale === "en" ? strategyMapEn : locale === "de" ? strategyMapDe : strategyMapFr;
-  const moodOptions = locale === "en" ? moodOptionsEn : locale === "de" ? moodOptionsDe : moodOptionsFr;
-  const featureOptions = locale === "en" ? featureOptionsEn : locale === "de" ? featureOptionsDe : featureOptionsFr;
+    locale === "en" ? "/cahier-des-charges.en.pdf" : "/cahier-des-charges.pdf";
+  const siteTypes = locale === "en" ? siteTypesEn : siteTypesFr;
+  const strategyMap = locale === "en" ? strategyMapEn : strategyMapFr;
+  const moodOptions = locale === "en" ? moodOptionsEn : moodOptionsFr;
+  const featureOptions = locale === "en" ? featureOptionsEn : featureOptionsFr;
   const integrationOptions =
-    locale === "en" ? integrationOptionsEn : locale === "de" ? integrationOptionsDe : integrationOptionsFr;
-  const aiModuleOptions = locale === "en" ? aiModuleOptionsEn : locale === "de" ? aiModuleOptionsDe : aiModuleOptionsFr;
-  const mvpHighlights = locale === "en" ? mvpHighlightsEn : locale === "de" ? mvpHighlightsDe : mvpHighlightsFr;
+    locale === "en" ? integrationOptionsEn : integrationOptionsFr;
+  const aiModuleOptions = locale === "en" ? aiModuleOptionsEn : aiModuleOptionsFr;
+  const mvpHighlights = locale === "en" ? mvpHighlightsEn : mvpHighlightsFr;
   const configuratorSections =
-    locale === "en" ? configuratorSectionsEn : locale === "de" ? configuratorSectionsDe : configuratorSectionsFr;
+    locale === "en" ? configuratorSectionsEn : configuratorSectionsFr;
   const stepLabels =
     locale === "en"
       ? ["Step 1: Type", "Step 2: Vision", "Step 3: Style", "Step 4: Options"]
-      : locale === "de"
-        ? ["Schritt 1: Typ", "Schritt 2: Vision", "Schritt 3: Stil", "Schritt 4: Optionen"]
-        : ["Etape 1 : Type", "Etape 2 : Vision", "Etape 3 : Style", "Etape 4 : Options"];
+      : ["Etape 1 : Type", "Etape 2 : Vision", "Etape 3 : Style", "Etape 4 : Options"];
   const textCopy =
     locale === "en"
       ? {
@@ -1333,65 +1290,7 @@ export default function ConfigurateurPage() {
         recapDownload: "Download the project brief",
         recapClassic: "Go to classic quote",
       }
-      : locale === "de"
-        ? {
-            heroKicker: "Schnelle Anfrage",
-            heroTitle: "Beschreibe deine Website oder mobile App",
-            heroBody: "Waehle, was du brauchst, aktiviere die richtigen Optionen und starte mit einem klaren Recap in die Anfrage.",
-            heroHome: "Zur Startseite",
-            heroSteps: "Zu den Schritten",
-            heroClassic: "Zur klassischen Anfrage",
-            timelineStart: "Starte mit der Wahl: Website oder mobile App.",
-            timelineDone: "Dein Recap ist bereit für die Anfrage.",
-            timelineProgress: "Mach weiter, um dein Angebot zu verfeinern.",
-            mvpKicker: "Mobile-App-Option",
-            mvpTitle: "Beschreibe deine App in wenigen Punkten",
-            mvpBody:
-              "Du willst eine Idee testen? Wir machen daraus ein klares Briefing mit Screens, Kernfunktionen und einer Roadmap für 6 bis 8 Wochen.",
-            mvpPrimary: "MVP-Briefing starten",
-            mvpSecondary: "Produkt-Call planen",
-            mvpPanelKicker: "Site + MVP",
-            mvpPanelTitle: "Ein gemeinsamer roter Faden",
-            mvpPanelBody:
-              "Dieser Konfigurator verbindet Identität, Marketingseiten und Produktoptionen. Ergebnis: ein gemeinsames Briefing für Marketing, Produkt und Tech.",
-            mvpDeliveryLabel: "Geschätzte Lieferung",
-            mvpDeliveryValue: "6 bis 8 Wochen",
-            mvpFormatLabel: "Format",
-            mvpFormatValue: "Landingpage + interaktives MVP",
-            step1Kicker: "Schritt 1",
-            step1Title: "Welchen Website-Typ willst du starten?",
-            step1Reset: "Zurücksetzen",
-            step2Kicker: "Schritt 2",
-            step2Title: "Vision und Lieferumfang schärfen",
-            step2Body: "Jede Karte beschreibt Ton, Seiten und enthaltene Deliverables.",
-            step2Empty: "Waehle zuerst einen Website-Typ.",
-            step3Kicker: "Schritt 3",
-            step3Title: "Welcher visuelle Stil passt zu dir?",
-            step3Body: "Jeder Mood zeigt dominante Farben und das Gesamtgefuehl.",
-            step4Kicker: "Schritt 4",
-            step4Title: "Funktionen & Integrationen",
-            step4Body: "Waehle, was du wirklich brauchst, um Ueberraschungen im Angebot zu vermeiden.",
-            step4Reset: "Optionen leeren",
-            step4FeaturesLabel: "Schluesselfunktionen",
-            step4IntegrationsLabel: "Integrationen",
-            step4AiLabel: "AI-Module",
-            step4AiBadge: "Premium AI",
-            step5Kicker: "Schritt 5",
-            step5Title: "Zusammenfassung",
-            step5Body: "Diese Zusammenfassung kannst du ins Anfrageformular uebernehmen oder intern teilen.",
-            recapType: "Typ",
-            recapVision: "Vision",
-            recapStyle: "Stil",
-            recapFeatures: "Funktionen",
-            recapIntegrations: "Integrationen",
-            recapAiModules: "AI-Module",
-            recapNoneFeatures: "Noch keine Optionen ausgewaehlt.",
-            recapNoneIntegrations: "Keine Integrationen ausgewaehlt.",
-            recapNoneAiModules: "Keine AI-Module ausgewaehlt.",
-            recapDownload: "Projektbriefing herunterladen",
-            recapClassic: "Zur klassischen Anfrage",
-          }
-        : {
+      : {
             heroKicker: "Devis rapide",
             heroTitle: "Décris ton site ou ton app mobile",
             heroBody: "Choisis ce que tu veux, coche les options utiles, puis récupère un récap simple pour lancer le devis.",

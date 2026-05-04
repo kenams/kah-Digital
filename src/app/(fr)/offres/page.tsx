@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/offres",
-  title: "Tarifs & offres — Sites web, apps et IA | KAH-Digital",
-  description: "Tarifs clairs pour sites vitrines, applications web sur mesure et automatisations IA. Devis personnalisé sous 24h. Dès € 300.",
-  keywords: ["tarifs agence web", "prix site internet", "devis application web", "offres création site Lausanne"],
+  title: "Tarifs & offres — Sites web, apps & SaaS | KAH-Digital",
+  description: "Tarifs clairs : landing page dès 300€, site web dès 800€, app mobile MVP dès 2500€, SaaS sur mesure dès 3000€. Devis sous 24h.",
+  keywords: ["tarifs agence web", "prix site internet", "devis application web", "prix création site web", "tarif site vitrine", "prix SaaS sur mesure"],
 });
 
 export default function OffresPage() {

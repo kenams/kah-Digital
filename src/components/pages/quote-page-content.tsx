@@ -1,119 +1,88 @@
-import Link from "next/link";
-
+import { SmartQuoteForm } from "@/components/smart-quote-form";
 import { QuoteForm } from "@/components/quote-form";
-import { QuotePreview } from "@/components/quote-preview";
 import type { Locale } from "@/lib/locales";
 
 type QuotePageContentProps = {
   locale: Locale;
 };
 
-const copy = {
+const COPY = {
   fr: {
-    heroTitle: "Demande de devis gratuit",
-    heroBody: "Remplissez ce formulaire et recevez un retour clair avec budget, délai et recommandations.",
-    eyebrow: "Devis express",
-    title: "Décris ton projet clairement, on te répond vite.",
-    body: "Budget, délai, recommandations et cadrage initial dans un format simple à relire.",
-    cards: [
-      { eyebrow: "Devise", body: "Tous les montants sont émis en €." },
-      { eyebrow: "Paiement", body: "Règlement par virement bancaire." },
-      { eyebrow: "Coordonnées", body: "Transmises sur devis validé ou facture finale." },
+    eyebrow: "Devis gratuit · Réponse sous 24h",
+    title: "Quel projet souhaitez-vous réaliser ?",
+    subtitle: "Choisissez votre service, remplissez vos coordonnées et décrivez votre idée.\nOn vous répond avec un devis clair sous 24h — sans engagement.",
+    reassurance: [
+      { icon: "⚡", label: "Réponse sous 24h",  sub: "Jours ouvrés" },
+      { icon: "🔒", label: "Sans engagement",    sub: "Aucune obligation" },
+      { icon: "💶", label: "Dès 300 €",          sub: "Tarifs transparents" },
+      { icon: "🌍", label: "France & Suisse",    sub: "Remote ou présentiel" },
     ],
-    previewEyebrow: "Aperçu",
-    previewTitle: "Exemple de devis KAH-Digital",
-    previewBody: "Un format plus clair, plus professionnel et plus facile à lire sur desktop comme sur mobile.",
   },
   en: {
-    heroTitle: "Free quote request",
-    heroBody: "Fill in the form and receive a clear reply with budget, timeline, and recommendations.",
-    eyebrow: "Quick quote",
-    title: "Describe your project clearly, we reply fast.",
-    body: "Budget, timeline, recommendations, and initial scoping in a simple format you can review easily.",
-    cards: [
-      { eyebrow: "Currency", body: "All amounts are issued in €." },
-      { eyebrow: "Payment", body: "Payment by bank transfer." },
-      { eyebrow: "Details", body: "Shared on approved quote or final invoice." },
+    eyebrow: "Free quote · Reply within 24h",
+    title: "What project do you have in mind?",
+    subtitle: "Pick your service, fill in your details and describe your idea.\nWe'll reply with a clear quote within 24 hours — no commitment.",
+    reassurance: [
+      { icon: "⚡", label: "Reply within 24h",    sub: "Business days" },
+      { icon: "🔒", label: "No commitment",        sub: "Completely free" },
+      { icon: "💶", label: "From 300 €",           sub: "Transparent pricing" },
+      { icon: "🌍", label: "France & Switzerland", sub: "Remote or on-site" },
     ],
-    previewEyebrow: "Preview",
-    previewTitle: "KAH-Digital quote example",
-    previewBody: "A clearer, more professional format that stays easy to read on desktop and mobile.",
-  },
-  de: {
-    heroTitle: "Kostenlose Projektanfrage",
-    heroBody: "Fülle dieses Formular aus und erhalte eine klare Rückmeldung mit Budget, Timing und Empfehlungen.",
-    eyebrow: "Schnelle Anfrage",
-    title: "Beschreibe dein Projekt klar, wir antworten schnell.",
-    body: "Budget, Timing, Empfehlungen und ein erstes Briefing in einem einfachen Format zum Nachlesen.",
-    cards: [
-      { eyebrow: "Währung", body: "Alle Beträge werden in € ausgewiesen." },
-      { eyebrow: "Zahlung", body: "Zahlung per Banküberweisung." },
-      { eyebrow: "Kontaktdaten", body: "Werden auf dem bestätigten Angebot oder der Schlussrechnung übermittelt." },
-    ],
-    previewEyebrow: "Vorschau",
-    previewTitle: "Beispiel einer KAH-Digital-Offerte",
-    previewBody: "Ein klareres, professionelleres Format, das auf Desktop und Mobile gut lesbar bleibt.",
   },
 } as const;
 
 export function QuotePageContent({ locale }: QuotePageContentProps) {
-  const content = copy[locale];
+  // FR and EN both use the new smart form
+  if (locale === "fr" || locale === "en") {
+    const c = COPY[locale];
+    return (
+      <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.18),transparent_50%),linear-gradient(180deg,#020b18_0%,#04070d_100%)]">
+        {/* Hero */}
+        <section className="border-b border-white/8 px-4 pb-10 pt-16 text-center sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-[0.35em] text-sky-400">{c.eyebrow}</p>
+          <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
+            {c.title}
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-base text-white/55 sm:text-lg">
+            {c.subtitle.split("\n").map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br className="hidden sm:block" />}</span>
+            ))}
+          </p>
+        </section>
 
-  return (
-    <>
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mb-6 text-4xl font-bold sm:text-5xl">{content.heroTitle}</h1>
-          <p className="text-xl">{content.heroBody}</p>
-        </div>
-      </section>
+        {/* Form */}
+        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+          <SmartQuoteForm locale={locale} />
+        </section>
 
-      <section className="bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.2),transparent_40%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center text-white">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/60">{content.eyebrow}</p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{content.title}</h2>
-            <p className="mt-4 text-base text-white/70 sm:text-lg">{content.body}</p>
-          </div>
-          <QuoteForm />
-          {locale === "fr" ? (
-            <div className="mt-6 rounded-3xl border border-sky-300/20 bg-sky-400/10 p-5 text-white shadow-[0_18px_60px_rgba(46,168,255,0.12)] sm:flex sm:items-center sm:justify-between sm:gap-6">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-200">PDF client</p>
-                <p className="mt-2 text-lg font-bold">Tu veux envoyer un devis finalise ?</p>
-                <p className="mt-1 max-w-2xl text-sm leading-6 text-white/70">
-                  Remplis les informations du client, ajoute les prestations et telecharge un PDF pret a transmettre.
-                </p>
-              </div>
-              <Link
-                href="/devis/generateur"
-                className="mt-4 inline-flex shrink-0 items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-sky-100 sm:mt-0"
-              >
-                Ouvrir le generateur PDF
-              </Link>
-            </div>
-          ) : null}
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {content.cards.map((card) => (
-              <div key={card.eyebrow} className="rounded-3xl border border-white/10 bg-white/5 p-5 text-white/80">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/50">{card.eyebrow}</p>
-                <p className="mt-3 text-lg font-semibold text-white">{card.body}</p>
+        {/* Reassurance footer */}
+        <section className="border-t border-white/8 px-4 py-8 sm:px-6">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 sm:flex-row sm:justify-center">
+            {c.reassurance.map((item) => (
+              <div key={item.label} className="flex flex-col items-center gap-1 text-center">
+                <span className="text-2xl">{item.icon}</span>
+                <p className="text-sm font-semibold text-white">{item.label}</p>
+                <p className="text-xs text-white/40">{item.sub}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
+    );
+  }
 
-      <section className="bg-gray-900 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-gray-500">{content.previewEyebrow}</p>
-            <h2 className="mb-4 mt-3 text-3xl font-bold text-white">{content.previewTitle}</h2>
-            <p className="text-lg text-gray-400">{content.previewBody}</p>
-          </div>
-          <QuotePreview />
+  // DE fallback — old form
+  return (
+    <section className="bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.2),transparent_40%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center text-white">
+          <h1 className="mt-3 text-3xl font-bold sm:text-4xl">Kostenlose Projektanfrage</h1>
+          <p className="mt-4 text-base text-white/70">
+            Beschreibe dein Projekt und erhalte eine klare Antwort mit Budget und Timing.
+          </p>
         </div>
-      </section>
-    </>
+        <QuoteForm />
+      </div>
+    </section>
   );
 }

@@ -16,15 +16,14 @@ export function SiteHeader() {
     fr: {
       nav: [
         { label: "Accueil", href: "/" },
-        { label: "Services", href: "/services" },
-        { label: "Projets", href: "/projets" },
-        { label: "GLPI", href: "/services/glpi" },
-        { label: "Devis", href: "/devis" },
-        { label: "Factures", href: "/factures" },
+        { label: "Offres", href: "/offres" },
+        { label: "Réalisations", href: "/projets" },
+        { label: "Blog", href: "/blog" },
+        { label: "Tarifs", href: "/devis" },
         { label: "Contact", href: "/contact" },
       ],
-      cta: "Demander un devis",
-      subtitle: "Digital studio",
+      cta: "Devis gratuit",
+      subtitle: "Studio digital",
       openMenu: "Ouvrir le menu",
       closeMenu: "Fermer le menu",
       homeLabel: "KAH-Digital - Accueil",
@@ -32,14 +31,12 @@ export function SiteHeader() {
     en: {
       nav: [
         { label: "Home", href: "/en" },
-        { label: "Services", href: "/en/services" },
-        { label: "Projects", href: "/en/projets" },
-        { label: "GLPI", href: "/en/services/glpi" },
-        { label: "Quote", href: "/en/devis" },
-        { label: "Invoices", href: "/en/factures" },
+        { label: "Offers", href: "/en/offres" },
+        { label: "Portfolio", href: "/en/projets" },
+        { label: "Pricing", href: "/en/devis" },
         { label: "Contact", href: "/en/contact" },
       ],
-      cta: "Request a quote",
+      cta: "Free quote",
       subtitle: "Digital studio",
       openMenu: "Open menu",
       closeMenu: "Close menu",
@@ -48,15 +45,13 @@ export function SiteHeader() {
     de: {
       nav: [
         { label: "Start", href: "/de" },
-        { label: "Leistungen", href: "/de/services" },
+        { label: "Angebote", href: "/de/offres" },
         { label: "Projekte", href: "/de/projets" },
-        { label: "GLPI", href: "/de/services/glpi" },
-        { label: "Anfrage", href: "/de/devis" },
-        { label: "Rechnungen", href: "/de/factures" },
+        { label: "Preise", href: "/de/devis" },
         { label: "Kontakt", href: "/de/contact" },
       ],
-      cta: "Projekt anfragen",
-      subtitle: "Digital studio",
+      cta: "Kostenlos anfragen",
+      subtitle: "Digital Studio",
       openMenu: "Menue oeffnen",
       closeMenu: "Menue schliessen",
       homeLabel: "KAH-Digital - Start",
@@ -86,7 +81,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
             <Link
-              href={localeCopy.nav[4]?.href ?? `${prefix}/contact`}
+              href={localeCopy.nav[3]?.href ?? `${prefix}/devis`}
               className="whitespace-nowrap rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}
@@ -122,7 +117,7 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Link
-                href={localeCopy.nav[4]?.href ?? `${prefix}/contact`}
+                href={localeCopy.nav[3]?.href ?? `${prefix}/devis`}
                 className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 text-center font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
                 onClick={() => setIsMenuOpen(false)}
               >

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiArrowRight, FiCheckCircle, FiZap, FiSearch, FiTrendingUp } from "react-icons/fi";
+import { trackEvent } from "@/lib/analytics";
 
 const CHECKS = [
   { icon: FiSearch, label: "Référencement Google (SEO)" },
@@ -26,6 +27,7 @@ export default function AuditGratuitPage() {
       });
       if (!res.ok) throw new Error();
       setState("done");
+      trackEvent("generate_lead", { form_name: "audit_gratuit", website: form.website });
     } catch {
       setState("error");
     }

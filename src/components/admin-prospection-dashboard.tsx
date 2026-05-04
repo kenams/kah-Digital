@@ -59,9 +59,11 @@ const SEVERITY_COLOR: Record<string, string> = {
 
 type NoEmailProspect = { id: string; businessName: string | null; website: string; sector: string | null; country: string | null; audit: ProspectAudit | null; createdAt: string };
 
+type BatchStats = { id: string; createdAt?: string; runAt?: string; slot: string; found: number; sent: number; errors: string[] };
+
 type LiveStats = {
   stats: { total: number; sent: number; opened: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
-  batches: Array<{ id: string; createdAt?: string; runAt?: string; slot: string; found: number; sent: number; errors: string[] }>;
+  batches: BatchStats[];
   hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null; draftReply: string | null }>;
   noEmailProspects: NoEmailProspect[];
   diagnostics?: {
@@ -86,6 +88,7 @@ type LiveBatchProgress = {
   failed: number;
   found: number;
   tracking: boolean;
+  startedAt: number | null;
 };
 
 const EMPTY_LIVE_BATCH_PROGRESS: LiveBatchProgress = {
@@ -94,6 +97,7 @@ const EMPTY_LIVE_BATCH_PROGRESS: LiveBatchProgress = {
   failed: 0,
   found: 0,
   tracking: false,
+  startedAt: null,
 };
 
 type ProspectFilters = {
@@ -220,8 +224,8 @@ export function ProspectionDashboard() {
   const [followupRunning, setFollowupRunning] = useState(false);
   const [fireRunning, setFireRunning] = useState(false);
   const [fireMessage, setFireMessage] = useState<string | null>(null);
-  const [prospectFilters, setProspectFilters] = useState<ProspectFilters>(DEFAULT_PROSPECT_FILTERS);
   const [liveBatch, setLiveBatch] = useState<LiveBatchProgress>(EMPTY_LIVE_BATCH_PROGRESS);
+  const [prospectFilters, setProspectFilters] = useState<ProspectFilters>(DEFAULT_PROSPECT_FILTERS);
 
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
@@ -270,7 +274,7 @@ export function ProspectionDashboard() {
   async function handleFireBatch() {
     setFireRunning(true);
     setFireMessage(null);
-    setLiveBatch({ ...EMPTY_LIVE_BATCH_PROGRESS, tracking: true });
+    setLiveBatch({ ...EMPTY_LIVE_BATCH_PROGRESS, tracking: true, startedAt: Date.now() });
     try {
       const res = await fetch("/api/prospection/fire?key=KAH2026FIRE");
       const data = await res.json() as { ok?: boolean; batchId?: string | null; message?: string; error?: string };
@@ -279,6 +283,7 @@ export function ProspectionDashboard() {
           ...EMPTY_LIVE_BATCH_PROGRESS,
           batchId: data.batchId ?? null,
           tracking: Boolean(data.batchId),
+          startedAt: Date.now(),
         });
         setFireMessage(data.batchId
           ? "Batch lancé - compteur live actif."
@@ -301,7 +306,7 @@ export function ProspectionDashboard() {
     const score = prospect.audit?.problems?.length
       ? `J'ai détecté ${prospect.audit.problems.filter((p) => p.severity === "critical").length} point(s) critique(s) sur votre site`
       : "J'ai analysé votre site";
-    const price = prospect.audit?.priceRange ?? "entre 900€ et 2500€";
+    const price = prospect.audit?.priceRange ?? "entre 800€ et 3000€";
     return `Bonjour,\n\nJe suis Kénan, fondateur de KAH-Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement — ma proposition serait ${price}.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH-Digital\nkah-digital.ch`;
   }
 
@@ -533,14 +538,6 @@ export function ProspectionDashboard() {
       <span className="text-gray-500">échoués</span>
     </div>
   ) : null;
-
-  const stats = {
-    total: prospects.length,
-    analyzed: prospects.filter((p) => ["analyzed","draft","sent","replied"].includes(p.status)).length,
-    sent: prospects.filter((p) => p.status === "sent").length,
-    replied: prospects.filter((p) => p.status === "replied").length,
-  };
-
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">

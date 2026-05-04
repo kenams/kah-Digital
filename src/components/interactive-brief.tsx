@@ -98,7 +98,7 @@ const fieldsDe: BriefField[] = [
 
 export function InteractiveBrief() {
   const { locale } = useLocale();
-  const fields = locale === "en" ? fieldsEn : locale === "de" ? fieldsDe : fieldsFr;
+  const fields = locale === "en" ? fieldsEn : fieldsFr;
   const textCopy =
     locale === "en"
       ? {
@@ -115,22 +115,7 @@ export function InteractiveBrief() {
           sendMissingEmail: "Add a valid email to send the PDF.",
           error: "Unable to generate the PDF right now.",
         }
-      : locale === "de"
-        ? {
-            title: "Ausfuellbare Version",
-            reset: "Zuruecksetzen",
-            export: "Meine Version als PDF exportieren",
-            send: "Per E-Mail senden",
-            sending: "Versand...",
-            pdfTitle: "Kah-Digital - Projektbriefing",
-            pdfContact: "Kontakt: kahdigital42@gmail.com - +33 7 59 55 84 14 (vorlaeufige Nummer)",
-            success: "PDF-Version erfolgreich erstellt.",
-            sendSuccess: "PDF per E-Mail versendet.",
-            sendError: "Das PDF kann gerade nicht versendet werden.",
-            sendMissingEmail: "Fuege eine gueltige E-Mail-Adresse hinzu, um das PDF zu senden.",
-            error: "Das PDF kann gerade nicht erstellt werden.",
-          }
-        : {
+      : {
             title: "Version remplissable",
             reset: "Reinitialiser",
             export: "Exporter ma version en PDF",

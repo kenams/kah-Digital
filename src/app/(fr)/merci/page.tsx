@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { brandContact } from "@/config/brand";
 import { FiCheck, FiArrowRight, FiMail, FiPhone, FiCalendar } from "react-icons/fi";
+import { TrackConversion } from "@/components/track-conversion";
 
 export const metadata: Metadata = {
   title: "Merci",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function MerciPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-950 px-4 py-20">
+      <TrackConversion event="conversion" params={{ page: "merci", locale: "fr" }} />
       <div className="w-full max-w-lg text-center">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/15 ring-1 ring-emerald-500/30">
           <FiCheck size={32} className="text-emerald-400" />

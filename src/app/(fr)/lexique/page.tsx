@@ -1250,9 +1250,9 @@ const lexiqueSectionsDe = [
 
 export default function LexiquePage() {
   const { locale, prefix } = useLocale();
-  const topics = locale === "en" ? topicsEn : locale === "de" ? topicsDe : topicsFr;
-  const categoryData = locale === "en" ? categoriesEn : locale === "de" ? categoriesDe : categoriesFr;
-  const lexiqueSections = locale === "en" ? lexiqueSectionsEn : locale === "de" ? lexiqueSectionsDe : lexiqueSectionsFr;
+  const topics = locale === "en" ? topicsEn : topicsFr;
+  const categoryData = locale === "en" ? categoriesEn : categoriesFr;
+  const lexiqueSections = locale === "en" ? lexiqueSectionsEn : lexiqueSectionsFr;
   const textCopy =
     locale === "en"
       ? {
@@ -1272,25 +1272,7 @@ export default function LexiquePage() {
           nextStepsCta2: "Build your MVP",
           nextStepsCta3: "Download the pack",
         }
-      : locale === "de"
-        ? {
-            heroKicker: "Lexikon",
-            heroTitle: "Die wichtigsten Begriffe in 5 Minuten verstehen",
-            heroBody:
-              "Eine einfache Seite, um Kunden, Vertrieb und Freelancer schnell auf denselben Stand zu bringen. Kein Ballast, nur das Wesentliche für schnelle Entscheidungen.",
-            backHome: "Zur Startseite",
-            openConfigurator: "Konfigurator öffnen",
-            filterPlaceholder: "Suchen: SEO, API, responsive, React Native, Supabase...",
-            noResults: "Kein Begriff gefunden. Versuche \"SEO\", \"CMS\" oder \"responsive\"...",
-            nextStepsKicker: "Nächste Schritte",
-            nextStepsTitle: "Bereit, deinen Sprint oder dein MVP sauber zu scopen?",
-            nextStepsBody:
-              "Wir übersetzen diese Begriffe in konkrete Aktionen: Projektbriefing, geführter Konfigurator und schnelle Anfrage für den Start der Produktion.",
-            nextStepsCta1: "Sprint planen",
-            nextStepsCta2: "MVP strukturieren",
-            nextStepsCta3: "Briefing herunterladen",
-          }
-        : {
+      : {
             heroKicker: "Lexique",
             heroTitle: "Comprendre les termes en 5 minutes",
             heroBody:

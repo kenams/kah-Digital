@@ -2,64 +2,58 @@
 
 import { Reveal } from "@/components/reveal";
 import { useLocale } from "@/lib/locale";
+import Link from "next/link";
 
 const testimonialsFr = [
   {
-    name: "Clara M.",
-    role: "Directrice Marketing, Lumea Skin",
+    name: "Ashanti Beauty",
+    role: "Marque beauté · e-commerce",
     quote:
-      "Execution rapide, finitions irreprochables. Le site est plus rapide et plus premium des la mise en ligne.",
+      "Mise en ligne rapide, design soigné, on a eu des retours positifs de nos clientes dès le lancement. L'équipe était réactive et claire sur chaque étape.",
+    real: true,
   },
   {
-    name: "Jonathan P.",
-    role: "Founder, NovaPay",
+    name: "TechCash Academy",
+    role: "Formation en ligne · plateforme SaaS",
     quote:
-      "Process court et clair. Ils ont compris l'image premium et ont livre en avance.",
-  },
-  {
-    name: "Marion L.",
-    role: "Head of Brand, Atelier Nomade",
-    quote:
-      "Direction artistique solide, storytelling net et resultats concrets sur les leads.",
+      "On cherchait quelqu'un de fiable sans payer une grande agence. KAH Digital a livré une plateforme propre, rapide et fonctionnelle dans les délais.",
+    real: true,
   },
 ];
 
 const testimonialsEn = [
   {
-    name: "Clara M.",
-    role: "Marketing Director, Lumea Skin",
+    name: "Ashanti Beauty",
+    role: "Beauty brand · e-commerce",
     quote:
-      "Fast execution, flawless finishes. The site is faster and more premium right after launch.",
+      "Fast launch, clean design — our customers loved it from day one. The team was responsive and clear at every step.",
+    real: true,
   },
   {
-    name: "Jonathan P.",
-    role: "Founder, NovaPay",
+    name: "TechCash Academy",
+    role: "Online training · SaaS platform",
     quote:
-      "Short and clear process. They understood the premium positioning and delivered early.",
-  },
-  {
-    name: "Marion L.",
-    role: "Head of Brand, Atelier Nomade",
-    quote:
-      "Strong art direction, clear storytelling, and tangible results on leads.",
+      "We needed a reliable partner without agency prices. KAH Digital delivered a clean, fast platform on time.",
+    real: true,
   },
 ];
 
-const logos = ["NovaPay", "Pulse Studio", "OKO Energy", "Atelier Nomade"];
+const logos = ["Ashanti Beauty", "TechCash Academy"];
 
 export function Testimonials() {
-  const { isEnglish } = useLocale();
+  const { isEnglish, prefix } = useLocale();
   const testimonials = isEnglish ? testimonialsEn : testimonialsFr;
+  const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
     <section className="section-shell space-y-8">
       <Reveal>
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] text-white/60">
-            {isEnglish ? "Trust" : "Confiance"}
+            {isEnglish ? "They trusted us" : "Ils nous ont fait confiance"}
           </p>
           <h2 className="text-3xl font-semibold text-white">
-            {isEnglish ? "Trusted by demanding brands" : "Marques exigeantes accompagnees"}
+            {isEnglish ? "Real clients, real results" : "De vrais clients, de vrais résultats"}
           </h2>
         </div>
       </Reveal>
@@ -70,6 +64,9 @@ export function Testimonials() {
               {logo}
             </span>
           ))}
+          <span className="text-white/30">
+            {isEnglish ? "+ artisans · restaurants · local shops" : "+ artisans · restaurants · commerces"}
+          </span>
         </div>
       </Reveal>
       <div className="grid gap-6 md:grid-cols-3">
@@ -83,6 +80,26 @@ export function Testimonials() {
             </div>
           </Reveal>
         ))}
+        <Reveal delay={0.2}>
+          <div className="premium-card flex flex-col items-start justify-between rounded-3xl border border-dashed border-white/20 bg-white/3 p-6 text-white">
+            <div>
+              <p className="text-lg font-semibold text-white/80">
+                {isEnglish ? "Your project here?" : "Votre projet ici ?"}
+              </p>
+              <p className="mt-2 text-sm text-white/50">
+                {isEnglish
+                  ? "We have slots open. Get a free quote in 24h."
+                  : "On a des créneaux disponibles. Devis gratuit sous 24h."}
+              </p>
+            </div>
+            <Link
+              href={withPrefix("/devis")}
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition hover:bg-neutral-200"
+            >
+              {isEnglish ? "Start now" : "Démarrer maintenant"}
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

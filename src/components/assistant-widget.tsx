@@ -388,7 +388,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const [session, setSession] = useState<AssistantSession | null>(() => initialState.session);
   const [summary, setSummary] = useState<AssistantStructuredOutput | null>(() => initialState.summary);
   const [lastActivityAt, setLastActivityAt] = useState<number | null>(() => initialState.lastActivityAt);
-  const [progress, setProgress] = useState<AssistantProgress>(() =>
+  const [_progress, setProgress] = useState<AssistantProgress>(() =>
     initialState.summary
       ? { current: 1, total: 1, label: copy.summary }
       : { current: 1, total: 1, label: copy.progress }

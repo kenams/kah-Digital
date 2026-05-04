@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/services",
   title: "Services digitaux",
   description:
-    "Sites web, applications sur mesure et parcours support connectes a GLPI pour entreprises francophones, anglophones et internationales.",
+    "Landing pages, sites web professionnels, applications mobiles, SaaS et outils web métier — KAH-Digital, studio digital. Devis gratuit sous 24h.",
 });
 
 export default function ServicesPage() {

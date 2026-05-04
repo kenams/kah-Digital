@@ -217,11 +217,11 @@ export type ProjectSceneVariant = "card" | "hero";
 const fallbackScene = (project: PortfolioProject, locale: "fr" | "en" | "de"): ProjectScene => ({
   badge: project.type,
   hero: project.tagline,
-  statLabel: locale === "en" ? "Result" : locale === "de" ? "Ergebnis" : "Resultat",
+  statLabel: locale === "en" ? "Result" : "Resultat",
   statValue: project.result,
   chip: project.timeline,
   callout: project.shortDescription,
-  calloutLabel: locale === "de" ? "Module" : "Modules",
+  calloutLabel: "Modules",
   footer: project.stack.slice(0, 2).join(" / "),
 });
 
@@ -233,7 +233,7 @@ type ProjectSceneRenderProps = {
 export function ProjectSceneRender({ project, variant = "card" }: ProjectSceneRenderProps) {
   const { locale } = useLocale();
   const palette = project.palette;
-  const sceneMap = locale === "en" ? projectSceneMapEn : locale === "de" ? projectSceneMapDe : projectSceneMapFr;
+  const sceneMap = locale === "en" ? projectSceneMapEn : projectSceneMapFr;
   const scene = sceneMap[project.slug] ?? fallbackScene(project, locale);
   const height = variant === "hero" ? "h-64" : "h-48";
 
