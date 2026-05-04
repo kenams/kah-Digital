@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiArrowUpRight, FiMessageSquare, FiRotateCcw, FiSend } from "react-icons/fi";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
+import { withLocalePrefix } from "@/lib/locales";
 import {
   assistantSessionSchema,
   assistantStructuredOutputSchema,
@@ -38,7 +39,7 @@ const widgetCopy = {
   fr: {
     button: "Assistant projet & support",
     title: "Assistant projet & support",
-    subtitle: "Qualification rapide, résumé structuré, reprise humaine si nécessaire.",
+    subtitle: "Orientation, budget, devis 24h et reprise humaine si nécessaire.",
     introTitle: "Avant de commencer",
     introBody: "Prénom, nom et email suffisent pour démarrer. Tu peux compléter les autres infos en cours de conversation.",
     firstName: "Prénom *",
@@ -51,8 +52,8 @@ const widgetCopy = {
     companyPlaceholder: "Ex : Studio Nova",
     startChat: "Commencer le chat",
     identityRequired: "Ajoute ton prénom, ton nom et ton email pour commencer.",
-    welcome: "Bonjour ! Dis-moi ce que tu veux créer ou résoudre — je qualifie ton besoin et prépare un résumé exploitable.",
-    suggestions: ["Créer un site web", "Application sur mesure", "Support / Bug GLPI", "Demander un devis"],
+    welcome: "Bonjour ! Dis-moi ce que tu veux créer, vendre ou améliorer. Je t'oriente vers la bonne offre et je prépare un devis propre si le projet est mûr.",
+    suggestions: ["Voir les tarifs", "Créer un SaaS", "Automatisation IA", "Demander un devis"],
     placeholder: "Décris ton besoin, ton projet ou ton problème...",
     send: "Envoyer",
     progress: "Progression",
@@ -62,8 +63,11 @@ const widgetCopy = {
     days: "Jours estimés",
     roles: "Ressources",
     ctaEmail: "Recevoir le résumé",
-    ctaHuman: "Parler a un humain",
+    ctaHuman: "Parler à un humain",
     ctaGlpi: "Créer un ticket",
+    ctaQuote: "Demander un devis 24h",
+    ctaOffers: "Voir les offres",
+    purchaseHint: "Résumé prêt. Le plus propre est de transformer ça en demande de devis ou de comparer l'offre correspondante.",
     consent: "J&apos;accepte l&apos;enregistrement de mon résumé pour être recontacté.",
     email: "Email",
     name: "Nom",
@@ -74,7 +78,7 @@ const widgetCopy = {
     close: "Fermer",
     open: "Ouvrir",
     contact: "Contacter KAH-Digital",
-    helper: "Une question à la fois. Réponse claire. Fallback humain prévu.",
+    helper: "Une question à la fois. Prix cohérents. Suite claire.",
     qualStarted: "Démarrage",
     qualCollecting: "Qualification",
     qualReady: "Résumé en cours",
@@ -82,7 +86,7 @@ const widgetCopy = {
   en: {
     button: "Project & support assistant",
     title: "Project & support assistant",
-    subtitle: "Fast qualification, structured summary, human handoff when needed.",
+    subtitle: "Routing, budget, 24h quote and human handoff when needed.",
     introTitle: "Before we start",
     introBody: "First name, last name and email are enough to start. You can add other details during the conversation.",
     firstName: "First name *",
@@ -95,8 +99,8 @@ const widgetCopy = {
     companyPlaceholder: "e.g. Studio Nova",
     startChat: "Start chat",
     identityRequired: "Add your first name, last name and email to start.",
-    welcome: "Hello! Tell me what you want to build or solve — I'll qualify your need and prepare a structured summary.",
-    suggestions: ["Build a website", "Custom application", "GLPI support", "Get a quote"],
+    welcome: "Hello! Tell me what you want to build, sell, or improve. I will route you to the right offer and prepare a clean quote request if the project is mature enough.",
+    suggestions: ["See pricing", "Build a SaaS", "AI automation", "Get a quote"],
     placeholder: "Describe your need, project, or issue...",
     send: "Send",
     progress: "Progress",
@@ -108,6 +112,9 @@ const widgetCopy = {
     ctaEmail: "Get the summary",
     ctaHuman: "Talk to a human",
     ctaGlpi: "Create a ticket",
+    ctaQuote: "Request a 24h quote",
+    ctaOffers: "See offers",
+    purchaseHint: "Summary ready. The clean next step is to turn this into a quote request or compare the matching offer.",
     consent: "I agree to store the summary so KAH-Digital can follow up.",
     email: "Email",
     name: "Name",
@@ -118,7 +125,7 @@ const widgetCopy = {
     close: "Close",
     open: "Open",
     contact: "Contact KAH-Digital",
-    helper: "One question at a time. Clear reply. Human fallback included.",
+    helper: "One question at a time. Coherent prices. Clear next step.",
     qualStarted: "Getting started",
     qualCollecting: "Qualification",
     qualReady: "Summary in progress",
@@ -126,7 +133,7 @@ const widgetCopy = {
   de: {
     button: "Projekt- & Support-Assistent",
     title: "Projekt- & Support-Assistent",
-    subtitle: "Schnelle Qualifizierung, strukturierte Zusammenfassung, menschliche Übergabe bei Bedarf.",
+    subtitle: "Orientierung, Budget, 24h-Angebot und menschliche Übergabe bei Bedarf.",
     introTitle: "Bevor es losgeht",
     introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben können während der Unterhaltung ergänzt werden.",
     firstName: "Vorname *",
@@ -139,8 +146,8 @@ const widgetCopy = {
     companyPlaceholder: "z. B. Studio Nova",
     startChat: "Chat starten",
     identityRequired: "Bitte Vorname, Nachname und E-Mail angeben, um zu starten.",
-    welcome: "Hallo! Sag mir, was du erstellen oder lösen möchtest — ich qualifiziere deinen Bedarf und bereite eine strukturierte Zusammenfassung vor.",
-    suggestions: ["Website erstellen", "Individuelle App", "GLPI-Support", "Angebot anfordern"],
+    welcome: "Hallo! Sag mir, was du bauen, verkaufen oder verbessern willst. Ich leite dich zum passenden Angebot und bereite eine saubere Anfrage vor, wenn das Projekt reif genug ist.",
+    suggestions: ["Preise sehen", "SaaS erstellen", "KI-Automatisierung", "Angebot anfordern"],
     placeholder: "Beschreibe dein Anliegen, Projekt oder Problem...",
     send: "Senden",
     progress: "Fortschritt",
@@ -152,6 +159,9 @@ const widgetCopy = {
     ctaEmail: "Zusammenfassung erhalten",
     ctaHuman: "Mit einem Menschen sprechen",
     ctaGlpi: "Ticket erstellen",
+    ctaQuote: "24h-Angebot anfragen",
+    ctaOffers: "Angebote sehen",
+    purchaseHint: "Zusammenfassung bereit. Der saubere nächste Schritt ist eine Angebotsanfrage oder der Vergleich des passenden Angebots.",
     consent: "Ich stimme der Speicherung der Zusammenfassung für eine Rückmeldung zu.",
     email: "E-Mail",
     name: "Name",
@@ -162,7 +172,7 @@ const widgetCopy = {
     close: "Schließen",
     open: "Öffnen",
     contact: "KAH-Digital kontaktieren",
-    helper: "Immer nur eine Frage. Klare Antworten. Menschlicher Fallback inklusive.",
+    helper: "Immer eine Frage. Stimmige Preise. Klarer nächster Schritt.",
     qualStarted: "Start",
     qualCollecting: "Qualifizierung",
     qualReady: "Zusammenfassung läuft",
@@ -411,6 +421,9 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const hasConversation = transcript.length > 0 || Boolean(summary) || Boolean(pendingUserMessage) || Boolean(streamingReply);
   const fullName = joinName(firstName, lastName);
   const hasStartedChat = Boolean(session);
+  const quoteHref = withLocalePrefix("/devis", locale);
+  const offersHref = withLocalePrefix("/offres", locale);
+  const contactHref = withLocalePrefix("/contact", locale);
 
   const qualScore = useMemo(() => {
     const c = session?.collected ?? {};
@@ -572,10 +585,10 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     const activeField = session?.lastAskedField;
     if (intent === "project_quote" && activeField === "type") {
       return locale === "fr"
-        ? ["Site vitrine", "Application web", "App mobile", "Tableau de bord"]
+        ? ["Landing / portfolio", "Site vitrine", "SaaS / produit web", "Automatisation IA"]
         : locale === "en"
-          ? ["Showcase site", "Web app", "Mobile app", "Dashboard"]
-          : ["Unternehmenswebsite", "Web-App", "Mobile App", "Dashboard"];
+          ? ["Landing / portfolio", "Showcase site", "SaaS / web product", "AI automation"]
+          : ["Landing / Portfolio", "Unternehmenswebsite", "SaaS / Web-Produkt", "KI-Automatisierung"];
     }
     if (intent === "project_quote" && activeField === "objective") {
       return locale === "fr"
@@ -600,10 +613,17 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     }
     if (intent === "project_quote" && activeField === "budget") {
       return locale === "fr"
-        ? ["Moins de 1'000 CHF", "1'000 - 3'000 CHF", "3'000 - 8'000 CHF", "A definir"]
+        ? ["300 - 600 €", "900 - 1 500 €", "2 200 - 4 500 €", "4 000 € et plus"]
         : locale === "en"
-          ? ["Under CHF 1,000", "CHF 1,000 - 3,000", "CHF 3,000 - 8,000", "To define"]
-          : ["Unter CHF 1'000", "CHF 1'000 - 3'000", "CHF 3'000 - 8'000", "Noch offen"];
+          ? ["€300 - 600", "€900 - 1,500", "€2,200 - 4,500", "€4,000+"]
+          : ["300 - 600 €", "900 - 1.500 €", "2.200 - 4.500 €", "4.000 €+"];
+    }
+    if (intent === "project_quote" && activeField === "decisionStage") {
+      return locale === "fr"
+        ? ["Devis sous 24h", "Parler à quelqu'un", "Comparer les offres", "Je réfléchis encore"]
+        : locale === "en"
+          ? ["24h quote", "Talk to someone", "Compare offers", "Still thinking"]
+          : ["24h-Angebot", "Mit jemandem sprechen", "Angebote vergleichen", "Ich überlege noch"];
     }
     if (intent === "project_quote" && activeField === "users") {
       return locale === "fr"
@@ -646,6 +666,13 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
         : locale === "en"
           ? ["No access", "Errors", "Data affected", "Payment blocked"]
           : ["Kein Zugriff", "Fehler", "Daten betroffen", "Zahlung blockiert"];
+    }
+    if (intent === "support_glpi" && activeField === "supportPlan") {
+      return locale === "fr"
+        ? ["Intervention ponctuelle", "Maintenance Essentiel", "Maintenance Confort", "Maintenance Pro"]
+        : locale === "en"
+          ? ["One-off intervention", "Essential maintenance", "Comfort maintenance", "Pro maintenance"]
+          : ["Einmaliger Eingriff", "Basis-Wartung", "Komfort-Wartung", "Pro-Wartung"];
     }
     if (intent === "faq") {
       return locale === "fr"
@@ -1006,6 +1033,36 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                     </div>
                   ) : null}
 
+                  {summary.intent === "project_quote" ? (
+                    <div className="mt-3 rounded-2xl border border-white/8 bg-black/20 p-3">
+                      <p className="text-sm text-white/78">{copy.purchaseHint}</p>
+                      <div className="mt-3 grid gap-2">
+                        <Link
+                          href={quoteHref}
+                          onClick={() => trackEvent("assistant_quote_cta", {
+                            assistant_locale: locale,
+                            assistant_project_type: summary.project_type,
+                          })}
+                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[#11131b] transition hover:brightness-105"
+                        >
+                          {copy.ctaQuote}
+                          <FiArrowUpRight />
+                        </Link>
+                        <Link
+                          href={offersHref}
+                          onClick={() => trackEvent("assistant_offers_cta", {
+                            assistant_locale: locale,
+                            assistant_project_type: summary.project_type,
+                          })}
+                          className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 px-4 py-3 text-sm font-semibold text-white transition hover:border-white/25"
+                        >
+                          {copy.ctaOffers}
+                          <FiArrowUpRight />
+                        </Link>
+                      </div>
+                    </div>
+                  ) : null}
+
                   <div className="mt-4 grid gap-2">
                     <input
                       type="text"
@@ -1127,7 +1184,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                 <span className={message.length > 450 ? "text-amber-400" : ""}>
                   {message.length > 400 ? `${500 - message.length}` : copy.helper}
                 </span>
-                <Link href={`/${locale === "fr" ? "" : locale}/contact`.replace("//", "/")} className="inline-flex items-center gap-1 text-white/62 hover:text-white">
+                <Link href={contactHref} className="inline-flex items-center gap-1 text-white/62 hover:text-white">
                   {copy.contact}
                   <FiArrowUpRight />
                 </Link>

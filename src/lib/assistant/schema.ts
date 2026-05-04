@@ -9,6 +9,7 @@ export const assistantIntentSchema = z.enum([
 ]);
 
 export const assistantProjectTypeSchema = z.enum([
+  "landing_portfolio",
   "showcase_website",
   "corporate_website",
   "ecommerce",
@@ -16,6 +17,7 @@ export const assistantProjectTypeSchema = z.enum([
   "mobile_app",
   "dashboard_portal",
   "glpi_assistant",
+  "automation_ai",
   "unknown",
 ]);
 
@@ -40,6 +42,8 @@ export const assistantCollectedSchema = z.object({
   users: z.string().optional(),
   countriesLanguages: z.string().optional(),
   technicalNeeds: z.string().optional(),
+  decisionStage: z.string().optional(),
+  supportPlan: z.string().optional(),
   problem: z.string().optional(),
   urgency: z.string().optional(),
   impact: z.string().optional(),

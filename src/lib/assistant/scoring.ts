@@ -85,13 +85,15 @@ export function buildAssistantRecord(input: {
     action: input.action,
     intent: input.summary.intent === "support_glpi" ? "support_glpi" : input.summary.intent === "project_quote" ? "project_quote" : "unknown",
     projectType:
+      input.summary.project_type === "landing_portfolio" ||
       input.summary.project_type === "showcase_website" ||
       input.summary.project_type === "corporate_website" ||
       input.summary.project_type === "ecommerce" ||
       input.summary.project_type === "web_app" ||
       input.summary.project_type === "mobile_app" ||
       input.summary.project_type === "dashboard_portal" ||
-      input.summary.project_type === "glpi_assistant"
+      input.summary.project_type === "glpi_assistant" ||
+      input.summary.project_type === "automation_ai"
         ? input.summary.project_type
         : "unknown",
     score: scored.score,

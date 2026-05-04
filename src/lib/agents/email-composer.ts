@@ -170,8 +170,8 @@ export async function composeProspectingEmail(
   const quoteUrl = `${trackingBaseUrl}/devis?utm_source=email&utm_campaign=prospection&utm_medium=email`;
 
   // Claude génère l'intro et la conclusion personnalisées
-  const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital — sites web, apps mobiles, SaaS).
-Offres KAH-Digital : landing page dès 300€, site web professionnel dès 800€, outil web métier dès 1500€, app mobile MVP dès 2500€, SaaS MVP dès 3000€.
+  const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital — sites web, apps mobiles, SaaS, automatisations IA).
+Offres KAH-Digital : landing / portfolio 300–600€, site vitrine 900–1500€, site corporate 2200–4500€, automatisation IA 1500–8000€, application web / dashboard 4000–12000€, application mobile MVP 6000–20000€.
 Écris en "${audit.language}" :
 1. Une accroche d'intro (2-3 phrases) pour ${audit.businessName}, un commerce dans le secteur ${audit.sector}.
    Score actuel de leur site : ${audit.score}/100. Sois direct et bienveillant, mentionne le site (${lead.website}).

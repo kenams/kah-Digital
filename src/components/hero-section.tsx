@@ -18,14 +18,14 @@ export function HeroSection() {
       secondary: "Voir les offres",
       badges: [
         "Landing page dès 300 €",
-        "Site web dès 800 €",
+        "Site vitrine dès 900 €",
         "Réponse sous 24h",
         "Livraison rapide",
         "Accompagnement clair",
       ],
-      proof1: { label: "Site livré en 2 à 4 semaines", desc: "Cadrage clair · zéro surprise" },
+      proof1: { label: "Site vitrine en 2 à 3 semaines", desc: "Cadrage clair · zéro surprise" },
       proof2: { label: "Réponse garantie sous 24h", desc: "Devis gratuit · sans engagement" },
-      proof3: { label: "MVP possible dès 2 500 €", desc: "App mobile · SaaS · outil métier" },
+      proof3: { label: "Automatisation IA dès 1 500 €", desc: "Assistant · workflow · outil métier" },
     },
     en: {
       badge: "Digital studio · Lausanne, Switzerland · Remote-friendly",
@@ -37,14 +37,14 @@ export function HeroSection() {
       secondary: "See our offers",
       badges: [
         "Landing page from €300",
-        "Website from €800",
+        "Showcase site from €900",
         "Reply within 24h",
         "Fast delivery",
         "Clear support",
       ],
-      proof1: { label: "Site delivered in 2–4 weeks", desc: "Clear scope · no surprises" },
+      proof1: { label: "Showcase site in 2–3 weeks", desc: "Clear scope · no surprises" },
       proof2: { label: "Reply guaranteed within 24h", desc: "Free quote · no commitment" },
-      proof3: { label: "MVP from €2,500", desc: "Mobile app · SaaS · business tool" },
+      proof3: { label: "AI automation from €1,500", desc: "Assistant · workflow · business tool" },
     },
     de: {
       badge: "Digitalstudio · Lausanne, Schweiz · Remote verfügbar",
@@ -56,14 +56,14 @@ export function HeroSection() {
       secondary: "Leistungen ansehen",
       badges: [
         "Landing Page ab 300 €",
-        "Website ab 800 €",
+        "Website ab 900 €",
         "Antwort in 24h",
         "Schnelle Lieferung",
         "Klare Begleitung",
       ],
-      proof1: { label: "Website in 2–4 Wochen geliefert", desc: "Klares Scope · keine Überraschungen" },
+      proof1: { label: "Website in 2–3 Wochen", desc: "Klares Scope · keine Überraschungen" },
       proof2: { label: "Antwort in 24h garantiert", desc: "Kostenloses Angebot · keine Verpflichtung" },
-      proof3: { label: "MVP ab 2.500 €", desc: "Mobile App · SaaS · Business-Tool" },
+      proof3: { label: "KI-Automatisierung ab 1.500 €", desc: "Assistent · Workflow · Business-Tool" },
     },
   }[locale];
 

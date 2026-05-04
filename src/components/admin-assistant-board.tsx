@@ -34,13 +34,15 @@ const intentLabels: Record<AssistantRecord["intent"], string> = {
 };
 
 const projectTypeLabels: Record<AssistantRecord["projectType"], string> = {
+  landing_portfolio: "Landing / portfolio",
   showcase_website: "Site vitrine",
   corporate_website: "Site corporate",
   ecommerce: "E-commerce",
-  web_app: "Application web",
+  web_app: "Application web / SaaS",
   mobile_app: "Application mobile",
   dashboard_portal: "Dashboard / portail",
   glpi_assistant: "Workflow GLPI",
+  automation_ai: "Automatisation IA",
   unknown: "Projet à préciser",
 };
 

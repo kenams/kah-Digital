@@ -46,7 +46,7 @@ const localeCopy = {
     humanEscalation: "La base est suffisante. Je prépare un résumé net et je passe la suite à un expert KAH-Digital.",
     startProject: "On cadre ça proprement.",
     startSupport: "On va qualifier ça vite et bien.",
-    nextStepQuote: "Devis structuré avec reprise humaine conseillée.",
+    nextStepQuote: "Demander un devis clair sous 24h.",
     nextStepSupport: "Résumé support prêt pour ticket ou reprise humaine.",
     nextStepInfo: "Orientation vers le bon service KAH-Digital.",
     projectFlowLabel: "Qualification projet",
@@ -73,20 +73,22 @@ const localeCopy = {
       method: assistantKnowledge.faq[3].answerFr,
     },
     questions: {
-      type: "Quel type de projet veux-tu lancer ? Site, application, outil métier, GLPI, autre ?",
-      objective: "Quel est l'objectif principal du projet ?",
-      features: "Quelles fonctionnalités ou quels blocs sont indispensables ?",
+      type: "Quel type de projet veux-tu lancer : landing, site vitrine, site corporate, e-commerce, SaaS / app web, automatisation IA, mobile ou GLPI ?",
+      objective: "Quel résultat tu veux obtenir avec ce projet : visibilité, demandes clients, vente, automatisation ou support ?",
+      features: "Quelles fonctionnalités ou quels blocs sont indispensables pour acheter la bonne offre ?",
       timeline: "Quel délai vises-tu ?",
       budget: "As-tu déjà une fourchette de budget ?",
-      users: "Combien d'utilisateurs ou quel volume prévois-tu ?",
+      users: "Qui va utiliser ou acheter via ce projet : toi, ton équipe, des clients, ou un volume plus large ?",
       countriesLanguages: "Quels pays ou quelles langues sont concernés ?",
       technicalNeeds: "Y a-t-il des besoins spécifiques : admin, paiement, API, design premium, autre ?",
+      decisionStage: "Si la fourchette est cohérente, tu préfères recevoir un devis sous 24h, parler à quelqu'un, ou comparer les offres d'abord ?",
       problem: "Quel est le problème principal à résoudre ?",
       urgency: "Quel est le niveau d'urgence ?",
       impact: "Quel est l'impact sur l'activité ou les utilisateurs ?",
       affectedUsers: "Combien d'utilisateurs sont touchés ?",
       sinceWhen: "Depuis quand le problème existe-t-il ?",
       actionsTried: "Quelles actions ont déjà été tentées ?",
+      supportPlan: "Après correction, tu cherches juste une intervention ponctuelle ou aussi une maintenance mensuelle ?",
     },
   },
   en: {
@@ -94,7 +96,7 @@ const localeCopy = {
     humanEscalation: "The base is strong enough. I am preparing a clean summary and handing it to a KAH-Digital expert.",
     startProject: "Let's frame this properly.",
     startSupport: "Let's qualify this quickly and cleanly.",
-    nextStepQuote: "Structured quote with human follow-up recommended.",
+    nextStepQuote: "Request a clear quote within 24h.",
     nextStepSupport: "Support summary ready for ticket creation or human follow-up.",
     nextStepInfo: "Route toward the right KAH-Digital service.",
     projectFlowLabel: "Project qualification",
@@ -120,20 +122,22 @@ const localeCopy = {
       method: assistantKnowledge.faq[3].answerEn,
     },
     questions: {
-      type: "What type of project do you want to launch? Website, app, business tool, GLPI, other?",
-      objective: "What is the main goal of the project?",
-      features: "Which features or blocks are essential?",
+      type: "What type of project do you want to launch: landing, showcase site, corporate site, e-commerce, SaaS / web app, AI automation, mobile, or GLPI?",
+      objective: "What result do you want from this project: visibility, leads, sales, automation, or support?",
+      features: "Which features or blocks are essential to choose the right offer?",
       timeline: "What timeline are you targeting?",
       budget: "Do you already have a budget range in mind?",
-      users: "How many users or what scale do you expect?",
+      users: "Who will use or buy through this project: you, your team, clients, or a larger volume?",
       countriesLanguages: "Which countries or languages are involved?",
       technicalNeeds: "Any specific needs: admin area, payment, API, premium design, other?",
+      decisionStage: "If the range makes sense, would you rather receive a quote within 24h, talk to someone, or compare offers first?",
       problem: "What is the main issue to solve?",
       urgency: "How urgent is it?",
       impact: "What is the impact on the business or users?",
       affectedUsers: "How many users are affected?",
       sinceWhen: "How long has the issue existed?",
       actionsTried: "What has already been tried?",
+      supportPlan: "After the fix, do you only need a one-off intervention, or also monthly maintenance?",
     },
   },
   de: {
@@ -141,7 +145,7 @@ const localeCopy = {
     humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und übergebe an einen KAH-Digital Experten.",
     startProject: "Wir grenzen das jetzt sauber ein.",
     startSupport: "Wir qualifizieren das jetzt schnell und sauber.",
-    nextStepQuote: "Strukturiertes Angebot mit menschlicher Rückmeldung empfohlen.",
+    nextStepQuote: "Klares Angebot innerhalb von 24h anfragen.",
     nextStepSupport: "Support-Zusammenfassung bereit für Ticket oder menschliche Übernahme.",
     nextStepInfo: "Weiterleitung zum passenden KAH-Digital Service.",
     projectFlowLabel: "Projektqualifizierung",
@@ -167,33 +171,37 @@ const localeCopy = {
       method: assistantKnowledge.faq[3].answerDe,
     },
     questions: {
-      type: "Welche Art Projekt willst du starten? Website, App, Business-Tool, GLPI, anderes?",
-      objective: "Was ist das Hauptziel des Projekts?",
-      features: "Welche Funktionen oder Bloecke sind unverzichtbar?",
+      type: "Welche Art Projekt willst du starten: Landing, Unternehmenswebsite, Corporate-Site, E-Commerce, SaaS / Web-App, KI-Automatisierung, Mobile oder GLPI?",
+      objective: "Welches Ergebnis soll das Projekt bringen: Sichtbarkeit, Anfragen, Verkauf, Automatisierung oder Support?",
+      features: "Welche Funktionen oder Bloecke sind unverzichtbar, um das richtige Angebot zu waehlen?",
       timeline: "Welchen Zeitrahmen peilst du an?",
       budget: "Gibt es bereits eine Budgetspanne?",
-      users: "Wie viele Nutzer oder welches Volumen erwartest du?",
+      users: "Wer nutzt oder kauft ueber das Projekt: du, dein Team, Kunden oder ein groesseres Volumen?",
       countriesLanguages: "Welche Laender oder Sprachen sind betroffen?",
       technicalNeeds: "Gibt es besondere Anforderungen: Admin, Zahlung, API, Premium-Design, anderes?",
+      decisionStage: "Wenn die Spanne passt: willst du ein Angebot innerhalb von 24h, mit jemandem sprechen oder zuerst Angebote vergleichen?",
       problem: "Was ist das Hauptproblem, das geloest werden muss?",
       urgency: "Wie dringend ist das Thema?",
       impact: "Wie stark ist der Einfluss auf Betrieb oder Nutzer?",
       affectedUsers: "Wie viele Nutzer sind betroffen?",
       sinceWhen: "Seit wann besteht das Problem?",
       actionsTried: "Welche Schritte wurden bereits versucht?",
+      supportPlan: "Nach der Korrektur: brauchst du nur einen einmaligen Eingriff oder auch monatliche Wartung?",
     },
   },
 } as const;
 
-const projectQuestionOrder = ["type", "objective", "features", "timeline", "budget", "users", "countriesLanguages", "technicalNeeds"] as const;
-const supportQuestionOrder = ["problem", "urgency", "impact", "affectedUsers", "sinceWhen", "actionsTried"] as const;
+const projectQuestionOrder = ["type", "objective", "features", "timeline", "budget", "decisionStage"] as const;
+const supportQuestionOrder = ["problem", "urgency", "impact", "affectedUsers", "sinceWhen", "actionsTried", "supportPlan"] as const;
 
 const faqIntentKeywords = ["faq", "comment", "combien", "how", "what", "do you", "wie", "was", "wann"];
 const projectIntentKeywords = [
   "site",
   "website",
   "landing",
+  "portfolio",
   "ecommerce",
+  "e-commerce",
   "application",
   "app",
   "mvp",
@@ -202,6 +210,17 @@ const projectIntentKeywords = [
   "portal",
   "plateforme",
   "platform",
+  "saas",
+  "logiciel",
+  "software",
+  "produit web",
+  "web product",
+  "ia",
+  "ai",
+  "automatisation",
+  "automation",
+  "chatbot",
+  "llm",
   "refonte",
   "outil",
   "tool",
@@ -210,6 +229,9 @@ const projectIntentKeywords = [
 const supportIntentKeywords = ["support", "ticket", "incident", "bug", "probleme", "problem", "erreur", "glpi", "panne", "issue"];
 const projectBuildPhrases = [
   "je veux",
+  "je souhaite",
+  "je voudrais",
+  "j'aimerais",
   "j'ai besoin",
   "besoin de",
   "lancer",
@@ -256,11 +278,14 @@ function keywordMatch(input: string, words: string[]) {
 function inferProjectType(input: string): AssistantProjectType {
   const text = input.toLowerCase();
   if (text.includes("glpi")) return "glpi_assistant";
+  if (/(landing|portfolio|page unique|one page|one-page)/.test(text)) return "landing_portfolio";
+  if (/(automatisation|automation|chatbot|llm|assistant ia|ai assistant|intelligence artificielle|\bia\b|\bai\b)/.test(text)) return "automation_ai";
   if (text.includes("mobile")) return "mobile_app";
+  if (/(saas|logiciel|software|produit web|web product)/.test(text)) return "web_app";
   if (text.includes("dashboard") || text.includes("portail") || text.includes("portal") || text.includes("plateforme") || text.includes("platform")) return "dashboard_portal";
   if (text.includes("app") || text.includes("application")) return "web_app";
-  if (text.includes("ecommerce") || text.includes("boutique") || text.includes("shop")) return "ecommerce";
-  if (text.includes("corporate")) return "corporate_website";
+  if (text.includes("ecommerce") || text.includes("e-commerce") || text.includes("boutique") || text.includes("shop")) return "ecommerce";
+  if (text.includes("corporate") || text.includes("premium")) return "corporate_website";
   if (text.includes("site") || text.includes("landing") || text.includes("vitrine")) return "showcase_website";
   return "unknown";
 }
@@ -313,6 +338,8 @@ function inferFeatures(collected: AssistantSession["collected"]) {
 
 function projectTypeToPricingType(projectType: AssistantProjectType): PricingProjectType {
   switch (projectType) {
+    case "landing_portfolio":
+      return "landing_portfolio";
     case "showcase_website":
       return "showcase_website";
     case "corporate_website":
@@ -327,6 +354,8 @@ function projectTypeToPricingType(projectType: AssistantProjectType): PricingPro
       return "dashboard_portal";
     case "glpi_assistant":
       return "glpi_assistant";
+    case "automation_ai":
+      return "automation_ai";
     default:
       return "unknown";
   }
@@ -341,7 +370,7 @@ function getRequiredFields(intent: AssistantIntent) {
 function getProjectRoles(projectType: AssistantProjectType, features: PricingFeature[]) {
   const roles = new Set<string>(["Project lead"]);
 
-  if (projectType === "showcase_website" || projectType === "corporate_website" || projectType === "ecommerce") {
+  if (projectType === "landing_portfolio" || projectType === "showcase_website" || projectType === "corporate_website" || projectType === "ecommerce") {
     roles.add("Designer");
     roles.add("Front-end developer");
   }
@@ -350,6 +379,11 @@ function getProjectRoles(projectType: AssistantProjectType, features: PricingFea
     roles.add("Product designer");
     roles.add("Front-end developer");
     roles.add("Back-end developer");
+  }
+
+  if (projectType === "automation_ai") {
+    roles.add("Automation specialist");
+    roles.add("AI integration");
   }
 
   if (projectType === "mobile_app") {
@@ -368,9 +402,31 @@ function getProjectRoles(projectType: AssistantProjectType, features: PricingFea
 }
 
 function computeComplexity(totalDays: number) {
-  if (totalDays <= 8) return "low";
-  if (totalDays <= 20) return "medium";
+  if (totalDays <= 10) return "low";
+  if (totalDays <= 30) return "medium";
   return "high";
+}
+
+function resolveEffectiveProjectType(projectType: AssistantProjectType, features: PricingFeature[]): AssistantProjectType {
+  if (
+    features.includes("payment") &&
+    (projectType === "landing_portfolio" || projectType === "showcase_website" || projectType === "corporate_website")
+  ) {
+    return "ecommerce";
+  }
+
+  if (
+    (features.includes("auth") || features.includes("dashboard") || features.includes("api")) &&
+    projectType === "landing_portfolio"
+  ) {
+    return "web_app";
+  }
+
+  if (features.includes("dashboard") && projectType === "showcase_website") {
+    return "dashboard_portal";
+  }
+
+  return projectType;
 }
 
 function getProgress(intent: AssistantIntent, collected: AssistantSession["collected"], locale: Locale): AssistantProgress {
@@ -412,36 +468,37 @@ function buildStructuredSummary(session: AssistantSession): AssistantStructuredO
       missing_info: missingInfo,
       next_step: missingInfo.length
         ? "Clarifier le contexte avant ticket."
-        : "Resume support pret pour humain ou ticket GLPI.",
+        : "Resume support pret pour ticket, reprise humaine ou maintenance.",
     });
   }
 
-  const pricingType = projectTypeToPricingType(session.projectType);
   const detectedFeatures = inferFeatures(session.collected);
+  const effectiveProjectType = resolveEffectiveProjectType(session.projectType, detectedFeatures);
+  const pricingType = projectTypeToPricingType(effectiveProjectType);
   const baseDays = Number(pricingRules.baseDays[pricingType]);
-  const weightedDays = detectedFeatures.reduce<number>(
+  const featureDays = detectedFeatures.reduce<number>(
     (sum, feature) => sum + Number(pricingRules.featureWeights[feature]),
-    baseDays
+    0
   );
-  const budgetMin = Math.max(pricingRules.minimums[pricingType], weightedDays * pricingRules.dailyRate.min);
-  const budgetMax = Math.max(
-    budgetMin + pricingRules.dailyRate.max,
-    Math.round((weightedDays + Math.max(2, Math.ceil(weightedDays * 0.35))) * pricingRules.dailyRate.max)
-  );
+  const weightedDays = baseDays + featureDays;
+  const publicRange = pricingRules.catalogRanges[pricingType];
+  const scopeMultiplier = featureDays > 4 ? 1 + Math.min(0.35, (featureDays - 4) / 30) : 1;
+  const budgetMin = publicRange.min;
+  const budgetMax = Math.round((publicRange.max * scopeMultiplier) / 100) * 100;
   const complexity = computeComplexity(weightedDays);
 
   return assistantStructuredOutputSchema.parse({
     intent: "project_quote",
-    project_type: session.projectType,
+    project_type: effectiveProjectType,
     clarity_score: clarityScore,
     complexity,
     budget_range: { min: budgetMin, max: budgetMax },
     estimated_days: weightedDays,
-    roles: getProjectRoles(session.projectType, detectedFeatures),
+    roles: getProjectRoles(effectiveProjectType, detectedFeatures),
     missing_info: missingInfo,
     next_step: missingInfo.length
       ? "Completer les informations manquantes avant devis."
-      : "Preparer un devis structure avec reprise humaine.",
+      : "Demander un devis clair sous 24h avec le bon perimetre.",
   });
 }
 
@@ -452,11 +509,13 @@ Return only valid JSON.
 Classify the request, structure the output, and keep uncertainty explicit.
 Never promise fixed prices or fixed delivery.
 Allowed intents: project_quote, support_glpi, faq, general_info, unknown.
-Allowed project types: showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, unknown.
+Allowed project types: landing_portfolio, showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, automation_ai, unknown.
+Classify SaaS, software, produit web, and web product as web_app.
 Allowed complexity: low, medium, high.
 Act like a pre-project lead, not a generic chatbot.
 Be direct, concise, structured, and commercially useful.
 Flag vague requests, unrealistic expectations, and missing essentials clearly.
+Use the current public offers and maintenance plans as the pricing source. Push toward quote submission only when scope, timing, and budget are coherent enough.
 `;
 
   const output = await generateOpenAIJson<AssistantStructuredOutput>({
@@ -466,6 +525,9 @@ Flag vague requests, unrealistic expectations, and missing essentials clearly.
       positioning: assistantKnowledge.positioning,
       process: assistantKnowledge.process,
       services: assistantKnowledge.services,
+      offers: assistantKnowledge.offers,
+      maintenancePlans: assistantKnowledge.maintenancePlans,
+      referenceProjects: assistantKnowledge.referenceProjects,
       session,
     }),
   });
@@ -478,7 +540,7 @@ Flag vague requests, unrealistic expectations, and missing essentials clearly.
 
 function detectEscalation(summary: AssistantStructuredOutput, session: AssistantSession) {
   if (summary.complexity === "high") return true;
-  if (summary.budget_range.max >= 12000) return true;
+  if (summary.budget_range.max >= 8000) return true;
   if (summary.clarity_score < 55) return true;
   if (summary.missing_info.length >= 3) return true;
   if (session.intent === "support_glpi" && /(critique|critical|bloque|blocked)/i.test(JSON.stringify(session.collected))) return true;
@@ -512,38 +574,59 @@ function detectUrgentRequest(message: string) {
 function formatProjectTypeLabel(projectType: AssistantProjectType, locale: Locale) {
   const labels = {
     fr: {
+      landing_portfolio: "landing / portfolio",
       showcase_website: "site vitrine",
       corporate_website: "site corporate",
       ecommerce: "e-commerce",
-      web_app: "application web",
+      web_app: "application web / SaaS",
       mobile_app: "application mobile",
       dashboard_portal: "dashboard ou portail",
       glpi_assistant: "solution connectee a GLPI",
+      automation_ai: "automatisation IA",
       unknown: "projet digital",
     },
     en: {
+      landing_portfolio: "landing / portfolio",
       showcase_website: "showcase website",
       corporate_website: "corporate website",
       ecommerce: "e-commerce",
-      web_app: "web application",
+      web_app: "web application / SaaS",
       mobile_app: "mobile application",
       dashboard_portal: "dashboard or portal",
       glpi_assistant: "GLPI-connected solution",
+      automation_ai: "AI automation",
       unknown: "digital project",
     },
     de: {
+      landing_portfolio: "Landing / Portfolio",
       showcase_website: "Unternehmenswebsite",
       corporate_website: "Corporate-Website",
       ecommerce: "E-Commerce",
-      web_app: "Web-Anwendung",
+      web_app: "Web-Anwendung / SaaS",
       mobile_app: "Mobile-App",
       dashboard_portal: "Dashboard oder Portal",
       glpi_assistant: "GLPI-nahe Lösung",
+      automation_ai: "KI-Automatisierung",
       unknown: "Digitalprojekt",
     },
   } as const;
 
   return labels[locale][projectType];
+}
+
+function getOfferHint(projectType: AssistantProjectType, locale: Locale) {
+  const offer = assistantKnowledge.offers.find((item) => item.projectType === projectType);
+  if (!offer) return null;
+
+  if (locale === "en") {
+    return `${offer.nameEn} usually fits here: ${offer.price}, ${offer.timelineEn}.`;
+  }
+
+  if (locale === "de") {
+    return `${offer.nameDe} passt hier meist: ${offer.price}, ${offer.timelineDe}.`;
+  }
+
+  return `L'offre la plus proche est ${offer.nameFr} : ${offer.price}, ${offer.timelineFr}.`;
 }
 
 function estimateCalendarRange(days: number, locale: Locale) {
@@ -570,6 +653,14 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
   const objective = session.collected.objective?.toLowerCase() ?? "";
 
   if (nextMissing === "features") {
+    if (projectType === "landing_portfolio") {
+      return locale === "en"
+        ? "For a landing, what must be on the page: offer, proof, contact form, booking link, portfolio, or payment?"
+        : locale === "de"
+          ? "Für eine Landing: was muss auf die Seite - Angebot, Nachweis, Kontaktformular, Buchungslink, Portfolio oder Zahlung?"
+          : "Pour une landing, qu'est-ce qui doit être sur la page : offre, preuves, formulaire, lien de réservation, portfolio ou paiement ?";
+    }
+
     if (projectType === "showcase_website" || projectType === "corporate_website") {
       return locale === "en"
         ? "To answer seriously, I need the minimum useful scope: roughly how many pages, and do you need lead capture, SEO, multilingual content, or a premium visual direction?"
@@ -584,6 +675,14 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
         : locale === "de"
           ? "Lass uns den scope eingrenzen: brauchst du Benutzerkonten, Zahlung, Dashboard, API-Integrationen oder Geolokalisierung?"
           : "On cadre le scope utile : il faut des comptes utilisateurs, du paiement, un dashboard, des intégrations API ou de la géolocalisation ?";
+    }
+
+    if (projectType === "automation_ai") {
+      return locale === "en"
+        ? "For the AI automation, what should be automated first: customer replies, document processing, internal workflow, CRM/email sync, or a site assistant?"
+        : locale === "de"
+          ? "Für die KI-Automatisierung: was soll zuerst automatisiert werden - Kundenantworten, Dokumente, interner Workflow, CRM/E-Mail-Sync oder Site-Assistent?"
+          : "Pour l'automatisation IA, qu'est-ce qu'on automatise en premier : réponses clients, documents, workflow interne, synchro CRM/email ou assistant sur le site ?";
     }
 
     if (projectType === "glpi_assistant") {
@@ -614,7 +713,11 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
         : `${copy.recadrageBudget} Quelle fourchette tu envisages, meme approximative ?`;
   }
 
-  if (nextMissing === "objective" && (projectType === "showcase_website" || projectType === "corporate_website")) {
+  if (nextMissing === "decisionStage") {
+    return copy.questions.decisionStage;
+  }
+
+  if (nextMissing === "objective" && (projectType === "landing_portfolio" || projectType === "showcase_website" || projectType === "corporate_website")) {
     return locale === "en"
       ? "Key point first: is the site meant to present the business, generate leads, or sell?"
       : locale === "de"
@@ -688,6 +791,10 @@ function buildSupportQuestion(session: AssistantSession, locale: Locale, nextMis
       : locale === "de"
         ? "Was ist der genaue Impact: kein Zugriff, Fehlermeldungen, Datenproblem, Zahlung blockiert oder etwas anderes?"
         : "Quel est l'impact exact : plus d'acces, erreurs, probleme de donnees, paiement bloque ou autre chose ?";
+  }
+
+  if (nextMissing === "supportPlan") {
+    return copy.questions.supportPlan;
   }
 
   return copy.questions[nextMissing as keyof typeof copy.questions];
@@ -773,31 +880,35 @@ function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, hum
   const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary, locale) : null;
   const type = formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale);
   const timeline = estimateCalendarRange(summary.estimated_days, locale);
+  const offerHint = getOfferHint(summary.project_type as AssistantProjectType, locale);
 
   if (locale === "en") {
     const budgetStr = budget ? ` Budget range: ${budget} €.` : "";
     const timelineStr = ` Timeline: ${timeline}.`;
+    const offerStr = offerHint ? ` ${offerHint}` : "";
     const next = humanNeeded
-      ? " Given the scope, a human review makes sense here before going further."
-      : " The summary below is ready — you can send it or request a follow-up.";
-    return `Here's what I have: ${type}, ${summary.complexity} complexity.${budgetStr}${timelineStr}${next}`;
+      ? " Given the scope, request a human quote review before committing."
+      : " The next clean step is to request the 24h quote with this summary.";
+    return `Here's what I have: ${type}, ${summary.complexity} complexity.${budgetStr}${timelineStr}${offerStr}${next}`;
   }
 
   if (locale === "de") {
     const budgetStr = budget ? ` Budgetspanne: ${budget} €.` : "";
     const timelineStr = ` Zeitrahmen: ${timeline}.`;
+    const offerStr = offerHint ? ` ${offerHint}` : "";
     const next = humanNeeded
-      ? " Bei diesem Umfang macht eine menschliche Rückmeldung Sinn, bevor wir weitermachen."
-      : " Die Zusammenfassung ist bereit — du kannst sie versenden oder eine Rückmeldung anfordern.";
-    return `Das habe ich: ${type}, Komplexität ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
+      ? " Bei diesem Umfang sollte ein Mensch das Angebot prüfen, bevor du dich festlegst."
+      : " Der nächste saubere Schritt ist die 24h-Angebotsanfrage mit dieser Zusammenfassung.";
+    return `Das habe ich: ${type}, Komplexität ${summary.complexity}.${budgetStr}${timelineStr}${offerStr}${next}`;
   }
 
   const budgetStr = budget ? ` Fourchette budget : ${budget} €.` : "";
   const timelineStr = ` Délai probable : ${timeline}.`;
+  const offerStr = offerHint ? ` ${offerHint}` : "";
   const next = humanNeeded
-    ? " Vu le scope, une reprise humaine a du sens avant d'aller plus loin."
-    : " Le résumé ci-dessous est prêt — tu peux l'envoyer ou demander une suite avec quelqu'un.";
-  return `Voici ce que j'ai : ${type}, complexité ${summary.complexity}.${budgetStr}${timelineStr}${next}`;
+    ? " Vu le scope, il faut une validation humaine du devis avant de s'engager."
+    : " La suite propre, c'est de demander le devis sous 24h avec ce résumé.";
+  return `Voici ce que j'ai : ${type}, complexité ${summary.complexity}.${budgetStr}${timelineStr}${offerStr}${next}`;
 }
 
 function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
@@ -808,11 +919,61 @@ function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
 function isGenericProjectTypeAnswer(message: string) {
   const text = message.toLowerCase().trim();
   const compact = text.replace(/[.!?]/g, "").trim();
+  const genericType =
+    "(landing|landing page|portfolio|site|site web|site vitrine|website|showcase site|application|application web|web app|app mobile|mobile app|dashboard|tableau de bord|e-?commerce|boutique en ligne|saas|logiciel|software|produit web|web product|automatisation ia|automation ai|chatbot|assistant ia)";
+
   return (
-    /^(site|site web|site vitrine|website|showcase site|application|application web|web app|app mobile|mobile app|dashboard|tableau de bord|e-?commerce|boutique en ligne)$/.test(compact) ||
-    /^(creer|créer|build|faire|lancer)\s+(un\s+|une\s+)?(site|site web|site vitrine|website|application|application web|web app|app mobile|mobile app|dashboard|tableau de bord|e-?commerce|boutique en ligne)$/.test(compact) ||
+    new RegExp(`^${genericType}$`).test(compact) ||
+    new RegExp(`^(je\\s+)?(veux|souhaite|voudrais|aimerais|cherche|need|want|build|creer|créer|faire|lancer)\\s+(un\\s+|une\\s+|a\\s+|an\\s+)?${genericType}$`).test(compact) ||
     /^(demander un devis|get a quote|angebot anfordern)$/.test(compact)
   );
+}
+
+const assistantIntentValues = new Set<AssistantIntent>([
+  "project_quote",
+  "support_glpi",
+  "faq",
+  "general_info",
+  "unknown",
+]);
+
+const assistantProjectTypeValues = new Set<AssistantProjectType>([
+  "landing_portfolio",
+  "showcase_website",
+  "corporate_website",
+  "ecommerce",
+  "web_app",
+  "mobile_app",
+  "dashboard_portal",
+  "glpi_assistant",
+  "automation_ai",
+  "unknown",
+]);
+
+function normalizeOpenAiClassification(
+  value: { intent: AssistantIntent; project_type: AssistantProjectType } | null
+) {
+  if (!value) return null;
+  const intent = assistantIntentValues.has(value.intent) ? value.intent : "unknown";
+  const projectType = assistantProjectTypeValues.has(value.project_type) ? value.project_type : "unknown";
+  return { intent, project_type: projectType };
+}
+
+function resolveClassification(input: string, openAiClassification: { intent: AssistantIntent; project_type: AssistantProjectType } | null) {
+  const normalizedOpenAi = normalizeOpenAiClassification(openAiClassification);
+  const heuristicIntent = inferIntent(input);
+  const heuristicProjectType = inferProjectType(input);
+
+  return {
+    intent:
+      normalizedOpenAi?.intent && normalizedOpenAi.intent !== "unknown"
+        ? normalizedOpenAi.intent
+        : heuristicIntent,
+    project_type:
+      normalizedOpenAi?.project_type && normalizedOpenAi.project_type !== "unknown"
+        ? normalizedOpenAi.project_type
+        : heuristicProjectType,
+  };
 }
 
 function setCollectedValue(session: AssistantSession, key: string, value: string) {
@@ -838,14 +999,15 @@ async function classifyWithOpenAI(input: string, locale: Locale) {
 You classify KAH-Digital inbound messages.
 Return only JSON with keys: intent, project_type.
 Allowed intents: project_quote, support_glpi, faq, general_info, unknown.
-Allowed project types: showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, unknown.
+Allowed project types: landing_portfolio, showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, automation_ai, unknown.
+Classify SaaS, software, produit web, and web product as web_app.
 If the user wants to build, frame, connect, redesign, or implement a solution around GLPI, classify as project_quote.
 Use support_glpi only for active incidents, bugs, blocked users, ticket handling, or operational support issues.
 `;
 
   return generateOpenAIJson<{ intent: AssistantIntent; project_type: AssistantProjectType }>({
     instructions,
-    input: JSON.stringify({ locale, text: input, services: assistantKnowledge.services }),
+    input: JSON.stringify({ locale, text: input, services: assistantKnowledge.services, offers: assistantKnowledge.offers }),
   });
 }
 
@@ -880,8 +1042,9 @@ export async function runAssistantTurn(params: {
 
   if (session.intent === "unknown" || session.status === "idle") {
     const openAiClassification = await classifyWithOpenAI(message, params.locale).catch(() => null);
-    const inferredIntent = openAiClassification?.intent ?? inferIntent(message);
-    const inferredProjectType = openAiClassification?.project_type ?? inferProjectType(message);
+    const classification = resolveClassification(message, openAiClassification);
+    const inferredIntent = classification.intent;
+    const inferredProjectType = classification.project_type;
 
     session.intent = inferredIntent;
     session.projectType = inferredProjectType;
@@ -953,10 +1116,12 @@ export async function runAssistantTurn(params: {
   const refinedSummary = (await refineSummaryWithOpenAI(session, params.locale).catch(() => null)) ?? fallbackSummary;
   const summary = assistantStructuredOutputSchema.parse({
     ...refinedSummary,
-    budget_range:
-      refinedSummary.budget_range.max >= refinedSummary.budget_range.min
-        ? refinedSummary.budget_range
-        : fallbackSummary.budget_range,
+    project_type: fallbackSummary.project_type,
+    complexity: fallbackSummary.complexity,
+    budget_range: fallbackSummary.budget_range,
+    estimated_days: fallbackSummary.estimated_days,
+    roles: fallbackSummary.roles,
+    missing_info: fallbackSummary.missing_info,
   });
   const humanNeeded = detectEscalation(summary, session);
 
@@ -981,10 +1146,7 @@ export async function runAssistantTurn(params: {
 
 export async function classifyRequest(input: string, locale: Locale) {
   const openAiClassification = await classifyWithOpenAI(input, locale).catch(() => null);
-  return {
-    intent: openAiClassification?.intent ?? inferIntent(input),
-    project_type: openAiClassification?.project_type ?? inferProjectType(input),
-  };
+  return resolveClassification(input, openAiClassification);
 }
 
 export async function extractRequirements(input: string, locale: Locale) {
@@ -1084,6 +1246,8 @@ function formatAssistantTimeline(summary: AssistantStructuredOutput) {
 
 function mapAssistantProjectType(projectType: AssistantStructuredOutput["project_type"]) {
   switch (projectType) {
+    case "landing_portfolio":
+      return "Landing / portfolio";
     case "showcase_website":
       return "Site vitrine";
     case "corporate_website":
@@ -1091,13 +1255,15 @@ function mapAssistantProjectType(projectType: AssistantStructuredOutput["project
     case "ecommerce":
       return "E-commerce";
     case "web_app":
-      return "Application web";
+      return "Application web / SaaS";
     case "mobile_app":
       return "Application mobile";
     case "dashboard_portal":
       return "Dashboard / portail";
     case "glpi_assistant":
       return "Workflow GLPI";
+    case "automation_ai":
+      return "Automatisation IA";
     default:
       return "Projet assistant";
   }

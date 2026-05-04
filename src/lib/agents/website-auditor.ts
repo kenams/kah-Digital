@@ -218,10 +218,12 @@ estimatedPrice and priceRange in EUR at these lower rates.`,
   // Default: European EUR market (FR, BE, DE, IT, ES, etc.)
   return guides[country] ?? `Pricing in EUR — KAH-Digital official rates:
 - Landing page (1 page): from 300€ (5-10 days)
-- Professional website (5-8 pages): from 800€, typically 800–1600€ (2-4 weeks)
-- Business web tool (internal tool, dashboard, admin): from 1500€, typically 1500–3000€ (3-6 weeks)
-- Mobile app or SaaS MVP: from 2500€ for mobile app, from 3000€ for SaaS, typically 3000–8000€
-estimatedPrice is the EUR mid-range integer for the most relevant offer. priceRange in EUR (e.g. "entre 800€ et 1600€").`;
+- Showcase website (5-8 pages): from 900€, typically 900–1500€ (2-3 weeks)
+- Corporate website: typically 2200–4500€ (3-5 weeks)
+- AI automation: typically 1500–8000€ (2-6 weeks)
+- Business web app or dashboard: typically 4000–12000€ (4-10 weeks)
+- Mobile app MVP: typically 6000–20000€
+estimatedPrice is the EUR mid-range integer for the most relevant offer. priceRange in EUR (e.g. "entre 900€ et 1500€").`;
 }
 
 // Prix fallback rule-based adapté au pays

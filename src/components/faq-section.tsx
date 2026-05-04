@@ -20,11 +20,11 @@ export function FAQSection() {
         },
         {
           question: "Combien coûte un site web professionnel ?",
-          answer: "Un site vitrine démarre à partir de 800 €. Un site plus complet (plusieurs pages, blog, galerie, espace membre) est généralement entre 1 500 et 3 500 €. Chaque projet est différent — je vous propose un devis précis après avoir compris votre besoin.",
+          answer: "Un site vitrine démarre à partir de 900 €. Un site corporate plus complet se situe généralement entre 2 200 et 4 500 €. Chaque projet est différent — je vous propose un devis précis après avoir compris votre besoin.",
         },
         {
           question: "Combien coûte une application mobile ?",
-          answer: "Un MVP (version minimale fonctionnelle) démarre à partir de 2 500 €. Le prix final dépend du nombre d'écrans, des fonctionnalités, des intégrations (paiement, géolocalisation, notifications) et de la plateforme (iOS, Android ou les deux). Je vous aide à définir le périmètre minimal pour lancer rapidement.",
+          answer: "Une application mobile MVP démarre généralement à partir de 6 000 €. Le prix final dépend du nombre d'écrans, des fonctionnalités, des intégrations (paiement, géolocalisation, notifications) et de la plateforme (iOS, Android ou les deux). Je vous aide à définir le périmètre minimal pour lancer proprement.",
         },
         {
           question: "Puis-je commencer avec un petit budget ?",
@@ -67,11 +67,11 @@ export function FAQSection() {
         },
         {
           question: "How much does a professional website cost?",
-          answer: "A showcase site starts from €800. A more complete site (multiple pages, blog, gallery, member area) is typically between €1,500 and €3,500. Every project is different — I'll give you a precise quote after understanding your needs.",
+          answer: "A showcase site starts from €900. A more complete corporate site is typically between €2,200 and €4,500. Every project is different — I'll give you a precise quote after understanding your needs.",
         },
         {
           question: "How much does a mobile app cost?",
-          answer: "An MVP (minimum viable product) starts from €2,500. The final price depends on the number of screens, features, integrations (payment, geolocation, notifications) and platform (iOS, Android or both). I help you define the minimal scope to launch quickly.",
+          answer: "A mobile app MVP usually starts from €6,000. The final price depends on the number of screens, features, integrations (payment, geolocation, notifications) and platform (iOS, Android or both). I help you define the minimal scope to launch cleanly.",
         },
         {
           question: "Can I start with a small budget?",
@@ -114,11 +114,11 @@ export function FAQSection() {
         },
         {
           question: "Was kostet eine professionelle Website?",
-          answer: "Eine Unternehmenswebsite beginnt ab 800 €. Eine umfangreichere Website (mehrere Seiten, Blog, Galerie, Mitgliederbereich) kostet in der Regel zwischen 1.500 und 3.500 €. Jedes Projekt ist anders — ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
+          answer: "Eine Unternehmenswebsite beginnt ab 900 €. Eine umfangreichere Corporate-Website liegt in der Regel zwischen 2.200 und 4.500 €. Jedes Projekt ist anders — ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
         },
         {
           question: "Was kostet eine mobile App?",
-          answer: "Ein MVP (Minimum Viable Product) beginnt ab 2.500 €. Der Endpreis hängt von Anzahl der Screens, Funktionen, Integrationen (Zahlung, Geolokalisierung, Push-Nachrichten) und Plattform (iOS, Android oder beides) ab. Ich helfe Ihnen, den minimalen Umfang für einen schnellen Launch zu definieren.",
+          answer: "Eine mobile MVP-App beginnt in der Regel ab 6.000 €. Der Endpreis hängt von Anzahl der Screens, Funktionen, Integrationen (Zahlung, Geolokalisierung, Push-Nachrichten) und Plattform (iOS, Android oder beides) ab. Ich helfe Ihnen, den minimalen Umfang für einen sauberen Launch zu definieren.",
         },
         {
           question: "Kann ich mit kleinem Budget starten?",

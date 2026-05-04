@@ -69,7 +69,7 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans markdown) respectant exactem
     { "title": "solution", "detail": "ce que KAH-Digital ferait concrètement", "estimatedValue": "valeur apportée" }
   ],
   "estimatedPrice": 1100,
-  "priceRange": "entre 800€ et 1600€",
+  "priceRange": "entre 900€ et 1500€",
   "emailSubject": "objet de l'email accrocheur et personnalisé",
   "emailBody": "corps de l'email complet en HTML (utilise <p>, <ul><li>, <strong>, pas de style inline). Commence par bonjour, présente 3 problèmes concrets du site, propose une solution KAH-Digital avec un prix ancré, ajoute un CTA clair."
 }
@@ -77,7 +77,7 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans markdown) respectant exactem
 Règles :
 - 3 à 5 problèmes, du plus critique au moins critique
 - 2 à 3 recommandations concrètes
-- Prix KAH-Digital à utiliser : landing page dès 300€ (5-10j), site web professionnel dès 800€ (2-4 semaines), outil web métier dès 1500€ (3-6 semaines), application mobile MVP dès 2500€, SaaS sur mesure MVP dès 3000€
+- Prix KAH-Digital à utiliser : landing / portfolio 300–600€ (5-10j), site vitrine 900–1500€ (2-3 semaines), site corporate 2200–4500€ (3-5 semaines), automatisation IA 1500–8000€ (2-6 semaines), application web / dashboard 4000–12000€ (4-10 semaines), application mobile MVP 6000–20000€
 - estimatedPrice = valeur centrale réaliste selon le besoin détecté, priceRange = fourchette cohérente avec ces tarifs
 - Email chaleureux mais direct, pro mais pas froid, 200-350 mots
 - Mentionne des détails spécifiques du site pour montrer qu'on l'a vraiment analysé`;
