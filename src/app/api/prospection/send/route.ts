@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { getResendFromAddress } from "@/lib/mail";
+import { sanitizeEmailSubject } from "@/lib/prospection-email";
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -34,7 +35,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email destinataire manquant" }, { status: 400 });
     }
 
-    const subject = overrideSubject ?? prospect.emailSubject ?? "Votre site web — analyse gratuite par KAH-Digital";
+    const subject = sanitizeEmailSubject(
+      overrideSubject ?? prospect.emailSubject ?? "Votre site web - analyse gratuite par KAH-Digital"
+    );
     const htmlBody = overrideBody ?? prospect.emailBody;
 
     if (!htmlBody) {

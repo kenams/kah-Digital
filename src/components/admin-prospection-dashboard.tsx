@@ -51,9 +51,23 @@ type NoEmailProspect = { id: string; businessName: string | null; website: strin
 
 type LiveStats = {
   stats: { total: number; sent: number; opened: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
-  batches: Array<{ id: string; createdAt: string; slot: string; found: number; sent: number; errors: string[] }>;
+  batches: Array<{ id: string; createdAt?: string; runAt?: string; slot: string; found: number; sent: number; errors: string[] }>;
   hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null; draftReply: string | null }>;
   noEmailProspects: NoEmailProspect[];
+  diagnostics?: {
+    checkedAt: string;
+    resendConfigured: boolean;
+    resendFromConfigured: boolean;
+    cronSecretConfigured: boolean;
+    aiProvider: "anthropic" | "openai" | "none";
+    latestBatchAt: string | null;
+    latestProspectAt: string | null;
+    staleBatchHours: number | null;
+    backlogReady: number;
+    sentLast24h: number;
+    recentErrors: string[];
+    warnings: string[];
+  };
 };
 
 export function ProspectionDashboard() {
@@ -275,7 +289,7 @@ export function ProspectionDashboard() {
                 </span>
               )}
             </h1>
-            <p className="text-sm text-gray-400">Autonome — jusqu'à 90 emails/jour · 6 batches · relances J+2/J+5 · multilingue · mondial</p>
+            <p className="text-sm text-gray-400">Autonome — jusqu'à 36 emails/jour · batches suivis dès le démarrage · relances J+2/J+5 · multilingue</p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -358,6 +372,58 @@ export function ProspectionDashboard() {
                 </div>
                 <p className="mt-2 text-xs text-yellow-400/80">⚠️ Une vraie réponse email arrive dans <strong>kahdigital42@gmail.com</strong> directement — ce tableau ne la capture pas.</p>
               </div>
+
+              {liveStats.diagnostics && (
+                <div className={`rounded-2xl border p-5 ${
+                  liveStats.diagnostics.warnings.length > 0
+                    ? "border-yellow-500/30 bg-yellow-500/5"
+                    : "border-emerald-500/25 bg-emerald-500/5"
+                }`}>
+                  <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-300 flex items-center gap-2">
+                      <FiActivity size={14} className={liveStats.diagnostics.warnings.length > 0 ? "text-yellow-400" : "text-emerald-400"} />
+                      État système prospection
+                    </h2>
+                    <span className="text-xs text-gray-500">
+                      Check {new Date(liveStats.diagnostics.checkedAt).toLocaleString("fr-FR")}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                    {[
+                      { label: "Resend", value: liveStats.diagnostics.resendConfigured ? "OK" : "Manquant", tone: liveStats.diagnostics.resendConfigured ? "text-emerald-400" : "text-red-400" },
+                      { label: "Expéditeur", value: liveStats.diagnostics.resendFromConfigured ? "Domaine OK" : "Fallback", tone: liveStats.diagnostics.resendFromConfigured ? "text-emerald-400" : "text-yellow-400" },
+                      { label: "Cron secret", value: liveStats.diagnostics.cronSecretConfigured ? "OK" : "Manquant", tone: liveStats.diagnostics.cronSecretConfigured ? "text-emerald-400" : "text-red-400" },
+                      { label: "IA", value: liveStats.diagnostics.aiProvider, tone: liveStats.diagnostics.aiProvider === "none" ? "text-yellow-400" : "text-emerald-400" },
+                      { label: "Dernier batch", value: liveStats.diagnostics.latestBatchAt ? new Date(liveStats.diagnostics.latestBatchAt).toLocaleString("fr-FR") : "Aucun", tone: liveStats.diagnostics.staleBatchHours && liveStats.diagnostics.staleBatchHours > 24 ? "text-yellow-400" : "text-gray-200" },
+                      { label: "Dernier prospect", value: liveStats.diagnostics.latestProspectAt ? new Date(liveStats.diagnostics.latestProspectAt).toLocaleString("fr-FR") : "Aucun", tone: "text-gray-200" },
+                      { label: "Backlog prêt", value: liveStats.diagnostics.backlogReady.toString(), tone: liveStats.diagnostics.backlogReady > 0 ? "text-blue-400" : "text-gray-400" },
+                      { label: "Envoyés 24h", value: liveStats.diagnostics.sentLast24h.toString(), tone: liveStats.diagnostics.sentLast24h > 0 ? "text-emerald-400" : "text-yellow-400" },
+                    ].map((item) => (
+                      <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900/70 p-3">
+                        <div className="text-xs text-gray-500">{item.label}</div>
+                        <div className={`mt-1 truncate text-sm font-bold ${item.tone}`}>{item.value}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {liveStats.diagnostics.warnings.length > 0 && (
+                    <div className="mt-4 space-y-1 text-xs text-yellow-300">
+                      {liveStats.diagnostics.warnings.map((warning) => (
+                        <p key={warning}>• {warning}</p>
+                      ))}
+                    </div>
+                  )}
+                  {liveStats.diagnostics.recentErrors.length > 0 && (
+                    <details className="mt-3 text-xs text-gray-400">
+                      <summary className="cursor-pointer text-gray-300">Erreurs récentes</summary>
+                      <div className="mt-2 space-y-1">
+                        {liveStats.diagnostics.recentErrors.slice(0, 4).map((error, index) => (
+                          <p key={`${index}-${error}`} className="truncate rounded bg-black/20 px-2 py-1">{error}</p>
+                        ))}
+                      </div>
+                    </details>
+                  )}
+                </div>
+              )}
 
               {/* ─ Funnel Analytics ─ */}
               <div className="rounded-2xl border border-white/8 bg-gray-900/60 p-5">
@@ -489,7 +555,7 @@ export function ProspectionDashboard() {
                   <FiZap size={18} className="text-emerald-400" /> Lancer la prospection
                 </h3>
                 <p className="text-sm text-gray-400 mb-5">
-                  Chaque batch découvre des leads, audite leur site avec l&apos;IA et envoie jusqu&apos;à <strong className="text-white">25 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
+                  Chaque batch envoie d&apos;abord le backlog prêt, puis découvre et audite de nouveaux leads avec l&apos;IA, jusqu&apos;à <strong className="text-white">12 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
@@ -497,7 +563,7 @@ export function ProspectionDashboard() {
                     disabled={fireRunning}
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
                   >
-                    <FiZap size={16} /> {fireRunning ? "Batch lancé en background ✓" : "🚀 Lancer un batch (25 emails)"}
+                    <FiZap size={16} /> {fireRunning ? "Batch lancé en background ✓" : "🚀 Lancer un batch (12 emails)"}
                   </button>
                   <button
                     onClick={() => void handleManualFollowup()}
@@ -589,7 +655,7 @@ export function ProspectionDashboard() {
                   <div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm font-semibold capitalize">{b.slot === "morning" ? "🌅 Matin" : b.slot === "noon" ? "☀️ Midi" : "🌙 Soir"}</span>
-                      <span className="text-xs text-gray-400">{new Date(b.createdAt).toLocaleString("fr-FR")}</span>
+                      <span className="text-xs text-gray-400">{new Date(b.createdAt ?? b.runAt ?? "").toLocaleString("fr-FR")}</span>
                     </div>
                     {b.errors.length > 0 && (
                       <p className="mt-1 text-xs text-red-400">{b.errors.length} erreur(s)</p>
