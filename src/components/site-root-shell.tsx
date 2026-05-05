@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteProviders } from "@/components/site-providers";
 import ExitIntentPopup from "@/components/exit-intent-popup";
+import { UrgencyBanner } from "@/components/urgency-banner";
+import { SocialProofToast } from "@/components/social-proof-toast";
 import { GA_MEASUREMENT_ID, structuredData } from "@/lib/shared-metadata";
 
 const dmSans = DM_Sans({
@@ -60,6 +62,8 @@ gtag('config', '${GA_MEASUREMENT_ID}');`}
           </>
         ) : null}
         <SiteProviders>
+          <UrgencyBanner />
+          <SocialProofToast />
           <ScrollToTop />
           <FlashInteractions />
           <SiteHeader />

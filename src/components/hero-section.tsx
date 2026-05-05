@@ -3,67 +3,67 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiCheckCircle, FiClock, FiStar } from "react-icons/fi";
+import { FiArrowRight, FiCheckCircle, FiClock, FiZap } from "react-icons/fi";
 
 export function HeroSection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      badge: "Studio digital · Lausanne, Suisse · Disponible à distance",
-      title1: "Création de sites web,",
-      title2: "applications mobiles",
-      title3: "et SaaS sur mesure",
-      body: "J'aide les entrepreneurs, indépendants et PME à transformer leurs idées en solutions digitales concrètes : landing page, site vitrine, application mobile ou plateforme SaaS. Clair, rapide, accessible.",
-      primary: "Demander un devis gratuit",
-      secondary: "Voir les offres",
+      badge: "30+ projets livrés · Lausanne · Disponible à distance · 2 créneaux libres en mai",
+      title1: "Sites web, apps mobiles",
+      title2: "et SaaS qui convertissent",
+      title3: "— livrés en 1 à 6 semaines",
+      body: "Prix fixe. Scope clair. Zéro dépassement. Chaque projet est cadré, chiffré et livré dans les délais — ou remboursé. Site vitrine dès 900 €, app mobile dès 6 000 €.",
+      primary: "Obtenir mon devis en 2 min",
+      secondary: "Voir les offres et tarifs",
       badges: [
         "Landing page dès 300 €",
         "Site vitrine dès 900 €",
         "Réponse sous 24h",
-        "Livraison rapide",
-        "Accompagnement clair",
+        "Prix fixe garanti",
+        "30 jours de corrections inclus",
       ],
-      proof1: { label: "Site vitrine en 2 à 3 semaines", desc: "Cadrage clair · zéro surprise" },
-      proof2: { label: "Réponse garantie sous 24h", desc: "Devis gratuit · sans engagement" },
-      proof3: { label: "Automatisation IA dès 1 500 €", desc: "Assistant · workflow · outil métier" },
+      proof1: { label: "Site vitrine livré en 2 à 3 semaines", desc: "Prix fixe · zéro surprise · 30j corrections" },
+      proof2: { label: "Devis personnalisé sous 24h", desc: "Gratuit · sans engagement · réponse garantie" },
+      proof3: { label: "2 créneaux disponibles en mai", desc: "Prochain démarrage : semaine du 12 mai" },
     },
     en: {
-      badge: "Digital studio · Lausanne, Switzerland · Remote-friendly",
-      title1: "Website creation,",
-      title2: "mobile applications",
-      title3: "and custom SaaS",
-      body: "I help entrepreneurs, freelancers and SMEs turn their ideas into concrete digital solutions: landing pages, showcase sites, mobile apps or SaaS platforms. Clear, fast, affordable.",
-      primary: "Request a free quote",
-      secondary: "See our offers",
+      badge: "30+ projects delivered · Lausanne · Remote-friendly · 2 slots left in May",
+      title1: "Websites, mobile apps",
+      title2: "and SaaS that convert",
+      title3: "— delivered in 1 to 6 weeks",
+      body: "Fixed price. Clear scope. No overruns. Every project is scoped, quoted and delivered on time — or refunded. Showcase site from €900, mobile app from €6,000.",
+      primary: "Get my quote in 2 min",
+      secondary: "See offers & pricing",
       badges: [
         "Landing page from €300",
         "Showcase site from €900",
         "Reply within 24h",
-        "Fast delivery",
-        "Clear support",
+        "Fixed price guaranteed",
+        "30-day corrections included",
       ],
-      proof1: { label: "Showcase site in 2–3 weeks", desc: "Clear scope · no surprises" },
-      proof2: { label: "Reply guaranteed within 24h", desc: "Free quote · no commitment" },
-      proof3: { label: "AI automation from €1,500", desc: "Assistant · workflow · business tool" },
+      proof1: { label: "Showcase site in 2–3 weeks", desc: "Fixed price · no surprises · 30d corrections" },
+      proof2: { label: "Custom quote in under 24h", desc: "Free · no commitment · guaranteed reply" },
+      proof3: { label: "2 slots available in May", desc: "Next start: week of May 12" },
     },
     de: {
-      badge: "Digitalstudio · Lausanne, Schweiz · Remote verfügbar",
-      title1: "Erstellung von Websites,",
-      title2: "mobilen Apps",
-      title3: "und massgeschneiderten SaaS",
-      body: "Ich helfe Unternehmern, Selbstständigen und KMU dabei, ihre Ideen in konkrete digitale Lösungen umzusetzen: Landing Pages, Websites, mobile Apps oder SaaS-Plattformen. Klar, schnell, erschwinglich.",
-      primary: "Kostenloses Angebot anfordern",
-      secondary: "Leistungen ansehen",
+      badge: "30+ gelieferte Projekte · Lausanne · Remote · 2 freie Plätze im Mai",
+      title1: "Websites, mobile Apps",
+      title2: "und SaaS die konvertieren",
+      title3: "— in 1 bis 6 Wochen geliefert",
+      body: "Festpreis. Klares Scope. Keine Überschreitungen. Jedes Projekt wird termingerecht geliefert — oder erstattet. Website ab 900 €, Mobile App ab 6.000 €.",
+      primary: "Angebot in 2 Min anfordern",
+      secondary: "Angebote & Preise ansehen",
       badges: [
         "Landing Page ab 300 €",
         "Website ab 900 €",
         "Antwort in 24h",
-        "Schnelle Lieferung",
-        "Klare Begleitung",
+        "Festpreis garantiert",
+        "30 Tage Korrekturen inklusive",
       ],
-      proof1: { label: "Website in 2–3 Wochen", desc: "Klares Scope · keine Überraschungen" },
-      proof2: { label: "Antwort in 24h garantiert", desc: "Kostenloses Angebot · keine Verpflichtung" },
-      proof3: { label: "KI-Automatisierung ab 1.500 €", desc: "Assistent · Workflow · Business-Tool" },
+      proof1: { label: "Website in 2–3 Wochen geliefert", desc: "Festpreis · keine Überraschungen" },
+      proof2: { label: "Individuelles Angebot in 24h", desc: "Kostenlos · keine Verpflichtung" },
+      proof3: { label: "2 freie Plätze im Mai", desc: "Nächster Start: Woche vom 12. Mai" },
     },
   }[locale];
 
@@ -160,12 +160,12 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm"
+              className="flex items-center gap-2.5 rounded-2xl border border-orange-500/25 bg-orange-500/8 px-4 py-2.5 backdrop-blur-sm"
             >
-              <FiStar size={15} className="shrink-0 text-violet-400" />
+              <FiZap size={15} className="shrink-0 text-orange-400" />
               <div className="text-left">
-                <p className="text-xs font-semibold text-white">{copy.proof3.label}</p>
-                <p className="text-xs text-gray-500">{copy.proof3.desc}</p>
+                <p className="text-xs font-semibold text-orange-200">{copy.proof3.label}</p>
+                <p className="text-xs text-orange-400/70">{copy.proof3.desc}</p>
               </div>
             </motion.div>
           </div>
