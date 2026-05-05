@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { FiArrowRight, FiExternalLink, FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import type { PortfolioProject } from "@/data/portfolio";
 import { ProjectSceneRender } from "@/components/project-scene";
 import { useLocale } from "@/lib/locale";
@@ -14,45 +15,22 @@ type ProjectCardProps = {
   index: number;
 };
 
+const NUMBERS = ["01", "02", "03", "04", "05", "06"];
+
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const { locale, prefix } = useLocale();
   const href = prefix ? `${prefix}/projets/${project.slug}` : `/projets/${project.slug}`;
   const gallery = project.mockups?.gallery ?? (project.mockups?.primary ? [project.mockups.primary] : []);
   const hasGallery = gallery.length > 0;
   const primaryMockup = project.mockups?.primary ?? gallery[0];
+  const num = NUMBERS[index] ?? `0${index + 1}`;
+
   const copy = {
-    fr: {
-      website: "Voir le site",
-      preview: "Visuel",
-      close: "Fermer",
-      caseStudy: "Etude de cas",
-      prev: "Precedent",
-      next: "Suivant",
-      scope: "Perimetre",
-      stack: "Stack",
-    },
-    en: {
-      website: "Visit site",
-      preview: "Preview",
-      close: "Close",
-      caseStudy: "Case study",
-      prev: "Prev",
-      next: "Next",
-      scope: "Scope",
-      stack: "Stack",
-    },
-    de: {
-      website: "Website ansehen",
-      preview: "Vorschau",
-      close: "Schliessen",
-      caseStudy: "Case Study",
-      prev: "Zurueck",
-      next: "Weiter",
-      scope: "Umfang",
-      stack: "Stack",
-    },
+    fr: { website: "Voir le site", close: "Fermer", caseStudy: "Étude de cas", prev: "Préc.", next: "Suiv.", stack: "Stack" },
+    en: { website: "Visit site", close: "Close", caseStudy: "Case study", prev: "Prev", next: "Next", stack: "Stack" },
+    de: { website: "Website", close: "Schliessen", caseStudy: "Case Study", prev: "Zurück", next: "Weiter", stack: "Stack" },
   }[locale];
-  const previewLabel = copy.preview;
+
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeImage = gallery[activeIndex] ?? gallery[0];
@@ -61,23 +39,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   useEffect(() => {
     if (!lightboxOpen) return;
-    const total = gallery.length;
     const originalOverflow = document.body.style.overflow;
-
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setLightboxOpen(false);
-        return;
-      }
-      if (total <= 1) return;
-      if (event.key === "ArrowRight") {
-        setActiveIndex((prev) => (prev + 1) % total);
-      }
-      if (event.key === "ArrowLeft") {
-        setActiveIndex((prev) => (prev - 1 + total) % total);
-      }
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowRight" && gallery.length > 1) setActiveIndex((p) => (p + 1) % gallery.length);
+      if (e.key === "ArrowLeft" && gallery.length > 1) setActiveIndex((p) => (p - 1 + gallery.length) % gallery.length);
     };
-
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleKey);
     return () => {
@@ -90,51 +57,32 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     lightboxOpen && activeImage && canUseDOM
       ? createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
             role="dialog"
             aria-modal="true"
-            aria-label={`${project.name} ${previewLabel}`}
             id={lightboxId}
             onClick={() => setLightboxOpen(false)}
           >
-          <div
-            className="relative w-full max-w-5xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setLightboxOpen(false)}
-              className="absolute right-3 top-3 rounded-full bg-black/70 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 transition hover:bg-black/90 hover:text-white"
-            >
-              {copy.close}
-            </button>
-            <div className="relative mx-auto w-full max-h-[80vh] aspect-[4/3]">
-              <Image
-                src={activeImage}
-                alt={`${project.name} mockup`}
-                fill
-                sizes="(min-width: 1024px) 70vw, 90vw"
-                className="object-cover"
-              />
-            </div>
+            <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={() => setLightboxOpen(false)}
+                className="absolute -top-12 right-0 flex items-center gap-2 text-xs uppercase tracking-widest text-white/60 transition hover:text-white"
+              >
+                <FiX size={16} /> {copy.close}
+              </button>
+              <div className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <Image src={activeImage} alt={`${project.name} preview`} fill sizes="90vw" className="object-cover" />
+              </div>
               {gallery.length > 1 && (
-                <div className="mt-4 flex items-center justify-between text-white/80">
-                  <button
-                    type="button"
-                    onClick={() => setActiveIndex((prev) => (prev - 1 + gallery.length) % gallery.length)}
-                    className="rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] transition hover:border-white hover:text-white"
-                  >
-                    {copy.prev}
+                <div className="mt-4 flex items-center justify-between">
+                  <button onClick={() => setActiveIndex((p) => (p - 1 + gallery.length) % gallery.length)}
+                    className="flex items-center gap-1 rounded-full border border-white/20 px-4 py-2 text-xs text-white/70 transition hover:text-white">
+                    <FiChevronLeft size={14} /> {copy.prev}
                   </button>
-                  <p className="text-xs uppercase tracking-[0.3em]">
-                    {activeIndex + 1} / {gallery.length}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setActiveIndex((prev) => (prev + 1) % gallery.length)}
-                    className="rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] transition hover:border-white hover:text-white"
-                  >
-                    {copy.next}
+                  <p className="text-xs text-white/40">{activeIndex + 1} / {gallery.length}</p>
+                  <button onClick={() => setActiveIndex((p) => (p + 1) % gallery.length)}
+                    className="flex items-center gap-1 rounded-full border border-white/20 px-4 py-2 text-xs text-white/70 transition hover:text-white">
+                    {copy.next} <FiChevronRight size={14} />
                   </button>
                 </div>
               )}
@@ -147,112 +95,145 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <>
       <motion.div
-        className="group relative overflow-hidden rounded-[30px] border border-white/10 p-5 text-white shadow-[0_28px_80px_rgba(2,6,23,0.32)] transition duration-500"
+        className="group relative overflow-hidden rounded-[28px] border border-white/8 transition-all duration-500 hover:border-white/20 hover:shadow-2xl"
         style={{
-          background: `linear-gradient(155deg, ${project.palette.primary} 0%, ${project.palette.secondary} 52%, #08111f 100%)`,
+          background: `linear-gradient(145deg, ${project.palette.primary} 0%, ${project.palette.secondary} 55%, #060d1a 100%)`,
         }}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: index * 0.05 }}
+        transition={{ duration: 0.45, delay: index * 0.08 }}
+        whileHover={{ y: -4 }}
       >
+        {/* Glow */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-35 transition duration-500 group-hover:opacity-55"
-          style={{
-            background: `radial-gradient(circle at 20% 20%, ${project.palette.accent}, transparent 55%)`,
-          }}
+          className="pointer-events-none absolute inset-0 opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+          style={{ background: `radial-gradient(circle at 20% 20%, ${project.palette.accent}, transparent 55%)` }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(251,191,36,0.12),transparent_22%)] opacity-80" />
-        <div className="relative flex h-full flex-col gap-5">
-          <div className="overflow-hidden rounded-[26px] border border-white/10 bg-black/25 backdrop-blur-sm">
+
+        {/* Number badge */}
+        <div className="absolute right-5 top-5 z-10 text-5xl font-black leading-none text-white/5 select-none transition-all duration-500 group-hover:text-white/10">
+          {num}
+        </div>
+
+        <div className="relative flex h-full flex-col gap-0">
+
+          {/* Visual */}
+          <div className="overflow-hidden rounded-t-[26px] border-b border-white/8">
             {primaryMockup ? (
-              <div className="relative aspect-[16/10]">
-                <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-4 py-3 text-[0.62rem] uppercase tracking-[0.34em] text-white/65">
-                  <span>{project.type}</span>
-                  <span>{project.timeline}</span>
+              <>
+                {/* Browser chrome */}
+                <div className="flex items-center gap-1.5 border-b border-white/8 bg-black/60 px-4 py-2.5 backdrop-blur-sm">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]/80" />
+                  <div className="ml-2.5 flex-1 overflow-hidden rounded border border-white/8 bg-white/5 px-2.5 py-0.5 text-center">
+                    <span className="truncate text-[0.55rem] font-mono text-white/35">
+                      {project.website?.replace(/^https?:\/\//, "") ?? `${project.slug}.vercel.app`}
+                    </span>
+                  </div>
                 </div>
-                <Image
-                  src={primaryMockup}
-                  alt={`${project.name} preview`}
-                  fill
-                  sizes="(min-width: 1024px) 30vw, 90vw"
-                  className="object-cover object-top transition duration-700 group-hover:scale-[1.02]"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.18),transparent_28%,rgba(2,6,23,0.4))]" />
-              </div>
+                {/* Screenshot */}
+                <div className="relative aspect-[16/9]">
+                  <div className="absolute right-2.5 top-2.5 z-10">
+                    <span className="rounded-full border border-white/15 bg-black/50 px-2 py-0.5 text-[0.55rem] uppercase tracking-widest text-white/55 backdrop-blur-sm">
+                      {project.timeline}
+                    </span>
+                  </div>
+                  <Image
+                    src={primaryMockup}
+                    alt={`${project.name} preview`}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 90vw"
+                    className="object-cover object-top transition duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(2,6,23,0.65))]" />
+                </div>
+              </>
             ) : (
-              <div className="p-3">
-                <ProjectSceneRender project={project} />
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-[0.68rem] uppercase tracking-[0.38em] text-white/50">{project.type}</p>
-              <p className="mt-3 text-2xl font-semibold">{project.name}</p>
-            </div>
-            <span className="rounded-full border border-white/15 bg-white/8 px-3 py-2 text-xs uppercase tracking-[0.28em] text-white/65">
-              {project.result}
-            </span>
-          </div>
-
-          <p className="text-sm leading-7 text-white/72">{project.tagline}</p>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
-              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{copy.scope}</p>
-              <p className="mt-3 text-sm leading-6 text-white/75">{project.shortDescription}</p>
-            </div>
-            <div className="rounded-[22px] border border-white/10 bg-white/6 p-4 backdrop-blur-sm">
-              <p className="text-[0.62rem] uppercase tracking-[0.34em] text-white/45">{copy.stack}</p>
-              <div className="mt-3 flex flex-wrap gap-2 text-[0.68rem] uppercase tracking-[0.26em] text-white/62">
-                {project.stack.slice(0, 4).map((tech) => (
-                  <span key={tech} className="rounded-full border border-white/15 px-3 py-1.5">
-                    {tech}
+              <div className="relative bg-black/20">
+                <div className="absolute inset-x-0 top-3 z-10 flex items-center justify-between px-4">
+                  <span className="rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[0.6rem] uppercase tracking-widest text-white/60 backdrop-blur-sm">
+                    {project.type}
                   </span>
-                ))}
+                  <span className="rounded-full border border-white/15 bg-black/40 px-2.5 py-1 text-[0.6rem] uppercase tracking-widest text-white/60 backdrop-blur-sm">
+                    {project.timeline}
+                  </span>
+                </div>
+                <div className="p-4">
+                  <ProjectSceneRender project={project} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          <div className="mt-auto flex flex-wrap gap-3">
-            <Link
-              href={href}
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-white/90"
-            >
-              {copy.caseStudy}
-              <span aria-hidden="true" className="transition duration-300 group-hover:translate-x-1">
-                -&gt;
-              </span>
-            </Link>
-            {project.website && (
-              <a
-                href={project.website}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-white/80 transition hover:border-white hover:bg-white/8 hover:text-white"
+          {/* Content */}
+          <div className="flex flex-1 flex-col gap-5 p-6">
+            {/* Title */}
+            <div>
+              <h2 className="text-2xl font-black text-white transition-colors group-hover:text-white">
+                {project.name}
+              </h2>
+              <p className="mt-1 text-sm leading-relaxed text-white/55">{project.tagline}</p>
+            </div>
+
+            {/* Metrics */}
+            <div className="grid grid-cols-3 gap-2">
+              {project.metrics.slice(0, 3).map((m) => (
+                <div key={m.label} className="rounded-xl border border-white/8 bg-black/20 p-3 text-center backdrop-blur-sm">
+                  <p className="text-base font-black" style={{ color: project.palette.accent }}>{m.value}</p>
+                  <p className="mt-0.5 text-[0.58rem] uppercase tracking-wider text-white/35">{m.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Stack */}
+            <div className="flex flex-wrap gap-2">
+              {project.stack.slice(0, 4).map((tech) => (
+                <span key={tech} className="rounded-full border border-white/12 px-2.5 py-1 text-[0.65rem] text-white/50">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="mt-auto flex flex-wrap gap-2 pt-2">
+              <Link
+                href={href}
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-white/90"
               >
-                {copy.website}
-              </a>
-            )}
-            {hasGallery && (
-              <button
-                type="button"
-                onClick={() => {
-                  setActiveIndex(0);
-                  setLightboxOpen(true);
-                }}
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-white/80 transition hover:border-white hover:bg-white/8 hover:text-white"
-                aria-haspopup="dialog"
-                aria-controls={lightboxId}
-              >
-                {copy.preview}
-              </button>
-            )}
+                {copy.caseStudy} <FiArrowRight size={13} />
+              </Link>
+              {project.website && (
+                <a
+                  href={project.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:border-white/40 hover:text-white"
+                >
+                  {copy.website} <FiExternalLink size={12} />
+                </a>
+              )}
+              {hasGallery && (
+                <button
+                  type="button"
+                  onClick={() => { setActiveIndex(0); setLightboxOpen(true); }}
+                  aria-haspopup="dialog"
+                  aria-controls={lightboxId}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:border-white/40 hover:text-white"
+                >
+                  Preview
+                </button>
+              )}
+            </div>
           </div>
         </div>
-        <div className="pointer-events-none absolute -bottom-8 right-6 hidden h-28 w-36 rounded-full bg-amber-300/15 blur-3xl md:block" />
+
+        {/* Bottom glow blur */}
+        <div
+          className="pointer-events-none absolute -bottom-6 left-1/2 h-20 w-2/3 -translate-x-1/2 rounded-full blur-2xl opacity-20 transition-opacity duration-500 group-hover:opacity-40"
+          style={{ background: project.palette.accent }}
+        />
       </motion.div>
       {lightbox}
     </>
