@@ -553,16 +553,16 @@ export function ProspectionDashboard() {
                 </span>
               )}
             </h1>
-            <p className="text-sm text-gray-400">Autonome — jusqu'à 36 emails/jour · batches suivis dès le démarrage · relances J+2/J+5 · multilingue</p>
+            <p className="text-sm text-gray-400">Autonome — 30 emails/jour · 2 crons (11h & 16h) · relances J+1/J+3/J+5/J+10 · multilingue</p>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={() => void handleFireBatch()}
               disabled={liveBatchRunning}
-              aria-label="Lancer un batch de prospection de 12 emails"
+              aria-label="Lancer un batch de prospection de 15 emails"
               className="flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
             >
-              <FiPlay size={13} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
+              <FiPlay size={13} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (15 emails)"}
             </button>
             {renderLiveBatchCounter()}
             <button onClick={() => { void fetchProspects(); void fetchLiveStats(); }} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5">
@@ -608,8 +608,8 @@ export function ProspectionDashboard() {
               { label: "👁 Ouverts", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
               { label: "🖱 Cliqués", value: `${liveStats.stats.clicked} (${liveStats.stats.clickRate}%)`, color: "text-orange-400" },
               { label: "🔥 Chauds", value: `${liveStats.stats.replied} (${liveStats.stats.replyRate}%)`, color: "text-emerald-400" },
-              { label: "🔁 Relances J+3", value: liveStats.stats.j3Sent, color: "text-violet-400" },
-              { label: "🔁 Relances J+7", value: liveStats.stats.j7Sent, color: "text-pink-400" },
+              { label: "🔁 Relances J+1/J+3", value: liveStats.stats.j3Sent, color: "text-violet-400" },
+              { label: "🔁 Relances J+5", value: liveStats.stats.j7Sent, color: "text-pink-400" },
               { label: "⚠️ Sans email", value: liveStats.stats.noEmail, color: "text-yellow-400" },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-2">
@@ -822,7 +822,7 @@ export function ProspectionDashboard() {
                   <FiZap size={18} className="text-emerald-400" /> Lancer la prospection
                 </h3>
                 <p className="text-sm text-gray-400 mb-5">
-                  Chaque batch envoie d&apos;abord le backlog prêt, puis découvre et audite de nouveaux leads avec l&apos;IA, jusqu&apos;à <strong className="text-white">12 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
+                  Chaque batch envoie d&apos;abord le backlog prêt, puis découvre et audite de nouveaux leads avec l&apos;IA, jusqu&apos;à <strong className="text-white">15 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <div className="flex flex-1 flex-col gap-2 sm:flex-row">
@@ -831,7 +831,7 @@ export function ProspectionDashboard() {
                       disabled={liveBatchRunning}
                       className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
                     >
-                      <FiZap size={16} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (12 emails)"}
+                      <FiZap size={16} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (15 emails)"}
                     </button>
                     {renderLiveBatchCounter()}
                   </div>
@@ -840,7 +840,7 @@ export function ProspectionDashboard() {
                     disabled={followupRunning}
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-pink-500/30 bg-pink-500/10 py-4 text-base font-bold text-pink-300 hover:bg-pink-500/20 disabled:opacity-50 transition"
                   >
-                    <FiSend size={16} /> {followupRunning ? "Relances envoyées ✓" : "Relances J+2 / J+5 / J+10"}
+                    <FiSend size={16} /> {followupRunning ? "Relances envoyées ✓" : "Relances J+1 / J+3 / J+5 / J+10"}
                   </button>
                 </div>
                 {fireMessage && (

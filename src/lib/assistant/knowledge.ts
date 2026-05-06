@@ -269,5 +269,55 @@ export const assistantKnowledge = {
       answerDe:
         "KAH-Digital kann einen GLPI-verbundenen Support-Workflow erstellen: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Tracking und Wissensbasis. Bei einem aktiven Incident behandelt der Assistent es als Support, bei einer Umsetzung als Projekt.",
     },
+    {
+      key: "paiement",
+      keywords: ["acompte", "paiement", "comment payer", "facturation", "invoice", "deposit", "down payment", "rechnung", "zahlung", "virement", "stripe", "comment ça marche côté paiement", "conditions de paiement"],
+      answerFr:
+        "Le fonctionnement habituel est un acompte de 30 % à la commande, 40 % à la livraison du prototype et 30 % à la livraison finale. Les paiements se font par virement bancaire ou Stripe. Un devis signé formalise tout avant de démarrer — zéro surprise.",
+      answerEn:
+        "The usual terms are 30% at order, 40% at prototype delivery, and 30% at final delivery. Payments are by bank transfer or Stripe. A signed quote formalises everything before work begins — no surprises.",
+      answerDe:
+        "Die üblichen Konditionen sind 30 % bei Bestellung, 40 % bei Prototyp-Lieferung und 30 % bei Endlieferung. Zahlung per Banküberweisung oder Stripe. Ein unterzeichnetes Angebot formalisiert alles vor dem Start — keine Überraschungen.",
+    },
+    {
+      key: "technologie",
+      keywords: ["technologie", "stack", "wordpress", "cms", "react", "next", "nextjs", "framework", "quel outil", "what technology", "technologie utilisée", "no-code", "wix", "squarespace", "shopify", "php"],
+      answerFr:
+        "KAH-Digital travaille avec Next.js (React) pour le web, Expo React Native pour le mobile, FastAPI ou Node.js pour le backend, et Supabase / PostgreSQL pour la base de données. Pas de WordPress par défaut — les projets sont sur mesure, rapides et maintenables. Si tu as une contrainte technologique spécifique, précise-la.",
+      answerEn:
+        "KAH-Digital primarily works with Next.js (React) for web, Expo React Native for mobile, FastAPI or Node.js for backend, and Supabase / PostgreSQL for the database. No WordPress by default — projects are custom, fast and maintainable. Mention any specific tech constraint and we adapt.",
+      answerDe:
+        "KAH-Digital arbeitet hauptsächlich mit Next.js (React) für Web, Expo React Native für Mobile, FastAPI oder Node.js für Backend und Supabase / PostgreSQL für die Datenbank. Kein WordPress standardmäßig — Projekte sind maßgeschneidert, schnell und wartbar. Spezifische Technologieanforderungen einfach angeben.",
+    },
+    {
+      key: "secteur",
+      keywords: ["restaurant", "salon", "coiffeur", "coiffure", "coach", "coaching", "thérapeute", "therapeute", "artisan", "avocat", "médecin", "medecin", "immobilier", "boutique", "agence", "indépendant", "independant", "freelance", "pme", "startup", "association", "ong"],
+      answerFr:
+        "KAH-Digital travaille avec des indépendants, TPE et PME dans tous les secteurs : restauration, beauté, coaching, santé, immobilier, artisanat, e-commerce, B2B. Le secteur oriente le type de projet — site vitrine, prise de RDV, catalogue, automatisation — mais n'est pas un frein. Dis-moi ton activité et ton objectif principal et je t'oriente directement.",
+      answerEn:
+        "KAH-Digital works with freelancers, small businesses and SMEs across all sectors: food, beauty, coaching, health, real estate, crafts, e-commerce, B2B. The sector shapes the project type — showcase site, booking, catalogue, automation — but is not a constraint. Tell me your activity and main goal and I'll route you directly.",
+      answerDe:
+        "KAH-Digital arbeitet mit Selbstständigen, Kleinunternehmen und KMUs in allen Branchen: Gastronomie, Beauty, Coaching, Gesundheit, Immobilien, Handwerk, E-Commerce, B2B. Die Branche prägt den Projekttyp — Unternehmenswebsite, Buchung, Katalog, Automatisierung — ist aber kein Hindernis. Aktivität und Hauptziel nennen, ich leite direkt weiter.",
+    },
+    {
+      key: "garantie",
+      keywords: ["garantie", "guarantee", "warranty", "sav", "après livraison", "after delivery", "si ça marche pas", "bug après", "problème livraison", "qualité", "satisfaction", "révision", "correction"],
+      answerFr:
+        "Après livraison, une période de correction de 30 jours est incluse pour tout bug ou défaut constaté. Au-delà, les corrections sont couvertes par la formule de maintenance choisie. Le devis décrit exactement ce qui est livré — pas de flou sur le périmètre.",
+      answerEn:
+        "After delivery, a 30-day correction period is included for any bugs or defects found. Beyond that, fixes are covered by the chosen maintenance plan. The quote describes exactly what gets delivered — no scope ambiguity.",
+      answerDe:
+        "Nach der Lieferung ist ein 30-tägiger Korrekturzeitraum für Bugs oder Mängel inbegriffen. Danach werden Korrekturen durch den gewählten Wartungsplan abgedeckt. Das Angebot beschreibt exakt, was geliefert wird — kein unklarer Scope.",
+    },
+    {
+      key: "commencer",
+      keywords: ["comment commencer", "comment démarrer", "how to start", "wie anfangen", "par où commencer", "première étape", "first step", "je suis intéressé", "interested", "je veux démarrer", "lancer le projet", "contacter"],
+      answerFr:
+        "La suite la plus propre : remplis le formulaire de devis sur kah-digital.ch/devis — tu reçois une réponse concrète sous 24h. Si tu veux d'abord cadrer le projet ici, je peux t'y aider et préparer un résumé clair pour accélérer le devis.",
+      answerEn:
+        "The cleanest next step: fill in the quote form at kah-digital.ch/devis — you get a concrete response within 24h. If you want to frame the project here first, I can help and prepare a clear summary to speed up the quote.",
+      answerDe:
+        "Der sauberste nächste Schritt: Angebotsformular ausfüllen auf kah-digital.ch/devis — du erhältst innerhalb von 24h eine konkrete Antwort. Wenn du das Projekt hier zuerst eingrenzen willst, helfe ich dabei und bereite eine klare Zusammenfassung vor.",
+    },
   ],
 } as const;

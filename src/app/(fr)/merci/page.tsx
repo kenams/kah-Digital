@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { brandContact } from "@/config/brand";
-import { FiCheck, FiArrowRight, FiMail, FiPhone, FiCalendar } from "react-icons/fi";
+import { FiCheck, FiArrowRight, FiMail, FiPhone, FiCalendar, FiMessageCircle } from "react-icons/fi";
 import { TrackConversion } from "@/components/track-conversion";
 
 export const metadata: Metadata = {
@@ -23,19 +23,14 @@ export default function MerciPage() {
           Je reviens vers toi sous 24h avec un retour clair : budget, délai et recommandations. Pas de blabla.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
-          >
-            Retour à l'accueil
-            <FiArrowRight size={14} />
-          </Link>
           <a
-            href={`mailto:${brandContact.email}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+            href="https://wa.me/33759558414?text=Bonjour%20Kénan%2C%20je%20viens%20de%20vous%20envoyer%20une%20demande%20et%20je%20voudrais%20en%20discuter%20rapidement."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:brightness-110"
           >
-            <FiMail size={14} />
-            Écrire un email
+            <FiMessageCircle size={14} />
+            Discuter sur WhatsApp
           </a>
           <a
             href={`tel:${brandContact.phoneHref}`}
@@ -43,6 +38,13 @@ export default function MerciPage() {
           >
             <FiPhone size={14} />
             Appeler
+          </a>
+          <a
+            href={`mailto:${brandContact.email}`}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+          >
+            <FiMail size={14} />
+            Écrire un email
           </a>
           {brandContact.calendlyUrl && (
             <a
@@ -53,6 +55,13 @@ export default function MerciPage() {
               Planifier un appel
             </a>
           )}
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+          >
+            Retour à l'accueil
+            <FiArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ const popupCopy = {
     title: "Audit gratuit de votre site avant de partir",
     body: "En 2 minutes, on analyse votre site web et on vous envoie un rapport complet : vitesse, SEO, mobile, conversions.",
     placeholder_company: "Nom de votre entreprise",
+    placeholder_website: "URL de votre site (ex: votre-site.fr)",
     placeholder_email: "Votre email *",
     cta: "Recevoir mon audit gratuit",
     loading: "Analyse en cours…",
@@ -23,6 +24,7 @@ const popupCopy = {
     title: "Free site audit before you leave",
     body: "In 2 minutes, we analyse your website and send you a full report: speed, SEO, mobile, conversions.",
     placeholder_company: "Your company name",
+    placeholder_website: "Your website URL (e.g. your-site.com)",
     placeholder_email: "Your email *",
     cta: "Get my free audit",
     loading: "Analysing…",
@@ -36,6 +38,7 @@ const popupCopy = {
     title: "Kostenlose Website-Analyse bevor Sie gehen",
     body: "In 2 Minuten analysieren wir Ihre Website und senden einen vollständigen Bericht: Geschwindigkeit, SEO, Mobile, Conversions.",
     placeholder_company: "Ihr Unternehmensname",
+    placeholder_website: "Ihre Website-URL (z.B. ihre-seite.de)",
     placeholder_email: "Ihre E-Mail *",
     cta: "Meine kostenlose Analyse erhalten",
     loading: "Wird analysiert…",
@@ -53,6 +56,7 @@ export default function ExitIntentPopup() {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [businessName, setBusinessName] = useState("");
+  const [website, setWebsite] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const triggered = useRef(false);
@@ -104,10 +108,14 @@ export default function ExitIntentPopup() {
     if (!email) return;
     setLoading(true);
     try {
+      const rawWebsite = website.trim();
+      const normalizedWebsite = rawWebsite && !rawWebsite.startsWith("http")
+        ? `https://${rawWebsite}`
+        : rawWebsite;
       await fetch("/api/audit-gratuit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, businessName: businessName || "Non renseigné", website: "", phone: "" }),
+        body: JSON.stringify({ email, businessName: businessName || "Non renseigné", website: normalizedWebsite, phone: "" }),
       });
       setSubmitted(true);
       sessionStorage.setItem("exit_popup_dismissed", "1");
@@ -151,6 +159,13 @@ export default function ExitIntentPopup() {
                 placeholder={copy.placeholder_company}
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+              />
+              <input
+                type="text"
+                placeholder={copy.placeholder_website}
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
                 className="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
               />
               <input

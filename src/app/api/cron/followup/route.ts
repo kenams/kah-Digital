@@ -18,6 +18,8 @@ function getSupabase() {
 }
 
 const FOLLOWUP_COPY: Record<string, {
+  j1Subject: (name: string) => string;
+  j1Body: (name: string, website: string, siteUrl: string, id: string) => string;
   j3Subject: (name: string) => string;
   j3Body: (name: string, website: string, siteUrl: string, id: string) => string;
   j7Subject: (name: string) => string;
@@ -29,6 +31,13 @@ const FOLLOWUP_COPY: Record<string, {
   unsubscribe: string;
 }> = {
   fr: {
+    j1Subject: (n) => `Avez-vous eu le temps de voir ? — ${n}`,
+    j1Body: (n, w, s, id) => `Bonjour,<br><br>
+Je vois que vous avez ouvert mon email concernant <strong>${n}</strong>.<br><br>
+J'ai préparé une <strong>page d'analyse personnalisée</strong> pour votre site — elle contient le rapport complet, les problèmes détectés, et notre proposition chiffrée.<br><br>
+C'est gratuit, sans engagement, et ça prend 2 minutes à consulter :<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Voir mon analyse →</a><br><br>
+Si vous avez une question, répondez directement à cet email — je réponds le jour même.`,
     j3Subject: (n) => `Un mot rapide — ${n}`,
     j3Body: (n, w, s, id) => `Bonjour,<br><br>
 Je voulais m'assurer que mon message de l'autre jour vous est bien parvenu concernant <strong>${w}</strong>.<br><br>
@@ -53,6 +62,13 @@ Bonne continuation !`,
     unsubscribe: "Répondez STOP pour ne plus recevoir de messages.",
   },
   en: {
+    j1Subject: (n) => `Did you get a chance to look? — ${n}`,
+    j1Body: (n, w, s, id) => `Hi,<br><br>
+I can see you opened my email about <strong>${n}</strong>.<br><br>
+I've prepared a <strong>personalised analysis page</strong> for your website — it contains the full report, detected issues, and our detailed proposal.<br><br>
+Free, no commitment, takes 2 minutes to read:<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 See my analysis →</a><br><br>
+If you have any questions, just reply — I respond the same day.`,
     j3Subject: (n) => `Quick follow-up — ${n}`,
     j3Body: (n, w, s, id) => `Hi,<br><br>
 I wanted to make sure my recent message about <strong>${w}</strong> reached you.<br><br>
@@ -77,6 +93,13 @@ All the best!`,
     unsubscribe: "Reply STOP to unsubscribe.",
   },
   es: {
+    j1Subject: (n) => `¿Tuvo ocasión de verlo? — ${n}`,
+    j1Body: (n, w, s, id) => `Hola,<br><br>
+Veo que abrió mi email sobre <strong>${n}</strong>.<br><br>
+He preparado una <strong>página de análisis personalizada</strong> para su sitio — contiene el informe completo, los problemas detectados y nuestra propuesta detallada.<br><br>
+Gratuito, sin compromiso, 2 minutos de lectura:<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Ver mi análisis →</a><br><br>
+Si tiene alguna pregunta, responda a este email — contesto el mismo día.`,
     j3Subject: (n) => `Un mensaje rápido — ${n}`,
     j3Body: (n, w, s, id) => `Hola,<br><br>
 Quería asegurarme de que mi mensaje anterior sobre <strong>${w}</strong> le llegó correctamente.<br><br>
@@ -100,6 +123,13 @@ Entiendo que el momento quizás no es el adecuado. Si cambia de opinión, no dud
     unsubscribe: "Responda STOP para darse de baja.",
   },
   de: {
+    j1Subject: (n) => `Hatten Sie Zeit, es sich anzusehen? — ${n}`,
+    j1Body: (n, w, s, id) => `Hallo,<br><br>
+ich sehe, dass Sie meine E-Mail über <strong>${n}</strong> geöffnet haben.<br><br>
+Ich habe eine <strong>persönliche Analyseseite</strong> für Ihre Website erstellt — sie enthält den vollständigen Bericht, erkannte Probleme und unser detailliertes Angebot.<br><br>
+Kostenlos, unverbindlich, 2 Minuten Lesezeit:<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Meine Analyse ansehen →</a><br><br>
+Bei Fragen antworten Sie einfach auf diese E-Mail — ich antworte noch am selben Tag.`,
     j3Subject: (n) => `Kurze Nachfrage — ${n}`,
     j3Body: (n, w, s, id) => `Hallo,<br><br>
 ich wollte sicherstellen, dass meine Nachricht über <strong>${w}</strong> Sie erreicht hat.<br><br>
@@ -123,6 +153,13 @@ Alles Gute!`,
     unsubscribe: "Antworten Sie mit STOP, um sich abzumelden.",
   },
   it: {
+    j1Subject: (n) => `Ha avuto modo di vederlo? — ${n}`,
+    j1Body: (n, w, s, id) => `Buongiorno,<br><br>
+vedo che ha aperto la mia email su <strong>${n}</strong>.<br><br>
+Ho preparato una <strong>pagina di analisi personalizzata</strong> per il suo sito — contiene il report completo, i problemi rilevati e la nostra proposta dettagliata.<br><br>
+Gratuito, senza impegno, 2 minuti di lettura:<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Vedi la mia analisi →</a><br><br>
+Se ha domande, risponda a questa email — rispondo in giornata.`,
     j3Subject: (n) => `Un breve messaggio — ${n}`,
     j3Body: (n, w, s, id) => `Buongiorno,<br><br>
 volevo assicurarmi che il mio messaggio su <strong>${w}</strong> le fosse arrivato.<br><br>
@@ -237,13 +274,12 @@ export async function POST(req: Request) {
       const lang = p.language ?? "fr";
       const c = getCopy(lang);
       const name = p.businessName ?? p.website;
-      // Utilise le body J+3 pour J+1 (message chaleureux de relance rapide)
-      const body = c.j3Body(name, p.website, siteUrl, p.id);
-      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe);
-      await sendFollowup(p.email!, c.j3Subject(name), html);
+      const body = c.j1Body(name, p.website, siteUrl, p.id);
+      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
+      await sendFollowup(p.email!, c.j1Subject(name), html);
       await supabase.from("prospects").update({ followup1SentAt: now.toISOString() }).eq("id", p.id);
       j1Sent++;
-      await new Promise((r) => setTimeout(r, 1500));
+      await new Promise((r) => setTimeout(r, 1000));
     } catch {
       errors++;
     }
@@ -267,7 +303,7 @@ export async function POST(req: Request) {
       const c = getCopy(lang);
       const name = p.businessName ?? p.website;
       const body = c.j3Body(name, p.website, siteUrl, p.id);
-      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe);
+      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
       await sendFollowup(p.email!, c.j3Subject(name), html);
       await supabase.from("prospects").update({ followup1SentAt: now.toISOString() }).eq("id", p.id);
       j3Sent++;
@@ -295,7 +331,7 @@ export async function POST(req: Request) {
       const c = getCopy(lang);
       const name = p.businessName ?? p.website;
       const body = c.j7Body(name, p.website, siteUrl, p.id);
-      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe);
+      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
       await sendFollowup(p.email!, c.j7Subject(name), html);
       await supabase.from("prospects").update({ followup2SentAt: now.toISOString() }).eq("id", p.id);
       j7Sent++;
@@ -322,7 +358,7 @@ export async function POST(req: Request) {
       const c = getCopy(lang);
       const name = p.businessName ?? p.website;
       const body = c.j10Body(name, p.website, siteUrl, p.id);
-      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe);
+      const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
       await sendFollowup(p.email!, c.j10Subject(name), html);
       await supabase.from("prospects").update({ followup3SentAt: now.toISOString() }).eq("id", p.id);
       j10Sent++;

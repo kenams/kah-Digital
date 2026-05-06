@@ -59,6 +59,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/agence-web-pme-comment-choisir",
     "/blog/application-mobile-cout",
     "/blog/landing-page-vs-site-vitrine",
+    "/blog/seo-local-pme",
+    "/references",
     "/mentions-legales",
     "/politique-de-confidentialite",
   ].map((path) => ({

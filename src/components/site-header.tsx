@@ -18,6 +18,7 @@ export function SiteHeader() {
         { label: "Accueil", href: "/" },
         { label: "Offres", href: "/offres" },
         { label: "Réalisations", href: "/projets" },
+        { label: "Références", href: "/references" },
         { label: "Blog", href: "/blog" },
         { label: "Tarifs", href: "/devis" },
         { label: "Contact", href: "/contact" },

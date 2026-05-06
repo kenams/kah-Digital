@@ -768,7 +768,23 @@ function buildDiscoveryReply(message: string, locale: Locale) {
       ? "Understood. To know if the timeline is realistic, I need three things: what exactly has to be delivered, what is the hard deadline, and what is strictly required for launch?"
       : locale === "de"
         ? "Verstanden. Um zu sehen, ob der Zeitrahmen realistisch ist, brauche ich drei Punkte: was genau geliefert werden muss, was die feste Deadline ist, und was zum Start wirklich unverzichtbar ist."
-        : "C'est note. Pour savoir si le delai est realiste, il me faut trois points : ce qu'il faut livrer exactement, la date limite ferme, et ce qui est strictement indispensable au lancement.";
+        : "C'est noté. Pour savoir si le délai est réaliste, il me faut trois points : ce qu'il faut livrer exactement, la date limite ferme, et ce qui est strictement indispensable au lancement.";
+  }
+
+  if (/(bonjour|salut|hello|coucou|hallo|guten\s+tag|hi\b)/i.test(text)) {
+    return locale === "en"
+      ? "Hello! I'm here to help you frame a project or handle a support request. Tell me what you want to build, sell, or improve — and I'll route you to the right offer."
+      : locale === "de"
+        ? "Hallo! Ich helfe dir, ein Projekt einzugrenzen oder eine Support-Anfrage zu bearbeiten. Sag mir, was du bauen, verkaufen oder verbessern willst — ich leite dich zum richtigen Angebot."
+        : "Bonjour ! Je suis là pour cadrer un projet ou traiter une demande de support. Dis-moi ce que tu veux créer, vendre ou améliorer — je t'oriente vers la bonne offre.";
+  }
+
+  if (/(merci|thank|danke)/i.test(text)) {
+    return locale === "en"
+      ? "You're welcome. If you have a project in mind or a support issue, just describe it and I'll take it from there."
+      : locale === "de"
+        ? "Gerne. Wenn du ein Projekt oder ein Support-Anliegen hast, beschreib es einfach und ich übernehme."
+        : "Avec plaisir. Si tu as un projet en tête ou un problème de support, décris-le simplement et je prends le relais.";
   }
 
   return getCopy(locale).fallbackAnswer;
@@ -1016,6 +1032,58 @@ function extractEmail(message: string) {
   return match?.[0];
 }
 
+function extractAllFieldsFromMessage(message: string, session: AssistantSession): AssistantSession {
+  const updates: Partial<AssistantSession["collected"]> = {};
+  let projectType = session.projectType;
+  const text = message;
+
+  if (!session.collected.type) {
+    const t = inferProjectType(text);
+    if (t !== "unknown") {
+      updates.type = t;
+      projectType = t;
+    }
+  }
+
+  if (!session.collected.budget) {
+    const bm =
+      text.match(/(?:budget\s*(?:de|autour(?:\s+de)?|environ|~|d'environ)?\s*)?(\d[\d\s]*(?:[.,]\d+)?)\s*(€|eur(?:os?)?|chf|fr\.?\b|k€|keur|\$)/i) ??
+      text.match(/\b(\d+)\s*k\b(?!\w)/i);
+    if (bm) updates.budget = bm[0].replace(/\s{2,}/g, " ").trim();
+  }
+
+  if (!session.collected.timeline) {
+    if (detectUrgentRequest(text)) {
+      updates.timeline = text;
+    } else {
+      const tm =
+        text.match(/\b(?:dans|en|sous|d['']ici)\s+\d+\s*(?:semaines?|mois|jours?)\b/i) ??
+        text.match(/\b\d+\s*(?:semaines?|mois|jours?|weeks?|months?)\b/i);
+      if (tm) updates.timeline = tm[0];
+    }
+  }
+
+  if (!session.collected.objective && text.length > 30) {
+    if (/\b(client|vente|vendre|r[eé]serv|contact|visibilit[eé]|leads?|notori[eé]t[eé]|pr[eé]sence|attirer|recruter|automatiser|digitali|gagner|prise\s+de\s+rdv)\b/i.test(text)) {
+      updates.objective = text;
+    }
+  }
+
+  if (!session.collected.features) {
+    const inferred = inferFeatures({ objective: text, type: session.collected.type });
+    const featureKw = /\b(r[eé]serv|reservation|booking|catalogue|catalog|blog|galerie|gallery|formulaire|paiement|payment|login|connexion|espace\s+client|multilingue|multilingual|carte\s+interactive|avis\s+google|google\s+maps)\b/i;
+    if (inferred.length > 0 || featureKw.test(text)) updates.features = text;
+  }
+
+  if (!session.collected.decisionStage) {
+    if (/\b(devis|quote)\b/i.test(text)) updates.decisionStage = "devis";
+    else if (/\b(appel|call|t[eé]l[eé]phone|parler\s+[àa]\s+quelqu)\b/i.test(text)) updates.decisionStage = "call";
+  }
+
+  if (Object.keys(updates).length === 0 && projectType === session.projectType) return session;
+  return { ...session, projectType, collected: { ...session.collected, ...updates } };
+}
+
 export async function runAssistantTurn(params: {
   message: string;
   locale: Locale;
@@ -1040,6 +1108,9 @@ export async function runAssistantTurn(params: {
     session.lastAskedField = null;
   }
 
+  // Extract all recognizable fields from every message (budget, timeline, type, features…)
+  session = extractAllFieldsFromMessage(message, session);
+
   if (session.intent === "unknown" || session.status === "idle") {
     const openAiClassification = await classifyWithOpenAI(message, params.locale).catch(() => null);
     const classification = resolveClassification(message, openAiClassification);
@@ -1048,7 +1119,7 @@ export async function runAssistantTurn(params: {
 
     session.intent = inferredIntent;
     session.projectType = inferredProjectType;
-    session.status = "collecting";
+    session.status = inferredIntent === "project_quote" || inferredIntent === "support_glpi" ? "collecting" : "idle";
 
     if (inferredIntent === "project_quote") {
       if (!session.collected.type && inferredProjectType !== "unknown") {

@@ -8,12 +8,15 @@ import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 import type { DiscoveredLead } from "./lead-discovery";
 
+const AUDIT_SYSTEM_PROMPT = `Tu es un expert en développement web, UX/UI et SEO technique. Tu analyses des sites de PME et commerces locaux pour identifier leurs faiblesses et proposer des améliorations concrètes. Tu génères des audits JSON précis, utiles et actionnables. Tu adaptes toujours ta réponse à la langue cible indiquée. Tu es direct, factuel et orienté résultats business.`;
+
 async function callLLM(prompt: string, maxTokens: number): Promise<string> {
   if (process.env.ANTHROPIC_API_KEY) {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const msg = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: maxTokens,
+      system: [{ type: "text", text: AUDIT_SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }] as Parameters<typeof client.messages.create>[0]["system"],
       messages: [{ role: "user", content: prompt }],
     });
     return msg.content[0].type === "text" ? msg.content[0].text : "";
@@ -37,42 +40,42 @@ function ruleBasedAudit(lead: DiscoveredLead, html: string): SiteAudit {
   let score = 60;
 
   if (!lower.includes('viewport')) {
-    problems.push({ title: "Site non adapté mobile", detail: "Aucune balise viewport détectée — le site s'affiche mal sur smartphone.", severity: "critical", category: "mobile" });
+    problems.push({ title: "Invisible sur mobile", detail: "Plus de 60% de vos visiteurs arrivent sur mobile — et repartent sans prendre contact.", severity: "critical", category: "mobile" });
     score -= 20;
   }
   if (!lower.includes('<meta name="description"') && !lower.includes("<meta name='description'")) {
-    problems.push({ title: "Meta description absente", detail: "Google ne peut pas générer un extrait pertinent pour ce site.", severity: "critical", category: "seo" });
+    problems.push({ title: "Absent des résultats Google", detail: "Votre site n'apparaît pas correctement dans Google — vos concurrents captent ces clients à votre place.", severity: "critical", category: "seo" });
     score -= 15;
   }
   if (!lower.includes('schema.org') && !lower.includes('application/ld+json')) {
-    problems.push({ title: "Données structurées manquantes", detail: "Pas de Schema.org — le site est invisible dans les rich snippets Google.", severity: "medium", category: "seo" });
+    problems.push({ title: "Non référencé localement", detail: "Votre activité n'apparaît pas dans les recherches de proximité — vous perdez des clients qui cherchent exactement ce que vous faites.", severity: "medium", category: "seo" });
     score -= 10;
   }
   if (lower.includes('jquery-1.') || lower.includes('jquery-2.') || lower.includes('jquery/1.') || lower.includes('jquery/2.')) {
-    problems.push({ title: "Librairie jQuery obsolète", detail: "Version ancienne de jQuery détectée — risque de sécurité et lenteur.", severity: "medium", category: "speed" });
+    problems.push({ title: "Site lent — visiteurs qui fuient", detail: "Un site qui charge trop lentement perd 53% de ses visiteurs avant même qu'ils voient votre offre.", severity: "medium", category: "speed" });
     score -= 8;
   }
   if (!lower.includes('gtag') && !lower.includes('google-analytics') && !lower.includes('googletagmanager')) {
-    problems.push({ title: "Pas de suivi analytique", detail: "Impossible de mesurer le trafic et les conversions sans Google Analytics.", severity: "low", category: "conversion" });
+    problems.push({ title: "Aucune mesure des résultats", detail: "Vous ne savez pas combien de clients votre site génère — ni pourquoi certains repartent sans vous contacter.", severity: "low", category: "conversion" });
     score -= 5;
   }
   if (!lower.includes('button') && !lower.includes('cta') && !lower.includes('contact') && !lower.includes('rdv') && !lower.includes('appointment')) {
-    problems.push({ title: "Pas d'appel à l'action visible", detail: "Aucun bouton CTA détecté — les visiteurs ne savent pas quoi faire.", severity: "medium", category: "conversion" });
+    problems.push({ title: "Visiteurs sans direction claire", detail: "Vos visiteurs ne savent pas quoi faire sur votre site — ils repartent sans vous contacter.", severity: "medium", category: "conversion" });
     score -= 10;
   }
   if (lower.includes('http://') && !lower.includes('https://')) {
-    problems.push({ title: "Site non sécurisé (HTTP)", detail: "Le site n'utilise pas HTTPS — pénalisé par Google et rejeté par les navigateurs.", severity: "critical", category: "security" });
+    problems.push({ title: "Site signalé comme non sécurisé", detail: "Les navigateurs affichent un avertissement de sécurité à vos visiteurs — ça détruit la confiance avant même qu'ils lisent votre offre.", severity: "critical", category: "security" });
     score -= 15;
   }
 
   if (problems.length === 0) {
-    problems.push({ title: "Design vieillissant", detail: "Le site manque de modernité comparé aux standards actuels.", severity: "medium", category: "design" });
+    problems.push({ title: "Design qui date — crédibilité en jeu", detail: "La première impression se fait en 0.05 secondes — un site vieillissant fait douter de votre sérieux.", severity: "medium", category: "design" });
     score -= 12;
   }
 
-  recommendations.push({ title: "Refonte design responsive", detail: "KAH-Digital créerait un site moderne, rapide et optimisé mobile.", impact: "high" });
-  recommendations.push({ title: "SEO technique complet", detail: "Balises meta, Schema.org, sitemap, Core Web Vitals — tout optimisé.", impact: "high" });
-  recommendations.push({ title: "Tunnel de conversion", detail: "Boutons CTA stratégiques, formulaire de contact, prise de RDV en ligne.", impact: "medium" });
+  recommendations.push({ title: "Site qui convertit des visiteurs en clients", detail: "KAH-Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
+  recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à ranker et à générer du trafic qualifié.", impact: "high" });
+  recommendations.push({ title: "Clients qui passent à l'action", detail: "Chaque page est conçue pour guider vos visiteurs vers un appel, une réservation ou un achat.", impact: "medium" });
 
   const finalScore = Math.max(10, Math.min(60, score));
   const quality = finalScore < 30 ? "poor" : finalScore < 45 ? "medium" : "ok";
@@ -284,16 +287,16 @@ Return ONLY a valid JSON object (no markdown):
   "score": 35,
   "problems": [
     {
-      "title": "short problem title",
-      "detail": "concrete explanation in 1-2 sentences",
+      "title": "short problem title focused on business symptom",
+      "detail": "1-2 sentences about BUSINESS IMPACT only — what it costs them in clients/revenue/trust. NEVER explain how to fix it technically. The goal is to make them feel the pain, not to teach them the solution.",
       "severity": "critical|medium|low",
       "category": "design|seo|mobile|speed|ux|conversion|security"
     }
   ],
   "recommendations": [
     {
-      "title": "solution title",
-      "detail": "what KAH-Digital would concretely do",
+      "title": "outcome-focused title (what the client gains)",
+      "detail": "What KAH-Digital delivers as an outcome — NOT technical steps. e.g. 'Un site livré en 3 semaines, optimisé pour convertir vos visiteurs en clients.' Never say 'add viewport meta tag' or 'compress images'.",
       "impact": "high|medium|low"
     }
   ],

@@ -40,7 +40,7 @@ export type ComposedEmail = {
 // Textes statiques par langue
 const COPY: Record<string, {
   currentSite: string; futureSite: string; problems: string; quote: string;
-  ctaLabel: string; ctaAlt: string; greeting: string; footer: string;
+  ctaLabel: string; ctaAlt: string; ctaPrimary: string; greeting: string; footer: string;
   from: string; signoff: string; scoreBanner: string; analysisBadge: string;
   mockupFeatures: string; unsubscribeLink: string;
 }> = {
@@ -52,6 +52,7 @@ const COPY: Record<string, {
     quote: "Notre proposition",
     ctaLabel: "Répondre à cet email",
     ctaAlt: "Demander un devis gratuit",
+    ctaPrimary: "📊 Voir votre analyse complète →",
     from: "Kénan — KAH-Digital",
     signoff: "Cordialement",
     footer: "Vous recevez cet email car votre site est publiquement accessible.",
@@ -68,6 +69,7 @@ const COPY: Record<string, {
     quote: "Our proposal",
     ctaLabel: "Reply to this email",
     ctaAlt: "Request a free quote",
+    ctaPrimary: "📊 See your full analysis →",
     from: "Kenan — KAH-Digital",
     signoff: "Best regards",
     footer: "You received this email because your website is publicly accessible.",
@@ -84,6 +86,7 @@ const COPY: Record<string, {
     quote: "Nuestra propuesta",
     ctaLabel: "Responder a este email",
     ctaAlt: "Solicitar presupuesto gratuito",
+    ctaPrimary: "📊 Ver mi análisis completo →",
     from: "Kenan — KAH-Digital",
     signoff: "Saludos cordiales",
     footer: "Recibió este email porque su sitio web es accesible públicamente.",
@@ -100,9 +103,10 @@ const COPY: Record<string, {
     quote: "Unser Angebot",
     ctaLabel: "Diese E-Mail beantworten",
     ctaAlt: "Kostenloses Angebot anfordern",
+    ctaPrimary: "📊 Vollständige Analyse ansehen →",
     from: "Kenan — KAH-Digital",
-    signoff: "Mit freundlichen Gruessen",
-    footer: "Sie erhalten diese E-Mail, weil Ihre Website oeffentlich zugaenglich ist.",
+    signoff: "Mit freundlichen Grüßen",
+    footer: "Sie erhalten diese E-Mail, weil Ihre Website öffentlich zugänglich ist.",
     unsubscribeLink: "Abmelden",
     scoreBanner: "Digital-Score",
     analysisBadge: "KOSTENLOSE ANALYSE",
@@ -116,6 +120,7 @@ const COPY: Record<string, {
     quote: "La nostra proposta",
     ctaLabel: "Rispondi a questa email",
     ctaAlt: "Richiedi un preventivo gratuito",
+    ctaPrimary: "📊 Vedi la mia analisi completa →",
     from: "Kenan — KAH-Digital",
     signoff: "Cordiali saluti",
     footer: "Hai ricevuto questa email perché il tuo sito è accessibile pubblicamente.",
@@ -132,6 +137,7 @@ const COPY: Record<string, {
     quote: "Ons voorstel",
     ctaLabel: "Reageer op deze e-mail",
     ctaAlt: "Vraag een gratis offerte aan",
+    ctaPrimary: "📊 Bekijk mijn volledige analyse →",
     from: "Kenan — KAH-Digital",
     signoff: "Met vriendelijke groet",
     footer: "U ontvangt deze e-mail omdat uw website openbaar toegankelijk is.",
@@ -166,6 +172,7 @@ export async function composeProspectingEmail(
   const c = getCopy(audit.language);
   const pixelUrl = `${trackingBaseUrl}/api/tracking/open/${prospectId}`;
   const clickUrl = `${trackingBaseUrl}/api/tracking/click/${prospectId}`;
+  const prospectPageUrl = `${trackingBaseUrl}/p/${prospectId}`;
   // URL devis avec données prospect pour prefill (traitées côté tracking/click)
   const quoteUrl = `${trackingBaseUrl}/devis?utm_source=email&utm_campaign=prospection&utm_medium=email`;
 
@@ -192,8 +199,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     }
   } catch { /* keep defaults */ }
 
-  // A/B test sujets — 5 variantes, rotation par jour
-  const abVariant = Math.floor(Date.now() / 86400000) % 5;
+  // A/B test sujets — 7 variantes, rotation par jour
+  const abVariant = Math.floor(Date.now() / 86400000) % 7;
   const SUBJECTS: Record<string, string[]> = {
     fr: [
       `${audit.businessName} — votre site web perd des clients (analyse gratuite)`,
@@ -201,6 +208,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName} : 3 problèmes qui coûtent des clients chaque semaine`,
       `Score ${audit.score}/100 pour ${audit.businessName} — rapport complet inclus`,
       `Une question rapide sur ${audit.businessName}`,
+      `⚠️ ${audit.businessName} — votre site coûte des clients chaque jour`,
+      `Kénan de KAH-Digital — j'ai une proposition pour ${audit.businessName}`,
     ],
     en: [
       `${audit.businessName} — your website is losing customers (free analysis)`,
@@ -208,6 +217,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName}: 3 issues costing you customers every week`,
       `Score ${audit.score}/100 for ${audit.businessName} — full report inside`,
       `Quick question about ${audit.businessName}`,
+      `⚠️ ${audit.businessName} — your website is costing you clients every day`,
+      `Kenan from KAH-Digital — I have a proposal for ${audit.businessName}`,
     ],
     es: [
       `${audit.businessName} — su sitio web está perdiendo clientes (análisis gratuito)`,
@@ -215,6 +226,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName}: 3 problemas que le cuestan clientes cada semana`,
       `Puntuación ${audit.score}/100 para ${audit.businessName} — informe incluido`,
       `Una pregunta rápida sobre ${audit.businessName}`,
+      `⚠️ ${audit.businessName} — su web le cuesta clientes cada día`,
+      `Kenan de KAH-Digital — tengo una propuesta para ${audit.businessName}`,
     ],
     de: [
       `${audit.businessName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
@@ -222,6 +235,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName}: 3 Probleme, die jede Woche Kunden kosten`,
       `Score ${audit.score}/100 für ${audit.businessName} — vollständiger Bericht`,
       `Kurze Frage zu ${audit.businessName}`,
+      `⚠️ ${audit.businessName} — Ihre Website kostet täglich Kunden`,
+      `Kenan von KAH-Digital — ich habe ein Angebot für ${audit.businessName}`,
     ],
     it: [
       `${audit.businessName} — il tuo sito perde clienti (analisi gratuita)`,
@@ -229,6 +244,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName}: 3 problemi che ti costano clienti ogni settimana`,
       `Punteggio ${audit.score}/100 per ${audit.businessName} — report completo`,
       `Una domanda rapida su ${audit.businessName}`,
+      `⚠️ ${audit.businessName} — il tuo sito ti costa clienti ogni giorno`,
+      `Kenan di KAH-Digital — ho una proposta per ${audit.businessName}`,
     ],
     nl: [
       `${audit.businessName} — uw website verliest klanten (gratis analyse)`,
@@ -236,6 +253,8 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       `${audit.businessName}: 3 problemen die u elke week klanten kosten`,
       `Score ${audit.score}/100 voor ${audit.businessName} — volledig rapport`,
       `Korte vraag over ${audit.businessName}`,
+      `${audit.businessName} — uw website kost u dagelijks klanten`,
+      `Kenan van KAH-Digital — ik heb een voorstel voor ${audit.businessName}`,
     ],
   };
   const langSubjects = SUBJECTS[audit.language] ?? SUBJECTS.fr;
@@ -290,6 +309,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     de: "Ich kontaktiere nur 3 Unternehmen pro Branche und Stadt — antwortet ein Konkurrent zuerst, ist der Platz vergeben.",
     es: "Solo contacto a 3 empresas por sector y ciudad — si un competidor responde primero, el cupo está tomado.",
     it: "Contatto solo 3 aziende per settore e città — se un concorrente risponde prima, il posto è preso.",
+    nl: "Ik neem alleen contact op met 3 bedrijven per sector en stad — als een concurrent als eerste reageert, is de plek bezet.",
   };
   const psText = psScarcity[audit.language] ?? psScarcity.fr;
 
@@ -384,8 +404,15 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
           <td align="center" style="padding-bottom:12px;">
-            <a href="${clickUrl}?target=reply" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;padding:14px 36px;border-radius:9999px;">
-              ${c.ctaLabel} →
+            <a href="${clickUrl}?target=prospect_page&redirect=${encodeURIComponent(prospectPageUrl)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;padding:14px 36px;border-radius:9999px;">
+              ${c.ctaPrimary}
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding-bottom:10px;">
+            <a href="${clickUrl}?target=reply" style="display:inline-block;color:#1e3a8a;font-size:14px;font-weight:600;text-decoration:underline;">
+              ${c.ctaLabel}
             </a>
           </td>
         </tr>
@@ -457,33 +484,37 @@ function buildMockupHtml(audit: SiteAudit, lang: string): string {
   const colors = ["#1e3a8a", "#7c3aed", "#059669", "#d97706", "#dc2626"];
   const accentColor = colors[Math.abs(audit.businessName.charCodeAt(0)) % colors.length];
 
-  return `<div style="background:#111827;border-radius:8px;overflow:hidden;border:2px solid ${accentColor};font-size:0;">
+  return `<table cellpadding="0" cellspacing="0" width="100%" style="background:#111827;border-radius:8px;overflow:hidden;border:2px solid ${accentColor};">
   <!-- Browser bar -->
-  <div style="background:#1f2937;padding:6px 10px;display:flex;align-items:center;gap:6px;">
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ef4444;"></span>
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f59e0b;"></span>
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;"></span>
-    <span style="display:inline-block;margin-left:6px;background:#374151;border-radius:4px;padding:2px 8px;color:#9ca3af;font-size:10px;font-family:monospace;">✨ NEW ${audit.businessName.slice(0,16)}</span>
-  </div>
+  <tr><td style="background:#1f2937;padding:6px 10px;">
+    <table cellpadding="0" cellspacing="0"><tr>
+      <td style="width:8px;height:8px;border-radius:50%;background:#ef4444;font-size:0;">&nbsp;</td>
+      <td style="width:6px;font-size:0;">&nbsp;</td>
+      <td style="width:8px;height:8px;border-radius:50%;background:#f59e0b;font-size:0;">&nbsp;</td>
+      <td style="width:6px;font-size:0;">&nbsp;</td>
+      <td style="width:8px;height:8px;border-radius:50%;background:#22c55e;font-size:0;">&nbsp;</td>
+      <td style="padding-left:8px;"><span style="background:#374151;border-radius:4px;padding:2px 8px;color:#9ca3af;font-size:10px;font-family:monospace;">&#10024; NEW ${audit.businessName.slice(0,16)}</span></td>
+    </tr></table>
+  </td></tr>
   <!-- Hero -->
-  <div style="background:linear-gradient(135deg,${accentColor}22,#000);padding:18px 14px;text-align:center;">
+  <tr><td style="background:linear-gradient(135deg,${accentColor}22,#000000);padding:18px 14px;text-align:center;">
     <div style="font-size:14px;font-weight:800;color:#ffffff;margin-bottom:4px;">${audit.businessName}</div>
     <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:10px;">${audit.sector}</div>
-    <div style="display:inline-block;background:${accentColor};color:#fff;font-size:10px;font-weight:700;padding:5px 14px;border-radius:9999px;">CTA →</div>
-  </div>
+    <span style="background:${accentColor};color:#ffffff;font-size:10px;font-weight:700;padding:5px 14px;border-radius:9999px;">CTA &#8594;</span>
+  </td></tr>
   <!-- Content blocks -->
-  <div style="padding:10px 12px;background:#1a1a2e;">
-    <div style="display:flex;gap:6px;margin-bottom:6px;">
-      <div style="flex:1;background:${accentColor}33;border-radius:4px;height:28px;"></div>
-      <div style="flex:1;background:#ffffff11;border-radius:4px;height:28px;"></div>
-      <div style="flex:1;background:#ffffff11;border-radius:4px;height:28px;"></div>
-    </div>
-    <div style="background:#ffffff08;border-radius:4px;height:14px;margin-bottom:5px;"></div>
-    <div style="background:#ffffff08;border-radius:4px;height:14px;width:70%;"></div>
-  </div>
+  <tr><td style="padding:10px 12px;background:#1a1a2e;">
+    <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:6px;"><tr>
+      <td width="33%" style="padding-right:3px;"><div style="background:${accentColor}33;border-radius:4px;height:28px;font-size:0;">&nbsp;</div></td>
+      <td width="33%" style="padding:0 3px;"><div style="background:#ffffff11;border-radius:4px;height:28px;font-size:0;">&nbsp;</div></td>
+      <td width="33%" style="padding-left:3px;"><div style="background:#ffffff11;border-radius:4px;height:28px;font-size:0;">&nbsp;</div></td>
+    </tr></table>
+    <div style="background:#ffffff11;border-radius:4px;height:12px;margin-bottom:5px;font-size:0;">&nbsp;</div>
+    <div style="background:#ffffff08;border-radius:4px;height:12px;width:70%;font-size:0;">&nbsp;</div>
+  </td></tr>
   <!-- Footer hint -->
-  <div style="background:${accentColor};padding:6px;text-align:center;">
-    <span style="color:#fff;font-size:9px;font-weight:700;">${c.mockupFeatures}</span>
-  </div>
-</div>`;
+  <tr><td style="background:${accentColor};padding:6px;text-align:center;">
+    <span style="color:#ffffff;font-size:9px;font-weight:700;">${c.mockupFeatures}</span>
+  </td></tr>
+</table>`;
 }

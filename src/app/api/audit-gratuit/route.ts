@@ -15,10 +15,10 @@ function getSupabase() {
 export async function POST(req: Request) {
   try {
     const { businessName, website, email, phone } = await req.json() as {
-      businessName?: string; website: string; email: string; phone?: string;
+      businessName?: string; website?: string; email: string; phone?: string;
     };
 
-    if (!website || !email) {
+    if (!email) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
@@ -36,15 +36,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true, message: "Already queued" });
     }
 
+    const siteWebsite = website?.trim() || null;
+
     // Insert prospect avec statut "inbound"
     const { data: inserted } = await supabase
       .from("prospects")
       .insert({
         businessName: businessName || null,
-        website,
+        website: siteWebsite,
         email,
         phone: phone || null,
-        status: "inbound",
+        status: siteWebsite ? "inbound" : "no-website",
         language: "fr",
         country: "FR",
         sentAt: new Date().toISOString(),
@@ -58,12 +60,17 @@ export async function POST(req: Request) {
 
     const prospectId = inserted.id;
 
+    // Si pas de site web, on stocke juste le lead et on notifie
+    if (!siteWebsite) {
+      return NextResponse.json({ ok: true });
+    }
+
     // Lance l'audit en background (fire & forget)
     void (async () => {
       try {
         const lead = {
-          businessName: businessName || website,
-          website,
+          businessName: businessName || siteWebsite,
+          website: siteWebsite,
           address: "FR",
           country: "FR",
           language: "fr",
@@ -89,6 +96,7 @@ export async function POST(req: Request) {
           subject: composed.subject,
           html: composed.html,
           text: composed.textFallback,
+          tags: [{ name: "prospect_id", value: prospectId }],
         });
 
         await supabase.from("prospects").update({ status: "sent", emailSubject: composed.subject }).eq("id", prospectId);

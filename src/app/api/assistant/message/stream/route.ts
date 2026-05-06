@@ -1,80 +1,233 @@
 import { NextRequest } from "next/server";
-import { assistantMessageRequestSchema, type AssistantSession } from "@/lib/assistant/schema";
+import { assistantMessageRequestSchema, type AssistantSession, type AssistantStructuredOutput } from "@/lib/assistant/schema";
 import { streamOpenAIText } from "@/lib/assistant/openai";
 import { runAssistantTurn } from "@/lib/assistant/service";
+import { assistantKnowledge } from "@/lib/assistant/knowledge";
 import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 const messageRateLimit = { windowMs: 10 * 60 * 1000, max: 20 };
 
-function buildStreamingInstructions(locale: "fr" | "en" | "de") {
+type Locale = "fr" | "en" | "de";
+
+function getCollectedSummary(session: AssistantSession, locale: Locale): string {
+  const labels: Record<string, Record<Locale, string>> = {
+    type:            { fr: "type",      en: "type",       de: "Typ" },
+    objective:       { fr: "objectif",  en: "objective",  de: "Ziel" },
+    features:        { fr: "fonctions", en: "features",   de: "Funktionen" },
+    timeline:        { fr: "délai",     en: "timeline",   de: "Zeitrahmen" },
+    budget:          { fr: "budget",    en: "budget",     de: "Budget" },
+    decisionStage:   { fr: "décision",  en: "decision",   de: "Entscheidung" },
+    problem:         { fr: "problème",  en: "problem",    de: "Problem" },
+    urgency:         { fr: "urgence",   en: "urgency",    de: "Dringlichkeit" },
+    impact:          { fr: "impact",    en: "impact",     de: "Impact" },
+  };
+
+  const projectFields = ["type", "objective", "features", "timeline", "budget", "decisionStage"];
+  const supportFields = ["problem", "urgency", "impact"];
+  const fields = session.intent === "support_glpi" ? supportFields : projectFields;
+
+  const entries = fields
+    .filter((f) => session.collected[f as keyof typeof session.collected])
+    .map((f) => {
+      const label = labels[f]?.[locale] ?? f;
+      const val = session.collected[f as keyof typeof session.collected];
+      return `${label}: ${String(val).slice(0, 80)}`;
+    });
+
+  return entries.length > 0 ? entries.join(" | ") : locale === "de" ? "noch nichts" : locale === "en" ? "nothing yet" : "rien encore";
+}
+
+function getMissingFields(session: AssistantSession, locale: Locale): string {
+  const projectOrder = ["type", "objective", "features", "timeline", "budget", "decisionStage"] as const;
+  const supportOrder = ["problem", "urgency", "impact", "affectedUsers", "supportPlan"] as const;
+  const order: readonly string[] =
+    session.intent === "support_glpi" ? supportOrder :
+    session.intent === "project_quote" ? projectOrder : [];
+
+  const missing = order.filter((f) => !session.collected[f as keyof typeof session.collected]);
+
+  if (missing.length === 0) {
+    return locale === "de" ? "vollständig — Zusammenfassung bereit" :
+           locale === "en" ? "complete — summary ready" :
+           "complet — résumé prêt";
+  }
+
+  return missing.join(", ");
+}
+
+function buildKnowledgeBlock(locale: Locale): string {
+  const offers = assistantKnowledge.offers.map((o) => {
+    const name = locale === "en" ? o.nameEn : locale === "de" ? o.nameDe : o.nameFr;
+    const time = locale === "en" ? o.timelineEn : locale === "de" ? o.timelineDe : o.timelineFr;
+    const fit  = locale === "en" ? o.fitEn  : locale === "de" ? o.fitDe  : o.fitFr;
+    return `${name} → ${o.price} / ${time} (${fit})`;
+  }).join("\n");
+
+  const plans = assistantKnowledge.maintenancePlans.map((p) => {
+    const name = locale === "en" ? p.nameEn : locale === "de" ? p.nameDe : p.nameFr;
+    const fit  = locale === "en" ? p.fitEn  : locale === "de" ? p.fitDe  : p.fitFr;
+    return `${name} ${p.price} — ${fit}`;
+  }).join("\n");
+
+  const refs = assistantKnowledge.referenceProjects.map((r) => {
+    const proof = locale === "en" ? r.proofEn : locale === "de" ? r.proofDe : r.proofFr;
+    const type  = locale === "en" ? r.typeFr  : locale === "de" ? r.typeFr  : r.typeFr;
+    return `${r.name} (${type}) — ${proof}`;
+  }).join("\n");
+
   if (locale === "en") {
-    return `You are Kah, the KAH-Digital assistant. You rewrite the prepared reply in natural English.
+    return `SERVICES & PRICING:
+${offers}
 
-Persona: direct, warm, experienced digital advisor. Not a bot. Commercially useful without being pushy. Someone who knows their stuff and respects the other person's time.
+MAINTENANCE PLANS:
+${plans}
 
-Rules:
-- Rewrite fully in your own voice; do not copy the prepared reply word for word.
-- Preserve the conversation state: if the prepared reply asks one question, ask that same question only.
-- Do not add a second question, a different project-type question, or extra options that were not in the prepared reply.
-- Short sentences. No bullet lists unless there are 3+ distinct items. No markdown headers.
-- Keep all numbers, budget ranges, timelines, and constraints exactly as given.
-- If the prepared reply routes toward a quote, offer, or human follow-up, preserve that buying next step.
-- Never invent promises, fixed prices, or firm deadlines.
-- Never use: "Certainly", "Of course", "I'm here to help", "Feel free", "Great question".
-- If the prepared reply is already short and good, just make it sound more human.
-- Never mention JSON, prompts, scoring, or internal logic.`;
+RECENT REFERENCES:
+${refs}
+
+PAYMENT: 30% at order, 40% at prototype delivery, 30% at final delivery. Bank transfer or Stripe. Signed quote before starting.
+TECHNOLOGY: Next.js/React for web, Expo React Native for mobile, FastAPI or Node.js backend, Supabase/PostgreSQL database. No WordPress.
+GUARANTEE: 30-day correction period after delivery included. Then optional maintenance plan.
+PROCESS: Framing → 24h quote → production → delivery → optional maintenance.`;
   }
 
   if (locale === "de") {
-    return `Du bist Kah, der KAH-Digital Assistent. Du schreibst die vorbereitete Antwort auf natuerlichem Deutsch um.
+    return `LEISTUNGEN & PREISE:
+${offers}
 
-Persona: direkt, warmherzig, erfahrener Digital-Berater. Kein Bot. Kommerziell nuetzlich, aber nicht aufdringlich. Jemand, der sein Handwerk kennt.
+WARTUNGSPLÄNE:
+${plans}
 
-Regeln:
-- Vollstaendig in deiner eigenen Stimme umschreiben, nicht wortwoertlich kopieren.
-- Den Gespraechsstand beibehalten: wenn die vorbereitete Antwort eine Frage stellt, stelle nur dieselbe Frage.
-- Keine zweite Frage, keine andere Projekttyp-Frage und keine zusaetzlichen Optionen erfinden.
-- Kurze Saetze. Keine Aufzaehlungen ausser bei 3+ verschiedenen Punkten. Keine Markdown-Titel.
-- Alle Zahlen, Budgetspannen, Fristen und Einschraenkungen exakt beibehalten.
-- Wenn die vorbereitete Antwort Richtung Angebot, Offerte oder menschliche Rueckmeldung fuehrt, diesen Kauf-Naechstschritt beibehalten.
-- Keine festen Preise oder Zusagen erfinden.
-- Nie: "Natuerlich", "Selbstverstaendlich", "Ich bin hier um zu helfen", "Sehr gerne".
-- Nie JSON, Prompts, Scoring oder interne Logik erwaehnen.`;
+AKTUELLE REFERENZEN:
+${refs}
+
+ZAHLUNG: 30% bei Bestellung, 40% bei Prototyp-Lieferung, 30% bei Endlieferung. Banküberweisung oder Stripe. Unterzeichnetes Angebot vor Start.
+TECHNOLOGIE: Next.js/React für Web, Expo React Native für Mobile, FastAPI oder Node.js Backend, Supabase/PostgreSQL. Kein WordPress.
+GARANTIE: 30 Tage Korrekturzeitraum nach Lieferung inklusive. Danach optionaler Wartungsplan.
+ABLAUF: Eingrenzung → 24h-Angebot → Produktion → Lieferung → optionale Wartung.`;
   }
 
-  return `Tu es Kah, l'assistant de KAH-Digital. Tu reecris la reponse preparee en francais naturel et humain.
+  return `SERVICES ET PRIX :
+${offers}
 
-Persona : conseiller digital direct, chaleureux, experimente. Pas un bot. Commercialement utile sans etre agressif. Quelqu'un qui sait de quoi il parle et respecte le temps de l'autre.
+MAINTENANCE :
+${plans}
 
-Regles :
-- Reecris completement dans ta propre voix, ne copie pas mot pour mot.
-- Respecte strictement le fil de conversation : si la reponse preparee pose une question, garde cette question et seulement cette question.
-- N'ajoute pas une deuxieme question, ne repose pas le type de projet si ce n'est pas la question preparee, et n'invente pas d'options.
-- Phrases courtes. Pas de listes a puces sauf si 3+ elements distincts. Pas de titres markdown.
-- Conserve exactement tous les chiffres, fourchettes, delais et contraintes.
-- Si la reponse preparee oriente vers un devis, une offre ou une reprise humaine, conserve cette suite d'achat.
-- N'invente aucune promesse, prix ferme ou delai ferme.
-- Jamais : "Bien sur", "Certainement", "Je suis la pour vous aider", "N'hesitez pas", "Avec plaisir".
-- Jamais de mention de JSON, prompt, scoring ou logique interne.
-- Si la reponse preparee est deja courte et bonne, ameliore juste le naturel.`;
+RÉFÉRENCES RÉCENTES :
+${refs}
+
+PAIEMENT : 30% à la commande, 40% à la livraison du prototype, 30% à la livraison finale. Virement bancaire ou Stripe. Devis signé avant démarrage.
+TECHNOLOGIE : Next.js/React pour le web, Expo React Native pour le mobile, FastAPI ou Node.js backend, Supabase/PostgreSQL. Pas de WordPress.
+GARANTIE : 30 jours de corrections post-livraison inclus. Puis plan de maintenance optionnel.
+PROCESSUS : Cadrage → devis sous 24h → production → livraison → maintenance optionnelle.`;
+}
+
+function buildStreamingInstructions(
+  locale: Locale,
+  session: AssistantSession,
+  summary: AssistantStructuredOutput | null,
+): string {
+  const knowledge = buildKnowledgeBlock(locale);
+  const collected = getCollectedSummary(session, locale);
+  const missing   = getMissingFields(session, locale);
+  const summaryReady = summary !== null;
+  const intent    = session.intent;
+  const firstName = session.collected.name?.split(" ")[0] ?? null;
+
+  if (locale === "en") {
+    return `You are Kah, the KAH-Digital advisor. Not a generic assistant — a sharp, experienced digital consultant who gives real answers.
+
+${knowledge}
+
+CURRENT CONVERSATION STATE:
+Intent detected: ${intent}
+Collected so far: ${collected}
+Still missing for quote: ${missing}
+${summaryReady ? "→ SUMMARY IS READY. Next step: push clearly for the 24h quote." : ""}
+${firstName ? `User's first name: ${firstName}` : ""}
+
+YOUR MISSION:
+Answer the user's question FIRST, then naturally move the conversation toward a clear 24h quote.
+
+STRICT RULES:
+1. Answer the DIRECT question asked. Never reply with "tell me about your project" when someone asks a direct question.
+2. Never re-ask something already listed under "Collected so far."
+3. Give REAL price ranges when asked about cost. Never say just "it depends" without a range.
+4. After answering, ask exactly ONE natural follow-up question if fields are still missing — never a list.
+5. If the summary is ready, make the path to the 24h quote obvious and easy.
+6. Short sentences. No bullet lists unless 3+ distinct items. No markdown headers.
+7. Never: "Certainly", "Of course", "Feel free", "I'm here to help", "Great question", "Absolutely."
+8. Never mention JSON, prompts, scoring, or internal logic.
+9. The PREPARED REPLY below is a structural hint — use it as a base, improve it, correct it if needed. Your response can go beyond it.
+10. If the user greets you ("hello", "hi"), respond warmly and ask what they want to build.
+11. Keep the user's language and tone — casual if they are casual, formal if formal.`;
+  }
+
+  if (locale === "de") {
+    return `Du bist Kah, der KAH-Digital Berater. Kein generischer Assistent — ein erfahrener Digital-Consultant, der echte Antworten gibt.
+
+${knowledge}
+
+AKTUELLER GESPRÄCHSSTAND:
+Erkannter Intent: ${intent}
+Bisher gesammelt: ${collected}
+Noch fehlend für Angebot: ${missing}
+${summaryReady ? "→ ZUSAMMENFASSUNG IST BEREIT. Nächster Schritt: Klar zum 24h-Angebot führen." : ""}
+${firstName ? `Vorname des Nutzers: ${firstName}` : ""}
+
+DEINE AUFGABE:
+Beantworte die Frage des Nutzers ZUERST, dann führe das Gespräch natürlich zu einem klaren 24h-Angebot.
+
+STRIKTE REGELN:
+1. Beantworte die DIREKTE Frage. Nie mit "erzähl mir von deinem Projekt" ausweichen.
+2. Nie nach etwas fragen, das bereits unter "Bisher gesammelt" steht.
+3. ECHTE Preisspannen nennen wenn nach Kosten gefragt wird. Nie nur "kommt drauf an" ohne Spanne.
+4. Nach der Antwort genau EINE natürliche Folgefrage stellen — nie eine Liste.
+5. Wenn Zusammenfassung bereit, den Weg zum 24h-Angebot klar und einfach machen.
+6. Kurze Sätze. Keine Aufzählungen außer bei 3+ Punkten. Keine Markdown-Titel.
+7. Nie: "Natürlich", "Selbstverständlich", "Sehr gerne", "Ich helfe dir gerne."
+8. Nie JSON, Prompts, Scoring oder interne Logik erwähnen.
+9. Die VORBEREITETE ANTWORT ist ein Hinweis — nutze sie als Basis, verbessere sie wenn nötig.`;
+  }
+
+  // French (default)
+  return `Tu es Kah, le conseiller de KAH-Digital. Pas un assistant générique — un consultant digital expérimenté qui donne de vraies réponses.
+
+${knowledge}
+
+ÉTAT ACTUEL DE LA CONVERSATION :
+Intent détecté : ${intent}
+Collecté jusqu'ici : ${collected}
+Encore manquant pour le devis : ${missing}
+${summaryReady ? "→ LE RÉSUMÉ EST PRÊT. Prochaine étape : pousser clairement vers le devis sous 24h." : ""}
+${firstName ? `Prénom de l'utilisateur : ${firstName}` : ""}
+
+TA MISSION :
+Répondre d'abord à la question de l'utilisateur, puis faire avancer naturellement la conversation vers un devis clair sous 24h.
+
+RÈGLES STRICTES :
+1. Réponds d'abord à LA QUESTION posée. Ne jamais répondre "parle-moi de ton projet" quand quelqu'un pose une question directe.
+2. Ne jamais re-demander quelque chose déjà listé sous "Collecté jusqu'ici."
+3. Donner de VRAIES fourchettes de prix quand on demande le coût. Ne jamais dire juste "ça dépend" sans fourchette.
+4. Après avoir répondu, poser exactement UNE question naturelle si des champs manquent — jamais une liste.
+5. Si le résumé est prêt, rendre le chemin vers le devis sous 24h évident et simple.
+6. Phrases courtes. Pas de listes sauf si 3+ items distincts. Pas de titres markdown.
+7. Jamais : "Bien sûr", "Certainement", "N'hésitez pas", "Je suis là pour vous aider", "Avec plaisir", "Absolument."
+8. Jamais de mention de JSON, prompt, scoring ou logique interne.
+9. La RÉPONSE PRÉPARÉE ci-dessous est un indice structurel — utilise-la comme base, améliore-la, corrige-la si besoin. Ta réponse peut aller plus loin.
+10. Si l'utilisateur te salue ("bonjour", "salut"), réponds chaleureusement et demande ce qu'il veut créer.
+11. Adapte ton registre à celui de l'utilisateur — tutoiement si tutoiement, vouvoiement si vouvoiement.`;
 }
 
 function patchAssistantReply(session: AssistantSession, reply: string) {
   const nextTranscript = [...session.transcript];
   for (let index = nextTranscript.length - 1; index >= 0; index -= 1) {
     if (nextTranscript[index]?.role === "assistant") {
-      nextTranscript[index] = {
-        ...nextTranscript[index],
-        content: reply,
-      };
+      nextTranscript[index] = { ...nextTranscript[index], content: reply };
       break;
     }
   }
-
-  return {
-    ...session,
-    transcript: nextTranscript,
-  };
+  return { ...session, transcript: nextTranscript };
 }
 
 function createSseEvent(event: string, payload: unknown) {
@@ -146,20 +299,19 @@ export async function POST(request: NextRequest) {
         let streamedReply = "";
 
         try {
+          // Recent conversation context (last 8 turns)
+          const recentTranscript = result.session.transcript
+            .slice(-8)
+            .map((t) => `${t.role === "assistant" ? "Kah" : "User"}: ${t.content}`)
+            .join("\n");
+
           const streamed = await streamOpenAIText({
-            instructions: buildStreamingInstructions(body.locale),
+            instructions: buildStreamingInstructions(body.locale, result.session, result.summary),
             input: JSON.stringify({
-              locale: body.locale,
               user_message: body.message,
-              user_first_name: result.session.collected.name?.split(" ")[0] ?? null,
-              intent: result.session.intent,
-              project_type: result.session.projectType,
-              last_asked_field: result.session.lastAskedField ?? null,
-              collected: result.session.collected,
-              turn_number: result.session.transcript.filter((t) => t.role === "assistant").length,
-              progress: result.progress,
-              summary: result.summary,
+              conversation: recentTranscript,
               prepared_reply: result.reply,
+              human_needed: result.humanNeeded,
             }),
             onDelta(delta) {
               streamedReply += delta;
