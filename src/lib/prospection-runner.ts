@@ -13,10 +13,10 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 12;
+export const PROSPECTION_EMAILS_PER_RUN = 15;
 
-const SCORE_THRESHOLD = 60;
-const SEND_DELAY_MS = 1200;
+const SCORE_THRESHOLD = 72;
+const SEND_DELAY_MS = 800;
 
 type ProspectBacklogRow = {
   id: string;
@@ -46,16 +46,30 @@ async function delayAfterSend() {
   await new Promise((resolve) => setTimeout(resolve, SEND_DELAY_MS));
 }
 
-async function websiteAlreadySent(client: SupabaseClient, website: string) {
+async function websiteAlreadySent(client: SupabaseClient, website: string, email?: string | null) {
   const domain = extractRootDomain(website);
-  const { data } = await client
+
+  // Check by domain
+  const { data: byDomain } = await client
     .from("prospects")
     .select("id")
     .ilike("website", `%${domain}%`)
     .not("status", "eq", "rejected")
     .limit(1);
+  if ((byDomain?.length ?? 0) > 0) return true;
 
-  return (data?.length ?? 0) > 0;
+  // Check by email — prevent same address getting multiple series
+  if (email) {
+    const { data: byEmail } = await client
+      .from("prospects")
+      .select("id")
+      .eq("email", email.toLowerCase().trim())
+      .eq("status", "sent")
+      .limit(1);
+    if ((byEmail?.length ?? 0) > 0) return true;
+  }
+
+  return false;
 }
 
 async function sendProspectingEmail(
@@ -170,7 +184,7 @@ async function discoverAnalyzeAndSend(params: {
     if (!lead.website) continue;
 
     try {
-      if (await websiteAlreadySent(supabase, lead.website)) continue;
+      if (await websiteAlreadySent(supabase, lead.website, lead.email)) continue;
 
       const audit = await auditWebsite(lead);
       if (!audit) {
