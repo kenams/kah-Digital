@@ -8,10 +8,10 @@ type QuotePageContentProps = {
 
 const COPY = {
   fr: {
-    urgency: "🔥 52 devis envoyés ce mois · 2 créneaux disponibles en mai",
+    urgency: "🔥 52 devis envoyés ce mois · 2 créneaux disponibles en juin",
     eyebrow: "Devis gratuit · Réponse sous 24h",
     title: "Quel projet souhaitez-vous réaliser ?",
-    subtitle: "Choisissez votre service, remplissez vos coordonnées et décrivez votre idée.\nOn vous répond avec un devis clair sous 24h — sans engagement.",
+    subtitle: "Choisissez votre service, remplissez vos coordonnées et décrivez votre idée.\nOn vous répond avec un devis clair sous 24h, sans engagement.",
     proofTitle: "Ils ont fait confiance à KAH-Digital",
     stats: [
       { value: "30+", label: "Projets livrés" },
@@ -41,7 +41,7 @@ const COPY = {
       { step: "1", label: "Tu envoies ce formulaire", desc: "2 minutes max" },
       { step: "2", label: "On analyse ton projet", desc: "Sous 24h" },
       { step: "3", label: "Tu reçois un devis clair", desc: "Prix fixe + délai" },
-      { step: "4", label: "On démarre quand tu veux", desc: "Ou jamais — aucune obligation" },
+      { step: "4", label: "On démarre quand tu veux", desc: "Ou jamais. Aucune obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Réponse sous 24h",  sub: "Jours ouvrés" },
@@ -51,10 +51,10 @@ const COPY = {
     ],
   },
   en: {
-    urgency: "🔥 52 quotes sent this month · 2 slots available in May",
+    urgency: "🔥 52 quotes sent this month · 2 slots available in June",
     eyebrow: "Free quote · Reply within 24h",
     title: "What project do you have in mind?",
-    subtitle: "Pick your service, fill in your details and describe your idea.\nWe'll reply with a clear quote within 24 hours — no commitment.",
+    subtitle: "Pick your service, fill in your details and describe your idea.\nWe'll reply with a clear quote within 24 hours, no commitment.",
     proofTitle: "They trusted KAH-Digital",
     stats: [
       { value: "30+", label: "Projects delivered" },
@@ -84,7 +84,7 @@ const COPY = {
       { step: "1", label: "You send this form", desc: "Takes 2 minutes" },
       { step: "2", label: "We analyse your project", desc: "Within 24h" },
       { step: "3", label: "You receive a clear quote", desc: "Fixed price + timeline" },
-      { step: "4", label: "We start when you're ready", desc: "Or never — no obligation" },
+      { step: "4", label: "We start when you're ready", desc: "Or never. No obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Reply within 24h",    sub: "Business days" },

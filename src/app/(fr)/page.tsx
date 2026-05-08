@@ -7,6 +7,7 @@ import { ProblemSection } from "@/components/problem-section";
 import { ServicesGrid } from "@/components/services-grid";
 import { WhyChooseSection } from "@/components/why-choose-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import { CaseStudySection } from "@/components/case-study-section";
 import { ProcessSection } from "@/components/process-section";
 import { GlobalTrustSection } from "@/components/global-trust-section";
 import { FAQSection } from "@/components/faq-section";
@@ -111,6 +112,7 @@ export default function Home() {
       <ServicesGrid />
       <WhyChooseSection />
       <TestimonialsSection />
+      <CaseStudySection />
       <ProcessSection />
       <GlobalTrustSection />
       <FAQSection />
