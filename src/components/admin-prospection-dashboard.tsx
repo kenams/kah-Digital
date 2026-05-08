@@ -77,6 +77,7 @@ type LiveStats = {
     staleBatchHours: number | null;
     backlogReady: number;
     sentLast24h: number;
+    blockedDomains: number;
     recentErrors: string[];
     warnings: string[];
   };
@@ -611,6 +612,7 @@ export function ProspectionDashboard() {
               { label: "🔁 Relances J+1/J+3", value: liveStats.stats.j3Sent, color: "text-violet-400" },
               { label: "🔁 Relances J+5", value: liveStats.stats.j7Sent, color: "text-pink-400" },
               { label: "⚠️ Sans email", value: liveStats.stats.noEmail, color: "text-yellow-400" },
+              { label: "🔒 Domaines bloqués", value: liveStats.diagnostics?.blockedDomains ?? "—", color: "text-red-400" },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-2">
                 <span className={`text-xl font-bold ${s.color}`}>{s.value}</span>
@@ -665,6 +667,7 @@ export function ProspectionDashboard() {
                       { label: "Dernier prospect", value: liveStats.diagnostics.latestProspectAt ? new Date(liveStats.diagnostics.latestProspectAt).toLocaleString("fr-FR") : "Aucun", tone: "text-gray-200" },
                       { label: "Backlog prêt", value: liveStats.diagnostics.backlogReady.toString(), tone: liveStats.diagnostics.backlogReady > 0 ? "text-blue-400" : "text-gray-400" },
                       { label: "Envoyés 24h", value: liveStats.diagnostics.sentLast24h.toString(), tone: liveStats.diagnostics.sentLast24h > 0 ? "text-emerald-400" : "text-yellow-400" },
+                      { label: "🔒 Domaines bloqués", value: liveStats.diagnostics.blockedDomains.toString(), tone: liveStats.diagnostics.blockedDomains > 300 ? "text-red-400" : "text-gray-200" },
                     ].map((item) => (
                       <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900/70 p-3">
                         <div className="text-xs text-gray-500">{item.label}</div>

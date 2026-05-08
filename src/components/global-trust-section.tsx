@@ -22,7 +22,7 @@ export function GlobalTrustSection() {
           icon: FiClock,
           accent: "#8b5cf6",
           title: "Communication claire",
-          description: "Réponses rapides, points réguliers et vision nette de l'avancement — sans opacité technique.",
+          description: "Réponses rapides, points réguliers et vision nette de l'avancement, sans opacité technique.",
         },
         {
           icon: FiFileText,
@@ -60,7 +60,7 @@ export function GlobalTrustSection() {
           icon: FiClock,
           accent: "#8b5cf6",
           title: "Clear communication",
-          description: "Fast replies, regular check-ins, and a clear view of progress — no technical opacity.",
+          description: "Fast replies, regular check-ins, and a clear view of progress, no technical opacity.",
         },
         {
           icon: FiFileText,
@@ -98,7 +98,7 @@ export function GlobalTrustSection() {
           icon: FiClock,
           accent: "#8b5cf6",
           title: "Klare Kommunikation",
-          description: "Schnelle Antworten, regelmäßige Updates, klarer Fortschrittsblick — ohne technische Intransparenz.",
+          description: "Schnelle Antworten, regelmäßige Updates, klarer Fortschrittsblick, ohne technische Intransparenz.",
         },
         {
           icon: FiFileText,

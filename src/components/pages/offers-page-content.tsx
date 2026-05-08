@@ -143,7 +143,7 @@ const copy = {
     ],
     customOffers: {
       title: "Projet hors catalogue ?",
-      body: "Application mobile, e-commerce avancé, parcours GLPI, refonte complète — tout besoin est évalué sur mesure.",
+      body: "Application mobile, e-commerce avancé, parcours GLPI, refonte complète. Tout besoin est évalué sur mesure.",
       items: [
         { label: "Application mobile", price: "€ 6 000 – 20 000" },
         { label: "E-commerce complet", price: "€ 3 500 – 9 000" },
@@ -287,7 +287,7 @@ const copy = {
     ],
     customOffers: {
       title: "Off-catalogue project?",
-      body: "Mobile app, advanced e-commerce, GLPI workflow, full redesign — any need is evaluated on a custom basis.",
+      body: "Mobile app, advanced e-commerce, GLPI workflow, full redesign. Any need is evaluated on a custom basis.",
       items: [
         { label: "Mobile app", price: "€ 6,000 – 20,000" },
         { label: "Full e-commerce", price: "€ 3,500 – 9,000" },
@@ -431,7 +431,7 @@ const copy = {
     ],
     customOffers: {
       title: "Projekt außerhalb des Katalogs?",
-      body: "Mobile App, erweiterter E-Commerce, GLPI-Workflow, vollständige Neugestaltung — jeder Bedarf wird individuell bewertet.",
+      body: "Mobile App, erweiterter E-Commerce, GLPI-Workflow, vollständige Neugestaltung. Jeder Bedarf wird individuell bewertet.",
       items: [
         { label: "Mobile App", price: "€ 6.000 – 20.000" },
         { label: "Vollständiger E-Commerce", price: "€ 3.500 – 9.000" },

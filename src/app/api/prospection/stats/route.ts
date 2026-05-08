@@ -62,6 +62,7 @@ export async function GET() {
     lastProspectRes,
     backlogCountRes,
     sent24hRes,
+    blockedCountRes,
   ] = await Promise.all([
     supabase.from("prospects").select("status, openedAt, clickedAt, repliedAt, sentAt, email, createdAt"),
     fetchBatches(supabase),
@@ -92,6 +93,9 @@ export async function GET() {
     supabase.from("prospects")
       .select("id", { count: "exact", head: true })
       .gte("sentAt", since24h),
+    supabase.from("prospects")
+      .select("id", { count: "exact", head: true })
+      .not("status", "eq", "rejected"),
   ]);
 
   const prospects = (prospectsRes.data ?? []) as ProspectStatRow[];
@@ -160,6 +164,7 @@ export async function GET() {
       staleBatchHours,
       backlogReady: backlogCountRes.count ?? 0,
       sentLast24h: sent24hRes.count ?? 0,
+      blockedDomains: blockedCountRes.count ?? 0,
       recentErrors,
       warnings,
     },

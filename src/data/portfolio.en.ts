@@ -129,6 +129,130 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     },
   },
   {
+    slug: "dropigo",
+    name: "DroPiPêche",
+    type: "Mobile app / Fishing marketplace",
+    tagline:
+      "iOS & Android app connecting fishermen and buyers: sell fresh catches, book a pickup, track orders and chat in-app.",
+    shortDescription:
+      "Mobile marketplace with dual roles (fisher / buyer), Supabase auth, geolocation, cart, booking, order tracking, chat, push notifications and delivery QR code.",
+    description:
+      "DroPiPêche is a mobile marketplace app connecting fishermen with buyers of fresh fish. Built with Expo React Native, it offers two distinct flows: fishers create listings with photos, geolocation and availability; buyers browse listings, book, pay and track their order through to delivery via QR code. An admin panel supervises profiles and transactions.",
+    challenge:
+      "Design two watertight user flows (fisher / buyer) within a single app, handle geolocation for meeting points, integrate real-time chat and a booking system with slot management.",
+    solution:
+      "Expo React Native with typed navigation, Supabase for auth, database and bookings, expo-location for geolocation, expo-notifications for alerts and expo-print for delivery QR code generation.",
+    stack: ["Expo React Native", "TypeScript", "Supabase", "Geolocation", "Push Notifications", "QR Code"],
+    result:
+      "Full iOS & Android app with dual flow, booking, payment, chat and order tracking — ready for store submission.",
+    timeline: "8 weeks",
+    deliverables: [
+      "Dual fisher / buyer flow",
+      "Supabase auth + profiles",
+      "Geolocation & meeting point",
+      "Cart, booking, order tracking",
+      "Integrated real-time chat",
+      "Delivery QR code",
+    ],
+    metrics: [
+      { label: "Screens", value: "20+" },
+      { label: "Roles", value: "2 + admin" },
+      { label: "Stack", value: "Expo + Supabase" },
+    ],
+    highlights: [
+      "Dual fisher / buyer role",
+      "Chat & push notifications",
+      "QR code delivery + order tracking",
+    ],
+    palette: {
+      primary: "#071420",
+      secondary: "#0f2d4a",
+      accent: "#3b9ef6",
+    },
+  },
+  {
+    slug: "immortal-arena",
+    name: "Immortal Arena",
+    type: "Mobile app / Sport & Gaming",
+    tagline:
+      "Viral sports challenge app: live battles, leaderboards, territories, community reputation and reward system.",
+    shortDescription:
+      "Gamified mobile app with sports challenges, live battles, leaderboard, territory system, shop, wallet, moderation and coach space.",
+    description:
+      "Immortal Arena turns sports challenges into a gamified community experience. Users launch challenges, participate in filmed live battles, earn reputation points, conquer territories and climb leaderboards. A coach space allows athlete tracking, and a moderation system enforces fair play.",
+    challenge:
+      "Build an app with real-time flows (live battles, live votes), full gamification (rankings, territories, shop, wallet) and frictionless moderation for a sports community.",
+    solution:
+      "Expo React Native with Supabase for real-time data, expo-camera and expo-video for lives, push notifications for incoming challenges, cron scripts for vote finalization and battle closure.",
+    stack: ["Expo React Native", "TypeScript", "Supabase", "expo-video", "Push Notifications"],
+    result:
+      "Full sports mobile app with live battles, real-time leaderboards, integrated shop and moderation panel — production-ready structure.",
+    timeline: "6 weeks",
+    deliverables: [
+      "Challenges & filmed live battles",
+      "Leaderboard & territory system",
+      "Shop & points wallet",
+      "Coach space & moderation",
+      "Push notifications & automated crons",
+    ],
+    metrics: [
+      { label: "Screens", value: "30+" },
+      { label: "Modes", value: "Challenge + Live + Territory" },
+      { label: "Stack", value: "Expo + Supabase" },
+    ],
+    highlights: [
+      "Filmed live battles with live voting",
+      "Rankings, territories & shop",
+      "Coach space + fair-play moderation",
+    ],
+    palette: {
+      primary: "#050507",
+      secondary: "#1a0d1f",
+      accent: "#e63946",
+    },
+  },
+  {
+    slug: "ruby-gallery",
+    name: "Ruby Gallery",
+    type: "Showcase site + E-commerce / Art gallery",
+    tagline:
+      "Premium site built for a contemporary painter: catalogued artwork gallery, admin space and Stripe checkout.",
+    shortDescription:
+      "Next.js 15 site with filtered artwork gallery, admin panel to manage catalogue, Stripe checkout and legal pages — ready to go live.",
+    description:
+      "Ruby Gallery is a premium showcase site delivered to a contemporary painter. It presents her world, a filtered artwork catalogue, an about page, a contact form and a Stripe purchase flow. The admin panel lets Ruby manage artworks, prices and availability without any technical input. Deployed on Vercel with Neon Postgres.",
+    challenge:
+      "Build a site that showcases the artworks without visually overwhelming them, with a simple admin for a non-technical artist, a reliable checkout and fast deployment with no WordPress dependency.",
+    solution:
+      "Next.js 15 App Router, Prisma with Neon Postgres, gallery filtered by type and availability, session-protected admin, Stripe checkout with success/cancel pages, auto-generated sitemap and robots.",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Prisma", "Stripe", "Neon Postgres", "Vercel"],
+    result:
+      "Premium gallery site live, working admin, operational Stripe checkout — delivered turnkey to the artist.",
+    timeline: "2 weeks",
+    deliverables: [
+      "Filtered gallery by category",
+      "Artworks / price / availability admin",
+      "Stripe checkout + webhook",
+      "Legal & terms pages",
+      "Auto sitemap + basic SEO",
+    ],
+    metrics: [
+      { label: "Stack", value: "Next.js + Prisma" },
+      { label: "Payment", value: "Stripe integrated" },
+      { label: "Admin", value: "Turnkey" },
+    ],
+    highlights: [
+      "Premium gallery with filters",
+      "No-code artist admin",
+      "Stripe checkout + Neon Postgres",
+    ],
+    palette: {
+      primary: "#13100e",
+      secondary: "#2a1f18",
+      accent: "#c9956c",
+    },
+  },
+  {
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Music label / production",

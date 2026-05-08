@@ -324,12 +324,12 @@ function extractBraveUrls(html: string): string[] {
   return [...new Set(urls)].slice(0, 20);
 }
 
-async function searchDuckDuckGo(query: string): Promise<string[]> {
+async function searchDuckDuckGo(query: string, offset = 0): Promise<string[]> {
   const ua = DDG_USER_AGENTS[Math.floor(Math.random() * DDG_USER_AGENTS.length)];
   const endpoints = [
-    { url: `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`, extractor: extractDdgUrls },
-    { url: `https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(query)}`, extractor: extractDdgUrls },
-    { url: `https://search.brave.com/search?q=${encodeURIComponent(query)}&source=web`, extractor: extractBraveUrls },
+    { url: `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}&s=${offset}`, extractor: extractDdgUrls },
+    { url: `https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(query)}&s=${offset}`, extractor: extractDdgUrls },
+    { url: `https://search.brave.com/search?q=${encodeURIComponent(query)}&source=web&offset=${offset}`, extractor: extractBraveUrls },
   ];
   for (const { url, extractor } of endpoints) {
     const ctrl = new AbortController();
@@ -570,20 +570,65 @@ async function extractSiteInfo(url: string): Promise<{ name: string; email: stri
 // ── Blacklist ────────────────────────────────────────────────────────────────
 function isBlacklisted(url: string): boolean {
   const blocked = [
-    "facebook.com","instagram.com","twitter.com","x.com","linkedin.com","youtube.com","tiktok.com",
+    // Réseaux sociaux
+    "facebook.com","instagram.com","twitter.com","x.com","linkedin.com","youtube.com","tiktok.com","pinterest.com","snapchat.com",
+    // Annuaires / agrégateurs
     "tripadvisor","yelp.com","pagesjaunes","lafourchette","thefork","pagesjaunes.fr","pagesjaunes.be",
     "local.ch","yell.com","gelbeseiten.de","paginegialle.it","paginasamarillas.es","canada411",
-    "google.com","apple.com","amazon.","wikipedia","bing.com","yahoo.com",
-    "booking.com","leboncoin","airbnb","uber","deliveroo","ubereats",
-    "doctolib","wix.com/site","squarespace.com","wordpress.com","shopify.com",
-    ".gov",".gouv","mairie-","prefecture","lebonbon.fr","lefigaro","lemonde","leparisien",
-    "chu-","chru-","chu.","aphp.fr","hopital","hospital","clinique-publique","sante.gouv",
-    "selfcity.fr","depanneo.com","lesbonsartisans.fr","habitatpresto.com","houzz.com",
     "pages24.fr","annuaire-des-professionnels.fr","kompass.com","europages","societe.com",
     "foursquare.com","zomato.com","opentable.com","just-eat","grubhub","doordash",
-    "trustpilot","avis-verifies","google.fr","maps.google",
+    "superprof.","lessonup.","preply.com","italki.com","coursera.","udemy.","skillshare.",
+    "malt.fr","malt.com","upwork.com","freelancer.com","fiverr.com","guru.com",
+    "indeed.com","linkedin.com","monster.com","pole-emploi","offredemploi","welcometothejungle",
+    "leboncoin","lacentraledesparticuliers","logic-immo","seloger","pap.fr","orpi.","century21.",
+    "laforet.","stephalex.","guy-hoquet.","era-immobilier",
+    // Moteurs de recherche / grands sites
+    "google.com","google.fr","apple.com","amazon.","wikipedia","bing.com","yahoo.com","baidu.com","duckduckgo.com",
+    // Voyage / hébergement
+    "booking.com","airbnb","uber","deliveroo","ubereats","tripadvisor","expedia","hotels.com","kayak.",
+    // Santé publique / admin
+    "doctolib","clinique-publique","sante.gouv","hopital","hospital","aphp.fr","chu-","chru-","chu.",
+    ".gov",".gouv","mairie-","prefecture","conseil-departemental","region.",
+    // Sites CMS / plateformes
+    "wix.com/site","squarespace.com","wordpress.com","shopify.com","webflow.io","strikingly.com",
+    // Médias / presse
+    "lefigaro","lemonde","leparisien","liberation.fr","lexpress.fr","lepoint.fr","huffingtonpost","bfmtv","20minutes","ouest-france",
+    // Avis / notation
+    "trustpilot","avis-verifies","google.fr","maps.google","notretemps.com","societe.ninja",
+    // Artisans plateformes
+    "selfcity.fr","depanneo.com","lesbonsartisans.fr","habitatpresto.com","houzz.com",
+    // Registres / bases légales
+    "gleif.org","infogreffe.fr","bodacc.fr","societe.com","pappers.fr","manageo.fr","verif.com",
+    // Presse spécialisée / portails ville / guides
+    "lebonbon.fr","sortiraparis.","lyoncapitale.fr","bordeaux-metropole","toulouse.fr",
+    "timeout.com","thrillist.com","eater.com","infobel.","192.com","companieshouse.",
+    "cuatrecasas.","linklaters.","cliffordchance.","freshfields.","deloitte.","pwc.com","kpmg.","ey.com",
+    // Autres
+    "cloudflare.com","sentry.io","jsdelivr.net","cdnjs.cloudflare","jsdelivr.com",
   ];
-  return blocked.some((b) => url.toLowerCase().includes(b));
+
+  const lower = url.toLowerCase();
+  if (blocked.some((b) => lower.includes(b))) return true;
+
+  // Filtre chemins d'agrégateurs : URL contenant des segments typiques de pages catégorie
+  try {
+    const path = new URL(url).pathname.toLowerCase();
+    const badPathSegments = [
+      "/lessons/","/search/","/record/","/annonce/","/offre-","/recherche/","/trouver-",
+      "/liste-","/category/","/categories/","/tag/","/tags/","/page/","/results/",
+      "/annuaire/","/directory/","/profils/","/profiles/","/members/","/membres/",
+      "/jobs/","/emploi/","/recrutement/","/offres-emploi/",
+    ];
+    if (badPathSegments.some((seg) => path.includes(seg))) return true;
+
+    // URL qui est une page "opticien à clermont" ou "/aeronautique-toulouse" → chemin sans sens pour un site business
+    if (/\/[a-z-]+-[a-z-]+(\/|$)/.test(path) && path.split("/").length > 3) {
+      const lastSegment = path.split("/").filter(Boolean).pop() ?? "";
+      if (lastSegment.length > 30) return true; // chemin trop long = page SEO d'annuaire
+    }
+  } catch { /* skip */ }
+
+  return false;
 }
 
 // ── Build leads from URLs ────────────────────────────────────────────────────
@@ -598,6 +643,8 @@ async function buildLeadsFromUrls(
     try {
       const hostname = new URL(url).hostname;
       const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(url);
+      // On ne retient que les leads avec un email (réel ou deviné) pour éviter le backlog mort
+      if (!email) continue;
       leads.push({
         businessName,
         website: url,
@@ -641,58 +688,73 @@ const STATIC_FALLBACKS: Array<{ businessName: string; website: string; country: 
 
 function getStaticFallback(count: number): DiscoveredLead[] {
   const shuffled = [...STATIC_FALLBACKS].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count).map((f, i) => ({
-    businessName: f.businessName,
-    website: f.website,
-    address: f.country,
-    country: f.country,
-    language: f.language,
-    sector: f.sector,
-    placeId: `static-${i}-${Date.now()}`,
-    email: null,
-    phone: null,
-  }));
+  return shuffled.slice(0, count).map((f, i) => {
+    // Deviner info@domain pour le fallback statique (toujours envoyable)
+    const domain = new URL(f.website).hostname.replace(/^www\./, "");
+    return {
+      businessName: f.businessName,
+      website: f.website,
+      address: f.country,
+      country: f.country,
+      language: f.language,
+      sector: f.sector,
+      placeId: `static-${i}-${Date.now()}`,
+      email: `info@${domain}`,
+      emailGuessed: true,
+      phone: null,
+    };
+  });
 }
 
 // ── Point d'entrée ───────────────────────────────────────────────────────────
+const DDG_OFFSETS = [0, 10, 20, 30, 40];
+
 export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
-  // Sélectionne 2 targets aléatoires depuis des parties différentes du tableau
+  // 5 targets aléatoires avec pagination variée pour éviter les doublons DB
   const shuffled = [...TARGETS].sort(() => Math.random() - 0.5);
-  const target1 = shuffled[0];
-  const target2 = shuffled[1 + Math.floor(Math.random() * (shuffled.length - 1))];
+  const selected = shuffled.slice(0, 5);
 
-  // Lance les 2 recherches DDG séquentiellement (évite le rate-limit)
-  console.log(`[lead-discovery] DDG target 1: "${target1.query}"`);
-  let urls1 = await searchDuckDuckGo(target1.query);
+  // Map url → meta pour préserver le bon pays/secteur par URL
+  const urlMetaMap = new Map<string, { country: string; language: string; sector: string }>();
 
-  // Si target1 échoue, essaie target2 en premier
-  if (urls1.length < 3) {
-    console.log(`[lead-discovery] DDG target 2: "${target2.query}"`);
-    const urls2 = await searchDuckDuckGo(target2.query);
-    const combined = [...new Set([...urls1, ...urls2])];
-    if (combined.length > 0) {
-      const leads = await buildLeadsFromUrls(
-        combined,
-        { country: target1.country, language: target1.lang, sector: target1.sector },
-        count
-      );
-      if (leads.length > 0) {
-        console.log(`[lead-discovery] DDG dual: ${leads.length} leads`);
-        return leads;
+  for (const target of selected) {
+    const offset = DDG_OFFSETS[Math.floor(Math.random() * DDG_OFFSETS.length)];
+    console.log(`[lead-discovery] DDG: "${target.query}" offset=${offset}`);
+    const urls = await searchDuckDuckGo(target.query, offset);
+    for (const url of urls) {
+      if (!urlMetaMap.has(url)) {
+        urlMetaMap.set(url, { country: target.country, language: target.lang, sector: target.sector });
       }
     }
-  } else {
-    // target1 a réussi, on peut ajouter target2 pour enrichir
-    console.log(`[lead-discovery] DDG target 2 bonus: "${target2.query}"`);
-    const urls2 = await searchDuckDuckGo(target2.query);
-    urls1 = [...new Set([...urls1, ...urls2])];
-    const leads = await buildLeadsFromUrls(
-      urls1,
-      { country: target1.country, language: target1.lang, sector: target1.sector },
-      count
-    );
+    // Assez d'URLs → on arrête tôt pour économiser le temps Vercel
+    if (urlMetaMap.size >= count * 5) break;
+  }
+
+  if (urlMetaMap.size > 0) {
+    const leads: DiscoveredLead[] = [];
+    for (const [url, meta] of urlMetaMap) {
+      if (leads.length >= count) break;
+      try {
+        const hostname = new URL(url).hostname;
+        const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(url);
+        if (!email) continue;
+        leads.push({
+          businessName,
+          website: url,
+          address: meta.country,
+          country: meta.country,
+          language: meta.language,
+          sector: meta.sector,
+          placeId: `${hostname}-${Date.now()}`,
+          email,
+          phone,
+          emailGuessed,
+        });
+        await new Promise((r) => setTimeout(r, 400));
+      } catch { /* skip */ }
+    }
     if (leads.length > 0) {
-      console.log(`[lead-discovery] DDG: ${leads.length} leads via dual target`);
+      console.log(`[lead-discovery] DDG: ${leads.length} leads via ${selected.length} targets`);
       return leads;
     }
   }

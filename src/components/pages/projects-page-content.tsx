@@ -20,7 +20,7 @@ const copy = {
     eyebrow: "Réalisations",
     title: "Des projets livrés.",
     titleAccent: "Pas des promesses.",
-    body: "Sites premium, SaaS, apps métier — chaque projet est conçu pour convertir, pas juste pour exister.",
+    body: "Sites premium, SaaS, apps métier. Chaque projet est conçu pour convertir, pas juste pour exister.",
     stats: [
       { value: "30+", label: "Projets livrés" },
       { value: "1–6 sem.", label: "Délai moyen" },
@@ -39,7 +39,7 @@ const copy = {
     eyebrow: "Portfolio",
     title: "Projects delivered.",
     titleAccent: "Not just promises.",
-    body: "Premium sites, SaaS, business apps — every project is built to convert, not just exist.",
+    body: "Premium sites, SaaS, business apps. Every project is built to convert, not just exist.",
     stats: [
       { value: "30+", label: "Projects delivered" },
       { value: "1–6 wk", label: "Average timeline" },
@@ -58,7 +58,7 @@ const copy = {
     eyebrow: "Referenzen",
     title: "Projekte geliefert.",
     titleAccent: "Keine Versprechen.",
-    body: "Premium-Websites, SaaS, Business-Apps — jedes Projekt ist auf Conversion ausgelegt.",
+    body: "Premium-Websites, SaaS, Business-Apps. Jedes Projekt ist auf Conversion ausgelegt.",
     stats: [
       { value: "30+", label: "Projekte geliefert" },
       { value: "1–6 Wo.", label: "Durchschnittliche Laufzeit" },

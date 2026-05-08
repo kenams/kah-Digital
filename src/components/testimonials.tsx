@@ -26,7 +26,7 @@ const testimonialsEn = [
     name: "Ashanti Beauty",
     role: "Beauty brand · e-commerce",
     quote:
-      "Fast launch, clean design — our customers loved it from day one. The team was responsive and clear at every step.",
+      "Fast launch, clean design. Our customers loved it from day one. The team was responsive and clear at every step.",
     real: true,
   },
   {

@@ -23,7 +23,7 @@ export function ProcessSection() {
           icon: FiFileText,
           accent: "#8b5cf6",
           title: "Devis clair & périmètre",
-          description: "Un devis lisible avec les fonctionnalités, le budget et le planning. Vous savez exactement ce que vous achetez — pas de surprise à la facture.",
+          description: "Un devis lisible avec les fonctionnalités, le budget et le planning. Vous savez exactement ce que vous achetez, sans surprise à la facture.",
         },
         {
           num: "03",
@@ -65,7 +65,7 @@ export function ProcessSection() {
           icon: FiFileText,
           accent: "#8b5cf6",
           title: "Clear quote & scope",
-          description: "A readable quote with features, budget, and timeline. You know exactly what you're buying — no surprise invoice.",
+          description: "A readable quote with features, budget, and timeline. You know exactly what you're buying. No surprise invoice.",
         },
         {
           num: "03",
@@ -79,7 +79,7 @@ export function ProcessSection() {
           icon: FiCheckCircle,
           accent: "#f59e0b",
           title: "Testing & launch",
-          description: "Desktop, mobile, performance, and SEO tests before delivery. Clean, supported launch — no stress, no improvisation.",
+          description: "Desktop, mobile, performance, and SEO tests before delivery. Clean, supported launch. No stress, no improvisation.",
         },
         {
           num: "05",
@@ -107,7 +107,7 @@ export function ProcessSection() {
           icon: FiFileText,
           accent: "#8b5cf6",
           title: "Klares Angebot & Scope",
-          description: "Ein lesbares Angebot mit Funktionen, Budget und Zeitplan. Sie wissen genau, was Sie kaufen — keine Überraschungsrechnung.",
+          description: "Ein lesbares Angebot mit Funktionen, Budget und Zeitplan. Sie wissen genau, was Sie kaufen. Keine Überraschungsrechnung.",
         },
         {
           num: "03",
@@ -121,7 +121,7 @@ export function ProcessSection() {
           icon: FiCheckCircle,
           accent: "#f59e0b",
           title: "Tests & Launch",
-          description: "Desktop-, Mobile-, Performance- und SEO-Tests vor der Lieferung. Sauberer, begleiteter Launch — kein Stress.",
+          description: "Desktop-, Mobile-, Performance- und SEO-Tests vor der Lieferung. Sauberer, begleiteter Launch, kein Stress.",
         },
         {
           num: "05",

@@ -77,7 +77,7 @@ export function ProblemSection() {
     de: {
       eyebrow: "Erkennen Sie sich wieder?",
       title: "Sie haben eine Idee oder ein Projekt, aber noch kein digitales Werkzeug, um es zu starten.",
-      body: "Genau hier komme ich ins Spiel. Ob Sie bei null anfangen oder etwas erneuern möchten — ich begleite Sie von der Idee bis zum Launch.",
+      body: "Genau hier komme ich ins Spiel. Ob Sie bei null anfangen oder etwas erneuern möchten, ich begleite Sie von der Idee bis zum Launch.",
       problems: [
         {
           icon: FiTrendingDown,
