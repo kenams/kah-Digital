@@ -9,11 +9,11 @@ export function HeroSection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      badge: "30+ projets livrés · Lausanne · Disponible à distance · 2 créneaux libres en mai",
+      badge: "30+ projets livrés · Lausanne · Disponible à distance · 2 créneaux libres en juin",
       title1: "Sites web, apps mobiles",
       title2: "et SaaS qui convertissent",
-      title3: "— livrés en 1 à 6 semaines",
-      body: "Prix fixe. Scope clair. Zéro dépassement. Chaque projet est cadré, chiffré et livré dans les délais — ou remboursé. Site vitrine dès 900 €, app mobile dès 6 000 €.",
+      title3: "livrés en 1 à 6 semaines.",
+      body: "Prix fixe. Scope clair. Zéro dépassement. Chaque projet est cadré, chiffré et livré dans les délais, ou remboursé. Site vitrine dès 900 €, app mobile dès 6 000 €.",
       primary: "Obtenir mon devis en 2 min",
       secondary: "Voir les offres et tarifs",
       badges: [
@@ -25,14 +25,14 @@ export function HeroSection() {
       ],
       proof1: { label: "Site vitrine livré en 2 à 3 semaines", desc: "Prix fixe · zéro surprise · 30j corrections" },
       proof2: { label: "Devis personnalisé sous 24h", desc: "Gratuit · sans engagement · réponse garantie" },
-      proof3: { label: "2 créneaux disponibles en mai", desc: "Prochain démarrage : semaine du 12 mai" },
+      proof3: { label: "2 créneaux disponibles en juin", desc: "Prochain démarrage : semaine du 9 juin" },
     },
     en: {
-      badge: "30+ projects delivered · Lausanne · Remote-friendly · 2 slots left in May",
+      badge: "30+ projects delivered · Lausanne · Remote-friendly · 2 slots left in June",
       title1: "Websites, mobile apps",
       title2: "and SaaS that convert",
-      title3: "— delivered in 1 to 6 weeks",
-      body: "Fixed price. Clear scope. No overruns. Every project is scoped, quoted and delivered on time — or refunded. Showcase site from €900, mobile app from €6,000.",
+      title3: "delivered in 1 to 6 weeks.",
+      body: "Fixed price. Clear scope. No overruns. Every project is scoped, quoted and delivered on time, or refunded. Showcase site from €900, mobile app from €6,000.",
       primary: "Get my quote in 2 min",
       secondary: "See offers & pricing",
       badges: [
@@ -44,14 +44,14 @@ export function HeroSection() {
       ],
       proof1: { label: "Showcase site in 2–3 weeks", desc: "Fixed price · no surprises · 30d corrections" },
       proof2: { label: "Custom quote in under 24h", desc: "Free · no commitment · guaranteed reply" },
-      proof3: { label: "2 slots available in May", desc: "Next start: week of May 12" },
+      proof3: { label: "2 slots available in June", desc: "Next start: week of June 9" },
     },
     de: {
-      badge: "30+ gelieferte Projekte · Lausanne · Remote · 2 freie Plätze im Mai",
+      badge: "30+ gelieferte Projekte · Lausanne · Remote · 2 freie Plätze im Juni",
       title1: "Websites, mobile Apps",
       title2: "und SaaS die konvertieren",
-      title3: "— in 1 bis 6 Wochen geliefert",
-      body: "Festpreis. Klares Scope. Keine Überschreitungen. Jedes Projekt wird termingerecht geliefert — oder erstattet. Website ab 900 €, Mobile App ab 6.000 €.",
+      title3: "in 1 bis 6 Wochen geliefert.",
+      body: "Festpreis. Klares Scope. Keine Überschreitungen. Jedes Projekt wird termingerecht geliefert, oder erstattet. Website ab 900 €, Mobile App ab 6.000 €.",
       primary: "Angebot in 2 Min anfordern",
       secondary: "Angebote & Preise ansehen",
       badges: [
@@ -63,7 +63,7 @@ export function HeroSection() {
       ],
       proof1: { label: "Website in 2–3 Wochen geliefert", desc: "Festpreis · keine Überraschungen" },
       proof2: { label: "Individuelles Angebot in 24h", desc: "Kostenlos · keine Verpflichtung" },
-      proof3: { label: "2 freie Plätze im Mai", desc: "Nächster Start: Woche vom 12. Mai" },
+      proof3: { label: "2 freie Plätze im Juni", desc: "Nächster Start: Woche vom 9. Juni" },
     },
   }[locale];
 

@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiPhone } from "react-icons/fi";
-import { companyConfig } from "@/config/company";
+import { FiArrowRight, FiMessageCircle } from "react-icons/fi";
 
 export function CTASection() {
   const { locale, prefix } = useLocale();
@@ -11,30 +10,34 @@ export function CTASection() {
     fr: {
       eyebrow: "Prêt à démarrer ?",
       title: "Votre projet mérite un cadrage sérieux",
-      body: "Site web, application ou automatisation IA — premier échange sous 24h, devis lisible, aucun engagement avant validation.",
+      body: "Site web, application ou automatisation IA. Premier échange sous 24h, devis lisible, aucun engagement avant validation.",
       primary: "Demander un devis gratuit",
-      secondary: "Appeler directement",
+      secondary: "WhatsApp — réponse sous 2h",
+      waText: "Bonjour Kénan, je souhaite un devis pour mon projet web.",
       trust: ["Devis gratuit et sans engagement", "Réponse sous 24h ouvrables", "Dès € 300"],
     },
     en: {
       eyebrow: "Ready to start?",
       title: "Your project deserves serious scoping",
-      body: "Website, application, or AI automation — first reply within 24h, clear quote, no commitment before validation.",
+      body: "Website, application, or AI automation. First reply within 24h, clear quote, no commitment before validation.",
       primary: "Request a free quote",
-      secondary: "Call directly",
+      secondary: "WhatsApp — reply in 2h",
+      waText: "Hi Kénan, I'd like a quote for my web project.",
       trust: ["Free quote, no commitment", "Reply within 24 business hours", "From € 300"],
     },
     de: {
       eyebrow: "Bereit loszulegen?",
       title: "Ihr Projekt verdient ein ernsthaftes Briefing",
-      body: "Website, Anwendung oder KI-Automatisierung — erste Antwort in 24h, klares Angebot, keine Verpflichtung vor der Freigabe.",
+      body: "Website, Anwendung oder KI-Automatisierung. Erste Antwort in 24h, klares Angebot, keine Verpflichtung vor der Freigabe.",
       primary: "Kostenloses Angebot anfragen",
-      secondary: "Direkt anrufen",
+      secondary: "WhatsApp — Antwort in 2h",
+      waText: "Hallo Kénan, ich möchte ein Angebot für mein Webprojekt.",
       trust: ["Kostenloses Angebot, keine Verpflichtung", "Antwort in 24 Arbeitsstunden", "Ab € 300"],
     },
   }[locale];
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
+  const waUrl = `https://wa.me/33759558414?text=${encodeURIComponent(copy.waText)}`;
 
   return (
     <section className="relative overflow-hidden bg-gray-950 py-28">
@@ -56,10 +59,12 @@ export function CTASection() {
             <FiArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
-            href={`tel:${companyConfig.phone.replace(/\s/g, "")}`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5"
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-semibold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
           >
-            <FiPhone size={15} />
+            <FiMessageCircle size={15} />
             {copy.secondary}
           </a>
         </div>

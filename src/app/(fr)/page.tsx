@@ -1,5 +1,7 @@
 import { buildPageMetadata } from "@/lib/shared-metadata";
 import { HeroSection } from "@/components/hero-section";
+import { StatsBar } from "@/components/stats-bar";
+import { FreeCallSection } from "@/components/free-call-section";
 import { TrustBar } from "@/components/trust-bar";
 import { ProblemSection } from "@/components/problem-section";
 import { ServicesGrid } from "@/components/services-grid";
@@ -102,6 +104,8 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
+      <StatsBar />
+      <FreeCallSection />
       <TrustBar />
       <ProblemSection />
       <ServicesGrid />

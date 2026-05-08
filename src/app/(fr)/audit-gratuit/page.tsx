@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { FiArrowRight, FiCheckCircle, FiZap, FiSearch, FiTrendingUp } from "react-icons/fi";
+import { FiArrowRight, FiCheckCircle, FiZap, FiSearch, FiTrendingUp, FiMessageCircle } from "react-icons/fi";
 import { trackEvent } from "@/lib/analytics";
+
+const WA_AUDIT_URL = "https://wa.me/33759558414?text=Bonjour%20K%C3%A9nan%2C%20je%20voudrais%20un%20audit%20gratuit%20de%20mon%20site%20web.";
 
 const CHECKS = [
   { icon: FiSearch, label: "Référencement Google (SEO)" },
@@ -136,6 +138,19 @@ export default function AuditGratuitPage() {
             </button>
             <p className="text-center text-xs text-gray-600">Aucune carte bleue · Résultats par email · 100% gratuit</p>
           </form>
+          <div className="mt-6 rounded-2xl border border-[#25D366]/25 bg-[#25D366]/8 p-4 text-center">
+            <p className="mb-2 text-sm font-semibold text-white">Vous préférez un retour direct ?</p>
+            <a
+              href={WA_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110"
+            >
+              <FiMessageCircle size={15} />
+              Demander via WhatsApp
+            </a>
+            <p className="mt-2 text-xs text-gray-500">Réponse sous 2h en semaine</p>
+          </div>
         </div>
 
         {/* What you get */}
@@ -183,6 +198,27 @@ export default function AuditGratuitPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Urgency CTA final */}
+      <section className="border-t border-white/6 bg-gradient-to-r from-blue-950/60 to-violet-950/40 py-14">
+        <div className="mx-auto max-w-2xl px-4 text-center">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Places limitées</p>
+          <h2 className="mb-4 text-2xl font-extrabold text-white">2 audits gratuits disponibles ce mois-ci</h2>
+          <p className="mb-8 text-gray-400">Chaque audit est préparé manuellement par Kénan. Places limitées pour garantir la qualité.</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href={WA_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
+            >
+              <FiMessageCircle size={16} />
+              Réserver mon audit sur WhatsApp
+            </a>
+          </div>
+          <p className="mt-4 text-xs text-gray-600">100% gratuit · Sans engagement · Résultats personnalisés</p>
         </div>
       </section>
     </div>

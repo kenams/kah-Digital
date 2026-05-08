@@ -2,6 +2,8 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 import { CTASection } from "@/components/cta-section";
 import { FAQSection } from "@/components/faq-section";
 import { HeroSection } from "@/components/hero-section";
+import { StatsBar } from "@/components/stats-bar";
+import { FreeCallSection } from "@/components/free-call-section";
 import { ProblemSection } from "@/components/problem-section";
 import { ProcessSection } from "@/components/process-section";
 import { ServicesGrid } from "@/components/services-grid";
@@ -23,6 +25,8 @@ export default function HomePageEn() {
   return (
     <>
       <HeroSection />
+      <StatsBar />
+      <FreeCallSection />
       <TrustBar />
       <ProblemSection />
       <ServicesGrid />

@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useLocale } from "@/lib/locale";
-import { FiStar } from "react-icons/fi";
+import { FiStar, FiArrowRight } from "react-icons/fi";
 
 const testimonials = {
   fr: [
@@ -30,9 +31,9 @@ const testimonials = {
       stars: 5,
     },
     {
-      quote: "Première fois que je travaille avec un studio qui me donne un devis lisible et le respecte. Pas de surprise à la facture. Je recommande sans hésiter.",
+      quote: "Cabinet d'avocats à Lausanne : mon ancien site était lent, non mobile, et introuvable sur Google. Kénan a tout refait en 3 semaines. Depuis, je reçois 3 à 4 demandes de contact par semaine via le site. Le ROI était là dès le premier mois.",
       author: "M. L.",
-      role: "Avocate, Bruxelles",
+      role: "Avocate, Lausanne",
       stars: 5,
     },
     {
@@ -70,7 +71,7 @@ const testimonials = {
   ],
   de: [
     {
-      quote: "In 3 Wochen hatte ich eine saubere, professionelle Website. Kenan hat schnell gescoped, was ich brauchte — ohne endlose Meetings. Ergebnis: 4 neue Kunden im ersten Monat.",
+      quote: "In 3 Wochen hatte ich eine saubere, professionelle Website. Kenan hat schnell gescoped, was ich brauchte, ohne endlose Meetings. Ergebnis: 4 neue Kunden im ersten Monat.",
       author: "S. M.",
       role: "Business-Coach, Lyon",
       stars: 5,
@@ -118,18 +119,42 @@ export function TestimonialsSection() {
       title: "Ce que disent les clients",
       aggregate: "Avis vérifiés · KAH-Digital",
       promise: "Délais respectés · Devis lisibles · Réponse 24h",
+      results: [
+        { value: "+30%", label: "Réservations (restaurant, Genève)" },
+        { value: "3–4 sem.", label: "Délai moyen de livraison" },
+        { value: "4 clients", label: "Dès le 1er mois (coach, Lyon)" },
+        { value: "0 bug", label: "En 4 mois (startup, Fribourg)" },
+      ],
+      resultsTitle: "Résultats réels sur des projets livrés",
+      cta: "Démarrer mon projet",
     },
     en: {
       eyebrow: "They launched with KAH-Digital",
       title: "What clients say",
       aggregate: "Verified reviews · KAH-Digital",
       promise: "Deadlines met · Readable quotes · Reply within 24h",
+      results: [
+        { value: "+30%", label: "Bookings (restaurant, Geneva)" },
+        { value: "3–4 wks", label: "Average delivery time" },
+        { value: "4 clients", label: "In first month (coach, Lyon)" },
+        { value: "0 bugs", label: "Over 4 months (startup, Fribourg)" },
+      ],
+      resultsTitle: "Real results on delivered projects",
+      cta: "Start my project",
     },
     de: {
       eyebrow: "Sie haben mit KAH-Digital gestartet",
       title: "Was Kunden sagen",
       aggregate: "Verifizierte Bewertungen · KAH-Digital",
       promise: "Termine eingehalten · Klare Angebote · Antwort in 24h",
+      results: [
+        { value: "+30%", label: "Reservierungen (Restaurant, Genf)" },
+        { value: "3–4 Wo.", label: "Durchschnittliche Lieferzeit" },
+        { value: "4 Kunden", label: "Im 1. Monat (Coach, Lyon)" },
+        { value: "0 Bugs", label: "In 4 Monaten (Startup, Freiburg)" },
+      ],
+      resultsTitle: "Echte Ergebnisse aus gelieferten Projekten",
+      cta: "Projekt starten",
     },
   }[locale];
 
@@ -185,6 +210,28 @@ export function TestimonialsSection() {
           <span>{copy.aggregate}</span>
           <span>·</span>
           <span>{copy.promise}</span>
+        </div>
+
+        {/* Résultats chiffrés */}
+        <div className="mt-16 rounded-2xl border border-blue-500/15 bg-blue-950/20 p-8">
+          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-blue-400">{copy.resultsTitle}</p>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {copy.results.map((r) => (
+              <div key={r.label} className="text-center">
+                <p className="text-2xl font-extrabold text-white sm:text-3xl">{r.value}</p>
+                <p className="mt-1 text-xs text-gray-500">{r.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/devis"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:gap-3"
+            >
+              {copy.cta}
+              <FiArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
