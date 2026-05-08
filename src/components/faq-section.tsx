@@ -20,7 +20,7 @@ export function FAQSection() {
         },
         {
           question: "Combien coûte un site web professionnel ?",
-          answer: "Un site vitrine démarre à partir de 900 €. Un site corporate plus complet se situe généralement entre 2 200 et 4 500 €. Chaque projet est différent — je vous propose un devis précis après avoir compris votre besoin.",
+          answer: "Un site vitrine démarre à partir de 900 €. Un site corporate plus complet se situe généralement entre 2 200 et 4 500 €. Chaque projet est différent. Je vous propose un devis précis après avoir compris votre besoin.",
         },
         {
           question: "Combien coûte une application mobile ?",
@@ -67,7 +67,7 @@ export function FAQSection() {
         },
         {
           question: "How much does a professional website cost?",
-          answer: "A showcase site starts from €900. A more complete corporate site is typically between €2,200 and €4,500. Every project is different — I'll give you a precise quote after understanding your needs.",
+          answer: "A showcase site starts from €900. A more complete corporate site is typically between €2,200 and €4,500. Every project is different. I'll give you a precise quote after understanding your needs.",
         },
         {
           question: "How much does a mobile app cost?",
@@ -114,7 +114,7 @@ export function FAQSection() {
         },
         {
           question: "Was kostet eine professionelle Website?",
-          answer: "Eine Unternehmenswebsite beginnt ab 900 €. Eine umfangreichere Corporate-Website liegt in der Regel zwischen 2.200 und 4.500 €. Jedes Projekt ist anders — ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
+          answer: "Eine Unternehmenswebsite beginnt ab 900 €. Eine umfangreichere Corporate-Website liegt in der Regel zwischen 2.200 und 4.500 €. Jedes Projekt ist anders. Ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
         },
         {
           question: "Was kostet eine mobile App?",
@@ -134,7 +134,7 @@ export function FAQSection() {
         },
         {
           question: "Können Sie meine bestehende Website überarbeiten?",
-          answer: "Ja. Die Website-Überarbeitung ist einer der am häufigsten nachgefragten Services. Egal ob WordPress, Wix, Squarespace oder andere — ich kann sie sauber neu aufbauen: moderneres Design, bessere Performance, besseres SEO und bessere Conversion.",
+          answer: "Ja. Die Website-Überarbeitung ist einer der am häufigsten nachgefragten Services. Egal ob WordPress, Wix, Squarespace oder andere, ich kann sie sauber neu aufbauen: moderneres Design, bessere Performance, besseres SEO und bessere Conversion.",
         },
         {
           question: "Wird die Website mobilfreundlich sein?",

@@ -8,7 +8,7 @@ export function WhyChooseSection() {
   const copy = {
     fr: {
       eyebrow: "Pourquoi KAH-Digital",
-      title: "Un studio qui livre — pas qui promet",
+      title: "Un studio qui livre. Pas qui promet.",
       body: "Pas de sur-promesse, pas de scope flou. Un cadrage clair, une production propre et un projet livrable du début à la fin.",
       reasons: [
         {
@@ -24,7 +24,7 @@ export function WhyChooseSection() {
           icon: FiUsers,
           accent: "#8b5cf6",
           title: "Un seul interlocuteur",
-          description: "Pas de chef de projet intermédiaire. Tu parles directement à celui qui conçoit et développe — en FR, EN ou DE.",
+          description: "Pas de chef de projet intermédiaire. Tu parles directement à celui qui conçoit et développe : FR, EN ou DE.",
           tag: "FR · EN · DE",
         },
         {
@@ -32,7 +32,7 @@ export function WhyChooseSection() {
           icon: FiCheck,
           accent: "#10b981",
           title: "Scope propre, pas gonflé",
-          description: "Chaque devis couvre ce qui est nécessaire — pas plus. Transparence totale sur les fonctionnalités et le budget.",
+          description: "Chaque devis couvre ce qui est nécessaire, pas plus. Transparence totale sur les fonctionnalités et le budget.",
           tag: "Devis lisibles · € 300+",
         },
         {
@@ -47,7 +47,7 @@ export function WhyChooseSection() {
     },
     en: {
       eyebrow: "Why KAH-Digital",
-      title: "A studio that delivers — not just promises",
+      title: "A studio that delivers. Not just promises.",
       body: "No over-promising, no vague scopes. Clear framing, clean production, and a project that stays deliverable from start to finish.",
       reasons: [
         {
@@ -63,7 +63,7 @@ export function WhyChooseSection() {
           icon: FiUsers,
           accent: "#8b5cf6",
           title: "One point of contact",
-          description: "No middleman project manager. You work directly with the person who designs and builds — in FR, EN, or DE.",
+          description: "No middleman project manager. You work directly with the person who designs and builds: FR, EN, or DE.",
           tag: "FR · EN · DE",
         },
         {
@@ -71,7 +71,7 @@ export function WhyChooseSection() {
           icon: FiCheck,
           accent: "#10b981",
           title: "Clean scope, no bloat",
-          description: "Every quote covers what is needed — nothing more. Full transparency on features and budget from day one.",
+          description: "Every quote covers what is needed, nothing more. Full transparency on features and budget from day one.",
           tag: "Readable quotes · € 300+",
         },
         {
@@ -86,7 +86,7 @@ export function WhyChooseSection() {
     },
     de: {
       eyebrow: "Warum KAH-Digital",
-      title: "Ein Studio das liefert — nicht nur verspricht",
+      title: "Ein Studio das liefert. Nicht nur verspricht.",
       body: "Keine Ueberversprechen, kein vager Scope. Klares Briefing, saubere Umsetzung und ein Projekt das wirklich abgeschlossen wird.",
       reasons: [
         {
@@ -102,7 +102,7 @@ export function WhyChooseSection() {
           icon: FiUsers,
           accent: "#8b5cf6",
           title: "Ein Ansprechpartner",
-          description: "Kein Zwischenmanager. Du arbeitest direkt mit dem, der entwirft und entwickelt — auf DE, FR oder EN.",
+          description: "Kein Zwischenmanager. Du arbeitest direkt mit dem, der entwirft und entwickelt: DE, FR oder EN.",
           tag: "DE · FR · EN",
         },
         {
@@ -110,7 +110,7 @@ export function WhyChooseSection() {
           icon: FiCheck,
           accent: "#10b981",
           title: "Sauberer Scope, kein Overhead",
-          description: "Jedes Angebot deckt was benoetigt wird — nicht mehr. Volle Transparenz ueber Funktionen und Budget.",
+          description: "Jedes Angebot deckt was benoetigt wird, nicht mehr. Volle Transparenz ueber Funktionen und Budget.",
           tag: "Lesbare Angebote · € 300+",
         },
         {

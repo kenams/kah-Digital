@@ -82,7 +82,7 @@ export function ServicesGrid() {
     en: {
       badge: "Our offers",
       title: "What I build for you",
-      body: "Clear, affordable digital solutions — from landing pages to mobile apps, SaaS and business tools.",
+      body: "Clear, affordable digital solutions: landing pages, mobile apps, SaaS and business tools.",
       cta: "Request a quote",
       forLabel: "For whom",
       fromLabel: "Starting from",
@@ -153,7 +153,7 @@ export function ServicesGrid() {
     de: {
       badge: "Unsere Angebote",
       title: "Was ich für Sie erstelle",
-      body: "Klare, erschwingliche digitale Lösungen — von Landing Pages bis hin zu mobilen Apps, SaaS und Business-Tools.",
+      body: "Klare, erschwingliche digitale Lösungen: Landing Pages, mobile Apps, SaaS und Business-Tools.",
       cta: "Angebot anfordern",
       forLabel: "Für wen",
       fromLabel: "Ab",

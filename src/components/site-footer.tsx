@@ -46,7 +46,7 @@ export function SiteFooter() {
 
   const copy = {
     fr: {
-      tagline: "Studio digital — sites, apps & SaaS",
+      tagline: "Studio digital · sites, apps & SaaS",
       description: "Je crée des sites web, landing pages, applications mobiles et SaaS sur mesure pour entrepreneurs, indépendants et PME.",
       cta: "Vous avez un projet ?",
       ctaBtn: "Demander un devis gratuit",
@@ -96,7 +96,7 @@ export function SiteFooter() {
       madeWith: "Conçu avec IA · Déployé sur Vercel",
     },
     en: {
-      tagline: "Digital studio — websites, apps & SaaS",
+      tagline: "Digital studio · websites, apps & SaaS",
       description: "I build websites, landing pages, mobile apps and custom SaaS for entrepreneurs, freelancers and SMEs.",
       cta: "Have a project?",
       ctaBtn: "Get a free quote",
@@ -143,7 +143,7 @@ export function SiteFooter() {
       madeWith: "Built with AI · Deployed on Vercel",
     },
     de: {
-      tagline: "Digital-Studio — Websites, Apps & SaaS",
+      tagline: "Digital-Studio · Websites, Apps & SaaS",
       description: "Ich erstelle Websites, Landing Pages, mobile Apps und massgeschneidertes SaaS für Unternehmer, Selbstständige und KMU.",
       cta: "Sie haben ein Projekt?",
       ctaBtn: "Kostenloses Angebot anfordern",
