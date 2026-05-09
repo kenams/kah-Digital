@@ -49,12 +49,11 @@ async function delayAfterSend() {
 async function websiteAlreadySent(client: SupabaseClient, website: string, email?: string | null) {
   const domain = extractRootDomain(website);
 
-  // Check by domain
+  // ANY existing entry (including rejected/unsubscribed) means: do not contact again
   const { data: byDomain } = await client
     .from("prospects")
     .select("id")
     .ilike("website", `%${domain}%`)
-    .not("status", "eq", "rejected")
     .limit(1);
   if ((byDomain?.length ?? 0) > 0) return true;
 
@@ -64,7 +63,7 @@ async function websiteAlreadySent(client: SupabaseClient, website: string, email
       .from("prospects")
       .select("id")
       .eq("email", email.toLowerCase().trim())
-      .eq("status", "sent")
+      .in("status", ["sent", "rejected", "replied"])
       .limit(1);
     if ((byEmail?.length ?? 0) > 0) return true;
   }

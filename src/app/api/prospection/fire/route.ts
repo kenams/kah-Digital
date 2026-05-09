@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { PROSPECTION_EMAILS_PER_RUN, runProspectionBatch } from "@/lib/prospection-runner";
 import { createProspectionBatch, getProspectionSlot } from "@/lib/prospection-batches";
+import { isAdminUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const maxDuration = 300;
-
-const FIRE_KEY = process.env.FIRE_API_KEY ?? "KAH2026FIRE";
 
 function getSupabase() {
   return createClient(
@@ -15,9 +15,23 @@ function getSupabase() {
   );
 }
 
+async function authorize(req: NextRequest) {
+  const cronSecret = process.env.CRON_SECRET;
+  const authHeader = req.headers.get("authorization");
+  if (cronSecret && authHeader === `Bearer ${cronSecret}`) return true;
+
+  try {
+    const supabaseAuth = await createSupabaseServerClient();
+    if (!supabaseAuth) return false;
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch {
+    return false;
+  }
+}
+
 export async function GET(req: NextRequest) {
-  const key = req.nextUrl.searchParams.get("key");
-  if (key !== FIRE_KEY) {
+  if (!(await authorize(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -32,4 +46,8 @@ export async function GET(req: NextRequest) {
     batchId,
     message: "Batch lance en background. Resultats dans /admin/prospection.",
   });
+}
+
+export async function POST(req: NextRequest) {
+  return GET(req);
 }

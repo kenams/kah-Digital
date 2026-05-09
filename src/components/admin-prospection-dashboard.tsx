@@ -281,7 +281,7 @@ export function ProspectionDashboard() {
     setFireMessage(null);
     setLiveBatch({ ...EMPTY_LIVE_BATCH_PROGRESS, tracking: true, startedAt: Date.now() });
     try {
-      const res = await fetch("/api/prospection/fire?key=KAH2026FIRE");
+      const res = await fetch("/api/prospection/fire", { method: "POST" });
       const data = await res.json() as { ok?: boolean; batchId?: string | null; message?: string; error?: string };
       if (data.ok) {
         setLiveBatch({
