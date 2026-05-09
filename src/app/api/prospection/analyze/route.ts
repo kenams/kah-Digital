@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { auditWebsite } from "@/lib/prospection";
+import { isAdminUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -8,7 +10,21 @@ function getSupabase() {
   return createClient(url, key);
 }
 
+async function requireAdmin(): Promise<boolean> {
+  try {
+    const supabaseAuth = await createSupabaseServerClient();
+    if (!supabaseAuth) return false;
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
+  if (!(await requireAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body = await req.json() as { website?: string; email?: string; businessName?: string; sector?: string };
     const { website, email, businessName, sector } = body;

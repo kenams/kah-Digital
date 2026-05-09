@@ -3,6 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { getResendFromAddress } from "@/lib/mail";
 import { sanitizeEmailSubject } from "@/lib/prospection-email";
+import { isAdminUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -10,7 +12,21 @@ function getSupabase() {
   return createClient(url, key);
 }
 
+async function requireAdmin(): Promise<boolean> {
+  try {
+    const supabaseAuth = await createSupabaseServerClient();
+    if (!supabaseAuth) return false;
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(req: Request) {
+  if (!(await requireAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body = await req.json() as { prospectId?: string; overrideEmail?: string; overrideSubject?: string; overrideBody?: string };
     const { prospectId, overrideEmail, overrideSubject, overrideBody } = body;
@@ -55,6 +71,7 @@ export async function POST(req: Request) {
     const { error: sendError } = await resend.emails.send({
       from: getResendFromAddress(),
       to: toEmail,
+      replyTo: "kahdigital42@gmail.com",
       subject,
       html: emailHtml,
     });

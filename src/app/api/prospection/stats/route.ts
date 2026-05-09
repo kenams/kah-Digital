@@ -158,6 +158,7 @@ export async function GET() {
       resendConfigured: Boolean(process.env.RESEND_API_KEY),
       resendFromConfigured: Boolean(process.env.RESEND_FROM),
       cronSecretConfigured: Boolean(process.env.CRON_SECRET),
+      webhookSecretConfigured: Boolean(process.env.RESEND_WEBHOOK_SECRET),
       aiProvider: process.env.ANTHROPIC_API_KEY ? "anthropic" : process.env.OPENAI_API_KEY ? "openai" : "none",
       latestBatchAt,
       latestProspectAt,

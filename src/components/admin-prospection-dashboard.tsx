@@ -71,6 +71,7 @@ type LiveStats = {
     resendConfigured: boolean;
     resendFromConfigured: boolean;
     cronSecretConfigured: boolean;
+    webhookSecretConfigured: boolean;
     aiProvider: "anthropic" | "openai" | "none";
     latestBatchAt: string | null;
     latestProspectAt: string | null;
@@ -666,6 +667,7 @@ export function ProspectionDashboard() {
                       { label: "Resend", value: liveStats.diagnostics.resendConfigured ? "OK" : "Manquant", tone: liveStats.diagnostics.resendConfigured ? "text-emerald-400" : "text-red-400" },
                       { label: "Expéditeur", value: liveStats.diagnostics.resendFromConfigured ? "Domaine OK" : "Fallback", tone: liveStats.diagnostics.resendFromConfigured ? "text-emerald-400" : "text-yellow-400" },
                       { label: "Cron secret", value: liveStats.diagnostics.cronSecretConfigured ? "OK" : "Manquant", tone: liveStats.diagnostics.cronSecretConfigured ? "text-emerald-400" : "text-red-400" },
+                      { label: "Webhook secret", value: (liveStats.diagnostics.webhookSecretConfigured ?? false) ? "OK" : "Non configuré", tone: (liveStats.diagnostics.webhookSecretConfigured ?? false) ? "text-emerald-400" : "text-yellow-400" },
                       { label: "IA", value: liveStats.diagnostics.aiProvider, tone: liveStats.diagnostics.aiProvider === "none" ? "text-yellow-400" : "text-emerald-400" },
                       { label: "Dernier batch", value: liveStats.diagnostics.latestBatchAt ? new Date(liveStats.diagnostics.latestBatchAt).toLocaleString("fr-FR") : "Aucun", tone: liveStats.diagnostics.staleBatchHours && liveStats.diagnostics.staleBatchHours > 24 ? "text-yellow-400" : "text-gray-200" },
                       { label: "Dernier prospect", value: liveStats.diagnostics.latestProspectAt ? new Date(liveStats.diagnostics.latestProspectAt).toLocaleString("fr-FR") : "Aucun", tone: "text-gray-200" },

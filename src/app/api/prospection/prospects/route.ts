@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { isAdminUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -7,7 +9,22 @@ function getSupabase() {
   return createClient(url, key);
 }
 
+async function requireAdmin(): Promise<boolean> {
+  try {
+    const supabaseAuth = await createSupabaseServerClient();
+    if (!supabaseAuth) return false;
+    const { data: { user } } = await supabaseAuth.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch {
+    return false;
+  }
+}
+
 export async function GET(req: Request) {
+  if (!(await requireAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const { searchParams } = new URL(req.url);
   const status = searchParams.get("status");
   const requestedLimit = Number(searchParams.get("limit") ?? 500);
@@ -28,6 +45,10 @@ export async function GET(req: Request) {
 }
 
 export async function PATCH(req: Request) {
+  if (!(await requireAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json() as { id?: string; status?: string; notes?: string; email?: string; emailSubject?: string; emailBody?: string };
   const { id, ...updates } = body;
   if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
@@ -45,6 +66,10 @@ export async function PATCH(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  if (!(await requireAdmin())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "id requis" }, { status: 400 });
