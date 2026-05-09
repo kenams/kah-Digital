@@ -201,60 +201,61 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
 
   // A/B test sujets — 7 variantes, rotation par jour
   const abVariant = Math.floor(Date.now() / 86400000) % 7;
+  const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
   const SUBJECTS: Record<string, string[]> = {
     fr: [
-      `${audit.businessName} — votre site web perd des clients (analyse gratuite)`,
-      `J'ai analysé le site de ${audit.businessName} — voici ce que j'ai trouvé`,
-      `${audit.businessName} : 3 problèmes qui coûtent des clients chaque semaine`,
-      `Score ${audit.score}/100 pour ${audit.businessName} — rapport complet inclus`,
-      `Une question rapide sur ${audit.businessName}`,
-      `⚠️ ${audit.businessName} — votre site coûte des clients chaque jour`,
-      `Kénan de KAH-Digital — j'ai une proposition pour ${audit.businessName}`,
+      `${bName} — votre site web perd des clients (analyse gratuite)`,
+      `J'ai analysé le site de ${bName} — voici ce que j'ai trouvé`,
+      `${bName} : 3 problèmes qui coûtent des clients chaque semaine`,
+      `Score ${audit.score}/100 pour ${bName} — rapport complet inclus`,
+      `Une question rapide sur ${bName}`,
+      `${bName} — votre site coûte des clients chaque jour`,
+      `Kénan de KAH-Digital — j'ai une proposition pour ${bName}`,
     ],
     en: [
-      `${audit.businessName} — your website is losing customers (free analysis)`,
-      `I analysed ${audit.businessName}'s website — here's what I found`,
-      `${audit.businessName}: 3 issues costing you customers every week`,
-      `Score ${audit.score}/100 for ${audit.businessName} — full report inside`,
-      `Quick question about ${audit.businessName}`,
-      `⚠️ ${audit.businessName} — your website is costing you clients every day`,
-      `Kenan from KAH-Digital — I have a proposal for ${audit.businessName}`,
+      `${bName} — your website is losing customers (free analysis)`,
+      `I analysed ${bName}'s website — here's what I found`,
+      `${bName}: 3 issues costing you customers every week`,
+      `Score ${audit.score}/100 for ${bName} — full report inside`,
+      `Quick question about ${bName}`,
+      `${bName} — your website is costing you clients every day`,
+      `Kenan from KAH-Digital — I have a proposal for ${bName}`,
     ],
     es: [
-      `${audit.businessName} — su sitio web está perdiendo clientes (análisis gratuito)`,
-      `Analicé el sitio de ${audit.businessName} — esto es lo que encontré`,
-      `${audit.businessName}: 3 problemas que le cuestan clientes cada semana`,
-      `Puntuación ${audit.score}/100 para ${audit.businessName} — informe incluido`,
-      `Una pregunta rápida sobre ${audit.businessName}`,
-      `⚠️ ${audit.businessName} — su web le cuesta clientes cada día`,
-      `Kenan de KAH-Digital — tengo una propuesta para ${audit.businessName}`,
+      `${bName} — su sitio web está perdiendo clientes (análisis gratuito)`,
+      `Analicé el sitio de ${bName} — esto es lo que encontré`,
+      `${bName}: 3 problemas que le cuestan clientes cada semana`,
+      `Puntuación ${audit.score}/100 para ${bName} — informe incluido`,
+      `Una pregunta rápida sobre ${bName}`,
+      `${bName} — su web le cuesta clientes cada día`,
+      `Kenan de KAH-Digital — tengo una propuesta para ${bName}`,
     ],
     de: [
-      `${audit.businessName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
-      `Ich habe die Website von ${audit.businessName} analysiert — das habe ich gefunden`,
-      `${audit.businessName}: 3 Probleme, die jede Woche Kunden kosten`,
-      `Score ${audit.score}/100 für ${audit.businessName} — vollständiger Bericht`,
-      `Kurze Frage zu ${audit.businessName}`,
-      `⚠️ ${audit.businessName} — Ihre Website kostet täglich Kunden`,
-      `Kenan von KAH-Digital — ich habe ein Angebot für ${audit.businessName}`,
+      `${bName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
+      `Ich habe die Website von ${bName} analysiert — das habe ich gefunden`,
+      `${bName}: 3 Probleme, die jede Woche Kunden kosten`,
+      `Score ${audit.score}/100 für ${bName} — vollständiger Bericht`,
+      `Kurze Frage zu ${bName}`,
+      `${bName} — Ihre Website kostet täglich Kunden`,
+      `Kenan von KAH-Digital — ich habe ein Angebot für ${bName}`,
     ],
     it: [
-      `${audit.businessName} — il tuo sito perde clienti (analisi gratuita)`,
-      `Ho analizzato il sito di ${audit.businessName} — ecco cosa ho trovato`,
-      `${audit.businessName}: 3 problemi che ti costano clienti ogni settimana`,
-      `Punteggio ${audit.score}/100 per ${audit.businessName} — report completo`,
-      `Una domanda rapida su ${audit.businessName}`,
-      `⚠️ ${audit.businessName} — il tuo sito ti costa clienti ogni giorno`,
-      `Kenan di KAH-Digital — ho una proposta per ${audit.businessName}`,
+      `${bName} — il tuo sito perde clienti (analisi gratuita)`,
+      `Ho analizzato il sito di ${bName} — ecco cosa ho trovato`,
+      `${bName}: 3 problemi che ti costano clienti ogni settimana`,
+      `Punteggio ${audit.score}/100 per ${bName} — report completo`,
+      `Una domanda rapida su ${bName}`,
+      `${bName} — il tuo sito ti costa clienti ogni giorno`,
+      `Kenan di KAH-Digital — ho una proposta per ${bName}`,
     ],
     nl: [
-      `${audit.businessName} — uw website verliest klanten (gratis analyse)`,
-      `Ik analyseerde de website van ${audit.businessName} — dit vond ik`,
-      `${audit.businessName}: 3 problemen die u elke week klanten kosten`,
-      `Score ${audit.score}/100 voor ${audit.businessName} — volledig rapport`,
-      `Korte vraag over ${audit.businessName}`,
-      `${audit.businessName} — uw website kost u dagelijks klanten`,
-      `Kenan van KAH-Digital — ik heb een voorstel voor ${audit.businessName}`,
+      `${bName} — uw website verliest klanten (gratis analyse)`,
+      `Ik analyseerde de website van ${bName} — dit vond ik`,
+      `${bName}: 3 problemen die u elke week klanten kosten`,
+      `Score ${audit.score}/100 voor ${bName} — volledig rapport`,
+      `Korte vraag over ${bName}`,
+      `${bName} — uw website kost u dagelijks klanten`,
+      `Kenan van KAH-Digital — ik heb een voorstel voor ${bName}`,
     ],
   };
   const langSubjects = SUBJECTS[audit.language] ?? SUBJECTS.fr;
@@ -481,8 +482,9 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
 // Mockup HTML simulant le futur site (pure HTML, compatible email)
 function buildMockupHtml(audit: SiteAudit, lang: string): string {
   const c = getCopy(lang);
+  const mockupName = audit.businessName.trim() || audit.sector;
   const colors = ["#1e3a8a", "#7c3aed", "#059669", "#d97706", "#dc2626"];
-  const accentColor = colors[Math.abs(audit.businessName.charCodeAt(0)) % colors.length];
+  const accentColor = colors[Math.abs((mockupName.charCodeAt(0) || 75)) % colors.length];
 
   return `<table cellpadding="0" cellspacing="0" width="100%" style="background:#111827;border-radius:8px;overflow:hidden;border:2px solid ${accentColor};">
   <!-- Browser bar -->
@@ -493,12 +495,12 @@ function buildMockupHtml(audit: SiteAudit, lang: string): string {
       <td style="width:8px;height:8px;border-radius:50%;background:#f59e0b;font-size:0;">&nbsp;</td>
       <td style="width:6px;font-size:0;">&nbsp;</td>
       <td style="width:8px;height:8px;border-radius:50%;background:#22c55e;font-size:0;">&nbsp;</td>
-      <td style="padding-left:8px;"><span style="background:#374151;border-radius:4px;padding:2px 8px;color:#9ca3af;font-size:10px;font-family:monospace;">&#10024; NEW ${audit.businessName.slice(0,16)}</span></td>
+      <td style="padding-left:8px;"><span style="background:#374151;border-radius:4px;padding:2px 8px;color:#9ca3af;font-size:10px;font-family:monospace;">&#10024; NEW ${mockupName.slice(0,16)}</span></td>
     </tr></table>
   </td></tr>
   <!-- Hero -->
   <tr><td style="background:linear-gradient(135deg,${accentColor}22,#000000);padding:18px 14px;text-align:center;">
-    <div style="font-size:14px;font-weight:800;color:#ffffff;margin-bottom:4px;">${audit.businessName}</div>
+    <div style="font-size:14px;font-weight:800;color:#ffffff;margin-bottom:4px;">${mockupName}</div>
     <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:10px;">${audit.sector}</div>
     <span style="background:${accentColor};color:#ffffff;font-size:10px;font-weight:700;padding:5px 14px;border-radius:9999px;">CTA &#8594;</span>
   </td></tr>
