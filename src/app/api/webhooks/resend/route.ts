@@ -11,7 +11,7 @@ function getSupabase() {
 
 async function verifySignature(req: NextRequest, rawBody: string): Promise<boolean> {
   const secret = process.env.RESEND_WEBHOOK_SECRET;
-  if (!secret) return true; // pas de secret configuré → on accepte (à configurer)
+  if (!secret) return true; // pas de secret → accepte (configurer RESEND_WEBHOOK_SECRET en prod)
 
   const svixId        = req.headers.get("svix-id");
   const svixTimestamp = req.headers.get("svix-timestamp");
