@@ -620,8 +620,10 @@ function isBlacklisted(url: string): boolean {
     "laforet.","stephalex.","guy-hoquet.","era-immobilier",
     // Moteurs de recherche / grands sites
     "google.com","google.fr","apple.com","amazon.","wikipedia","bing.com","yahoo.com","baidu.com","duckduckgo.com",
-    // Voyage / hébergement
+    // Voyage / hébergement / agrégateurs
     "booking.com","airbnb","uber","deliveroo","ubereats","tripadvisor","expedia","hotels.com","kayak.",
+    "lastminute.com","travelweekly.com","guestreservations.com","agoda.com","trivago.","laterooms.","venere.",
+    "mariages.net","zankyou.","thebash.com","helloasso.","eventbrite.",
     // Santé publique / admin
     "doctolib","clinique-publique","sante.gouv","hopital","hospital","aphp.fr","chu-","chru-","chu.",
     ".gov",".gouv","mairie-","prefecture","conseil-departemental","region.",
@@ -746,9 +748,11 @@ function getStaticFallback(count: number): DiscoveredLead[] {
 const DDG_OFFSETS = [0, 10, 20, 30, 40];
 
 export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
-  // 5 targets aléatoires avec pagination variée pour éviter les doublons DB
+  const MIN_DDG_LEADS = Math.max(3, Math.ceil(count / 5)); // seuil minimum avant de tenter les fallbacks
+
+  // 8 targets aléatoires (au lieu de 5) pour maximiser les URLs uniques
   const shuffled = [...TARGETS].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, 5);
+  const selected = shuffled.slice(0, 8);
 
   // Map url → meta pour préserver le bon pays/secteur par URL
   const urlMetaMap = new Map<string, { country: string; language: string; sector: string }>();
@@ -762,19 +766,18 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
         urlMetaMap.set(url, { country: target.country, language: target.lang, sector: target.sector });
       }
     }
-    // Assez d'URLs → on arrête tôt pour économiser le temps Vercel
     if (urlMetaMap.size >= count * 5) break;
   }
 
+  const ddgLeads: DiscoveredLead[] = [];
   if (urlMetaMap.size > 0) {
-    const leads: DiscoveredLead[] = [];
     for (const [url, meta] of urlMetaMap) {
-      if (leads.length >= count) break;
+      if (ddgLeads.length >= count) break;
       try {
         const hostname = new URL(url).hostname;
         const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(url);
         if (!email) continue;
-        leads.push({
+        ddgLeads.push({
           businessName,
           website: url,
           address: meta.country,
@@ -789,25 +792,31 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
         await new Promise((r) => setTimeout(r, 400));
       } catch { /* skip */ }
     }
-    if (leads.length > 0) {
-      console.log(`[lead-discovery] DDG: ${leads.length} leads via ${selected.length} targets`);
-      return leads;
-    }
   }
 
-  // Annuaire international si DDG insuffisant
+  // DDG a retourné assez → on s'arrête là
+  if (ddgLeads.length >= MIN_DDG_LEADS) {
+    console.log(`[lead-discovery] DDG: ${ddgLeads.length} leads via ${selected.length} targets`);
+    return ddgLeads;
+  }
+
+  // DDG insuffisant (throttling Vercel) → compléter avec l'annuaire
+  console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative annuaire`);
+  const remaining = count - ddgLeads.length;
   const dirTarget = DIRECTORY_SEARCHES[Math.floor(Math.random() * DIRECTORY_SEARCHES.length)];
   console.log(`[lead-discovery] Annuaire: ${dirTarget.url}`);
   const dirUrls = await scrapeDirectory(dirTarget.url);
   if (dirUrls.length > 0) {
-    const leads = await buildLeadsFromUrls(dirUrls, dirTarget, count);
-    if (leads.length > 0) {
-      console.log(`[lead-discovery] Annuaire: ${leads.length} leads`);
-      return leads;
+    const dirLeads = await buildLeadsFromUrls(dirUrls, dirTarget, remaining);
+    if (dirLeads.length > 0) {
+      const combined = [...ddgLeads, ...dirLeads];
+      console.log(`[lead-discovery] Combiné DDG+Annuaire: ${combined.length} leads`);
+      return combined;
     }
   }
 
-  // Fallback statique
+  // Fallback statique si tout échoue
+  if (ddgLeads.length > 0) return ddgLeads;
   console.warn("[lead-discovery] Fallback statique");
   return getStaticFallback(count);
 }
