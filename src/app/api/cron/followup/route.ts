@@ -1,6 +1,6 @@
 /**
- * Cron Relance — J+2 (pas ouvert), J+5 (ouvert, pas répondu), J+10 (dernier contact)
- * Schedule : 09h00 et 14h00 UTC (vercel.json)
+ * Cron Relance — J+1 fast-track (ouvert, pas cliqué), J+3 (pas ouvert), J+5 (ouvert, pas répondu), J+10 (dernier contact)
+ * Schedule : 10h00, 15h00, 23h00 UTC (vercel.json)
  */
 
 import { NextResponse } from "next/server";

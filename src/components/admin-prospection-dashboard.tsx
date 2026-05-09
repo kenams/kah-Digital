@@ -151,6 +151,10 @@ const CITY_PATTERNS = [
   ["berlin", "Berlin"], ["munchen", "Munich"], ["muenchen", "Munich"], ["hamburg", "Hamburg"],
   ["roma", "Rome"], ["rome", "Rome"], ["milano", "Milan"], ["milan", "Milan"],
   ["madrid", "Madrid"], ["barcelona", "Barcelona"], ["sevilla", "Seville"], ["sydney", "Sydney"], ["melbourne", "Melbourne"],
+  ["brisbane", "Brisbane"], ["perth", "Perth"], ["auckland", "Auckland"],
+  ["calgary", "Calgary"], ["edmonton", "Edmonton"],
+  ["dubai", "Dubai"], ["abu dhabi", "Abu Dhabi"], ["sharjah", "Sharjah"],
+  ["singapore", "Singapore"],
 ] as const;
 
 function normalizeFilterText(value: string | null | undefined) {
@@ -176,7 +180,7 @@ function hasFollowup(prospect: Prospect) {
 function getFollowupLabel(prospect: Prospect) {
   if (prospect.followup3SentAt) return "J+10";
   if (prospect.followup2SentAt) return "J+5";
-  if (prospect.followup1SentAt) return "J+2";
+  if (prospect.followup1SentAt) return "J+1/J+3";
   return "Aucune relance";
 }
 
@@ -319,8 +323,8 @@ export function ProspectionDashboard() {
     setFollowupRunning(true);
     try {
       const res = await fetch("/api/cron/followup", { method: "POST" });
-      const data = await res.json() as { j3Sent?: number; j7Sent?: number; errors?: number };
-      alert(`Relances envoyées : J+3 → ${data.j3Sent ?? 0} · J+7 → ${data.j7Sent ?? 0} · Erreurs: ${data.errors ?? 0}`);
+      const data = await res.json() as { j1Sent?: number; j3Sent?: number; j7Sent?: number; j10Sent?: number; errors?: number };
+      alert(`Relances envoyées :\nJ+1 → ${data.j1Sent ?? 0}\nJ+3 → ${data.j3Sent ?? 0}\nJ+5 → ${data.j7Sent ?? 0}\nJ+10 → ${data.j10Sent ?? 0}\nErreurs: ${data.errors ?? 0}`);
       void fetchLiveStats();
     } finally {
       setFollowupRunning(false);
@@ -554,7 +558,7 @@ export function ProspectionDashboard() {
                 </span>
               )}
             </h1>
-            <p className="text-sm text-gray-400">Autonome — 30 emails/jour · 2 crons (11h & 16h) · relances J+1/J+3/J+5/J+10 · multilingue</p>
+            <p className="text-sm text-gray-400">Autonome — 30 emails/jour · 3 crons (11h, 16h & 00h) · relances J+1/J+3/J+5/J+10 · multilingue</p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -921,7 +925,7 @@ export function ProspectionDashboard() {
                       <option value="all">Toutes</option>
                       <option value="with">Avec relance</option>
                       <option value="without">Sans relance</option>
-                      <option value="j2">Relance J+2</option>
+                      <option value="j2">Relance J+1/J+3</option>
                       <option value="j5">Relance J+5</option>
                       <option value="j10">Relance J+10</option>
                     </select>

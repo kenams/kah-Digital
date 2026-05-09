@@ -95,7 +95,7 @@ export async function GET() {
       .gte("sentAt", since24h),
     supabase.from("prospects")
       .select("id", { count: "exact", head: true })
-      .not("status", "eq", "rejected"),
+      .eq("status", "rejected"),
   ]);
 
   const prospects = (prospectsRes.data ?? []) as ProspectStatRow[];
