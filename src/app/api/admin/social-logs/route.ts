@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const access = await requireAdminAccess();
-  if (access.kind !== "ok") {
+  if (access !== "ok") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
