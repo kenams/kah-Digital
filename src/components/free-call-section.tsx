@@ -22,18 +22,6 @@ export function FreeCallSection() {
       cta: "Réserver 15 min sur WhatsApp",
       waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
       note: "Réponse sous 2h en semaine · Disponible CH / FR / BE",
-      calendar: {
-        title: "Appel 15 min",
-        subtitle: "Gratuit · Sans engagement",
-        available: "Libre",
-        confirm: "→ Confirme ton créneau via WhatsApp",
-        slots: [
-          { day: "Lun 9 juin", time: "10h00", available: true },
-          { day: "Mar 10 juin", time: "14h30", available: true },
-          { day: "Mer 11 juin", time: "09h00", available: false },
-          { day: "Jeu 12 juin", time: "11h00", available: true },
-        ],
-      },
     },
     en: {
       label: "Free discovery call",
@@ -48,18 +36,6 @@ export function FreeCallSection() {
       cta: "Book 15 min on WhatsApp",
       waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
       note: "Reply within 2h on weekdays · Available CH / FR / BE",
-      calendar: {
-        title: "15-min call",
-        subtitle: "Free · No commitment",
-        available: "Open",
-        confirm: "→ Confirm your slot on WhatsApp",
-        slots: [
-          { day: "Mon 9 Jun", time: "10:00", available: true },
-          { day: "Tue 10 Jun", time: "14:30", available: true },
-          { day: "Wed 11 Jun", time: "09:00", available: false },
-          { day: "Thu 12 Jun", time: "11:00", available: true },
-        ],
-      },
     },
     de: {
       label: "Kostenloses Erstgespräch",
@@ -74,18 +50,6 @@ export function FreeCallSection() {
       cta: "15 Min auf WhatsApp buchen",
       waText: "Hallo Kénan, ich möchte einen kostenlosen 15-Minuten-Anruf buchen.",
       note: "Antwort innerhalb von 2h · Verfügbar CH / DE",
-      calendar: {
-        title: "15-Min.-Anruf",
-        subtitle: "Kostenlos · Unverbindlich",
-        available: "Frei",
-        confirm: "→ Termin per WhatsApp bestätigen",
-        slots: [
-          { day: "Mo. 9. Juni", time: "10:00", available: true },
-          { day: "Di. 10. Juni", time: "14:30", available: true },
-          { day: "Mi. 11. Juni", time: "09:00", available: false },
-          { day: "Do. 12. Juni", time: "11:00", available: true },
-        ],
-      },
     },
   }[locale];
 
@@ -136,12 +100,18 @@ export function FreeCallSection() {
                   <FiCalendar size={18} className="text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">{copy.calendar.title}</p>
-                  <p className="text-xs text-gray-500">{copy.calendar.subtitle}</p>
+                  <p className="text-sm font-semibold text-white">Appel 15 min</p>
+                  <p className="text-xs text-gray-500">Gratuit · Sans engagement</p>
                 </div>
               </div>
+              {/* Faux créneaux */}
               <div className="space-y-2">
-                {copy.calendar.slots.map((slot) => (
+                {[
+                  { day: "Lun 9 juin", time: "10h00", available: true },
+                  { day: "Mar 10 juin", time: "14h30", available: true },
+                  { day: "Mer 11 juin", time: "09h00", available: false },
+                  { day: "Jeu 12 juin", time: "11h00", available: true },
+                ].map((slot) => (
                   <div
                     key={slot.day}
                     className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs ${
@@ -153,13 +123,13 @@ export function FreeCallSection() {
                     <span>{slot.day}</span>
                     <span className="font-semibold">{slot.time}</span>
                     {slot.available && (
-                      <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-400">{copy.calendar.available}</span>
+                      <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-400">Libre</span>
                     )}
                   </div>
                 ))}
               </div>
               <p className="mt-4 text-center text-xs text-gray-500">
-                {copy.calendar.confirm}
+                → Confirme ton créneau via WhatsApp
               </p>
             </div>
           </div>
