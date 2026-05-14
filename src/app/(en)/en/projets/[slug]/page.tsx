@@ -34,7 +34,6 @@ export async function generateMetadata({ params }: ProjectPageProps) {
       canonical: `/en/projets/${slug}`,
       languages: {
         fr: `/projets/${slug}`,
-        de: `/de/projets/${slug}`,
       },
     },
     openGraph: {

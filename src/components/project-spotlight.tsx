@@ -3,7 +3,7 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 type ProjectSpotlightProps = {
   project: PortfolioProject;
-  locale?: "fr" | "en" | "de";
+  locale?: "fr" | "en";
 };
 
 const copy = {
@@ -45,32 +45,13 @@ const copy = {
     detailTwoBody:
       "A more premium presence, with stronger visual hierarchy and a cleaner base to present the project image properly.",
   },
-  de: {
-    eyebrow: "Referenz",
-    title: "KAH Prod, ein KAH-Digital Projekt mit klarem Markencharakter.",
-    intro:
-      "Es ging nicht um eine einfache Projektkarte, sondern um eine echte Markenpräsenz: ein klares Universum, eine saubere visuelle Richtung und eine Website, die Label, Artists, Releases und Business-Kontakte hochwertig präsentiert.",
-    primaryCta: "Website ansehen",
-    secondaryCta: "Projekt besprechen",
-    previewLabel: "Live-Vorschau",
-    previewKicker: "Art Direction / unabhängiges Label",
-    secondaryPreviewLabel: "Strukturierte Navigation",
-    metricsEyebrow: "Projektmarker",
-    detailOneTitle: "Was die Website sofort klar macht",
-    detailTwoTitle: "Was den eigentlichen Unterschied schafft",
-    detailThreeTitle: "Gelieferter Umfang",
-    detailOneBody:
-      "Ein klareres Musikuniversum mit direkter Navigation zwischen Label, Artists, Releases, Clips, Events, Netzwerken und Business-Kontakten.",
-    detailTwoBody:
-      "Eine deutlich wertigere Präsenz mit stärkerer visueller Hierarchie und einer saubereren Basis für das Markenbild.",
-  },
 } as const;
 
 function splitDeliverables(deliverables: string[]) {
   return deliverables.slice(0, 4);
 }
 
-function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
+function KahProdHeroPreview({ locale }: { locale: "fr" | "en" }) {
   const content =
     locale === "en"
       ? {
@@ -79,20 +60,12 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" | "de" }) {
           primary: "Discover artists",
           secondary: "View releases",
         }
-      : locale === "de"
-        ? {
-            badge: "Unabhängiges Label - Toulouse / Frankreich",
-            lead:
-              "Premium-Produktion, cineastische Bildsprache und eine maßgeschneiderte digitale Ausrichtung für ambitionierte frankophone Artists.",
-            primary: "Artists entdecken",
-            secondary: "Releases ansehen",
-          }
-        : {
-            badge: "Label independant - Toulouse / France",
-            lead: "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
-            primary: "Decouvrir les artistes",
-            secondary: "Voir les sorties",
-          };
+      : {
+          badge: "Label independant - Toulouse / France",
+          lead: "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
+          primary: "Decouvrir les artistes",
+          secondary: "Voir les sorties",
+        };
 
   return (
     <div className="relative overflow-hidden rounded-[30px] border border-[#6f5530] bg-[linear-gradient(135deg,#121318_0%,#1b1716_35%,#2a1f19_58%,#0f1014_100%)] p-7 shadow-[0_30px_90px_rgba(0,0,0,0.42)]">
@@ -164,7 +137,7 @@ export function ProjectSpotlight({ project, locale = "fr" }: ProjectSpotlightPro
               {text.primaryCta}
             </Link>
             <Link
-              href={locale === "en" ? "/en/contact" : locale === "de" ? "/de/contact" : "/contact"}
+              href={locale === "en" ? "/en/contact" : "/contact"}
               className="inline-flex items-center rounded-full border border-white/18 bg-white/5 px-6 py-3 font-semibold text-white transition-colors hover:border-white/35 hover:bg-white/10"
             >
               {text.secondaryCta}

@@ -101,21 +101,6 @@ const COPY: Record<string, {
     sevLabel: { critical: "Critical", medium: "Medium", low: "Minor" },
     socialTitle: "They trusted us",
   },
-  de: {
-    greeting: (n) => `Guten Tag ${n},`,
-    subtitle: "Hier ist Ihre persönliche Website-Analyse von KAH-Digital.",
-    scoreLabel: "Aktueller Digital-Score",
-    problemsTitle: "Was wir gefunden haben",
-    recoTitle: "Unser Vorschlag",
-    priceLabel: "Individuelles Angebot",
-    ctaWhatsApp: "WhatsApp schreiben",
-    ctaCall: "Jetzt anrufen",
-    ctaEmail: "Per E-Mail antworten",
-    ctaQuote: "Individuelles Angebot anfordern",
-    footer: "Diese Analyse wurde kostenlos von KAH-Digital erstellt. Keine Verpflichtung.",
-    sevLabel: { critical: "Kritisch", medium: "Mittel", low: "Gering" },
-    socialTitle: "Die uns vertraut haben",
-  },
 };
 
 function getCopy(lang: string | null) {
@@ -163,8 +148,8 @@ const SEV_TEXT: Record<string, string> = {
 };
 
 const SOCIAL_PROOF = [
-  { initials: "S.M.", quote: { fr: "Site livré en 3 semaines. 4 nouveaux clients le premier mois.", en: "Site delivered in 3 weeks. 4 new clients in the first month.", de: "3 Wochen. 4 neue Kunden im ersten Monat." } },
-  { initials: "A.B.", quote: { fr: "Réservations +30% en deux mois. Devis clair, livraison dans les délais.", en: "+30% bookings in two months. Clear quote, on time.", de: "+30% Buchungen in zwei Monaten. Klares Angebot, pünktlich." } },
+  { initials: "S.M.", quote: { fr: "Site livré en 3 semaines. 4 nouveaux clients le premier mois.", en: "Site delivered in 3 weeks. 4 new clients in the first month." } },
+  { initials: "A.B.", quote: { fr: "Réservations +30% en deux mois. Devis clair, livraison dans les délais.", en: "+30% bookings in two months. Clear quote, on time." } },
 ];
 
 export default async function ProspectLandingPage({ params }: Props) {
@@ -265,16 +250,12 @@ export default async function ProspectLandingPage({ params }: Props) {
           <div className="mt-1 text-2xl font-black text-white">
             {lang === "en"
               ? "Adjusted after a short scoping call"
-              : lang === "de"
-                ? "Nach einem kurzen Erstgespräch angepasst"
-                : "Ajustée après un court échange de cadrage"}
+              : "Ajustée après un court échange de cadrage"}
           </div>
           <div className="mt-2 text-xs text-gray-500">
             {lang === "en"
               ? "Clear custom quote · No obligation"
-              : lang === "de"
-                ? "Klares individuelles Angebot · Unverbindlich"
-                : "Devis personnalisé clair · Sans engagement"}
+              : "Devis personnalisé clair · Sans engagement"}
           </div>
         </div>
 

@@ -71,7 +71,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <FiX size={16} /> {copy.close}
               </button>
               <div className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                <Image src={activeImage} alt={`${project.name} preview`} fill sizes="90vw" className="object-cover" />
+                <Image src={activeImage} alt={`${project.name} preview`} fill unoptimized sizes="90vw" className="object-cover" />
               </div>
               {gallery.length > 1 && (
                 <div className="mt-4 flex items-center justify-between">
@@ -144,6 +144,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                     src={primaryMockup}
                     alt={`${project.name} preview`}
                     fill
+                    unoptimized
                     sizes="(min-width: 1024px) 40vw, 90vw"
                     className="object-cover object-top transition duration-700 group-hover:scale-[1.04]"
                   />

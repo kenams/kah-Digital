@@ -135,18 +135,18 @@ Bei Fragen antworten Sie einfach auf diese E-Mail — ich antworte noch am selbe
 ich wollte sicherstellen, dass meine Nachricht über <strong>${w}</strong> Sie erreicht hat.<br><br>
 Kurz gesagt: Ihre Website hat konkrete Verbesserungspotenziale, die wahrscheinlich neue Kunden kosten.<br><br>
 Falls Sie darüber sprechen möchten, antworten Sie einfach auf diese E-Mail — ich bin diese Woche verfügbar.<br><br>
-<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/de/devis')}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Kostenloses Angebot anfordern →</a>`,
+<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/devis')}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Kostenloses Angebot anfordern →</a>`,
     j7Subject: (n) => `Re: ${n} — Ihre Website`,
     j7Body: (n, w, s, id) => `Hallo,<br><br>
 ich sehe, dass Sie meine Analyse für <strong>${n}</strong> gesehen haben. Ich verstehe, dass das eine Entscheidung ist, die Überlegung verdient.<br><br>
 Bei Fragen oder wenn Sie Beispiele unserer Arbeit sehen möchten, stehe ich gerne zur Verfügung.<br><br>
 Diese Woche: kostenloses <strong>15-minütiges Video-Audit</strong> — ohne Verpflichtung.<br><br>
-<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/de/devis')}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Mein kostenloses Audit buchen →</a>`,
+<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/devis')}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Mein kostenloses Audit buchen →</a>`,
     j10Subject: (n) => `Letzte Nachricht — ${n}`,
     j10Body: (n, w, s, id) => `Hallo,<br><br>
 dies ist meine letzte Nachricht bezüglich <strong>${w}</strong>.<br><br>
 Ich verstehe, dass der Zeitpunkt vielleicht nicht passt. Falls Sie Ihre Meinung ändern, bin ich jederzeit erreichbar.<br><br>
-<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/de/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Unsere Angebote ansehen →</a><br><br>
+<a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Unsere Angebote ansehen →</a><br><br>
 Alles Gute!`,
     signoff: "Mit freundlichen Grüßen,",
     from: "Kenan — KAH-Digital",

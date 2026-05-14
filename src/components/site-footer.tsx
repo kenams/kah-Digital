@@ -142,53 +142,6 @@ export function SiteFooter() {
       rights: "All rights reserved.",
       madeWith: "Built with AI · Deployed on Vercel",
     },
-    de: {
-      tagline: "Digital-Studio · Websites, Apps & SaaS",
-      description: "Ich erstelle Websites, Landing Pages, mobile Apps und massgeschneidertes SaaS für Unternehmer, Selbstständige und KMU.",
-      cta: "Sie haben ein Projekt?",
-      ctaBtn: "Individuelle Offerte anfragen",
-      nav: {
-        title: "Navigation",
-        links: [
-          { label: "Start", href: "/de" },
-          { label: "Angebote", href: "/de/offres" },
-          { label: "Projekte", href: "/de/projets" },
-          { label: "Preise", href: "/de/devis" },
-          { label: "Kontakt", href: "/de/contact" },
-        ],
-      },
-      services: {
-        title: "Meine Angebote",
-        links: [
-          { label: "Individuelle Landing Page", href: "/de/devis" },
-          { label: "Professionelle Website", href: "/de/site-web-entreprise" },
-          { label: "Mobile App", href: "/de/application-web-sur-mesure" },
-          { label: "Massgeschneidertes SaaS", href: "/de/devis" },
-          { label: "Business-Web-Tool", href: "/de/devis" },
-        ],
-      },
-      zones: {
-        title: "Städte",
-        links: [
-          { label: "Website Lausanne", href: "/site-web-lausanne" },
-          { label: "Website Genf", href: "/site-web-geneve" },
-          { label: "Website Freiburg", href: "/site-web-fribourg" },
-          { label: "Webagentur Paris", href: "/agence-web-paris" },
-          { label: "Webagentur Lyon", href: "/agence-web-lyon" },
-        ],
-      },
-      legal: {
-        title: "Rechtliches",
-        links: [
-          { label: "Impressum", href: "/de/mentions-legales" },
-          { label: "Datenschutz", href: "/de/politique-de-confidentialite" },
-          { label: "Gratis-Audit", href: "/audit-gratuit" },
-        ],
-      },
-      location: "Lausanne, Schweiz",
-      rights: "Alle Rechte vorbehalten.",
-      madeWith: "Mit KI gebaut · Auf Vercel bereitgestellt",
-    },
   }[locale];
 
   const devisHref = locale === "fr" ? "/devis" : `${prefix}/devis`;
@@ -257,7 +210,7 @@ export function SiteFooter() {
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/40">{copy.nav.title}</h4>
             <ul className="space-y-2.5">
               {copy.nav.links.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/70 transition-colors hover:text-white">
                     {link.label}
                   </Link>
@@ -271,7 +224,7 @@ export function SiteFooter() {
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/40">{copy.services.title}</h4>
             <ul className="space-y-2.5">
               {copy.services.links.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/70 transition-colors hover:text-white">
                     {link.label}
                   </Link>
@@ -285,7 +238,7 @@ export function SiteFooter() {
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/40">{copy.zones.title}</h4>
             <ul className="space-y-2.5">
               {copy.zones.links.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link href={link.href} className="text-sm text-white/70 transition-colors hover:text-white">
                     {link.label}
                   </Link>
@@ -302,7 +255,7 @@ export function SiteFooter() {
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             {copy.legal.links.map((link) => (
-              <Link key={link.href} href={link.href} className="text-xs text-white/40 hover:text-white/70 transition-colors">
+              <Link key={link.label} href={link.href} className="text-xs text-white/40 hover:text-white/70 transition-colors">
                 {link.label}
               </Link>
             ))}
