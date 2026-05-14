@@ -5,14 +5,43 @@ import { FiCalendar, FiMessageCircle, FiCheck } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
 
+// Génère 4 créneaux sur les prochains jours ouvrés, localisés dynamiquement
+function generateSlots(locale: string) {
+  const langMap: Record<string, string> = { fr: "fr-CH", en: "en-GB", de: "de-CH" };
+  const lang = langMap[locale] ?? "fr-CH";
+  const times = ["10:00", "14:30", "09:00", "11:00"];
+  const availability = [true, true, false, true];
+  const slots: { day: string; time: string; available: boolean }[] = [];
+
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+
+  while (slots.length < 4) {
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6) {
+      slots.push({
+        day: new Intl.DateTimeFormat(lang, {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+        }).format(new Date(d)),
+        time: times[slots.length],
+        available: availability[slots.length],
+      });
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return slots;
+}
+
 export function FreeCallSection() {
   const { locale } = useLocale();
 
   const copy = {
     fr: {
       label: "Appel découverte gratuit",
-      title: "15 minutes pour clarifier ton projet.",
-      subtitle: "Pas de pitch. Pas de vendeur. Juste Kénan — on regarde ton projet ensemble et tu repars avec un plan clair.",
+      title: "15 minutes pour clarifier votre projet.",
+      subtitle: "Pas de pitch. Pas de vendeur. Juste Kénan — on regarde votre projet ensemble et vous repartez avec un plan clair.",
       items: [
         "Budget estimé sur mesure",
         "Délai réaliste garanti",
@@ -22,6 +51,10 @@ export function FreeCallSection() {
       cta: "Réserver 15 min sur WhatsApp",
       waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
       note: "Réponse sous 2h en semaine · Disponible CH / FR / BE",
+      callTitle: "Appel 15 min",
+      callSubtitle: "Gratuit · Sans engagement",
+      confirmSlot: "Confirmez votre créneau via WhatsApp",
+      available: "Libre",
     },
     en: {
       label: "Free discovery call",
@@ -36,11 +69,15 @@ export function FreeCallSection() {
       cta: "Book 15 min on WhatsApp",
       waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
       note: "Reply within 2h on weekdays · Available CH / FR / BE",
+      callTitle: "15 min call",
+      callSubtitle: "Free · No commitment",
+      confirmSlot: "Confirm your slot via WhatsApp",
+      available: "Available",
     },
     de: {
       label: "Kostenloses Erstgespräch",
       title: "15 Minuten für Ihr Projekt.",
-      subtitle: "Kein Pitch. Kein Verkäufer. Nur Kénan — wir schauen uns Ihr Projekt gemeinsam an.",
+      subtitle: "Kein Pitch. Kein Verkäufer. Nur Kénan — wir schauen uns Ihr Projekt gemeinsam an und Sie erhalten einen klaren Plan.",
       items: [
         "Individuelle Kostenschätzung",
         "Realistischer Zeitplan",
@@ -50,17 +87,22 @@ export function FreeCallSection() {
       cta: "15 Min auf WhatsApp buchen",
       waText: "Hallo Kénan, ich möchte einen kostenlosen 15-Minuten-Anruf buchen.",
       note: "Antwort innerhalb von 2h · Verfügbar CH / DE",
+      callTitle: "15 min Gespräch",
+      callSubtitle: "Kostenlos · Unverbindlich",
+      confirmSlot: "Termin via WhatsApp bestätigen",
+      available: "Frei",
     },
   }[locale];
 
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
+  const slots = generateSlots(locale);
 
   return (
     <section className="relative bg-gradient-to-b from-blue-950/40 to-gray-950 border-y border-blue-500/15 py-14">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-16">
 
-          {/* Left — texte */}
+          {/* Left */}
           <div className="flex-1 text-center md:text-left">
             <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
@@ -92,7 +134,7 @@ export function FreeCallSection() {
             <p className="mt-3 text-xs text-gray-500">{copy.note}</p>
           </div>
 
-          {/* Right — card visuelle */}
+          {/* Right — card créneaux */}
           <div className="w-full max-w-xs shrink-0">
             <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur">
               <div className="mb-4 flex items-center gap-3">
@@ -100,18 +142,12 @@ export function FreeCallSection() {
                   <FiCalendar size={18} className="text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">Appel 15 min</p>
-                  <p className="text-xs text-gray-500">Gratuit · Sans engagement</p>
+                  <p className="text-sm font-semibold text-white">{copy.callTitle}</p>
+                  <p className="text-xs text-gray-500">{copy.callSubtitle}</p>
                 </div>
               </div>
-              {/* Faux créneaux */}
               <div className="space-y-2">
-                {[
-                  { day: "Lun 9 juin", time: "10h00", available: true },
-                  { day: "Mar 10 juin", time: "14h30", available: true },
-                  { day: "Mer 11 juin", time: "09h00", available: false },
-                  { day: "Jeu 12 juin", time: "11h00", available: true },
-                ].map((slot) => (
+                {slots.map((slot) => (
                   <div
                     key={slot.day}
                     className={`flex items-center justify-between rounded-lg px-3 py-2 text-xs ${
@@ -120,16 +156,18 @@ export function FreeCallSection() {
                         : "border border-white/5 bg-white/[0.02] text-gray-600 line-through"
                     }`}
                   >
-                    <span>{slot.day}</span>
+                    <span className="capitalize">{slot.day}</span>
                     <span className="font-semibold">{slot.time}</span>
                     {slot.available && (
-                      <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-400">Libre</span>
+                      <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.5 text-[10px] text-emerald-400">
+                        {copy.available}
+                      </span>
                     )}
                   </div>
                 ))}
               </div>
               <p className="mt-4 text-center text-xs text-gray-500">
-                → Confirme ton créneau via WhatsApp
+                → {copy.confirmSlot}
               </p>
             </div>
           </div>

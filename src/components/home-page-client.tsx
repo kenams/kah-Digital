@@ -67,8 +67,8 @@ export function HomePageClient({ data }: HomePageClientProps) {
                 </h2>
                 <p className="mt-2 text-white/70 max-w-3xl">
                   {isEnglish
-                    ? "Clear budgets, timelines, and deliverables to move fast without wasted loops."
-                    : "Budgets, délais et livrables clairs pour valider un go sans itérations inutiles."}
+                    ? "Clear scope, timelines, and deliverables to move fast without wasted loops."
+                    : "Périmètre, délais et livrables clairs pour valider un go sans itérations inutiles."}
                 </p>
               </div>
               <Link
@@ -86,7 +86,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <div className="mt-3 flex flex-wrap gap-4 text-white/70">
                     <div>
                       <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                        {isEnglish ? "Budget" : "Budget"}
+                        {isEnglish ? "Scope" : "Périmètre"}
                       </p>
                       <p className="text-base font-semibold text-white">{deal.budget}</p>
                     </div>
@@ -497,7 +497,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       <p className="mt-2 text-sm text-white/70">{item.description}</p>
                       <div className="mt-4 grid gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
                         <div>
-                          <span className="text-white/40">{isEnglish ? "Pricing" : "Tarif"}</span>
+                          <span className="text-white/40">{isEnglish ? "Scope" : "Périmètre"}</span>
                           <p className="text-sm normal-case text-white/80">{item.pricing}</p>
                         </div>
                         <div>
@@ -618,8 +618,8 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   </h2>
                   <p className="text-white/70">
                     {isEnglish
-                      ? "Clear budget, timeline, and deliverables. Ideal to validate fast with leadership."
-                      : "Budget, planning et livrables clairs. Idéal pour valider vite avec un board ou une direction marketing."}
+                      ? "Clear scope, timeline, and deliverables. Ideal to validate fast with leadership."
+                      : "Périmètre, planning et livrables clairs. Idéal pour valider vite avec un board ou une direction marketing."}
                   </p>
                   <div className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.3em] text-white/60">
                     {(isEnglish ? ["Kick-off 48h", "1 point of contact", "Weekly updates"] : ["Kick-off 48h", "1 interlocuteur", "Reporting hebdo"]).map((item) => (
@@ -658,7 +658,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                   <ul className="mt-4 space-y-3 text-white/80">
                     {isEnglish ? (
                       <>
-                        <li>- Line-item budget (design, dev, QA).</li>
+                        <li>- Scope split by design, development and QA.</li>
                         <li>- Sprint plan (kick-off to release) with roles.</li>
                         <li>- Onboarding checklist (access, tools, Slack).</li>
                         <li>- Email templates for internal approval.</li>
@@ -666,7 +666,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                       </>
                     ) : (
                       <>
-                        <li>- Budget ligne par ligne (design, dev, QA).</li>
+                        <li>- Périmètre détaillé par design, développement et QA.</li>
                         <li>- Plan de sprint (kick-off à recette) avec responsabilités.</li>
                         <li>- Checklist onboarding (accès, outils, Slack privé).</li>
                         <li>- Modèles d&apos;emails pour valider en interne.</li>
@@ -685,29 +685,33 @@ export function HomePageClient({ data }: HomePageClientProps) {
             <div className="accent-section">
               <div className="content px-6 py-12 text-center">
                 <p className="text-sm uppercase tracking-[0.3em] text-white/60">
-                  {isEnglish ? "Shall we talk?" : "On en parle ?"}
+                  {isEnglish ? "Let's talk" : "Parlons-en"}
                 </p>
                 <h3 className="mt-4 text-3xl font-semibold text-white">
-                  {isEnglish ? "Ready to launch a fast premium site?" : "Prêt à lancer un site premium et ultra-rapide ?"}
-                </h3>
-                <p className="mt-3 text-white/70">
                   {isEnglish
-                    ? "We scope, design, and deliver. Short process, premium finish, a site that converts."
-                    : "On cadre, on design, on livre. Un process court, une finition luxe, un site qui convertit."}
+                    ? "Your project deserves a partner who delivers."
+                    : "Votre projet mérite un partenaire qui tient ses promesses."}
+                </h3>
+                <p className="mt-3 max-w-2xl mx-auto text-white/70">
+                  {isEnglish
+                    ? "A 15-min call is enough to clarify your need, scope the project, and give you a clear proposal within 24h. No commitment, no lengthy process."
+                    : "15 minutes suffisent pour clarifier votre besoin, cadrer le projet et vous envoyer une proposition claire sous 24h. Sans engagement, sans processus interminable."}
                 </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-4">
+                <div className="mt-8 flex flex-wrap justify-center gap-4">
                   <Link
                     href={withPrefix("/devis")}
-                    className="inline-flex items-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200"
                   >
-                    {isEnglish ? "Get a quote" : "Demander un devis"}
+                    {isEnglish ? "Start a project" : "Démarrer un projet"}
                   </Link>
-                  <Link
-                    href={withPrefix("/cahier-des-charges")}
-                    className="inline-flex items-center rounded-full border border-white/30 px-6 py-3 text-white transition hover:border-white"
+                  <a
+                    href={`https://wa.me/33759558414?text=${encodeURIComponent(isEnglish ? "Hi Kénan, I'd like to book a free 15-min discovery call." : "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-6 py-3 font-semibold text-[#25D366] transition hover:bg-[#25D366]/20"
                   >
-                    {isEnglish ? "Project brief" : "Cahier des charges"}
-                  </Link>
+                    {isEnglish ? "Book a 15-min call" : "Réserver un appel 15 min"}
+                  </a>
                 </div>
                 <ContactCard
                   className="mx-auto mt-8 max-w-xl text-left"

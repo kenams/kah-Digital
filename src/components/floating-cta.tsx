@@ -21,9 +21,14 @@ export function FloatingCTA() {
 
   const waText = encodeURIComponent(
     locale === "en"
-      ? "Hi, I'd like to discuss a web project."
-      : "Bonjour, je voudrais discuter d'un projet web."
+      ? "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project."
+      : locale === "de"
+      ? "Hallo Kénan, ich möchte einen kostenlosen 15-Minuten-Anruf buchen."
+      : "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet."
   );
+
+  const ctaLabel =
+    locale === "en" ? "Book a free call" : locale === "de" ? "Erstgespräch buchen" : "Réserver un appel gratuit";
 
   return (
     <div
@@ -44,13 +49,13 @@ export function FloatingCTA() {
         </svg>
       </a>
 
-      {/* Devis */}
+      {/* CTA principal */}
       <Link
-        href={`${prefix}/devis`}
+        href={`${prefix ?? ""}/devis`}
         className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-[#f6efe3]/95 px-6 py-3 text-[#15120e] shadow-2xl shadow-black/30 backdrop-blur transition hover:bg-[#f6efe3]"
       >
         <span className="h-2 w-2 rounded-full bg-[#d6b36a]" />
-        {locale === "en" ? "Get a free quote" : "Demander un devis"}
+        {ctaLabel}
       </Link>
     </div>
   );

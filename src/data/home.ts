@@ -86,41 +86,41 @@ const processSteps = [
 
 const faqs = [
   {
-    question: "Quel niveau de finition puis-je attendre ?",
-    answer: "Un rendu propre : design clair, micro-interactions, et un site rapide (Core Web Vitals).",
+    question: "Comment se passe un projet concrètement ?",
+    answer: "Un premier échange de 15 min permet de clarifier votre besoin, vos priorités et votre contexte. Je vous envoie ensuite une proposition adaptée sous 24h — périmètre clair, délai réaliste, zéro engagement. On valide ensemble, puis on démarre.",
   },
   {
-    question: "Pouvez-vous livrer vite sans perdre la qualité ?",
-    answer: "Oui. Le process en sprints garde une qualité constante tout en accélérant les validations.",
+    question: "Quel niveau de qualité puis-je attendre ?",
+    answer: "Un rendu premium : design soigné, micro-interactions fluides, code propre, et un site qui score vert sur les Core Web Vitals. Chaque livrable passe par une QA rigoureuse avant mise en ligne.",
   },
   {
-    question: "Quelle est la différence entre un site et une app ?",
-    answer: "Un site s'ouvre dans le navigateur. Une app s'installe sur iOS/Android et peut envoyer des notifications.",
+    question: "Vous travaillez à distance ?",
+    answer: "Oui, intégralement. Clients en Suisse, France et Belgique — avec des points réguliers, une communication réactive (réponse sous 24h en semaine) et un accès permanent à l'avancement du projet.",
   },
   {
-    question: "Fournissez-vous textes et visuels ?",
-    answer: "Oui. Nous pouvons gérer la rédaction, la sélection d'images et les icônes.",
+    question: "Gérez-vous textes, visuels, SEO et hébergement ?",
+    answer: "Oui. Rédaction, sélection d'images, icônes, SEO de base, mise en ligne et analytics — tout est pris en charge si besoin. Rien à gérer de votre côté si vous ne le souhaitez pas.",
   },
   {
-    question: "Gérez-vous SEO, hébergement et suivi ?",
-    answer: "Oui. Mise en ligne, SEO de base, analytics et optimisations si besoin.",
+    question: "Que se passe-t-il si quelque chose ne me convient pas ?",
+    answer: "30 jours de corrections inclus après livraison. Le process inclut des validations régulières pour éviter les surprises — vous voyez l'avancement à chaque étape, pas seulement le résultat final.",
   },
   {
-    question: "Que se passe-t-il après la mise en ligne ?",
-    answer: "30 jours de support inclus, puis un forfait maintenance si tu veux garder le rythme.",
+    question: "Pourquoi travailler avec KAH-Digital plutôt qu'une agence classique ?",
+    answer: "L'expertise d'un studio senior, la réactivité d'un partenaire dédié. Pas de chef de projet intermédiaire, pas de délais gonflés. Vous avez un interlocuteur unique, disponible, qui connaît votre projet de bout en bout.",
   },
 ];
 
 const stats = [
-  { label: "Projets premium", value: "70+" },
-  { label: "Satisfaction", value: "9.6/10" },
-  { label: "Délai moyen", value: "4-6 semaines" },
+  { label: "Projets livrés", value: "70+" },
+  { label: "Satisfaction client", value: "9.6/10" },
+  { label: "Délai maîtrisé", value: "4–6 semaines" },
 ];
 
 const fastDeals = [
   {
     title: "Landing conversion",
-    budget: "1'900 €",
+    budget: "Périmètre simple",
     timeline: "3 semaines (incl. QA)",
     stack: "Next.js, SEO, Email",
     deliverable: "Page unique + formulaire + calendrier",
@@ -128,7 +128,7 @@ const fastDeals = [
   },
   {
     title: "Portail membres privé",
-    budget: "5'900 €",
+    budget: "Projet évolutif",
     timeline: "5 semaines",
     stack: "Supabase Auth, Stripe, Dashboard",
     deliverable: "Espace login + contenus + paiements récurrents",
@@ -136,7 +136,7 @@ const fastDeals = [
   },
   {
     title: "Devis interactif + dossier PDF",
-    budget: "7'900 €",
+    budget: "Sur mesure",
     timeline: "6 semaines",
     stack: "Next.js, PDF, CRM",
     deliverable: "Simulateur de devis + dossier PDF",
@@ -145,7 +145,7 @@ const fastDeals = [
 ];
 
 const closingHighlights = [
-  { label: "Budget indicatif", value: "2'000 € - 12'000 €" },
+  { label: "Devis", value: "Personnalisé" },
   { label: "Sprint moyen", value: "4 a 6 semaines" },
   { label: "Réponse sous 24h", value: "-24h" },
 ];
@@ -175,7 +175,7 @@ export const aiBusinessGuide = [
   {
     title: "Automatisation relation client",
     description: "Réponses, devis et relances automatiques sans perdre le ton de la marque.",
-    pricing: "Budget indicatif: 2'900 - 6'900 €",
+    pricing: "Estimation adaptée après cadrage",
     timeline: "Mise en place: 2-4 semaines",
     tools: ["ChatGPT", "Make/Zapier", "CRM"],
     image:
@@ -184,7 +184,7 @@ export const aiBusinessGuide = [
   {
     title: "Chatbot métier & support",
     description: "Assistant entraîné sur vos contenus pour répondre 24/7 et filtrer les demandes.",
-    pricing: "Budget indicatif: 3'500 - 9'000 €",
+    pricing: "Estimation adaptée après cadrage",
     timeline: "Mise en place: 3-5 semaines",
     tools: ["Base de connaissance", "Widget web", "Analytics"],
     image:
@@ -193,7 +193,7 @@ export const aiBusinessGuide = [
   {
     title: "Qualification & lead scoring",
     description: "Formulaires intelligents, scoring et routage des leads vers l'équipe.",
-    pricing: "Budget indicatif: 2'400 - 5'900 €",
+    pricing: "Estimation adaptée après cadrage",
     timeline: "Mise en place: 2-3 semaines",
     tools: ["Emailing", "CRM", "Scoring IA"],
     image:
@@ -202,7 +202,7 @@ export const aiBusinessGuide = [
   {
     title: "Contenu & assets IA",
     description: "Templates, contenus et scripts alignés à votre marque pour gagner du temps.",
-    pricing: "Budget indicatif: 1'800 - 4'500 €",
+    pricing: "Estimation adaptée après cadrage",
     timeline: "Mise en place: 1-2 semaines",
     tools: ["Notion", "Templates", "Brand kit"],
     image:
@@ -211,7 +211,7 @@ export const aiBusinessGuide = [
   {
     title: "Micro-outil IA sur-mesure",
     description: "Outil interne : résumé, extraction, tri ou aide à la décision.",
-    pricing: "Budget indicatif: 4'900 - 12'000 €",
+    pricing: "Estimation adaptée après cadrage",
     timeline: "MVP: 4-6 semaines",
     tools: ["Next.js", "API IA", "Sécurité"],
     image:
