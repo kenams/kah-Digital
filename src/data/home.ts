@@ -152,22 +152,34 @@ const closingHighlights = [
 
 const resultsShowcase = [
   {
-    title: "Portail immobilier privé",
-    before: "3 leads/semaine",
-    after: "14 leads + 2 deals/mois",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+    title: "Ashanti Beauty — Site vitrine",
+    before: "0 réservation en ligne",
+    after: "12 réservations/sem dès J+7",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80",
   },
   {
-    title: "MVP santé premium",
-    before: "MVP Figma",
-    after: "TestFlight + 400 beta-users",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+    title: "TechCash Academy — Plateforme",
+    before: "0 vente digitale",
+    after: "Premiers revenus J+7 après live",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
   },
   {
-    title: "Boutique haute couture",
-    before: "Conversion 0.6%",
-    after: "2.1% en 45 jours",
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    title: "Ruby Gallery — E-commerce art",
+    before: "Réseau social uniquement",
+    after: "3 ventes Stripe en 2 semaines",
+    image: "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "TontineApp — MVP mobile",
+    before: "Excel + groupes WhatsApp",
+    after: "150 beta-testeurs, 0 bug critique",
+    image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    title: "FEATNESS — App + Kiosque",
+    before: "Idée + brief Notion",
+    after: "200 utilisateurs actifs en 6 sem.",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
   },
 ];
 

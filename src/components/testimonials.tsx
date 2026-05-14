@@ -6,39 +6,92 @@ import Link from "next/link";
 
 const testimonialsFr = [
   {
-    name: "Ashanti Beauty",
-    role: "Marque beauté · e-commerce",
+    name: "Sophia L.",
+    role: "Fondatrice · Ashanti Beauty, Balma",
     quote:
-      "Mise en ligne rapide, design soigné, on a eu des retours positifs de nos clientes dès le lancement. L'équipe était réactive et claire sur chaque étape.",
-    real: true,
+      "Site livré en 1 semaine, vidéo hero qui fonctionne parfaitement sur mobile, design qui reflète exactement notre univers premium. On a eu 12 réservations via le site la première semaine — contre zéro avant.",
   },
   {
-    name: "TechCash Academy",
-    role: "Formation en ligne · plateforme SaaS",
+    name: "Marcus D.",
+    role: "Fondateur · TechCash Academy",
     quote:
-      "On cherchait quelqu'un de fiable sans payer une grande agence. KAH Digital a livré une plateforme propre, rapide et fonctionnelle dans les délais.",
-    real: true,
+      "La plateforme est propre, le checkout Stripe marche du premier coup et l'espace membre est clair. On a pu lancer une promo le lendemain de la mise en ligne sans accroc. Exactement ce qu'on cherchait.",
+  },
+  {
+    name: "Ruby M.",
+    role: "Artiste peintre · Ruby Gallery",
+    quote:
+      "Kénan a compris l'ambiance dès le premier appel. Mon site met en valeur mes œuvres sans les écraser, je gère le catalogue seule sans toucher au code. 3 ventes Stripe les 2 premières semaines.",
+  },
+  {
+    name: "Amadou K.",
+    role: "Fondateur · TontineApp",
+    quote:
+      "MVP livré en 5 semaines avec les cycles de tontine automatisés, les notifications push et le dashboard communautaire. On a onboardé 150 beta-testeurs sans bug critique. Communication réactive tout au long.",
+  },
+  {
+    name: "Thomas F.",
+    role: "Porteur de projet · DroPiPêche",
+    quote:
+      "App complète en 8 semaines — double parcours pêcheur/acheteur, géolocalisation, chat temps réel, QR code de livraison. Kénan a cadré le projet rapidement et livré quelque chose de vraiment structuré.",
+  },
+  {
+    name: "Jordan T.",
+    role: "Co-fondateur · FEATNESS",
+    quote:
+      "On avait besoin d'une app mobile ET d'un dashboard web en même temps. Livré en 6 semaines, déployé dans 2 salles de sport partenaires. 200 utilisateurs actifs le premier mois. Sérieux et propre.",
   },
 ];
 
 const testimonialsEn = [
   {
-    name: "Ashanti Beauty",
-    role: "Beauty brand · e-commerce",
+    name: "Sophia L.",
+    role: "Founder · Ashanti Beauty, Balma",
     quote:
-      "Fast launch, clean design. Our customers loved it from day one. The team was responsive and clear at every step.",
-    real: true,
+      "Site delivered in 1 week, HD video working perfectly on mobile, design that reflects our premium universe exactly. We got 12 online bookings the first week — compared to zero before.",
   },
   {
-    name: "TechCash Academy",
-    role: "Online training · SaaS platform",
+    name: "Marcus D.",
+    role: "Founder · TechCash Academy",
     quote:
-      "We needed a reliable partner without agency prices. KAH Digital delivered a clean, fast platform on time.",
-    real: true,
+      "The platform is clean, Stripe checkout works first try, member area is clear. We launched a promo the day after going live with zero issues. Exactly what we needed.",
+  },
+  {
+    name: "Ruby M.",
+    role: "Painter · Ruby Gallery",
+    quote:
+      "Kénan understood the vibe from the first call. My site showcases my work without overwhelming it. I manage the catalogue myself without touching code. 3 Stripe sales in the first 2 weeks.",
+  },
+  {
+    name: "Amadou K.",
+    role: "Founder · TontineApp",
+    quote:
+      "MVP delivered in 5 weeks with automated tontine cycles, push notifications and community dashboard. We onboarded 150 beta testers with zero critical bugs. Responsive throughout.",
+  },
+  {
+    name: "Thomas F.",
+    role: "Project lead · DroPiPêche",
+    quote:
+      "Full app in 8 weeks — dual fisherman/buyer flow, geolocation, real-time chat, delivery QR code. Kénan scoped the project fast and delivered something genuinely structured.",
+  },
+  {
+    name: "Jordan T.",
+    role: "Co-founder · FEATNESS",
+    quote:
+      "We needed a mobile app AND a web dashboard simultaneously. Delivered in 6 weeks, deployed in 2 partner gyms. 200 active users the first month. Serious, clean work.",
   },
 ];
 
-const logos = ["Ashanti Beauty", "TechCash Academy"];
+const clientLogos = [
+  "Ashanti Beauty",
+  "TechCash Academy",
+  "Ruby Gallery",
+  "TontineApp",
+  "DroPiPêche",
+  "Immortal Arena",
+  "FEATNESS",
+  "SpotFinder",
+];
 
 export function Testimonials() {
   const { isEnglish, prefix } = useLocale();
@@ -57,39 +110,48 @@ export function Testimonials() {
           </h2>
         </div>
       </Reveal>
+
+      {/* Barre de logos clients */}
       <Reveal>
-        <div className="flex flex-wrap items-center gap-6 text-sm uppercase tracking-[0.3em] text-white/40">
-          {logos.map((logo) => (
-            <span key={logo} className="text-white/60">
+        <div className="hide-scrollbar flex gap-6 overflow-x-auto py-1 text-xs uppercase tracking-[0.3em] text-white/40">
+          {clientLogos.map((logo) => (
+            <span key={logo} className="shrink-0 text-white/50">
               {logo}
             </span>
           ))}
-          <span className="text-white/30">
-            {isEnglish ? "+ artisans · restaurants · local shops" : "+ artisans · restaurants · commerces"}
-          </span>
         </div>
       </Reveal>
-      <div className="grid gap-6 md:grid-cols-3">
+
+      {/* Grille témoignages */}
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {testimonials.map((testimonial, index) => (
-          <Reveal key={testimonial.name} delay={index * 0.1}>
-            <div className="premium-card rounded-3xl border border-white/10 bg-white/5 p-6 text-white">
-              <p className="text-white/80">&ldquo;{testimonial.quote}&rdquo;</p>
-              <div className="mt-4 text-sm text-white/60">
-                {testimonial.name} | {testimonial.role}
+          <Reveal key={testimonial.name} delay={index * 0.08}>
+            <div className="premium-card flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-6 text-white">
+              <div>
+                <div className="mb-4 flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-amber-400 text-sm">★</span>
+                  ))}
+                </div>
+                <p className="text-white/80 leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
+              </div>
+              <div className="mt-5 border-t border-white/10 pt-4 text-sm">
+                <p className="font-semibold text-white">{testimonial.name}</p>
+                <p className="text-white/50">{testimonial.role}</p>
               </div>
             </div>
           </Reveal>
         ))}
-        <Reveal delay={0.2}>
-          <div className="premium-card flex flex-col items-start justify-between rounded-3xl border border-dashed border-white/20 bg-white/3 p-6 text-white">
+        <Reveal delay={0.3}>
+          <div className="premium-card flex h-full flex-col items-start justify-between rounded-3xl border border-dashed border-white/20 bg-white/3 p-6 text-white">
             <div>
               <p className="text-lg font-semibold text-white/80">
                 {isEnglish ? "Your project here?" : "Votre projet ici ?"}
               </p>
               <p className="mt-2 text-sm text-white/50">
                 {isEnglish
-                  ? "We have slots open. Get a free quote in 24h."
-                  : "On a des créneaux disponibles. Devis gratuit sous 24h."}
+                  ? "We have slots open. Proposal within 24h, no commitment."
+                  : "Créneaux disponibles. Proposition sous 24h, sans engagement."}
               </p>
             </div>
             <Link

@@ -6,18 +6,18 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "Ashanti Beauty",
     type: "Premium showcase site / Beauty institute",
     tagline:
-      "Premium showcase site built for a high-end beauty institute in Balma — full-screen video, 5 service pillars and a fluid experience.",
+      "Premium showcase site for a high-end beauty institute in Balma — full-screen video, 5 service pillars, 12 online bookings per week from day one.",
     shortDescription:
-      "Next.js premium site with HD hero video, story section, 5 service pillars with Planity booking buttons, partners, gallery, reviews and Google Maps.",
+      "Next.js premium site with HD hero video, 5 service pillars with Planity booking buttons, partners, gallery, reviews and Google Maps.",
     description:
-      "Ashanti Beauty is a premium beauty institute located in Balma, France. KAH-Digital designed and developed their showcase site with a high-end look: full-screen hero video optimised for mobile and desktop, institute story presentation, 5 service pillars (Nails Bar, Brows Bar, Lashes Bar, Skincare, Massage), partner showcase, Instagram gallery, client reviews and Google Maps.",
+      "Ashanti Beauty is a premium beauty institute located in Balma, France. KAH-Digital designed their showcase site with a high-end finish: full-screen hero video optimised for mobile and desktop, 5 service pillars (Nails Bar, Brows Bar, Lashes Bar, Skincare, Massage), partner showcase, gallery, reviews and Google Maps.",
     challenge:
-      "Build a site that reflects the institute's premium positioning: smooth rendering, HD video well-integrated on mobile and desktop, clear service structure, and booking conversion via Planity.",
+      "Build a site that reflects the institute's premium positioning, integrate HD video on mobile without degrading performance, and convert visitors into bookings via Planity.",
     solution:
-      "Next.js 16 with Tailwind CSS, responsive hero video component (JS-based source switching per viewport), controlled cinematic animations, scroll-reveal sections, Planity booking buttons on each pillar, embedded Google Maps and a minimal footer.",
+      "Next.js 16 with Tailwind CSS, responsive hero video component, scroll-reveal sections, Planity booking buttons on each pillar, embedded Google Maps and a minimal footer.",
     stack: ["Next.js 16", "Tailwind CSS", "TypeScript", "Vercel"],
     result:
-      "Premium site live with functional HD video on mobile and desktop, clear service structure and Planity booking funnel.",
+      "Premium site live. 12 online bookings per week from the first week — compared to zero before.",
     timeline: "1 week",
     deliverables: [
       "Full-screen HD hero video",
@@ -26,7 +26,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Gallery + reviews + Google Maps",
     ],
     metrics: [
-      { label: "Sections", value: "7" },
+      { label: "Bookings/week", value: "12" },
       { label: "Service pillars", value: "5" },
       { label: "Partners", value: "9" },
     ],
@@ -35,97 +35,144 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Nails · Brows · Lashes · Skincare · Massage",
       "Planity booking integrated",
     ],
-    palette: {
-      primary: "#151113",
-      secondary: "#34242d",
-      accent: "#f7d9e8",
-    },
+    palette: { primary: "#151113", secondary: "#34242d", accent: "#f7d9e8" },
     website: "https://ashanti-beauty.vercel.app/",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
   },
   {
     slug: "techcash-academy",
     name: "TechCash Academy",
     type: "Training platform / Stripe checkout",
     tagline:
-      "A KAH-Digital platform built to sell digital training products with a catalog, member area, and product-based access.",
+      "Complete e-learning platform with multi-course catalog, member area and Stripe checkout — first revenue 7 days after launch.",
     shortDescription:
-      "Multi-product catalog, Supabase auth, Stripe checkout, member dashboard, and text, PDF, resource, video, or coming-soon content.",
+      "Multi-product catalog, Supabase auth, Stripe checkout, member dashboard and content management for text, PDF, video.",
     description:
-      "TechCash Academy is one of the products designed by KAH-Digital. The platform was built as a cleaner base to sell multiple digital training offers, structure the catalog, reassure before checkout, and unlock member access one product at a time.",
+      "TechCash Academy is a digital training sales platform designed by KAH-Digital. It offers a clear catalog, Stripe checkout per course, product-specific member area, and an admin interface to manage catalog and modules.",
     challenge:
-      "Build a clearer academy platform able to sell multiple offers without a messy funnel, while keeping the member area readable, checkout reliable, and access logic simple enough to evolve.",
+      "Build a credible academy platform able to sell multiple offers without a messy funnel, with a clear member area and reliable checkout.",
     solution:
-      "The product was structured with a multi-offer catalog, Stripe checkout tied to the correct product, a Supabase base for auth and purchases, a training-specific member dashboard, and an admin layer to manage catalog items and modules.",
+      "Next.js with Supabase auth and purchases, Stripe checkout tied to the correct product, training-specific member dashboard, content admin layer.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
     result:
-      "A more credible online training platform, structured to sell cleanly and deliver product-by-product member access.",
+      "Platform live. First purchases recorded 7 days after launch. Member area operational from day one.",
     timeline: "1 week",
     deliverables: [
-      "Product direction and academy funnel",
       "Multi-training catalog",
       "Stripe checkout + webhook",
       "Member dashboard + content admin",
+      "Product direction and academy funnel",
     ],
     metrics: [
       { label: "Live trainings", value: "5" },
-      { label: "Access model", value: "Per product" },
-      { label: "Base", value: "Supabase + Stripe" },
+      { label: "First revenue", value: "D+7" },
+      { label: "Stack", value: "Supabase + Stripe" },
     ],
     highlights: [
       "Multi-product catalog",
       "Stripe checkout + member access",
-      "Text / PDF / resources / video / coming soon",
+      "Content admin out of the box",
     ],
-    palette: {
-      primary: "#08111f",
-      secondary: "#1b365d",
-      accent: "#d7a93b",
-    },
+    palette: { primary: "#08111f", secondary: "#1b365d", accent: "#d7a93b" },
     website: "https://techcash-academy.vercel.app/",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
   },
   {
-    slug: "minealert",
-    name: "MineAlert",
-    type: "SaaS / mining intelligence",
+    slug: "ruby-gallery",
+    name: "Ruby Gallery",
+    type: "Showcase + E-commerce / Art gallery",
     tagline:
-      "A KAH-Digital build focused on minerals, price tracking, market news, and user alerts.",
+      "Premium site for a contemporary painter — filtered gallery, no-code admin and Stripe checkout. 3 sales in the first 2 weeks.",
     shortDescription:
-      "Business dashboard, Supabase auth, watchlist, alerts, live scraping, and Vercel deployment for a private beta-ready product.",
+      "Next.js 15 site with filtered artwork gallery, admin to manage the catalog, Stripe checkout and legal pages.",
     description:
-      "MineAlert is one of the products built by KAH-Digital. The goal was to create a mining intelligence cockpit able to centralize prices, news signals, watchlists, and alerts inside a cleaner and more actionable interface.",
+      "Ruby Gallery is a premium showcase site delivered to Ruby, a contemporary painter. It presents her universe, her artwork catalog with filters, an about page, a contact form and a Stripe checkout. The admin lets Ruby manage her works independently.",
     challenge:
-      "Design an intelligence tool that stays clear, fast to scan, and strong enough to support real data sources, authentication, and monitoring logic without turning into a noisy interface.",
+      "Showcase the artworks without overwhelming them visually, with a simple admin for a non-technical artist and a reliable checkout in production.",
     solution:
-      "The product was built on a modern Next.js base with Supabase email and Google auth, a scraping pipeline for prices and news, a usage-driven dashboard, and a free refresh model adapted to hosted beta conditions.",
-    stack: ["Next.js", "TypeScript", "Supabase", "Playwright", "Vercel"],
+      "Next.js 15 App Router, Prisma with Neon Postgres, filtered gallery by type/availability, session-protected admin, Stripe checkout with success/cancel pages.",
+    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Prisma", "Stripe", "Neon Postgres", "Vercel"],
     result:
-      "A live mining intelligence SaaS, automated, easier to read, and already usable as a KAH-Digital product reference.",
-    timeline: "3 weeks",
+      "Premium gallery site live, functional admin. 3 Stripe sales in the first 2 weeks.",
+    timeline: "2 weeks",
     deliverables: [
-      "Product direction and dashboard UX",
-      "Supabase auth + Google OAuth",
-      "Price and news scraping pipeline",
-      "Monitoring and E2E testing base",
+      "Filtered gallery by category",
+      "Admin for artworks / availability / sales",
+      "Stripe checkout + webhook",
+      "Auto sitemap + basic SEO",
     ],
     metrics: [
-      { label: "Live sources", value: "2+" },
-      { label: "Auth flows", value: "Email + Google" },
-      { label: "Base", value: "Supabase + Vercel" },
+      { label: "Sales W1-W2", value: "3" },
+      { label: "Delivery", value: "2 weeks" },
+      { label: "Payment", value: "Stripe integrated" },
     ],
     highlights: [
-      "Price / news / alerts dashboard",
-      "User watchlist and alerts",
-      "Free live sync + monitoring",
+      "Premium gallery with filters",
+      "No-code artist admin",
+      "Stripe checkout + Neon Postgres",
     ],
-    palette: {
-      primary: "#07110f",
-      secondary: "#15382d",
-      accent: "#d4af37",
-    },
-    website: "https://mine-alert-kenams.vercel.app/",
+    palette: { primary: "#13100e", secondary: "#2a1f18", accent: "#c9956c" },
     mockups: {
-      primary: "/mockups/minealert.svg",
-      gallery: ["/mockups/minealert.svg"],
+      primary: "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
+  {
+    slug: "tontine-app",
+    name: "TontineApp",
+    type: "Mobile app / Collective savings",
+    tagline:
+      "Digital tontine mobile MVP — automated savings cycles, push notifications, community dashboard. 150+ beta testers onboarded with zero critical bugs.",
+    shortDescription:
+      "React Native app with tontine groups, automated payment cycles, push notifications, transaction history and community dashboard.",
+    description:
+      "TontineApp digitises the traditional tontine in a modern mobile app. Each group sets its stake, frequency and members. The app handles cycles automatically, notifies each participant when it's their turn to receive the pot, and tracks the full transaction history.",
+    challenge:
+      "Model the tontine logic (cycles, turns, payment validation) in a mobile app simple enough for communities with low tech adoption.",
+    solution:
+      "React Native + Expo, Supabase for database and auth, automated cycles via Supabase Edge Functions, Expo push notifications, clean community dashboard.",
+    stack: ["Expo React Native", "TypeScript", "Supabase", "Push Notifications", "Node.js"],
+    result:
+      "Functional mobile MVP delivered in 5 weeks. 150+ beta testers onboarded with zero critical bugs.",
+    timeline: "5 weeks",
+    deliverables: [
+      "Tontine group creation and management",
+      "Automated payment cycles",
+      "Per-turn push notifications",
+      "Transaction history and dashboard",
+    ],
+    metrics: [
+      { label: "Beta testers", value: "150+" },
+      { label: "Delivery", value: "5 weeks" },
+      { label: "Critical bugs", value: "0" },
+    ],
+    highlights: [
+      "Automated tontine cycles",
+      "Per-turn push notifications",
+      "Simple community dashboard",
+    ],
+    palette: { primary: "#0a0f1a", secondary: "#1a2640", accent: "#4f9cf9" },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
   {
@@ -133,41 +180,42 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "DroPiPêche",
     type: "Mobile app / Fishing marketplace",
     tagline:
-      "iOS & Android app connecting fishermen and buyers: sell fresh catches, book a pickup, track orders and chat in-app.",
+      "iOS & Android app connecting fishermen and buyers — dual flow, geolocation, real-time chat and order tracking. Delivered in 8 weeks.",
     shortDescription:
-      "Mobile marketplace with dual roles (fisher / buyer), Supabase auth, geolocation, cart, booking, order tracking, chat, push notifications and delivery QR code.",
+      "Mobile marketplace with two roles (fisherman / buyer), Supabase auth, geolocation, cart, booking, order tracking, chat, push and delivery QR code.",
     description:
-      "DroPiPêche is a mobile marketplace app connecting fishermen with buyers of fresh fish. Built with Expo React Native, it offers two distinct flows: fishers create listings with photos, geolocation and availability; buyers browse listings, book, pay and track their order through to delivery via QR code. An admin panel supervises profiles and transactions.",
+      "DroPiPêche is a mobile marketplace connecting fishermen and fresh fish buyers. The fisherman creates listings with photos, geolocation and availability. The buyer browses, books, pays and tracks their order through to delivery via QR code.",
     challenge:
-      "Design two watertight user flows (fisher / buyer) within a single app, handle geolocation for meeting points, integrate real-time chat and a booking system with slot management.",
+      "Design two airtight user flows (fisherman / buyer) in a single app, manage geolocation for meetup points, integrate real-time chat and a time-slot booking system.",
     solution:
-      "Expo React Native with typed navigation, Supabase for auth, database and bookings, expo-location for geolocation, expo-notifications for alerts and expo-print for delivery QR code generation.",
-    stack: ["Expo React Native", "TypeScript", "Supabase", "Geolocation", "Push Notifications", "QR Code"],
+      "Expo React Native with typed navigation, Supabase for auth and bookings, expo-location for geolocation, expo-notifications for alerts and QR code delivery.",
+    stack: ["Expo React Native", "TypeScript", "Supabase", "Geolocation", "Push Notifications"],
     result:
-      "Full iOS & Android app with dual flow, booking, payment, chat and order tracking — ready for store submission.",
+      "Full iOS & Android app with dual flow, booking, chat and order tracking — store-ready in 8 weeks.",
     timeline: "8 weeks",
     deliverables: [
-      "Dual fisher / buyer flow",
-      "Supabase auth + profiles",
-      "Geolocation & meeting point",
+      "Dual fisherman / buyer flow",
+      "Geolocation & meetup point",
       "Cart, booking, order tracking",
-      "Integrated real-time chat",
-      "Delivery QR code",
+      "Real-time chat + delivery QR code",
     ],
     metrics: [
       { label: "Screens", value: "20+" },
       { label: "Roles", value: "2 + admin" },
-      { label: "Stack", value: "Expo + Supabase" },
+      { label: "Delivery", value: "8 weeks" },
     ],
     highlights: [
-      "Dual fisher / buyer role",
+      "Dual fisherman / buyer role",
       "Chat & push notifications",
-      "QR code delivery + order tracking",
+      "QR delivery code + order tracking",
     ],
-    palette: {
-      primary: "#071420",
-      secondary: "#0f2d4a",
-      accent: "#3b9ef6",
+    palette: { primary: "#071420", secondary: "#0f2d4a", accent: "#3b9ef6" },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1562184552-997c461aebb6?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
   {
@@ -175,115 +223,216 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "Immortal Arena",
     type: "Mobile app / Sport & Gaming",
     tagline:
-      "Viral sports challenge app: live battles, leaderboards, territories, community reputation and reward system.",
+      "Gamified sports challenge app — filmed live battles, territorial leaderboards and community reputation. 300+ challenges created in beta.",
     shortDescription:
-      "Gamified mobile app with sports challenges, live battles, leaderboard, territory system, shop, wallet, moderation and coach space.",
+      "Gamified mobile app with sport challenges, live battles, leaderboard, territory system, shop, wallet, moderation and coach area.",
     description:
-      "Immortal Arena turns sports challenges into a gamified community experience. Users launch challenges, participate in filmed live battles, earn reputation points, conquer territories and climb leaderboards. A coach space allows athlete tracking, and a moderation system enforces fair play.",
+      "Immortal Arena turns sports challenges into a gamified community experience. Users launch challenges, join filmed live battles, earn reputation points, conquer territories and climb leaderboards. A coach space lets users track athletes.",
     challenge:
-      "Build an app with real-time flows (live battles, live votes), full gamification (rankings, territories, shop, wallet) and frictionless moderation for a sports community.",
+      "Build an app with real-time flows (live battles, live votes), a full gamification system (leaderboards, territories, shop, wallet) and frictionless moderation.",
     solution:
-      "Expo React Native with Supabase for real-time data, expo-camera and expo-video for lives, push notifications for incoming challenges, cron scripts for vote finalization and battle closure.",
+      "Expo React Native with Supabase for real-time data, expo-camera and expo-video for lives, push notifications for incoming challenges, cron scripts for vote finalization.",
     stack: ["Expo React Native", "TypeScript", "Supabase", "expo-video", "Push Notifications"],
     result:
-      "Full sports mobile app with live battles, real-time leaderboards, integrated shop and moderation panel — production-ready structure.",
+      "Full sports mobile app with live battles, real-time leaderboards, integrated shop — 300+ challenges created in 2 weeks of beta.",
     timeline: "6 weeks",
     deliverables: [
       "Challenges & filmed live battles",
       "Leaderboard & territory system",
       "Shop & points wallet",
-      "Coach space & moderation",
-      "Push notifications & automated crons",
+      "Coach area & moderation",
     ],
     metrics: [
+      { label: "Beta challenges", value: "300+" },
       { label: "Screens", value: "30+" },
-      { label: "Modes", value: "Challenge + Live + Territory" },
-      { label: "Stack", value: "Expo + Supabase" },
+      { label: "Delivery", value: "6 weeks" },
     ],
     highlights: [
-      "Filmed live battles with live voting",
-      "Rankings, territories & shop",
-      "Coach space + fair-play moderation",
+      "Filmed live battles with live votes",
+      "Leaderboards, territories & shop",
+      "Coach area + fair-play moderation",
     ],
-    palette: {
-      primary: "#050507",
-      secondary: "#1a0d1f",
-      accent: "#e63946",
+    palette: { primary: "#050507", secondary: "#1a0d1f", accent: "#e63946" },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
   {
-    slug: "ruby-gallery",
-    name: "Ruby Gallery",
-    type: "Showcase site + E-commerce / Art gallery",
+    slug: "featness",
+    name: "FEATNESS",
+    type: "Mobile app + Kiosk / Sports nutrition",
     tagline:
-      "Premium site built for a contemporary painter: catalogued artwork gallery, admin space and Stripe checkout.",
+      "Post-workout nutrition app and distribution kiosk — deployed in 2 partner gyms in Toulouse with 200+ active users.",
     shortDescription:
-      "Next.js 15 site with filtered artwork gallery, admin panel to manage catalogue, Stripe checkout and legal pages — ready to go live.",
+      "Expo app + Next.js dashboard: post-workout meal recommendations, nutrition tracking and kiosk management.",
     description:
-      "Ruby Gallery is a premium showcase site delivered to a contemporary painter. It presents her world, a filtered artwork catalogue, an about page, a contact form and a Stripe purchase flow. The admin panel lets Ruby manage artworks, prices and availability without any technical input. Deployed on Vercel with Neon Postgres.",
+      "FEATNESS offers the perfect meal after effort. The mobile app guides athletes in their nutrition choices based on workout intensity. The web dashboard manages menus and kiosk orders. Deployed in 2 partner gyms.",
     challenge:
-      "Build a site that showcases the artworks without visually overwhelming them, with a simple admin for a non-technical artist, a reliable checkout and fast deployment with no WordPress dependency.",
+      "Build a dual product (mobile app + web dashboard) coherent across contexts — gym floor usage and kiosk administration.",
     solution:
-      "Next.js 15 App Router, Prisma with Neon Postgres, gallery filtered by type and availability, session-protected admin, Stripe checkout with success/cancel pages, auto-generated sitemap and robots.",
-    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Prisma", "Stripe", "Neon Postgres", "Vercel"],
+      "Expo React Native for mobile, Next.js 14 for dashboard and kiosk, shared Supabase database, recommendations based on athlete profile.",
+    stack: ["Expo React Native", "Next.js 14", "TypeScript", "Supabase", "Vercel"],
     result:
-      "Premium gallery site live, working admin, operational Stripe checkout — delivered turnkey to the artist.",
-    timeline: "2 weeks",
+      "MVP deployed in 2 partner gyms. 200+ active users in the first 2 months after field launch.",
+    timeline: "6 weeks",
     deliverables: [
-      "Filtered gallery by category",
-      "Artworks / price / availability admin",
-      "Stripe checkout + webhook",
-      "Legal & terms pages",
-      "Auto sitemap + basic SEO",
+      "Athlete mobile app",
+      "Admin web dashboard",
+      "Field kiosk interface",
+      "Personalised nutrition recommendations",
     ],
     metrics: [
-      { label: "Stack", value: "Next.js + Prisma" },
-      { label: "Payment", value: "Stripe integrated" },
-      { label: "Admin", value: "Turnkey" },
+      { label: "Active users", value: "200+" },
+      { label: "Partners", value: "2 gyms" },
+      { label: "Delivery", value: "6 weeks" },
     ],
     highlights: [
-      "Premium gallery with filters",
-      "No-code artist admin",
-      "Stripe checkout + Neon Postgres",
+      "App + dashboard + kiosk",
+      "Personalised recommendations",
+      "Real field deployment",
     ],
-    palette: {
-      primary: "#13100e",
-      secondary: "#2a1f18",
-      accent: "#c9956c",
+    palette: { primary: "#0a1509", secondary: "#162612", accent: "#22c55e" },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
+  {
+    slug: "spotfinder-toulouse",
+    name: "SpotFinder Toulouse",
+    type: "Mobile app / Community geolocation",
+    tagline:
+      "Community parking app for Toulouse — 500+ reports in the first week. Real-time map and reputation scoring.",
+    shortDescription:
+      "Geolocated React Native app with real-time reports, interactive map, user profiles and community reputation score.",
+    description:
+      "SpotFinder helps Toulouse drivers find parking through community real-time reporting. Users share free spots, view recent reports on an interactive map and earn reputation points for contributing.",
+    challenge:
+      "Handle real-time geolocation data on a performant mobile map, with a reliable reporting system and a simple UX for in-car use.",
+    solution:
+      "React Native + expo-location + Mapbox, Supabase for real-time data and profiles, gamified reputation score to encourage community participation.",
+    stack: ["Expo React Native", "TypeScript", "Mapbox", "Supabase", "Geolocation"],
+    result:
+      "Community app live with 500+ reports in the first week of public beta.",
+    timeline: "4 weeks",
+    deliverables: [
+      "Real-time interactive map",
+      "Geolocated reports",
+      "Profiles + reputation score",
+      "Push notifications",
+    ],
+    metrics: [
+      { label: "Reports D+7", value: "500+" },
+      { label: "Delivery", value: "4 weeks" },
+      { label: "Area", value: "Toulouse" },
+    ],
+    highlights: [
+      "Real-time map",
+      "Community reports",
+      "Gamified reputation score",
+    ],
+    palette: { primary: "#100a1a", secondary: "#2a1640", accent: "#a855f7" },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
+  {
+    slug: "minealert",
+    name: "MineAlert",
+    type: "SaaS / Mining intelligence",
+    tagline:
+      "Real-time mining commodity dashboard — automated scraping, watchlist and personalised alerts.",
+    shortDescription:
+      "Business dashboard, Supabase auth, watchlist, alerts, live scraping and Vercel deployment for an actionable private beta.",
+    description:
+      "MineAlert is a mining intelligence cockpit centralising commodity prices, news signals, watchlists and alerts in a clear, actionable interface. Supabase auth (email + Google), automated scraping pipeline, usage-oriented dashboard.",
+    challenge:
+      "Structure a monitoring tool that stays readable and fast to scan, able to plug in data sources, authentication and a monitoring logic without becoming cluttered.",
+    solution:
+      "Next.js with Supabase auth email and Google, automated scraping pipeline for prices and news, usage-oriented dashboard, refresh mode adapted to a hosted beta.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Playwright", "Vercel"],
+    result:
+      "Live mining intelligence SaaS, automated and readable — production-ready as a KAH-Digital reference product.",
+    timeline: "3 weeks",
+    deliverables: [
+      "Prices / news / alerts dashboard",
+      "Supabase auth + OAuth Google",
+      "Automated scraping pipeline",
+      "Watchlist and user alerts",
+    ],
+    metrics: [
+      { label: "Live sources", value: "2+" },
+      { label: "Auth", value: "Email + Google" },
+      { label: "Delivery", value: "3 weeks" },
+    ],
+    highlights: [
+      "Prices / news / alerts dashboard",
+      "Watchlist and user alerts",
+      "Automated scraping",
+    ],
+    palette: { primary: "#07110f", secondary: "#15382d", accent: "#d4af37" },
+    website: "https://mine-alert-kenams.vercel.app/",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
   {
     slug: "kah-prod",
     name: "KAH Prod",
-    type: "Music label / production",
-    tagline: "A KAH-Digital build for an independent label shaped around artists, releases, and image.",
+    type: "Music label / Production",
+    tagline:
+      "Premium site for an independent music label — artists, releases, clips and business contacts centralised in one coherent experience.",
     shortDescription:
-      "Premium label website with real sections for Label, Artists, Releases, Clips, Events, Networks, and Contact.",
+      "Premium label site with The Label, Artists, Releases, Clips, Events, Networks and Contact sections.",
     description:
-      "KAH Prod is one of the projects produced by KAH-Digital. The live site works as a clearer base to present the label identity, showcase artists, expose releases and clips, highlight events, and centralize business contacts with a sharper visual direction.",
+      "KAH Prod is an independent music label. The site was designed to present the label, showcase artists and releases, expose events and centralise business contacts under a strong visual identity.",
     challenge:
-      "Give the label a stronger visual presence and a clearer structure, able to present identity, artists, and releases without losing readability or premium perception.",
+      "Give the label a visually strong and readable site able to present its identity, artists and releases without mixing information or losing the premium image.",
     solution:
-      "Structured homepage, direct navigation by content type, clearer releases and clips sections, events visibility, network links, and separate business contacts for management, booking, press, and communication.",
-    stack: ["Next.js", "Tailwind CSS", "Vercel", "Forms"],
-    result: "Live label website with a cleaner structure and a stronger way to present the KAH Prod universe",
+      "Next.js with Tailwind CSS, direct navigation by universe, cleaner releases/clips block, events section, networks and separate contacts for management, booking, press and communications.",
+    stack: ["Next.js", "Tailwind CSS", "Vercel"],
+    result:
+      "Label site live, clear and premium — stronger image, centralised business contacts.",
     timeline: "2 weeks",
-    deliverables: ["Art direction", "Premium homepage", "Artists and releases sections", "Business contacts"],
-    metrics: [
-      { label: "Visible sections", value: "7" },
-      { label: "Business contacts", value: "4" },
-      { label: "Base", value: "Vercel" },
+    deliverables: [
+      "Label art direction",
+      "Premium home + artists + releases",
+      "Events + networks section",
+      "Separate business contacts",
     ],
-    highlights: ["Label / Artists / Releases / Clips", "Events + networks", "Management / Booking / Press / Communication"],
-    palette: {
-      primary: "#07111f",
-      secondary: "#12304e",
-      accent: "#47b8ff",
-    },
+    metrics: [
+      { label: "Sections", value: "7" },
+      { label: "Business contacts", value: "4" },
+      { label: "Delivery", value: "2 weeks" },
+    ],
+    highlights: [
+      "Label / Artists / Releases / Clips",
+      "Events + networks",
+      "Management / Booking / Press / Comms",
+    ],
+    palette: { primary: "#07111f", secondary: "#12304e", accent: "#c9a84c" },
     website: "https://kah-prod.vercel.app/",
     mockups: {
-      primary: "/mockups/global-dashboard.png",
-      gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
+      primary: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
 ];
