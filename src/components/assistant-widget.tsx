@@ -39,7 +39,7 @@ const widgetCopy = {
   fr: {
     button: "Assistant projet & support",
     title: "Assistant projet & support",
-    subtitle: "Orientation, budget, devis 24h et reprise humaine si nécessaire.",
+    subtitle: "Orientation, cadrage, devis personnalisé et reprise humaine si nécessaire.",
     introTitle: "Avant de commencer",
     introBody: "Prénom, nom et email suffisent pour démarrer. Tu peux compléter les autres infos en cours de conversation.",
     firstName: "Prénom *",
@@ -52,22 +52,22 @@ const widgetCopy = {
     companyPlaceholder: "Ex : Studio Nova",
     startChat: "Commencer le chat",
     identityRequired: "Ajoute ton prénom, ton nom et ton email pour commencer.",
-    welcome: "Bonjour ! Je suis Kah, conseiller KAH-Digital. Je peux répondre à tes questions sur les prix, les délais et les services, et cadrer ton projet pour un devis sous 24h si tu le souhaites.",
-    suggestions: ["Combien coûte un site ?", "Je veux créer une app", "Refaire mon site", "Automatisation IA"],
+    welcome: "Bonjour ! Je suis Kah, conseiller KAH-Digital. Décris ton besoin, même s'il n'est pas encore clair : je t'aide à cadrer le bon périmètre pour un devis personnalisé.",
+    suggestions: ["Obtenir un devis adapté", "Je veux créer une app", "Refaire mon site", "Automatisation IA"],
     placeholder: "Pose ta question ou décris ton projet...",
     send: "Envoyer",
     progress: "Progression",
     summary: "Résumé structuré",
     missing: "Informations manquantes",
-    budget: "Budget estimé",
+    budget: "Budget disponible",
     days: "Jours estimés",
     roles: "Ressources",
     ctaEmail: "Recevoir le résumé",
     ctaHuman: "Parler à un humain",
     ctaGlpi: "Créer un ticket",
-    ctaQuote: "Demander un devis 24h",
-    ctaOffers: "Voir les offres",
-    purchaseHint: "Résumé prêt. Le plus propre est de transformer ça en demande de devis ou de comparer l'offre correspondante.",
+    ctaQuote: "Demander un devis personnalisé",
+    ctaOffers: "Voir les approches",
+    purchaseHint: "Résumé prêt. Le plus propre est de transformer ça en demande de devis personnalisé ou de planifier un échange.",
     consent: "J'accepte l'enregistrement de mon résumé pour être recontacté.",
     email: "Email",
     name: "Nom",
@@ -78,7 +78,7 @@ const widgetCopy = {
     close: "Fermer",
     open: "Ouvrir",
     contact: "Contact KAH",
-    helper: "Une question à la fois. Prix cohérents. Suite claire.",
+    helper: "Une question à la fois. Périmètre clair. Suite simple.",
     qualStarted: "Démarrage",
     qualCollecting: "Qualification",
     qualReady: "Résumé en cours",
@@ -86,7 +86,7 @@ const widgetCopy = {
   en: {
     button: "Project & support assistant",
     title: "Project & support assistant",
-    subtitle: "Routing, budget, 24h quote and human handoff when needed.",
+    subtitle: "Routing, scoping, custom quote and human handoff when needed.",
     introTitle: "Before we start",
     introBody: "First name, last name and email are enough to start. You can add other details during the conversation.",
     firstName: "First name *",
@@ -99,22 +99,22 @@ const widgetCopy = {
     companyPlaceholder: "e.g. Studio Nova",
     startChat: "Start chat",
     identityRequired: "Add your first name, last name and email to start.",
-    welcome: "Hi! I'm Kah, KAH-Digital advisor. Ask me anything about pricing, timelines, or services. I can frame your project for a 24h quote if you'd like.",
-    suggestions: ["How much does a site cost?", "I want to build an app", "Redo my website", "AI automation"],
+    welcome: "Hi! I'm Kah, KAH-Digital advisor. Describe your need, even if it is still rough: I will help frame the right scope for a custom quote.",
+    suggestions: ["Get an adapted quote", "I want to build an app", "Redo my website", "AI automation"],
     placeholder: "Ask a question or describe your project...",
     send: "Send",
     progress: "Progress",
     summary: "Structured summary",
     missing: "Missing info",
-    budget: "Estimated budget",
+    budget: "Available budget",
     days: "Estimated days",
     roles: "Resources",
     ctaEmail: "Get the summary",
     ctaHuman: "Talk to a human",
     ctaGlpi: "Create a ticket",
-    ctaQuote: "Request a 24h quote",
-    ctaOffers: "See offers",
-    purchaseHint: "Summary ready. The clean next step is to turn this into a quote request or compare the matching offer.",
+    ctaQuote: "Request a custom quote",
+    ctaOffers: "See approaches",
+    purchaseHint: "Summary ready. The clean next step is to turn this into a custom quote request or plan a discovery call.",
     consent: "I agree to store the summary so KAH-Digital can follow up.",
     email: "Email",
     name: "Name",
@@ -125,7 +125,7 @@ const widgetCopy = {
     close: "Close",
     open: "Open",
     contact: "Contact KAH",
-    helper: "One question at a time. Coherent prices. Clear next step.",
+    helper: "One question at a time. Clear scope. Simple next step.",
     qualStarted: "Getting started",
     qualCollecting: "Qualification",
     qualReady: "Summary in progress",
@@ -133,7 +133,7 @@ const widgetCopy = {
   de: {
     button: "Projekt- & Support-Assistent",
     title: "Projekt- & Support-Assistent",
-    subtitle: "Orientierung, Budget, 24h-Angebot und menschliche Übergabe bei Bedarf.",
+    subtitle: "Orientierung, Eingrenzung, individuelles Angebot und menschliche Übergabe bei Bedarf.",
     introTitle: "Bevor es losgeht",
     introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben können während der Unterhaltung ergänzt werden.",
     firstName: "Vorname *",
@@ -146,22 +146,22 @@ const widgetCopy = {
     companyPlaceholder: "z. B. Studio Nova",
     startChat: "Chat starten",
     identityRequired: "Bitte Vorname, Nachname und E-Mail angeben, um zu starten.",
-    welcome: "Hallo! Ich bin Kah, KAH-Digital Berater. Stell mir Fragen zu Preisen, Zeitrahmen oder Leistungen. Ich kann dein Projekt für ein 24h-Angebot eingrenzen.",
-    suggestions: ["Was kostet eine Website?", "Ich will eine App bauen", "Website neu machen", "KI-Automatisierung"],
+    welcome: "Hallo! Ich bin Kah, KAH-Digital Berater. Beschreibe deinen Bedarf, auch wenn er noch nicht ganz klar ist: ich helfe dir, den passenden Umfang für ein individuelles Angebot einzugrenzen.",
+    suggestions: ["Passendes Angebot erhalten", "Ich will eine App bauen", "Website neu machen", "KI-Automatisierung"],
     placeholder: "Stell eine Frage oder beschreibe dein Projekt...",
     send: "Senden",
     progress: "Fortschritt",
     summary: "Strukturierte Zusammenfassung",
     missing: "Fehlende Infos",
-    budget: "Geschätztes Budget",
+    budget: "Verfügbares Budget",
     days: "Geschätzte Tage",
     roles: "Ressourcen",
     ctaEmail: "Zusammenfassung erhalten",
     ctaHuman: "Mit einem Menschen sprechen",
     ctaGlpi: "Ticket erstellen",
-    ctaQuote: "24h-Angebot anfragen",
-    ctaOffers: "Angebote sehen",
-    purchaseHint: "Zusammenfassung bereit. Der saubere nächste Schritt ist eine Angebotsanfrage oder der Vergleich des passenden Angebots.",
+    ctaQuote: "Individuelles Angebot anfragen",
+    ctaOffers: "Ansätze ansehen",
+    purchaseHint: "Zusammenfassung bereit. Der saubere nächste Schritt ist eine individuelle Angebotsanfrage oder ein kurzes Erstgespräch.",
     consent: "Ich stimme der Speicherung der Zusammenfassung für eine Rückmeldung zu.",
     email: "E-Mail",
     name: "Name",
@@ -172,7 +172,7 @@ const widgetCopy = {
     close: "Schließen",
     open: "Öffnen",
     contact: "Kontakt KAH",
-    helper: "Immer eine Frage. Stimmige Preise. Klarer nächster Schritt.",
+    helper: "Immer eine Frage. Klarer Umfang. Einfacher nächster Schritt.",
     qualStarted: "Start",
     qualCollecting: "Qualifizierung",
     qualReady: "Zusammenfassung läuft",
@@ -231,7 +231,7 @@ function parseStreamEvent(block: string): AssistantStreamEvent | null {
 
 async function streamAssistantMessage(body: {
   message: string;
-  locale: "fr" | "en" | "de";
+  locale: "fr" | "en";
   session?: AssistantSession;
   onText: (delta: string) => void;
 }) {
@@ -299,11 +299,6 @@ async function streamAssistantMessage(body: {
   }
 
   return donePayload;
-}
-
-function formatBudgetNumber(value: number, locale: string) {
-  const resolvedLocale = locale === "de" ? "de-DE" : locale === "en" ? "en-US" : "fr-FR";
-  return new Intl.NumberFormat(resolvedLocale).format(value);
 }
 
 function splitStoredName(value?: string) {
@@ -388,7 +383,7 @@ function readStoredState(storageKey: string) {
   }
 }
 
-function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
+function AssistantWidgetInner({ locale }: { locale: "fr" | "en" }) {
   const copy = widgetCopy[locale];
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
@@ -613,10 +608,10 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     }
     if (intent === "project_quote" && activeField === "budget") {
       return locale === "fr"
-        ? ["300 - 600 €", "900 - 1 500 €", "2 200 - 4 500 €", "4 000 € et plus"]
+        ? ["Budget à définir", "Budget limité", "Budget évolutif", "Priorité au périmètre"]
         : locale === "en"
-          ? ["€300 - 600", "€900 - 1,500", "€2,200 - 4,500", "€4,000+"]
-          : ["300 - 600 €", "900 - 1.500 €", "2.200 - 4.500 €", "4.000 €+"];
+          ? ["Budget to define", "Limited budget", "Scalable budget", "Scope first"]
+          : ["Budget offen", "Begrenztes Budget", "Skalierbares Budget", "Umfang zuerst"];
     }
     if (intent === "project_quote" && activeField === "decisionStage") {
       return locale === "fr"
@@ -676,10 +671,10 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
     }
     if (intent === "faq") {
       return locale === "fr"
-        ? ["Lancer un projet", "Voir les tarifs", "Parler à quelqu'un"]
+        ? ["Lancer un projet", "Recevoir une proposition", "Parler à quelqu'un"]
         : locale === "en"
-          ? ["Start a project", "See pricing", "Talk to someone"]
-          : ["Projekt starten", "Preise sehen", "Mit jemandem sprechen"];
+          ? ["Start a project", "Get a proposal", "Talk to someone"]
+          : ["Projekt starten", "Vorschlag erhalten", "Mit jemandem sprechen"];
     }
     return [];
   }, [hasStartedChat, transcript.length, summary, isStreaming, messagePending, session?.intent, session?.lastAskedField, locale]);
@@ -690,9 +685,9 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
       {
         label: copy.budget,
         value:
-          summary.budget_range.max > 0
-            ? `€ ${formatBudgetNumber(summary.budget_range.min, locale)} – ${formatBudgetNumber(summary.budget_range.max, locale)}`
-            : "n/a",
+          locale === "en"
+            ? "Adapted after scoping"
+            : "Ajusté après cadrage",
       },
       {
         label: copy.days,

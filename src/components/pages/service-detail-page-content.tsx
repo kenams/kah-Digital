@@ -60,11 +60,11 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Formats de projet",
           body:
-            "Des bases claires pour des projets web bien cadres, avec une adaptation possible selon le niveau de contenu, de design et de fonctionnalités.",
+            "Des formats souples pour cadrer un projet web selon le besoin réel, le contenu, le niveau de design, les fonctionnalités et le budget disponible.",
           items: [
             {
               title: "Essentiel",
-              price: "À partir de 2'900 €",
+              price: "Projet simple",
               points: [
                 "Site vitrine 4 à 6 pages",
                 "Design responsive",
@@ -77,7 +77,7 @@ const content = {
             },
             {
               title: "Business",
-              price: "À partir de 5'500 €",
+              price: "Projet évolutif",
               points: [
                 "Site corporate plus complet",
                 "Pages services structurées",
@@ -90,7 +90,7 @@ const content = {
             },
             {
               title: "Sur mesure",
-              price: "À partir de 9'500 €",
+              price: "Projet sur mesure",
               points: [
                 "Direction plus premium",
                 "Parcours conversion travaillé",
@@ -217,25 +217,25 @@ const content = {
         {
           kind: "pricing",
           sectionClassName: "bg-gray-50 py-16",
-          title: "Ordres de grandeur",
+          title: "Formats de cadrage",
           body:
-            "Des bases de prix realistes pour des projets web et applicatifs bien cadres, a affiner selon le perimetre, les utilisateurs et les integrations necessaires.",
+            "Chaque application est estimée après cadrage selon le périmètre, les utilisateurs, les intégrations, les délais et les priorités métier.",
           items: [
             {
               title: "Application metier",
-              price: "A partir de 4'500 €",
+              price: "Besoin opérationnel ciblé",
               description:
                 "Pour remplacer un process manuel, structurer une activité ou centraliser l'opérationnel.",
             },
             {
               title: "Portail ou espace client",
-              price: "A partir de 7'500 €",
+              price: "Expérience client évolutive",
               description:
                 "Pour donner un accès utile à des documents, états, demandes ou suivis côté client.",
             },
             {
               title: "Application plus complete",
-              price: "A partir de 12'000 €",
+              price: "Produit métier sur mesure",
               description:
                 "Pour un produit plus riche avec comptes, données, workflows et intégrations multiples.",
             },
@@ -325,30 +325,30 @@ const content = {
           id: "services",
           sectionClassName: "bg-gray-50 py-16",
           title: "Services autour de GLPI",
-          body: "Du cadrage jusqu'au passage vers ticket, sans sur-vendre la promesse.",
+          body: "Du cadrage jusqu'au passage vers ticket, avec un périmètre ajusté à votre organisation support.",
           columns: 4,
           items: [
             {
               title: "Cadrage du parcours support",
-              price: "A partir de 900 €",
+              price: "Diagnostic support",
               description:
                 "Analyse des demandes frequentes, des points de blocage et des moments ou il faut passer au support humain.",
             },
             {
               title: "Aide virtuelle de premier niveau",
-              price: "A partir de 1'500 €",
+              price: "Aide virtuelle adaptée",
               description:
                 "Mise en place d'un point d'aide qui guide l'utilisateur sur vos contenus, procedures ou cas courants.",
             },
             {
               title: "Connexion vers ticket GLPI",
-              price: "A partir de 1'200 €",
+              price: "Connexion cadrée",
               description:
                 "Passage propre de l'assistance vers la création de ticket lorsque le besoin doit être repris par l'équipe support.",
             },
             {
               title: "Suivi et ajustements",
-              price: "A partir de 180 €/mois",
+              price: "Suivi ajustable",
               description:
                 "Évolution du parcours, des réponses et des points de passage selon le retour terrain.",
             },
@@ -422,23 +422,23 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Project formats",
           body:
-            "Clear starting points for well-scoped website projects, adjustable depending on content, design depth, and functional scope.",
+            "Flexible formats to scope a website around the real need, content, design depth, functional scope and available budget.",
           items: [
             {
               title: "Essential",
-              price: "From € 2,900",
+              price: "Simple project",
               points: ["4 to 6 page showcase site", "Responsive design", "Contact form", "Clean SEO basics", "Launch and handover"],
               cta: "Discuss this format",
             },
             {
               title: "Business",
-              price: "From € 5,500",
+              price: "Scalable project",
               points: ["Full corporate website", "Structured service pages", "CMS or editing area", "Analytics tracking", "Launch support"],
               cta: "Discuss this format",
             },
             {
               title: "Custom",
-              price: "From € 9,500",
+              price: "Custom project",
               points: ["More premium direction", "Sharper conversion flow", "Connections to your tools", "Custom business features", "Priority launch support"],
               cta: "Discuss this format",
             },
@@ -539,13 +539,13 @@ const content = {
         {
           kind: "pricing",
           sectionClassName: "bg-gray-50 py-16",
-          title: "Budget ranges",
+          title: "Scoping formats",
           body:
-            "Realistic starting points for web and application projects, to be refined according to scope, users, and integrations.",
+            "Each application is estimated after scoping according to scope, users, integrations, timeline and business priorities.",
           items: [
-            { title: "Business application", price: "From € 4,500", description: "To replace manual processes, structure an activity, or centralise operations." },
-            { title: "Portal or client area", price: "From € 7,500", description: "To give access to documents, statuses, requests, or follow-up features." },
-            { title: "More complete application", price: "From € 12,000", description: "For a richer product with accounts, data, workflows, and multiple integrations." },
+            { title: "Business application", price: "Targeted operational need", description: "To replace manual processes, structure an activity, or centralise operations." },
+            { title: "Portal or client area", price: "Scalable client experience", description: "To give access to documents, statuses, requests, or follow-up features." },
+            { title: "More complete application", price: "Custom business product", description: "For a richer product with accounts, data, workflows, and multiple integrations." },
           ],
         },
       ],
@@ -618,10 +618,10 @@ const content = {
           body: "From scoping to ticket handoff, without overselling the promise.",
           columns: 4,
           items: [
-            { title: "Support journey scoping", price: "From € 900", description: "Analysis of frequent requests, blocking points, and handoff moments to human support." },
-            { title: "First-level virtual help", price: "From € 1,500", description: "A useful assistance entry point connected to your content, procedures, or frequent questions." },
-            { title: "GLPI ticket handoff", price: "From € 1,200", description: "Clean transition from guided support to ticket creation when the support team must take over." },
-            { title: "Follow-up and tuning", price: "From € 180 / month", description: "Evolution of the journey, responses, and handoff points based on field feedback." },
+            { title: "Support journey scoping", price: "Support diagnosis", description: "Analysis of frequent requests, blocking points, and handoff moments to human support." },
+            { title: "First-level virtual help", price: "Adapted virtual help", description: "A useful assistance entry point connected to your content, procedures, or frequent questions." },
+            { title: "GLPI ticket handoff", price: "Scoped connection", description: "Clean transition from guided support to ticket creation when the support team must take over." },
+            { title: "Follow-up and tuning", price: "Adjustable follow-up", description: "Evolution of the journey, responses, and handoff points based on field feedback." },
           ],
         },
         {
@@ -679,23 +679,23 @@ const content = {
           sectionClassName: "bg-gray-50 py-16",
           title: "Projektformate",
           body:
-            "Klare Startpunkte für sauber eingegrenzte Website-Projekte, je nach Inhalt, Design-Tiefe und Funktionsumfang anpassbar.",
+            "Flexible Formate, um eine Website nach echtem Bedarf, Inhalt, Design-Tiefe, Funktionsumfang und verfügbarem Budget zu planen.",
           items: [
             {
               title: "Essential",
-              price: "Ab € 2'900",
+              price: "Einfaches Projekt",
               points: ["4 bis 6 Seiten", "Responsives Design", "Kontaktformular", "Saubere SEO-Basis", "Launch und Übergabe"],
               cta: "Dieses Format anfragen",
             },
             {
               title: "Business",
-              price: "Ab € 5'500",
+              price: "Erweiterbares Projekt",
               points: ["Corporate Website", "Strukturierte Leistungsseiten", "CMS oder Bearbeitungsbereich", "Analytics", "Launch-Begleitung"],
               cta: "Dieses Format anfragen",
             },
             {
               title: "Custom",
-              price: "Ab € 9'500",
+              price: "Individuelles Projekt",
               points: ["Stärkere Premium-Richtung", "Schärferer Conversion-Flow", "Anbindung an eure Tools", "Individuelle Funktionen", "Priorisierter Launch"],
               cta: "Dieses Format anfragen",
             },
@@ -782,12 +782,12 @@ const content = {
         {
           kind: "pricing",
           sectionClassName: "bg-gray-50 py-16",
-          title: "Budgetrahmen",
-          body: "Realistische Startpunkte für Web- und Anwendungsprojekte - je nach Scope, Nutzern und Integrationen.",
+          title: "Scoping-Formate",
+          body: "Jede Anwendung wird nach Scoping eingeschätzt - abhängig von Umfang, Nutzern, Integrationen, Zeitplan und geschäftlichen Prioritäten.",
           items: [
-            { title: "Business-Anwendung", price: "Ab € 4'500", description: "Um manuelle Prozesse zu ersetzen, eine Aktivität zu strukturieren oder Operationen zu zentralisieren." },
-            { title: "Portal oder Kundenbereich", price: "Ab € 7'500", description: "Für Dokumente, Status, Anfragen oder Follow-up-Funktionen." },
-            { title: "Umfassendere Anwendung", price: "Ab € 12'000", description: "Für ein stärkeres Produkt mit Accounts, Daten, Workflows und mehreren Integrationen." },
+            { title: "Business-Anwendung", price: "Gezielter operativer Bedarf", description: "Um manuelle Prozesse zu ersetzen, eine Aktivität zu strukturieren oder Operationen zu zentralisieren." },
+            { title: "Portal oder Kundenbereich", price: "Erweiterbare Kundenerfahrung", description: "Für Dokumente, Status, Anfragen oder Follow-up-Funktionen." },
+            { title: "Umfassendere Anwendung", price: "Individuelles Business-Produkt", description: "Für ein stärkeres Produkt mit Accounts, Daten, Workflows und mehreren Integrationen." },
           ],
         },
       ],
@@ -859,10 +859,10 @@ const content = {
           body: "Von Scoping bis Ticket-Übergabe, ohne die Leistung zu überverkaufen.",
           columns: 4,
           items: [
-            { title: "Support-Journey Scoping", price: "Ab € 900", description: "Analyse häufiger Anfragen, Blocker und der Punkte, an denen menschlicher Support übernehmen soll." },
-            { title: "Virtuelle Ersthilfe", price: "Ab € 1'500", description: "Ein nützlicher Hilfepunkt, verbunden mit euren Inhalten, Prozessen oder häufigen Fragen." },
-            { title: "GLPI Ticket-Übergabe", price: "Ab € 1'200", description: "Sauberer Übergang von geführter Hilfe zur Ticket-Erstellung, wenn das Support-Team übernehmen muss." },
-            { title: "Follow-up und Feintuning", price: "Ab € 180 / Monat", description: "Weiterentwicklung von Antworten, Journey und Übergabepunkten basierend auf echtem Feedback." },
+            { title: "Support-Journey Scoping", price: "Support-Diagnose", description: "Analyse häufiger Anfragen, Blocker und der Punkte, an denen menschlicher Support übernehmen soll." },
+            { title: "Virtuelle Ersthilfe", price: "Angepasste virtuelle Hilfe", description: "Ein nützlicher Hilfepunkt, verbunden mit euren Inhalten, Prozessen oder häufigen Fragen." },
+            { title: "GLPI Ticket-Übergabe", price: "Eingegrenzte Verbindung", description: "Sauberer Übergang von geführter Hilfe zur Ticket-Erstellung, wenn das Support-Team übernehmen muss." },
+            { title: "Follow-up und Feintuning", price: "Anpassbare Begleitung", description: "Weiterentwicklung von Antworten, Journey und Übergabepunkten basierend auf echtem Feedback." },
           ],
         },
         {

@@ -1,4 +1,4 @@
-import { GlobalAcquisitionPageContent } from "@/components/pages/global-acquisition-page-content";
+﻿import { GlobalAcquisitionPageContent } from "@/components/pages/global-acquisition-page-content";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 export const metadata = buildPageMetadata({
@@ -12,3 +12,4 @@ export const metadata = buildPageMetadata({
 export default function SiteWebEntreprisePage() {
   return <GlobalAcquisitionPageContent locale="fr" page="site-web-entreprise" />;
 }
+

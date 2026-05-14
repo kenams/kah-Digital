@@ -11,53 +11,39 @@ export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { locale, prefix } = useLocale();
   const homeHref = prefix || "/";
+  const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
-  const localeCopy = {
-    fr: {
-      nav: [
-        { label: "Accueil", href: "/" },
-        { label: "Offres", href: "/offres" },
-        { label: "Réalisations", href: "/projets" },
-        { label: "Références", href: "/references" },
-        { label: "Blog", href: "/blog" },
-        { label: "Tarifs", href: "/devis" },
-        { label: "Contact", href: "/contact" },
-      ],
-      cta: "Devis gratuit",
-      subtitle: "Studio digital",
-      openMenu: "Ouvrir le menu",
-      closeMenu: "Fermer le menu",
-      homeLabel: "KAH-Digital - Accueil",
-    },
-    en: {
-      nav: [
-        { label: "Home", href: "/en" },
-        { label: "Offers", href: "/en/offres" },
-        { label: "Portfolio", href: "/en/projets" },
-        { label: "Pricing", href: "/en/devis" },
-        { label: "Contact", href: "/en/contact" },
-      ],
-      cta: "Free quote",
-      subtitle: "Digital studio",
-      openMenu: "Open menu",
-      closeMenu: "Close menu",
-      homeLabel: "KAH-Digital - Home",
-    },
-    de: {
-      nav: [
-        { label: "Start", href: "/de" },
-        { label: "Angebote", href: "/de/offres" },
-        { label: "Projekte", href: "/de/projets" },
-        { label: "Preise", href: "/de/devis" },
-        { label: "Kontakt", href: "/de/contact" },
-      ],
-      cta: "Kostenlos anfragen",
-      subtitle: "Digital Studio",
-      openMenu: "Menue oeffnen",
-      closeMenu: "Menue schliessen",
-      homeLabel: "KAH-Digital - Start",
-    },
-  }[locale];
+  const localeCopy = locale === "en"
+    ? {
+        nav: [
+          { label: "Home", href: "/en" },
+          { label: "Offers", href: "/en/offres" },
+          { label: "Portfolio", href: "/en/projets" },
+          { label: "Quote", href: "/en/devis" },
+          { label: "Contact", href: "/en/contact" },
+        ],
+        cta: "Free quote",
+        subtitle: "Digital studio",
+        openMenu: "Open menu",
+        closeMenu: "Close menu",
+        homeLabel: "KAH-Digital - Home",
+      }
+    : {
+        nav: [
+          { label: "Accueil", href: "/" },
+          { label: "Offres", href: "/offres" },
+          { label: "Réalisations", href: "/projets" },
+          { label: "Références", href: "/references" },
+          { label: "Blog", href: "/blog" },
+          { label: "Devis", href: "/devis" },
+          { label: "Contact", href: "/contact" },
+        ],
+        cta: "Devis gratuit",
+        subtitle: "Studio digital",
+        openMenu: "Ouvrir le menu",
+        closeMenu: "Fermer le menu",
+        homeLabel: "KAH-Digital - Accueil",
+      };
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
@@ -82,7 +68,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
             <Link
-              href={localeCopy.nav[3]?.href ?? `${prefix}/devis`}
+              href={withPrefix("/devis")}
               className="whitespace-nowrap rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}
@@ -118,7 +104,7 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Link
-                href={localeCopy.nav[3]?.href ?? `${prefix}/devis`}
+                href={withPrefix("/devis")}
                 className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 text-center font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
                 onClick={() => setIsMenuOpen(false)}
               >

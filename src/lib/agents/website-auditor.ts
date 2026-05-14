@@ -1,6 +1,6 @@
 /**
  * Agent 2 : Website Auditor
- * Claude visite le site, détecte les faiblesses, génère le rapport + devis.
+ * Claude visite le site, détecte les faiblesses, génère le rapport + demande de devis.
  * S'adapte automatiquement à la langue du site cible.
  */
 
@@ -158,99 +158,27 @@ const AUDIT_PROMPT: Record<string, string> = {
   nl: `Je bent een expert in webontwikkeling en digitaal design. Analyseer deze website voor een lokaal bedrijf.`,
 };
 
-// Grille tarifaire adaptée au marché local
+// Orientation commerciale adaptée au marché local, sans prix public.
 function getPricingGuide(country: string): string {
   const guides: Record<string, string> = {
-    CH: `Pricing in CHF (Swiss market — premium pricing applies):
-- Landing page (1 page): CHF 500–900
-- Professional website (5-8 pages): CHF 1200–2400
-- Business web tool: CHF 2300–4600
-- Mobile app / SaaS MVP: CHF 3800–12000
-estimatedPrice should be the CHF mid-range value. priceRange in CHF (e.g. "CHF 1200 – CHF 2400").`,
-    GB: `Pricing in GBP (UK market):
-- Landing page (1 page): £280–550
-- Professional website (5-8 pages): £700–1500
-- Business web tool: £1300–2500
-- Mobile app / SaaS MVP: £2200–7000
-estimatedPrice in GBP mid-range. priceRange in GBP (e.g. "£700 – £1500").`,
-    US: `Pricing in USD (US market):
-- Landing page (1 page): $320–600
-- Professional website (5-8 pages): $800–1600
-- Business web tool: £1400–2800
-- Mobile app / SaaS MVP: $2500–8000
-estimatedPrice in USD mid-range. priceRange in USD (e.g. "$800 – $1600").`,
-    AU: `Pricing in AUD (Australian market):
-- Landing page (1 page): AUD 450–850
-- Professional website (5-8 pages): AUD 1100–2000
-- Business web tool: AUD 1800–3500
-- Mobile app / SaaS MVP: AUD 3000–8000
-estimatedPrice in AUD mid-range. priceRange in AUD (e.g. "AUD 1100 – AUD 2000").`,
-    CA: `Pricing in CAD (Canadian market):
-- Landing page (1 page): CAD 400–750
-- Professional website (5-8 pages): CAD 1000–1900
-- Business web tool: CAD 1700–3200
-- Mobile app / SaaS MVP: CAD 2800–7500
-estimatedPrice in CAD mid-range. priceRange in CAD (e.g. "CAD 1000 – CAD 1900").`,
-    MA: `Pricing in EUR adapted to Moroccan market (lower purchasing power):
-- Landing / single-page: 200–400€
-- Standard website: 400–900€
-- Site with booking/blog: 700–1400€
-- E-commerce: 1200–2500€
-estimatedPrice and priceRange in EUR at these lower rates.`,
-    SN: `Pricing in EUR adapted to Senegal/West Africa market:
-- Landing / single-page: 150–350€
-- Standard website: 350–800€
-- Site with booking/blog: 600–1200€
-estimatedPrice and priceRange in EUR at these lower rates.`,
-    CI: `Pricing in EUR adapted to Ivory Coast/West Africa market:
-- Landing / single-page: 150–350€
-- Standard website: 350–800€
-- Site with booking/blog: 600–1200€
-estimatedPrice and priceRange in EUR at these lower rates.`,
-    CM: `Pricing in EUR adapted to Cameroon/West Africa market:
-- Landing / single-page: 150–350€
-- Standard website: 350–800€
-- Site with booking/blog: 600–1200€
-estimatedPrice and priceRange in EUR at these lower rates.`,
-    TN: `Pricing in EUR adapted to Tunisian market:
-- Landing / single-page: 200–400€
-- Standard website: 400–900€
-- Site with booking/blog: 700–1400€
-estimatedPrice and priceRange in EUR at these lower rates.`,
+    CH: `Swiss market: emphasize premium positioning, trust, clarity, and an estimate adapted after scoping. Do not provide public amounts.`,
+    GB: `UK market: emphasize conversion, credibility, and an estimate adapted after scoping. Do not provide public amounts.`,
+    US: `US market: emphasize business outcome, speed, and an estimate adapted after scoping. Do not provide public amounts.`,
+    AU: `Australian market: emphasize clarity, trust, and an estimate adapted after scoping. Do not provide public amounts.`,
+    CA: `Canadian market: emphasize clear scope, trust, and an estimate adapted after scoping. Do not provide public amounts.`,
+    MA: `Moroccan market: adapt the recommendation to local buying power, but do not provide public amounts.`,
+    SN: `Senegal/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
+    CI: `Ivory Coast/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
+    CM: `Cameroon/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
+    TN: `Tunisian market: adapt the recommendation to local buying power, but do not provide public amounts.`,
   };
-  // Default: European EUR market (FR, BE, DE, IT, ES, etc.)
-  return guides[country] ?? `Pricing in EUR — KAH-Digital official rates:
-- Landing page (1 page): from 300€ (5-10 days)
-- Showcase website (5-8 pages): from 900€, typically 900–1500€ (2-3 weeks)
-- Corporate website: typically 2200–4500€ (3-5 weeks)
-- AI automation: typically 1500–8000€ (2-6 weeks)
-- Business web app or dashboard: typically 4000–12000€ (4-10 weeks)
-- Mobile app MVP: typically 6000–20000€
-estimatedPrice is the EUR mid-range integer for the most relevant offer. priceRange in EUR (e.g. "entre 900€ et 1500€").`;
+  return guides[country] ?? `European market: no public fixed pricing. Each proposal is adjusted after scoping the real need, complexity, timeline, support level, useful features, available budget, and business priorities.`;
 }
 
-// Prix fallback rule-based adapté au pays
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
-  const base = quality === "poor" ? 1400 : quality === "medium" ? 1100 : 900;
-  const multipliers: Record<string, { mult: number; currency: string; symbol: string }> = {
-    CH: { mult: 1.55, currency: "CHF", symbol: "CHF " },
-    GB: { mult: 1.15, currency: "GBP", symbol: "£" },
-    US: { mult: 1.15, currency: "USD", symbol: "$" },
-    AU: { mult: 1.35, currency: "AUD", symbol: "AUD " },
-    CA: { mult: 1.25, currency: "CAD", symbol: "CAD " },
-    MA: { mult: 0.45, currency: "EUR", symbol: "" },
-    SN: { mult: 0.40, currency: "EUR", symbol: "" },
-    CI: { mult: 0.40, currency: "EUR", symbol: "" },
-    CM: { mult: 0.40, currency: "EUR", symbol: "" },
-    TN: { mult: 0.45, currency: "EUR", symbol: "" },
-  };
-  const m = multipliers[country] ?? { mult: 1.0, currency: "EUR", symbol: "" };
-  const price = Math.round(base * m.mult / 100) * 100;
-  const low = Math.round((price - 200 * m.mult) / 100) * 100;
-  const high = Math.round((price + 400 * m.mult) / 100) * 100;
-  const sym = m.symbol;
-  const suffix = m.currency === "EUR" ? "€" : "";
-  return { price, range: `${sym}${low}${suffix} – ${sym}${high}${suffix}` };
+  void country;
+  void quality;
+  return { price: 0, range: "Devis personnalisé après cadrage" };
 }
 
 export async function auditWebsite(lead: DiscoveredLead): Promise<SiteAudit | null> {
@@ -300,8 +228,8 @@ Return ONLY a valid JSON object (no markdown):
       "impact": "high|medium|low"
     }
   ],
-  "estimatedPrice": 1400,
-  "priceRange": "...",
+  "estimatedPrice": 0,
+  "priceRange": "devis personnalisé après cadrage",
   "mockupDescription": "Compelling 3-4 sentence description of the future redesigned site in language '${lang}'"
 }
 
@@ -312,6 +240,7 @@ Score evaluation rules:
 - 71-100: good site (skip if > 65)
 
 ${pricingGuide}
+Do not output public fixed prices, currencies, or pricing ranges. Use estimatedPrice: 0 and priceRange: a custom quote / personalized estimate message in language "${lang}".
 
 Return 3-5 problems and 2-3 recommendations, all written in language "${lang}".`;
 

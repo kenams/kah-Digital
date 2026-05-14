@@ -1,26 +1,26 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "Blog KAH-Digital — Conseils sites web, SEO et digital pour PME",
-  description: "Guides pratiques sur la création de site web, les tarifs, la refonte et le SEO pour PME et indépendants. Par KAH-Digital, studio digital basé en Suisse.",
+  description: "Guides pratiques sur la création de site web, Les formats, la refonte et le SEO pour PME et indépendants. Par KAH-Digital, studio digital basé en Suisse.",
   alternates: { canonical: "https://kah-digital.ch/blog" },
 };
 
 const ARTICLES = [
   {
-    slug: "prix-site-web-professionnel",
-    title: "Combien coûte un site web professionnel en 2026 ?",
-    excerpt: "Landing page, site vitrine, corporate, application — les fourchettes réelles par type de projet, sans bullshit.",
+    slug: "devis-site-web-professionnel",
+    title: "comment estimer un site web professionnel en 2026 ?",
+    excerpt: "Landing page, site vitrine, corporate, application — comment cadrer un devis personnalisé selon le périmètre réel.",
     readTime: "6 min",
     date: "24 avril 2026",
-    tag: "Tarifs",
+    tag: "Devis",
   },
   {
     slug: "refonte-site-web",
     title: "Refonte de site web : quand faut-il se lancer et comment s'y prendre ?",
-    excerpt: "Les 7 signaux qui montrent qu'il est temps de refondre votre site, et la méthode pour le faire sans gaspiller du budget.",
+    excerpt: "Les 7 signaux qui montrent qu'il est temps de refondre votre site, et la méthode pour le faire sans gaspiller du Périmètre.",
     readTime: "5 min",
     date: "24 avril 2026",
     tag: "Stratégie",
@@ -36,7 +36,7 @@ const ARTICLES = [
   {
     slug: "site-web-artisan",
     title: "Site web pour artisan : guide complet 2026",
-    excerpt: "Plombier, électricien, menuisier — un site simple et bien fait peut vous ramener des clients toutes les semaines. Prix, contenu essentiel, erreurs à éviter.",
+    excerpt: "Plombier, électricien, menuisier — un site simple et bien fait peut vous ramener des clients toutes les semaines. devis, contenu essentiel, erreurs à éviter.",
     readTime: "5 min",
     date: "4 mai 2026",
     tag: "Artisans",
@@ -59,8 +59,8 @@ const ARTICLES = [
   },
   {
     slug: "application-mobile-cout",
-    title: "Combien coûte une application mobile en 2026 ?",
-    excerpt: "PWA, MVP React Native, application complète, native — les vrais tarifs et comment garder le contrôle de votre budget.",
+    title: "comment estimer une application mobile en 2026 ?",
+    excerpt: "PWA, MVP React Native, application complète, native — les critères de devis et comment garder le contrôle de votre Périmètre.",
     readTime: "7 min",
     date: "4 mai 2026",
     tag: "Mobile",
@@ -68,7 +68,7 @@ const ARTICLES = [
   {
     slug: "landing-page-vs-site-vitrine",
     title: "Landing page vs site vitrine : lequel choisir ?",
-    excerpt: "Ce ne sont pas les mêmes outils. Voici comment décider en 2 minutes selon votre objectif, votre budget et votre situation.",
+    excerpt: "Ce ne sont pas les mêmes outils. Voici comment décider en 2 minutes selon votre objectif, votre Périmètre et votre situation.",
     readTime: "5 min",
     date: "4 mai 2026",
     tag: "Stratégie",
@@ -76,7 +76,7 @@ const ARTICLES = [
 ];
 
 const TAG_COLORS: Record<string, string> = {
-  "Tarifs": "border-blue-500/30 bg-blue-500/10 text-blue-400",
+  "Devis": "border-blue-500/30 bg-blue-500/10 text-blue-400",
   "Stratégie": "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
   "Guide": "border-violet-500/30 bg-violet-500/10 text-violet-400",
   "Artisans": "border-orange-500/30 bg-orange-500/10 text-orange-400",
@@ -119,3 +119,5 @@ export default function BlogPage() {
     </div>
   );
 }
+
+

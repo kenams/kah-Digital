@@ -11,7 +11,7 @@ interface InvoiceItem {
 }
 
 interface InvoicePreviewProps {
-  locale?: "fr" | "en" | "de";
+  locale?: "fr" | "en";
   clientName?: string;
   clientCompany?: string;
   items?: InvoiceItem[];
@@ -34,7 +34,6 @@ export function InvoicePreview({
   const signatureName = companyConfig.legalName || brandName;
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
   const isEnglish = locale === "en";
-  const isGerman = false;
   const copy = {
     fr: {
       invoice: "Facture",
@@ -104,43 +103,9 @@ export function InvoicePreview({
         { description: "Training and support", quantity: 1, unitPrice: 300, total: 300 },
       ],
     },
-    de: {
-      invoice: "Rechnung",
-      document: "KAH-Digital Rechnungsdokument",
-      issuer: "Aussteller",
-      phone: "Telefon",
-      client: "Kunde",
-      invoiceNumber: "Rechnungsnummer",
-      issueDate: "Ausstellungsdatum",
-      due: "Faelligkeit",
-      dueValue: "30 Tage",
-      description: "Beschreibung",
-      qty: "Menge",
-      unitPrice: "Einzelpreis",
-      subtotalCol: "Zwischensumme",
-      subtotal: "Zwischensumme",
-      vat: "MwSt. (0% - nicht steuerpflichtig)",
-      total: "Gesamtbetrag",
-      paymentTerms: "Zahlungsbedingungen:",
-      paymentWithin: "Zahlbar innerhalb von 30 Tagen nach Rechnungserhalt",
-      paymentCurrency: "Zahlung per Banküberweisung in CHF.",
-      milestoneNote: "Falls im Angebot ein Zahlungsplan definiert wurde, gilt dieser anstelle einer Einmalzahlung.",
-      bankOnRequest: "Bankdaten werden auf der finalen Rechnung oder auf Anfrage übermittelt.",
-      bankTransfer: "Banküberweisung auf folgendes Konto:",
-      reference: "Referenz",
-      notes: "Hinweise:",
-      notesBody: "Vielen Dank für Ihr Vertrauen. Bei Fragen können Sie uns jederzeit kontaktieren.",
-      signature: "Unterschrift und Datum",
-      clientName: "[Kundenname]",
-      clientCompany: "[Unternehmen]",
-      items: [
-        { description: "Entwicklung einer Unternehmenswebsite", quantity: 1, unitPrice: 2500, total: 2500 },
-        { description: "Schulung und Begleitung", quantity: 1, unitPrice: 300, total: 300 },
-      ],
-    },
   }[locale];
-  const clientNameFallback = isEnglish || isGerman ? copy.clientName : clientName;
-  const clientCompanyFallback = isEnglish || isGerman ? copy.clientCompany : clientCompany;
+  const clientNameFallback = isEnglish ? copy.clientName : clientName;
+  const clientCompanyFallback = isEnglish ? copy.clientCompany : clientCompany;
   const invoiceItems =
     items ?? copy.items;
 
@@ -182,7 +147,7 @@ export function InvoicePreview({
           </div>
           <div className="rounded-2xl border border-slate-200 p-4">
             <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{copy.issueDate}</span>
-            <p className="mt-2 text-slate-900">{new Date().toLocaleDateString(isEnglish ? "en-GB" : isGerman ? "de-CH" : "fr-FR")}</p>
+            <p className="mt-2 text-slate-900">{new Date().toLocaleDateString(isEnglish ? "en-GB" : "fr-FR")}</p>
           </div>
           <div className="rounded-2xl border border-slate-200 p-4">
             <span className="text-sm font-semibold uppercase tracking-[0.15em] text-slate-500">{copy.due}</span>

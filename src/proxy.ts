@@ -8,7 +8,6 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env
 
 function getLocaleFromPathname(pathname: string) {
   if (pathname === "/en" || pathname.startsWith("/en/")) return "en";
-  if (pathname === "/de" || pathname.startsWith("/de/")) return "de";
   return "fr";
 }
 

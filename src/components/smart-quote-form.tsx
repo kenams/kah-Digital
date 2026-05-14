@@ -13,7 +13,7 @@ type Service = {
   emoji: string;
   label: Record<"fr" | "en", string>;
   shortDesc: Record<"fr" | "en", string>;
-  priceLabel: string;
+  scopeLabel: Record<"fr" | "en", string>;
   delayLabel: Record<"fr" | "en", string>;
   projectType: Record<"fr" | "en", string>;
   budget: string;
@@ -25,97 +25,97 @@ const SERVICES: Service[] = [
     emoji: "🚀",
     label:      { fr: "Landing page",         en: "Landing page" },
     shortDesc:  { fr: "1 page percutante avec CTA clair",         en: "1-page site with a clear call-to-action" },
-    priceLabel: "from 300 €",
+    scopeLabel: { fr: "Projet simple", en: "Simple project" },
     delayLabel: { fr: "5–10 jours",            en: "5–10 days" },
     projectType:{ fr: "Landing page",          en: "Landing page" },
-    budget: "300 € – 600 €",
+    budget: "À définir après échange",
   },
   {
     id: "site-vitrine",
     emoji: "🌐",
     label:      { fr: "Site vitrine",          en: "Business website" },
     shortDesc:  { fr: "5–8 pages, SEO, formulaire contact",       en: "5–8 pages, SEO, contact form" },
-    priceLabel: "from 900 €",
+    scopeLabel: { fr: "Présence professionnelle", en: "Professional presence" },
     delayLabel: { fr: "2–3 semaines",          en: "2–3 weeks" },
     projectType:{ fr: "Site vitrine standard", en: "Standard business website" },
-    budget: "900 € – 1 500 €",
+    budget: "À définir après échange",
   },
   {
     id: "site-premium",
     emoji: "✨",
     label:      { fr: "Site corporate / premium", en: "Corporate / premium website" },
     shortDesc:  { fr: "10–20 pages, SEO avancé, CRM",             en: "10–20 pages, advanced SEO, CRM" },
-    priceLabel: "from 2 200 €",
+    scopeLabel: { fr: "Projet évolutif", en: "Scalable project" },
     delayLabel: { fr: "3–5 semaines",          en: "3–5 weeks" },
     projectType:{ fr: "Site corporate / premium", en: "Corporate / premium website" },
-    budget: "2 200 € – 4 500 €",
+    budget: "À définir après échange",
   },
   {
     id: "ecommerce",
     emoji: "🛒",
     label:      { fr: "Boutique en ligne",     en: "Online store" },
     shortDesc:  { fr: "Catalogue produits, paiement Stripe",      en: "Product catalog, Stripe payments" },
-    priceLabel: "from 3 500 €",
+    scopeLabel: { fr: "Périmètre à cadrer", en: "Scope to define" },
     delayLabel: { fr: "3–8 semaines",          en: "3–8 weeks" },
     projectType:{ fr: "E-commerce",            en: "E-commerce" },
-    budget: "3 500 € – 9 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "outil-metier",
     emoji: "⚙️",
     label:      { fr: "Outil métier / Dashboard", en: "Business tool / Dashboard" },
     shortDesc:  { fr: "App interne, gestion données, rôles",      en: "Internal app, data management, roles" },
-    priceLabel: "from 4 000 €",
+    scopeLabel: { fr: "Projet sur mesure", en: "Custom project" },
     delayLabel: { fr: "4–10 semaines",         en: "4–10 weeks" },
     projectType:{ fr: "Outil web métier",      en: "Business web tool" },
-    budget: "4 000 € – 12 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "refonte",
     emoji: "🔄",
     label:      { fr: "Refonte de site",       en: "Website redesign" },
     shortDesc:  { fr: "Moderniser un site existant",              en: "Modernise an existing website" },
-    priceLabel: "from 1 200 €",
+    scopeLabel: { fr: "Diagnostic préalable", en: "Initial diagnosis" },
     delayLabel: { fr: "2–4 semaines",          en: "2–4 weeks" },
     projectType:{ fr: "Refonte de site",       en: "Website redesign" },
-    budget: "1 000 € – 2 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "app-mobile",
     emoji: "📱",
     label:      { fr: "Application mobile",   en: "Mobile app" },
     shortDesc:  { fr: "iOS + Android, MVP fonctionnel",           en: "iOS + Android, working MVP" },
-    priceLabel: "from 6 000 €",
+    scopeLabel: { fr: "MVP à cadrer", en: "MVP to scope" },
     delayLabel: { fr: "6–12 semaines",         en: "6–12 weeks" },
     projectType:{ fr: "Application mobile MVP", en: "Mobile app MVP" },
-    budget: "6 000 € – 20 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "saas",
     emoji: "☁️",
     label:      { fr: "SaaS / Produit web",   en: "SaaS / Web product" },
     shortDesc:  { fr: "Auth, paiement, dashboard client",         en: "Auth, payments, client dashboard" },
-    priceLabel: "from 6 000 €",
+    scopeLabel: { fr: "Produit évolutif", en: "Scalable product" },
     delayLabel: { fr: "8–12 semaines",         en: "8–12 weeks" },
     projectType:{ fr: "SaaS MVP",             en: "SaaS MVP" },
-    budget: "6 000 € – 15 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "ia",
     emoji: "🤖",
     label:      { fr: "IA / Chatbot",         en: "AI / Chatbot" },
     shortDesc:  { fr: "Intégration IA, assistant, automatisation", en: "AI integration, assistant, automation" },
-    priceLabel: "from 1 500 €",
+    scopeLabel: { fr: "Automatisation adaptée", en: "Adapted automation" },
     delayLabel: { fr: "2–6 semaines",          en: "2–6 weeks" },
     projectType:{ fr: "Chatbot / Intégration IA", en: "Chatbot / AI integration" },
-    budget: "1 500 € – 8 000 €",
+    budget: "À définir après échange",
   },
   {
     id: "autre",
     emoji: "💬",
     label:      { fr: "Autre / Je ne sais pas", en: "Other / Not sure" },
     shortDesc:  { fr: "Décrivez votre idée, on vous oriente",     en: "Describe your idea, we'll guide you" },
-    priceLabel: "custom quote",
+    scopeLabel: { fr: "Devis personnalisé", en: "Custom quote" },
     delayLabel: { fr: "À définir",             en: "To be defined" },
     projectType:{ fr: "Autre projet",          en: "Other project" },
     budget: "Budget à définir",
@@ -146,17 +146,17 @@ const COPY = {
     timelines: ["Le plus tôt possible", "Dans le mois", "Dans 1 à 3 mois", "Dans 3 à 6 mois", "Pas de deadline précise"],
     recap: "Votre demande",
     service: "Service",
-    estimation: "Estimation",
+    estimation: "Type de besoin",
     contact: "Contact",
     delay: "Délai souhaité",
     noService: "Non sélectionné",
     reassurance: [
       { icon: "⚡", label: "Réponse sous 24h", sub: "Jours ouvrés" },
       { icon: "🔒", label: "Sans engagement", sub: "Aucune obligation" },
-      { icon: "💶", label: "Dès 300 €", sub: "Tarifs transparents" },
+      { icon: "💬", label: "Estimation adaptée", sub: "Selon votre besoin" },
       { icon: "🌍", label: "France & Suisse", sub: "Remote ou présentiel" },
     ],
-    submit: "Envoyer ma demande → Réponse sous 24h",
+    submit: "Demander mon devis personnalisé → Réponse sous 24h",
     submitting: "Envoi en cours…",
     disclaimer: "Sans engagement · Vos données ne sont pas revendues · RGPD",
     captchaError: "Merci de valider le captcha.",
@@ -186,17 +186,17 @@ const COPY = {
     timelines: ["As soon as possible", "Within the month", "Within 1–3 months", "Within 3–6 months", "No specific deadline"],
     recap: "Your request",
     service: "Service",
-    estimation: "Estimate",
+    estimation: "Need type",
     contact: "Contact",
     delay: "Desired timeline",
     noService: "Not selected",
     reassurance: [
       { icon: "⚡", label: "Reply within 24h", sub: "Business days" },
       { icon: "🔒", label: "No commitment", sub: "Completely free" },
-      { icon: "💶", label: "From 300 €", sub: "Transparent pricing" },
+      { icon: "💬", label: "Adapted estimate", sub: "Based on your need" },
       { icon: "🌍", label: "France & Switzerland", sub: "Remote or on-site" },
     ],
-    submit: "Send my request → Reply within 24h",
+    submit: "Request my custom quote → Reply within 24h",
     submitting: "Sending…",
     disclaimer: "No commitment · Your data is never sold · GDPR",
     captchaError: "Please complete the captcha.",
@@ -292,7 +292,7 @@ export function SmartQuoteForm({ locale = "fr" }: { locale?: "fr" | "en" }) {
                   {s.label[locale]}
                 </span>
                 <span className={`text-[11px] leading-tight ${active ? "text-sky-200/80" : "text-white/45"}`}>
-                  {s.priceLabel}
+                  {s.scopeLabel[locale]}
                 </span>
                 {active && (
                   <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-sky-500 text-[10px] font-black text-white">✓</span>
@@ -310,7 +310,7 @@ export function SmartQuoteForm({ locale = "fr" }: { locale?: "fr" | "en" }) {
               <p className="text-sm text-white/60">{service.shortDesc[locale]}</p>
             </div>
             <div className="text-right">
-              <p className="text-sm font-bold text-sky-400">{service.priceLabel}</p>
+              <p className="text-sm font-bold text-sky-400">{service.scopeLabel[locale]}</p>
               <p className="text-xs text-white/45">{service.delayLabel[locale]}</p>
             </div>
           </div>
@@ -400,7 +400,7 @@ export function SmartQuoteForm({ locale = "fr" }: { locale?: "fr" | "en" }) {
             {service && (
               <div className="rounded-xl border border-sky-500/20 bg-sky-500/8 p-3">
                 <p className="mb-1 text-xs text-sky-400/70">{c.estimation}</p>
-                <p className="text-lg font-black text-sky-400">{service.priceLabel}</p>
+                <p className="text-lg font-black text-sky-400">{service.scopeLabel[locale]}</p>
                 <p className="mt-0.5 text-xs text-white/40">{service.delayLabel[locale]}</p>
               </div>
             )}

@@ -52,7 +52,7 @@ const localeCopy = {
     projectFlowLabel: "Qualification projet",
     supportFlowLabel: "Qualification support",
     generalFlowLabel: "Orientation",
-    faqFollowUp: "Si tu veux une fourchette utile ou une suite claire, on peut cadrer maintenant.",
+    faqFollowUp: "Si tu veux une estimation adaptée ou une suite claire, on peut cadrer maintenant.",
     invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le résumé.",
     summarySent: "Le résumé a été envoyé par email.",
     leadSent: "Le résumé a été transmis à KAH-Digital pour reprise humaine.",
@@ -61,7 +61,7 @@ const localeCopy = {
     fallbackAnswer:
       "Dis-moi simplement si on parle d'un site, d'une application, de support, de GLPI ou d'un besoin de cadrage. Je prends ensuite le relais avec les bonnes questions.",
     recadrageBudget:
-      "Je préfère être transparent : sans périmètre clair, je peux donner une fourchette, pas un prix ferme.",
+      "Je préfère être transparent : sans périmètre clair, le plus sérieux est de cadrer le besoin avant de chiffrer.",
     recadrageTimeline: "Je peux tester la faisabilité, pas promettre un délai ferme sans cadrage.",
     recadrageMvp:
       "Pour éviter de partir sur quelque chose d'irréaliste, il faut définir les fonctions indispensables au départ.",
@@ -77,11 +77,11 @@ const localeCopy = {
       objective: "Quel résultat tu veux obtenir avec ce projet : visibilité, demandes clients, vente, automatisation ou support ?",
       features: "Quelles fonctionnalités ou quels blocs sont indispensables pour acheter la bonne offre ?",
       timeline: "Quel délai vises-tu ?",
-      budget: "As-tu déjà une fourchette de budget ?",
+      budget: "As-tu déjà un budget disponible ou une limite à respecter ?",
       users: "Qui va utiliser ou acheter via ce projet : toi, ton équipe, des clients, ou un volume plus large ?",
       countriesLanguages: "Quels pays ou quelles langues sont concernés ?",
       technicalNeeds: "Y a-t-il des besoins spécifiques : admin, paiement, API, design premium, autre ?",
-      decisionStage: "Si la fourchette est cohérente, tu préfères recevoir un devis sous 24h, parler à quelqu'un, ou comparer les offres d'abord ?",
+      decisionStage: "Une fois le périmètre cadré, tu préfères recevoir un devis personnalisé, parler à quelqu'un, ou comparer les approches d'abord ?",
       problem: "Quel est le problème principal à résoudre ?",
       urgency: "Quel est le niveau d'urgence ?",
       impact: "Quel est l'impact sur l'activité ou les utilisateurs ?",
@@ -102,7 +102,7 @@ const localeCopy = {
     projectFlowLabel: "Project qualification",
     supportFlowLabel: "Support qualification",
     generalFlowLabel: "Routing",
-    faqFollowUp: "If you want a useful range or a clear next step, we can frame it now.",
+    faqFollowUp: "If you want an adapted estimate or a clear next step, we can frame it now.",
     invalidConsent: "I need your consent before storing or sending the summary.",
     summarySent: "The summary was sent by email.",
     leadSent: "The summary was forwarded to KAH-Digital for human follow-up.",
@@ -111,7 +111,7 @@ const localeCopy = {
     fallbackAnswer:
       "Tell me whether this is about a website, an application, support, GLPI, or general framing. I will take it from there with the right questions.",
     recadrageBudget:
-      "To be transparent, without a clear scope I can give you a range, not a fixed price.",
+      "To be transparent, without a clear scope the serious approach is to frame the need before estimating.",
     recadrageTimeline: "I can test feasibility, but not promise a fixed timeline without framing.",
     recadrageMvp: "To avoid an unrealistic scope, we need to define the must-have features first.",
     recapIntro: "Here is what I understood:",
@@ -126,11 +126,11 @@ const localeCopy = {
       objective: "What result do you want from this project: visibility, leads, sales, automation, or support?",
       features: "Which features or blocks are essential to choose the right offer?",
       timeline: "What timeline are you targeting?",
-      budget: "Do you already have a budget range in mind?",
+      budget: "Do you already have an available budget or a limit to respect?",
       users: "Who will use or buy through this project: you, your team, clients, or a larger volume?",
       countriesLanguages: "Which countries or languages are involved?",
       technicalNeeds: "Any specific needs: admin area, payment, API, premium design, other?",
-      decisionStage: "If the range makes sense, would you rather receive a quote within 24h, talk to someone, or compare offers first?",
+      decisionStage: "Once the scope is framed, would you rather receive a custom quote, talk to someone, or compare approaches first?",
       problem: "What is the main issue to solve?",
       urgency: "How urgent is it?",
       impact: "What is the impact on the business or users?",
@@ -151,7 +151,7 @@ const localeCopy = {
     projectFlowLabel: "Projektqualifizierung",
     supportFlowLabel: "Supportqualifizierung",
     generalFlowLabel: "Orientierung",
-    faqFollowUp: "Wenn du eine belastbare Spanne oder den nächsten klaren Schritt willst, können wir jetzt sauber eingrenzen.",
+    faqFollowUp: "Wenn du eine passende Einschätzung oder den nächsten klaren Schritt willst, können wir jetzt sauber eingrenzen.",
     invalidConsent: "Ich brauche deine Zustimmung, bevor ich die Zusammenfassung speichere oder versende.",
     summarySent: "Die Zusammenfassung wurde per E-Mail versendet.",
     leadSent: "Die Zusammenfassung wurde an KAH-Digital für eine menschliche Rückmeldung weitergeleitet.",
@@ -160,7 +160,7 @@ const localeCopy = {
     fallbackAnswer:
       "Sag mir einfach, ob es um eine Website, eine Anwendung, Support, GLPI oder um erstes Cadrage geht. Danach stelle ich nur die wirklich nötigen Fragen.",
     recadrageBudget:
-      "Ich bin lieber direkt: Ohne klaren Umfang kann ich eine Spanne nennen, aber keinen festen Preis.",
+      "Ich bin lieber direkt: Ohne klaren Umfang ist es seriöser, den Bedarf zuerst einzugrenzen.",
     recadrageTimeline: "Ich kann die Machbarkeit prüfen, aber keinen festen Termin ohne Cadrage versprechen.",
     recadrageMvp: "Damit das nicht unrealistisch wird, müssen zuerst die Pflichtfunktionen festgelegt werden.",
     recapIntro: "Das habe ich verstanden:",
@@ -175,11 +175,11 @@ const localeCopy = {
       objective: "Welches Ergebnis soll das Projekt bringen: Sichtbarkeit, Anfragen, Verkauf, Automatisierung oder Support?",
       features: "Welche Funktionen oder Bloecke sind unverzichtbar, um das richtige Angebot zu waehlen?",
       timeline: "Welchen Zeitrahmen peilst du an?",
-      budget: "Gibt es bereits eine Budgetspanne?",
+      budget: "Gibt es bereits ein verfügbares Budget oder eine Grenze, die eingehalten werden soll?",
       users: "Wer nutzt oder kauft ueber das Projekt: du, dein Team, Kunden oder ein groesseres Volumen?",
       countriesLanguages: "Welche Laender oder Sprachen sind betroffen?",
       technicalNeeds: "Gibt es besondere Anforderungen: Admin, Zahlung, API, Premium-Design, anderes?",
-      decisionStage: "Wenn die Spanne passt: willst du ein Angebot innerhalb von 24h, mit jemandem sprechen oder zuerst Angebote vergleichen?",
+      decisionStage: "Wenn der Umfang klar ist: willst du ein individuelles Angebot, mit jemandem sprechen oder zuerst Ansätze vergleichen?",
       problem: "Was ist das Hauptproblem, das geloest werden muss?",
       urgency: "Wie dringend ist das Thema?",
       impact: "Wie stark ist der Einfluss auf Betrieb oder Nutzer?",
@@ -481,10 +481,6 @@ function buildStructuredSummary(session: AssistantSession): AssistantStructuredO
     0
   );
   const weightedDays = baseDays + featureDays;
-  const publicRange = pricingRules.catalogRanges[pricingType];
-  const scopeMultiplier = featureDays > 4 ? 1 + Math.min(0.35, (featureDays - 4) / 30) : 1;
-  const budgetMin = publicRange.min;
-  const budgetMax = Math.round((publicRange.max * scopeMultiplier) / 100) * 100;
   const complexity = computeComplexity(weightedDays);
 
   return assistantStructuredOutputSchema.parse({
@@ -492,7 +488,7 @@ function buildStructuredSummary(session: AssistantSession): AssistantStructuredO
     project_type: effectiveProjectType,
     clarity_score: clarityScore,
     complexity,
-    budget_range: { min: budgetMin, max: budgetMax },
+    budget_range: { min: 0, max: 0 },
     estimated_days: weightedDays,
     roles: getProjectRoles(effectiveProjectType, detectedFeatures),
     missing_info: missingInfo,
@@ -515,7 +511,7 @@ Allowed complexity: low, medium, high.
 Act like a pre-project lead, not a generic chatbot.
 Be direct, concise, structured, and commercially useful.
 Flag vague requests, unrealistic expectations, and missing essentials clearly.
-Use the current public offers and maintenance plans as the pricing source. Push toward quote submission only when scope, timing, and budget are coherent enough.
+Do not provide public fixed prices or catalog ranges. Push toward quote submission only when scope, timing, priorities, and available budget context are coherent enough.
 `;
 
   const output = await generateOpenAIJson<AssistantStructuredOutput>({
@@ -540,7 +536,7 @@ Use the current public offers and maintenance plans as the pricing source. Push 
 
 function detectEscalation(summary: AssistantStructuredOutput, session: AssistantSession) {
   if (summary.complexity === "high") return true;
-  if (summary.budget_range.max >= 8000) return true;
+  if (summary.estimated_days >= 25) return true;
   if (summary.clarity_score < 55) return true;
   if (summary.missing_info.length >= 3) return true;
   if (session.intent === "support_glpi" && /(critique|critical|bloque|blocked)/i.test(JSON.stringify(session.collected))) return true;
@@ -619,14 +615,14 @@ function getOfferHint(projectType: AssistantProjectType, locale: Locale) {
   if (!offer) return null;
 
   if (locale === "en") {
-    return `${offer.nameEn} usually fits here: ${offer.price}, ${offer.timelineEn}.`;
+    return `${offer.nameEn} usually fits here: ${offer.price}; timeline to confirm after scoping, often ${offer.timelineEn}.`;
   }
 
   if (locale === "de") {
-    return `${offer.nameDe} passt hier meist: ${offer.price}, ${offer.timelineDe}.`;
+    return `${offer.nameDe} passt hier meist: ${offer.price}; Zeitrahmen nach Eingrenzung, oft ${offer.timelineDe}.`;
   }
 
-  return `L'offre la plus proche est ${offer.nameFr} : ${offer.price}, ${offer.timelineFr}.`;
+  return `L'approche la plus proche est ${offer.nameFr} : ${offer.price}; délai à confirmer après cadrage, souvent ${offer.timelineFr}.`;
 }
 
 function estimateCalendarRange(days: number, locale: Locale) {
@@ -707,10 +703,10 @@ function buildProjectQuestion(session: AssistantSession, locale: Locale, nextMis
 
   if (nextMissing === "budget") {
     return locale === "en"
-      ? `${copy.recadrageBudget} What range do you have in mind, even roughly?`
+      ? `${copy.recadrageBudget} Do you already have a budget limit or priority level in mind?`
       : locale === "de"
-        ? `${copy.recadrageBudget} Welche Spanne hast du im Kopf, selbst grob?`
-        : `${copy.recadrageBudget} Quelle fourchette tu envisages, meme approximative ?`;
+        ? `${copy.recadrageBudget} Gibt es bereits eine Budgetgrenze oder Prioritäten?`
+        : `${copy.recadrageBudget} As-tu déjà une limite de budget ou des priorités à respecter ?`;
   }
 
   if (nextMissing === "decisionStage") {
@@ -760,7 +756,7 @@ function buildDiscoveryReply(message: string, locale: Locale) {
       ? "No problem. I can give you a first range, but I need to place the scope first: simple website or more advanced project, which features are must-have, and are you aiming for a quick base or something more complete from the start?"
       : locale === "de"
         ? "Kein Problem. Ich kann eine erste Spanne geben, aber zuerst muss der Umfang klar sein: einfache Website oder avanciertes Projekt, welche Funktionen sind Pflicht, und willst du eine schnelle Basis oder direkt etwas Vollstaendigeres?"
-        : "Pas de souci. Je peux te donner une premiere fourchette, mais il faut d'abord situer le perimetre : site simple ou projet plus avance, quelles fonctions sont indispensables, et tu veux une base rapide ou quelque chose de plus complet des le depart ?";
+        : "Pas de souci. Je peux t'orienter, mais il faut d'abord situer le perimetre : site simple ou projet plus avance, quelles fonctions sont indispensables, et tu veux une base rapide ou quelque chose de plus complet des le depart ?";
   }
 
   if (detectUrgentRequest(text)) {
@@ -893,38 +889,37 @@ function buildFollowUpReply(session: AssistantSession, locale: Locale, nextMissi
 }
 
 function buildReadyReply(summary: AssistantStructuredOutput, locale: Locale, humanNeeded: boolean) {
-  const budget = summary.budget_range.max > 0 ? formatBudgetRange(summary, locale) : null;
   const type = formatProjectTypeLabel(summary.project_type as AssistantProjectType, locale);
   const timeline = estimateCalendarRange(summary.estimated_days, locale);
   const offerHint = getOfferHint(summary.project_type as AssistantProjectType, locale);
 
   if (locale === "en") {
-    const budgetStr = budget ? ` Budget range: ${budget} €.` : "";
+    const estimateStr = " The quote is adapted after scoping, based on useful features, timeline, support level, and available budget.";
     const timelineStr = ` Timeline: ${timeline}.`;
     const offerStr = offerHint ? ` ${offerHint}` : "";
     const next = humanNeeded
       ? " Given the scope, request a human quote review before committing."
-      : " The next clean step is to request the 24h quote with this summary.";
-    return `Here's what I have: ${type}, ${summary.complexity} complexity.${budgetStr}${timelineStr}${offerStr}${next}`;
+      : " The next clean step is to request a custom quote with this summary.";
+    return `Here's what I have: ${type}, ${summary.complexity} complexity.${estimateStr}${timelineStr}${offerStr}${next}`;
   }
 
   if (locale === "de") {
-    const budgetStr = budget ? ` Budgetspanne: ${budget} €.` : "";
+    const estimateStr = " Das Angebot wird nach Eingrenzung angepasst: nützliche Funktionen, Zeitrahmen, Begleitung und verfügbares Budget zählen.";
     const timelineStr = ` Zeitrahmen: ${timeline}.`;
     const offerStr = offerHint ? ` ${offerHint}` : "";
     const next = humanNeeded
       ? " Bei diesem Umfang sollte ein Mensch das Angebot prüfen, bevor du dich festlegst."
-      : " Der nächste saubere Schritt ist die 24h-Angebotsanfrage mit dieser Zusammenfassung.";
-    return `Das habe ich: ${type}, Komplexität ${summary.complexity}.${budgetStr}${timelineStr}${offerStr}${next}`;
+      : " Der nächste saubere Schritt ist die individuelle Angebotsanfrage mit dieser Zusammenfassung.";
+    return `Das habe ich: ${type}, Komplexität ${summary.complexity}.${estimateStr}${timelineStr}${offerStr}${next}`;
   }
 
-  const budgetStr = budget ? ` Fourchette budget : ${budget} €.` : "";
+  const estimateStr = " Le devis est ajusté après cadrage selon les fonctionnalités utiles, le délai, l'accompagnement et le budget disponible.";
   const timelineStr = ` Délai probable : ${timeline}.`;
   const offerStr = offerHint ? ` ${offerHint}` : "";
   const next = humanNeeded
     ? " Vu le scope, il faut une validation humaine du devis avant de s'engager."
-    : " La suite propre, c'est de demander le devis sous 24h avec ce résumé.";
-  return `Voici ce que j'ai : ${type}, complexité ${summary.complexity}.${budgetStr}${timelineStr}${offerStr}${next}`;
+    : " La suite propre, c'est de demander un devis personnalisé avec ce résumé.";
+  return `Voici ce que j'ai : ${type}, complexité ${summary.complexity}.${estimateStr}${timelineStr}${offerStr}${next}`;
 }
 
 function resolveProjectTypeFromAnswer(answer: string): AssistantProjectType {
@@ -1131,7 +1126,7 @@ export async function runAssistantTurn(params: {
       if (!session.collected.features && inferFeatures({ objective: message }).length > 0) {
         session.collected.features = message;
       }
-      // Extract budget hint from first message (e.g. "3000 CHF", "budget 5k")
+      // Extract budget hint from first message when the user gives one.
       if (!session.collected.budget) {
         const budgetMatch = message.match(/(\d[\d\s.]*)\s*(eur|euros?|chf|fr\b|k€|kchf|\$)/i);
         if (budgetMatch) session.collected.budget = budgetMatch[0].trim();
@@ -1251,16 +1246,20 @@ export async function estimateResources(input: string, locale: Locale) {
   };
 }
 
-function getNumberLocale(locale: Locale) {
-  if (locale === "en") return "en-US";
-  if (locale === "de") return "de-DE";
-  return "fr-FR";
-}
-
 function formatBudgetRange(summary: AssistantStructuredOutput, locale: Locale) {
-  if (!summary.budget_range.max) return "n/a";
-  const numberLocale = getNumberLocale(locale);
-  return `${summary.budget_range.min.toLocaleString(numberLocale)} - ${summary.budget_range.max.toLocaleString(numberLocale)}`;
+  if (summary.budget_range.max > 0) {
+    return locale === "en"
+      ? "available budget noted, quote adjusted after scoping"
+      : locale === "de"
+        ? "Budgetkontext notiert, Angebot nach Eingrenzung"
+        : "budget disponible noté, devis ajusté après cadrage";
+  }
+
+  return locale === "en"
+    ? "to define after scoping"
+    : locale === "de"
+      ? "nach Eingrenzung zu definieren"
+      : "à définir après cadrage";
 }
 
 function formatSummaryText(summary: AssistantStructuredOutput, locale: Locale) {
@@ -1270,7 +1269,7 @@ function formatSummaryText(summary: AssistantStructuredOutput, locale: Locale) {
 Project type: ${summary.project_type}
 Clarity score: ${summary.clarity_score}/100
 Complexity: ${summary.complexity}
-Budget range: ${budget}
+Budget context: ${budget}
 Estimated days: ${summary.estimated_days}
 Roles: ${summary.roles.join(", ") || "-"}
 Missing info: ${summary.missing_info.join(", ") || "-"}
@@ -1281,7 +1280,7 @@ Next step: ${summary.next_step}`;
 Projekttyp: ${summary.project_type}
 Klarheitsgrad: ${summary.clarity_score}/100
 Komplexitaet: ${summary.complexity}
-Budgetspanne: ${budget}
+Budgetkontext: ${budget}
 Geschaetzte Tage: ${summary.estimated_days}
 Rollen: ${summary.roles.join(", ") || "-"}
 Fehlende Infos: ${summary.missing_info.join(", ") || "-"}
@@ -1292,7 +1291,7 @@ Naechster Schritt: ${summary.next_step}`;
 Type de projet: ${summary.project_type}
 Clarte: ${summary.clarity_score}/100
 Complexite: ${summary.complexity}
-Fourchette budget: ${budget}
+Contexte budget: ${budget}
 Jours estimes: ${summary.estimated_days}
 Roles: ${summary.roles.join(", ") || "-"}
 Infos manquantes: ${summary.missing_info.join(", ") || "-"}
@@ -1300,11 +1299,9 @@ Next step: ${summary.next_step}`;
 }
 
 function formatAssistantBudget(summary: AssistantStructuredOutput) {
-  if (summary.budget_range.max > 0) {
-    return `${summary.budget_range.min.toLocaleString("fr-FR")} - ${summary.budget_range.max.toLocaleString("fr-FR")}`;
-  }
-
-  return "A definir";
+  return summary.budget_range.max > 0
+    ? "Budget client note, estimation a cadrer"
+    : "A definir apres echange";
 }
 
 function formatAssistantTimeline(summary: AssistantStructuredOutput) {

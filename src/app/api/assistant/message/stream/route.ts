@@ -60,13 +60,13 @@ function buildKnowledgeBlock(locale: Locale): string {
     const name = locale === "en" ? o.nameEn : locale === "de" ? o.nameDe : o.nameFr;
     const time = locale === "en" ? o.timelineEn : locale === "de" ? o.timelineDe : o.timelineFr;
     const fit  = locale === "en" ? o.fitEn  : locale === "de" ? o.fitDe  : o.fitFr;
-    return `${name} → ${o.price} / ${time} (${fit})`;
+    return `${name} → ${o.price} / délai indicatif ${time} (${fit})`;
   }).join("\n");
 
   const plans = assistantKnowledge.maintenancePlans.map((p) => {
     const name = locale === "en" ? p.nameEn : locale === "de" ? p.nameDe : p.nameFr;
     const fit  = locale === "en" ? p.fitEn  : locale === "de" ? p.fitDe  : p.fitFr;
-    return `${name} ${p.price} — ${fit}`;
+    return `${name} — ${p.price} — ${fit}`;
   }).join("\n");
 
   const refs = assistantKnowledge.referenceProjects.map((r) => {
@@ -76,47 +76,50 @@ function buildKnowledgeBlock(locale: Locale): string {
   }).join("\n");
 
   if (locale === "en") {
-    return `SERVICES & PRICING:
+    return `SERVICES & CUSTOM SCOPING:
 ${offers}
 
-MAINTENANCE PLANS:
+ADJUSTABLE MAINTENANCE:
 ${plans}
 
 RECENT REFERENCES:
 ${refs}
 
-PAYMENT: 30% at order, 40% at prototype delivery, 30% at final delivery. Bank transfer or Stripe. Signed quote before starting.
+QUOTE APPROACH: every project is scoped before estimation. No public fixed pricing, no rigid package. The quote is custom, clear, and non-binding.
+PAYMENT: payment terms are confirmed in the signed quote before starting.
 TECHNOLOGY: Next.js/React for web, Expo React Native for mobile, FastAPI or Node.js backend, Supabase/PostgreSQL database. No WordPress.
 GUARANTEE: 30-day correction period after delivery included. Then optional maintenance plan.
 PROCESS: Framing → 24h quote → production → delivery → optional maintenance.`;
   }
 
   if (locale === "de") {
-    return `LEISTUNGEN & PREISE:
+    return `LEISTUNGEN & INDIVIDUELLE EINGRENZUNG:
 ${offers}
 
-WARTUNGSPLÄNE:
+ANPASSBARE WARTUNG:
 ${plans}
 
 AKTUELLE REFERENZEN:
 ${refs}
 
-ZAHLUNG: 30% bei Bestellung, 40% bei Prototyp-Lieferung, 30% bei Endlieferung. Banküberweisung oder Stripe. Unterzeichnetes Angebot vor Start.
+ANGEBOTSANSATZ: jedes Projekt wird vor der Einschätzung eingegrenzt. Keine starren öffentlichen Preise, kein Pflichtpaket. Das Angebot ist individuell, klar und unverbindlich.
+ZAHLUNG: Zahlungsbedingungen werden im unterschriebenen Angebot vor Start bestätigt.
 TECHNOLOGIE: Next.js/React für Web, Expo React Native für Mobile, FastAPI oder Node.js Backend, Supabase/PostgreSQL. Kein WordPress.
 GARANTIE: 30 Tage Korrekturzeitraum nach Lieferung inklusive. Danach optionaler Wartungsplan.
 ABLAUF: Eingrenzung → 24h-Angebot → Produktion → Lieferung → optionale Wartung.`;
   }
 
-  return `SERVICES ET PRIX :
+  return `SERVICES ET CADRAGE SUR MESURE :
 ${offers}
 
-MAINTENANCE :
+MAINTENANCE AJUSTABLE :
 ${plans}
 
 RÉFÉRENCES RÉCENTES :
 ${refs}
 
-PAIEMENT : 30% à la commande, 40% à la livraison du prototype, 30% à la livraison finale. Virement bancaire ou Stripe. Devis signé avant démarrage.
+APPROCHE DEVIS : chaque projet est cadré avant estimation. Pas de prix public fixe, pas de formule rigide. Le devis est personnalisé, clair et sans engagement.
+PAIEMENT : les modalités de paiement sont confirmées dans le devis signé avant démarrage.
 TECHNOLOGIE : Next.js/React pour le web, Expo React Native pour le mobile, FastAPI ou Node.js backend, Supabase/PostgreSQL. Pas de WordPress.
 GARANTIE : 30 jours de corrections post-livraison inclus. Puis plan de maintenance optionnel.
 PROCESSUS : Cadrage → devis sous 24h → production → livraison → maintenance optionnelle.`;
@@ -152,7 +155,7 @@ Answer the user's question FIRST, then naturally move the conversation toward a 
 STRICT RULES:
 1. Answer the DIRECT question asked. Never reply with "tell me about your project" when someone asks a direct question.
 2. Never re-ask something already listed under "Collected so far."
-3. Give REAL price ranges when asked about cost. Never say just "it depends" without a range.
+3. When asked about cost, explain that the estimate is personalized after scoping. Never provide public fixed ranges; avoid sounding evasive by naming the criteria: real need, complexity, support level, timeline, useful features, available budget, and business priorities.
 4. After answering, ask exactly ONE natural follow-up question if fields are still missing — never a list.
 5. If the summary is ready, make the path to the 24h quote obvious and easy.
 6. Short sentences. No bullet lists unless 3+ distinct items. No markdown headers.
@@ -181,7 +184,7 @@ Beantworte die Frage des Nutzers ZUERST, dann führe das Gespräch natürlich zu
 STRIKTE REGELN:
 1. Beantworte die DIREKTE Frage. Nie mit "erzähl mir von deinem Projekt" ausweichen.
 2. Nie nach etwas fragen, das bereits unter "Bisher gesammelt" steht.
-3. ECHTE Preisspannen nennen wenn nach Kosten gefragt wird. Nie nur "kommt drauf an" ohne Spanne.
+3. Wenn nach Kosten gefragt wird, erkläre dass die Einschätzung nach Eingrenzung individuell erfolgt. Keine öffentlichen festen Spannen nennen; nenne stattdessen die Kriterien: Bedarf, Komplexität, Begleitung, Zeitrahmen, Funktionen, verfügbares Budget und Prioritäten.
 4. Nach der Antwort genau EINE natürliche Folgefrage stellen — nie eine Liste.
 5. Wenn Zusammenfassung bereit, den Weg zum 24h-Angebot klar und einfach machen.
 6. Kurze Sätze. Keine Aufzählungen außer bei 3+ Punkten. Keine Markdown-Titel.
@@ -208,7 +211,7 @@ Répondre d'abord à la question de l'utilisateur, puis faire avancer naturellem
 RÈGLES STRICTES :
 1. Réponds d'abord à LA QUESTION posée. Ne jamais répondre "parle-moi de ton projet" quand quelqu'un pose une question directe.
 2. Ne jamais re-demander quelque chose déjà listé sous "Collecté jusqu'ici."
-3. Donner de VRAIES fourchettes de prix quand on demande le coût. Ne jamais dire juste "ça dépend" sans fourchette.
+3. Quand on demande le coût, expliquer que l'estimation est personnalisée après cadrage. Ne pas donner de fourchette publique fixe ; rester concret en citant les critères : besoin réel, complexité, accompagnement, délai, fonctionnalités, budget disponible et priorités business.
 4. Après avoir répondu, poser exactement UNE question naturelle si des champs manquent — jamais une liste.
 5. Si le résumé est prêt, rendre le chemin vers le devis sous 24h évident et simple.
 6. Phrases courtes. Pas de listes sauf si 3+ items distincts. Pas de titres markdown.

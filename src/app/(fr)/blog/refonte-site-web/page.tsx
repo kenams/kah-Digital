@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiAlertCircle, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "Refonte de site web : quand et comment ? — KAH-Digital",
-  description: "Les 7 signaux qui indiquent qu'il est temps de refondre votre site web, et la méthode pour réussir votre refonte sans gaspiller de budget.",
+  description: "Les 7 signaux qui indiquent qu'il est temps de refondre votre site web, et la méthode pour réussir votre refonte sans gaspiller de Périmètre.",
   keywords: ["refonte site web", "rénover site web", "mettre à jour site internet", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/blog/refonte-site-web" },
   openGraph: {
@@ -26,7 +26,7 @@ const jsonLd = {
 
 const SIGNALS = [
   { num: "01", title: "Votre site n'est pas adapté mobile", detail: "Plus de 60% du trafic web vient des smartphones. Si votre site n'est pas responsive, vous perdez plus de la moitié de vos visiteurs potentiels dès la première seconde." },
-  { num: "02", title: "Il charge lentement", detail: "Au-delà de 3 secondes, 53% des visiteurs mobile abandonnent. Un site lent coûte des clients chaque jour." },
+  { num: "02", title: "Il charge lentement", detail: "Au-delà de 3 secondes, 53% des visiteurs mobile abandonnent. Un site lent s'estime des clients chaque jour." },
   { num: "03", title: "Le design date de plus de 4 ans", detail: "Le web évolue vite. Un site vieux de 4 ans donne une impression d'entreprise dépassée — avant même que le visiteur ait lu une ligne." },
   { num: "04", title: "Vous ne pouvez pas le mettre à jour vous-même", detail: "Si chaque modification de texte ou d'image nécessite de contacter votre développeur, c'est un frein majeur à votre communication." },
   { num: "05", title: "Il ne génère pas de contacts", detail: "Un site vitrine devrait convertir entre 1 et 3% de ses visiteurs en contacts. En dessous, il y a un problème de structure ou de CTA." },
@@ -51,7 +51,7 @@ export default function RefonteWebPage() {
             Refonte de site web : quand faut-il se lancer et comment s'y prendre ?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            La refonte d'un site est une décision importante. Trop tôt, c'est du budget gaspillé. Trop tard, c'est des clients perdus. Voici comment savoir quand agir — et comment faire.
+            La refonte d'un site est une décision importante. Trop tôt, c'est du Périmètre gaspillé. Trop tard, c'est des clients perdus. Voici comment savoir quand agir — et comment faire.
           </p>
         </div>
       </section>
@@ -79,12 +79,12 @@ export default function RefonteWebPage() {
           <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
             <div className="mb-2 flex items-center gap-2"><FiAlertCircle size={15} className="text-amber-400" /><span className="font-semibold text-white text-sm">Améliorations ciblées</span></div>
             <p className="text-xs text-gray-400 leading-relaxed">Le contenu est bon, la structure tient — il faut juste moderniser le design, améliorer la vitesse ou corriger le SEO.</p>
-            <p className="mt-2 text-xs font-semibold text-amber-400">Budget : 500 – 1 500€</p>
+            <p className="mt-2 text-xs font-semibold text-amber-400">Périmètre : à définir après audit</p>
           </div>
           <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-5">
             <div className="mb-2 flex items-center gap-2"><FiCheck size={15} className="text-blue-400" /><span className="font-semibold text-white text-sm">Refonte complète</span></div>
             <p className="text-xs text-gray-400 leading-relaxed">Le CMS est vieux, la stack est dépassée, ou votre offre a fondamentalement changé. Repartir sur une base propre.</p>
-            <p className="mt-2 text-xs font-semibold text-blue-400">Budget : 1 500 – 6 000€</p>
+            <p className="mt-2 text-xs font-semibold text-blue-400">Périmètre : à définir après audit</p>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function RefonteWebPage() {
         <ol className="mb-12 space-y-6">
           {[
             { step: "Auditez l'existant", detail: "Avant de construire quoi que ce soit, mesurez : vitesse (PageSpeed), positions SEO (Google Search Console), taux de conversion (Analytics), pages les plus visitées. Ces données guident les décisions." },
-            { step: "Définissez le périmètre précis", detail: "Quelles pages garder, lesquelles supprimer ? Quelles nouvelles fonctionnalités ? Un scope vague est la première cause de budget dépassé." },
+            { step: "Définissez le périmètre précis", detail: "Quelles pages garder, lesquelles supprimer ? Quelles nouvelles fonctionnalités ? Un scope vague est la première cause de Périmètre dépassé." },
             { step: "Choisissez la bonne stack", detail: "WordPress si vous voulez gérer le contenu vous-même. Next.js si la performance et le SEO sont prioritaires. Évitez les constructeurs visuels type Wix si vous visez une vraie performance." },
             { step: "Gérez la migration SEO", detail: "Chaque URL qui change doit avoir une redirection 301. Un plan de redirections bâclé peut faire perdre 30 à 50% du trafic organique en quelques semaines." },
             { step: "Lancez — puis améliorez", detail: "Un site parfait qui sort dans 6 mois vaut moins qu'un site correct sorti dans 3 semaines. Lancez avec le minimum viable, puis itérez sur les données réelles." },
@@ -138,3 +138,5 @@ export default function RefonteWebPage() {
     </div>
   );
 }
+
+

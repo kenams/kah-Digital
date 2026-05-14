@@ -33,7 +33,7 @@ export function WhyChooseSection() {
           accent: "#10b981",
           title: "Scope propre, pas gonflé",
           description: "Chaque devis couvre ce qui est nécessaire, pas plus. Transparence totale sur les fonctionnalités et le budget.",
-          tag: "Devis lisibles · € 300+",
+          tag: "Devis lisibles · Sur mesure",
         },
         {
           num: "04",
@@ -72,7 +72,7 @@ export function WhyChooseSection() {
           accent: "#10b981",
           title: "Clean scope, no bloat",
           description: "Every quote covers what is needed, nothing more. Full transparency on features and budget from day one.",
-          tag: "Readable quotes · € 300+",
+          tag: "Readable quotes · Custom scope",
         },
         {
           num: "04",
@@ -111,7 +111,7 @@ export function WhyChooseSection() {
           accent: "#10b981",
           title: "Sauberer Scope, kein Overhead",
           description: "Jedes Angebot deckt was benoetigt wird, nicht mehr. Volle Transparenz ueber Funktionen und Budget.",
-          tag: "Lesbare Angebote · € 300+",
+          tag: "Lesbare Angebote · Individuell",
         },
         {
           num: "04",

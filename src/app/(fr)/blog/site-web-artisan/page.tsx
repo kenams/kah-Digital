@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "Site web pour artisan : guide complet 2026 — KAH-Digital",
-  description: "Comment créer un site web efficace pour un artisan ? Prix, délais, ce qu'il faut absolument avoir. Guide pratique pour plombiers, électriciens, menuisiers, maçons.",
+  description: "Comment créer un site web efficace pour un artisan ? devis, délais, ce qu'il faut absolument avoir. Guide pratique pour plombiers, électriciens, menuisiers, maçons.",
   keywords: ["site web artisan", "création site artisan", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-artisan" },
   openGraph: {
     title: "Site web pour artisan : guide complet 2026",
-    description: "Prix, délais, contenu essentiel. Tout ce qu'un artisan doit savoir avant de créer son site.",
+    description: "devis, délais, contenu essentiel. Tout ce qu'un artisan doit savoir avant de créer son site.",
   },
 };
 
@@ -29,7 +29,7 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Combien coûte un site web pour un artisan ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel pour artisan coûte entre 600 et 1 200€ selon les pages, les photos et les fonctionnalités (formulaire, Google Maps, avis)." } },
+    { "@type": "Question", "name": "comment estimer un site web pour un artisan ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel pour artisan s'estime après cadrage selon les pages, les photos et les fonctionnalités (formulaire, Google Maps, avis)." } },
     { "@type": "Question", "name": "Un artisan a-t-il vraiment besoin d'un site web ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. 80% des clients cherchent sur Google avant de choisir un artisan. Sans site, vous n'existez pas pour eux. Un site simple et bien référencé peut générer plusieurs contacts qualifiés par semaine." } },
     { "@type": "Question", "name": "Quel contenu mettre sur un site artisan ?", "acceptedAnswer": { "@type": "Answer", "text": "L'essentiel : vos services et zone d'intervention, des photos de vos réalisations, vos coordonnées visibles, un formulaire ou bouton WhatsApp, et si possible des avis clients." } },
     { "@type": "Question", "name": "En combien de temps un site artisan peut-il être en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec un brief clair et vos photos prêtes, un site vitrine artisan peut être en ligne en 1 à 2 semaines." } },
@@ -63,7 +63,7 @@ export default function SiteWebArtisanPage() {
             Site web pour artisan : guide complet 2026
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Plombier, électricien, menuisier, maçon — un site web simple et bien fait peut vous ramener des clients toutes les semaines sans payer de pub. Voici exactement quoi faire et combien ça coûte.
+            Plombier, électricien, menuisier, maçon — un site web simple et bien fait peut vous ramener des clients toutes les semaines sans payer de pub. Voici exactement quoi faire et combien ça s'estime.
           </p>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function SiteWebArtisanPage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-orange-500/20 bg-orange-500/5 p-5">
           <p className="text-sm leading-relaxed text-orange-200">
-            <strong>TL;DR :</strong> Site vitrine artisan 600–1 200€ · En ligne en 1–2 semaines · Essentiel : photos de réalisations + zone d'intervention + formulaire contact.
+            <strong>TL;DR :</strong> Site vitrine artisan selon le périmètre · En ligne en 1–2 semaines · Essentiel : photos de réalisations + zone d'intervention + formulaire contact.
           </p>
         </div>
 
@@ -96,16 +96,16 @@ export default function SiteWebArtisanPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Combien ça coûte ?</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Combien ça s'estime ?</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          Un site vitrine artisan professionnel coûte entre <strong className="text-white">600 et 1 200€</strong> pour une bonne agence ou un développeur indépendant. À moins de 300€, méfiez-vous : le résultat risque d'être un template générique qui ne vous représente pas et qui ne se référencie pas bien.
+          Un site vitrine artisan professionnel s'estime après cadrage du besoin, des pages, des photos et des fonctionnalités utiles. Avec une proposition trop basse, méfiez-vous : le résultat risque d'être un template générique qui ne vous représente pas et qui ne se référence pas bien.
         </p>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site basique (3-4 pages)", price: "600 – 900€", delay: "1 semaine" },
-            { label: "Site complet (6-8 pages)", price: "900 – 1 200€", delay: "2 semaines" },
-            { label: "Avec galerie réalisations", price: "+200 – 400€", delay: "+2-3 jours" },
-            { label: "Maintenance annuelle", price: "150 – 300€/an", delay: "Support inclus" },
+            { label: "Site basique (3-4 pages)", price: "selon le périmètre", delay: "1 semaine" },
+            { label: "Site complet (6-8 pages)", price: "selon le périmètre", delay: "2 semaines" },
+            { label: "Avec galerie réalisations", price: "selon le périmètre", delay: "+2-3 jours" },
+            { label: "Maintenance annuelle", price: "selon le périmètre", delay: "Support inclus" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>
@@ -143,7 +143,7 @@ export default function SiteWebArtisanPage() {
 
         <div className="rounded-2xl border border-orange-500/20 bg-gradient-to-br from-orange-500/10 to-amber-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Un site web professionnel pour votre activité</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis gratuit · Dès € 600</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-orange-500/30">
               Demander un devis <FiArrowRight size={15} />
@@ -157,3 +157,6 @@ export default function SiteWebArtisanPage() {
     </div>
   );
 }
+
+
+

@@ -6,7 +6,7 @@ import { getPaymentResultUrls, getSiteOrigin, getStripeClient, isStripeConfigure
 export const dynamic = "force-dynamic";
 
 function getLocale(value: unknown): Locale {
-  return value === "en" || value === "de" ? value : "fr";
+  return value === "en" ? value : "fr";
 }
 
 function cleanString(value: unknown, maxLength: number) {

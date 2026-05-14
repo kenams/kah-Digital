@@ -9,14 +9,14 @@ type OffersPageContentProps = {
 
 const copy = {
   fr: {
-    eyebrow: "Offres & tarifs",
-    title: "Budgets clairs. Périmètre défini. Pas de surprise.",
-    body: "Chaque offre liste ce qui est inclus, le délai de production moyen et pourquoi ce budget. Devis personnalisé disponible pour tout besoin hors catalogue.",
+    eyebrow: "Prestations sur mesure",
+    title: "Pas de formule rigide. Un accompagnement ajusté à votre besoin.",
+    body: "Chaque projet est étudié selon votre contexte, la complexité, les délais, le niveau d'accompagnement souhaité et le budget disponible. L'objectif est de proposer une solution utile, pas une formule inutile ou trop chère.",
     popular: "Le plus demandé",
-    requestQuote: "Demander un devis",
+    requestQuote: "Recevoir une proposition sur mesure",
     startChat: "Démarrer le chat",
-    customNote: "Besoin hors catalogue ? Devis personnalisé sous 24h.",
-    customCta: "Nous contacter",
+    customNote: "Besoin spécifique ? Un premier échange permet de définir le bon périmètre.",
+    customCta: "Planifier un échange",
     timeline: "Délai",
     includes: "Ce qui est inclus",
     idealFor: "Idéal pour",
@@ -27,33 +27,33 @@ const copy = {
       plans: [
         {
           name: "Essentiel",
-          price: "€ 90 / mois",
+          price: "Support léger",
           desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
           items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
         },
         {
           name: "Confort",
-          price: "€ 190 / mois",
+          price: "Support renforcé",
           desc: "Tout Essentiel + corrections mineures et ajouts de contenu.",
           items: ["Tout du plan Essentiel", "2h de modifications / mois", "Ajouts textes et images", "Support prioritaire (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "€ 390 / mois",
+          price: "Suivi prioritaire",
           desc: "Tout Confort + développement léger et suivi analytique mensuel.",
           items: ["Tout du plan Confort", "5h de développement / mois", "Rapport analytique mensuel", "Support dédié (réponse jour-même)"],
         },
       ],
-      note: "Formules sans engagement. Résiliable à tout moment. Disponibles après livraison de votre projet.",
-      cta: "Demander un devis",
+      note: "Le niveau de support est ajusté après livraison selon votre autonomie, vos priorités et le rythme d'évolution souhaité.",
+      cta: "Discuter du support",
     },
     offers: [
       {
         id: "landing-portfolio",
         tag: null,
         title: "Landing / Portfolio",
-        price: "€ 300 – 600",
+        price: "Projet simple",
         timeline: "1 – 2 semaines",
         summary: "Page unique, design propre, adapté mobile. Idéal pour un portfolio personnel, une activité freelance ou un projet à tester.",
         includes: [
@@ -70,7 +70,7 @@ const copy = {
         id: "site-vitrine",
         tag: null,
         title: "Site vitrine",
-        price: "€ 900 – 1 500",
+        price: "Présence professionnelle",
         timeline: "2 – 3 semaines",
         summary: "Présence professionnelle en ligne, design soigné, SEO de base et formulaire de contact.",
         includes: [
@@ -88,7 +88,7 @@ const copy = {
         id: "site-corporate",
         tag: "Le plus demandé",
         title: "Site corporate",
-        price: "€ 2 200 – 4 500",
+        price: "Projet évolutif",
         timeline: "3 – 5 semaines",
         summary: "Site complet avec pages services, blog ou actualités, design premium et optimisation SEO avancée.",
         includes: [
@@ -107,7 +107,7 @@ const copy = {
         id: "application-web",
         tag: null,
         title: "Application web sur mesure",
-        price: "€ 4 000 – 12 000",
+        price: "Projet sur mesure",
         timeline: "4 – 10 semaines",
         summary: "Outil métier, portail, dashboard ou SaaS avec authentification, base de données et logique métier.",
         includes: [
@@ -126,7 +126,7 @@ const copy = {
         id: "automatisation-ia",
         tag: null,
         title: "Automatisation IA",
-        price: "€ 1 500 – 8 000",
+        price: "Automatisation adaptée",
         timeline: "2 – 6 semaines",
         summary: "Workflows automatisés, assistant IA, traitement de documents ou intégration LLM dans vos outils existants.",
         includes: [
@@ -145,22 +145,22 @@ const copy = {
       title: "Projet hors catalogue ?",
       body: "Application mobile, e-commerce avancé, parcours GLPI, refonte complète. Tout besoin est évalué sur mesure.",
       items: [
-        { label: "Application mobile", price: "€ 6 000 – 20 000" },
-        { label: "E-commerce complet", price: "€ 3 500 – 9 000" },
-        { label: "Parcours support GLPI", price: "€ 2 500 – 8 000" },
-        { label: "Refonte + migration", price: "Sur devis" },
+        { label: "Application mobile", price: "Estimation après cadrage" },
+        { label: "E-commerce complet", price: "Périmètre défini ensemble" },
+        { label: "Parcours support GLPI", price: "Adapté à votre organisation" },
+        { label: "Refonte + migration", price: "Proposition personnalisée" },
       ],
     },
   },
   en: {
-    eyebrow: "Offers & pricing",
-    title: "Clear budgets. Defined scope. No surprises.",
-    body: "Each offer lists what is included, the average production timeline, and why that budget. Custom quotes available for any off-catalogue need.",
+    eyebrow: "Custom services",
+    title: "No rigid package. Support adjusted to your need.",
+    body: "Each project is studied according to context, complexity, timeline, support level and available budget. The goal is to propose a useful solution, not an unnecessary or oversized package.",
     popular: "Most requested",
-    requestQuote: "Request a quote",
+    requestQuote: "Receive a custom proposal",
     startChat: "Start chat",
-    customNote: "Need something off-catalogue? Custom quote within 24h.",
-    customCta: "Contact us",
+    customNote: "Specific need? A first exchange helps define the right scope.",
+    customCta: "Book a call",
     timeline: "Timeline",
     includes: "What's included",
     idealFor: "Ideal for",
@@ -171,33 +171,33 @@ const copy = {
       plans: [
         {
           name: "Essential",
-          price: "€ 90 / month",
+          price: "Light support",
           desc: "Security updates, backups, uptime monitoring.",
           items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
         },
         {
           name: "Comfort",
-          price: "€ 190 / month",
+          price: "Extended support",
           desc: "Everything in Essential + minor fixes and content additions.",
           items: ["Everything in Essential", "2h of changes / month", "Text and image updates", "Priority support (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "€ 390 / month",
+          price: "Priority follow-up",
           desc: "Everything in Comfort + light development and monthly analytics report.",
           items: ["Everything in Comfort", "5h of development / month", "Monthly analytics report", "Dedicated support (same-day)"],
         },
       ],
-      note: "No-commitment plans. Cancel anytime. Available after your project is delivered.",
-      cta: "Request a quote",
+      note: "Support level is adjusted after delivery according to autonomy, priorities and desired pace of evolution.",
+      cta: "Discuss support",
     },
     offers: [
       {
         id: "landing-portfolio",
         tag: null,
         title: "Landing / Portfolio",
-        price: "€ 300 – 600",
+        price: "Simple project",
         timeline: "1 – 2 weeks",
         summary: "Single page, clean design, mobile-ready. Perfect for a personal portfolio, freelance activity, or a project to test.",
         includes: [
@@ -214,7 +214,7 @@ const copy = {
         id: "site-vitrine",
         tag: null,
         title: "Showcase site",
-        price: "€ 900 – 1,500",
+        price: "Professional presence",
         timeline: "2 – 3 weeks",
         summary: "Professional online presence, clean design, basic SEO, and contact form.",
         includes: [
@@ -232,7 +232,7 @@ const copy = {
         id: "site-corporate",
         tag: "Most requested",
         title: "Corporate site",
-        price: "€ 2,200 – 4,500",
+        price: "Scalable project",
         timeline: "3 – 5 weeks",
         summary: "Full site with services pages, blog or news, premium design, and advanced SEO.",
         includes: [
@@ -251,7 +251,7 @@ const copy = {
         id: "application-web",
         tag: null,
         title: "Custom web app",
-        price: "€ 4,000 – 12,000",
+        price: "Custom project",
         timeline: "4 – 10 weeks",
         summary: "Business tool, portal, dashboard, or SaaS with auth, database, and business logic.",
         includes: [
@@ -270,7 +270,7 @@ const copy = {
         id: "automatisation-ia",
         tag: null,
         title: "AI automation",
-        price: "€ 1,500 – 8,000",
+        price: "Adapted automation",
         timeline: "2 – 6 weeks",
         summary: "Automated workflows, AI assistant, document processing, or LLM integration into your existing tools.",
         includes: [
@@ -289,22 +289,22 @@ const copy = {
       title: "Off-catalogue project?",
       body: "Mobile app, advanced e-commerce, GLPI workflow, full redesign. Any need is evaluated on a custom basis.",
       items: [
-        { label: "Mobile app", price: "€ 6,000 – 20,000" },
-        { label: "Full e-commerce", price: "€ 3,500 – 9,000" },
-        { label: "GLPI support flow", price: "€ 2,500 – 8,000" },
-        { label: "Redesign + migration", price: "On quote" },
+        { label: "Mobile app", price: "Estimated after scoping" },
+        { label: "Full e-commerce", price: "Scope defined together" },
+        { label: "GLPI support flow", price: "Adapted to your organisation" },
+        { label: "Redesign + migration", price: "Custom proposal" },
       ],
     },
   },
   de: {
-    eyebrow: "Angebote & Preise",
-    title: "Klare Budgets. Definierter Scope. Keine Überraschungen.",
-    body: "Jedes Angebot zeigt was enthalten ist, die durchschnittliche Produktionsdauer und warum dieses Budget. Individuelle Offerte für jeden Sonderbedarf.",
+    eyebrow: "Individuelle Leistungen",
+    title: "Keine starre Formel. Begleitung passend zum Bedarf.",
+    body: "Jedes Projekt wird nach Kontext, Komplexität, Zeitplan, gewünschter Begleitung und verfügbarem Budget betrachtet. Ziel ist eine nützliche Lösung, kein unnötig großes Paket.",
     popular: "Am häufigsten gefragt",
-    requestQuote: "Projekt anfragen",
+    requestQuote: "Individuelle Offerte erhalten",
     startChat: "Chat starten",
-    customNote: "Bedarf außerhalb des Katalogs? Individuelle Offerte in 24h.",
-    customCta: "Kontakt aufnehmen",
+    customNote: "Spezieller Bedarf? Ein Erstgespräch hilft, den passenden Umfang zu definieren.",
+    customCta: "Gespräch planen",
     timeline: "Dauer",
     includes: "Enthalten",
     idealFor: "Ideal für",
@@ -315,33 +315,33 @@ const copy = {
       plans: [
         {
           name: "Basis",
-          price: "€ 90 / Monat",
+          price: "Leichter Support",
           desc: "Sicherheitsupdates, Backups, Uptime-Monitoring.",
           items: ["CMS- / Abhängigkeits-Updates", "Wöchentliches Backup", "24/7 Uptime-Monitoring", "E-Mail-Support (48h)"],
         },
         {
           name: "Komfort",
-          price: "€ 190 / Monat",
+          price: "Erweiterter Support",
           desc: "Alles aus Basis + kleinere Korrekturen und Inhaltsaktualisierungen.",
           items: ["Alles aus Basis", "2h Änderungen / Monat", "Text- und Bildaktualisierungen", "Prioritäts-Support (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "€ 390 / Monat",
+          price: "Priorisierte Begleitung",
           desc: "Alles aus Komfort + leichte Entwicklung und monatlicher Analytics-Bericht.",
           items: ["Alles aus Komfort", "5h Entwicklung / Monat", "Monatlicher Analytics-Bericht", "Dedizierter Support (am selben Tag)"],
         },
       ],
-      note: "Monatlich kündbar. Keine Mindestlaufzeit. Verfügbar nach Projektabschluss.",
-      cta: "Projekt anfragen",
+      note: "Der Support wird nach Lieferung an Autonomie, Prioritäten und gewünschtes Entwicklungstempo angepasst.",
+      cta: "Support besprechen",
     },
     offers: [
       {
         id: "landing-portfolio",
         tag: null,
         title: "Landing / Portfolio",
-        price: "€ 300 – 600",
+        price: "Einfaches Projekt",
         timeline: "1 – 2 Wochen",
         summary: "Eine Seite, sauberes Design, mobil optimiert. Ideal für ein persönliches Portfolio, freiberufliche Tätigkeit oder ein Testprojekt.",
         includes: [
@@ -358,7 +358,7 @@ const copy = {
         id: "site-vitrine",
         tag: null,
         title: "Unternehmenswebsite",
-        price: "€ 900 – 1.500",
+        price: "Professionelle Präsenz",
         timeline: "2 – 3 Wochen",
         summary: "Professionelle Online-Präsenz, sauberes Design, Basis-SEO und Kontaktformular.",
         includes: [
@@ -376,7 +376,7 @@ const copy = {
         id: "site-corporate",
         tag: "Am häufigsten gefragt",
         title: "Corporate-Website",
-        price: "€ 2.200 – 4.500",
+        price: "Erweiterbares Projekt",
         timeline: "3 – 5 Wochen",
         summary: "Vollständige Website mit Leistungsseiten, Blog oder News, Premium-Design und erweitertem SEO.",
         includes: [
@@ -395,7 +395,7 @@ const copy = {
         id: "application-web",
         tag: null,
         title: "Maßgeschneiderte Web-App",
-        price: "€ 4.000 – 12.000",
+        price: "Individuelles Projekt",
         timeline: "4 – 10 Wochen",
         summary: "Business-Tool, Portal, Dashboard oder SaaS mit Auth, Datenbank und Geschäftslogik.",
         includes: [
@@ -414,7 +414,7 @@ const copy = {
         id: "automatisation-ia",
         tag: null,
         title: "KI-Automatisierung",
-        price: "€ 1.500 – 8.000",
+        price: "Angepasste Automation",
         timeline: "2 – 6 Wochen",
         summary: "Automatisierte Workflows, KI-Assistent, Dokumentenverarbeitung oder LLM-Integration in bestehende Tools.",
         includes: [
@@ -433,10 +433,10 @@ const copy = {
       title: "Projekt außerhalb des Katalogs?",
       body: "Mobile App, erweiterter E-Commerce, GLPI-Workflow, vollständige Neugestaltung. Jeder Bedarf wird individuell bewertet.",
       items: [
-        { label: "Mobile App", price: "€ 6.000 – 20.000" },
-        { label: "Vollständiger E-Commerce", price: "€ 3.500 – 9.000" },
-        { label: "GLPI-Support-Workflow", price: "€ 2.500 – 8.000" },
-        { label: "Redesign + Migration", price: "Auf Anfrage" },
+        { label: "Mobile App", price: "Schätzung nach Scoping" },
+        { label: "Vollständiger E-Commerce", price: "Umfang gemeinsam definiert" },
+        { label: "GLPI-Support-Workflow", price: "An eure Organisation angepasst" },
+        { label: "Redesign + Migration", price: "Individuelle Offerte" },
       ],
     },
   },
@@ -482,11 +482,13 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                   <p className="mt-1 text-sm text-gray-400">{offer.summary}</p>
                 </div>
 
-                {/* Price + timeline */}
+                {/* Scope + timeline */}
                 <div className="mb-5 flex items-end justify-between rounded-xl border border-white/8 bg-black/20 px-4 py-3">
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500">Budget</p>
-                    <p className="mt-0.5 text-2xl font-extrabold text-white">{offer.price}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-500">
+                      {locale === "fr" ? "Type de besoin" : locale === "en" ? "Need type" : "Bedarf"}
+                    </p>
+                    <p className="mt-0.5 text-xl font-extrabold text-white">{offer.price}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-xs uppercase tracking-widest text-gray-500">{content.timeline}</p>

@@ -31,7 +31,7 @@ const copy = {
     viewCase: "Voir l'étude de cas",
     visitSite: "Voir le site",
     cta: "Votre projet est le prochain.",
-    ctaSub: "Devis gratuit sous 24h. Délai clair. Prix fixe.",
+    ctaSub: "Devis personnalisé sous 24h. Délai clair. Périmètre adapté.",
     ctaBtn: "Démarrer mon projet",
     ctaWa: "WhatsApp direct",
   },

@@ -63,10 +63,10 @@ function getItemKey(item: AssistantRecord) {
 
 function formatBudget(item: AssistantRecord) {
   if (item.summary.budget_range.max <= 0) {
-    return "À définir";
+    return "À cadrer";
   }
 
-  return `${new Intl.NumberFormat("fr-CH").format(item.summary.budget_range.min)} - ${new Intl.NumberFormat("fr-CH").format(item.summary.budget_range.max)} CHF`;
+  return "Budget client noté";
 }
 
 function formatDate(value: string) {

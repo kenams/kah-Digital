@@ -34,7 +34,6 @@ type MvpQuotePayload = {
 export function MvpQuoteForm() {
   const router = useRouter();
   const { isEnglish, prefix } = useLocale();
-  const isGerman = false;
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
   const formRef = useRef<HTMLFormElement | null>(null);
   const widgetRef = useRef<TurnstileWidgetHandle | null>(null);
@@ -45,7 +44,7 @@ export function MvpQuoteForm() {
   const [captchaReset, setCaptchaReset] = useState(0);
   const [captchaError, setCaptchaError] = useState("");
 
-  const mobilePlatformOptions = isEnglish ? ["iOS", "Android", "Both"] : isGerman ? ["iOS", "Android", "Beide"] : ["iOS", "Android", "Les deux"];
+  const mobilePlatformOptions = isEnglish ? ["iOS", "Android", "Both"] : ["iOS", "Android", "Les deux"];
   const mobileFeatureOptions = isEnglish
     ? [
         "Authentication / roles",
@@ -57,18 +56,7 @@ export function MvpQuoteForm() {
         "Analytics tracking",
         "Sensor integration (GPS, camera)",
       ]
-    : isGerman
-      ? [
-          "Authentifizierung / Rollen",
-          "In-App-Zahlung",
-          "Buchung / Planung",
-          "Chat / Community",
-          "Push-Benachrichtigungen",
-          "Offline-Modus",
-          "Analytics-Tracking",
-          "Sensor-Integration (GPS, Kamera)",
-        ]
-      : [
+    : [
         "Authentification / roles",
         "Paiement in-app",
         "Reservation / planning",
@@ -80,35 +68,24 @@ export function MvpQuoteForm() {
       ];
 
   const budgetOptions = isEnglish
-    ? ["Under € 10,000", "€ 10,000 - 20,000", "€ 20,000 - 30,000", "€ 30,000 +"]
-    : isGerman
-      ? ["Unter € 10'000", "€ 10'000 - 20'000", "€ 20'000 - 30'000", "€ 30'000 +"]
-      : ["Moins de 10 000 €", "10 000 € - 20 000 €", "20 000 € - 30 000 €", "30 000 € +"];
+    ? ["To be discussed", "Limited MVP budget", "Comfortable MVP budget", "Investment planned", "I need advice"]
+    : ["À discuter", "Budget MVP limité", "Budget MVP confortable", "Investissement prévu", "J'ai besoin de conseil"];
 
   const timelineOptions = isEnglish
     ? ["ASAP", "4-6 weeks", "6-10 weeks", "3 months +"]
-    : isGerman
-      ? ["ASAP", "4-6 Wochen", "6-10 Wochen", "3 Monate +"]
-      : ["ASAP", "4-6 semaines", "6-10 semaines", "3 mois et +"];
+    : ["ASAP", "4-6 semaines", "6-10 semaines", "3 mois et +"];
 
   const storeSupportOptions = isEnglish
     ? ["Prototype TestFlight / Android Beta", "Publish on App Store + Play Store", "Not sure yet"]
-    : isGerman
-      ? ["Prototype via TestFlight / Android Beta", "Publikation im App Store + Play Store", "Noch nicht sicher"]
-      : ["Prototype TestFlight / Android Beta", "Publication App Store + Play Store", "Je ne sais pas encore"];
+    : ["Prototype TestFlight / Android Beta", "Publication App Store + Play Store", "Je ne sais pas encore"];
+
   const trustItems = isEnglish
     ? [
         { title: "Reply in 24h", detail: "Budget + MVP scope" },
         { title: "Senior team", detail: "Design + build in one sprint" },
         { title: "Confidential", detail: "NDA on request" },
       ]
-    : isGerman
-      ? [
-          { title: "Antwort in 24h", detail: "Budget + MVP-Umfang" },
-          { title: "Senior-Team", detail: "Design + Build in einem Sprint" },
-          { title: "Vertraulich", detail: "NDA auf Anfrage" },
-        ]
-      : [
+    : [
         { title: "Reponse 24h", detail: "Budget + scope MVP" },
         { title: "Equipe senior", detail: "Design + build en un sprint" },
         { title: "Confidentiel", detail: "NDA sur demande" },
@@ -123,32 +100,32 @@ export function MvpQuoteForm() {
     const phoneRaw = String(formData.get("phone") ?? "").trim();
     const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
     const values: Array<[string, string]> = [
-      [isEnglish ? "Client type" : isGerman ? "Kundentyp" : "Type de client", String(formData.get("clientType") ?? "")],
-      [isEnglish ? "Company name" : isGerman ? "Firmenname" : "Nom de societe", String(formData.get("companyName") ?? "")],
-      [isEnglish ? "Full name" : isGerman ? "Vollstaendiger Name" : "Nom complet", String(formData.get("name") ?? "")],
+      [isEnglish ? "Client type" : "Type de client", String(formData.get("clientType") ?? "")],
+      [isEnglish ? "Company name" : "Nom de societe", String(formData.get("companyName") ?? "")],
+      [isEnglish ? "Full name" : "Nom complet", String(formData.get("name") ?? "")],
       ["Email", String(formData.get("email") ?? "")],
-      [isEnglish ? "Phone" : isGerman ? "Telefon" : "Telephone", phoneValue],
-      [isEnglish ? "Idea / promise" : isGerman ? "Idee / Versprechen" : "Idee / promesse", String(formData.get("idea") ?? "")],
-      [isEnglish ? "Platforms" : isGerman ? "Plattformen" : "Plateformes", selectedPlatforms.join(", ")],
-      [isEnglish ? "Key features" : isGerman ? "Kernfunktionen" : "Fonctionnalites cles", selectedFeatures.join(", ")],
-      [isEnglish ? "How it works" : isGerman ? "Ablauf" : "Fonctionnement", String(formData.get("flows") ?? "")],
-      [isEnglish ? "Visual mood" : isGerman ? "Visuelle Richtung" : "Univers visuel", String(formData.get("visualMood") ?? "")],
-      [isEnglish ? "Tech / APIs" : isGerman ? "Tech / APIs" : "Technos / APIs", String(formData.get("techStack") ?? "")],
-      [isEnglish ? "Store release" : isGerman ? "Store-Release" : "Publication / stores", String(formData.get("storeSupport") ?? "")],
-      [isEnglish ? "References" : isGerman ? "Referenzen" : "References", String(formData.get("inspirations") ?? "")],
-      [isEnglish ? "Budget" : "Budget", String(formData.get("budget") ?? "")],
-      [isEnglish ? "Timeline" : isGerman ? "Zeitplan" : "Delai", String(formData.get("timeline") ?? "")],
-      [isEnglish ? "Notes" : isGerman ? "Hinweise" : "Notes", String(formData.get("notes") ?? "")],
+      [isEnglish ? "Phone" : "Telephone", phoneValue],
+      [isEnglish ? "Idea / promise" : "Idee / promesse", String(formData.get("idea") ?? "")],
+      [isEnglish ? "Platforms" : "Plateformes", selectedPlatforms.join(", ")],
+      [isEnglish ? "Key features" : "Fonctionnalites cles", selectedFeatures.join(", ")],
+      [isEnglish ? "How it works" : "Fonctionnement", String(formData.get("flows") ?? "")],
+      [isEnglish ? "Visual mood" : "Univers visuel", String(formData.get("visualMood") ?? "")],
+      [isEnglish ? "Tech / APIs" : "Technos / APIs", String(formData.get("techStack") ?? "")],
+      [isEnglish ? "Store release" : "Publication / stores", String(formData.get("storeSupport") ?? "")],
+      [isEnglish ? "References" : "References", String(formData.get("inspirations") ?? "")],
+      ["Budget", String(formData.get("budget") ?? "")],
+      [isEnglish ? "Timeline" : "Delai", String(formData.get("timeline") ?? "")],
+      [isEnglish ? "Notes" : "Notes", String(formData.get("notes") ?? "")],
     ];
 
     const doc = new jsPDF();
     drawKahDigitalPdfLogo(doc, 16, 10);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
-    doc.text(isEnglish ? "MVP request" : isGerman ? "MVP-Anfrage" : "Demande MVP", 16, 42);
+    doc.text(isEnglish ? "MVP request" : "Demande MVP", 16, 42);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.text(isEnglish ? "Generated from the MVP form" : isGerman ? "Erstellt aus dem MVP-Formular" : "Genere depuis le formulaire MVP", 16, 49);
+    doc.text(isEnglish ? "Generated from the MVP form" : "Genere depuis le formulaire MVP", 16, 49);
     doc.setDrawColor(210);
     doc.line(16, 53, 194, 53);
 
@@ -176,7 +153,7 @@ export function MvpQuoteForm() {
       y += 4;
     });
 
-    doc.save(isEnglish ? "kah-digital-mvp.pdf" : isGerman ? "kah-digital-mvp-offerte.pdf" : "devis-mvp-kah-digital.pdf");
+    doc.save(isEnglish ? "kah-digital-mvp.pdf" : "devis-mvp-kah-digital.pdf");
   };
 
   const submitMvpRequest = useCallback(async (form: HTMLFormElement, token: string) => {
@@ -188,19 +165,19 @@ export function MvpQuoteForm() {
     const phoneValue = phoneRaw ? `${phoneCountry} ${phoneRaw}`.trim() : "";
 
     if (selectedPlatforms.length === 0) {
-      setServerMessage(isEnglish ? "Select at least one platform." : isGerman ? "Waehle mindestens eine Plattform." : "Sélectionne au moins une plateforme.");
+      setServerMessage(isEnglish ? "Select at least one platform." : "Sélectionne au moins une plateforme.");
       setStatus("error");
       return;
     }
 
     if (!siteKey) {
-      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement.");
+      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configuré. Contacte-nous directement.");
       setStatus("error");
       return;
     }
 
     if (!token) {
-      setServerMessage(isEnglish ? "Validate the captcha before sending." : isGerman ? "Bitte bestätige das Captcha vor dem Senden." : "Valide le captcha avant d'envoyer.");
+      setServerMessage(isEnglish ? "Validate the captcha before sending." : "Valide le captcha avant d'envoyer.");
       setStatus("error");
       return;
     }
@@ -211,7 +188,7 @@ export function MvpQuoteForm() {
       phone: phoneValue || undefined,
       clientType: String(formData.get("clientType") ?? "").trim() as "entreprise" | "particulier" | undefined,
       companyName: String(formData.get("companyName") ?? "").trim() || undefined,
-      projectType: isEnglish ? "Mobile MVP app" : isGerman ? "Mobile MVP-App" : "Application mobile MVP",
+      projectType: isEnglish ? "Mobile MVP app" : "Application mobile MVP",
       goal: String(formData.get("idea") ?? "").trim(),
       pages: [],
       mobilePlatforms: selectedPlatforms,
@@ -222,9 +199,9 @@ export function MvpQuoteForm() {
       budget: String(formData.get("budget") ?? ""),
       timeline: String(formData.get("timeline") ?? ""),
       message: [
-        `${isEnglish ? "Flow" : isGerman ? "Ablauf" : "Fonctionnement"} : ${String(formData.get("flows") ?? "").trim() || "-"}`,
-        `${isEnglish ? "Visual mood" : isGerman ? "Visuelle Richtung" : "Univers visuel"} : ${String(formData.get("visualMood") ?? "").trim() || "-"}`,
-        `${isEnglish ? "Notes" : isGerman ? "Hinweise" : "Notes"} : ${String(formData.get("notes") ?? "").trim() || "-"}`,
+        `${isEnglish ? "Flow" : "Fonctionnement"} : ${String(formData.get("flows") ?? "").trim() || "-"}`,
+        `${isEnglish ? "Visual mood" : "Univers visuel"} : ${String(formData.get("visualMood") ?? "").trim() || "-"}`,
+        `Notes : ${String(formData.get("notes") ?? "").trim() || "-"}`,
       ]
         .filter(Boolean)
         .join("\n"),
@@ -234,7 +211,7 @@ export function MvpQuoteForm() {
     };
 
     if (!payload.goal || payload.goal.length < 5) {
-      setServerMessage(isEnglish ? "Describe your idea briefly so we can reply." : isGerman ? "Beschreibe deine Idee kurz, damit wir konkret antworten können." : "Décris rapidement ton idée pour que l'on puisse te répondre.");
+      setServerMessage(isEnglish ? "Describe your idea briefly so we can reply." : "Décris rapidement ton idée pour que l'on puisse te répondre.");
       setStatus("error");
       return;
     }
@@ -253,9 +230,7 @@ export function MvpQuoteForm() {
         const errorPayload = await response.json().catch(() => null);
         const fallbackMessage = isEnglish
           ? "Unable to send the request. Check your connection or contact us."
-          : isGerman
-            ? "Die Anfrage konnte nicht gesendet werden. Bitte pruefe deine Verbindung oder schreibe uns direkt."
-            : "Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.";
+          : "Impossible d'envoyer la demande. Verifie ta connexion ou ecris-nous.";
         const errorMessage = errorPayload?.error ?? fallbackMessage;
         setCaptchaToken("");
         setCaptchaReset((prev) => prev + 1);
@@ -265,7 +240,7 @@ export function MvpQuoteForm() {
       }
 
       setStatus("success");
-      setServerMessage(isEnglish ? "Thanks, request sent. Redirecting..." : isGerman ? "Danke, Anfrage gesendet. Weiterleitung laeuft..." : "Merci, demande envoyée. Redirection en cours...");
+      setServerMessage(isEnglish ? "Thanks, request sent. Redirecting..." : "Merci, demande envoyée. Redirection en cours...");
       trackEvent("generate_lead", { form_name: "mvp", destination: "devis_mvp" });
       form.reset();
       setCaptchaToken("");
@@ -276,9 +251,9 @@ export function MvpQuoteForm() {
     } catch (error) {
       console.error(error);
       setStatus("error");
-      setServerMessage(isEnglish ? "Unable to send the request. Check your connection or contact us." : isGerman ? "Die Anfrage konnte nicht gesendet werden. Bitte pruefe deine Verbindung oder schreibe uns direkt." : "Impossible d'envoyer la demande. Vérifie ta connexion ou écris-nous.");
+      setServerMessage(isEnglish ? "Unable to send the request. Check your connection or contact us." : "Impossible d'envoyer la demande. Vérifie ta connexion ou écris-nous.");
     }
-  }, [isEnglish, isGerman, prefix, router, siteKey]);
+  }, [isEnglish, prefix, router, siteKey]);
 
   const handleCaptchaVerify = useCallback((token: string) => {
     setCaptchaToken(token);
@@ -295,9 +270,9 @@ export function MvpQuoteForm() {
   }, []);
   const handleCaptchaError = useCallback(() => {
     setCaptchaToken("");
-    setCaptchaError(isEnglish ? "Verification failed. Try again." : isGerman ? "Verifizierung fehlgeschlagen. Bitte erneut versuchen." : "Vérification impossible. Réessaie.");
+    setCaptchaError(isEnglish ? "Verification failed. Try again." : "Vérification impossible. Réessaie.");
     pendingFormRef.current = null;
-  }, [isEnglish, isGerman]);
+  }, [isEnglish]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -306,13 +281,13 @@ export function MvpQuoteForm() {
     const selectedPlatforms = formData.getAll("mobilePlatforms").map((value) => String(value));
 
     if (selectedPlatforms.length === 0) {
-      setServerMessage(isEnglish ? "Select at least one platform." : isGerman ? "Waehle mindestens eine Plattform." : "Sélectionne au moins une plateforme.");
+      setServerMessage(isEnglish ? "Select at least one platform." : "Sélectionne au moins une plateforme.");
       setStatus("error");
       return;
     }
 
     if (!siteKey) {
-      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : isGerman ? "Captcha ist nicht konfiguriert. Kontaktiere uns direkt." : "Captcha non configuré. Contacte-nous directement.");
+      setServerMessage(isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configuré. Contacte-nous directement.");
       setStatus("error");
       return;
     }
@@ -355,7 +330,7 @@ export function MvpQuoteForm() {
       </div>
       <div className="grid gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="clientType" className="text-sm text-white/70">{isEnglish ? "You are *" : isGerman ? "Du bist *" : "Tu es *"}</label>
+          <label htmlFor="clientType" className="text-sm text-white/70">{isEnglish ? "You are *" : "Tu es *"}</label>
           <select
             id="clientType"
             name="clientType"
@@ -363,30 +338,30 @@ export function MvpQuoteForm() {
             className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Choisir"}</option>
-            <option value="entreprise">{isEnglish ? "Company" : isGerman ? "Unternehmen" : "Entreprise"}</option>
-            <option value="particulier">{isEnglish ? "Individual" : isGerman ? "Privatperson" : "Particulier"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : "Choisir"}</option>
+            <option value="entreprise">{isEnglish ? "Company" : "Entreprise"}</option>
+            <option value="particulier">{isEnglish ? "Individual" : "Particulier"}</option>
           </select>
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="companyName" className="text-sm text-white/70">
-            {isEnglish ? "Company name (if company)" : isGerman ? "Firmenname (falls Unternehmen)" : "Nom de société (si entreprise)"}
+            {isEnglish ? "Company name (if company)" : "Nom de société (si entreprise)"}
           </label>
           <input
             id="companyName"
             name="companyName"
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Studio Nova" : isGerman ? "Bsp.: Studio Nova" : "Ex : Studio Nova"}
+            placeholder={isEnglish ? "e.g. Studio Nova" : "Ex : Studio Nova"}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-sm text-white/70">{isEnglish ? "Full name *" : isGerman ? "Vollstaendiger Name *" : "Nom complet *"}</label>
+          <label htmlFor="name" className="text-sm text-white/70">{isEnglish ? "Full name *" : "Nom complet *"}</label>
           <input
             id="name"
             name="name"
             required
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Alex Martin" : isGerman ? "z. B. Alex Martin" : "Ex : Alex Martin"}
+            placeholder={isEnglish ? "e.g. Alex Martin" : "Ex : Alex Martin"}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -401,7 +376,7 @@ export function MvpQuoteForm() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm text-white/70">{isEnglish ? "Phone" : isGerman ? "Telefon" : "Téléphone"}</label>
+          <label htmlFor="phone" className="text-sm text-white/70">{isEnglish ? "Phone" : "Téléphone"}</label>
           <div className="flex flex-wrap gap-3">
             <select
               id="phoneCountry"
@@ -425,7 +400,7 @@ export function MvpQuoteForm() {
           </div>
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="idea" className="text-sm text-white/70">{isEnglish ? "Your idea / promise *" : isGerman ? "Deine Idee / das Versprechen *" : "Ton idée / la promesse *"}</label>
+          <label htmlFor="idea" className="text-sm text-white/70">{isEnglish ? "Your idea / promise *" : "Ton idée / la promesse *"}</label>
           <textarea
             id="idea"
             name="idea"
@@ -435,15 +410,13 @@ export function MvpQuoteForm() {
             placeholder={
               isEnglish
                 ? "e.g. Nutrition coaching app with weekly tracking and audio content."
-                : isGerman
-                  ? "z. B. Coaching-App mit Wochen-Tracking und Audio-Inhalten."
-                  : "Ex : app de coaching nutrition avec suivi hebdo et contenus audio."
+                : "Ex : app de coaching nutrition avec suivi hebdo et contenus audio."
             }
           />
         </div>
         <div className="premium-card md:col-span-2 space-y-3 rounded-3xl border border-white/15 bg-white/5 p-4 text-sm text-white/80">
           <p className="text-xs uppercase tracking-[0.4em] text-white/60">
-            {isEnglish ? "Target platforms *" : isGerman ? "Zielplattformen *" : "Plateformes ciblées *"}
+            {isEnglish ? "Target platforms *" : "Plateformes ciblées *"}
           </p>
           <div className="flex flex-wrap gap-3">
             {mobilePlatformOptions.map((platform) => (
@@ -461,7 +434,7 @@ export function MvpQuoteForm() {
         </div>
         <div className="premium-card md:col-span-2 space-y-3 rounded-3xl border border-white/15 bg-white/5 p-4 text-sm text-white/80">
           <p className="text-xs uppercase tracking-[0.4em] text-white/60">
-            {isEnglish ? "Key features" : isGerman ? "Kernfunktionen" : "Fonctionnalités clés"}
+            {isEnglish ? "Key features" : "Fonctionnalités clés"}
           </p>
           <div className="grid gap-3 md:grid-cols-2">
             {mobileFeatureOptions.map((feature) => (
@@ -478,7 +451,7 @@ export function MvpQuoteForm() {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="flows" className="text-sm text-white/70">{isEnglish ? "How does it work? *" : isGerman ? "Wie funktioniert es? *" : "Comment ça fonctionne ? *"}</label>
+          <label htmlFor="flows" className="text-sm text-white/70">{isEnglish ? "How does it work? *" : "Comment ça fonctionne ? *"}</label>
           <textarea
             id="flows"
             name="flows"
@@ -488,33 +461,31 @@ export function MvpQuoteForm() {
             placeholder={
               isEnglish
                 ? "e.g. 3-step onboarding, personalized feed, coach booking."
-                : isGerman
-                  ? "z. B. Onboarding in 3 Schritten, personalisierter Feed, Coach-Buchung."
-                  : "Ex : onboarding 3 étapes, feed personnalisé, réservation coach."
+                : "Ex : onboarding 3 étapes, feed personnalisé, réservation coach."
             }
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="visualMood" className="text-sm text-white/70">{isEnglish ? "Colors / visual mood *" : isGerman ? "Farben / visuelle Richtung *" : "Couleurs / univers visuel *"}</label>
+          <label htmlFor="visualMood" className="text-sm text-white/70">{isEnglish ? "Colors / visual mood *" : "Couleurs / univers visuel *"}</label>
           <input
             id="visualMood"
             name="visualMood"
             required
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. dark luxury, gold accents." : isGerman ? "z. B. dunkel, hochwertig, goldene Akzente." : "Ex : sombre luxe, touches or & violet."}
+            placeholder={isEnglish ? "e.g. dark luxury, gold accents." : "Ex : sombre luxe, touches or & violet."}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="techStack" className="text-sm text-white/70">{isEnglish ? "Tech or APIs you want" : isGerman ? "Gewuenschte Tech oder APIs" : "Technologies ou APIs souhaitées"}</label>
+          <label htmlFor="techStack" className="text-sm text-white/70">{isEnglish ? "Tech or APIs you want" : "Technologies ou APIs souhaitées"}</label>
           <input
             id="techStack"
             name="techStack"
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "e.g. Supabase, Stripe, Notion, internal API..." : isGerman ? "z. B. Supabase, Stripe, Notion, interne API..." : "Ex : Supabase, Stripe, Notion, API interne..."}
+            placeholder={isEnglish ? "e.g. Supabase, Stripe, Notion, internal API..." : "Ex : Supabase, Stripe, Notion, API interne..."}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="storeSupport" className="text-sm text-white/70">{isEnglish ? "Store release *" : isGerman ? "Store-Release *" : "Publication / stores *"}</label>
+          <label htmlFor="storeSupport" className="text-sm text-white/70">{isEnglish ? "Store release *" : "Publication / stores *"}</label>
           <select
             id="storeSupport"
             name="storeSupport"
@@ -522,7 +493,7 @@ export function MvpQuoteForm() {
             className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Choisir"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : "Choisir"}</option>
             {storeSupportOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -531,7 +502,7 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="inspirations" className="text-sm text-white/70">{isEnglish ? "Reference apps" : isGerman ? "Referenz-Apps" : "Apps de référence"}</label>
+          <label htmlFor="inspirations" className="text-sm text-white/70">{isEnglish ? "Reference apps" : "Apps de référence"}</label>
           <input
             id="inspirations"
             name="inspirations"
@@ -548,7 +519,7 @@ export function MvpQuoteForm() {
             className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Select" : isGerman ? "Wählen" : "Sélectionne"}</option>
+            <option value="" disabled>{isEnglish ? "Select" : "Sélectionne"}</option>
             {budgetOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -557,7 +528,7 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="timeline" className="text-sm text-white/70">{isEnglish ? "Timeline *" : isGerman ? "Zeitplan *" : "Délai *"}</label>
+          <label htmlFor="timeline" className="text-sm text-white/70">{isEnglish ? "Timeline *" : "Délai *"}</label>
           <select
             id="timeline"
             name="timeline"
@@ -565,7 +536,7 @@ export function MvpQuoteForm() {
             className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
             defaultValue=""
           >
-            <option value="" disabled>{isEnglish ? "Choose" : isGerman ? "Wählen" : "Choisis"}</option>
+            <option value="" disabled>{isEnglish ? "Choose" : "Choisis"}</option>
             {timelineOptions.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -574,18 +545,18 @@ export function MvpQuoteForm() {
           </select>
         </div>
         <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="notes" className="text-sm text-white/70">{isEnglish ? "Notes" : isGerman ? "Freie Hinweise" : "Notes libres"}</label>
+          <label htmlFor="notes" className="text-sm text-white/70">{isEnglish ? "Notes" : "Notes libres"}</label>
           <textarea
             id="notes"
             name="notes"
             rows={4}
             className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
-            placeholder={isEnglish ? "Constraints, team, roadmap, etc." : isGerman ? "Constraints, Team, Roadmap usw." : "Contraintes, équipe, roadmap, etc."}
+            placeholder={isEnglish ? "Constraints, team, roadmap, etc." : "Contraintes, équipe, roadmap, etc."}
           />
         </div>
       </div>
       <div className="mt-6 space-y-2 text-sm text-white/70">
-        <p>{isEnglish ? "Anti-spam verification" : isGerman ? "Anti-Spam-Verifizierung" : "Vérification anti-spam"}</p>
+        <p>{isEnglish ? "Anti-spam verification" : "Vérification anti-spam"}</p>
         {siteKey ? (
           <div className="min-h-[96px] rounded-2xl border border-white/15 bg-white/5 p-4 flex items-center">
             <TurnstileWidget
@@ -598,7 +569,7 @@ export function MvpQuoteForm() {
             />
           </div>
         ) : (
-          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : isGerman ? "Captcha ist nicht konfiguriert." : "Captcha non configuré."}</p>
+          <p className="text-amber-200">{isEnglish ? "Captcha not configured." : "Captcha non configuré."}</p>
         )}
         {captchaError && <p className="text-rose-200">{captchaError}</p>}
       </div>
@@ -608,28 +579,24 @@ export function MvpQuoteForm() {
           disabled={isSubmitting}
           className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? (isEnglish ? "Sending..." : isGerman ? "Versand laeuft..." : "Envoi en cours...") : isEnglish ? "Send my MVP request" : isGerman ? "MVP-Anfrage senden" : "Envoyer ma demande MVP"}
+          {isSubmitting ? (isEnglish ? "Sending..." : "Envoi en cours...") : isEnglish ? "Send my MVP request" : "Envoyer ma demande MVP"}
         </button>
         <button
           type="button"
           onClick={exportPdf}
           className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/80 transition hover:border-white hover:text-white"
         >
-          {isEnglish ? "Export to PDF" : isGerman ? "Als PDF exportieren" : "Exporter en PDF"}
+          {isEnglish ? "Export to PDF" : "Exporter en PDF"}
         </button>
         <p className="text-xs text-white/60">
           {isEnglish
             ? "Free estimate, reply within 24h. No commitment."
-            : isGerman
-              ? "Kostenlose Anfrage, Rückmeldung innerhalb von 24h. Unverbindlich."
-              : "Devis gratuit, réponse sous 24h. Aucun engagement."}
+            : "Devis gratuit, réponse sous 24h. Aucun engagement."}
         </p>
         <p className="text-xs text-white/55">
           {isEnglish
-            ? "MVP quotes are issued in €. Payment is made by bank transfer, either in one payment or according to the schedule stated on the quote."
-            : isGerman
-              ? "MVP-Angebote werden in € erstellt. Die Zahlung erfolgt per Banküberweisung, entweder einmalig oder gemäß dem im Angebot definierten Zahlungsplan."
-              : "Les devis MVP sont émis en €. Le paiement se fait par virement bancaire, en une fois ou selon l'échéancier précisé sur le devis."}
+            ? "The MVP proposal is adjusted to the real scope, launch priorities and validation strategy."
+            : "La proposition MVP est ajustée au périmètre réel, aux priorités de lancement et à la stratégie de validation."}
         </p>
         {serverMessage && (
           <p

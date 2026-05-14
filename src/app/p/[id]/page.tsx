@@ -77,11 +77,11 @@ const COPY: Record<string, {
     scoreLabel: "Score digital actuel",
     problemsTitle: "Ce qu'on a détecté",
     recoTitle: "Notre proposition",
-    priceLabel: "Budget estimé",
+    priceLabel: "Proposition personnalisée",
     ctaWhatsApp: "Discuter sur WhatsApp",
     ctaCall: "Appeler maintenant",
     ctaEmail: "Répondre par email",
-    ctaQuote: "Demander un devis gratuit",
+    ctaQuote: "Demander un devis personnalisé",
     footer: "Cette analyse a été réalisée gratuitement par KAH-Digital. Aucun engagement de votre part.",
     sevLabel: { critical: "Critique", medium: "Moyen", low: "Mineur" },
     socialTitle: "Ils nous ont fait confiance",
@@ -92,11 +92,11 @@ const COPY: Record<string, {
     scoreLabel: "Current digital score",
     problemsTitle: "What we found",
     recoTitle: "Our proposal",
-    priceLabel: "Estimated budget",
+    priceLabel: "Custom proposal",
     ctaWhatsApp: "Chat on WhatsApp",
     ctaCall: "Call now",
     ctaEmail: "Reply by email",
-    ctaQuote: "Request a free quote",
+    ctaQuote: "Request a custom quote",
     footer: "This analysis was performed for free by KAH-Digital. No commitment required.",
     sevLabel: { critical: "Critical", medium: "Medium", low: "Minor" },
     socialTitle: "They trusted us",
@@ -107,11 +107,11 @@ const COPY: Record<string, {
     scoreLabel: "Aktueller Digital-Score",
     problemsTitle: "Was wir gefunden haben",
     recoTitle: "Unser Vorschlag",
-    priceLabel: "Geschätztes Budget",
+    priceLabel: "Individuelles Angebot",
     ctaWhatsApp: "WhatsApp schreiben",
     ctaCall: "Jetzt anrufen",
     ctaEmail: "Per E-Mail antworten",
-    ctaQuote: "Kostenloses Angebot anfordern",
+    ctaQuote: "Individuelles Angebot anfordern",
     footer: "Diese Analyse wurde kostenlos von KAH-Digital erstellt. Keine Verpflichtung.",
     sevLabel: { critical: "Kritisch", medium: "Mittel", low: "Gering" },
     socialTitle: "Die uns vertraut haben",
@@ -259,11 +259,23 @@ export default async function ProspectLandingPage({ params }: Props) {
           </div>
         )}
 
-        {/* Price */}
+        {/* Custom proposal */}
         <div className="mb-8 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-6 text-center">
           <div className="text-sm text-gray-400">{c.priceLabel}</div>
-          <div className="mt-1 text-3xl font-black text-white">{audit.priceRange}</div>
-          <div className="mt-1 text-xs text-gray-500">Devis personnalisé gratuit · Réponse sous 24h</div>
+          <div className="mt-1 text-2xl font-black text-white">
+            {lang === "en"
+              ? "Adjusted after a short scoping call"
+              : lang === "de"
+                ? "Nach einem kurzen Erstgespräch angepasst"
+                : "Ajustée après un court échange de cadrage"}
+          </div>
+          <div className="mt-2 text-xs text-gray-500">
+            {lang === "en"
+              ? "Clear custom quote · No obligation"
+              : lang === "de"
+                ? "Klares individuelles Angebot · Unverbindlich"
+                : "Devis personnalisé clair · Sans engagement"}
+          </div>
         </div>
 
         {/* CTAs */}

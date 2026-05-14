@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "Site web pour restaurant : ce qu'il faut vraiment en 2026 — KAH-Digital",
-  description: "Menu en ligne, réservation, Google Maps, avis — ce dont un restaurant a besoin sur son site web. Tarifs et guide pratique.",
+  description: "Menu en ligne, réservation, Google Maps, avis — ce dont un restaurant a besoin sur son site web. Devis et guide pratique.",
   keywords: ["site web restaurant", "site internet restaurant", "création site restaurant", "site web bar", "site web pizzeria", "réservation en ligne restaurant"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-restaurant" },
   openGraph: {
@@ -29,7 +29,7 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Combien coûte un site web pour un restaurant ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site restaurant complet (menu, réservation, photos, Google Maps) coûte entre 800 et 1 500€ selon les fonctionnalités." } },
+    { "@type": "Question", "name": "comment estimer un site web pour un restaurant ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site restaurant complet (menu, réservation, photos, Google Maps) s'estime après cadrage selon les fonctionnalités." } },
     { "@type": "Question", "name": "Vaut-il mieux un site ou une fiche Google My Business ?", "acceptedAnswer": { "@type": "Answer", "text": "Les deux sont complémentaires. La fiche Google capte les recherches locales immédiates, le site convertit les visiteurs et vous appartient vraiment." } },
     { "@type": "Question", "name": "Faut-il intégrer la réservation en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui si votre restaurant prend des réservations. Un système simple (TheFork, Formitable, ou un formulaire) peut doubler vos réservations en ligne." } },
     { "@type": "Question", "name": "Mon site doit-il être mobile-first ?", "acceptedAnswer": { "@type": "Answer", "text": "Absolument. Plus de 70% des recherches restaurant se font sur mobile, souvent au moment où la personne cherche où manger maintenant." } },
@@ -99,16 +99,16 @@ export default function SiteWebRestaurantPage() {
           Beaucoup de restaurateurs pensent que leur fiche Google suffit. C'est faux. La fiche Google capte l'intention immédiate ("restaurant proche"), mais votre site est votre outil de conversion : menu complet, ambiance, histoire, réservation directe sans commission.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          TheFork prend une commission sur chaque couvert. Un formulaire de réservation sur votre propre site vous coûte zéro commission.
+          TheFork prend une commission sur chaque couvert. Un formulaire de réservation sur votre propre site vous s'estime zéro commission.
         </p>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Combien ça coûte ?</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Combien ça s'estime ?</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site vitrine simple (4-5 pages)", price: "800 – 1 000€", delay: "1–2 semaines" },
-            { label: "Avec réservation en ligne", price: "1 000 – 1 500€", delay: "2–3 semaines" },
-            { label: "Avec commande en ligne", price: "1 800 – 2 800€", delay: "3–4 semaines" },
-            { label: "Maintenance + mises à jour menu", price: "150 – 250€/an", delay: "Support inclus" },
+            { label: "Site vitrine simple (4-5 pages)", price: "selon le périmètre", delay: "1–2 semaines" },
+            { label: "Avec réservation en ligne", price: "selon le périmètre", delay: "2–3 semaines" },
+            { label: "Avec commande en ligne", price: "selon le périmètre", delay: "3–4 semaines" },
+            { label: "Maintenance + mises à jour menu", price: "selon le périmètre", delay: "Support inclus" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>
@@ -130,7 +130,7 @@ export default function SiteWebRestaurantPage() {
 
         <div className="rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-orange-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Un site qui fait venir des clients dans votre restaurant</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis gratuit · Dès € 800</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-red-500/30">
               Demander un devis <FiArrowRight size={15} />
@@ -144,3 +144,6 @@ export default function SiteWebRestaurantPage() {
     </div>
   );
 }
+
+
+

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
@@ -68,10 +68,10 @@ export default function CreationSiteWebPMEPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Étape 2 — Choisir le bon type de site</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { type: "Landing page", ideal: "Tester une offre, lancer un produit, freelances", price: "€ 300 – 600" },
-            { type: "Site vitrine", ideal: "PME locale, professions libérales, artisans", price: "€ 900 – 1 500" },
-            { type: "Site corporate", ideal: "Entreprises établies, multilingue, CMS", price: "€ 2 200 – 4 500" },
-            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "€ 2 500 – 8 000" },
+            { type: "Landing page", ideal: "Tester une offre, lancer un produit, freelances", price: "devis personnalisé" },
+            { type: "Site vitrine", ideal: "PME locale, professions libérales, artisans", price: "devis personnalisé" },
+            { type: "Site corporate", ideal: "Entreprises établies, multilingue, CMS", price: "devis personnalisé" },
+            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "devis personnalisé" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-5">
               <div className="mb-1 font-bold text-white text-sm">{item.type}</div>
@@ -83,7 +83,7 @@ export default function CreationSiteWebPMEPage() {
 
         <h2 className="mb-6 text-2xl font-bold text-white">Étape 3 — Rédiger un brief efficace</h2>
         <p className="mb-4 text-gray-400 leading-relaxed">
-          Un bon brief vous fait gagner 30% de budget. Il contient au minimum :
+          Un bon brief vous fait gagner 30% de Périmètre. Il contient au minimum :
         </p>
         <div className="mb-10 rounded-2xl border border-white/8 bg-gray-900 p-6">
           <div className="grid gap-2 sm:grid-cols-2 text-sm">
@@ -95,7 +95,7 @@ export default function CreationSiteWebPMEPage() {
               "Fonctionnalités spécifiques",
               "Identité visuelle existante",
               "Sites de référence (style souhaité)",
-              "Budget maximum",
+              "Périmètre maximum",
               "Date de mise en ligne souhaitée",
               "Qui gère le contenu ensuite ?",
             ].map((item) => (
@@ -112,10 +112,10 @@ export default function CreationSiteWebPMEPage() {
         </p>
         <div className="mb-10 space-y-4">
           {[
-            { type: "Freelance junior (Malt, Fiverr)", pro: "Prix bas (500-1500€)", con: "Risque élevé sur la qualité et les délais, support inexistant après livraison" },
-            { type: "Grande agence web", pro: "Process structuré, équipe complète", con: "Tarifs élevés (8 000-50 000€), souvent peu flexible, interlocuteur changeant" },
-            { type: "Studio digital indépendant", pro: "Équilibre qualité/prix, interlocuteur direct, réactif", con: "Capacité limitée en parallèle (attention aux délais)" },
-            { type: "Constructeur DIY (Wix, Squarespace)", pro: "Très rapide à lancer, pas cher", con: "Design générique, performance médiocre, peu évolutif, SEO limité" },
+            { type: "Freelance junior (Malt, Fiverr)", pro: "Souplesse et démarrage rapide", con: "Risque élevé sur la qualité et les délais, support inexistant après livraison" },
+            { type: "Grande agence web", pro: "Process structuré, équipe complète", con: "Propositions parfois surdimensionnées, interlocuteur changeant" },
+            { type: "Studio digital indépendant", pro: "Équilibre qualité/cadrage, interlocuteur direct, réactif", con: "Capacité limitée en parallèle (attention aux délais)" },
+            { type: "Constructeur DIY (Wix, Squarespace)", pro: "Très rapide à lancer", con: "Design générique, performance médiocre, peu évolutif, SEO limité" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
               <div className="mb-3 font-semibold text-white">{item.type}</div>
@@ -130,11 +130,11 @@ export default function CreationSiteWebPMEPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Les 5 erreurs les plus fréquentes</h2>
         <ul className="mb-12 space-y-4 text-sm text-gray-400 leading-relaxed">
           {[
-            { err: "Partir sans brief clair", detail: "Sans brief, le prestataire crée selon ses propres suppositions. Les allers-retours s'accumulent et la facture monte." },
-            { err: "Confier le SEO à plus tard", detail: "Le SEO se construit dès l'architecture du site. Une refonte ultérieure pour ajouter du SEO coûte 2 fois plus cher que de le faire dès le départ." },
-            { err: "Choisir au tarif le plus bas", detail: "Un site à 400€ livré en 3 jours sera probablement un template basique avec votre logo dessus. Prévoyez déjà la refonte dans 6 mois." },
+            { err: "Partir sans brief clair", detail: "Sans brief, le prestataire crée selon ses propres suppositions. Les allers-retours s'accumulent et le périmètre devient flou." },
+            { err: "Confier le SEO à plus tard", detail: "Le SEO se construit dès l'architecture du site. L'ajouter après coup impose souvent une refonte partielle." },
+            { err: "Choisir sans vérifier le périmètre", detail: "Une proposition trop vague peut cacher un template basique avec votre logo dessus. Vérifiez toujours ce qui est réellement livré." },
             { err: "Ignorer le mobile", detail: "Plus de 60% des visites viennent du mobile. Un site non adapté perd plus de la moitié de son audience." },
-            { err: "Ne pas prévoir la maintenance", detail: "Un site web nécessite des mises à jour régulières (sécurité, compatibilité, contenu). Prévoyez 100 à 300€/mois pour un maintien sérieux." },
+            { err: "Ne pas prévoir la maintenance", detail: "Un site web nécessite des mises à jour régulières : sécurité, compatibilité, contenu et suivi des performances." },
           ].map((item) => (
             <li key={item.err} className="flex items-start gap-3">
               <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
@@ -145,7 +145,7 @@ export default function CreationSiteWebPMEPage() {
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Prêt à lancer votre site web ?</h2>
-          <p className="mb-6 text-gray-400">KAH-Digital accompagne les PME de la Suisse et de la France. Devis gratuit sous 24h.</p>
+          <p className="mb-6 text-gray-400">KAH-Digital accompagne les PME de la Suisse et de la France. Devis personnalisé sous 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Demander un devis <FiArrowRight size={15} />
@@ -159,3 +159,6 @@ export default function CreationSiteWebPMEPage() {
     </div>
   );
 }
+
+
+

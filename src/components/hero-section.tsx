@@ -10,71 +10,47 @@ const WA_NUMBER = "33759558414";
 export function HeroSection() {
   const { locale, prefix } = useLocale();
 
-  const copy = {
-    fr: {
-      badge: "30+ projets livrés · Lausanne · France & Suisse · Sans engagement",
-      title1: "Votre présence digitale,",
-      title2: "pensée pour convertir.",
-      title3: "",
-      body: "On conçoit et livre des sites web, apps mobiles et SaaS sur mesure — pour des entreprises qui veulent un résultat réel, pas une promesse.",
-      primary: "Parlons de votre projet",
-      secondary: "Voir les réalisations",
-      wa: "Appel découverte 15 min",
-      waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
-      badges: [
-        "Périmètre défini après échange",
-        "Prestation ajustée au contexte",
-        "Réponse sous 24h",
-        "Proposition claire sans engagement",
-        "30 jours de corrections inclus",
-      ],
-      proof1: { label: "Cadrage simple et efficace", desc: "Besoin réel · priorités · plan d'action" },
-      proof2: { label: "Proposition personnalisée sous 24h", desc: "Claire · ajustable · sans engagement" },
-      proof3: { label: "Accompagnement à chaque étape", desc: "Un interlocuteur senior, pas un intermédiaire" },
-    },
-    en: {
-      badge: "30+ projects delivered · Lausanne · France & Switzerland · No commitment",
-      title1: "Your digital presence,",
-      title2: "built to convert.",
-      title3: "",
-      body: "We design and deliver custom websites, mobile apps, and SaaS — for businesses that want real results, not promises.",
-      primary: "Let's talk about your project",
-      secondary: "View portfolio",
-      wa: "Free 15-min call",
-      waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
-      badges: [
-        "Scope defined after discussion",
-        "Service adjusted to the real context",
-        "Reply within 24h",
-        "Clear proposal, no commitment",
-        "30-day corrections included",
-      ],
-      proof1: { label: "Simple, effective scoping", desc: "Real need · priorities · action plan" },
-      proof2: { label: "Custom proposal within 24h", desc: "Clear · adjustable · no commitment" },
-      proof3: { label: "Senior support throughout", desc: "One dedicated contact, not a middleman" },
-    },
-    de: {
-      badge: "30+ gelieferte Projekte · Lausanne · Schweiz & Frankreich · Unverbindlich",
-      title1: "Ihre digitale Präsenz,",
-      title2: "für Konversion optimiert.",
-      title3: "",
-      body: "Wir konzipieren und liefern maßgeschneiderte Websites, mobile Apps und SaaS — für Unternehmen, die echte Ergebnisse wollen.",
-      primary: "Projekt besprechen",
-      secondary: "Portfolio ansehen",
-      wa: "Kostenloses Erstgespräch",
-      waText: "Hallo Kénan, ich möchte einen kostenlosen 15-Minuten-Anruf buchen.",
-      badges: [
-        "Umfang nach Gespräch definiert",
-        "Leistung passend zum Kontext",
-        "Antwort in 24h",
-        "Klares Angebot ohne Verpflichtung",
-        "30 Tage Korrekturen inklusive",
-      ],
-      proof1: { label: "Einfaches, effektives Scoping", desc: "Bedarf · Prioritäten · Aktionsplan" },
-      proof2: { label: "Individuelle Offerte in 24h", desc: "Klar · anpassbar · unverbindlich" },
-      proof3: { label: "Senior-Begleitung auf jedem Schritt", desc: "Ein Ansprechpartner, kein Vermittler" },
-    },
-  }[locale];
+  const copy = locale === "en"
+    ? {
+        badge: "30+ projects delivered · Lausanne · France & Switzerland · No commitment",
+        title1: "Your digital presence,",
+        title2: "built to convert.",
+        body: "We design and deliver custom websites, mobile apps, and SaaS — for businesses that want a digital presence equal to their ambition.",
+        primary: "Let's talk about your project",
+        secondary: "View portfolio",
+        wa: "Free 15-min call",
+        waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
+        badges: [
+          "Scope defined after discussion",
+          "Service adjusted to the real context",
+          "Reply within 24h",
+          "Clear proposal, no commitment",
+          "30-day corrections included",
+        ],
+        proof1: { label: "Simple, effective scoping", desc: "Real need · priorities · action plan" },
+        proof2: { label: "Custom proposal within 24h", desc: "Clear · adjustable · no commitment" },
+        proof3: { label: "Senior support throughout", desc: "One dedicated contact, not a middleman" },
+      }
+    : {
+        badge: "30+ projets livrés · Lausanne · France & Suisse · Sans engagement",
+        title1: "Votre présence digitale,",
+        title2: "pensée pour convertir.",
+        body: "On conçoit et livre des sites web, apps mobiles et SaaS sur mesure — pour des entreprises qui veulent une présence digitale à la hauteur de leur ambition.",
+        primary: "Parlons de votre projet",
+        secondary: "Voir les réalisations",
+        wa: "Appel découverte 15 min",
+        waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
+        badges: [
+          "Périmètre défini après échange",
+          "Prestation ajustée au contexte",
+          "Réponse sous 24h",
+          "Proposition claire sans engagement",
+          "30 jours de corrections inclus",
+        ],
+        proof1: { label: "Cadrage simple et efficace", desc: "Besoin réel · priorités · plan d'action" },
+        proof2: { label: "Proposition personnalisée sous 24h", desc: "Claire · ajustable · sans engagement" },
+        proof3: { label: "Accompagnement à chaque étape", desc: "Un interlocuteur senior, pas un intermédiaire" },
+      };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
@@ -100,9 +76,7 @@ export function HeroSection() {
             </span>
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400">
-            {copy.body}
-          </p>
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400">{copy.body}</p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
@@ -143,16 +117,16 @@ export function HeroSection() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             {[
-              { icon: FiCheckCircle, color: "text-green-400", proof: copy.proof1, bg: "" },
-              { icon: FiClock, color: "text-blue-400", proof: copy.proof2, bg: "" },
-              { icon: FiMessageCircle, color: "text-violet-400", proof: copy.proof3, bg: "border-violet-500/20 bg-violet-500/8" },
-            ].map(({ icon: Icon, color, proof, bg }, i) => (
+              { icon: FiCheckCircle, color: "text-green-400", proof: copy.proof1, extra: "" },
+              { icon: FiClock, color: "text-blue-400", proof: copy.proof2, extra: "" },
+              { icon: FiMessageCircle, color: "text-violet-400", proof: copy.proof3, extra: "border-violet-500/20 bg-violet-500/8" },
+            ].map(({ icon: Icon, color, proof, extra }, i) => (
               <motion.div
                 key={proof.label}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.15, duration: 0.5 }}
-                className={`flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm ${bg}`}
+                className={`flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-sm ${extra}`}
               >
                 <Icon size={15} className={`shrink-0 ${color}`} />
                 <div className="text-left">

@@ -5,10 +5,8 @@ import { FiCalendar, FiMessageCircle, FiCheck } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
 
-// Génère 4 créneaux sur les prochains jours ouvrés, localisés dynamiquement
 function generateSlots(locale: string) {
-  const langMap: Record<string, string> = { fr: "fr-CH", en: "en-GB", de: "de-CH" };
-  const lang = langMap[locale] ?? "fr-CH";
+  const lang = locale === "en" ? "en-GB" : "fr-CH";
   const times = ["10:00", "14:30", "09:00", "11:00"];
   const availability = [true, true, false, true];
   const slots: { day: string; time: string; available: boolean }[] = [];
@@ -37,62 +35,33 @@ function generateSlots(locale: string) {
 export function FreeCallSection() {
   const { locale } = useLocale();
 
-  const copy = {
-    fr: {
-      label: "Appel découverte gratuit",
-      title: "15 minutes pour clarifier votre projet.",
-      subtitle: "Pas de pitch. Pas de vendeur. Juste Kénan — on regarde votre projet ensemble et vous repartez avec un plan clair.",
-      items: [
-        "Budget estimé sur mesure",
-        "Délai réaliste garanti",
-        "Conseils tech gratuits",
-        "Zéro engagement",
-      ],
-      cta: "Réserver 15 min sur WhatsApp",
-      waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
-      note: "Réponse sous 2h en semaine · Disponible CH / FR / BE",
-      callTitle: "Appel 15 min",
-      callSubtitle: "Gratuit · Sans engagement",
-      confirmSlot: "Confirmez votre créneau via WhatsApp",
-      available: "Libre",
-    },
-    en: {
-      label: "Free discovery call",
-      title: "15 minutes to clarify your project.",
-      subtitle: "No pitch. No sales rep. Just Kénan — we look at your project together and you leave with a clear plan.",
-      items: [
-        "Custom budget estimate",
-        "Realistic guaranteed timeline",
-        "Free tech advice",
-        "Zero commitment",
-      ],
-      cta: "Book 15 min on WhatsApp",
-      waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
-      note: "Reply within 2h on weekdays · Available CH / FR / BE",
-      callTitle: "15 min call",
-      callSubtitle: "Free · No commitment",
-      confirmSlot: "Confirm your slot via WhatsApp",
-      available: "Available",
-    },
-    de: {
-      label: "Kostenloses Erstgespräch",
-      title: "15 Minuten für Ihr Projekt.",
-      subtitle: "Kein Pitch. Kein Verkäufer. Nur Kénan — wir schauen uns Ihr Projekt gemeinsam an und Sie erhalten einen klaren Plan.",
-      items: [
-        "Individuelle Kostenschätzung",
-        "Realistischer Zeitplan",
-        "Kostenlose Tech-Beratung",
-        "Keine Verpflichtung",
-      ],
-      cta: "15 Min auf WhatsApp buchen",
-      waText: "Hallo Kénan, ich möchte einen kostenlosen 15-Minuten-Anruf buchen.",
-      note: "Antwort innerhalb von 2h · Verfügbar CH / DE",
-      callTitle: "15 min Gespräch",
-      callSubtitle: "Kostenlos · Unverbindlich",
-      confirmSlot: "Termin via WhatsApp bestätigen",
-      available: "Frei",
-    },
-  }[locale];
+  const copy = locale === "en"
+    ? {
+        label: "Free discovery call",
+        title: "15 minutes to clarify your project.",
+        subtitle: "No pitch. No sales rep. Just Kénan — we look at your project together and you leave with a clear plan.",
+        items: ["Custom budget estimate", "Realistic guaranteed timeline", "Free tech advice", "Zero commitment"],
+        cta: "Book 15 min on WhatsApp",
+        waText: "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project.",
+        note: "Reply within 2h on weekdays · Available CH / FR / BE",
+        callTitle: "15 min call",
+        callSubtitle: "Free · No commitment",
+        confirmSlot: "Confirm your slot via WhatsApp",
+        available: "Available",
+      }
+    : {
+        label: "Appel découverte gratuit",
+        title: "15 minutes pour clarifier votre projet.",
+        subtitle: "Pas de pitch. Pas de vendeur. Juste Kénan — on regarde votre projet ensemble et vous repartez avec un plan clair.",
+        items: ["Budget estimé sur mesure", "Délai réaliste garanti", "Conseils tech gratuits", "Zéro engagement"],
+        cta: "Réserver 15 min sur WhatsApp",
+        waText: "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet.",
+        note: "Réponse sous 2h en semaine · Disponible CH / FR / BE",
+        callTitle: "Appel 15 min",
+        callSubtitle: "Gratuit · Sans engagement",
+        confirmSlot: "Confirmez votre créneau via WhatsApp",
+        available: "Libre",
+      };
 
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
   const slots = generateSlots(locale);
@@ -102,7 +71,6 @@ export function FreeCallSection() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-16">
 
-          {/* Left */}
           <div className="flex-1 text-center md:text-left">
             <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-300">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-400" />
@@ -111,9 +79,7 @@ export function FreeCallSection() {
             <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               {copy.title}
             </h2>
-            <p className="mb-6 text-base leading-relaxed text-gray-400">
-              {copy.subtitle}
-            </p>
+            <p className="mb-6 text-base leading-relaxed text-gray-400">{copy.subtitle}</p>
             <ul className="mb-8 space-y-2">
               {copy.items.map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm text-gray-300">
@@ -134,7 +100,6 @@ export function FreeCallSection() {
             <p className="mt-3 text-xs text-gray-500">{copy.note}</p>
           </div>
 
-          {/* Right — card créneaux */}
           <div className="w-full max-w-xs shrink-0">
             <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur">
               <div className="mb-4 flex items-center gap-3">
@@ -166,9 +131,7 @@ export function FreeCallSection() {
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-center text-xs text-gray-500">
-                → {copy.confirmSlot}
-              </p>
+              <p className="mt-4 text-center text-xs text-gray-500">→ {copy.confirmSlot}</p>
             </div>
           </div>
 

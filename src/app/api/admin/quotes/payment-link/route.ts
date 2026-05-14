@@ -61,7 +61,7 @@ async function requireAdmin() {
 }
 
 function getLocale(value: unknown): Locale {
-  return value === "en" || value === "de" ? value : "fr";
+  return value === "en" ? value : "fr";
 }
 
 export async function POST(request: NextRequest) {

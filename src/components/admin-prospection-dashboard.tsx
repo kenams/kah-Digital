@@ -312,8 +312,7 @@ export function ProspectionDashboard() {
     const score = prospect.audit?.problems?.length
       ? `J'ai détecté ${prospect.audit.problems.filter((p) => p.severity === "critical").length} point(s) critique(s) sur votre site`
       : "J'ai analysé votre site";
-    const price = prospect.audit?.priceRange ?? "entre 800€ et 3000€";
-    return `Bonjour,\n\nJe suis Kénan, fondateur de KAH-Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement — ma proposition serait ${price}.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH-Digital\nkah-digital.ch`;
+    return `Bonjour,\n\nJe suis Kénan, fondateur de KAH-Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement. Je peux vous préparer une proposition personnalisée après un court échange, selon votre besoin réel et vos priorités.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH-Digital\nkah-digital.ch`;
   }
 
   function copyLinkedIn(prospect: Prospect) {
@@ -1342,11 +1341,11 @@ export function ProspectionDashboard() {
 
               {selected.audit && (
                 <div className="p-5 space-y-5">
-                  {/* Pricing */}
+                  {/* Custom proposal */}
                   <div className="rounded-lg bg-indigo-500/10 border border-indigo-500/20 p-4">
-                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Prix estimé</p>
-                    <p className="mt-1 text-2xl font-bold text-white">{selected.audit.priceRange}</p>
-                    <p className="text-xs text-gray-400">Valeur centrale : {selected.audit.estimatedPrice}€</p>
+                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Proposition personnalisée</p>
+                    <p className="mt-1 text-2xl font-bold text-white">À cadrer après échange</p>
+                    <p className="text-xs text-gray-400">Besoin réel, priorités, délai et budget disponible.</p>
                   </div>
 
                   {/* Problems */}

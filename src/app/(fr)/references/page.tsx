@@ -275,7 +275,7 @@ export default function ReferencesPage() {
         <div className="mx-auto max-w-2xl px-4 text-center">
           <h2 className="mb-4 text-3xl font-extrabold text-white">Votre projet est le prochain.</h2>
           <p className="mb-8 text-gray-400">
-            Devis gratuit sous 24h. Délai clair. Prix fixe. Pas de surprise.
+            Devis personnalisé sous 24h. Délai clair. Périmètre adapté. Pas de surprise.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

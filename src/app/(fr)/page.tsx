@@ -28,10 +28,10 @@ const faqJsonLd = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Combien coûte un site web ou une application ?",
+      "name": "Comment est défini le devis d'un site web ou d'une application ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Un site vitrine : € 800 à 2 500. Un site corporate ou e-commerce : € 2 000 à 6 000. Une application web sur mesure : € 4 000 à 15 000. Une app mobile : € 6 000 à 20 000. Ces fourchettes dépendent des fonctionnalités, du design et du contenu. Chaque projet est cadré avant tout devis."
+        "text": "Chaque projet est différent. Le devis dépend du besoin réel, de la complexité, du niveau d'accompagnement, des délais, des fonctionnalités, du budget disponible et des priorités business. Un premier échange permet de définir un périmètre clair et une proposition sans engagement."
       }
     },
     {
@@ -95,7 +95,6 @@ const organizationJsonLd = {
   "areaServed": ["CH", "FR", "BE", "LU", "MA", "SN", "CI"],
   "availableLanguage": ["French", "English", "German"],
   "description": "KAH-Digital crée des sites web, applications sur mesure et automatisations IA pour PME, indépendants et entreprises en croissance.",
-  "priceRange": "€€",
   "serviceType": ["Création de site web", "Application web sur mesure", "Automatisation IA", "Support GLPI", "Refonte site web"]
 };
 

@@ -258,7 +258,7 @@ const strategyMapFr: Record<string, StrategyOption[]> = {
       id: "workshop",
       title: "Workshop",
       summary: "Cohortes limitées.",
-      deliverables: ["Tarifs", "RDV", "Kit media"],
+      deliverables: ["Devis", "RDV", "Kit media"],
     },
   ],
   portal: [

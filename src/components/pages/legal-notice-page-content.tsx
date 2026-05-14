@@ -220,7 +220,7 @@ export function LegalNoticePageContent({ locale }: Props) {
           ))}
 
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
+            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR")}
           </div>
         </div>
       </div>

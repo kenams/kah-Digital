@@ -5,29 +5,21 @@ import { useLocale } from "@/lib/locale";
 export function StatsBar() {
   const { locale } = useLocale();
 
-  const stats = {
-    fr: [
-      { value: "30+", label: "Projets livrés" },
-      { value: "3–4", label: "Semaines en moyenne" },
-      { value: "100%", label: "Devis respectés" },
-      { value: "24h", label: "Délai de réponse" },
-      { value: "5★", label: "Satisfaction client" },
-    ],
-    en: [
-      { value: "30+", label: "Projects delivered" },
-      { value: "3–4", label: "Weeks on average" },
-      { value: "100%", label: "Quotes honored" },
-      { value: "24h", label: "Response time" },
-      { value: "5★", label: "Client satisfaction" },
-    ],
-    de: [
-      { value: "30+", label: "Gelieferte Projekte" },
-      { value: "3–4", label: "Wochen im Schnitt" },
-      { value: "100%", label: "Angebote eingehalten" },
-      { value: "24h", label: "Antwortzeit" },
-      { value: "5★", label: "Kundenzufriedenheit" },
-    ],
-  }[locale];
+  const stats = locale === "en"
+    ? [
+        { value: "70+", label: "Projects delivered" },
+        { value: "3–6", label: "Weeks average" },
+        { value: "100%", label: "Quotes honored" },
+        { value: "24h", label: "Response time" },
+        { value: "5★", label: "Client satisfaction" },
+      ]
+    : [
+        { value: "70+", label: "Projets livrés" },
+        { value: "3–6", label: "Semaines en moyenne" },
+        { value: "100%", label: "Devis respectés" },
+        { value: "24h", label: "Délai de réponse" },
+        { value: "5★", label: "Satisfaction client" },
+      ];
 
   return (
     <section className="border-y border-white/6 bg-gray-950 py-8">

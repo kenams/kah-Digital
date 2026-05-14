@@ -178,16 +178,16 @@ export async function composeProspectingEmail(
 
   // Claude génère l'intro et la conclusion personnalisées
   const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital — sites web, apps mobiles, SaaS, automatisations IA).
-Offres KAH-Digital : landing / portfolio 300–600€, site vitrine 900–1500€, site corporate 2200–4500€, automatisation IA 1500–8000€, application web / dashboard 4000–12000€, application mobile MVP 6000–20000€.
+Approche KAH-Digital : pas de prix public fixe ni formule rigide. Chaque proposition est ajustée après échange selon le besoin réel, les fonctionnalités utiles, les délais, le niveau d'accompagnement, le budget disponible et les priorités business.
 Écris en "${audit.language}" :
 1. Une accroche d'intro (2-3 phrases) pour ${audit.businessName}, un commerce dans le secteur ${audit.sector}.
    Score actuel de leur site : ${audit.score}/100. Sois direct et bienveillant, mentionne le site (${lead.website}).
-   Si pertinent, ancre le prix estimé (${audit.priceRange}) dans l'intro.
-2. Une conclusion courte (1-2 phrases) qui incite à répondre ou demander un devis.
+   Si pertinent, ancre l'idée d'une proposition personnalisée après cadrage, sans montant.
+2. Une conclusion courte (1-2 phrases) qui incite à répondre, demander un devis personnalisé ou planifier un échange.
 Format JSON : { "intro": "...", "conclusion": "..." }`;
 
   let intro = `Nous avons analysé votre site ${lead.website} et identifié plusieurs points d'amélioration concrets.`;
-  let conclusion = `N'hésitez pas à répondre directement à cet email — je vous prépare un devis détaillé sous 24h.`;
+  let conclusion = `N'hésitez pas à répondre directement à cet email — je vous prépare une proposition claire et adaptée après un court échange.`;
 
   try {
     const raw = await callLLMFast(introConclusionPrompt);

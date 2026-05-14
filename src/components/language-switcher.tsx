@@ -10,7 +10,7 @@ const labels: Record<Locale, string> = {
 };
 
 const ariaLabels: Record<Locale, string> = {
-  fr: "Afficher le site en francais",
+  fr: "Afficher le site en français",
   en: "View the site in English",
 };
 
@@ -22,7 +22,6 @@ export function LanguageSwitcher() {
     <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
       {(["fr", "en"] as const).map((locale) => {
         const active = currentLocale === locale;
-
         return (
           <Link
             key={locale}

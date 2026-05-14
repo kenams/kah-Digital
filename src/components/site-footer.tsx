@@ -49,21 +49,21 @@ export function SiteFooter() {
       tagline: "Studio digital · sites, apps & SaaS",
       description: "Je crée des sites web, landing pages, applications mobiles et SaaS sur mesure pour entrepreneurs, indépendants et PME.",
       cta: "Vous avez un projet ?",
-      ctaBtn: "Demander un devis gratuit",
+      ctaBtn: "Demander un devis personnalisé",
       nav: {
         title: "Navigation",
         links: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
           { label: "Réalisations", href: "/projets" },
-          { label: "Tarifs", href: "/devis" },
+          { label: "Devis", href: "/devis" },
           { label: "Contact", href: "/contact" },
         ],
       },
       services: {
         title: "Mes offres",
         links: [
-          { label: "Landing page dès 300 €", href: "/devis" },
+          { label: "Landing page sur mesure", href: "/devis" },
           { label: "Site web professionnel", href: "/site-web-entreprise" },
           { label: "Application mobile", href: "/application-web-sur-mesure" },
           { label: "SaaS sur mesure", href: "/devis" },
@@ -99,7 +99,7 @@ export function SiteFooter() {
       tagline: "Digital studio · websites, apps & SaaS",
       description: "I build websites, landing pages, mobile apps and custom SaaS for entrepreneurs, freelancers and SMEs.",
       cta: "Have a project?",
-      ctaBtn: "Get a free quote",
+      ctaBtn: "Get a custom quote",
       nav: {
         title: "Navigation",
         links: [
@@ -113,7 +113,7 @@ export function SiteFooter() {
       services: {
         title: "My offers",
         links: [
-          { label: "Landing page from €300", href: "/en/devis" },
+          { label: "Custom landing page", href: "/en/devis" },
           { label: "Professional website", href: "/en/site-web-entreprise" },
           { label: "Mobile application", href: "/en/application-web-sur-mesure" },
           { label: "Custom SaaS", href: "/en/devis" },
@@ -146,7 +146,7 @@ export function SiteFooter() {
       tagline: "Digital-Studio · Websites, Apps & SaaS",
       description: "Ich erstelle Websites, Landing Pages, mobile Apps und massgeschneidertes SaaS für Unternehmer, Selbstständige und KMU.",
       cta: "Sie haben ein Projekt?",
-      ctaBtn: "Kostenloses Angebot anfordern",
+      ctaBtn: "Individuelle Offerte anfragen",
       nav: {
         title: "Navigation",
         links: [
@@ -160,7 +160,7 @@ export function SiteFooter() {
       services: {
         title: "Meine Angebote",
         links: [
-          { label: "Landing Page ab 300 €", href: "/de/devis" },
+          { label: "Individuelle Landing Page", href: "/de/devis" },
           { label: "Professionelle Website", href: "/de/site-web-entreprise" },
           { label: "Mobile App", href: "/de/application-web-sur-mesure" },
           { label: "Massgeschneidertes SaaS", href: "/de/devis" },

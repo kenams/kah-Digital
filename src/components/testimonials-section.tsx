@@ -19,7 +19,7 @@ const testimonials = {
       stars: 5,
     },
     {
-      quote: "J'avais besoin d'un portfolio professionnel rapidement pour décrocher une mission. 10 jours après le brief, mon site était en ligne. Très satisfait du résultat et du prix.",
+      quote: "J'avais besoin d'un portfolio professionnel rapidement pour décrocher une mission. 10 jours après le brief, mon site était en ligne. Très satisfait du résultat et de l'accompagnement.",
       author: "T. K.",
       role: "Développeur freelance, Paris",
       stars: 5,

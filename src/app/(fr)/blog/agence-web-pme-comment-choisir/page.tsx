@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "Comment choisir une agence web pour votre PME — Guide 2026 — KAH-Digital",
-  description: "Prix, red flags, questions à poser, critères clés : tout ce qu'une PME doit savoir avant de choisir une agence web ou un développeur freelance.",
+  description: "devis, red flags, questions à poser, critères clés : tout ce qu'une PME doit savoir avant de choisir une agence web ou un développeur freelance.",
   keywords: ["choisir agence web PME", "agence web PME", "comment choisir agence digitale", "freelance vs agence web", "agence web petite entreprise"],
   alternates: { canonical: "https://kah-digital.ch/blog/agence-web-pme-comment-choisir" },
   openGraph: {
@@ -29,16 +29,16 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Vaut-il mieux une agence web ou un freelance pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour une PME avec un budget de 1 000 à 5 000€, un freelance ou un studio indépendant offre souvent plus de réactivité et moins d'overhead qu'une grande agence. Au-delà de 8 000€ et pour des projets complexes, une agence structurée peut être préférable." } },
+    { "@type": "Question", "name": "Vaut-il mieux une agence web ou un freelance pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour une PME, un freelance senior ou un studio indépendant offre souvent plus de réactivité et moins d'overhead qu'une grande agence. Pour des projets complexes, une agence structurée peut être préférable." } },
     { "@type": "Question", "name": "Quelles questions poser avant de signer avec une agence web ?", "acceptedAnswer": { "@type": "Answer", "text": "Demandez : Qui va vraiment travailler sur mon projet ? Ai-je accès au code et à l'hébergement ? Qu'est-ce qui est inclus après la mise en ligne ? Avez-vous des références dans mon secteur ?" } },
-    { "@type": "Question", "name": "Quel budget prévoir pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine PME propre et performant coûte entre 1 500 et 4 000€. Méfiez-vous des devis sous 800€ (travail bâclé) et des devis au-delà de 10 000€ sans fonctionnalités justifiant le prix." } },
+    { "@type": "Question", "name": "Comment cadrer le périmètre pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine PME propre et performant s'estime après cadrage. Méfiez-vous des propositions trop vagues, trop standardisées ou sans explication claire des livrables." } },
   ],
 };
 
 const GOOD_SIGNS = [
   "Porte-folio avec des vrais projets livrés (pas des maquettes)",
   "Process clair : brief → maquette → dev → recette → livraison",
-  "Tarifs annoncés sans rendez-vous obligatoire",
+  "Devis personnalisé expliqué après un premier cadrage simple",
   "Vous recevez les accès : hébergement, domaine, code source",
   "Réponse rapide (sous 24-48h) dès le premier contact",
   "Interlocuteur unique qui comprend votre métier",
@@ -47,9 +47,9 @@ const GOOD_SIGNS = [
 const RED_FLAGS = [
   "Aucun portfolio visible ou des projets non cliquables",
   "Devis signé avant d'avoir compris votre besoin",
-  "\"Nos prix sont sur devis\" sans aucune fourchette communiquée",
+  "\"Nos devis sont sur devis\" sans aucune explication de méthode ou de périmètre",
   "Hébergement propriétaire que vous ne pouvez pas quitter",
-  "Contrat de maintenance mensuel obligatoire de 200€+",
+  "Contrat de maintenance mensuel obligatoire sans justification claire",
   "Interlocuteur commercial qui passe ensuite le projet à une équipe offshore",
 ];
 
@@ -79,7 +79,7 @@ export default function AgenceWebPmePage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-5">
           <p className="text-sm leading-relaxed text-blue-200">
-            <strong>TL;DR :</strong> Vérifiez le portfolio, demandez qui travaille sur votre projet, assurez-vous d'avoir tous les accès. Fuyez les contrats sans sortie possible et les devis sans fourchette.
+            <strong>TL;DR :</strong> Vérifiez le portfolio, demandez qui travaille sur votre projet, assurez-vous d'avoir tous les accès. Fuyez les contrats sans sortie possible et les devis sans périmètre clair.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function AgenceWebPmePage() {
           La vraie question n'est pas "agence ou freelance" mais "qui va vraiment travailler sur mon projet". Une grande agence peut vous mettre sur votre projet un junior ou un sous-traitant offshore. Un bon studio indépendant peut vous offrir la même qualité qu'une grande structure, avec plus de réactivité et moins d'intermédiaires.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          Pour un budget entre 1 000 et 8 000€, un freelance senior ou un petit studio est souvent le meilleur rapport qualité/prix/réactivité.
+          Pour un projet de PME, un freelance senior ou un petit studio est souvent un bon équilibre entre qualité, cadrage et réactivité.
         </p>
 
         <h2 className="mb-8 text-2xl font-bold text-white">Les bons signes</h2>
@@ -116,7 +116,7 @@ export default function AgenceWebPmePage() {
           {[
             { q: "Qui va travailler sur mon projet ?", a: "Vous devez connaître le ou les profils qui vont coder et designer votre site. Pas un chef de projet qui délègue." },
             { q: "Est-ce que j'aurai accès à mon code et mon hébergement ?", a: "Vous devez être propriétaire de tout. Si la réponse est vague, fuyez." },
-            { q: "Que se passe-t-il après la mise en ligne ?", a: "Corrections de bugs, mises à jour, support — à quel coût ? Avec quel délai de réponse ?" },
+            { q: "Que se passe-t-il après la mise en ligne ?", a: "Corrections de bugs, mises à jour, support : demandez ce qui est inclus, ce qui est optionnel et le délai de réponse." },
             { q: "Avez-vous des références dans mon secteur ?", a: "Pas obligatoire, mais un plus. Demandez à voir des projets livrés et à contacter des anciens clients." },
           ].map((item) => (
             <div key={item.q} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -138,7 +138,7 @@ export default function AgenceWebPmePage() {
 
         <div className="rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-violet-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Travaillez avec un studio transparent et réactif</h2>
-          <p className="mb-6 text-gray-400">Process clair · Accès complets · Réponse sous 24h · Dès € 300</p>
+          <p className="mb-6 text-gray-400">Process clair · Accès complets · Réponse sous 24h · Devis personnalisé</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-blue-500/30">
               Demander un devis <FiArrowRight size={15} />
@@ -152,3 +152,6 @@ export default function AgenceWebPmePage() {
     </div>
   );
 }
+
+
+

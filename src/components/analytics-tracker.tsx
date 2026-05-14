@@ -16,21 +16,16 @@ const trackedPaths = new Set([
   "/en/configurateur",
   "/en/offres",
   "/en/contact",
-  "/de/devis",
-  "/de/devis/mvp",
-  "/de/configurateur",
-  "/de/offres",
-  "/de/contact",
+
 ]);
 
 function isTrackedPath(pathname: string): boolean {
   if (trackedPaths.has(pathname)) return true;
-  return /^\/(en\/|de\/)?(agence-web-|site-web-)[\w-]+$/.test(pathname);
+  return /^\/(en\/)?(agence-web-|site-web-)[\w-]+$/.test(pathname);
 }
 
 function getLocaleFromPath(pathname: string) {
   if (pathname.startsWith("/en")) return "en";
-  if (pathname.startsWith("/de")) return "de";
   return "fr";
 }
 

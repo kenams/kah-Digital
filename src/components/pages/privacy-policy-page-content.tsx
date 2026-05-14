@@ -71,7 +71,7 @@ export function PrivacyPolicyPageContent({ locale }: Props) {
         <h1 className="mb-8 text-center text-3xl font-bold text-gray-900">{content.title}</h1>
         <div className="space-y-8">
           <section>
-            <h2 className="mb-4 text-2xl font-semibold text-gray-900">{locale === "en" ? "Introduction" : locale === "de" ? "Einleitung" : "Introduction"}</h2>
+            <h2 className="mb-4 text-2xl font-semibold text-gray-900">{locale === "en" ? "Introduction" : "Introduction"}</h2>
             <p className="text-gray-700">{content.intro}</p>
           </section>
           {content.sections.map((section) => (
@@ -88,7 +88,7 @@ export function PrivacyPolicyPageContent({ locale }: Props) {
             </section>
           ))}
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
+            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR")}
           </div>
         </div>
       </div>

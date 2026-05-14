@@ -15,20 +15,20 @@ export function FAQSection() {
       body: "Tout ce que vous voulez savoir avant de lancer votre projet.",
       faqs: [
         {
-          question: "Combien coûte une landing page ?",
-          answer: "Une landing page démarre à partir de 300 €. Le prix final dépend du nombre de sections, du design, des animations et des intégrations souhaitées (formulaire, paiement, etc.). Je vous donne une estimation claire dès le premier échange.",
+          question: "Comment est défini le budget d'une landing page ?",
+          answer: "Le budget dépend du besoin réel : objectif de conversion, nombre de sections, contenus, design, animations et intégrations utiles. Un premier échange permet de cadrer simplement le périmètre et de proposer un devis personnalisé, clair et sans engagement.",
         },
         {
-          question: "Combien coûte un site web professionnel ?",
-          answer: "Un site vitrine démarre à partir de 900 €. Un site corporate plus complet se situe généralement entre 2 200 et 4 500 €. Chaque projet est différent. Je vous propose un devis précis après avoir compris votre besoin.",
+          question: "Comment est estimé un site web professionnel ?",
+          answer: "Chaque projet est différent. Un site vitrine, un site corporate ou une plateforme plus complète n'ont pas le même niveau de contenu, de design, de SEO ni de fonctionnalités. Le devis est construit après compréhension de votre contexte, de votre budget disponible et de vos priorités business.",
         },
         {
-          question: "Combien coûte une application mobile ?",
-          answer: "Une application mobile MVP démarre généralement à partir de 6 000 €. Le prix final dépend du nombre d'écrans, des fonctionnalités, des intégrations (paiement, géolocalisation, notifications) et de la plateforme (iOS, Android ou les deux). Je vous aide à définir le périmètre minimal pour lancer proprement.",
+          question: "Comment cadrer une application mobile ou web ?",
+          answer: "On part des utilisateurs, des processus métier, des fonctionnalités indispensables, des délais et du niveau d'accompagnement souhaité. L'objectif est de définir un périmètre utile, évolutif et adapté à votre budget, puis de fournir une estimation claire après cadrage.",
         },
         {
-          question: "Puis-je commencer avec un petit budget ?",
-          answer: "Oui. La landing page à 300 € est faite pour ça. L'idée est de commencer simple, valider votre offre, puis évoluer. Même pour une application, il est possible de définir un MVP minimal et d'ajouter des fonctionnalités ensuite. Je vous guide selon votre budget réel.",
+          question: "Puis-je commencer avec un budget limité ?",
+          answer: "Oui. Pas de formule rigide : les prestations peuvent être ajustées selon la demande. On peut commencer par un périmètre simple, valider l'essentiel, puis faire évoluer le site ou l'application progressivement selon vos priorités.",
         },
         {
           question: "Est-ce que vous pouvez créer un MVP ?",
@@ -62,20 +62,20 @@ export function FAQSection() {
       body: "Everything you want to know before launching your project.",
       faqs: [
         {
-          question: "How much does a landing page cost?",
-          answer: "A landing page starts from €300. The final price depends on the number of sections, design, animations and integrations (contact form, payment, etc.). I give you a clear estimate from the first exchange.",
+          question: "How is a landing page budget defined?",
+          answer: "The budget depends on the real need: conversion goal, number of sections, content, design, animations and useful integrations. A first exchange helps define the right scope and produce a clear custom quote with no commitment.",
         },
         {
-          question: "How much does a professional website cost?",
-          answer: "A showcase site starts from €900. A more complete corporate site is typically between €2,200 and €4,500. Every project is different. I'll give you a precise quote after understanding your needs.",
+          question: "How is a professional website estimated?",
+          answer: "Every project is different. A showcase site, a corporate website and a richer platform do not require the same content, design, SEO or features. The quote is built after understanding your context, available budget and business priorities.",
         },
         {
-          question: "How much does a mobile app cost?",
-          answer: "A mobile app MVP usually starts from €6,000. The final price depends on the number of screens, features, integrations (payment, geolocation, notifications) and platform (iOS, Android or both). I help you define the minimal scope to launch cleanly.",
+          question: "How do you scope a mobile or web app?",
+          answer: "We start with users, workflows, must-have features, timeline and the level of support you need. The goal is to define a useful, scalable scope adapted to your budget, then provide a clear estimate after scoping.",
         },
         {
           question: "Can I start with a small budget?",
-          answer: "Yes. The €300 landing page is made for that. The idea is to start simple, validate your offer, then grow. Even for an app, it's possible to define a minimal MVP and add features later. I guide you based on your real budget.",
+          answer: "Yes. There is no rigid package: the work can be adjusted to the request. We can start with a simple scope, validate the essentials, then improve the site or app progressively according to your priorities.",
         },
         {
           question: "Can you build an MVP?",
@@ -109,20 +109,20 @@ export function FAQSection() {
       body: "Alles, was Sie vor dem Start Ihres Projekts wissen möchten.",
       faqs: [
         {
-          question: "Was kostet eine Landing Page?",
-          answer: "Eine Landing Page beginnt ab 300 €. Der Endpreis hängt von der Anzahl der Abschnitte, dem Design, Animationen und gewünschten Integrationen (Kontaktformular, Zahlung usw.) ab. Ich gebe Ihnen beim ersten Austausch eine klare Schätzung.",
+          question: "Wie wird das Budget einer Landing Page definiert?",
+          answer: "Das Budget hängt vom echten Bedarf ab: Conversion-Ziel, Anzahl der Sektionen, Inhalte, Design, Animationen und sinnvolle Integrationen. Ein erstes Gespräch hilft, den passenden Umfang zu definieren und eine klare unverbindliche Offerte zu erstellen.",
         },
         {
-          question: "Was kostet eine professionelle Website?",
-          answer: "Eine Unternehmenswebsite beginnt ab 900 €. Eine umfangreichere Corporate-Website liegt in der Regel zwischen 2.200 und 4.500 €. Jedes Projekt ist anders. Ich erstelle Ihnen ein genaues Angebot, nachdem ich Ihren Bedarf verstanden habe.",
+          question: "Wie wird eine professionelle Website eingeschätzt?",
+          answer: "Jedes Projekt ist anders. Eine Unternehmenswebsite, eine Corporate-Website oder eine größere Plattform brauchen nicht denselben Inhalt, dasselbe Design, SEO-Niveau oder dieselben Funktionen. Die Offerte entsteht nach Verständnis von Kontext, Budgetrahmen und Prioritäten.",
         },
         {
-          question: "Was kostet eine mobile App?",
-          answer: "Eine mobile MVP-App beginnt in der Regel ab 6.000 €. Der Endpreis hängt von Anzahl der Screens, Funktionen, Integrationen (Zahlung, Geolokalisierung, Push-Nachrichten) und Plattform (iOS, Android oder beides) ab. Ich helfe Ihnen, den minimalen Umfang für einen sauberen Launch zu definieren.",
+          question: "Wie wird eine mobile oder Web-App eingegrenzt?",
+          answer: "Wir starten mit Nutzern, Abläufen, unverzichtbaren Funktionen, Zeitplan und gewünschter Begleitung. Ziel ist ein sinnvoller, erweiterbarer Umfang passend zum verfügbaren Budget, danach folgt eine klare Schätzung.",
         },
         {
           question: "Kann ich mit kleinem Budget starten?",
-          answer: "Ja. Die Landing Page für 300 € ist genau dafür gedacht. Die Idee ist, einfach zu starten, Ihr Angebot zu validieren und dann zu wachsen. Selbst für eine App kann ein minimales MVP definiert und Funktionen später hinzugefügt werden. Ich begleite Sie basierend auf Ihrem tatsächlichen Budget.",
+          answer: "Ja. Es gibt keine starre Formel: Die Leistung kann an die Anfrage angepasst werden. Man kann mit einem einfachen Umfang starten, das Wichtigste validieren und danach Website oder App schrittweise weiterentwickeln.",
         },
         {
           question: "Können Sie ein MVP erstellen?",

@@ -5,9 +5,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/offres",
-  title: "Pricing & offers — Websites, apps & AI | KAH-Digital",
-  description: "Clear pricing for websites, custom web apps, and AI automation. Custom quote within 24h. From € 300.",
-  keywords: ["web agency pricing", "website cost Switzerland", "custom web app quote", "AI automation pricing"],
+  title: "Custom offers — Websites, apps & AI | KAH-Digital",
+  description: "Adjustable digital services for websites, custom web apps and AI automation. Clear custom quote within 24h.",
+  keywords: ["custom web agency quote", "custom digital solution", "custom web app quote", "AI automation quote"],
 });
 
 export default function OffresPageEn() {

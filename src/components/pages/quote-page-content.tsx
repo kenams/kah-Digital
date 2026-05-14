@@ -8,16 +8,16 @@ type QuotePageContentProps = {
 
 const COPY = {
   fr: {
-    urgency: "🔥 52 devis envoyés ce mois · 2 créneaux disponibles en juin",
-    eyebrow: "Devis gratuit · Réponse sous 24h",
-    title: "Quel projet souhaitez-vous réaliser ?",
-    subtitle: "Choisissez votre service, remplissez vos coordonnées et décrivez votre idée.\nOn vous répond avec un devis clair sous 24h, sans engagement.",
+    urgency: "🔥 Premier échange offert · devis personnalisé · réponse sous 24h",
+    eyebrow: "Devis personnalisé · Réponse sous 24h",
+    title: "Décrivez votre besoin, même s'il n'est pas encore clair.",
+    subtitle: "Vous n'avez pas besoin d'avoir un cahier des charges complet. Expliquez simplement votre situation, votre objectif ou votre problème actuel.\nOn vous répond avec une proposition claire, ajustable et sans engagement.",
     proofTitle: "Ils ont fait confiance à KAH-Digital",
     stats: [
       { value: "30+", label: "Projets livrés" },
       { value: "24h", label: "Délai de réponse" },
       { value: "5★", label: "Satisfaction client" },
-      { value: "100%", label: "Budget respecté" },
+      { value: "100%", label: "Périmètre clarifié" },
     ],
     testimonials: [
       {
@@ -40,27 +40,27 @@ const COPY = {
     process: [
       { step: "1", label: "Tu envoies ce formulaire", desc: "2 minutes max" },
       { step: "2", label: "On analyse ton projet", desc: "Sous 24h" },
-      { step: "3", label: "Tu reçois un devis clair", desc: "Prix fixe + délai" },
+      { step: "3", label: "Tu reçois un devis clair", desc: "Périmètre + délai + priorités" },
       { step: "4", label: "On démarre quand tu veux", desc: "Ou jamais. Aucune obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Réponse sous 24h",  sub: "Jours ouvrés" },
       { icon: "🔒", label: "Sans engagement",    sub: "Aucune obligation" },
-      { icon: "💶", label: "Dès 300 €",          sub: "Tarifs transparents" },
+      { icon: "💬", label: "Estimation adaptée", sub: "Selon votre besoin" },
       { icon: "🌍", label: "France & Suisse",    sub: "Remote ou présentiel" },
     ],
   },
   en: {
-    urgency: "🔥 52 quotes sent this month · 2 slots available in June",
-    eyebrow: "Free quote · Reply within 24h",
-    title: "What project do you have in mind?",
-    subtitle: "Pick your service, fill in your details and describe your idea.\nWe'll reply with a clear quote within 24 hours, no commitment.",
+    urgency: "🔥 Free discovery exchange · custom quote · reply within 24h",
+    eyebrow: "Custom quote · Reply within 24h",
+    title: "Describe your need, even if it is not fully clear yet.",
+    subtitle: "You do not need a complete specification document. Simply explain your situation, goal or current problem.\nWe'll reply with a clear, adjustable and no-commitment proposal.",
     proofTitle: "They trusted KAH-Digital",
     stats: [
       { value: "30+", label: "Projects delivered" },
       { value: "24h", label: "Response time" },
       { value: "5★", label: "Client satisfaction" },
-      { value: "100%", label: "Budget respected" },
+      { value: "100%", label: "Scope clarified" },
     ],
     testimonials: [
       {
@@ -83,13 +83,13 @@ const COPY = {
     process: [
       { step: "1", label: "You send this form", desc: "Takes 2 minutes" },
       { step: "2", label: "We analyse your project", desc: "Within 24h" },
-      { step: "3", label: "You receive a clear quote", desc: "Fixed price + timeline" },
+      { step: "3", label: "You receive a clear quote", desc: "Scope + timeline + priorities" },
       { step: "4", label: "We start when you're ready", desc: "Or never. No obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Reply within 24h",    sub: "Business days" },
       { icon: "🔒", label: "No commitment",        sub: "Completely free" },
-      { icon: "💶", label: "From 300 €",           sub: "Transparent pricing" },
+      { icon: "💬", label: "Adapted estimate",     sub: "Based on your need" },
       { icon: "🌍", label: "France & Switzerland", sub: "Remote or on-site" },
     ],
   },
@@ -209,9 +209,9 @@ export function QuotePageContent({ locale }: QuotePageContentProps) {
     <section className="bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.2),transparent_40%),linear-gradient(180deg,#08111f_0%,#04070d_100%)] py-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 text-center text-white">
-          <h1 className="mt-3 text-3xl font-bold sm:text-4xl">Kostenlose Projektanfrage</h1>
+          <h1 className="mt-3 text-3xl font-bold sm:text-4xl">Individuelle Projektanfrage</h1>
           <p className="mt-4 text-base text-white/70">
-            Beschreibe dein Projekt und erhalte eine klare Antwort mit Budget und Timing.
+            Beschreiben Sie Ihre Situation, Ziele oder aktuellen Probleme. Eine klare Offerte entsteht nach kurzem Scoping, ohne Verpflichtung.
           </p>
         </div>
         <QuoteForm />

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SEO local pour PME : apparaître en 1ère page Google en 2026",
     description:
-      "Les actions concrètes pour que vos clients locaux vous trouvent sur Google — sans agence SEO hors de prix.",
+      "Les actions concrètes pour que vos clients locaux vous trouvent sur Google — sans agence SEO hors de devis.",
   },
 };
 
@@ -64,10 +64,10 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Combien coûte le SEO local pour une PME ?",
+      name: "comment estimer le SEO local pour une PME ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mettre en place une base SEO locale solide (page optimisée, schema, Google Business Profile) coûte entre 300 et 800€ selon la complexité. Une agence SEO facture ensuite 500 à 2000€/mois pour le suivi. KAH-Digital intègre le SEO local directement dans la création du site.",
+        text: "Mettre en place une base SEO locale solide (page optimisée, schema, Google Business Profile) s'estime après cadrage selon la concurrence locale, les villes ciblées et le niveau de suivi souhaité. KAH-Digital intègre le SEO local directement dans la création du site.",
       },
     },
   ],
@@ -315,7 +315,7 @@ export default function SeoLocalPmePage() {
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               { href: "/blog/creation-site-web-pme", label: "Créer un site web pour PME en 2026" },
-              { href: "/blog/prix-site-web-professionnel", label: "Combien coûte un site web ?" },
+              { href: "/blog/devis-site-web-professionnel", label: "comment estimer un site web ?" },
               { href: "/blog/refonte-site-web", label: "Refonte site web : quand et comment ?" },
               { href: "/blog/site-web-artisan", label: "Site web pour artisan : le guide 2026" },
             ].map((article) => (
@@ -334,3 +334,5 @@ export default function SeoLocalPmePage() {
     </div>
   );
 }
+
+

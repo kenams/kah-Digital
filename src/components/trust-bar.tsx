@@ -5,26 +5,20 @@ import { useLocale } from "@/lib/locale";
 
 export function TrustBar() {
   const { locale } = useLocale();
-  const trustItems = {
-    fr: [
-      { icon: FiGlobe,       text: "Lausanne, Suisse · FR / EN / DE" },
-      { icon: FiClock,       text: "Réponse sous 24h garantie" },
-      { icon: FiCheckCircle, text: "Projets livrables dès € 300" },
-      { icon: FiShield,      text: "Devis clair avant tout engagement" },
-    ],
-    en: [
-      { icon: FiGlobe,       text: "Lausanne, Switzerland · FR / EN / DE" },
-      { icon: FiClock,       text: "Reply guaranteed within 24h" },
-      { icon: FiCheckCircle, text: "Projects from € 300" },
-      { icon: FiShield,      text: "Clear quote before any commitment" },
-    ],
-    de: [
-      { icon: FiGlobe,       text: "Lausanne, Schweiz · DE / FR / EN" },
-      { icon: FiClock,       text: "Antwort in 24h garantiert" },
-      { icon: FiCheckCircle, text: "Projekte ab € 300" },
-      { icon: FiShield,      text: "Klares Angebot vor jeder Zusage" },
-    ],
-  }[locale];
+
+  const trustItems = locale === "en"
+    ? [
+        { icon: FiGlobe,       text: "Lausanne, Switzerland · FR / EN" },
+        { icon: FiClock,       text: "Reply guaranteed within 24h" },
+        { icon: FiCheckCircle, text: "Service adjusted to your need" },
+        { icon: FiShield,      text: "Clear quote before any commitment" },
+      ]
+    : [
+        { icon: FiGlobe,       text: "Lausanne, Suisse · FR / EN" },
+        { icon: FiClock,       text: "Réponse sous 24h garantie" },
+        { icon: FiCheckCircle, text: "Prestation ajustée à votre besoin" },
+        { icon: FiShield,      text: "Devis clair avant tout engagement" },
+      ];
 
   return (
     <section className="border-y border-white/8 bg-gray-900/60 py-4 backdrop-blur-sm">

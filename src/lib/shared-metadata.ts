@@ -18,7 +18,7 @@ const localeMetadata = {
       "Agence digitale premium. Sites vitrines, e-commerce et expériences sur mesure avec un process limpide.",
     keywords: ["agence web", "site vitrine", "Next.js", "landing page", "design system", "KAH-Digital"],
     openGraphLocale: "fr_FR",
-    alternateLocales: ["en_US", "de_CH"],
+    alternateLocales: ["en_US"],
     openGraphDescription: "Création de sites, landing pages et expériences digitales. Devis rapide et réponse sous 24h.",
     openGraphAlt: "KAH-Digital - agence digitale premium",
     twitterDescription: "Sites et solutions digitales avec process express.",
@@ -28,20 +28,10 @@ const localeMetadata = {
       "Premium digital studio. Websites, landing pages, and custom solutions with a clear and fast process.",
     keywords: ["web agency", "business website", "Next.js", "landing page", "digital studio", "KAH-Digital"],
     openGraphLocale: "en_US",
-    alternateLocales: ["fr_FR", "de_CH"],
+    alternateLocales: ["fr_FR"],
     openGraphDescription: "Websites, landing pages, and digital solutions with a clear process and fast turnaround.",
     openGraphAlt: "KAH-Digital - premium digital studio",
     twitterDescription: "Websites and digital solutions with a clear process.",
-  },
-  de: {
-    description:
-      "Digitalstudio mit Premium-Anspruch. Websites, Landingpages und individuelle digitale Lösungen mit klarem Prozess.",
-    keywords: ["Webagentur", "Unternehmenswebsite", "Next.js", "Landingpage", "Digitalstudio", "KAH-Digital"],
-    openGraphLocale: "de_CH",
-    alternateLocales: ["fr_FR", "en_US"],
-    openGraphDescription: "Websites, Landingpages und digitale Lösungen mit klarem Ablauf und schneller Umsetzung.",
-    openGraphAlt: "KAH-Digital - digitales Premium-Studio",
-    twitterDescription: "Websites und digitale Lösungen mit klarem Prozess.",
   },
 } satisfies Record<
   Locale,
@@ -106,7 +96,6 @@ export function buildPageMetadata({
       languages: {
         fr: getLocalizedPath(path, "fr"),
         en: getLocalizedPath(path, "en"),
-        de: getLocalizedPath(path, "de"),
         "x-default": getLocalizedPath(path, "fr"),
       },
     },
