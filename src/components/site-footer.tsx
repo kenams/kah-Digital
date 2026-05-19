@@ -142,6 +142,53 @@ export function SiteFooter() {
       rights: "All rights reserved.",
       madeWith: "Built with AI · Deployed on Vercel",
     },
+    de: {
+      tagline: "Digitales Studio · Websites, Apps & SaaS",
+      description: "Wir entwickeln Websites, Landing Pages, mobile Apps und individuelle SaaS-Lösungen für Unternehmer, Freelancer und KMUs in der Schweiz.",
+      cta: "Sie haben ein Projekt?",
+      ctaBtn: "Kostenlose Offerte anfragen",
+      nav: {
+        title: "Navigation",
+        links: [
+          { label: "Startseite", href: "/de" },
+          { label: "Angebote", href: "/de/offres" },
+          { label: "Referenzen", href: "/de/projets" },
+          { label: "Offerte", href: "/de/devis" },
+          { label: "Kontakt", href: "/de/contact" },
+        ],
+      },
+      services: {
+        title: "Unsere Angebote",
+        links: [
+          { label: "Individuelle Landing Page", href: "/de/devis" },
+          { label: "Professionelle Website", href: "/de/devis" },
+          { label: "Mobile App", href: "/de/devis" },
+          { label: "Individuelle SaaS", href: "/de/devis" },
+          { label: "KI-Automatisierung", href: "/de/devis" },
+        ],
+      },
+      zones: {
+        title: "Regionen",
+        links: [
+          { label: "Website Lausanne", href: "/site-web-lausanne" },
+          { label: "Website Genf", href: "/site-web-geneve" },
+          { label: "Website Freiburg", href: "/site-web-fribourg" },
+          { label: "Website Bern", href: "/de/devis" },
+          { label: "Website Zürich", href: "/de/devis" },
+        ],
+      },
+      legal: {
+        title: "Rechtliches",
+        links: [
+          { label: "Impressum", href: "/de/devis" },
+          { label: "Datenschutz", href: "/de/devis" },
+          { label: "Kostenloser Audit", href: "/de/devis" },
+        ],
+      },
+      location: "Lausanne, Schweiz",
+      rights: "Alle Rechte vorbehalten.",
+      madeWith: "Mit KI gebaut · Deployed on Vercel",
+    },
   }[locale];
 
   const devisHref = locale === "fr" ? "/devis" : `${prefix}/devis`;

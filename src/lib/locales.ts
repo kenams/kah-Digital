@@ -1,7 +1,8 @@
-export type Locale = "fr" | "en";
+export type Locale = "fr" | "en" | "de";
 
 export function getLocalePrefix(locale: Locale) {
   if (locale === "en") return "/en";
+  if (locale === "de") return "/de";
   return "";
 }
 

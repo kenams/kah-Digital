@@ -70,6 +70,70 @@ const PLANS = {
       note: "Échange gratuit · Devis sous 24h",
     },
   ],
+  de: [
+    {
+      name: "Starter",
+      price: "Ab",
+      anchor: "CHF 890",
+      anchorSub: "je nach Umfang",
+      tagline: "Professioneller digitaler Auftritt",
+      highlight: false,
+      badge: null,
+      features: [
+        "Premium-Website (5–7 Seiten)",
+        "Mobiles, responsives Design",
+        "Technisches Basis-SEO",
+        "Optimiertes Kontaktformular",
+        "90+ Lighthouse-Performance",
+        "Lieferung in 2–3 Wochen",
+      ],
+      cta: "Offerte anfragen",
+      href: "/devis",
+      note: "Persönliches Angebot · Keine Verpflichtung",
+    },
+    {
+      name: "Professional",
+      price: "Ab",
+      anchor: "CHF 2'400",
+      anchorSub: "je nach Umfang",
+      tagline: "Vollständiges digitales Wachstumssystem",
+      highlight: true,
+      badge: "Am meisten gefragt",
+      features: [
+        "Vollständige Website (10+ Seiten)",
+        "KI-Automatisierung & E-Mails",
+        "Erweitertes SEO + lokale Seiten",
+        "Stripe-Zahlungsintegration",
+        "Analytics + Heatmaps",
+        "3 Monate Support nach Lieferung",
+        "Lieferung in 4–6 Wochen",
+      ],
+      cta: "Projekt besprechen",
+      href: "/devis",
+      note: "Persönliches Angebot · Budget garantiert",
+    },
+    {
+      name: "Elite",
+      price: "Budget",
+      anchor: "Massgeschneidert",
+      anchorSub: "je nach Umfang",
+      tagline: "Vollständiges KI-System & skalierbare Infrastruktur",
+      highlight: false,
+      badge: null,
+      features: [
+        "Individuelle Web-App / SaaS",
+        "KI-Agenten & Automatisierungen",
+        "Skalierbare Cloud-Infrastruktur",
+        "Echtzeit-Analytics-Dashboard",
+        "Unbegrenzte API-Integrationen",
+        "Mehrsprachig & international",
+        "6 Monate strategisches Growth-Support",
+      ],
+      cta: "Projekt anfragen",
+      href: "/devis",
+      note: "Kostenloses Erstgespräch · Angebot in 24h",
+    },
+  ],
   en: [
     {
       name: "Starter",
@@ -139,7 +203,7 @@ const PLANS = {
 export function PricingSection() {
   const { locale, prefix } = useLocale();
 
-  const plans = PLANS[locale === "en" ? "en" : "fr"];
+  const plans = PLANS[locale === "de" ? "de" : locale === "en" ? "en" : "fr"];
 
   const copy =
     locale === "en"
@@ -157,6 +221,22 @@ export function PricingSection() {
           bottomWa: "WhatsApp — reply in 2h",
           waText: "Hi KAH Digital, I'd like to discuss the budget for my project.",
           bottomNote: "No commitment · Budget adjusted to your needs · Reply within 24h",
+        }
+      : locale === "de"
+      ? {
+          eyebrow: "Investieren Sie richtig, zahlen Sie nicht zu viel",
+          title: "Ein System gebaut",
+          title2: "rund um Ihr Budget.",
+          sub: "Jedes Projekt beginnt mit einem kostenlosen Erstgespräch. Wir definieren genau, was Sie brauchen — nicht mehr, nicht weniger. Feste Offerte garantiert vor der Unterzeichnung.",
+          reassurance: [
+            "Kostenlose individuelle Offerte in 24h",
+            "Fester Preis — keine Überraschungen",
+            "Keine Verpflichtung bis zur Unterschrift",
+          ],
+          bottomCta: "Kostenlose Offerte erhalten",
+          bottomWa: "WhatsApp — Antwort in 2h",
+          waText: "Hallo KAH Digital, ich möchte das Budget für mein Projekt besprechen.",
+          bottomNote: "Unverbindlich · Budget angepasst an Ihren Bedarf · Antwort in 24h",
         }
       : {
           eyebrow: "Investissez juste, sans dépenser trop",
@@ -284,11 +364,15 @@ export function PricingSection() {
           <p className="mb-2 text-sm font-semibold text-white">
             {locale === "en"
               ? "Not sure which tier fits your project?"
+              : locale === "de"
+              ? "Nicht sicher, welche Stufe zu Ihrem Projekt passt?"
               : "Vous ne savez pas quel niveau correspond à votre projet ?"}
           </p>
           <p className="mb-6 text-sm text-gray-400">
             {locale === "en"
               ? "Tell us your situation in 2 lines. We'll come back with a clear scope and a realistic number — in 24h, free."
+              : locale === "de"
+              ? "Beschreiben Sie Ihre Situation in 2 Sätzen. Wir kommen mit einem klaren Umfang und einer realistischen Zahl zurück — in 24h, kostenlos."
               : "Décrivez votre situation en 2 lignes. On revient avec un périmètre clair et un chiffre réaliste — en 24h, gratuitement."}
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">

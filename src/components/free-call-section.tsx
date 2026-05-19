@@ -49,6 +49,20 @@ export function FreeCallSection() {
         confirmSlot: "Confirm your slot via WhatsApp",
         available: "Available",
       }
+    : locale === "de"
+    ? {
+        label: "Kostenloses Erstgespräch",
+        title: "15 Minuten, um Ihr Projekt zu klären.",
+        subtitle: "Kein Pitch. Kein Verkäufer. Direkter Zugang zum Senior KAH — wir schauen uns Ihr Projekt gemeinsam an und Sie verlassen es mit einem klaren Plan.",
+        items: ["Individuelle Budgetschätzung", "Realistischer, garantierter Zeitplan", "Kostenlose technische Beratung", "Keinerlei Verpflichtung"],
+        cta: "15 Min. auf WhatsApp buchen",
+        waText: "Hallo KAH Digital, ich möchte ein kostenloses 15-minütiges Erstgespräch über mein Projekt buchen.",
+        note: "Antwort in 2h an Werktagen · Verfügbar CH / DE / AT",
+        callTitle: "15-min. Gespräch",
+        callSubtitle: "Kostenlos · Unverbindlich",
+        confirmSlot: "Slot per WhatsApp bestätigen",
+        available: "Frei",
+      }
     : {
         label: "Appel découverte gratuit",
         title: "15 minutes pour clarifier votre projet.",

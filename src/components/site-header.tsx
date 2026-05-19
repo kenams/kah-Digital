@@ -23,10 +23,27 @@ export function SiteHeader() {
           { label: "Contact", href: "/en/contact" },
         ],
         cta: "Free audit",
+        ctaHref: "/en/audit-gratuit",
         subtitle: "AI Growth Systems",
         openMenu: "Open menu",
         closeMenu: "Close menu",
         homeLabel: "KAH Digital - Home",
+      }
+    : locale === "de"
+    ? {
+        nav: [
+          { label: "Startseite", href: "/de" },
+          { label: "Angebote", href: "/de/offres" },
+          { label: "Referenzen", href: "/de/projets" },
+          { label: "Offerte", href: "/de/devis" },
+          { label: "Kontakt", href: "/de/contact" },
+        ],
+        cta: "Kostenlos anfragen",
+        ctaHref: "/de/devis",
+        subtitle: "AI Growth Systems",
+        openMenu: "Menü öffnen",
+        closeMenu: "Menü schließen",
+        homeLabel: "KAH Digital - Startseite",
       }
     : {
         nav: [
@@ -39,6 +56,7 @@ export function SiteHeader() {
           { label: "Contact", href: "/contact" },
         ],
         cta: "Audit gratuit",
+        ctaHref: "/audit-gratuit",
         subtitle: "AI Growth Systems",
         openMenu: "Ouvrir le menu",
         closeMenu: "Fermer le menu",
@@ -68,7 +86,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
             <Link
-              href={withPrefix("/audit-gratuit")}
+              href={localeCopy.ctaHref}
               className="whitespace-nowrap rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}

@@ -32,6 +32,25 @@ export function HeroSection() {
             { value: "100%", label: "On-budget delivery" },
           ],
         }
+      : locale === "de"
+      ? {
+          eyebrow: "KI-gestützte Wachstumssysteme",
+          title1: "Wir bauen die Systeme,",
+          title2: "die Ihr Unternehmen wachsen lassen.",
+          body: "KI-Automatisierung, Premium-Plattformen, digitale Infrastruktur — für Unternehmen, die skalieren wollen, ohne zu verkomplizieren.",
+          primary: "Kostenloses Audit erhalten",
+          secondary: "Ergebnisse ansehen",
+          wa: "WhatsApp KAH",
+          waText: "Hallo KAH Digital, ich möchte besprechen, wie Sie mein Wachstum unterstützen können.",
+          tags: ["KI-Automatisierung", "Premium-Plattformen", "Wachstumsinfrastruktur", "International"],
+          trustLine: "70+ Unternehmen in der Schweiz, Frankreich & weltweit vertrauen uns",
+          proof: [
+            { value: "70+", label: "Systeme geliefert" },
+            { value: "3×", label: "Leads Ø" },
+            { value: "24h", label: "Antwortzeit" },
+            { value: "100%", label: "Budget eingehalten" },
+          ],
+        }
       : {
           eyebrow: "AI-Powered Growth Systems",
           title1: "On construit les systèmes",

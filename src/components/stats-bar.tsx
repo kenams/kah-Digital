@@ -14,6 +14,14 @@ export function StatsBar() {
           { value: "24h", label: "Response time" },
           { value: "100%", label: "On-budget delivery" },
         ]
+      : locale === "de"
+      ? [
+          { value: "70+", label: "Systeme geliefert" },
+          { value: "3×", label: "Leads-Wachstum Ø" },
+          { value: "95+", label: "Lighthouse-Score" },
+          { value: "24h", label: "Antwortzeit" },
+          { value: "100%", label: "Budget eingehalten" },
+        ]
       : [
           { value: "70+", label: "Systèmes livrés" },
           { value: "3×", label: "Croissance leads moy." },

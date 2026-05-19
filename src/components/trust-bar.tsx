@@ -8,13 +8,20 @@ export function TrustBar() {
 
   const trustItems = locale === "en"
     ? [
-        { icon: FiGlobe,       text: "Lausanne, Switzerland · FR / EN" },
+        { icon: FiGlobe,       text: "Lausanne, Switzerland · FR / EN / DE" },
         { icon: FiClock,       text: "Reply guaranteed within 24h" },
         { icon: FiCheckCircle, text: "Service adjusted to your need" },
         { icon: FiShield,      text: "Clear quote before any commitment" },
       ]
+    : locale === "de"
+    ? [
+        { icon: FiGlobe,       text: "Lausanne, Schweiz · DE / FR / EN" },
+        { icon: FiClock,       text: "Antwort garantiert in 24h" },
+        { icon: FiCheckCircle, text: "Leistung angepasst an Ihren Bedarf" },
+        { icon: FiShield,      text: "Klare Offerte vor jeder Verpflichtung" },
+      ]
     : [
-        { icon: FiGlobe,       text: "Lausanne, Suisse · FR / EN" },
+        { icon: FiGlobe,       text: "Lausanne, Suisse · FR / EN / DE" },
         { icon: FiClock,       text: "Réponse sous 24h garantie" },
         { icon: FiCheckCircle, text: "Prestation ajustée à votre besoin" },
         { icon: FiShield,      text: "Devis clair avant tout engagement" },

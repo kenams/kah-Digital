@@ -100,16 +100,65 @@ const CASES = {
       border: "border-violet-500/20",
     },
   ],
+  de: [
+    {
+      tag: "KI-Automatisierung · SaaS",
+      title: "100% automatisierte Prospecting-Pipeline",
+      context: "Wachsendes Startup: Vertriebsmitarbeiter verbrachten 4h/Tag mit manueller Lead-Qualifizierung. Conversion-Rate 2%.",
+      solution: "Claude-KI-Agent + Supabase-Pipeline: automatisches Scoring, sektorbasierte personalisierte E-Mails, automatische Follow-ups über 10 Tage.",
+      results: [
+        { icon: FiTrendingUp, value: "6×", label: "Qualifizierte Leads/Woche" },
+        { icon: FiZap, value: "−80%", label: "Vertriebszeit gespart" },
+        { icon: FiClock, value: "3 Wo.", label: "Lieferzeit" },
+      ],
+      quote: "Das System läuft 24/7 ohne Eingriffe. Wir haben 6× mehr qualifizierte Leads, ohne einen weiteren Verkäufer einstellen zu müssen.",
+      author: "T. A. — Mitgründer SaaS B2B",
+      accent: "from-blue-600/20 to-cyan-600/10",
+      border: "border-blue-500/20",
+    },
+    {
+      tag: "E-Commerce · Relaunch",
+      title: "Premium E-Commerce-Plattform mit KI",
+      context: "Shopify-Shop mit 78% Warenkorbabbruchrate. Keine Personalisierung, nicht mobiloptimiert, kein lokales SEO.",
+      solution: "Vollständiger Next.js + Stripe-Relaunch + KI-Produktempfehlungen. Lokales SEO Genf/Lausanne. Mobile Performance 95+.",
+      results: [
+        { icon: FiTrendingUp, value: "+42%", label: "Conversions in 60 Tagen" },
+        { icon: FiStar, value: "−34%", label: "Warenkorbabbruchrate" },
+        { icon: FiClock, value: "5 Wo.", label: "Lieferzeit" },
+      ],
+      quote: "42% mehr Conversions in 2 Monaten. Die KI-Produktempfehlung hat alles verändert — Kunden bleiben 2× länger.",
+      author: "S. M. — E-Commerce-Direktorin, Genf",
+      accent: "from-emerald-600/20 to-teal-600/10",
+      border: "border-emerald-500/20",
+    },
+    {
+      tag: "Dashboard · Infrastruktur",
+      title: "Echtzeit-operatives Dashboard",
+      context: "KMU mit 40 Mitarbeitern nutzte Excel für das Reporting. 2h/Woche verloren durch manuelles Datenkompilieren.",
+      solution: "React-Web-App + Echtzeit-Supabase + automatische PDF-Exporte. Auth, Rollen, KPI-Dashboard, E-Mail-Alerts.",
+      results: [
+        { icon: FiClock, value: "−90%", label: "Reporting-Zeit" },
+        { icon: FiStar, value: "0 Bugs", label: "In 6 Monaten Betrieb" },
+        { icon: FiTrendingUp, value: "3. Projekt", label: "Bereits geplant" },
+      ],
+      quote: "Wir haben 2h Reporting pro Woche zurückgewonnen. Das Team sieht die KPIs in Echtzeit von überall. Plant bereits das 3. Projekt.",
+      author: "J. F. — Betriebsleiter, Freiburg",
+      accent: "from-violet-600/20 to-purple-600/10",
+      border: "border-violet-500/20",
+    },
+  ],
 };
 
 export function CaseStudySection() {
   const { locale, prefix } = useLocale();
 
-  const cases = CASES[locale === "en" ? "en" : "fr"];
+  const cases = CASES[locale === "en" ? "en" : locale === "de" ? "de" : "fr"];
 
   const copy =
     locale === "en"
       ? { eyebrow: "Case studies", title: "Real results.", title2: "Real businesses.", cta: "Start my project", ctaSub: "Free audit · Reply within 24h" }
+      : locale === "de"
+      ? { eyebrow: "Fallstudien", title: "Echte Ergebnisse.", title2: "Echte Unternehmen.", cta: "Projekt starten", ctaSub: "Kostenloses Audit · Antwort in 24h" }
       : { eyebrow: "Cas clients", title: "Des résultats réels.", title2: "Des entreprises réelles.", cta: "Démarrer mon projet", ctaSub: "Audit gratuit · Réponse sous 24h" };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);

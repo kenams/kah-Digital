@@ -11,6 +11,7 @@ const SYSTEMS = [
     bg: "bg-blue-500/10 border-blue-500/20",
     fr: { title: "Automatisation IA", desc: "Éliminez les tâches répétitives. Vos processus tournent seuls — lead capture, emails, reporting, workflows." },
     en: { title: "AI Automation", desc: "Eliminate repetitive tasks. Your processes run themselves — lead capture, emails, reporting, workflows." },
+    de: { title: "KI-Automatisierung", desc: "Eliminieren Sie Routineaufgaben. Ihre Prozesse laufen von selbst — Lead-Erfassung, E-Mails, Reporting, Workflows." },
   },
   {
     icon: FiTrendingUp,
@@ -18,6 +19,7 @@ const SYSTEMS = [
     bg: "bg-violet-500/10 border-violet-500/20",
     fr: { title: "Systèmes de conversion", desc: "Tunnels de vente, pages de capture, formulaires intelligents. Chaque visiteur devient une opportunité." },
     en: { title: "Conversion Systems", desc: "Sales funnels, capture pages, smart forms. Every visitor becomes an opportunity." },
+    de: { title: "Conversion-Systeme", desc: "Verkaufstunnel, Capture-Seiten, intelligente Formulare. Jeder Besucher wird zur Chance." },
   },
   {
     icon: FiGlobe,
@@ -25,6 +27,7 @@ const SYSTEMS = [
     bg: "bg-cyan-500/10 border-cyan-500/20",
     fr: { title: "Plateformes premium", desc: "Sites web, apps SaaS, e-commerce. Architectures scalables, design haut de gamme, performances Lighthouse 95+." },
     en: { title: "Premium Platforms", desc: "Websites, SaaS apps, e-commerce. Scalable architectures, high-end design, 95+ Lighthouse performance." },
+    de: { title: "Premium-Plattformen", desc: "Websites, SaaS-Apps, E-Commerce. Skalierbare Architekturen, hochwertiges Design, 95+ Lighthouse-Performance." },
   },
   {
     icon: FiCpu,
@@ -32,6 +35,7 @@ const SYSTEMS = [
     bg: "bg-emerald-500/10 border-emerald-500/20",
     fr: { title: "Agents IA sur mesure", desc: "Chatbots, assistants internes, agents de prospection. L'IA travaille pour vous 24h/24." },
     en: { title: "Custom AI Agents", desc: "Chatbots, internal assistants, prospecting agents. AI works for you 24/7." },
+    de: { title: "Individuelle KI-Agenten", desc: "Chatbots, interne Assistenten, Prospecting-Agenten. KI arbeitet 24/7 für Sie." },
   },
   {
     icon: FiLayers,
@@ -39,6 +43,7 @@ const SYSTEMS = [
     bg: "bg-orange-500/10 border-orange-500/20",
     fr: { title: "Infrastructure digitale", desc: "API, bases de données, intégrations tierces. Une architecture solide qui supporte votre croissance." },
     en: { title: "Digital Infrastructure", desc: "APIs, databases, third-party integrations. A solid architecture that supports your growth." },
+    de: { title: "Digitale Infrastruktur", desc: "APIs, Datenbanken, Drittanbieter-Integrationen. Eine solide Architektur, die Ihr Wachstum trägt." },
   },
   {
     icon: FiBarChart2,
@@ -46,6 +51,7 @@ const SYSTEMS = [
     bg: "bg-pink-500/10 border-pink-500/20",
     fr: { title: "Dashboards & Analytics", desc: "Visualisez vos KPIs en temps réel. Prenez de meilleures décisions plus vite." },
     en: { title: "Dashboards & Analytics", desc: "Visualize your KPIs in real time. Make better decisions faster." },
+    de: { title: "Dashboards & Analytics", desc: "Visualisieren Sie Ihre KPIs in Echtzeit. Treffen Sie schneller bessere Entscheidungen." },
   },
 ];
 
@@ -59,6 +65,13 @@ export function AiSystemsSection() {
           title: "Not just a website.",
           title2: "A growth system.",
           sub: "We design and deliver end-to-end digital systems — from the first pixel to the last automation — so your business runs smarter.",
+        }
+      : locale === "de"
+      ? {
+          eyebrow: "Was wir bauen",
+          title: "Nicht nur eine Website.",
+          title2: "Ein Wachstumssystem.",
+          sub: "Wir konzipieren und liefern vollständige digitale Systeme — vom ersten Pixel bis zur letzten Automatisierung — damit Ihr Unternehmen intelligenter läuft.",
         }
       : {
           eyebrow: "Ce qu'on construit",
@@ -89,7 +102,7 @@ export function AiSystemsSection() {
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SYSTEMS.map(({ icon: Icon, color, bg, fr, en }, i) => {
-            const c = locale === "en" ? en : fr;
+            const c = locale === "en" ? en : locale === "de" ? de : fr;
             return (
               <motion.div
                 key={c.title}

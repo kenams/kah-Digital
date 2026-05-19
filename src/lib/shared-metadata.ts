@@ -18,7 +18,7 @@ const localeMetadata = {
       "Agence digitale premium. Sites vitrines, e-commerce et expériences sur mesure avec un process limpide.",
     keywords: ["agence web", "site vitrine", "Next.js", "landing page", "design system", "KAH-Digital"],
     openGraphLocale: "fr_FR",
-    alternateLocales: ["en_US"],
+    alternateLocales: ["en_US", "de_CH"],
     openGraphDescription: "Création de sites, landing pages et expériences digitales. Devis rapide et réponse sous 24h.",
     openGraphAlt: "KAH-Digital - agence digitale premium",
     twitterDescription: "Sites et solutions digitales avec process express.",
@@ -28,10 +28,20 @@ const localeMetadata = {
       "Premium digital studio. Websites, landing pages, and custom solutions with a clear and fast process.",
     keywords: ["web agency", "business website", "Next.js", "landing page", "digital studio", "KAH-Digital"],
     openGraphLocale: "en_US",
-    alternateLocales: ["fr_FR"],
+    alternateLocales: ["fr_FR", "de_CH"],
     openGraphDescription: "Websites, landing pages, and digital solutions with a clear process and fast turnaround.",
     openGraphAlt: "KAH-Digital - premium digital studio",
     twitterDescription: "Websites and digital solutions with a clear process.",
+  },
+  de: {
+    description:
+      "Premium Digital-Studio in der Schweiz. Webseiten, Landing Pages und massgeschneiderte Lösungen mit einem klaren und schnellen Prozess.",
+    keywords: ["Webentwicklung Schweiz", "Webseite erstellen", "Next.js", "Landing Page", "Digital Studio", "KAH-Digital"],
+    openGraphLocale: "de_CH",
+    alternateLocales: ["fr_FR", "en_US"],
+    openGraphDescription: "Webseiten, Landing Pages und digitale Lösungen. Klarer Prozess, Angebot innerhalb von 24h.",
+    openGraphAlt: "KAH-Digital - Premium Digital Studio Schweiz",
+    twitterDescription: "Webseiten und digitale Lösungen mit klarem Prozess.",
   },
 } satisfies Record<
   Locale,
@@ -96,6 +106,7 @@ export function buildPageMetadata({
       languages: {
         fr: getLocalizedPath(path, "fr"),
         en: getLocalizedPath(path, "en"),
+        de: getLocalizedPath(path, "de"),
         "x-default": getLocalizedPath(path, "fr"),
       },
     },

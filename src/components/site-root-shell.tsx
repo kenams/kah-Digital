@@ -32,7 +32,7 @@ const syne = Syne({
 
 type SiteRootShellProps = {
   children: React.ReactNode;
-  htmlLang: "fr" | "en";
+  htmlLang: "fr" | "en" | "de";
 };
 
 export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
