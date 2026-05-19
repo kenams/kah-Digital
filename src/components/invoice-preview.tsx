@@ -11,7 +11,7 @@ interface InvoiceItem {
 }
 
 interface InvoicePreviewProps {
-  locale?: "fr" | "en";
+  locale?: "fr" | "en" | "de";
   clientName?: string;
   clientCompany?: string;
   items?: InvoiceItem[];
@@ -103,7 +103,7 @@ export function InvoicePreview({
         { description: "Training and support", quantity: 1, unitPrice: 300, total: 300 },
       ],
     },
-  }[locale];
+  }[locale === "de" ? "fr" : locale];
   const clientNameFallback = isEnglish ? copy.clientName : clientName;
   const clientCompanyFallback = isEnglish ? copy.clientCompany : clientCompany;
   const invoiceItems =

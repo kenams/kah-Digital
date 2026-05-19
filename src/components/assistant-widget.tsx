@@ -231,7 +231,7 @@ function parseStreamEvent(block: string): AssistantStreamEvent | null {
 
 async function streamAssistantMessage(body: {
   message: string;
-  locale: "fr" | "en";
+  locale: "fr" | "en" | "de";
   session?: AssistantSession;
   onText: (delta: string) => void;
 }) {
@@ -383,8 +383,8 @@ function readStoredState(storageKey: string) {
   }
 }
 
-function AssistantWidgetInner({ locale }: { locale: "fr" | "en" }) {
-  const copy = widgetCopy[locale];
+function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
+  const copy = widgetCopy[locale === "de" ? "fr" : locale];
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const storageKey = `${storagePrefix}:${locale}`;
