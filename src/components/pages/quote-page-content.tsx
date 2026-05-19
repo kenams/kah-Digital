@@ -8,16 +8,16 @@ type QuotePageContentProps = {
 
 const COPY = {
   fr: {
-    urgency: "🔥 Premier échange offert · devis personnalisé · réponse sous 24h",
-    eyebrow: "Devis personnalisé · Réponse sous 24h",
-    title: "Décrivez votre besoin, même s'il n'est pas encore clair.",
-    subtitle: "Vous n'avez pas besoin d'avoir un cahier des charges complet. Expliquez simplement votre situation, votre objectif ou votre problème actuel.\nOn vous répond avec une proposition claire, ajustable et sans engagement.",
+    urgency: "💬 Budget flexible · on discute avant toute décision · réponse sous 24h",
+    eyebrow: "Devis personnalisé · Budget adapté · Réponse sous 24h",
+    title: "Parlez-nous de votre projet. On s'adapte.",
+    subtitle: "Pas de formule rigide, pas de tarif imposé. Décrivez votre situation en 2 lignes — on revient avec une proposition claire, ajustée à votre budget réel.\nAucun engagement avant validation.",
     proofTitle: "Ils ont fait confiance à KAH-Digital",
     stats: [
       { value: "30+", label: "Projets livrés" },
       { value: "24h", label: "Délai de réponse" },
       { value: "5★", label: "Satisfaction client" },
-      { value: "100%", label: "Périmètre clarifié" },
+      { value: "100%", label: "Budget respecté" },
     ],
     testimonials: [
       {
@@ -39,28 +39,28 @@ const COPY = {
     ],
     process: [
       { step: "1", label: "Tu envoies ce formulaire", desc: "2 minutes max" },
-      { step: "2", label: "On analyse ton projet", desc: "Sous 24h" },
-      { step: "3", label: "Tu reçois un devis clair", desc: "Périmètre + délai + priorités" },
-      { step: "4", label: "On démarre quand tu veux", desc: "Ou jamais. Aucune obligation." },
+      { step: "2", label: "On analyse & on discute", desc: "Sous 24h — budget inclus" },
+      { step: "3", label: "Tu reçois une proposition claire", desc: "Périmètre + délai + prix ferme" },
+      { step: "4", label: "On démarre quand tu valides", desc: "Ou jamais. Aucune obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Réponse sous 24h",  sub: "Jours ouvrés" },
       { icon: "🔒", label: "Sans engagement",    sub: "Aucune obligation" },
-      { icon: "💬", label: "Estimation adaptée", sub: "Selon votre besoin" },
-      { icon: "🌍", label: "France & Suisse",    sub: "Remote ou présentiel" },
+      { icon: "💬", label: "Budget discuté",      sub: "On s'adapte à vous" },
+      { icon: "🚀", label: "Démarrage en 48h",   sub: "Après validation" },
     ],
   },
   en: {
-    urgency: "🔥 Free discovery exchange · custom quote · reply within 24h",
-    eyebrow: "Custom quote · Reply within 24h",
-    title: "Describe your need, even if it is not fully clear yet.",
-    subtitle: "You do not need a complete specification document. Simply explain your situation, goal or current problem.\nWe'll reply with a clear, adjustable and no-commitment proposal.",
+    urgency: "💬 Flexible budget · we discuss before any decision · reply within 24h",
+    eyebrow: "Custom quote · Adapted budget · Reply within 24h",
+    title: "Tell us about your project. We'll adapt.",
+    subtitle: "No rigid package, no imposed price. Describe your situation in 2 lines — we come back with a clear proposal adjusted to your actual budget.\nNo commitment before you validate.",
     proofTitle: "They trusted KAH-Digital",
     stats: [
       { value: "30+", label: "Projects delivered" },
       { value: "24h", label: "Response time" },
       { value: "5★", label: "Client satisfaction" },
-      { value: "100%", label: "Scope clarified" },
+      { value: "100%", label: "Budget respected" },
     ],
     testimonials: [
       {
@@ -82,21 +82,64 @@ const COPY = {
     ],
     process: [
       { step: "1", label: "You send this form", desc: "Takes 2 minutes" },
-      { step: "2", label: "We analyse your project", desc: "Within 24h" },
-      { step: "3", label: "You receive a clear quote", desc: "Scope + timeline + priorities" },
-      { step: "4", label: "We start when you're ready", desc: "Or never. No obligation." },
+      { step: "2", label: "We analyse & discuss", desc: "Within 24h — budget included" },
+      { step: "3", label: "You receive a clear proposal", desc: "Scope + timeline + fixed price" },
+      { step: "4", label: "We start when you validate", desc: "Or never. No obligation." },
     ],
     reassurance: [
       { icon: "⚡", label: "Reply within 24h",    sub: "Business days" },
       { icon: "🔒", label: "No commitment",        sub: "Completely free" },
-      { icon: "💬", label: "Adapted estimate",     sub: "Based on your need" },
-      { icon: "🌍", label: "France & Switzerland", sub: "Remote or on-site" },
+      { icon: "💬", label: "Budget discussed",     sub: "We adapt to you" },
+      { icon: "🚀", label: "Kickoff in 48h",       sub: "After validation" },
+    ],
+  },
+  de: {
+    urgency: "💬 Flexibles Budget · wir besprechen alles vor einer Entscheidung · Antwort in 24h",
+    eyebrow: "Individuelle Offerte · Budget anpassbar · Antwort in 24h",
+    title: "Erzählen Sie uns von Ihrem Projekt. Wir passen uns an.",
+    subtitle: "Kein starres Paket, kein aufgezwungener Preis. Beschreiben Sie Ihre Situation in 2 Sätzen — wir kommen mit einem klaren Vorschlag zurück, der an Ihr tatsächliches Budget angepasst ist.\nKeine Verpflichtung vor Ihrer Bestätigung.",
+    proofTitle: "Sie haben KAH-Digital vertraut",
+    stats: [
+      { value: "30+", label: "Projekte geliefert" },
+      { value: "24h", label: "Antwortzeit" },
+      { value: "5★", label: "Kundenzufriedenheit" },
+      { value: "100%", label: "Budget eingehalten" },
+    ],
+    testimonials: [
+      {
+        quote: "4 neue Kunden im ersten Monat nach dem Launch.",
+        author: "S. M.", role: "Business-Coach, Lyon",
+      },
+      {
+        quote: "Die Reservierungen stiegen in zwei Monaten um 30 %.",
+        author: "A. B.", role: "Restaurantbesitzer, Genf",
+      },
+      {
+        quote: "10 Tage nach dem Briefing war meine Website live.",
+        author: "T. K.", role: "Freiberuflicher Entwickler, Paris",
+      },
+      {
+        quote: "Dashboard seit 4 Monaten in Produktion — kein einziger Bug.",
+        author: "J. F.", role: "Mitgründer Startup, Freiburg",
+      },
+    ],
+    process: [
+      { step: "1", label: "Sie senden dieses Formular", desc: "Dauert 2 Minuten" },
+      { step: "2", label: "Wir analysieren & besprechen", desc: "In 24h — Budget inklusive" },
+      { step: "3", label: "Sie erhalten einen klaren Vorschlag", desc: "Scope + Zeitplan + fester Preis" },
+      { step: "4", label: "Wir starten wenn Sie bestätigen", desc: "Oder nie. Keine Verpflichtung." },
+    ],
+    reassurance: [
+      { icon: "⚡", label: "Antwort in 24h",       sub: "Arbeitstage" },
+      { icon: "🔒", label: "Keine Verpflichtung",  sub: "Vollständig kostenlos" },
+      { icon: "💬", label: "Budget besprochen",     sub: "Wir passen uns an" },
+      { icon: "🚀", label: "Start in 48h",          sub: "Nach Bestätigung" },
     ],
   },
 } as const;
 
 export function QuotePageContent({ locale }: QuotePageContentProps) {
-  if (locale === "fr" || locale === "en") {
+  if (locale === "fr" || locale === "en" || locale === "de") {
     const c = COPY[locale];
     return (
       <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.18),transparent_50%),linear-gradient(180deg,#020b18_0%,#04070d_100%)]">

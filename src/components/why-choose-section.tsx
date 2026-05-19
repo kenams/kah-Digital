@@ -26,9 +26,9 @@ export function WhyChooseSection() {
         },
         {
           num: "03", icon: FiCheck, accent: "#10b981",
-          title: "100% budget respecté",
-          description: "Chaque devis est ferme. Vous savez exactement ce que vous achetez avant de signer. Aucune mauvaise surprise à la facture.",
-          tag: "Devis lisibles · Sur mesure",
+          title: "Budget discuté, pas imposé",
+          description: "On ne fixe rien sans en parler. On cadre ensemble ce qui est utile selon votre budget réel. Devis ferme uniquement après accord — aucune mauvaise surprise.",
+          tag: "Budget adapté · Devis sur mesure",
         },
         {
           num: "04", icon: FiClock, accent: "#f59e0b",
@@ -57,9 +57,9 @@ export function WhyChooseSection() {
         },
         {
           num: "03", icon: FiCheck, accent: "#10b981",
-          title: "100% on-budget delivery",
-          description: "Every quote is fixed. You know exactly what you're buying before signing. No surprise invoice. Ever.",
-          tag: "Readable quotes · Custom scope",
+          title: "Budget discussed, not imposed",
+          description: "Nothing is fixed without talking first. We scope together what's useful within your actual budget. Fixed quote only after agreement — zero surprise invoice.",
+          tag: "Adapted budget · Custom quote",
         },
         {
           num: "04", icon: FiClock, accent: "#f59e0b",
@@ -88,9 +88,9 @@ export function WhyChooseSection() {
         },
         {
           num: "03", icon: FiCheck, accent: "#10b981",
-          title: "100% Budget eingehalten",
-          description: "Jedes Angebot ist fest. Sie wissen genau, was Sie kaufen, bevor Sie unterschreiben. Keine Überraschungsrechnung.",
-          tag: "Lesbare Angebote · Individuell",
+          title: "Budget besprochen, nicht aufgezwungen",
+          description: "Nichts wird ohne Gespräch festgelegt. Wir definieren gemeinsam, was in Ihrem Budget sinnvoll ist. Festes Angebot erst nach Einigung — keine Überraschungsrechnung.",
+          tag: "Angepasstes Budget · Individuelle Offerte",
         },
         {
           num: "04", icon: FiClock, accent: "#f59e0b",
