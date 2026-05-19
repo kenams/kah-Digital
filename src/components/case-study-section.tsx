@@ -1,156 +1,157 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiTrendingUp, FiClock, FiStar } from "react-icons/fi";
+import { FiArrowRight, FiTrendingUp, FiClock, FiStar, FiZap } from "react-icons/fi";
+
+const CASES = {
+  fr: [
+    {
+      tag: "Automatisation IA · SaaS",
+      title: "Pipeline de prospection 100% automatisé",
+      context: "Startup en croissance : commerciaux qui passaient 4h/jour à qualifier des leads manuellement. Taux de conversion à 2%.",
+      solution: "Agent IA Claude + pipeline Supabase : scoring automatique, emails personnalisés par secteur, follow-ups automatiques sur 10 jours.",
+      results: [
+        { icon: FiTrendingUp, value: "6×", label: "Leads qualifiés/semaine" },
+        { icon: FiZap, value: "−80%", label: "Temps commercial" },
+        { icon: FiClock, value: "3 sem.", label: "Délai de livraison" },
+      ],
+      quote: "Le système tourne 24h/24 sans intervention. On a 6× plus de leads qualifiés sans recruter un commercial supplémentaire.",
+      author: "T. A. — Co-fondateur SaaS B2B",
+      accent: "from-blue-600/20 to-cyan-600/10",
+      border: "border-blue-500/20",
+    },
+    {
+      tag: "E-commerce · Refonte",
+      title: "Plateforme e-commerce premium avec IA",
+      context: "Boutique Shopify avec taux d'abandon panier à 78%. Aucune personnalisation, mobile non optimisé, 0 SEO local.",
+      solution: "Refonte complète Next.js + Stripe + recommandations IA produit. SEO local Genève/Lausanne. Performance mobile 95+.",
+      results: [
+        { icon: FiTrendingUp, value: "+42%", label: "Conversions en 60j" },
+        { icon: FiStar, value: "−34%", label: "Taux d'abandon panier" },
+        { icon: FiClock, value: "5 sem.", label: "Délai de livraison" },
+      ],
+      quote: "42% de conversions en plus en 2 mois. L'IA de recommandation produit a changé la donne — les clients restent 2× plus longtemps.",
+      author: "S. M. — Directrice e-commerce, Genève",
+      accent: "from-emerald-600/20 to-teal-600/10",
+      border: "border-emerald-500/20",
+    },
+    {
+      tag: "Dashboard · Infrastructure",
+      title: "Dashboard opérationnel temps réel",
+      context: "PME de 40 personnes avec Excel comme outil de reporting. 2h/semaine perdues à compiler des données manuellement.",
+      solution: "Application web React + Supabase temps réel + exports PDF automatiques. Auth, rôles, dashboard KPIs, alertes email.",
+      results: [
+        { icon: FiClock, value: "−90%", label: "Temps de reporting" },
+        { icon: FiStar, value: "0 bug", label: "En 6 mois de prod" },
+        { icon: FiTrendingUp, value: "3e projet", label: "Déjà planifié" },
+      ],
+      quote: "On a récupéré 2h de reporting par semaine. L'équipe voit les KPIs en temps réel depuis n'importe où. Déjà en train de planifier le 3e projet.",
+      author: "J. F. — Directeur opérations, Fribourg",
+      accent: "from-violet-600/20 to-purple-600/10",
+      border: "border-violet-500/20",
+    },
+  ],
+  en: [
+    {
+      tag: "AI Automation · SaaS",
+      title: "100% automated prospecting pipeline",
+      context: "Growing startup: salespeople spending 4h/day manually qualifying leads. 2% conversion rate.",
+      solution: "Claude AI agent + Supabase pipeline: automatic scoring, sector-personalized emails, auto follow-ups over 10 days.",
+      results: [
+        { icon: FiTrendingUp, value: "6×", label: "Qualified leads/week" },
+        { icon: FiZap, value: "−80%", label: "Sales time saved" },
+        { icon: FiClock, value: "3 wks", label: "Delivery time" },
+      ],
+      quote: "The system runs 24/7 without intervention. We have 6× more qualified leads without hiring an extra salesperson.",
+      author: "T. A. — Co-founder B2B SaaS",
+      accent: "from-blue-600/20 to-cyan-600/10",
+      border: "border-blue-500/20",
+    },
+    {
+      tag: "E-commerce · Redesign",
+      title: "Premium e-commerce platform with AI",
+      context: "Shopify store with 78% cart abandonment rate. No personalization, non-optimized mobile, zero local SEO.",
+      solution: "Full Next.js + Stripe rebuild + AI product recommendations. Local SEO Geneva/Lausanne. Mobile performance 95+.",
+      results: [
+        { icon: FiTrendingUp, value: "+42%", label: "Conversions in 60 days" },
+        { icon: FiStar, value: "−34%", label: "Cart abandonment" },
+        { icon: FiClock, value: "5 wks", label: "Delivery time" },
+      ],
+      quote: "42% more conversions in 2 months. The AI product recommendation changed everything — customers stay 2× longer.",
+      author: "S. M. — E-commerce Director, Geneva",
+      accent: "from-emerald-600/20 to-teal-600/10",
+      border: "border-emerald-500/20",
+    },
+    {
+      tag: "Dashboard · Infrastructure",
+      title: "Real-time operational dashboard",
+      context: "40-person SME using Excel for reporting. 2h/week lost compiling data manually.",
+      solution: "React web app + real-time Supabase + auto PDF exports. Auth, roles, KPI dashboard, email alerts.",
+      results: [
+        { icon: FiClock, value: "−90%", label: "Reporting time" },
+        { icon: FiStar, value: "0 bugs", label: "In 6 months of production" },
+        { icon: FiTrendingUp, value: "3rd project", label: "Already planned" },
+      ],
+      quote: "We recovered 2h of reporting per week. The team sees KPIs in real time from anywhere. Already planning the 3rd project.",
+      author: "J. F. — Operations Director, Fribourg",
+      accent: "from-violet-600/20 to-purple-600/10",
+      border: "border-violet-500/20",
+    },
+  ],
+};
 
 export function CaseStudySection() {
   const { locale, prefix } = useLocale();
 
-  const copy = {
-    fr: {
-      eyebrow: "Cas clients",
-      title: "Des résultats concrets, pas des promesses",
-      cases: [
-        {
-          tag: "Avocat · Lausanne",
-          title: "Refonte site cabinet d'avocats",
-          context: "Site WordPress lent, non mobile, introuvable sur Google. 0 contact entrant par mois via le site.",
-          solution: "Refonte complète en 3 semaines : Next.js, SEO local, formulaire de contact optimisé, page par domaine de pratique.",
-          results: [
-            { icon: FiTrendingUp, value: "3–4", label: "Contacts/semaine via le site" },
-            { icon: FiStar, value: "ROI", label: "Atteint dès le 1er mois" },
-            { icon: FiClock, value: "3 sem.", label: "Délai de livraison" },
-          ],
-          quote: "Depuis la refonte, je reçois 3 à 4 demandes de contact par semaine. Le ROI était là dès le premier mois.",
-          author: "M. L. — Avocate, Lausanne",
-          accent: "from-blue-600/20 to-violet-600/10",
-          border: "border-blue-500/20",
-        },
-        {
-          tag: "Restaurant · Genève",
-          title: "Site avec réservation en ligne",
-          context: "Site Wix lent, pas optimisé mobile. Les clients abandonnaient avant de réserver.",
-          solution: "Nouveau site vitrine avec système de réservation intégré, photos optimisées et SEO local Genève.",
-          results: [
-            { icon: FiTrendingUp, value: "+30%", label: "Réservations en 2 mois" },
-            { icon: FiClock, value: "2 sem.", label: "Délai de livraison" },
-            { icon: FiStar, value: "100%", label: "Devis respecté" },
-          ],
-          quote: "Les réservations ont augmenté de 30% en deux mois. Devis clair, livraison dans les délais.",
-          author: "A. B. — Restaurateur, Genève",
-          accent: "from-emerald-600/20 to-teal-600/10",
-          border: "border-emerald-500/20",
-        },
-        {
-          tag: "Startup · Fribourg",
-          title: "Dashboard de gestion interne",
-          context: "Gestion sur Excel et email. Besoin d'un outil métier pour coordonner les équipes et suivre les commandes.",
-          solution: "Application web React sur mesure avec auth, dashboard temps réel, export PDF et gestion des rôles.",
-          results: [
-            { icon: FiClock, value: "6 sem.", label: "Délai de livraison" },
-            { icon: FiStar, value: "0 bug", label: "En 4 mois de production" },
-            { icon: FiTrendingUp, value: "2e projet", label: "Déjà commandé" },
-          ],
-          quote: "Dashboard en prod depuis 4 mois sans aucun bug. Déjà en train de planifier le 2e projet.",
-          author: "J. F. — Co-fondateur startup, Fribourg",
-          accent: "from-violet-600/20 to-purple-600/10",
-          border: "border-violet-500/20",
-        },
-      ],
-      cta: "Démarrer mon projet",
-      ctaSub: "Devis gratuit · Réponse sous 24h",
-    },
-    en: {
-      eyebrow: "Case studies",
-      title: "Real results, not promises",
-      cases: [
-        {
-          tag: "Lawyer · Lausanne",
-          title: "Law firm website redesign",
-          context: "Slow WordPress site, not mobile-friendly, invisible on Google. 0 incoming contacts per month via website.",
-          solution: "Full redesign in 3 weeks: Next.js, local SEO, optimized contact form, dedicated page per practice area.",
-          results: [
-            { icon: FiTrendingUp, value: "3–4", label: "Contacts/week via website" },
-            { icon: FiStar, value: "ROI", label: "Achieved from month 1" },
-            { icon: FiClock, value: "3 wks", label: "Delivery time" },
-          ],
-          quote: "Since the redesign, I receive 3 to 4 contact requests per week. The ROI was there from the first month.",
-          author: "M. L. — Lawyer, Lausanne",
-          accent: "from-blue-600/20 to-violet-600/10",
-          border: "border-blue-500/20",
-        },
-        {
-          tag: "Restaurant · Geneva",
-          title: "Website with online booking",
-          context: "Slow Wix site, not mobile-optimized. Customers were abandoning before booking.",
-          solution: "New showcase site with integrated booking system, optimized photos, and local Geneva SEO.",
-          results: [
-            { icon: FiTrendingUp, value: "+30%", label: "Bookings in 2 months" },
-            { icon: FiClock, value: "2 wks", label: "Delivery time" },
-            { icon: FiStar, value: "100%", label: "Quote honored" },
-          ],
-          quote: "Bookings increased 30% in two months. Clear quote, delivered on time.",
-          author: "A. B. — Restaurant owner, Geneva",
-          accent: "from-emerald-600/20 to-teal-600/10",
-          border: "border-emerald-500/20",
-        },
-      ],
-      cta: "Start my project",
-      ctaSub: "Free quote · Reply within 24h",
-    },
-    de: {
-      eyebrow: "Fallstudien",
-      title: "Echte Ergebnisse, keine Versprechen",
-      cases: [
-        {
-          tag: "Anwalt · Lausanne",
-          title: "Neugestaltung Kanzleiwebsite",
-          context: "Langsame WordPress-Website, nicht mobiloptimiert, bei Google nicht auffindbar. 0 Kontaktanfragen pro Monat.",
-          solution: "Vollständige Neugestaltung in 3 Wochen: Next.js, lokales SEO, optimiertes Kontaktformular.",
-          results: [
-            { icon: FiTrendingUp, value: "3–4", label: "Anfragen/Woche über die Website" },
-            { icon: FiStar, value: "ROI", label: "Ab dem 1. Monat erreicht" },
-            { icon: FiClock, value: "3 Wo.", label: "Lieferzeit" },
-          ],
-          quote: "Seit der Neugestaltung erhalte ich 3 bis 4 Kontaktanfragen pro Woche. Der ROI war ab dem ersten Monat da.",
-          author: "M. L. — Anwältin, Lausanne",
-          accent: "from-blue-600/20 to-violet-600/10",
-          border: "border-blue-500/20",
-        },
-      ],
-      cta: "Projekt starten",
-      ctaSub: "Kostenloses Angebot · Antwort in 24h",
-    },
-  }[locale];
+  const cases = CASES[locale === "en" ? "en" : "fr"];
+
+  const copy =
+    locale === "en"
+      ? { eyebrow: "Case studies", title: "Real results.", title2: "Real businesses.", cta: "Start my project", ctaSub: "Free audit · Reply within 24h" }
+      : { eyebrow: "Cas clients", title: "Des résultats réels.", title2: "Des entreprises réelles.", cta: "Démarrer mon projet", ctaSub: "Audit gratuit · Réponse sous 24h" };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
   return (
-    <section className="bg-gray-950 py-24">
+    <section className="bg-gray-950 py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 text-center"
+        >
           <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
             {copy.eyebrow}
           </span>
-          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{copy.title}</h2>
-        </div>
+          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            {copy.title}{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">{copy.title2}</span>
+          </h2>
+        </motion.div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {copy.cases.map((c) => (
-            <div
+        <div className="grid gap-6 lg:grid-cols-3">
+          {cases.map((c, i) => (
+            <motion.div
               key={c.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.55 }}
               className={`flex flex-col rounded-2xl border ${c.border} bg-gradient-to-br ${c.accent} p-6`}
             >
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-gray-400">{c.tag}</span>
-              <h3 className="mb-3 text-lg font-bold text-white">{c.title}</h3>
+              <h3 className="mb-4 text-lg font-bold text-white">{c.title}</h3>
 
-              <div className="mb-4 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">Situation</p>
+              <div className="mb-4 space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">{locale === "en" ? "Situation" : "Situation"}</p>
                 <p className="text-sm text-gray-400">{c.context}</p>
               </div>
 
-              <div className="mb-4 space-y-2">
+              <div className="mb-5 space-y-1">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-500">Solution</p>
                 <p className="text-sm text-gray-400">{c.solution}</p>
               </div>
@@ -169,11 +170,17 @@ export function CaseStudySection() {
                 <p className="text-sm italic text-gray-300">"{c.quote}"</p>
                 <p className="mt-2 text-xs text-gray-600">{c.author}</p>
               </blockquote>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 text-center"
+        >
           <Link
             href={withPrefix("/devis")}
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 hover:gap-3"
@@ -182,7 +189,7 @@ export function CaseStudySection() {
             <FiArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <p className="mt-3 text-sm text-gray-500">{copy.ctaSub}</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
