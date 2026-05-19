@@ -19,8 +19,8 @@ export function FloatingCTA() {
 
   const waText = encodeURIComponent(
     locale === "en"
-      ? "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project."
-      : "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet."
+      ? "Hi KAH Digital, I'd like to book a free 15-min discovery call to discuss my project."
+      : "Bonjour KAH Digital, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet."
   );
 
   const ctaLabel = locale === "en" ? "Book a free call" : "Réserver un appel gratuit";

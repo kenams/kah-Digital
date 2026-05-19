@@ -21,8 +21,8 @@ export function HeroSection() {
           body: "AI automation, premium platforms, digital infrastructure — for companies ready to scale without complexity.",
           primary: "Get my free audit",
           secondary: "See results",
-          wa: "Talk to Kénan",
-          waText: "Hi Kénan, I'd like to discuss how you can help grow my business.",
+          wa: "WhatsApp KAH",
+          waText: "Hi KAH Digital, I'd like to discuss how you can help grow my business.",
           tags: ["AI Automation", "Premium Platforms", "Growth Infrastructure", "International"],
           trustLine: "Trusted by 70+ businesses in Switzerland, France & worldwide",
           proof: [
@@ -39,8 +39,8 @@ export function HeroSection() {
           body: "Automatisation IA, plateformes premium, infrastructure digitale — pour les entreprises qui veulent accélérer sans complexifier.",
           primary: "Obtenir mon audit gratuit",
           secondary: "Voir les résultats",
-          wa: "Parler à Kénan",
-          waText: "Bonjour Kénan, je voudrais discuter de comment vous pouvez aider ma croissance.",
+          wa: "WhatsApp KAH",
+          waText: "Bonjour KAH Digital, je voudrais discuter de comment vous pouvez aider ma croissance.",
           tags: ["Automatisation IA", "Plateformes Premium", "Infrastructure Growth", "International"],
           trustLine: "70+ entreprises en Suisse, France & international nous font confiance",
           proof: [

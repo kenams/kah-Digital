@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FiArrowRight, FiCheckCircle, FiZap, FiSearch, FiTrendingUp, FiMessageCircle } from "react-icons/fi";
 import { trackEvent } from "@/lib/analytics";
 
-const WA_AUDIT_URL = "https://wa.me/33759558414?text=Hi%20K%C3%A9nan%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20website.";
+const WA_AUDIT_URL = "https://wa.me/33759558414?text=Hi%20KAH%20Digital%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20website.";
 
 const CHECKS = [
   { icon: FiSearch, label: "Google SEO ranking" },

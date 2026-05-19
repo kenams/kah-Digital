@@ -30,7 +30,7 @@ const jsonLd = {
   headline: "Automatisation IA pour PME : 5 cas concrets qui font gagner du temps en 2026",
   datePublished: "2026-05-19",
   dateModified: "2026-05-19",
-  author: { "@type": "Person", name: "Kénan — KAH Digital" },
+  author: { "@type": "Organization", name: "KAH Digital" },
   publisher: { "@type": "Organization", name: "KAH Digital", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/blog/automatisation-ia-pme",
 };
@@ -366,7 +366,7 @@ export default function AutomatisationIaPmePage() {
                 <FiArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
-                href="https://wa.me/33759558414?text=Bonjour%20K%C3%A9nan%2C%20je%20veux%20automatiser%20mes%20processus%20PME."
+                href="https://wa.me/33759558414?text=Bonjour%20KAH%20Digital%2C%20je%20veux%20automatiser%20mes%20processus%20PME."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"

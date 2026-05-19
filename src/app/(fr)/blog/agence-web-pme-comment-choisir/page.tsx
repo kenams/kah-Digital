@@ -20,7 +20,7 @@ const jsonLd = {
   "headline": "Comment choisir une agence web pour votre PME — Guide 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Person", "name": "Kénan — KAH-Digital" },
+  "author": { "@type": "Organization", "name": "KAH Digital" },
   "publisher": { "@type": "Organization", "name": "KAH-Digital", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/blog/agence-web-pme-comment-choisir",
 };

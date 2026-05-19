@@ -29,7 +29,7 @@ const jsonLd = {
   headline: "SEO local pour PME : apparaître en 1ère page Google en 2026",
   datePublished: "2026-05-04",
   dateModified: "2026-05-04",
-  author: { "@type": "Person", name: "Kénan — KAH-Digital" },
+  author: { "@type": "Organization", name: "KAH Digital" },
   publisher: { "@type": "Organization", name: "KAH-Digital", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/blog/seo-local-pme",
 };
@@ -200,7 +200,7 @@ export default function SeoLocalPmePage() {
             46% des recherches Google ont une intention locale. Si votre entreprise n'apparaît pas dans le Pack Local (les 3 résultats avec carte), vous perdez la moitié de vos clients potentiels. Voici les 6 actions concrètes pour y remédier.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-            <span>Kénan — KAH-Digital</span>
+            <span>KAH Digital</span>
             <span>·</span>
             <span>8 min de lecture</span>
           </div>

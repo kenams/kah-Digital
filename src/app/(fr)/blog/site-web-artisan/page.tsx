@@ -20,7 +20,7 @@ const jsonLd = {
   "headline": "Site web pour artisan : guide complet 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Person", "name": "Kénan — KAH-Digital" },
+  "author": { "@type": "Organization", "name": "KAH Digital" },
   "publisher": { "@type": "Organization", "name": "KAH-Digital", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/blog/site-web-artisan",
 };

@@ -20,7 +20,7 @@ const jsonLd = {
   "headline": "Création de site web pour PME : guide complet 2026",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Person", "name": "Kénan — KAH-Digital" },
+  "author": { "@type": "Organization", "name": "KAH Digital" },
   "publisher": { "@type": "Organization", "name": "KAH-Digital", "url": "https://kah-digital.ch" },
 };
 

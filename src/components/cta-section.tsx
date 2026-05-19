@@ -14,7 +14,7 @@ export function CTASection() {
       body: "Audit gratuit sous 24h. On analyse votre situation, on identifie les leviers prioritaires et on vous propose un plan d'action concret — sans engagement.",
       primary: "Obtenir mon audit gratuit",
       secondary: "WhatsApp — réponse sous 2h",
-      waText: "Bonjour Kénan, je souhaite un audit gratuit pour mon projet.",
+      waText: "Bonjour KAH Digital, je souhaite un audit gratuit pour mon projet.",
       trust: ["Audit personnalisé offert", "Réponse sous 24h ouvrables", "Sans engagement"],
     },
     en: {
@@ -23,7 +23,7 @@ export function CTASection() {
       body: "Free audit within 24h. We analyze your situation, identify priority levers, and propose a concrete action plan — no commitment.",
       primary: "Get my free audit",
       secondary: "WhatsApp — reply in 2h",
-      waText: "Hi Kénan, I'd like a free audit for my project.",
+      waText: "Hi KAH Digital, I'd like a free audit for my project.",
       trust: ["Personalised audit included", "Reply within 24 business hours", "No commitment"],
     },
     de: {
@@ -32,7 +32,7 @@ export function CTASection() {
       body: "Kostenloses Audit in 24h. Wir analysieren Ihre Situation, identifizieren die wichtigsten Hebel und schlagen einen konkreten Aktionsplan vor — ohne Verpflichtung.",
       primary: "Mein kostenloses Audit erhalten",
       secondary: "WhatsApp — Antwort in 2h",
-      waText: "Hallo Kénan, ich möchte ein kostenloses Audit für mein Projekt.",
+      waText: "Hallo KAH Digital, ich möchte ein kostenloses Audit für mein Projekt.",
       trust: ["Persönliches Audit inklusive", "Antwort in 24 Arbeitsstunden", "Ohne Verpflichtung"],
     },
   }[locale];

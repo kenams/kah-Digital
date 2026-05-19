@@ -20,7 +20,7 @@ const jsonLd = {
   "headline": "Refonte de site web : quand faut-il se lancer et comment s'y prendre ?",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Person", "name": "Kénan — KAH-Digital" },
+  "author": { "@type": "Organization", "name": "KAH Digital" },
   "publisher": { "@type": "Organization", "name": "KAH-Digital", "url": "https://kah-digital.ch" },
 };
 
