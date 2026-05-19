@@ -3,16 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiCheck, FiZap, FiMessageCircle, FiClock } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiX, FiZap, FiMessageCircle, FiClock, FiPlus } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
-
-// FR = € | EN = $ | DE = CHF
-function fmt(amount: string, locale: string) {
-  if (locale === "en") return `$${amount}`;
-  if (locale === "de") return `CHF ${amount}`;
-  return `${amount} €`;
-}
 
 const PLANS = {
   fr: [
@@ -20,40 +13,52 @@ const PLANS = {
       id: "starter",
       name: "Starter",
       price: "49",
-      tagline: "Une présence pro en ligne, livrée en 5 jours",
+      badge: null,
+      badgeStyle: "",
+      tagline: "Idéal pour tester une idée ou lancer rapidement une présence en ligne.",
       delivery: "Livré en 5 jours",
       highlight: false,
-      badge: null,
       accent: "blue",
-      features: [
-        "Landing page premium (1 page)",
-        "Design moderne responsive",
-        "Mobile-first",
-        "Formulaire + lien WhatsApp",
-        "90+ Lighthouse",
-        "Lancement en 48h après validation",
+      includes: [
+        "1 landing page complète",
+        "Section hero + services + contact",
+        "Formulaire de contact",
+        "Design responsive mobile",
+        "Hébergement 1 mois offert",
+        "Livraison en 5 jours ouvrés",
       ],
-      cta: "Je démarre maintenant",
-      note: "Sans engagement · Devis en 24h",
+      excludes: [
+        "SEO avancé",
+        "Logo / branding",
+        "Multi-pages",
+        "Automatisation",
+        "Chatbot IA",
+        "Modifications illimitées",
+      ],
+      cta: "Je teste avec 49 €",
+      note: "Sans engagement · Paiement après livraison",
     },
     {
       id: "business",
       name: "Business",
       price: "199",
-      tagline: "Site complet, SEO, animations & 1 mois de support",
+      badge: "Le meilleur choix",
+      badgeStyle: "violet",
+      tagline: "Le site professionnel complet qui convertit les visiteurs en clients.",
       delivery: "Livré en 14 jours",
       highlight: true,
-      badge: "Le plus populaire",
       accent: "violet",
-      features: [
-        "Site multi-pages (jusqu'à 8 pages)",
-        "SEO optimisé inclus",
+      includes: [
+        "Jusqu'à 5 pages",
+        "SEO de base inclus",
         "Design premium + animations",
-        "95+ Lighthouse",
-        "Formulaire devis + réseaux sociaux",
+        "Formulaire devis + WhatsApp",
+        "Optimisation vitesse & mobile",
+        "2 retouches incluses",
         "1 mois de support offert",
-        "Lancement en 48h après validation",
+        "Livraison en 14 jours",
       ],
+      excludes: [],
       cta: "Je veux ce site",
       note: "Plus demandé · Prix fixe garanti",
     },
@@ -61,22 +66,24 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "499",
-      tagline: "Système IA complet qui tourne 24h/24 pour vous",
+      badge: "IA incluse",
+      badgeStyle: "amber",
+      tagline: "Un système complet qui travaille pour vous 24h/24 et génère des clients.",
       delivery: "Livré en 28 jours",
       highlight: false,
-      badge: "IA incluse",
       accent: "amber",
-      features: [
-        "Tout le plan Business inclus",
+      includes: [
+        "Tout le plan Business",
         "Chatbot IA personnalisé",
-        "Automatisations emails & leads",
+        "Automatisation emails & leads",
         "Tunnel de conversion optimisé",
         "SEO avancé + pages locales",
-        "Dashboard analytics temps réel",
-        "Paiements Stripe intégrés",
+        "Copywriting premium inclus",
+        "Stratégie d'acquisition",
         "3 mois support prioritaire",
       ],
-      cta: "Je veux le système IA",
+      excludes: [],
+      cta: "Je veux le système complet",
       note: "Tout inclus · ROI mesurable",
     },
   ],
@@ -85,40 +92,52 @@ const PLANS = {
       id: "starter",
       name: "Starter",
       price: "49",
-      tagline: "Professional online presence, delivered in 5 days",
+      badge: null,
+      badgeStyle: "",
+      tagline: "Perfect for testing an idea or launching a quick online presence.",
       delivery: "Delivered in 5 days",
       highlight: false,
-      badge: null,
       accent: "blue",
-      features: [
-        "Premium landing page (1 page)",
-        "Modern responsive design",
-        "Mobile-first",
-        "Contact form + WhatsApp link",
-        "90+ Lighthouse",
-        "Kickoff in 48h after sign-off",
+      includes: [
+        "1 complete landing page",
+        "Hero + services + contact sections",
+        "Contact form",
+        "Responsive mobile design",
+        "1 month hosting included",
+        "Delivered in 5 business days",
       ],
-      cta: "Start now",
-      note: "No commitment · Quote in 24h",
+      excludes: [
+        "Advanced SEO",
+        "Logo / branding",
+        "Multi-page",
+        "Automation",
+        "AI chatbot",
+        "Unlimited revisions",
+      ],
+      cta: "Start for $49",
+      note: "No commitment · Payment after delivery",
     },
     {
       id: "business",
       name: "Business",
       price: "199",
-      tagline: "Full site, SEO, animations & 1 month support",
+      badge: "Best choice",
+      badgeStyle: "violet",
+      tagline: "The complete professional site that turns visitors into clients.",
       delivery: "Delivered in 14 days",
       highlight: true,
-      badge: "Most popular",
       accent: "violet",
-      features: [
-        "Multi-page site (up to 8 pages)",
-        "Optimised SEO included",
+      includes: [
+        "Up to 5 pages",
+        "Basic SEO included",
         "Premium design + animations",
-        "95+ Lighthouse",
-        "Quote form + social media",
+        "Quote form + WhatsApp",
+        "Speed & mobile optimisation",
+        "2 revisions included",
         "1 month support included",
-        "Kickoff in 48h after sign-off",
+        "Delivered in 14 days",
       ],
+      excludes: [],
       cta: "Get this site",
       note: "Most requested · Fixed price guaranteed",
     },
@@ -126,22 +145,24 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "499",
-      tagline: "Complete AI system running 24/7 for you",
+      badge: "AI included",
+      badgeStyle: "amber",
+      tagline: "A complete system working 24/7 to bring you clients on autopilot.",
       delivery: "Delivered in 28 days",
       highlight: false,
-      badge: "AI included",
       accent: "amber",
-      features: [
-        "Everything in Business included",
+      includes: [
+        "Everything in Business",
         "Custom AI chatbot",
         "Email & lead automations",
         "Optimised conversion funnel",
         "Advanced SEO + local pages",
-        "Real-time analytics dashboard",
-        "Stripe payments integrated",
+        "Premium copywriting included",
+        "Acquisition strategy",
         "3 months priority support",
       ],
-      cta: "Get the AI system",
+      excludes: [],
+      cta: "Get the full system",
       note: "All included · Measurable ROI",
     },
   ],
@@ -150,40 +171,52 @@ const PLANS = {
       id: "starter",
       name: "Starter",
       price: "49",
-      tagline: "Professioneller Auftritt online, geliefert in 5 Tagen",
+      badge: null,
+      badgeStyle: "",
+      tagline: "Ideal um eine Idee zu testen oder schnell online präsent zu sein.",
       delivery: "Geliefert in 5 Tagen",
       highlight: false,
-      badge: null,
       accent: "blue",
-      features: [
-        "Premium Landing Page (1 Seite)",
-        "Modernes responsives Design",
-        "Mobile-first",
-        "Kontaktformular + WhatsApp-Link",
-        "90+ Lighthouse",
-        "Start in 48h nach Freigabe",
+      includes: [
+        "1 vollständige Landing Page",
+        "Hero + Services + Kontakt Bereiche",
+        "Kontaktformular",
+        "Responsives mobiles Design",
+        "1 Monat Hosting inklusive",
+        "Lieferung in 5 Werktagen",
       ],
-      cta: "Jetzt starten",
-      note: "Unverbindlich · Angebot in 24h",
+      excludes: [
+        "Erweitertes SEO",
+        "Logo / Branding",
+        "Mehrere Seiten",
+        "Automatisierung",
+        "KI-Chatbot",
+        "Unbegrenzte Änderungen",
+      ],
+      cta: "Für CHF 49 starten",
+      note: "Unverbindlich · Zahlung nach Lieferung",
     },
     {
       id: "business",
       name: "Business",
       price: "199",
-      tagline: "Vollständige Website, SEO, Animationen & 1 Monat Support",
+      badge: "Beste Wahl",
+      badgeStyle: "violet",
+      tagline: "Die vollständige professionelle Website, die Besucher in Kunden verwandelt.",
       delivery: "Geliefert in 14 Tagen",
       highlight: true,
-      badge: "Am beliebtesten",
       accent: "violet",
-      features: [
-        "Mehrseitige Website (bis zu 8 Seiten)",
-        "Optimiertes SEO inklusive",
+      includes: [
+        "Bis zu 5 Seiten",
+        "Basis-SEO inklusive",
         "Premium-Design + Animationen",
-        "95+ Lighthouse",
-        "Angebotsformular + Social Media",
+        "Angebotsformular + WhatsApp",
+        "Geschwindigkeits- & Mobiloptimierung",
+        "2 Korrekturen inklusive",
         "1 Monat Support inklusive",
-        "Start in 48h nach Freigabe",
+        "Lieferung in 14 Tagen",
       ],
+      excludes: [],
       cta: "Diese Website wählen",
       note: "Am meisten gefragt · Fester Preis garantiert",
     },
@@ -191,106 +224,122 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "499",
-      tagline: "Vollständiges KI-System, 24/7 für Sie aktiv",
+      badge: "KI inklusive",
+      badgeStyle: "amber",
+      tagline: "Ein komplettes System, das 24/7 für Sie arbeitet und Kunden generiert.",
       delivery: "Geliefert in 28 Tagen",
       highlight: false,
-      badge: "KI inklusive",
       accent: "amber",
-      features: [
-        "Alles aus Business inklusive",
+      includes: [
+        "Alles aus Business",
         "Individueller KI-Chatbot",
         "E-Mail- & Lead-Automatisierungen",
         "Optimierter Conversion-Funnel",
         "Erweitertes SEO + lokale Seiten",
-        "Echtzeit-Analytics-Dashboard",
-        "Stripe-Zahlungen integriert",
+        "Premium-Copywriting inklusive",
+        "Akquisitionsstrategie",
         "3 Monate Prioritäts-Support",
       ],
-      cta: "KI-System erhalten",
+      excludes: [],
+      cta: "Vollständiges System erhalten",
       note: "Alles inklusive · Messbarer ROI",
     },
   ],
 };
 
-const ACCENT_STYLES = {
-  blue: {
-    badge: "bg-blue-500/15 text-blue-300 border-blue-500/25",
-    delivery: "text-blue-400",
-    check: "text-blue-400",
-    cta: "border border-white/15 text-white hover:border-blue-400/40 hover:bg-blue-500/8",
-    card: "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]",
-  },
-  violet: {
-    badge: "bg-violet-500/15 text-violet-200 border-violet-500/40",
-    delivery: "text-violet-300",
-    check: "text-violet-400",
-    cta: "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50",
-    card: "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-2xl shadow-violet-500/15 scale-[1.02]",
-  },
-  amber: {
-    badge: "bg-amber-500/15 text-amber-300 border-amber-500/30",
-    delivery: "text-amber-400",
-    check: "text-amber-400",
-    cta: "border border-amber-500/30 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20",
-    card: "border-amber-500/20 bg-gradient-to-b from-amber-500/5 to-transparent hover:border-amber-500/35",
-  },
+const OPTIONS = {
+  fr: [
+    { icon: "📄", label: "Page supplémentaire", price: "49 €" },
+    { icon: "🔍", label: "SEO avancé", price: "149 €" },
+    { icon: "🎨", label: "Logo simple", price: "99 €" },
+    { icon: "🤖", label: "Chatbot IA", price: "199 €" },
+    { icon: "⚙️", label: "Automatisation", price: "dès 299 €" },
+    { icon: "🛠️", label: "Maintenance mensuelle", price: "49 €/mois" },
+  ],
+  en: [
+    { icon: "📄", label: "Extra page", price: "$49" },
+    { icon: "🔍", label: "Advanced SEO", price: "$149" },
+    { icon: "🎨", label: "Simple logo", price: "$99" },
+    { icon: "🤖", label: "AI chatbot", price: "$199" },
+    { icon: "⚙️", label: "Automation", price: "from $299" },
+    { icon: "🛠️", label: "Monthly maintenance", price: "$49/mo" },
+  ],
+  de: [
+    { icon: "📄", label: "Zusätzliche Seite", price: "CHF 49" },
+    { icon: "🔍", label: "Erweitertes SEO", price: "CHF 149" },
+    { icon: "🎨", label: "Einfaches Logo", price: "CHF 99" },
+    { icon: "🤖", label: "KI-Chatbot", price: "CHF 199" },
+    { icon: "⚙️", label: "Automatisierung", price: "ab CHF 299" },
+    { icon: "🛠️", label: "Monatliche Wartung", price: "CHF 49/Mt." },
+  ],
+};
+
+const ACCENT_CARD = {
+  blue: "border-white/10 bg-white/[0.03] hover:border-blue-500/20 hover:bg-white/[0.05]",
+  violet: "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-2xl shadow-violet-500/15",
+  amber: "border-amber-500/20 bg-gradient-to-b from-amber-500/8 to-transparent hover:border-amber-500/30",
+};
+const ACCENT_CHECK = { blue: "text-blue-400", violet: "text-violet-400", amber: "text-amber-400" };
+const ACCENT_DELIVERY = { blue: "text-blue-400", violet: "text-violet-300", amber: "text-amber-400" };
+const ACCENT_CTA = {
+  blue: "border border-white/15 text-white hover:border-blue-400/40 hover:bg-blue-500/8",
+  violet: "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50",
+  amber: "border border-amber-500/30 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20",
+};
+const BADGE_STYLE = {
+  violet: "border-violet-500/40 bg-violet-500/15 text-violet-200",
+  amber: "border-amber-500/30 bg-amber-500/15 text-amber-300",
 };
 
 export function PricingSection() {
   const { locale, prefix } = useLocale();
 
   const plans = PLANS[locale === "de" ? "de" : locale === "en" ? "en" : "fr"];
+  const options = OPTIONS[locale === "de" ? "de" : locale === "en" ? "en" : "fr"];
   const isEN = locale === "en";
   const isDE = locale === "de";
 
   const copy =
-    isEN
-      ? {
-          eyebrow: "Transparent pricing",
-          title: "From",
-          titlePrice: "$49.",
-          title2: "No surprises.",
-          sub: "Fixed prices, rapid delivery. Send your assets after sign-off — we launch in 48h.",
-          urgency: "⚡ Limited spots this month — book yours now",
-          launchNote: "To launch in 48h: send your photos · colours · font — we handle everything",
-          bottomCta: "Get my free quote",
-          bottomWa: "Chat on WhatsApp",
-          waText: "Hi KAH Digital, I'd like a quote for my project.",
-          bottomNote: "No commitment · Budget discussed · Reply within 24h",
-          notSure: "Not sure which plan fits? Describe your project in 2 lines.",
-          notSureAction: "Get a free recommendation →",
-        }
-      : isDE
-      ? {
-          eyebrow: "Transparente Preise",
-          title: "Ab",
-          titlePrice: "CHF 49.",
-          title2: "Keine Überraschungen.",
-          sub: "Feste Preise, schnelle Lieferung. Assets einsenden nach Freigabe — wir starten in 48h.",
-          urgency: "⚡ Begrenzte Plätze diesen Monat — jetzt sichern",
-          launchNote: "Für Start in 48h: Fotos · Farben · Schrift einsenden — wir erledigen alles",
-          bottomCta: "Kostenlose Offerte erhalten",
-          bottomWa: "WhatsApp schreiben",
-          waText: "Hallo KAH Digital, ich möchte ein Projekt besprechen.",
-          bottomNote: "Unverbindlich · Budget besprochen · Antwort in 24h",
-          notSure: "Nicht sicher welcher Plan passt? Projekt in 2 Sätzen beschreiben.",
-          notSureAction: "Kostenlose Empfehlung erhalten →",
-        }
-      : {
-          eyebrow: "Tarifs transparents",
-          title: "Dès",
-          titlePrice: "49 €.",
-          title2: "Zéro surprise.",
-          sub: "Prix fixes, livraison rapide. Envoyez vos assets après validation — on lance en 48h.",
-          urgency: "⚡ Places limitées ce mois-ci — réservez la vôtre maintenant",
-          launchNote: "Pour lancer en 48h : envoyez photos · couleurs · police — on gère tout",
-          bottomCta: "Obtenir mon devis gratuit",
-          bottomWa: "Écrire sur WhatsApp",
-          waText: "Bonjour KAH Digital, je voudrais discuter d'un projet.",
-          bottomNote: "Sans engagement · Budget discuté · Réponse sous 24h",
-          notSure: "Pas sûr du plan ? Décrivez votre projet en 2 lignes.",
-          notSureAction: "Obtenir une recommandation gratuite →",
-        };
+    isEN ? {
+      eyebrow: "Transparent pricing",
+      title: "Start from",
+      titlePrice: "$49.",
+      title2: "Scale as you grow.",
+      sub: "Attract with $49 · Convert with $199 · Dominate with $499. Each plan is a step toward more clients.",
+      urgency: "⚡ Limited spots — only 3 Starter projects per week",
+      optionsTitle: "Add-on options",
+      optionsSub: "Personalise your project. Add only what you need.",
+      bottomCta: "Get my free quote",
+      bottomWa: "Chat on WhatsApp",
+      waText: "Hi KAH Digital, I'd like a quote for my project.",
+      bottomNote: "No commitment · Fixed price · Reply within 24h",
+    } : isDE ? {
+      eyebrow: "Transparente Preise",
+      title: "Ab",
+      titlePrice: "CHF 49.",
+      title2: "Wachsen Sie mit uns.",
+      sub: "Einstieg mit CHF 49 · Konvertieren mit CHF 199 · Dominieren mit CHF 499. Jeder Plan bringt mehr Kunden.",
+      urgency: "⚡ Begrenzte Plätze — nur 3 Starter-Projekte pro Woche",
+      optionsTitle: "Zusatzoptionen",
+      optionsSub: "Passen Sie Ihr Projekt an. Fügen Sie nur das hinzu, was Sie brauchen.",
+      bottomCta: "Kostenlose Offerte erhalten",
+      bottomWa: "WhatsApp schreiben",
+      waText: "Hallo KAH Digital, ich möchte ein Projekt besprechen.",
+      bottomNote: "Unverbindlich · Fester Preis · Antwort in 24h",
+    } : {
+      eyebrow: "Tarifs transparents",
+      title: "Démarrez à",
+      titlePrice: "49 €.",
+      title2: "Montez en puissance.",
+      sub: "Attirez avec 49 € · Convertissez avec 199 € · Dominez avec 499 €. Chaque plan est une étape vers plus de clients.",
+      urgency: "⚡ Places limitées — seulement 3 projets Starter par semaine",
+      optionsTitle: "Options à la carte",
+      optionsSub: "Personnalisez votre projet. Ajoutez uniquement ce dont vous avez besoin.",
+      bottomCta: "Obtenir mon devis gratuit",
+      bottomWa: "Écrire sur WhatsApp",
+      waText: "Bonjour KAH Digital, je voudrais discuter d'un projet.",
+      bottomNote: "Sans engagement · Prix fixe · Réponse sous 24h",
+    };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
@@ -305,7 +354,7 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="mb-10 flex items-center justify-center"
+          className="mb-10 flex justify-center"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-5 py-2 text-xs font-bold text-amber-300">
             {copy.urgency}
@@ -333,83 +382,112 @@ export function PricingSection() {
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-400">{copy.sub}</p>
         </motion.div>
 
-        {/* Plans */}
+        {/* Plans grid */}
         <div className="grid gap-6 lg:grid-cols-3">
-          {plans.map((plan, i) => {
-            const a = ACCENT_STYLES[plan.accent as keyof typeof ACCENT_STYLES];
-            return (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.55 }}
-                className={`group relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${a.card}`}
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.55 }}
+              className={`group relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${ACCENT_CARD[plan.accent as keyof typeof ACCENT_CARD]}`}
+            >
+              {/* Badge */}
+              {plan.badge && (
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                  <span className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1 text-xs font-bold shadow-lg ${BADGE_STYLE[plan.badgeStyle as keyof typeof BADGE_STYLE]}`}>
+                    <FiZap size={10} />
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+
+              {/* Name */}
+              <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">{plan.name}</p>
+
+              {/* Price */}
+              <div className="mb-2 flex items-end gap-1">
+                {isEN && <span className="mb-1 text-2xl font-black text-gray-400">$</span>}
+                {isDE && <span className="mb-1 mr-1 text-lg font-bold text-gray-400">CHF</span>}
+                <span className="text-5xl font-black leading-none text-white">{plan.price}</span>
+                {!isEN && !isDE && <span className="mb-1 ml-1 text-2xl font-black text-gray-400">€</span>}
+              </div>
+
+              {/* Delivery */}
+              <div className={`mb-4 flex items-center gap-1.5 text-sm font-semibold ${ACCENT_DELIVERY[plan.accent as keyof typeof ACCENT_DELIVERY]}`}>
+                <FiClock size={13} />
+                {plan.delivery}
+              </div>
+
+              <p className="mb-5 text-sm leading-relaxed text-gray-400">{plan.tagline}</p>
+              <div className="mb-5 h-px bg-white/8" />
+
+              {/* Included */}
+              <ul className="mb-4 flex-1 space-y-2.5">
+                {plan.includes.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
+                    <FiCheck size={14} className={`mt-0.5 shrink-0 ${ACCENT_CHECK[plan.accent as keyof typeof ACCENT_CHECK]}`} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Excluded (Starter only) */}
+              {plan.excludes.length > 0 && (
+                <>
+                  <div className="mb-3 mt-2 h-px bg-white/5" />
+                  <ul className="mb-5 space-y-2">
+                    {plan.excludes.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600">
+                        <FiX size={13} className="mt-0.5 shrink-0 text-gray-700" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {/* CTA */}
+              <Link
+                href={withPrefix("/devis")}
+                className={`mt-auto inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold transition-all hover:gap-3 ${ACCENT_CTA[plan.accent as keyof typeof ACCENT_CTA]}`}
               >
-                {/* Badge */}
-                {plan.badge && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1 text-xs font-bold shadow-lg ${a.badge}`}>
-                      <FiZap size={10} />
-                      {plan.badge}
-                    </span>
-                  </div>
-                )}
-
-                {/* Plan name */}
-                <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">{plan.name}</p>
-
-                {/* Price — devise par locale */}
-                <div className="mb-2 flex items-end gap-1">
-                  {isEN && <span className="mb-1 text-2xl font-black text-gray-400">$</span>}
-                  {isDE && <span className="mb-1 mr-1 text-lg font-bold text-gray-400">CHF</span>}
-                  <span className="text-5xl font-black leading-none text-white">{plan.price}</span>
-                  {!isEN && !isDE && <span className="mb-1 ml-1 text-2xl font-black text-gray-400">€</span>}
-                </div>
-
-                {/* Delivery */}
-                <div className={`mb-4 flex items-center gap-1.5 text-sm font-semibold ${a.delivery}`}>
-                  <FiClock size={13} />
-                  {plan.delivery}
-                </div>
-
-                <p className="mb-6 text-sm leading-relaxed text-gray-400">{plan.tagline}</p>
-                <div className="mb-6 h-px bg-white/8" />
-
-                {/* Features */}
-                <ul className="mb-8 flex-1 space-y-3">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
-                      <FiCheck size={14} className={`mt-0.5 shrink-0 ${a.check}`} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <Link
-                  href={withPrefix("/devis")}
-                  className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold transition-all hover:gap-3 ${a.cta}`}
-                >
-                  {plan.cta}
-                  <FiArrowRight size={14} />
-                </Link>
-                <p className="mt-3 text-center text-xs text-gray-600">{plan.note}</p>
-              </motion.div>
-            );
-          })}
+                {plan.cta}
+                <FiArrowRight size={14} />
+              </Link>
+              <p className="mt-3 text-center text-xs text-gray-600">{plan.note}</p>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Launch banner */}
+        {/* Options à la carte */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.35, duration: 0.45 }}
-          className="mt-8 flex items-center justify-center gap-3 rounded-xl border border-blue-500/20 bg-blue-500/8 px-6 py-3.5"
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="mt-14"
         >
-          <FiZap size={14} className="shrink-0 text-blue-400" />
-          <p className="text-sm text-blue-200">{copy.launchNote}</p>
+          <div className="mb-6 text-center">
+            <div className="mb-2 flex items-center justify-center gap-2">
+              <FiPlus size={15} className="text-gray-500" />
+              <p className="text-sm font-bold uppercase tracking-widest text-gray-500">{copy.optionsTitle}</p>
+            </div>
+            <p className="text-sm text-gray-500">{copy.optionsSub}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+            {options.map((opt) => (
+              <div
+                key={opt.label}
+                className="flex flex-col items-center gap-2 rounded-xl border border-white/8 bg-white/[0.02] px-3 py-4 text-center transition hover:border-white/15 hover:bg-white/[0.04]"
+              >
+                <span className="text-xl">{opt.icon}</span>
+                <p className="text-xs font-semibold text-gray-300">{opt.label}</p>
+                <p className="text-xs font-bold text-white">{opt.price}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom CTA */}
@@ -418,10 +496,15 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-12 rounded-2xl border border-white/8 bg-gradient-to-r from-violet-950/40 to-blue-950/30 p-8 text-center"
+          className="mt-10 rounded-2xl border border-white/8 bg-gradient-to-r from-violet-950/40 to-blue-950/30 p-8 text-center"
         >
-          <p className="mb-1 text-sm text-gray-400">{copy.notSure}</p>
-          <p className="mb-6 text-sm font-semibold text-white">{copy.notSureAction}</p>
+          <p className="mb-6 text-sm text-gray-400">
+            {isEN
+              ? "Not sure which plan? We'll help you choose in 2 minutes."
+              : isDE
+              ? "Nicht sicher welcher Plan? Wir helfen Ihnen in 2 Minuten."
+              : "Pas sûr du plan ? On vous aide à choisir en 2 minutes."}
+          </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={withPrefix("/devis")}
