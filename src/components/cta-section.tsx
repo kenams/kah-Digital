@@ -9,31 +9,31 @@ export function CTASection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      eyebrow: "Prêt à passer à la vitesse supérieure ?",
-      title: "Votre système de croissance commence ici.",
-      body: "Audit gratuit sous 24h. On analyse votre situation, on identifie les leviers prioritaires et on vous propose un plan d'action concret — sans engagement.",
-      primary: "Obtenir mon audit gratuit",
+      eyebrow: "Prêt à démarrer ?",
+      title: "Site livré en 5 jours. Dès 99 CHF/€.",
+      body: "Devis gratuit sous 24h. Décrivez votre projet en 2 lignes — on vous envoie une proposition claire avec un prix fixe. Zéro surprise, zéro engagement.",
+      primary: "Obtenir mon devis gratuit",
       secondary: "WhatsApp — réponse sous 2h",
-      waText: "Bonjour KAH Digital, je souhaite un audit gratuit pour mon projet.",
-      trust: ["Audit personnalisé offert", "Réponse sous 24h ouvrables", "Sans engagement"],
+      waText: "Bonjour KAH Digital, je voudrais un devis pour mon projet.",
+      trust: ["Devis gratuit sous 24h", "Prix fixe garanti", "Sans engagement"],
     },
     en: {
-      eyebrow: "Ready to scale?",
-      title: "Your growth system starts here.",
-      body: "Free audit within 24h. We analyze your situation, identify priority levers, and propose a concrete action plan — no commitment.",
-      primary: "Get my free audit",
+      eyebrow: "Ready to launch?",
+      title: "Site delivered in 5 days. From 99 CHF/€.",
+      body: "Free quote within 24h. Describe your project in 2 lines — we send a clear proposal with a fixed price. Zero surprises, zero commitment.",
+      primary: "Get my free quote",
       secondary: "WhatsApp — reply in 2h",
-      waText: "Hi KAH Digital, I'd like a free audit for my project.",
-      trust: ["Personalised audit included", "Reply within 24 business hours", "No commitment"],
+      waText: "Hi KAH Digital, I'd like a quote for my project.",
+      trust: ["Free quote within 24h", "Fixed price guaranteed", "No commitment"],
     },
     de: {
-      eyebrow: "Bereit für den nächsten Schritt?",
-      title: "Ihr Wachstumssystem beginnt hier.",
-      body: "Kostenloses Audit in 24h. Wir analysieren Ihre Situation, identifizieren die wichtigsten Hebel und schlagen einen konkreten Aktionsplan vor — ohne Verpflichtung.",
-      primary: "Mein kostenloses Audit erhalten",
+      eyebrow: "Bereit zum Start?",
+      title: "Website in 5 Tagen geliefert. Ab 99 CHF/€.",
+      body: "Kostenloses Angebot in 24h. Beschreiben Sie Ihr Projekt in 2 Sätzen — wir senden einen klaren Vorschlag mit festem Preis. Null Überraschungen, null Verpflichtung.",
+      primary: "Kostenlose Offerte erhalten",
       secondary: "WhatsApp — Antwort in 2h",
-      waText: "Hallo KAH Digital, ich möchte ein kostenloses Audit für mein Projekt.",
-      trust: ["Persönliches Audit inklusive", "Antwort in 24 Arbeitsstunden", "Ohne Verpflichtung"],
+      waText: "Hallo KAH Digital, ich möchte eine Offerte für mein Projekt.",
+      trust: ["Kostenlose Offerte in 24h", "Fester Preis garantiert", "Ohne Verpflichtung"],
     },
   }[locale];
 
@@ -59,7 +59,7 @@ export function CTASection() {
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
-            href={withPrefix("/audit-gratuit")}
+            href={withPrefix("/devis")}
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-blue-500/40 hover:gap-3"
           >
             {copy.primary}

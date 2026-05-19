@@ -3,207 +3,254 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiCheck, FiZap, FiMessageCircle } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiZap, FiMessageCircle, FiClock } from "react-icons/fi";
+
+const WA_NUMBER = "33759558414";
 
 const PLANS = {
   fr: [
     {
+      id: "starter",
       name: "Starter",
-      price: "Dès",
-      anchor: "CHF 590",
-      anchorSub: "selon votre scope — on discute",
-      tagline: "Présence en ligne propre, rapide, efficace",
+      price: "99",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Présence en ligne rapide et professionnelle",
+      deliveryLabel: "Livré en 5 jours",
       highlight: false,
       badge: null,
+      accentColor: "blue",
       features: [
-        "Site vitrine premium (5–7 pages)",
-        "Design responsive mobile-first",
-        "SEO technique de base inclus",
-        "Formulaire de contact optimisé",
-        "Performance Lighthouse 90+",
-        "Démarrage en 48h après validation",
-        "Livraison en 1–2 semaines",
+        "Landing page premium (1 page)",
+        "Design moderne responsive",
+        "Mobile-first",
+        "Formulaire de contact + WhatsApp",
+        "90+ Lighthouse",
+        "Démarrage en 48h",
       ],
-      cta: "Obtenir mon devis",
+      cta: "Démarrer maintenant",
       href: "/devis",
-      note: "Devis personnalisé · Sans engagement",
+      note: "Sans engagement · Devis ferme en 24h",
     },
     {
-      name: "Professional",
-      price: "Dès",
-      anchor: "CHF 1'590",
-      anchorSub: "selon votre scope — on discute",
-      tagline: "Système complet, lancé sans délai",
+      id: "business",
+      name: "Business",
+      price: "299",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Site complet avec SEO, animations et support",
+      deliveryLabel: "Livré en 14 jours",
       highlight: true,
-      badge: "Le plus demandé",
+      badge: "Le plus populaire",
+      accentColor: "violet",
       features: [
-        "Site web complet (10–15 pages)",
-        "Automatisation IA & emails",
+        "Site multi-pages (jusqu'à 8 pages)",
+        "SEO de base inclus",
+        "Design premium + animations",
+        "95+ Lighthouse",
+        "Formulaire devis + réseaux sociaux",
+        "1 mois de support inclus",
+        "Démarrage en 48h",
+      ],
+      cta: "Je veux ce plan",
+      href: "/devis",
+      note: "Le plus demandé · Budget ferme garanti",
+    },
+    {
+      id: "ai",
+      name: "Premium AI",
+      price: "699",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Système IA complet qui génère des leads",
+      deliveryLabel: "Livré en 28 jours",
+      highlight: false,
+      badge: "IA incluse",
+      accentColor: "amber",
+      features: [
+        "Tout le plan Business inclus",
+        "Chatbot IA personnalisé",
+        "Automatisations business",
+        "Tunnel de conversion",
         "SEO avancé + pages locales",
-        "Intégration paiement Stripe",
-        "Analytics + heatmaps",
-        "Support 3 mois post-livraison",
-        "Démarrage en 48h après validation",
-        "Livraison en 3–4 semaines",
+        "Dashboard analytics",
+        "Paiements Stripe intégrés",
+        "3 mois support prioritaire",
       ],
-      cta: "Discuter de mon projet",
+      cta: "Obtenir le système IA",
       href: "/devis",
-      note: "Devis personnalisé · Budget ferme garanti",
-    },
-    {
-      name: "Elite",
-      price: "Budget",
-      anchor: "Sur mesure",
-      anchorSub: "défini ensemble",
-      tagline: "Système IA complet & infrastructure scalable",
-      highlight: false,
-      badge: null,
-      features: [
-        "Application web / SaaS sur mesure",
-        "Agents IA & automatisations avancées",
-        "Infrastructure cloud scalable",
-        "Dashboard analytics temps réel",
-        "Intégrations API illimitées",
-        "Multi-langues & international",
-        "Accompagnement growth 6 mois",
-      ],
-      cta: "Échanger sur mon projet",
-      href: "/devis",
-      note: "Échange gratuit · Devis sous 24h",
-    },
-  ],
-  de: [
-    {
-      name: "Starter",
-      price: "Ab",
-      anchor: "CHF 590",
-      anchorSub: "je nach Umfang — wir besprechen es",
-      tagline: "Sauberer, schneller, professioneller Auftritt",
-      highlight: false,
-      badge: null,
-      features: [
-        "Premium-Website (5–7 Seiten)",
-        "Mobiles, responsives Design",
-        "Technisches Basis-SEO inklusive",
-        "Optimiertes Kontaktformular",
-        "90+ Lighthouse-Performance",
-        "Start in 48h nach Freigabe",
-        "Lieferung in 1–2 Wochen",
-      ],
-      cta: "Offerte anfragen",
-      href: "/devis",
-      note: "Persönliches Angebot · Keine Verpflichtung",
-    },
-    {
-      name: "Professional",
-      price: "Ab",
-      anchor: "CHF 1'590",
-      anchorSub: "je nach Umfang — wir besprechen es",
-      tagline: "Vollständiges System, sofort gestartet",
-      highlight: true,
-      badge: "Am meisten gefragt",
-      features: [
-        "Vollständige Website (10–15 Seiten)",
-        "KI-Automatisierung & E-Mails",
-        "Erweitertes SEO + lokale Seiten",
-        "Stripe-Zahlungsintegration",
-        "Analytics + Heatmaps",
-        "3 Monate Support nach Lieferung",
-        "Start in 48h nach Freigabe",
-        "Lieferung in 3–4 Wochen",
-      ],
-      cta: "Projekt besprechen",
-      href: "/devis",
-      note: "Persönliches Angebot · Festes Budget garantiert",
-    },
-    {
-      name: "Elite",
-      price: "Budget",
-      anchor: "Massgeschneidert",
-      anchorSub: "gemeinsam definiert",
-      tagline: "Vollständiges KI-System & skalierbare Infrastruktur",
-      highlight: false,
-      badge: null,
-      features: [
-        "Individuelle Web-App / SaaS",
-        "KI-Agenten & Automatisierungen",
-        "Skalierbare Cloud-Infrastruktur",
-        "Echtzeit-Analytics-Dashboard",
-        "Unbegrenzte API-Integrationen",
-        "Mehrsprachig & international",
-        "6 Monate strategisches Growth-Support",
-      ],
-      cta: "Projekt anfragen",
-      href: "/devis",
-      note: "Kostenloses Erstgespräch · Angebot in 24h",
+      note: "Tout inclus · ROI mesurable",
     },
   ],
   en: [
     {
+      id: "starter",
       name: "Starter",
-      price: "From",
-      anchor: "CHF 590",
-      anchorSub: "based on scope — let's talk",
-      tagline: "Clean, fast, professional presence",
+      price: "99",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Fast, professional online presence",
+      deliveryLabel: "Delivered in 5 days",
       highlight: false,
       badge: null,
+      accentColor: "blue",
       features: [
-        "Premium landing site (5–7 pages)",
-        "Mobile-first responsive design",
-        "Basic technical SEO included",
-        "Optimized contact form",
-        "90+ Lighthouse performance",
-        "Kickoff in 48h after sign-off",
-        "Delivery in 1–2 weeks",
+        "Premium landing page (1 page)",
+        "Modern responsive design",
+        "Mobile-first",
+        "Contact form + WhatsApp",
+        "90+ Lighthouse",
+        "Kickoff in 48h",
       ],
-      cta: "Get my quote",
+      cta: "Start now",
       href: "/devis",
-      note: "Custom quote · No commitment",
+      note: "No commitment · Fixed quote in 24h",
     },
     {
-      name: "Professional",
-      price: "From",
-      anchor: "CHF 1,590",
-      anchorSub: "based on scope — let's talk",
-      tagline: "Complete system, launched without delay",
+      id: "business",
+      name: "Business",
+      price: "299",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Full site with SEO, animations and support",
+      deliveryLabel: "Delivered in 14 days",
       highlight: true,
-      badge: "Most requested",
+      badge: "Most popular",
+      accentColor: "violet",
       features: [
-        "Full website (10–15 pages)",
-        "AI automation & emails",
-        "Advanced SEO + local pages",
-        "Stripe payment integration",
-        "Analytics + heatmaps",
-        "3 months post-delivery support",
-        "Kickoff in 48h after sign-off",
-        "Delivery in 3–4 weeks",
+        "Multi-page site (up to 8 pages)",
+        "Basic SEO included",
+        "Premium design + animations",
+        "95+ Lighthouse",
+        "Quote form + social media",
+        "1 month support included",
+        "Kickoff in 48h",
       ],
-      cta: "Discuss my project",
+      cta: "Get this plan",
       href: "/devis",
-      note: "Custom quote · Fixed budget guaranteed",
+      note: "Most requested · Fixed budget guaranteed",
     },
     {
-      name: "Elite",
-      price: "Budget",
-      anchor: "Custom",
-      anchorSub: "defined together",
-      tagline: "Full AI system & scalable infrastructure",
+      id: "ai",
+      name: "Premium AI",
+      price: "699",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Complete AI system that generates leads",
+      deliveryLabel: "Delivered in 28 days",
       highlight: false,
-      badge: null,
+      badge: "AI included",
+      accentColor: "amber",
       features: [
-        "Custom web app / SaaS",
-        "AI agents & advanced automation",
-        "Scalable cloud infrastructure",
-        "Real-time analytics dashboard",
-        "Unlimited API integrations",
-        "Multi-language & international",
-        "6-month strategic growth support",
+        "Everything in Business included",
+        "Custom AI chatbot",
+        "Business automations",
+        "Conversion funnel",
+        "Advanced SEO + local pages",
+        "Analytics dashboard",
+        "Stripe payments integrated",
+        "3 months priority support",
       ],
-      cta: "Talk about my project",
+      cta: "Get the AI system",
       href: "/devis",
-      note: "Free discovery call · Quote within 24h",
+      note: "All included · Measurable ROI",
     },
   ],
+  de: [
+    {
+      id: "starter",
+      name: "Starter",
+      price: "99",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Schneller, professioneller Online-Auftritt",
+      deliveryLabel: "Geliefert in 5 Tagen",
+      highlight: false,
+      badge: null,
+      accentColor: "blue",
+      features: [
+        "Premium Landing Page (1 Seite)",
+        "Modernes responsives Design",
+        "Mobile-first",
+        "Kontaktformular + WhatsApp",
+        "90+ Lighthouse",
+        "Start in 48h",
+      ],
+      cta: "Jetzt starten",
+      href: "/devis",
+      note: "Unverbindlich · Festes Angebot in 24h",
+    },
+    {
+      id: "business",
+      name: "Business",
+      price: "299",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Vollständige Website mit SEO, Animationen und Support",
+      deliveryLabel: "Geliefert in 14 Tagen",
+      highlight: true,
+      badge: "Am beliebtesten",
+      accentColor: "violet",
+      features: [
+        "Mehrseitige Website (bis zu 8 Seiten)",
+        "Basis-SEO inklusive",
+        "Premium-Design + Animationen",
+        "95+ Lighthouse",
+        "Angebotsformular + Social Media",
+        "1 Monat Support inklusive",
+        "Start in 48h",
+      ],
+      cta: "Diesen Plan wählen",
+      href: "/devis",
+      note: "Am meisten gefragt · Festes Budget garantiert",
+    },
+    {
+      id: "ai",
+      name: "Premium AI",
+      price: "699",
+      currency: "CHF/€",
+      period: null,
+      tagline: "Vollständiges KI-System, das Leads generiert",
+      deliveryLabel: "Geliefert in 28 Tagen",
+      highlight: false,
+      badge: "KI inklusive",
+      accentColor: "amber",
+      features: [
+        "Alles aus Business inklusive",
+        "Individueller KI-Chatbot",
+        "Business-Automatisierungen",
+        "Conversion-Funnel",
+        "Erweitertes SEO + lokale Seiten",
+        "Analytics-Dashboard",
+        "Stripe-Zahlungen integriert",
+        "3 Monate Prioritäts-Support",
+      ],
+      cta: "KI-System erhalten",
+      href: "/devis",
+      note: "Alles inklusive · Messbarer ROI",
+    },
+  ],
+};
+
+const ACCENT = {
+  blue: {
+    badge: "bg-blue-500/15 text-blue-300 border-blue-500/25",
+    delivery: "text-blue-400",
+    check: "text-blue-400",
+    cta: "border border-white/15 text-white hover:border-blue-400/40 hover:bg-blue-500/8",
+  },
+  violet: {
+    badge: "bg-violet-500/15 text-violet-200 border-violet-500/40",
+    delivery: "text-violet-300",
+    check: "text-violet-400",
+    cta: "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50",
+  },
+  amber: {
+    badge: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+    delivery: "text-amber-400",
+    check: "text-amber-400",
+    cta: "border border-amber-500/30 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20",
+  },
 };
 
 export function PricingSection() {
@@ -214,61 +261,71 @@ export function PricingSection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "Fast. Clean. On budget.",
-          title: "Quote accepted →",
-          title2: "we launch in 48h.",
-          sub: "Once you validate the quote and send your assets (photos, colours, fonts), our team launches immediately. No waiting, no back-and-forth — just clean execution and fast delivery.",
-          reassurance: [
-            "Kickoff in 48h after sign-off",
-            "Fixed price — zero surprises",
-            "No commitment until you sign",
-          ],
-          launchNote: "To start in 48h, prepare: your photos · your brand colours · your font",
+          eyebrow: "Transparent pricing",
+          title: "From",
+          titlePrice: "99 CHF/€.",
+          title2: "No surprises.",
+          sub: "Fixed prices, rapid delivery. Once you validate and send your assets (photos, colours, fonts), our team launches immediately.",
+          urgency: "⚡ Limited slots available this month",
+          launchNote: "To launch in 48h: send your photos · colours · font — we handle the rest",
           bottomCta: "Get my free quote",
-          bottomWa: "WhatsApp — reply in 2h",
-          waText: "Hi KAH Digital, I'd like to discuss the budget for my project.",
-          bottomNote: "No commitment · Budget adjusted to your needs · Reply within 24h",
+          bottomWa: "Chat on WhatsApp",
+          waText: "Hi KAH Digital, I'd like to discuss a project.",
+          bottomNote: "No commitment · Budget discussed · Reply within 24h",
+          notSure: "Not sure which plan? Describe your project in 2 lines.",
+          notSureAction: "Get a free recommendation →",
         }
       : locale === "de"
       ? {
-          eyebrow: "Schnell. Sauber. Im Budget.",
-          title: "Freigabe erteilt →",
-          title2: "wir starten in 48h.",
-          sub: "Sobald Sie die Offerte bestätigen und Ihre Assets senden (Fotos, Farben, Schrift), startet unser Team sofort. Kein Warten, kein Hin-und-Her — saubere Ausführung, schnelle Lieferung.",
-          reassurance: [
-            "Start in 48h nach Freigabe",
-            "Fester Preis — null Überraschungen",
-            "Keine Verpflichtung bis zur Unterschrift",
-          ],
-          launchNote: "Für Start in 48h bereitstellen: Fotos · Markenfarben · Schriftart",
+          eyebrow: "Transparente Preise",
+          title: "Ab",
+          titlePrice: "99 CHF/€.",
+          title2: "Keine Überraschungen.",
+          sub: "Feste Preise, schnelle Lieferung. Sobald Sie bestätigen und Ihre Assets senden (Fotos, Farben, Schrift), startet unser Team sofort.",
+          urgency: "⚡ Begrenzte Plätze diesen Monat",
+          launchNote: "Für Start in 48h: Fotos · Farben · Schrift senden — wir erledigen den Rest",
           bottomCta: "Kostenlose Offerte erhalten",
-          bottomWa: "WhatsApp — Antwort in 2h",
-          waText: "Hallo KAH Digital, ich möchte das Budget für mein Projekt besprechen.",
-          bottomNote: "Unverbindlich · Budget angepasst an Ihren Bedarf · Antwort in 24h",
+          bottomWa: "WhatsApp schreiben",
+          waText: "Hallo KAH Digital, ich möchte ein Projekt besprechen.",
+          bottomNote: "Unverbindlich · Budget besprochen · Antwort in 24h",
+          notSure: "Nicht sicher welcher Plan? Beschreiben Sie Ihr Projekt in 2 Sätzen.",
+          notSureAction: "Kostenlose Empfehlung erhalten →",
         }
       : {
-          eyebrow: "Rapide. Propre. Dans le budget.",
-          title: "Devis validé →",
-          title2: "on démarre en 48h.",
-          sub: "Dès que vous validez le devis et envoyez vos assets (photos, couleurs, police), l'équipe se met en route immédiatement. Pas d'attente, pas d'aller-retours — exécution propre et livraison rapide.",
-          reassurance: [
-            "Démarrage en 48h après validation",
-            "Prix ferme — zéro mauvaise surprise",
-            "Zéro engagement avant signature",
-          ],
-          launchNote: "Pour démarrer en 48h, préparez : vos photos · vos couleurs · votre police",
+          eyebrow: "Tarifs transparents",
+          title: "Dès",
+          titlePrice: "99 CHF/€.",
+          title2: "Zéro surprise.",
+          sub: "Prix fixes, livraison rapide. Dès que vous validez et envoyez vos assets (photos, couleurs, police), l'équipe se lance immédiatement.",
+          urgency: "⚡ Places limitées ce mois-ci",
+          launchNote: "Pour lancer en 48h : envoyez vos photos · couleurs · police — on s'occupe du reste",
           bottomCta: "Obtenir mon devis gratuit",
-          bottomWa: "WhatsApp — réponse sous 2h",
-          waText: "Bonjour KAH Digital, je voudrais discuter du budget pour mon projet.",
-          bottomNote: "Sans engagement · Budget adapté à votre besoin · Réponse sous 24h",
+          bottomWa: "Écrire sur WhatsApp",
+          waText: "Bonjour KAH Digital, je voudrais discuter d'un projet.",
+          bottomNote: "Sans engagement · Budget discuté · Réponse sous 24h",
+          notSure: "Pas sûr du plan ? Décrivez votre projet en 2 lignes.",
+          notSureAction: "Obtenir une recommandation gratuite →",
         };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
-  const waUrl = `https://wa.me/33759558414?text=${encodeURIComponent(copy.waText)}`;
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
 
   return (
     <section className="bg-gray-950 py-28" id="pricing">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        {/* Urgency strip */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="mb-10 flex items-center justify-center"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-5 py-2 text-xs font-bold text-amber-300">
+            {copy.urgency}
+          </span>
+        </motion.div>
 
         {/* Header */}
         <motion.div
@@ -283,83 +340,85 @@ export function PricingSection() {
           </span>
           <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
             {copy.title}{" "}
-            <span className="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">{copy.title2}</span>
+            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent">
+              {copy.titlePrice}
+            </span>{" "}
+            {copy.title2}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-400">{copy.sub}</p>
-
-          {/* Reassurance pills */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {copy.reassurance.map((item) => (
-              <div key={item} className="flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/8 px-4 py-1.5 text-xs font-semibold text-green-400">
-                <FiCheck size={11} />
-                {item}
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         {/* Plans */}
         <div className="grid gap-6 lg:grid-cols-3">
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.55 }}
-              className={`group relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
-                plan.highlight
-                  ? "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-xl shadow-violet-500/10"
-                  : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]"
-              }`}
-            >
-              {plan.badge && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-1 text-xs font-bold text-white shadow-lg shadow-violet-500/30">
-                    <FiZap size={11} />
-                    {plan.badge}
-                  </span>
-                </div>
-              )}
-
-              {/* Price block */}
-              <div className="mb-6">
-                <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-500">{plan.name}</p>
-                <p className="text-xs text-gray-600 mb-0.5">{plan.price}</p>
-                <div className="flex items-end gap-2">
-                  <span className={`font-extrabold text-white ${plan.anchor === "Sur mesure" || plan.anchor === "Custom" || plan.anchor === "Massgeschneidert" ? "text-2xl" : "text-3xl"}`}>
-                    {plan.anchor}
-                  </span>
-                </div>
-                <p className="mt-0.5 text-xs text-gray-600 italic">{plan.anchorSub}</p>
-                <p className="mt-3 text-sm text-gray-400">{plan.tagline}</p>
-              </div>
-
-              {/* Features */}
-              <ul className="mb-8 flex-1 space-y-3">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
-                    <FiCheck size={15} className="mt-0.5 shrink-0 text-green-400" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <Link
-                href={withPrefix(plan.href)}
-                className={`group/btn inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-semibold transition-all hover:gap-3 ${
+          {plans.map((plan, i) => {
+            const accent = ACCENT[plan.accentColor as keyof typeof ACCENT];
+            return (
+              <motion.div
+                key={plan.id}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.55 }}
+                className={`group relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                   plan.highlight
-                    ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
-                    : "border border-white/15 text-white hover:border-white/30 hover:bg-white/5"
+                    ? "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-2xl shadow-violet-500/15 scale-[1.02]"
+                    : plan.accentColor === "amber"
+                    ? "border-amber-500/20 bg-gradient-to-b from-amber-500/5 to-transparent hover:border-amber-500/35"
+                    : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]"
                 }`}
               >
-                {plan.cta}
-                <FiArrowRight size={15} className="transition-transform group/btn-hover:translate-x-0.5" />
-              </Link>
-              <p className="mt-3 text-center text-xs text-gray-600">{plan.note}</p>
-            </motion.div>
-          ))}
+                {/* Badge */}
+                {plan.badge && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1 text-xs font-bold shadow-lg ${accent.badge}`}>
+                      <FiZap size={10} />
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                {/* Plan name */}
+                <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">{plan.name}</p>
+
+                {/* Price */}
+                <div className="mb-2 flex items-end gap-1.5">
+                  <span className="text-5xl font-black text-white leading-none">{plan.price}</span>
+                  <span className="mb-1 text-lg font-semibold text-gray-400">{plan.currency}</span>
+                </div>
+
+                {/* Delivery badge */}
+                <div className={`mb-4 flex items-center gap-1.5 text-sm font-semibold ${accent.delivery}`}>
+                  <FiClock size={13} />
+                  {plan.deliveryLabel}
+                </div>
+
+                <p className="mb-6 text-sm leading-relaxed text-gray-400">{plan.tagline}</p>
+
+                {/* Divider */}
+                <div className="mb-6 h-px bg-white/8" />
+
+                {/* Features */}
+                <ul className="mb-8 flex-1 space-y-3">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
+                      <FiCheck size={14} className={`mt-0.5 shrink-0 ${accent.check}`} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <Link
+                  href={withPrefix(plan.href)}
+                  className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold transition-all hover:gap-3 ${accent.cta}`}
+                >
+                  {plan.cta}
+                  <FiArrowRight size={14} />
+                </Link>
+                <p className="mt-3 text-center text-xs text-gray-600">{plan.note}</p>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Launch banner */}
@@ -370,7 +429,7 @@ export function PricingSection() {
           transition={{ delay: 0.35, duration: 0.45 }}
           className="mt-8 flex items-center justify-center gap-3 rounded-xl border border-blue-500/20 bg-blue-500/8 px-6 py-3.5"
         >
-          <FiZap size={15} className="shrink-0 text-blue-400" />
+          <FiZap size={14} className="shrink-0 text-blue-400" />
           <p className="text-sm text-blue-200">{copy.launchNote}</p>
         </motion.div>
 
@@ -382,27 +441,15 @@ export function PricingSection() {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="mt-12 rounded-2xl border border-white/8 bg-gradient-to-r from-violet-950/40 to-blue-950/30 p-8 text-center"
         >
-          <p className="mb-2 text-sm font-semibold text-white">
-            {locale === "en"
-              ? "Not sure which tier fits your project?"
-              : locale === "de"
-              ? "Nicht sicher, welche Stufe zu Ihrem Projekt passt?"
-              : "Vous ne savez pas quel niveau correspond à votre projet ?"}
-          </p>
-          <p className="mb-6 text-sm text-gray-400">
-            {locale === "en"
-              ? "Tell us your situation in 2 lines. We'll come back with a clear scope and a realistic number — in 24h, free."
-              : locale === "de"
-              ? "Beschreiben Sie Ihre Situation in 2 Sätzen. Wir kommen mit einem klaren Umfang und einer realistischen Zahl zurück — in 24h, kostenlos."
-              : "Décrivez votre situation en 2 lignes. On revient avec un périmètre clair et un chiffre réaliste — en 24h, gratuitement."}
-          </p>
+          <p className="mb-1 text-sm text-gray-400">{copy.notSure}</p>
+          <p className="mb-6 text-sm font-semibold text-white">{copy.notSureAction}</p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href={withPrefix("/audit-gratuit")}
+              href={withPrefix("/devis")}
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-violet-500/20 transition hover:shadow-violet-500/40 hover:gap-3"
             >
               {copy.bottomCta}
-              <FiArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+              <FiArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a
               href={waUrl}
@@ -410,7 +457,7 @@ export function PricingSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/15 transition hover:brightness-110"
             >
-              <FiMessageCircle size={15} />
+              <FiMessageCircle size={14} />
               {copy.bottomWa}
             </a>
           </div>

@@ -8,24 +8,24 @@ export function StatsBar() {
   const stats =
     locale === "en"
       ? [
+          { value: "99€", label: "Starting price" },
+          { value: "5 days", label: "First delivery" },
           { value: "70+", label: "Systems delivered" },
-          { value: "3×", label: "Avg. lead growth" },
-          { value: "95+", label: "Lighthouse score" },
           { value: "24h", label: "Response time" },
-          { value: "100%", label: "On-budget delivery" },
+          { value: "100%", label: "On-budget" },
         ]
       : locale === "de"
       ? [
+          { value: "99€", label: "Ab diesem Preis" },
+          { value: "5 Tage", label: "Erste Lieferung" },
           { value: "70+", label: "Systeme geliefert" },
-          { value: "3×", label: "Leads-Wachstum Ø" },
-          { value: "95+", label: "Lighthouse-Score" },
           { value: "24h", label: "Antwortzeit" },
           { value: "100%", label: "Budget eingehalten" },
         ]
       : [
+          { value: "99€", label: "Dès ce prix" },
+          { value: "5 jours", label: "1ère livraison" },
           { value: "70+", label: "Systèmes livrés" },
-          { value: "3×", label: "Croissance leads moy." },
-          { value: "95+", label: "Score Lighthouse" },
           { value: "24h", label: "Délai de réponse" },
           { value: "100%", label: "Budget respecté" },
         ];

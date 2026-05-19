@@ -15,56 +15,56 @@ export function HeroSection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "AI-Powered Growth Systems",
+          eyebrow: "Sites & AI Systems · from 99 CHF/€",
           title1: "We build the systems",
           title2: "that grow your business.",
-          body: "AI automation, premium platforms, digital infrastructure — every project is discussed and adjusted to your budget, before anything is signed.",
-          primary: "Get my free audit",
+          body: "Premium website in 5 days, full AI system in 28 days. Fixed price, zero surprises. Quote accepted → we launch in 48h.",
+          primary: "Get my free quote",
           secondary: "See results",
-          wa: "WhatsApp KAH",
-          waText: "Hi KAH Digital, I'd like to discuss how you can help grow my business.",
-          tags: ["AI Automation", "Premium Platforms", "Budget-Friendly", "Fast Delivery"],
-          trustLine: "70+ projects delivered in Switzerland, France & worldwide · Budget discussed before sign-off",
+          wa: "WhatsApp — reply in 2h",
+          waText: "Hi KAH Digital, I'd like a quote for my project.",
+          tags: ["From 99 CHF/€", "Delivered in 5 days", "AI included", "Fixed price"],
+          trustLine: "70+ projects delivered · Starter from 99 CHF/€ · Launch in 48h after sign-off",
           proof: [
-            { value: "70+", label: "Systems delivered" },
-            { value: "3×", label: "Avg. lead increase" },
-            { value: "24h", label: "Response time" },
-            { value: "100%", label: "On-budget delivery" },
+            { value: "99€", label: "From" },
+            { value: "5 days", label: "First delivery" },
+            { value: "24h", label: "Quote response" },
+            { value: "100%", label: "On-budget" },
           ],
         }
       : locale === "de"
       ? {
-          eyebrow: "KI-gestützte Wachstumssysteme",
+          eyebrow: "Websites & KI-Systeme · ab 99 CHF/€",
           title1: "Wir bauen die Systeme,",
           title2: "die Ihr Unternehmen wachsen lassen.",
-          body: "KI-Automatisierung, Premium-Plattformen, digitale Infrastruktur — jedes Projekt wird besprochen und an Ihr Budget angepasst, bevor Sie etwas unterschreiben.",
-          primary: "Kostenloses Audit erhalten",
+          body: "Premium-Website in 5 Tagen, vollständiges KI-System in 28 Tagen. Fester Preis, null Überraschungen. Freigabe erteilt → wir starten in 48h.",
+          primary: "Kostenlose Offerte erhalten",
           secondary: "Ergebnisse ansehen",
-          wa: "WhatsApp KAH",
-          waText: "Hallo KAH Digital, ich möchte besprechen, wie Sie mein Wachstum unterstützen können.",
-          tags: ["KI-Automatisierung", "Premium-Plattformen", "Budget anpassbar", "Schnelle Lieferung"],
-          trustLine: "70+ Projekte geliefert in der Schweiz, Frankreich & weltweit · Budget vor Vertragsschluss besprochen",
+          wa: "WhatsApp — Antwort in 2h",
+          waText: "Hallo KAH Digital, ich möchte eine Offerte für mein Projekt.",
+          tags: ["Ab 99 CHF/€", "Lieferung in 5 Tagen", "KI inklusive", "Fester Preis"],
+          trustLine: "70+ Projekte geliefert · Starter ab 99 CHF/€ · Start in 48h nach Freigabe",
           proof: [
-            { value: "70+", label: "Systeme geliefert" },
-            { value: "3×", label: "Leads Ø" },
-            { value: "24h", label: "Antwortzeit" },
+            { value: "99€", label: "Ab" },
+            { value: "5 Tage", label: "Erste Lieferung" },
+            { value: "24h", label: "Angebotsantwort" },
             { value: "100%", label: "Budget eingehalten" },
           ],
         }
       : {
-          eyebrow: "AI-Powered Growth Systems",
+          eyebrow: "Sites & Systèmes IA · dès 99 CHF/€",
           title1: "On construit les systèmes",
           title2: "qui font croître votre business.",
-          body: "Automatisation IA, plateformes premium, infrastructure digitale — chaque projet est discuté et ajusté à votre budget, avant toute signature.",
-          primary: "Obtenir mon audit gratuit",
+          body: "Site premium en 5 jours, système IA complet en 28 jours. Prix fixe, zéro surprise. Devis validé → on démarre en 48h.",
+          primary: "Obtenir mon devis gratuit",
           secondary: "Voir les résultats",
-          wa: "WhatsApp KAH",
-          waText: "Bonjour KAH Digital, je voudrais discuter de comment vous pouvez aider ma croissance.",
-          tags: ["Automatisation IA", "Plateformes Premium", "Budget adapté", "Livraison rapide"],
-          trustLine: "70+ projets livrés en Suisse, France & international · Budget discuté avant signature",
+          wa: "WhatsApp — réponse en 2h",
+          waText: "Bonjour KAH Digital, je voudrais un devis pour mon projet.",
+          tags: ["Dès 99 CHF/€", "Livré en 5 jours", "IA incluse", "Prix fixe"],
+          trustLine: "70+ projets livrés · Starter dès 99 CHF/€ · Lancement en 48h après validation",
           proof: [
-            { value: "70+", label: "Systèmes livrés" },
-            { value: "3×", label: "Leads en moyenne" },
+            { value: "99€", label: "Dès" },
+            { value: "5 jours", label: "1ère livraison" },
             { value: "24h", label: "Délai de réponse" },
             { value: "100%", label: "Budget respecté" },
           ],
@@ -120,7 +120,7 @@ export function HeroSection() {
           {/* CTAs */}
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href={withPrefix("/audit-gratuit")}
+              href={withPrefix("/devis")}
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 font-semibold text-white shadow-lg shadow-blue-500/30 transition-all hover:shadow-blue-500/50 hover:gap-3"
             >
               {copy.primary}
