@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/refonte-site-web",
-  title: "Refonte de site web | KAH-Digital",
+  title: "Refonte site web · De +0 à +40% de conversions | KAH Digital",
   description:
-    "Refonte de site web pour entreprises qui veulent reprendre une base plus propre, plus lisible et plus convaincante.",
+    "Refonte site web sur Next.js 15 : UX premium, vitesse < 2s, taux de conversion optimisé. Votre ancien site coûte des clients — on le transforme en machine à leads. Audit gratuit.",
 });
 
 export default function RefonteSiteWebPage() {

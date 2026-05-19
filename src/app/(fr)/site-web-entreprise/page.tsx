@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/site-web-entreprise",
-  title: "Site web entreprise | KAH-Digital",
+  title: "Site web entreprise premium · Livré en 14 jours | KAH Digital",
   description:
-    "Creation de site web d'entreprise pour PME, cabinets, agences et structures de service. Positionnement clair, site credible et conversion propre.",
+    "Site web entreprise Next.js 15 — design niveau SaaS, Core Web Vitals 95+, SEO technique inclus. Livré en 14 jours, propriété 100% à vous. Devis gratuit sous 24h.",
 });
 
 export default function SiteWebEntreprisePage() {

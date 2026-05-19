@@ -5,9 +5,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/automatisation-ia-entreprise",
-  title: "AI automation for business | KAH-Digital",
+  title: "AI automation for business · Custom agents & workflows | KAH Digital",
   description:
-    "AI automation for lead qualification, support, routing, summaries, and operational time savings.",
+    "AI automation: lead qualification, customer support, smart routing, custom GPT-4 agents. Cut operational costs by 40–70%. Free audit within 24h. No lock-in.",
 });
 
 export default function AutomatisationIaEntreprisePageEn() {

@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/automatisation-ia-entreprise",
-  title: "Automatisation IA entreprise | KAH-Digital",
+  title: "Automatisation IA entreprise · Agents & workflows sur mesure | KAH Digital",
   description:
-    "Automatisation IA pour qualification de leads, support, routage et gain de temps operationnel.",
+    "Automatisation IA : qualification leads, support client, routage intelligent, agents GPT-4 sur mesure. Réduisez vos coûts opérationnels de 40 à 70%. Audit gratuit sous 24h.",
 });
 
 export default function AutomatisationIaEntreprisePage() {
