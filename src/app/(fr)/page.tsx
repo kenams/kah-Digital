@@ -12,6 +12,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { ProcessSection } from "@/components/process-section";
 import { GlobalTrustSection } from "@/components/global-trust-section";
 import { FAQSection } from "@/components/faq-section";
+import { BuiltForSection } from "@/components/built-for-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata = buildPageMetadata({
@@ -130,6 +131,7 @@ export default function Home() {
       <WhyChooseSection />
       <CaseStudySection />
       <TestimonialsSection />
+      <BuiltForSection />
       <PricingSection />
       <ProcessSection />
       <GlobalTrustSection />

@@ -1,192 +1,185 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { useLocale } from "@/lib/locale";
 
-export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const { locale } = useLocale();
+const FAQS = {
+  fr: [
+    {
+      q: "Combien de temps faut-il pour livrer mon site ?",
+      a: "Starter (1 page) : 5 jours ouvrés. Business (5 pages) : 14 jours. Premium AI (système complet) : 28 jours. Une fois le devis validé et vos assets envoyés (photos, couleurs, police), on démarre immédiatement.",
+    },
+    {
+      q: "Puis-je upgrader vers un plan supérieur après la livraison ?",
+      a: "Oui, à tout moment. Vous démarrez avec le Starter pour tester, et on peut faire évoluer vers Business ou Premium AI quand vous êtes prêt. Chaque étape s'appuie sur la précédente — rien n'est à refaire.",
+    },
+    {
+      q: "Le site m'appartient-il intégralement ?",
+      a: "100%. Le code source, le domaine et l'hébergement vous appartiennent entièrement. Pas de plateforme propriétaire, pas de verrouillage. Vous avez les accès complets dès la livraison.",
+    },
+    {
+      q: "Le SEO est-il inclus dans les plans ?",
+      a: "Le SEO technique de base (balises meta, sitemap, structure URL, vitesse) est inclus dans tous les plans. Le SEO avancé (pages locales, contenu optimisé, link building, suivi de positions) est disponible en option à 149 €.",
+    },
+    {
+      q: "Le site sera-t-il optimisé pour mobile ?",
+      a: "Absolument — c'est non-négociable. Chaque projet est développé mobile-first. Score Lighthouse 90+ sur mobile, interface fluide sur tous les écrans, temps de chargement < 2 secondes.",
+    },
+    {
+      q: "Puis-je payer en plusieurs fois ?",
+      a: "Oui. Le paiement standard est 50 % au démarrage, 50 % à la livraison. Pour les projets Business et Premium AI, un échelonnement en 3 fois est possible. On en discute avant tout engagement.",
+    },
+    {
+      q: "Y a-t-il un support après la livraison ?",
+      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Premium AI : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 49 €/mois pour la suite.",
+    },
+    {
+      q: "L'IA est-elle disponible dans tous les plans ?",
+      a: "Le chatbot IA et les automatisations sont inclus dans le plan Premium AI. Pour les autres plans, le chatbot IA est disponible en option à 199 € et l'automatisation à partir de 299 €. On peut ajouter l'IA à n'importe quel plan existant.",
+    },
+  ],
+  en: [
+    {
+      q: "How long does it take to deliver my site?",
+      a: "Starter (1 page): 5 business days. Business (5 pages): 14 days. Premium AI (full system): 28 days. Once your quote is approved and assets sent (photos, colours, font), we start immediately.",
+    },
+    {
+      q: "Can I upgrade to a higher plan after delivery?",
+      a: "Yes, at any time. Start with Starter to test the waters, then move to Business or Premium AI when you're ready. Each step builds on the previous — nothing needs to be redone.",
+    },
+    {
+      q: "Do I fully own my website?",
+      a: "100%. The source code, domain, and hosting are entirely yours. No proprietary platform, no lock-in. You get full access from day one of delivery.",
+    },
+    {
+      q: "Is SEO included in the plans?",
+      a: "Basic technical SEO (meta tags, sitemap, URL structure, speed) is included in all plans. Advanced SEO (local pages, optimised content, link building, rank tracking) is available as an add-on for $149.",
+    },
+    {
+      q: "Will my site be mobile-optimised?",
+      a: "Absolutely — non-negotiable. Every project is built mobile-first. 90+ Lighthouse on mobile, fluid on all screens, load time under 2 seconds.",
+    },
+    {
+      q: "Can I pay in instalments?",
+      a: "Yes. Standard payment is 50% upfront, 50% on delivery. For Business and Premium AI projects, a 3-instalment split is possible. We discuss this before any commitment.",
+    },
+    {
+      q: "Is there support after delivery?",
+      a: "Business: 1 month support included (fixes, minor adjustments). Premium AI: 3 months priority support. Monthly maintenance plans are available from $49/month for ongoing care.",
+    },
+    {
+      q: "Is AI available in all plans?",
+      a: "AI chatbot and automations are included in Premium AI. For other plans, the AI chatbot is available as an add-on at $199, and automation from $299. AI can be added to any existing plan.",
+    },
+  ],
+  de: [
+    {
+      q: "Wie lange dauert die Lieferung meiner Website?",
+      a: "Starter (1 Seite): 5 Werktage. Business (5 Seiten): 14 Tage. Premium AI (vollständiges System): 28 Tage. Sobald Ihr Angebot bestätigt und Assets gesendet sind (Fotos, Farben, Schrift), starten wir sofort.",
+    },
+    {
+      q: "Kann ich nach der Lieferung auf einen höheren Plan upgraden?",
+      a: "Ja, jederzeit. Starten Sie mit dem Starter zum Testen und wechseln Sie zu Business oder Premium AI, wenn Sie bereit sind. Jeder Schritt baut auf dem vorherigen auf — nichts muss neu gemacht werden.",
+    },
+    {
+      q: "Gehört mir die Website vollständig?",
+      a: "100 %. Der Quellcode, die Domain und das Hosting gehören Ihnen vollständig. Kein proprietäres System, kein Lock-in. Ab dem ersten Liefertag haben Sie vollen Zugriff.",
+    },
+    {
+      q: "Ist SEO in den Plänen enthalten?",
+      a: "Technisches Basis-SEO (Meta-Tags, Sitemap, URL-Struktur, Geschwindigkeit) ist in allen Plänen enthalten. Erweitertes SEO (lokale Seiten, optimierter Content, Link-Building, Ranking-Tracking) ist als Option für CHF 149 verfügbar.",
+    },
+    {
+      q: "Wird meine Website für Mobilgeräte optimiert?",
+      a: "Absolut — nicht verhandelbar. Jedes Projekt wird Mobile-first entwickelt. 90+ Lighthouse auf Mobilgeräten, flüssig auf allen Bildschirmen, Ladezeit unter 2 Sekunden.",
+    },
+    {
+      q: "Kann ich in Raten zahlen?",
+      a: "Ja. Die Standardzahlung ist 50 % bei Start, 50 % bei Lieferung. Für Business- und Premium AI-Projekte ist eine 3-Raten-Zahlung möglich. Das besprechen wir vor jeder Verpflichtung.",
+    },
+    {
+      q: "Gibt es Support nach der Lieferung?",
+      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Premium AI: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 49/Monat verfügbar.",
+    },
+    {
+      q: "Ist KI in allen Plänen verfügbar?",
+      a: "KI-Chatbot und Automatisierungen sind im Premium AI-Plan enthalten. Für andere Pläne ist der KI-Chatbot als Option für CHF 199 verfügbar, Automatisierung ab CHF 299. KI kann jedem bestehenden Plan hinzugefügt werden.",
+    },
+  ],
+};
 
-  const copy = {
-    fr: {
-      eyebrow: "FAQ",
-      title: "Questions fréquentes",
-      body: "Tout ce que vous voulez savoir avant de lancer votre projet.",
-      faqs: [
-        {
-          question: "Comment est défini le budget d'une landing page ?",
-          answer: "Le budget dépend du besoin réel : objectif de conversion, nombre de sections, contenus, design, animations et intégrations utiles. Un premier échange permet de cadrer simplement le périmètre et de proposer un devis personnalisé, clair et sans engagement.",
-        },
-        {
-          question: "Comment est estimé un site web professionnel ?",
-          answer: "Chaque projet est différent. Un site vitrine, un site corporate ou une plateforme plus complète n'ont pas le même niveau de contenu, de design, de SEO ni de fonctionnalités. Le devis est construit après compréhension de votre contexte, de votre budget disponible et de vos priorités business.",
-        },
-        {
-          question: "Comment cadrer une application mobile ou web ?",
-          answer: "On part des utilisateurs, des processus métier, des fonctionnalités indispensables, des délais et du niveau d'accompagnement souhaité. L'objectif est de définir un périmètre utile, évolutif et adapté à votre budget, puis de fournir une estimation claire après cadrage.",
-        },
-        {
-          question: "Puis-je commencer avec un budget limité ?",
-          answer: "Oui. Pas de formule rigide : les prestations peuvent être ajustées selon la demande. On peut commencer par un périmètre simple, valider l'essentiel, puis faire évoluer le site ou l'application progressivement selon vos priorités.",
-        },
-        {
-          question: "Est-ce que vous pouvez créer un MVP ?",
-          answer: "Oui, c'est l'une de mes spécialités. Un MVP (Minimum Viable Product) est une version simplifiée de votre produit qui permet de le tester avec de vrais utilisateurs sans investir dans une version complète. Je vous aide à définir ce qui est vraiment nécessaire pour démarrer.",
-        },
-        {
-          question: "Est-ce que vous gérez aussi le design ?",
-          answer: "Oui. Je m'occupe du design et du développement. Vous n'avez pas besoin de fournir de maquette. Si vous avez une charte graphique (logo, couleurs), je l'utilise. Sinon, je propose un design adapté à votre activité et à votre positionnement.",
-        },
-        {
-          question: "Est-ce que vous pouvez refaire mon site actuel ?",
-          answer: "Oui. La refonte est l'un des services les plus demandés. Que vous ayez un site WordPress, Wix, Squarespace ou autre, je peux le reprendre et le reconstruire proprement : design plus moderne, meilleures performances, meilleur SEO et meilleure conversion.",
-        },
-        {
-          question: "Le site sera-t-il adapté mobile ?",
-          answer: "Oui, systématiquement. Tous les sites et applications que je crée sont responsive et optimisés pour mobile, tablette et desktop. C'est une base non négociable.",
-        },
-        {
-          question: "Est-ce que vous pouvez intégrer un système de paiement ?",
-          answer: "Oui. J'intègre Stripe pour les paiements en ligne, abonnements ou réservations. Cela peut s'appliquer aussi bien à un site vitrine qu'à une application mobile ou un SaaS.",
-        },
-        {
-          question: "Comment demander un devis ?",
-          answer: "Remplissez le formulaire de devis en précisant votre besoin, le type de projet, votre budget estimé et votre délai. Je vous réponds sous 24h ouvrables avec une première estimation claire. Aucun engagement, aucun formulaire en 40 champs.",
-        },
-      ],
-    },
-    en: {
-      eyebrow: "FAQ",
-      title: "Frequently asked questions",
-      body: "Everything you want to know before launching your project.",
-      faqs: [
-        {
-          question: "How is a landing page budget defined?",
-          answer: "The budget depends on the real need: conversion goal, number of sections, content, design, animations and useful integrations. A first exchange helps define the right scope and produce a clear custom quote with no commitment.",
-        },
-        {
-          question: "How is a professional website estimated?",
-          answer: "Every project is different. A showcase site, a corporate website and a richer platform do not require the same content, design, SEO or features. The quote is built after understanding your context, available budget and business priorities.",
-        },
-        {
-          question: "How do you scope a mobile or web app?",
-          answer: "We start with users, workflows, must-have features, timeline and the level of support you need. The goal is to define a useful, scalable scope adapted to your budget, then provide a clear estimate after scoping.",
-        },
-        {
-          question: "Can I start with a small budget?",
-          answer: "Yes. There is no rigid package: the work can be adjusted to the request. We can start with a simple scope, validate the essentials, then improve the site or app progressively according to your priorities.",
-        },
-        {
-          question: "Can you build an MVP?",
-          answer: "Yes, that's one of my specialties. An MVP (Minimum Viable Product) is a simplified version of your product that lets you test it with real users without investing in a full version. I help you define what's truly necessary to get started.",
-        },
-        {
-          question: "Do you handle design as well?",
-          answer: "Yes. I handle both design and development. You don't need to provide mockups. If you have a brand identity (logo, colours), I'll use it. Otherwise, I propose a design suited to your activity and positioning.",
-        },
-        {
-          question: "Can you redo my existing website?",
-          answer: "Yes. Redesign is one of the most requested services. Whether you have a WordPress, Wix, Squarespace or other site, I can take it over and rebuild it cleanly: more modern design, better performance, better SEO and better conversion.",
-        },
-        {
-          question: "Will the site be mobile-friendly?",
-          answer: "Yes, always. Every site and app I build is responsive and optimised for mobile, tablet and desktop. That's a non-negotiable baseline.",
-        },
-        {
-          question: "Can you integrate a payment system?",
-          answer: "Yes. I integrate Stripe for online payments, subscriptions or bookings. This applies to showcase sites, mobile apps and SaaS platforms alike.",
-        },
-        {
-          question: "How do I request a quote?",
-          answer: "Fill in the quote form with your need, project type, estimated budget and timeline. I reply within 24 business hours with a clear first estimate. No commitment, no 40-field form.",
-        },
-      ],
-    },
-    de: {
-      eyebrow: "FAQ",
-      title: "Häufige Fragen",
-      body: "Alles, was Sie vor dem Start Ihres Projekts wissen möchten.",
-      faqs: [
-        {
-          question: "Wie wird das Budget einer Landing Page definiert?",
-          answer: "Das Budget hängt vom echten Bedarf ab: Conversion-Ziel, Anzahl der Sektionen, Inhalte, Design, Animationen und sinnvolle Integrationen. Ein erstes Gespräch hilft, den passenden Umfang zu definieren und eine klare unverbindliche Offerte zu erstellen.",
-        },
-        {
-          question: "Wie wird eine professionelle Website eingeschätzt?",
-          answer: "Jedes Projekt ist anders. Eine Unternehmenswebsite, eine Corporate-Website oder eine größere Plattform brauchen nicht denselben Inhalt, dasselbe Design, SEO-Niveau oder dieselben Funktionen. Die Offerte entsteht nach Verständnis von Kontext, Budgetrahmen und Prioritäten.",
-        },
-        {
-          question: "Wie wird eine mobile oder Web-App eingegrenzt?",
-          answer: "Wir starten mit Nutzern, Abläufen, unverzichtbaren Funktionen, Zeitplan und gewünschter Begleitung. Ziel ist ein sinnvoller, erweiterbarer Umfang passend zum verfügbaren Budget, danach folgt eine klare Schätzung.",
-        },
-        {
-          question: "Kann ich mit kleinem Budget starten?",
-          answer: "Ja. Es gibt keine starre Formel: Die Leistung kann an die Anfrage angepasst werden. Man kann mit einem einfachen Umfang starten, das Wichtigste validieren und danach Website oder App schrittweise weiterentwickeln.",
-        },
-        {
-          question: "Können Sie ein MVP erstellen?",
-          answer: "Ja, das ist eine meiner Spezialitäten. Ein MVP (Minimum Viable Product) ist eine vereinfachte Version Ihres Produkts, mit der Sie es mit echten Nutzern testen können, ohne in eine vollständige Version zu investieren. Ich helfe Ihnen zu definieren, was wirklich notwendig ist, um anzufangen.",
-        },
-        {
-          question: "Übernehmen Sie auch das Design?",
-          answer: "Ja. Ich kümmere mich um Design und Entwicklung. Sie müssen keine Mockups liefern. Wenn Sie eine Corporate Identity haben (Logo, Farben), nutze ich diese. Sonst schlage ich ein zur Ihrer Tätigkeit passendes Design vor.",
-        },
-        {
-          question: "Können Sie meine bestehende Website überarbeiten?",
-          answer: "Ja. Die Website-Überarbeitung ist einer der am häufigsten nachgefragten Services. Egal ob WordPress, Wix, Squarespace oder andere, ich kann sie sauber neu aufbauen: moderneres Design, bessere Performance, besseres SEO und bessere Conversion.",
-        },
-        {
-          question: "Wird die Website mobilfreundlich sein?",
-          answer: "Ja, immer. Alle Websites und Apps, die ich erstelle, sind responsive und für Mobilgerät, Tablet und Desktop optimiert. Das ist eine nicht verhandelbare Grundlage.",
-        },
-        {
-          question: "Können Sie ein Zahlungssystem integrieren?",
-          answer: "Ja. Ich integriere Stripe für Online-Zahlungen, Abonnements oder Buchungen. Das gilt für Unternehmenswebsites, mobile Apps und SaaS-Plattformen gleichermaßen.",
-        },
-        {
-          question: "Wie fordere ich ein Angebot an?",
-          answer: "Füllen Sie das Angebotsformular mit Ihrem Bedarf, Projekttyp, geschätztem Budget und Zeitrahmen aus. Ich antworte innerhalb von 24 Arbeitsstunden mit einer klaren ersten Schätzung. Keine Verpflichtung, kein 40-Felder-Formular.",
-        },
-      ],
-    },
-  }[locale];
+export function FAQSection() {
+  const [open, setOpen] = useState<number | null>(0);
+  const { locale } = useLocale();
+  const faqs = FAQS[locale === "de" ? "de" : locale === "en" ? "en" : "fr"];
+
+  const copy =
+    locale === "en"
+      ? { eyebrow: "FAQ", title: "Straight answers.", title2: "No vague replies.", sub: "Everything you need to know before getting started." }
+      : locale === "de"
+      ? { eyebrow: "FAQ", title: "Klare Antworten.", title2: "Keine vagen Aussagen.", sub: "Alles, was Sie vor dem Start wissen müssen." }
+      : { eyebrow: "FAQ", title: "Des réponses claires.", title2: "Pas de vague.", sub: "Tout ce que vous devez savoir avant de commencer." };
 
   return (
-    <section className="bg-gray-900 py-24">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 text-center">
+    <section className="bg-gray-900 py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 text-center"
+        >
           <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
             {copy.eyebrow}
           </span>
-          <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-white">{copy.title}</h2>
-          <p className="text-lg text-gray-400">{copy.body}</p>
-        </div>
+          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            {copy.title}{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">{copy.title2}</span>
+          </h2>
+          <p className="mt-4 text-lg text-gray-400">{copy.sub}</p>
+        </motion.div>
 
-        <div className="space-y-3">
-          {copy.faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="overflow-hidden rounded-2xl border border-white/8 bg-gray-950 transition-all"
+        <div className="space-y-2">
+          {faqs.map((faq, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+              className="overflow-hidden rounded-2xl border border-white/8 bg-gray-950 transition-all hover:border-white/14"
             >
               <button
                 type="button"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                aria-expanded={openIndex === index}
-                aria-controls={`faq-answer-${index}`}
+                onClick={() => setOpen(open === i ? null : i)}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               >
-                <span className="font-semibold text-white">{faq.question}</span>
-                <span className="shrink-0 text-gray-500" aria-hidden="true">
-                  {openIndex === index ? <FiMinus size={18} /> : <FiPlus size={18} />}
+                <span className={`font-semibold transition-colors ${open === i ? "text-white" : "text-gray-200"}`}>
+                  {faq.q}
+                </span>
+                <span className={`shrink-0 transition-colors ${open === i ? "text-blue-400" : "text-gray-600"}`}>
+                  {open === i ? <FiMinus size={18} /> : <FiPlus size={18} />}
                 </span>
               </button>
-              {openIndex === index && (
-                <div id={`faq-answer-${index}`} className="border-t border-white/6 px-6 pb-5 pt-4">
-                  <p className="text-sm leading-relaxed text-gray-400">{faq.answer}</p>
-                </div>
-              )}
-            </div>
+              <AnimatePresence initial={false}>
+                {open === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                  >
+                    <div className="border-t border-white/6 px-6 pb-5 pt-4">
+                      <p className="text-sm leading-relaxed text-gray-400">{faq.a}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
