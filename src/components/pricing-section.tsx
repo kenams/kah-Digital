@@ -9,19 +9,20 @@ const PLANS = {
   fr: [
     {
       name: "Starter",
-      price: "À partir de",
-      anchor: "CHF 890",
+      price: "Dès",
+      anchor: "CHF 490",
       anchorSub: "selon votre scope",
-      tagline: "Présence digitale professionnelle",
+      tagline: "Présence en ligne propre, rapide, efficace",
       highlight: false,
       badge: null,
       features: [
         "Site vitrine premium (5–7 pages)",
         "Design responsive mobile-first",
-        "SEO technique de base",
+        "SEO technique de base inclus",
         "Formulaire de contact optimisé",
         "Performance Lighthouse 90+",
-        "Livraison en 2–3 semaines",
+        "Démarrage en 48h après validation",
+        "Livraison en 1–2 semaines",
       ],
       cta: "Obtenir mon devis",
       href: "/devis",
@@ -29,30 +30,31 @@ const PLANS = {
     },
     {
       name: "Professional",
-      price: "À partir de",
-      anchor: "CHF 2'400",
+      price: "Dès",
+      anchor: "CHF 1'490",
       anchorSub: "selon votre scope",
-      tagline: "Système digital complet & convertissant",
+      tagline: "Système complet, lancé sans délai",
       highlight: true,
       badge: "Le plus demandé",
       features: [
-        "Site web complet (10+ pages)",
+        "Site web complet (10–15 pages)",
         "Automatisation IA & emails",
         "SEO avancé + pages locales",
         "Intégration paiement Stripe",
-        "Analytics avancés + heatmaps",
+        "Analytics + heatmaps",
         "Support 3 mois post-livraison",
-        "Livraison en 4–6 semaines",
+        "Démarrage en 48h après validation",
+        "Livraison en 3–4 semaines",
       ],
       cta: "Discuter de mon projet",
       href: "/devis",
-      note: "Devis personnalisé · Budget garanti",
+      note: "Devis personnalisé · Budget ferme garanti",
     },
     {
       name: "Elite",
       price: "Budget",
       anchor: "Sur mesure",
-      anchorSub: "selon le scope",
+      anchorSub: "défini ensemble",
       tagline: "Système IA complet & infrastructure scalable",
       highlight: false,
       badge: null,
@@ -74,18 +76,19 @@ const PLANS = {
     {
       name: "Starter",
       price: "Ab",
-      anchor: "CHF 890",
+      anchor: "CHF 490",
       anchorSub: "je nach Umfang",
-      tagline: "Professioneller digitaler Auftritt",
+      tagline: "Sauberer, schneller, professioneller Auftritt",
       highlight: false,
       badge: null,
       features: [
         "Premium-Website (5–7 Seiten)",
         "Mobiles, responsives Design",
-        "Technisches Basis-SEO",
+        "Technisches Basis-SEO inklusive",
         "Optimiertes Kontaktformular",
         "90+ Lighthouse-Performance",
-        "Lieferung in 2–3 Wochen",
+        "Start in 48h nach Freigabe",
+        "Lieferung in 1–2 Wochen",
       ],
       cta: "Offerte anfragen",
       href: "/devis",
@@ -94,29 +97,30 @@ const PLANS = {
     {
       name: "Professional",
       price: "Ab",
-      anchor: "CHF 2'400",
+      anchor: "CHF 1'490",
       anchorSub: "je nach Umfang",
-      tagline: "Vollständiges digitales Wachstumssystem",
+      tagline: "Vollständiges System, sofort gestartet",
       highlight: true,
       badge: "Am meisten gefragt",
       features: [
-        "Vollständige Website (10+ Seiten)",
+        "Vollständige Website (10–15 Seiten)",
         "KI-Automatisierung & E-Mails",
         "Erweitertes SEO + lokale Seiten",
         "Stripe-Zahlungsintegration",
         "Analytics + Heatmaps",
         "3 Monate Support nach Lieferung",
-        "Lieferung in 4–6 Wochen",
+        "Start in 48h nach Freigabe",
+        "Lieferung in 3–4 Wochen",
       ],
       cta: "Projekt besprechen",
       href: "/devis",
-      note: "Persönliches Angebot · Budget garantiert",
+      note: "Persönliches Angebot · Festes Budget garantiert",
     },
     {
       name: "Elite",
       price: "Budget",
       anchor: "Massgeschneidert",
-      anchorSub: "je nach Umfang",
+      anchorSub: "gemeinsam definiert",
       tagline: "Vollständiges KI-System & skalierbare Infrastruktur",
       highlight: false,
       badge: null,
@@ -137,19 +141,20 @@ const PLANS = {
   en: [
     {
       name: "Starter",
-      price: "Starting from",
-      anchor: "CHF 890",
+      price: "From",
+      anchor: "CHF 490",
       anchorSub: "based on your scope",
-      tagline: "Professional digital presence",
+      tagline: "Clean, fast, professional presence",
       highlight: false,
       badge: null,
       features: [
         "Premium landing site (5–7 pages)",
         "Mobile-first responsive design",
-        "Basic technical SEO",
+        "Basic technical SEO included",
         "Optimized contact form",
         "90+ Lighthouse performance",
-        "Delivery in 2–3 weeks",
+        "Kickoff in 48h after sign-off",
+        "Delivery in 1–2 weeks",
       ],
       cta: "Get my quote",
       href: "/devis",
@@ -157,30 +162,31 @@ const PLANS = {
     },
     {
       name: "Professional",
-      price: "Starting from",
-      anchor: "CHF 2,400",
+      price: "From",
+      anchor: "CHF 1,490",
       anchorSub: "based on your scope",
-      tagline: "Complete converting digital system",
+      tagline: "Complete system, launched without delay",
       highlight: true,
       badge: "Most requested",
       features: [
-        "Full website (10+ pages)",
+        "Full website (10–15 pages)",
         "AI automation & emails",
         "Advanced SEO + local pages",
         "Stripe payment integration",
-        "Advanced analytics + heatmaps",
+        "Analytics + heatmaps",
         "3 months post-delivery support",
-        "Delivery in 4–6 weeks",
+        "Kickoff in 48h after sign-off",
+        "Delivery in 3–4 weeks",
       ],
       cta: "Discuss my project",
       href: "/devis",
-      note: "Custom quote · Budget guaranteed",
+      note: "Custom quote · Fixed budget guaranteed",
     },
     {
       name: "Elite",
       price: "Budget",
       anchor: "Custom",
-      anchorSub: "based on scope",
+      anchorSub: "defined together",
       tagline: "Full AI system & scalable infrastructure",
       highlight: false,
       badge: null,
@@ -208,47 +214,50 @@ export function PricingSection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "Invest, don't overpay",
-          title: "A system built",
-          title2: "around your budget.",
-          sub: "Every project starts with a free discovery call. We scope exactly what you need — no more, no less. Fixed quote guaranteed before you sign anything.",
+          eyebrow: "Fast. Clean. On budget.",
+          title: "Quote accepted →",
+          title2: "we launch in 48h.",
+          sub: "Once you validate the quote and send your assets (photos, colours, fonts), our team launches immediately. No waiting, no back-and-forth — just clean execution and fast delivery.",
           reassurance: [
-            "Free personalised quote within 24h",
-            "Fixed price — no surprises",
+            "Kickoff in 48h after sign-off",
+            "Fixed price — zero surprises",
             "No commitment until you sign",
           ],
-          bottomCta: "Get a free quote",
+          launchNote: "To start in 48h, prepare: your photos · your brand colours · your font",
+          bottomCta: "Get my free quote",
           bottomWa: "WhatsApp — reply in 2h",
           waText: "Hi KAH Digital, I'd like to discuss the budget for my project.",
           bottomNote: "No commitment · Budget adjusted to your needs · Reply within 24h",
         }
       : locale === "de"
       ? {
-          eyebrow: "Investieren Sie richtig, zahlen Sie nicht zu viel",
-          title: "Ein System gebaut",
-          title2: "rund um Ihr Budget.",
-          sub: "Jedes Projekt beginnt mit einem kostenlosen Erstgespräch. Wir definieren genau, was Sie brauchen — nicht mehr, nicht weniger. Feste Offerte garantiert vor der Unterzeichnung.",
+          eyebrow: "Schnell. Sauber. Im Budget.",
+          title: "Freigabe erteilt →",
+          title2: "wir starten in 48h.",
+          sub: "Sobald Sie die Offerte bestätigen und Ihre Assets senden (Fotos, Farben, Schrift), startet unser Team sofort. Kein Warten, kein Hin-und-Her — saubere Ausführung, schnelle Lieferung.",
           reassurance: [
-            "Kostenlose individuelle Offerte in 24h",
-            "Fester Preis — keine Überraschungen",
+            "Start in 48h nach Freigabe",
+            "Fester Preis — null Überraschungen",
             "Keine Verpflichtung bis zur Unterschrift",
           ],
+          launchNote: "Für Start in 48h bereitstellen: Fotos · Markenfarben · Schriftart",
           bottomCta: "Kostenlose Offerte erhalten",
           bottomWa: "WhatsApp — Antwort in 2h",
           waText: "Hallo KAH Digital, ich möchte das Budget für mein Projekt besprechen.",
           bottomNote: "Unverbindlich · Budget angepasst an Ihren Bedarf · Antwort in 24h",
         }
       : {
-          eyebrow: "Investissez juste, sans dépenser trop",
-          title: "Un système construit",
-          title2: "autour de votre budget.",
-          sub: "Chaque projet commence par un échange gratuit. On cadre exactement ce dont vous avez besoin — ni plus, ni moins. Devis ferme garanti avant toute signature.",
+          eyebrow: "Rapide. Propre. Dans le budget.",
+          title: "Devis validé →",
+          title2: "on démarre en 48h.",
+          sub: "Dès que vous validez le devis et envoyez vos assets (photos, couleurs, police), l'équipe se met en route immédiatement. Pas d'attente, pas d'aller-retours — exécution propre et livraison rapide.",
           reassurance: [
-            "Devis personnalisé gratuit sous 24h",
-            "Prix ferme — aucune mauvaise surprise",
-            "Zéro engagement avant validation",
+            "Démarrage en 48h après validation",
+            "Prix ferme — zéro mauvaise surprise",
+            "Zéro engagement avant signature",
           ],
-          bottomCta: "Obtenir un devis gratuit",
+          launchNote: "Pour démarrer en 48h, préparez : vos photos · vos couleurs · votre police",
+          bottomCta: "Obtenir mon devis gratuit",
           bottomWa: "WhatsApp — réponse sous 2h",
           waText: "Bonjour KAH Digital, je voudrais discuter du budget pour mon projet.",
           bottomNote: "Sans engagement · Budget adapté à votre besoin · Réponse sous 24h",
@@ -318,7 +327,7 @@ export function PricingSection() {
                 <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-500">{plan.name}</p>
                 <p className="text-xs text-gray-600 mb-0.5">{plan.price}</p>
                 <div className="flex items-end gap-2">
-                  <span className={`font-extrabold text-white ${plan.anchor === "Sur mesure" || plan.anchor === "Custom" ? "text-2xl" : "text-3xl"}`}>
+                  <span className={`font-extrabold text-white ${plan.anchor === "Sur mesure" || plan.anchor === "Custom" || plan.anchor === "Massgeschneidert" ? "text-2xl" : "text-3xl"}`}>
                     {plan.anchor}
                   </span>
                 </div>
@@ -352,6 +361,18 @@ export function PricingSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Launch banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35, duration: 0.45 }}
+          className="mt-8 flex items-center justify-center gap-3 rounded-xl border border-blue-500/20 bg-blue-500/8 px-6 py-3.5"
+        >
+          <FiZap size={15} className="shrink-0 text-blue-400" />
+          <p className="text-sm text-blue-200">{copy.launchNote}</p>
+        </motion.div>
 
         {/* Bottom CTA block */}
         <motion.div
