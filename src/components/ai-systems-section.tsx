@@ -101,7 +101,7 @@ export function AiSystemsSection() {
         </motion.div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SYSTEMS.map(({ icon: Icon, color, bg, fr, en }, i) => {
+          {SYSTEMS.map(({ icon: Icon, color, bg, fr, en, de }, i) => {
             const c = locale === "en" ? en : locale === "de" ? de : fr;
             return (
               <motion.div
