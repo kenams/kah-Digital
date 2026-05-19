@@ -15,6 +15,9 @@ import { FAQSection } from "@/components/faq-section";
 import { BuiltForSection } from "@/components/built-for-section";
 import { SocialProofSection } from "@/components/social-proof-section";
 import { PortfolioSection } from "@/components/portfolio-section";
+import { ROICalculator } from "@/components/roi-calculator";
+import { BookingSection } from "@/components/booking-section";
+import { SocialContentSection } from "@/components/social-content-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata = buildPageMetadata({
@@ -46,12 +49,15 @@ export default function HomePageEn() {
       <WhyChooseSection />
       <CaseStudySection />
       <SocialProofSection />
+      <ROICalculator />
       <TestimonialsSection />
       <BuiltForSection />
       <PortfolioSection />
       <PricingSection />
+      <BookingSection />
       <ProcessSection />
       <GlobalTrustSection />
+      <SocialContentSection />
       <FAQSection />
       <CTASection />
     </>
