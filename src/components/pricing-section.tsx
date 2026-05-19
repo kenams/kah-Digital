@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
-import { FiArrowRight, FiCheck, FiZap } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiZap, FiMessageCircle } from "react-icons/fi";
 
 const PLANS = {
   fr: [
     {
       name: "Starter",
-      price: "CHF 2'500",
-      period: "projet unique",
+      price: "À partir de",
+      anchor: "CHF 890",
+      anchorSub: "selon votre scope",
       tagline: "Présence digitale professionnelle",
       highlight: false,
       badge: null,
@@ -19,39 +20,39 @@ const PLANS = {
         "Design responsive mobile-first",
         "SEO technique de base",
         "Formulaire de contact optimisé",
-        "Hébergement & domaine 1 an",
-        "Google Analytics configuré",
-        "30 jours de corrections inclus",
+        "Performance Lighthouse 90+",
         "Livraison en 2–3 semaines",
       ],
-      cta: "Démarrer",
+      cta: "Obtenir mon devis",
       href: "/devis",
+      note: "Devis personnalisé · Sans engagement",
     },
     {
       name: "Professional",
-      price: "CHF 6'900",
-      period: "projet unique",
+      price: "À partir de",
+      anchor: "CHF 2'400",
+      anchorSub: "selon votre scope",
       tagline: "Système digital complet & convertissant",
       highlight: true,
-      badge: "Le plus populaire",
+      badge: "Le plus demandé",
       features: [
         "Site web complet (10+ pages)",
-        "Automatisation de base (CRM, emails)",
+        "Automatisation IA & emails",
         "SEO avancé + pages locales",
         "Intégration paiement Stripe",
-        "Blog & content management",
         "Analytics avancés + heatmaps",
-        "Performance Lighthouse 90+",
         "Support 3 mois post-livraison",
         "Livraison en 4–6 semaines",
       ],
-      cta: "Choisir Professional",
+      cta: "Discuter de mon projet",
       href: "/devis",
+      note: "Devis personnalisé · Budget garanti",
     },
     {
       name: "Elite",
-      price: "Sur devis",
-      period: "projet sur mesure",
+      price: "Budget",
+      anchor: "Sur mesure",
+      anchorSub: "selon le scope",
       tagline: "Système IA complet & infrastructure scalable",
       highlight: false,
       badge: null,
@@ -62,19 +63,19 @@ const PLANS = {
         "Dashboard analytics temps réel",
         "Intégrations API illimitées",
         "Multi-langues & international",
-        "Support dédié 6 mois",
-        "Accompagnement growth stratégique",
-        "Délai selon scope projet",
+        "Accompagnement growth 6 mois",
       ],
-      cta: "Discuter de mon projet",
+      cta: "Échanger sur mon projet",
       href: "/devis",
+      note: "Échange gratuit · Devis sous 24h",
     },
   ],
   en: [
     {
       name: "Starter",
-      price: "CHF 2,500",
-      period: "one-time",
+      price: "Starting from",
+      anchor: "CHF 890",
+      anchorSub: "based on your scope",
       tagline: "Professional digital presence",
       highlight: false,
       badge: null,
@@ -83,39 +84,39 @@ const PLANS = {
         "Mobile-first responsive design",
         "Basic technical SEO",
         "Optimized contact form",
-        "Hosting & domain 1 year",
-        "Google Analytics setup",
-        "30-day corrections included",
+        "90+ Lighthouse performance",
         "Delivery in 2–3 weeks",
       ],
-      cta: "Get started",
+      cta: "Get my quote",
       href: "/devis",
+      note: "Custom quote · No commitment",
     },
     {
       name: "Professional",
-      price: "CHF 6,900",
-      period: "one-time",
+      price: "Starting from",
+      anchor: "CHF 2,400",
+      anchorSub: "based on your scope",
       tagline: "Complete converting digital system",
       highlight: true,
-      badge: "Most popular",
+      badge: "Most requested",
       features: [
         "Full website (10+ pages)",
-        "Basic automation (CRM, emails)",
+        "AI automation & emails",
         "Advanced SEO + local pages",
         "Stripe payment integration",
-        "Blog & content management",
         "Advanced analytics + heatmaps",
-        "90+ Lighthouse performance",
         "3 months post-delivery support",
         "Delivery in 4–6 weeks",
       ],
-      cta: "Choose Professional",
+      cta: "Discuss my project",
       href: "/devis",
+      note: "Custom quote · Budget guaranteed",
     },
     {
       name: "Elite",
-      price: "Custom",
-      period: "bespoke project",
+      price: "Budget",
+      anchor: "Custom",
+      anchorSub: "based on scope",
       tagline: "Full AI system & scalable infrastructure",
       highlight: false,
       badge: null,
@@ -126,12 +127,11 @@ const PLANS = {
         "Real-time analytics dashboard",
         "Unlimited API integrations",
         "Multi-language & international",
-        "Dedicated 6-month support",
-        "Strategic growth advisory",
-        "Timeline based on scope",
+        "6-month strategic growth support",
       ],
-      cta: "Discuss my project",
+      cta: "Talk about my project",
       href: "/devis",
+      note: "Free discovery call · Quote within 24h",
     },
   ],
 };
@@ -144,25 +144,44 @@ export function PricingSection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "Transparent pricing",
-          title: "Choose the right system",
-          title2: "for your ambition.",
-          sub: "No hidden fees. No bad surprises. Each project delivered on budget and on time.",
-          note: "All prices excl. VAT. Custom pricing available for complex projects.",
+          eyebrow: "Invest, don't overpay",
+          title: "A system built",
+          title2: "around your budget.",
+          sub: "Every project starts with a free discovery call. We scope exactly what you need — no more, no less. Fixed quote guaranteed before you sign anything.",
+          reassurance: [
+            "Free personalised quote within 24h",
+            "Fixed price — no surprises",
+            "No commitment until you sign",
+          ],
+          bottomCta: "Get a free quote",
+          bottomWa: "WhatsApp — reply in 2h",
+          waText: "Hi KAH Digital, I'd like to discuss the budget for my project.",
+          bottomNote: "No commitment · Budget adjusted to your needs · Reply within 24h",
         }
       : {
-          eyebrow: "Tarifs transparents",
-          title: "Choisissez le système",
-          title2: "à la hauteur de votre ambition.",
-          sub: "Aucun frais cachés. Aucune mauvaise surprise. Chaque projet livré dans les délais et dans le budget.",
-          note: "Prix HT. Tarifs sur mesure disponibles pour projets complexes.",
+          eyebrow: "Investissez juste, sans dépenser trop",
+          title: "Un système construit",
+          title2: "autour de votre budget.",
+          sub: "Chaque projet commence par un échange gratuit. On cadre exactement ce dont vous avez besoin — ni plus, ni moins. Devis ferme garanti avant toute signature.",
+          reassurance: [
+            "Devis personnalisé gratuit sous 24h",
+            "Prix ferme — aucune mauvaise surprise",
+            "Zéro engagement avant validation",
+          ],
+          bottomCta: "Obtenir un devis gratuit",
+          bottomWa: "WhatsApp — réponse sous 2h",
+          waText: "Bonjour KAH Digital, je voudrais discuter du budget pour mon projet.",
+          bottomNote: "Sans engagement · Budget adapté à votre besoin · Réponse sous 24h",
         };
 
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
+  const waUrl = `https://wa.me/33759558414?text=${encodeURIComponent(copy.waText)}`;
 
   return (
     <section className="bg-gray-950 py-28" id="pricing">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -178,8 +197,19 @@ export function PricingSection() {
             <span className="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">{copy.title2}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-gray-400">{copy.sub}</p>
+
+          {/* Reassurance pills */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {copy.reassurance.map((item) => (
+              <div key={item} className="flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/8 px-4 py-1.5 text-xs font-semibold text-green-400">
+                <FiCheck size={11} />
+                {item}
+              </div>
+            ))}
+          </div>
         </motion.div>
 
+        {/* Plans */}
         <div className="grid gap-6 lg:grid-cols-3">
           {plans.map((plan, i) => (
             <motion.div
@@ -188,10 +218,10 @@ export function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.55 }}
-              className={`relative flex flex-col rounded-2xl border p-8 ${
+              className={`group relative flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                 plan.highlight
                   ? "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-xl shadow-violet-500/10"
-                  : "border-white/10 bg-white/[0.03]"
+                  : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]"
               }`}
             >
               {plan.badge && (
@@ -203,15 +233,20 @@ export function PricingSection() {
                 </div>
               )}
 
+              {/* Price block */}
               <div className="mb-6">
                 <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-500">{plan.name}</p>
-                <div className="mb-2 flex items-end gap-2">
-                  <span className="text-3xl font-extrabold text-white">{plan.price}</span>
-                  <span className="mb-1 text-sm text-gray-500">/ {plan.period}</span>
+                <p className="text-xs text-gray-600 mb-0.5">{plan.price}</p>
+                <div className="flex items-end gap-2">
+                  <span className={`font-extrabold text-white ${plan.anchor === "Sur mesure" || plan.anchor === "Custom" ? "text-2xl" : "text-3xl"}`}>
+                    {plan.anchor}
+                  </span>
                 </div>
-                <p className="text-sm text-gray-400">{plan.tagline}</p>
+                <p className="mt-0.5 text-xs text-gray-600 italic">{plan.anchorSub}</p>
+                <p className="mt-3 text-sm text-gray-400">{plan.tagline}</p>
               </div>
 
+              {/* Features */}
               <ul className="mb-8 flex-1 space-y-3">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-gray-300">
@@ -221,22 +256,62 @@ export function PricingSection() {
                 ))}
               </ul>
 
+              {/* CTA */}
               <Link
                 href={withPrefix(plan.href)}
-                className={`group inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-semibold transition-all hover:gap-3 ${
+                className={`group/btn inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-semibold transition-all hover:gap-3 ${
                   plan.highlight
                     ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40"
                     : "border border-white/15 text-white hover:border-white/30 hover:bg-white/5"
                 }`}
               >
                 {plan.cta}
-                <FiArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+                <FiArrowRight size={15} className="transition-transform group/btn-hover:translate-x-0.5" />
               </Link>
+              <p className="mt-3 text-center text-xs text-gray-600">{plan.note}</p>
             </motion.div>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-xs text-gray-600">{copy.note}</p>
+        {/* Bottom CTA block */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-12 rounded-2xl border border-white/8 bg-gradient-to-r from-violet-950/40 to-blue-950/30 p-8 text-center"
+        >
+          <p className="mb-2 text-sm font-semibold text-white">
+            {locale === "en"
+              ? "Not sure which tier fits your project?"
+              : "Vous ne savez pas quel niveau correspond à votre projet ?"}
+          </p>
+          <p className="mb-6 text-sm text-gray-400">
+            {locale === "en"
+              ? "Tell us your situation in 2 lines. We'll come back with a clear scope and a realistic number — in 24h, free."
+              : "Décrivez votre situation en 2 lignes. On revient avec un périmètre clair et un chiffre réaliste — en 24h, gratuitement."}
+          </p>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href={withPrefix("/audit-gratuit")}
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-violet-500/20 transition hover:shadow-violet-500/40 hover:gap-3"
+            >
+              {copy.bottomCta}
+              <FiArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/15 transition hover:brightness-110"
+            >
+              <FiMessageCircle size={15} />
+              {copy.bottomWa}
+            </a>
+          </div>
+          <p className="mt-4 text-xs text-gray-600">{copy.bottomNote}</p>
+        </motion.div>
+
       </div>
     </section>
   );
