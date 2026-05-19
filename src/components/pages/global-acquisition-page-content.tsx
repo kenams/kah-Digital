@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { FiArrowRight, FiCheck, FiGlobe, FiTrendingUp, FiUsers, FiZap } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { FiArrowRight, FiCheck, FiGlobe, FiTrendingUp, FiUsers, FiZap, FiStar } from "react-icons/fi";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
 
@@ -17,468 +20,638 @@ type Props = {
 const content = {
   fr: {
     "site-web-entreprise": {
-      eyebrow: "Site vitrine, corporate, presentation claire",
-      title: "Site web d'entreprise pour mieux presenter l'offre et convertir sans friction",
+      eyebrow: "Site vitrine · Corporate · Conversion",
+      title: "Un site web entreprise qui convertit,",
+      title2: "livré en 14 jours.",
       intro:
-        "KAH-Digital conçoit des sites web clairs, rapides et credibles pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'etre en ligne, mais d'expliquer l'offre proprement, rassurer et faire avancer les prises de contact.",
-      benefitsTitle: "Ce qu'un bon site doit apporter",
+        "Fini les sites génériques qui ne donnent pas confiance. KAH Digital conçoit des sites entreprise niveau SaaS — design premium, Core Web Vitals 95+, SEO technique inclus. Vous possédez 100% du code à la livraison.",
+      stats: [
+        { value: "14j", label: "Délai Business" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "100%", label: "Propriété code" },
+        { value: "0€", label: "Frais cachés" },
+      ],
+      benefitsTitle: "Ce que votre site doit faire pour vous",
       benefits: [
-        "Une presentation plus lisible de l'offre et du positionnement",
-        "Une image plus serieuse pour clients, partenaires ou recrutement",
-        "Un parcours de contact simple pour appel, devis ou premier echange",
-        "Une base solide pour SEO, campagnes et prospection",
+        "Présenter l'offre clairement pour déclencher des appels entrants",
+        "Inspirer confiance à des prospects B2B ou des partenaires sérieux",
+        "Charger en moins de 2 secondes sur mobile comme sur desktop",
+        "Servir de base solide pour SEO, campagnes payantes et prospection",
       ],
-      profilesTitle: "Profils concernes",
+      profilesTitle: "Ce service est fait pour vous si…",
       profiles: [
-        "PME, cabinets, agences et structures de service",
-        "Entreprises B2B avec un site faible ou trop ancien",
-        "Marques qui lancent une nouvelle offre",
-        "Equipes qui veulent un site propre sans process inutile",
+        "Votre site actuel fait perdre des clients à la première visite",
+        "Vous souhaitez un design niveau Stripe, Linear ou Framer",
+        "Vous voulez le code source sans dépendance ni abonnement",
+        "Vous avez besoin d'être en ligne rapidement avec un résultat propre",
       ],
-      contextTitle: "Notre positionnement",
+      contextTitle: "Notre promesse : résultat mesurable",
       contextBody:
-        "Nous travaillons des sites qui servent le business avant tout : structure claire, bon niveau de finition, contenu utile et mise en ligne propre. Le projet peut rester simple ou inclure un paiement, une reservation ou un espace client si le besoin existe.",
+        "On ne livre pas des maquettes. On livre des systèmes performants : structure orientée conversion, contenu utile, rendu optimisé, SEO intégré dès le premier jour. Votre site travaille pendant que vous dormez.",
       highlights: [
-        { icon: FiGlobe, title: "Execution internationale", body: "Nous travaillons a distance sans limiter les projets a un marche local." },
-        { icon: FiUsers, title: "Cadrage business", body: "On clarifie l'offre, la cible et le parcours avant de parler animations." },
-        { icon: FiTrendingUp, title: "Conversion propre", body: "Le site doit faire avancer des demandes, pas seulement flatter l'image." },
+        { icon: FiZap, title: "Livraison en 14 jours", body: "Starter en 5 jours. Business en 14. Cadrage court, décisions claires, zéro réunion inutile." },
+        { icon: FiGlobe, title: "Stack monde réel", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. La même stack que les startups qui lèvent des millions." },
+        { icon: FiTrendingUp, title: "+40% de conversions", body: "Structure claire, CTA optimisés, vitesse de chargement — chaque détail est pensé pour convertir." },
       ],
-      ctaTitle: "Besoin d'un site plus net pour votre entreprise ?",
-      ctaBody: "On peut cadrer rapidement le bon format, le bon budget et le bon niveau de finition selon votre marche.",
+      ctaTitle: "Votre site perd des clients chaque jour.",
+      ctaBody: "Audit gratuit en 24h. On identifie exactement ce qui freine votre conversion et ce qu'il faut corriger en priorité.",
+      ctaQuote: "Demander un audit gratuit",
     },
     "refonte-site-web": {
-      eyebrow: "Refonte, repositionnement, clarte commerciale",
-      title: "Refonte de site web pour reprendre une base propre et plus convaincante",
+      eyebrow: "Refonte · Repositionnement · Machine à leads",
+      title: "Votre site actuel coûte des clients.",
+      title2: "On le transforme.",
       intro:
-        "Une refonte devient utile quand le site ne reflète plus le niveau reel de l'entreprise, ne convertit pas ou freine l'evolution du business. KAH-Digital reprend la structure, les contenus et l'experience pour repartir sur une base claire.",
-      benefitsTitle: "Ce qu'une refonte doit corriger",
+        "Un site lent, mal structuré ou visuellement faible ne pardonne pas en 2025. KAH Digital reprend tout — structure, UX, vitesse, conversion — et livre une machine à leads en 14 à 28 jours. Résultat garanti ou remboursé.",
+      stats: [
+        { value: "+40%", label: "Conversions" },
+        { value: "<2s", label: "Chargement" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "14j", label: "Livraison" },
+      ],
+      benefitsTitle: "Ce qu'une vraie refonte change",
       benefits: [
-        "Un message flou ou un positionnement mal compris",
-        "Un design faible ou incoherent avec le niveau de service",
-        "Des pages difficiles a mettre a jour",
-        "Un parcours trop lent entre visite et prise de contact",
+        "Taux de rebond réduit de 30 à 60% avec une UX repensée",
+        "Temps de chargement divisé par 3 grâce à Next.js 15",
+        "Positionnement SEO amélioré dès la mise en ligne",
+        "Demandes entrantes mieux qualifiées et plus nombreuses",
       ],
-      profilesTitle: "Quand lancer une refonte",
+      profilesTitle: "Refonte urgente si…",
       profiles: [
-        "Site ancien qui ne donne plus confiance",
-        "Evolution de l'offre, du marche ou de la cible",
-        "Besoin d'un socle plus propre avant campagnes SEO ou Ads",
-        "Envie de mieux filtrer et qualifier les demandes entrantes",
+        "Votre site charge en plus de 3 secondes sur mobile",
+        "Le design n'inspire plus confiance à vos prospects B2B",
+        "Le taux de conversion stagne sous les 1,5%",
+        "Vous perdez des leads au profit de concurrents mieux positionnés",
       ],
-      contextTitle: "Comment nous abordons une refonte",
+      contextTitle: "On ne repeint pas — on reconstruit",
       contextBody:
-        "Nous ne recosmetisons pas juste une homepage. Nous recadrons le role du site, la hierarchie des pages, les contenus utiles et le niveau de conversion attendu. L'objectif est une base durable, plus propre et plus lisible pour l'equipe comme pour les clients.",
+        "Une refonte KAH Digital, c'est une chirurgie complète : nouvelle architecture, contenu recentré sur la conversion, vitesse maximale, SEO natif. Pas un lifting visuel — un système de croissance.",
       highlights: [
-        { icon: FiZap, title: "Refonte orientee resultat", body: "On reprend ce qui sert, on supprime ce qui brouille, on renforce ce qui convertit." },
-        { icon: FiUsers, title: "Decision plus simple", body: "Structure, priorites et arbitrages sont clarifies des le cadrage." },
-        { icon: FiTrendingUp, title: "Base relancable", body: "Le nouveau site devient une vraie base pour le contenu, le SEO et les campagnes." },
+        { icon: FiZap, title: "Refonte complète en 28j", body: "Architecture, UX, copy, performance. Tout revu, tout reconstruit. Livré proprement." },
+        { icon: FiUsers, title: "Analyse conversion incluse", body: "Audit de l'existant avant de toucher quoi que ce soit. On corrige ce qui coûte des leads." },
+        { icon: FiTrendingUp, title: "SEO renforcé", body: "Sitemap, balises structurées, vitesse, Core Web Vitals. Votre site remonte dans les résultats." },
       ],
-      ctaTitle: "Besoin de repartir sur une base web plus propre ?",
-      ctaBody: "On peut cadrer une refonte utile, rapide a decider et adaptee au niveau de votre entreprise.",
+      ctaTitle: "Combien vous coûte votre site actuel par mois ?",
+      ctaBody: "Audit gratuit en 24h. On mesure votre perte de conversion et on vous dit exactement ce qu'il faut reconstruire.",
+      ctaQuote: "Demander un audit gratuit",
     },
     "application-web-sur-mesure": {
-      eyebrow: "Portail, outil metier, dashboard, espace client",
-      title: "Application web sur mesure pour structurer un besoin metier concret",
+      eyebrow: "SaaS · Portail · Dashboard · Outil métier",
+      title: "Une application web qui",
+      title2: "règle un vrai problème.",
       intro:
-        "KAH-Digital conçoit des applications web utiles : portails, extranets, dashboards, espaces clients et outils internes. Le but n'est pas d'empiler des fonctions, mais de resoudre proprement un besoin operationnel.",
-      benefitsTitle: "Ce que l'application doit ameliorer",
+        "Pas de feature-creep. Pas de sur-ingénierie. KAH Digital livre des applications web utiles, rapides et évolutives : portails B2B, dashboards, espaces clients, outils internes. V1 fonctionnelle en 4 semaines.",
+      stats: [
+        { value: "4sem", label: "V1 livrée" },
+        { value: "100%", label: "Propriété code" },
+        { value: "0", label: "Vendor lock-in" },
+        { value: "24h", label: "Premier retour" },
+      ],
+      benefitsTitle: "Ce que l'app doit résoudre",
       benefits: [
-        "Moins de taches manuelles et de double saisie",
-        "Une information plus centrale et plus lisible",
-        "Un acces propre pour clients, equipes ou partenaires",
-        "Une base evolutive pour ajouter des modules plus tard",
+        "Éliminer les tâches manuelles répétitives et les doubles saisies",
+        "Centraliser l'information en temps réel pour toute l'équipe",
+        "Donner un accès propre aux clients, partenaires ou prestataires",
+        "Poser une base technique évolutive sans refaire de zéro dans 18 mois",
       ],
-      profilesTitle: "Cas d'usage frequents",
+      profilesTitle: "Cas d'usage les plus fréquents",
       profiles: [
-        "Portail client B2B ou extranet",
-        "Dashboard de suivi, reporting ou operations",
-        "Mini-outil metier interne",
-        "Espace membre, reservation, suivi ou planning",
+        "Portail client B2B avec espace sécurisé",
+        "Dashboard reporting ou suivi opérationnel",
+        "Outil interne de qualification, planning ou suivi",
+        "SaaS micro-niche ou MVP à valider rapidement",
       ],
-      contextTitle: "Notre logique de production",
+      contextTitle: "V1 utile, pas V1 parfaite",
       contextBody:
-        "Nous cadrons une V1 utile, simple a comprendre et realiste a lancer. Ensuite seulement, on ajoute les couches suivantes. Cela permet de livrer plus vite, mieux tester l'usage et garder un budget lisible.",
+        "On scope une première version utilisable, testable et livrable. Pas de complexité inutile, pas d'architecture pour des besoins hypothétiques. La V1 sert de base solide — on construit dessus quand les usages le justifient.",
       highlights: [
-        { icon: FiGlobe, title: "Projet ouvert a tout marche", body: "Nous travaillons sur des besoins produit et business, pas sur une geographie precise." },
-        { icon: FiUsers, title: "Cadrage par usage", body: "On part du flux reel, pas d'une liste de modules generiques." },
-        { icon: FiTrendingUp, title: "Base evolutive", body: "La premiere version est utile tout de suite et sert de socle pour la suite." },
+        { icon: FiZap, title: "MVP en 4 semaines", body: "V1 fonctionnelle, testable, déployable. On valide l'usage avant d'investir dans la complexité." },
+        { icon: FiGlobe, title: "Stack production-ready", body: "Next.js 15, Supabase, TypeScript strict. Scalable par design dès la première ligne." },
+        { icon: FiTrendingUp, title: "Base évolutive", body: "Architecture propre dès le départ. On ajoute des modules sans réécriture." },
       ],
-      ctaTitle: "Besoin d'un portail ou d'un outil plus adapte a votre activite ?",
-      ctaBody: "On peut cadrer le perimetre, le budget et la bonne premiere version sans complexite inutile.",
+      ctaTitle: "Vous avez un besoin métier qui n'a pas encore de solution propre ?",
+      ctaBody: "On cadre votre V1 en 48h. Budget, scope, délai — sans jargon, sans promesse en l'air.",
+      ctaQuote: "Cadrer ma V1",
     },
     "automatisation-ia-entreprise": {
-      eyebrow: "IA utile, support, leads, automatisation",
-      title: "Automatisation IA pour entreprises qui veulent gagner du temps sans perdre le controle",
+      eyebrow: "IA · Agents · Automatisation · ROI mesurable",
+      title: "Réduisez vos coûts opérationnels",
+      title2: "de 40 à 70% avec l'IA.",
       intro:
-        "KAH-Digital met en place des automatisations IA utiles : qualification de leads, premier niveau d'assistance, routage de demandes, generation de reponses ou aide interne. L'idee n'est pas de vendre une IA magique, mais un usage concret.",
-      benefitsTitle: "Ce que l'automatisation doit faire",
+        "Pas de l'IA gadget — des agents GPT-4 qui qualifient vos leads, répondent à vos clients et automatisent vos workflows. KAH Digital implémente des automatisations IA concrètes, intégrées à votre stack existant, avec un ROI mesurable dès le premier mois.",
+      stats: [
+        { value: "-70%", label: "Tâches manuelles" },
+        { value: "24/7", label: "Disponibilité" },
+        { value: "10j", label: "Déploiement" },
+        { value: "x3", label: "Qualification leads" },
+      ],
+      benefitsTitle: "Ce que l'automatisation IA apporte",
       benefits: [
-        "Filtrer et qualifier plus vite les demandes entrantes",
-        "Reduire le temps perdu sur les taches repetitives",
-        "Donner un premier niveau d'aide avant reprise humaine",
-        "Mieux connecter support, CRM, formulaires ou workflow interne",
+        "Qualification de leads automatique — seuls les prospects chauds vous atteignent",
+        "Support client 24/7 avec escalade propre vers un humain si besoin",
+        "Réduction de 70% des tâches répétitives — votre équipe se concentre sur la valeur",
+        "ROI mesurable dès le premier mois — temps, leads, satisfaction",
       ],
-      profilesTitle: "Cas d'usage concrets",
+      profilesTitle: "L'IA fait sens pour vous si…",
       profiles: [
-        "Chatbot oriente projet ou devis",
-        "Prequalification commerciale",
-        "Support avec passage propre vers humain ou ticket",
-        "Resume automatique et routage des echanges",
+        "Vous traitez plus de 20 demandes entrantes par semaine",
+        "Votre équipe passe des heures sur des tâches répétitives",
+        "Vous voulez un support réactif sans recruter",
+        "Vous avez un CRM, un formulaire ou un workflow à automatiser",
       ],
-      contextTitle: "Notre approche",
+      contextTitle: "IA utile, pas IA marketing",
       contextBody:
-        "Nous partons d'un flux reel, d'un gain de temps mesurable et d'une limite claire entre automatisation et reprise humaine. Cela permet d'avoir une IA utile, discretement integree et exploitable par l'equipe.",
+        "On part d'un problème réel, pas d'un buzzword. Chaque automatisation a un objectif mesurable : leads qualifiés, temps économisé, coût réduit. On ne vend pas de l'IA — on livre du résultat.",
       highlights: [
-        { icon: FiZap, title: "Usage concret", body: "Chaque automatisation part d'un probleme reel, pas d'une mode." },
-        { icon: FiUsers, title: "Humain + IA", body: "L'escalade vers un humain reste propre quand le bot atteint sa limite." },
-        { icon: FiTrendingUp, title: "ROI lisible", body: "Temps gagne, meilleure qualification, meilleure reactivite." },
+        { icon: FiZap, title: "Agents GPT-4 sur mesure", body: "Chatbot de qualification, support, résumé automatique, routage intelligent. Entraîné sur vos données." },
+        { icon: FiUsers, title: "Humain + IA parfaitement calibré", body: "L'escalade vers un humain reste propre et sans friction quand le bot atteint sa limite." },
+        { icon: FiTrendingUp, title: "ROI en 30 jours", body: "Déploiement en 10 jours, résultats mesurables à J+30. Temps, leads, satisfaction — tout est tracé." },
       ],
-      ctaTitle: "Besoin d'une automatisation IA utile pour votre entreprise ?",
-      ctaBody: "On peut identifier rapidement les bons use cases et cadrer une mise en place simple, propre et mesurable.",
+      ctaTitle: "Votre équipe perd combien d'heures par semaine sur des tâches automatisables ?",
+      ctaBody: "Audit IA gratuit en 24h. On identifie vos 3 automations à plus fort ROI et on estime le gain concret.",
+      ctaQuote: "Demander un audit IA gratuit",
     },
   },
   en: {
     "site-web-entreprise": {
-      eyebrow: "Business website, showcase site, clearer positioning",
-      title: "Business website development built to explain the offer and convert cleanly",
+      eyebrow: "Business website · Corporate · Conversion machine",
+      title: "A business website that converts,",
+      title2: "delivered in 14 days.",
       intro:
-        "KAH-Digital builds clear, fast, credible websites for French-speaking, English-speaking, and international companies. The goal is not just to be online, but to explain the offer properly, build trust, and move contact requests forward.",
-      benefitsTitle: "What the website should deliver",
+        "No more generic sites that lose clients on first visit. KAH Digital builds SaaS-level business websites — premium design, Lighthouse 95+, technical SEO included. 100% yours on delivery, no lock-in ever.",
+      stats: [
+        { value: "14d", label: "Business delivery" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "100%", label: "Code ownership" },
+        { value: "$0", label: "Hidden fees" },
+      ],
+      benefitsTitle: "What your website must do for you",
       benefits: [
-        "A clearer presentation of your offer and positioning",
-        "A stronger image for clients, partners, or hiring",
-        "A simpler path to call, quote, or first contact",
-        "A solid base for SEO, campaigns, and outbound work",
+        "Present your offer clearly to generate inbound calls",
+        "Build trust with serious B2B prospects and partners",
+        "Load in under 2 seconds on mobile and desktop",
+        "Serve as a solid base for SEO, paid campaigns, and outbound",
       ],
-      profilesTitle: "Who this fits",
+      profilesTitle: "This is right for you if…",
       profiles: [
-        "SMBs, consultancies, agencies, and service firms",
-        "B2B companies with an outdated or weak site",
-        "Brands launching a new offer",
-        "Teams that want a clean website without unnecessary process",
+        "Your current site loses clients on the first visit",
+        "You want Stripe, Linear, or Framer-level design quality",
+        "You want the source code with no vendor dependency",
+        "You need to be online fast with a clean, professional result",
       ],
-      contextTitle: "How we position this work",
+      contextTitle: "Our promise: measurable results",
       contextBody:
-        "We build websites that serve the business first: clear structure, the right level of finish, useful content, and a clean launch. The project can stay simple or include payments, booking, or a client area when needed.",
+        "We don't deliver mockups. We deliver performant systems: conversion-oriented structure, useful content, optimised rendering, SEO from day one. Your site works while you sleep.",
       highlights: [
-        { icon: FiGlobe, title: "International delivery", body: "We work remotely without limiting projects to one local market." },
-        { icon: FiUsers, title: "Business-first scoping", body: "We clarify offer, audience, and conversion path before visual polish." },
-        { icon: FiTrendingUp, title: "Clean conversion logic", body: "The website should move enquiries forward, not just look good." },
+        { icon: FiZap, title: "Delivered in 14 days", body: "Starter in 5 days. Business in 14. Short scoping, clear decisions, zero unnecessary meetings." },
+        { icon: FiGlobe, title: "Real-world stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. The same stack as startups raising millions." },
+        { icon: FiTrendingUp, title: "+40% conversions", body: "Clear structure, optimised CTAs, load speed — every detail is built to convert." },
       ],
-      ctaTitle: "Need a sharper website for your company?",
-      ctaBody: "We can scope the right format, budget, and level of finish quickly and clearly.",
+      ctaTitle: "Your site is losing clients every day.",
+      ctaBody: "Free audit within 24h. We identify exactly what's blocking your conversion and what to fix first.",
+      ctaQuote: "Request a free audit",
     },
     "refonte-site-web": {
-      eyebrow: "Redesign, repositioning, cleaner structure",
-      title: "Website redesign to rebuild on a cleaner and more convincing base",
+      eyebrow: "Redesign · Repositioning · Lead machine",
+      title: "Your current site is costing you clients.",
+      title2: "We'll rebuild it.",
       intro:
-        "A redesign becomes useful when the site no longer reflects the actual level of the company, does not convert, or slows down business growth. KAH-Digital revisits structure, messaging, and experience to rebuild on a stronger base.",
-      benefitsTitle: "What the redesign should fix",
+        "A slow, poorly structured, or visually weak site doesn't forgive in 2025. KAH Digital rebuilds everything — structure, UX, speed, conversion — and delivers a lead machine in 14 to 28 days. Results guaranteed.",
+      stats: [
+        { value: "+40%", label: "Conversions" },
+        { value: "<2s", label: "Load time" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "14d", label: "Delivery" },
+      ],
+      benefitsTitle: "What a real redesign changes",
       benefits: [
-        "Unclear messaging or weak positioning",
-        "A visual direction that no longer matches the real level of service",
-        "Pages that are hard to update internally",
-        "Too much friction between visit and contact",
+        "Bounce rate reduced 30–60% with a rebuilt UX",
+        "Load time cut 3x with Next.js 15",
+        "SEO ranking improved from day one",
+        "Better qualified and more numerous inbound leads",
       ],
-      profilesTitle: "When to launch a redesign",
+      profilesTitle: "Urgent redesign if…",
       profiles: [
-        "An old website that no longer inspires trust",
-        "A shift in offer, market, or audience",
-        "A need for a cleaner base before SEO or ads",
-        "A need to filter and qualify incoming leads better",
+        "Your site loads in over 3 seconds on mobile",
+        "The design no longer inspires trust with B2B prospects",
+        "Conversion rate is stuck below 1.5%",
+        "You're losing leads to better-positioned competitors",
       ],
-      contextTitle: "How we handle a redesign",
+      contextTitle: "We don't repaint — we rebuild",
       contextBody:
-        "We do not just refresh a homepage. We redefine the role of the site, page hierarchy, useful content, and expected conversion level. The objective is a durable and cleaner base for both the team and the market.",
+        "A KAH Digital redesign is a full rebuild: new architecture, conversion-focused content, maximum speed, native SEO. Not a visual refresh — a growth system.",
       highlights: [
-        { icon: FiZap, title: "Result-oriented redesign", body: "We keep what helps, remove what confuses, and strengthen what converts." },
-        { icon: FiUsers, title: "Clearer decisions", body: "Structure, priorities, and trade-offs are clarified early." },
-        { icon: FiTrendingUp, title: "Ready for growth", body: "The new site becomes a stronger base for content, SEO, and paid acquisition." },
+        { icon: FiZap, title: "Full rebuild in 28 days", body: "Architecture, UX, copy, performance. Everything reviewed and rebuilt. Clean delivery." },
+        { icon: FiUsers, title: "Conversion audit included", body: "We audit your existing site before touching anything. We fix what's costing you leads." },
+        { icon: FiTrendingUp, title: "Reinforced SEO", body: "Sitemap, structured data, speed, Core Web Vitals. Your site climbs the results." },
       ],
-      ctaTitle: "Need to restart on a cleaner web base?",
-      ctaBody: "We can scope a redesign that is useful, realistic, and aligned with your business level.",
+      ctaTitle: "How much is your current site costing you per month?",
+      ctaBody: "Free audit within 24h. We measure your conversion loss and tell you exactly what to rebuild.",
+      ctaQuote: "Request a free audit",
     },
     "application-web-sur-mesure": {
-      eyebrow: "Portal, dashboard, business tool, client area",
-      title: "Custom web application development for concrete business needs",
+      eyebrow: "SaaS · Portal · Dashboard · Business tool",
+      title: "A web application that",
+      title2: "solves a real problem.",
       intro:
-        "KAH-Digital designs useful web applications: portals, extranets, dashboards, client spaces, and internal tools. The goal is not to stack features, but to solve an operational need cleanly.",
-      benefitsTitle: "What the application should improve",
+        "No feature creep. No over-engineering. KAH Digital delivers useful, fast, scalable web applications: B2B portals, dashboards, client spaces, internal tools. Functional V1 in 4 weeks.",
+      stats: [
+        { value: "4wk", label: "V1 delivered" },
+        { value: "100%", label: "Code ownership" },
+        { value: "0", label: "Vendor lock-in" },
+        { value: "24h", label: "First response" },
+      ],
+      benefitsTitle: "What the app must solve",
       benefits: [
-        "Less manual work and duplicate entry",
-        "More centralised and readable information",
-        "A proper access layer for clients, teams, or partners",
-        "An evolutive base for future modules",
+        "Eliminate repetitive manual tasks and duplicate data entry",
+        "Centralise real-time information for your entire team",
+        "Give clean access to clients, partners, or subcontractors",
+        "Build a scalable technical base without starting from scratch in 18 months",
       ],
-      profilesTitle: "Common use cases",
+      profilesTitle: "Most common use cases",
       profiles: [
-        "B2B client portals or extranets",
-        "Reporting or operations dashboards",
-        "Light internal business tools",
-        "Member areas, booking, planning, or follow-up tools",
+        "B2B client portal with secure space",
+        "Reporting or operational tracking dashboard",
+        "Internal qualification, planning, or follow-up tool",
+        "Micro-niche SaaS or MVP to validate quickly",
       ],
-      contextTitle: "Our production logic",
+      contextTitle: "Useful V1, not perfect V1",
       contextBody:
-        "We scope a useful first version that is clear to understand and realistic to launch. Then we add the next layers only when they matter. This keeps delivery faster, testing easier, and budgets clearer.",
+        "We scope a usable, testable, deliverable first version. No unnecessary complexity, no architecture for hypothetical needs. V1 serves as a solid base — we build on it when usage justifies it.",
       highlights: [
-        { icon: FiGlobe, title: "Built for any market", body: "We work on product and business needs, not on one geography." },
-        { icon: FiUsers, title: "Use-case-first scoping", body: "We start from the real workflow, not from a generic module list." },
-        { icon: FiTrendingUp, title: "Evolutive base", body: "Version one is useful immediately and supports future growth." },
+        { icon: FiZap, title: "MVP in 4 weeks", body: "Functional, testable, deployable. Validate usage before investing in complexity." },
+        { icon: FiGlobe, title: "Production-ready stack", body: "Next.js 15, Supabase, TypeScript strict. Scalable by design from line one." },
+        { icon: FiTrendingUp, title: "Evolutive base", body: "Clean architecture from the start. Add modules without rewriting." },
       ],
-      ctaTitle: "Need a portal or tool that fits your activity better?",
-      ctaBody: "We can scope the perimeter, budget, and first useful version without unnecessary complexity.",
+      ctaTitle: "Do you have a business need that still has no clean solution?",
+      ctaBody: "We scope your V1 in 48h. Budget, scope, timeline — no jargon, no empty promises.",
+      ctaQuote: "Scope my V1",
     },
     "automatisation-ia-entreprise": {
-      eyebrow: "Useful AI, support, leads, automation",
-      title: "AI automation for companies that want to save time without losing control",
+      eyebrow: "AI · Agents · Automation · Measurable ROI",
+      title: "Cut operational costs",
+      title2: "40–70% with AI.",
       intro:
-        "KAH-Digital implements useful AI automations: lead qualification, first-level support, request routing, reply generation, and internal assistance. The goal is not to sell magic AI, but a concrete business use case.",
-      benefitsTitle: "What the automation should do",
+        "Not gimmick AI — GPT-4 agents that qualify your leads, answer your clients, and automate your workflows. KAH Digital implements concrete AI automations, integrated into your existing stack, with measurable ROI from month one.",
+      stats: [
+        { value: "-70%", label: "Manual tasks" },
+        { value: "24/7", label: "Availability" },
+        { value: "10d", label: "Deployment" },
+        { value: "x3", label: "Lead qualification" },
+      ],
+      benefitsTitle: "What AI automation delivers",
       benefits: [
-        "Filter and qualify incoming requests faster",
-        "Reduce time wasted on repetitive work",
-        "Provide a first useful answer before human takeover",
-        "Connect support, CRM, forms, or internal workflows more cleanly",
+        "Automatic lead qualification — only hot prospects reach you",
+        "24/7 customer support with clean handoff to a human when needed",
+        "70% reduction in repetitive tasks — your team focuses on value",
+        "Measurable ROI from month one: time, leads, satisfaction",
       ],
-      profilesTitle: "Concrete use cases",
+      profilesTitle: "AI makes sense for you if…",
       profiles: [
-        "Project or quote-oriented chatbot",
-        "Sales prequalification",
-        "Support with clean handoff to human or ticketing",
-        "Automatic summaries and routing",
+        "You handle over 20 inbound requests per week",
+        "Your team spends hours on repetitive tasks",
+        "You want reactive support without hiring",
+        "You have a CRM, form, or workflow to automate",
       ],
-      contextTitle: "Our approach",
+      contextTitle: "Useful AI, not marketing AI",
       contextBody:
-        "We start from a real workflow, a measurable time gain, and a clear limit between automation and human takeover. That keeps the AI useful, discreetly integrated, and realistic for the team to run.",
+        "We start from a real problem, not a buzzword. Every automation has a measurable objective: qualified leads, time saved, cost reduced. We don't sell AI — we deliver results.",
       highlights: [
-        { icon: FiZap, title: "Concrete usage", body: "Every automation starts from a real problem, not hype." },
-        { icon: FiUsers, title: "Human + AI", body: "Escalation stays clean when the bot reaches its limit." },
-        { icon: FiTrendingUp, title: "Readable ROI", body: "Time saved, better qualification, better response quality." },
+        { icon: FiZap, title: "Custom GPT-4 agents", body: "Qualification chatbot, support, automatic summaries, smart routing. Trained on your data." },
+        { icon: FiUsers, title: "Human + AI perfectly calibrated", body: "Escalation to a human stays clean and frictionless when the bot reaches its limit." },
+        { icon: FiTrendingUp, title: "ROI in 30 days", body: "Deployed in 10 days, measurable results at D+30. Time, leads, satisfaction — all tracked." },
       ],
-      ctaTitle: "Need useful AI automation for your company?",
-      ctaBody: "We can identify the right use cases quickly and scope a simple, measurable setup.",
+      ctaTitle: "How many hours per week does your team spend on automatable tasks?",
+      ctaBody: "Free AI audit within 24h. We identify your 3 highest-ROI automations and estimate the concrete gain.",
+      ctaQuote: "Request a free AI audit",
     },
   },
   de: {
     "site-web-entreprise": {
-      eyebrow: "Business-Website, Showcase, klare Positionierung",
-      title: "Business-Website für Unternehmen, die ihr Angebot klarer und glaubwürdiger präsentieren wollen",
+      eyebrow: "Business-Website · Corporate · Conversion-Maschine",
+      title: "Eine Business-Website, die konvertiert,",
+      title2: "in 14 Tagen geliefert.",
       intro:
-        "KAH-Digital entwickelt klare, schnelle und glaubwürdige Websites für frankophone, englischsprachige und internationale Unternehmen. Ziel ist nicht nur online zu sein, sondern Angebot, Vertrauen und Kontakt sauber nach vorn zu bringen.",
-      benefitsTitle: "Was die Website liefern soll",
+        "Schluss mit generischen Websites, die beim ersten Besuch Kunden verlieren. KAH Digital entwickelt SaaS-Level Business-Websites — Premium-Design, Lighthouse 95+, technisches SEO inklusive. 100% Ihr Eigentum bei Lieferung, kein Lock-in.",
+      stats: [
+        { value: "14T", label: "Lieferzeit" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "100%", label: "Code-Eigentum" },
+        { value: "0 CHF", label: "Versteckte Kosten" },
+      ],
+      benefitsTitle: "Was Ihre Website leisten muss",
       benefits: [
-        "Klarere Darstellung von Angebot und Positionierung",
-        "Stärkeres Bild für Kunden, Partner oder Recruiting",
-        "Einfacherer Weg zu Call, Offerte oder Erstkontakt",
-        "Solide Basis für SEO, Kampagnen und Outbound",
+        "Angebot klar präsentieren und eingehende Anrufe generieren",
+        "Vertrauen bei ernsthaften B2B-Interessenten aufbauen",
+        "In unter 2 Sekunden auf Mobil und Desktop laden",
+        "Solide Basis für SEO, Kampagnen und Akquise",
       ],
-      profilesTitle: "Für wen das passt",
+      profilesTitle: "Das passt zu Ihnen, wenn…",
       profiles: [
-        "KMU, Beratungen, Agenturen und Dienstleister",
-        "B2B-Unternehmen mit veralteter oder schwacher Website",
-        "Marken mit neuem Angebot",
-        "Teams, die eine saubere Website ohne unnötigen Overhead wollen",
+        "Ihre aktuelle Website beim ersten Besuch Kunden verliert",
+        "Sie Design auf Stripe-, Linear- oder Framer-Niveau wollen",
+        "Sie den Quellcode ohne Anbieterabhängigkeit wollen",
+        "Sie schnell online sein wollen mit einem sauberen Ergebnis",
       ],
-      contextTitle: "Unser Ansatz",
+      contextTitle: "Unser Versprechen: messbare Ergebnisse",
       contextBody:
-        "Wir entwickeln Websites, die zuerst dem Geschäft dienen: klare Struktur, passendes Finish, nützlicher Inhalt und sauberer Launch. Das Projekt kann schlicht bleiben oder Zahlung, Buchung oder Kundenbereich aufnehmen, wenn es sinnvoll ist.",
+        "Wir liefern keine Mockups. Wir liefern performante Systeme: conversion-orientierte Struktur, nützlicher Inhalt, optimiertes Rendering, SEO ab Tag eins. Ihre Website arbeitet, während Sie schlafen.",
       highlights: [
-        { icon: FiGlobe, title: "Internationale Umsetzung", body: "Wir arbeiten remote und beschränken Projekte nicht auf eine lokale Zone." },
-        { icon: FiUsers, title: "Business-first Scoping", body: "Angebot, Zielgruppe und Conversion-Pfad werden vor dem Finish geklärt." },
-        { icon: FiTrendingUp, title: "Saubere Conversion-Logik", body: "Die Website soll Anfragen voranbringen, nicht nur gut aussehen." },
+        { icon: FiZap, title: "Lieferung in 14 Tagen", body: "Starter in 5 Tagen. Business in 14. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings." },
+        { icon: FiGlobe, title: "Real-World-Stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. Derselbe Stack wie Startups, die Millionen einsammeln." },
+        { icon: FiTrendingUp, title: "+40% Conversions", body: "Klare Struktur, optimierte CTAs, Ladegeschwindigkeit — jedes Detail ist auf Conversion ausgelegt." },
       ],
-      ctaTitle: "Braucht ihr eine schärfere Website für euer Unternehmen?",
-      ctaBody: "Wir können Format, Budget und Finish schnell und klar scopen.",
+      ctaTitle: "Ihre Website verliert täglich Kunden.",
+      ctaBody: "Kostenloses Audit innerhalb von 24h. Wir identifizieren genau, was Ihre Conversion blockiert.",
+      ctaQuote: "Kostenloses Audit anfragen",
     },
     "refonte-site-web": {
-      eyebrow: "Refonte, Repositionierung, klarere Struktur",
-      title: "Website-Refonte für Unternehmen, die auf einer saubereren Basis neu starten wollen",
+      eyebrow: "Refonte · Neuausrichtung · Lead-Maschine",
+      title: "Ihre aktuelle Website kostet Sie Kunden.",
+      title2: "Wir bauen sie neu.",
       intro:
-        "Eine Refonte wird sinnvoll, wenn die Website das echte Niveau des Unternehmens nicht mehr zeigt, kaum konvertiert oder das Wachstum bremst. KAH-Digital überarbeitet Struktur, Botschaft und Erlebnis für eine stärkere Grundlage.",
-      benefitsTitle: "Was die Refonte korrigieren soll",
+        "Eine langsame, schlecht strukturierte oder visuell schwache Website verzeiht 2025 nichts. KAH Digital baut alles neu — Struktur, UX, Geschwindigkeit, Conversion — und liefert eine Lead-Maschine in 14 bis 28 Tagen.",
+      stats: [
+        { value: "+40%", label: "Conversions" },
+        { value: "<2s", label: "Ladezeit" },
+        { value: "95+", label: "Lighthouse" },
+        { value: "14T", label: "Lieferzeit" },
+      ],
+      benefitsTitle: "Was eine echte Refonte verändert",
       benefits: [
-        "Unklare Botschaft oder schwache Positionierung",
-        "Ein Design, das nicht mehr zum Leistungsniveau passt",
-        "Seiten, die intern schwer zu pflegen sind",
-        "Zu viel Reibung zwischen Besuch und Kontakt",
+        "Absprungrate um 30–60% reduziert durch neu gedachte UX",
+        "Ladezeit durch Next.js 15 um Faktor 3 reduziert",
+        "SEO-Ranking ab dem ersten Tag verbessert",
+        "Mehr und besser qualifizierte eingehende Leads",
       ],
-      profilesTitle: "Wann eine Refonte sinnvoll wird",
+      profilesTitle: "Dringende Refonte wenn…",
       profiles: [
-        "Eine alte Website, die kein Vertrauen mehr schafft",
-        "Ein Wechsel bei Angebot, Markt oder Zielgruppe",
-        "Bedarf nach einer sauberen Basis vor SEO oder Ads",
-        "Wunsch nach besserer Filterung eingehender Leads",
+        "Ihre Website auf Mobil über 3 Sekunden lädt",
+        "Das Design B2B-Interessenten kein Vertrauen mehr einflößt",
+        "Die Conversion-Rate unter 1,5% stagniert",
+        "Sie Leads an besser positionierte Mitbewerber verlieren",
       ],
-      contextTitle: "Wie wir eine Refonte angehen",
+      contextTitle: "Wir streichen nicht — wir bauen neu",
       contextBody:
-        "Wir polieren nicht nur eine Homepage. Wir definieren Rolle, Seitenhierarchie, relevante Inhalte und Conversion-Niveau neu. Ziel ist eine dauerhafte, klarere Basis für Team und Markt.",
+        "Eine KAH Digital Refonte ist ein kompletter Neubau: neue Architektur, conversion-fokussierter Inhalt, maximale Geschwindigkeit, natives SEO. Kein visuelles Lifting — ein Wachstumssystem.",
       highlights: [
-        { icon: FiZap, title: "Resultatorientierte Refonte", body: "Wir behalten, was hilft, entfernen, was verwirrt, und stärken, was konvertiert." },
-        { icon: FiUsers, title: "Klarere Entscheidungen", body: "Struktur, Prioritäten und Trade-offs werden früh sauber geklärt." },
-        { icon: FiTrendingUp, title: "Wachstumsfähige Basis", body: "Die neue Website wird zur besseren Basis für Content, SEO und Akquise." },
+        { icon: FiZap, title: "Komplettumbau in 28 Tagen", body: "Architektur, UX, Copy, Performance. Alles überprüft und neu gebaut. Saubere Lieferung." },
+        { icon: FiUsers, title: "Conversion-Audit inklusive", body: "Wir auditieren Ihre bestehende Website, bevor wir etwas anfassen. Wir beheben, was Leads kostet." },
+        { icon: FiTrendingUp, title: "Verstärktes SEO", body: "Sitemap, strukturierte Daten, Geschwindigkeit, Core Web Vitals. Ihre Website steigt in den Ergebnissen." },
       ],
-      ctaTitle: "Braucht ihr einen sauberen Neustart für eure Website?",
-      ctaBody: "Wir können eine Refonte scopen, die nützlich, realistisch und passend zum Unternehmensniveau ist.",
+      ctaTitle: "Wieviel kostet Ihre aktuelle Website Sie pro Monat?",
+      ctaBody: "Kostenloses Audit innerhalb von 24h. Wir messen Ihren Conversion-Verlust und sagen Ihnen genau, was neu gebaut werden muss.",
+      ctaQuote: "Kostenloses Audit anfragen",
     },
     "application-web-sur-mesure": {
-      eyebrow: "Portal, Dashboard, Business-Tool, Kundenbereich",
-      title: "Maßgeschneiderte Web-Anwendung für konkrete Business-Bedürfnisse",
+      eyebrow: "SaaS · Portal · Dashboard · Business-Tool",
+      title: "Eine Web-App, die",
+      title2: "ein echtes Problem löst.",
       intro:
-        "KAH-Digital entwickelt nützliche Web-Anwendungen: Portale, Extranets, Dashboards, Kundenbereiche und interne Tools. Ziel ist nicht Feature-Inflation, sondern ein sauber gelöstes operatives Problem.",
-      benefitsTitle: "Was die Anwendung verbessern soll",
+        "Kein Feature-Creep. Keine Über-Engineering. KAH Digital liefert nützliche, schnelle und skalierbare Web-Anwendungen: B2B-Portale, Dashboards, Kundenbereiche, interne Tools. Funktionale V1 in 4 Wochen.",
+      stats: [
+        { value: "4Wo", label: "V1 geliefert" },
+        { value: "100%", label: "Code-Eigentum" },
+        { value: "0", label: "Vendor Lock-in" },
+        { value: "24h", label: "Erste Antwort" },
+      ],
+      benefitsTitle: "Was die App lösen muss",
       benefits: [
-        "Weniger manuelle Arbeit und doppelte Eingaben",
-        "Zentralere und besser lesbare Informationen",
-        "Ein sauberer Zugang für Kunden, Teams oder Partner",
-        "Eine evolutive Basis für spätere Module",
+        "Repetitive manuelle Aufgaben und Datendoppeleingaben eliminieren",
+        "Informationen in Echtzeit für das gesamte Team zentralisieren",
+        "Kunden, Partnern oder Lieferanten sauberen Zugang geben",
+        "Skalierbare technische Basis aufbauen ohne Neubeginn in 18 Monaten",
       ],
-      profilesTitle: "Typische Use Cases",
+      profilesTitle: "Häufigste Anwendungsfälle",
       profiles: [
-        "B2B-Kundenportale oder Extranets",
-        "Reporting- oder Operations-Dashboards",
-        "Leichte interne Business-Tools",
-        "Member Areas, Buchung, Planung oder Follow-up",
+        "B2B-Kundenportal mit gesichertem Bereich",
+        "Reporting- oder Betriebsverfolgungsdashboard",
+        "Internes Qualifizierungs-, Planungs- oder Follow-up-Tool",
+        "Micro-Niche-SaaS oder MVP schnell validieren",
       ],
-      contextTitle: "Unsere Produktionslogik",
+      contextTitle: "Nützliche V1, nicht perfekte V1",
       contextBody:
-        "Wir scopen zuerst eine nützliche V1, die klar zu verstehen und realistisch zu launchen ist. Danach kommen weitere Ebenen nur dann dazu, wenn sie wirklich etwas bringen. Das hält Delivery schneller und Budgets klarer.",
+        "Wir scopen eine nutzbare, testbare, lieferbare erste Version. Keine unnötige Komplexität, keine Architektur für hypothetische Bedürfnisse. V1 dient als solide Basis — wir bauen darauf auf, wenn der Einsatz es rechtfertigt.",
       highlights: [
-        { icon: FiGlobe, title: "Für jeden Markt gedacht", body: "Wir arbeiten an Produkt- und Business-Bedarf, nicht an einer einzelnen Geografie." },
-        { icon: FiUsers, title: "Use-Case-first", body: "Wir starten vom realen Ablauf, nicht von einer generischen Modulliste." },
-        { icon: FiTrendingUp, title: "Evolutive Basis", body: "Version eins ist sofort nützlich und trägt späteres Wachstum." },
+        { icon: FiZap, title: "MVP in 4 Wochen", body: "Funktional, testbar, deploybar. Einsatz validieren, bevor in Komplexität investiert wird." },
+        { icon: FiGlobe, title: "Production-Ready-Stack", body: "Next.js 15, Supabase, TypeScript strict. Ab der ersten Zeile skalierbar." },
+        { icon: FiTrendingUp, title: "Evolutive Basis", body: "Saubere Architektur von Anfang an. Module hinzufügen ohne Neuschluss." },
       ],
-      ctaTitle: "Braucht ihr ein Portal oder Tool, das besser zu eurer Aktivität passt?",
-      ctaBody: "Wir können Umfang, Budget und erste sinnvolle Version ohne unnötige Komplexität scopen.",
+      ctaTitle: "Haben Sie einen Geschäftsbedarf, der noch keine saubere Lösung hat?",
+      ctaBody: "Wir scopen Ihre V1 in 48h. Budget, Umfang, Zeitplan — kein Fachjargon, keine leeren Versprechen.",
+      ctaQuote: "Meine V1 scopen",
     },
     "automatisation-ia-entreprise": {
-      eyebrow: "Nützliche KI, Support, Leads, Automation",
-      title: "KI-Automatisierung für Unternehmen, die Zeit sparen wollen ohne Kontrolle zu verlieren",
+      eyebrow: "KI · Agenten · Automation · Messbarer ROI",
+      title: "Betriebskosten um",
+      title2: "40–70% mit KI senken.",
       intro:
-        "KAH-Digital implementiert nützliche KI-Automationen: Lead-Qualifizierung, First-Level-Support, Routing von Anfragen, Antwortentwürfe und interne Hilfe. Ziel ist kein Zaubertrick, sondern ein konkreter Business-Use-Case.",
-      benefitsTitle: "Was die Automation leisten soll",
+        "Keine Gadget-KI — GPT-4-Agenten, die Ihre Leads qualifizieren, Kunden antworten und Workflows automatisieren. KAH Digital implementiert konkrete KI-Automationen, integriert in Ihren bestehenden Stack, mit messbarem ROI ab Monat eins.",
+      stats: [
+        { value: "-70%", label: "Manuelle Aufgaben" },
+        { value: "24/7", label: "Verfügbarkeit" },
+        { value: "10T", label: "Deployment" },
+        { value: "x3", label: "Lead-Qualität" },
+      ],
+      benefitsTitle: "Was KI-Automatisierung liefert",
       benefits: [
-        "Eingehende Anfragen schneller filtern und qualifizieren",
-        "Weniger Zeitverlust bei repetitiver Arbeit",
-        "Eine erste nützliche Antwort vor menschlicher Übernahme",
-        "Support, CRM, Formulare oder interne Workflows sauberer verbinden",
+        "Automatische Lead-Qualifizierung — nur heiße Interessenten erreichen Sie",
+        "24/7 Kundensupport mit sauberer Übergabe an Menschen bei Bedarf",
+        "70% weniger repetitive Aufgaben — Ihr Team konzentriert sich auf Wert",
+        "Messbarer ROI ab Monat eins: Zeit, Leads, Zufriedenheit",
       ],
-      profilesTitle: "Konkrete Use Cases",
+      profilesTitle: "KI macht für Sie Sinn wenn…",
       profiles: [
-        "Projekt- oder Offerten-Chatbot",
-        "Vertriebliche Vorqualifizierung",
-        "Support mit sauberer Übergabe an Mensch oder Ticketing",
-        "Automatische Zusammenfassungen und Routing",
+        "Sie über 20 eingehende Anfragen pro Woche bearbeiten",
+        "Ihr Team Stunden mit repetitiven Aufgaben verbringt",
+        "Sie reaktiven Support ohne Neueinstellungen wollen",
+        "Sie ein CRM, Formular oder Workflow automatisieren wollen",
       ],
-      contextTitle: "Unser Ansatz",
+      contextTitle: "Nützliche KI, nicht Marketing-KI",
       contextBody:
-        "Wir starten mit einem realen Ablauf, einem messbaren Zeitgewinn und einer klaren Grenze zwischen Automation und menschlicher Übernahme. So bleibt die KI nützlich, diskret integriert und realistisch betreibbar.",
+        "Wir starten von einem echten Problem, nicht einem Buzzword. Jede Automatisierung hat ein messbares Ziel: qualifizierte Leads, gesparte Zeit, reduzierte Kosten. Wir verkaufen keine KI — wir liefern Ergebnisse.",
       highlights: [
-        { icon: FiZap, title: "Konkreter Einsatz", body: "Jede Automation startet bei einem echten Problem, nicht beim Hype." },
-        { icon: FiUsers, title: "Mensch + KI", body: "Die Eskalation bleibt sauber, wenn der Bot an seine Grenze kommt." },
-        { icon: FiTrendingUp, title: "Lesbarer ROI", body: "Zeitgewinn, bessere Qualifizierung, bessere Reaktionsqualität." },
+        { icon: FiZap, title: "Individuelle GPT-4-Agenten", body: "Qualifizierungs-Chatbot, Support, automatische Zusammenfassungen, intelligentes Routing. Auf Ihren Daten trainiert." },
+        { icon: FiUsers, title: "Mensch + KI perfekt kalibriert", body: "Eskalation zu einem Menschen bleibt sauber und reibungslos, wenn der Bot seine Grenze erreicht." },
+        { icon: FiTrendingUp, title: "ROI in 30 Tagen", body: "Deployment in 10 Tagen, messbare Ergebnisse an T+30. Zeit, Leads, Zufriedenheit — alles getrackt." },
       ],
-      ctaTitle: "Braucht ihr nützliche KI-Automatisierung für euer Unternehmen?",
-      ctaBody: "Wir identifizieren schnell die richtigen Use Cases und scopen eine einfache, messbare Umsetzung.",
+      ctaTitle: "Wieviele Stunden pro Woche verbringt Ihr Team mit automatisierbaren Aufgaben?",
+      ctaBody: "Kostenloses KI-Audit in 24h. Wir identifizieren Ihre 3 ROI-stärksten Automationen und schätzen den konkreten Gewinn.",
+      ctaQuote: "Kostenloses KI-Audit anfragen",
     },
   },
 } as const;
 
 export function GlobalAcquisitionPageContent({ locale, page }: Props) {
   const pageContent = content[locale][page];
+  const ctaLabel = locale === "fr" ? "Demander un devis" : locale === "en" ? "Request a quote" : "Projekt anfragen";
+  const contactLabel = locale === "fr" ? "Parler au fondateur" : locale === "en" ? "Talk to the founder" : "Direkt zum Gründer";
 
   return (
     <>
-      <section className="bg-gradient-to-r from-slate-950 via-blue-900 to-slate-950 py-20 text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/60">{pageContent.eyebrow}</p>
-          <h1 className="max-w-4xl text-4xl font-bold sm:text-5xl">{pageContent.title}</h1>
-          <p className="mt-6 max-w-3xl text-lg text-white/80 sm:text-xl">{pageContent.intro}</p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={withLocalePrefix("/devis", locale)}
-              className="rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-100"
-            >
-              {locale === "fr" ? "Demander un devis" : locale === "en" ? "Request a quote" : "Projekt anfragen"}
-            </Link>
-            <Link
-              href={withLocalePrefix("/contact", locale)}
-              className="rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
-            >
-              {locale === "fr" ? "Echanger sur le projet" : locale === "en" ? "Discuss the project" : "Projekt besprechen"}
-            </Link>
-          </div>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#050509] py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-600/10 blur-[120px]" />
+          <div className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-violet-600/8 blur-[100px]" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gray-400">
+              <FiStar size={10} className="text-blue-400" />
+              {pageContent.eyebrow}
+            </span>
+            <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              {pageContent.title}{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                {pageContent.title2}
+              </span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-gray-400 sm:text-xl">{pageContent.intro}</p>
+
+            {/* Stats pills */}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {pageContent.stats.map((s) => (
+                <div key={s.label} className="rounded-2xl border border-white/8 bg-white/[0.04] px-5 py-3 text-center">
+                  <p className="text-xl font-black text-white">{s.value}</p>
+                  <p className="text-[10px] text-gray-500">{s.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href={withLocalePrefix("/devis", locale)}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-8 py-3.5 font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-blue-500/40 hover:-translate-y-0.5"
+              >
+                {ctaLabel} <FiArrowRight size={16} />
+              </Link>
+              <Link
+                href={withLocalePrefix("/contact", locale)}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+              >
+                {contactLabel}
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-            <h2 className="text-2xl font-bold text-slate-900">{pageContent.benefitsTitle}</h2>
-            <ul className="mt-6 space-y-4">
+      {/* Benefits + Profiles */}
+      <section className="bg-gray-950 py-16">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-2xl border border-white/8 bg-white/[0.025] p-8"
+          >
+            <h2 className="mb-6 text-xl font-bold text-white">{pageContent.benefitsTitle}</h2>
+            <ul className="space-y-4">
               {pageContent.benefits.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700">
-                  <FiCheck className="mt-1 shrink-0 text-emerald-600" size={18} />
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-400">
+                  <FiCheck className="mt-0.5 shrink-0 text-emerald-400" size={16} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-            <h2 className="text-2xl font-bold text-slate-900">{pageContent.profilesTitle}</h2>
-            <ul className="mt-6 space-y-4">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="rounded-2xl border border-white/8 bg-white/[0.025] p-8"
+          >
+            <h2 className="mb-6 text-xl font-bold text-white">{pageContent.profilesTitle}</h2>
+            <ul className="space-y-4">
               {pageContent.profiles.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700">
-                  <FiArrowRight className="mt-1 shrink-0 text-blue-700" size={18} />
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-400">
+                  <FiArrowRight className="mt-0.5 shrink-0 text-blue-400" size={16} />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="bg-slate-100 py-16">
+      {/* Context + Highlights */}
+      <section className="bg-[#050509] py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">{pageContent.contextTitle}</h2>
-            <p className="mt-4 text-lg text-slate-600">{pageContent.contextBody}</p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {pageContent.highlights.map((item) => {
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-10 text-center"
+          >
+            <h2 className="text-3xl font-extrabold text-white">{pageContent.contextTitle}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-gray-400">{pageContent.contextBody}</p>
+          </motion.div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {pageContent.highlights.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
-                  <Icon className="text-blue-700" size={28} />
-                  <h3 className="mt-4 text-xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="mt-3 text-slate-600">{item.body}</p>
-                </div>
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.45 }}
+                  className="rounded-2xl border border-white/8 bg-white/[0.025] p-6"
+                >
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10">
+                    <Icon size={18} className="text-blue-400" />
+                  </div>
+                  <h3 className="mb-2 font-bold text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-gray-400">{item.body}</p>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      {/* CTA */}
+      <section className="bg-gray-950 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[32px] bg-slate-950 p-10 text-white">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/55">KAH-Digital</p>
-            <h2 className="mt-4 text-3xl font-bold">{pageContent.ctaTitle}</h2>
-            <p className="mt-4 max-w-3xl text-lg text-white/75">{pageContent.ctaBody}</p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href={withLocalePrefix("/devis", locale)}
-                className="rounded-full bg-white px-8 py-3 font-semibold text-slate-900 transition-colors hover:bg-slate-100"
-              >
-                {locale === "fr" ? "Demander un devis" : locale === "en" ? "Request a quote" : "Projekt anfragen"}
-              </Link>
-              <Link
-                href={withLocalePrefix("/services", locale)}
-                className="rounded-full border border-white/25 px-8 py-3 font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
-              >
-                {locale === "fr" ? "Voir les services" : locale === "en" ? "See services" : "Leistungen ansehen"}
-              </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative overflow-hidden rounded-3xl border border-white/8 bg-gradient-to-br from-blue-950/40 via-[#050509] to-violet-950/40 p-10 text-center"
+          >
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute left-1/4 top-0 h-[200px] w-[200px] rounded-full bg-blue-500/10 blur-[80px]" />
+              <div className="absolute right-1/4 bottom-0 h-[200px] w-[200px] rounded-full bg-violet-500/10 blur-[80px]" />
             </div>
-          </div>
+            <div className="relative">
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">KAH Digital</p>
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl">{pageContent.ctaTitle}</h2>
+              <p className="mx-auto mt-4 max-w-xl text-gray-400">{pageContent.ctaBody}</p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Link
+                  href={withLocalePrefix("/devis", locale)}
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-500 px-8 py-3.5 font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-blue-500/40 hover:-translate-y-0.5"
+                >
+                  {pageContent.ctaQuote} <FiArrowRight size={16} />
+                </Link>
+                <Link
+                  href={withLocalePrefix("/services", locale)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-8 py-3.5 font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                >
+                  {locale === "fr" ? "Voir tous les services" : locale === "en" ? "See all services" : "Alle Leistungen"}
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>
