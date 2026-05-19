@@ -10,7 +10,7 @@ export function CTASection() {
   const copy = {
     fr: {
       eyebrow: "Prêt à démarrer ?",
-      title: "Site livré en 5 jours. Dès 99 CHF/€.",
+      title: "Site livré en 5 jours. Dès 99 €.",
       body: "Devis gratuit sous 24h. Décrivez votre projet en 2 lignes — on vous envoie une proposition claire avec un prix fixe. Zéro surprise, zéro engagement.",
       primary: "Obtenir mon devis gratuit",
       secondary: "WhatsApp — réponse sous 2h",
@@ -19,7 +19,7 @@ export function CTASection() {
     },
     en: {
       eyebrow: "Ready to launch?",
-      title: "Site delivered in 5 days. From 99 CHF/€.",
+      title: "Site delivered in 5 days. From $99.",
       body: "Free quote within 24h. Describe your project in 2 lines — we send a clear proposal with a fixed price. Zero surprises, zero commitment.",
       primary: "Get my free quote",
       secondary: "WhatsApp — reply in 2h",
@@ -28,7 +28,7 @@ export function CTASection() {
     },
     de: {
       eyebrow: "Bereit zum Start?",
-      title: "Website in 5 Tagen geliefert. Ab 99 CHF/€.",
+      title: "Website in 5 Tagen geliefert. Ab CHF 99.",
       body: "Kostenloses Angebot in 24h. Beschreiben Sie Ihr Projekt in 2 Sätzen — wir senden einen klaren Vorschlag mit festem Preis. Null Überraschungen, null Verpflichtung.",
       primary: "Kostenlose Offerte erhalten",
       secondary: "WhatsApp — Antwort in 2h",

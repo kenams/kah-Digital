@@ -15,7 +15,7 @@ export function HeroSection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "Sites & AI Systems · from 99 CHF/€",
+          eyebrow: "Sites & AI Systems · from $99",
           title1: "We build the systems",
           title2: "that grow your business.",
           body: "Premium website in 5 days, full AI system in 28 days. Fixed price, zero surprises. Quote accepted → we launch in 48h.",
@@ -23,10 +23,10 @@ export function HeroSection() {
           secondary: "See results",
           wa: "WhatsApp — reply in 2h",
           waText: "Hi KAH Digital, I'd like a quote for my project.",
-          tags: ["From 99 CHF/€", "Delivered in 5 days", "AI included", "Fixed price"],
-          trustLine: "70+ projects delivered · Starter from 99 CHF/€ · Launch in 48h after sign-off",
+          tags: ["From $99", "Delivered in 5 days", "AI included", "Fixed price"],
+          trustLine: "70+ projects delivered · Starter from $99 · Launch in 48h after sign-off",
           proof: [
-            { value: "99€", label: "From" },
+            { value: "$99", label: "From" },
             { value: "5 days", label: "First delivery" },
             { value: "24h", label: "Quote response" },
             { value: "100%", label: "On-budget" },
@@ -34,7 +34,7 @@ export function HeroSection() {
         }
       : locale === "de"
       ? {
-          eyebrow: "Websites & KI-Systeme · ab 99 CHF/€",
+          eyebrow: "Websites & KI-Systeme · ab CHF 99",
           title1: "Wir bauen die Systeme,",
           title2: "die Ihr Unternehmen wachsen lassen.",
           body: "Premium-Website in 5 Tagen, vollständiges KI-System in 28 Tagen. Fester Preis, null Überraschungen. Freigabe erteilt → wir starten in 48h.",
@@ -42,17 +42,17 @@ export function HeroSection() {
           secondary: "Ergebnisse ansehen",
           wa: "WhatsApp — Antwort in 2h",
           waText: "Hallo KAH Digital, ich möchte eine Offerte für mein Projekt.",
-          tags: ["Ab 99 CHF/€", "Lieferung in 5 Tagen", "KI inklusive", "Fester Preis"],
-          trustLine: "70+ Projekte geliefert · Starter ab 99 CHF/€ · Start in 48h nach Freigabe",
+          tags: ["Ab CHF 99", "Lieferung in 5 Tagen", "KI inklusive", "Fester Preis"],
+          trustLine: "70+ Projekte geliefert · Starter ab CHF 99 · Start in 48h nach Freigabe",
           proof: [
-            { value: "99€", label: "Ab" },
+            { value: "CHF 99", label: "Ab" },
             { value: "5 Tage", label: "Erste Lieferung" },
             { value: "24h", label: "Angebotsantwort" },
             { value: "100%", label: "Budget eingehalten" },
           ],
         }
       : {
-          eyebrow: "Sites & Systèmes IA · dès 99 CHF/€",
+          eyebrow: "Sites & Systèmes IA · dès 99 €",
           title1: "On construit les systèmes",
           title2: "qui font croître votre business.",
           body: "Site premium en 5 jours, système IA complet en 28 jours. Prix fixe, zéro surprise. Devis validé → on démarre en 48h.",
@@ -60,10 +60,10 @@ export function HeroSection() {
           secondary: "Voir les résultats",
           wa: "WhatsApp — réponse en 2h",
           waText: "Bonjour KAH Digital, je voudrais un devis pour mon projet.",
-          tags: ["Dès 99 CHF/€", "Livré en 5 jours", "IA incluse", "Prix fixe"],
-          trustLine: "70+ projets livrés · Starter dès 99 CHF/€ · Lancement en 48h après validation",
+          tags: ["Dès 99 €", "Livré en 5 jours", "IA incluse", "Prix fixe"],
+          trustLine: "70+ projets livrés · Starter dès 99 € · Lancement en 48h après validation",
           proof: [
-            { value: "99€", label: "Dès" },
+            { value: "99 €", label: "Dès" },
             { value: "5 jours", label: "1ère livraison" },
             { value: "24h", label: "Délai de réponse" },
             { value: "100%", label: "Budget respecté" },

@@ -7,14 +7,19 @@ import { FiArrowRight, FiCheck, FiZap, FiMessageCircle, FiClock } from "react-ic
 
 const WA_NUMBER = "33759558414";
 
+// FR = € (France/Belgique), EN = $ (international), DE = CHF (Suisse alémanique)
+function fmtPrice(amount: string, locale: string) {
+  if (locale === "en") return `$${amount}`;
+  if (locale === "de") return `CHF ${amount}`;
+  return `${amount} €`;
+}
+
 const PLANS = {
   fr: [
     {
       id: "starter",
       name: "Starter",
       price: "99",
-      currency: "CHF/€",
-      period: null,
       tagline: "Présence en ligne rapide et professionnelle",
       deliveryLabel: "Livré en 5 jours",
       highlight: false,
@@ -36,8 +41,6 @@ const PLANS = {
       id: "business",
       name: "Business",
       price: "299",
-      currency: "CHF/€",
-      period: null,
       tagline: "Site complet avec SEO, animations et support",
       deliveryLabel: "Livré en 14 jours",
       highlight: true,
@@ -60,8 +63,6 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "699",
-      currency: "CHF/€",
-      period: null,
       tagline: "Système IA complet qui génère des leads",
       deliveryLabel: "Livré en 28 jours",
       highlight: false,
@@ -87,8 +88,6 @@ const PLANS = {
       id: "starter",
       name: "Starter",
       price: "99",
-      currency: "CHF/€",
-      period: null,
       tagline: "Fast, professional online presence",
       deliveryLabel: "Delivered in 5 days",
       highlight: false,
@@ -110,8 +109,6 @@ const PLANS = {
       id: "business",
       name: "Business",
       price: "299",
-      currency: "CHF/€",
-      period: null,
       tagline: "Full site with SEO, animations and support",
       deliveryLabel: "Delivered in 14 days",
       highlight: true,
@@ -134,8 +131,6 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "699",
-      currency: "CHF/€",
-      period: null,
       tagline: "Complete AI system that generates leads",
       deliveryLabel: "Delivered in 28 days",
       highlight: false,
@@ -161,8 +156,6 @@ const PLANS = {
       id: "starter",
       name: "Starter",
       price: "99",
-      currency: "CHF/€",
-      period: null,
       tagline: "Schneller, professioneller Online-Auftritt",
       deliveryLabel: "Geliefert in 5 Tagen",
       highlight: false,
@@ -184,8 +177,6 @@ const PLANS = {
       id: "business",
       name: "Business",
       price: "299",
-      currency: "CHF/€",
-      period: null,
       tagline: "Vollständige Website mit SEO, Animationen und Support",
       deliveryLabel: "Geliefert in 14 Tagen",
       highlight: true,
@@ -208,8 +199,6 @@ const PLANS = {
       id: "ai",
       name: "Premium AI",
       price: "699",
-      currency: "CHF/€",
-      period: null,
       tagline: "Vollständiges KI-System, das Leads generiert",
       deliveryLabel: "Geliefert in 28 Tagen",
       highlight: false,
@@ -258,12 +247,16 @@ export function PricingSection() {
 
   const plans = PLANS[locale === "de" ? "de" : locale === "en" ? "en" : "fr"];
 
+  // Currency label inline for copy text
+  const currencyLabel = locale === "en" ? "$99" : locale === "de" ? "CHF 99" : "99 €";
+  const currencyCode = locale === "en" ? "$" : locale === "de" ? "CHF" : "€";
+
   const copy =
     locale === "en"
       ? {
           eyebrow: "Transparent pricing",
           title: "From",
-          titlePrice: "99 CHF/€.",
+          titlePrice: "$99.",
           title2: "No surprises.",
           sub: "Fixed prices, rapid delivery. Once you validate and send your assets (photos, colours, fonts), our team launches immediately.",
           urgency: "⚡ Limited slots available this month",
@@ -279,7 +272,7 @@ export function PricingSection() {
       ? {
           eyebrow: "Transparente Preise",
           title: "Ab",
-          titlePrice: "99 CHF/€.",
+          titlePrice: "CHF 99.",
           title2: "Keine Überraschungen.",
           sub: "Feste Preise, schnelle Lieferung. Sobald Sie bestätigen und Ihre Assets senden (Fotos, Farben, Schrift), startet unser Team sofort.",
           urgency: "⚡ Begrenzte Plätze diesen Monat",
@@ -294,7 +287,7 @@ export function PricingSection() {
       : {
           eyebrow: "Tarifs transparents",
           title: "Dès",
-          titlePrice: "99 CHF/€.",
+          titlePrice: "99 €.",
           title2: "Zéro surprise.",
           sub: "Prix fixes, livraison rapide. Dès que vous validez et envoyez vos assets (photos, couleurs, police), l'équipe se lance immédiatement.",
           urgency: "⚡ Places limitées ce mois-ci",
@@ -352,6 +345,11 @@ export function PricingSection() {
         <div className="grid gap-6 lg:grid-cols-3">
           {plans.map((plan, i) => {
             const accent = ACCENT[plan.accentColor as keyof typeof ACCENT];
+            const formattedPrice = fmtPrice(plan.price, locale);
+            // Split for display: prefix vs number vs suffix
+            const isUSD = locale === "en";
+            const isCHF = locale === "de";
+
             return (
               <motion.div
                 key={plan.id}
@@ -380,10 +378,18 @@ export function PricingSection() {
                 {/* Plan name */}
                 <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">{plan.name}</p>
 
-                {/* Price */}
-                <div className="mb-2 flex items-end gap-1.5">
-                  <span className="text-5xl font-black text-white leading-none">{plan.price}</span>
-                  <span className="mb-1 text-lg font-semibold text-gray-400">{plan.currency}</span>
+                {/* Price — devise adaptée */}
+                <div className="mb-2 flex items-end gap-1">
+                  {isUSD && (
+                    <span className="mb-1 text-2xl font-black text-gray-400">$</span>
+                  )}
+                  {isCHF && (
+                    <span className="mb-1 mr-1 text-lg font-bold text-gray-400">CHF</span>
+                  )}
+                  <span className="text-5xl font-black leading-none text-white">{plan.price}</span>
+                  {!isUSD && !isCHF && (
+                    <span className="mb-1 ml-1 text-2xl font-black text-gray-400">€</span>
+                  )}
                 </div>
 
                 {/* Delivery badge */}
