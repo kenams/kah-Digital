@@ -13,6 +13,8 @@ import { ProcessSection } from "@/components/process-section";
 import { GlobalTrustSection } from "@/components/global-trust-section";
 import { FAQSection } from "@/components/faq-section";
 import { BuiltForSection } from "@/components/built-for-section";
+import { SocialProofSection } from "@/components/social-proof-section";
+import { PortfolioSection } from "@/components/portfolio-section";
 import { CTASection } from "@/components/cta-section";
 
 export const metadata = buildPageMetadata({
@@ -43,8 +45,10 @@ export default function HomePageEn() {
       <ProblemSection />
       <WhyChooseSection />
       <CaseStudySection />
+      <SocialProofSection />
       <TestimonialsSection />
       <BuiltForSection />
+      <PortfolioSection />
       <PricingSection />
       <ProcessSection />
       <GlobalTrustSection />

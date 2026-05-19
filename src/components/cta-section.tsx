@@ -1,90 +1,209 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useLocale } from "@/lib/locale";
 import { FiArrowRight, FiMessageCircle } from "react-icons/fi";
+import { useRef } from "react";
+
+const WA_NUMBER = "33759558414";
+
+function MagneticButton({ children, className }: { children: React.ReactNode; className: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const tx = useTransform(x, [-60, 60], [-6, 6]);
+  const ty = useTransform(y, [-60, 60], [-6, 6]);
+
+  const handleMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  };
+  const handleLeave = () => { x.set(0); y.set(0); };
+
+  return (
+    <div ref={ref} onMouseMove={handleMove} onMouseLeave={handleLeave}>
+      <motion.div style={{ x: tx, y: ty }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className={className}>
+        {children}
+      </motion.div>
+    </div>
+  );
+}
 
 export function CTASection() {
   const { locale, prefix } = useLocale();
-  const copy = {
-    fr: {
-      eyebrow: "Prêt à démarrer ?",
-      title: "Site livré en 5 jours. Dès 49 €.",
-      body: "Devis gratuit sous 24h. Décrivez votre projet en 2 lignes — on vous envoie une proposition claire avec un prix fixe. Zéro surprise, zéro engagement.",
-      primary: "Obtenir mon devis gratuit",
-      secondary: "WhatsApp — réponse sous 2h",
-      waText: "Bonjour KAH Digital, je voudrais un devis pour mon projet.",
-      trust: ["Devis gratuit sous 24h", "Prix fixe garanti", "Sans engagement"],
-    },
-    en: {
-      eyebrow: "Ready to launch?",
-      title: "Site delivered in 5 days. From $49.",
-      body: "Free quote within 24h. Describe your project in 2 lines — we send a clear proposal with a fixed price. Zero surprises, zero commitment.",
-      primary: "Get my free quote",
-      secondary: "WhatsApp — reply in 2h",
-      waText: "Hi KAH Digital, I'd like a quote for my project.",
-      trust: ["Free quote within 24h", "Fixed price guaranteed", "No commitment"],
-    },
-    de: {
-      eyebrow: "Bereit zum Start?",
-      title: "Website in 5 Tagen geliefert. Ab CHF 49.",
-      body: "Kostenloses Angebot in 24h. Beschreiben Sie Ihr Projekt in 2 Sätzen — wir senden einen klaren Vorschlag mit festem Preis. Null Überraschungen, null Verpflichtung.",
-      primary: "Kostenlose Offerte erhalten",
-      secondary: "WhatsApp — Antwort in 2h",
-      waText: "Hallo KAH Digital, ich möchte eine Offerte für mein Projekt.",
-      trust: ["Kostenlose Offerte in 24h", "Fester Preis garantiert", "Ohne Verpflichtung"],
-    },
-  }[locale];
 
-  const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
-  const waUrl = `https://wa.me/33759558414?text=${encodeURIComponent(copy.waText)}`;
+  const copy =
+    locale === "en"
+      ? {
+          eyebrow: "Ready to grow?",
+          title: "Your business deserves",
+          title2: "better than an average site.",
+          sub: "Book a free 15-minute call. No commitment, no sales pitch. Just a real conversation about your project.",
+          cta1: "Get a free quote",
+          cta2: "Chat on WhatsApp",
+          waText: "Hi KAH Digital, I'd like to discuss my project.",
+          badges: ["5-day delivery", "No commitment", "Reply in 24h"],
+          available: "Available now · Slots filling up",
+        }
+      : locale === "de"
+      ? {
+          eyebrow: "Bereit zu wachsen?",
+          title: "Ihr Unternehmen verdient",
+          title2: "mehr als eine durchschnittliche Website.",
+          sub: "Buchen Sie ein kostenloses 15-Minuten-Gespräch. Keine Verpflichtung, kein Verkaufsgespräch.",
+          cta1: "Kostenlose Offerte",
+          cta2: "WhatsApp schreiben",
+          waText: "Hallo KAH Digital, ich möchte mein Projekt besprechen.",
+          badges: ["5 Tage Lieferung", "Keine Verpflichtung", "Antwort in 24h"],
+          available: "Jetzt verfügbar · Plätze werden knapp",
+        }
+      : {
+          eyebrow: "Prêt à passer à la vitesse supérieure ?",
+          title: "Votre business mérite",
+          title2: "mieux qu'un site banal.",
+          sub: "Réservez un call de 15 min. Sans engagement, sans pitch commercial. Juste une vraie conversation sur votre projet.",
+          cta1: "Obtenir un devis gratuit",
+          cta2: "Écrire sur WhatsApp",
+          waText: "Bonjour KAH Digital, je voudrais discuter de mon projet.",
+          badges: ["Livraison 5 jours", "Sans engagement", "Réponse en 24h"],
+          available: "Disponible maintenant · Places qui se remplissent",
+        };
+
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
+  const withPrefix = (p: string) => (prefix ? `${prefix}${p}` : p);
 
   return (
-    <section className="relative overflow-hidden bg-gray-950 py-28">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-transparent to-purple-600/10" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+    <section className="relative overflow-hidden bg-gray-950 py-32">
 
-      <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8"
-      >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">{copy.eyebrow}</p>
-        <h2 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{copy.title}</h2>
-        <p className="mb-10 text-lg text-gray-400">{copy.body}</p>
+      {/* Animated mesh background */}
+      <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(59,130,246,0.12) 0%, rgba(139,92,246,0.08) 40%, transparent 70%)",
+          }}
+          animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="absolute -left-32 top-1/4 h-64 w-64 rounded-full bg-blue-600/8 blur-3xl" />
+        <div className="absolute -right-32 bottom-1/4 h-64 w-64 rounded-full bg-violet-600/8 blur-3xl" />
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+      </div>
 
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href={withPrefix("/devis")}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-blue-500/40 hover:gap-3"
-          >
-            {copy.primary}
-            <FiArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-semibold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
-          >
-            <FiMessageCircle size={15} />
-            {copy.secondary}
-          </a>
-        </div>
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-          {copy.trust.map((item) => (
-            <div key={item} className="flex items-center gap-2 text-sm text-gray-500">
-              <span className="h-1 w-1 rounded-full bg-green-400" />
-              {item}
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="mb-6 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+            {copy.eyebrow}
+          </span>
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
+        >
+          {copy.title}{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-400 bg-clip-text text-transparent">
+            {copy.title2}
+          </span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mx-auto mt-6 max-w-xl text-lg text-gray-400"
+        >
+          {copy.sub}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-6 flex flex-wrap justify-center gap-2"
+        >
+          {copy.badges.map((b) => (
+            <span
+              key={b}
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-gray-400"
+            >
+              {b}
+            </span>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35, duration: 0.5 }}
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <MagneticButton className="inline-block">
+            <Link
+              href={withPrefix("/devis")}
+              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 text-base font-bold text-white shadow-xl shadow-blue-500/30 transition-all duration-300 hover:shadow-blue-500/50 hover:gap-4"
+            >
+              <motion.div
+                className="pointer-events-none absolute inset-0 -translate-x-full skew-x-12 bg-white/10"
+                animate={{ translateX: ["-100%", "200%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+              />
+              {copy.cta1}
+              <FiArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </MagneticButton>
+
+          <MagneticButton className="inline-block">
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-8 py-4 text-base font-bold text-[#25D366] transition-all duration-300 hover:bg-[#25D366]/20 hover:border-[#25D366]/50"
+            >
+              <FiMessageCircle size={16} />
+              {copy.cta2}
+            </a>
+          </MagneticButton>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-10 flex items-center justify-center gap-2 text-sm text-gray-500"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-50" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
+          </span>
+          {copy.available}
+        </motion.div>
+
+      </div>
     </section>
   );
 }

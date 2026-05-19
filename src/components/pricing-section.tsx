@@ -275,9 +275,9 @@ const OPTIONS = {
 };
 
 const ACCENT_CARD = {
-  blue: "border-white/10 bg-white/[0.03] hover:border-blue-500/20 hover:bg-white/[0.05]",
-  violet: "border-violet-500/50 bg-gradient-to-b from-violet-600/15 to-violet-600/5 shadow-2xl shadow-violet-500/15",
-  amber: "border-amber-500/20 bg-gradient-to-b from-amber-500/8 to-transparent hover:border-amber-500/30",
+  blue: "border-white/10 bg-white/[0.025] backdrop-blur-sm hover:border-blue-500/20 hover:bg-white/[0.04]",
+  violet: "border-violet-500/40 bg-gradient-to-b from-violet-600/12 to-violet-600/4 backdrop-blur-md shadow-2xl shadow-violet-500/20 ring-1 ring-violet-500/20",
+  amber: "border-amber-500/20 bg-gradient-to-b from-amber-500/6 to-transparent backdrop-blur-sm hover:border-amber-500/35 hover:shadow-lg hover:shadow-amber-500/10",
 };
 const ACCENT_CHECK = { blue: "text-blue-400", violet: "text-violet-400", amber: "text-amber-400" };
 const ACCENT_DELIVERY = { blue: "text-blue-400", violet: "text-violet-300", amber: "text-amber-400" };
@@ -408,10 +408,10 @@ export function PricingSection() {
 
               {/* Price */}
               <div className="mb-2 flex items-end gap-1">
-                {isEN && <span className="mb-1 text-2xl font-black text-gray-400">$</span>}
-                {isDE && <span className="mb-1 mr-1 text-lg font-bold text-gray-400">CHF</span>}
-                <span className="text-5xl font-black leading-none text-white">{plan.price}</span>
-                {!isEN && !isDE && <span className="mb-1 ml-1 text-2xl font-black text-gray-400">€</span>}
+                {isEN && <span className="mb-2 text-2xl font-black text-gray-400">$</span>}
+                {isDE && <span className="mb-2 mr-1 text-xl font-bold text-gray-400">CHF</span>}
+                <span className={`text-6xl font-black leading-none tracking-tighter ${plan.highlight ? "text-white" : "text-white"}`}>{plan.price}</span>
+                {!isEN && !isDE && <span className="mb-2 ml-1 text-2xl font-black text-gray-400">€</span>}
               </div>
 
               {/* Delivery */}
