@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { useLocale } from "@/lib/locale";
 import { FiArrowRight, FiMessageCircle } from "react-icons/fi";
 
@@ -8,31 +9,31 @@ export function CTASection() {
   const { locale, prefix } = useLocale();
   const copy = {
     fr: {
-      eyebrow: "Prêt à démarrer ?",
-      title: "Votre projet mérite un cadrage sérieux",
-      body: "Site web, application ou automatisation IA. Premier échange sous 24h, périmètre ajustable et devis lisible avant toute validation.",
-      primary: "Demander un devis personnalisé",
+      eyebrow: "Prêt à passer à la vitesse supérieure ?",
+      title: "Votre système de croissance commence ici.",
+      body: "Audit gratuit sous 24h. On analyse votre situation, on identifie les leviers prioritaires et on vous propose un plan d'action concret — sans engagement.",
+      primary: "Obtenir mon audit gratuit",
       secondary: "WhatsApp — réponse sous 2h",
-      waText: "Bonjour Kénan, je souhaite un devis pour mon projet web.",
-      trust: ["Devis clair et sans engagement", "Réponse sous 24h ouvrables", "Prestation ajustée au besoin"],
+      waText: "Bonjour Kénan, je souhaite un audit gratuit pour mon projet.",
+      trust: ["Audit personnalisé offert", "Réponse sous 24h ouvrables", "Sans engagement"],
     },
     en: {
-      eyebrow: "Ready to start?",
-      title: "Your project deserves serious scoping",
-      body: "Website, application, or AI automation. First reply within 24h, adjustable scope and a clear quote before any validation.",
-      primary: "Request a custom quote",
+      eyebrow: "Ready to scale?",
+      title: "Your growth system starts here.",
+      body: "Free audit within 24h. We analyze your situation, identify priority levers, and propose a concrete action plan — no commitment.",
+      primary: "Get my free audit",
       secondary: "WhatsApp — reply in 2h",
-      waText: "Hi Kénan, I'd like a quote for my web project.",
-      trust: ["Clear quote, no commitment", "Reply within 24 business hours", "Service adjusted to the need"],
+      waText: "Hi Kénan, I'd like a free audit for my project.",
+      trust: ["Personalised audit included", "Reply within 24 business hours", "No commitment"],
     },
     de: {
-      eyebrow: "Bereit loszulegen?",
-      title: "Ihr Projekt verdient ein ernsthaftes Briefing",
-      body: "Website, Anwendung oder KI-Automatisierung. Erste Antwort in 24h, anpassbarer Umfang und klares Angebot vor jeder Freigabe.",
-      primary: "Individuelle Offerte anfragen",
+      eyebrow: "Bereit für den nächsten Schritt?",
+      title: "Ihr Wachstumssystem beginnt hier.",
+      body: "Kostenloses Audit in 24h. Wir analysieren Ihre Situation, identifizieren die wichtigsten Hebel und schlagen einen konkreten Aktionsplan vor — ohne Verpflichtung.",
+      primary: "Mein kostenloses Audit erhalten",
       secondary: "WhatsApp — Antwort in 2h",
-      waText: "Hallo Kénan, ich möchte ein Angebot für mein Webprojekt.",
-      trust: ["Klares Angebot, keine Verpflichtung", "Antwort in 24 Arbeitsstunden", "Leistung passend zum Bedarf"],
+      waText: "Hallo Kénan, ich möchte ein kostenloses Audit für mein Projekt.",
+      trust: ["Persönliches Audit inklusive", "Antwort in 24 Arbeitsstunden", "Ohne Verpflichtung"],
     },
   }[locale];
 
@@ -45,14 +46,20 @@ export function CTASection() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8"
+      >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">{copy.eyebrow}</p>
         <h2 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{copy.title}</h2>
         <p className="mb-10 text-lg text-gray-400">{copy.body}</p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
-            href={withPrefix("/devis")}
+            href={withPrefix("/audit-gratuit")}
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-blue-500/40 hover:gap-3"
           >
             {copy.primary}
@@ -77,7 +84,7 @@ export function CTASection() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

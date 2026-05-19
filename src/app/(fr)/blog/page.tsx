@@ -73,6 +73,22 @@ const ARTICLES = [
     date: "4 mai 2026",
     tag: "Stratégie",
   },
+  {
+    slug: "seo-local-pme",
+    title: "SEO local pour PME : apparaître en 1ère page Google en 2026",
+    excerpt: "Google Business Profile, pages locales, schema LocalBusiness, avis clients — les actions concrètes pour que vos clients vous trouvent.",
+    readTime: "6 min",
+    date: "4 mai 2026",
+    tag: "SEO",
+  },
+  {
+    slug: "automatisation-ia-pme",
+    title: "Automatisation IA pour PME : 5 cas concrets qui font gagner du temps en 2026",
+    excerpt: "Qualification de leads, reporting auto, relances commerciales, support IA — 5 usages réels avec résultats mesurables et coûts.",
+    readTime: "8 min",
+    date: "19 mai 2026",
+    tag: "IA",
+  },
 ];
 
 const TAG_COLORS: Record<string, string> = {
@@ -83,6 +99,8 @@ const TAG_COLORS: Record<string, string> = {
   "Restaurants": "border-red-500/30 bg-red-500/10 text-red-400",
   "PME": "border-blue-500/30 bg-blue-500/10 text-blue-400",
   "Mobile": "border-violet-500/30 bg-violet-500/10 text-violet-400",
+  "SEO": "border-cyan-500/30 bg-cyan-500/10 text-cyan-400",
+  "IA": "border-blue-500/30 bg-blue-500/10 text-blue-400",
 };
 
 export default function BlogPage() {

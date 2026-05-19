@@ -22,11 +22,11 @@ export function SiteHeader() {
           { label: "Quote", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
         ],
-        cta: "Free quote",
-        subtitle: "Digital studio",
+        cta: "Free audit",
+        subtitle: "AI Growth Systems",
         openMenu: "Open menu",
         closeMenu: "Close menu",
-        homeLabel: "KAH-Digital - Home",
+        homeLabel: "KAH Digital - Home",
       }
     : {
         nav: [
@@ -38,11 +38,11 @@ export function SiteHeader() {
           { label: "Devis", href: "/devis" },
           { label: "Contact", href: "/contact" },
         ],
-        cta: "Devis gratuit",
-        subtitle: "Studio digital",
+        cta: "Audit gratuit",
+        subtitle: "AI Growth Systems",
         openMenu: "Ouvrir le menu",
         closeMenu: "Fermer le menu",
-        homeLabel: "KAH-Digital - Accueil",
+        homeLabel: "KAH Digital - Accueil",
       };
 
   return (
@@ -53,7 +53,7 @@ export function SiteHeader() {
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
-          <nav className="hidden items-center gap-5 text-sm lg:flex xl:gap-6 xl:text-base">
+          <nav className="hidden items-center gap-4 text-sm lg:flex xl:gap-5 xl:text-base">
             {localeCopy.nav.map((link) => (
               <Link
                 key={link.href}
@@ -68,7 +68,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-3 md:flex">
             <LanguageSwitcher />
             <Link
-              href={withPrefix("/devis")}
+              href={withPrefix("/audit-gratuit")}
               className="whitespace-nowrap rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
             >
               {localeCopy.cta}
@@ -104,7 +104,7 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Link
-                href={withPrefix("/devis")}
+                href={withPrefix("/audit-gratuit")}
                 className="rounded-full border border-[#e0c48e]/50 bg-[linear-gradient(135deg,#f0ddb5,#c99747)] px-4 py-2 text-center font-semibold text-[#18120b] shadow-[0_12px_34px_rgba(199,151,71,0.24)] transition hover:brightness-105"
                 onClick={() => setIsMenuOpen(false)}
               >
