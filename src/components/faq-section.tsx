@@ -33,11 +33,11 @@ const FAQS = {
     },
     {
       q: "Y a-t-il un support après la livraison ?",
-      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Premium AI : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 49 €/mois pour la suite.",
+      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Premium AI : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 89 €/mois pour la suite.",
     },
     {
       q: "L'IA est-elle disponible dans tous les plans ?",
-      a: "Le chatbot IA et les automatisations sont inclus dans le plan Premium AI. Pour les autres plans, le chatbot IA est disponible en option à 199 € et l'automatisation à partir de 299 €. On peut ajouter l'IA à n'importe quel plan existant.",
+      a: "Le chatbot IA et les automatisations sont inclus dans le plan Premium AI. Pour les autres plans, le chatbot IA est disponible en option à 349 € et l'automatisation à partir de 490 €. On peut ajouter l'IA à n'importe quel plan existant.",
     },
   ],
   en: [
@@ -67,11 +67,11 @@ const FAQS = {
     },
     {
       q: "Is there support after delivery?",
-      a: "Business: 1 month support included (fixes, minor adjustments). Premium AI: 3 months priority support. Monthly maintenance plans are available from $49/month for ongoing care.",
+      a: "Business: 1 month support included (fixes, minor adjustments). Premium AI: 3 months priority support. Monthly maintenance plans are available from $89/month for ongoing care.",
     },
     {
       q: "Is AI available in all plans?",
-      a: "AI chatbot and automations are included in Premium AI. For other plans, the AI chatbot is available as an add-on at $199, and automation from $299. AI can be added to any existing plan.",
+      a: "AI chatbot and automations are included in Premium AI. For other plans, the AI chatbot is available as an add-on at $349, and automation from $490. AI can be added to any existing plan.",
     },
   ],
   de: [
@@ -101,11 +101,11 @@ const FAQS = {
     },
     {
       q: "Gibt es Support nach der Lieferung?",
-      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Premium AI: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 49/Monat verfügbar.",
+      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Premium AI: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 89/Monat verfügbar.",
     },
     {
       q: "Ist KI in allen Plänen verfügbar?",
-      a: "KI-Chatbot und Automatisierungen sind im Premium AI-Plan enthalten. Für andere Pläne ist der KI-Chatbot als Option für CHF 199 verfügbar, Automatisierung ab CHF 299. KI kann jedem bestehenden Plan hinzugefügt werden.",
+      a: "KI-Chatbot und Automatisierungen sind im Premium AI-Plan enthalten. Für andere Pläne ist der KI-Chatbot als Option für CHF 349 verfügbar, Automatisierung ab CHF 490. KI kann jedem bestehenden Plan hinzugefügt werden.",
     },
   ],
 };

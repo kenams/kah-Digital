@@ -20,7 +20,7 @@ const POSTS = {
     {
       handle: "@DigitalKah42",
       time: "1j",
-      content: "Un restaurateur à Genève m'a contacté avec ce problème :\n→ Site lent\n→ Pas de réservation en ligne\n→ Invisible sur Google\n\n3 semaines plus tard :\n→ Site livré\n→ +30% de réservations\n→ 1er sur Google local\n\nDès 49€.",
+      content: "Un restaurateur à Genève m'a contacté avec ce problème :\n→ Site lent\n→ Pas de réservation en ligne\n→ Invisible sur Google\n\n3 semaines plus tard :\n→ Site livré\n→ +30% de réservations\n→ 1er sur Google local\n\nDès 142 €.",
       likes: "1.2k",
       retweets: "334",
       replies: "67",
@@ -29,7 +29,7 @@ const POSTS = {
     {
       handle: "@DigitalKah42",
       time: "3j",
-      content: "Ce que vous perdez sans site pro :\n\n5 clients/mois × 300€ = 1500€/mois\n= 18 000€/an\n\nCoût d'un site KAH Digital : 199€\n\nROI : ×90\n\nDemandez votre devis gratuit.",
+      content: "Ce que vous perdez sans site pro :\n\n5 clients/mois × 300€ = 1500€/mois\n= 18 000€/an\n\nCoût d'un site KAH Digital : dès 142 €\n\nROI : ×90\n\nDemandez votre devis gratuit.",
       likes: "2.1k",
       retweets: "567",
       replies: "89",

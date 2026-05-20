@@ -14,7 +14,7 @@ const COPY = {
     subtitle: "Pas de formule rigide, pas de tarif imposé. Décrivez votre situation en 2 lignes — on revient avec une proposition claire, ajustée à votre budget réel.\nAucun engagement avant validation.",
     proofTitle: "Ils ont fait confiance à KAH-Digital",
     stats: [
-      { value: "49 €", label: "Dès ce prix" },
+      { value: "142 €", label: "Dès ce prix" },
       { value: "5 jours", label: "1ère livraison" },
       { value: "24h", label: "Délai de réponse" },
       { value: "100%", label: "Budget respecté" },
@@ -57,7 +57,7 @@ const COPY = {
     subtitle: "No rigid package, no imposed price. Describe your situation in 2 lines — we come back with a clear proposal adjusted to your actual budget.\nNo commitment before you validate.",
     proofTitle: "They trusted KAH-Digital",
     stats: [
-      { value: "$49", label: "Starting price" },
+      { value: "$142", label: "Starting price" },
       { value: "5 days", label: "First delivery" },
       { value: "24h", label: "Response time" },
       { value: "100%", label: "Budget respected" },
@@ -100,7 +100,7 @@ const COPY = {
     subtitle: "Kein starres Paket, kein aufgezwungener Preis. Beschreiben Sie Ihre Situation in 2 Sätzen — wir kommen mit einem klaren Vorschlag zurück, der an Ihr tatsächliches Budget angepasst ist.\nKeine Verpflichtung vor Ihrer Bestätigung.",
     proofTitle: "Sie haben KAH-Digital vertraut",
     stats: [
-      { value: "CHF 49", label: "Ab diesem Preis" },
+      { value: "CHF 149", label: "Ab diesem Preis" },
       { value: "5 Tage", label: "Erste Lieferung" },
       { value: "24h", label: "Antwortzeit" },
       { value: "100%", label: "Budget eingehalten" },

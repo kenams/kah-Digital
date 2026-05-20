@@ -8,7 +8,7 @@ export function StatsBar() {
   const stats =
     locale === "en"
       ? [
-          { value: "$49", label: "Starting price" },
+          { value: "$142", label: "Starting price" },
           { value: "5 days", label: "First delivery" },
           { value: "70+", label: "Systems delivered" },
           { value: "24h", label: "Response time" },
@@ -16,14 +16,14 @@ export function StatsBar() {
         ]
       : locale === "de"
       ? [
-          { value: "CHF 49", label: "Ab diesem Preis" },
+          { value: "CHF 149", label: "Ab diesem Preis" },
           { value: "5 Tage", label: "Erste Lieferung" },
           { value: "70+", label: "Systeme geliefert" },
           { value: "24h", label: "Antwortzeit" },
           { value: "100%", label: "Budget eingehalten" },
         ]
       : [
-          { value: "49 €", label: "Dès ce prix" },
+          { value: "142 €", label: "Dès ce prix" },
           { value: "5 jours", label: "1ère livraison" },
           { value: "70+", label: "Systèmes livrés" },
           { value: "24h", label: "Délai de réponse" },
