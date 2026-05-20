@@ -90,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/ai-agency-new-york",
     "/en/web-development-new-york",
     "/en/ai-agency-dubai",
+    "/en/web-development-dubai",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,

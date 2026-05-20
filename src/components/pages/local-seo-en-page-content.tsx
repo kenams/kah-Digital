@@ -86,6 +86,23 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
       { q: "Do you handle SEO for the US market?", a: "Yes, full technical SEO, structured data, Core Web Vitals 95+, clean URLs. Included from the Business plan. Optimised for Google US." },
     ],
   },
+  "web-development-dubai": {
+    city: "Dubai",
+    country: "UAE",
+    region: "Dubai",
+    slug: "web-development-dubai",
+    headline: "Web Development Dubai",
+    subline: "Premium web development for Dubai & UAE — Next.js 15, multilingual, SaaS-level design. Delivered in 14 days.",
+    intro: "KAH Digital builds high-performance websites for Dubai and UAE businesses: real estate portals, hospitality, e-commerce, consulting, and SaaS. We deliver multilingual sites (Arabic, English, French) on Next.js 15 — fast, scalable, and 100% yours. Remote from Switzerland, no local overhead.",
+    sectors: ["Real Estate & PropTech", "Hospitality & Tourism", "E-Commerce & Luxury Retail", "Consulting & Advisory", "FinTech & Payments", "Healthcare & Wellness"],
+    proofLine: "Reply within 24h · Fixed price · No lock-in",
+    faq: [
+      { q: "Do you build Arabic-English bilingual websites?", a: "Yes, we build fully bilingual and RTL-ready websites in Arabic and English (and French). Proper hreflang, clean URL structure, SEO in both languages." },
+      { q: "How much does a business website cost in Dubai?", a: "Starter from $142 (landing page, 5 days). Business from $390 (up to 6 pages, full SEO, 14 days). Premium AI from $890 (complete system with AI chatbot). Fixed price, no surprises." },
+      { q: "How fast can you deliver a website for a UAE business?", a: "Starter in 5 business days. Business website in 14 days. All timelines are confirmed in writing before kickoff. No delays." },
+      { q: "Do you handle SEO for the UAE and GCC market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean Arabic and English URLs. Included from the Business plan. Optimised for Google UAE." },
+    ],
+  },
   "ai-agency-dubai": {
     city: "Dubai",
     country: "UAE",
