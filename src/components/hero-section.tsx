@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/lib/locale";
 import { FiArrowRight, FiMessageCircle, FiPlay } from "react-icons/fi";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const WA_NUMBER = "33759558414";
 
@@ -44,49 +44,6 @@ function WordReveal({
   );
 }
 
-/* ─── Floating proof card ────────────────────────────────────────────────── */
-function FloatCard({
-  title,
-  value,
-  sub,
-  color,
-  className = "",
-  refEl,
-}: {
-  title: string;
-  value: string;
-  sub: string;
-  color: string;
-  className?: string;
-  refEl: React.RefObject<HTMLDivElement | null>;
-}) {
-  return (
-    <div
-      ref={refEl}
-      className={`pointer-events-none absolute hidden lg:block ${className}`}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 16 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        className="rounded-2xl border border-white/[0.08] px-4 py-3.5 backdrop-blur-xl"
-        style={{
-          background: "rgba(8,9,14,0.82)",
-          boxShadow: "0 24px 64px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.04)",
-        }}
-      >
-        <div className="mb-2 flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full" style={{ background: color }} />
-          <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-gray-500">
-            {title}
-          </span>
-        </div>
-        <div className="text-[22px] font-black leading-none text-white">{value}</div>
-        <div className="mt-0.5 text-[11px] text-gray-500">{sub}</div>
-      </motion.div>
-    </div>
-  );
-}
 
 /* ─── Rotating gradient text ─────────────────────────────────────────────── */
 function RotatingText({
@@ -127,51 +84,6 @@ function RotatingText({
 /* ─── Section ────────────────────────────────────────────────────────────── */
 export function HeroSection() {
   const { locale, prefix } = useLocale();
-  const sectionRef = useRef<HTMLElement>(null);
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-
-  // Mouse parallax — paused via IntersectionObserver when off-screen
-  useEffect(() => {
-    let tx = 0, ty = 0, x = 0, y = 0;
-    let raf: number;
-    let visible = true;
-
-    const obs = new IntersectionObserver(
-      ([e]) => { visible = e.isIntersecting; },
-      { threshold: 0 }
-    );
-    if (sectionRef.current) obs.observe(sectionRef.current);
-
-    const onMove = (e: MouseEvent) => {
-      if (!visible) return;
-      tx = (e.clientX / window.innerWidth - 0.5) * 2;
-      ty = (e.clientY / window.innerHeight - 0.5) * 2;
-    };
-
-    const tick = () => {
-      if (visible) {
-        x += (tx - x) * 0.045;
-        y += (ty - y) * 0.045;
-        const c1 = card1Ref.current;
-        const c2 = card2Ref.current;
-        const c3 = card3Ref.current;
-        if (c1) c1.style.transform = `translate(${x * 22}px, ${y * 14}px)`;
-        if (c2) c2.style.transform = `translate(${x * -18}px, ${y * -12}px)`;
-        if (c3) c3.style.transform = `translate(${x * 28}px, ${y * 20}px)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    raf = requestAnimationFrame(tick);
-    return () => {
-      obs.disconnect();
-      window.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   const copy =
     locale === "en"
@@ -262,7 +174,7 @@ export function HeroSection() {
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#030304]">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#030304]">
 
       {/* ── Noise texture — absolute (not fixed) to avoid full-page composite layer ── */}
       <svg
@@ -293,31 +205,6 @@ export function HeroSection() {
       {/* ── Vignette edges ─────────────────────────────────────────────────── */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_40%,rgba(3,3,4,0.6)_100%)]" />
 
-      {/* ── Floating proof cards ──────────────────────────────────────────── */}
-      <FloatCard
-        refEl={card1Ref}
-        title={copy.cards[0].title}
-        value={copy.cards[0].value}
-        sub={copy.cards[0].sub}
-        color={copy.cards[0].color}
-        className="top-[16%] right-[3%] rotate-[6deg] xl:right-[6%]"
-      />
-      <FloatCard
-        refEl={card2Ref}
-        title={copy.cards[1].title}
-        value={copy.cards[1].value}
-        sub={copy.cards[1].sub}
-        color={copy.cards[1].color}
-        className="top-[42%] left-[1%] rotate-[-5deg] xl:left-[4%]"
-      />
-      <FloatCard
-        refEl={card3Ref}
-        title={copy.cards[2].title}
-        value={copy.cards[2].value}
-        sub={copy.cards[2].sub}
-        color={copy.cards[2].color}
-        className="bottom-[20%] right-[2%] rotate-[3deg] xl:right-[5%]"
-      />
 
       {/* ── Main content ──────────────────────────────────────────────────── */}
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center sm:px-6 lg:px-8">
