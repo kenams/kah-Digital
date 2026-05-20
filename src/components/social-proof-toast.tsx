@@ -151,7 +151,7 @@ export function SocialProofToast() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 14, scale: 0.96 }}
           transition={{ type: "spring", stiffness: 320, damping: 28 }}
-          className="fixed bottom-36 right-4 z-40 max-w-[272px] overflow-hidden rounded-2xl border border-white/10 bg-gray-900/96 shadow-2xl shadow-black/50 backdrop-blur-xl sm:bottom-28 sm:right-6"
+          className="fixed bottom-[88px] right-4 z-40 max-w-[272px] overflow-hidden rounded-2xl border border-white/10 bg-gray-900/96 shadow-2xl shadow-black/50 backdrop-blur-xl sm:right-6"
         >
           {/* Barre verte gauche */}
           <div className="absolute left-0 top-0 h-full w-1 rounded-l-2xl bg-gradient-to-b from-green-400 to-emerald-500" />

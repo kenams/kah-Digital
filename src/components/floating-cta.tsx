@@ -34,11 +34,11 @@ export function FloatingCTA() {
 
   return (
     <div
-      className={`fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500 ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0 pointer-events-none"
+      className={`pointer-events-none fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500 ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
     >
-      <div className="flex items-center gap-2 rounded-full border border-white/10 bg-gray-950/95 px-2 py-2 shadow-2xl shadow-black/60 backdrop-blur-md">
+      <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-gray-950/95 px-2 py-2 shadow-2xl shadow-black/60 backdrop-blur-md">
         {/* WhatsApp */}
         <a
           href={`https://wa.me/${WA_NUMBER}?text=${waText}`}

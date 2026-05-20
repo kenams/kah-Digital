@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/lib/locale";
 import Link from "next/link";
@@ -562,7 +563,10 @@ export function PortfolioSection() {
   const { locale, prefix } = useLocale();
   const [active, setActive] = useState<Category>("all");
   const [selected, setSelected] = useState<Project | null>(null);
+  const [mounted, setMounted] = useState(false);
   const loc = locale === "de" ? "de" : locale === "en" ? "en" : "fr";
+
+  useEffect(() => { setMounted(true); }, []);
 
   const copy =
     locale === "en"
@@ -727,17 +731,20 @@ export function PortfolioSection() {
         </div>
       </section>
 
-      {/* Project detail modal */}
-      <AnimatePresence>
-        {selected && (
-          <ProjectModal
-            project={selected}
-            onClose={() => setSelected(null)}
-            locale={locale}
-            devisHref={withPrefix("/devis")}
-          />
-        )}
-      </AnimatePresence>
+      {/* Project detail modal — portal to body to escape stacking contexts */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {selected && (
+            <ProjectModal
+              project={selected}
+              onClose={() => setSelected(null)}
+              locale={locale}
+              devisHref={withPrefix("/devis")}
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }
