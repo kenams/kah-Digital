@@ -40,6 +40,8 @@ export function localizePath(pathname: string | null, locale: Locale) {
     if (basePath === "/confidentialite" || basePath === "/politique-de-confidentialite") {
       return "/de/politique-de-confidentialite";
     }
+    // FR-only pages → nearest DE equivalent
+    if (basePath === "/references") return "/de/projets";
     return basePath === "/" ? "/de" : `/de${basePath}`;
   }
 

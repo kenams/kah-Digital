@@ -384,7 +384,7 @@ function readStoredState(storageKey: string) {
 }
 
 function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
-  const copy = widgetCopy[locale === "de" ? "fr" : locale];
+  const copy = widgetCopy[locale];
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const storageKey = `${storagePrefix}:${locale}`;
