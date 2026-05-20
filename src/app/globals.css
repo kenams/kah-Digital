@@ -517,10 +517,10 @@ textarea {
   80%       { transform: translate(6%, -4%) scale(0.97); }
 }
 
-.aurora-1 { animation: aurora-1 20s ease-in-out infinite; }
-.aurora-2 { animation: aurora-2 26s ease-in-out infinite; }
-.aurora-3 { animation: aurora-3 22s ease-in-out infinite; }
-.aurora-4 { animation: aurora-4 28s ease-in-out infinite; }
+.aurora-1 { animation: aurora-1 28s ease-in-out infinite; will-change: transform; }
+.aurora-2 { animation: aurora-2 36s ease-in-out infinite; will-change: transform; }
+.aurora-3 { animation: aurora-3 32s ease-in-out infinite; }
+.aurora-4 { animation: aurora-4 40s ease-in-out infinite; }
 
 /* ── Gradient text shift ─────────────────────────────────────────────────── */
 @keyframes gradient-shift {
@@ -548,9 +548,11 @@ textarea {
   animation: shimmer-sweep 3.5s linear infinite;
 }
 
-/* ── Cursor ring smooth transition ──────────────────────────────────────── */
-.cursor-ring {
-  transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+/* ── prefers-reduced-motion: disable all heavy animations ────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-1, .aurora-2, .aurora-3, .aurora-4 { animation: none; }
+  .gradient-animated { animation: none; }
+  .shimmer-badge { animation: none; }
 }
 
 @keyframes heroGlow {

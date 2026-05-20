@@ -3,55 +3,94 @@
 import { useEffect, useRef } from "react";
 
 export function CursorGlow() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Only on pointer:fine (desktop mouse)
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
-    const dot = dotRef.current;
-    const ring = ringRef.current;
-    if (!dot || !ring) return;
+    const outer = outerRef.current;
+    const inner = innerRef.current;
+    if (!outer || !inner) return;
 
-    dot.style.display = "block";
-    ring.style.display = "block";
+    outer.style.opacity = "1";
 
-    let tx = -200, ty = -200;
-    let rx = -200, ry = -200;
+    let tx = -200, ty = -200; // target (exact mouse pos)
+    let px = -200, py = -200; // lerped prev pos for velocity
     let hovering = false;
     let pressing = false;
+    let prevHovering = false;
+    let prevPressing = false;
     let raf: number;
 
     const onMove = (e: MouseEvent) => {
       tx = e.clientX;
       ty = e.clientY;
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      hovering = !!(el?.closest('a, button, [role="button"], [data-cursor="pointer"], input, select, textarea'));
+      const hit = document.elementFromPoint(tx, ty);
+      hovering = !!(hit?.closest('a, button, [role="button"], input, select, textarea, [data-cursor]'));
     };
-
     const onDown = () => { pressing = true; };
-    const onUp = () => { pressing = false; };
+    const onUp   = () => { pressing = false; };
 
     const tick = () => {
-      // Dot tracks exactly
-      dot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%,-50%) scale(${pressing ? 0.5 : 1})`;
+      // Lerp previous position for velocity calculation
+      px += (tx - px) * 0.28;
+      py += (ty - py) * 0.28;
 
-      // Ring springs behind
-      rx += (tx - rx) * 0.13;
-      ry += (ty - ry) * 0.13;
+      const dx = tx - px;
+      const dy = ty - py;
+      const speed = Math.hypot(dx, dy);
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
 
-      const size = hovering ? 52 : pressing ? 26 : 36;
-      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
-      ring.style.width = `${size}px`;
-      ring.style.height = `${size}px`;
-      ring.style.borderColor = hovering
-        ? "rgba(99,102,241,0.7)"
-        : "rgba(255,255,255,0.28)";
-      ring.style.backgroundColor = hovering
-        ? "rgba(99,102,241,0.07)"
-        : "transparent";
+      // ── Position (outer, no CSS transition) ──────────────────────────────
+      outer.style.transform = `translate3d(${tx}px,${ty}px,0) translate(-50%,-50%)`;
+
+      // ── Squash & stretch (inner, CSS transition handles hover size) ───────
+      let sx: number, sy: number;
+      if (pressing) {
+        sx = 0.55; sy = 0.55;
+      } else if (hovering) {
+        sx = 1; sy = 1;
+      } else {
+        const s = Math.min(speed * 0.052, 0.82);
+        sx = 1 + s;
+        sy = Math.max(0.52, 1 - s * 0.44);
+      }
+      inner.style.transform = `rotate(${hovering ? 0 : angle}deg) scaleX(${sx}) scaleY(${sy})`;
+
+      // ── State changes → CSS transition takes over for size / color ────────
+      const stateChanged = hovering !== prevHovering || pressing !== prevPressing;
+      if (stateChanged) {
+        prevHovering = hovering;
+        prevPressing = pressing;
+
+        if (pressing) {
+          inner.style.width  = "6px";
+          inner.style.height = "6px";
+          inner.style.background  = "rgba(255,255,255,1)";
+          inner.style.boxShadow   = "0 0 12px 4px rgba(255,255,255,0.5)";
+          inner.style.border      = "none";
+        } else if (hovering) {
+          inner.style.width  = "40px";
+          inner.style.height = "40px";
+          inner.style.background  = "rgba(99,102,241,0.08)";
+          inner.style.boxShadow   = "0 0 0 1.5px rgba(99,102,241,0.75), 0 0 22px 4px rgba(99,102,241,0.18)";
+          inner.style.border      = "none";
+        } else {
+          inner.style.width  = "8px";
+          inner.style.height = "8px";
+          inner.style.background  = "rgba(255,255,255,0.92)";
+          inner.style.border      = "none";
+        }
+      }
+
+      // Dynamic glow follows speed when not hovering
+      if (!hovering && !pressing) {
+        const gR = (4 + speed * 0.36).toFixed(1);
+        const gO = Math.min(0.13 + speed * 0.009, 0.38).toFixed(3);
+        inner.style.boxShadow = `0 0 ${gR}px 1px rgba(255,255,255,${gO})`;
+      }
 
       raf = requestAnimationFrame(tick);
     };
@@ -70,21 +109,27 @@ export function CursorGlow() {
   }, []);
 
   return (
-    <>
-      {/* Small dot — exact cursor */}
+    // Outer: position only — no CSS transition to avoid fighting rAF
+    <div
+      ref={outerRef}
+      aria-hidden="true"
+      className="pointer-events-none fixed left-0 top-0 z-[9999] will-change-transform"
+      style={{ opacity: 0 }}
+    >
+      {/* Inner: shape + color — CSS transition handles hover state smoothly */}
       <div
-        ref={dotRef}
-        aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden h-[7px] w-[7px] rounded-full bg-white will-change-transform"
-        style={{ transition: "transform 0.05s linear" }}
+        ref={innerRef}
+        className="rounded-full"
+        style={{
+          width: 8,
+          height: 8,
+          background: "rgba(255,255,255,0.92)",
+          boxShadow: "0 0 5px 1px rgba(255,255,255,0.15)",
+          transformOrigin: "center",
+          willChange: "transform",
+          transition: "width 0.18s ease, height 0.18s ease, background 0.18s ease, box-shadow 0.22s ease",
+        }}
       />
-      {/* Large ring — lags behind */}
-      <div
-        ref={ringRef}
-        aria-hidden="true"
-        className="cursor-ring pointer-events-none fixed left-0 top-0 z-[9998] hidden rounded-full border will-change-transform"
-        style={{ width: 36, height: 36, borderColor: "rgba(255,255,255,0.28)" }}
-      />
-    </>
+    </div>
   );
 }

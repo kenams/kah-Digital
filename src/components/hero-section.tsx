@@ -127,37 +127,47 @@ function RotatingText({
 /* ─── Section ────────────────────────────────────────────────────────────── */
 export function HeroSection() {
   const { locale, prefix } = useLocale();
+  const sectionRef = useRef<HTMLElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
   const card3Ref = useRef<HTMLDivElement>(null);
 
-  // Mouse parallax — floating cards move at different depths
+  // Mouse parallax — paused via IntersectionObserver when off-screen
   useEffect(() => {
     let tx = 0, ty = 0, x = 0, y = 0;
     let raf: number;
+    let visible = true;
+
+    const obs = new IntersectionObserver(
+      ([e]) => { visible = e.isIntersecting; },
+      { threshold: 0 }
+    );
+    if (sectionRef.current) obs.observe(sectionRef.current);
 
     const onMove = (e: MouseEvent) => {
+      if (!visible) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 2;
       ty = (e.clientY / window.innerHeight - 0.5) * 2;
     };
 
     const tick = () => {
-      x += (tx - x) * 0.045;
-      y += (ty - y) * 0.045;
-
-      const c1 = card1Ref.current;
-      const c2 = card2Ref.current;
-      const c3 = card3Ref.current;
-      if (c1) c1.style.transform = `translate(${x * 22}px, ${y * 14}px)`;
-      if (c2) c2.style.transform = `translate(${x * -18}px, ${y * -12}px)`;
-      if (c3) c3.style.transform = `translate(${x * 28}px, ${y * 20}px)`;
-
+      if (visible) {
+        x += (tx - x) * 0.045;
+        y += (ty - y) * 0.045;
+        const c1 = card1Ref.current;
+        const c2 = card2Ref.current;
+        const c3 = card3Ref.current;
+        if (c1) c1.style.transform = `translate(${x * 22}px, ${y * 14}px)`;
+        if (c2) c2.style.transform = `translate(${x * -18}px, ${y * -12}px)`;
+        if (c3) c3.style.transform = `translate(${x * 28}px, ${y * 20}px)`;
+      }
       raf = requestAnimationFrame(tick);
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
     raf = requestAnimationFrame(tick);
     return () => {
+      obs.disconnect();
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
     };
@@ -252,11 +262,11 @@ export function HeroSection() {
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(copy.waText)}`;
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#030304]">
+    <section ref={sectionRef} className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#030304]">
 
-      {/* ── Noise texture ─────────────────────────────────────────────────── */}
+      {/* ── Noise texture — absolute (not fixed) to avoid full-page composite layer ── */}
       <svg
-        className="pointer-events-none fixed inset-0 z-[1] h-full w-full opacity-[0.032]"
+        className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.032]"
         aria-hidden="true"
       >
         <filter id="kah-noise">
@@ -272,10 +282,10 @@ export function HeroSection() {
       </svg>
 
       {/* ── Aurora blobs ──────────────────────────────────────────────────── */}
-      <div className="aurora-1 absolute -top-60 left-[8%] h-[750px] w-[750px] rounded-full bg-blue-600/[0.09] blur-[160px]" />
-      <div className="aurora-2 absolute -top-32 right-[3%] h-[640px] w-[640px] rounded-full bg-violet-600/[0.08] blur-[140px]" />
-      <div className="aurora-3 absolute bottom-[-4rem] left-[28%] h-[520px] w-[520px] rounded-full bg-cyan-500/[0.055] blur-[110px]" />
-      <div className="aurora-4 absolute bottom-[8%] left-[-2%] h-[420px] w-[420px] rounded-full bg-indigo-500/[0.06] blur-[100px]" />
+      <div className="aurora-1 absolute -top-60 left-[8%] h-[700px] w-[700px] rounded-full bg-blue-600/[0.1] blur-[90px]" />
+      <div className="aurora-2 absolute -top-32 right-[3%] h-[600px] w-[600px] rounded-full bg-violet-600/[0.09] blur-[80px]" />
+      <div className="aurora-3 absolute bottom-[-4rem] left-[28%] h-[480px] w-[480px] rounded-full bg-cyan-500/[0.06] blur-[65px]" />
+      <div className="aurora-4 absolute bottom-[8%] left-[-2%] h-[380px] w-[380px] rounded-full bg-indigo-500/[0.065] blur-[60px]" />
 
       {/* ── Grid ──────────────────────────────────────────────────────────── */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:72px_72px]" />
