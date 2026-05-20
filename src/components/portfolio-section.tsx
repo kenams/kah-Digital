@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/lib/locale";
 import Link from "next/link";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiX } from "react-icons/fi";
 
 type Category = "all" | "saas" | "restaurant" | "ecommerce" | "coach" | "startup" | "local";
 
@@ -286,6 +286,7 @@ const PROJECTS: {
   catLabel: { fr: string; en: string; de: string };
   title: { fr: string; en: string; de: string };
   client: { fr: string; en: string; de: string };
+  description: { fr: string; en: string; de: string };
   stack: string[];
   results: { fr: string; en: string; de: string }[];
   renderPreview: (accent: string) => React.ReactNode;
@@ -297,6 +298,11 @@ const PROJECTS: {
     catLabel: { fr: "Restaurant", en: "Restaurant", de: "Restaurant" },
     title: { fr: "Réservations en ligne", en: "Online Reservations", de: "Online-Reservierungen" },
     client: { fr: "Restaurant gastronomique · Genève", en: "Fine dining · Geneva", de: "Gourmetrestaurant · Genf" },
+    description: {
+      fr: "Système de réservation complet avec sélection de date, créneaux horaires, nombre de couverts et confirmation email automatique. Interface admin pour gérer les disponibilités en temps réel. La salle affichait quasi-complet dès la 3e semaine après le lancement.",
+      en: "Complete booking system with date selection, time slots, cover count, and automatic email confirmation. Admin interface to manage availability in real time. The restaurant was nearly fully booked within 3 weeks of launch.",
+      de: "Komplettes Reservierungssystem mit Datumsauswahl, Zeitfenstern, Personenzahl und automatischer E-Mail-Bestätigung. Admin-Oberfläche zur Echtzeit-Verwaltung der Verfügbarkeit. Das Restaurant war innerhalb von 3 Wochen nach dem Launch nahezu ausgebucht.",
+    },
     stack: ["Next.js", "Stripe", "Resend"],
     results: [
       { fr: "+30% réservations", en: "+30% bookings", de: "+30% Reservierungen" },
@@ -311,6 +317,11 @@ const PROJECTS: {
     catLabel: { fr: "SaaS", en: "SaaS", de: "SaaS" },
     title: { fr: "Dashboard PME", en: "SME Dashboard", de: "KMU-Dashboard" },
     client: { fr: "Startup B2B · Fribourg", en: "B2B Startup · Fribourg", de: "B2B Startup · Freiburg" },
+    description: {
+      fr: "Dashboard B2B en temps réel avec KPIs personnalisables, graphiques interactifs, gestion multi-utilisateurs et export CSV. Architecture Supabase + Row Level Security pour isoler les données par client. 0 bug signalé en 4 mois de production continue.",
+      en: "Real-time B2B dashboard with customizable KPIs, interactive charts, multi-user management, and CSV export. Supabase + Row Level Security architecture to isolate client data. 0 bugs reported in 4 months of continuous production.",
+      de: "Echtzeit-B2B-Dashboard mit anpassbaren KPIs, interaktiven Diagrammen, Multi-User-Management und CSV-Export. Supabase + Row Level Security Architektur zur Datenisolierung. 0 gemeldete Bugs in 4 Monaten Dauerbetrieb.",
+    },
     stack: ["React", "Supabase", "Tailwind"],
     results: [
       { fr: "0 bug en 4 mois", en: "0 bugs in 4 months", de: "0 Bugs in 4 Monaten" },
@@ -325,6 +336,11 @@ const PROJECTS: {
     catLabel: { fr: "Coach", en: "Coach", de: "Coach" },
     title: { fr: "Portfolio & Booking", en: "Portfolio & Booking", de: "Portfolio & Buchung" },
     client: { fr: "Coach business · Lyon", en: "Business coach · Lyon", de: "Business-Coach · Lyon" },
+    description: {
+      fr: "Site portfolio avec intégration Cal.com pour la prise de rendez-vous, paiement Stripe pour les sessions payantes, et tunnel email automatique via Resend. Design premium qui reflète l'expertise du coach. 4 nouveaux clients signés dès le premier mois.",
+      en: "Portfolio site with Cal.com integration for appointment booking, Stripe payment for paid sessions, and automated email funnel via Resend. Premium design reflecting the coach's expertise. 4 new clients signed in the first month.",
+      de: "Portfolio-Website mit Cal.com-Integration für Terminbuchungen, Stripe-Zahlung für kostenpflichtige Sessions und automatisiertem E-Mail-Tunnel über Resend. Premium-Design, das die Expertise des Coaches widerspiegelt. 4 neue Kunden im ersten Monat.",
+    },
     stack: ["Next.js", "Cal.com", "Stripe"],
     results: [
       { fr: "4 clients le 1er mois", en: "4 clients first month", de: "4 Kunden im 1. Monat" },
@@ -339,6 +355,11 @@ const PROJECTS: {
     catLabel: { fr: "E-commerce", en: "E-commerce", de: "E-Commerce" },
     title: { fr: "Boutique en ligne", en: "Online Store", de: "Online-Shop" },
     client: { fr: "Créatrice artisanale · Paris", en: "Artisan creator · Paris", de: "Kunsthandwerkerin · Paris" },
+    description: {
+      fr: "Boutique artisanale avec catalogue dynamique géré via CMS, panier persistant, checkout Stripe optimisé et emails de confirmation automatiques. UX pensée pour maximiser la conversion sur mobile. Le taux de conversion a bondi de 45% en 60 jours.",
+      en: "Artisan shop with CMS-managed dynamic catalog, persistent cart, optimized Stripe checkout, and automatic confirmation emails. UX designed to maximize mobile conversion. Conversion rate jumped 45% in 60 days.",
+      de: "Handwerksboutique mit CMS-verwaltetem Katalog, persistentem Warenkorb, optimiertem Stripe-Checkout und automatischen Bestätigungs-E-Mails. UX optimiert für maximale Mobile-Conversion. Conversion-Rate stieg in 60 Tagen um 45%.",
+    },
     stack: ["Next.js", "Stripe", "Vercel"],
     results: [
       { fr: "+45% taux conversion", en: "+45% conversion rate", de: "+45% Conversion-Rate" },
@@ -353,6 +374,11 @@ const PROJECTS: {
     catLabel: { fr: "Startup", en: "Startup", de: "Startup" },
     title: { fr: "Landing SaaS", en: "SaaS Landing Page", de: "SaaS-Landing Page" },
     client: { fr: "Startup FinTech · Lausanne", en: "FinTech Startup · Lausanne", de: "FinTech Startup · Lausanne" },
+    description: {
+      fr: "Landing page haute performance pour startup FinTech avec animations CSS avancées, capture d'email intégrée, A/B testing et tunnel de conversion optimisé. Score Lighthouse 98/100 dès le jour 1. MVP fonctionnel livré en 5 jours ouvrés.",
+      en: "High-performance landing page for a FinTech startup with advanced CSS animations, integrated email capture, A/B testing, and optimized conversion funnel. Lighthouse score 98/100 from day one. Functional MVP delivered in 5 business days.",
+      de: "Hochleistungs-Landingpage für ein FinTech-Startup mit fortgeschrittenen CSS-Animationen, integrierter E-Mail-Erfassung, A/B-Testing und optimiertem Conversion-Funnel. Lighthouse-Score 98/100 ab dem ersten Tag. Funktionsfähiges MVP in 5 Werktagen geliefert.",
+    },
     stack: ["Next.js", "Framer", "TypeScript"],
     results: [
       { fr: "MVP en 5 jours", en: "MVP in 5 days", de: "MVP in 5 Tagen" },
@@ -367,6 +393,11 @@ const PROJECTS: {
     catLabel: { fr: "Local", en: "Local", de: "Lokal" },
     title: { fr: "Site vitrine local", en: "Local Business Site", de: "Lokale Unternehmenswebsite" },
     client: { fr: "Cabinet juridique · Lausanne", en: "Law firm · Lausanne", de: "Anwaltskanzlei · Lausanne" },
+    description: {
+      fr: "Site vitrine SEO-first pour cabinet juridique avec balisage Schema.org, intégration Google Maps, section avis clients dynamique et formulaire de contact sécurisé. Stratégie de mots-clés locaux ciblée : position #1 sur les requêtes principales en 6 semaines.",
+      en: "SEO-first showcase site for a law firm with Schema.org markup, Google Maps integration, dynamic client reviews section, and secure contact form. Targeted local keyword strategy: #1 position on main queries within 6 weeks.",
+      de: "SEO-first Showcase-Website für eine Anwaltskanzlei mit Schema.org-Markup, Google Maps-Integration, dynamischem Kundenbewertungsbereich und sicherem Kontaktformular. Gezielte lokale Keyword-Strategie: Position #1 bei Hauptanfragen innerhalb von 6 Wochen.",
+    },
     stack: ["Next.js", "SEO local", "Google Maps"],
     results: [
       { fr: "3–4 contacts/sem.", en: "3–4 contacts/week", de: "3–4 Kontakte/Woche" },
@@ -386,11 +417,151 @@ const FILTERS: { key: Category; fr: string; en: string; de: string }[] = [
   { key: "local", fr: "Local", en: "Local", de: "Lokal" },
 ];
 
+/* ─── Project modal ──────────────────────────────────────────────────────── */
+
+type Project = (typeof PROJECTS)[0];
+
+function ProjectModal({
+  project,
+  onClose,
+  locale,
+  devisHref,
+}: {
+  project: Project;
+  onClose: () => void;
+  locale: string;
+  devisHref: string;
+}) {
+  const loc = locale === "de" ? "de" : locale === "en" ? "en" : "fr";
+
+  const ctaLabel = locale === "en" ? "Start a similar project" : locale === "de" ? "Ähnliches Projekt starten" : "Démarrer un projet similaire";
+  const closeLabel = locale === "en" ? "Close" : locale === "de" ? "Schließen" : "Fermer";
+  const stackLabel = locale === "en" ? "Stack" : locale === "de" ? "Stack" : "Stack";
+  const resultsLabel = locale === "en" ? "Results" : locale === "de" ? "Ergebnisse" : "Résultats";
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[9950] flex items-center justify-center p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      {/* Backdrop */}
+      <motion.div
+        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      />
+
+      {/* Modal card */}
+      <motion.div
+        className="relative z-10 w-full max-w-lg overflow-hidden rounded-3xl border border-white/[0.09] bg-[#08090e] shadow-2xl"
+        initial={{ opacity: 0, scale: 0.92, y: 24 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.94, y: 16 }}
+        transition={{ type: "spring", stiffness: 320, damping: 28 }}
+      >
+        {/* Top accent line */}
+        <div className="h-[3px] w-full" style={{ background: `linear-gradient(90deg, transparent, ${project.accent}, transparent)` }} />
+
+        {/* Preview strip */}
+        <div className="relative h-[180px] overflow-hidden border-b border-white/[0.07]">
+          {project.renderPreview(project.accent)}
+          <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(8,9,14,0.9) 100%)" }} />
+        </div>
+
+        {/* Content */}
+        <div className="p-7">
+          {/* Category + close */}
+          <div className="mb-4 flex items-start justify-between gap-3">
+            <div>
+              <span
+                className="mb-2 inline-block rounded-full px-2.5 py-1 text-[11px] font-semibold"
+                style={{ background: `${project.accent}18`, border: `1px solid ${project.accent}35`, color: project.accent }}
+              >
+                {project.catLabel[loc]}
+              </span>
+              <h3 className="text-xl font-extrabold text-white leading-tight">{project.title[loc]}</h3>
+              <p className="mt-0.5 text-sm text-gray-500">{project.client[loc]}</p>
+            </div>
+            <button
+              onClick={onClose}
+              aria-label={closeLabel}
+              className="shrink-0 mt-1 flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-gray-400 transition hover:border-white/20 hover:text-white"
+            >
+              <FiX size={14} />
+            </button>
+          </div>
+
+          {/* Description */}
+          <p className="mb-5 text-sm leading-relaxed text-gray-400">{project.description[loc]}</p>
+
+          {/* Results grid */}
+          <div className="mb-5">
+            <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-600">{resultsLabel}</div>
+            <div className="flex flex-wrap gap-2">
+              {project.results.map((r, i) => (
+                <span
+                  key={i}
+                  className="rounded-full px-3 py-1.5 text-[11px] font-bold"
+                  style={{ background: `${project.accent}14`, border: `1px solid ${project.accent}30`, color: project.accent }}
+                >
+                  {r[loc]}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Stack */}
+          <div className="mb-6">
+            <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-gray-600">{stackLabel}</div>
+            <div className="flex flex-wrap gap-1.5">
+              {project.stack.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-md border border-white/[0.08] bg-white/[0.05] px-2.5 py-1 text-[11px] font-medium text-gray-400"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <Link
+            href={devisHref}
+            onClick={onClose}
+            className="group flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-bold text-white transition hover:gap-3"
+            style={{ background: `linear-gradient(135deg, ${project.accent}cc, ${project.accent}88)` }}
+          >
+            {ctaLabel}
+            <FiArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 /* ─── Section ────────────────────────────────────────────────────────────── */
 
 export function PortfolioSection() {
   const { locale, prefix } = useLocale();
   const [active, setActive] = useState<Category>("all");
+  const [selected, setSelected] = useState<Project | null>(null);
   const loc = locale === "de" ? "de" : locale === "en" ? "en" : "fr";
 
   const copy =
@@ -405,154 +576,168 @@ export function PortfolioSection() {
   const viewLabel = locale === "en" ? "View project" : locale === "de" ? "Ansehen" : "Voir le projet";
 
   return (
-    <section className="bg-[#050509] py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <>
+      <section className="bg-[#050509] py-28">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
-            {copy.eyebrow}
-          </span>
-          <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            {copy.title}{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">{copy.title2}</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">{copy.sub}</p>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-center"
+          >
+            <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
+              {copy.eyebrow}
+            </span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+              {copy.title}{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">{copy.title2}</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">{copy.sub}</p>
+          </motion.div>
 
-        {/* Filter tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mb-10 flex flex-wrap justify-center gap-2"
-        >
-          {FILTERS.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setActive(f.key)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
-                active === f.key
-                  ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20"
-                  : "border border-white/10 bg-white/[0.03] text-gray-400 hover:border-white/20 hover:text-white"
-              }`}
-            >
-              {f[loc]}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Project grid */}
-        <motion.div layout className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => (
-              <motion.div
-                key={p.id}
-                layout
-                initial={{ opacity: 0, scale: 0.96, y: 12 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ delay: i * 0.07, duration: 0.35 }}
-                className="group relative overflow-hidden rounded-[20px] border border-white/[0.07] bg-[#0a0b0f] shadow-xl transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.14] hover:shadow-2xl"
-                style={{ boxShadow: `0 0 0 0 ${p.accent}00` }}
+          {/* Filter tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mb-10 flex flex-wrap justify-center gap-2"
+          >
+            {FILTERS.map((f) => (
+              <button
+                key={f.key}
+                onClick={() => setActive(f.key)}
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
+                  active === f.key
+                    ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20"
+                    : "border border-white/10 bg-white/[0.03] text-gray-400 hover:border-white/20 hover:text-white"
+                }`}
               >
-                {/* Inner glow on hover */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-[20px]"
-                  style={{ background: `radial-gradient(ellipse at 50% 0%, ${p.accent}10 0%, transparent 60%)` }}
-                />
+                {f[loc]}
+              </button>
+            ))}
+          </motion.div>
 
-                {/* Visual preview */}
-                <div className="relative h-[210px] overflow-hidden rounded-t-[19px] border-b border-white/[0.07]">
-                  {p.renderPreview(p.accent)}
-
-                  {/* Category chip */}
+          {/* Project grid */}
+          <motion.div layout className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((p, i) => (
+                <motion.div
+                  key={p.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ delay: i * 0.07, duration: 0.35 }}
+                  onClick={() => setSelected(p)}
+                  className="group relative cursor-pointer overflow-hidden rounded-[20px] border border-white/[0.07] bg-[#0a0b0f] shadow-xl transition-all duration-500 hover:-translate-y-1.5 hover:border-white/[0.14] hover:shadow-2xl"
+                >
+                  {/* Inner glow on hover */}
                   <div
-                    className="absolute left-3 top-[calc(100%-28px)] z-10 rounded-full px-2.5 py-1 text-[10px] font-semibold"
-                    style={{ background: `${p.accent}22`, border: `1px solid ${p.accent}35`, color: p.accent }}
-                  >
-                    {p.catLabel[loc]}
-                  </div>
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-[20px]"
+                    style={{ background: `radial-gradient(ellipse at 50% 0%, ${p.accent}10 0%, transparent 60%)` }}
+                  />
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100" style={{ background: "rgba(0,0,0,0.45)" }}>
+                  {/* Visual preview */}
+                  <div className="relative h-[210px] overflow-hidden rounded-t-[19px] border-b border-white/[0.07]">
+                    {p.renderPreview(p.accent)}
+
+                    {/* Category chip */}
                     <div
-                      className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
-                      style={{ background: `${p.accent}28`, border: `1px solid ${p.accent}55`, backdropFilter: "blur(8px)" }}
+                      className="absolute left-3 top-[calc(100%-28px)] z-10 rounded-full px-2.5 py-1 text-[10px] font-semibold"
+                      style={{ background: `${p.accent}22`, border: `1px solid ${p.accent}35`, color: p.accent }}
                     >
-                      <FiArrowUpRight size={14} />
-                      {viewLabel}
+                      {p.catLabel[loc]}
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100" style={{ background: "rgba(0,0,0,0.45)" }}>
+                      <div
+                        className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+                        style={{ background: `${p.accent}28`, border: `1px solid ${p.accent}55`, backdropFilter: "blur(8px)" }}
+                      >
+                        <FiArrowUpRight size={14} />
+                        {viewLabel}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Card content */}
-                <div className="p-5">
-                  <h3 className="mb-0.5 text-[15px] font-bold text-white">
-                    {p.title[loc]}
-                  </h3>
-                  <p className="mb-4 text-[11px] text-gray-500">{p.client[loc]}</p>
+                  {/* Card content */}
+                  <div className="p-5">
+                    <h3 className="mb-0.5 text-[15px] font-bold text-white">
+                      {p.title[loc]}
+                    </h3>
+                    <p className="mb-4 text-[11px] text-gray-500">{p.client[loc]}</p>
 
-                  {/* Result metrics as inline pills */}
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    {p.results.map((r, j) => (
-                      <span
-                        key={j}
-                        className="rounded-full px-2.5 py-1 text-[10px] font-semibold"
-                        style={{ background: `${p.accent}14`, border: `1px solid ${p.accent}28`, color: p.accent }}
-                      >
-                        {r[loc]}
-                      </span>
-                    ))}
+                    {/* Result metrics as inline pills */}
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {p.results.map((r, j) => (
+                        <span
+                          key={j}
+                          className="rounded-full px-2.5 py-1 text-[10px] font-semibold"
+                          style={{ background: `${p.accent}14`, border: `1px solid ${p.accent}28`, color: p.accent }}
+                        >
+                          {r[loc]}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Stack */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.stack.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md border border-white/[0.07] bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium text-gray-500"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Stack */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {p.stack.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-white/[0.07] bg-white/[0.04] px-2 py-0.5 text-[10px] font-medium text-gray-500"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                  {/* Bottom accent line */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    style={{ background: `linear-gradient(90deg, transparent, ${p.accent}60, transparent)` }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
 
-                {/* Bottom accent line */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ background: `linear-gradient(90deg, transparent, ${p.accent}60, transparent)` }}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-14 text-center"
-        >
-          <Link
-            href={withPrefix("/devis")}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:gap-3 hover:shadow-blue-500/40"
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mt-14 text-center"
           >
-            {copy.cta}
-            <FiArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </motion.div>
+            <Link
+              href={withPrefix("/devis")}
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:gap-3 hover:shadow-blue-500/40"
+            >
+              {copy.cta}
+              <FiArrowUpRight size={15} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </motion.div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* Project detail modal */}
+      <AnimatePresence>
+        {selected && (
+          <ProjectModal
+            project={selected}
+            onClose={() => setSelected(null)}
+            locale={locale}
+            devisHref={withPrefix("/devis")}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
