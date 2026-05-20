@@ -304,6 +304,33 @@ export function LocalSeoDePageContent({ data }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Internal links */}
+      <section className="border-t border-white/6 bg-gray-950 py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <p className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-gray-600">Verwandte Leistungen</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { label: "KI-Agentur Schweiz", href: "/de/agence-ia" },
+              { label: "Website-Redesign", href: "/de/refonte-site-web" },
+              { label: "Web-App Entwicklung", href: "/de/application-web-sur-mesure" },
+              { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
+              { label: "Webentwicklung Zürich", href: "/de/webentwicklung-zuerich" },
+              { label: "KI-Agentur Zürich", href: "/de/ki-agentur-zuerich" },
+              { label: "Webentwicklung München", href: "/de/webentwicklung-muenchen" },
+              { label: "KI-Agentur Berlin", href: "/de/ki-agentur-berlin" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full border border-white/8 bg-gray-900 px-4 py-2 text-xs text-gray-400 transition hover:border-blue-500/40 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

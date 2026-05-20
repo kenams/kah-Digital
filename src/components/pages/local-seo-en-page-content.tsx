@@ -120,6 +120,40 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
       { q: "What does it cost?", a: "AI chatbot add-on from $349. Full AI system from $890 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
     ],
   },
+  "web-development-geneva": {
+    city: "Geneva",
+    country: "Switzerland",
+    region: "Geneva",
+    slug: "web-development-geneva",
+    headline: "Web Development Geneva",
+    subline: "Premium websites for Geneva businesses — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 14 days.",
+    intro: "KAH Digital builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Based in Lausanne, 40 minutes from Geneva. No lock-in, 100% yours.",
+    sectors: ["Finance & Private Banking", "Consulting & Advisory", "NGOs & International Organisations", "Hospitality & Luxury", "Healthcare & MedTech", "SaaS & Tech Startups"],
+    proofLine: "Reply within 24h · Fixed price · No lock-in",
+    faq: [
+      { q: "Do you work with Geneva-based clients?", a: "Yes, we're based in Lausanne — 40 minutes from Geneva. We meet in person or work fully remote, whichever suits you. No difference in price or quality." },
+      { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 149 (landing page, 5 days). Business CHF 420 (up to 6 pages, SEO, 14 days). Premium AI CHF 950 (full AI system). Fixed price, no hidden costs." },
+      { q: "Can you build multilingual sites for Geneva's international audience?", a: "Yes — French, English, German, and more. hreflang, clean URL structure, SEO per language. Standard on Business and above." },
+      { q: "Do you work with NGOs and international organisations?", a: "Yes. We have experience with compliance-sensitive sectors and can adapt our process to your procurement constraints." },
+    ],
+  },
+  "web-development-lausanne": {
+    city: "Lausanne",
+    country: "Switzerland",
+    region: "Vaud",
+    slug: "web-development-lausanne",
+    headline: "Web Development Lausanne",
+    subline: "Premium websites for Lausanne & the Lake Geneva region — Next.js 15, fast delivery, fixed price. Based in Lausanne.",
+    intro: "KAH Digital is based in Lausanne — your local studio for high-performance websites and custom web applications. Sport tech, health, e-commerce, consulting, startups — we build fast, scalable, and visually premium products on Next.js 15. 100% code ownership, no lock-in, transparent fixed prices.",
+    sectors: ["Sport Tech & Olympic Ecosystem", "Health & MedTech", "Education & EdTech", "Consulting & Agencies", "E-Commerce & D2C", "SaaS & Tech Startups"],
+    proofLine: "Based in Lausanne · Reply within 24h · Fixed price",
+    faq: [
+      { q: "Are you based in Lausanne?", a: "Yes, KAH Digital is based in Lausanne. You can meet us in person, or we work fully remote — same quality, same price." },
+      { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 149 (landing page, 5 days). Business from CHF 420 (6 pages, SEO, 14 days). Premium AI from CHF 950 (full system with AI chatbot). Fixed price, no surprises." },
+      { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
+      { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
+    ],
+  },
 };
 
 type Props = { data: EnCity };
@@ -301,6 +335,34 @@ export function LocalSeoEnPageContent({ data }: Props) {
               <FiMessageCircle size={15} />
               WhatsApp direct
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal links */}
+      <section className="border-t border-white/6 bg-gray-950 py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <p className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-gray-600">Related services</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { label: "AI Agency Switzerland", href: "/en/agence-ia" },
+              { label: "Website Redesign", href: "/en/refonte-site-web" },
+              { label: "Custom Web App", href: "/en/application-web-sur-mesure" },
+              { label: "AI Automation", href: "/en/automatisation-ia-entreprise" },
+              { label: "Web Development London", href: "/en/web-development-london" },
+              { label: "Web Development New York", href: "/en/web-development-new-york" },
+              { label: "Web Development Dubai", href: "/en/web-development-dubai" },
+              { label: "AI Agency London", href: "/en/ai-agency-london" },
+              { label: "AI Agency Dubai", href: "/en/ai-agency-dubai" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full border border-white/8 bg-gray-900 px-4 py-2 text-xs text-gray-400 transition hover:border-blue-500/40 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

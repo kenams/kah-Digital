@@ -84,6 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/automatisation-ia-entreprise",
     "/en/agence-ia",
     "/en/projets",
+    "/en/site-web-geneve",
+    "/en/site-web-lausanne",
     // EN city pages — SEO international
     "/en/ai-agency-london",
     "/en/web-development-london",
@@ -91,6 +93,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/web-development-new-york",
     "/en/ai-agency-dubai",
     "/en/web-development-dubai",
+    // EN blog
+    "/en/blog/how-to-choose-ai-agency",
+    "/en/blog/website-redesign-roi",
+    "/en/blog/nextjs-vs-wordpress",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
@@ -115,6 +121,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/de/ki-agentur-muenchen",
     "/de/webentwicklung-berlin",
     "/de/ki-agentur-berlin",
+    // DE blog
+    "/de/blog/ki-automatisierung-kmu",
+    "/de/blog/website-kosten-2025",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
