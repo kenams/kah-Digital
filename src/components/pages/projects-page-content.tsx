@@ -123,7 +123,6 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
               src={project.mockups.primary}
               alt={`${project.name} — aperçu du site`}
               fill
-              unoptimized
               priority
               sizes="(min-width: 1024px) 90vw, 100vw"
               className="object-cover object-top transition duration-700 group-hover:scale-[1.02]"
