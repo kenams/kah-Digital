@@ -69,10 +69,10 @@ export function SiteFooter() {
         title: "Services",
         links: [
           { label: "Site web professionnel", href: "/site-web-entreprise" },
-          { label: "Landing page sur mesure", href: "/devis" },
+          { label: "Refonte site web", href: "/refonte-site-web" },
           { label: "Application web", href: "/application-web-sur-mesure" },
           { label: "Automatisation IA", href: "/automatisation-ia-entreprise" },
-          { label: "SaaS sur mesure", href: "/devis" },
+          { label: "Agence IA", href: "/agence-ia" },
         ],
       },
       zones: {
@@ -115,11 +115,11 @@ export function SiteFooter() {
       services: {
         title: "Services",
         links: [
-          { label: "Professional website", href: "/en/site-web-entreprise" },
-          { label: "Custom landing page", href: "/en/devis" },
+          { label: "Business website", href: "/en/site-web-entreprise" },
+          { label: "Website redesign", href: "/en/refonte-site-web" },
           { label: "Web application", href: "/en/application-web-sur-mesure" },
           { label: "AI automation", href: "/en/automatisation-ia-entreprise" },
-          { label: "Custom SaaS", href: "/en/devis" },
+          { label: "AI Agency", href: "/en/agence-ia" },
         ],
       },
       zones: {
@@ -161,11 +161,11 @@ export function SiteFooter() {
       services: {
         title: "Leistungen",
         links: [
-          { label: "Professionelle Website", href: "/de/devis" },
-          { label: "Individuelle Landing Page", href: "/de/devis" },
-          { label: "Web-App", href: "/de/devis" },
-          { label: "KI-Automatisierung", href: "/de/devis" },
-          { label: "Individuelle SaaS", href: "/de/devis" },
+          { label: "Business-Website", href: "/de/site-web-entreprise" },
+          { label: "Website-Refonte", href: "/de/refonte-site-web" },
+          { label: "Web-App", href: "/de/application-web-sur-mesure" },
+          { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
+          { label: "KI-Agentur", href: "/de/agence-ia" },
         ],
       },
       zones: {
