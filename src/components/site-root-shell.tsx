@@ -8,6 +8,7 @@ import { SiteProviders } from "@/components/site-providers";
 import ExitIntentPopup from "@/components/exit-intent-popup";
 import { UrgencyBanner } from "@/components/urgency-banner";
 import { CursorGlow } from "@/components/cursor-glow";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { FloatingCTA } from "@/components/floating-cta";
 import { SocialProofToast } from "@/components/social-proof-toast";
 import { GA_MEASUREMENT_ID, structuredData } from "@/lib/shared-metadata";
@@ -65,6 +66,7 @@ gtag('config', '${GA_MEASUREMENT_ID}');`}
         ) : null}
         <SiteProviders>
           <CursorGlow />
+          <ScrollProgress />
           <UrgencyBanner />
           <SocialProofToast />
           <ScrollToTop />
