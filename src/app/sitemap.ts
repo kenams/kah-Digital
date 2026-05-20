@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/automatisation-ia-entreprise",
     "/automatisation-ia-suisse",
     "/application-web-suisse",
+    "/agence-ia",
     "/projets",
     "/lexique",
     // Pages SEO locales — priorité haute
@@ -75,22 +76,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routesEn = [
     "/en",
     "/en/services",
-    "/en/services/site-web",
-    "/en/services/applications",
-    "/en/services/glpi",
     "/en/offres",
     "/en/contact",
     "/en/site-web-entreprise",
     "/en/refonte-site-web",
     "/en/application-web-sur-mesure",
     "/en/automatisation-ia-entreprise",
+    "/en/agence-ia",
     "/en/projets",
-    "/en/lexique",
+    // EN city pages — SEO international
+    "/en/ai-agency-london",
+    "/en/web-development-london",
+    "/en/ai-agency-new-york",
+    "/en/web-development-new-york",
+    "/en/ai-agency-dubai",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: path === "/en" ? 0.9 : 0.6,
+    changeFrequency: (path.includes("agency") || path.includes("development")) ? ("weekly" as const) : ("monthly" as const),
+    priority: path === "/en" ? 0.9 : path.includes("agency") || path.includes("development") ? 0.85 : 0.7,
+  }));
+
+  const routesDe = [
+    "/de",
+    "/de/offres",
+    "/de/contact",
+    "/de/devis",
+    "/de/site-web-entreprise",
+    "/de/refonte-site-web",
+    "/de/application-web-sur-mesure",
+    "/de/automatisation-ia-entreprise",
+    "/de/agence-ia",
+    // DE city pages — SEO DACH + international
+    "/de/webentwicklung-zuerich",
+    "/de/ki-agentur-zuerich",
+    "/de/webentwicklung-muenchen",
+    "/de/ki-agentur-muenchen",
+    "/de/webentwicklung-berlin",
+    "/de/ki-agentur-berlin",
+  ].map((path) => ({
+    url: `${SITE_URL}${path}`,
+    lastModified: now,
+    changeFrequency: (path.includes("agentur") || path.includes("entwicklung")) ? ("weekly" as const) : ("monthly" as const),
+    priority: path === "/de" ? 0.9 : path.includes("agentur") || path.includes("entwicklung") ? 0.85 : 0.7,
   }));
 
   const projectRoutes = portfolioProjects.filter((p) => p.slug !== "kah-prod").map((p) => ({
@@ -107,5 +135,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...routes, ...routesEn, ...projectRoutes, ...projectRoutesEn];
+  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn];
 }

@@ -86,6 +86,23 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
       { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, funktionale V1 in 4 Wochen. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
     ],
   },
+  "ki-agentur-berlin": {
+    city: "Berlin",
+    country: "Deutschland",
+    region: "Berlin",
+    slug: "ki-agentur-berlin",
+    headline: "KI-Agentur Berlin",
+    subline: "GPT-4 Agenten & KI-Automatisierung für Berliner Startups und Scale-ups. Deployment in 10 Tagen.",
+    intro: "KAH Digital baut KI-Automatisierungssysteme für Berliner Unternehmen: Lead-Qualifizierung, 24/7-Kundensupport, CRM-Integration, individuelle GPT-4-Agenten. Berlin ist Europas Startup-Hauptstadt — wir liefern das passende KI-Niveau. Remote aus der Schweiz, ohne Berliner Agenturpreise.",
+    sectors: ["Tech-Startups & Venture-backed", "E-Commerce & D2C Brands", "Agenturen & Kreativwirtschaft", "FinTech & InsurTech", "B2B SaaS", "NGOs & Non-profit"],
+    proofLine: "Kostenloses KI-Audit · Antwort in 24h · ROI in 30 Tagen",
+    faq: [
+      { q: "Welche KI-Anwendungsfälle eignen sich für Berliner Startups?", a: "Lead-Scoring und Qualifizierung, 24/7 Kundensupport mit sauberem Escalation-Flow, E-Mail-Drip-Automatisierung, CRM-Enrichment, Onboarding-Assistenten. Wir identifizieren Ihre Top-3-ROI-Automationen kostenlos." },
+      { q: "Wie schnell ist die KI live?", a: "10 Tage Deployment. Erste messbare Ergebnisse an T+30. Kein monatelanger Workshop — direkt starten, bauen, testen, live gehen." },
+      { q: "Kann eure KI in unser bestehendes Tech-Stack integriert werden?", a: "Ja, wir integrieren in Notion, Linear, Slack, HubSpot, Intercom, Stripe und praktisch jedes Tool via API, Zapier, Make oder n8n." },
+      { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €890 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
+    ],
+  },
   "ki-agentur-muenchen": {
     city: "München",
     country: "Deutschland",
