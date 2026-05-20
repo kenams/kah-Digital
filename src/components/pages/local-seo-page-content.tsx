@@ -22,40 +22,42 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-lausanne": {
     city: "Lausanne", country: "Suisse", region: "Vaud", locale: "fr", slug: "site-web-lausanne",
     headline: "Création de site web à Lausanne",
-    subline: "Studio digital basé à Lausanne · sites, apps et solutions digitales pour indépendants, PME et startups vaudoises.",
-    intro: "KAH-Digital est un studio digital installé à Lausanne. Nous créons des sites web professionnels, des applications métier et des automatisations IA pour les entreprises et particuliers de la région lémanique, de Nyon à Montreux, de Lausanne à Fribourg.",
-    sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Artisans & indépendants", "Startups & PME vaudoises", "Photographes & créatifs"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    subline: "Studio basé à Lausanne · Next.js 15, Lighthouse 95+, SEO technique. Dès CHF 149, livré en 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital est basé à Lausanne. Nous créons des sites web haute-performance sur Next.js 15 pour les PME, indépendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intégré. Starter dès CHF 149 · Business dès CHF 420 · Système IA complet dès CHF 950. Devis gratuit en 24h, sans engagement.",
+    sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Médecins & professions libérales"],
+    proofLine: "Studio à Lausanne · Réponse 24h · Prix fixe CHF 149 · Sans engagement",
     faq: [
-      { q: "Travaillez-vous uniquement à Lausanne ?", a: "Non, nous travaillons à distance pour toute la Suisse romande, la France et l'international. Lausanne est notre base, mais le projet se gère entièrement en ligne." },
-      { q: "Quels sont vos délais pour un site à Lausanne ?", a: "Un site vitrine simple : 2 à 3 semaines. Un site corporate complet : 3 à 5 semaines. Une app sur mesure : 6 à 10 semaines selon le scope." },
-      { q: "Faites-vous des réunions en personne ?", a: "Oui, si le projet le nécessite, nous pouvons nous rencontrer à Lausanne ou dans la région. La plupart du cadrage se fait en visioconférence pour gagner du temps." },
+      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 420, livré en 14 jours. Système complet avec IA dès CHF 950. Prix fixe garanti avant de commencer, zéro surprise." },
+      { q: "Vous êtes vraiment basés à Lausanne ?", a: "Oui, KAH Digital est basé à Lausanne. Vous pouvez nous rencontrer en personne ou travailler entièrement à distance — même qualité, même prix." },
+      { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
+      { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui — SEO technique complet, données structurées, Core Web Vitals 95+, URLs propres, sitemap. Inclus dès le plan Business. Optimisé pour Google CH." },
     ],
   },
   "site-web-geneve": {
     city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "site-web-geneve",
     headline: "Création de site web à Genève",
-    subline: "Studio digital proche de Genève · sites professionnels, apps et solutions digitales pour entreprises et particuliers genevois.",
-    intro: "KAH-Digital accompagne les entreprises et indépendants de la région genevoise dans leur présence digitale. Cabinets d'avocats, fiduciaires, restaurants, coachs, artisans : nous créons des sites web qui représentent correctement votre activité et génèrent des contacts.",
-    sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "Hôtels & restauration", "ONG & associations", "Startups Geneva Lake", "Médecins & thérapeutes"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    subline: "Studio romand proche de Genève · Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 149, 14 jours. Prix fixe.",
+    intro: "KAH Digital accompagne les entreprises genevaises dans leur présence digitale : cabinets d'avocats, fiduciaires, ONG, hôtels, startups, médecins. Sites web haute-performance en français, anglais et allemand. Basé à Lausanne, à 45 min de Genève. Devis gratuit sous 24h, prix fixe, code 100% à vous.",
+    sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hôtels & restauration de luxe", "Startups Geneva Lake", "Médecins & cliniques"],
+    proofLine: "À 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 149 · Réponse 24h",
     faq: [
-      { q: "Êtes-vous basés à Genève ?", a: "Notre studio est à Lausanne, à 45 min de Genève. Nous travaillons régulièrement avec des clients genevois, tout se gère en ligne ou en déplacement si besoin." },
-      { q: "Travaillez-vous en anglais pour des clients genevois ?", a: "Oui, nous travaillons en français, anglais et allemand. Beaucoup de nos clients genevois sont internationaux ou bilingues." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 420. Système IA complet dès CHF 950. Prix fixe confirmé avant tout démarrage." },
+      { q: "Êtes-vous basés à Genève ?", a: "Notre studio est à Lausanne, à 45 min de Genève. Nous rencontrons nos clients genevois en personne si besoin ou travaillons entièrement à distance — même qualité, même prix." },
+      { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dès le plan Business." },
+      { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui. Nous avons l'expérience des secteurs sensibles aux conformités et pouvons adapter notre process à vos contraintes de procurement." },
     ],
   },
   "site-web-fribourg": {
     city: "Fribourg", country: "Suisse", region: "Fribourg", locale: "fr", slug: "site-web-fribourg",
     headline: "Création de site web à Fribourg",
-    subline: "Studio digital romand · sites web professionnels et applications pour entreprises et indépendants de Fribourg.",
-    intro: "KAH-Digital crée des sites web et des solutions digitales pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, notre studio comprend les besoins spécifiques du marché fribourgeois.",
-    sectors: ["Artisans & PME", "Restaurants & cafés", "Coachs & formateurs", "Associations & institutions", "Agriculture & terroir", "Professions libérales"],
-    proofLine: "Bilingue FR/DE · Devis personnalisé · Sans engagement",
+    subline: "Studio romand bilingue FR/DE · Next.js 15, SEO technique, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
+    intro: "KAH Digital crée des sites web professionnels pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, nous comprenons les besoins spécifiques du marché fribourgeois. Sites haute-performance, SEO local, design premium. Starter dès CHF 149 · Business dès CHF 420 · Devis gratuit en 24h.",
+    sectors: ["Artisans & PME fribourgeois", "Restaurants & cafés", "Coachs & formateurs", "Agriculture & terroir", "Associations & institutions", "Professions libérales"],
+    proofLine: "Bilingue FR/DE · Prix fixe CHF 149 · Réponse 24h · Sans engagement",
     faq: [
-      { q: "Travaillez-vous en allemand pour les clients fribourgeoises ?", a: "Oui, KAH-Digital produit des sites en français, allemand et anglais. Idéal pour le marché bilingue fribourgeois." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Peut-on se rencontrer à Fribourg ?", a: "Nous pouvons nous déplacer à Fribourg pour les projets importants. La plupart des échanges se font en visioconférence." },
+      { q: "Combien coûte un site web professionnel à Fribourg ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, zéro surprise." },
+      { q: "Faites-vous des sites bilingues français-allemand pour le marché fribourgeois ?", a: "Oui — sites FR/DE parfaitement bilingues avec hreflang correct, URLs propres par langue, SEO optimisé dans les deux langues. Idéal pour le marché fribourgeois." },
+      { q: "Peut-on se rencontrer à Fribourg ?", a: "Nous pouvons nous déplacer à Fribourg pour les projets importants. La plupart des échanges se font en visioconférence depuis Lausanne." },
     ],
   },
   "agence-web-paris": {
@@ -361,81 +363,132 @@ export const CITY_PAGES: Record<string, CityPageData> = {
 
 type Props = { data: CityPageData };
 
+const SWISS_CITIES = ["Lausanne", "Genève", "Fribourg", "Zurich", "Bâle", "Berne", "Lugano"];
+const SWISS_LINKS = [
+  { label: "Site web Lausanne", href: "/site-web-lausanne" },
+  { label: "Site web Genève", href: "/site-web-geneve" },
+  { label: "Site web Fribourg", href: "/site-web-fribourg" },
+  { label: "Agence web Zurich", href: "/agence-web-zurich" },
+  { label: "Agence web Bâle", href: "/agence-web-basel" },
+  { label: "Agence web Berne", href: "/agence-web-berne" },
+  { label: "Agence web Lugano", href: "/agence-web-lugano" },
+];
+
 export function LocalSeoPageContent({ data }: Props) {
   const devisUrl = `/devis?city=${encodeURIComponent(data.city)}&ref=local-seo`;
+  const isSwiss = SWISS_CITIES.includes(data.city);
+  const currency = isSwiss ? "CHF" : "€";
+  const priceStarter = isSwiss ? "CHF 149" : "149 €";
+  const priceBusiness = isSwiss ? "CHF 420" : "390 €";
+  const priceAI = isSwiss ? "CHF 950" : "890 €";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "KAH-Digital",
-    "description": `Studio digital · création de sites web, applications et solutions digitales à ${data.city}`,
-    "url": `https://kah-digital.ch/${data.slug}`,
-    "telephone": "+33759558414",
-    "email": "kahdigital42@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Lausanne",
-      "addressCountry": "CH",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "KAH Digital",
+      "description": `Studio digital · création de sites web, applications et solutions IA à ${data.city}`,
+      "url": `https://kah-digital.ch/${data.slug}`,
+      "telephone": "+33759558414",
+      "email": "kahdigital42@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressCountry": "CH" },
+      "areaServed": { "@type": "City", "name": data.city },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "sameAs": ["https://www.linkedin.com/company/kah-digital-95128b408", "https://x.com/DigitalKah42"],
     },
-    "areaServed": { "@type": "City", "name": data.city },
-        "openingHours": "Mo-Fr 09:00-18:00",
-    "sameAs": ["https://www.linkedin.com/company/kah-digital", "https://github.com/kenams"],
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": data.faq.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a },
+      })),
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-[#050509] text-white">
       <Script id={`ld-${data.slug}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gray-950 pt-24 pb-16">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
-        <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-blue-600/15 blur-3xl" />
+      <section className="relative overflow-hidden pb-16 pt-24">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-600/10 blur-[130px]" />
+        <div className="absolute -top-20 right-0 h-[300px] w-[300px] rounded-full bg-violet-600/8 blur-[100px]" />
+
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-300">
+          {isSwiss && (
+            <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Studio basé en Suisse · Places disponibles cette semaine
+            </div>
+          )}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">
             <FiMapPin size={13} className="text-blue-400" />
             {data.city}, {data.country}
           </div>
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             {data.headline}
           </h1>
-          <p className="mb-8 text-lg text-gray-400">{data.subline}</p>
+          <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">{data.subline}</p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={devisUrl}
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:gap-3 hover:shadow-blue-500/40"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg shadow-blue-500/30 transition hover:gap-3 hover:shadow-blue-500/45"
             >
-              Devis personnalisé en 24h <FiArrowRight size={15} />
+              Devis gratuit en 24h <FiArrowRight size={15} />
             </Link>
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-semibold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
             >
               <FiMessageCircle size={15} />
               WhatsApp — réponse 2h
             </a>
           </div>
-          <p className="mt-5 text-sm text-gray-500">{data.proofLine}</p>
+          <p className="mt-5 text-sm text-gray-600">{data.proofLine}</p>
+        </div>
+      </section>
+
+      {/* Stats bar */}
+      <section className="border-y border-white/[0.06] bg-white/[0.015] py-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {[
+              { value: "120+", label: "Sites livrés" },
+              { value: `dès ${priceStarter}`, label: "Prix fixe garanti" },
+              { value: "5 jours", label: "Délai minimum" },
+              { value: "24h", label: "Réponse garantie" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="text-xl font-black text-white sm:text-2xl">{s.value}</div>
+                <div className="mt-1 text-xs text-gray-600">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="bg-gray-900/50 py-16">
+      <section className="py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <p className="text-lg leading-relaxed text-gray-300">{data.intro}</p>
         </div>
       </section>
 
       {/* Sectors */}
-      <section className="py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-8 text-center text-2xl font-extrabold tracking-tight text-white">
             Secteurs accompagnés à {data.city}
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {data.sectors.map((s) => (
-              <div key={s} className="flex items-center gap-2.5 rounded-xl border border-white/8 bg-gray-900 px-4 py-3">
-                <FiCheck size={14} className="shrink-0 text-blue-400" />
+              <div key={s} className="flex items-center gap-2.5 rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 transition hover:border-blue-500/25">
+                <FiCheck size={13} className="shrink-0 text-blue-400" />
                 <span className="text-sm text-gray-300">{s}</span>
               </div>
             ))}
@@ -444,19 +497,31 @@ export function LocalSeoPageContent({ data }: Props) {
       </section>
 
       {/* Why us */}
-      <section className="bg-gray-900/50 py-16">
+      <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Pourquoi KAH-Digital à {data.city} ?
+            Pourquoi KAH Digital à {data.city} ?
           </h2>
           <div className="grid gap-5 sm:grid-cols-3">
             {[
-              { icon: FiZap, title: "Exécution rapide", body: "Cadrage court, décisions claires. Pas d'aller-retours inutiles. Délai moyen : 2 à 6 semaines." },
-              { icon: FiClock, title: "Réponse 24h", body: "Première réponse le jour ouvrable suivant votre demande : devis, question ou brief." },
-              { icon: FiMapPin, title: "devis personnalisés", body: `Devis personnalisé pour une page simple. Chaque devis détaille le périmètre avant tout engagement.` },
+              {
+                icon: FiZap,
+                title: "Livré en 5 à 14 jours",
+                body: "Starter en 5 jours. Business en 14 jours. Brief court, décisions rapides, zéro aller-retour inutile. Pas 6 semaines.",
+              },
+              {
+                icon: FiClock,
+                title: "Réponse en 24h garantie",
+                body: "Première réponse le jour ouvrable suivant. Accès direct au fondateur — pas de chef de projet intermédiaire, pas de délai.",
+              },
+              {
+                icon: FiMapPin,
+                title: `Prix fixe dès ${priceStarter}`,
+                body: `Devis fixe avant de commencer. Zéro surprise, zéro coût caché. ${currency === "CHF" ? "Studio basé à Lausanne, à portée de main." : "Studio suisse, tarifs compétitifs."}`,
+              },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-white/8 bg-gray-900 p-6">
-                <item.icon size={20} className="mb-3 text-blue-400" />
+              <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 transition hover:border-blue-500/20">
+                <item.icon size={18} className="mb-3 text-blue-400" />
                 <h3 className="mb-2 font-bold text-white">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-400">{item.body}</p>
               </div>
@@ -466,34 +531,44 @@ export function LocalSeoPageContent({ data }: Props) {
       </section>
 
       {/* Pricing */}
-      <section className="py-16">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-          <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-white">Prestations pour {data.city}</h2>
-          <p className="mb-8 text-gray-400">Chaque projet est cadré selon le besoin réel, les priorités et le niveau d'accompagnement souhaité.</p>
-          <div className="grid gap-4 sm:grid-cols-2">
+      <section className="border-t border-white/[0.06] py-16">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-white">Tarifs pour {data.city}</h2>
+          <p className="mb-8 text-gray-500">Prix fixes et transparents. Zéro abonnement, zéro lock-in, 100% à vous à la livraison.</p>
+          <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Projet simple", price: "Présence claire et crédible", delay: "Périmètre léger" },
-              { label: "Projet évolutif", price: "Pages, SEO et contenus ajustés", delay: "Périmètre cadré" },
-              { label: "Projet premium", price: "Image, conversion et accompagnement", delay: "Approche complète" },
-              { label: "Projet sur mesure", price: "Fonctionnalités et intégrations métier", delay: "Après cadrage" },
+              { label: "Starter", price: priceStarter, sub: `Landing page · 5 jours`, highlight: false },
+              { label: "Business", price: priceBusiness, sub: `Jusqu'à 6 pages · SEO · 14 jours`, highlight: true },
+              { label: "Premium IA", price: priceAI, sub: `Système complet + IA · 28 jours`, highlight: false },
             ].map((item) => (
-              <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">
-                <div className="mb-1 text-sm text-gray-500">{item.label}</div>
-                <div className="text-xl font-bold text-white">{item.price}</div>
-                <div className="mt-1 text-xs text-gray-600">{item.delay}</div>
+              <div
+                key={item.label}
+                className={`rounded-xl p-5 text-left transition ${item.highlight
+                  ? "border border-blue-500/30 bg-[linear-gradient(135deg,rgba(59,130,246,0.08),rgba(124,58,237,0.06))] shadow-lg shadow-blue-500/10"
+                  : "border border-white/[0.07] bg-white/[0.025]"}`}
+              >
+                <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-gray-600">{item.label}</div>
+                <div className="text-2xl font-black text-white">{item.price}</div>
+                <div className="mt-1 text-xs text-gray-500">{item.sub}</div>
+                {item.highlight && (
+                  <div className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-blue-400">Le plus populaire</div>
+                )}
               </div>
             ))}
           </div>
+          <p className="mt-5 text-xs text-gray-700">
+            Options disponibles : page supplémentaire, SEO avancé, logo, chatbot IA, maintenance mensuelle.
+          </p>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-gray-900/50 py-16">
+      <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="mb-8 text-2xl font-extrabold tracking-tight text-white text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
+          <h2 className="mb-8 text-center text-2xl font-extrabold tracking-tight text-white">Questions fréquentes</h2>
+          <div className="space-y-3">
             {data.faq.map((item) => (
-              <div key={item.q} className="rounded-xl border border-white/8 bg-gray-900 p-5">
+              <div key={item.q} className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-5">
                 <h3 className="mb-2 font-semibold text-white">{item.q}</h3>
                 <p className="text-sm leading-relaxed text-gray-400">{item.a}</p>
               </div>
@@ -502,34 +577,38 @@ export function LocalSeoPageContent({ data }: Props) {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 text-center">
+      {/* CTA final */}
+      <section className="border-t border-white/[0.06] py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
-          <div className="mb-8 mx-auto max-w-sm rounded-2xl border border-white/8 bg-gray-900/60 p-5">
-            <div className="flex gap-0.5 justify-center mb-2">
+          <div className="mx-auto mb-8 max-w-sm rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+            <div className="mb-2 flex justify-center gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" fill="#fbbf24" className="h-3.5 w-3.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg key={i} viewBox="0 0 24 24" fill="#fbbf24" className="h-3.5 w-3.5">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
               ))}
             </div>
-            <p className="text-sm italic text-gray-300">"Depuis la refonte, je reçois 3 à 4 demandes par semaine. ROI dès le premier mois."</p>
+            <p className="text-sm italic text-gray-300">
+              &ldquo;Depuis la refonte, je reçois 3 à 4 demandes qualifiées par semaine. ROI dès le premier mois.&rdquo;
+            </p>
             <p className="mt-2 text-xs text-gray-600">M.L. — Avocate, Lausanne</p>
           </div>
-          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">
-            Votre projet à {data.city} : on en parle ?
+          <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">
+            Votre projet à {data.city} — on en parle ?
           </h2>
-          <p className="mb-8 text-gray-400">Devis personnalisé · Réponse sous 24h · Sans engagement</p>
+          <p className="mb-8 text-gray-500">Devis gratuit · Réponse sous 24h · Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href={devisUrl}
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-10 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40"
             >
-              Demander mon devis personnalisé <FiArrowRight size={15} />
+              Demander mon devis gratuit <FiArrowRight size={15} />
             </Link>
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-semibold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#25D366]/10 px-8 py-4 font-semibold text-[#25D366] transition hover:bg-[#25D366] hover:text-white"
             >
               <FiMessageCircle size={15} />
               WhatsApp direct
@@ -538,22 +617,42 @@ export function LocalSeoPageContent({ data }: Props) {
         </div>
       </section>
 
+      {/* Internal links Suisse */}
+      {isSwiss && (
+        <section className="border-t border-white/[0.05] bg-[#050509] py-10">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-widest text-gray-700">Autres villes suisses</p>
+            <div className="flex flex-wrap justify-center gap-2.5">
+              {SWISS_LINKS.filter((l) => !l.href.includes(data.slug)).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border border-white/[0.07] bg-white/[0.025] px-4 py-1.5 text-xs text-gray-500 transition hover:border-blue-500/30 hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Sticky mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex gap-2 border-t border-white/10 bg-gray-950/95 px-4 py-3 backdrop-blur sm:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex gap-2 border-t border-white/[0.08] bg-[#050509]/95 px-4 py-3 backdrop-blur-sm sm:hidden">
         <Link
           href={devisUrl}
           className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/25"
         >
-          Devis personnalisé <FiArrowRight size={13} />
+          Devis gratuit <FiArrowRight size={13} />
         </Link>
         <a
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-white"
+          className="flex items-center justify-center gap-1.5 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-md"
         >
           <FiMessageCircle size={14} />
-          WhatsApp
+          WA
         </a>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
-import { FiArrowUpRight, FiMessageSquare, FiRotateCcw, FiSend } from "react-icons/fi";
+import { FiArrowUpRight, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
 import { withLocalePrefix } from "@/lib/locales";
@@ -37,145 +37,145 @@ const ASSISTANT_SESSION_TTL_MS = 60 * 60 * 1000;
 
 const widgetCopy = {
   fr: {
-    button: "Assistant projet & support",
-    title: "Assistant projet & support",
-    subtitle: "Orientation, cadrage, devis personnalisé et reprise humaine si nécessaire.",
-    introTitle: "Avant de commencer",
-    introBody: "Prénom, nom et email suffisent pour démarrer. Tu peux compléter les autres infos en cours de conversation.",
+    button: "Parler à Kayla",
+    title: "Kayla · KAH Digital",
+    subtitle: "Devis en 24h · Projet · Support",
+    introTitle: "Juste quelques infos",
+    introBody: "Prénom, nom et email pour démarrer. Kayla s'occupe du reste — c'est rapide.",
     firstName: "Prénom *",
     lastName: "Nom *",
     phone: "Téléphone (optionnel)",
     company: "Société (optionnel)",
-    firstNamePlaceholder: "Ex : Alex",
-    lastNamePlaceholder: "Ex : Martin",
-    phonePlaceholder: "Ex : +41 79 000 00 00",
-    companyPlaceholder: "Ex : Studio Nova",
-    startChat: "Commencer le chat",
-    identityRequired: "Ajoute ton prénom, ton nom et ton email pour commencer.",
-    welcome: "Bonjour ! Je suis Kah, conseiller KAH-Digital. Décris ton besoin, même s'il n'est pas encore clair : je t'aide à cadrer le bon périmètre pour un devis personnalisé.",
-    suggestions: ["Obtenir un devis adapté", "Je veux créer une app", "Refaire mon site", "Automatisation IA"],
-    placeholder: "Pose ta question ou décris ton projet...",
+    firstNamePlaceholder: "Prénom",
+    lastNamePlaceholder: "Nom",
+    phonePlaceholder: "+41 79 000 00 00",
+    companyPlaceholder: "Nom de ta société",
+    startChat: "Démarrer la conversation",
+    identityRequired: "Prénom, nom et email requis pour commencer.",
+    welcome: "Bonjour ! 👋 Je suis Kayla, de KAH Digital. Dis-moi ce que tu veux créer ou améliorer — même si c'est encore flou, j'aide à y voir clair.",
+    suggestions: ["Je veux un site web", "Besoin d'une appli", "Refaire mon site", "Automatisation IA"],
+    placeholder: "Écris ton message...",
     send: "Envoyer",
     progress: "Progression",
-    summary: "Résumé structuré",
-    missing: "Informations manquantes",
-    budget: "Budget disponible",
-    days: "Jours estimés",
+    summary: "Résumé de ton projet",
+    missing: "Infos manquantes",
+    budget: "Budget estimé",
+    days: "Délai estimé",
     roles: "Ressources",
-    ctaEmail: "Recevoir le résumé",
-    ctaHuman: "Parler à un humain",
-    ctaGlpi: "Créer un ticket",
-    ctaQuote: "Demander un devis personnalisé",
-    ctaOffers: "Voir les approches",
-    purchaseHint: "Résumé prêt. Le plus propre est de transformer ça en demande de devis personnalisé ou de planifier un échange.",
-    consent: "J'accepte l'enregistrement de mon résumé pour être recontacté.",
+    ctaEmail: "Recevoir le résumé par email",
+    ctaHuman: "Parler à quelqu'un",
+    ctaGlpi: "Ouvrir un ticket",
+    ctaQuote: "Obtenir un devis personnalisé",
+    ctaOffers: "Voir les offres",
+    purchaseHint: "Projet bien cadré. Prochaine étape : devis personnalisé ou échange de 15 min.",
+    consent: "J'accepte que KAH Digital conserve ce résumé pour me recontacter.",
     email: "Email",
     name: "Nom",
     reset: "Nouveau chat",
-    resetConfirm: "Effacer l'historique de cette conversation ?",
-    retention: "Historique conservé 1h",
-    sessionExpired: "La conversation précédente a expiré après inactivité. Tu peux repartir de zéro.",
+    resetConfirm: "Effacer cette conversation ?",
+    retention: "Session conservée 1h",
+    sessionExpired: "Session expirée. Tu peux repartir à zéro.",
     close: "Fermer",
     open: "Ouvrir",
-    contact: "Contact KAH",
-    helper: "Une question à la fois. Périmètre clair. Suite simple.",
+    contact: "Contact direct",
+    helper: "Entrée pour envoyer",
     qualStarted: "Démarrage",
     qualCollecting: "Qualification",
-    qualReady: "Résumé en cours",
+    qualReady: "Résumé prêt",
   },
   en: {
-    button: "Project & support assistant",
-    title: "Project & support assistant",
-    subtitle: "Routing, scoping, custom quote and human handoff when needed.",
-    introTitle: "Before we start",
-    introBody: "First name, last name and email are enough to start. You can add other details during the conversation.",
+    button: "Chat with Kayla",
+    title: "Kayla · KAH Digital",
+    subtitle: "Quote in 24h · Project · Support",
+    introTitle: "Quick intro",
+    introBody: "First name, last name and email to start. Kayla handles the rest — it's fast.",
     firstName: "First name *",
     lastName: "Last name *",
     phone: "Phone (optional)",
     company: "Company (optional)",
-    firstNamePlaceholder: "e.g. Alex",
-    lastNamePlaceholder: "e.g. Martin",
-    phonePlaceholder: "e.g. +41 79 000 00 00",
-    companyPlaceholder: "e.g. Studio Nova",
-    startChat: "Start chat",
-    identityRequired: "Add your first name, last name and email to start.",
-    welcome: "Hi! I'm Kah, KAH-Digital advisor. Describe your need, even if it is still rough: I will help frame the right scope for a custom quote.",
-    suggestions: ["Get an adapted quote", "I want to build an app", "Redo my website", "AI automation"],
-    placeholder: "Ask a question or describe your project...",
+    firstNamePlaceholder: "First name",
+    lastNamePlaceholder: "Last name",
+    phonePlaceholder: "+41 79 000 00 00",
+    companyPlaceholder: "Your company",
+    startChat: "Start conversation",
+    identityRequired: "First name, last name and email required.",
+    welcome: "Hey! 👋 I'm Kayla from KAH Digital. Tell me what you want to build or improve — even if it's still rough, I'll help you shape it.",
+    suggestions: ["I need a website", "Build an app", "Redesign my site", "AI automation"],
+    placeholder: "Type your message...",
     send: "Send",
     progress: "Progress",
-    summary: "Structured summary",
+    summary: "Project summary",
     missing: "Missing info",
-    budget: "Available budget",
+    budget: "Estimated budget",
     days: "Estimated days",
     roles: "Resources",
-    ctaEmail: "Get the summary",
-    ctaHuman: "Talk to a human",
-    ctaGlpi: "Create a ticket",
-    ctaQuote: "Request a custom quote",
-    ctaOffers: "See approaches",
-    purchaseHint: "Summary ready. The clean next step is to turn this into a custom quote request or plan a discovery call.",
-    consent: "I agree to store the summary so KAH-Digital can follow up.",
+    ctaEmail: "Email me the summary",
+    ctaHuman: "Talk to someone",
+    ctaGlpi: "Open a ticket",
+    ctaQuote: "Get a custom quote",
+    ctaOffers: "Browse offers",
+    purchaseHint: "Project well scoped. Next step: custom quote or a 15-min discovery call.",
+    consent: "I agree KAH Digital can keep this summary to follow up.",
     email: "Email",
     name: "Name",
     reset: "New chat",
-    resetConfirm: "Clear this conversation history?",
-    retention: "History kept for 1h",
-    sessionExpired: "The previous conversation expired after inactivity. You can start again from zero.",
+    resetConfirm: "Clear this conversation?",
+    retention: "Session kept for 1h",
+    sessionExpired: "Session expired. Start fresh.",
     close: "Close",
     open: "Open",
-    contact: "Contact KAH",
-    helper: "One question at a time. Clear scope. Simple next step.",
+    contact: "Direct contact",
+    helper: "Enter to send",
     qualStarted: "Getting started",
-    qualCollecting: "Qualification",
-    qualReady: "Summary in progress",
+    qualCollecting: "Qualifying",
+    qualReady: "Summary ready",
   },
   de: {
-    button: "Projekt- & Support-Assistent",
-    title: "Projekt- & Support-Assistent",
-    subtitle: "Orientierung, Eingrenzung, individuelles Angebot und menschliche Übergabe bei Bedarf.",
-    introTitle: "Bevor es losgeht",
-    introBody: "Vorname, Nachname und E-Mail reichen aus, um zu starten. Weitere Angaben können während der Unterhaltung ergänzt werden.",
+    button: "Mit Kayla sprechen",
+    title: "Kayla · KAH Digital",
+    subtitle: "Angebot in 24h · Projekt · Support",
+    introTitle: "Kurze Vorstellung",
+    introBody: "Vorname, Nachname und E-Mail zum Start. Kayla übernimmt den Rest — geht schnell.",
     firstName: "Vorname *",
     lastName: "Nachname *",
     phone: "Telefon (optional)",
     company: "Unternehmen (optional)",
-    firstNamePlaceholder: "z. B. Alex",
-    lastNamePlaceholder: "z. B. Martin",
-    phonePlaceholder: "z. B. +41 79 000 00 00",
-    companyPlaceholder: "z. B. Studio Nova",
-    startChat: "Chat starten",
-    identityRequired: "Bitte Vorname, Nachname und E-Mail angeben, um zu starten.",
-    welcome: "Hallo! Ich bin Kah, KAH-Digital Berater. Beschreibe deinen Bedarf, auch wenn er noch nicht ganz klar ist: ich helfe dir, den passenden Umfang für ein individuelles Angebot einzugrenzen.",
-    suggestions: ["Passendes Angebot erhalten", "Ich will eine App bauen", "Website neu machen", "KI-Automatisierung"],
-    placeholder: "Stell eine Frage oder beschreibe dein Projekt...",
+    firstNamePlaceholder: "Vorname",
+    lastNamePlaceholder: "Nachname",
+    phonePlaceholder: "+41 79 000 00 00",
+    companyPlaceholder: "Unternehmen",
+    startChat: "Gespräch starten",
+    identityRequired: "Vorname, Nachname und E-Mail erforderlich.",
+    welcome: "Hallo! 👋 Ich bin Kayla von KAH Digital. Erzähl mir, was du aufbauen oder verbessern möchtest — auch wenn es noch nicht klar ist, ich helfe dir dabei.",
+    suggestions: ["Ich brauche eine Website", "App entwickeln", "Website neu machen", "KI-Automatisierung"],
+    placeholder: "Schreib eine Nachricht...",
     send: "Senden",
     progress: "Fortschritt",
-    summary: "Strukturierte Zusammenfassung",
+    summary: "Projekt-Zusammenfassung",
     missing: "Fehlende Infos",
-    budget: "Verfügbares Budget",
+    budget: "Geschätztes Budget",
     days: "Geschätzte Tage",
     roles: "Ressourcen",
-    ctaEmail: "Zusammenfassung erhalten",
-    ctaHuman: "Mit einem Menschen sprechen",
-    ctaGlpi: "Ticket erstellen",
+    ctaEmail: "Zusammenfassung per E-Mail",
+    ctaHuman: "Mit jemandem sprechen",
+    ctaGlpi: "Ticket öffnen",
     ctaQuote: "Individuelles Angebot anfragen",
-    ctaOffers: "Ansätze ansehen",
-    purchaseHint: "Zusammenfassung bereit. Der saubere nächste Schritt ist eine individuelle Angebotsanfrage oder ein kurzes Erstgespräch.",
-    consent: "Ich stimme der Speicherung der Zusammenfassung für eine Rückmeldung zu.",
+    ctaOffers: "Angebote ansehen",
+    purchaseHint: "Projekt gut eingegrenzt. Nächster Schritt: Angebot oder 15-min Gespräch.",
+    consent: "Ich stimme zu, dass KAH Digital die Zusammenfassung speichert.",
     email: "E-Mail",
     name: "Name",
-    reset: "Neuer Chat",
-    resetConfirm: "Den Verlauf dieser Unterhaltung löschen?",
-    retention: "Verlauf für 1h gespeichert",
-    sessionExpired: "Die vorherige Unterhaltung ist nach Inaktivität abgelaufen. Du kannst sauber neu starten.",
+    reset: "Neues Gespräch",
+    resetConfirm: "Dieses Gespräch löschen?",
+    retention: "Session für 1h gespeichert",
+    sessionExpired: "Session abgelaufen. Neu starten.",
     close: "Schließen",
     open: "Öffnen",
-    contact: "Kontakt KAH",
-    helper: "Immer eine Frage. Klarer Umfang. Einfacher nächster Schritt.",
+    contact: "Direktkontakt",
+    helper: "Enter zum Senden",
     qualStarted: "Start",
     qualCollecting: "Qualifizierung",
-    qualReady: "Zusammenfassung läuft",
+    qualReady: "Zusammenfassung bereit",
   },
 } as const;
 
@@ -814,398 +814,394 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-4 bottom-4 z-[80] flex justify-end sm:inset-x-6 sm:bottom-6">
-      <div className="pointer-events-auto w-full max-w-[26rem]">
+      <div className="pointer-events-auto w-full max-w-[22rem]">
+
+        {/* ── Widget panel ── */}
         {open ? (
-          <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(10,9,8,0.98),rgba(8,16,28,0.98))] shadow-[0_30px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
-            <div className="border-b border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(214,179,106,0.24),transparent_40%),radial-gradient(circle_at_top_right,rgba(127,184,199,0.22),transparent_38%)] p-5">
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[0.72rem] uppercase tracking-[0.35em] text-white/55">{copy.progress}</p>
-                  <h3 className="mt-2 text-xl font-semibold text-white">{copy.title}</h3>
-                  <p className="mt-2 max-w-xs text-sm text-white/68">{copy.subtitle}</p>
-                  <p className="mt-3 text-[0.68rem] uppercase tracking-[0.28em] text-white/42">{copy.retention}</p>
+          <div
+            className="flex flex-col overflow-hidden rounded-[1.25rem] border border-white/[0.09] bg-[#0d0e12] shadow-[0_32px_80px_rgba(0,0,0,0.8),0_0_0_0.5px_rgba(255,255,255,0.06)]"
+            style={{ maxHeight: "min(90dvh, 640px)" }}
+          >
+            {/* Header */}
+            <div className="flex shrink-0 items-center justify-between gap-3 border-b border-white/[0.07] bg-[#13141a] px-4 py-3">
+              <div className="flex items-center gap-2.5">
+                <div className="relative shrink-0">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-xs font-bold text-white shadow-lg shadow-blue-500/40">
+                    K
+                  </div>
+                  <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 ring-[1.5px] ring-[#13141a]" />
+                  </span>
                 </div>
-                <div className="flex flex-wrap items-center justify-end gap-2">
-                  <button
-                    type="button"
-                    onClick={() => resetConversation()}
-                    disabled={!canReset}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/12 px-3 py-2 text-xs font-medium text-white/70 transition hover:border-white/25 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    <FiRotateCcw />
-                    {copy.reset}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { setOpen(false); trackEvent("assistant_closed", { assistant_locale: locale }); }}
-                    className="rounded-full border border-white/12 px-3 py-2 text-xs font-medium text-white/70 transition hover:border-white/25 hover:text-white"
-                  >
-                    {copy.close}
-                  </button>
+                <div>
+                  <p className="text-[13px] font-semibold leading-none text-white">Kayla</p>
+                  <p className="mt-[3px] text-[10px] leading-none text-emerald-500">
+                    {locale === "de" ? "Online · Antwortet in 2 Min." : locale === "en" ? "Online · Replies in 2 min" : "En ligne · Répond en 2 min"}
+                  </p>
                 </div>
               </div>
-
-              <div className="rounded-2xl border border-white/10 bg-black/25 p-3">
-                <div className="mb-2 flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/50">
-                  <span>{qualScore.label}</span>
-                  <span>{qualScore.pct}%</span>
-                </div>
-                <div className="h-2 rounded-full bg-white/8">
-                  <div
-                    className="h-full rounded-full bg-[linear-gradient(90deg,rgba(214,179,106,0.95),rgba(127,184,199,0.95))] transition-all duration-700 ease-out"
-                    style={{ width: `${qualScore.pct}%` }}
-                  />
-                </div>
-                <div className="mt-2 flex gap-1">
-                  {Array.from({ length: qualScore.total }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`h-0.5 flex-1 rounded-full transition-all duration-500 ${i < qualScore.current ? "bg-[rgba(214,179,106,0.7)]" : "bg-white/10"}`}
-                    />
-                  ))}
-                </div>
+              <div className="flex items-center gap-0.5">
+                <button
+                  type="button"
+                  onClick={() => resetConversation()}
+                  disabled={!canReset}
+                  className="rounded-full p-2 text-gray-600 transition hover:bg-white/[0.06] hover:text-gray-300 disabled:opacity-30"
+                  title={copy.reset}
+                >
+                  <FiRotateCcw size={13} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setOpen(false); trackEvent("assistant_closed", { assistant_locale: locale }); }}
+                  className="rounded-full p-2 text-gray-600 transition hover:bg-white/[0.06] hover:text-gray-300"
+                  title={copy.close}
+                >
+                  <FiX size={15} />
+                </button>
               </div>
             </div>
 
-            <div className="max-h-[28rem] space-y-4 overflow-y-auto px-5 py-4" role="log" aria-live="polite" aria-atomic="false" aria-label={copy.title}>
-              {!hasStartedChat ? (
-                <div className="space-y-4 rounded-[1.8rem] border border-white/12 bg-white/[0.03] p-4">
-                  <div>
-                    <p className="text-[0.72rem] uppercase tracking-[0.32em] text-white/45">{copy.open}</p>
-                    <h4 className="mt-2 text-lg font-semibold text-white">{copy.introTitle}</h4>
-                    <p className="mt-2 text-sm text-white/68">{copy.introBody}</p>
-                  </div>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <input
-                      type="text"
-                      value={firstName}
-                      onChange={(event) => setFirstName(event.target.value)}
-                      placeholder={copy.firstNamePlaceholder}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                      aria-label={copy.firstName}
-                    />
-                    <input
-                      type="text"
-                      value={lastName}
-                      onChange={(event) => setLastName(event.target.value)}
-                      placeholder={copy.lastNamePlaceholder}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                      aria-label={copy.lastName}
-                    />
-                  </div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    placeholder={copy.email}
-                    className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    aria-label={copy.email}
-                  />
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <input
-                      type="text"
-                      value={phone}
-                      onChange={(event) => setPhone(event.target.value)}
-                      placeholder={copy.phonePlaceholder}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                      aria-label={copy.phone}
-                    />
-                    <input
-                      type="text"
-                      value={company}
-                      onChange={(event) => setCompany(event.target.value)}
-                      placeholder={copy.companyPlaceholder}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                      aria-label={copy.company}
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleStartChat}
-                    disabled={!canStartChat}
-                    className="inline-flex items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[#11131b] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {copy.startChat}
-                  </button>
+            {/* Progress bar (conversation only) */}
+            {hasStartedChat ? (
+              <div className="shrink-0 border-b border-white/[0.05] bg-[#0d0e12] px-4 pb-2 pt-1.5">
+                <div className="mb-1 flex items-center justify-between gap-2">
+                  <span className="text-[9px] font-medium uppercase tracking-widest text-gray-700">{qualScore.label}</span>
+                  <span className="text-[9px] text-gray-700">{qualScore.pct}%</span>
                 </div>
-              ) : transcript.length === 0 && !pendingUserMessage && !isStreaming ? (
-                <div className="space-y-3">
-                  <div className="pr-8">
-                    <div className="rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86">
-                      {copy.welcome}
+                <div className="h-[3px] w-full overflow-hidden rounded-full bg-white/[0.06]">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-violet-500 transition-all duration-700 ease-out"
+                    style={{ width: `${qualScore.pct}%` }}
+                  />
+                </div>
+              </div>
+            ) : null}
+
+            {/* Messages */}
+            <div
+              className="flex-1 overflow-y-auto overscroll-contain px-4 py-4"
+              role="log"
+              aria-live="polite"
+              aria-atomic="false"
+              aria-label={copy.title}
+            >
+              <div className="space-y-3">
+
+                {/* Onboarding form */}
+                {!hasStartedChat ? (
+                  <div className="space-y-3">
+                    <div className="flex items-end gap-2">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[10px] font-bold text-white">K</div>
+                      <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-[#1c1d24] px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-300">
+                        {copy.introBody}
+                      </div>
+                    </div>
+                    <div className="rounded-2xl border border-white/[0.08] bg-[#13141a] p-3.5 space-y-2.5">
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="text"
+                          value={firstName}
+                          onChange={(event) => setFirstName(event.target.value)}
+                          placeholder={copy.firstNamePlaceholder}
+                          className="rounded-xl border border-white/[0.08] bg-black/30 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-blue-500/50 focus:bg-black/40"
+                          aria-label={copy.firstName}
+                        />
+                        <input
+                          type="text"
+                          value={lastName}
+                          onChange={(event) => setLastName(event.target.value)}
+                          placeholder={copy.lastNamePlaceholder}
+                          className="rounded-xl border border-white/[0.08] bg-black/30 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-blue-500/50 focus:bg-black/40"
+                          aria-label={copy.lastName}
+                        />
+                      </div>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        placeholder={copy.email}
+                        className="w-full rounded-xl border border-white/[0.08] bg-black/30 px-3 py-2.5 text-sm text-white outline-none transition placeholder:text-gray-600 focus:border-blue-500/50 focus:bg-black/40"
+                        aria-label={copy.email}
+                      />
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="text"
+                          value={phone}
+                          onChange={(event) => setPhone(event.target.value)}
+                          placeholder={copy.phonePlaceholder}
+                          className="rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-sm text-white outline-none transition placeholder:text-gray-700 focus:border-blue-500/40"
+                          aria-label={copy.phone}
+                        />
+                        <input
+                          type="text"
+                          value={company}
+                          onChange={(event) => setCompany(event.target.value)}
+                          placeholder={copy.companyPlaceholder}
+                          className="rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2 text-sm text-white outline-none transition placeholder:text-gray-700 focus:border-blue-500/40"
+                          aria-label={copy.company}
+                        />
+                      </div>
+                      {statusMessage ? (
+                        <p className="text-[11px] text-red-400">{statusMessage}</p>
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={handleStartChat}
+                        disabled={!canStartChat}
+                        className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:shadow-blue-500/35 disabled:cursor-not-allowed disabled:opacity-45"
+                      >
+                        {copy.startChat}
+                      </button>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-2 pr-8">
-                    {copy.suggestions.map((s) => (
+                ) : null}
+
+                {/* Welcome + initial suggestions */}
+                {hasStartedChat && transcript.length === 0 && !pendingUserMessage && !isStreaming ? (
+                  <div className="space-y-3">
+                    <div className="flex items-end gap-2">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[10px] font-bold text-white">K</div>
+                      <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-[#1c1d24] px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-200">
+                        {copy.welcome}
+                      </div>
+                    </div>
+                    <div className="ml-9 flex flex-wrap gap-1.5">
+                      {copy.suggestions.map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          onClick={() => sendQuickReply(s)}
+                          className="rounded-full border border-white/[0.09] bg-[#13141a] px-3 py-1.5 text-[11px] text-gray-400 transition hover:border-blue-500/40 hover:text-white"
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* Transcript */}
+                {hasStartedChat
+                  ? transcript.map((item, index) =>
+                      item.role === "assistant" ? (
+                        <div key={`${item.role}-${index}`} className="flex items-end gap-2">
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[10px] font-bold text-white">K</div>
+                          <div className="max-w-[84%] rounded-2xl rounded-bl-sm bg-[#1c1d24] px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-200">
+                            {item.content}
+                          </div>
+                        </div>
+                      ) : (
+                        <div key={`${item.role}-${index}`} className="flex justify-end">
+                          <div className="max-w-[84%] rounded-2xl rounded-br-sm bg-gradient-to-br from-blue-600 to-violet-600 px-3.5 py-2.5 text-[13px] leading-relaxed text-white shadow-md shadow-blue-600/25">
+                            {item.content}
+                          </div>
+                        </div>
+                      )
+                    )
+                  : null}
+
+                {/* Pending user bubble */}
+                {hasStartedChat && pendingUserMessage ? (
+                  <div className="flex justify-end">
+                    <div className="max-w-[84%] rounded-2xl rounded-br-sm bg-gradient-to-br from-blue-600 to-violet-600 px-3.5 py-2.5 text-[13px] leading-relaxed text-white shadow-md shadow-blue-600/25">
+                      {pendingUserMessage}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* Typing / streaming */}
+                {hasStartedChat && isStreaming ? (
+                  <div className="flex items-end gap-2">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[10px] font-bold text-white">K</div>
+                    <div className="max-w-[84%] rounded-2xl rounded-bl-sm bg-[#1c1d24] px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-200">
+                      {streamingReply || (
+                        <span className="flex items-center gap-1.5 py-0.5">
+                          {[0, 1, 2].map((i) => (
+                            <span
+                              key={i}
+                              className="inline-block h-[7px] w-[7px] rounded-full bg-gray-500 animate-bounce"
+                              style={{ animationDelay: `${i * 0.16}s`, animationDuration: "0.75s" }}
+                            />
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* Dynamic suggestions */}
+                {dynamicSuggestions.length > 0 ? (
+                  <div className="ml-9 flex flex-wrap gap-1.5">
+                    {dynamicSuggestions.map((s) => (
                       <button
                         key={s}
                         type="button"
                         onClick={() => sendQuickReply(s)}
-                        className="rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/68 transition hover:border-[#d6b36a]/50 hover:text-white"
+                        className="rounded-full border border-white/[0.09] bg-[#13141a] px-3 py-1.5 text-[11px] text-gray-400 transition hover:border-blue-500/40 hover:text-white"
                       >
                         {s}
                       </button>
                     ))}
                   </div>
-                </div>
-              ) : null}
+                ) : null}
 
-              {hasStartedChat ? transcript.map((item, index) => (
-                <div key={`${item.role}-${index}`} className={item.role === "assistant" ? "pr-8" : "pl-8"}>
-                  <div
-                    className={
-                      item.role === "assistant"
-                        ? "rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86"
-                        : "rounded-[1.6rem] rounded-br-md bg-[linear-gradient(135deg,rgba(214,179,106,0.18),rgba(127,184,199,0.18))] px-4 py-3 text-sm text-white"
-                    }
-                  >
-                    {item.content}
-                  </div>
-                </div>
-              )) : null}
-
-              {hasStartedChat && pendingUserMessage ? (
-                <div className="pl-8">
-                  <div className="rounded-[1.6rem] rounded-br-md bg-[linear-gradient(135deg,rgba(214,179,106,0.18),rgba(127,184,199,0.18))] px-4 py-3 text-sm text-white">
-                    {pendingUserMessage}
-                  </div>
-                </div>
-              ) : null}
-
-              {hasStartedChat && isStreaming ? (
-                <div className="pr-8">
-                  <div className="rounded-[1.6rem] rounded-bl-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/86">
-                    {streamingReply || (
-                      <span className="flex items-center gap-1">
-                        {[0, 1, 2].map((i) => (
-                          <span
-                            key={i}
-                            className="inline-block h-1.5 w-1.5 rounded-full bg-white/50 animate-bounce"
-                            style={{ animationDelay: `${i * 0.18}s`, animationDuration: "0.9s" }}
-                          />
-                        ))}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ) : null}
-
-              {dynamicSuggestions.length > 0 ? (
-                <div className="flex flex-wrap gap-2 pr-8">
-                  {dynamicSuggestions.map((s) => (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => sendQuickReply(s)}
-                      className="rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/68 transition hover:border-[#d6b36a]/50 hover:text-white"
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              ) : null}
-
-              {summary ? (
-                <div className="rounded-[1.8rem] border border-[#d6b36a]/28 bg-[linear-gradient(135deg,rgba(214,179,106,0.14),rgba(18,22,38,0.82))] p-4">
-                  <div className="mb-3 flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.34em] text-[#f1d9a4]">
-                    <FiMessageSquare />
-                    <span>{copy.summary}</span>
-                  </div>
-
-                  <div className="grid gap-3">
-                    {summaryCards.map((card) => (
-                      <div key={card.label} className="rounded-2xl border border-white/8 bg-black/20 p-3">
-                        <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">{card.label}</p>
-                        <p className="mt-2 text-sm font-medium text-white">{card.value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {summary.missing_info.length ? (
-                    <div className="mt-3 rounded-2xl border border-white/8 bg-black/20 p-3">
-                      <p className="text-[0.68rem] uppercase tracking-[0.28em] text-white/45">{copy.missing}</p>
-                      <p className="mt-2 text-sm text-white/82">{summary.missing_info.join(", ")}</p>
+                {/* Summary card */}
+                {summary ? (
+                  <div className="rounded-2xl border border-blue-500/20 bg-[linear-gradient(135deg,rgba(59,130,246,0.07),rgba(124,58,237,0.05))] p-4">
+                    <div className="mb-3 flex items-center gap-2">
+                      <div className="h-1.5 w-1.5 rounded-full bg-blue-400" />
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-blue-400">{copy.summary}</span>
                     </div>
-                  ) : null}
 
-                  {summary.intent === "project_quote" ? (
-                    <div className="mt-3 rounded-2xl border border-white/8 bg-black/20 p-3">
-                      <p className="text-sm text-white/78">{copy.purchaseHint}</p>
-                      <div className="mt-3 grid gap-2">
-                        <Link
-                          href={quoteHref}
-                          onClick={() => trackEvent("assistant_quote_cta", {
-                            assistant_locale: locale,
-                            assistant_project_type: summary.project_type,
-                          })}
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[#11131b] transition hover:brightness-105"
-                        >
-                          {copy.ctaQuote}
-                          <FiArrowUpRight />
-                        </Link>
-                        <Link
-                          href={offersHref}
-                          onClick={() => trackEvent("assistant_offers_cta", {
-                            assistant_locale: locale,
-                            assistant_project_type: summary.project_type,
-                          })}
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 px-4 py-3 text-sm font-semibold text-white transition hover:border-white/25"
-                        >
-                          {copy.ctaOffers}
-                          <FiArrowUpRight />
-                        </Link>
-                      </div>
+                    <div className="space-y-2">
+                      {summaryCards.map((card) => (
+                        <div key={card.label} className="rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2">
+                          <p className="text-[9px] uppercase tracking-widest text-gray-600">{card.label}</p>
+                          <p className="mt-0.5 text-sm font-medium text-gray-200">{card.value}</p>
+                        </div>
+                      ))}
                     </div>
-                  ) : null}
 
-                  <div className="mt-4 grid gap-2">
-                    <input
-                      type="text"
-                      value={firstName}
-                      onChange={(event) => setFirstName(event.target.value)}
-                      placeholder={copy.firstName}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    />
-                    <input
-                      type="text"
-                      value={lastName}
-                      onChange={(event) => setLastName(event.target.value)}
-                      placeholder={copy.lastName}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    />
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(event) => setEmail(event.target.value)}
-                      placeholder={copy.email}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    />
-                    <input
-                      type="text"
-                      value={phone}
-                      onChange={(event) => setPhone(event.target.value)}
-                      placeholder={copy.phone}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    />
-                    <input
-                      type="text"
-                      value={company}
-                      onChange={(event) => setCompany(event.target.value)}
-                      placeholder={copy.company}
-                      className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
-                    />
-                    <label className="flex items-start gap-3 rounded-2xl border border-white/8 bg-black/15 px-4 py-3 text-sm text-white/76">
-                      <input
-                        type="checkbox"
-                        checked={consent}
-                        onChange={(event) => setConsent(event.target.checked)}
-                        className="mt-1 h-4 w-4 rounded border-white/20 bg-transparent"
-                      />
-                      <span>{copy.consent}</span>
-                    </label>
-                  </div>
-
-                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                    <button
-                      type="button"
-                      onClick={() => handleAction("email")}
-                      disabled={!canTriggerActions || !email}
-                      className="rounded-2xl bg-[#d6b36a] px-4 py-3 text-sm font-semibold text-[#17120a] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {copy.ctaEmail}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleAction("lead")}
-                      disabled={!canTriggerActions}
-                      className="rounded-2xl border border-white/12 px-4 py-3 text-sm font-semibold text-white transition hover:border-white/25 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {copy.ctaHuman}
-                    </button>
-                    {session?.intent === "support_glpi" ? (
-                      <button
-                        type="button"
-                        onClick={() => handleAction("glpi")}
-                        disabled={!canTriggerActions}
-                        className="rounded-2xl border border-[#7fb8c7]/35 bg-[#7fb8c7]/12 px-4 py-3 text-sm font-semibold text-white transition hover:border-[#7fb8c7]/55 disabled:cursor-not-allowed disabled:opacity-50 sm:col-span-2"
-                      >
-                        {copy.ctaGlpi}
-                      </button>
+                    {summary.missing_info.length ? (
+                      <div className="mt-2 rounded-xl border border-white/[0.06] bg-black/20 px-3 py-2">
+                        <p className="text-[9px] uppercase tracking-widest text-gray-600">{copy.missing}</p>
+                        <p className="mt-0.5 text-sm text-gray-400">{summary.missing_info.join(", ")}</p>
+                      </div>
                     ) : null}
-                  </div>
-                </div>
-              ) : null}
 
-              {statusMessage ? (
-                <div className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/80">
-                  {statusMessage}
-                </div>
-              ) : null}
-              <div ref={endRef} />
+                    {summary.intent === "project_quote" ? (
+                      <div className="mt-3 rounded-xl border border-white/[0.06] bg-black/20 p-3">
+                        <p className="mb-3 text-[11px] leading-relaxed text-gray-400">{copy.purchaseHint}</p>
+                        <div className="flex flex-col gap-2">
+                          <Link
+                            href={quoteHref}
+                            onClick={() => trackEvent("assistant_quote_cta", { assistant_locale: locale, assistant_project_type: summary.project_type })}
+                            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 transition hover:shadow-blue-600/40"
+                          >
+                            {copy.ctaQuote} <FiArrowUpRight size={13} />
+                          </Link>
+                          <Link
+                            href={offersHref}
+                            onClick={() => trackEvent("assistant_offers_cta", { assistant_locale: locale, assistant_project_type: summary.project_type })}
+                            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/[0.1] py-2.5 text-sm font-semibold text-gray-300 transition hover:border-white/20 hover:text-white"
+                          >
+                            {copy.ctaOffers} <FiArrowUpRight size={13} />
+                          </Link>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    <div className="mt-3 space-y-2">
+                      <div className="grid grid-cols-2 gap-2">
+                        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder={copy.firstName}
+                          className="rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2 text-sm text-white outline-none placeholder:text-gray-700 focus:border-blue-500/40" />
+                        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder={copy.lastName}
+                          className="rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2 text-sm text-white outline-none placeholder:text-gray-700 focus:border-blue-500/40" />
+                      </div>
+                      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={copy.email}
+                        className="w-full rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2 text-sm text-white outline-none placeholder:text-gray-700 focus:border-blue-500/40" />
+                      <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder={copy.phone}
+                        className="w-full rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2 text-sm text-white outline-none placeholder:text-gray-700 focus:border-blue-500/40" />
+                      <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder={copy.company}
+                        className="w-full rounded-xl border border-white/[0.07] bg-black/20 px-3 py-2 text-sm text-white outline-none placeholder:text-gray-700 focus:border-blue-500/40" />
+                      <label className="flex items-start gap-2.5 rounded-xl border border-white/[0.06] bg-black/10 px-3 py-2.5 text-[11px] text-gray-500">
+                        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
+                          className="mt-0.5 h-3.5 w-3.5 accent-blue-500" />
+                        <span>{copy.consent}</span>
+                      </label>
+                    </div>
+
+                    <div className="mt-3 grid grid-cols-2 gap-2">
+                      <button type="button" onClick={() => handleAction("email")} disabled={!canTriggerActions || !email}
+                        className="rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 py-2.5 text-[12px] font-semibold text-white transition hover:shadow-md hover:shadow-blue-600/25 disabled:cursor-not-allowed disabled:opacity-45">
+                        {copy.ctaEmail}
+                      </button>
+                      <button type="button" onClick={() => handleAction("lead")} disabled={!canTriggerActions}
+                        className="rounded-xl border border-white/[0.1] py-2.5 text-[12px] font-semibold text-gray-300 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-45">
+                        {copy.ctaHuman}
+                      </button>
+                      {session?.intent === "support_glpi" ? (
+                        <button type="button" onClick={() => handleAction("glpi")} disabled={!canTriggerActions}
+                          className="col-span-2 rounded-xl border border-blue-500/20 bg-blue-500/[0.07] py-2.5 text-[12px] font-semibold text-blue-300 transition hover:border-blue-500/40 disabled:cursor-not-allowed disabled:opacity-45">
+                          {copy.ctaGlpi}
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* Status message */}
+                {statusMessage ? (
+                  <div className="flex items-end gap-2">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[10px] font-bold text-white">K</div>
+                    <div className="max-w-[84%] rounded-2xl rounded-bl-sm bg-[#1c1d24] px-3.5 py-2.5 text-[13px] text-gray-400">
+                      {statusMessage}
+                    </div>
+                  </div>
+                ) : null}
+
+                <div ref={endRef} />
+              </div>
             </div>
 
-            <div className="border-t border-white/8 p-4">
-              <div className="flex gap-2">
+            {/* Input area */}
+            <div className="shrink-0 border-t border-white/[0.07] bg-[#0d0e12] p-3">
+              <div className="flex items-center gap-2 rounded-xl border border-white/[0.09] bg-[#13141a] px-3 py-2 transition focus-within:border-blue-500/40 focus-within:ring-1 focus-within:ring-blue-500/10">
                 <input
                   ref={inputRef}
                   type="text"
                   value={message}
-                  onChange={(event) => {
-                    const val = event.target.value;
-                    if (val.length <= 500) setMessage(val);
-                  }}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" && !event.shiftKey) {
-                      event.preventDefault();
-                      handleSend();
-                    }
-                  }}
+                  onChange={(event) => { if (event.target.value.length <= 500) setMessage(event.target.value); }}
+                  onKeyDown={(event) => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); handleSend(); } }}
                   placeholder={copy.placeholder}
                   maxLength={500}
-                  className="min-w-0 flex-1 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none placeholder:text-white/35"
+                  className="min-w-0 flex-1 bg-transparent py-0.5 text-sm text-white outline-none placeholder:text-gray-600"
                   disabled={!hasStartedChat}
                 />
                 <button
                   type="button"
                   onClick={handleSend}
                   disabled={!canSend || !hasStartedChat}
-                  className="inline-flex h-[3.2rem] w-[3.2rem] items-center justify-center rounded-2xl bg-white text-[#11131b] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-violet-600 text-white shadow-md shadow-blue-600/30 transition hover:shadow-blue-600/50 disabled:opacity-30"
                   aria-label={copy.send}
                 >
-                  <FiSend />
+                  <FiSend size={12} />
                 </button>
               </div>
-              <div className="mt-3 flex items-center justify-between gap-3 text-xs text-white/42">
-                <span className={message.length > 450 ? "text-amber-400" : ""}>
+              <div className="mt-1.5 flex items-center justify-between gap-2 px-0.5 text-[10px] text-gray-700">
+                <span className={message.length > 450 ? "text-amber-500" : ""}>
                   {message.length > 400 ? `${500 - message.length}` : copy.helper}
                 </span>
-                <Link href={contactHref} className="inline-flex items-center gap-1 text-white/62 hover:text-white">
-                  {copy.contact}
-                  <FiArrowUpRight />
+                <Link href={contactHref} className="flex items-center gap-0.5 transition hover:text-gray-500">
+                  {copy.contact} <FiArrowUpRight size={10} />
                 </Link>
               </div>
             </div>
           </div>
         ) : null}
 
+        {/* ── Launcher button ── */}
         {!open ? (
           <button
             type="button"
             onClick={() => { setOpen(true); trackEvent("assistant_opened", { assistant_locale: locale }); }}
-            className="group ml-auto flex items-center gap-3 rounded-full border border-white/10 bg-[linear-gradient(135deg,rgba(9,9,8,0.92),rgba(10,23,38,0.92))] px-4 py-3 text-left shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition hover:border-[#d6b36a]/40"
+            className="group ml-auto flex items-center gap-3 rounded-full border border-white/[0.09] bg-[#0d0e12] px-4 py-2.5 shadow-[0_16px_48px_rgba(0,0,0,0.6)] transition hover:border-blue-500/25 hover:shadow-[0_16px_48px_rgba(59,130,246,0.12)]"
             aria-label={copy.button}
           >
-            <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(214,179,106,0.92),rgba(127,184,199,0.92))] text-[#11131b] shadow-[0_10px_30px_rgba(214,179,106,0.28)]">
-              <FiMessageSquare className="text-lg" />
-              <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3" aria-hidden="true">
+            <div className="relative shrink-0">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-violet-600 text-[13px] font-bold text-white shadow-lg shadow-blue-500/35">
+                K
+              </div>
+              <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 ring-[1.5px] ring-[#0d0e12]" />
               </span>
-            </span>
-            <span className="hidden min-w-0 sm:block">
-              <span className="block text-[0.68rem] uppercase tracking-[0.32em] text-white/45">{copy.open}</span>
-              <span className="mt-1 block text-sm font-semibold text-white">{copy.button}</span>
-            </span>
+            </div>
+            <div className="hidden sm:block">
+              <span className="block text-[10px] uppercase tracking-[0.18em] text-gray-600">KAH Digital</span>
+              <span className="mt-0.5 block text-[13px] font-semibold text-white">{copy.button}</span>
+            </div>
           </button>
         ) : null}
       </div>
