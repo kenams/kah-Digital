@@ -136,6 +136,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Mettre en valeur les œuvres sans les écraser visuellement, avec un admin simple pour une artiste non-technique et un checkout fiable en production.",
     solution:
       "Next.js 15 App Router, Prisma avec Neon Postgres, galerie filtrée par type/disponibilité, admin protégé par session, checkout Stripe avec pages succès/annulation.",
+    website: "https://ruby-gallery.vercel.app/",
     stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Prisma", "Stripe", "Neon Postgres", "Vercel"],
     result:
       "Site galerie premium en ligne, admin fonctionnel. 3 ventes Stripe réalisées dans les 2 premières semaines.",

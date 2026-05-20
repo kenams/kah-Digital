@@ -225,6 +225,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       "Eine Website erstellen, die Kunstwerke visuell in Szene setzt, mit einem einfachen Admin für eine nicht-technische Künstlerin, zuverlässigem Checkout und schneller Bereitstellung ohne WordPress.",
     solution:
       "Next.js 15 App Router, Prisma mit Neon Postgres, gefilterte Galerie nach Typ und Verfügbarkeit, sitzungsgeschützter Admin, Stripe-Checkout mit Erfolgs-/Abbruchseiten, automatisch generierte Sitemap und Robots.",
+    website: "https://ruby-gallery.vercel.app/",
     stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Prisma", "Stripe", "Neon Postgres", "Vercel"],
     result:
       "Premium-Galeriewebsite live, funktionierender Admin, betriebsbereiter Stripe-Checkout — schlüsselfertig an die Künstlerin übergeben.",
