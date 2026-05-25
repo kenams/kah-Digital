@@ -436,4 +436,50 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       ],
     },
   },
+  {
+    slug: "kah-support",
+    name: "KAH Support",
+    type: "AI SaaS / IT Assistant for SMBs",
+    tagline:
+      "AI assistant connected to GLPI that resolves 70% of L1 tickets without a technician — 5-minute setup, available 24/7.",
+    shortDescription:
+      "Multi-tenant Node.js/PostgreSQL SaaS with OpenAI, native GLPI integration, live Stripe, full admin and automated outreach.",
+    description:
+      "KAH Support is an AI-powered IT support assistant for SMBs. It connects directly to GLPI and handles level-1 requests (VPN, passwords, printers, software access) 24/7 without human intervention. The AI responds to the user, creates tickets in GLPI with the correct priority and category, and escalates only when needed.",
+    challenge:
+      "Build a production-ready multi-tenant SaaS that natively integrates with GLPI, handles authentication, Stripe billing, conversational AI and automatic ticket creation — all without any GLPI plugin.",
+    solution:
+      "Node.js/Express multi-tenant backend on Render with PostgreSQL, OpenAI GPT-4o for reasoning, GLPI REST API for ticket creation, Stripe for billing, Resend for emails and GitHub Actions for continuous deployment.",
+    stack: ["Node.js", "Express", "PostgreSQL", "OpenAI", "GLPI API", "Stripe", "Resend", "Render", "GitHub Actions"],
+    result:
+      "Live SaaS at kah-support.ch — 70% of L1 tickets resolved without a technician, 8 min saved per ticket, client ROI in under 1 month.",
+    timeline: "3 weeks",
+    deliverables: [
+      "Multi-tenant Node.js/PostgreSQL backend",
+      "Native GLPI REST integration (no plugin)",
+      "OpenAI GPT-4o conversational AI",
+      "Live Stripe + Resend emails",
+      "Full admin dashboard",
+      "Auto-deploy GitHub Actions → Render",
+    ],
+    metrics: [
+      { label: "Auto-resolved tickets", value: "70%" },
+      { label: "Time saved/ticket", value: "8 min" },
+      { label: "Client ROI", value: "<1 month" },
+    ],
+    highlights: [
+      "Multi-tenant — full isolation per organisation",
+      "GLPI 9.5.x and 10.x integration, no plugin",
+      "Available 24/7",
+    ],
+    palette: { primary: "#0f0f1a", secondary: "#1a1a35", accent: "#6366f1" },
+    website: "https://kah-support.ch",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
 ];

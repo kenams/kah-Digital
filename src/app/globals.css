@@ -490,10 +490,15 @@ textarea {
   opacity: 1;
 }
 
-/* ── Cursor hide on desktop ─────────────────────────────────────────────── */
+/* ── Cursor hide on desktop (public site only, not admin) ───────────────── */
 @media (pointer: fine) and (hover: hover) {
-  html { cursor: none; }
-  a, button, input, textarea, select, [role="button"] { cursor: none; }
+  html:not([data-admin]) { cursor: none; }
+  html:not([data-admin]) a,
+  html:not([data-admin]) button,
+  html:not([data-admin]) input,
+  html:not([data-admin]) textarea,
+  html:not([data-admin]) select,
+  html:not([data-admin]) [role="button"] { cursor: none; }
 }
 
 /* ── Aurora blobs ───────────────────────────────────────────────────────── */

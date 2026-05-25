@@ -287,4 +287,48 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
     },
   },
+  {
+    slug: "kah-support",
+    name: "KAH Support",
+    type: "KI-SaaS / IT-Assistent für KMU",
+    tagline:
+      "KI-Assistent mit GLPI-Integration, der 70 % der L1-Tickets ohne Techniker löst — Einrichtung in 5 Minuten, 24/7 verfügbar.",
+    shortDescription:
+      "Multi-Tenant Node.js/PostgreSQL SaaS mit OpenAI, nativer GLPI-Integration, Live-Stripe, vollständigem Admin und automatisierter Akquise.",
+    description:
+      "KAH Support ist ein KI-gestützter IT-Support-Assistent für KMU. Er verbindet sich direkt mit GLPI und bearbeitet Level-1-Anfragen (VPN, Passwörter, Drucker, Softwarezugang) rund um die Uhr ohne menschliches Eingreifen.",
+    challenge:
+      "Ein produktionsreifes Multi-Tenant-SaaS aufbauen, das nativ mit GLPI integriert, Authentifizierung, Stripe-Abrechnung, konversationelle KI und automatische Ticketerstellung verwaltet.",
+    solution:
+      "Node.js/Express Multi-Tenant-Backend auf Render mit PostgreSQL, OpenAI GPT-4o, GLPI REST API, Stripe, Resend und GitHub Actions für Continuous Deployment.",
+    stack: ["Node.js", "Express", "PostgreSQL", "OpenAI", "GLPI API", "Stripe", "Resend", "Render", "GitHub Actions"],
+    result: "Live SaaS auf kah-support.ch — 70 % der L1-Tickets automatisch gelöst, 8 Min. pro Ticket gespart.",
+    timeline: "3 Wochen",
+    deliverables: [
+      "Multi-Tenant Node.js/PostgreSQL Backend",
+      "Native GLPI REST Integration (kein Plugin)",
+      "OpenAI GPT-4o Konversations-KI",
+      "Live Stripe + Resend E-Mails",
+      "Vollständiges Admin-Dashboard",
+    ],
+    metrics: [
+      { label: "Auto-gelöste Tickets", value: "70 %" },
+      { label: "Zeit gespart/Ticket", value: "8 Min." },
+      { label: "ROI", value: "< 1 Monat" },
+    ],
+    highlights: [
+      "Multi-Tenant — vollständige Isolation pro Organisation",
+      "GLPI 9.5.x und 10.x ohne Plugin",
+      "24/7 verfügbar",
+    ],
+    palette: { primary: "#0f0f1a", secondary: "#1a1a35", accent: "#6366f1" },
+    website: "https://kah-support.ch",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
 ];

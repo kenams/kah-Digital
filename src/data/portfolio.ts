@@ -501,4 +501,54 @@ export const portfolioProjects: PortfolioProject[] = [
       ],
     },
   },
+  {
+    slug: "kah-support",
+    name: "KAH Support",
+    type: "SaaS IA / Assistant IT pour PME",
+    tagline:
+      "Assistant IA connecté à GLPI qui résout 70% des tickets N1 sans technicien — intégration en 5 minutes, disponible 24h/24.",
+    shortDescription:
+      "SaaS multi-tenant Node.js/PostgreSQL avec IA OpenAI, intégration GLPI native, Stripe live, admin complet et prospection automatisée.",
+    description:
+      "KAH Support est un assistant IA de support informatique pour PME. Il se connecte directement à GLPI et prend en charge les demandes de niveau 1 (VPN, mots de passe, imprimantes, accès logiciels) 24h/24 sans intervention humaine. L'IA répond à l'utilisateur, crée les tickets dans GLPI avec la bonne priorité et catégorie, et escalade uniquement si nécessaire.",
+    challenge:
+      "Construire un SaaS multi-tenant production-ready qui s'intègre nativement à GLPI, gère l'authentification, la facturation Stripe, l'IA conversationnelle et la création automatique de tickets — le tout sans plugin côté GLPI.",
+    solution:
+      "Backend Node.js/Express multi-tenant sur Render avec PostgreSQL, OpenAI GPT-4o pour le raisonnement, API GLPI REST pour la création de tickets, Stripe pour la facturation, Resend pour les emails et GitHub Actions pour le déploiement continu.",
+    stack: ["Node.js", "Express", "PostgreSQL", "OpenAI", "GLPI API", "Stripe", "Resend", "Render", "GitHub Actions"],
+    result:
+      "SaaS live sur kah-support.ch — 70% de tickets N1 résolus sans technicien, 8 min économisées par ticket, ROI client en moins d'1 mois.",
+    timeline: "3 semaines",
+    deliverables: [
+      "Backend multi-tenant Node.js/PostgreSQL",
+      "Intégration GLPI REST native (aucun plugin)",
+      "IA conversationnelle OpenAI GPT-4o",
+      "Stripe live + emails Resend",
+      "Admin dashboard complet",
+      "Déploiement auto GitHub Actions → Render",
+    ],
+    metrics: [
+      { label: "Tickets auto-résolus", value: "70%" },
+      { label: "Temps économisé/ticket", value: "8 min" },
+      { label: "ROI client", value: "<1 mois" },
+    ],
+    highlights: [
+      "Multi-tenant — isolation complète par organisation",
+      "Intégration GLPI 9.5.x et 10.x sans plugin",
+      "Disponible 24h/24, 7j/7",
+    ],
+    palette: {
+      primary: "#0f0f1a",
+      secondary: "#1a1a35",
+      accent: "#6366f1",
+    },
+    website: "https://kah-support.ch",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
 ];

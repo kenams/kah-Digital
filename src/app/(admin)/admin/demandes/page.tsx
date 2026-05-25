@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AdminStateCard, handleAdminAccessState, requireAdminAccess } from "@/app/(admin)/admin/_shared";
 import { AdminAssistantBoard } from "@/components/admin-assistant-board";
 import { AdminDemandesBoard } from "@/components/admin-demandes-board";
+import { AdminKahSupportBoard } from "@/components/admin-kah-support-board";
 import { AdminPaymentsTable } from "@/components/admin-payments-table";
 import { AdminPipelineKanban } from "@/components/admin-pipeline-kanban";
 import { getRecentAssistantRecords } from "@/lib/assistant-store";
@@ -9,7 +10,7 @@ import { getRecentQuotes, isSupabaseConfigured } from "@/lib/quote-store";
 
 export const dynamic = "force-dynamic";
 
-type AdminSection = "demandes" | "assistant";
+type AdminSection = "demandes" | "assistant" | "kah-support";
 type DemandesView = "pipeline" | "kanban" | "payments";
 
 async function loadAdminDemandesData() {
@@ -24,7 +25,9 @@ async function loadAdminDemandesData() {
 }
 
 function resolveSection(value?: string): AdminSection {
-  return value === "assistant" ? "assistant" : "demandes";
+  if (value === "assistant") return "assistant";
+  if (value === "kah-support") return "kah-support";
+  return "demandes";
 }
 
 function resolveDemandesView(value?: string): DemandesView {
@@ -60,6 +63,9 @@ function AdminWorkspaceTabs(props: { section: AdminSection; demandesView: Demand
           </Link>
           <Link href="/admin/demandes?section=assistant" className={getTabClass(props.section === "assistant")}>
             Assistant
+          </Link>
+          <Link href="/admin/demandes?section=kah-support" className={getTabClass(props.section === "kah-support")}>
+            🎯 KAH-Support GLPI
           </Link>
         </div>
         {props.section === "demandes" ? (
@@ -125,7 +131,9 @@ export default async function AdminDemandesPage(props: {
   return (
     <>
       <AdminWorkspaceTabs section={section} demandesView={demandesView} />
-      {section === "assistant" ? (
+      {section === "kah-support" ? (
+        <AdminKahSupportBoard />
+      ) : section === "assistant" ? (
         <AdminAssistantBoard initialItems={data.assistantItems} />
       ) : demandesView === "payments" ? (
         <AdminPaymentsTable initialItems={data.items} />

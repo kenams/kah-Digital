@@ -21,7 +21,7 @@ export const metadata: Metadata = adminMetadata;
 
 export default function AdminRootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${dmSans.variable} ${geistMono.variable}`}>
+    <html lang="fr" data-admin="true" className={`${dmSans.variable} ${geistMono.variable}`}>
       <body className="antialiased bg-[#090908] text-white">
         <AdminNav />
         <main className="min-h-[calc(100vh-3.5rem)]">{children}</main>
