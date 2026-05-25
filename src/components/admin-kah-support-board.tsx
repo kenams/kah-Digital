@@ -92,6 +92,7 @@ export function AdminKahSupportBoard() {
   const [checkingDomains, setCheckingDomains] = useState(false);
   const [firing, setFiring] = useState(false);
   const [fireMsg, setFireMsg] = useState<string | null>(null);
+  const [batchProgress, setBatchProgress] = useState<{ step: number; total: number; email?: string; company?: string; ok?: boolean } | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -132,16 +133,54 @@ export function AdminKahSupportBoard() {
   async function fireBatch() {
     setFiring(true);
     setFireMsg(null);
+    setBatchProgress(null);
+
     try {
-      const res = await fetch("/api/cron/kah-support-prospection", { method: "POST" });
-      const data = await res.json() as { sent?: number; failed?: number; message?: string; error?: string };
-      if (data.error) {
-        setFireMsg(`❌ ${data.error}`);
-      } else if (data.message && (data.sent ?? 0) === 0) {
-        setFireMsg(`ℹ️ ${data.message}`);
-      } else {
-        setFireMsg(`✅ ${data.sent ?? 0} emails envoyés${data.failed ? ` · ${data.failed} échoués` : ""}`);
-        void load();
+      const res = await fetch("/api/admin/kah-support-fire", { method: "POST" });
+
+      if (!res.ok) {
+        const err = await res.json() as { error?: string };
+        setFireMsg(`❌ ${err.error ?? `Erreur ${res.status}`}`);
+        return;
+      }
+
+      if (!res.body) {
+        setFireMsg("❌ Pas de réponse streaming");
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          try {
+            const event = JSON.parse(line) as {
+              type: string; step?: number; total?: number;
+              email?: string; company?: string; ok?: boolean;
+              sent?: number; failed?: number; message?: string;
+            };
+            if (event.type === "progress") {
+              setBatchProgress({ step: event.step!, total: event.total!, email: event.email, company: event.company, ok: event.ok });
+            }
+            if (event.type === "done") {
+              if ((event.sent ?? 0) === 0 && event.message) {
+                setFireMsg(`ℹ️ ${event.message}`);
+              } else {
+                setFireMsg(`✅ ${event.sent ?? 0} emails envoyés${event.failed ? ` · ${event.failed} échoués` : ""}`);
+              }
+              void load();
+            }
+          } catch { /* ignore parse errors */ }
+        }
       }
     } catch (err) {
       setFireMsg(`❌ Erreur réseau: ${String(err)}`);
@@ -405,20 +444,58 @@ export function AdminKahSupportBoard() {
                 </span>
               )}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => void fireBatch()}
-                disabled={firing || stats.pending === 0}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 disabled:opacity-50 transition"
-              >
-                <FiZap size={16} /> {firing ? "Batch en cours..." : `Lancer batch maintenant (5 emails)`}
-              </button>
-            </div>
-            {fireMsg && (
-              <p className="mt-3 text-center text-sm font-semibold text-violet-300">{fireMsg}</p>
+
+            <button
+              onClick={() => void fireBatch()}
+              disabled={firing || stats.pending === 0}
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 disabled:opacity-50 transition mb-4"
+            >
+              <FiZap size={16} /> {firing ? "Envoi en cours..." : "Lancer batch maintenant (5 emails)"}
+            </button>
+
+            {/* Barre de progression */}
+            {(firing || batchProgress) && (
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center justify-between text-xs text-gray-400">
+                  <span className="truncate max-w-[280px]">
+                    {batchProgress
+                      ? `${batchProgress.ok === false ? "❌" : "✓"} ${batchProgress.company ?? batchProgress.email ?? "..."}`
+                      : "Démarrage..."}
+                  </span>
+                  <span className="font-mono font-bold text-violet-300 ml-2 flex-shrink-0">
+                    {batchProgress ? `${batchProgress.step}/${batchProgress.total}` : "0/5"}
+                  </span>
+                </div>
+                <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-400 transition-all duration-700 ease-out"
+                    style={{ width: batchProgress ? `${(batchProgress.step / batchProgress.total) * 100}%` : "0%" }}
+                  />
+                </div>
+                {batchProgress && (
+                  <div className="flex gap-1 flex-wrap">
+                    {Array.from({ length: batchProgress.total }, (_, i) => (
+                      <div
+                        key={i}
+                        className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
+                          i < batchProgress.step
+                            ? "bg-violet-400"
+                            : "bg-white/10"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             )}
-            {stats.pending === 0 && (
-              <p className="mt-3 text-center text-xs text-gray-500">File d&apos;attente vide — tous les prospects ont été contactés.</p>
+
+            {fireMsg && (
+              <p className={`text-center text-sm font-semibold ${fireMsg.startsWith("✅") ? "text-emerald-400" : fireMsg.startsWith("ℹ️") ? "text-blue-400" : "text-red-400"}`}>
+                {fireMsg}
+              </p>
+            )}
+            {stats.pending === 0 && !firing && (
+              <p className="text-center text-xs text-gray-500">File d&apos;attente vide — tous les prospects ont été contactés.</p>
             )}
           </div>
 

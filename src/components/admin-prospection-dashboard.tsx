@@ -832,17 +832,14 @@ export function ProspectionDashboard() {
                 <p className="text-sm text-gray-400 mb-5">
                   Chaque batch envoie d&apos;abord le backlog prêt, puis découvre et audite de nouveaux leads avec l&apos;IA, jusqu&apos;à <strong className="text-white">15 emails personnalisés</strong>. Le batch tourne en background — tu peux fermer l&apos;onglet.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <div className="flex flex-1 flex-col gap-2 sm:flex-row">
-                    <button
-                      onClick={() => void handleFireBatch()}
-                      disabled={liveBatchRunning}
-                      className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
-                    >
-                      <FiZap size={16} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (15 emails)"}
-                    </button>
-                    {renderLiveBatchCounter()}
-                  </div>
+                <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                  <button
+                    onClick={() => void handleFireBatch()}
+                    disabled={liveBatchRunning}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:opacity-50 transition"
+                  >
+                    <FiZap size={16} /> {liveBatchRunning ? "Batch en cours..." : "Lancer un batch (15 emails)"}
+                  </button>
                   <button
                     onClick={() => void handleManualFollowup()}
                     disabled={followupRunning}
@@ -851,8 +848,45 @@ export function ProspectionDashboard() {
                     <FiSend size={16} /> {followupRunning ? "Relances envoyées ✓" : "Relances J+1 / J+3 / J+5 / J+10"}
                   </button>
                 </div>
+
+                {/* Barre de progression live batch */}
+                {liveBatch.batchId && (
+                  <div className="space-y-2 mb-3">
+                    <div className="flex items-center justify-between text-xs text-gray-400">
+                      <span className="flex items-center gap-2">
+                        <span className={`h-2 w-2 rounded-full flex-shrink-0 ${liveBatch.tracking ? "animate-pulse bg-emerald-400" : "bg-gray-500"}`} />
+                        {liveBatch.tracking ? "Envoi en cours..." : "Batch terminé"}
+                      </span>
+                      <span className="font-mono font-bold text-emerald-300">
+                        {liveBatch.sent}/{liveBatch.found || 15}
+                        {liveBatch.failed > 0 && <span className="text-red-400 ml-1">· {liveBatch.failed} éch.</span>}
+                      </span>
+                    </div>
+                    <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-700 ease-out"
+                        style={{ width: `${Math.min(100, ((liveBatch.sent) / Math.max(liveBatch.found || 15, 1)) * 100)}%` }}
+                      />
+                    </div>
+                    <div className="flex gap-1">
+                      {Array.from({ length: liveBatch.found || 15 }, (_, i) => (
+                        <div
+                          key={i}
+                          className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
+                            i < liveBatch.sent
+                              ? "bg-emerald-400"
+                              : i < liveBatch.sent + liveBatch.failed
+                              ? "bg-red-400"
+                              : "bg-white/10"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {fireMessage && (
-                  <p className="mt-3 text-center text-sm text-emerald-400 font-semibold">{fireMessage}</p>
+                  <p className="text-center text-sm text-emerald-400 font-semibold">{fireMessage}</p>
                 )}
               </div>
             </>

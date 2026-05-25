@@ -1,15 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isAdminUser } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
+
+function getServiceSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
 async function requireAdmin() {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return null;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user || !isAdminUser(user)) return null;
-  return supabase;
+  return getServiceSupabase();
 }
 
 export async function GET() {
