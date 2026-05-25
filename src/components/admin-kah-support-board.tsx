@@ -131,62 +131,53 @@ export function AdminKahSupportBoard() {
   }
 
   async function fireBatch() {
+    // Prend les 5 premiers pending depuis le state déjà chargé
+    const toSend = prospects.filter(p => p.status === "pending").slice(0, 5);
+    if (toSend.length === 0) {
+      setFireMsg("ℹ️ Aucun prospect en attente");
+      return;
+    }
+
     setFiring(true);
     setFireMsg(null);
-    setBatchProgress(null);
+    setBatchProgress({ step: 0, total: toSend.length });
 
-    try {
-      const res = await fetch("/api/admin/kah-support-fire", { method: "POST" });
+    let sent = 0;
+    let failed = 0;
 
-      if (!res.ok) {
-        const err = await res.json() as { error?: string };
-        setFireMsg(`❌ ${err.error ?? `Erreur ${res.status}`}`);
-        return;
-      }
+    for (let i = 0; i < toSend.length; i++) {
+      const p = toSend[i];
+      // Update progress AVANT l'envoi (nom de l'entreprise en cours)
+      setBatchProgress({ step: i, total: toSend.length, email: p.email, company: p.company });
 
-      if (!res.body) {
-        setFireMsg("❌ Pas de réponse streaming");
-        return;
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() ?? "";
-
-        for (const line of lines) {
-          if (!line.trim()) continue;
-          try {
-            const event = JSON.parse(line) as {
-              type: string; step?: number; total?: number;
-              email?: string; company?: string; ok?: boolean;
-              sent?: number; failed?: number; message?: string;
-            };
-            if (event.type === "progress") {
-              setBatchProgress({ step: event.step!, total: event.total!, email: event.email, company: event.company, ok: event.ok });
-            }
-            if (event.type === "done") {
-              if ((event.sent ?? 0) === 0 && event.message) {
-                setFireMsg(`ℹ️ ${event.message}`);
-              } else {
-                setFireMsg(`✅ ${event.sent ?? 0} emails envoyés${event.failed ? ` · ${event.failed} échoués` : ""}`);
-              }
-              void load();
-            }
-          } catch { /* ignore parse errors */ }
+      try {
+        const res = await fetch("/api/admin/kah-support-send-one", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: p.id }),
+        });
+        const data = await res.json() as { ok?: boolean; error?: string; skipped?: boolean };
+        if (res.ok && (data.ok || data.skipped)) {
+          sent++;
+          // Met à jour localement sans recharger
+          setProspects(prev => prev.map(x => x.id === p.id ? { ...x, status: "sent" as ProspectStatus } : x));
+        } else {
+          failed++;
         }
+      } catch {
+        failed++;
       }
-    } catch (err) {
-      setFireMsg(`❌ Erreur réseau: ${String(err)}`);
-    } finally {
-      setFiring(false);
+
+      // Progress APRÈS l'envoi : i+1 cases remplies
+      setBatchProgress({ step: i + 1, total: toSend.length, email: p.email, company: p.company, ok: failed === 0 });
     }
+
+    setFireMsg(
+      sent > 0
+        ? `✅ ${sent} email${sent > 1 ? "s" : ""} envoyé${sent > 1 ? "s" : ""}${failed > 0 ? ` · ${failed} échoué${failed > 1 ? "s" : ""}` : ""}`
+        : `❌ Tous les envois ont échoué`
+    );
+    setFiring(false);
   }
 
   async function checkAllDomains() {
@@ -453,38 +444,51 @@ export function AdminKahSupportBoard() {
               <FiZap size={16} /> {firing ? "Envoi en cours..." : "Lancer batch maintenant (5 emails)"}
             </button>
 
-            {/* Barre de progression */}
-            {(firing || batchProgress) && (
-              <div className="space-y-2 mb-3">
-                <div className="flex items-center justify-between text-xs text-gray-400">
-                  <span className="truncate max-w-[280px]">
-                    {batchProgress
-                      ? `${batchProgress.ok === false ? "❌" : "✓"} ${batchProgress.company ?? batchProgress.email ?? "..."}`
+            {/* Barre de progression — s'affiche dès le clic jusqu'à la fin */}
+            {(firing || (batchProgress && batchProgress.step > 0)) && (
+              <div className="rounded-xl border border-violet-500/20 bg-black/20 p-4 mb-3 space-y-3">
+                {/* Label entreprise en cours */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs text-gray-400 truncate flex items-center gap-2">
+                    {firing && batchProgress && batchProgress.step < batchProgress.total && (
+                      <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse flex-shrink-0" />
+                    )}
+                    {batchProgress && batchProgress.step < batchProgress.total
+                      ? `Envoi vers ${batchProgress.company ?? batchProgress.email ?? "..."}`
+                      : batchProgress && batchProgress.step === batchProgress.total
+                      ? "Batch terminé"
                       : "Démarrage..."}
                   </span>
-                  <span className="font-mono font-bold text-violet-300 ml-2 flex-shrink-0">
+                  <span className="font-mono text-sm font-bold text-violet-300 flex-shrink-0">
                     {batchProgress ? `${batchProgress.step}/${batchProgress.total}` : "0/5"}
                   </span>
                 </div>
-                <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
+
+                {/* Barre principale 0% → 100% */}
+                <div className="relative h-3 rounded-full bg-white/8 overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-400 transition-all duration-700 ease-out"
-                    style={{ width: batchProgress ? `${(batchProgress.step / batchProgress.total) * 100}%` : "0%" }}
+                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-400 transition-all duration-500 ease-out"
+                    style={{ width: batchProgress ? `${Math.round((batchProgress.step / batchProgress.total) * 100)}%` : "0%" }}
                   />
                 </div>
+
+                {/* Segments individuels */}
+                <div className="flex gap-1.5">
+                  {batchProgress && Array.from({ length: batchProgress.total }, (_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
+                        i < batchProgress.step ? "bg-violet-400" : "bg-white/10"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Pourcentage */}
                 {batchProgress && (
-                  <div className="flex gap-1 flex-wrap">
-                    {Array.from({ length: batchProgress.total }, (_, i) => (
-                      <div
-                        key={i}
-                        className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                          i < batchProgress.step
-                            ? "bg-violet-400"
-                            : "bg-white/10"
-                        }`}
-                      />
-                    ))}
-                  </div>
+                  <p className="text-center text-xs font-mono text-violet-300">
+                    {Math.round((batchProgress.step / batchProgress.total) * 100)}%
+                  </p>
                 )}
               </div>
             )}
