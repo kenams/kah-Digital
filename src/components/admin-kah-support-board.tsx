@@ -6,7 +6,7 @@ import {
   FiFilter, FiSearch, FiGlobe, FiZap, FiMail,
 } from "react-icons/fi";
 
-type ProspectStatus = "sent" | "no_reply" | "replied" | "demo_scheduled" | "won" | "lost";
+type ProspectStatus = "pending" | "sent" | "no_reply" | "replied" | "demo_scheduled" | "won" | "lost";
 
 type Prospect = {
   id: string;
@@ -24,12 +24,13 @@ type Prospect = {
 };
 
 const STATUS_CONFIG: Record<ProspectStatus, { label: string; bg: string; text: string; dot: string }> = {
-  sent:           { label: "Envoyé",          bg: "bg-blue-500/15",    text: "text-blue-400",    dot: "bg-blue-400" },
-  no_reply:       { label: "Sans réponse",    bg: "bg-white/8",        text: "text-white/40",    dot: "bg-white/30" },
-  replied:        { label: "🔥 Répondu",       bg: "bg-emerald-500/15", text: "text-emerald-400", dot: "bg-emerald-400" },
-  demo_scheduled: { label: "📅 Démo planif.", bg: "bg-violet-500/15",  text: "text-violet-400",  dot: "bg-violet-400" },
-  won:            { label: "✅ Gagné",          bg: "bg-green-500/15",   text: "text-green-400",   dot: "bg-green-400" },
-  lost:           { label: "Perdu",            bg: "bg-red-500/15",     text: "text-red-400",     dot: "bg-red-400" },
+  pending:        { label: "⏳ En attente",    bg: "bg-gray-500/15",    text: "text-gray-400",    dot: "bg-gray-500" },
+  sent:           { label: "Envoyé",           bg: "bg-blue-500/15",    text: "text-blue-400",    dot: "bg-blue-400" },
+  no_reply:       { label: "Sans réponse",     bg: "bg-white/8",        text: "text-white/40",    dot: "bg-white/30" },
+  replied:        { label: "🔥 Répondu",        bg: "bg-emerald-500/15", text: "text-emerald-400", dot: "bg-emerald-400" },
+  demo_scheduled: { label: "📅 Démo planif.",  bg: "bg-violet-500/15",  text: "text-violet-400",  dot: "bg-violet-400" },
+  won:            { label: "✅ Gagné",           bg: "bg-green-500/15",   text: "text-green-400",   dot: "bg-green-400" },
+  lost:           { label: "Perdu",             bg: "bg-red-500/15",     text: "text-red-400",     dot: "bg-red-400" },
 };
 
 type ActiveTab = "live" | "chauds" | "prospects" | "domaines";
@@ -89,6 +90,8 @@ export function AdminKahSupportBoard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [domainResults, setDomainResults] = useState<Record<string, DomainStatus>>({});
   const [checkingDomains, setCheckingDomains] = useState(false);
+  const [firing, setFiring] = useState(false);
+  const [fireMsg, setFireMsg] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -126,6 +129,27 @@ export function AdminKahSupportBoard() {
     setNoteEdit(null);
   }
 
+  async function fireBatch() {
+    setFiring(true);
+    setFireMsg(null);
+    try {
+      const res = await fetch("/api/cron/kah-support-prospection", { method: "POST" });
+      const data = await res.json() as { sent?: number; failed?: number; message?: string; error?: string };
+      if (data.error) {
+        setFireMsg(`❌ ${data.error}`);
+      } else if (data.message && (data.sent ?? 0) === 0) {
+        setFireMsg(`ℹ️ ${data.message}`);
+      } else {
+        setFireMsg(`✅ ${data.sent ?? 0} emails envoyés${data.failed ? ` · ${data.failed} échoués` : ""}`);
+        void load();
+      }
+    } catch (err) {
+      setFireMsg(`❌ Erreur réseau: ${String(err)}`);
+    } finally {
+      setFiring(false);
+    }
+  }
+
   async function checkAllDomains() {
     setCheckingDomains(true);
     const domains = [...new Set(prospects.map(p => extractDomain(p.email)).filter(Boolean))];
@@ -144,16 +168,17 @@ export function AdminKahSupportBoard() {
   }
 
   const stats = useMemo(() => {
+    const pending = prospects.filter(p => p.status === "pending").length;
+    const sent = prospects.filter(p => p.status !== "pending").length;
     const total = prospects.length;
-    const sent = total;
     const replied = prospects.filter(p => ["replied", "demo_scheduled", "won"].includes(p.status)).length;
     const demo = prospects.filter(p => p.status === "demo_scheduled").length;
     const won = prospects.filter(p => p.status === "won").length;
     const lost = prospects.filter(p => p.status === "lost").length;
     const noReply = prospects.filter(p => p.status === "no_reply" || p.status === "sent").length;
-    const replyRate = total > 0 ? Math.round((replied / total) * 100) : 0;
-    const convRate = total > 0 ? Math.round((won / total) * 100) : 0;
-    return { total, sent, replied, demo, won, lost, noReply, replyRate, convRate };
+    const replyRate = sent > 0 ? Math.round((replied / sent) * 100) : 0;
+    const convRate = sent > 0 ? Math.round((won / sent) * 100) : 0;
+    return { total, pending, sent, replied, demo, won, lost, noReply, replyRate, convRate };
   }, [prospects]);
 
   const hotProspects = useMemo(() =>
@@ -212,13 +237,27 @@ export function AdminKahSupportBoard() {
             </h1>
             <p className="text-sm text-gray-400">Campagne Resend · 30 entreprises GLPI · contact@kah-digital.ch → kahdigital42@gmail.com</p>
           </div>
-          <button
-            onClick={() => void load()}
-            disabled={loading}
-            className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5 disabled:opacity-50"
-          >
-            <FiRefreshCw size={14} className={loading ? "animate-spin" : ""} />
-          </button>
+          <div className="flex items-center gap-2">
+            {stats.pending > 0 && (
+              <span className="rounded-lg border border-gray-500/30 bg-gray-500/10 px-3 py-2 text-xs text-gray-400">
+                ⏳ {stats.pending} en file
+              </span>
+            )}
+            <button
+              onClick={() => void fireBatch()}
+              disabled={firing || stats.pending === 0}
+              className="flex items-center gap-2 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold hover:bg-violet-700 disabled:opacity-50"
+            >
+              <FiZap size={13} /> {firing ? "Envoi..." : `Lancer batch (5 emails)`}
+            </button>
+            <button
+              onClick={() => void load()}
+              disabled={loading}
+              className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm text-gray-300 hover:bg-white/5 disabled:opacity-50"
+            >
+              <FiRefreshCw size={14} className={loading ? "animate-spin" : ""} />
+            </button>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -241,12 +280,13 @@ export function AdminKahSupportBoard() {
       <div className="border-b border-white/10 bg-gray-900/50 px-6 py-3">
         <div className="mx-auto max-w-7xl flex flex-wrap gap-6 text-sm">
           {[
-            { label: "📤 Envoyés",      value: stats.sent,    color: "text-white" },
-            { label: "🔥 Répondus",     value: `${stats.replied} (${stats.replyRate}%)`, color: "text-emerald-400" },
-            { label: "📅 Démos",        value: stats.demo,    color: "text-violet-400" },
-            { label: "✅ Gagnés",        value: `${stats.won} (${stats.convRate}%)`, color: "text-green-400" },
-            { label: "❌ Perdus",        value: stats.lost,    color: "text-red-400" },
-            { label: "⏳ Sans réponse", value: stats.noReply, color: "text-yellow-400" },
+            { label: "⏳ File d'attente", value: stats.pending, color: "text-gray-400" },
+            { label: "📤 Envoyés",        value: stats.sent,    color: "text-white" },
+            { label: "🔥 Répondus",       value: `${stats.replied} (${stats.replyRate}%)`, color: "text-emerald-400" },
+            { label: "📅 Démos",          value: stats.demo,    color: "text-violet-400" },
+            { label: "✅ Gagnés",          value: `${stats.won} (${stats.convRate}%)`, color: "text-green-400" },
+            { label: "❌ Perdus",          value: stats.lost,    color: "text-red-400" },
+            { label: "📭 Sans réponse",   value: stats.noReply, color: "text-yellow-400" },
           ].map(s => (
             <div key={s.label} className="flex items-center gap-2">
               <span className={`text-xl font-bold ${s.color}`}>{s.value}</span>
@@ -303,10 +343,11 @@ export function AdminKahSupportBoard() {
               <FiActivity size={14} className="text-blue-400" /> Funnel de conversion
             </h2>
             <div className="space-y-3">
-              <FunnelBar label="📤 Envoyés" value={stats.sent} max={stats.sent} color="bg-gray-400" pct={null} />
-              <FunnelBar label="🔥 Répondus" value={stats.replied} max={stats.sent} color="bg-emerald-500" pct={stats.replyRate} />
-              <FunnelBar label="📅 Démos planifiées" value={stats.demo} max={stats.sent} color="bg-violet-500" pct={stats.sent > 0 ? Math.round((stats.demo / stats.sent) * 100) : 0} />
-              <FunnelBar label="✅ Gagnés (clients)" value={stats.won} max={stats.sent} color="bg-green-500" pct={stats.convRate} />
+              <FunnelBar label="⏳ File d'attente" value={stats.pending} max={stats.total} color="bg-gray-600" pct={stats.total > 0 ? Math.round((stats.pending / stats.total) * 100) : 0} />
+              <FunnelBar label="📤 Envoyés" value={stats.sent} max={stats.total} color="bg-blue-500" pct={stats.total > 0 ? Math.round((stats.sent / stats.total) * 100) : 0} />
+              <FunnelBar label="🔥 Répondus" value={stats.replied} max={stats.sent || 1} color="bg-emerald-500" pct={stats.replyRate} />
+              <FunnelBar label="📅 Démos planifiées" value={stats.demo} max={stats.sent || 1} color="bg-violet-500" pct={stats.sent > 0 ? Math.round((stats.demo / stats.sent) * 100) : 0} />
+              <FunnelBar label="✅ Gagnés (clients)" value={stats.won} max={stats.sent || 1} color="bg-green-500" pct={stats.convRate} />
             </div>
 
             {/* KPI benchmarks */}
@@ -349,6 +390,36 @@ export function AdminKahSupportBoard() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Lancer la prospection */}
+          <div className="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-6">
+            <h3 className="mb-1 font-bold text-white flex items-center gap-2 text-lg">
+              <FiZap size={18} className="text-violet-400" /> Prospection automatique GLPI
+            </h3>
+            <p className="text-sm text-gray-400 mb-5">
+              Cron actif tous les jours à 15h (lun–ven) — envoie <strong className="text-white">5 emails/jour</strong> depuis la file d&apos;attente.
+              {stats.pending > 0 && (
+                <span className="ml-2 text-gray-300">
+                  <strong className="text-violet-300">{stats.pending} prospects</strong> en attente ({Math.round(stats.pending / 5)} jours restants).
+                </span>
+              )}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => void fireBatch()}
+                disabled={firing || stats.pending === 0}
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 disabled:opacity-50 transition"
+              >
+                <FiZap size={16} /> {firing ? "Batch en cours..." : `Lancer batch maintenant (5 emails)`}
+              </button>
+            </div>
+            {fireMsg && (
+              <p className="mt-3 text-center text-sm font-semibold text-violet-300">{fireMsg}</p>
+            )}
+            {stats.pending === 0 && (
+              <p className="mt-3 text-center text-xs text-gray-500">File d&apos;attente vide — tous les prospects ont été contactés.</p>
+            )}
           </div>
 
           {/* Répartition par statut */}
