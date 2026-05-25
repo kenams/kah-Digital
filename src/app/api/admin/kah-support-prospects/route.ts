@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 
 async function requireAdmin() {
   const supabase = await createSupabaseServerClient();
+  if (!supabase) return null;
   const { data: { user } } = await supabase.auth.getUser();
   if (!user || !isAdminUser(user)) return null;
   return supabase;
