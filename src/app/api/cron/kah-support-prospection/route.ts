@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const FROM = "KAH Digital <contact@kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
-const EMAILS_PER_RUN = 5;
+const EMAILS_PER_RUN = 10;
 
 type Prospect = {
   id: string;

@@ -132,7 +132,7 @@ export function AdminKahSupportBoard() {
 
   async function fireBatch() {
     // Prend les 5 premiers pending depuis le state déjà chargé
-    const toSend = prospects.filter(p => p.status === "pending").slice(0, 5);
+    const toSend = prospects.filter(p => p.status === "pending").slice(0, 10);
     if (toSend.length === 0) {
       setFireMsg("ℹ️ Aucun prospect en attente");
       return;
@@ -428,10 +428,10 @@ export function AdminKahSupportBoard() {
               <FiZap size={18} className="text-violet-400" /> Prospection automatique GLPI
             </h3>
             <p className="text-sm text-gray-400 mb-5">
-              Cron actif tous les jours à 15h (lun–ven) — envoie <strong className="text-white">5 emails/jour</strong> depuis la file d&apos;attente.
+              Cron actif tous les jours à 15h (lun–ven) — envoie <strong className="text-white">10 emails/jour</strong> depuis la file d&apos;attente.
               {stats.pending > 0 && (
                 <span className="ml-2 text-gray-300">
-                  <strong className="text-violet-300">{stats.pending} prospects</strong> en attente ({Math.round(stats.pending / 5)} jours restants).
+                  <strong className="text-violet-300">{stats.pending} prospects</strong> en attente ({Math.round(stats.pending / 10)} jours restants).
                 </span>
               )}
             </p>
@@ -441,7 +441,7 @@ export function AdminKahSupportBoard() {
               disabled={firing || stats.pending === 0}
               className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-4 text-base font-bold text-white shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40 disabled:opacity-50 transition mb-4"
             >
-              <FiZap size={16} /> {firing ? "Envoi en cours..." : "Lancer batch maintenant (5 emails)"}
+              <FiZap size={16} /> {firing ? "Envoi en cours..." : "Lancer batch maintenant (10 emails)"}
             </button>
 
             {/* Barre de progression — s'affiche dès le clic jusqu'à la fin */}
