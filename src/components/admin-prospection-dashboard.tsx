@@ -236,6 +236,8 @@ export function ProspectionDashboard() {
   // Add form state
   const [addForm, setAddForm] = useState({ website: "", email: "", businessName: "", sector: "" });
   const [addLoading, setAddLoading] = useState(false);
+  const [reauditLoading, setReauditLoading] = useState(false);
+  const [reauditMsg, setReauditMsg] = useState<string | null>(null);
 
   const fetchLiveStats = useCallback(async () => {
     const res = await fetch("/api/prospection/stats");
@@ -769,9 +771,37 @@ export function ProspectionDashboard() {
 
               {/* Hot prospects (opened/clicked) */}
               <div>
-                <h2 className="mb-1 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
-                  <FiBell size={14} className="text-orange-400" /> Prospects actifs — à relancer
-                </h2>
+                <div className="flex items-center justify-between mb-1">
+                  <h2 className="text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                    <FiBell size={14} className="text-orange-400" /> Prospects actifs — à relancer
+                  </h2>
+                  <button
+                    onClick={async () => {
+                      setReauditLoading(true);
+                      setReauditMsg(null);
+                      try {
+                        const res = await fetch("/api/admin/reaudit", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ limit: 10, status: "replied" }),
+                        });
+                        const data = await res.json() as { updated: number; total: number };
+                        setReauditMsg(`✅ ${data.updated}/${data.total} re-audités`);
+                        void fetchLiveStats();
+                      } catch {
+                        setReauditMsg("❌ Erreur re-audit");
+                      } finally {
+                        setReauditLoading(false);
+                      }
+                    }}
+                    disabled={reauditLoading}
+                    className="flex items-center gap-1.5 rounded-full bg-violet-600/20 border border-violet-500/30 px-3 py-1 text-xs font-semibold text-violet-300 hover:bg-violet-600/40 transition disabled:opacity-50"
+                  >
+                    <FiRefreshCw size={11} className={reauditLoading ? "animate-spin" : ""} />
+                    {reauditLoading ? "Re-audit..." : "Re-audit leads (10)"}
+                  </button>
+                </div>
+                {reauditMsg && <p className="text-xs text-violet-300 mb-2">{reauditMsg}</p>}
                 <div className="flex flex-wrap gap-3 mb-3 text-xs">
                   <span className="flex items-center gap-1.5 rounded-full bg-orange-500/20 px-3 py-1 text-orange-300 font-semibold">🔥 Cliqué = lead brûlant → contacte MAINTENANT</span>
                   <span className="flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-blue-300">👁 Ouvert = intéressé → relance dans 48h</span>
