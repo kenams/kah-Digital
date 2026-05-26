@@ -1,18 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isAdminUser } from "@/lib/auth";
 import { auditWebsite } from "@/lib/agents/website-auditor";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
+async function requireAdmin(): Promise<boolean> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    if (!supabase) return false;
+    const { data: { user } } = await supabase.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch { return false; }
+}
+
 export async function POST(req: NextRequest) {
-  if (!isAdminUser(req)) {
+  if (!(await requireAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const url = process.env.SUPABASE_URL!;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
   if (!url || !key) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 500 });
   }
