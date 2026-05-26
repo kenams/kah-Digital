@@ -16,7 +16,7 @@ type OpenAIStreamEvent = {
 };
 
 const OPENAI_API_URL = "https://api.openai.com/v1/responses";
-const OPENAI_MODEL = process.env.OPENAI_ASSISTANT_MODEL ?? "gpt-5-mini";
+const OPENAI_MODEL = process.env.OPENAI_ASSISTANT_MODEL ?? "gpt-4o-mini";
 
 function extractOutputText(payload: OpenAIResponsePayload) {
   if (payload.output_text && payload.output_text.trim()) {

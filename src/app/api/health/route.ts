@@ -28,6 +28,15 @@ export async function GET() {
     turnstile: process.env.TURNSTILE_SECRET_KEY
       ? makeCheck("ok", "Turnstile configured")
       : makeCheck("degraded", "Turnstile secret missing"),
+    anthropic: process.env.ANTHROPIC_API_KEY
+      ? makeCheck("ok", "ANTHROPIC_API_KEY present")
+      : makeCheck("degraded", "ANTHROPIC_API_KEY missing — audits use rule-based fallback"),
+    openai: process.env.OPENAI_API_KEY
+      ? makeCheck("ok", "OPENAI_API_KEY present")
+      : makeCheck("degraded", "OPENAI_API_KEY missing"),
+    gmail: process.env.GMAIL_APP_PASSWORD
+      ? makeCheck("ok", "GMAIL_APP_PASSWORD present")
+      : makeCheck("degraded", "GMAIL_APP_PASSWORD missing — admin notifications disabled"),
   };
 
   const supabaseReady = isQuoteSupabaseConfigured() && isAssistantSupabaseConfigured();
