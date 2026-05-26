@@ -1,0 +1,20 @@
+name: Keepalive — Render services
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping assistant-pme
+        run: |
+          STATUS=$(curl -sf -o /dev/null -w "%{http_code}" --max-time 20 https://assistant-pme.onrender.com/health || echo "0")
+          echo "assistant-pme: $STATUS"
+          if [ "$STATUS" = "0" ]; then
+            echo "⚠️ assistant-pme unreachable"
+          else
+            echo "✅ assistant-pme OK ($STATUS)"
+          fi

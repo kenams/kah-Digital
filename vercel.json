@@ -9,6 +9,6 @@
     { "path": "/api/indexnow",         "schedule": "0 3 * * *"   },
     { "path": "/api/cron/kah-support-prospection", "schedule": "0 13 * * 1-5" },
     { "path": "/api/cron/kah-support-followup",    "schedule": "0 11 * * 2,4" },
-    { "path": "/api/cron/keepalive", "schedule": "*/14 * * * *" }
+    { "path": "/api/cron/keepalive", "schedule": "0 6 * * *" }
   ]
 }
