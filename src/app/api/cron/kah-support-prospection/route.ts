@@ -43,59 +43,68 @@ function esc(str: string | null | undefined) {
   return (str ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+// A/B variants — rotation par semaine pour éviter la répétition
+const SUBJECT_VARIANTS = [
+  (c: string) => `${c} — votre support IT automatisé 24h/24`,
+  (c: string) => `${c} : réduire les tickets répétitifs avec l'IA`,
+  (c: string) => `Une question rapide sur le support IT de ${c}`,
+  (c: string) => `${c} — 70% des demandes IT résolues sans technicien`,
+];
+
 function buildEmail(p: Prospect) {
   const firstName = (p.name ?? "").split(" ").pop() ?? "Bonjour";
   const company = p.company ?? "votre organisation";
   const role = p.contact_role ?? "votre équipe IT";
   const note = p.personal_note ?? "";
-  const subject = `${company} + IA : 70% de tickets GLPI en moins`;
+  const variant = Math.floor(Date.now() / (86400000 * 7)) % SUBJECT_VARIANTS.length;
+  const subject = SUBJECT_VARIANTS[variant]!(company);
 
   const html = `<!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><title>GLPI + IA</title></head>
+<html lang="fr"><head><meta charset="UTF-8"><title>Support IT IA</title></head>
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:40px auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
   <div style="background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:28px 36px;">
     <span style="color:#fff;font-size:15px;font-weight:700;">🤖 Assistant IT — KAH Digital</span><br/>
-    <span style="color:rgba(255,255,255,.7);font-size:12px;">kah-support.ch</span>
+    <span style="color:rgba(255,255,255,.7);font-size:12px;">kah-support.ch · Démo gratuite disponible</span>
   </div>
   <div style="padding:32px 36px;">
     <p style="color:#111827;font-size:16px;margin:0 0 16px;">Bonjour ${esc(firstName)},</p>
     ${note ? `<p style="color:#374151;font-size:14px;margin:0 0 18px;padding:12px 14px;background:#f9fafb;border-left:3px solid #6366f1;border-radius:0 6px 6px 0;line-height:1.5;">${esc(note)}</p>` : ""}
     <p style="color:#374151;font-size:15px;margin:0 0 16px;line-height:1.65;">
-      Si vous gérez GLPI pour <strong>${esc(company)}</strong>, vous savez que le niveau 1 prend la majorité du temps de ${esc(role)} — réinitialisation de mots de passe, VPN, impressions, accès logiciels.
+      Dans la plupart des équipes IT de PME comme <strong>${esc(company)}</strong>, 60 à 70% des tickets entrants sont des demandes répétitives — réinitialisation de mots de passe, accès logiciels, problèmes VPN, configuration d'imprimantes.
     </p>
     <p style="color:#374151;font-size:15px;margin:0 0 22px;line-height:1.65;">
-      Notre assistant IA se connecte à votre GLPI en <strong>5 minutes</strong> et prend ces demandes en charge 24h/24 : il répond à l'utilisateur, et si besoin, crée automatiquement le ticket dans GLPI avec priorité, catégorie et description complète.
+      Notre assistant IA prend ces demandes en charge 24h/24 : il répond à l'utilisateur instantanément en langage naturel, et crée automatiquement un ticket dans votre outil de ticketing (GLPI, Freshdesk, Zendesk ou autre) avec priorité, catégorie et description prêtes.
     </p>
     <div style="background:#f0f0ff;border:1px solid #c7d2fe;border-radius:8px;padding:18px 22px;margin-bottom:26px;">
       <p style="color:#4338ca;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;">Résultats chez nos clients PME</p>
       <table style="width:100%;border-collapse:collapse;text-align:center;">
         <tr>
           <td style="padding:6px;"><div style="font-size:26px;font-weight:900;color:#6366f1;">70%</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">tickets auto-résolus</div></td>
-          <td style="padding:6px;"><div style="font-size:26px;font-weight:900;color:#6366f1;">8 min</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">économisées/ticket</div></td>
-          <td style="padding:6px;"><div style="font-size:26px;font-weight:900;color:#6366f1;">&lt;1 mois</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">pour atteindre le ROI</div></td>
+          <td style="padding:6px;"><div style="font-size:26px;font-weight:900;color:#6366f1;">5 min</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">pour déployer</div></td>
+          <td style="padding:6px;"><div style="font-size:26px;font-weight:900;color:#6366f1;">24h/24</div><div style="font-size:11px;color:#6b7280;margin-top:2px;">disponibilité</div></td>
         </tr>
       </table>
     </div>
-    <div style="text-align:center;margin-bottom:26px;">
-      <a href="https://kah-support.ch/glpi"
+    <div style="text-align:center;margin-bottom:18px;">
+      <a href="https://kah-support.ch"
          style="display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 4px 16px rgba(99,102,241,.3);">
-        Voir l'intégration GLPI →
+        Voir une démo de 2 minutes →
       </a>
     </div>
+    <p style="text-align:center;color:#6b7280;font-size:12px;margin:0 0 22px;">Essai 14 jours gratuit · Sans carte bancaire · Déploiement en 5 minutes</p>
     <p style="color:#6b7280;font-size:13px;margin:0;line-height:1.6;">
-      Compatible GLPI 9.5.x et 10.x — on-premise et cloud. Aucun plugin à installer.
+      Compatible GLPI, Freshdesk, Zendesk, Jira Service — on-premise et cloud. Aucun plugin à installer.
     </p>
   </div>
-  <div style="padding:18px 36px;background:#f9fafb;border-top:1px solid #e5e7eb;">
-    <p style="color:#6b7280;font-size:13px;margin:0;line-height:1.6;">
-      <strong>PS :</strong> Si vous voulez voir ça sur un GLPI réel, je peux vous faire une démo de 10 min. Répondez simplement à cet email.
+  <div style="padding:18px 36px;background:#fef9c3;border-top:1px solid #fef08a;">
+    <p style="color:#78350f;font-size:13px;margin:0;line-height:1.6;">
+      <strong>PS :</strong> Je peux vous montrer l'assistant sur un vrai helpdesk en 10 min. Répondez simplement "démo" à cet email — je m'occupe du reste.
     </p>
   </div>
   <div style="padding:14px 36px;text-align:center;border-top:1px solid #f3f4f6;">
     <p style="color:#9ca3af;font-size:11px;margin:0;">
-      KAH Digital · <a href="https://kah-support.ch" style="color:#9ca3af;">kah-support.ch</a> ·
-      <a href="https://kah-support.ch/glpi" style="color:#9ca3af;">Page GLPI</a>
+      KAH Digital · <a href="https://kah-support.ch" style="color:#9ca3af;">kah-support.ch</a> · kahdigital42@gmail.com
     </p>
   </div>
 </div>
