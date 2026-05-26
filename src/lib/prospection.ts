@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 
 export type ProspectAudit = {
   businessName: string;
@@ -36,12 +37,33 @@ async function fetchWebsiteContent(url: string): Promise<string> {
   }
 }
 
+async function callLLM(prompt: string): Promise<string> {
+  if (process.env.ANTHROPIC_API_KEY) {
+    try {
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const msg = await client.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 2000,
+        messages: [{ role: "user", content: prompt }],
+      });
+      return msg.content[0].type === "text" ? msg.content[0].text : "";
+    } catch {
+      // fall through to OpenAI
+    }
+  }
+  if (process.env.OPENAI_API_KEY) {
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const resp = await client.chat.completions.create({
+      model: "gpt-4o",
+      max_tokens: 2000,
+      messages: [{ role: "user", content: prompt }],
+    });
+    return resp.choices[0]?.message?.content ?? "";
+  }
+  throw new Error("No AI provider configured");
+}
+
 export async function auditWebsite(websiteUrl: string): Promise<ProspectAudit | null> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error("ANTHROPIC_API_KEY manquant");
-
-  const client = new Anthropic({ apiKey });
-
   let websiteContent = "";
   try {
     websiteContent = await fetchWebsiteContent(websiteUrl);
@@ -82,13 +104,7 @@ Règles :
 - Email chaleureux mais direct, pro mais pas froid, 200-350 mots
 - Mentionne des détails spécifiques du site pour montrer qu'on l'a vraiment analysé`;
 
-  const message = await client.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 2000,
-    messages: [{ role: "user", content: prompt }],
-  });
-
-  const text = message.content[0].type === "text" ? message.content[0].text : "";
+  const text = await callLLM(prompt);
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
   if (start === -1 || end === -1) return null;

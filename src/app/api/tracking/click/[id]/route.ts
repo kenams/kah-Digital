@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 import { Resend } from "resend";
 import { sendAdminNotification } from "@/lib/gmail";
 import { getResendFromAddress } from "@/lib/mail";
@@ -64,21 +65,32 @@ async function generateAndSendAutoReply(prospect: {
 
   let draft = "";
 
-  // Générer le brouillon avec Claude
+  // Générer le brouillon — Anthropic puis OpenAI en fallback
+  const promptFn = REPLY_PROMPT[lang] ?? REPLY_PROMPT.fr;
   if (process.env.ANTHROPIC_API_KEY) {
     try {
       const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const promptFn = REPLY_PROMPT[lang] ?? REPLY_PROMPT.fr;
       const msg = await client.messages.create({
         model: "claude-haiku-4-5-20251001",
         max_tokens: 300,
         messages: [{ role: "user", content: promptFn(name, sector, isQuote) }],
       });
       draft = msg.content[0].type === "text" ? msg.content[0].text.trim() : "";
-    } catch { /* fallback below */ }
+    } catch { /* fall through to OpenAI */ }
+  }
+  if (!draft && process.env.OPENAI_API_KEY) {
+    try {
+      const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const resp = await client.chat.completions.create({
+        model: "gpt-4o-mini",
+        max_tokens: 300,
+        messages: [{ role: "user", content: promptFn(name, sector, isQuote) }],
+      });
+      draft = resp.choices[0]?.message?.content?.trim() ?? "";
+    } catch { /* fall through to static template */ }
   }
 
-  // Fallback si pas d'IA
+  // Fallback statique si aucune IA
   if (!draft) {
     const fallbacks: Record<string, string> = {
       fr: `Bonjour,\n\nMerci pour votre intérêt pour KAH-Digital ! J'ai bien noté votre demande concernant ${name}.\n\nJe vous prépare une proposition personnalisée et reviens vers vous dans les 24 heures avec tous les détails.\n\nÀ très bientôt,\nKénan — KAH-Digital | kahdigital42@gmail.com`,
