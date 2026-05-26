@@ -50,7 +50,7 @@ export async function GET() {
       checks.anthropic = makeCheck("ok", "ANTHROPIC_API_KEY valid — API responding");
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
-      checks.anthropic = makeCheck("degraded", `ANTHROPIC_API_KEY set but API error: ${msg.slice(0, 80)}`);
+      checks.anthropic = makeCheck("degraded", `ANTHROPIC_API_KEY set but API error: ${msg.slice(0, 200)}`);
     }
   } else {
     checks.anthropic = makeCheck("degraded", "ANTHROPIC_API_KEY missing — audits use rule-based fallback");
