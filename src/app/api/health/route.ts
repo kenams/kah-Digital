@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import Anthropic from "@anthropic-ai/sdk";
 import { getRecentAssistantRecords, isSupabaseConfigured as isAssistantSupabaseConfigured } from "@/lib/assistant-store";
 import { getRecentQuotes, isSupabaseConfigured as isQuoteSupabaseConfigured } from "@/lib/quote-store";
 import { isStripeConfigured } from "@/lib/stripe";
@@ -28,9 +29,7 @@ export async function GET() {
     turnstile: process.env.TURNSTILE_SECRET_KEY
       ? makeCheck("ok", "Turnstile configured")
       : makeCheck("degraded", "Turnstile secret missing"),
-    anthropic: process.env.ANTHROPIC_API_KEY
-      ? makeCheck("ok", "ANTHROPIC_API_KEY present")
-      : makeCheck("degraded", "ANTHROPIC_API_KEY missing — audits use rule-based fallback"),
+    anthropic: makeCheck("ok", "checking..."),
     openai: process.env.OPENAI_API_KEY
       ? makeCheck("ok", "OPENAI_API_KEY present")
       : makeCheck("degraded", "OPENAI_API_KEY missing"),
@@ -38,6 +37,24 @@ export async function GET() {
       ? makeCheck("ok", "GMAIL_APP_PASSWORD present")
       : makeCheck("degraded", "GMAIL_APP_PASSWORD missing — admin notifications disabled"),
   };
+
+  // Test Anthropic API key with a real ping
+  if (process.env.ANTHROPIC_API_KEY) {
+    try {
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      await client.messages.create({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 5,
+        messages: [{ role: "user", content: "ping" }],
+      });
+      checks.anthropic = makeCheck("ok", "ANTHROPIC_API_KEY valid — API responding");
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      checks.anthropic = makeCheck("degraded", `ANTHROPIC_API_KEY set but API error: ${msg.slice(0, 80)}`);
+    }
+  } else {
+    checks.anthropic = makeCheck("degraded", "ANTHROPIC_API_KEY missing — audits use rule-based fallback");
+  }
 
   const supabaseReady = isQuoteSupabaseConfigured() && isAssistantSupabaseConfigured();
   if (!supabaseReady) {
