@@ -4,6 +4,8 @@ import type { Locale } from "@/lib/locales";
 
 type QuotePageContentProps = {
   locale: Locale;
+  defaultCompany?: string;
+  defaultSite?: string;
 };
 
 const COPY = {
@@ -138,7 +140,7 @@ const COPY = {
   },
 } as const;
 
-export function QuotePageContent({ locale }: QuotePageContentProps) {
+export function QuotePageContent({ locale, defaultCompany = "", defaultSite = "" }: QuotePageContentProps) {
   if (locale === "fr" || locale === "en" || locale === "de") {
     const c = COPY[locale];
     return (
@@ -168,7 +170,7 @@ export function QuotePageContent({ locale }: QuotePageContentProps) {
 
             {/* Form */}
             <div>
-              <SmartQuoteForm locale={locale === "de" ? "fr" : locale} />
+              <SmartQuoteForm locale={locale === "de" ? "fr" : locale} defaultCompany={defaultCompany} defaultSite={defaultSite} />
             </div>
 
             {/* Right panel: stats + testimonials + process */}

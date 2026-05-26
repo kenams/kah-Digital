@@ -9,6 +9,15 @@ export const metadata = buildPageMetadata({
   keywords: ["devis personnalisé site web", "devis agence web Lausanne", "demande devis application", "solution digitale sur mesure"],
 });
 
-export default function DevisPage() {
-  return <QuotePageContent locale="fr" />;
+type Props = { searchParams: Promise<Record<string, string | undefined>> };
+
+export default async function DevisPage({ searchParams }: Props) {
+  const params = await searchParams;
+  return (
+    <QuotePageContent
+      locale="fr"
+      defaultCompany={params.company ?? ""}
+      defaultSite={params.site ?? ""}
+    />
+  );
 }

@@ -207,13 +207,22 @@ const COPY = {
 
 // ─── Component ─────────────────────────────────────────────────────────────────
 
-export function SmartQuoteForm({ locale = "fr" }: { locale?: "fr" | "en" }) {
+export function SmartQuoteForm({
+  locale = "fr",
+  defaultCompany = "",
+  defaultSite = "",
+}: {
+  locale?: "fr" | "en";
+  defaultCompany?: string;
+  defaultSite?: string;
+}) {
   const router = useRouter();
   const c = COPY[locale];
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [form, setForm] = useState({ name: "", email: "", companyName: "", phone: "", message: "", timeline: "" });
+  const defaultMessage = defaultSite ? (locale === "en" ? `My current site: ${defaultSite}. ` : `Mon site actuel : ${defaultSite}. `) : "";
+  const [form, setForm] = useState({ name: "", email: "", companyName: defaultCompany, phone: "", message: defaultMessage, timeline: "" });
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -268,6 +277,16 @@ export function SmartQuoteForm({ locale = "fr" }: { locale?: "fr" | "en" }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+
+      {defaultSite && (
+        <div className="flex items-center gap-3 rounded-xl border border-sky-500/20 bg-sky-500/8 px-4 py-3 text-sm text-sky-300">
+          <span className="text-base">🔍</span>
+          <span>
+            {locale === "en" ? "Site analysed:" : "Site analysé :"}{" "}
+            <strong className="text-white">{defaultSite}</strong>
+          </span>
+        </div>
+      )}
 
       {/* ── Step 1 : Service ── */}
       <div>
