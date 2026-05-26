@@ -77,7 +77,7 @@ function ruleBasedAudit(lead: DiscoveredLead, html: string): SiteAudit {
   recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à ranker et à générer du trafic qualifié.", impact: "high" });
   recommendations.push({ title: "Clients qui passent à l'action", detail: "Chaque page est conçue pour guider vos visiteurs vers un appel, une réservation ou un achat.", impact: "medium" });
 
-  const finalScore = Math.max(10, Math.min(60, score));
+  const finalScore = Math.max(22, Math.min(58, score));
   const quality = finalScore < 30 ? "poor" : finalScore < 45 ? "medium" : "ok";
   const { price, range } = getCountryBasePrice(lead.country ?? "FR", quality);
 
@@ -252,12 +252,12 @@ Return 3-5 problems and 2-3 recommendations, all written in language "${lang}".`
   }
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
-  if (start === -1 || end === -1) return null;
+  if (start === -1 || end === -1) return { ...ruleBasedAudit(lead, content), screenshotUrl };
 
   try {
     const audit = JSON.parse(text.slice(start, end + 1)) as SiteAudit;
     return { ...audit, screenshotUrl };
   } catch {
-    return null;
+    return { ...ruleBasedAudit(lead, content), screenshotUrl };
   }
 }
