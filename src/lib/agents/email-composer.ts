@@ -8,27 +8,27 @@ import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 
 async function callLLMFast(prompt: string): Promise<string> {
-  if (process.env.ANTHROPIC_API_KEY) {
+  if (process.env.OPENAI_API_KEY) {
     try {
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
+      const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const resp = await client.chat.completions.create({
+        model: "gpt-4o-mini",
         max_tokens: 400,
         messages: [{ role: "user", content: prompt }],
       });
-      return msg.content[0].type === "text" ? msg.content[0].text : "";
+      return resp.choices[0]?.message?.content ?? "";
     } catch {
-      // fall through to OpenAI
+      // fall through to Anthropic
     }
   }
-  if (process.env.OPENAI_API_KEY) {
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    const resp = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+  if (process.env.ANTHROPIC_API_KEY) {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const msg = await client.messages.create({
+      model: "claude-haiku-4-5-20251001",
       max_tokens: 400,
       messages: [{ role: "user", content: prompt }],
     });
-    return resp.choices[0]?.message?.content ?? "";
+    return msg.content[0].type === "text" ? msg.content[0].text : "";
   }
   throw new Error("No AI provider");
 }

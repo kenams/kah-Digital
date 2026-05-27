@@ -67,18 +67,7 @@ async function generateAndSendAutoReply(prospect: {
 
   // Générer le brouillon — Anthropic puis OpenAI en fallback
   const promptFn = REPLY_PROMPT[lang] ?? REPLY_PROMPT.fr;
-  if (process.env.ANTHROPIC_API_KEY) {
-    try {
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 300,
-        messages: [{ role: "user", content: promptFn(name, sector, isQuote) }],
-      });
-      draft = msg.content[0].type === "text" ? msg.content[0].text.trim() : "";
-    } catch { /* fall through to OpenAI */ }
-  }
-  if (!draft && process.env.OPENAI_API_KEY) {
+  if (process.env.OPENAI_API_KEY) {
     try {
       const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
       const resp = await client.chat.completions.create({
@@ -87,6 +76,17 @@ async function generateAndSendAutoReply(prospect: {
         messages: [{ role: "user", content: promptFn(name, sector, isQuote) }],
       });
       draft = resp.choices[0]?.message?.content?.trim() ?? "";
+    } catch { /* fall through to Anthropic */ }
+  }
+  if (!draft && process.env.ANTHROPIC_API_KEY) {
+    try {
+      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+      const msg = await client.messages.create({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 300,
+        messages: [{ role: "user", content: promptFn(name, sector, isQuote) }],
+      });
+      draft = msg.content[0].type === "text" ? msg.content[0].text.trim() : "";
     } catch { /* fall through to static template */ }
   }
 

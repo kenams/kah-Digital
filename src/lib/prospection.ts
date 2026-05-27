@@ -38,27 +38,27 @@ async function fetchWebsiteContent(url: string): Promise<string> {
 }
 
 async function callLLM(prompt: string): Promise<string> {
-  if (process.env.ANTHROPIC_API_KEY) {
+  if (process.env.OPENAI_API_KEY) {
     try {
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-sonnet-4-6",
+      const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const resp = await client.chat.completions.create({
+        model: "gpt-4o",
         max_tokens: 2000,
         messages: [{ role: "user", content: prompt }],
       });
-      return msg.content[0].type === "text" ? msg.content[0].text : "";
+      return resp.choices[0]?.message?.content ?? "";
     } catch {
-      // fall through to OpenAI
+      // fall through to Anthropic
     }
   }
-  if (process.env.OPENAI_API_KEY) {
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    const resp = await client.chat.completions.create({
-      model: "gpt-4o",
+  if (process.env.ANTHROPIC_API_KEY) {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const msg = await client.messages.create({
+      model: "claude-sonnet-4-6",
       max_tokens: 2000,
       messages: [{ role: "user", content: prompt }],
     });
-    return resp.choices[0]?.message?.content ?? "";
+    return msg.content[0].type === "text" ? msg.content[0].text : "";
   }
   throw new Error("No AI provider configured");
 }

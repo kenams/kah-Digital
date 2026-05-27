@@ -11,37 +11,37 @@ import type { DiscoveredLead } from "./lead-discovery";
 const AUDIT_SYSTEM_PROMPT = `Tu es un expert en développement web, UX/UI et SEO technique. Tu analyses des sites de PME et commerces locaux pour identifier leurs faiblesses et proposer des améliorations concrètes. Tu génères des audits JSON précis, utiles et actionnables. Tu adaptes toujours ta réponse à la langue cible indiquée. Tu es direct, factuel et orienté résultats business.`;
 
 async function callLLM(prompt: string, maxTokens: number): Promise<string> {
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.OPENAI_API_KEY) {
-    console.warn("[website-auditor] No AI provider configured — add ANTHROPIC_API_KEY or OPENAI_API_KEY to Vercel env");
+  if (!process.env.OPENAI_API_KEY && !process.env.ANTHROPIC_API_KEY) {
+    console.warn("[website-auditor] No AI provider configured — add OPENAI_API_KEY or ANTHROPIC_API_KEY to Vercel env");
     throw new Error("No AI provider configured");
   }
-  if (process.env.ANTHROPIC_API_KEY) {
+  if (process.env.OPENAI_API_KEY) {
     try {
-      const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-      const msg = await client.messages.create({
-        model: "claude-sonnet-4-6",
+      const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const resp = await client.chat.completions.create({
+        model: "gpt-4o",
         max_tokens: maxTokens,
-        system: [{ type: "text", text: AUDIT_SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }] as Parameters<typeof client.messages.create>[0]["system"],
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          { role: "system", content: AUDIT_SYSTEM_PROMPT },
+          { role: "user", content: prompt },
+        ],
       });
-      return msg.content[0].type === "text" ? msg.content[0].text : "";
+      return resp.choices[0]?.message?.content ?? "";
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
-      console.warn(`[website-auditor] Anthropic error (${msg.slice(0, 120)}) — falling back to OpenAI`);
-      if (!process.env.OPENAI_API_KEY) throw e;
+      console.warn(`[website-auditor] OpenAI error (${msg.slice(0, 120)}) — falling back to Anthropic`);
+      if (!process.env.ANTHROPIC_API_KEY) throw e;
     }
   }
-  if (process.env.OPENAI_API_KEY) {
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    const resp = await client.chat.completions.create({
-      model: "gpt-4o",
+  if (process.env.ANTHROPIC_API_KEY) {
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    const msg = await client.messages.create({
+      model: "claude-sonnet-4-6",
       max_tokens: maxTokens,
-      messages: [
-        { role: "system", content: AUDIT_SYSTEM_PROMPT },
-        { role: "user", content: prompt },
-      ],
+      system: [{ type: "text", text: AUDIT_SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }] as Parameters<typeof client.messages.create>[0]["system"],
+      messages: [{ role: "user", content: prompt }],
     });
-    return resp.choices[0]?.message?.content ?? "";
+    return msg.content[0].type === "text" ? msg.content[0].text : "";
   }
   throw new Error("No AI provider available");
 }
