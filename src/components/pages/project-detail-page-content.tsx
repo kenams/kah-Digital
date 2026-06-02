@@ -119,11 +119,21 @@ export function ProjectDetailPageContent({ locale, project }: Props) {
             <Link href={withLocalePrefix("/", locale)} className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
               {text.backHome}
             </Link>
-            {project.website ? (
+            {project.website && !project.downloadLinks ? (
               <a href={project.website} target="_blank" rel="noreferrer" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
                 {text.liveSite}
               </a>
             ) : null}
+            {project.downloadLinks?.android && (
+              <a href={project.downloadLinks.android} target="_blank" rel="noreferrer" className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-4 py-2 text-emerald-400 transition hover:bg-emerald-500/20">
+                📱 Android APK
+              </a>
+            )}
+            {project.downloadLinks?.ios && (
+              <a href={project.downloadLinks.ios} target="_blank" rel="noreferrer" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
+                🍎 iPhone / iOS
+              </a>
+            )}
           </div>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">

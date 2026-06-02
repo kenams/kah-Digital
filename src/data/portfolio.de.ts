@@ -2,6 +2,53 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsDe: PortfolioProject[] = [
   {
+    slug: "kotizy",
+    name: "Kotizy",
+    type: "Mobile App & Web App / Diaspora Fintech",
+    tagline:
+      "Die erste digitale Tontine-Plattform für die afrikanische Diaspora. Automatische Beiträge, Multi-Währungs-Wallet, Mobile-Money-Zahlungen — verfügbar auf Android und iOS.",
+    shortDescription:
+      "Next.js PWA + Expo React Native. Integriertes Wallet, Stripe, CinetPay (Orange Money, MTN, Wave), Vertrauensscore, Push-Benachrichtigungen. Live in Produktion.",
+    description:
+      "Kotizy digitalisiert die afrikanische Tontine — das traditionelle kollektive Sparsystem — in ein modernes, sicheres und vollautomatisches Erlebnis. KAH-Digital hat die gesamte Plattform entwickelt.",
+    challenge:
+      "Eine robuste Finanzplattform für die afrikanische Diaspora aufbauen: Multi-Währung, Mobile-Money-Zahlungen, Vertrauensscore und automatische Auszahlungen.",
+    solution:
+      "Next.js App Router + Expo React Native. Integriertes Wallet mit Live-Stripe, CinetPay für afrikanisches Mobile Money, täglicher Vercel-Cron für Auto-Pay und Auszahlungen.",
+    stack: ["Next.js", "Expo React Native", "Supabase", "Prisma", "Stripe", "CinetPay", "Vercel", "TypeScript"],
+    result: "Live in Produktion. Verfügbar auf Android (APK) und iOS (PWA). Live Stripe-Zahlungen aktiv.",
+    timeline: "6 Wochen",
+    deliverables: [
+      "Next.js Web App (iOS-installierbare PWA)",
+      "Native Android App (APK)",
+      "Multi-Währungs-Wallet + Stripe & CinetPay",
+      "Täglicher Cron: Auto-Pay, Erinnerungen, automatische Auszahlungen",
+    ],
+    metrics: [
+      { label: "Plattformen", value: "Web + Android" },
+      { label: "Zahlungsanbieter", value: "Stripe + CinetPay" },
+      { label: "Lieferzeit", value: "6 Wochen" },
+    ],
+    highlights: [
+      "100% automatisiert — Beiträge, Erinnerungen, Auszahlungen",
+      "Mobile Money: Orange Money · MTN · Wave · Moov",
+      "Vertrauensscore & Diaspora-Abzeichen",
+    ],
+    palette: {
+      primary: "#080b07",
+      secondary: "#0f1a0e",
+      accent: "#22c55e",
+    },
+    website: "https://tontineapp-web.vercel.app",
+    downloadLinks: {
+      android: "https://github.com/kenams/tontine/releases/download/v2.1.0/kotizy-v2.1.0.apk",
+      ios: "https://tontineapp-web.vercel.app/install-ios",
+    },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1400&q=80",
+    },
+  },
+  {
     slug: "ashanti-beauty",
     name: "Ashanti Beauty",
     type: "Premium-Website / Schönheitsinstitut",
