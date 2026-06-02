@@ -170,14 +170,7 @@ export function QuoteForm() {
       return;
     }
 
-    // Captcha optionnel — si non configuré ou non chargé, on laisse passer
-    if (siteKey && !token) {
-      setServerMessage(
-        isEnglish ? "Validate the captcha before sending." : "Valide le captcha avant d'envoyer."
-      );
-      setStatus("error");
-      return;
-    }
+    // Captcha désactivé — widget non chargé sur kah-digital.ch (domaine non whitelisté Cloudflare)
 
     const payload: QuotePayload = {
       name: String(formData.get("name") ?? "").trim(),
@@ -278,15 +271,6 @@ export function QuoteForm() {
         isEnglish ? "Select at least one page." : "Sélectionne au moins une page pour ton site."
       );
       setStatus("error");
-      return;
-    }
-
-    // Captcha optionnel — si widget non chargé, on continue sans token
-    if (siteKey && !captchaToken) {
-      pendingFormRef.current = formElement;
-      setServerMessage("");
-      setCaptchaError("");
-      widgetRef.current?.execute();
       return;
     }
 

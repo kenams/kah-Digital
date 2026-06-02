@@ -237,8 +237,6 @@ export function SmartQuoteForm({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!selectedService) { setServerMessage(c.noServiceError); setStatus("error"); return; }
-    // Captcha optionnel — non bloquant si widget non chargé (domaine non whitelisté)
-    if (siteKey && !captchaToken) { setCaptchaError(c.captchaError); return; }
 
     setStatus("loading");
     setCaptchaError("");
