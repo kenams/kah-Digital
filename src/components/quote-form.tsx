@@ -170,15 +170,8 @@ export function QuoteForm() {
       return;
     }
 
-    if (!siteKey) {
-      setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configuré. Contacte-nous directement."
-      );
-      setStatus("error");
-      return;
-    }
-
-    if (!token) {
+    // Captcha optionnel — si non configuré ou non chargé, on laisse passer
+    if (siteKey && !token) {
       setServerMessage(
         isEnglish ? "Validate the captcha before sending." : "Valide le captcha avant d'envoyer."
       );
@@ -288,15 +281,8 @@ export function QuoteForm() {
       return;
     }
 
-    if (!siteKey) {
-      setServerMessage(
-        isEnglish ? "Captcha not configured. Contact us directly." : "Captcha non configuré. Contacte-nous directement."
-      );
-      setStatus("error");
-      return;
-    }
-
-    if (!captchaToken) {
+    // Captcha optionnel — si widget non chargé, on continue sans token
+    if (siteKey && !captchaToken) {
       pendingFormRef.current = formElement;
       setServerMessage("");
       setCaptchaError("");
