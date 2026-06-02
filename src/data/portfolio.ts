@@ -73,7 +73,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://tontineapp-web.vercel.app",
     downloadLinks: {
-      android: "https://github.com/kenams/tontine/releases/download/v2.1.0/kotizy-v2.1.0.apk",
+      android: "https://github.com/kenams/tontine/releases/download/v2.2.0/kotizy-v2.2.0.apk",
       ios: "https://tontineapp-web.vercel.app/install-ios",
     },
     mockups: {
