@@ -177,7 +177,7 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
             >
               {c.viewCase} <FiArrowRight size={14} />
             </Link>
-            {project.website && (
+            {project.website && !project.downloadLinks && (
               <a
                 href={project.website}
                 target="_blank"
@@ -185,6 +185,26 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm text-white/80 transition hover:border-white hover:text-white"
               >
                 {c.visitSite} <FiExternalLink size={13} />
+              </a>
+            )}
+            {project.downloadLinks?.android && (
+              <a
+                href={project.downloadLinks.android}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:border-white/50 hover:bg-white/10"
+              >
+                📱 Android APK
+              </a>
+            )}
+            {project.downloadLinks?.ios && (
+              <a
+                href={project.downloadLinks.ios}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:border-white/50 hover:bg-white/10"
+              >
+                🍎 iPhone / iOS
               </a>
             )}
           </div>

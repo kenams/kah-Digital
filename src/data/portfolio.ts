@@ -19,6 +19,10 @@ export type PortfolioProject = {
     accent: string;
   };
   website?: string;
+  downloadLinks?: {
+    android?: string;
+    ios?: string;
+  };
   mockups?: {
     primary?: string;
     gallery?: string[];
@@ -26,6 +30,59 @@ export type PortfolioProject = {
 };
 
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    slug: "kotizy",
+    name: "Kotizy",
+    type: "Application mobile & Web App / Fintech diaspora",
+    tagline:
+      "La première plateforme de tontine digitale pour la diaspora africaine. Cotisations automatiques, wallet multi-devise, paiements Mobile Money — disponible sur Android et iOS.",
+    shortDescription:
+      "App Next.js PWA + Expo React Native. Wallet intégré, Stripe, CinetPay (Orange Money, MTN, Wave), score de confiance, notifications push. Livré en production.",
+    description:
+      "Kotizy digitalise la tontine africaine — ce système d'épargne collective ancestral — en une expérience moderne, sécurisée et automatisée. KAH-Digital a conçu et développé l'intégralité de la plateforme : web app Next.js déployée sur Vercel, application native Android via Expo, backend API avec Prisma/Supabase, système de paiement multi-devise (Stripe, CinetPay), et un cron quotidien qui gère les cotisations, les rappels et les versements de manière 100% automatique.",
+    challenge:
+      "Créer une plateforme financière robuste pour la diaspora africaine : multi-devise (EUR, XOF, GBP), paiements Mobile Money (Orange Money, MTN, Wave), score de confiance, gestion des défauts de paiement et versements automatiques — le tout sans intervention manuelle.",
+    solution:
+      "Stack Next.js App Router + Expo React Native. Wallet intégré avec Stripe live, CinetPay pour le Mobile Money africain, cron Vercel quotidien pour l'auto-pay et les payouts, score de confiance algorithmique, notifications push, PWA installable sur iOS.",
+    stack: ["Next.js", "Expo React Native", "Supabase", "Prisma", "Stripe", "CinetPay", "Vercel", "TypeScript"],
+    result:
+      "Application en production. Disponible sur Android (APK direct) et iOS (PWA). Paiements Stripe live actifs. CinetPay Mobile Money en cours de validation KYC.",
+    timeline: "6 semaines",
+    deliverables: [
+      "Web App Next.js (PWA installable iOS)",
+      "Application Android native (APK)",
+      "Wallet multi-devise + paiements Stripe & CinetPay",
+      "Cron quotidien : auto-pay, rappels, payouts automatiques",
+      "Score de confiance + système de badges",
+      "Chat de groupe + notifications push",
+    ],
+    metrics: [
+      { label: "Plateformes", value: "Web + Android" },
+      { label: "Fournisseurs paiement", value: "Stripe + CinetPay" },
+      { label: "Délai de livraison", value: "6 semaines" },
+    ],
+    highlights: [
+      "100% automatisé — cotisations, rappels, versements",
+      "Mobile Money : Orange Money · MTN · Wave · Moov",
+      "Score de confiance & badges diaspora",
+    ],
+    palette: {
+      primary: "#080b07",
+      secondary: "#0f1a0e",
+      accent: "#22c55e",
+    },
+    website: "https://tontineapp-web.vercel.app",
+    downloadLinks: {
+      android: "https://github.com/kenams/tontine/releases/download/v2.1.0/kotizy-v2.1.0.apk",
+      ios: "https://tontineapp-web.vercel.app/install-ios",
+    },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1400&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
   {
     slug: "ashanti-beauty",
     name: "Ashanti Beauty",

@@ -2,6 +2,56 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsEn: PortfolioProject[] = [
   {
+    slug: "kotizy",
+    name: "Kotizy",
+    type: "Mobile App & Web App / Diaspora Fintech",
+    tagline:
+      "The first digital tontine platform for the African diaspora. Automatic contributions, multi-currency wallet, Mobile Money payments — available on Android and iOS.",
+    shortDescription:
+      "Next.js PWA + Expo React Native. Built-in wallet, Stripe, CinetPay (Orange Money, MTN, Wave), trust score, push notifications. Live in production.",
+    description:
+      "Kotizy digitalises the African tontine — the ancestral collective savings system — into a modern, secure and fully automated experience. KAH-Digital designed and built the entire platform: Next.js web app on Vercel, native Android app via Expo, API backend with Prisma/Supabase, multi-currency payment system (Stripe, CinetPay), and a daily cron job that manages contributions, reminders and payouts 100% automatically.",
+    challenge:
+      "Build a robust financial platform for the African diaspora: multi-currency (EUR, XOF, GBP), Mobile Money payments (Orange Money, MTN, Wave), trust score, default management and automatic payouts — with zero manual intervention.",
+    solution:
+      "Next.js App Router + Expo React Native. Integrated wallet with live Stripe, CinetPay for African Mobile Money, daily Vercel cron for auto-pay and payouts, algorithmic trust score, push notifications, iOS-installable PWA.",
+    stack: ["Next.js", "Expo React Native", "Supabase", "Prisma", "Stripe", "CinetPay", "Vercel", "TypeScript"],
+    result:
+      "Live in production. Available on Android (direct APK) and iOS (PWA). Live Stripe payments active. CinetPay Mobile Money pending KYC validation.",
+    timeline: "6 weeks",
+    deliverables: [
+      "Next.js Web App (iOS-installable PWA)",
+      "Native Android app (APK)",
+      "Multi-currency wallet + Stripe & CinetPay payments",
+      "Daily cron: auto-pay, reminders, automatic payouts",
+      "Trust score + badge system",
+      "Group chat + push notifications",
+    ],
+    metrics: [
+      { label: "Platforms", value: "Web + Android" },
+      { label: "Payment providers", value: "Stripe + CinetPay" },
+      { label: "Delivery time", value: "6 weeks" },
+    ],
+    highlights: [
+      "100% automated — contributions, reminders, payouts",
+      "Mobile Money: Orange Money · MTN · Wave · Moov",
+      "Trust score & diaspora badges",
+    ],
+    palette: {
+      primary: "#080b07",
+      secondary: "#0f1a0e",
+      accent: "#22c55e",
+    },
+    website: "https://tontineapp-web.vercel.app",
+    downloadLinks: {
+      android: "https://github.com/kenams/tontine/releases/download/v2.1.0/kotizy-v2.1.0.apk",
+      ios: "https://tontineapp-web.vercel.app/install-ios",
+    },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1400&q=80",
+    },
+  },
+  {
     slug: "ashanti-beauty",
     name: "Ashanti Beauty",
     type: "Premium showcase site / Beauty institute",
