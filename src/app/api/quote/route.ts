@@ -55,21 +55,17 @@ export async function POST(request: NextRequest) {
   try {
     const payload = await request.json();
     const turnstileToken = typeof payload?.turnstileToken === "string" ? payload.turnstileToken.trim() : "";
-    if (!turnstileToken) {
-      return NextResponse.json(
-        { error: "Captcha manquant" },
-        { status: 400, headers: rateHeaders }
-      );
-    }
-
-    const verification = await verifyTurnstile(turnstileToken, remoteIp);
-    if (!verification.success) {
-      const errorCodes = verification["error-codes"] ?? [];
-      const errorSuffix = errorCodes.length ? ` (codes: ${errorCodes.join(", ")})` : "";
-      return NextResponse.json(
-        { error: `Captcha invalide${errorSuffix}`, details: errorCodes },
-        { status: 400, headers: rateHeaders }
-      );
+    // Captcha optionnel — widget non chargé sur kah-digital.ch (domaine non whitelisté Cloudflare)
+    if (turnstileToken) {
+      const verification = await verifyTurnstile(turnstileToken, remoteIp);
+      if (!verification.success) {
+        const errorCodes = verification["error-codes"] ?? [];
+        const errorSuffix = errorCodes.length ? ` (codes: ${errorCodes.join(", ")})` : "";
+        return NextResponse.json(
+          { error: `Captcha invalide${errorSuffix}`, details: errorCodes },
+          { status: 400, headers: rateHeaders }
+        );
+      }
     }
 
     const websiteField = typeof payload?.website === "string" ? payload.website.trim() : "";
