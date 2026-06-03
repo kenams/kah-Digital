@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projets",
     "/lexique",
     // Pages SEO locales — priorité haute
+    "/agence-web-suisse",
     "/site-web-lausanne",
     "/site-web-geneve",
     "/site-web-fribourg",

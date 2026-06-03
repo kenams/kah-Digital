@@ -2,7 +2,8 @@
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiClock, FiMapPin, FiMessageCircle, FiZap } from "react-icons/fi";
 
-const WA_URL = "https://wa.me/33759558414?text=Bonjour%20K%C3%A9nan%2C%20je%20souhaite%20un%20devis%20pour%20mon%20site%20web.";
+const WA_URL_FR = "https://wa.me/33759558414?text=Bonjour%20KAH%20Digital%2C%20je%20souhaite%20un%20devis%20pour%20mon%20projet%20web.";
+const WA_URL_CH = "https://wa.me/33759558414?text=Bonjour%20KAH%20Digital%2C%20je%20cherche%20un%20studio%20digital%20en%20Suisse%20pour%20mon%20projet.";
 
 export type CityPageData = {
   city: string;
@@ -141,14 +142,15 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-berne": {
     city: "Berne", country: "Suisse", region: "Berne", locale: "fr", slug: "agence-web-berne",
     headline: "Création de site web à Berne",
-    subline: "Studio digital suisse bilingue FR/DE · sites, apps et solutions pour entreprises, PME et indépendants de la région bernoise.",
-    intro: "KAH-Digital accompagne les entreprises et indépendants de la région bernoise dans leur présence digitale. Bilingue français-allemand, notre studio est parfaitement adapté aux besoins du marché bernois : fédéral, institutionnel, ou PME de proximité.",
-    sectors: ["Institutions & administrations", "Cabinets & consultants", "PME bilingues", "Artisans & indépendants", "Associations & ONG", "Startups bernoises"],
-    proofLine: "Bilingue FR/DE · Devis personnalisé · Sans engagement",
+    subline: "Studio digital suisse bilingue FR/DE · Next.js 15, Lighthouse 95+, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
+    intro: "KAH Digital accompagne les entreprises et indépendants de la région bernoise dans leur présence digitale. Bilingue français-allemand, notre studio est parfaitement adapté aux besoins du marché bernois : fédéral, institutionnel, ou PME de proximité. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950. Devis gratuit en 24h.",
+    sectors: ["Institutions & administrations fédérales", "Cabinets & consultants", "PME bilingues FR/DE", "Artisans & indépendants", "Associations & ONG", "Startups bernoises"],
+    proofLine: "Studio Suisse · Bilingue FR/DE · Prix fixe CHF 149 · Réponse 24h",
     faq: [
-      { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui, sites institutionnels, portails de services et intranets. Expérience avec les structures fédérales et cantonales." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH-Digital produit des sites en allemand, français et anglais. Idéal pour le marché bilingue bernois." },
+      { q: "Combien coûte un site web professionnel à Berne ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, devis confirmé avant de commencer." },
+      { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui, sites institutionnels, portails de services et intranets. Expérience avec les structures fédérales et cantonales suisses." },
+      { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH Digital produit des sites en allemand, français et anglais. Idéal pour le marché bilingue bernois." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne." },
     ],
   },
   "agence-web-toulouse": {
@@ -219,40 +221,43 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-zurich": {
     city: "Zurich", country: "Suisse", region: "Zurich", locale: "fr", slug: "agence-web-zurich",
     headline: "Création de site web à Zurich",
-    subline: "Studio digital suisse multilingue · sites web, apps et solutions digitales pour entreprises de Zurich et la Suisse alémanique.",
-    intro: "KAH-Digital accompagne les entreprises de Zurich dans leur présence digitale. Zurich est la capitale économique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles : notre studio crée des sites professionnels multilingues (FR/DE/EN) adaptés au marché zurichois.",
-    sectors: ["Finance & banques", "Cabinets d'avocats & fiduciaires", "Startups fintech", "Hôtels & restauration", "PME industrielles", "Professions libérales"],
-    proofLine: "Multilingue FR/DE/EN · Devis personnalisé · Sans engagement",
+    subline: "Studio digital suisse multilingue DE/FR/EN · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Zurich dans leur présence digitale. Zurich est la capitale économique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles — notre studio crée des sites professionnels multilingues (DE/FR/EN) adaptés au marché zurichois. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950. Devis gratuit en 24h.",
+    sectors: ["Finance & banques", "Cabinets d'avocats & fiduciaires", "Startups fintech & crypto", "Hôtels & restauration", "PME Suisse alémanique", "Professions libérales"],
+    proofLine: "Studio Suisse · Multilingue DE/FR/EN · Prix fixe CHF 149 · Réponse 24h",
     faq: [
-      { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, français et anglais. Idéal pour les entreprises qui ciblent la Suisse alémanique et internationale." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. On connaît les exigences du marché financier suisse." },
+      { q: "Combien coûte un site web professionnel à Zurich ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 420. Système IA complet dès CHF 950. Prix fixe confirmé avant tout démarrage." },
+      { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, français et anglais. SEO optimisé dans chaque langue. Idéal pour les entreprises qui ciblent la Suisse alémanique et internationale." },
+      { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. On connaît les exigences du marché financier suisse et les standards LPD." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne, en CHF." },
     ],
   },
   "agence-web-basel": {
     city: "Basel", country: "Suisse", region: "Bâle", locale: "fr", slug: "agence-web-basel",
     headline: "Création de site web à Bâle",
-    subline: "Studio digital pour Bâle et la région rhénane · sites web trilingues FR/DE/EN pour entreprises pharmaceutiques, culturelles et PME.",
-    intro: "KAH-Digital crée des sites web pour les entreprises bâloises. Bâle est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptés aux entreprises qui opèrent en France, Allemagne et Suisse.",
-    sectors: ["Pharma & life sciences", "Industrie & manufacturing", "Culture & art", "PME transfrontalières", "Cabinets & consultants", "Restaurants & hôtels"],
-    proofLine: "Trilingue FR/DE/EN · Devis personnalisé · Sans engagement",
+    subline: "Studio digital suisse trilingue FR/DE/EN · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital crée des sites web pour les entreprises bâloises. Bâle est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptés aux entreprises qui opèrent en France, Allemagne et Suisse. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950.",
+    sectors: ["Pharma & life sciences", "Industrie & manufacturing", "Culture & art Basel", "PME transfrontalières CH/DE/FR", "Cabinets & consultants", "Restaurants & hôtels"],
+    proofLine: "Studio Suisse · Trilingue FR/DE/EN · Prix fixe CHF 149 · Réponse 24h",
     faq: [
-      { q: "Faites-vous des sites trilingues pour les entreprises bâloises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue. Idéal pour le marché rhénan." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Avez-vous travaillé avec des entreprises du secteur pharma ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Nous respectons les exigences de conformité du secteur." },
+      { q: "Combien coûte un site web professionnel à Bâle ?", a: "Starter (landing page trilingue) dès CHF 149, livré en 5 jours. Business (6 pages, SEO dans 3 langues) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, zéro surprise." },
+      { q: "Faites-vous des sites trilingues pour les entreprises bâloises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue et hreflang correct. Idéal pour le marché rhénan et les foires internationales." },
+      { q: "Avez-vous travaillé avec des entreprises du secteur pharma ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Nous respectons les exigences LPD et les standards de conformité du secteur." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
     ],
   },
   "agence-web-lugano": {
     city: "Lugano", country: "Suisse", region: "Tessin", locale: "fr", slug: "agence-web-lugano",
     headline: "Création de site web à Lugano",
-    subline: "Studio digital pour Lugano et le Tessin · sites web, apps et solutions digitales en FR, IT et DE pour entreprises tessinoises.",
-    intro: "KAH-Digital accompagne les entreprises de Lugano dans leur présence digitale. Le Tessin est unique en Suisse : italien de cœur, suisse d'esprit, tourné vers l'Italie et le monde. Notre studio crée des sites multilingues adaptés aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME.",
-    sectors: ["Finance & wealth management", "Tourisme & hôtellerie", "Luxe & mode", "PME & indépendants", "Restaurants & café", "Professions libérales"],
-    proofLine: "Trilingue IT/FR/DE · Devis personnalisé · Sans engagement",
+    subline: "Studio digital suisse trilingue IT/FR/DE · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Lugano dans leur présence digitale. Le Tessin est unique en Suisse : italien de cœur, suisse d'esprit, tourné vers l'Italie et le monde. Notre studio crée des sites multilingues adaptés aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME. Starter dès CHF 149 · Business dès CHF 420 · Devis gratuit en 24h.",
+    sectors: ["Finance & wealth management", "Tourisme & hôtellerie luxe", "Luxe & mode", "PME tessinoises", "Restaurants & cafés", "Professions libérales"],
+    proofLine: "Studio Suisse · Trilingue IT/FR/DE · Prix fixe CHF 149 · Réponse 24h",
     faq: [
+      { q: "Combien coûte un site web professionnel à Lugano ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, devis confirmé avant de commencer." },
       { q: "Faites-vous des sites en italien pour des entreprises de Lugano ?", a: "Oui, sites natifs en italien, français, allemand et anglais. Le Tessin est notre marché naturel pour l'italien." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Créez-vous des sites pour le secteur wealth management à Lugano ?", a: "Oui, sites institutionnels discrets, sécurisés, avec RGPD et conformité suisse. Rigueur et élégance." },
+      { q: "Créez-vous des sites pour le secteur wealth management à Lugano ?", a: "Oui, sites institutionnels discrets, sécurisés, conformes LPD et RGPD. Rigueur et élégance — les standards suisses." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
     ],
   },
   "agence-web-grenoble": {
@@ -377,6 +382,7 @@ const SWISS_LINKS = [
 export function LocalSeoPageContent({ data }: Props) {
   const devisUrl = `/devis?city=${encodeURIComponent(data.city)}&ref=local-seo`;
   const isSwiss = SWISS_CITIES.includes(data.city);
+  const WA_URL = isSwiss ? WA_URL_CH : WA_URL_FR;
   const currency = isSwiss ? "CHF" : "€";
   const priceStarter = isSwiss ? "CHF 149" : "149 €";
   const priceBusiness = isSwiss ? "CHF 420" : "390 €";
@@ -472,6 +478,27 @@ export function LocalSeoPageContent({ data }: Props) {
         </div>
       </section>
 
+      {/* Swiss trust block */}
+      {isSwiss && (
+        <section className="border-b border-emerald-500/10 bg-emerald-500/[0.03] py-6">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-emerald-400/80">
+              {[
+                { icon: "🇨🇭", label: "Société domiciliée à Lausanne" },
+                { icon: "💳", label: "Facturation CHF · TWINT accepté" },
+                { icon: "🔒", label: "Conforme LPD (loi suisse protection des données)" },
+                { icon: "📄", label: "Devis en CHF · RC Vaud" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-1.5 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-3 py-1.5">
+                  <span>{item.icon}</span>
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Intro */}
       <section className="py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -559,6 +586,11 @@ export function LocalSeoPageContent({ data }: Props) {
           <p className="mt-5 text-xs text-gray-700">
             Options disponibles : page supplémentaire, SEO avancé, logo, chatbot IA, maintenance mensuelle.
           </p>
+          {isSwiss && (
+            <p className="mt-3 text-xs text-emerald-500/60">
+              💳 Paiement accepté : virement bancaire CHF · TWINT · Carte bancaire (Stripe)
+            </p>
+          )}
         </div>
       </section>
 
