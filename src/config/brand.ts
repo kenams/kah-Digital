@@ -3,7 +3,7 @@ const PHONE_FALLBACK = "+33 7 59 55 84 14";
 
 const rawEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? EMAIL_FALLBACK;
 const rawPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? PHONE_FALLBACK;
-const rawCalendly = process.env.NEXT_PUBLIC_CALENDLY_URL ?? "";
+const rawCalendly = process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/kahdigital42";
 
 function toPhoneHref(phone: string) {
   const digits = phone.replace(/[^\d+]/g, "");

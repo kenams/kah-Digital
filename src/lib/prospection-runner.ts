@@ -13,10 +13,10 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 15;
+export const PROSPECTION_EMAILS_PER_RUN = 10;
 
 const SCORE_THRESHOLD = 72;
-const SEND_DELAY_MS = 800;
+const SEND_DELAY_MS = 400;
 
 type ProspectBacklogRow = {
   id: string;
