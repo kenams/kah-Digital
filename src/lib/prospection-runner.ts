@@ -13,7 +13,7 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 10;
+export const PROSPECTION_EMAILS_PER_RUN = 1;
 
 const SCORE_THRESHOLD = 72;
 const SEND_DELAY_MS = 400;
