@@ -77,9 +77,10 @@ export const portfolioProjects: PortfolioProject[] = [
       ios: "https://tontineapp-web.vercel.app/install-ios",
     },
     mockups: {
-      primary: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1400&q=80",
+      primary: "/portfolio/kotizy.png",
       gallery: [
-        "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=900&q=80",
+        "/portfolio/kotizy-dashboard.png",
+        "/portfolio/kotizy.png",
       ],
     },
   },
@@ -601,10 +602,60 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://kah-support.ch",
     mockups: {
-      primary: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
+      primary: "/portfolio/kah-digital.png",
       gallery: [
-        "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80",
-        "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=900&q=80",
+        "/portfolio/kah-digital.png",
+      ],
+    },
+  },
+  {
+    slug: "vellio-shop",
+    name: "Vellio Shop",
+    type: "E-commerce premium / Maison de sélection",
+    tagline:
+      "Boutique e-commerce haut de gamme pour une maison de sélection contemporaine — 21 produits, Stripe live, emails automatisés, design éditorial.",
+    shortDescription:
+      "Next.js + Prisma + Stripe live. 21 produits, 8 catégories, tunnel d'achat optimisé, emails automatiques (bienvenue, confirmation, panier abandonné, upsell, relance J+7, avis J+14).",
+    description:
+      "Vellio est une boutique e-commerce positionnée comme une maison de sélection contemporaine. KAH Digital a conçu l'intégralité de l'expérience : tunnel d'achat Stripe, catalogue Prisma/PostgreSQL, emails Resend (confirmation commande, panier abandonné 30min, upsell post-achat, re-engagement J+7 avec code promo, demande d'avis J+14), popup newsletter avec code -10%, crons Vercel pour l'automatisation complète.",
+    challenge:
+      "Créer une boutique haut de gamme qui génère des ventes automatiquement — sans intervention manuelle — via des emails au bon moment et un tunnel d'achat irréprochable.",
+    solution:
+      "Next.js App Router + Prisma + Stripe. Pipeline email complet avec Resend : 6 types d'emails automatiques déclenchés par crons Vercel. Popup newsletter avec code BIENVENUE10. Design éditorial noir/or inspiré des maisons de luxe.",
+    stack: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Resend", "Vercel", "TypeScript", "Cloudinary"],
+    result:
+      "Boutique live sur vellio-shop.vercel.app. 21 produits Stripe actifs. Pipeline email entièrement automatisé.",
+    timeline: "3 semaines",
+    deliverables: [
+      "Boutique e-commerce complète (21 produits, 8 catégories)",
+      "Tunnel d'achat Stripe live",
+      "6 emails automatiques (bienvenue, commande, panier, upsell, relance, avis)",
+      "Popup newsletter + code promo -10%",
+      "Dashboard admin produits",
+      "Crons Vercel automatisés",
+    ],
+    metrics: [
+      { label: "Produits", value: "21" },
+      { label: "Emails auto", value: "6 types" },
+      { label: "Livraison", value: "3 semaines" },
+    ],
+    highlights: [
+      "Pipeline email 100% automatisé",
+      "Popup newsletter + code promo BIENVENUE10",
+      "Re-engagement J+7 + demande avis J+14",
+      "Design éditorial premium",
+    ],
+    palette: {
+      primary: "#0b0b0c",
+      secondary: "#111111",
+      accent: "#c8a96e",
+    },
+    website: "https://vellio-shop.vercel.app",
+    mockups: {
+      primary: "/portfolio/vellio.png",
+      gallery: [
+        "/portfolio/vellio-produits.png",
+        "/portfolio/vellio.png",
       ],
     },
   },
