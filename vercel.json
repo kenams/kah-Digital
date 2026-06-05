@@ -12,6 +12,10 @@
     { "path": "/api/cron/kah-support-prospection", "schedule": "0 13 * * 1-5" },
     { "path": "/api/cron/kah-support-followup",    "schedule": "0 11 * * 2,4" },
     { "path": "/api/cron/keepalive",            "schedule": "0 6 * * *"       },
-    { "path": "/api/cron/kotizy-prospection",   "schedule": "0 10 * * 1,3,5"  }
+    { "path": "/api/cron/kotizy-prospection",   "schedule": "0 10 * * 1,3,5"  },
+    { "path": "/api/cron/kah-support-prospection", "schedule": "0 8 * * 1-5"   },
+    { "path": "/api/cron/kotizy-sequence",         "schedule": "0 9 * * 1,3,5" },
+    { "path": "/api/cron/it-jobs-scraper",         "schedule": "0 7 * * 1,4"   },
+    { "path": "/api/cron/vellio-affiliates",       "schedule": "0 11 * * 2,5"  }
   ]
 }
