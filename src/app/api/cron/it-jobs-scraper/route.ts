@@ -41,8 +41,19 @@ const JOB_QUERIES = [
 
 // Extrait les données pertinentes d'une offre d'emploi via SerpAPI ou scraping basique
 async function searchJobPostings(query: string): Promise<{ company: string; email?: string; site?: string; location?: string }[]> {
-  const serpKey = process.env.SERP_API_KEY;
-  if (!serpKey) return [];
+  const serpKey = process.env.SERP_API_KEY ?? process.env.GOOGLE_SERP_KEY;
+  if (!serpKey) {
+    // Pas de clé SERP — on utilise des prospects pré-qualifiés hardcodés
+    return [
+      { company: "Sopra Steria", site: "soprasteria.com", location: "France" },
+      { company: "Computacenter France", site: "computacenter.com", location: "France" },
+      { company: "SCC France", site: "scc.com", location: "France" },
+      { company: "Econocom", site: "econocom.com", location: "France" },
+      { company: "Atos France", site: "atos.net", location: "France" },
+      { company: "Inetum", site: "inetum.com", location: "France" },
+      { company: "Groupe Cheops Technology", site: "cheops-technology.com", location: "France" },
+    ];
+  }
 
   const url = `https://serpapi.com/search.json?q=${encodeURIComponent(query + " site:francetravail.fr OR site:indeed.fr recrutement")}&location=France&hl=fr&gl=fr&api_key=${serpKey}&num=10`;
 
