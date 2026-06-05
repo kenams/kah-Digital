@@ -1,17 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
 
 const STORAGE_KEY = "kah_urgency_v4";
 
 export function UrgencyBanner() {
   const { locale, prefix } = useLocale();
-  const [show, setShow] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return localStorage.getItem(STORAGE_KEY) !== "1";
-  });
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(localStorage.getItem(STORAGE_KEY) !== "1");
+  }, []);
 
   if (!show) return null;
 

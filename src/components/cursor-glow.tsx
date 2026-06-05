@@ -113,7 +113,7 @@ export function CursorGlow() {
     <div
       ref={outerRef}
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[9999] will-change-transform"
+      className="pointer-events-none fixed left-0 top-0 z-[99999] will-change-transform"
       style={{ opacity: 0 }}
     >
       {/* Inner: shape + color — CSS transition handles hover state smoothly */}
