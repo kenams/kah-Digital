@@ -87,18 +87,18 @@ function buildNotif(usedNames: Set<string>): Notif {
 
 function buildBatch(): Notif[] {
   const r = Math.random();
-  // 15% silence (0), 40% single, 30% double, 15% triple
-  const size = r < 0.15 ? 0 : r < 0.55 ? 1 : r < 0.85 ? 2 : 3;
+  // 30% silence (0), 70% single — jamais plus d'un à la fois
+  const size = r < 0.30 ? 0 : 1;
   const used = new Set<string>();
   return Array.from({ length: size }, () => buildNotif(used));
 }
 
 // ms
-const FIRST_DELAY      = () => 7000  + Math.random() * 8000;   // 7–15s
+const FIRST_DELAY      = () => 60000 + Math.random() * 120000; // 1–3 min avant le premier
 const SHOW_DURATION    = 5500;
-const IN_BATCH_GAP     = () => 13000 + Math.random() * 11000;  // 13–24s
-const BETWEEN_BATCH    = () => 85000 + Math.random() * 160000; // 85–245s (~1.5–4 min)
-const SILENT_EXTRA     = () => 60000 + Math.random() * 90000;  // +1–2.5 min si batch vide
+const IN_BATCH_GAP     = () => 0;                               // inutile (batch = 1 max)
+const BETWEEN_BATCH    = () => 1500000 + Math.random() * 600000; // 25–35 min entre chaque
+const SILENT_EXTRA     = () => 300000 + Math.random() * 300000;  // +5–10 min si batch vide
 
 export function SocialProofToast() {
   const [current, setCurrent] = useState<Notif | null>(null);
