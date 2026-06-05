@@ -19,6 +19,7 @@ import { ROICalculator } from "@/components/roi-calculator";
 import { BookingSection } from "@/components/booking-section";
 import { SocialContentSection } from "@/components/social-content-section";
 import { CTASection } from "@/components/cta-section";
+import { SaasPortfolioSection } from "@/components/saas-portfolio-section";
 
 export const metadata = buildPageMetadata({
   locale: "de",
@@ -42,6 +43,7 @@ export default function HomePageDe() {
     <>
       <HeroSection />
       <StatsBar />
+      <SaasPortfolioSection lang="de" />
       <AiSystemsSection />
       <FreeCallSection />
       <TrustBar />

@@ -19,6 +19,7 @@ import { ROICalculator } from "@/components/roi-calculator";
 import { BookingSection } from "@/components/booking-section";
 import { SocialContentSection } from "@/components/social-content-section";
 import { CTASection } from "@/components/cta-section";
+import { SaasPortfolioSection } from "@/components/saas-portfolio-section";
 
 export const metadata = buildPageMetadata({
   locale: "fr",
@@ -100,11 +101,11 @@ const organizationJsonLd = {
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
-  telephone: "+33759558414",
+  telephone: "+41759558414",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Rue du Simplon 4",
-    postalCode: "1006",
+    streetAddress: "Rue de Bourg 27",
+    postalCode: "1003",
     addressLocality: "Lausanne",
     addressCountry: "CH",
   },
@@ -129,6 +130,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
       <StatsBar />
+      <SaasPortfolioSection lang="fr" />
       <AiSystemsSection />
       <FreeCallSection />
       <TrustBar />
