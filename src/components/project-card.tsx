@@ -26,9 +26,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const num = NUMBERS[index] ?? `0${index + 1}`;
 
   const copy = {
-    fr: { website: "Voir le site", close: "Fermer", caseStudy: "Étude de cas", prev: "Préc.", next: "Suiv.", stack: "Stack" },
-    en: { website: "Visit site", close: "Close", caseStudy: "Case study", prev: "Prev", next: "Next", stack: "Stack" },
-    de: { website: "Website", close: "Schliessen", caseStudy: "Case Study", prev: "Zurück", next: "Weiter", stack: "Stack" },
+    fr: { website: "Voir le site", close: "Fermer", caseStudy: "Étude de cas", prev: "Préc.", next: "Suiv.", stack: "Stack", demo: "Demander une démo" },
+    en: { website: "Visit site", close: "Close", caseStudy: "Case study", prev: "Prev", next: "Next", stack: "Stack", demo: "Request a demo" },
+    de: { website: "Website", close: "Schliessen", caseStudy: "Case Study", prev: "Zurück", next: "Weiter", stack: "Stack", demo: "Demo anfragen" },
   }[locale];
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -213,6 +213,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:border-white/40 hover:text-white"
                 >
                   {copy.website} <FiExternalLink size={12} />
+                </a>
+              )}
+              {!project.website && project.demoRequest && (
+                <a
+                  href={`https://wa.me/33759558414?text=${encodeURIComponent(`Bonjour, je voudrais voir une démo de ${project.name}.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/70 transition hover:border-white/40 hover:text-white"
+                >
+                  {copy.demo} <FiExternalLink size={12} />
                 </a>
               )}
               {hasGallery && (

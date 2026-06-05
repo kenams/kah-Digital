@@ -217,6 +217,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Per-turn push notifications",
       "Simple community dashboard",
     ],
+    website: "https://tontineapp-web.vercel.app",
     palette: { primary: "#0a0f1a", secondary: "#1a2640", accent: "#4f9cf9" },
     mockups: {
       primary: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
@@ -260,6 +261,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Chat & push notifications",
       "QR delivery code + order tracking",
     ],
+    demoRequest: true,
     palette: { primary: "#071420", secondary: "#0f2d4a", accent: "#3b9ef6" },
     mockups: {
       primary: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80",
@@ -303,6 +305,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Leaderboards, territories & shop",
       "Coach area + fair-play moderation",
     ],
+    demoRequest: true,
     palette: { primary: "#050507", secondary: "#1a0d1f", accent: "#e63946" },
     mockups: {
       primary: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
@@ -346,6 +349,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Personalised recommendations",
       "Real field deployment",
     ],
+    demoRequest: true,
     palette: { primary: "#0a1509", secondary: "#162612", accent: "#22c55e" },
     mockups: {
       primary: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
@@ -389,6 +393,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Community reports",
       "Gamified reputation score",
     ],
+    demoRequest: true,
     palette: { primary: "#100a1a", secondary: "#2a1640", accent: "#a855f7" },
     mockups: {
       primary: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=900&q=80",

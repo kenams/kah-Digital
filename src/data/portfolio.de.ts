@@ -216,6 +216,13 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       secondary: "#0f2d4a",
       accent: "#3b9ef6",
     },
+    demoRequest: true,
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
   },
   {
     slug: "immortal-arena",
@@ -256,6 +263,13 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       primary: "#050507",
       secondary: "#1a0d1f",
       accent: "#e63946",
+    },
+    demoRequest: true,
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=80",
+      ],
     },
   },
   {

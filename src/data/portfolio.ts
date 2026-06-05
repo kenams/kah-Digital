@@ -19,6 +19,7 @@ export type PortfolioProject = {
     accent: string;
   };
   website?: string;
+  demoRequest?: boolean;
   downloadLinks?: {
     android?: string;
     ios?: string;
@@ -262,6 +263,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Push notifications par tour",
       "Dashboard communautaire simple",
     ],
+    website: "https://tontineapp-web.vercel.app",
     palette: {
       primary: "#0a0f1a",
       secondary: "#1a2640",
@@ -309,6 +311,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Chat & notifications push",
       "QR code livraison + suivi commande",
     ],
+    demoRequest: true,
     palette: {
       primary: "#071420",
       secondary: "#0f2d4a",
@@ -356,6 +359,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Classements, territoires & shop",
       "Espace coach + modération fair-play",
     ],
+    demoRequest: true,
     palette: {
       primary: "#050507",
       secondary: "#1a0d1f",
@@ -403,6 +407,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Recommandations personnalisées",
       "Déploiement terrain réel",
     ],
+    demoRequest: true,
     palette: {
       primary: "#0a1509",
       secondary: "#162612",
@@ -450,6 +455,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Signalements communautaires",
       "Score de réputation gamifié",
     ],
+    demoRequest: true,
     palette: {
       primary: "#100a1a",
       secondary: "#2a1640",
