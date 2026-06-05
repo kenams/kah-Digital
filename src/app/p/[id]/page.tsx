@@ -282,7 +282,7 @@ export default async function ProspectLandingPage({ params }: Props) {
             prospectId={prospect.id}
             siteUrl={prospect.website}
             businessName={prospect.businessName ?? ""}
-            lang={lang}
+            lang={lang as "en" | "fr" | "de"}
           />
           <a
             href={`mailto:${email}?subject=Suite — ${encodeURIComponent(name)}&body=Bonjour%2C%0A%0AJ'ai vu votre analyse de mon site ${encodeURIComponent(prospect.website)}.%0A%0A`}
