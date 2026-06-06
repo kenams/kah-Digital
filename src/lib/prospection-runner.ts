@@ -194,6 +194,13 @@ async function discoverAnalyzeAndSend(params: {
 
       if (audit.score > SCORE_THRESHOLD) continue;
 
+      // Skip leads with generic/invalid business names
+      const JUNK_NAMES = /^(accueil|home|index|pme|entreprise|société|company|website|site web|page d'accueil|welcome|bienvenue|lorem ipsum|test|demo|example|untitled|default|new page|\d+)$/i;
+      if (!audit.businessName || JUNK_NAMES.test(audit.businessName.trim())) {
+        rememberError(errors, `Junk businessName skipped: ${audit.businessName} (${lead.website})`);
+        continue;
+      }
+
       const { data: prospect, error: insertError } = await supabase
         .from("prospects")
         .insert({

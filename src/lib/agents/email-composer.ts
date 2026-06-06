@@ -51,13 +51,13 @@ const COPY: Record<string, {
   fr: {
     greeting: "Bonjour",
     currentSite: "Votre site actuel",
-    futureSite: "Ce que KAH-Digital créerait pour vous",
-    problems: "Ce qu'on a détecté",
+    futureSite: "Ce que KAH Digital créerait pour vous",
+    problems: "Ce qu'on a trouvé",
     quote: "Notre proposition",
     ctaLabel: "Répondre à cet email",
     ctaAlt: "Demander un devis gratuit",
-    ctaPrimary: "📊 Voir votre analyse complète →",
-    from: "Kénan — KAH-Digital",
+    ctaPrimary: "📊 Voir mon analyse complète →",
+    from: "L'équipe KAH Digital",
     signoff: "Cordialement",
     footer: "Vous recevez cet email car votre site est publiquement accessible.",
     unsubscribeLink: "Se désabonner",
@@ -68,13 +68,13 @@ const COPY: Record<string, {
   en: {
     greeting: "Hello",
     currentSite: "Your current website",
-    futureSite: "What KAH-Digital would build for you",
+    futureSite: "What KAH Digital would build for you",
     problems: "What we found",
     quote: "Our proposal",
     ctaLabel: "Reply to this email",
     ctaAlt: "Request a free quote",
-    ctaPrimary: "📊 See your full analysis →",
-    from: "Kenan — KAH-Digital",
+    ctaPrimary: "📊 See my full analysis →",
+    from: "The KAH Digital team",
     signoff: "Best regards",
     footer: "You received this email because your website is publicly accessible.",
     unsubscribeLink: "Unsubscribe",
@@ -85,13 +85,13 @@ const COPY: Record<string, {
   es: {
     greeting: "Hola",
     currentSite: "Su sitio web actual",
-    futureSite: "Lo que KAH-Digital crearía para usted",
+    futureSite: "Lo que KAH Digital crearía para usted",
     problems: "Lo que encontramos",
     quote: "Nuestra propuesta",
     ctaLabel: "Responder a este email",
     ctaAlt: "Solicitar presupuesto gratuito",
     ctaPrimary: "📊 Ver mi análisis completo →",
-    from: "Kenan — KAH-Digital",
+    from: "El equipo KAH Digital",
     signoff: "Saludos cordiales",
     footer: "Recibió este email porque su sitio web es accesible públicamente.",
     unsubscribeLink: "Darse de baja",
@@ -102,13 +102,13 @@ const COPY: Record<string, {
   de: {
     greeting: "Guten Tag",
     currentSite: "Ihre aktuelle Website",
-    futureSite: "Was KAH-Digital für Sie erstellen würde",
+    futureSite: "Was KAH Digital für Sie erstellen würde",
     problems: "Was wir gefunden haben",
     quote: "Unser Angebot",
     ctaLabel: "Diese E-Mail beantworten",
     ctaAlt: "Kostenloses Angebot anfordern",
     ctaPrimary: "📊 Vollständige Analyse ansehen →",
-    from: "Kenan — KAH-Digital",
+    from: "Das KAH Digital Team",
     signoff: "Mit freundlichen Grüßen",
     footer: "Sie erhalten diese E-Mail, weil Ihre Website öffentlich zugänglich ist.",
     unsubscribeLink: "Abmelden",
@@ -119,13 +119,13 @@ const COPY: Record<string, {
   it: {
     greeting: "Buongiorno",
     currentSite: "Il tuo sito attuale",
-    futureSite: "Cosa creerebbe KAH-Digital per te",
+    futureSite: "Cosa creerebbe KAH Digital per te",
     problems: "Cosa abbiamo trovato",
     quote: "La nostra proposta",
     ctaLabel: "Rispondi a questa email",
     ctaAlt: "Richiedi un preventivo gratuito",
     ctaPrimary: "📊 Vedi la mia analisi completa →",
-    from: "Kenan — KAH-Digital",
+    from: "Il team KAH Digital",
     signoff: "Cordiali saluti",
     footer: "Hai ricevuto questa email perché il tuo sito è accessibile pubblicamente.",
     unsubscribeLink: "Annulla iscrizione",
@@ -136,13 +136,13 @@ const COPY: Record<string, {
   nl: {
     greeting: "Goedendag",
     currentSite: "Uw huidige website",
-    futureSite: "Wat KAH-Digital voor u zou maken",
+    futureSite: "Wat KAH Digital voor u zou maken",
     problems: "Wat we hebben gevonden",
     quote: "Ons voorstel",
     ctaLabel: "Reageer op deze e-mail",
     ctaAlt: "Vraag een gratis offerte aan",
     ctaPrimary: "📊 Bekijk mijn volledige analyse →",
-    from: "Kenan — KAH-Digital",
+    from: "Het KAH Digital team",
     signoff: "Met vriendelijke groet",
     footer: "U ontvangt deze e-mail omdat uw website openbaar toegankelijk is.",
     unsubscribeLink: "Afmelden",
@@ -174,20 +174,21 @@ export async function composeProspectingEmail(
   prospectId: string
 ): Promise<ComposedEmail> {
   const c = getCopy(audit.language);
-  const pixelUrl = `${trackingBaseUrl}/api/tracking/open/${prospectId}`;
-  const clickUrl = `${trackingBaseUrl}/api/tracking/click/${prospectId}`;
-  const prospectPageUrl = `${trackingBaseUrl}/p/${prospectId}`;
-  // URL devis avec données prospect pour prefill (traitées côté tracking/click)
-  const quoteUrl = `${trackingBaseUrl}/devis?utm_source=email&utm_campaign=prospection&utm_medium=email`;
+  // Fix: strip whitespace/newlines that can sneak in from env vars
+  const baseUrl = trackingBaseUrl.replace(/[\r\n\s]+/g, "").replace(/\/$/, "");
+  const pixelUrl = `${baseUrl}/api/tracking/open/${prospectId}`;
+  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}`;
+  const prospectPageUrl = `${baseUrl}/p/${prospectId}`;
+  const quoteUrl = `${baseUrl}/devis?utm_source=email&utm_campaign=prospection&utm_medium=email`;
 
   // Claude génère l'intro et la conclusion personnalisées
-  const introConclusionPrompt = `Tu es Kenan, fondateur de KAH-Digital (studio digital — sites web, apps mobiles, SaaS, automatisations IA).
-Approche KAH-Digital : pas de prix public fixe ni formule rigide. Chaque proposition est ajustée après échange selon le besoin réel, les fonctionnalités utiles, les délais, le niveau d'accompagnement, le budget disponible et les priorités business.
+  const introConclusionPrompt = `Tu représentes KAH Digital (studio digital — sites web, apps mobiles, SaaS, automatisations IA).
+Approche : chaque proposition est sur-mesure après un échange, pas de prix public fixe.
 Écris en "${audit.language}" :
-1. Une accroche d'intro (2-3 phrases) pour ${audit.businessName}, un commerce dans le secteur ${audit.sector}.
-   Score actuel de leur site : ${audit.score}/100. Sois direct et bienveillant, mentionne le site (${lead.website}).
-   Si pertinent, ancre l'idée d'une proposition personnalisée après cadrage, sans montant.
-2. Une conclusion courte (1-2 phrases) qui incite à répondre, demander un devis personnalisé ou planifier un échange.
+1. Une accroche d'intro (2-3 phrases MAX) pour ${audit.businessName}, secteur ${audit.sector}.
+   Score de leur site : ${audit.score}/100. Sois direct, précis, mentionne un problème concret visible sur ${lead.website}.
+   Ton: professionnel mais humain, pas commercial. Pas de "nous avons analysé" — sois plus direct.
+2. Une conclusion courte (1 phrase) qui invite à répondre pour obtenir l'analyse complète + proposition personnalisée.
 Format JSON : { "intro": "...", "conclusion": "..." }`;
 
   let intro = `Nous avons analysé votre site ${lead.website} et identifié plusieurs points d'amélioration concrets.`;
@@ -206,60 +207,61 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
   // A/B test sujets — 7 variantes, rotation par jour
   const abVariant = Math.floor(Date.now() / 86400000) % 7;
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
+  const topProblem = audit.problems[0]?.title ?? "problème critique détecté";
   const SUBJECTS: Record<string, string[]> = {
     fr: [
-      `${bName} — votre site web perd des clients (analyse gratuite)`,
-      `J'ai analysé le site de ${bName} — voici ce que j'ai trouvé`,
-      `${bName} : 3 problèmes qui coûtent des clients chaque semaine`,
-      `Score ${audit.score}/100 pour ${bName} — rapport complet inclus`,
-      `Une question rapide sur ${bName}`,
-      `${bName} — votre site coûte des clients chaque jour`,
-      `Kénan de KAH-Digital — j'ai une proposition pour ${bName}`,
+      `${bName} — votre site perd des clients chaque semaine`,
+      `${topProblem} sur ${bName} — rapport complet`,
+      `${bName} : score ${audit.score}/100 — voici les 3 problèmes principaux`,
+      `Une question rapide sur le site de ${bName}`,
+      `${bName} — voici ce qu'un audit de 5 min a révélé`,
+      `${bName} — vos concurrents vous doublent sur Google`,
+      `Rapport gratuit pour ${bName} — ${audit.score}/100`,
     ],
     en: [
-      `${bName} — your website is losing customers (free analysis)`,
-      `I analysed ${bName}'s website — here's what I found`,
-      `${bName}: 3 issues costing you customers every week`,
-      `Score ${audit.score}/100 for ${bName} — full report inside`,
-      `Quick question about ${bName}`,
-      `${bName} — your website is costing you clients every day`,
-      `Kenan from KAH-Digital — I have a proposal for ${bName}`,
+      `${bName} — your website is losing customers every week`,
+      `${topProblem} on ${bName} — full report`,
+      `${bName}: score ${audit.score}/100 — 3 issues found`,
+      `Quick question about ${bName}'s website`,
+      `${bName} — here's what a 5-min audit revealed`,
+      `${bName} — competitors are outranking you on Google`,
+      `Free report for ${bName} — ${audit.score}/100`,
     ],
     es: [
-      `${bName} — su sitio web está perdiendo clientes (análisis gratuito)`,
-      `Analicé el sitio de ${bName} — esto es lo que encontré`,
-      `${bName}: 3 problemas que le cuestan clientes cada semana`,
-      `Puntuación ${audit.score}/100 para ${bName} — informe incluido`,
-      `Una pregunta rápida sobre ${bName}`,
-      `${bName} — su web le cuesta clientes cada día`,
-      `Kenan de KAH-Digital — tengo una propuesta para ${bName}`,
+      `${bName} — su sitio pierde clientes cada semana`,
+      `${topProblem} en ${bName} — informe completo`,
+      `${bName}: puntuación ${audit.score}/100 — 3 problemas encontrados`,
+      `Pregunta rápida sobre el sitio de ${bName}`,
+      `${bName} — esto reveló una auditoría de 5 minutos`,
+      `${bName} — sus competidores lo superan en Google`,
+      `Informe gratuito para ${bName} — ${audit.score}/100`,
     ],
     de: [
-      `${bName} — Ihre Website verliert Kunden (kostenlose Analyse)`,
-      `Ich habe die Website von ${bName} analysiert — das habe ich gefunden`,
-      `${bName}: 3 Probleme, die jede Woche Kunden kosten`,
-      `Score ${audit.score}/100 für ${bName} — vollständiger Bericht`,
-      `Kurze Frage zu ${bName}`,
-      `${bName} — Ihre Website kostet täglich Kunden`,
-      `Kenan von KAH-Digital — ich habe ein Angebot für ${bName}`,
+      `${bName} — Ihre Website verliert jede Woche Kunden`,
+      `${topProblem} bei ${bName} — vollständiger Bericht`,
+      `${bName}: Score ${audit.score}/100 — 3 Probleme gefunden`,
+      `Kurze Frage zur Website von ${bName}`,
+      `${bName} — das hat ein 5-Minuten-Audit ergeben`,
+      `${bName} — Wettbewerber überholen Sie bei Google`,
+      `Kostenloser Bericht für ${bName} — ${audit.score}/100`,
     ],
     it: [
-      `${bName} — il tuo sito perde clienti (analisi gratuita)`,
-      `Ho analizzato il sito di ${bName} — ecco cosa ho trovato`,
-      `${bName}: 3 problemi che ti costano clienti ogni settimana`,
-      `Punteggio ${audit.score}/100 per ${bName} — report completo`,
-      `Una domanda rapida su ${bName}`,
-      `${bName} — il tuo sito ti costa clienti ogni giorno`,
-      `Kenan di KAH-Digital — ho una proposta per ${bName}`,
+      `${bName} — il tuo sito perde clienti ogni settimana`,
+      `${topProblem} su ${bName} — report completo`,
+      `${bName}: punteggio ${audit.score}/100 — 3 problemi trovati`,
+      `Domanda rapida sul sito di ${bName}`,
+      `${bName} — ecco cosa ha rivelato un audit di 5 minuti`,
+      `${bName} — i tuoi concorrenti ti superano su Google`,
+      `Report gratuito per ${bName} — ${audit.score}/100`,
     ],
     nl: [
-      `${bName} — uw website verliest klanten (gratis analyse)`,
-      `Ik analyseerde de website van ${bName} — dit vond ik`,
-      `${bName}: 3 problemen die u elke week klanten kosten`,
-      `Score ${audit.score}/100 voor ${bName} — volledig rapport`,
-      `Korte vraag over ${bName}`,
-      `${bName} — uw website kost u dagelijks klanten`,
-      `Kenan van KAH-Digital — ik heb een voorstel voor ${bName}`,
+      `${bName} — uw website verliest elke week klanten`,
+      `${topProblem} op ${bName} — volledig rapport`,
+      `${bName}: score ${audit.score}/100 — 3 problemen gevonden`,
+      `Korte vraag over de website van ${bName}`,
+      `${bName} — dit onthulde een audit van 5 minuten`,
+      `${bName} — concurrenten overtreffen u op Google`,
+      `Gratis rapport voor ${bName} — ${audit.score}/100`,
     ],
   };
   const langSubjects = SUBJECTS[audit.language] ?? SUBJECTS.fr;
@@ -363,7 +365,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     <td style="padding:28px 32px;">
 
       <!-- Greeting -->
-      <p style="margin:0 0 6px;font-size:15px;color:#374151;font-weight:600;">${c.greeting},</p>
+      <p style="margin:0 0 6px;font-size:15px;color:#374151;font-weight:600;">${c.greeting}${audit.businessName ? ` — ${audit.businessName}` : ""},</p>
       <p style="margin:0 0 24px;font-size:15px;color:#4b5563;line-height:1.6;">${intro}</p>
 
       <!-- Screenshots + Mockup -->
@@ -465,7 +467,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
   <!-- FOOTER -->
   <tr>
     <td style="background:#f9fafb;border-top:1px solid #f3f4f6;padding:14px 32px;">
-      <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.5;">${c.footer} &nbsp;&mdash;&nbsp; <a href="${trackingBaseUrl}/api/unsubscribe?id=${prospectId}" style="color:#9ca3af;text-decoration:underline;">${c.unsubscribeLink}</a></p>
+      <p style="margin:0;font-size:11px;color:#9ca3af;line-height:1.5;">${c.footer} &nbsp;&mdash;&nbsp; <a href="${baseUrl}/api/unsubscribe?id=${prospectId}" style="color:#9ca3af;text-decoration:underline;">${c.unsubscribeLink}</a></p>
     </td>
   </tr>
 
@@ -478,7 +480,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
 </body>
 </html>`;
 
-  const textFallback = `${c.greeting},\n\n${intro}\n\nProblèmes détectés sur ${lead.website}:\n${audit.problems.map((p) => `- ${p.title}: ${p.detail}`).join("\n")}\n\nProposition: ${audit.priceRange}\n\n${conclusion}\n\n${c.signoff},\n${c.from}`;
+  const textFallback = `${c.greeting}${audit.businessName ? ` — ${audit.businessName}` : ""},\n\n${intro}\n\nProblèmes détectés sur ${lead.website}:\n${audit.problems.map((p) => `- ${p.title}: ${p.detail}`).join("\n")}\n\nProposition: ${audit.priceRange}\n\n${conclusion}\n\n${c.signoff},\n${c.from}`;
 
   return { subject, html, textFallback };
 }
