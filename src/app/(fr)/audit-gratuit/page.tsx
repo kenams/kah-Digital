@@ -127,7 +127,7 @@ export default function AuditGratuitPage() {
               />
             </div>
             {state === "error" && (
-              <p className="text-sm text-red-400">Une erreur est survenue. Réessayez ou envoyez un email à kahdigital42@gmail.com.</p>
+              <p className="text-sm text-red-400">Une erreur est survenue. Réessayez ou envoyez un email à contact@kah-digital.ch.</p>
             )}
             <button
               type="submit"

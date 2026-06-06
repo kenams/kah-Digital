@@ -125,7 +125,7 @@ export default function AuditGratuitPageEn() {
               />
             </div>
             {state === "error" && (
-              <p className="text-sm text-red-400">An error occurred. Please retry or email kahdigital42@gmail.com.</p>
+              <p className="text-sm text-red-400">An error occurred. Please retry or email contact@kah-digital.ch.</p>
             )}
             <button
               type="submit"

@@ -28,7 +28,7 @@ export const companyConfig: CompanyConfig = {
   postalCode: "1006",
   city: "Lausanne",
   country: "Switzerland",
-  email: "kahdigital42@gmail.com",
+  email: "contact@kah-digital.ch",
   phone: "+33 7 59 55 84 14",
   siren: "",
   vatNumber: "",

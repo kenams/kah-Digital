@@ -452,7 +452,7 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
           <td style="width:42px;height:42px;background:linear-gradient(135deg,#1e3a8a,#7c3aed);border-radius:50%;text-align:center;vertical-align:middle;color:#fff;font-size:16px;font-weight:800;">K</td>
           <td style="padding-left:12px;">
             <div style="font-weight:700;color:#111827;font-size:14px;">${c.from}</div>
-            <div style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com &bull; kah-digital.ch</div>
+            <div style="color:#6b7280;font-size:12px;">contact@kah-digital.ch &bull; kah-digital.ch</div>
           </td>
           <td align="right">
             <a href="https://wa.me/33759558414" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;font-size:12px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:9999px;">

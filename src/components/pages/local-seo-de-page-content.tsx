@@ -134,7 +134,7 @@ export function LocalSeoDePageContent({ data }: Props) {
     description: `Webentwicklung & KI-Automatisierung für ${data.city} — Premium Next.js Websites, GPT-4 Agenten, messbare Ergebnisse.`,
     url: `https://kah-digital.ch/de/${data.slug}`,
     telephone: "+33759558414",
-    email: "kahdigital42@gmail.com",
+    email: "contact@kah-digital.ch",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lausanne",

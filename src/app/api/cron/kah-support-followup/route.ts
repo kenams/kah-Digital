@@ -52,7 +52,7 @@ function buildFollowup1Html(firstName: string, company: string): string {
     </p>
   </div>
   <div style="padding:14px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · kahdigital42@gmail.com</p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · contact@kah-digital.ch</p>
   </div>
 </div>
 </body></html>`;
@@ -85,7 +85,7 @@ function buildFollowup2Html(firstName: string, company: string): string {
     </div>
   </div>
   <div style="padding:14px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · kahdigital42@gmail.com</p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · contact@kah-digital.ch</p>
   </div>
 </div>
 </body></html>`;

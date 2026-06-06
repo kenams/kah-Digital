@@ -206,7 +206,7 @@ function buildFollowupHtml(body: string, signoff: string, fromName: string, unsu
     <div style="font-size:15px;color:#374151;line-height:1.7;">${body}</div>
     <div style="margin-top:24px;font-size:14px;color:#374151;">${signoff}<br/>
     <strong>${fromName}</strong><br/>
-    <span style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com</span></div>
+    <span style="color:#6b7280;font-size:12px;">contact@kah-digital.ch</span></div>
   </td></tr>
   <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:12px 28px;">
     <p style="margin:0;font-size:11px;color:#9ca3af;">${unsubscribeHtml}</p>

@@ -32,7 +32,7 @@ const jsonLd = {
   "description": "Studio digital suisse basé à Lausanne. Création de sites web, applications et solutions IA pour entreprises suisses.",
   "url": "https://kah-digital.ch/agence-web-suisse",
   "telephone": "+33759558414",
-  "email": "kahdigital42@gmail.com",
+  "email": "contact@kah-digital.ch",
   "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressRegion": "Vaud", "addressCountry": "CH" },
   "areaServed": { "@type": "Country", "name": "Suisse" },
   "openingHours": "Mo-Fr 09:00-18:00",

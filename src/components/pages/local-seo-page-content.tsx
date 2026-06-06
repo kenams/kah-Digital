@@ -396,7 +396,7 @@ export function LocalSeoPageContent({ data }: Props) {
       "description": `Studio digital · création de sites web, applications et solutions IA à ${data.city}`,
       "url": `https://kah-digital.ch/${data.slug}`,
       "telephone": "+33759558414",
-      "email": "kahdigital42@gmail.com",
+      "email": "contact@kah-digital.ch",
       "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressCountry": "CH" },
       "areaServed": { "@type": "City", "name": data.city },
       "openingHours": "Mo-Fr 09:00-18:00",
