@@ -228,6 +228,7 @@ export function ProspectionDashboard() {
   const [editEmail, setEditEmail] = useState<{ subject: string; body: string } | null>(null);
   const [liveStats, setLiveStats] = useState<LiveStats | null>(null);
   const [followupRunning, setFollowupRunning] = useState(false);
+  const [clickerRelanceRunning, setClickerRelanceRunning] = useState(false);
   const [fireRunning, setFireRunning] = useState(false);
   const [fireMessage, setFireMessage] = useState<string | null>(null);
   const [liveBatch, setLiveBatch] = useState<LiveBatchProgress>(EMPTY_LIVE_BATCH_PROGRESS);
@@ -330,6 +331,24 @@ export function ProspectionDashboard() {
       void fetchLiveStats();
     } finally {
       setFollowupRunning(false);
+    }
+  }
+
+  async function handleClickerRelance() {
+    // Vérifier combien de cliqueurs éligibles
+    const countRes = await fetch("/api/admin/followup-clickers");
+    const countData = await countRes.json() as { eligible: number };
+    if (!countData.eligible) { alert("Aucun cliqueur éligible pour l'instant."); return; }
+    const ok = confirm(`${countData.eligible} cliqueurs sans réponse. Envoyer une relance courte à 20 d'entre eux ?`);
+    if (!ok) return;
+    setClickerRelanceRunning(true);
+    try {
+      const res = await fetch("/api/admin/followup-clickers", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ limit: 20 }) });
+      const data = await res.json() as { sent?: number; failed?: number; total?: number };
+      alert(`Relance cliqueurs :\n✅ Envoyés → ${data.sent ?? 0}\n❌ Échecs → ${data.failed ?? 0}\nTotal éligibles → ${data.total ?? 0}`);
+      void fetchLiveStats();
+    } finally {
+      setClickerRelanceRunning(false);
     }
   }
 
@@ -876,6 +895,13 @@ export function ProspectionDashboard() {
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-pink-500/30 bg-pink-500/10 py-4 text-base font-bold text-pink-300 hover:bg-pink-500/20 disabled:opacity-50 transition"
                   >
                     <FiSend size={16} /> {followupRunning ? "Relances envoyées ✓" : "Relances J+1 / J+3 / J+5 / J+10"}
+                  </button>
+                  <button
+                    onClick={() => void handleClickerRelance()}
+                    disabled={clickerRelanceRunning}
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-orange-500/30 bg-orange-500/10 py-4 text-base font-bold text-orange-300 hover:bg-orange-500/20 disabled:opacity-50 transition"
+                  >
+                    <FiBell size={16} /> {clickerRelanceRunning ? "Envoi en cours..." : "🖱 Relancer les cliqueurs"}
                   </button>
                 </div>
 
