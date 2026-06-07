@@ -27,20 +27,20 @@ const copy = {
       plans: [
         {
           name: "Essentiel",
-          price: "Support léger",
+          price: "79 € / mois",
           desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
           items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
         },
         {
           name: "Confort",
-          price: "Support renforcé",
+          price: "149 € / mois",
           desc: "Tout Essentiel + corrections mineures et ajouts de contenu.",
           items: ["Tout du plan Essentiel", "2h de modifications / mois", "Ajouts textes et images", "Support prioritaire (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "Suivi prioritaire",
+          price: "299 € / mois",
           desc: "Tout Confort + développement léger et suivi analytique mensuel.",
           items: ["Tout du plan Confort", "5h de développement / mois", "Rapport analytique mensuel", "Support dédié (réponse jour-même)"],
         },
@@ -53,7 +53,7 @@ const copy = {
         id: "landing-portfolio",
         tag: null,
         title: "Landing / Portfolio",
-        price: "Projet simple",
+        price: "à partir de 490 €",
         timeline: "1 – 2 semaines",
         summary: "Page unique, design propre, adapté mobile. Idéal pour un portfolio personnel, une activité freelance ou un projet à tester.",
         includes: [
@@ -70,7 +70,7 @@ const copy = {
         id: "site-vitrine",
         tag: null,
         title: "Site vitrine",
-        price: "Présence professionnelle",
+        price: "à partir de 890 €",
         timeline: "2 – 3 semaines",
         summary: "Présence professionnelle en ligne, design soigné, SEO de base et formulaire de contact.",
         includes: [
@@ -88,7 +88,7 @@ const copy = {
         id: "site-corporate",
         tag: "Le plus demandé",
         title: "Site corporate",
-        price: "Projet évolutif",
+        price: "à partir de 1 490 €",
         timeline: "3 – 5 semaines",
         summary: "Site complet avec pages services, blog ou actualités, design premium et optimisation SEO avancée.",
         includes: [
@@ -107,7 +107,7 @@ const copy = {
         id: "application-web",
         tag: null,
         title: "Application web sur mesure",
-        price: "Projet sur mesure",
+        price: "à partir de 2 990 €",
         timeline: "4 – 10 semaines",
         summary: "Outil métier, portail, dashboard ou SaaS avec authentification, base de données et logique métier.",
         includes: [
@@ -126,7 +126,7 @@ const copy = {
         id: "automatisation-ia",
         tag: null,
         title: "Automatisation IA",
-        price: "Automatisation adaptée",
+        price: "à partir de 1 490 €",
         timeline: "2 – 6 semaines",
         summary: "Workflows automatisés, assistant IA, traitement de documents ou intégration LLM dans vos outils existants.",
         includes: [
@@ -145,10 +145,10 @@ const copy = {
       title: "Projet hors catalogue ?",
       body: "Application mobile, e-commerce avancé, parcours GLPI, refonte complète. Tout besoin est évalué sur mesure.",
       items: [
-        { label: "Application mobile", price: "Estimation après cadrage" },
-        { label: "E-commerce complet", price: "Périmètre défini ensemble" },
-        { label: "Parcours support GLPI", price: "Adapté à votre organisation" },
-        { label: "Refonte + migration", price: "Proposition personnalisée" },
+        { label: "Application mobile", price: "dès 3 500 €" },
+        { label: "E-commerce complet", price: "dès 1 990 €" },
+        { label: "Parcours support GLPI", price: "devis sur mesure" },
+        { label: "Refonte + migration", price: "dès 890 €" },
       ],
     },
   },
@@ -171,20 +171,20 @@ const copy = {
       plans: [
         {
           name: "Essential",
-          price: "Light support",
+          price: "€79 / month",
           desc: "Security updates, backups, uptime monitoring.",
           items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
         },
         {
           name: "Comfort",
-          price: "Extended support",
+          price: "€149 / month",
           desc: "Everything in Essential + minor fixes and content additions.",
           items: ["Everything in Essential", "2h of changes / month", "Text and image updates", "Priority support (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "Priority follow-up",
+          price: "€299 / month",
           desc: "Everything in Comfort + light development and monthly analytics report.",
           items: ["Everything in Comfort", "5h of development / month", "Monthly analytics report", "Dedicated support (same-day)"],
         },
@@ -197,7 +197,7 @@ const copy = {
         id: "landing-portfolio",
         tag: null,
         title: "Landing / Portfolio",
-        price: "Simple project",
+        price: "from €490",
         timeline: "1 – 2 weeks",
         summary: "Single page, clean design, mobile-ready. Perfect for a personal portfolio, freelance activity, or a project to test.",
         includes: [
@@ -214,7 +214,7 @@ const copy = {
         id: "site-vitrine",
         tag: null,
         title: "Showcase site",
-        price: "Professional presence",
+        price: "from €890",
         timeline: "2 – 3 weeks",
         summary: "Professional online presence, clean design, basic SEO, and contact form.",
         includes: [
@@ -232,7 +232,7 @@ const copy = {
         id: "site-corporate",
         tag: "Most requested",
         title: "Corporate site",
-        price: "Scalable project",
+        price: "from €1,490",
         timeline: "3 – 5 weeks",
         summary: "Full site with services pages, blog or news, premium design, and advanced SEO.",
         includes: [
@@ -251,7 +251,7 @@ const copy = {
         id: "application-web",
         tag: null,
         title: "Custom web app",
-        price: "Custom project",
+        price: "from €2,990",
         timeline: "4 – 10 weeks",
         summary: "Business tool, portal, dashboard, or SaaS with auth, database, and business logic.",
         includes: [
@@ -270,7 +270,7 @@ const copy = {
         id: "automatisation-ia",
         tag: null,
         title: "AI automation",
-        price: "Adapted automation",
+        price: "from €1,490",
         timeline: "2 – 6 weeks",
         summary: "Automated workflows, AI assistant, document processing, or LLM integration into your existing tools.",
         includes: [
@@ -289,10 +289,10 @@ const copy = {
       title: "Off-catalogue project?",
       body: "Mobile app, advanced e-commerce, GLPI workflow, full redesign. Any need is evaluated on a custom basis.",
       items: [
-        { label: "Mobile app", price: "Estimated after scoping" },
-        { label: "Full e-commerce", price: "Scope defined together" },
-        { label: "GLPI support flow", price: "Adapted to your organisation" },
-        { label: "Redesign + migration", price: "Custom proposal" },
+        { label: "Mobile app", price: "from €3,500" },
+        { label: "Full e-commerce", price: "from €1,990" },
+        { label: "GLPI support flow", price: "custom quote" },
+        { label: "Redesign + migration", price: "from €890" },
       ],
     },
   },

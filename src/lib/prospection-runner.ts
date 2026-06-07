@@ -15,7 +15,8 @@ import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-emai
 
 export const PROSPECTION_EMAILS_PER_RUN = 2;
 
-const SCORE_THRESHOLD = 72;
+const SCORE_THRESHOLD = 65; // Max score — au-delà = site correct, pas besoin de nous
+const SCORE_MIN = 25;       // Min score — en-dessous = site mort, pas de budget
 const SEND_DELAY_MS = 400;
 
 type ProspectBacklogRow = {
@@ -192,7 +193,8 @@ async function discoverAnalyzeAndSend(params: {
         continue;
       }
 
-      if (audit.score > SCORE_THRESHOLD) continue;
+      if (audit.score > SCORE_THRESHOLD) continue; // site trop bon, pas besoin de nous
+      if (audit.score < SCORE_MIN) continue;        // site mort = pas de budget
 
       // Skip leads with generic/invalid business names
       const JUNK_NAMES = /^(accueil|home|index|pme|entreprise|société|company|website|site web|page d'accueil|welcome|bienvenue|lorem ipsum|test|demo|example|untitled|default|new page|\d+)$/i;

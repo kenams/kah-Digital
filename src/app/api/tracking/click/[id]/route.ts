@@ -146,34 +146,39 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     prospect = data;
 
     if (prospect && !prospect.clickedAt) {
+      // Marquer "clicked" seulement — pas "replied" (réservé aux vrais formulaires soumis)
       await supabase
         .from("prospects")
-        .update({ clickedAt: new Date().toISOString(), status: "replied" })
+        .update({ clickedAt: new Date().toISOString(), status: "clicked" })
         .eq("id", id);
 
-      // Auto-reply si email connu
+      // Générer un brouillon en local (sans l'envoyer) — Kenams choisit d'envoyer ou non
       let draft = "";
       if (prospect.email) {
-        draft = await generateAndSendAutoReply(
-          { ...prospect, email: prospect.email },
-          target
-        );
+        try {
+          draft = await generateAndSendAutoReply(
+            { ...prospect, email: prospect.email },
+            target
+          );
+        } catch { /* silent */ }
         if (draft) {
           await supabase.from("prospects").update({ draftReply: draft }).eq("id", id);
         }
       }
 
-      // Notification admin
+      // Notification admin uniquement — pas d'envoi auto
       const name = prospect.businessName ?? prospect.website;
       const gmailSearchUrl = `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(prospect.email ?? name)}`;
+      const prospectPageUrl = `${siteUrl}/p/${id}`;
       void sendAdminNotification({
-        subject: `🔥 CLIC — ${name} (${prospect.language?.toUpperCase() ?? "FR"})`,
-        body: `<strong style="color:#dc2626;font-size:16px;">Prospect chaud !</strong><br/><br/>
-<strong>${name}</strong> a cliqué — réponse auto envoyée.<br/>
-Secteur : ${prospect.sector ?? "?"} | Email : ${prospect.email ?? "inconnu"} | Cible : ${target}<br/><br/>
-${draft ? `<div style="background:#f0f9ff;border-left:4px solid #3b82f6;padding:14px;border-radius:0 8px 8px 0;margin:12px 0;white-space:pre-wrap;font-size:13px;color:#374151;">${draft}</div>` : ""}
-<a href="${gmailSearchUrl}" style="display:inline-block;background:#1a73e8;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:700;margin-top:8px;">📧 Vérifier Gmail →</a>
-<br/><small style="color:#9ca3af;">Site: ${prospect.website}</small>`,
+        subject: `👁️ CLIC — ${name} (${prospect.language?.toUpperCase() ?? "FR"})`,
+        body: `<strong style="font-size:15px;">Prospect a vu ta page d'analyse</strong><br/><br/>
+<strong>${name}</strong> a cliqué sur le lien de l'email.<br/>
+Secteur : ${prospect.sector ?? "?"} | Email : ${prospect.email ?? "inconnu"}<br/><br/>
+${draft ? `<p style="margin:4px 0 8px;font-size:12px;color:#6b7280;">Brouillon prêt à envoyer :</p><div style="background:#f0f9ff;border-left:4px solid #3b82f6;padding:14px;border-radius:0 8px 8px 0;margin:4px 0 12px;white-space:pre-wrap;font-size:13px;color:#374151;">${draft}</div>` : ""}
+<a href="${gmailSearchUrl}" style="display:inline-block;background:#1a73e8;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:700;margin-right:8px;">📧 Gmail</a>
+<a href="${prospectPageUrl}" style="display:inline-block;background:#059669;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:700;">👁️ Sa page</a>
+<br/><small style="color:#9ca3af;margin-top:8px;display:block;">Site: ${prospect.website}</small>`,
       }).catch(console.error);
     }
   } catch (err) {
