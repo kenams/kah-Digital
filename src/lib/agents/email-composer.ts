@@ -204,64 +204,59 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     }
   } catch { /* keep defaults */ }
 
-  // A/B test sujets — 7 variantes, rotation par jour
-  const abVariant = Math.floor(Date.now() / 86400000) % 7;
+  // A/B test sujets — 6 variantes humaines, rotation par jour
+  // Règle : pas de "gratuit", pas de "perd des clients", pas de chiffres score en sujet
+  const abVariant = Math.floor(Date.now() / 86400000) % 6;
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
-  const topProblem = audit.problems[0]?.title ?? "problème critique détecté";
+  const topProblem = audit.problems[0]?.title ?? "point à améliorer";
   const SUBJECTS: Record<string, string[]> = {
     fr: [
-      `${bName} — votre site perd des clients chaque semaine`,
-      `${topProblem} sur ${bName} — rapport complet`,
-      `${bName} : score ${audit.score}/100 — voici les 3 problèmes principaux`,
-      `Une question rapide sur le site de ${bName}`,
-      `${bName} — voici ce qu'un audit de 5 min a révélé`,
-      `${bName} — vos concurrents vous doublent sur Google`,
-      `Rapport gratuit pour ${bName} — ${audit.score}/100`,
+      `${bName} — j'ai regardé votre site`,
+      `Une question pour ${bName}`,
+      `${bName} — j'ai une suggestion`,
+      `${topProblem} — ${bName}`,
+      `${bName} — j'ai analysé votre présence en ligne`,
+      `Retour sur le site de ${bName}`,
     ],
     en: [
-      `${bName} — your website is losing customers every week`,
-      `${topProblem} on ${bName} — full report`,
-      `${bName}: score ${audit.score}/100 — 3 issues found`,
-      `Quick question about ${bName}'s website`,
-      `${bName} — here's what a 5-min audit revealed`,
-      `${bName} — competitors are outranking you on Google`,
-      `Free report for ${bName} — ${audit.score}/100`,
+      `${bName} — I had a look at your website`,
+      `Quick question for ${bName}`,
+      `${bName} — I have a suggestion`,
+      `${topProblem} — ${bName}`,
+      `${bName} — I reviewed your online presence`,
+      `Feedback on ${bName}'s website`,
     ],
     es: [
-      `${bName} — su sitio pierde clientes cada semana`,
-      `${topProblem} en ${bName} — informe completo`,
-      `${bName}: puntuación ${audit.score}/100 — 3 problemas encontrados`,
-      `Pregunta rápida sobre el sitio de ${bName}`,
-      `${bName} — esto reveló una auditoría de 5 minutos`,
-      `${bName} — sus competidores lo superan en Google`,
-      `Informe gratuito para ${bName} — ${audit.score}/100`,
+      `${bName} — eché un vistazo a su sitio`,
+      `Una pregunta para ${bName}`,
+      `${bName} — tengo una sugerencia`,
+      `${topProblem} — ${bName}`,
+      `${bName} — revisé su presencia online`,
+      `Comentarios sobre el sitio de ${bName}`,
     ],
     de: [
-      `${bName} — Ihre Website verliert jede Woche Kunden`,
-      `${topProblem} bei ${bName} — vollständiger Bericht`,
-      `${bName}: Score ${audit.score}/100 — 3 Probleme gefunden`,
-      `Kurze Frage zur Website von ${bName}`,
-      `${bName} — das hat ein 5-Minuten-Audit ergeben`,
-      `${bName} — Wettbewerber überholen Sie bei Google`,
-      `Kostenloser Bericht für ${bName} — ${audit.score}/100`,
+      `${bName} — ich habe Ihre Website angeschaut`,
+      `Kurze Frage an ${bName}`,
+      `${bName} — ich habe einen Vorschlag`,
+      `${topProblem} — ${bName}`,
+      `${bName} — ich habe Ihren Online-Auftritt analysiert`,
+      `Feedback zur Website von ${bName}`,
     ],
     it: [
-      `${bName} — il tuo sito perde clienti ogni settimana`,
-      `${topProblem} su ${bName} — report completo`,
-      `${bName}: punteggio ${audit.score}/100 — 3 problemi trovati`,
-      `Domanda rapida sul sito di ${bName}`,
-      `${bName} — ecco cosa ha rivelato un audit di 5 minuti`,
-      `${bName} — i tuoi concorrenti ti superano su Google`,
-      `Report gratuito per ${bName} — ${audit.score}/100`,
+      `${bName} — ho guardato il tuo sito`,
+      `Una domanda per ${bName}`,
+      `${bName} — ho un suggerimento`,
+      `${topProblem} — ${bName}`,
+      `${bName} — ho analizzato la tua presenza online`,
+      `Feedback sul sito di ${bName}`,
     ],
     nl: [
-      `${bName} — uw website verliest elke week klanten`,
-      `${topProblem} op ${bName} — volledig rapport`,
-      `${bName}: score ${audit.score}/100 — 3 problemen gevonden`,
-      `Korte vraag over de website van ${bName}`,
-      `${bName} — dit onthulde een audit van 5 minuten`,
-      `${bName} — concurrenten overtreffen u op Google`,
-      `Gratis rapport voor ${bName} — ${audit.score}/100`,
+      `${bName} — ik heb uw website bekeken`,
+      `Korte vraag voor ${bName}`,
+      `${bName} — ik heb een suggestie`,
+      `${topProblem} — ${bName}`,
+      `${bName} — ik heb uw online aanwezigheid geanalyseerd`,
+      `Feedback over de website van ${bName}`,
     ],
   };
   const langSubjects = SUBJECTS[audit.language] ?? SUBJECTS.fr;
@@ -310,15 +305,15 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
     </div>
   `;
 
-  const psScarcity: Record<string, string> = {
-    fr: "Je ne contacte que 3 entreprises par secteur et par ville — si un concurrent répond en premier, le créneau est pris. Répondez pour bloquer votre place.",
-    en: "I only contact 3 businesses per sector per city — if a competitor responds first, the slot is taken. Reply to secure yours.",
-    de: "Ich kontaktiere nur 3 Unternehmen pro Branche und Stadt — antwortet ein Konkurrent zuerst, ist der Platz vergeben.",
-    es: "Solo contacto a 3 empresas por sector y ciudad — si un competidor responde primero, el cupo está tomado.",
-    it: "Contatto solo 3 aziende per settore e città — se un concorrente risponde prima, il posto è preso.",
-    nl: "Ik neem alleen contact op met 3 bedrijven per sector en stad — als een concurrent als eerste reageert, is de plek bezet.",
+  const psTexts: Record<string, string> = {
+    fr: "Si ce n'est pas le bon moment, répondez simplement \"pas maintenant\" — je ne vous recontacterai pas.",
+    en: "If the timing isn't right, just reply \"not now\" — I won't follow up.",
+    de: "Wenn der Zeitpunkt nicht passt, antworten Sie einfach \"nicht jetzt\" — ich melde mich nicht erneut.",
+    es: "Si no es el momento adecuado, responda simplemente \"ahora no\" — no le volvería a contactar.",
+    it: "Se non è il momento giusto, rispondi semplicemente \"non ora\" — non ti ricontatterò.",
+    nl: "Als het moment niet goed is, antwoord dan gewoon \"niet nu\" — ik neem geen contact meer op.",
   };
-  const psText = psScarcity[audit.language] ?? psScarcity.fr;
+  const psText = psTexts[audit.language] ?? psTexts.fr;
 
   const html = `<!DOCTYPE html>
 <html lang="${audit.language}">
@@ -368,19 +363,11 @@ Format JSON : { "intro": "...", "conclusion": "..." }`;
       <p style="margin:0 0 6px;font-size:15px;color:#374151;font-weight:600;">${c.greeting}${audit.businessName ? ` — ${audit.businessName}` : ""},</p>
       <p style="margin:0 0 24px;font-size:15px;color:#4b5563;line-height:1.6;">${intro}</p>
 
-      <!-- Screenshots + Mockup -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
-        <tr>
-          <td width="48%" style="vertical-align:top;padding-right:8px;">
-            ${screenshotBlock}
-          </td>
-          <td width="4%"></td>
-          <td width="48%" style="vertical-align:top;padding-left:8px;">
-            <div style="margin-bottom:8px;font-size:12px;color:#7c3aed;text-transform:uppercase;letter-spacing:1px;font-weight:600;">${c.futureSite}</div>
-            ${mockupHtml}
-          </td>
-        </tr>
-      </table>
+      <!-- Site actuel -->
+      ${audit.screenshotUrl ? `<div style="margin-bottom:20px;">
+        <div style="margin-bottom:6px;font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;font-weight:600;">${c.currentSite}</div>
+        <img src="${audit.screenshotUrl}" alt="${audit.businessName}" width="516" style="width:100%;max-width:516px;border-radius:8px;border:1px solid #e5e7eb;display:block;" />
+      </div>` : ""}
 
       <!-- Problems -->
       <div style="margin-bottom:6px;font-size:12px;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;font-weight:600;">${c.problems}</div>
