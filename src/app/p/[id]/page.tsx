@@ -167,6 +167,7 @@ export default async function ProspectLandingPage({ params }: Props) {
   const email = "contact@kah-digital.ch";
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
   const devisUrl = `${siteUrl}/devis?company=${encodeURIComponent(name)}&site=${encodeURIComponent(prospect.website)}&ref=email`;
+  const lang = prospect.language ?? "fr";
   const waMsgMap: Record<string, string> = {
     fr: `Bonjour Kénan, j'ai vu l'analyse de mon site ${prospect.website}. Je suis intéressé(e) par vos services.`,
     en: `Hello Kenan, I saw the analysis of my website ${prospect.website}. I'm interested in your services.`,
@@ -175,7 +176,6 @@ export default async function ProspectLandingPage({ params }: Props) {
   };
   const waMsg = encodeURIComponent(waMsgMap[lang] ?? waMsgMap.fr);
   const waUrl = `https://wa.me/33759558414?text=${waMsg}`;
-  const lang = prospect.language ?? "fr";
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
