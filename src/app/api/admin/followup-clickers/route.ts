@@ -167,6 +167,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Si appelé par le cron (Bearer token) → déclencher la relance automatiquement
+  const cronSecret = process.env.CRON_SECRET;
+  const isCron = cronSecret && req.headers.get("authorization") === `Bearer ${cronSecret}`;
+  if (isCron) return POST(req);
+
   const supabase = getSupabase();
   const { count } = await supabase
     .from("prospects")

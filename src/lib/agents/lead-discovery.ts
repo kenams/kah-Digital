@@ -749,9 +749,10 @@ const DDG_OFFSETS = [0, 10, 20, 30, 40];
 export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   const MIN_DDG_LEADS = Math.max(3, Math.ceil(count / 5)); // seuil minimum avant de tenter les fallbacks
 
-  // 8 targets aléatoires (au lieu de 5) pour maximiser les URLs uniques
-  const shuffled = [...TARGETS].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, 8);
+  // Sélection pondérée : 4 slots CH garantis + 8 slots aléatoires (CH = 25.5% click rate)
+  const chTargets = TARGETS.filter(t => t.country === "CH").sort(() => Math.random() - 0.5).slice(0, 4);
+  const otherTargets = TARGETS.filter(t => t.country !== "CH").sort(() => Math.random() - 0.5).slice(0, 8);
+  const selected = [...chTargets, ...otherTargets].sort(() => Math.random() - 0.5);
 
   // Map url → meta pour préserver le bon pays/secteur par URL
   const urlMetaMap = new Map<string, { country: string; language: string; sector: string }>();

@@ -229,6 +229,8 @@ export function ProspectionDashboard() {
   const [liveStats, setLiveStats] = useState<LiveStats | null>(null);
   const [followupRunning, setFollowupRunning] = useState(false);
   const [clickerRelanceRunning, setClickerRelanceRunning] = useState(false);
+  const [telegramSetupRunning, setTelegramSetupRunning] = useState(false);
+  const [telegramConfigured, setTelegramConfigured] = useState<boolean | null>(null);
   const [fireRunning, setFireRunning] = useState(false);
   const [fireMessage, setFireMessage] = useState<string | null>(null);
   const [liveBatch, setLiveBatch] = useState<LiveBatchProgress>(EMPTY_LIVE_BATCH_PROGRESS);
@@ -332,6 +334,21 @@ export function ProspectionDashboard() {
     } finally {
       setFollowupRunning(false);
     }
+  }
+
+  async function handleTelegramSetup() {
+    setTelegramSetupRunning(true);
+    try {
+      // Vérifier d'abord l'état
+      const checkRes = await fetch("/api/admin/telegram-setup");
+      const checkData = await checkRes.json() as { configured: boolean; chatId?: string };
+      if (checkData.configured) { setTelegramConfigured(true); alert("✅ Telegram déjà configuré : " + (checkData.chatId ?? "OK")); return; }
+      // Capturer le chat_id
+      const res = await fetch("/api/admin/telegram-setup", { method: "POST" });
+      const data = await res.json() as { ok: boolean; firstName?: string; message?: string };
+      if (data.ok) { setTelegramConfigured(true); alert(`✅ Telegram activé ! Bonjour ${data.firstName ?? ""}. Tu vas recevoir une notif sur ton téléphone à chaque lead.`); }
+      else alert(`❌ ${data.message ?? "Erreur"}\n\nEnvoie /start au bot Telegram d'abord, puis réessaie.`);
+    } finally { setTelegramSetupRunning(false); }
   }
 
   async function handleClickerRelance() {
@@ -718,6 +735,16 @@ export function ProspectionDashboard() {
                       </div>
                     </details>
                   )}
+                  <div className="mt-4 flex items-center gap-3">
+                    <button
+                      onClick={() => void handleTelegramSetup()}
+                      disabled={telegramSetupRunning || telegramConfigured === true}
+                      className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition ${telegramConfigured ? "border border-emerald-500/30 bg-emerald-500/10 text-emerald-400" : "border border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500/20"} disabled:opacity-60`}
+                    >
+                      {telegramConfigured ? "✅ Telegram actif" : telegramSetupRunning ? "Connexion..." : "📱 Activer Telegram notifs"}
+                    </button>
+                    <span className="text-xs text-gray-500">Envoie /start au bot Telegram d'abord</span>
+                  </div>
                 </div>
               )}
 
