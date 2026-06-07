@@ -241,7 +241,8 @@ async function discoverAnalyzeAndSend(params: {
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
 
-      if (!lead.email) continue;
+      // Bloquer les emails devinés — taux de bounce 46% vs 17% pour les emails réels
+      if (!lead.email || lead.emailGuessed) continue;
 
       await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback, prospect.id as string);
       await supabase
