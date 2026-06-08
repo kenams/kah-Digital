@@ -615,15 +615,15 @@ export const portfolioProjects: PortfolioProject[] = [
     },
   },
   {
-    slug: "stackr",
-    name: "Stackr",
+    slug: "ante",
+    name: "ANTE",
     type: "SaaS Fintech / Défis financiers entre amis",
     tagline:
-      "Challenge tes amis avec de l'argent réel. Le plus discipliné rafle tout — paiements Stripe live, check-in hebdomadaire, PWA installable.",
+      "Ante up. Challenge tes amis avec de l'argent réel. Le dernier debout empoche tout — paiements Stripe live, check-in hebdomadaire, PWA installable.",
     shortDescription:
       "Next.js App Router + Prisma + Stripe live. Défis financiers en groupe, wallet intégré, check-in hebdomadaire, retrait IBAN, notifications email Resend, PWA mobile.",
     description:
-      "Stackr transforme l'épargne et la discipline financière en un jeu compétitif entre amis. Chaque participant mise une somme réelle via Stripe. Check-in chaque semaine. Le dernier encore en jeu empoche l'intégralité du pot (moins 3% de frais). KAH Digital a conçu la plateforme complète : gestion des défis, wallet interne, paiements Stripe live, système de retraits IBAN, crons automatiques, notifications email et PWA installable sur mobile.",
+      "ANTE transforme la discipline financière en un jeu compétitif entre amis. Chaque participant mise une somme réelle via Stripe. Check-in chaque semaine. Le dernier encore en jeu empoche l'intégralité du pot (moins 3% de frais). KAH Digital a conçu la plateforme complète : gestion des défis, wallet interne, paiements Stripe live, système de retraits IBAN, crons automatiques, notifications email et PWA installable sur mobile.",
     challenge:
       "Créer une plateforme financière de gamification avec paiements réels, logique de challenge complexe (types, statuts, check-ins, gagnant automatique), wallet interne et retraits bancaires — en maintenant la conformité légale.",
     solution:
@@ -657,6 +657,7 @@ export const portfolioProjects: PortfolioProject[] = [
       accent: "#f59e0b",
     },
     website: "https://stackr-app-three.vercel.app",
+    launchDate: "Juin 2026 — Coupe du Monde",
     mockups: {
       primary: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
       gallery: [
