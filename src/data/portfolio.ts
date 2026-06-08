@@ -608,9 +608,60 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://kah-support.ch",
     mockups: {
-      primary: "/portfolio/KAH Digital.png",
+      primary: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
       gallery: [
-        "/portfolio/KAH Digital.png",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+  },
+  {
+    slug: "stackr",
+    name: "Stackr",
+    type: "SaaS Fintech / Défis financiers entre amis",
+    tagline:
+      "Challenge tes amis avec de l'argent réel. Le plus discipliné rafle tout — paiements Stripe live, check-in hebdomadaire, PWA installable.",
+    shortDescription:
+      "Next.js App Router + Prisma + Stripe live. Défis financiers en groupe, wallet intégré, check-in hebdomadaire, retrait IBAN, notifications email Resend, PWA mobile.",
+    description:
+      "Stackr transforme l'épargne et la discipline financière en un jeu compétitif entre amis. Chaque participant mise une somme réelle via Stripe. Check-in chaque semaine. Le dernier encore en jeu empoche l'intégralité du pot (moins 3% de frais). KAH Digital a conçu la plateforme complète : gestion des défis, wallet interne, paiements Stripe live, système de retraits IBAN, crons automatiques, notifications email et PWA installable sur mobile.",
+    challenge:
+      "Créer une plateforme financière de gamification avec paiements réels, logique de challenge complexe (types, statuts, check-ins, gagnant automatique), wallet interne et retraits bancaires — en maintenant la conformité légale.",
+    solution:
+      "Next.js App Router + Prisma + Neon PostgreSQL. Stripe Checkout pour les mises, wallet interne avec historique, cron Vercel pour la complétion automatique des défis, Resend pour les emails transactionnels (bienvenue, reset, confirmation mise, gagnant, retrait), PWA avec service worker.",
+    stack: ["Next.js 15", "Prisma", "PostgreSQL", "Stripe", "Resend", "Vercel", "TypeScript", "PWA"],
+    result:
+      "Plateforme live. Paiements Stripe actifs. PWA installable iOS/Android. Crons automatiques opérationnels.",
+    timeline: "4 semaines",
+    deliverables: [
+      "Défis financiers multi-types (épargne, zéro dépense, objectif commun)",
+      "Wallet interne + retraits IBAN",
+      "Paiements Stripe live + webhooks",
+      "Check-in hebdomadaire + gagnant automatique",
+      "Emails transactionnels complets (Resend)",
+      "PWA installable mobile",
+      "Admin dashboard + crons Vercel",
+    ],
+    metrics: [
+      { label: "Stack", value: "Next.js + Stripe" },
+      { label: "Emails auto", value: "7 types" },
+      { label: "Livraison", value: "4 semaines" },
+    ],
+    highlights: [
+      "Paiements réels entre amis — Stripe live",
+      "Le gagnant rafle tout automatiquement",
+      "PWA installable iOS et Android",
+    ],
+    palette: {
+      primary: "#000000",
+      secondary: "#111111",
+      accent: "#f59e0b",
+    },
+    website: "https://stackr-app-three.vercel.app",
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80",
       ],
     },
   },
