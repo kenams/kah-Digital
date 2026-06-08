@@ -5,7 +5,7 @@ import { AdminSocialDashboard } from "@/components/admin-social-dashboard";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Social Poster — Admin KAH-Digital",
+  title: "Social Poster — Admin KAH Digital",
 };
 
 export default async function SocialPage() {

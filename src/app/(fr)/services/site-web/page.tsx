@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/services/site-web",
-  title: "Sites web pour entreprises | KAH-Digital",
+  title: "Sites web pour entreprises | KAH Digital",
   description:
     "Creation de sites web vitrines, sites corporate et plateformes sur mesure pour entreprises francophones, anglophones et internationales.",
 });

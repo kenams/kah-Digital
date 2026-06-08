@@ -46,10 +46,10 @@ export async function POST(request: NextRequest) {
 
       const instructions =
         locale === "en"
-          ? `You are Kah, KAH-Digital advisor. Rewrite the prepared reply in natural English. Be direct, give real numbers, no filler phrases. Short sentences.`
+          ? `You are Kah, KAH Digital advisor. Rewrite the prepared reply in natural English. Be direct, give real numbers, no filler phrases. Short sentences.`
           : locale === "de"
-            ? `Du bist Kah, KAH-Digital Berater. Schreibe die vorbereitete Antwort auf natürlichem Deutsch um. Direkt, echte Zahlen, kurze Sätze.`
-            : `Tu es Kah, conseiller KAH-Digital. Réécris la réponse préparée en français naturel et direct. Donne de vrais chiffres, phrases courtes. Pas de "Bien sûr", "N'hésitez pas", "Avec plaisir."`;
+            ? `Du bist Kah, KAH Digital Berater. Schreibe die vorbereitete Antwort auf natürlichem Deutsch um. Direkt, echte Zahlen, kurze Sätze.`
+            : `Tu es Kah, conseiller KAH Digital. Réécris la réponse préparée en français naturel et direct. Donne de vrais chiffres, phrases courtes. Pas de "Bien sûr", "N'hésitez pas", "Avec plaisir."`;
 
       const enhanced = await generateOpenAIJson<{ reply: string }>({
         instructions,

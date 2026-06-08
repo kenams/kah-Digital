@@ -8,7 +8,7 @@ type Props = {
 const copy = {
   fr: {
     title: "Politique de confidentialité",
-    intro: "KAH-Digital s'engage à protéger la confidentialité et les données personnelles de ses utilisateurs conformément à la Loi fédérale sur la protection des données (LPD) et au RGPD lorsque celui-ci s'applique.",
+    intro: "KAH Digital s'engage à protéger la confidentialité et les données personnelles de ses utilisateurs conformément à la Loi fédérale sur la protection des données (LPD) et au RGPD lorsque celui-ci s'applique.",
     sections: [
       { title: "Données collectées", list: ["Contact : nom, prénom, email, téléphone, société", "Devis : informations de projet, budget, délais souhaités", "Données techniques : IP, navigateur et pages visitées via analytics anonymes"] },
       { title: "Finalité du traitement", list: ["Répondre à vos demandes", "Fournir nos services web et produit", "Améliorer le site et nos services", "Respecter nos obligations légales et contractuelles"] },
@@ -26,7 +26,7 @@ const copy = {
   },
   en: {
     title: "Privacy policy",
-    intro: "KAH-Digital is committed to protecting the privacy and personal data of its users in line with Swiss data protection law and GDPR where applicable.",
+    intro: "KAH Digital is committed to protecting the privacy and personal data of its users in line with Swiss data protection law and GDPR where applicable.",
     sections: [
       { title: "Collected data", list: ["Contact: first name, last name, email, phone, company", "Quote forms: project information, budget, preferred timeline", "Technical data: IP address, browser, and visited pages through privacy-friendly analytics"] },
       { title: "Purpose of processing", list: ["Reply to your requests", "Provide our web and product services", "Improve the site and our services", "Meet legal and contractual obligations"] },
@@ -44,7 +44,7 @@ const copy = {
   },
   de: {
     title: "Datenschutzerklärung",
-    intro: "KAH-Digital verpflichtet sich zum Schutz der Privatsphaere und der personenbezogenen Daten seiner Nutzer gemaess Schweizer Datenschutzrecht und, soweit anwendbar, der DSGVO.",
+    intro: "KAH Digital verpflichtet sich zum Schutz der Privatsphaere und der personenbezogenen Daten seiner Nutzer gemaess Schweizer Datenschutzrecht und, soweit anwendbar, der DSGVO.",
     sections: [
       { title: "Erhobene Daten", list: ["Kontakt: Vorname, Nachname, E-Mail, Telefon, Unternehmen", "Anfrageformulare: Projektinformationen, Budget und gewünschter Zeitrahmen", "Technische Daten: IP-Adresse, Browser und besuchte Seiten über datenschutzfreundliche Analytics"] },
       { title: "Zweck der Verarbeitung", list: ["Eure Anfragen beantworten", "Unsere Web- und Produktleistungen erbringen", "Website und Services verbessern", "Gesetzliche und vertragliche Pflichten erfüllen"] },

@@ -1,12 +1,12 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Rennes â€” KAH-Digital | Devis personnalisÃ©",
+  title: "Création site web Rennes — KAH Digital | Devis personnalisé",
   description: "Studio digital pour Rennes et la Bretagne. Sites web, apps et solutions IA pour startups, PME et artisans. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web Rennes", "agence web Rennes", "site internet Bretagne", "dÃ©veloppeur web Rennes"],
-  openGraph: { title: "CrÃ©ation site web Rennes â€” KAH-Digital", description: "Studio digital pour entreprises rennaises. Sites, apps, IA. Devis personnalisÃ©." },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-rennes" },
+  keywords: ["création site web Rennes", "agence web Rennes", "site internet Bretagne", "développeur web Rennes"],
+  openGraph: { title: "Création site web Rennes — KAH Digital", description: "Studio digital pour entreprises rennaises. Sites, apps, IA. Devis personnalisé." },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-rennes" },
 };
 
 export default function Page() {

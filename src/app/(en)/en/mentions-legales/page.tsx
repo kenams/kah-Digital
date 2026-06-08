@@ -3,7 +3,7 @@ import { LegalNoticePageContent } from "@/components/pages/legal-notice-page-con
 
 export const metadata: Metadata = {
   title: "Legal notice",
-  description: "Legal information about KAH-Digital and site publishing details.",
+  description: "Legal information about KAH Digital and site publishing details.",
 };
 
 export default function MentionsLegalesPageEn() {

@@ -7,7 +7,7 @@ import { FiChevronDown, FiDownload, FiPlus, FiTrash2 } from "react-icons/fi";
 import { companyConfig } from "@/config/company";
 import { drawKahDigitalPdfLogo } from "@/lib/pdf-branding";
 
-// ─── Catalogue des prestations KAH-Digital ────────────────────────────────────
+// ─── Catalogue des prestations KAH Digital ────────────────────────────────────
 
 type Unit = "forfait" | "mois" | "heure";
 
@@ -230,7 +230,7 @@ export function DownloadableQuoteGenerator() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(100, 116, 139);
-    doc.text("Document commercial KAH-Digital", right, y + 22, { align: "right" });
+    doc.text("Document commercial KAH Digital", right, y + 22, { align: "right" });
 
     y = 50;
     doc.setDrawColor(226, 232, 240);
@@ -350,13 +350,13 @@ export function DownloadableQuoteGenerator() {
     doc.setFontSize(8);
     doc.setTextColor(100, 116, 139);
     doc.text("Client — Signature et date", left + 5, y + 7);
-    doc.text("KAH-Digital — Signature et date", 119, y + 7);
+    doc.text("KAH Digital — Signature et date", 119, y + 7);
     doc.setFontSize(7);
     doc.setTextColor(148, 163, 184);
     doc.text(`${info.quoteNumber} — ${info.companyName || info.clientName || "Client"}`, left, 286);
     doc.text(`Total : ${formatMoney(total)}`, right, 286, { align: "right" });
 
-    const filename = `devis-${sanitizeFilename(info.companyName || info.clientName)}-kah-digital.pdf`;
+    const filename = `devis-${sanitizeFilename(info.companyName || info.clientName)}-KAH Digital.pdf`;
     doc.save(filename);
   }
 
@@ -564,7 +564,7 @@ export function DownloadableQuoteGenerator() {
           <FiDownload size={17} /> Télécharger le devis PDF
         </button>
 
-        <p className="mt-3 text-center text-xs text-slate-400">PDF avec en-tête KAH-Digital · Prêt à envoyer</p>
+        <p className="mt-3 text-center text-xs text-slate-400">PDF avec en-tête KAH Digital · Prêt à envoyer</p>
       </aside>
     </div>
   );

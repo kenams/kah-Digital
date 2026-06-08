@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     return buildNoIndexMetadata({
       locale: "en",
       path: `/projets/${slug}`,
-      title: `${project.name} | KAH-Digital`,
+      title: `${project.name} | KAH Digital`,
       description: project.shortDescription,
     });
   }
 
   const ogImage = project.mockups?.primary ?? "/og-kah-digital.png";
-  const title = `${project.name} | KAH-Digital`;
+  const title = `${project.name} | KAH Digital`;
 
   return {
     title,

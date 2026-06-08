@@ -1,16 +1,16 @@
-Ôªøimport type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "comment estimer une application mobile en 2026 ? ‚Äî KAH-Digital",
-  description: "crit√®res de cadrage pour une app mobile en 2026 : application vitrine, MVP, application native ou React Native. Guide pour obtenir un devis personnalis√©.",
-  keywords: ["estimation application mobile", "devis application mobile", "comment estimer une app", "d√©veloppement application mobile sur mesure", "MVP application mobile"],
-  alternates: { canonical: "https://kah-digital.ch/blog/application-mobile-cout" },
+  title: "comment estimer une application mobile en 2026 ? ó KAH Digital",
+  description: "critËres de cadrage pour une app mobile en 2026 : application vitrine, MVP, application native ou React Native. Guide pour obtenir un devis personnalisÈ.",
+  keywords: ["estimation application mobile", "devis application mobile", "comment estimer une app", "dÈveloppement application mobile sur mesure", "MVP application mobile"],
+  alternates: { canonical: "https://KAH Digital.ch/blog/application-mobile-cout" },
   openGraph: {
     title: "comment estimer une application mobile en 2026 ?",
-    description: "Les crit√®res qui structurent le p√©rim√®tre d'une application mobile et permettent de garder le contr√¥le.",
+    description: "Les critËres qui structurent le pÈrimËtre d'une application mobile et permettent de garder le contrÙle.",
   },
 };
 
@@ -21,35 +21,35 @@ const jsonLd = {
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
   "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH-Digital", "url": "https://kah-digital.ch" },
-  "mainEntityOfPage": "https://kah-digital.ch/blog/application-mobile-cout",
+  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://KAH Digital.ch" },
+  "mainEntityOfPage": "https://KAH Digital.ch/blog/application-mobile-cout",
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "comment estimer une application mobile simple ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application mobile simple (MVP, 3-5 √©crans, authentification, une fonctionnalit√© principale) s'estime apr√®s cadrage avec React Native, qui permet de cibler iOS et Android avec une seule base de code." } },
-    { "@type": "Question", "name": "Quelle est la diff√©rence entre natif et cross-platform ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application native implique souvent deux bases de code s√©par√©es. React Native ou Flutter permettent de viser les deux plateformes en une seule fois, ce qui simplifie le cadrage d'un MVP." } },
-    { "@type": "Question", "name": "Faut-il pr√©voir des comptes App Store et Google Play ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les comptes d√©veloppeur restent √† votre charge en tant qu'√©diteur de l'application et sont √† anticiper avant la publication." } },
-    { "@type": "Question", "name": "Peut-on commencer avec une version plus simple ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, dans certains cas : une Progressive Web App ou un prototype no-code peut suffire pour valider un flux simple avant un d√©veloppement complet." } },
+    { "@type": "Question", "name": "comment estimer une application mobile simple ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application mobile simple (MVP, 3-5 Ècrans, authentification, une fonctionnalitÈ principale) s'estime aprËs cadrage avec React Native, qui permet de cibler iOS et Android avec une seule base de code." } },
+    { "@type": "Question", "name": "Quelle est la diffÈrence entre natif et cross-platform ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application native implique souvent deux bases de code sÈparÈes. React Native ou Flutter permettent de viser les deux plateformes en une seule fois, ce qui simplifie le cadrage d'un MVP." } },
+    { "@type": "Question", "name": "Faut-il prÈvoir des comptes App Store et Google Play ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les comptes dÈveloppeur restent ‡ votre charge en tant qu'Èditeur de l'application et sont ‡ anticiper avant la publication." } },
+    { "@type": "Question", "name": "Peut-on commencer avec une version plus simple ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, dans certains cas : une Progressive Web App ou un prototype no-code peut suffire pour valider un flux simple avant un dÈveloppement complet." } },
   ],
 };
 
 const TIERS = [
-  { label: "PWA / Web App mobile", price: "selon le p√©rim√®tre", delay: "2‚Äì3 sem.", desc: "Une application web qui s'installe comme une app. Pas dans les stores, mais fonctionne hors-ligne et s'utilise comme une app native.", tech: "Next.js ¬∑ React ¬∑ Service Workers" },
-  { label: "MVP React Native", price: "selon le p√©rim√®tre", delay: "4‚Äì6 sem.", desc: "Application iOS + Android avec une base de code commune. Id√©al pour valider une id√©e avec un P√©rim√®tre ma√Ætris√©.", tech: "React Native ¬∑ Expo ¬∑ Supabase" },
-  { label: "Application compl√®te", price: "selon le p√©rim√®tre", delay: "8‚Äì14 sem.", desc: "Produit complet avec auth, paiement, dashboard admin, notifications push, API sur mesure.", tech: "React Native ¬∑ Node.js ¬∑ PostgreSQL" },
-  { label: "Application native iOS/Android", price: "selon le p√©rim√®tre", delay: "12‚Äì24 sem.", desc: "Deux bases de code s√©par√©es, performances maximales, acc√®s complet aux APIs syst√®me. Pour des produits √©tablis.", tech: "Swift + Kotlin ou SwiftUI + Compose" },
+  { label: "PWA / Web App mobile", price: "selon le pÈrimËtre", delay: "2ñ3 sem.", desc: "Une application web qui s'installe comme une app. Pas dans les stores, mais fonctionne hors-ligne et s'utilise comme une app native.", tech: "Next.js ∑ React ∑ Service Workers" },
+  { label: "MVP React Native", price: "selon le pÈrimËtre", delay: "4ñ6 sem.", desc: "Application iOS + Android avec une base de code commune. IdÈal pour valider une idÈe avec un PÈrimËtre maÓtrisÈ.", tech: "React Native ∑ Expo ∑ Supabase" },
+  { label: "Application complËte", price: "selon le pÈrimËtre", delay: "8ñ14 sem.", desc: "Produit complet avec auth, paiement, dashboard admin, notifications push, API sur mesure.", tech: "React Native ∑ Node.js ∑ PostgreSQL" },
+  { label: "Application native iOS/Android", price: "selon le pÈrimËtre", delay: "12ñ24 sem.", desc: "Deux bases de code sÈparÈes, performances maximales, accËs complet aux APIs systËme. Pour des produits Ètablis.", tech: "Swift + Kotlin ou SwiftUI + Compose" },
 ];
 
 const COST_DRIVERS = [
-  { title: "Authentification et comptes", detail: "Login, profils, r√¥les et droits d'acc√®s doivent √™tre cadr√©s d√®s le d√©part." },
-  { title: "Paiement in-app", detail: "Stripe, achats int√©gr√©s Apple/Google et parcours de facturation demandent une analyse sp√©cifique." },
-  { title: "Notifications push", detail: "La segmentation, les r√®gles d'envoi et les pr√©f√©rences utilisateur influencent le p√©rim√®tre." },
-  { title: "G√©olocalisation", detail: "Cartographie, tracking, calcul d'itin√©raire et permissions mobiles doivent √™tre valid√©s fonctionnellement." },
-  { title: "Mode hors-ligne", detail: "La synchronisation locale et la gestion des conflits augmentent la complexit√© produit." },
-  { title: "Dashboard admin web", detail: "Une interface de gestion d√©di√©e doit √™tre trait√©e comme un module √† part enti√®re." },
+  { title: "Authentification et comptes", detail: "Login, profils, rÙles et droits d'accËs doivent Ítre cadrÈs dËs le dÈpart." },
+  { title: "Paiement in-app", detail: "Stripe, achats intÈgrÈs Apple/Google et parcours de facturation demandent une analyse spÈcifique." },
+  { title: "Notifications push", detail: "La segmentation, les rËgles d'envoi et les prÈfÈrences utilisateur influencent le pÈrimËtre." },
+  { title: "GÈolocalisation", detail: "Cartographie, tracking, calcul d'itinÈraire et permissions mobiles doivent Ítre validÈs fonctionnellement." },
+  { title: "Mode hors-ligne", detail: "La synchronisation locale et la gestion des conflits augmentent la complexitÈ produit." },
+  { title: "Dashboard admin web", detail: "Une interface de gestion dÈdiÈe doit Ítre traitÈe comme un module ‡ part entiËre." },
 ];
 
 export default function ApplicationMobileCoutPage() {
@@ -61,16 +61,16 @@ export default function ApplicationMobileCoutPage() {
       <section className="relative overflow-hidden pt-24 pb-12">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
         <div className="relative mx-auto max-w-3xl px-4">
-          <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">‚Üê Blog</Link>
+          <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
             <span className="rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-400">Mobile</span>
-            <span className="text-xs text-gray-600">4 mai 2026 ¬∑ 7 min de lecture</span>
+            <span className="text-xs text-gray-600">4 mai 2026 ∑ 7 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             comment estimer une application mobile en 2026 ?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            PWA, React Native, application native ‚Äî les crit√®res qui structurent le p√©rim√®tre, et comment rester ma√Ætre de votre investissement.
+            PWA, React Native, application native ó les critËres qui structurent le pÈrimËtre, et comment rester maÓtre de votre investissement.
           </p>
         </div>
       </section>
@@ -78,16 +78,16 @@ export default function ApplicationMobileCoutPage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-violet-500/20 bg-violet-500/5 p-5">
           <p className="text-sm leading-relaxed text-violet-200">
-            <strong>TL;DR :</strong> PWA selon le p√©rim√®tre ¬∑ MVP React Native selon le p√©rim√®tre ¬∑ Application compl√®te selon le p√©rim√®tre ¬∑ Native iOS+Android selon le p√©rim√®tre. Commencez toujours par un MVP.
+            <strong>TL;DR :</strong> PWA selon le pÈrimËtre ∑ MVP React Native selon le pÈrimËtre ∑ Application complËte selon le pÈrimËtre ∑ Native iOS+Android selon le pÈrimËtre. Commencez toujours par un MVP.
           </p>
         </div>
 
         <h2 className="mb-6 text-2xl font-bold text-white">Pourquoi le cadrage est indispensable ?</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          "D√©velopper une application mobile" peut vouloir dire une to-do list √† 3 √©crans ou une plateforme de livraison √† 50 fonctionnalit√©s. Le devis d√©pend de trois choses : le nombre de fonctionnalit√©s, la complexit√© technique (paiement, g√©oloc, temps r√©el) et la technologie choisie.
+          "DÈvelopper une application mobile" peut vouloir dire une to-do list ‡ 3 Ècrans ou une plateforme de livraison ‡ 50 fonctionnalitÈs. Le devis dÈpend de trois choses : le nombre de fonctionnalitÈs, la complexitÈ technique (paiement, gÈoloc, temps rÈel) et la technologie choisie.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          La r√®gle d'or : commencez par un MVP (Minimum Viable Product) avec une seule fonctionnalit√© principale. Validez que des gens l'utilisent vraiment, puis investissez davantage.
+          La rËgle d'or : commencez par un MVP (Minimum Viable Product) avec une seule fonctionnalitÈ principale. Validez que des gens l'utilisent vraiment, puis investissez davantage.
         </p>
 
         <h2 className="mb-8 text-2xl font-bold text-white">Les formats par type d'application</h2>
@@ -107,7 +107,7 @@ export default function ApplicationMobileCoutPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Ce qui fait monter le P√©rim√®tre</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Ce qui fait monter le PÈrimËtre</h2>
         <div className="mb-12 grid gap-4 sm:grid-cols-2">
           {COST_DRIVERS.map((item) => (
             <div key={item.title} className="rounded-xl border border-white/8 bg-gray-900/50 p-4">
@@ -117,14 +117,14 @@ export default function ApplicationMobileCoutPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Comment r√©duire le P√©rim√®tre sans sacrifier la qualit√©</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Comment rÈduire le PÈrimËtre sans sacrifier la qualitÈ</h2>
         <ul className="mb-10 space-y-3 text-sm text-gray-400 leading-relaxed">
           {[
-            "Commencez par une seule plateforme (iOS OU Android) pour valider, puis √©tendez.",
-            "Utilisez React Native ou Expo ‚Äî une base de code, deux plateformes, souvent plus simple √† maintenir qu'un double d√©veloppement natif.",
-            "D√©finissez un scope strict pour le MVP. Chaque fonctionnalit√© en plus multiplie le P√©rim√®tre.",
-            "Choisissez Supabase ou Firebase comme backend ‚Äî des semaines de dev √©conomis√©es.",
-            "√âvitez les animations complexes et les effets 3D en V1 ‚Äî √ßa peut attendre la V2.",
+            "Commencez par une seule plateforme (iOS OU Android) pour valider, puis Ètendez.",
+            "Utilisez React Native ou Expo ó une base de code, deux plateformes, souvent plus simple ‡ maintenir qu'un double dÈveloppement natif.",
+            "DÈfinissez un scope strict pour le MVP. Chaque fonctionnalitÈ en plus multiplie le PÈrimËtre.",
+            "Choisissez Supabase ou Firebase comme backend ó des semaines de dev ÈconomisÈes.",
+            "…vitez les animations complexes et les effets 3D en V1 ó Áa peut attendre la V2.",
           ].map((item) => (
             <li key={item} className="flex items-start gap-3">
               <FiCheck size={14} className="mt-0.5 shrink-0 text-emerald-400" />
@@ -133,7 +133,7 @@ export default function ApplicationMobileCoutPage() {
           ))}
         </ul>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Questions fr√©quentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Questions frÈquentes</h2>
         <div className="mb-12 space-y-4">
           {faqJsonLd.mainEntity.map((f) => (
             <div key={f.name} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -144,8 +144,8 @@ export default function ApplicationMobileCoutPage() {
         </div>
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-white">Votre application mobile, bien budg√©t√©e</h2>
-          <p className="mb-6 text-gray-400">Devis personnalis√© ¬∑ R√©ponse sous 24h ¬∑ MVP cadr√© sur mesure</p>
+          <h2 className="mb-3 text-2xl font-bold text-white">Votre application mobile, bien budgÈtÈe</h2>
+          <p className="mb-6 text-gray-400">Devis personnalisÈ ∑ RÈponse sous 24h ∑ MVP cadrÈ sur mesure</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-violet-500/30">
               Demander un devis <FiArrowRight size={15} />

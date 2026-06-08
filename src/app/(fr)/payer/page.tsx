@@ -6,7 +6,7 @@ export const metadata: Metadata = buildNoIndexMetadata({
   locale: "fr",
   path: "/payer",
   title: "Paiement en ligne",
-  description: "Payez une facture, un acompte ou un solde KAH-Digital par carte bancaire.",
+  description: "Payez une facture, un acompte ou un solde KAH Digital par carte bancaire.",
 });
 
 export default function PayPage() {

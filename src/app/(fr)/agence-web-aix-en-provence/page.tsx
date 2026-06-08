@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Aix-en-Provence â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital pour Aix-en-Provence et la rÃ©gion PACA. Sites web pour cabinets, vignobles, boutiques et professions libÃ©rales. Devis personnalisÃ© sous 24h, adaptÃ© au besoin rÃ©el.",
-  keywords: ["crÃ©ation site web Aix-en-Provence", "agence web Aix", "site internet Aix-en-Provence", "dÃ©veloppeur web PACA", "agence digitale Aix"],
+  title: "Création site web Aix-en-Provence — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Aix-en-Provence et la région PACA. Sites web pour cabinets, vignobles, boutiques et professions libérales. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Aix-en-Provence", "agence web Aix", "site internet Aix-en-Provence", "développeur web PACA", "agence digitale Aix"],
   openGraph: {
-    title: "CrÃ©ation site web Aix-en-Provence â€” KAH-Digital",
-    description: "Studio digital pour entreprises aixoises. Sites Ã©lÃ©gants, apps, solutions digitales. Devis personnalisÃ©.",
+    title: "Création site web Aix-en-Provence — KAH Digital",
+    description: "Studio digital pour entreprises aixoises. Sites élégants, apps, solutions digitales. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-aix-en-provence" },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-aix-en-provence" },
 };
 
 export default function AgenceWebAixEnProvencePage() {

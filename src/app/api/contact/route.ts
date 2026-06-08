@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
       from: getResendFromAddress(),
       to: notificationEmail.split(",").map((mail) => mail.trim()),
       replyTo: contact.email,
-      subject: `Nouveau contact KAH-Digital - ${contact.subject}`,
+      subject: `Nouveau contact KAH Digital - ${contact.subject}`,
       html,
       text: `Nom: ${contact.firstName} ${contact.lastName}\nEmail: ${contact.email}\nSociete: ${
         contact.company ?? "-"

@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Grenoble â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital pour Grenoble et l'IsÃ¨re. Sites web, apps et solutions digitales pour startups deeptech, PME et indÃ©pendants. Devis personnalisÃ© sous 24h, adaptÃ© au besoin rÃ©el.",
-  keywords: ["crÃ©ation site web Grenoble", "agence web Grenoble", "site internet Grenoble", "dÃ©veloppeur web Grenoble", "agence digitale IsÃ¨re"],
+  title: "Création site web Grenoble — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Grenoble et l'Isère. Sites web, apps et solutions digitales pour startups deeptech, PME et indépendants. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Grenoble", "agence web Grenoble", "site internet Grenoble", "développeur web Grenoble", "agence digitale Isère"],
   openGraph: {
-    title: "CrÃ©ation site web Grenoble â€” KAH-Digital",
-    description: "Studio digital pour startups et PME grenobloises. Sites, apps, SaaS. Process clair. Devis personnalisÃ©.",
+    title: "Création site web Grenoble — KAH Digital",
+    description: "Studio digital pour startups et PME grenobloises. Sites, apps, SaaS. Process clair. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-grenoble" },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-grenoble" },
 };
 
 export default function AgenceWebGrenoblePage() {

@@ -29,7 +29,7 @@ export type SendEmailOptions = {
 
 export async function sendGmail(opts: SendEmailOptions): Promise<void> {
   const transport = createTransport();
-  const from = `KAH-Digital <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
+  const from = `KAH Digital <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
 
   await transport.sendMail({
     from,
@@ -48,17 +48,17 @@ export async function sendAdminNotification(opts: {
 }): Promise<void> {
   const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL ?? "kahdigital42@gmail.com";
   const transport = createTransport();
-  const from = `KAH-Digital System <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
+  const from = `KAH Digital System <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
 
   await transport.sendMail({
     from,
     to: adminEmail,
-    subject: `[KAH-Digital] ${opts.subject}`,
+    subject: `[KAH Digital] ${opts.subject}`,
     html: `<div style="font-family:Arial,sans-serif;padding:20px;max-width:500px;">
       <h2 style="color:#1e3a8a;">${opts.subject}</h2>
       <p style="color:#4b5563;line-height:1.6;">${opts.body}</p>
       <p style="margin-top:20px;">
-        <a href="${process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app"}/admin/prospection"
+        <a href="${process.env.NEXT_PUBLIC_SITE_URL ?? "https://KAH Digital-site.vercel.app"}/admin/prospection"
            style="background:#7c3aed;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;">
           Voir dans l'admin →
         </a>

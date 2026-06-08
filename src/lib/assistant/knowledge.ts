@@ -1,6 +1,6 @@
 export const assistantKnowledge = {
   positioning:
-    "KAH-Digital conçoit des sites web, applications, automatisations IA, parcours support GLPI et outils métier pour des indépendants, PME et structures en croissance. L'assistant doit orienter vers l'approche adaptée, cadrer le besoin réel, expliquer que le devis est personnalisé, puis pousser vers un échange ou une reprise humaine quand le projet est prêt.",
+    "KAH Digital conçoit des sites web, applications, automatisations IA, parcours support GLPI et outils métier pour des indépendants, PME et structures en croissance. L'assistant doit orienter vers l'approche adaptée, cadrer le besoin réel, expliquer que le devis est personnalisé, puis pousser vers un échange ou une reprise humaine quand le projet est prêt.",
   process: [
     "Orientation vers la bonne offre",
     "Cadrage du besoin et des priorités",
@@ -213,11 +213,11 @@ export const assistantKnowledge = {
       key: "services",
       keywords: ["service", "services", "offre", "offres", "what do you do", "leistungen"],
       answerFr:
-        "KAH-Digital couvre landing / portfolio, site vitrine, site corporate, e-commerce, application web, automatisation IA, application mobile, dashboard, parcours support GLPI et maintenance mensuelle.",
+        "KAH Digital couvre landing / portfolio, site vitrine, site corporate, e-commerce, application web, automatisation IA, application mobile, dashboard, parcours support GLPI et maintenance mensuelle.",
       answerEn:
-        "KAH-Digital covers landing / portfolio, showcase sites, corporate sites, e-commerce, web apps, AI automation, mobile apps, dashboards, GLPI support workflows, and monthly maintenance.",
+        "KAH Digital covers landing / portfolio, showcase sites, corporate sites, e-commerce, web apps, AI automation, mobile apps, dashboards, GLPI support workflows, and monthly maintenance.",
       answerDe:
-        "KAH-Digital bietet Landing / Portfolio, Unternehmenswebsites, Corporate-Websites, E-Commerce, Web-Apps, KI-Automatisierung, Mobile Apps, Dashboards, GLPI-Support-Workflows und monatliche Wartung.",
+        "KAH Digital bietet Landing / Portfolio, Unternehmenswebsites, Corporate-Websites, E-Commerce, Web-Apps, KI-Automatisierung, Mobile Apps, Dashboards, GLPI-Support-Workflows und monatliche Wartung.",
     },
     {
       key: "maintenance",
@@ -233,21 +233,21 @@ export const assistantKnowledge = {
       key: "method",
       keywords: ["methode", "process", "processus", "comment", "workflow", "ablauf"],
       answerFr:
-        "Le process est simple : on oriente vers la bonne approche, on cadre les priorités, on valide le périmètre et le délai réalistes, puis KAH-Digital envoie un devis clair et sans engagement. L'objectif est d'acheter dans de bonnes conditions, sans formule inutile.",
+        "Le process est simple : on oriente vers la bonne approche, on cadre les priorités, on valide le périmètre et le délai réalistes, puis KAH Digital envoie un devis clair et sans engagement. L'objectif est d'acheter dans de bonnes conditions, sans formule inutile.",
       answerEn:
-        "The process is simple: we route you to the right approach, frame priorities, validate a realistic scope and timeline, then KAH-Digital sends a clear no-obligation quote. The goal is to buy under good conditions, without unnecessary packages.",
+        "The process is simple: we route you to the right approach, frame priorities, validate a realistic scope and timeline, then KAH Digital sends a clear no-obligation quote. The goal is to buy under good conditions, without unnecessary packages.",
       answerDe:
-        "Der Ablauf ist einfach: Wir leiten zum passenden Ansatz, klären Prioritäten, validieren Umfang und Termin realistisch, dann sendet KAH-Digital ein klares unverbindliches Angebot. Ziel ist eine saubere Kaufentscheidung ohne unnötige Pakete.",
+        "Der Ablauf ist einfach: Wir leiten zum passenden Ansatz, klären Prioritäten, validieren Umfang und Termin realistisch, dann sendet KAH Digital ein klares unverbindliches Angebot. Ziel ist eine saubere Kaufentscheidung ohne unnötige Pakete.",
     },
     {
       key: "tarifs",
       keywords: ["tarif", "tarifs", "prix", "price", "cost", "combien", "coût", "budget", "fourchette", "preis", "kosten", "how much"],
       answerFr:
-        "Chaque projet est différent. KAH-Digital ne pousse pas de tarif public rigide : l'échange sert à définir le bon périmètre, les fonctionnalités utiles, les délais et le niveau d'accompagnement. Le devis est personnalisé, clair et sans engagement.",
+        "Chaque projet est différent. KAH Digital ne pousse pas de tarif public rigide : l'échange sert à définir le bon périmètre, les fonctionnalités utiles, les délais et le niveau d'accompagnement. Le devis est personnalisé, clair et sans engagement.",
       answerEn:
-        "Every project is different. KAH-Digital does not push rigid public pricing: the discussion defines the right scope, useful features, timeline, and support level. The quote is custom, clear, and non-binding.",
+        "Every project is different. KAH Digital does not push rigid public pricing: the discussion defines the right scope, useful features, timeline, and support level. The quote is custom, clear, and non-binding.",
       answerDe:
-        "Jedes Projekt ist anders. KAH-Digital arbeitet nicht mit starren öffentlichen Preisen: Das Gespräch definiert Umfang, nützliche Funktionen, Zeitrahmen und Begleitniveau. Das Angebot ist individuell, klar und unverbindlich.",
+        "Jedes Projekt ist anders. KAH Digital arbeitet nicht mit starren öffentlichen Preisen: Das Gespräch definiert Umfang, nützliche Funktionen, Zeitrahmen und Begleitniveau. Das Angebot ist individuell, klar und unverbindlich.",
     },
     {
       key: "projets",
@@ -263,11 +263,11 @@ export const assistantKnowledge = {
       key: "glpi",
       keywords: ["glpi", "ticket", "support", "helpdesk", "itil", "incident", "itsm"],
       answerFr:
-        "KAH-Digital peut créer un parcours support connecté à GLPI : formulaire intelligent, qualification automatique, création de ticket, suivi et base de connaissance. Si c'est un incident actif, l'assistant le traite comme support ; si c'est une mise en place, il le traite comme projet.",
+        "KAH Digital peut créer un parcours support connecté à GLPI : formulaire intelligent, qualification automatique, création de ticket, suivi et base de connaissance. Si c'est un incident actif, l'assistant le traite comme support ; si c'est une mise en place, il le traite comme projet.",
       answerEn:
-        "KAH-Digital can create a GLPI-connected support workflow: smart form, automatic qualification, ticket creation, tracking, and knowledge base. If it is an active incident, the assistant treats it as support; if it is an implementation, it treats it as a project.",
+        "KAH Digital can create a GLPI-connected support workflow: smart form, automatic qualification, ticket creation, tracking, and knowledge base. If it is an active incident, the assistant treats it as support; if it is an implementation, it treats it as a project.",
       answerDe:
-        "KAH-Digital kann einen GLPI-verbundenen Support-Workflow erstellen: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Tracking und Wissensbasis. Bei einem aktiven Incident behandelt der Assistent es als Support, bei einer Umsetzung als Projekt.",
+        "KAH Digital kann einen GLPI-verbundenen Support-Workflow erstellen: intelligentes Formular, automatische Qualifizierung, Ticket-Erstellung, Tracking und Wissensbasis. Bei einem aktiven Incident behandelt der Assistent es als Support, bei einer Umsetzung als Projekt.",
     },
     {
       key: "paiement",
@@ -283,21 +283,21 @@ export const assistantKnowledge = {
       key: "technologie",
       keywords: ["technologie", "stack", "wordpress", "cms", "react", "next", "nextjs", "framework", "quel outil", "what technology", "technologie utilisée", "no-code", "wix", "squarespace", "shopify", "php"],
       answerFr:
-        "KAH-Digital travaille avec Next.js (React) pour le web, Expo React Native pour le mobile, FastAPI ou Node.js pour le backend, et Supabase / PostgreSQL pour la base de données. Pas de WordPress par défaut — les projets sont sur mesure, rapides et maintenables. Si tu as une contrainte technologique spécifique, précise-la.",
+        "KAH Digital travaille avec Next.js (React) pour le web, Expo React Native pour le mobile, FastAPI ou Node.js pour le backend, et Supabase / PostgreSQL pour la base de données. Pas de WordPress par défaut — les projets sont sur mesure, rapides et maintenables. Si tu as une contrainte technologique spécifique, précise-la.",
       answerEn:
-        "KAH-Digital primarily works with Next.js (React) for web, Expo React Native for mobile, FastAPI or Node.js for backend, and Supabase / PostgreSQL for the database. No WordPress by default — projects are custom, fast and maintainable. Mention any specific tech constraint and we adapt.",
+        "KAH Digital primarily works with Next.js (React) for web, Expo React Native for mobile, FastAPI or Node.js for backend, and Supabase / PostgreSQL for the database. No WordPress by default — projects are custom, fast and maintainable. Mention any specific tech constraint and we adapt.",
       answerDe:
-        "KAH-Digital arbeitet hauptsächlich mit Next.js (React) für Web, Expo React Native für Mobile, FastAPI oder Node.js für Backend und Supabase / PostgreSQL für die Datenbank. Kein WordPress standardmäßig — Projekte sind maßgeschneidert, schnell und wartbar. Spezifische Technologieanforderungen einfach angeben.",
+        "KAH Digital arbeitet hauptsächlich mit Next.js (React) für Web, Expo React Native für Mobile, FastAPI oder Node.js für Backend und Supabase / PostgreSQL für die Datenbank. Kein WordPress standardmäßig — Projekte sind maßgeschneidert, schnell und wartbar. Spezifische Technologieanforderungen einfach angeben.",
     },
     {
       key: "secteur",
       keywords: ["restaurant", "salon", "coiffeur", "coiffure", "coach", "coaching", "thérapeute", "therapeute", "artisan", "avocat", "médecin", "medecin", "immobilier", "boutique", "agence", "indépendant", "independant", "freelance", "pme", "startup", "association", "ong"],
       answerFr:
-        "KAH-Digital travaille avec des indépendants, TPE et PME dans tous les secteurs : restauration, beauté, coaching, santé, immobilier, artisanat, e-commerce, B2B. Le secteur oriente le type de projet — site vitrine, prise de RDV, catalogue, automatisation — mais n'est pas un frein. Dis-moi ton activité et ton objectif principal et je t'oriente directement.",
+        "KAH Digital travaille avec des indépendants, TPE et PME dans tous les secteurs : restauration, beauté, coaching, santé, immobilier, artisanat, e-commerce, B2B. Le secteur oriente le type de projet — site vitrine, prise de RDV, catalogue, automatisation — mais n'est pas un frein. Dis-moi ton activité et ton objectif principal et je t'oriente directement.",
       answerEn:
-        "KAH-Digital works with freelancers, small businesses and SMEs across all sectors: food, beauty, coaching, health, real estate, crafts, e-commerce, B2B. The sector shapes the project type — showcase site, booking, catalogue, automation — but is not a constraint. Tell me your activity and main goal and I'll route you directly.",
+        "KAH Digital works with freelancers, small businesses and SMEs across all sectors: food, beauty, coaching, health, real estate, crafts, e-commerce, B2B. The sector shapes the project type — showcase site, booking, catalogue, automation — but is not a constraint. Tell me your activity and main goal and I'll route you directly.",
       answerDe:
-        "KAH-Digital arbeitet mit Selbstständigen, Kleinunternehmen und KMUs in allen Branchen: Gastronomie, Beauty, Coaching, Gesundheit, Immobilien, Handwerk, E-Commerce, B2B. Die Branche prägt den Projekttyp — Unternehmenswebsite, Buchung, Katalog, Automatisierung — ist aber kein Hindernis. Aktivität und Hauptziel nennen, ich leite direkt weiter.",
+        "KAH Digital arbeitet mit Selbstständigen, Kleinunternehmen und KMUs in allen Branchen: Gastronomie, Beauty, Coaching, Gesundheit, Immobilien, Handwerk, E-Commerce, B2B. Die Branche prägt den Projekttyp — Unternehmenswebsite, Buchung, Katalog, Automatisierung — ist aber kein Hindernis. Aktivität und Hauptziel nennen, ich leite direkt weiter.",
     },
     {
       key: "garantie",
@@ -313,11 +313,11 @@ export const assistantKnowledge = {
       key: "commencer",
       keywords: ["comment commencer", "comment démarrer", "how to start", "wie anfangen", "par où commencer", "première étape", "first step", "je suis intéressé", "interested", "je veux démarrer", "lancer le projet", "contacter"],
       answerFr:
-        "La suite la plus propre : remplis le formulaire de devis sur kah-digital.ch/devis — tu reçois une réponse concrète sous 24h. Si tu veux d'abord cadrer le projet ici, je peux t'y aider et préparer un résumé clair pour accélérer le devis.",
+        "La suite la plus propre : remplis le formulaire de devis sur KAH Digital.ch/devis — tu reçois une réponse concrète sous 24h. Si tu veux d'abord cadrer le projet ici, je peux t'y aider et préparer un résumé clair pour accélérer le devis.",
       answerEn:
-        "The cleanest next step: fill in the quote form at kah-digital.ch/devis — you get a concrete response within 24h. If you want to frame the project here first, I can help and prepare a clear summary to speed up the quote.",
+        "The cleanest next step: fill in the quote form at KAH Digital.ch/devis — you get a concrete response within 24h. If you want to frame the project here first, I can help and prepare a clear summary to speed up the quote.",
       answerDe:
-        "Der sauberste nächste Schritt: Angebotsformular ausfüllen auf kah-digital.ch/devis — du erhältst innerhalb von 24h eine konkrete Antwort. Wenn du das Projekt hier zuerst eingrenzen willst, helfe ich dabei und bereite eine klare Zusammenfassung vor.",
+        "Der sauberste nächste Schritt: Angebotsformular ausfüllen auf KAH Digital.ch/devis — du erhältst innerhalb von 24h eine konkrete Antwort. Wenn du das Projekt hier zuerst eingrenzen willst, helfe ich dabei und bereite eine klare Zusammenfassung vor.",
     },
   ],
 } as const;

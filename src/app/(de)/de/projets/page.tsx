@@ -4,7 +4,7 @@ import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Websites, Anwendungen und Support-Lösungen von KAH-Digital für deutsch- und französischsprachige sowie internationale Unternehmen.";
+  "Websites, Anwendungen und Support-Lösungen von KAH Digital für deutsch- und französischsprachige sowie internationale Unternehmen.";
 
 export const metadata: Metadata = buildPageMetadata({
   locale: "de",

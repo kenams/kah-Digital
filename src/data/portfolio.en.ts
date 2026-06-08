@@ -10,7 +10,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     shortDescription:
       "Next.js PWA + Expo React Native. Built-in wallet, Stripe, CinetPay (Orange Money, MTN, Wave), trust score, push notifications. Live in production.",
     description:
-      "Kotizy digitalises the African tontine — the ancestral collective savings system — into a modern, secure and fully automated experience. KAH-Digital designed and built the entire platform: Next.js web app on Vercel, native Android app via Expo, API backend with Prisma/Supabase, multi-currency payment system (Stripe, CinetPay), and a daily cron job that manages contributions, reminders and payouts 100% automatically.",
+      "Kotizy digitalises the African tontine — the ancestral collective savings system — into a modern, secure and fully automated experience. KAH Digital designed and built the entire platform: Next.js web app on Vercel, native Android app via Expo, API backend with Prisma/Supabase, multi-currency payment system (Stripe, CinetPay), and a daily cron job that manages contributions, reminders and payouts 100% automatically.",
     challenge:
       "Build a robust financial platform for the African diaspora: multi-currency (EUR, XOF, GBP), Mobile Money payments (Orange Money, MTN, Wave), trust score, default management and automatic payouts — with zero manual intervention.",
     solution:
@@ -60,7 +60,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     shortDescription:
       "Next.js premium site with HD hero video, 5 service pillars with Planity booking buttons, partners, gallery, reviews and Google Maps.",
     description:
-      "Ashanti Beauty is a premium beauty institute located in Balma, France. KAH-Digital designed their showcase site with a high-end finish: full-screen hero video optimised for mobile and desktop, 5 service pillars (Nails Bar, Brows Bar, Lashes Bar, Skincare, Massage), partner showcase, gallery, reviews and Google Maps.",
+      "Ashanti Beauty is a premium beauty institute located in Balma, France. KAH Digital designed their showcase site with a high-end finish: full-screen hero video optimised for mobile and desktop, 5 service pillars (Nails Bar, Brows Bar, Lashes Bar, Skincare, Massage), partner showcase, gallery, reviews and Google Maps.",
     challenge:
       "Build a site that reflects the institute's premium positioning, integrate HD video on mobile without degrading performance, and convert visitors into bookings via Planity.",
     solution:
@@ -104,7 +104,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     shortDescription:
       "Multi-product catalog, Supabase auth, Stripe checkout, member dashboard and content management for text, PDF, video.",
     description:
-      "TechCash Academy is a digital training sales platform designed by KAH-Digital. It offers a clear catalog, Stripe checkout per course, product-specific member area, and an admin interface to manage catalog and modules.",
+      "TechCash Academy is a digital training sales platform designed by KAH Digital. It offers a clear catalog, Stripe checkout per course, product-specific member area, and an admin interface to manage catalog and modules.",
     challenge:
       "Build a credible academy platform able to sell multiple offers without a messy funnel, with a clear member area and reliable checkout.",
     solution:
@@ -419,7 +419,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Next.js with Supabase auth email and Google, automated scraping pipeline for prices and news, usage-oriented dashboard, refresh mode adapted to a hosted beta.",
     stack: ["Next.js", "TypeScript", "Supabase", "Playwright", "Vercel"],
     result:
-      "Live mining intelligence SaaS, automated and readable — production-ready as a KAH-Digital reference product.",
+      "Live mining intelligence SaaS, automated and readable — production-ready as a KAH Digital reference product.",
     timeline: "3 weeks",
     deliverables: [
       "Prices / news / alerts dashboard",

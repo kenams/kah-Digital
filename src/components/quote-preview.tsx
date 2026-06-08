@@ -1,6 +1,6 @@
 "use client";
 
-import { KahDigitalDocumentLogo } from "@/components/kah-digital-document-logo";
+import { KahDigitalDocumentLogo } from "@/components/KAH Digital-document-logo";
 import { companyConfig } from "@/config/company";
 import { useLocale } from "@/lib/locale";
 
@@ -21,7 +21,7 @@ interface QuotePreviewProps {
 
 export function QuotePreview({ clientName, clientCompany, items, total = 2800, validUntil }: QuotePreviewProps) {
   const { locale } = useLocale();
-  const brandName = companyConfig.brandName || "KAH-Digital";
+  const brandName = companyConfig.brandName || "KAH Digital";
   const currency = companyConfig.currency || "CHF";
   const signatureName =
     companyConfig.legalName && companyConfig.legalName !== "[A_REMPLACER_NOM_LEGAL_COMPLET]"
@@ -31,7 +31,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
   const copy = {
     fr: {
       documentLabel: "Devis",
-      documentBody: "Document commercial KAH-Digital",
+      documentBody: "Document commercial KAH Digital",
       from: "De",
       to: "Pour",
       quoteNumber: "Numéro de devis",
@@ -65,7 +65,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
     },
     en: {
       documentLabel: "Quote",
-      documentBody: "KAH-Digital commercial document",
+      documentBody: "KAH Digital commercial document",
       from: "From",
       to: "For",
       quoteNumber: "Quote number",
@@ -99,7 +99,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
     },
     de: {
       documentLabel: "Offerte",
-      documentBody: "KAH-Digital Geschäftsdokument",
+      documentBody: "KAH Digital Geschäftsdokument",
       from: "Von",
       to: "Für",
       quoteNumber: "Offertnummer",

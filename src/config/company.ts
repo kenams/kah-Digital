@@ -15,27 +15,27 @@ export interface CompanyConfig {
   iban: string;
   quotePrefix: string;
   invoicePrefix: string;
-  uid?: string; // For Swiss companies
-  vat?: string; // For Swiss companies
+  uid?: string;
+  vat?: string;
 }
 
 export const companyConfig: CompanyConfig = {
-  legalName: "KAH-Digital",
-  brandName: "KAH-Digital",
-  registrationStatus: "Entreprise individuelle",
-  currency: "EUR",
-  address: "Rue du Simplon 4",
-  postalCode: "1006",
+  legalName: "KAH Digital Sàrl",
+  brandName: "KAH Digital",
+  registrationStatus: "Sàrl — immatriculation RC Vaud en cours",
+  currency: "CHF",
+  address: "Rue de Bourg 27",
+  postalCode: "1003",
   city: "Lausanne",
   country: "Switzerland",
   email: "contact@kah-digital.ch",
   phone: "+33 7 59 55 84 14",
   siren: "",
   vatNumber: "",
-  hosting: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789 (USA)",
+  hosting: "Vercel Inc., 340 Pine Street, Suite 900, San Francisco, CA 94104 (USA)",
   iban: "",
   quotePrefix: "DEV-",
   invoicePrefix: "INV-",
-  uid: "", // Non applicable ici
-  vat: "", // Non applicable ici
+  uid: "",
+  vat: "",
 };

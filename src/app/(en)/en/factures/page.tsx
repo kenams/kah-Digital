@@ -6,7 +6,7 @@ export const metadata: Metadata = buildNoIndexMetadata({
   locale: "en",
   path: "/factures",
   title: "Invoices",
-  description: "See KAH-Digital invoice structure and billing logic.",
+  description: "See KAH Digital invoice structure and billing logic.",
 });
 
 export default function InvoicesPageEn() {

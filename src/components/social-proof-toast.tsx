@@ -28,7 +28,7 @@ const ACTIONS: { action: string; tag: string }[] = [
   { action: "a automatisé son", tag: "workflow IA" },
   { action: "a reçu son site", tag: "en 2 semaines" },
   { action: "a commandé une", tag: "refonte + SEO" },
-  { action: "a lancé son SaaS", tag: "avec KAH-Digital" },
+  { action: "a lancé son SaaS", tag: "avec KAH Digital" },
   { action: "vient de régler sa", tag: "landing page" },
   { action: "a réservé un", tag: "audit gratuit" },
   { action: "a démarré son", tag: "projet mobile" },

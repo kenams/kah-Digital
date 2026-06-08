@@ -5,7 +5,7 @@ import { ProspectionTabs } from "@/components/admin-prospection-tabs";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Prospection — Admin KAH-Digital",
+  title: "Prospection — Admin KAH Digital",
 };
 
 export default async function ProspectionPage(props: {

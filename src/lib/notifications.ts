@@ -109,7 +109,7 @@ async function sendEmailNotification(quote: QuoteRecord) {
     from: getResendFromAddress(),
     to: notificationEmail.split(",").map((mail) => mail.trim()),
     replyTo: quote.email,
-    subject: `Nouveau devis KAH-Digital - ${quote.name}`,
+    subject: `Nouveau devis KAH Digital - ${quote.name}`,
     html,
     text: `Projet: ${quote.projectType} / Budget: ${quote.budget} / Timeline: ${quote.timeline}\nClient: ${
       quote.clientType ?? "-"

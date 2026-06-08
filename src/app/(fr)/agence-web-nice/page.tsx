@@ -1,12 +1,12 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Nice â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital pour Nice et la CÃ´te d'Azur. Sites web multilingues pour hÃ´tels, restaurants gastronomiques et professions libÃ©rales. Devis sous 24h.",
-  keywords: ["crÃ©ation site web Nice", "agence web Nice", "site internet CÃ´te d'Azur", "dÃ©veloppeur web Nice"],
-  openGraph: { title: "CrÃ©ation site web Nice â€” KAH-Digital", description: "Studio digital pour entreprises niÃ§oises. Sites multilingues, apps. Devis personnalisÃ©." },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-nice" },
+  title: "Création site web Nice — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Nice et la Côte d'Azur. Sites web multilingues pour hôtels, restaurants gastronomiques et professions libérales. Devis sous 24h.",
+  keywords: ["création site web Nice", "agence web Nice", "site internet Côte d'Azur", "développeur web Nice"],
+  openGraph: { title: "Création site web Nice — KAH Digital", description: "Studio digital pour entreprises niçoises. Sites multilingues, apps. Devis personnalisé." },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-nice" },
 };
 
 export default function Page() {

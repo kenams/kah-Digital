@@ -58,7 +58,7 @@ En attendant, voici notre page dédiée avec notre offre complète — peut-êtr
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Voir nos offres →</a><br><br>
 Bonne continuation !`,
     signoff: "Cordialement,",
-    from: "Kénan — KAH-Digital",
+    from: "Kénan — KAH Digital",
     unsubscribe: "Répondez STOP pour ne plus recevoir de messages.",
   },
   en: {
@@ -89,7 +89,7 @@ In the meantime, here's our full offer page for future reference:<br><br>
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/en/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">See our offers →</a><br><br>
 All the best!`,
     signoff: "Best regards,",
-    from: "Kenan — KAH-Digital",
+    from: "Kenan — KAH Digital",
     unsubscribe: "Reply STOP to unsubscribe.",
   },
   es: {
@@ -119,7 +119,7 @@ Entiendo que el momento quizás no es el adecuado. Si cambia de opinión, no dud
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Ver nuestras ofertas →</a><br><br>
 ¡Mucho éxito!`,
     signoff: "Saludos,",
-    from: "Kenan — KAH-Digital",
+    from: "Kenan — KAH Digital",
     unsubscribe: "Responda STOP para darse de baja.",
   },
   de: {
@@ -149,7 +149,7 @@ Ich verstehe, dass der Zeitpunkt vielleicht nicht passt. Falls Sie Ihre Meinung 
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Unsere Angebote ansehen →</a><br><br>
 Alles Gute!`,
     signoff: "Mit freundlichen Grüßen,",
-    from: "Kenan — KAH-Digital",
+    from: "Kenan — KAH Digital",
     unsubscribe: "Antworten Sie mit STOP, um sich abzumelden.",
   },
   it: {
@@ -179,7 +179,7 @@ Capisco che i tempi potrebbero non essere favorevoli. Se dovesse cambiare idea, 
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Vedi le nostre offerte →</a><br><br>
 In bocca al lupo!`,
     signoff: "Cordiali saluti,",
-    from: "Kenan — KAH-Digital",
+    from: "Kenan — KAH Digital",
     unsubscribe: "Rispondi STOP per annullare l'iscrizione.",
   },
 };
@@ -199,14 +199,14 @@ function buildFollowupHtml(body: string, signoff: string, fromName: string, unsu
 <tr><td align="center">
 <table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);max-width:560px;">
   <tr><td style="background:linear-gradient(135deg,#1e3a8a,#7c3aed);padding:18px 28px;">
-    <div style="color:#fff;font-size:18px;font-weight:800;">KAH-Digital</div>
+    <div style="color:#fff;font-size:18px;font-weight:800;">KAH Digital</div>
     <div style="color:rgba(255,255,255,0.6);font-size:11px;">Studio digital — sites, apps & IA</div>
   </td></tr>
   <tr><td style="padding:28px 28px 20px;">
     <div style="font-size:15px;color:#374151;line-height:1.7;">${body}</div>
     <div style="margin-top:24px;font-size:14px;color:#374151;">${signoff}<br/>
     <strong>${fromName}</strong><br/>
-    <span style="color:#6b7280;font-size:12px;">contact@kah-digital.ch</span></div>
+    <span style="color:#6b7280;font-size:12px;">contact@KAH Digital.ch</span></div>
   </td></tr>
   <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:12px 28px;">
     <p style="margin:0;font-size:11px;color:#9ca3af;">${unsubscribeHtml}</p>
@@ -245,7 +245,7 @@ export async function POST(req: Request) {
   }
 
   const supabase = getSupabase();
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch").trim();
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://KAH Digital.ch").trim();
   const now = new Date();
   const j1Cutoff  = new Date(now.getTime() - 20 * 3600000).toISOString();  // ouvert il y a 20h+
   const j2Cutoff  = new Date(now.getTime() - 48 * 3600000).toISOString();  // limite J+1 (48h)

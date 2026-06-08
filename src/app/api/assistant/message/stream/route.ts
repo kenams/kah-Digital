@@ -138,7 +138,7 @@ function buildStreamingInstructions(
   const firstName = session.collected.name?.split(" ")[0] ?? null;
 
   if (locale === "en") {
-    return `You are Kah, the KAH-Digital advisor. Not a generic assistant — a sharp, experienced digital consultant who gives real answers.
+    return `You are Kah, the KAH Digital advisor. Not a generic assistant — a sharp, experienced digital consultant who gives real answers.
 
 ${knowledge}
 
@@ -167,7 +167,7 @@ STRICT RULES:
   }
 
   if (locale === "de") {
-    return `Du bist Kah, der KAH-Digital Berater. Kein generischer Assistent — ein erfahrener Digital-Consultant, der echte Antworten gibt.
+    return `Du bist Kah, der KAH Digital Berater. Kein generischer Assistent — ein erfahrener Digital-Consultant, der echte Antworten gibt.
 
 ${knowledge}
 
@@ -194,7 +194,7 @@ STRIKTE REGELN:
   }
 
   // French (default)
-  return `Tu es Kah, le conseiller de KAH-Digital. Pas un assistant générique — un consultant digital expérimenté qui donne de vraies réponses.
+  return `Tu es Kah, le conseiller de KAH Digital. Pas un assistant générique — un consultant digital expérimenté qui donne de vraies réponses.
 
 ${knowledge}
 

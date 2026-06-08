@@ -1,12 +1,12 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web BÃ¢le â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital trilingue pour BÃ¢le. Sites web FR/DE/EN pour pharma, PME transfrontaliÃ¨res et entreprises culturelles. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web BÃ¢le", "agence web Basel", "Webseite erstellen Basel", "studio digital BÃ¢le"],
-  openGraph: { title: "CrÃ©ation site web BÃ¢le â€” KAH-Digital", description: "Studio digital trilingue pour entreprises bÃ¢loises. Pharma, PME. Devis personnalisÃ©." },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-basel" },
+  title: "Création site web Bâle — KAH Digital | Devis personnalisé",
+  description: "Studio digital trilingue pour Bâle. Sites web FR/DE/EN pour pharma, PME transfrontalières et entreprises culturelles. Devis gratuit sous 24h.",
+  keywords: ["création site web Bâle", "agence web Basel", "Webseite erstellen Basel", "studio digital Bâle"],
+  openGraph: { title: "Création site web Bâle — KAH Digital", description: "Studio digital trilingue pour entreprises bâloises. Pharma, PME. Devis personnalisé." },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-basel" },
 };
 
 export default function Page() {

@@ -140,13 +140,13 @@ export async function POST(request: NextRequest) {
     const stripe = getStripeClient();
     const origin = getSiteOrigin(request);
     const urls = getPaymentResultUrls({ locale, origin });
-    const projectLabel = quote.projectType?.trim() || "Projet KAH-Digital";
+    const projectLabel = quote.projectType?.trim() || "Projet KAH Digital";
     const paymentTitle =
       paymentMode === "deposit"
-        ? `Acompte KAH-Digital - ${projectLabel}`
+        ? `Acompte KAH Digital - ${projectLabel}`
         : paidAmount > 0
-          ? `Solde KAH-Digital - ${projectLabel}`
-          : `Paiement KAH-Digital - ${projectLabel}`;
+          ? `Solde KAH Digital - ${projectLabel}`
+          : `Paiement KAH Digital - ${projectLabel}`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

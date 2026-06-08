@@ -13,7 +13,7 @@ type Props = {
 const copy = {
   fr: {
     title: "Paiement en ligne",
-    body: "Reglez un acompte, un solde ou une facture KAH-Digital par carte bancaire via Stripe.",
+    body: "Reglez un acompte, un solde ou une facture KAH Digital par carte bancaire via Stripe.",
     amount: "Montant en CHF",
     email: "Email de facturation",
     reference: "Reference",
@@ -22,12 +22,12 @@ const copy = {
     notePlaceholder: "Projet ou precision utile",
     submit: "Payer maintenant",
     loading: "Ouverture du paiement...",
-    secure: "Paiement securise par Stripe. KAH-Digital ne voit jamais vos donnees de carte.",
+    secure: "Paiement securise par Stripe. KAH Digital ne voit jamais vos donnees de carte.",
     back: "Voir la facturation",
   },
   en: {
     title: "Online payment",
-    body: "Pay a deposit, balance, or KAH-Digital invoice by card through Stripe.",
+    body: "Pay a deposit, balance, or KAH Digital invoice by card through Stripe.",
     amount: "Amount in CHF",
     email: "Billing email",
     reference: "Reference",
@@ -36,12 +36,12 @@ const copy = {
     notePlaceholder: "Project or useful detail",
     submit: "Pay now",
     loading: "Opening payment...",
-    secure: "Secure payment by Stripe. KAH-Digital never sees your card details.",
+    secure: "Secure payment by Stripe. KAH Digital never sees your card details.",
     back: "View billing",
   },
   de: {
     title: "Online-Zahlung",
-    body: "Zahlen Sie eine Anzahlung, den Restbetrag oder eine KAH-Digital Rechnung per Karte ueber Stripe.",
+    body: "Zahlen Sie eine Anzahlung, den Restbetrag oder eine KAH Digital Rechnung per Karte ueber Stripe.",
     amount: "Betrag in CHF",
     email: "Rechnungs-E-Mail",
     reference: "Referenz",
@@ -50,7 +50,7 @@ const copy = {
     notePlaceholder: "Projekt oder hilfreiches Detail",
     submit: "Jetzt bezahlen",
     loading: "Zahlung wird geoeffnet...",
-    secure: "Sichere Zahlung mit Stripe. KAH-Digital sieht Ihre Kartendaten nie.",
+    secure: "Sichere Zahlung mit Stripe. KAH Digital sieht Ihre Kartendaten nie.",
     back: "Abrechnung ansehen",
   },
 } as const;

@@ -11,7 +11,7 @@ export function scoreAssistantSummary(summary: AssistantStructuredOutput, sessio
     return {
       score: "out_of_scope",
       label: "Hors perimetre",
-      reason: "Demande informative ou hors offre directe KAH-Digital.",
+      reason: "Demande informative ou hors offre directe KAH Digital.",
     };
   }
 

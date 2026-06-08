@@ -52,7 +52,7 @@ export async function POST(req: Request) {
     }
 
     const subject = sanitizeEmailSubject(
-      overrideSubject ?? prospect.emailSubject ?? "Votre site web - analyse gratuite par KAH-Digital"
+      overrideSubject ?? prospect.emailSubject ?? "Votre site web - analyse gratuite par KAH Digital"
     );
     const htmlBody = overrideBody ?? prospect.emailBody;
 
@@ -106,7 +106,7 @@ function wrapEmailHtml(businessName: string, body: string): string {
     <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
       <tr>
         <td style="background:linear-gradient(135deg,#1e40af,#7c3aed);padding:28px 32px;text-align:center;">
-          <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.5px;">KAH-Digital</h1>
+          <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.5px;">KAH Digital</h1>
           <p style="margin:6px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">Studio digital — sites, apps &amp; solutions</p>
         </td>
       </tr>
@@ -120,8 +120,8 @@ function wrapEmailHtml(businessName: string, body: string): string {
       <tr>
         <td style="background:#f9fafb;padding:20px 32px;border-top:1px solid #e5e7eb;">
           <p style="margin:0;font-size:12px;color:#6b7280;line-height:1.5;">
-            KAH-Digital — Studio digital &bull;
-            <a href="https://kah-digital.ch" style="color:#3b82f6;text-decoration:none;">kah-digital.ch</a><br/>
+            KAH Digital — Studio digital &bull;
+            <a href="https://KAH Digital.ch" style="color:#3b82f6;text-decoration:none;">KAH Digital.ch</a><br/>
             Cet email vous a été envoyé car votre site web est publiquement accessible.
             Pour ne plus recevoir de communications de notre part, répondez avec "STOP".
           </p>

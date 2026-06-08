@@ -10,7 +10,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     shortDescription:
       "Next.js PWA + Expo React Native. Integriertes Wallet, Stripe, CinetPay (Orange Money, MTN, Wave), Vertrauensscore, Push-Benachrichtigungen. Live in Produktion.",
     description:
-      "Kotizy digitalisiert die afrikanische Tontine — das traditionelle kollektive Sparsystem — in ein modernes, sicheres und vollautomatisches Erlebnis. KAH-Digital hat die gesamte Plattform entwickelt.",
+      "Kotizy digitalisiert die afrikanische Tontine — das traditionelle kollektive Sparsystem — in ein modernes, sicheres und vollautomatisches Erlebnis. KAH Digital hat die gesamte Plattform entwickelt.",
     challenge:
       "Eine robuste Finanzplattform für die afrikanische Diaspora aufbauen: Multi-Währung, Mobile-Money-Zahlungen, Vertrauensscore und automatische Auszahlungen.",
     solution:
@@ -57,7 +57,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     shortDescription:
       "Next.js Premium-Website mit HD-Hero-Video, Story-Bereich, 5 Leistungsbereichen mit Planity-Buchungsbuttons, Partnern, Galerie, Bewertungen und Google Maps.",
     description:
-      "Ashanti Beauty ist ein hochwertiges Schönheitsinstitut in Balma, Frankreich. KAH-Digital hat ihre Website mit hochwertigem Design entwickelt: Vollbild-Hero-Video optimiert für Mobile und Desktop, Präsentation des Instituts, 5 Leistungsbereiche (Nails Bar, Brows Bar, Lashes Bar, Ästhetik, Massage), Partnermarken, Galerie, Kundenbewertungen und Google Maps.",
+      "Ashanti Beauty ist ein hochwertiges Schönheitsinstitut in Balma, Frankreich. KAH Digital hat ihre Website mit hochwertigem Design entwickelt: Vollbild-Hero-Video optimiert für Mobile und Desktop, Präsentation des Instituts, 5 Leistungsbereiche (Nails Bar, Brows Bar, Lashes Bar, Ästhetik, Massage), Partnermarken, Galerie, Kundenbewertungen und Google Maps.",
     challenge:
       "Eine Website erstellen, die das Premium-Positioning des Instituts widerspiegelt: flüssiges Rendering, HD-Video gut integriert auf Mobile und Desktop, klare Leistungsstruktur und Buchungsconversion über Planity.",
     solution:
@@ -94,11 +94,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "TechCash Academy",
     type: "Trainingsplattform / Stripe Checkout",
     tagline:
-      "Eine KAH-Digital Plattform, um digitale Trainingsangebote mit Katalog, Mitgliederbereich und produktbezogenem Zugang zu verkaufen.",
+      "Eine KAH Digital Plattform, um digitale Trainingsangebote mit Katalog, Mitgliederbereich und produktbezogenem Zugang zu verkaufen.",
     shortDescription:
       "Multi-Produkt-Katalog, Supabase Auth, Stripe Checkout, Member-Dashboard sowie Text-, PDF-, Ressourcen-, Video- und Coming-soon-Inhalte.",
     description:
-      "TechCash Academy gehört zu den Produkten, die von KAH-Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
+      "TechCash Academy gehört zu den Produkten, die von KAH Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
     challenge:
       "Eine klarere Academy-Plattform aufbauen, die mehrere Angebote ohne unruhigen Funnel verkaufen kann und gleichzeitig einen lesbaren Mitgliederbereich, einen stabilen Checkout und eine einfache, erweiterbare Zugangslogik behält.",
     solution:
@@ -135,18 +135,18 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "MineAlert",
     type: "SaaS / Mining Intelligence",
     tagline:
-      "Ein KAH-Digital Produkt für Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
+      "Ein KAH Digital Produkt für Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
     shortDescription:
       "Business-Dashboard, Supabase Auth, Watchlist, Alerts, Live-Scraping und Vercel-Deployment für ein produktionsnahes Beta-Setup.",
     description:
-      "MineAlert gehört zu den Produkten, die von KAH-Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenführt.",
+      "MineAlert gehört zu den Produkten, die von KAH Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenführt.",
     challenge:
       "Ein Intelligence-Tool entwickeln, das klar, schnell erfassbar und technisch stabil genug bleibt, um echte Datenquellen, Authentifizierung und Monitoring aufzunehmen, ohne unruhig zu wirken.",
     solution:
       "Die Basis wurde mit Next.js, Supabase Auth für E-Mail und Google, einer Scraping-Pipeline für Preise und News, einem nutzungsorientierten Dashboard und einem kostenlosen Refresh-Modell für Hosted-Beta-Szenarien aufgebaut.",
     stack: ["Next.js", "TypeScript", "Supabase", "Playwright", "Vercel"],
     result:
-      "Ein live erreichbares Mining-Intelligence-SaaS, automatisiert, lesbarer aufgebaut und bereits als KAH-Digital Referenz nutzbar.",
+      "Ein live erreichbares Mining-Intelligence-SaaS, automatisiert, lesbarer aufgebaut und bereits als KAH Digital Referenz nutzbar.",
     timeline: "3 Wochen",
     deliverables: [
       "Produktdirection und Dashboard-UX",
@@ -318,11 +318,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Musiklabel / Produktion",
-    tagline: "Eine KAH-Digital Realisierung für ein unabhängiges Label mit Fokus auf Bild, Artists und Releases.",
+    tagline: "Eine KAH Digital Realisierung für ein unabhängiges Label mit Fokus auf Bild, Artists und Releases.",
     shortDescription:
       "Premium-Website für ein Label mit klaren Bereichen für Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
     description:
-      "KAH Prod gehört zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identität, Artists, Releases, Clips, Events und Business-Kontakte in einem stärkeren visuellen Rahmen zu präsentieren.",
+      "KAH Prod gehört zu den Projekten, die von KAH Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identität, Artists, Releases, Clips, Events und Business-Kontakte in einem stärkeren visuellen Rahmen zu präsentieren.",
     challenge:
       "Dem Label eine stärkere visuelle Präsenz und eine klarere Struktur geben, damit Identität, Artists und Releases ohne Informationschaos und mit hochwertiger Wahrnehmung präsentiert werden.",
     solution:

@@ -1,4 +1,4 @@
-const DEFAULT_SUBJECT = "Analyse de votre site web - KAH-Digital";
+const DEFAULT_SUBJECT = "Analyse de votre site web - KAH Digital";
 
 export function sanitizeEmailSubject(subject?: string | null, fallback = DEFAULT_SUBJECT) {
   const cleaned = (subject ?? fallback)

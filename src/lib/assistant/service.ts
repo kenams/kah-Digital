@@ -43,19 +43,19 @@ const adminAssistantUrl = `${getSiteUrl()}/admin/assistant`;
 const localeCopy = {
   fr: {
     summaryReady: "Base solide. Je peux maintenant sortir un résumé exploitable.",
-    humanEscalation: "La base est suffisante. Je prépare un résumé net et je passe la suite à un expert KAH-Digital.",
+    humanEscalation: "La base est suffisante. Je prépare un résumé net et je passe la suite à un expert KAH Digital.",
     startProject: "On cadre ça proprement.",
     startSupport: "On va qualifier ça vite et bien.",
     nextStepQuote: "Demander un devis clair sous 24h.",
     nextStepSupport: "Résumé support prêt pour ticket ou reprise humaine.",
-    nextStepInfo: "Orientation vers le bon service KAH-Digital.",
+    nextStepInfo: "Orientation vers le bon service KAH Digital.",
     projectFlowLabel: "Qualification projet",
     supportFlowLabel: "Qualification support",
     generalFlowLabel: "Orientation",
     faqFollowUp: "Si tu veux une estimation adaptée ou une suite claire, on peut cadrer maintenant.",
     invalidConsent: "J'ai besoin de ton consentement pour stocker ou envoyer le résumé.",
     summarySent: "Le résumé a été envoyé par email.",
-    leadSent: "Le résumé a été transmis à KAH-Digital pour reprise humaine.",
+    leadSent: "Le résumé a été transmis à KAH Digital pour reprise humaine.",
     glpiCreated: "Le ticket support a été préparé et transmis.",
     glpiFallback: "GLPI n'est pas configuré ici. Je transmets plutôt vers un humain avec résumé.",
     fallbackAnswer:
@@ -93,19 +93,19 @@ const localeCopy = {
   },
   en: {
     summaryReady: "The base is solid. I can now turn this into a usable summary.",
-    humanEscalation: "The base is strong enough. I am preparing a clean summary and handing it to a KAH-Digital expert.",
+    humanEscalation: "The base is strong enough. I am preparing a clean summary and handing it to a KAH Digital expert.",
     startProject: "Let's frame this properly.",
     startSupport: "Let's qualify this quickly and cleanly.",
     nextStepQuote: "Request a clear quote within 24h.",
     nextStepSupport: "Support summary ready for ticket creation or human follow-up.",
-    nextStepInfo: "Route toward the right KAH-Digital service.",
+    nextStepInfo: "Route toward the right KAH Digital service.",
     projectFlowLabel: "Project qualification",
     supportFlowLabel: "Support qualification",
     generalFlowLabel: "Routing",
     faqFollowUp: "If you want an adapted estimate or a clear next step, we can frame it now.",
     invalidConsent: "I need your consent before storing or sending the summary.",
     summarySent: "The summary was sent by email.",
-    leadSent: "The summary was forwarded to KAH-Digital for human follow-up.",
+    leadSent: "The summary was forwarded to KAH Digital for human follow-up.",
     glpiCreated: "The support ticket was prepared and sent.",
     glpiFallback: "GLPI is not configured here. I am routing the summary to a human instead.",
     fallbackAnswer:
@@ -142,19 +142,19 @@ const localeCopy = {
   },
   de: {
     summaryReady: "Die Basis ist solide. Ich kann daraus jetzt eine brauchbare Zusammenfassung machen.",
-    humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und übergebe an einen KAH-Digital Experten.",
+    humanEscalation: "Die Basis ist ausreichend. Ich bereite eine klare Zusammenfassung vor und übergebe an einen KAH Digital Experten.",
     startProject: "Wir grenzen das jetzt sauber ein.",
     startSupport: "Wir qualifizieren das jetzt schnell und sauber.",
     nextStepQuote: "Klares Angebot innerhalb von 24h anfragen.",
     nextStepSupport: "Support-Zusammenfassung bereit für Ticket oder menschliche Übernahme.",
-    nextStepInfo: "Weiterleitung zum passenden KAH-Digital Service.",
+    nextStepInfo: "Weiterleitung zum passenden KAH Digital Service.",
     projectFlowLabel: "Projektqualifizierung",
     supportFlowLabel: "Supportqualifizierung",
     generalFlowLabel: "Orientierung",
     faqFollowUp: "Wenn du eine passende Einschätzung oder den nächsten klaren Schritt willst, können wir jetzt sauber eingrenzen.",
     invalidConsent: "Ich brauche deine Zustimmung, bevor ich die Zusammenfassung speichere oder versende.",
     summarySent: "Die Zusammenfassung wurde per E-Mail versendet.",
-    leadSent: "Die Zusammenfassung wurde an KAH-Digital für eine menschliche Rückmeldung weitergeleitet.",
+    leadSent: "Die Zusammenfassung wurde an KAH Digital für eine menschliche Rückmeldung weitergeleitet.",
     glpiCreated: "Das Support-Ticket wurde vorbereitet und übermittelt.",
     glpiFallback: "GLPI ist hier nicht konfiguriert. Ich leite die Zusammenfassung stattdessen an einen Menschen weiter.",
     fallbackAnswer:
@@ -500,7 +500,7 @@ function buildStructuredSummary(session: AssistantSession): AssistantStructuredO
 
 async function refineSummaryWithOpenAI(session: AssistantSession, locale: Locale) {
   const instructions = `
-You are a business qualification assistant for KAH-Digital.
+You are a business qualification assistant for KAH Digital.
 Return only valid JSON.
 Classify the request, structure the output, and keep uncertainty explicit.
 Never promise fixed prices or fixed delivery.
@@ -1007,7 +1007,7 @@ function setCollectedValue(session: AssistantSession, key: string, value: string
 
 async function classifyWithOpenAI(input: string, locale: Locale) {
   const instructions = `
-You classify KAH-Digital inbound messages.
+You classify KAH Digital inbound messages.
 Return only JSON with keys: intent, project_type.
 Allowed intents: project_quote, support_glpi, faq, general_info, unknown.
 Allowed project types: landing_portfolio, showcase_website, corporate_website, ecommerce, web_app, mobile_app, dashboard_portal, glpi_assistant, automation_ai, unknown.
@@ -1424,10 +1424,10 @@ export async function sendEmail(input: {
           : "Votre résumé projet est prêt",
     intro:
       input.locale === "en"
-        ? "Here is the structured summary produced from your exchange with the KAH-Digital assistant."
+        ? "Here is the structured summary produced from your exchange with the KAH Digital assistant."
         : input.locale === "de"
-          ? "Hier ist die strukturierte Zusammenfassung aus deinem Austausch mit dem KAH-Digital Assistenten."
-          : "Voici le résumé structuré produit à partir de votre échange avec l'assistant KAH-Digital.",
+          ? "Hier ist die strukturierte Zusammenfassung aus deinem Austausch mit dem KAH Digital Assistenten."
+          : "Voici le résumé structuré produit à partir de votre échange avec l'assistant KAH Digital.",
     metrics: [
       { label: "Projet", value: input.summary.project_type },
       { label: "Budget", value: formatAssistantBudget(input.summary) },
@@ -1459,10 +1459,10 @@ export async function sendEmail(input: {
     ],
     footer:
       input.locale === "en"
-        ? "A KAH-Digital expert can take over from this summary."
+        ? "A KAH Digital expert can take over from this summary."
         : input.locale === "de"
-          ? "Ein KAH-Digital Experte kann auf Basis dieser Zusammenfassung übernehmen."
-          : "Un expert KAH-Digital peut reprendre à partir de ce résumé.",
+          ? "Ein KAH Digital Experte kann auf Basis dieser Zusammenfassung übernehmen."
+          : "Un expert KAH Digital peut reprendre à partir de ce résumé.",
   });
 
   await resendClient.emails.send({
@@ -1470,10 +1470,10 @@ export async function sendEmail(input: {
     to: input.email,
     subject:
       input.locale === "en"
-        ? "Your KAH-Digital assistant summary"
+        ? "Your KAH Digital assistant summary"
         : input.locale === "de"
-          ? "Deine KAH-Digital Zusammenfassung"
-          : "Votre résumé assistant KAH-Digital",
+          ? "Deine KAH Digital Zusammenfassung"
+          : "Votre résumé assistant KAH Digital",
     html,
     text: `Contact: ${input.name ?? "-"} / ${input.email}
 Phone: ${input.phone ?? "-"}

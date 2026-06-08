@@ -40,7 +40,7 @@ export const portfolioProjects: PortfolioProject[] = [
     shortDescription:
       "App Next.js PWA + Expo React Native. Wallet intégré, Stripe, CinetPay (Orange Money, MTN, Wave), score de confiance, notifications push. Livré en production.",
     description:
-      "Kotizy digitalise la tontine africaine — ce système d'épargne collective ancestral — en une expérience moderne, sécurisée et automatisée. KAH-Digital a conçu et développé l'intégralité de la plateforme : web app Next.js déployée sur Vercel, application native Android via Expo, backend API avec Prisma/Supabase, système de paiement multi-devise (Stripe, CinetPay), et un cron quotidien qui gère les cotisations, les rappels et les versements de manière 100% automatique.",
+      "Kotizy digitalise la tontine africaine — ce système d'épargne collective ancestral — en une expérience moderne, sécurisée et automatisée. KAH Digital a conçu et développé l'intégralité de la plateforme : web app Next.js déployée sur Vercel, application native Android via Expo, backend API avec Prisma/Supabase, système de paiement multi-devise (Stripe, CinetPay), et un cron quotidien qui gère les cotisations, les rappels et les versements de manière 100% automatique.",
     challenge:
       "Créer une plateforme financière robuste pour la diaspora africaine : multi-devise (EUR, XOF, GBP), paiements Mobile Money (Orange Money, MTN, Wave), score de confiance, gestion des défauts de paiement et versements automatiques — le tout sans intervention manuelle.",
     solution:
@@ -94,7 +94,7 @@ export const portfolioProjects: PortfolioProject[] = [
     shortDescription:
       "Site Next.js premium avec hero vidéo HD, 5 pôles de prestations avec boutons Planity, partenaires, galerie, avis clients et Google Maps.",
     description:
-      "Ashanti Beauty est un institut de beauté premium situé à Balma (31). KAH-Digital a conçu et développé leur site vitrine avec un rendu haut de gamme : vidéo hero plein écran optimisée mobile et desktop, présentation de l'univers de l'institut, 5 pôles de prestations (Nails Bar, Brows Bar, Lashes Bar, Esthétique, Massage), section partenaires, galerie Instagram, avis clients et carte Google Maps.",
+      "Ashanti Beauty est un institut de beauté premium situé à Balma (31). KAH Digital a conçu et développé leur site vitrine avec un rendu haut de gamme : vidéo hero plein écran optimisée mobile et desktop, présentation de l'univers de l'institut, 5 pôles de prestations (Nails Bar, Brows Bar, Lashes Bar, Esthétique, Massage), section partenaires, galerie Instagram, avis clients et carte Google Maps.",
     challenge:
       "Créer un site qui reflète le positionnement premium de l'institut, intégrer une vidéo HD fonctionnelle sur mobile sans dégrader les performances, et convertir les visiteuses en réservations via Planity.",
     solution:
@@ -142,7 +142,7 @@ export const portfolioProjects: PortfolioProject[] = [
     shortDescription:
       "Catalogue multi-produits, auth Supabase, checkout Stripe, dashboard membre et contenus texte, PDF, ressources, vidéo.",
     description:
-      "TechCash Academy est une plateforme de vente de formations digitales conçue par KAH-Digital. Le site propose un catalogue clair, un checkout Stripe par formation, un espace membre produit par produit et une interface admin pour piloter le catalogue et les modules.",
+      "TechCash Academy est une plateforme de vente de formations digitales conçue par KAH Digital. Le site propose un catalogue clair, un checkout Stripe par formation, un espace membre produit par produit et une interface admin pour piloter le catalogue et les modules.",
     challenge:
       "Construire une academy crédible et performante, capable de vendre plusieurs offres sans tunnel brouillon, avec un espace membre lisible et un checkout fiable.",
     solution:
@@ -608,9 +608,9 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://kah-support.ch",
     mockups: {
-      primary: "/portfolio/kah-digital.png",
+      primary: "/portfolio/KAH Digital.png",
       gallery: [
-        "/portfolio/kah-digital.png",
+        "/portfolio/KAH Digital.png",
       ],
     },
   },

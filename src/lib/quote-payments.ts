@@ -90,7 +90,7 @@ export function buildStripePaymentLabel(params: {
   mode: QuotePaymentMode;
   quote: QuoteRecord;
 }) {
-  const projectLabel = params.quote.projectType?.trim() || "Projet KAH-Digital";
+  const projectLabel = params.quote.projectType?.trim() || "Projet KAH Digital";
   if (params.mode === "deposit") {
     return `Acompte projet - ${projectLabel}`;
   }

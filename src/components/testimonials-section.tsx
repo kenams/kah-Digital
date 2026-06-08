@@ -31,7 +31,7 @@ const TESTIMONIALS = {
       highlight: false,
     },
     {
-      quote: "KAH-Digital a créé notre app de gestion interne en 6 semaines. Très réactif, explique bien les choix techniques. On a lancé la saison avec l'outil en main.",
+      quote: "KAH Digital a créé notre app de gestion interne en 6 semaines. Très réactif, explique bien les choix techniques. On a lancé la saison avec l'outil en main.",
       author: "C. R.",
       role: "Directrice opérationnelle",
       city: "Lausanne",
@@ -131,7 +131,7 @@ const TESTIMONIALS = {
       highlight: true,
     },
     {
-      quote: "KAH-Digital hat unsere interne App in 6 Wochen erstellt. Sehr reaktiv, erklärt Entscheidungen verständlich.",
+      quote: "KAH Digital hat unsere interne App in 6 Wochen erstellt. Sehr reaktiv, erklärt Entscheidungen verständlich.",
       author: "C. R.",
       role: "Betriebsleiterin",
       city: "Lausanne",

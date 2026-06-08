@@ -3,7 +3,7 @@ import { LegalNoticePageContent } from "@/components/pages/legal-notice-page-con
 
 export const metadata: Metadata = {
   title: "Mentions légales",
-  description: "Mentions légales de KAH-Digital. Informations juridiques et administratives.",
+  description: "Mentions légales de KAH Digital. Informations juridiques et administratives.",
 };
 
 export default function MentionsLegalesPage() {

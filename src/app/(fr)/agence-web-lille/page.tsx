@@ -1,12 +1,12 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Lille â€” KAH-Digital | Devis personnalisÃ©",
+  title: "Création site web Lille — KAH Digital | Devis personnalisé",
   description: "Studio digital pour Lille et les Hauts-de-France. Sites web, apps et solutions IA pour PME, commerces et startups. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web Lille", "agence web Lille", "site internet Nord", "dÃ©veloppeur web Lille"],
-  openGraph: { title: "CrÃ©ation site web Lille â€” KAH-Digital", description: "Studio digital pour entreprises lilloises. Sites, apps, IA. Devis personnalisÃ©." },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-lille" },
+  keywords: ["création site web Lille", "agence web Lille", "site internet Nord", "développeur web Lille"],
+  openGraph: { title: "Création site web Lille — KAH Digital", description: "Studio digital pour entreprises lilloises. Sites, apps, IA. Devis personnalisé." },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-lille" },
 };
 
 export default function Page() {

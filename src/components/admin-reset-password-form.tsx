@@ -98,7 +98,7 @@ export function AdminResetPasswordForm() {
           <p className="text-xs uppercase tracking-[0.35em] text-white/60">Admin</p>
           <h1 className="mt-2 text-2xl font-semibold">Nouveau mot de passe</h1>
           <p className="mt-3 text-sm text-white/70">
-            Définis un nouveau mot de passe pour ton accès admin KAH-Digital.
+            Définis un nouveau mot de passe pour ton accès admin KAH Digital.
           </p>
         </div>
 

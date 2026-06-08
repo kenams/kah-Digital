@@ -317,7 +317,7 @@ export function ProspectionDashboard() {
     const score = prospect.audit?.problems?.length
       ? `J'ai détecté ${prospect.audit.problems.filter((p) => p.severity === "critical").length} point(s) critique(s) sur votre site`
       : "J'ai analysé votre site";
-    return `Bonjour,\n\nJe suis Kénan, fondateur de KAH-Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement. Je peux vous préparer une proposition personnalisée après un court échange, selon votre besoin réel et vos priorités.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH-Digital\nkah-digital.ch`;
+    return `Bonjour,\n\nJe suis Kénan, fondateur de KAH Digital (studio digital). ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement. Je peux vous préparer une proposition personnalisée après un court échange, selon votre besoin réel et vos priorités.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKénan — KAH Digital\nKAH Digital.ch`;
   }
 
   function copyLinkedIn(prospect: Prospect) {
@@ -880,7 +880,7 @@ export function ProspectionDashboard() {
                         )}
                         <div className="mt-3 flex gap-2">
                           <a
-                            href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(p.email ?? "")}&su=${encodeURIComponent(`Suite — ${p.businessName ?? ""}`)}&body=${encodeURIComponent(p.draftReply ?? `Bonjour,\n\nJe fais suite à mon email concernant votre site web.\n\nCordialement,\nKénan — KAH-Digital\nkahdigital42@gmail.com`)}`}
+                            href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(p.email ?? "")}&su=${encodeURIComponent(`Suite — ${p.businessName ?? ""}`)}&body=${encodeURIComponent(p.draftReply ?? `Bonjour,\n\nJe fais suite à mon email concernant votre site web.\n\nCordialement,\nKénan — KAH Digital\nkahdigital42@gmail.com`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`flex-1 text-center rounded-lg px-2 py-1.5 text-xs font-semibold hover:opacity-90 ${p.draftReply ? "bg-blue-600 text-white" : "bg-white/10"}`}

@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Lausanne â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital Ã  Lausanne. CrÃ©ation de sites web, apps et solutions IA pour indÃ©pendants, PME et startups vaudoises. Devis personnalisÃ© sous 24h, adaptÃ© au besoin rÃ©el.",
-  keywords: ["crÃ©ation site web Lausanne", "agence web Lausanne", "site internet Lausanne", "dÃ©veloppeur web Lausanne"],
+  title: "Création site web Lausanne — KAH Digital | Devis personnalisé",
+  description: "Studio digital à Lausanne. Création de sites web, apps et solutions IA pour indépendants, PME et startups vaudoises. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Lausanne", "agence web Lausanne", "site internet Lausanne", "développeur web Lausanne"],
   openGraph: {
-    title: "CrÃ©ation site web Lausanne â€” KAH-Digital",
-    description: "Studio digital basÃ© Ã  Lausanne. Sites, apps et IA pour PME et indÃ©pendants vaudois. Devis personnalisÃ©.",
+    title: "Création site web Lausanne — KAH Digital",
+    description: "Studio digital basé à Lausanne. Sites, apps et IA pour PME et indépendants vaudois. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/site-web-lausanne" },
+  alternates: { canonical: "https://KAH Digital.ch/site-web-lausanne" },
 };
 
 export default function SiteWebLausannePage() {

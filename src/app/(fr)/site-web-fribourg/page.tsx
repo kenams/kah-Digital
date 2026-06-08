@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Fribourg â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital romand bilingue FR/DE. Sites web, apps et solutions pour entreprises et indÃ©pendants de Fribourg. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web Fribourg", "agence web Fribourg", "site internet Fribourg", "Webseite Freiburg"],
+  title: "Création site web Fribourg — KAH Digital | Devis personnalisé",
+  description: "Studio digital romand bilingue FR/DE. Sites web, apps et solutions pour entreprises et indépendants de Fribourg. Devis gratuit sous 24h.",
+  keywords: ["création site web Fribourg", "agence web Fribourg", "site internet Fribourg", "Webseite Freiburg"],
   openGraph: {
-    title: "CrÃ©ation site web Fribourg â€” KAH-Digital",
-    description: "Studio digital bilingue pour Fribourg. Sites, apps, IA. Devis personnalisÃ©.",
+    title: "Création site web Fribourg — KAH Digital",
+    description: "Studio digital bilingue pour Fribourg. Sites, apps, IA. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/site-web-fribourg" },
+  alternates: { canonical: "https://KAH Digital.ch/site-web-fribourg" },
 };
 
 export default function SiteWebFribourgPage() {

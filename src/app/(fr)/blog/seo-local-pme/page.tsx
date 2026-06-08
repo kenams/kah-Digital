@@ -1,37 +1,37 @@
-Ôªøimport type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "SEO local pour PME : appara√Ætre en 1√®re page Google en 2026 ‚Äî KAH-Digital",
+  title: "SEO local pour PME : apparaÓtre en 1Ëre page Google en 2026 ó KAH Digital",
   description:
-    "Guide complet SEO local pour PME : Google Business Profile, avis clients, pages locales, balises schema. Les actions concr√®tes pour que vos clients locaux vous trouvent.",
+    "Guide complet SEO local pour PME : Google Business Profile, avis clients, pages locales, balises schema. Les actions concrËtes pour que vos clients locaux vous trouvent.",
   keywords: [
     "seo local pme",
-    "r√©f√©rencement local entreprise",
+    "rÈfÈrencement local entreprise",
     "google my business optimisation",
     "seo local 2026",
-    "comment appara√Ætre sur google local",
-    "r√©f√©rencement local artisan",
+    "comment apparaÓtre sur google local",
+    "rÈfÈrencement local artisan",
   ],
-  alternates: { canonical: "https://kah-digital.ch/blog/seo-local-pme" },
+  alternates: { canonical: "https://KAH Digital.ch/blog/seo-local-pme" },
   openGraph: {
-    title: "SEO local pour PME : appara√Ætre en 1√®re page Google en 2026",
+    title: "SEO local pour PME : apparaÓtre en 1Ëre page Google en 2026",
     description:
-      "Les actions concr√®tes pour que vos clients locaux vous trouvent sur Google ‚Äî sans agence SEO hors de devis.",
+      "Les actions concrËtes pour que vos clients locaux vous trouvent sur Google ó sans agence SEO hors de devis.",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "SEO local pour PME : appara√Ætre en 1√®re page Google en 2026",
+  headline: "SEO local pour PME : apparaÓtre en 1Ëre page Google en 2026",
   datePublished: "2026-05-04",
   dateModified: "2026-05-04",
   author: { "@type": "Organization", name: "KAH Digital" },
-  publisher: { "@type": "Organization", name: "KAH-Digital", url: "https://kah-digital.ch" },
-  mainEntityOfPage: "https://kah-digital.ch/blog/seo-local-pme",
+  publisher: { "@type": "Organization", name: "KAH Digital", url: "https://KAH Digital.ch" },
+  mainEntityOfPage: "https://KAH Digital.ch/blog/seo-local-pme",
 };
 
 const faqJsonLd = {
@@ -43,15 +43,15 @@ const faqJsonLd = {
       name: "Qu'est-ce que le SEO local ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Le SEO local regroupe toutes les techniques qui permettent √† une entreprise d'appara√Ætre dans les r√©sultats Google pour des recherches g√©olocalis√©es ‚Äî par exemple 'plombier Paris' ou 'restaurant Lyon centre'.",
+        text: "Le SEO local regroupe toutes les techniques qui permettent ‡ une entreprise d'apparaÓtre dans les rÈsultats Google pour des recherches gÈolocalisÈes ó par exemple 'plombier Paris' ou 'restaurant Lyon centre'.",
       },
     },
     {
       "@type": "Question",
-      name: "Combien de temps pour appara√Ætre sur Google en local ?",
+      name: "Combien de temps pour apparaÓtre sur Google en local ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Avec un Google Business Profile bien compl√©t√© et une page optimis√©e, les premiers r√©sultats apparaissent en 4 √† 8 semaines. La position stable dans le Pack Local prend 3 √† 6 mois selon la concurrence.",
+        text: "Avec un Google Business Profile bien complÈtÈ et une page optimisÈe, les premiers rÈsultats apparaissent en 4 ‡ 8 semaines. La position stable dans le Pack Local prend 3 ‡ 6 mois selon la concurrence.",
       },
     },
     {
@@ -59,7 +59,7 @@ const faqJsonLd = {
       name: "Google Business Profile suffit-il pour le SEO local ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Non. Google Business Profile est indispensable mais insuffisant seul. Il faut le coupler avec un site web optimis√© (balises title/h1 avec ville + m√©tier, schema LocalBusiness, pages sp√©cifiques par ville) et des avis clients r√©guliers.",
+        text: "Non. Google Business Profile est indispensable mais insuffisant seul. Il faut le coupler avec un site web optimisÈ (balises title/h1 avec ville + mÈtier, schema LocalBusiness, pages spÈcifiques par ville) et des avis clients rÈguliers.",
       },
     },
     {
@@ -67,7 +67,7 @@ const faqJsonLd = {
       name: "comment estimer le SEO local pour une PME ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mettre en place une base SEO locale solide (page optimis√©e, schema, Google Business Profile) s'estime apr√®s cadrage selon la concurrence locale, les villes cibl√©es et le niveau de suivi souhait√©. KAH-Digital int√®gre le SEO local directement dans la cr√©ation du site.",
+        text: "Mettre en place une base SEO locale solide (page optimisÈe, schema, Google Business Profile) s'estime aprËs cadrage selon la concurrence locale, les villes ciblÈes et le niveau de suivi souhaitÈ. KAH Digital intËgre le SEO local directement dans la crÈation du site.",
       },
     },
   ],
@@ -76,39 +76,39 @@ const faqJsonLd = {
 const ACTIONS = [
   {
     step: "01",
-    title: "Google Business Profile ‚Äî la base obligatoire",
-    content: `C'est votre vitrine sur Google Maps et dans le Pack Local (les 3 r√©sultats avec carte en haut des r√©sultats). Si vous ne l'avez pas encore, c'est la premi√®re action √† faire.
+    title: "Google Business Profile ó la base obligatoire",
+    content: `C'est votre vitrine sur Google Maps et dans le Pack Local (les 3 rÈsultats avec carte en haut des rÈsultats). Si vous ne l'avez pas encore, c'est la premiËre action ‡ faire.
 
 **Ce qu'il faut faire :**
-- Cr√©er ou r√©clamer votre fiche sur business.google.com
-- Remplir 100% des informations : horaires, t√©l√©phone, site web, cat√©gorie principale et secondaires
-- Ajouter 10+ photos r√©centes (fa√ßade, int√©rieur, √©quipe, r√©alisations)
-- R√©pondre √† TOUS les avis (positifs et n√©gatifs) ‚Äî Google le mesure
-- Publier un Post Google toutes les 2 semaines (actualit√©, offre, √©v√©nement)
+- CrÈer ou rÈclamer votre fiche sur business.google.com
+- Remplir 100% des informations : horaires, tÈlÈphone, site web, catÈgorie principale et secondaires
+- Ajouter 10+ photos rÈcentes (faÁade, intÈrieur, Èquipe, rÈalisations)
+- RÈpondre ‡ TOUS les avis (positifs et nÈgatifs) ó Google le mesure
+- Publier un Post Google toutes les 2 semaines (actualitÈ, offre, ÈvÈnement)
 
-**Pourquoi c'est critique :** 46% des recherches Google ont une intention locale. Ne pas √™tre sur Google Maps, c'est invisible pour la moiti√© de vos clients potentiels.`,
+**Pourquoi c'est critique :** 46% des recherches Google ont une intention locale. Ne pas Ítre sur Google Maps, c'est invisible pour la moitiÈ de vos clients potentiels.`,
   },
   {
     step: "02",
-    title: "Votre site web ‚Äî la page locale optimis√©e",
-    content: `Google Business Profile seul ne suffit pas. Il faut un site web qui renforce votre cr√©dibilit√© locale. Les signaux que Google lit :
+    title: "Votre site web ó la page locale optimisÈe",
+    content: `Google Business Profile seul ne suffit pas. Il faut un site web qui renforce votre crÈdibilitÈ locale. Les signaux que Google lit :
 
-**Balise title :** \`[M√©tier] [Ville] ‚Äî [Nom entreprise]\`
-Exemple : "Plombier Lyon 3 ‚Äî Dupont Plomberie"
+**Balise title :** \`[MÈtier] [Ville] ó [Nom entreprise]\`
+Exemple : "Plombier Lyon 3 ó Dupont Plomberie"
 
-**H1 :** m√™me logique que le title, avec le mot-cl√© principal
+**H1 :** mÍme logique que le title, avec le mot-clÈ principal
 
 **Contenu de la page :**
 - Mentionnez votre ville et quartier naturellement dans le texte
-- Incluez votre adresse compl√®te (schema.org LocalBusiness)
-- Int√©grez Google Maps sur votre page contact
-- Citez des lieux connus √† proximit√© ("√† 2 minutes de la gare Part-Dieu")
+- Incluez votre adresse complËte (schema.org LocalBusiness)
+- IntÈgrez Google Maps sur votre page contact
+- Citez des lieux connus ‡ proximitÈ ("‡ 2 minutes de la gare Part-Dieu")
 
 **URL :** \`/plombier-lyon\` ou \`/plombier-lyon-3\` si vous ciblez un arrondissement.`,
   },
   {
     step: "03",
-    title: "Schema.org LocalBusiness ‚Äî le code que Google lit",
+    title: "Schema.org LocalBusiness ó le code que Google lit",
     content: `Le schema LocalBusiness est un balisage JSON-LD que vous ajoutez dans le \`<head>\` de vos pages. Google le lit directement et s'en sert pour le Knowledge Panel et le Pack Local.
 
 **Exemple minimal :**
@@ -129,49 +129,49 @@ Exemple : "Plombier Lyon 3 ‚Äî Dupont Plomberie"
 }
 \`\`\`
 
-Ajoutez-y aussi \`"geo"\` avec latitude/longitude pour renforcer le signal g√©ographique.`,
+Ajoutez-y aussi \`"geo"\` avec latitude/longitude pour renforcer le signal gÈographique.`,
   },
   {
     step: "04",
-    title: "Avis clients ‚Äî le moteur du Pack Local",
-    content: `Google classe les entreprises dans le Pack Local en fonction de 3 crit√®res : pertinence, distance et notori√©t√©. Les avis sont le principal signal de notori√©t√©.
+    title: "Avis clients ó le moteur du Pack Local",
+    content: `Google classe les entreprises dans le Pack Local en fonction de 3 critËres : pertinence, distance et notoriÈtÈ. Les avis sont le principal signal de notoriÈtÈ.
 
-**Strat√©gie simple :**
-- Apr√®s chaque mission r√©ussie, envoyez un SMS/email avec le lien direct vers votre fiche Google
+**StratÈgie simple :**
+- AprËs chaque mission rÈussie, envoyez un SMS/email avec le lien direct vers votre fiche Google
 - Objectif : 1 nouvel avis par semaine
-- R√©pondez √† tous les avis sous 24h (y compris les n√©gatifs, calmement)
-- Ne jamais acheter de faux avis ‚Äî Google d√©tecte et peut supprimer votre fiche
+- RÈpondez ‡ tous les avis sous 24h (y compris les nÈgatifs, calmement)
+- Ne jamais acheter de faux avis ó Google dÈtecte et peut supprimer votre fiche
 
-**Impact mesur√© :** Passer de 10 √† 30 avis (tous 5 √©toiles) augmente la visibilit√© dans le Pack Local de 40 √† 60% selon les secteurs.`,
+**Impact mesurÈ :** Passer de 10 ‡ 30 avis (tous 5 Ètoiles) augmente la visibilitÈ dans le Pack Local de 40 ‡ 60% selon les secteurs.`,
   },
   {
     step: "05",
-    title: "Citations locales ‚Äî coh√©rence NAP partout",
-    content: `NAP = Name, Address, Phone. Google v√©rifie que ces informations sont identiques partout sur le web. Une incoh√©rence p√©nalise votre classement local.
+    title: "Citations locales ó cohÈrence NAP partout",
+    content: `NAP = Name, Address, Phone. Google vÈrifie que ces informations sont identiques partout sur le web. Une incohÈrence pÈnalise votre classement local.
 
-**O√π v√©rifier :**
+**O˘ vÈrifier :**
 - Pages Jaunes / 118000
 - Yelp France / TripAdvisor
 - Kompass, Foursquare
-- R√©pertoires sectoriels (Doctolib, La Fourchette, Houzz...)
+- RÈpertoires sectoriels (Doctolib, La Fourchette, Houzz...)
 - Vos profils LinkedIn, Facebook, Instagram
 
-**Action :** Faites un audit de vos citations avec BrightLocal (payant) ou en cherchant votre num√©ro de t√©l√©phone sur Google.`,
+**Action :** Faites un audit de vos citations avec BrightLocal (payant) ou en cherchant votre numÈro de tÈlÈphone sur Google.`,
   },
   {
     step: "06",
-    title: "Contenu local ‚Äî articles et pages de service par ville",
-    content: `Si vous couvrez plusieurs villes ou quartiers, cr√©ez une page d√©di√©e par zone g√©ographique. Pas de copier-coller ‚Äî chaque page doit avoir du contenu unique.
+    title: "Contenu local ó articles et pages de service par ville",
+    content: `Si vous couvrez plusieurs villes ou quartiers, crÈez une page dÈdiÈe par zone gÈographique. Pas de copier-coller ó chaque page doit avoir du contenu unique.
 
 **Structure gagnante par page :**
 - H1 : [Service] [Ville]
-- Introduction avec mention du secteur g√©ographique
+- Introduction avec mention du secteur gÈographique
 - Liste de vos interventions dans cette zone
-- T√©moignage d'un client local (nom, ville)
-- FAQ locale ("Quel d√©lai d'intervention √† [Ville] ?")
+- TÈmoignage d'un client local (nom, ville)
+- FAQ locale ("Quel dÈlai d'intervention ‡ [Ville] ?")
 - Schema LocalBusiness avec l'adresse locale
 
-**Blog local :** "Nos 3 derni√®res interventions √† Lyon 6" ou "Pourquoi nos clients de Bordeaux nous recommandent" ‚Äî contenu frais, signal frais pour Google.`,
+**Blog local :** "Nos 3 derniËres interventions ‡ Lyon 6" ou "Pourquoi nos clients de Bordeaux nous recommandent" ó contenu frais, signal frais pour Google.`,
   },
 ];
 
@@ -187,21 +187,21 @@ export default function SeoLocalPmePage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <Link href="/blog" className="text-xs text-gray-500 transition hover:text-gray-400">
-              ‚Üê Blog
+              ? Blog
             </Link>
-            <span className="text-xs text-gray-600">¬∑</span>
+            <span className="text-xs text-gray-600">∑</span>
             <span className="rounded-full bg-emerald-500/10 px-3 py-0.5 text-xs font-semibold text-emerald-400">SEO Local</span>
             <span className="text-xs text-gray-600">4 mai 2026</span>
           </div>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-            SEO local pour PME : appara√Ætre en 1√®re page Google en 2026
+            SEO local pour PME : apparaÓtre en 1Ëre page Google en 2026
           </h1>
           <p className="mb-6 text-lg text-gray-400 leading-relaxed">
-            46% des recherches Google ont une intention locale. Si votre entreprise n'appara√Æt pas dans le Pack Local (les 3 r√©sultats avec carte), vous perdez la moiti√© de vos clients potentiels. Voici les 6 actions concr√®tes pour y rem√©dier.
+            46% des recherches Google ont une intention locale. Si votre entreprise n'apparaÓt pas dans le Pack Local (les 3 rÈsultats avec carte), vous perdez la moitiÈ de vos clients potentiels. Voici les 6 actions concrËtes pour y remÈdier.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500">
             <span>KAH Digital</span>
-            <span>¬∑</span>
+            <span>∑</span>
             <span>8 min de lecture</span>
           </div>
         </div>
@@ -216,9 +216,9 @@ export default function SeoLocalPmePage() {
             {[
               "Comment optimiser votre Google Business Profile pour le Pack Local",
               "Les balises SEO indispensables sur votre site web",
-              "Le schema LocalBusiness ‚Äî le balisage que Google lit en priorit√©",
-              "La strat√©gie d'avis clients qui fait exploser votre visibilit√©",
-              "Citations locales : la coh√©rence NAP qui fait la diff√©rence",
+              "Le schema LocalBusiness ó le balisage que Google lit en prioritÈ",
+              "La stratÈgie d'avis clients qui fait exploser votre visibilitÈ",
+              "Citations locales : la cohÈrence NAP qui fait la diffÈrence",
               "Pages et contenu locaux pour dominer plusieurs zones",
             ].map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
@@ -258,7 +258,7 @@ export default function SeoLocalPmePage() {
 
         {/* FAQ */}
         <section>
-          <h2 className="mb-6 text-2xl font-bold text-white">Questions fr√©quentes</h2>
+          <h2 className="mb-6 text-2xl font-bold text-white">Questions frÈquentes</h2>
           <div className="space-y-4">
             {faqJsonLd.mainEntity.map((faq) => (
               <details key={faq.name} className="group rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -274,11 +274,11 @@ export default function SeoLocalPmePage() {
         {/* CTA inline */}
         <div className="rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-600/10 to-violet-600/10 p-8 text-center">
           <h3 className="mb-3 text-xl font-bold text-white">
-            Votre site est-il bien optimis√© pour le SEO local ?
+            Votre site est-il bien optimisÈ pour le SEO local ?
           </h3>
           <p className="mb-6 text-sm text-gray-400">
-            On analyse votre site gratuitement : score SEO local, probl√®mes d√©tect√©s, actions prioritaires.
-            R√©sultats par email sous 24h.
+            On analyse votre site gratuitement : score SEO local, problËmes dÈtectÈs, actions prioritaires.
+            RÈsultats par email sous 24h.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
@@ -302,19 +302,19 @@ export default function SeoLocalPmePage() {
         <section>
           <h2 className="mb-4 text-2xl font-bold text-white">Ce qu'il faut retenir</h2>
           <p className="mb-4 text-gray-400 leading-relaxed">
-            Le SEO local n'est pas sorcier, mais il demande de la coh√©rence. Les entreprises qui dominent le Pack Local dans leur secteur font toutes la m√™me chose : fiche Google compl√®te, avis r√©guliers, site technique propre et contenu local unique.
+            Le SEO local n'est pas sorcier, mais il demande de la cohÈrence. Les entreprises qui dominent le Pack Local dans leur secteur font toutes la mÍme chose : fiche Google complËte, avis rÈguliers, site technique propre et contenu local unique.
           </p>
           <p className="text-gray-400 leading-relaxed">
-            La bonne nouvelle : la majorit√© de vos concurrents ne font rien de tout √ßa. Commencez par Google Business Profile et une page web optimis√©e ‚Äî c'est 80% du r√©sultat avec 20% de l'effort.
+            La bonne nouvelle : la majoritÈ de vos concurrents ne font rien de tout Áa. Commencez par Google Business Profile et une page web optimisÈe ó c'est 80% du rÈsultat avec 20% de l'effort.
           </p>
         </section>
 
         {/* Related articles */}
         <section className="border-t border-white/6 pt-10">
-          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">Articles li√©s</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">Articles liÈs</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { href: "/blog/creation-site-web-pme", label: "Cr√©er un site web pour PME en 2026" },
+              { href: "/blog/creation-site-web-pme", label: "CrÈer un site web pour PME en 2026" },
               { href: "/blog/devis-site-web-professionnel", label: "comment estimer un site web ?" },
               { href: "/blog/refonte-site-web", label: "Refonte site web : quand et comment ?" },
               { href: "/blog/site-web-artisan", label: "Site web pour artisan : le guide 2026" },

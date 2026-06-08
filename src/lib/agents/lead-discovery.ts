@@ -51,7 +51,7 @@ const TARGETS = [
   { query: "kinesitherapeute toulouse site web", country: "FR", lang: "fr", sector: "sante" },
   { query: "boutique mode paris site web ecommerce", country: "FR", lang: "fr", sector: "ecommerce" },
   { query: "salle de sport fitness paris site web tarifs", country: "FR", lang: "fr", sector: "sport" },
-  // ── Suisse romande — priorité haute (marché local KAH-Digital) ──
+  // ── Suisse romande — priorité haute (marché local KAH Digital) ──
   { query: "avocat geneve site web cabinet", country: "CH", lang: "fr", sector: "avocat" },
   { query: "architecte lausanne site web cabinet", country: "CH", lang: "fr", sector: "architecte" },
   { query: "fiduciaire geneve site web", country: "CH", lang: "fr", sector: "comptable" },
@@ -532,7 +532,7 @@ async function fetchHtml(url: string, timeoutMs = 10000): Promise<string> {
     try {
       const res = await fetch(u, {
         signal: ctrl.signal,
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.ch)" },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0; +https://KAH Digital.ch)" },
       });
       if (res.ok) return await res.text();
     } catch { /* try next */ } finally { clearTimeout(t); }

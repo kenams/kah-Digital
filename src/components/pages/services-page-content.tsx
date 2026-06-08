@@ -12,7 +12,7 @@ const copy = {
     eyebrow: "Francophone, anglophone, PME et structures en croissance",
     title: "Des solutions digitales utiles pour les entreprises",
     intro:
-      "KAH-Digital conçoit des sites web, des applications et des parcours support plus lisibles pour entreprises qui veulent vendre mieux, s'organiser plus clairement ou fluidifier leur support.",
+      "KAH Digital conçoit des sites web, des applications et des parcours support plus lisibles pour entreprises qui veulent vendre mieux, s'organiser plus clairement ou fluidifier leur support.",
     sectionTitle: "Un positionnement simple",
     sectionBody:
       "Nous ne cherchons pas à tout promettre. Nous construisons des bases utiles, propres et crédibles pour aider une entreprise à mieux se présenter, mieux s'organiser ou mieux accompagner ses utilisateurs.",
@@ -51,7 +51,7 @@ const copy = {
     eyebrow: "French-speaking, English-speaking, SMBs, and growing teams",
     title: "Useful digital services for companies",
     intro:
-      "KAH-Digital designs websites, applications, and clearer support workflows for companies that need clearer positioning, smoother operations, or better support.",
+      "KAH Digital designs websites, applications, and clearer support workflows for companies that need clearer positioning, smoother operations, or better support.",
     sectionTitle: "A simple positioning",
     sectionBody:
       "We do not try to promise everything. We build useful, clean, credible foundations to help a company present itself better, operate more smoothly, or support its users more clearly.",
@@ -90,7 +90,7 @@ const copy = {
     eyebrow: "Frankophon, englischsprachig, KMU und wachsende Teams",
     title: "Digitale Leistungen mit echtem Nutzen für Unternehmen",
     intro:
-      "KAH-Digital entwickelt Websites, Anwendungen und klarere Support-Abläufe für Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
+      "KAH Digital entwickelt Websites, Anwendungen und klarere Support-Abläufe für Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
       "Wir versprechen nicht alles. Wir bauen nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen sich besser präsentieren, besser organisieren oder Nutzer klarer begleiten können.",

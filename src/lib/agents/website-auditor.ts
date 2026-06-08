@@ -86,7 +86,7 @@ function ruleBasedAudit(lead: DiscoveredLead, html: string): SiteAudit {
     score -= 12;
   }
 
-  recommendations.push({ title: "Site qui convertit des visiteurs en clients", detail: "KAH-Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
+  recommendations.push({ title: "Site qui convertit des visiteurs en clients", detail: "KAH Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
   recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à ranker et à générer du trafic qualifié.", impact: "high" });
   recommendations.push({ title: "Clients qui passent à l'action", detail: "Chaque page est conçue pour guider vos visiteurs vers un appel, une réservation ou un achat.", impact: "medium" });
 
@@ -141,7 +141,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
     try {
       const res = await fetch(u, {
         signal: ctrl.signal,
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.fr)" },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0; +https://KAH Digital.fr)" },
       });
       if (!res.ok) continue;
       const html = await res.text();
@@ -237,7 +237,7 @@ Return ONLY a valid JSON object (no markdown):
   "recommendations": [
     {
       "title": "outcome-focused title (what the client gains)",
-      "detail": "What KAH-Digital delivers as an outcome — NOT technical steps. e.g. 'Un site livré en 3 semaines, optimisé pour convertir vos visiteurs en clients.' Never say 'add viewport meta tag' or 'compress images'.",
+      "detail": "What KAH Digital delivers as an outcome — NOT technical steps. e.g. 'Un site livré en 3 semaines, optimisé pour convertir vos visiteurs en clients.' Never say 'add viewport meta tag' or 'compress images'.",
       "impact": "high|medium|low"
     }
   ],

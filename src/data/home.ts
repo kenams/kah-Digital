@@ -106,7 +106,7 @@ const faqs = [
     answer: "30 jours de corrections inclus après livraison. Le process inclut des validations régulières pour éviter les surprises — vous voyez l'avancement à chaque étape, pas seulement le résultat final.",
   },
   {
-    question: "Pourquoi travailler avec KAH-Digital plutôt qu'une agence classique ?",
+    question: "Pourquoi travailler avec KAH Digital plutôt qu'une agence classique ?",
     answer: "L'expertise d'un studio senior, la réactivité d'un partenaire dédié. Pas de chef de projet intermédiaire, pas de délais gonflés. Vous avez un interlocuteur unique, disponible, qui connaît votre projet de bout en bout.",
   },
 ];

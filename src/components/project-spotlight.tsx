@@ -9,7 +9,7 @@ type ProjectSpotlightProps = {
 const copy = {
   fr: {
     eyebrow: "Etude de cas",
-    title: "KAH Prod, une realisation KAH-Digital pensee comme une vraie piece de marque.",
+    title: "KAH Prod, une realisation KAH Digital pensee comme une vraie piece de marque.",
     intro:
       "Le but n'etait pas de poser une simple carte projet. Il fallait montrer un univers, une direction visuelle, et un site capable de presenter le label, les artistes, les sorties et les contacts metier avec un rendu plus net.",
     primaryCta: "Voir le site",
@@ -28,7 +28,7 @@ const copy = {
   },
   en: {
     eyebrow: "Case study",
-    title: "KAH Prod, a KAH-Digital build shaped as a true brand piece.",
+    title: "KAH Prod, a KAH Digital build shaped as a true brand piece.",
     intro:
       "The goal was not to place a simple project card. It had to show a universe, a visual direction, and a site able to present the label, artists, releases, and business contacts with a sharper execution.",
     primaryCta: "View live site",

@@ -21,7 +21,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
   try {
     const res = await fetch(normalizedUrl, {
       signal: controller.signal,
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0)" },
     });
     const html = await res.text();
     // Extract meaningful text: strip scripts/styles, keep tags for context
@@ -72,7 +72,7 @@ export async function auditWebsite(websiteUrl: string): Promise<ProspectAudit | 
   }
 
   const prompt = `Tu es un expert en développement web et marketing digital pour PME/commerçants français.
-Analyse ce site web et génère un audit + email de prospection personnalisé pour KAH-Digital.
+Analyse ce site web et génère un audit + email de prospection personnalisé pour KAH Digital.
 
 URL analysée : ${websiteUrl}
 Contenu extrait :
@@ -88,12 +88,12 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans markdown) respectant exactem
     { "title": "problème court", "detail": "explication concrète en 1-2 phrases", "severity": "critical|medium|low" }
   ],
   "recommendations": [
-    { "title": "solution", "detail": "ce que KAH-Digital ferait concrètement", "estimatedValue": "valeur apportée" }
+    { "title": "solution", "detail": "ce que KAH Digital ferait concrètement", "estimatedValue": "valeur apportée" }
   ],
   "estimatedPrice": 0,
   "priceRange": "devis personnalisé après cadrage",
   "emailSubject": "objet de l'email accrocheur et personnalisé",
-  "emailBody": "corps de l'email complet en HTML (utilise <p>, <ul><li>, <strong>, pas de style inline). Commence par bonjour, présente 3 problèmes concrets du site, propose une solution KAH-Digital avec une proposition personnalisée après échange, ajoute un CTA clair."
+  "emailBody": "corps de l'email complet en HTML (utilise <p>, <ul><li>, <strong>, pas de style inline). Commence par bonjour, présente 3 problèmes concrets du site, propose une solution KAH Digital avec une proposition personnalisée après échange, ajoute un CTA clair."
 }
 
 Règles :

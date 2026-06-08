@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Nantes â€” KAH-Digital | Devis personnalisÃ©",
+  title: "Création site web Nantes — KAH Digital | Devis personnalisé",
   description: "Studio digital pour Nantes et les Pays de la Loire. Sites web, apps et solutions IA pour startups, tech et PME. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web Nantes", "agence web Nantes", "site internet Nantes", "dÃ©veloppeur web Nantes"],
+  keywords: ["création site web Nantes", "agence web Nantes", "site internet Nantes", "développeur web Nantes"],
   openGraph: {
-    title: "CrÃ©ation site web Nantes â€” KAH-Digital",
-    description: "Studio digital pour entreprises nantaises. Sites, apps, IA. Devis personnalisÃ©.",
+    title: "Création site web Nantes — KAH Digital",
+    description: "Studio digital pour entreprises nantaises. Sites, apps, IA. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-nantes" },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-nantes" },
 };
 
 export default function AgenceWebNantesPage() {

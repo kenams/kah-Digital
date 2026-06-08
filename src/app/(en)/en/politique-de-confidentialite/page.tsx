@@ -3,7 +3,7 @@ import { PrivacyPolicyPageContent } from "@/components/pages/privacy-policy-page
 
 export const metadata: Metadata = {
   title: "Privacy policy",
-  description: "How KAH-Digital collects and protects personal data.",
+  description: "How KAH Digital collects and protects personal data.",
 };
 
 export default function PrivacyPolicyPageEn() {

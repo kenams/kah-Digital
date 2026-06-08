@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Metz â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital pour Metz et le Grand Est. Sites web, apps et solutions digitales pour PME, indÃ©pendants et entreprises transfrontaliÃ¨res. Devis personnalisÃ© sous 24h, adaptÃ© au besoin rÃ©el.",
-  keywords: ["crÃ©ation site web Metz", "agence web Metz", "site internet Metz", "dÃ©veloppeur web Grand Est", "agence digitale Metz"],
+  title: "Création site web Metz — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Metz et le Grand Est. Sites web, apps et solutions digitales pour PME, indépendants et entreprises transfrontalières. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Metz", "agence web Metz", "site internet Metz", "développeur web Grand Est", "agence digitale Metz"],
   openGraph: {
-    title: "CrÃ©ation site web Metz â€” KAH-Digital",
-    description: "Studio digital pour PME et entreprises messinnes. Sites multilingues, apps, solutions digitales. Devis personnalisÃ©.",
+    title: "Création site web Metz — KAH Digital",
+    description: "Studio digital pour PME et entreprises messinnes. Sites multilingues, apps, solutions digitales. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-metz" },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-metz" },
 };
 
 export default function AgenceWebMetzPage() {

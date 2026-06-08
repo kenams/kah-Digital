@@ -1,6 +1,6 @@
 "use client";
 
-import { KahDigitalDocumentLogo } from "@/components/kah-digital-document-logo";
+import { KahDigitalDocumentLogo } from "@/components/KAH Digital-document-logo";
 import { companyConfig } from "@/config/company";
 
 interface InvoiceItem {
@@ -29,7 +29,7 @@ export function InvoicePreview({
   vat = 0,
   totalWithVat = 2800,
 }: InvoicePreviewProps) {
-  const brandName = companyConfig.brandName || "KAH-Digital";
+  const brandName = companyConfig.brandName || "KAH Digital";
   const currency = companyConfig.currency || "CHF";
   const signatureName = companyConfig.legalName || brandName;
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
@@ -37,7 +37,7 @@ export function InvoicePreview({
   const copy = {
     fr: {
       invoice: "Facture",
-      document: "Document de facturation KAH-Digital",
+      document: "Document de facturation KAH Digital",
       issuer: "Emetteur",
       phone: "Tel",
       client: "Client",
@@ -71,7 +71,7 @@ export function InvoicePreview({
     },
     en: {
       invoice: "Invoice",
-      document: "KAH-Digital billing document",
+      document: "KAH Digital billing document",
       issuer: "Issuer",
       phone: "Phone",
       client: "Client",

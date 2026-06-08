@@ -32,7 +32,7 @@ function normalizeWhatsappAddress(value: string) {
 }
 
 function buildAdminUrl(path?: string) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kah-digital.ch";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://KAH Digital.ch";
   if (!path) {
     return `${siteUrl.replace(/\/+$/, "")}/admin`;
   }
@@ -42,7 +42,7 @@ function buildAdminUrl(path?: string) {
 
 function buildWhatsappBody(input: AdminAlertInput) {
   const lines = [
-    `KAH-Digital`,
+    `KAH Digital`,
     `Nouvelle alerte: ${input.title}`,
     `Source: ${input.source}`,
     input.company ? `Societe: ${input.company}` : null,

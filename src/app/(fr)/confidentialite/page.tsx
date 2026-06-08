@@ -3,7 +3,7 @@ import { PrivacyPolicyPageContent } from "@/components/pages/privacy-policy-page
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
-  description: "Politique de confidentialité de KAH-Digital. Protection des données personnelles et RGPD.",
+  description: "Politique de confidentialité de KAH Digital. Protection des données personnelles et RGPD.",
   alternates: {
     canonical: "/confidentialite",
   },

@@ -1,12 +1,12 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Zurich â€” KAH-Digital | Devis personnalisÃ©",
+  title: "Création site web Zurich — KAH Digital | Devis personnalisé",
   description: "Studio digital multilingue pour Zurich. Sites web FR/DE/EN, apps et solutions IA pour entreprises, fintech et PME zurichoises. Devis sous 24h.",
-  keywords: ["crÃ©ation site web Zurich", "agence web Zurich", "Webseite erstellen ZÃ¼rich", "digital studio Zurich"],
-  openGraph: { title: "CrÃ©ation site web Zurich â€” KAH-Digital", description: "Studio digital multilingue pour entreprises zurichoises. FR/DE/EN. Devis personnalisÃ©." },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-zurich" },
+  keywords: ["création site web Zurich", "agence web Zurich", "Webseite erstellen Zürich", "digital studio Zurich"],
+  openGraph: { title: "Création site web Zurich — KAH Digital", description: "Studio digital multilingue pour entreprises zurichoises. FR/DE/EN. Devis personnalisé." },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-zurich" },
 };
 
 export default function Page() {

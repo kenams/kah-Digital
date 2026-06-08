@@ -4,19 +4,19 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Références clients — Résultats concrets | KAH-Digital",
+  title: "Références clients — Résultats concrets | KAH Digital",
   description:
     "Cas clients réels : +30% réservations restaurant Genève, 4 nouveaux clients mois 1 pour une coach, dashboard PME en prod depuis 4 mois. Voyez ce qu'on peut faire pour vous.",
   keywords: [
     "références agence web",
     "cas clients site web",
     "résultats création site web",
-    "témoignages clients KAH-Digital",
+    "témoignages clients KAH Digital",
     "agence web résultats prouvés",
   ],
-  alternates: { canonical: "https://kah-digital.ch/references" },
+  alternates: { canonical: "https://KAH Digital.ch/references" },
   openGraph: {
-    title: "Références clients — Résultats concrets | KAH-Digital",
+    title: "Références clients — Résultats concrets | KAH Digital",
     description:
       "Cas clients réels avec résultats chiffrés. Site vitrine, app métier, refonte. Livraison en 1-3 semaines.",
   },
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Références clients KAH-Digital",
-  description: "Cas clients avec résultats chiffrés — sites web, applications et solutions digitales livrés par KAH-Digital",
+  name: "Références clients KAH Digital",
+  description: "Cas clients avec résultats chiffrés — sites web, applications et solutions digitales livrés par KAH Digital",
   itemListElement: [
     {
       "@type": "ListItem",
@@ -133,7 +133,7 @@ const CASES = [
       { value: "100%", label: "Délai respecté" },
     ],
     quote:
-      "KAH-Digital a créé notre application en 6 semaines. Très réactif, explique bien les choix techniques. On a pu lancer notre saison avec l'outil en main.",
+      "KAH Digital a créé notre application en 6 semaines. Très réactif, explique bien les choix techniques. On a pu lancer notre saison avec l'outil en main.",
     author: "C. R. — Directrice opérationnelle, PME Lausanne",
     color: "from-amber-500/20 to-orange-500/20",
     accentColor: "text-amber-400",

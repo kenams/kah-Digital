@@ -1,15 +1,15 @@
-ï»¿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "CrÃ©ation site web Lyon â€” KAH-Digital | Devis personnalisÃ©",
-  description: "Studio digital pour Lyon et la rÃ©gion Auvergne-RhÃ´ne-Alpes. Sites web, apps et solutions IA pour PME et indÃ©pendants. Devis gratuit sous 24h.",
-  keywords: ["crÃ©ation site web Lyon", "agence web Lyon", "site internet Lyon", "dÃ©veloppeur web Lyon"],
+  title: "Création site web Lyon — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Lyon et la région Auvergne-Rhône-Alpes. Sites web, apps et solutions IA pour PME et indépendants. Devis gratuit sous 24h.",
+  keywords: ["création site web Lyon", "agence web Lyon", "site internet Lyon", "développeur web Lyon"],
   openGraph: {
-    title: "CrÃ©ation site web Lyon â€” KAH-Digital",
-    description: "Studio digital pour entreprises lyonnaises. Sites, apps, IA. Devis personnalisÃ©.",
+    title: "Création site web Lyon — KAH Digital",
+    description: "Studio digital pour entreprises lyonnaises. Sites, apps, IA. Devis personnalisé.",
   },
-  alternates: { canonical: "https://kah-digital.ch/agence-web-lyon" },
+  alternates: { canonical: "https://KAH Digital.ch/agence-web-lyon" },
 };
 
 export default function AgenceWebLyonPage() {

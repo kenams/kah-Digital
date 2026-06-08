@@ -6,7 +6,7 @@ export const metadata: Metadata = buildNoIndexMetadata({
   locale: "en",
   path: "/payer",
   title: "Online payment",
-  description: "Pay a KAH-Digital invoice, deposit, or balance by card.",
+  description: "Pay a KAH Digital invoice, deposit, or balance by card.",
 });
 
 export default function PayPageEn() {

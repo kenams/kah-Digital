@@ -14,7 +14,7 @@ const COPY = {
     eyebrow: "Devis personnalisé · Budget adapté · Réponse sous 24h",
     title: "Parlez-nous de votre projet. On s'adapte.",
     subtitle: "Pas de formule rigide, pas de tarif imposé. Décrivez votre situation en 2 lignes — on revient avec une proposition claire, ajustée à votre budget réel.\nAucun engagement avant validation.",
-    proofTitle: "Ils ont fait confiance à KAH-Digital",
+    proofTitle: "Ils ont fait confiance à KAH Digital",
     stats: [
       { value: "142 €", label: "Dès ce prix" },
       { value: "5 jours", label: "1ère livraison" },
@@ -57,7 +57,7 @@ const COPY = {
     eyebrow: "Custom quote · Adapted budget · Reply within 24h",
     title: "Tell us about your project. We'll adapt.",
     subtitle: "No rigid package, no imposed price. Describe your situation in 2 lines — we come back with a clear proposal adjusted to your actual budget.\nNo commitment before you validate.",
-    proofTitle: "They trusted KAH-Digital",
+    proofTitle: "They trusted KAH Digital",
     stats: [
       { value: "$142", label: "Starting price" },
       { value: "5 days", label: "First delivery" },
@@ -100,7 +100,7 @@ const COPY = {
     eyebrow: "Individuelle Offerte · Budget anpassbar · Antwort in 24h",
     title: "Erzählen Sie uns von Ihrem Projekt. Wir passen uns an.",
     subtitle: "Kein starres Paket, kein aufgezwungener Preis. Beschreiben Sie Ihre Situation in 2 Sätzen — wir kommen mit einem klaren Vorschlag zurück, der an Ihr tatsächliches Budget angepasst ist.\nKeine Verpflichtung vor Ihrer Bestätigung.",
-    proofTitle: "Sie haben KAH-Digital vertraut",
+    proofTitle: "Sie haben KAH Digital vertraut",
     stats: [
       { value: "CHF 149", label: "Ab diesem Preis" },
       { value: "5 Tage", label: "Erste Lieferung" },
