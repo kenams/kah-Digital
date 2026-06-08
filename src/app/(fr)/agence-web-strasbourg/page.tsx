@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Strasbourg — KAH Digital | Devis personnalisé",
-  description: "Studio digital pour Strasbourg et l'Alsace. Sites web trilingues FR/DE/EN, apps et solutions IA. Idéal pour entreprises transfrontalières. Devis sous 24h.",
-  keywords: ["création site web Strasbourg", "agence web Strasbourg", "site internet Strasbourg", "développeur web Alsace"],
+  title: "Crï¿½ation site web Strasbourg ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital pour Strasbourg et l'Alsace. Sites web trilingues FR/DE/EN, apps et solutions IA. Idï¿½al pour entreprises transfrontaliï¿½res. Devis sous 24h.",
+  keywords: ["crï¿½ation site web Strasbourg", "agence web Strasbourg", "site internet Strasbourg", "dï¿½veloppeur web Alsace"],
   openGraph: {
-    title: "Création site web Strasbourg — KAH Digital",
-    description: "Studio digital pour entreprises alsaciennes et transfrontalières. FR/DE/EN. Devis personnalisé.",
+    title: "Crï¿½ation site web Strasbourg ï¿½ KAH Digital",
+    description: "Studio digital pour entreprises alsaciennes et transfrontaliï¿½res. FR/DE/EN. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-strasbourg" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-strasbourg" },
 };
 
 export default function AgenceWebStrasbourgPage() {

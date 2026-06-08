@@ -1,56 +1,56 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Comment choisir une agence web pour votre PME — Guide 2026 — KAH Digital",
-  description: "devis, red flags, questions à poser, critères clés : tout ce qu'une PME doit savoir avant de choisir une agence web ou un développeur freelance.",
+  title: "Comment choisir une agence web pour votre PME ï¿½ Guide 2026 ï¿½ KAH Digital",
+  description: "devis, red flags, questions ï¿½ poser, critï¿½res clï¿½s : tout ce qu'une PME doit savoir avant de choisir une agence web ou un dï¿½veloppeur freelance.",
   keywords: ["choisir agence web PME", "agence web PME", "comment choisir agence digitale", "freelance vs agence web", "agence web petite entreprise"],
-  alternates: { canonical: "https://KAH Digital.ch/blog/agence-web-pme-comment-choisir" },
+  alternates: { canonical: "https://kah-digital.ch/blog/agence-web-pme-comment-choisir" },
   openGraph: {
     title: "Comment choisir une agence web pour votre PME",
-    description: "Les critères qui comptent vraiment, les red flags, et les bonnes questions à poser.",
+    description: "Les critï¿½res qui comptent vraiment, les red flags, et les bonnes questions ï¿½ poser.",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Comment choisir une agence web pour votre PME — Guide 2026",
+  "headline": "Comment choisir une agence web pour votre PME ï¿½ Guide 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
   "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://KAH Digital.ch" },
-  "mainEntityOfPage": "https://KAH Digital.ch/blog/agence-web-pme-comment-choisir",
+  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "mainEntityOfPage": "https://kah-digital.ch/blog/agence-web-pme-comment-choisir",
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Vaut-il mieux une agence web ou un freelance pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour une PME, un freelance senior ou un studio indépendant offre souvent plus de réactivité et moins d'overhead qu'une grande agence. Pour des projets complexes, une agence structurée peut être préférable." } },
-    { "@type": "Question", "name": "Quelles questions poser avant de signer avec une agence web ?", "acceptedAnswer": { "@type": "Answer", "text": "Demandez : Qui va vraiment travailler sur mon projet ? Ai-je accès au code et à l'hébergement ? Qu'est-ce qui est inclus après la mise en ligne ? Avez-vous des références dans mon secteur ?" } },
-    { "@type": "Question", "name": "Comment cadrer le périmètre pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine PME propre et performant s'estime après cadrage. Méfiez-vous des propositions trop vagues, trop standardisées ou sans explication claire des livrables." } },
+    { "@type": "Question", "name": "Vaut-il mieux une agence web ou un freelance pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour une PME, un freelance senior ou un studio indï¿½pendant offre souvent plus de rï¿½activitï¿½ et moins d'overhead qu'une grande agence. Pour des projets complexes, une agence structurï¿½e peut ï¿½tre prï¿½fï¿½rable." } },
+    { "@type": "Question", "name": "Quelles questions poser avant de signer avec une agence web ?", "acceptedAnswer": { "@type": "Answer", "text": "Demandez : Qui va vraiment travailler sur mon projet ? Ai-je accï¿½s au code et ï¿½ l'hï¿½bergement ? Qu'est-ce qui est inclus aprï¿½s la mise en ligne ? Avez-vous des rï¿½fï¿½rences dans mon secteur ?" } },
+    { "@type": "Question", "name": "Comment cadrer le pï¿½rimï¿½tre pour une PME ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine PME propre et performant s'estime aprï¿½s cadrage. Mï¿½fiez-vous des propositions trop vagues, trop standardisï¿½es ou sans explication claire des livrables." } },
   ],
 };
 
 const GOOD_SIGNS = [
-  "Porte-folio avec des vrais projets livrés (pas des maquettes)",
+  "Porte-folio avec des vrais projets livrï¿½s (pas des maquettes)",
   "Process clair : brief ? maquette ? dev ? recette ? livraison",
-  "Devis personnalisé expliqué après un premier cadrage simple",
-  "Vous recevez les accès : hébergement, domaine, code source",
-  "Réponse rapide (sous 24-48h) dès le premier contact",
-  "Interlocuteur unique qui comprend votre métier",
+  "Devis personnalisï¿½ expliquï¿½ aprï¿½s un premier cadrage simple",
+  "Vous recevez les accï¿½s : hï¿½bergement, domaine, code source",
+  "Rï¿½ponse rapide (sous 24-48h) dï¿½s le premier contact",
+  "Interlocuteur unique qui comprend votre mï¿½tier",
 ];
 
 const RED_FLAGS = [
   "Aucun portfolio visible ou des projets non cliquables",
-  "Devis signé avant d'avoir compris votre besoin",
-  "\"Nos devis sont sur devis\" sans aucune explication de méthode ou de périmètre",
-  "Hébergement propriétaire que vous ne pouvez pas quitter",
+  "Devis signï¿½ avant d'avoir compris votre besoin",
+  "\"Nos devis sont sur devis\" sans aucune explication de mï¿½thode ou de pï¿½rimï¿½tre",
+  "Hï¿½bergement propriï¿½taire que vous ne pouvez pas quitter",
   "Contrat de maintenance mensuel obligatoire sans justification claire",
-  "Interlocuteur commercial qui passe ensuite le projet à une équipe offshore",
+  "Interlocuteur commercial qui passe ensuite le projet ï¿½ une ï¿½quipe offshore",
 ];
 
 export default function AgenceWebPmePage() {
@@ -65,13 +65,13 @@ export default function AgenceWebPmePage() {
           <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
             <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">PME</span>
-            <span className="text-xs text-gray-600">4 mai 2026 · 6 min de lecture</span>
+            <span className="text-xs text-gray-600">4 mai 2026 ï¿½ 6 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             Comment choisir une agence web pour votre PME
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Les critères qui comptent vraiment, les red flags qui doivent vous faire fuir, et les bonnes questions à poser avant de signer.
+            Les critï¿½res qui comptent vraiment, les red flags qui doivent vous faire fuir, et les bonnes questions ï¿½ poser avant de signer.
           </p>
         </div>
       </section>
@@ -79,16 +79,16 @@ export default function AgenceWebPmePage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-5">
           <p className="text-sm leading-relaxed text-blue-200">
-            <strong>TL;DR :</strong> Vérifiez le portfolio, demandez qui travaille sur votre projet, assurez-vous d'avoir tous les accès. Fuyez les contrats sans sortie possible et les devis sans périmètre clair.
+            <strong>TL;DR :</strong> Vï¿½rifiez le portfolio, demandez qui travaille sur votre projet, assurez-vous d'avoir tous les accï¿½s. Fuyez les contrats sans sortie possible et les devis sans pï¿½rimï¿½tre clair.
           </p>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Agence web ou freelance — laquelle choisir pour une PME ?</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Agence web ou freelance ï¿½ laquelle choisir pour une PME ?</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          La vraie question n'est pas "agence ou freelance" mais "qui va vraiment travailler sur mon projet". Une grande agence peut vous mettre sur votre projet un junior ou un sous-traitant offshore. Un bon studio indépendant peut vous offrir la même qualité qu'une grande structure, avec plus de réactivité et moins d'intermédiaires.
+          La vraie question n'est pas "agence ou freelance" mais "qui va vraiment travailler sur mon projet". Une grande agence peut vous mettre sur votre projet un junior ou un sous-traitant offshore. Un bon studio indï¿½pendant peut vous offrir la mï¿½me qualitï¿½ qu'une grande structure, avec plus de rï¿½activitï¿½ et moins d'intermï¿½diaires.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          Pour un projet de PME, un freelance senior ou un petit studio est souvent un bon équilibre entre qualité, cadrage et réactivité.
+          Pour un projet de PME, un freelance senior ou un petit studio est souvent un bon ï¿½quilibre entre qualitï¿½, cadrage et rï¿½activitï¿½.
         </p>
 
         <h2 className="mb-8 text-2xl font-bold text-white">Les bons signes</h2>
@@ -101,7 +101,7 @@ export default function AgenceWebPmePage() {
           ))}
         </div>
 
-        <h2 className="mb-8 text-2xl font-bold text-white">Les red flags — fuyez</h2>
+        <h2 className="mb-8 text-2xl font-bold text-white">Les red flags ï¿½ fuyez</h2>
         <div className="mb-10 space-y-3">
           {RED_FLAGS.map((item) => (
             <div key={item} className="flex items-start gap-3 rounded-xl border border-red-500/15 bg-red-500/5 p-4">
@@ -111,13 +111,13 @@ export default function AgenceWebPmePage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Les questions à poser obligatoirement</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Les questions ï¿½ poser obligatoirement</h2>
         <div className="mb-10 space-y-4">
           {[
-            { q: "Qui va travailler sur mon projet ?", a: "Vous devez connaître le ou les profils qui vont coder et designer votre site. Pas un chef de projet qui délègue." },
-            { q: "Est-ce que j'aurai accès à mon code et mon hébergement ?", a: "Vous devez être propriétaire de tout. Si la réponse est vague, fuyez." },
-            { q: "Que se passe-t-il après la mise en ligne ?", a: "Corrections de bugs, mises à jour, support : demandez ce qui est inclus, ce qui est optionnel et le délai de réponse." },
-            { q: "Avez-vous des références dans mon secteur ?", a: "Pas obligatoire, mais un plus. Demandez à voir des projets livrés et à contacter des anciens clients." },
+            { q: "Qui va travailler sur mon projet ?", a: "Vous devez connaï¿½tre le ou les profils qui vont coder et designer votre site. Pas un chef de projet qui dï¿½lï¿½gue." },
+            { q: "Est-ce que j'aurai accï¿½s ï¿½ mon code et mon hï¿½bergement ?", a: "Vous devez ï¿½tre propriï¿½taire de tout. Si la rï¿½ponse est vague, fuyez." },
+            { q: "Que se passe-t-il aprï¿½s la mise en ligne ?", a: "Corrections de bugs, mises ï¿½ jour, support : demandez ce qui est inclus, ce qui est optionnel et le dï¿½lai de rï¿½ponse." },
+            { q: "Avez-vous des rï¿½fï¿½rences dans mon secteur ?", a: "Pas obligatoire, mais un plus. Demandez ï¿½ voir des projets livrï¿½s et ï¿½ contacter des anciens clients." },
           ].map((item) => (
             <div key={item.q} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
               <p className="font-semibold text-white">? {item.q}</p>
@@ -126,7 +126,7 @@ export default function AgenceWebPmePage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Questions fréquentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Questions frï¿½quentes</h2>
         <div className="mb-12 space-y-4">
           {faqJsonLd.mainEntity.map((f) => (
             <div key={f.name} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -137,8 +137,8 @@ export default function AgenceWebPmePage() {
         </div>
 
         <div className="rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 to-violet-600/10 p-8 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-white">Travaillez avec un studio transparent et réactif</h2>
-          <p className="mb-6 text-gray-400">Process clair · Accès complets · Réponse sous 24h · Devis personnalisé</p>
+          <h2 className="mb-3 text-2xl font-bold text-white">Travaillez avec un studio transparent et rï¿½actif</h2>
+          <p className="mb-6 text-gray-400">Process clair ï¿½ Accï¿½s complets ï¿½ Rï¿½ponse sous 24h ï¿½ Devis personnalisï¿½</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-blue-500/30">
               Demander un devis <FiArrowRight size={15} />

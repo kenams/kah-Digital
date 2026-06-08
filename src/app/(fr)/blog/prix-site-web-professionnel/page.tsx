@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "comment estimer un site web professionnel en 2026 ? — KAH Digital",
-  description: "Méthode claire pour cadrer un site web professionnel : besoin réel, périmètre, fonctionnalités, délais, accompagnement et devis personnalisé.",
-  keywords: ["devis site web", "devis site web professionnel", "comment estimer un site internet", "estimation création site web 2026"],
-  alternates: { canonical: "https://KAH Digital.ch/blog/devis-site-web-professionnel" },
+  title: "comment estimer un site web professionnel en 2026 ? ï¿½ KAH Digital",
+  description: "Mï¿½thode claire pour cadrer un site web professionnel : besoin rï¿½el, pï¿½rimï¿½tre, fonctionnalitï¿½s, dï¿½lais, accompagnement et devis personnalisï¿½.",
+  keywords: ["devis site web", "devis site web professionnel", "comment estimer un site internet", "estimation crï¿½ation site web 2026"],
+  alternates: { canonical: "https://kah-digital.ch/blog/devis-site-web-professionnel" },
   openGraph: {
     title: "comment estimer un site web professionnel en 2026 ?",
-    description: "Les critères qui permettent de recevoir un devis web clair et adapté.",
+    description: "Les critï¿½res qui permettent de recevoir un devis web clair et adaptï¿½.",
   },
 };
 
@@ -21,26 +21,26 @@ const jsonLd = {
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
   "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://KAH Digital.ch" },
-  "mainEntityOfPage": "https://KAH Digital.ch/blog/devis-site-web-professionnel",
+  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "mainEntityOfPage": "https://kah-digital.ch/blog/devis-site-web-professionnel",
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "comment estimer une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page simple s'estime après cadrage selon la complexité du design et les intégrations nécessaires." } },
-    { "@type": "Question", "name": "Quel est le devis pour un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel s'estime après cadrage, livré en 2 à 3 semaines." } },
-    { "@type": "Question", "name": "comment estimer un site corporate ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site corporate complet (5-15 pages, CMS, multilingue) s'estime après cadrage." } },
-    { "@type": "Question", "name": "Quel Périmètre pour une application web ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application web sur mesure s'estime après cadrage selon la complexité des fonctionnalités." } },
+    { "@type": "Question", "name": "comment estimer une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page simple s'estime aprï¿½s cadrage selon la complexitï¿½ du design et les intï¿½grations nï¿½cessaires." } },
+    { "@type": "Question", "name": "Quel est le devis pour un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel s'estime aprï¿½s cadrage, livrï¿½ en 2 ï¿½ 3 semaines." } },
+    { "@type": "Question", "name": "comment estimer un site corporate ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site corporate complet (5-15 pages, CMS, multilingue) s'estime aprï¿½s cadrage." } },
+    { "@type": "Question", "name": "Quel Pï¿½rimï¿½tre pour une application web ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application web sur mesure s'estime aprï¿½s cadrage selon la complexitï¿½ des fonctionnalitï¿½s." } },
   ],
 };
 
 const TIERS = [
-  { label: "Landing / Portfolio", price: "devis personnalisé", delay: "1–2 sem.", desc: "Une page claire et professionnelle. Idéal pour freelances, coachs, lancement de produit ou test d'idée.", included: ["Design sur mesure", "Responsive mobile", "Formulaire de contact", "SEO de base", "Déploiement inclus"] },
-  { label: "Site vitrine", price: "devis personnalisé", delay: "2–3 sem.", desc: "Présence complète pour une PME ou un indépendant. Pages : accueil, services, à propos, contact.", included: ["5 à 8 pages", "SEO optimisé", "Google Maps", "Formulaire pro", "Analytics"] },
-  { label: "Site corporate", price: "devis personnalisé", delay: "3–5 sem.", desc: "Site complet pour entreprise établie : multilingue, CMS, pages multiples, design premium.", included: ["10–20 pages", "CMS admin", "Multilingue", "Blog intégré", "Performance optimisée"] },
-  { label: "Application web / IA", price: "devis personnalisé", delay: "4–10 sem.", desc: "Dashboard, SaaS, app métier, intégration IA. Développement full-stack sur mesure.", included: ["Auth utilisateurs", "Base de données", "API REST / webhooks", "Intégration IA", "Tests & déploiement"] },
+  { label: "Landing / Portfolio", price: "devis personnalisï¿½", delay: "1ï¿½2 sem.", desc: "Une page claire et professionnelle. Idï¿½al pour freelances, coachs, lancement de produit ou test d'idï¿½e.", included: ["Design sur mesure", "Responsive mobile", "Formulaire de contact", "SEO de base", "Dï¿½ploiement inclus"] },
+  { label: "Site vitrine", price: "devis personnalisï¿½", delay: "2ï¿½3 sem.", desc: "Prï¿½sence complï¿½te pour une PME ou un indï¿½pendant. Pages : accueil, services, ï¿½ propos, contact.", included: ["5 ï¿½ 8 pages", "SEO optimisï¿½", "Google Maps", "Formulaire pro", "Analytics"] },
+  { label: "Site corporate", price: "devis personnalisï¿½", delay: "3ï¿½5 sem.", desc: "Site complet pour entreprise ï¿½tablie : multilingue, CMS, pages multiples, design premium.", included: ["10ï¿½20 pages", "CMS admin", "Multilingue", "Blog intï¿½grï¿½", "Performance optimisï¿½e"] },
+  { label: "Application web / IA", price: "devis personnalisï¿½", delay: "4ï¿½10 sem.", desc: "Dashboard, SaaS, app mï¿½tier, intï¿½gration IA. Dï¿½veloppement full-stack sur mesure.", included: ["Auth utilisateurs", "Base de donnï¿½es", "API REST / webhooks", "Intï¿½gration IA", "Tests & dï¿½ploiement"] },
 ];
 
 export default function devisSiteWebPage() {
@@ -56,13 +56,13 @@ export default function devisSiteWebPage() {
           <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
             <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">Devis</span>
-            <span className="text-xs text-gray-600">24 avril 2026 · 6 min de lecture</span>
+            <span className="text-xs text-gray-600">24 avril 2026 ï¿½ 6 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             comment estimer un site web professionnel en 2026 ?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Chaque projet est différent. Le bon devis ne part pas d'un montant public, mais d'un périmètre clair : objectif, pages, fonctionnalités, niveau de finition, délai et accompagnement.
+            Chaque projet est diffï¿½rent. Le bon devis ne part pas d'un montant public, mais d'un pï¿½rimï¿½tre clair : objectif, pages, fonctionnalitï¿½s, niveau de finition, dï¿½lai et accompagnement.
           </p>
         </div>
       </section>
@@ -72,16 +72,16 @@ export default function devisSiteWebPage() {
         {/* Intro */}
         <div className="mb-10 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
           <p className="text-sm leading-relaxed text-amber-200">
-            <strong>TL;DR :</strong> Landing page, site vitrine, corporate ou application : le devis dépend du périmètre utile, des priorités business et du budget disponible, pas d'une formule rigide.
+            <strong>TL;DR :</strong> Landing page, site vitrine, corporate ou application : le devis dï¿½pend du pï¿½rimï¿½tre utile, des prioritï¿½s business et du budget disponible, pas d'une formule rigide.
           </p>
         </div>
 
         <h2 className="mb-6 text-2xl font-bold text-white">Pourquoi les devis varient autant ?</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          Sur internet, on trouve des promesses très différentes pour un résultat qui semble identique. En pratique, deux sites avec le même nombre de pages peuvent demander un effort très différent selon le contenu, les intégrations, le design, le SEO et les validations.
+          Sur internet, on trouve des promesses trï¿½s diffï¿½rentes pour un rï¿½sultat qui semble identique. En pratique, deux sites avec le mï¿½me nombre de pages peuvent demander un effort trï¿½s diffï¿½rent selon le contenu, les intï¿½grations, le design, le SEO et les validations.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          Un site Wix ou Squarespace peut suffire pour tester une idée. Mais dès que vous avez besoin d'un design différenciant, d'une performance correcte ou d'un CMS personnalisé, il faut passer à du développement sur mesure.
+          Un site Wix ou Squarespace peut suffire pour tester une idï¿½e. Mais dï¿½s que vous avez besoin d'un design diffï¿½renciant, d'une performance correcte ou d'un CMS personnalisï¿½, il faut passer ï¿½ du dï¿½veloppement sur mesure.
         </p>
 
         <h2 className="mb-8 text-2xl font-bold text-white">Les formats par type de projet</h2>
@@ -103,21 +103,21 @@ export default function devisSiteWebPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Ce qui élargit le périmètre</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Ce qui ï¿½largit le pï¿½rimï¿½tre</h2>
         <p className="mb-4 text-gray-400 leading-relaxed">
-          Plusieurs éléments peuvent demander plus de cadrage, de conception ou de développement :
+          Plusieurs ï¿½lï¿½ments peuvent demander plus de cadrage, de conception ou de dï¿½veloppement :
         </p>
         <ul className="mb-10 space-y-3 text-gray-400 text-sm leading-relaxed">
           {[
-            { title: "E-commerce", detail: "Catalogue produits, paiement, gestion des commandes et suivi client demandent un périmètre plus structuré." },
-            { title: "Multilingue", detail: "Traduire et adapter le contenu (3 langues) représente 20 à 35% de travail supplémentaire." },
-            { title: "Intégrations tierces", detail: "CRM, calendrier de réservation, ERP ou API personnalisées doivent être analysés avant estimation." },
-            { title: "Animations et micro-interactions", detail: "Un design très animé peut doubler le temps de développement front-end." },
-            { title: "SEO technique avancé", detail: "Audit, structure de données et Core Web Vitals demandent un travail sérieux dès l'architecture." },
+            { title: "E-commerce", detail: "Catalogue produits, paiement, gestion des commandes et suivi client demandent un pï¿½rimï¿½tre plus structurï¿½." },
+            { title: "Multilingue", detail: "Traduire et adapter le contenu (3 langues) reprï¿½sente 20 ï¿½ 35% de travail supplï¿½mentaire." },
+            { title: "Intï¿½grations tierces", detail: "CRM, calendrier de rï¿½servation, ERP ou API personnalisï¿½es doivent ï¿½tre analysï¿½s avant estimation." },
+            { title: "Animations et micro-interactions", detail: "Un design trï¿½s animï¿½ peut doubler le temps de dï¿½veloppement front-end." },
+            { title: "SEO technique avancï¿½", detail: "Audit, structure de donnï¿½es et Core Web Vitals demandent un travail sï¿½rieux dï¿½s l'architecture." },
           ].map((item) => (
             <li key={item.title} className="flex items-start gap-3">
               <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
-              <span><strong className="text-white">{item.title}</strong> — {item.detail}</span>
+              <span><strong className="text-white">{item.title}</strong> ï¿½ {item.detail}</span>
             </li>
           ))}
         </ul>
@@ -125,10 +125,10 @@ export default function devisSiteWebPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Ce qui simplifie l'estimation</h2>
         <ul className="mb-10 space-y-3 text-gray-400 text-sm leading-relaxed">
           {[
-            "Avoir des textes prêts — la rédaction représente 15 à 25% du temps total.",
-            "Fournir les photos et visuels — évite les frais de photothèque.",
-            "Un brief clair dès le départ — réduit les aller-retours et le temps de cadrage.",
-            "Périmètre simple — un site vitrine sobre se cadre plus vite qu'un site avec animations complexes.",
+            "Avoir des textes prï¿½ts ï¿½ la rï¿½daction reprï¿½sente 15 ï¿½ 25% du temps total.",
+            "Fournir les photos et visuels ï¿½ ï¿½vite les frais de photothï¿½que.",
+            "Un brief clair dï¿½s le dï¿½part ï¿½ rï¿½duit les aller-retours et le temps de cadrage.",
+            "Pï¿½rimï¿½tre simple ï¿½ un site vitrine sobre se cadre plus vite qu'un site avec animations complexes.",
           ].map((item) => (
             <li key={item} className="flex items-start gap-3">
               <FiCheck size={14} className="mt-0.5 shrink-0 text-emerald-400" />
@@ -137,7 +137,7 @@ export default function devisSiteWebPage() {
           ))}
         </ul>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Questions fréquentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Questions frï¿½quentes</h2>
         <div className="mb-12 space-y-4">
           {faqJsonLd.mainEntity.map((f) => (
             <div key={f.name} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -150,7 +150,7 @@ export default function devisSiteWebPage() {
         {/* CTA */}
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Obtenez un devis pour votre projet</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Sans engagement</p>
+          <p className="mb-6 text-gray-400">Rï¿½ponse sous 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-blue-500/30">
               Demander un devis <FiArrowRight size={15} />

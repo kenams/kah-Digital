@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Caen — KAH Digital | Devis personnalisé",
-  description: "Studio digital pour Caen et le Calvados. Sites web professionnels pour PME, artisans et indépendants normands. Devis personnalisé sous 24h, adapté au besoin réel.",
-  keywords: ["création site web Caen", "agence web Caen", "site internet Caen", "développeur web Calvados", "agence digitale Normandie Caen"],
+  title: "Crï¿½ation site web Caen ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital pour Caen et le Calvados. Sites web professionnels pour PME, artisans et indï¿½pendants normands. Devis personnalisï¿½ sous 24h, adaptï¿½ au besoin rï¿½el.",
+  keywords: ["crï¿½ation site web Caen", "agence web Caen", "site internet Caen", "dï¿½veloppeur web Calvados", "agence digitale Normandie Caen"],
   openGraph: {
-    title: "Création site web Caen — KAH Digital",
-    description: "Studio digital pour PME et artisans caennais. Sites, apps, solutions digitales. Devis personnalisé.",
+    title: "Crï¿½ation site web Caen ï¿½ KAH Digital",
+    description: "Studio digital pour PME et artisans caennais. Sites, apps, solutions digitales. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-caen" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-caen" },
 };
 
 export default function AgenceWebCaenPage() {

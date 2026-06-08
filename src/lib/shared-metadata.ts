@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { companyConfig } from "@/config/company";
 import type { Locale } from "@/lib/locales";
 import { getLocalizedPath } from "@/lib/locales";
 
-const DEFAULT_SITE_URL = "https://KAH Digital.ch";
+const DEFAULT_SITE_URL = "https://kah-digital.ch";
 const rawSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL).trim().replace(/\/+$/, "");
 
-export const SITE_URL = /^https:\/\/KAH Digital-site(?:-[^./]+)?\.vercel\.app$/i.test(rawSiteUrl)
+export const SITE_URL = /^https:\/\/kah-digital-site(?:-[^./]+)?\.vercel\.app$/i.test(rawSiteUrl)
   ? DEFAULT_SITE_URL
   : rawSiteUrl;
 

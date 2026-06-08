@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { getResendFromAddress } from "@/lib/mail";
@@ -121,7 +121,7 @@ function wrapEmailHtml(businessName: string, body: string): string {
         <td style="background:#f9fafb;padding:20px 32px;border-top:1px solid #e5e7eb;">
           <p style="margin:0;font-size:12px;color:#6b7280;line-height:1.5;">
             KAH Digital — Studio digital &bull;
-            <a href="https://KAH Digital.ch" style="color:#3b82f6;text-decoration:none;">KAH Digital.ch</a><br/>
+            <a href="https://kah-digital.ch" style="color:#3b82f6;text-decoration:none;">KAH Digital.ch</a><br/>
             Cet email vous a été envoyé car votre site web est publiquement accessible.
             Pour ne plus recevoir de communications de notre part, répondez avec "STOP".
           </p>

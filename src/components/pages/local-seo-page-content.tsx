@@ -1,4 +1,4 @@
-import Link from "next/link";
+ï»¿import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiClock, FiMapPin, FiMessageCircle, FiZap } from "react-icons/fi";
 
@@ -22,359 +22,359 @@ export type CityPageData = {
 export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-lausanne": {
     city: "Lausanne", country: "Suisse", region: "Vaud", locale: "fr", slug: "site-web-lausanne",
-    headline: "Création de site web à Lausanne",
-    subline: "Studio basé à Lausanne · Next.js 15, Lighthouse 95+, SEO technique. Dès CHF 149, livré en 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital est basé à Lausanne. Nous créons des sites web haute-performance sur Next.js 15 pour les PME, indépendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intégré. Starter dès CHF 149 · Business dès CHF 420 · Système IA complet dès CHF 950. Devis gratuit en 24h, sans engagement.",
-    sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Médecins & professions libérales"],
-    proofLine: "Studio à Lausanne · Réponse 24h · Prix fixe CHF 149 · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Lausanne",
+    subline: "Studio basï¿½ ï¿½ Lausanne ï¿½ Next.js 15, Lighthouse 95+, SEO technique. Dï¿½s CHF 149, livrï¿½ en 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital est basï¿½ ï¿½ Lausanne. Nous crï¿½ons des sites web haute-performance sur Next.js 15 pour les PME, indï¿½pendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intï¿½grï¿½. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Systï¿½me IA complet dï¿½s CHF 950. Devis gratuit en 24h, sans engagement.",
+    sectors: ["Avocats & fiduciaires", "Restaurants & hï¿½tels", "Coachs & thï¿½rapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Mï¿½decins & professions libï¿½rales"],
+    proofLine: "Studio ï¿½ Lausanne ï¿½ Rï¿½ponse 24h ï¿½ Prix fixe CHF 149 ï¿½ Sans engagement",
     faq: [
-      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 420, livré en 14 jours. Système complet avec IA dès CHF 950. Prix fixe garanti avant de commencer, zéro surprise." },
-      { q: "Vous êtes vraiment basés à Lausanne ?", a: "Oui, KAH Digital est basé à Lausanne. Vous pouvez nous rencontrer en personne ou travailler entièrement à distance — même qualité, même prix." },
-      { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
-      { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui — SEO technique complet, données structurées, Core Web Vitals 95+, URLs propres, sitemap. Inclus dès le plan Business. Optimisé pour Google CH." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Lausanne ?", a: "Starter (landing page) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (jusqu'ï¿½ 6 pages, SEO) dï¿½s CHF 420, livrï¿½ en 14 jours. Systï¿½me complet avec IA dï¿½s CHF 950. Prix fixe garanti avant de commencer, zï¿½ro surprise." },
+      { q: "Vous ï¿½tes vraiment basï¿½s ï¿½ Lausanne ?", a: "Oui, KAH Digital est basï¿½ ï¿½ Lausanne. Vous pouvez nous rencontrer en personne ou travailler entiï¿½rement ï¿½ distance ï¿½ mï¿½me qualitï¿½, mï¿½me prix." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 14 jours. Application ou systï¿½me IA : 28 jours. Dï¿½lais confirmï¿½s par ï¿½crit avant dï¿½marrage ï¿½ pas de mauvaise surprise." },
+      { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui ï¿½ SEO technique complet, donnï¿½es structurï¿½es, Core Web Vitals 95+, URLs propres, sitemap. Inclus dï¿½s le plan Business. Optimisï¿½ pour Google CH." },
     ],
   },
   "site-web-geneve": {
-    city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "site-web-geneve",
-    headline: "Création de site web à Genève",
-    subline: "Studio romand proche de Genève · Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 149, 14 jours. Prix fixe.",
-    intro: "KAH Digital accompagne les entreprises genevaises dans leur présence digitale : cabinets d'avocats, fiduciaires, ONG, hôtels, startups, médecins. Sites web haute-performance en français, anglais et allemand. Basé à Lausanne, à 45 min de Genève. Devis gratuit sous 24h, prix fixe, code 100% à vous.",
-    sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hôtels & restauration de luxe", "Startups Geneva Lake", "Médecins & cliniques"],
-    proofLine: "À 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 149 · Réponse 24h",
+    city: "Genï¿½ve", country: "Suisse", region: "Genï¿½ve", locale: "fr", slug: "site-web-geneve",
+    headline: "Crï¿½ation de site web ï¿½ Genï¿½ve",
+    subline: "Studio romand proche de Genï¿½ve ï¿½ Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dï¿½s CHF 149, 14 jours. Prix fixe.",
+    intro: "KAH Digital accompagne les entreprises genevaises dans leur prï¿½sence digitale : cabinets d'avocats, fiduciaires, ONG, hï¿½tels, startups, mï¿½decins. Sites web haute-performance en franï¿½ais, anglais et allemand. Basï¿½ ï¿½ Lausanne, ï¿½ 45 min de Genï¿½ve. Devis gratuit sous 24h, prix fixe, code 100% ï¿½ vous.",
+    sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hï¿½tels & restauration de luxe", "Startups Geneva Lake", "Mï¿½decins & cliniques"],
+    proofLine: "ï¿½ 45 min de Genï¿½ve ï¿½ Multilingue FR/EN/DE ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 420. Système IA complet dès CHF 950. Prix fixe confirmé avant tout démarrage." },
-      { q: "Êtes-vous basés à Genève ?", a: "Notre studio est à Lausanne, à 45 min de Genève. Nous rencontrons nos clients genevois en personne si besoin ou travaillons entièrement à distance — même qualité, même prix." },
-      { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dès le plan Business." },
-      { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui. Nous avons l'expérience des secteurs sensibles aux conformités et pouvons adapter notre process à vos contraintes de procurement." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Genï¿½ve ?", a: "Starter (landing page) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO multilingue) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe confirmï¿½ avant tout dï¿½marrage." },
+      { q: "ï¿½tes-vous basï¿½s ï¿½ Genï¿½ve ?", a: "Notre studio est ï¿½ Lausanne, ï¿½ 45 min de Genï¿½ve. Nous rencontrons nos clients genevois en personne si besoin ou travaillons entiï¿½rement ï¿½ distance ï¿½ mï¿½me qualitï¿½, mï¿½me prix." },
+      { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui ï¿½ franï¿½ais, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dï¿½s le plan Business." },
+      { q: "Travaillez-vous avec des ONG et organisations internationales ï¿½ Genï¿½ve ?", a: "Oui. Nous avons l'expï¿½rience des secteurs sensibles aux conformitï¿½s et pouvons adapter notre process ï¿½ vos contraintes de procurement." },
     ],
   },
   "site-web-fribourg": {
     city: "Fribourg", country: "Suisse", region: "Fribourg", locale: "fr", slug: "site-web-fribourg",
-    headline: "Création de site web à Fribourg",
-    subline: "Studio romand bilingue FR/DE · Next.js 15, SEO technique, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
-    intro: "KAH Digital crée des sites web professionnels pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, nous comprenons les besoins spécifiques du marché fribourgeois. Sites haute-performance, SEO local, design premium. Starter dès CHF 149 · Business dès CHF 420 · Devis gratuit en 24h.",
-    sectors: ["Artisans & PME fribourgeois", "Restaurants & cafés", "Coachs & formateurs", "Agriculture & terroir", "Associations & institutions", "Professions libérales"],
-    proofLine: "Bilingue FR/DE · Prix fixe CHF 149 · Réponse 24h · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Fribourg",
+    subline: "Studio romand bilingue FR/DE ï¿½ Next.js 15, SEO technique, prix fixe. Dï¿½s CHF 149, livrï¿½ en 5 jours. Sans engagement.",
+    intro: "KAH Digital crï¿½e des sites web professionnels pour les entreprises, artisans et indï¿½pendants du canton de Fribourg. Bilingue franï¿½ais-allemand, nous comprenons les besoins spï¿½cifiques du marchï¿½ fribourgeois. Sites haute-performance, SEO local, design premium. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Devis gratuit en 24h.",
+    sectors: ["Artisans & PME fribourgeois", "Restaurants & cafï¿½s", "Coachs & formateurs", "Agriculture & terroir", "Associations & institutions", "Professions libï¿½rales"],
+    proofLine: "Bilingue FR/DE ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h ï¿½ Sans engagement",
     faq: [
-      { q: "Combien coûte un site web professionnel à Fribourg ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, zéro surprise." },
-      { q: "Faites-vous des sites bilingues français-allemand pour le marché fribourgeois ?", a: "Oui — sites FR/DE parfaitement bilingues avec hreflang correct, URLs propres par langue, SEO optimisé dans les deux langues. Idéal pour le marché fribourgeois." },
-      { q: "Peut-on se rencontrer à Fribourg ?", a: "Nous pouvons nous déplacer à Fribourg pour les projets importants. La plupart des échanges se font en visioconférence depuis Lausanne." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Fribourg ?", a: "Starter (landing page bilingue FR/DE) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe, zï¿½ro surprise." },
+      { q: "Faites-vous des sites bilingues franï¿½ais-allemand pour le marchï¿½ fribourgeois ?", a: "Oui ï¿½ sites FR/DE parfaitement bilingues avec hreflang correct, URLs propres par langue, SEO optimisï¿½ dans les deux langues. Idï¿½al pour le marchï¿½ fribourgeois." },
+      { q: "Peut-on se rencontrer ï¿½ Fribourg ?", a: "Nous pouvons nous dï¿½placer ï¿½ Fribourg pour les projets importants. La plupart des ï¿½changes se font en visioconfï¿½rence depuis Lausanne." },
     ],
   },
   "agence-web-paris": {
-    city: "Paris", country: "France", region: "Île-de-France", locale: "fr", slug: "agence-web-paris",
-    headline: "Création de site web à Paris",
-    subline: "Studio digital franco-suisse · sites web, apps et solutions digitales pour freelances, PME et startups parisiennes.",
-    intro: "KAH Digital accompagne les entreprises et indépendants parisiens dans leur présence digitale. Basé en Suisse, notre studio travaille à distance pour toute la France. Process clair, réponse rapide et devis personnalisés après échange.",
-    sectors: ["Avocats & experts-comptables", "Agences & consultants", "E-commerce & boutiques", "Coachs & formateurs", "Startups & scale-ups", "Freelances & créatifs"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Paris", country: "France", region: "ï¿½le-de-France", locale: "fr", slug: "agence-web-paris",
+    headline: "Crï¿½ation de site web ï¿½ Paris",
+    subline: "Studio digital franco-suisse ï¿½ sites web, apps et solutions digitales pour freelances, PME et startups parisiennes.",
+    intro: "KAH Digital accompagne les entreprises et indï¿½pendants parisiens dans leur prï¿½sence digitale. Basï¿½ en Suisse, notre studio travaille ï¿½ distance pour toute la France. Process clair, rï¿½ponse rapide et devis personnalisï¿½s aprï¿½s ï¿½change.",
+    sectors: ["Avocats & experts-comptables", "Agences & consultants", "E-commerce & boutiques", "Coachs & formateurs", "Startups & scale-ups", "Freelances & crï¿½atifs"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des clients parisiens à distance ?", a: "Oui, tout le projet se gère en ligne. Visioconférence pour le cadrage, livraison et suivi par email. Aucun déplacement nécessaire." },
-      { q: "Quels délais pour un site à Paris ?", a: "Landing page : 1 semaine. Site vitrine : 2-3 semaines. Site corporate : 4-5 semaines. Application : 6-12 semaines." },
-      { q: "Pourquoi passer par un studio suisse pour un site parisien ?", a: "Nous offrons la rigueur suisse : process structuré, devis lisible, délais tenus. Propositions ajustées et une réactivité maximale." },
+      { q: "Travaillez-vous avec des clients parisiens ï¿½ distance ?", a: "Oui, tout le projet se gï¿½re en ligne. Visioconfï¿½rence pour le cadrage, livraison et suivi par email. Aucun dï¿½placement nï¿½cessaire." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Paris ?", a: "Landing page : 1 semaine. Site vitrine : 2-3 semaines. Site corporate : 4-5 semaines. Application : 6-12 semaines." },
+      { q: "Pourquoi passer par un studio suisse pour un site parisien ?", a: "Nous offrons la rigueur suisse : process structurï¿½, devis lisible, dï¿½lais tenus. Propositions ajustï¿½es et une rï¿½activitï¿½ maximale." },
     ],
   },
   "agence-web-lyon": {
-    city: "Lyon", country: "France", region: "Auvergne-Rhône-Alpes", locale: "fr", slug: "agence-web-lyon",
-    headline: "Création de site web à Lyon",
-    subline: "Studio digital · sites web professionnels, apps et solutions digitales pour entreprises et indépendants de Lyon et la région.",
-    intro: "KAH Digital crée des sites web et solutions digitales pour les entreprises lyonnaises. Proche géographiquement de la Suisse, nous travaillons régulièrement avec des clients de la région Auvergne-Rhône-Alpes. Process simple, devis clairs, livraison rapide.",
-    sectors: ["Restaurants & bouchons lyonnais", "PME industrielles", "Cabinets & professions libérales", "E-commerce & boutiques", "Startups & incubateurs", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Lyon", country: "France", region: "Auvergne-Rhï¿½ne-Alpes", locale: "fr", slug: "agence-web-lyon",
+    headline: "Crï¿½ation de site web ï¿½ Lyon",
+    subline: "Studio digital ï¿½ sites web professionnels, apps et solutions digitales pour entreprises et indï¿½pendants de Lyon et la rï¿½gion.",
+    intro: "KAH Digital crï¿½e des sites web et solutions digitales pour les entreprises lyonnaises. Proche gï¿½ographiquement de la Suisse, nous travaillons rï¿½guliï¿½rement avec des clients de la rï¿½gion Auvergne-Rhï¿½ne-Alpes. Process simple, devis clairs, livraison rapide.",
+    sectors: ["Restaurants & bouchons lyonnais", "PME industrielles", "Cabinets & professions libï¿½rales", "E-commerce & boutiques", "Startups & incubateurs", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Intervenez-vous à Lyon pour des réunions ?", a: "Lyon est à 2h de notre studio suisse. Nous pouvons nous déplacer pour les projets importants. Le cadrage se fait généralement en visio." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Avez-vous déjà travaillé avec des entreprises lyonnaises ?", a: "Oui, restaurants, cabinets de conseil, PME industrielles. La région est proche et nous en comprenons le tissu économique." },
+      { q: "Intervenez-vous ï¿½ Lyon pour des rï¿½unions ?", a: "Lyon est ï¿½ 2h de notre studio suisse. Nous pouvons nous dï¿½placer pour les projets importants. Le cadrage se fait gï¿½nï¿½ralement en visio." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Avez-vous dï¿½jï¿½ travaillï¿½ avec des entreprises lyonnaises ?", a: "Oui, restaurants, cabinets de conseil, PME industrielles. La rï¿½gion est proche et nous en comprenons le tissu ï¿½conomique." },
     ],
   },
   "agence-web-marseille": {
     city: "Marseille", country: "France", region: "PACA", locale: "fr", slug: "agence-web-marseille",
-    headline: "Création de site web à Marseille",
-    subline: "Studio digital pour Marseille et la région PACA · sites, apps et solutions digitales pour PME, indépendants et commerces.",
-    intro: "KAH Digital accompagne les entreprises marseillaises dans leur présence digitale. Restaurants, cabinets, boutiques, artisans : un site web propre, rapide et qui convertit. Process clair et des devis personnalisés après échange.",
-    sectors: ["Restaurants & commerces", "Artisans & indépendants", "Professions libérales", "Tourisme & hôtellerie", "E-commerce", "Startups PACA"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Marseille",
+    subline: "Studio digital pour Marseille et la rï¿½gion PACA ï¿½ sites, apps et solutions digitales pour PME, indï¿½pendants et commerces.",
+    intro: "KAH Digital accompagne les entreprises marseillaises dans leur prï¿½sence digitale. Restaurants, cabinets, boutiques, artisans : un site web propre, rapide et qui convertit. Process clair et des devis personnalisï¿½s aprï¿½s ï¿½change.",
+    sectors: ["Restaurants & commerces", "Artisans & indï¿½pendants", "Professions libï¿½rales", "Tourisme & hï¿½tellerie", "E-commerce", "Startups PACA"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des clients à Marseille à distance ?", a: "Oui, tout le projet se gère en ligne. Visioconférence pour le cadrage, livraison par email. Pas de déplacement nécessaire." },
-      { q: "Quels délais pour un site à Marseille ?", a: "Landing page : 1 semaine. Site vitrine : 2-3 semaines. Application : 6-10 semaines selon le scope." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Travaillez-vous avec des clients ï¿½ Marseille ï¿½ distance ?", a: "Oui, tout le projet se gï¿½re en ligne. Visioconfï¿½rence pour le cadrage, livraison par email. Pas de dï¿½placement nï¿½cessaire." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Marseille ?", a: "Landing page : 1 semaine. Site vitrine : 2-3 semaines. Application : 6-10 semaines selon le scope." },
+      { q: "Comment est dï¿½fini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation ï¿½ votre contexte, ï¿½ vos prioritï¿½s business et au budget disponible, sans formule rigide ni option inutile." },
     ],
   },
   "agence-web-bordeaux": {
     city: "Bordeaux", country: "France", region: "Nouvelle-Aquitaine", locale: "fr", slug: "agence-web-bordeaux",
-    headline: "Création de site web à Bordeaux",
-    subline: "Studio digital · sites web et applications pour PME, indépendants et startups de Bordeaux et la région.",
-    intro: "KAH Digital crée des sites web professionnels pour les entreprises bordelaises. Vignobles, cabinets, startups, commerces, un site web clair, rapide et adapté à votre activité, livré dans les délais convenus.",
-    sectors: ["Vignobles & domaines", "Cabinets & consultants", "Startups & scale-ups", "Restaurants & hôtels", "E-commerce", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Bordeaux",
+    subline: "Studio digital ï¿½ sites web et applications pour PME, indï¿½pendants et startups de Bordeaux et la rï¿½gion.",
+    intro: "KAH Digital crï¿½e des sites web professionnels pour les entreprises bordelaises. Vignobles, cabinets, startups, commerces, un site web clair, rapide et adaptï¿½ ï¿½ votre activitï¿½, livrï¿½ dans les dï¿½lais convenus.",
+    sectors: ["Vignobles & domaines", "Cabinets & consultants", "Startups & scale-ups", "Restaurants & hï¿½tels", "E-commerce", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour le secteur viticole à Bordeaux ?", a: "Oui, sites de domaines viticoles avec boutique en ligne, réservations de dégustations et galerie photo. Un secteur qu'on connaît bien." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous à distance pour Bordeaux ?", a: "Oui, tout le projet se gère en visioconférence et email. Efficace et sans perte de temps en déplacement." },
+      { q: "Faites-vous des sites pour le secteur viticole ï¿½ Bordeaux ?", a: "Oui, sites de domaines viticoles avec boutique en ligne, rï¿½servations de dï¿½gustations et galerie photo. Un secteur qu'on connaï¿½t bien." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Travaillez-vous ï¿½ distance pour Bordeaux ?", a: "Oui, tout le projet se gï¿½re en visioconfï¿½rence et email. Efficace et sans perte de temps en dï¿½placement." },
     ],
   },
   "agence-web-nantes": {
     city: "Nantes", country: "France", region: "Pays de la Loire", locale: "fr", slug: "agence-web-nantes",
-    headline: "Création de site web à Nantes",
-    subline: "Studio digital pour Nantes et la région · sites web, apps et automatisations IA pour entreprises et indépendants.",
-    intro: "KAH Digital accompagne les entreprises nantaises dans leur présence digitale. Nantes est l'un des écosystèmes startup les plus actifs de France. Notre studio comprend les besoins tech des scale-ups comme des TPE.",
-    sectors: ["Startups & tech", "Cabinets & consultants", "E-commerce", "Associations & ONG", "Artisans & indépendants", "Restaurants & commerces"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Nantes",
+    subline: "Studio digital pour Nantes et la rï¿½gion ï¿½ sites web, apps et automatisations IA pour entreprises et indï¿½pendants.",
+    intro: "KAH Digital accompagne les entreprises nantaises dans leur prï¿½sence digitale. Nantes est l'un des ï¿½cosystï¿½mes startup les plus actifs de France. Notre studio comprend les besoins tech des scale-ups comme des TPE.",
+    sectors: ["Startups & tech", "Cabinets & consultants", "E-commerce", "Associations & ONG", "Artisans & indï¿½pendants", "Restaurants & commerces"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des startups nantaises ?", a: "Oui, MVP, portails, dashboards et intégrations IA. Nantes a un écosystème tech solide que nous suivons de près." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Pouvez-vous faire une application mobile pour une startup nantaise ?", a: "Oui, application Expo React Native, cross-platform iOS et Android. Délai moyen : 6 à 12 semaines selon le scope." },
+      { q: "Travaillez-vous avec des startups nantaises ?", a: "Oui, MVP, portails, dashboards et intï¿½grations IA. Nantes a un ï¿½cosystï¿½me tech solide que nous suivons de prï¿½s." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Pouvez-vous faire une application mobile pour une startup nantaise ?", a: "Oui, application Expo React Native, cross-platform iOS et Android. Dï¿½lai moyen : 6 ï¿½ 12 semaines selon le scope." },
     ],
   },
   "agence-web-strasbourg": {
     city: "Strasbourg", country: "France", region: "Alsace", locale: "fr", slug: "agence-web-strasbourg",
-    headline: "Création de site web à Strasbourg",
-    subline: "Studio digital trilingue FR/DE/EN · sites web et applications pour entreprises alsaciennes, transfrontalières et internationales.",
-    intro: "KAH Digital est un studio idéal pour les entreprises strasbourgeoises : trilingue français-allemand-anglais, nous comprenons les enjeux des marchés transfrontaliers. Sites vitrines, applications métier ou solutions digitales. Process clair, livraison rapide.",
-    sectors: ["Entreprises transfrontalières FR/DE", "Institutions & collectivités", "Cabinets d'avocats", "E-commerce", "Artisans & PME", "Tourisme & culture"],
-    proofLine: "Trilingue FR/DE/EN · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Strasbourg",
+    subline: "Studio digital trilingue FR/DE/EN ï¿½ sites web et applications pour entreprises alsaciennes, transfrontaliï¿½res et internationales.",
+    intro: "KAH Digital est un studio idï¿½al pour les entreprises strasbourgeoises : trilingue franï¿½ais-allemand-anglais, nous comprenons les enjeux des marchï¿½s transfrontaliers. Sites vitrines, applications mï¿½tier ou solutions digitales. Process clair, livraison rapide.",
+    sectors: ["Entreprises transfrontaliï¿½res FR/DE", "Institutions & collectivitï¿½s", "Cabinets d'avocats", "E-commerce", "Artisans & PME", "Tourisme & culture"],
+    proofLine: "Trilingue FR/DE/EN ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites bilingues français-allemand ?", a: "Oui, c'est l'une de nos spécialités. Nous créons des sites natifs multilingues, optimisés SEO dans chaque langue." },
+      { q: "Faites-vous des sites bilingues franï¿½ais-allemand ?", a: "Oui, c'est l'une de nos spï¿½cialitï¿½s. Nous crï¿½ons des sites natifs multilingues, optimisï¿½s SEO dans chaque langue." },
       { q: "Travaillez-vous avec des entreprises du Bade-Wurtemberg proches de Strasbourg ?", a: "Oui, notre studio est trilingue. Nous accompagnons aussi les entreprises allemandes ou suisses proches de Strasbourg." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Comment est dï¿½fini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation ï¿½ votre contexte, ï¿½ vos prioritï¿½s business et au budget disponible, sans formule rigide ni option inutile." },
     ],
   },
   "agence-web-berne": {
     city: "Berne", country: "Suisse", region: "Berne", locale: "fr", slug: "agence-web-berne",
-    headline: "Création de site web à Berne",
-    subline: "Studio digital suisse bilingue FR/DE · Next.js 15, Lighthouse 95+, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
-    intro: "KAH Digital accompagne les entreprises et indépendants de la région bernoise dans leur présence digitale. Bilingue français-allemand, notre studio est parfaitement adapté aux besoins du marché bernois : fédéral, institutionnel, ou PME de proximité. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950. Devis gratuit en 24h.",
-    sectors: ["Institutions & administrations fédérales", "Cabinets & consultants", "PME bilingues FR/DE", "Artisans & indépendants", "Associations & ONG", "Startups bernoises"],
-    proofLine: "Studio Suisse · Bilingue FR/DE · Prix fixe CHF 149 · Réponse 24h",
+    headline: "Crï¿½ation de site web ï¿½ Berne",
+    subline: "Studio digital suisse bilingue FR/DE ï¿½ Next.js 15, Lighthouse 95+, prix fixe. Dï¿½s CHF 149, livrï¿½ en 5 jours. Sans engagement.",
+    intro: "KAH Digital accompagne les entreprises et indï¿½pendants de la rï¿½gion bernoise dans leur prï¿½sence digitale. Bilingue franï¿½ais-allemand, notre studio est parfaitement adaptï¿½ aux besoins du marchï¿½ bernois : fï¿½dï¿½ral, institutionnel, ou PME de proximitï¿½. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Systï¿½me IA dï¿½s CHF 950. Devis gratuit en 24h.",
+    sectors: ["Institutions & administrations fï¿½dï¿½rales", "Cabinets & consultants", "PME bilingues FR/DE", "Artisans & indï¿½pendants", "Associations & ONG", "Startups bernoises"],
+    proofLine: "Studio Suisse ï¿½ Bilingue FR/DE ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Berne ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, devis confirmé avant de commencer." },
-      { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui, sites institutionnels, portails de services et intranets. Expérience avec les structures fédérales et cantonales suisses." },
-      { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH Digital produit des sites en allemand, français et anglais. Idéal pour le marché bilingue bernois." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Berne ?", a: "Starter (landing page bilingue FR/DE) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe, devis confirmï¿½ avant de commencer." },
+      { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui, sites institutionnels, portails de services et intranets. Expï¿½rience avec les structures fï¿½dï¿½rales et cantonales suisses." },
+      { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH Digital produit des sites en allemand, franï¿½ais et anglais. Idï¿½al pour le marchï¿½ bilingue bernois." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui ï¿½ virement bancaire CHF, TWINT et carte bancaire acceptï¿½s. Facturation depuis notre siï¿½ge ï¿½ Lausanne." },
     ],
   },
   "agence-web-toulouse": {
     city: "Toulouse", country: "France", region: "Occitanie", locale: "fr", slug: "agence-web-toulouse",
-    headline: "Création de site web à Toulouse",
-    subline: "Studio digital pour Toulouse et l'Occitanie · sites web, apps et solutions digitales pour PME, startups et indépendants.",
-    intro: "KAH Digital accompagne les entreprises toulousaines dans leur présence digitale. Toulouse est la 4ème ville de France et un hub technologique majeur. Notre studio comprend autant les besoins des PME aéronautiques que des restaurants du Capitole. Process clair, devis personnalisés, livraison rapide.",
-    sectors: ["Aéronautique & ingénierie", "Restaurants & commerces", "Cabinets & professions libérales", "Startups & tech", "Artisans & indépendants", "E-commerce"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Toulouse",
+    subline: "Studio digital pour Toulouse et l'Occitanie ï¿½ sites web, apps et solutions digitales pour PME, startups et indï¿½pendants.",
+    intro: "KAH Digital accompagne les entreprises toulousaines dans leur prï¿½sence digitale. Toulouse est la 4ï¿½me ville de France et un hub technologique majeur. Notre studio comprend autant les besoins des PME aï¿½ronautiques que des restaurants du Capitole. Process clair, devis personnalisï¿½s, livraison rapide.",
+    sectors: ["Aï¿½ronautique & ingï¿½nierie", "Restaurants & commerces", "Cabinets & professions libï¿½rales", "Startups & tech", "Artisans & indï¿½pendants", "E-commerce"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des PME du secteur aéronautique à Toulouse ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Le tissu économique toulousain nous est familier." },
-      { q: "Quels délais pour un site à Toulouse ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. App sur mesure : 6-12 sem. selon scope." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Travaillez-vous avec des PME du secteur aï¿½ronautique ï¿½ Toulouse ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Le tissu ï¿½conomique toulousain nous est familier." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Toulouse ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. App sur mesure : 6-12 sem. selon scope." },
+      { q: "Comment est dï¿½fini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation ï¿½ votre contexte, ï¿½ vos prioritï¿½s business et au budget disponible, sans formule rigide ni option inutile." },
     ],
   },
   "agence-web-nice": {
-    city: "Nice", country: "France", region: "Côte d'Azur", locale: "fr", slug: "agence-web-nice",
-    headline: "Création de site web à Nice",
-    subline: "Studio digital pour Nice et la Côte d'Azur · sites web professionnels pour hôtels, restaurants, professions libérales et commerces.",
-    intro: "KAH Digital crée des sites web pour les entreprises niçoises. Tourisme, hôtellerie, restaurants gastronomiques, cabinets médicaux, boutiques, un site rapide, mobile et qui convertit. La Côte d'Azur mérite une présence digitale à la hauteur.",
-    sectors: ["Hôtels & résidences", "Restaurants gastronomiques", "Boutiques & luxe", "Médecins & thérapeutes", "Agences immobilières", "Artisans & prestataires"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Nice", country: "France", region: "Cï¿½te d'Azur", locale: "fr", slug: "agence-web-nice",
+    headline: "Crï¿½ation de site web ï¿½ Nice",
+    subline: "Studio digital pour Nice et la Cï¿½te d'Azur ï¿½ sites web professionnels pour hï¿½tels, restaurants, professions libï¿½rales et commerces.",
+    intro: "KAH Digital crï¿½e des sites web pour les entreprises niï¿½oises. Tourisme, hï¿½tellerie, restaurants gastronomiques, cabinets mï¿½dicaux, boutiques, un site rapide, mobile et qui convertit. La Cï¿½te d'Azur mï¿½rite une prï¿½sence digitale ï¿½ la hauteur.",
+    sectors: ["Hï¿½tels & rï¿½sidences", "Restaurants gastronomiques", "Boutiques & luxe", "Mï¿½decins & thï¿½rapeutes", "Agences immobiliï¿½res", "Artisans & prestataires"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour le secteur hôtelier niçois ?", a: "Oui, sites vitrines, réservation en ligne, galeries photo. Nous connaissons bien les besoins du tourisme haut de gamme." },
-      { q: "Créez-vous des sites en plusieurs langues pour Nice ?", a: "Oui, sites FR/EN/IT/DE pour accueillir la clientèle internationale de la Côte d'Azur." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
+      { q: "Faites-vous des sites pour le secteur hï¿½telier niï¿½ois ?", a: "Oui, sites vitrines, rï¿½servation en ligne, galeries photo. Nous connaissons bien les besoins du tourisme haut de gamme." },
+      { q: "Crï¿½ez-vous des sites en plusieurs langues pour Nice ?", a: "Oui, sites FR/EN/IT/DE pour accueillir la clientï¿½le internationale de la Cï¿½te d'Azur." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
     ],
   },
   "agence-web-lille": {
     city: "Lille", country: "France", region: "Hauts-de-France", locale: "fr", slug: "agence-web-lille",
-    headline: "Création de site web à Lille",
-    subline: "Studio digital pour Lille et les Hauts-de-France · sites web, apps et solutions digitales pour PME, indépendants et commerces.",
-    intro: "KAH Digital accompagne les entreprises lilloises dans leur présence digitale. Carrefour entre Paris, Bruxelles et Londres, Lille est un marché dynamique. Notre studio crée des sites web efficaces pour artisans, cabinets, startups et commerces de la région.",
-    sectors: ["Commerces & boutiques", "PME industrielles", "Cabinets & consultants", "Restaurants & cafés", "Startups & tech", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Lille",
+    subline: "Studio digital pour Lille et les Hauts-de-France ï¿½ sites web, apps et solutions digitales pour PME, indï¿½pendants et commerces.",
+    intro: "KAH Digital accompagne les entreprises lilloises dans leur prï¿½sence digitale. Carrefour entre Paris, Bruxelles et Londres, Lille est un marchï¿½ dynamique. Notre studio crï¿½e des sites web efficaces pour artisans, cabinets, startups et commerces de la rï¿½gion.",
+    sectors: ["Commerces & boutiques", "PME industrielles", "Cabinets & consultants", "Restaurants & cafï¿½s", "Startups & tech", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites bilingues FR/EN pour des entreprises lilloises ?", a: "Oui, Lille étant à la croisée des marchés européens, nous créons régulièrement des sites multilingues." },
-      { q: "Quels délais pour un site à Lille ?", a: "Landing : 1 sem. Site vitrine : 2-3 sem. App : 6-12 sem. Devis personnalisé sous 24h." },
-      { q: "Avez-vous de l'expérience avec des PME industrielles du Nord ?", a: "Oui, portails B2B, catalogues produits, intranets. On connaît les besoins des PME industrielles." },
+      { q: "Faites-vous des sites bilingues FR/EN pour des entreprises lilloises ?", a: "Oui, Lille ï¿½tant ï¿½ la croisï¿½e des marchï¿½s europï¿½ens, nous crï¿½ons rï¿½guliï¿½rement des sites multilingues." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Lille ?", a: "Landing : 1 sem. Site vitrine : 2-3 sem. App : 6-12 sem. Devis personnalisï¿½ sous 24h." },
+      { q: "Avez-vous de l'expï¿½rience avec des PME industrielles du Nord ?", a: "Oui, portails B2B, catalogues produits, intranets. On connaï¿½t les besoins des PME industrielles." },
     ],
   },
   "agence-web-montpellier": {
     city: "Montpellier", country: "France", region: "Occitanie", locale: "fr", slug: "agence-web-montpellier",
-    headline: "Création de site web à Montpellier",
-    subline: "Studio digital pour Montpellier · sites web, apps et solutions digitales pour startups, professions de santé et entreprises méditerranéennes.",
-    intro: "KAH Digital crée des sites web professionnels pour les entreprises montpelliéraines. Montpellier est une ville dynamique : startups, médecins, avocats, restaurants, e-commerce. Notre studio propose un process simple : brief en ligne, devis sous 24h, livraison en 2 à 6 semaines.",
-    sectors: ["Professions de santé", "Startups & tech", "Cabinets juridiques", "Restaurants & commerces", "E-commerce", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Montpellier",
+    subline: "Studio digital pour Montpellier ï¿½ sites web, apps et solutions digitales pour startups, professions de santï¿½ et entreprises mï¿½diterranï¿½ennes.",
+    intro: "KAH Digital crï¿½e des sites web professionnels pour les entreprises montpelliï¿½raines. Montpellier est une ville dynamique : startups, mï¿½decins, avocats, restaurants, e-commerce. Notre studio propose un process simple : brief en ligne, devis sous 24h, livraison en 2 ï¿½ 6 semaines.",
+    sectors: ["Professions de santï¿½", "Startups & tech", "Cabinets juridiques", "Restaurants & commerces", "E-commerce", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour des médecins et thérapeutes à Montpellier ?", a: "Oui, sites médicaux clairs, conformes RGPD, avec prise de rendez-vous en ligne si besoin." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
-      { q: "Combien de temps pour un site à Montpellier ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. Site corporate : 4-5 sem. App : 6-12 sem." },
+      { q: "Faites-vous des sites pour des mï¿½decins et thï¿½rapeutes ï¿½ Montpellier ?", a: "Oui, sites mï¿½dicaux clairs, conformes RGPD, avec prise de rendez-vous en ligne si besoin." },
+      { q: "Comment est dï¿½fini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation ï¿½ votre contexte, ï¿½ vos prioritï¿½s business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Combien de temps pour un site ï¿½ Montpellier ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. Site corporate : 4-5 sem. App : 6-12 sem." },
     ],
   },
   "agence-web-rennes": {
     city: "Rennes", country: "France", region: "Bretagne", locale: "fr", slug: "agence-web-rennes",
-    headline: "Création de site web à Rennes",
-    subline: "Studio digital pour Rennes et la Bretagne · sites web, apps et solutions digitales pour startups, PME et indépendants.",
-    intro: "KAH Digital accompagne les entreprises rennaises dans leur présence digitale. Rennes est l'un des écosystèmes tech les plus actifs de l'ouest de la France. Notre studio crée des sites et applications pour startups, freelances, artisans et TPE de la région.",
-    sectors: ["Startups & tech", "Artisans & indépendants", "Restaurants & commerces", "Cabinets & professions libérales", "E-commerce", "Associations & ONG"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Rennes",
+    subline: "Studio digital pour Rennes et la Bretagne ï¿½ sites web, apps et solutions digitales pour startups, PME et indï¿½pendants.",
+    intro: "KAH Digital accompagne les entreprises rennaises dans leur prï¿½sence digitale. Rennes est l'un des ï¿½cosystï¿½mes tech les plus actifs de l'ouest de la France. Notre studio crï¿½e des sites et applications pour startups, freelances, artisans et TPE de la rï¿½gion.",
+    sectors: ["Startups & tech", "Artisans & indï¿½pendants", "Restaurants & commerces", "Cabinets & professions libï¿½rales", "E-commerce", "Associations & ONG"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Créez-vous des applications pour des startups rennaises ?", a: "Oui, MVP, portails SaaS, dashboards et intégrations API. Rennes est une ville tech et on l'accompagne." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Pouvez-vous créer un site e-commerce pour un artisan breton ?", a: "Oui, boutique en ligne, paiement sécurisé, gestion de commandes. On aime les projets d'artisans." },
+      { q: "Crï¿½ez-vous des applications pour des startups rennaises ?", a: "Oui, MVP, portails SaaS, dashboards et intï¿½grations API. Rennes est une ville tech et on l'accompagne." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Pouvez-vous crï¿½er un site e-commerce pour un artisan breton ?", a: "Oui, boutique en ligne, paiement sï¿½curisï¿½, gestion de commandes. On aime les projets d'artisans." },
     ],
   },
   "agence-web-zurich": {
     city: "Zurich", country: "Suisse", region: "Zurich", locale: "fr", slug: "agence-web-zurich",
-    headline: "Création de site web à Zurich",
-    subline: "Studio digital suisse multilingue DE/FR/EN · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital accompagne les entreprises de Zurich dans leur présence digitale. Zurich est la capitale économique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles — notre studio crée des sites professionnels multilingues (DE/FR/EN) adaptés au marché zurichois. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950. Devis gratuit en 24h.",
-    sectors: ["Finance & banques", "Cabinets d'avocats & fiduciaires", "Startups fintech & crypto", "Hôtels & restauration", "PME Suisse alémanique", "Professions libérales"],
-    proofLine: "Studio Suisse · Multilingue DE/FR/EN · Prix fixe CHF 149 · Réponse 24h",
+    headline: "Crï¿½ation de site web ï¿½ Zurich",
+    subline: "Studio digital suisse multilingue DE/FR/EN ï¿½ Next.js 15, Lighthouse 95+. Dï¿½s CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Zurich dans leur prï¿½sence digitale. Zurich est la capitale ï¿½conomique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles ï¿½ notre studio crï¿½e des sites professionnels multilingues (DE/FR/EN) adaptï¿½s au marchï¿½ zurichois. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Systï¿½me IA dï¿½s CHF 950. Devis gratuit en 24h.",
+    sectors: ["Finance & banques", "Cabinets d'avocats & fiduciaires", "Startups fintech & crypto", "Hï¿½tels & restauration", "PME Suisse alï¿½manique", "Professions libï¿½rales"],
+    proofLine: "Studio Suisse ï¿½ Multilingue DE/FR/EN ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Zurich ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 420. Système IA complet dès CHF 950. Prix fixe confirmé avant tout démarrage." },
-      { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, français et anglais. SEO optimisé dans chaque langue. Idéal pour les entreprises qui ciblent la Suisse alémanique et internationale." },
-      { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. On connaît les exigences du marché financier suisse et les standards LPD." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne, en CHF." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Zurich ?", a: "Starter (landing page) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO multilingue) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe confirmï¿½ avant tout dï¿½marrage." },
+      { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, franï¿½ais et anglais. SEO optimisï¿½ dans chaque langue. Idï¿½al pour les entreprises qui ciblent la Suisse alï¿½manique et internationale." },
+      { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. On connaï¿½t les exigences du marchï¿½ financier suisse et les standards LPD." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui ï¿½ virement bancaire CHF, TWINT et carte bancaire acceptï¿½s. Facturation depuis notre siï¿½ge ï¿½ Lausanne, en CHF." },
     ],
   },
   "agence-web-basel": {
-    city: "Basel", country: "Suisse", region: "Bâle", locale: "fr", slug: "agence-web-basel",
-    headline: "Création de site web à Bâle",
-    subline: "Studio digital suisse trilingue FR/DE/EN · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital crée des sites web pour les entreprises bâloises. Bâle est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptés aux entreprises qui opèrent en France, Allemagne et Suisse. Starter dès CHF 149 · Business dès CHF 420 · Système IA dès CHF 950.",
-    sectors: ["Pharma & life sciences", "Industrie & manufacturing", "Culture & art Basel", "PME transfrontalières CH/DE/FR", "Cabinets & consultants", "Restaurants & hôtels"],
-    proofLine: "Studio Suisse · Trilingue FR/DE/EN · Prix fixe CHF 149 · Réponse 24h",
+    city: "Basel", country: "Suisse", region: "Bï¿½le", locale: "fr", slug: "agence-web-basel",
+    headline: "Crï¿½ation de site web ï¿½ Bï¿½le",
+    subline: "Studio digital suisse trilingue FR/DE/EN ï¿½ Next.js 15, Lighthouse 95+. Dï¿½s CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital crï¿½e des sites web pour les entreprises bï¿½loises. Bï¿½le est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptï¿½s aux entreprises qui opï¿½rent en France, Allemagne et Suisse. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Systï¿½me IA dï¿½s CHF 950.",
+    sectors: ["Pharma & life sciences", "Industrie & manufacturing", "Culture & art Basel", "PME transfrontaliï¿½res CH/DE/FR", "Cabinets & consultants", "Restaurants & hï¿½tels"],
+    proofLine: "Studio Suisse ï¿½ Trilingue FR/DE/EN ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Bâle ?", a: "Starter (landing page trilingue) dès CHF 149, livré en 5 jours. Business (6 pages, SEO dans 3 langues) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, zéro surprise." },
-      { q: "Faites-vous des sites trilingues pour les entreprises bâloises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue et hreflang correct. Idéal pour le marché rhénan et les foires internationales." },
-      { q: "Avez-vous travaillé avec des entreprises du secteur pharma ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Nous respectons les exigences LPD et les standards de conformité du secteur." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Bï¿½le ?", a: "Starter (landing page trilingue) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO dans 3 langues) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe, zï¿½ro surprise." },
+      { q: "Faites-vous des sites trilingues pour les entreprises bï¿½loises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue et hreflang correct. Idï¿½al pour le marchï¿½ rhï¿½nan et les foires internationales." },
+      { q: "Avez-vous travaillï¿½ avec des entreprises du secteur pharma ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Nous respectons les exigences LPD et les standards de conformitï¿½ du secteur." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui ï¿½ virement bancaire CHF, TWINT et carte bancaire acceptï¿½s. Facturation en CHF depuis Lausanne." },
     ],
   },
   "agence-web-lugano": {
     city: "Lugano", country: "Suisse", region: "Tessin", locale: "fr", slug: "agence-web-lugano",
-    headline: "Création de site web à Lugano",
-    subline: "Studio digital suisse trilingue IT/FR/DE · Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital accompagne les entreprises de Lugano dans leur présence digitale. Le Tessin est unique en Suisse : italien de cœur, suisse d'esprit, tourné vers l'Italie et le monde. Notre studio crée des sites multilingues adaptés aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME. Starter dès CHF 149 · Business dès CHF 420 · Devis gratuit en 24h.",
-    sectors: ["Finance & wealth management", "Tourisme & hôtellerie luxe", "Luxe & mode", "PME tessinoises", "Restaurants & cafés", "Professions libérales"],
-    proofLine: "Studio Suisse · Trilingue IT/FR/DE · Prix fixe CHF 149 · Réponse 24h",
+    headline: "Crï¿½ation de site web ï¿½ Lugano",
+    subline: "Studio digital suisse trilingue IT/FR/DE ï¿½ Next.js 15, Lighthouse 95+. Dï¿½s CHF 149, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Lugano dans leur prï¿½sence digitale. Le Tessin est unique en Suisse : italien de cï¿½ur, suisse d'esprit, tournï¿½ vers l'Italie et le monde. Notre studio crï¿½e des sites multilingues adaptï¿½s aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME. Starter dï¿½s CHF 149 ï¿½ Business dï¿½s CHF 420 ï¿½ Devis gratuit en 24h.",
+    sectors: ["Finance & wealth management", "Tourisme & hï¿½tellerie luxe", "Luxe & mode", "PME tessinoises", "Restaurants & cafï¿½s", "Professions libï¿½rales"],
+    proofLine: "Studio Suisse ï¿½ Trilingue IT/FR/DE ï¿½ Prix fixe CHF 149 ï¿½ Rï¿½ponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Lugano ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 420. Système IA complet dès CHF 950. Prix fixe, devis confirmé avant de commencer." },
-      { q: "Faites-vous des sites en italien pour des entreprises de Lugano ?", a: "Oui, sites natifs en italien, français, allemand et anglais. Le Tessin est notre marché naturel pour l'italien." },
-      { q: "Créez-vous des sites pour le secteur wealth management à Lugano ?", a: "Oui, sites institutionnels discrets, sécurisés, conformes LPD et RGPD. Rigueur et élégance — les standards suisses." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
+      { q: "Combien coï¿½te un site web professionnel ï¿½ Lugano ?", a: "Starter (landing page) dï¿½s CHF 149, livrï¿½ en 5 jours. Business (6 pages, SEO) dï¿½s CHF 420. Systï¿½me IA complet dï¿½s CHF 950. Prix fixe, devis confirmï¿½ avant de commencer." },
+      { q: "Faites-vous des sites en italien pour des entreprises de Lugano ?", a: "Oui, sites natifs en italien, franï¿½ais, allemand et anglais. Le Tessin est notre marchï¿½ naturel pour l'italien." },
+      { q: "Crï¿½ez-vous des sites pour le secteur wealth management ï¿½ Lugano ?", a: "Oui, sites institutionnels discrets, sï¿½curisï¿½s, conformes LPD et RGPD. Rigueur et ï¿½lï¿½gance ï¿½ les standards suisses." },
+      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui ï¿½ virement bancaire CHF, TWINT et carte bancaire acceptï¿½s. Facturation en CHF depuis Lausanne." },
     ],
   },
   "agence-web-grenoble": {
-    city: "Grenoble", country: "France", region: "Auvergne-Rhône-Alpes", locale: "fr", slug: "agence-web-grenoble",
-    headline: "Création de site web à Grenoble",
-    subline: "Studio digital pour Grenoble et l'Isère · sites web, apps et solutions digitales pour startups deeptech, PME et indépendants.",
-    intro: "KAH Digital accompagne les entreprises grenobloises dans leur présence digitale. Grenoble est l'une des villes les plus innovantes de France : nanotechnologies, ingénierie, startups deeptech. Notre studio crée des sites web et applications qui reflètent votre niveau d'expertise : clairs, rapides, bien référencés.",
-    sectors: ["Startups deeptech & ingénierie", "PME industrielles & high-tech", "Professions de santé", "Cabinets & consultants", "Restaurants & commerces", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Grenoble", country: "France", region: "Auvergne-Rhï¿½ne-Alpes", locale: "fr", slug: "agence-web-grenoble",
+    headline: "Crï¿½ation de site web ï¿½ Grenoble",
+    subline: "Studio digital pour Grenoble et l'Isï¿½re ï¿½ sites web, apps et solutions digitales pour startups deeptech, PME et indï¿½pendants.",
+    intro: "KAH Digital accompagne les entreprises grenobloises dans leur prï¿½sence digitale. Grenoble est l'une des villes les plus innovantes de France : nanotechnologies, ingï¿½nierie, startups deeptech. Notre studio crï¿½e des sites web et applications qui reflï¿½tent votre niveau d'expertise : clairs, rapides, bien rï¿½fï¿½rencï¿½s.",
+    sectors: ["Startups deeptech & ingï¿½nierie", "PME industrielles & high-tech", "Professions de santï¿½", "Cabinets & consultants", "Restaurants & commerces", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Créez-vous des sites pour des startups tech à Grenoble ?", a: "Oui, landing pages, portails SaaS, dashboards et MVPs. On connaît bien l'écosystème grenoblois entre Bpifrance et les incubateurs." },
-      { q: "Quels délais pour un site à Grenoble ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. App sur mesure : 6-12 sem. selon scope." },
-      { q: "Comment est défini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation à votre contexte, à vos priorités business et au budget disponible, sans formule rigide ni option inutile." },
+      { q: "Crï¿½ez-vous des sites pour des startups tech ï¿½ Grenoble ?", a: "Oui, landing pages, portails SaaS, dashboards et MVPs. On connaï¿½t bien l'ï¿½cosystï¿½me grenoblois entre Bpifrance et les incubateurs." },
+      { q: "Quels dï¿½lais pour un site ï¿½ Grenoble ?", a: "Landing page : 1 sem. Site vitrine : 2-3 sem. App sur mesure : 6-12 sem. selon scope." },
+      { q: "Comment est dï¿½fini le budget d'un projet local ?", a: "L'objectif est d'adapter la prestation ï¿½ votre contexte, ï¿½ vos prioritï¿½s business et au budget disponible, sans formule rigide ni option inutile." },
     ],
   },
   "agence-web-rouen": {
     city: "Rouen", country: "France", region: "Normandie", locale: "fr", slug: "agence-web-rouen",
-    headline: "Création de site web à Rouen",
-    subline: "Studio digital pour Rouen et la Normandie · sites web professionnels pour PME, artisans et commerces normands.",
-    intro: "KAH Digital crée des sites web professionnels pour les entreprises rouennaises. Rouen est une ville dynamique avec un tissu économique dense : PME, artisans, commerces, professions libérales. Notre studio propose un process simple : brief en ligne, devis sous 24h, livraison en 2 à 6 semaines.",
-    sectors: ["PME normandes", "Commerces & boutiques", "Artisans & indépendants", "Cabinets & professions libérales", "Restaurants & hôtels", "E-commerce"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Rouen",
+    subline: "Studio digital pour Rouen et la Normandie ï¿½ sites web professionnels pour PME, artisans et commerces normands.",
+    intro: "KAH Digital crï¿½e des sites web professionnels pour les entreprises rouennaises. Rouen est une ville dynamique avec un tissu ï¿½conomique dense : PME, artisans, commerces, professions libï¿½rales. Notre studio propose un process simple : brief en ligne, devis sous 24h, livraison en 2 ï¿½ 6 semaines.",
+    sectors: ["PME normandes", "Commerces & boutiques", "Artisans & indï¿½pendants", "Cabinets & professions libï¿½rales", "Restaurants & hï¿½tels", "E-commerce"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des PME rouennaises à distance ?", a: "Oui, tout le projet se gère en ligne. Visioconférence pour le cadrage, livraison par email. Aucun déplacement nécessaire." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Combien de temps pour un site vitrine à Rouen ?", a: "Un site vitrine standard : 2 à 3 semaines. Un site corporate : 4 à 5 semaines." },
+      { q: "Travaillez-vous avec des PME rouennaises ï¿½ distance ?", a: "Oui, tout le projet se gï¿½re en ligne. Visioconfï¿½rence pour le cadrage, livraison par email. Aucun dï¿½placement nï¿½cessaire." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Combien de temps pour un site vitrine ï¿½ Rouen ?", a: "Un site vitrine standard : 2 ï¿½ 3 semaines. Un site corporate : 4 ï¿½ 5 semaines." },
     ],
   },
   "agence-web-aix-en-provence": {
     city: "Aix-en-Provence", country: "France", region: "PACA", locale: "fr", slug: "agence-web-aix-en-provence",
-    headline: "Création de site web à Aix-en-Provence",
-    subline: "Studio digital pour Aix-en-Provence et la région PACA · sites web élégants pour cabinets, vignobles, boutiques et professions libérales.",
-    intro: "KAH Digital accompagne les entreprises aixoises dans leur présence digitale. Aix-en-Provence est une ville à fort pouvoir d'achat et une clientèle exigeante : cabinets d'avocats, vignobles, boutiques premium, médecins. Notre studio crée des sites web à la hauteur de votre réputation.",
-    sectors: ["Cabinets d'avocats & notaires", "Vignobles & domaines", "Boutiques & luxe", "Médecins & thérapeutes", "Startups & tech", "Restaurants gastronomiques"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Aix-en-Provence",
+    subline: "Studio digital pour Aix-en-Provence et la rï¿½gion PACA ï¿½ sites web ï¿½lï¿½gants pour cabinets, vignobles, boutiques et professions libï¿½rales.",
+    intro: "KAH Digital accompagne les entreprises aixoises dans leur prï¿½sence digitale. Aix-en-Provence est une ville ï¿½ fort pouvoir d'achat et une clientï¿½le exigeante : cabinets d'avocats, vignobles, boutiques premium, mï¿½decins. Notre studio crï¿½e des sites web ï¿½ la hauteur de votre rï¿½putation.",
+    sectors: ["Cabinets d'avocats & notaires", "Vignobles & domaines", "Boutiques & luxe", "Mï¿½decins & thï¿½rapeutes", "Startups & tech", "Restaurants gastronomiques"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour des vignobles de la région d'Aix ?", a: "Oui, sites domaines viticoles avec boutique en ligne, réservation de dégustations et galerie photo. Un secteur qu'on connaît bien." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous en anglais pour des clients internationaux à Aix ?", a: "Oui, sites bilingues FR/EN ou trilingues pour accueillir la clientèle internationale." },
+      { q: "Faites-vous des sites pour des vignobles de la rï¿½gion d'Aix ?", a: "Oui, sites domaines viticoles avec boutique en ligne, rï¿½servation de dï¿½gustations et galerie photo. Un secteur qu'on connaï¿½t bien." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Travaillez-vous en anglais pour des clients internationaux ï¿½ Aix ?", a: "Oui, sites bilingues FR/EN ou trilingues pour accueillir la clientï¿½le internationale." },
     ],
   },
   "agence-web-angers": {
     city: "Angers", country: "France", region: "Pays de la Loire", locale: "fr", slug: "agence-web-angers",
-    headline: "Création de site web à Angers",
-    subline: "Studio digital pour Angers et la Maine-et-Loire · sites web, apps et solutions digitales pour startups, PME et indépendants angevins.",
-    intro: "KAH Digital accompagne les entreprises angevines dans leur présence digitale. Angers est une ville étudiante et entrepreneuriale : startups, artisans, vignobles du Val de Loire, professions libérales. Notre studio crée des sites efficaces avec un process clair et des devis personnalisés.",
-    sectors: ["Startups & tech", "Vignobles & domaines", "Artisans & indépendants", "Professions libérales", "Restaurants & commerces", "Associations & ONG"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Angers",
+    subline: "Studio digital pour Angers et la Maine-et-Loire ï¿½ sites web, apps et solutions digitales pour startups, PME et indï¿½pendants angevins.",
+    intro: "KAH Digital accompagne les entreprises angevines dans leur prï¿½sence digitale. Angers est une ville ï¿½tudiante et entrepreneuriale : startups, artisans, vignobles du Val de Loire, professions libï¿½rales. Notre studio crï¿½e des sites efficaces avec un process clair et des devis personnalisï¿½s.",
+    sectors: ["Startups & tech", "Vignobles & domaines", "Artisans & indï¿½pendants", "Professions libï¿½rales", "Restaurants & commerces", "Associations & ONG"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour des domaines viticoles du Val de Loire ?", a: "Oui, sites vitrines, boutiques en ligne, réservations de dégustations. Le vignoble angevin nous est familier." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous avec des startups angevines ?", a: "Oui, MVP, portails SaaS, dashboards. Angers a un écosystème entrepreneurial dynamique." },
+      { q: "Faites-vous des sites pour des domaines viticoles du Val de Loire ?", a: "Oui, sites vitrines, boutiques en ligne, rï¿½servations de dï¿½gustations. Le vignoble angevin nous est familier." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Travaillez-vous avec des startups angevines ?", a: "Oui, MVP, portails SaaS, dashboards. Angers a un ï¿½cosystï¿½me entrepreneurial dynamique." },
     ],
   },
   "agence-web-dijon": {
-    city: "Dijon", country: "France", region: "Bourgogne-Franche-Comté", locale: "fr", slug: "agence-web-dijon",
-    headline: "Création de site web à Dijon",
-    subline: "Studio digital pour Dijon et la Bourgogne · sites web professionnels pour vignobles, restaurants gastronomiques, PME et indépendants.",
-    intro: "KAH Digital crée des sites web pour les entreprises dijonnaises. Dijon est la capitale de la gastronomie et des vins de Bourgogne. Notre studio comprend les besoins des domaines viticoles, restaurants étoilés, cabinets d'avocats et PME locales. Sites élégants, rapides et bien référencés.",
-    sectors: ["Vignobles & domaines", "Restaurants gastronomiques", "Cabinets & professions libérales", "PME & artisans", "Tourisme & culture", "E-commerce"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Dijon", country: "France", region: "Bourgogne-Franche-Comtï¿½", locale: "fr", slug: "agence-web-dijon",
+    headline: "Crï¿½ation de site web ï¿½ Dijon",
+    subline: "Studio digital pour Dijon et la Bourgogne ï¿½ sites web professionnels pour vignobles, restaurants gastronomiques, PME et indï¿½pendants.",
+    intro: "KAH Digital crï¿½e des sites web pour les entreprises dijonnaises. Dijon est la capitale de la gastronomie et des vins de Bourgogne. Notre studio comprend les besoins des domaines viticoles, restaurants ï¿½toilï¿½s, cabinets d'avocats et PME locales. Sites ï¿½lï¿½gants, rapides et bien rï¿½fï¿½rencï¿½s.",
+    sectors: ["Vignobles & domaines", "Restaurants gastronomiques", "Cabinets & professions libï¿½rales", "PME & artisans", "Tourisme & culture", "E-commerce"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour des domaines viticoles de Bourgogne ?", a: "Oui, sites vitrines, boutiques en ligne, réservation de dégustations. La Bourgogne viticole est un marché qu'on adore." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Créez-vous des sites en anglais pour accueillir les touristes œnotouristiques ?", a: "Oui, sites bilingues FR/EN ou trilingues pour cibler les clients internationaux de la Route des Grands Crus." },
+      { q: "Faites-vous des sites pour des domaines viticoles de Bourgogne ?", a: "Oui, sites vitrines, boutiques en ligne, rï¿½servation de dï¿½gustations. La Bourgogne viticole est un marchï¿½ qu'on adore." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Crï¿½ez-vous des sites en anglais pour accueillir les touristes ï¿½notouristiques ?", a: "Oui, sites bilingues FR/EN ou trilingues pour cibler les clients internationaux de la Route des Grands Crus." },
     ],
   },
   "agence-web-caen": {
     city: "Caen", country: "France", region: "Normandie", locale: "fr", slug: "agence-web-caen",
-    headline: "Création de site web à Caen",
-    subline: "Studio digital pour Caen et le Calvados · sites web professionnels pour PME, artisans et indépendants normands.",
-    intro: "KAH Digital crée des sites web pour les entreprises caennaises. Caen est une ville dynamique au cœur de la Normandie : artisans, PME, commerces, professions libérales. Notre studio propose un process simple : Devis personnalisé sous 24h, livraison en 2 à 5 semaines, sans jargon.",
-    sectors: ["PME normandes", "Artisans & indépendants", "Restaurants & commerces", "Professions libérales", "E-commerce", "Associations & culture"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Caen",
+    subline: "Studio digital pour Caen et le Calvados ï¿½ sites web professionnels pour PME, artisans et indï¿½pendants normands.",
+    intro: "KAH Digital crï¿½e des sites web pour les entreprises caennaises. Caen est une ville dynamique au cï¿½ur de la Normandie : artisans, PME, commerces, professions libï¿½rales. Notre studio propose un process simple : Devis personnalisï¿½ sous 24h, livraison en 2 ï¿½ 5 semaines, sans jargon.",
+    sectors: ["PME normandes", "Artisans & indï¿½pendants", "Restaurants & commerces", "Professions libï¿½rales", "E-commerce", "Associations & culture"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Travaillez-vous avec des PME caennaises à distance ?", a: "Oui, tout le projet se gère en visioconférence et email. Efficace, sans déplacement." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Combien de temps pour créer un site vitrine à Caen ?", a: "Un site vitrine : 2 à 3 semaines. Landing page : 5 à 10 jours. Application sur mesure : 6 à 12 semaines." },
+      { q: "Travaillez-vous avec des PME caennaises ï¿½ distance ?", a: "Oui, tout le projet se gï¿½re en visioconfï¿½rence et email. Efficace, sans dï¿½placement." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Combien de temps pour crï¿½er un site vitrine ï¿½ Caen ?", a: "Un site vitrine : 2 ï¿½ 3 semaines. Landing page : 5 ï¿½ 10 jours. Application sur mesure : 6 ï¿½ 12 semaines." },
     ],
   },
   "agence-web-clermont-ferrand": {
-    city: "Clermont-Ferrand", country: "France", region: "Auvergne-Rhône-Alpes", locale: "fr", slug: "agence-web-clermont-ferrand",
-    headline: "Création de site web à Clermont-Ferrand",
-    subline: "Studio digital pour Clermont-Ferrand et l'Auvergne · sites web, apps et solutions digitales pour PME, startups et indépendants.",
-    intro: "KAH Digital accompagne les entreprises clermontoise dans leur présence digitale. Clermont-Ferrand est une ville industrielle et entrepreneuriale : Michelin, startups, PME agroalimentaires, professions libérales. Notre studio crée des sites web efficaces avec un process clair et des devis personnalisés après échange.",
-    sectors: ["PME industrielles", "Startups & tech", "Agroalimentaire & terroir", "Artisans & indépendants", "Cabinets & professions libérales", "Restaurants & commerces"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    city: "Clermont-Ferrand", country: "France", region: "Auvergne-Rhï¿½ne-Alpes", locale: "fr", slug: "agence-web-clermont-ferrand",
+    headline: "Crï¿½ation de site web ï¿½ Clermont-Ferrand",
+    subline: "Studio digital pour Clermont-Ferrand et l'Auvergne ï¿½ sites web, apps et solutions digitales pour PME, startups et indï¿½pendants.",
+    intro: "KAH Digital accompagne les entreprises clermontoise dans leur prï¿½sence digitale. Clermont-Ferrand est une ville industrielle et entrepreneuriale : Michelin, startups, PME agroalimentaires, professions libï¿½rales. Notre studio crï¿½e des sites web efficaces avec un process clair et des devis personnalisï¿½s aprï¿½s ï¿½change.",
+    sectors: ["PME industrielles", "Startups & tech", "Agroalimentaire & terroir", "Artisans & indï¿½pendants", "Cabinets & professions libï¿½rales", "Restaurants & commerces"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites pour des PME industrielles à Clermont-Ferrand ?", a: "Oui, sites institutionnels, catalogues produits, portails B2B. On connaît les besoins des entreprises industrielles." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous avec des startups auvergnates ?", a: "Oui, MVP, landing pages, applications métier. L'écosystème auvergnat est actif et en croissance." },
+      { q: "Faites-vous des sites pour des PME industrielles ï¿½ Clermont-Ferrand ?", a: "Oui, sites institutionnels, catalogues produits, portails B2B. On connaï¿½t les besoins des entreprises industrielles." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Travaillez-vous avec des startups auvergnates ?", a: "Oui, MVP, landing pages, applications mï¿½tier. L'ï¿½cosystï¿½me auvergnat est actif et en croissance." },
     ],
   },
   "agence-web-metz": {
     city: "Metz", country: "France", region: "Grand Est", locale: "fr", slug: "agence-web-metz",
-    headline: "Création de site web à Metz",
-    subline: "Studio digital pour Metz et le Grand Est · sites web, apps et solutions digitales pour PME, indépendants et entreprises transfrontalières.",
-    intro: "KAH Digital crée des sites web pour les entreprises messines. Metz est une ville stratégique à la croisée de la France, du Luxembourg et de l'Allemagne : PME industrielles, commerces, professions libérales, entreprises transfrontalières. Sites web professionnels, multilingues si besoin, livrés rapidement.",
-    sectors: ["PME & industries", "Entreprises transfrontalières FR/LU/DE", "Commerces & boutiques", "Cabinets & professions libérales", "Restaurants & hôtels", "Artisans & indépendants"],
-    proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
+    headline: "Crï¿½ation de site web ï¿½ Metz",
+    subline: "Studio digital pour Metz et le Grand Est ï¿½ sites web, apps et solutions digitales pour PME, indï¿½pendants et entreprises transfrontaliï¿½res.",
+    intro: "KAH Digital crï¿½e des sites web pour les entreprises messines. Metz est une ville stratï¿½gique ï¿½ la croisï¿½e de la France, du Luxembourg et de l'Allemagne : PME industrielles, commerces, professions libï¿½rales, entreprises transfrontaliï¿½res. Sites web professionnels, multilingues si besoin, livrï¿½s rapidement.",
+    sectors: ["PME & industries", "Entreprises transfrontaliï¿½res FR/LU/DE", "Commerces & boutiques", "Cabinets & professions libï¿½rales", "Restaurants & hï¿½tels", "Artisans & indï¿½pendants"],
+    proofLine: "Rï¿½ponse en 24h ï¿½ Devis personnalisï¿½ ï¿½ Sans engagement",
     faq: [
-      { q: "Faites-vous des sites bilingues pour des entreprises transfrontalières à Metz ?", a: "Oui, sites FR/DE, FR/EN ou trilingues. Metz est à la croisée des marchés européens et nous comprenons ces enjeux." },
-      { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
-      { q: "Travaillez-vous avec des entreprises basées au Luxembourg proches de Metz ?", a: "Oui, notre studio travaille pour toute la Grande Région. Sites en français, allemand et anglais disponibles." },
+      { q: "Faites-vous des sites bilingues pour des entreprises transfrontaliï¿½res ï¿½ Metz ?", a: "Oui, sites FR/DE, FR/EN ou trilingues. Metz est ï¿½ la croisï¿½e des marchï¿½s europï¿½ens et nous comprenons ces enjeux." },
+      { q: "Comment est dï¿½fini le devis pour un projet local ?", a: "Chaque projet est cadrï¿½ selon le besoin rï¿½el, les fonctionnalitï¿½s, les dï¿½lais et vos prioritï¿½s. Le devis personnalisï¿½ est fourni aprï¿½s un court ï¿½change, sans engagement." },
+      { q: "Travaillez-vous avec des entreprises basï¿½es au Luxembourg proches de Metz ?", a: "Oui, notre studio travaille pour toute la Grande Rï¿½gion. Sites en franï¿½ais, allemand et anglais disponibles." },
     ],
   },
 };
 
 type Props = { data: CityPageData };
 
-const SWISS_CITIES = ["Lausanne", "Genève", "Fribourg", "Zurich", "Bâle", "Berne", "Lugano"];
+const SWISS_CITIES = ["Lausanne", "Genï¿½ve", "Fribourg", "Zurich", "Bï¿½le", "Berne", "Lugano"];
 const SWISS_LINKS = [
   { label: "Site web Lausanne", href: "/site-web-lausanne" },
-  { label: "Site web Genève", href: "/site-web-geneve" },
+  { label: "Site web Genï¿½ve", href: "/site-web-geneve" },
   { label: "Site web Fribourg", href: "/site-web-fribourg" },
   { label: "Agence web Zurich", href: "/agence-web-zurich" },
-  { label: "Agence web Bâle", href: "/agence-web-basel" },
+  { label: "Agence web Bï¿½le", href: "/agence-web-basel" },
   { label: "Agence web Berne", href: "/agence-web-berne" },
   { label: "Agence web Lugano", href: "/agence-web-lugano" },
 ];
@@ -383,24 +383,24 @@ export function LocalSeoPageContent({ data }: Props) {
   const devisUrl = `/devis?city=${encodeURIComponent(data.city)}&ref=local-seo`;
   const isSwiss = SWISS_CITIES.includes(data.city);
   const WA_URL = isSwiss ? WA_URL_CH : WA_URL_FR;
-  const currency = isSwiss ? "CHF" : "€";
-  const priceStarter = isSwiss ? "CHF 149" : "149 €";
-  const priceBusiness = isSwiss ? "CHF 420" : "390 €";
-  const priceAI = isSwiss ? "CHF 950" : "890 €";
+  const currency = isSwiss ? "CHF" : "ï¿½";
+  const priceStarter = isSwiss ? "CHF 149" : "149 ï¿½";
+  const priceBusiness = isSwiss ? "CHF 420" : "390 ï¿½";
+  const priceAI = isSwiss ? "CHF 950" : "890 ï¿½";
 
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "KAH Digital",
-      "description": `Studio digital · création de sites web, applications et solutions IA à ${data.city}`,
-      "url": `https://KAH Digital.ch/${data.slug}`,
+      "description": `Studio digital ï¿½ crï¿½ation de sites web, applications et solutions IA ï¿½ ${data.city}`,
+      "url": `https://kah-digital.ch/${data.slug}`,
       "telephone": "+33759558414",
       "email": "contact@KAH Digital.ch",
       "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressCountry": "CH" },
       "areaServed": { "@type": "City", "name": data.city },
       "openingHours": "Mo-Fr 09:00-18:00",
-      "sameAs": ["https://www.linkedin.com/company/KAH Digital-95128b408", "https://x.com/DigitalKah42"],
+      "sameAs": ["https://www.linkedin.com/company/kah-digital-95128b408", "https://x.com/DigitalKah42"],
     },
     {
       "@context": "https://schema.org",
@@ -427,7 +427,7 @@ export function LocalSeoPageContent({ data }: Props) {
           {isSwiss && (
             <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Studio basé en Suisse · Places disponibles cette semaine
+              Studio basï¿½ en Suisse ï¿½ Places disponibles cette semaine
             </div>
           )}
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">
@@ -452,7 +452,7 @@ export function LocalSeoPageContent({ data }: Props) {
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
             >
               <FiMessageCircle size={15} />
-              WhatsApp — réponse 2h
+              WhatsApp ï¿½ rï¿½ponse 2h
             </a>
           </div>
           <p className="mt-5 text-sm text-gray-600">{data.proofLine}</p>
@@ -464,10 +464,10 @@ export function LocalSeoPageContent({ data }: Props) {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { value: "120+", label: "Sites livrés" },
-              { value: `dès ${priceStarter}`, label: "Prix fixe garanti" },
-              { value: "5 jours", label: "Délai minimum" },
-              { value: "24h", label: "Réponse garantie" },
+              { value: "120+", label: "Sites livrï¿½s" },
+              { value: `dï¿½s ${priceStarter}`, label: "Prix fixe garanti" },
+              { value: "5 jours", label: "Dï¿½lai minimum" },
+              { value: "24h", label: "Rï¿½ponse garantie" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-xl font-black text-white sm:text-2xl">{s.value}</div>
@@ -484,10 +484,10 @@ export function LocalSeoPageContent({ data }: Props) {
           <div className="mx-auto max-w-4xl px-4 sm:px-6">
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-emerald-400/80">
               {[
-                { icon: "????", label: "Société domiciliée à Lausanne" },
-                { icon: "??", label: "Facturation CHF · TWINT accepté" },
-                { icon: "??", label: "Conforme LPD (loi suisse protection des données)" },
-                { icon: "??", label: "Devis en CHF · RC Vaud" },
+                { icon: "????", label: "Sociï¿½tï¿½ domiciliï¿½e ï¿½ Lausanne" },
+                { icon: "??", label: "Facturation CHF ï¿½ TWINT acceptï¿½" },
+                { icon: "??", label: "Conforme LPD (loi suisse protection des donnï¿½es)" },
+                { icon: "??", label: "Devis en CHF ï¿½ RC Vaud" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-1.5 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-3 py-1.5">
                   <span>{item.icon}</span>
@@ -510,7 +510,7 @@ export function LocalSeoPageContent({ data }: Props) {
       <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-8 text-center text-2xl font-extrabold tracking-tight text-white">
-            Secteurs accompagnés à {data.city}
+            Secteurs accompagnï¿½s ï¿½ {data.city}
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {data.sectors.map((s) => (
@@ -527,24 +527,24 @@ export function LocalSeoPageContent({ data }: Props) {
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Pourquoi KAH Digital à {data.city} ?
+            Pourquoi KAH Digital ï¿½ {data.city} ?
           </h2>
           <div className="grid gap-5 sm:grid-cols-3">
             {[
               {
                 icon: FiZap,
-                title: "Livré en 5 à 14 jours",
-                body: "Starter en 5 jours. Business en 14 jours. Brief court, décisions rapides, zéro aller-retour inutile. Pas 6 semaines.",
+                title: "Livrï¿½ en 5 ï¿½ 14 jours",
+                body: "Starter en 5 jours. Business en 14 jours. Brief court, dï¿½cisions rapides, zï¿½ro aller-retour inutile. Pas 6 semaines.",
               },
               {
                 icon: FiClock,
-                title: "Réponse en 24h garantie",
-                body: "Première réponse le jour ouvrable suivant. Accès direct au fondateur — pas de chef de projet intermédiaire, pas de délai.",
+                title: "Rï¿½ponse en 24h garantie",
+                body: "Premiï¿½re rï¿½ponse le jour ouvrable suivant. Accï¿½s direct au fondateur ï¿½ pas de chef de projet intermï¿½diaire, pas de dï¿½lai.",
               },
               {
                 icon: FiMapPin,
-                title: `Prix fixe dès ${priceStarter}`,
-                body: `Devis fixe avant de commencer. Zéro surprise, zéro coût caché. ${currency === "CHF" ? "Studio basé à Lausanne, à portée de main." : "Studio suisse, tarifs compétitifs."}`,
+                title: `Prix fixe dï¿½s ${priceStarter}`,
+                body: `Devis fixe avant de commencer. Zï¿½ro surprise, zï¿½ro coï¿½t cachï¿½. ${currency === "CHF" ? "Studio basï¿½ ï¿½ Lausanne, ï¿½ portï¿½e de main." : "Studio suisse, tarifs compï¿½titifs."}`,
               },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 transition hover:border-blue-500/20">
@@ -561,12 +561,12 @@ export function LocalSeoPageContent({ data }: Props) {
       <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-white">Tarifs pour {data.city}</h2>
-          <p className="mb-8 text-gray-500">Prix fixes et transparents. Zéro abonnement, zéro lock-in, 100% à vous à la livraison.</p>
+          <p className="mb-8 text-gray-500">Prix fixes et transparents. Zï¿½ro abonnement, zï¿½ro lock-in, 100% ï¿½ vous ï¿½ la livraison.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Starter", price: priceStarter, sub: `Landing page · 5 jours`, highlight: false },
-              { label: "Business", price: priceBusiness, sub: `Jusqu'à 6 pages · SEO · 14 jours`, highlight: true },
-              { label: "Premium IA", price: priceAI, sub: `Système complet + IA · 28 jours`, highlight: false },
+              { label: "Starter", price: priceStarter, sub: `Landing page ï¿½ 5 jours`, highlight: false },
+              { label: "Business", price: priceBusiness, sub: `Jusqu'ï¿½ 6 pages ï¿½ SEO ï¿½ 14 jours`, highlight: true },
+              { label: "Premium IA", price: priceAI, sub: `Systï¿½me complet + IA ï¿½ 28 jours`, highlight: false },
             ].map((item) => (
               <div
                 key={item.label}
@@ -584,11 +584,11 @@ export function LocalSeoPageContent({ data }: Props) {
             ))}
           </div>
           <p className="mt-5 text-xs text-gray-700">
-            Options disponibles : page supplémentaire, SEO avancé, logo, chatbot IA, maintenance mensuelle.
+            Options disponibles : page supplï¿½mentaire, SEO avancï¿½, logo, chatbot IA, maintenance mensuelle.
           </p>
           {isSwiss && (
             <p className="mt-3 text-xs text-emerald-500/60">
-              ?? Paiement accepté : virement bancaire CHF · TWINT · Carte bancaire (Stripe)
+              ?? Paiement acceptï¿½ : virement bancaire CHF ï¿½ TWINT ï¿½ Carte bancaire (Stripe)
             </p>
           )}
         </div>
@@ -597,7 +597,7 @@ export function LocalSeoPageContent({ data }: Props) {
       {/* FAQ */}
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="mb-8 text-center text-2xl font-extrabold tracking-tight text-white">Questions fréquentes</h2>
+          <h2 className="mb-8 text-center text-2xl font-extrabold tracking-tight text-white">Questions frï¿½quentes</h2>
           <div className="space-y-3">
             {data.faq.map((item) => (
               <div key={item.q} className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-5">
@@ -621,14 +621,14 @@ export function LocalSeoPageContent({ data }: Props) {
               ))}
             </div>
             <p className="text-sm italic text-gray-300">
-              &ldquo;Depuis la refonte, je reçois 3 à 4 demandes qualifiées par semaine. ROI dès le premier mois.&rdquo;
+              &ldquo;Depuis la refonte, je reï¿½ois 3 ï¿½ 4 demandes qualifiï¿½es par semaine. ROI dï¿½s le premier mois.&rdquo;
             </p>
-            <p className="mt-2 text-xs text-gray-600">M.L. — Avocate, Lausanne</p>
+            <p className="mt-2 text-xs text-gray-600">M.L. ï¿½ Avocate, Lausanne</p>
           </div>
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">
-            Votre projet à {data.city} — on en parle ?
+            Votre projet ï¿½ {data.city} ï¿½ on en parle ?
           </h2>
-          <p className="mb-8 text-gray-500">Devis gratuit · Réponse sous 24h · Sans engagement</p>
+          <p className="mb-8 text-gray-500">Devis gratuit ï¿½ Rï¿½ponse sous 24h ï¿½ Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href={devisUrl}

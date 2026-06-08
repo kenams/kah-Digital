@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Toulouse — KAH Digital | Devis personnalisé",
-  description: "Studio digital pour Toulouse et l'Occitanie. Sites web, apps et solutions IA pour PME, aéronautique et startups. Devis gratuit sous 24h.",
-  keywords: ["création site web Toulouse", "agence web Toulouse", "site internet Toulouse", "développeur web Occitanie"],
-  openGraph: { title: "Création site web Toulouse — KAH Digital", description: "Studio digital pour entreprises toulousaines. Sites, apps, IA. Devis personnalisé." },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-toulouse" },
+  title: "Crï¿½ation site web Toulouse ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital pour Toulouse et l'Occitanie. Sites web, apps et solutions IA pour PME, aï¿½ronautique et startups. Devis gratuit sous 24h.",
+  keywords: ["crï¿½ation site web Toulouse", "agence web Toulouse", "site internet Toulouse", "dï¿½veloppeur web Occitanie"],
+  openGraph: { title: "Crï¿½ation site web Toulouse ï¿½ KAH Digital", description: "Studio digital pour entreprises toulousaines. Sites, apps, IA. Devis personnalisï¿½." },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-toulouse" },
 };
 
 export default function Page() {

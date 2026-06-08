@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Agent 1 : Lead Discovery
  * Sources : DuckDuckGo (2 targets parallèles) → Annuaires → Fallback statique
  * Extraction : email (multi-chemin) + téléphone
@@ -532,7 +532,7 @@ async function fetchHtml(url: string, timeoutMs = 10000): Promise<string> {
     try {
       const res = await fetch(u, {
         signal: ctrl.signal,
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0; +https://KAH Digital.ch)" },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.ch)" },
       });
       if (res.ok) return await res.text();
     } catch { /* try next */ } finally { clearTimeout(t); }

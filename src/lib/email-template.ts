@@ -1,4 +1,4 @@
-type EmailMetric = {
+﻿type EmailMetric = {
   label: string;
   value: string;
 };
@@ -24,7 +24,7 @@ type BrandedEmailOptions = {
   footer?: string;
 };
 
-const fallbackSiteUrl = "https://KAH Digital.ch";
+const fallbackSiteUrl = "https://kah-digital.ch";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") || fallbackSiteUrl;
 
 function escapeHtml(value: string) {

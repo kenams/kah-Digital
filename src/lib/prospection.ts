@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+﻿import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 
 export type ProspectAudit = {
@@ -21,7 +21,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
   try {
     const res = await fetch(normalizedUrl, {
       signal: controller.signal,
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0)" },
     });
     const html = await res.text();
     // Extract meaningful text: strip scripts/styles, keep tags for context

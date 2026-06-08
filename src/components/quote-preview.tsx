@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { KahDigitalDocumentLogo } from "@/components/KAH Digital-document-logo";
+import { KahDigitalDocumentLogo } from "@/components/kah-digital-document-logo";
 import { companyConfig } from "@/config/company";
 import { useLocale } from "@/lib/locale";
 

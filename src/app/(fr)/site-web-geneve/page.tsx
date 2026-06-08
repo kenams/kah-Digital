@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Genève — KAH Digital | Devis personnalisé",
-  description: "Studio digital proche de Genève. Sites web professionnels, apps et solutions IA pour entreprises et indépendants genevois. Devis personnalisé sous 24h, adapté au besoin réel.",
-  keywords: ["création site web Genève", "agence web Genève", "site internet Genève", "développeur web Genève"],
+  title: "Crï¿½ation site web Genï¿½ve ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital proche de Genï¿½ve. Sites web professionnels, apps et solutions IA pour entreprises et indï¿½pendants genevois. Devis personnalisï¿½ sous 24h, adaptï¿½ au besoin rï¿½el.",
+  keywords: ["crï¿½ation site web Genï¿½ve", "agence web Genï¿½ve", "site internet Genï¿½ve", "dï¿½veloppeur web Genï¿½ve"],
   openGraph: {
-    title: "Création site web Genève — KAH Digital",
-    description: "Studio digital romand pour entreprises genevoise. Sites, apps, IA. Devis personnalisé.",
+    title: "Crï¿½ation site web Genï¿½ve ï¿½ KAH Digital",
+    description: "Studio digital romand pour entreprises genevoise. Sites, apps, IA. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/site-web-geneve" },
+  alternates: { canonical: "https://kah-digital.ch/site-web-geneve" },
 };
 
 export default function SiteWebGenevePage() {

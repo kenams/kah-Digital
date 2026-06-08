@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital",
-  description: "Landing page ou site vitrine : quelle différence, quel Périmètre, pour quel objectif ? Guide pour choisir la bonne option selon votre situation.",
-  keywords: ["landing page vs site vitrine", "différence landing page site vitrine", "quand choisir landing page", "landing page ou site web"],
-  alternates: { canonical: "https://KAH Digital.ch/blog/landing-page-vs-site-vitrine" },
+  title: "Landing page vs site vitrine : lequel choisir ? ï¿½ KAH Digital",
+  description: "Landing page ou site vitrine : quelle diffï¿½rence, quel Pï¿½rimï¿½tre, pour quel objectif ? Guide pour choisir la bonne option selon votre situation.",
+  keywords: ["landing page vs site vitrine", "diffï¿½rence landing page site vitrine", "quand choisir landing page", "landing page ou site web"],
+  alternates: { canonical: "https://kah-digital.ch/blog/landing-page-vs-site-vitrine" },
   openGraph: {
     title: "Landing page vs site vitrine : lequel choisir ?",
-    description: "Les différences réelles, les cas d'usage, et comment décider en fonction de votre objectif.",
+    description: "Les diffï¿½rences rï¿½elles, les cas d'usage, et comment dï¿½cider en fonction de votre objectif.",
   },
 };
 
@@ -21,45 +21,45 @@ const jsonLd = {
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
   "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://KAH Digital.ch" },
-  "mainEntityOfPage": "https://KAH Digital.ch/blog/landing-page-vs-site-vitrine",
+  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "mainEntityOfPage": "https://kah-digital.ch/blog/landing-page-vs-site-vitrine",
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Qu'est-ce qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page est une page unique conçue pour un objectif précis : capturer des leads, vendre un produit, promouvoir un événement. Elle n'a pas de menu de navigation pour garder le visiteur concentré sur l'action." } },
-    { "@type": "Question", "name": "Quand choisir un site vitrine plutôt qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Choisissez un site vitrine quand vous avez plusieurs services, que vous voulez être trouvé sur Google sur plusieurs mots-clés, ou que vous avez besoin de présenter votre entreprise dans sa globalité." } },
-    { "@type": "Question", "name": "comment estimer une landing page vs un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page s'estime après cadrage et peut être livrée en une semaine. Un site vitrine s'estime après cadrage pour 5-8 pages, livré en 2-3 semaines." } },
-    { "@type": "Question", "name": "Peut-on avoir les deux ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, c'est même recommandé. Le site vitrine assure votre présence générale et votre référencement, tandis que des landing pages spécifiques maximisent les conversions pour des campagnes précises." } },
+    { "@type": "Question", "name": "Qu'est-ce qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page est une page unique conï¿½ue pour un objectif prï¿½cis : capturer des leads, vendre un produit, promouvoir un ï¿½vï¿½nement. Elle n'a pas de menu de navigation pour garder le visiteur concentrï¿½ sur l'action." } },
+    { "@type": "Question", "name": "Quand choisir un site vitrine plutï¿½t qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Choisissez un site vitrine quand vous avez plusieurs services, que vous voulez ï¿½tre trouvï¿½ sur Google sur plusieurs mots-clï¿½s, ou que vous avez besoin de prï¿½senter votre entreprise dans sa globalitï¿½." } },
+    { "@type": "Question", "name": "comment estimer une landing page vs un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page s'estime aprï¿½s cadrage et peut ï¿½tre livrï¿½e en une semaine. Un site vitrine s'estime aprï¿½s cadrage pour 5-8 pages, livrï¿½ en 2-3 semaines." } },
+    { "@type": "Question", "name": "Peut-on avoir les deux ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, c'est mï¿½me recommandï¿½. Le site vitrine assure votre prï¿½sence gï¿½nï¿½rale et votre rï¿½fï¿½rencement, tandis que des landing pages spï¿½cifiques maximisent les conversions pour des campagnes prï¿½cises." } },
   ],
 };
 
 type CompareItem = { topic: string; landing: string; vitrine: string; landingOk?: boolean; vitrineOk?: boolean };
 
 const COMPARE: CompareItem[] = [
-  { topic: "Objectif", landing: "Une seule action (ex: remplir un formulaire, acheter)", vitrine: "Présenter l'entreprise dans sa globalité", landingOk: false, vitrineOk: false },
-  { topic: "Nombre de pages", landing: "1 page", vitrine: "5 à 15 pages", landingOk: false, vitrineOk: false },
-  { topic: "SEO long-terme", landing: "Limité (une seule page)", vitrine: "Fort — plusieurs pages, plusieurs mots-clés", landingOk: false, vitrineOk: true },
-  { topic: "Conversion (pub payante)", landing: "Excellent — pas de distraction", vitrine: "Moyen — trop d'options tue le taux de clic", landingOk: true, vitrineOk: false },
-  { topic: "Délai de mise en ligne", landing: "3-7 jours", vitrine: "2-3 semaines", landingOk: true, vitrineOk: false },
-  { topic: "Périmètre", landing: "selon le périmètre", vitrine: "selon le périmètre", landingOk: true, vitrineOk: false },
-  { topic: "Crédibilité / confiance", landing: "Faible si seul", vitrine: "Forte — \"À propos\", témoignages, blog", landingOk: false, vitrineOk: true },
+  { topic: "Objectif", landing: "Une seule action (ex: remplir un formulaire, acheter)", vitrine: "Prï¿½senter l'entreprise dans sa globalitï¿½", landingOk: false, vitrineOk: false },
+  { topic: "Nombre de pages", landing: "1 page", vitrine: "5 ï¿½ 15 pages", landingOk: false, vitrineOk: false },
+  { topic: "SEO long-terme", landing: "Limitï¿½ (une seule page)", vitrine: "Fort ï¿½ plusieurs pages, plusieurs mots-clï¿½s", landingOk: false, vitrineOk: true },
+  { topic: "Conversion (pub payante)", landing: "Excellent ï¿½ pas de distraction", vitrine: "Moyen ï¿½ trop d'options tue le taux de clic", landingOk: true, vitrineOk: false },
+  { topic: "Dï¿½lai de mise en ligne", landing: "3-7 jours", vitrine: "2-3 semaines", landingOk: true, vitrineOk: false },
+  { topic: "Pï¿½rimï¿½tre", landing: "selon le pï¿½rimï¿½tre", vitrine: "selon le pï¿½rimï¿½tre", landingOk: true, vitrineOk: false },
+  { topic: "Crï¿½dibilitï¿½ / confiance", landing: "Faible si seul", vitrine: "Forte ï¿½ \"ï¿½ propos\", tï¿½moignages, blog", landingOk: false, vitrineOk: true },
 ];
 
 const LANDING_CASES = [
-  "Vous lancez un produit ou service précis et voulez tester l'intérêt du marché",
-  "Vous faites de la publicité payante (Google Ads, Meta) et voulez maximiser les conversions",
-  "Vous organisez un événement, un webinaire, une formation",
-  "Vous êtes freelance et voulez une présence rapide avant de construire un vrai site",
+  "Vous lancez un produit ou service prï¿½cis et voulez tester l'intï¿½rï¿½t du marchï¿½",
+  "Vous faites de la publicitï¿½ payante (Google Ads, Meta) et voulez maximiser les conversions",
+  "Vous organisez un ï¿½vï¿½nement, un webinaire, une formation",
+  "Vous ï¿½tes freelance et voulez une prï¿½sence rapide avant de construire un vrai site",
 ];
 
 const VITRINE_CASES = [
-  "Vous avez plusieurs services à présenter",
-  "Vous voulez être trouvé sur Google par des clients locaux ou en recherche organique",
-  "Votre secteur requiert de la crédibilité (artisan, consultant, cabinet, agence)",
-  "Vous voulez une présence durable et autonome sur le long terme",
+  "Vous avez plusieurs services ï¿½ prï¿½senter",
+  "Vous voulez ï¿½tre trouvï¿½ sur Google par des clients locaux ou en recherche organique",
+  "Votre secteur requiert de la crï¿½dibilitï¿½ (artisan, consultant, cabinet, agence)",
+  "Vous voulez une prï¿½sence durable et autonome sur le long terme",
 ];
 
 export default function LandingPageVsSiteVitrinePage() {
@@ -73,14 +73,14 @@ export default function LandingPageVsSiteVitrinePage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">Stratégie web</span>
-            <span className="text-xs text-gray-600">4 mai 2026 · 5 min de lecture</span>
+            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">Stratï¿½gie web</span>
+            <span className="text-xs text-gray-600">4 mai 2026 ï¿½ 5 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             Landing page vs site vitrine : lequel choisir ?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Ce ne sont pas les mêmes outils et ils ne servent pas les mêmes objectifs. Voici comment décider rapidement selon votre situation.
+            Ce ne sont pas les mï¿½mes outils et ils ne servent pas les mï¿½mes objectifs. Voici comment dï¿½cider rapidement selon votre situation.
           </p>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function LandingPageVsSiteVitrinePage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
           <p className="text-sm leading-relaxed text-emerald-200">
-            <strong>TL;DR :</strong> Landing page = une action précise, Périmètre serré, déploiement rapide. Site vitrine = présence complète, SEO durable, crédibilité. Idéalement : les deux.
+            <strong>TL;DR :</strong> Landing page = une action prï¿½cise, Pï¿½rimï¿½tre serrï¿½, dï¿½ploiement rapide. Site vitrine = prï¿½sence complï¿½te, SEO durable, crï¿½dibilitï¿½. Idï¿½alement : les deux.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function LandingPageVsSiteVitrinePage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/8 bg-white/5">
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-500">Critère</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-500">Critï¿½re</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-blue-400">Landing page</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-emerald-400">Site vitrine</th>
               </tr>
@@ -114,7 +114,7 @@ export default function LandingPageVsSiteVitrinePage() {
           </table>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Choisissez une landing page si…</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Choisissez une landing page siï¿½</h2>
         <div className="mb-10 space-y-3">
           {LANDING_CASES.map((item) => (
             <div key={item} className="flex items-start gap-3 rounded-xl border border-blue-500/15 bg-blue-500/5 p-4">
@@ -124,7 +124,7 @@ export default function LandingPageVsSiteVitrinePage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Choisissez un site vitrine si…</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Choisissez un site vitrine siï¿½</h2>
         <div className="mb-10 space-y-3">
           {VITRINE_CASES.map((item) => (
             <div key={item} className="flex items-start gap-3 rounded-xl border border-emerald-500/15 bg-emerald-500/5 p-4">
@@ -134,12 +134,12 @@ export default function LandingPageVsSiteVitrinePage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">La meilleure stratégie : les deux</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">La meilleure stratï¿½gie : les deux</h2>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          Le site vitrine construit votre présence et votre référencement naturel. Les landing pages maximisent vos conversions sur vos campagnes marketing. Ce ne sont pas des alternatives — ce sont des outils complémentaires. Commencez par le site vitrine pour asseoir votre crédibilité, ajoutez des landing pages quand vous faites des campagnes.
+          Le site vitrine construit votre prï¿½sence et votre rï¿½fï¿½rencement naturel. Les landing pages maximisent vos conversions sur vos campagnes marketing. Ce ne sont pas des alternatives ï¿½ ce sont des outils complï¿½mentaires. Commencez par le site vitrine pour asseoir votre crï¿½dibilitï¿½, ajoutez des landing pages quand vous faites des campagnes.
         </p>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Questions fréquentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Questions frï¿½quentes</h2>
         <div className="mb-12 space-y-4">
           {faqJsonLd.mainEntity.map((f) => (
             <div key={f.name} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -150,8 +150,8 @@ export default function LandingPageVsSiteVitrinePage() {
         </div>
 
         <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-blue-600/10 p-8 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-white">Landing page ou site vitrine — on vous conseille gratuitement</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
+          <h2 className="mb-3 text-2xl font-bold text-white">Landing page ou site vitrine ï¿½ on vous conseille gratuitement</h2>
+          <p className="mb-6 text-gray-400">Rï¿½ponse sous 24h ï¿½ Devis personnalisï¿½ ï¿½ Devis personnalisï¿½</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-emerald-500/30">
               Demander un devis <FiArrowRight size={15} />

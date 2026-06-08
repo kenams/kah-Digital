@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Berne — KAH Digital | Devis personnalisé",
+  title: "Crï¿½ation site web Berne ï¿½ KAH Digital | Devis personnalisï¿½",
   description: "Studio digital pour Berne et la Suisse. Sites web bilingues FR/DE, apps et solutions IA pour entreprises et institutions. Devis gratuit sous 24h.",
-  keywords: ["création site web Berne", "agence web Berne", "site internet Berne", "développeur web Suisse"],
+  keywords: ["crï¿½ation site web Berne", "agence web Berne", "site internet Berne", "dï¿½veloppeur web Suisse"],
   openGraph: {
-    title: "Création site web Berne — KAH Digital",
-    description: "Studio digital pour entreprises bernoises. Bilingue FR/DE. Devis personnalisé.",
+    title: "Crï¿½ation site web Berne ï¿½ KAH Digital",
+    description: "Studio digital pour entreprises bernoises. Bilingue FR/DE. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-berne" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-berne" },
 };
 
 export default function AgenceWebBernePage() {

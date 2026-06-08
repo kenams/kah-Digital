@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Paris — KAH Digital | Devis personnalisé",
-  description: "Studio digital franco-suisse. Création de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalisé sous 24h, adapté au besoin réel.",
-  keywords: ["création site web Paris", "agence web Paris", "site internet Paris", "développeur web Paris freelance"],
+  title: "Crï¿½ation site web Paris ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital franco-suisse. Crï¿½ation de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalisï¿½ sous 24h, adaptï¿½ au besoin rï¿½el.",
+  keywords: ["crï¿½ation site web Paris", "agence web Paris", "site internet Paris", "dï¿½veloppeur web Paris freelance"],
   openGraph: {
-    title: "Création site web Paris — KAH Digital",
-    description: "Studio digital pour entreprises parisiennes. Sites, apps, IA. Process clair. Devis personnalisé.",
+    title: "Crï¿½ation site web Paris ï¿½ KAH Digital",
+    description: "Studio digital pour entreprises parisiennes. Sites, apps, IA. Process clair. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-paris" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-paris" },
 };
 
 export default function AgenceWebParisPage() {

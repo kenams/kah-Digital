@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Bordeaux — KAH Digital | Devis personnalisé",
+  title: "Crï¿½ation site web Bordeaux ï¿½ KAH Digital | Devis personnalisï¿½",
   description: "Studio digital pour Bordeaux et la Nouvelle-Aquitaine. Sites web, apps et solutions IA pour PME, vignobles et commerces. Devis gratuit sous 24h.",
-  keywords: ["création site web Bordeaux", "agence web Bordeaux", "site internet Bordeaux", "développeur web Bordeaux"],
+  keywords: ["crï¿½ation site web Bordeaux", "agence web Bordeaux", "site internet Bordeaux", "dï¿½veloppeur web Bordeaux"],
   openGraph: {
-    title: "Création site web Bordeaux — KAH Digital",
-    description: "Studio digital pour entreprises bordelaises. Sites, apps, IA. Devis personnalisé.",
+    title: "Crï¿½ation site web Bordeaux ï¿½ KAH Digital",
+    description: "Studio digital pour entreprises bordelaises. Sites, apps, IA. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-bordeaux" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-bordeaux" },
 };
 
 export default function AgenceWebBordeauxPage() {

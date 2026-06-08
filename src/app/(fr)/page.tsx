@@ -1,4 +1,4 @@
-import { buildPageMetadata } from "@/lib/shared-metadata";
+﻿import { buildPageMetadata } from "@/lib/shared-metadata";
 import { HeroSection } from "@/components/hero-section";
 import { StatsBar } from "@/components/stats-bar";
 import { AiSystemsSection } from "@/components/ai-systems-section";
@@ -98,8 +98,8 @@ const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   name: "KAH Digital",
   alternateName: "KAH Digital",
-  url: "https://KAH Digital.ch",
-  logo: "https://KAH Digital.ch/favicon.svg",
+  url: "https://kah-digital.ch",
+  logo: "https://kah-digital.ch/favicon.svg",
   email: "contact@KAH Digital.ch",
   telephone: "+41759558414",
   address: {

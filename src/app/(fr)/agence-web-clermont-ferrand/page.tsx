@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Clermont-Ferrand — KAH Digital | Devis personnalisé",
-  description: "Studio digital pour Clermont-Ferrand et l'Auvergne. Sites web, apps et solutions digitales pour PME, startups et indépendants. Devis personnalisé sous 24h, adapté au besoin réel.",
-  keywords: ["création site web Clermont-Ferrand", "agence web Clermont", "site internet Clermont-Ferrand", "développeur web Auvergne", "agence digitale Clermont"],
+  title: "Crï¿½ation site web Clermont-Ferrand ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital pour Clermont-Ferrand et l'Auvergne. Sites web, apps et solutions digitales pour PME, startups et indï¿½pendants. Devis personnalisï¿½ sous 24h, adaptï¿½ au besoin rï¿½el.",
+  keywords: ["crï¿½ation site web Clermont-Ferrand", "agence web Clermont", "site internet Clermont-Ferrand", "dï¿½veloppeur web Auvergne", "agence digitale Clermont"],
   openGraph: {
-    title: "Création site web Clermont-Ferrand — KAH Digital",
-    description: "Studio digital pour PME et startups de Clermont-Ferrand. Sites, apps, solutions digitales. Devis personnalisé.",
+    title: "Crï¿½ation site web Clermont-Ferrand ï¿½ KAH Digital",
+    description: "Studio digital pour PME et startups de Clermont-Ferrand. Sites, apps, solutions digitales. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-clermont-ferrand" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-clermont-ferrand" },
 };
 
 export default function AgenceWebClermontFerrandPage() {

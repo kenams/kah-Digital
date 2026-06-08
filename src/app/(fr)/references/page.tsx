@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "témoignages clients KAH Digital",
     "agence web résultats prouvés",
   ],
-  alternates: { canonical: "https://KAH Digital.ch/references" },
+  alternates: { canonical: "https://kah-digital.ch/references" },
   openGraph: {
     title: "Références clients — Résultats concrets | KAH Digital",
     description:

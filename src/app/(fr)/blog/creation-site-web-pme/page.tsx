@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Création de site web pour PME : guide complet 2026 — KAH Digital",
-  description: "Tout ce qu'une PME doit savoir avant de commander un site web : du brief au lancement, les erreurs à éviter et comment choisir son prestataire.",
-  keywords: ["créer site web PME", "site web entreprise", "création site professionnel PME", "agence web PME", "site internet entreprise 2026"],
-  alternates: { canonical: "https://KAH Digital.ch/blog/creation-site-web-pme" },
+  title: "Crï¿½ation de site web pour PME : guide complet 2026 ï¿½ KAH Digital",
+  description: "Tout ce qu'une PME doit savoir avant de commander un site web : du brief au lancement, les erreurs ï¿½ ï¿½viter et comment choisir son prestataire.",
+  keywords: ["crï¿½er site web PME", "site web entreprise", "crï¿½ation site professionnel PME", "agence web PME", "site internet entreprise 2026"],
+  alternates: { canonical: "https://kah-digital.ch/blog/creation-site-web-pme" },
   openGraph: {
-    title: "Création de site web pour PME : guide complet 2026",
+    title: "Crï¿½ation de site web pour PME : guide complet 2026",
     description: "Du brief au lancement, tout ce qu'une PME doit savoir avant de commander un site web.",
   },
 };
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Création de site web pour PME : guide complet 2026",
+  "headline": "Crï¿½ation de site web pour PME : guide complet 2026",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
   "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://KAH Digital.ch" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
 };
 
 export default function CreationSiteWebPMEPage() {
@@ -35,26 +35,26 @@ export default function CreationSiteWebPMEPage() {
           <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
             <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">Guide</span>
-            <span className="text-xs text-gray-600">24 avril 2026 · 7 min de lecture</span>
+            <span className="text-xs text-gray-600">24 avril 2026 ï¿½ 7 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Création de site web pour PME : guide complet 2026
+            Crï¿½ation de site web pour PME : guide complet 2026
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Commander un site web pour sa PME sans se faire avoir — voici le guide honnête, du brief au lancement.
+            Commander un site web pour sa PME sans se faire avoir ï¿½ voici le guide honnï¿½te, du brief au lancement.
           </p>
         </div>
       </section>
 
       <article className="mx-auto max-w-3xl px-4 pb-24">
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Étape 1 — Définir ce dont vous avez réellement besoin</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">ï¿½tape 1 ï¿½ Dï¿½finir ce dont vous avez rï¿½ellement besoin</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          La plupart des PME commandent un site trop grand. Commencez par répondre à ces 3 questions :
+          La plupart des PME commandent un site trop grand. Commencez par rï¿½pondre ï¿½ ces 3 questions :
         </p>
         <ul className="mb-10 space-y-3 text-gray-400 text-sm leading-relaxed">
           {[
-            "Quel est l'objectif principal ? (Générer des contacts, vendre en ligne, présenter votre activité, recruter...)",
+            "Quel est l'objectif principal ? (Gï¿½nï¿½rer des contacts, vendre en ligne, prï¿½senter votre activitï¿½, recruter...)",
             "Qui sont vos visiteurs cibles ? (Professionnels B2B, particuliers, locaux, internationaux...)",
             "Qu'est-ce qu'un visiteur devrait faire sur votre site ? (Vous appeler, remplir un formulaire, acheter, prendre RDV...)",
           ].map((item) => (
@@ -65,13 +65,13 @@ export default function CreationSiteWebPMEPage() {
           ))}
         </ul>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Étape 2 — Choisir le bon type de site</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">ï¿½tape 2 ï¿½ Choisir le bon type de site</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { type: "Landing page", ideal: "Tester une offre, lancer un produit, freelances", price: "devis personnalisé" },
-            { type: "Site vitrine", ideal: "PME locale, professions libérales, artisans", price: "devis personnalisé" },
-            { type: "Site corporate", ideal: "Entreprises établies, multilingue, CMS", price: "devis personnalisé" },
-            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "devis personnalisé" },
+            { type: "Landing page", ideal: "Tester une offre, lancer un produit, freelances", price: "devis personnalisï¿½" },
+            { type: "Site vitrine", ideal: "PME locale, professions libï¿½rales, artisans", price: "devis personnalisï¿½" },
+            { type: "Site corporate", ideal: "Entreprises ï¿½tablies, multilingue, CMS", price: "devis personnalisï¿½" },
+            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "devis personnalisï¿½" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-5">
               <div className="mb-1 font-bold text-white text-sm">{item.type}</div>
@@ -81,23 +81,23 @@ export default function CreationSiteWebPMEPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Étape 3 — Rédiger un brief efficace</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">ï¿½tape 3 ï¿½ Rï¿½diger un brief efficace</h2>
         <p className="mb-4 text-gray-400 leading-relaxed">
-          Un bon brief vous fait gagner 30% de Périmètre. Il contient au minimum :
+          Un bon brief vous fait gagner 30% de Pï¿½rimï¿½tre. Il contient au minimum :
         </p>
         <div className="mb-10 rounded-2xl border border-white/8 bg-gray-900 p-6">
           <div className="grid gap-2 sm:grid-cols-2 text-sm">
             {[
-              "Nom et activité de l'entreprise",
+              "Nom et activitï¿½ de l'entreprise",
               "Objectif principal du site",
               "Personas cibles (qui visite ?)",
-              "Nombre de pages estimé",
-              "Fonctionnalités spécifiques",
-              "Identité visuelle existante",
-              "Sites de référence (style souhaité)",
-              "Périmètre maximum",
-              "Date de mise en ligne souhaitée",
-              "Qui gère le contenu ensuite ?",
+              "Nombre de pages estimï¿½",
+              "Fonctionnalitï¿½s spï¿½cifiques",
+              "Identitï¿½ visuelle existante",
+              "Sites de rï¿½fï¿½rence (style souhaitï¿½)",
+              "Pï¿½rimï¿½tre maximum",
+              "Date de mise en ligne souhaitï¿½e",
+              "Qui gï¿½re le contenu ensuite ?",
             ].map((item) => (
               <div key={item} className="flex items-center gap-2 text-gray-400">
                 <FiCheck size={12} className="shrink-0 text-emerald-400" /> {item}
@@ -106,16 +106,16 @@ export default function CreationSiteWebPMEPage() {
           </div>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Étape 4 — Choisir son prestataire</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">ï¿½tape 4 ï¿½ Choisir son prestataire</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          Il existe 4 types de prestataires web. Voici leurs réalités :
+          Il existe 4 types de prestataires web. Voici leurs rï¿½alitï¿½s :
         </p>
         <div className="mb-10 space-y-4">
           {[
-            { type: "Freelance junior (Malt, Fiverr)", pro: "Souplesse et démarrage rapide", con: "Risque élevé sur la qualité et les délais, support inexistant après livraison" },
-            { type: "Grande agence web", pro: "Process structuré, équipe complète", con: "Propositions parfois surdimensionnées, interlocuteur changeant" },
-            { type: "Studio digital indépendant", pro: "Équilibre qualité/cadrage, interlocuteur direct, réactif", con: "Capacité limitée en parallèle (attention aux délais)" },
-            { type: "Constructeur DIY (Wix, Squarespace)", pro: "Très rapide à lancer", con: "Design générique, performance médiocre, peu évolutif, SEO limité" },
+            { type: "Freelance junior (Malt, Fiverr)", pro: "Souplesse et dï¿½marrage rapide", con: "Risque ï¿½levï¿½ sur la qualitï¿½ et les dï¿½lais, support inexistant aprï¿½s livraison" },
+            { type: "Grande agence web", pro: "Process structurï¿½, ï¿½quipe complï¿½te", con: "Propositions parfois surdimensionnï¿½es, interlocuteur changeant" },
+            { type: "Studio digital indï¿½pendant", pro: "ï¿½quilibre qualitï¿½/cadrage, interlocuteur direct, rï¿½actif", con: "Capacitï¿½ limitï¿½e en parallï¿½le (attention aux dï¿½lais)" },
+            { type: "Constructeur DIY (Wix, Squarespace)", pro: "Trï¿½s rapide ï¿½ lancer", con: "Design gï¿½nï¿½rique, performance mï¿½diocre, peu ï¿½volutif, SEO limitï¿½" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
               <div className="mb-3 font-semibold text-white">{item.type}</div>
@@ -127,25 +127,25 @@ export default function CreationSiteWebPMEPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Les 5 erreurs les plus fréquentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Les 5 erreurs les plus frï¿½quentes</h2>
         <ul className="mb-12 space-y-4 text-sm text-gray-400 leading-relaxed">
           {[
-            { err: "Partir sans brief clair", detail: "Sans brief, le prestataire crée selon ses propres suppositions. Les allers-retours s'accumulent et le périmètre devient flou." },
-            { err: "Confier le SEO à plus tard", detail: "Le SEO se construit dès l'architecture du site. L'ajouter après coup impose souvent une refonte partielle." },
-            { err: "Choisir sans vérifier le périmètre", detail: "Une proposition trop vague peut cacher un template basique avec votre logo dessus. Vérifiez toujours ce qui est réellement livré." },
-            { err: "Ignorer le mobile", detail: "Plus de 60% des visites viennent du mobile. Un site non adapté perd plus de la moitié de son audience." },
-            { err: "Ne pas prévoir la maintenance", detail: "Un site web nécessite des mises à jour régulières : sécurité, compatibilité, contenu et suivi des performances." },
+            { err: "Partir sans brief clair", detail: "Sans brief, le prestataire crï¿½e selon ses propres suppositions. Les allers-retours s'accumulent et le pï¿½rimï¿½tre devient flou." },
+            { err: "Confier le SEO ï¿½ plus tard", detail: "Le SEO se construit dï¿½s l'architecture du site. L'ajouter aprï¿½s coup impose souvent une refonte partielle." },
+            { err: "Choisir sans vï¿½rifier le pï¿½rimï¿½tre", detail: "Une proposition trop vague peut cacher un template basique avec votre logo dessus. Vï¿½rifiez toujours ce qui est rï¿½ellement livrï¿½." },
+            { err: "Ignorer le mobile", detail: "Plus de 60% des visites viennent du mobile. Un site non adaptï¿½ perd plus de la moitiï¿½ de son audience." },
+            { err: "Ne pas prï¿½voir la maintenance", detail: "Un site web nï¿½cessite des mises ï¿½ jour rï¿½guliï¿½res : sï¿½curitï¿½, compatibilitï¿½, contenu et suivi des performances." },
           ].map((item) => (
             <li key={item.err} className="flex items-start gap-3">
               <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-              <span><strong className="text-white">{item.err}</strong> — {item.detail}</span>
+              <span><strong className="text-white">{item.err}</strong> ï¿½ {item.detail}</span>
             </li>
           ))}
         </ul>
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
-          <h2 className="mb-3 text-2xl font-bold text-white">Prêt à lancer votre site web ?</h2>
-          <p className="mb-6 text-gray-400">KAH Digital accompagne les PME de la Suisse et de la France. Devis personnalisé sous 24h.</p>
+          <h2 className="mb-3 text-2xl font-bold text-white">Prï¿½t ï¿½ lancer votre site web ?</h2>
+          <p className="mb-6 text-gray-400">KAH Digital accompagne les PME de la Suisse et de la France. Devis personnalisï¿½ sous 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Demander un devis <FiArrowRight size={15} />

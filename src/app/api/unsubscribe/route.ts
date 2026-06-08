@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 function getSupabase() {
@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
     <h2 style="margin:0 0 12px;color:#111827;font-size:22px;">Désinscription enregistrée</h2>
     <p style="color:#6b7280;margin:0 0 24px;line-height:1.6;">Vous ne recevrez plus de messages de notre part. Si c'était une erreur ou si vous souhaitez reprendre contact, écrivez-nous.</p>
     <a href="mailto:contact@KAH Digital.ch" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;text-decoration:none;padding:12px 28px;border-radius:9999px;font-weight:600;font-size:14px;">Nous contacter</a>
-    <p style="margin:20px 0 0;font-size:12px;color:#9ca3af;"><a href="https://KAH Digital.ch" style="color:#9ca3af;">KAH Digital.ch</a></p>
+    <p style="margin:20px 0 0;font-size:12px;color:#9ca3af;"><a href="https://kah-digital.ch" style="color:#9ca3af;">KAH Digital.ch</a></p>
   </div>
 </body>
 </html>`,

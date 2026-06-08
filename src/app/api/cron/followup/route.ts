@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Cron Relance — J+1 fast-track (ouvert, pas cliqué), J+3 (pas ouvert), J+5 (ouvert, pas répondu), J+10 (dernier contact)
  * Schedule : 10h00, 15h00, 23h00 UTC (vercel.json)
  */
@@ -245,7 +245,7 @@ export async function POST(req: Request) {
   }
 
   const supabase = getSupabase();
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://KAH Digital.ch").trim();
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch").trim();
   const now = new Date();
   const j1Cutoff  = new Date(now.getTime() - 20 * 3600000).toISOString();  // ouvert il y a 20h+
   const j2Cutoff  = new Date(now.getTime() - 48 * 3600000).toISOString();  // limite J+1 (48h)

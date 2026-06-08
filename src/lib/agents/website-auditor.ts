@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Agent 2 : Website Auditor
  * Claude visite le site, détecte les faiblesses, génère le rapport + demande de devis.
  * S'adapte automatiquement à la langue du site cible.
@@ -141,7 +141,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
     try {
       const res = await fetch(u, {
         signal: ctrl.signal,
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH Digital-Scout/1.0; +https://KAH Digital.fr)" },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.fr)" },
       });
       if (!res.ok) continue;
       const html = await res.text();

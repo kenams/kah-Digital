@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+ï»¿import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Angers — KAH Digital | Devis personnalisé",
-  description: "Studio digital pour Angers et la Maine-et-Loire. Sites web, apps et solutions digitales pour startups, PME et indépendants angevins. Devis personnalisé sous 24h, adapté au besoin réel.",
-  keywords: ["création site web Angers", "agence web Angers", "site internet Angers", "développeur web Maine-et-Loire", "agence digitale Angers"],
+  title: "Crï¿½ation site web Angers ï¿½ KAH Digital | Devis personnalisï¿½",
+  description: "Studio digital pour Angers et la Maine-et-Loire. Sites web, apps et solutions digitales pour startups, PME et indï¿½pendants angevins. Devis personnalisï¿½ sous 24h, adaptï¿½ au besoin rï¿½el.",
+  keywords: ["crï¿½ation site web Angers", "agence web Angers", "site internet Angers", "dï¿½veloppeur web Maine-et-Loire", "agence digitale Angers"],
   openGraph: {
-    title: "Création site web Angers — KAH Digital",
-    description: "Studio digital pour entreprises angevines. Sites, apps, solutions digitales. Devis personnalisé.",
+    title: "Crï¿½ation site web Angers ï¿½ KAH Digital",
+    description: "Studio digital pour entreprises angevines. Sites, apps, solutions digitales. Devis personnalisï¿½.",
   },
-  alternates: { canonical: "https://KAH Digital.ch/agence-web-angers" },
+  alternates: { canonical: "https://kah-digital.ch/agence-web-angers" },
 };
 
 export default function AgenceWebAngersPage() {
