@@ -29,6 +29,11 @@ const nextConfig: NextConfig = {
         destination: "/en/projets",
         permanent: true,
       },
+      {
+        source: "/link",
+        destination: "/links",
+        permanent: true,
+      },
     ];
   },
   turbopack: {
