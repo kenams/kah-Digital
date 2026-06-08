@@ -22,7 +22,7 @@ async function getTelegramChatId(): Promise<string | null> {
     const supabase = getSupabase();
     const { data } = await supabase.from("app_settings").select("value").eq("key", "telegram_chat_id").single();
     _cachedChatId = data?.value ?? null;
-    return _cachedChatId;
+    return _cachedChatId ?? null;
   } catch {
     _cachedChatId = null;
     return null;
