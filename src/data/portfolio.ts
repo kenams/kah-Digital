@@ -718,4 +718,59 @@ export const portfolioProjects: PortfolioProject[] = [
       ],
     },
   },
+  {
+    slug: "clutch",
+    name: "CLUTCH",
+    type: "App Web + Mobile / Challenge financier entre amis",
+    tagline:
+      "Défie tes amis, mets de l'argent en jeu, le plus discipliné remporte tout. CLUTCH transforme tes résolutions en compétition motivante — avec de vrais euros sur la table.",
+    shortDescription:
+      "Next.js PWA + Expo React Native. Cautions Stripe, chat participants, feed public de défis, virements automatiques au gagnant. 8 types de défis de 7 jours à 2 ans.",
+    description:
+      "CLUTCH est une plateforme de défis financiers entre amis développée par KAH Digital. Chaque participant met une caution réelle (via Stripe). Le plus constant sur la durée — check-in hebdomadaire avec preuve — remporte l'intégralité de la cagnotte moins 3% de frais plateforme. Le virement est automatique, sans intervention humaine. CLUTCH couvre 8 types de défis : épargne, zéro dépense, sport, santé, productivité, objectif commun, libre et loufoque (défis absurdes et fun). L'application embarque un chat privé entre participants, des réactions (🔥💪😂), un feed public anonymisé des défis en cours pour inspirer d'autres joueurs, et un aperçu live de la cagnotte lors de la création.",
+    challenge:
+      "Créer une expérience de compétition financière entre amis qui soit à la fois motivante et légalement irréprochable (non soumise ANJ), avec paiement réel Stripe, virements automatiques au gagnant et conformité RGPD complète.",
+    solution:
+      "Next.js App Router + Expo React Native. Stripe Connect Express pour les virements automatiques joueur→gagnant. Crons Vercel : complétion automatique, rappels check-in, remboursements, retraits. Chat participants avec polling 4s. Feed public anonyme. Prisma + Neon PostgreSQL. Déployé sur Vercel en production.",
+    stack: ["Next.js 15", "Expo React Native", "Stripe Connect", "Prisma", "Neon PostgreSQL", "TypeScript", "Vercel", "EAS Build"],
+    result:
+      "Application web en production. APK Android disponible au téléchargement. Virements automatiques Stripe actifs. 0 intervention manuelle requise.",
+    timeline: "3 semaines",
+    deliverables: [
+      "Web App Next.js (PWA installable)",
+      "Application Android native (APK)",
+      "Cautions Stripe + virements automatiques gagnant",
+      "Chat privé participants + réactions emoji",
+      "Feed public de défis anonymisés",
+      "8 types de défis (épargne, sport, santé, loufoque...)",
+      "Crons automatisés : rappels, complétion, retraits",
+    ],
+    metrics: [
+      { label: "Types de défis", value: "8" },
+      { label: "Durée max", value: "2 ans" },
+      { label: "Mise max", value: "1 000€" },
+    ],
+    highlights: [
+      "Virements Stripe 100% automatiques au gagnant",
+      "Chat + réactions entre participants",
+      "Feed public anonymisé des défis en cours",
+    ],
+    palette: {
+      primary: "#000000",
+      secondary: "#111111",
+      accent: "#f97316",
+    },
+    website: "https://stackr-app-three.vercel.app",
+    downloadLinks: {
+      android: "https://expo.dev/accounts/kenams/projects/clutch-challenges/builds/b178c1c9-0c9d-4285-9134-9952f4af0dd4",
+    },
+    mockups: {
+      primary: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=900&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
+      ],
+    },
+    launchDate: "2026-06-09",
+  },
 ];
