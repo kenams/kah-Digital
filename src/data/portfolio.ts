@@ -28,6 +28,7 @@ export type PortfolioProject = {
     primary?: string;
     gallery?: string[];
   };
+  launchDate?: string;
 };
 
 export const portfolioProjects: PortfolioProject[] = [
