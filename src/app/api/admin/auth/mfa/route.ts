@@ -47,21 +47,8 @@ export async function GET(request: NextRequest) {
     return json;
   }
 
-  const { data: enrollData, error: enrollError } = await supabase.auth.mfa.enroll({ factorType: "totp" });
-  if (enrollError || !enrollData) {
-    const json = NextResponse.json({ error: "Impossible d'activer le MFA." }, { status: 500 });
-    applySupabaseCookies(response, json);
-    return json;
-  }
-
-  const json = NextResponse.json(
-    {
-      status: "setup",
-      factorId: enrollData.id,
-      qrCode: enrollData.totp?.qr_code ?? null,
-    },
-    { status: 200 },
-  );
+  // No MFA factor enrolled — accept AAL1, admin can re-enroll MFA from the dashboard
+  const json = NextResponse.json({ status: "active" }, { status: 200 });
   applySupabaseCookies(response, json);
   return json;
 }
