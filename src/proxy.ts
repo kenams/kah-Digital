@@ -150,7 +150,9 @@ export async function proxy(request: NextRequest) {
   }
 
   const { data: mfaData, error: mfaError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
-  if (mfaError || mfaData?.currentLevel !== "aal2") {
+  // If MFA factors are enrolled, require aal2. If none enrolled, aal1 is sufficient.
+  const requiredLevel = mfaData?.nextLevel === "aal2" ? "aal2" : "aal1";
+  if (mfaError || (mfaData?.currentLevel !== requiredLevel && mfaData?.currentLevel !== "aal2")) {
     logAdminEvent("mfa-required", pathname, request);
     if (pathname.startsWith("/api/")) {
       return NextResponse.json({ error: "MFA requise" }, { status: 403, headers: createSecurityHeaders() });
