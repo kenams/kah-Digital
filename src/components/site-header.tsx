@@ -18,6 +18,7 @@ export function SiteHeader() {
         nav: [
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
+          { label: "AI Agents", href: "/en/agents-ia" },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Quote", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
@@ -34,6 +35,7 @@ export function SiteHeader() {
         nav: [
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
+          { label: "KI-Agenten", href: "/de/agents-ia" },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Offerte", href: "/de/devis" },
           { label: "Kontakt", href: "/de/contact" },
@@ -49,6 +51,7 @@ export function SiteHeader() {
         nav: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
+          { label: "Agents IA", href: "/agents-ia", highlight: true },
           { label: "Réalisations", href: "/projets" },
           { label: "Références", href: "/references" },
           { label: "Blog", href: "/blog" },
@@ -76,9 +79,11 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="whitespace-nowrap text-white/80 transition-colors hover:text-white"
+                className={(link as { highlight?: boolean }).highlight
+                  ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
+                  : "whitespace-nowrap text-white/80 transition-colors hover:text-white"}
               >
-                {link.label}
+                {(link as { highlight?: boolean }).highlight && <span className="mr-1">⚡</span>}{link.label}
               </Link>
             ))}
           </nav>
