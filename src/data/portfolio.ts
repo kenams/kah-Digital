@@ -19,6 +19,10 @@ export type PortfolioProject = {
     accent: string;
   };
   website?: string;
+  downloadLinks?: {
+    android?: string;
+    ios?: string;
+  };
   mockups?: {
     primary?: string;
     gallery?: string[];
