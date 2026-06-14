@@ -19,6 +19,16 @@ const URLS = [
   "/agence-web-toulouse", "/agence-web-nice", "/agence-web-lille",
   "/agence-web-montpellier", "/agence-web-rennes",
   "/agence-web-zurich", "/agence-web-basel", "/agence-web-lugano",
+  "/agence-web-grenoble", "/agence-web-rouen", "/agence-web-aix-en-provence",
+  "/agence-web-angers", "/agence-web-dijon", "/agence-web-caen",
+  "/agence-web-clermont-ferrand", "/agence-web-metz", "/agence-web-lausanne",
+  "/agence-web-suisse",
+  "/agence-ia", "/agents-ia",
+  "/en/agence-ia", "/en/agents-ia",
+  "/de/agence-ia", "/de/agents-ia",
+  "/automatisation-ia-entreprise", "/automatisation-ia-suisse",
+  "/blog/automatisation-ia-pme", "/blog/seo-local-pme",
+  "/projets/clutch", "/projets/minealert", "/projets/techcash-academy",
 ];
 
 export async function GET() {
