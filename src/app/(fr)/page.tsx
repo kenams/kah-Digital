@@ -100,7 +100,7 @@ const organizationJsonLd = {
   alternateName: "KAH Digital",
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
-  email: "contact@KAH Digital.ch",
+  email: "contact@kah-digital.ch",
   telephone: "+41759558414",
   address: {
     "@type": "PostalAddress",
@@ -120,6 +120,10 @@ const organizationJsonLd = {
     "Custom AI Agents",
     "SaaS Development",
     "Digital Infrastructure",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/kah-digital-95128b408/",
+    "https://x.com/DigitalKah42",
   ],
 };
 

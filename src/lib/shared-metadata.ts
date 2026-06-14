@@ -225,7 +225,7 @@ export const structuredData = {
     postalCode: companyConfig.postalCode,
     addressCountry: companyConfig.country,
   },
-  sameAs: ["https://www.linkedin.com", "https://www.instagram.com"],
+  sameAs: ["https://www.linkedin.com/in/kah-digital-95128b408/", "https://x.com/DigitalKah42"],
   areaServed: "Global",
   serviceType: ["Site vitrine", "Landing page", "E-commerce"],
 };
