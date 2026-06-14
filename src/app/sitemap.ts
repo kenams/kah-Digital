@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/automatisation-ia-suisse",
     "/application-web-suisse",
     "/agence-ia",
+    "/agents-ia",
     "/projets",
     "/lexique",
     // Pages SEO locales — priorité haute
@@ -87,6 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/application-web-sur-mesure",
     "/en/automatisation-ia-entreprise",
     "/en/agence-ia",
+    "/en/agents-ia",
     "/en/projets",
     "/en/site-web-geneve",
     "/en/site-web-lausanne",
@@ -128,6 +130,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/de/application-web-sur-mesure",
     "/de/automatisation-ia-entreprise",
     "/de/agence-ia",
+    "/de/agents-ia",
     // DE city pages — SEO DACH + international
     "/de/webentwicklung-zuerich",
     "/de/ki-agentur-zuerich",
