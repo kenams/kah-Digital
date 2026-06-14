@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
+import { captureUtm } from "@/lib/utm";
 
 const trackedPaths = new Set([
   "/devis",
@@ -31,6 +32,8 @@ function getLocaleFromPath(pathname: string) {
 
 export function AnalyticsTracker() {
   const pathname = usePathname();
+
+  useEffect(() => { captureUtm(); }, []);
 
   useEffect(() => {
     if (!pathname) return;

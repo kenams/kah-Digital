@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/turnstile-widget";
 import { trackEvent } from "@/lib/analytics";
+import { getUtm } from "@/lib/utm";
 import { useLocale } from "@/lib/locale";
 import { drawKahDigitalPdfLogo } from "@/lib/pdf-branding";
 import { countryDialCodesSorted } from "@/data/country-dial-codes";
@@ -193,6 +194,7 @@ export function QuoteForm() {
       projectFocus: "web",
       website: website || undefined,
       turnstileToken: token,
+      ...getUtm(),
     };
 
     setStatus("loading");

@@ -76,9 +76,19 @@ export type QuotePaymentState = {
   paymentProcessedSessions?: string[];
 };
 
+export type QuoteAttribution = {
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  referrer?: string;
+  landing_page?: string;
+};
+
 export type QuoteRecord = QuoteRequest &
   QuoteStatus &
-  QuotePaymentState & { id?: string; submittedAt: string };
+  QuotePaymentState &
+  QuoteAttribution & { id?: string; submittedAt: string };
 
 export type QuoteActivityAction =
   | "qualification_updated"

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getUtm } from "@/lib/utm";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
 // ─── Catalogue ─────────────────────────────────────────────────────────────────
@@ -253,6 +254,7 @@ export function SmartQuoteForm({
         timeline: form.timeline || "Not specified",
         message: form.message.trim() || undefined,
         turnstileToken: captchaToken,
+        ...getUtm(),
       };
 
       const res = await fetch("/api/quote", {

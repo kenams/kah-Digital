@@ -1,5 +1,5 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
-import { quoteSchema, type QuoteRecord } from "@/lib/quote";
+import { quoteSchema, type QuoteAttribution, type QuoteRecord } from "@/lib/quote";
 import { notifyQuote } from "@/lib/notifications";
 import { getRecentQuotes, isSupabaseConfigured, saveQuoteRecord } from "@/lib/quote-store";
 import { getRateLimitHeaders, getRequestIp, rateLimit } from "@/lib/rate-limit";
@@ -72,6 +72,17 @@ export async function POST(request: NextRequest) {
     if (websiteField) {
       return NextResponse.json({ ok: true }, { headers: rateHeaders });
     }
+
+    // Extract attribution before zod strips unknown fields
+    const attribution: QuoteAttribution = {
+      utm_source: payload?.utm_source || undefined,
+      utm_medium: payload?.utm_medium || undefined,
+      utm_campaign: payload?.utm_campaign || undefined,
+      utm_content: payload?.utm_content || undefined,
+      referrer: payload?.referrer || undefined,
+      landing_page: payload?.landing_page || undefined,
+    };
+
     const sanitized = { ...payload };
     delete sanitized.turnstileToken;
     const parsed = quoteSchema.safeParse(sanitized);
@@ -85,6 +96,7 @@ export async function POST(request: NextRequest) {
 
     const quote: QuoteRecord = {
       ...parsed.data,
+      ...attribution,
       feasibility: "pending",
       deposit: "none",
       submittedAt: new Date().toISOString(),
