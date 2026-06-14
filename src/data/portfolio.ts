@@ -212,4 +212,49 @@ export const portfolioProjects: PortfolioProject[] = [
       gallery: ["/mockups/techcash-academy-screenshot.png"],
     },
   },
+  {
+    slug: "castly",
+    name: "Castly",
+    type: "SaaS / Plateforme de casting",
+    tagline:
+      "Une plateforme KAH-Digital qui connecte recruteurs et artistes en quelques clics — sans agence, sans attente.",
+    shortDescription:
+      "Matching artistes / recruteurs avec système de crédits, Stripe live, auth Supabase et profils vérifiés.",
+    description:
+      "Castly est une plateforme conçue par KAH-Digital pour moderniser le casting indépendant. Les recruteurs publient leurs offres, les artistes postulent avec leur profil, et le contact se débloque via un système de crédits. Pas d'abonnement, pas d'agence — juste le bon profil au bon moment.",
+    challenge:
+      "Créer un marché biface (artistes / recruteurs) avec une monétisation simple par crédits, une expérience premium côté design, et un backend fiable pour gérer l'auth, les paiements et le matching.",
+    solution:
+      "Next.js full-stack, Supabase pour l'auth et la DB, Stripe live pour les packs de crédits (5 / 20 / 50 crédits), vidéo hero full-bleed, nav transparente scrollée, témoignages et FAQ intégrés.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
+    result:
+      "Plateforme live avec paiements réels, profils artistes et recruteurs, et système de crédits opérationnel.",
+    timeline: "4 semaines",
+    deliverables: [
+      "Auth Supabase + profils artistes / recruteurs",
+      "Système de crédits + checkout Stripe live",
+      "Matching et révélation de contact",
+      "Design premium vidéo hero + FAQ",
+    ],
+    metrics: [
+      { label: "Packs crédits", value: "3" },
+      { label: "Paiements", value: "Stripe live" },
+      { label: "Base", value: "Supabase + Vercel" },
+    ],
+    highlights: [
+      "Marché biface artistes / recruteurs",
+      "Crédits sans abonnement — 9,90€ / 29,90€ / 59,90€",
+      "Auth Supabase + Stripe live opérationnel",
+    ],
+    palette: {
+      primary: "#07070f",
+      secondary: "#12121e",
+      accent: "#e8b86d",
+    },
+    website: "https://castly-chi.vercel.app/",
+    mockups: {
+      primary: "/mockups/castly-screenshot.png",
+      gallery: ["/mockups/castly-screenshot.png"],
+    },
+  },
 ];
