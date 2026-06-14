@@ -75,6 +75,7 @@ export const portfolioProjects: PortfolioProject[] = [
       primary: "/mockups/clutch.png",
       gallery: ["/mockups/clutch.png"],
     },
+
   },
   {
     slug: "kah-prod",
@@ -117,8 +118,8 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://kah-prod.vercel.app/",
     mockups: {
-      primary: "/mockups/global-dashboard.png",
-      gallery: ["/mockups/global-dashboard.svg", "/mockups/global-dashboard.png"],
+      primary: "/mockups/kah-prod-screenshot.png",
+      gallery: ["/mockups/kah-prod-screenshot.png"],
     },
   },
   {
@@ -162,8 +163,8 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     website: "https://mine-alert-kenams.vercel.app/",
     mockups: {
-      primary: "/mockups/minealert.svg",
-      gallery: ["/mockups/minealert.svg"],
+      primary: "/mockups/minealert-screenshot.png",
+      gallery: ["/mockups/minealert-screenshot.png"],
     },
   },
   {
@@ -206,5 +207,9 @@ export const portfolioProjects: PortfolioProject[] = [
       accent: "#d7a93b",
     },
     website: "https://techcash-academy.vercel.app/",
+    mockups: {
+      primary: "/mockups/techcash-academy-screenshot.png",
+      gallery: ["/mockups/techcash-academy-screenshot.png"],
+    },
   },
 ];
