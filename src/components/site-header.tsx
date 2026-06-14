@@ -18,7 +18,7 @@ export function SiteHeader() {
         nav: [
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
-          { label: "AI Agents", href: "/en/agents-ia" },
+          { label: "AI Agents", href: "/en/agents-ia", highlight: true },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Quote", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
@@ -35,7 +35,7 @@ export function SiteHeader() {
         nav: [
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
-          { label: "KI-Agenten", href: "/de/agents-ia" },
+          { label: "KI-Agenten", href: "/de/agents-ia", highlight: true },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Offerte", href: "/de/devis" },
           { label: "Kontakt", href: "/de/contact" },
