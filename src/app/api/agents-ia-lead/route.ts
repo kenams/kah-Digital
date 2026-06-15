@@ -80,8 +80,8 @@ export async function POST(req: Request) {
 ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #7c3aed;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${message}</div>` : ""}`,
     }).catch(console.error);
 
-    // Email confirmation au prospect avec lien Calendly
-    void sendConfirmation(email, name, agent).catch(console.error);
+    // Email confirmation au prospect avec lien Calendly — awaité pour éviter coupure Vercel
+    await sendConfirmation(email, name, agent).catch(console.error);
 
     return NextResponse.json({ ok: true });
   } catch {
