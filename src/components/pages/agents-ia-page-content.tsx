@@ -7,7 +7,7 @@ import {
   FiStar, FiZap, FiUsers, FiTrendingUp, FiClock, FiShield,
   FiChevronDown, FiChevronUp, FiX,
 } from "react-icons/fi";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
 
@@ -312,6 +312,151 @@ const COPY = {
     ctaFinalSub: "Antwort in 2h · Demo per Video oder persönlich · CH / FR / BE",
   },
 };
+
+const FORM_COPY = {
+  fr: {
+    title: "Parlez-nous de votre projet",
+    sub: "On vous répond sous 2h avec une proposition adaptée à votre cas.",
+    name: "Votre prénom ou nom d'entreprise",
+    email: "Votre email",
+    agent: "Quel agent vous intéresse ?",
+    agentOptions: ["Prospection automatique", "Support client IA", "Devis automatique", "Casting IA", "Je ne sais pas encore"],
+    message: "Décrivez votre besoin en 2 lignes (optionnel)",
+    submit: "Envoyer ma demande",
+    submitting: "Envoi...",
+    success: "Message reçu ! On vous répond sous 2h.",
+    error: "Erreur, réessayez ou écrivez à contact@kah-digital.ch",
+  },
+  en: {
+    title: "Tell us about your project",
+    sub: "We'll reply within 2h with a proposal tailored to your case.",
+    name: "Your name or company name",
+    email: "Your email",
+    agent: "Which agent interests you?",
+    agentOptions: ["Automated prospecting", "AI customer support", "Automated quoting", "AI casting", "Not sure yet"],
+    message: "Describe your need in 2 lines (optional)",
+    submit: "Send my request",
+    submitting: "Sending...",
+    success: "Message received! We'll reply within 2h.",
+    error: "Error, please retry or email contact@kah-digital.ch",
+  },
+  de: {
+    title: "Erzählen Sie uns von Ihrem Projekt",
+    sub: "Wir antworten innerhalb von 2h mit einem auf Ihren Fall zugeschnittenen Angebot.",
+    name: "Ihr Name oder Firmenname",
+    email: "Ihre E-Mail",
+    agent: "Welcher Agent interessiert Sie?",
+    agentOptions: ["Automatische Akquise", "KI-Kundensupport", "Automatische Angebote", "KI-Casting", "Noch nicht sicher"],
+    message: "Beschreiben Sie Ihren Bedarf in 2 Zeilen (optional)",
+    submit: "Anfrage senden",
+    submitting: "Senden...",
+    success: "Nachricht erhalten! Wir antworten innerhalb von 2h.",
+    error: "Fehler, bitte erneut versuchen oder an contact@kah-digital.ch schreiben",
+  },
+};
+
+function AgentContactForm({ locale }: { locale: Locale }) {
+  const fc = FORM_COPY[locale] ?? FORM_COPY.fr;
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/agents-ia-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          email: fd.get("email"),
+          agent: fd.get("agent"),
+          message: fd.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      formRef.current?.reset();
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <section className="bg-gray-950 py-20">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-3xl border border-violet-500/20 bg-gradient-to-br from-violet-950/40 via-[#0a0a14] to-blue-950/40 p-8 sm:p-12"
+        >
+          <div className="mb-8 text-center">
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/8 px-3 py-1 text-xs font-semibold text-violet-400">
+              <FiZap size={11} /> KAH Digital
+            </span>
+            <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">{fc.title}</h2>
+            <p className="mt-2 text-sm text-gray-500">{fc.sub}</p>
+          </div>
+
+          {status === "success" ? (
+            <div className="flex flex-col items-center gap-3 py-8 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15">
+                <FiCheck size={24} className="text-emerald-400" />
+              </div>
+              <p className="font-semibold text-white">{fc.success}</p>
+            </div>
+          ) : (
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  name="name"
+                  type="text"
+                  placeholder={fc.name}
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+                />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder={fc.email}
+                  required
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+                />
+              </div>
+              <select
+                name="agent"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-300 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+              >
+                <option value="">{fc.agent}</option>
+                {fc.agentOptions.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+              <textarea
+                name="message"
+                rows={3}
+                placeholder={fc.message}
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 resize-none"
+              />
+              {status === "error" && (
+                <p className="text-xs text-red-400">{fc.error}</p>
+              )}
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full rounded-xl bg-gradient-to-r from-violet-500 to-blue-500 py-3.5 font-bold text-white shadow-lg shadow-violet-500/20 transition-all hover:brightness-110 disabled:opacity-60"
+              >
+                {status === "loading" ? fc.submitting : fc.submit}
+              </button>
+            </form>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -671,6 +816,9 @@ export function AgentsIaPageContent({ locale }: Props) {
           </motion.div>
         </div>
       </section>
+
+      {/* ─── CONTACT FORM ─────────────────────────────────────────────── */}
+      <AgentContactForm locale={locale} />
 
       {/* ─── FINAL CTA ────────────────────────────────────────────────── */}
       <section className="bg-gray-950 py-20">
