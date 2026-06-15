@@ -295,6 +295,53 @@ const TARGETS = [
   { query: "startup tech melbourne sydney website", country: "AU", lang: "en", sector: "startup" },
   { query: "yoga pilates studio sydney website", country: "AU", lang: "en", sector: "fitness" },
   { query: "event planner wedding sydney website", country: "AU", lang: "en", sector: "events" },
+
+  // ── GRANDES ENTREPRISES OBSOLÈTES — budget élevé, site vieillissant ──────────
+  // Hôtels de chaîne / boutique avec vieux sites
+  { query: "hotel chain boutique old website no mobile contact", country: "AE", lang: "en", sector: "hotel" },
+  { query: "hotel 4 stars france vieux site web reservation obsolete", country: "FR", lang: "fr", sector: "hotel" },
+  { query: "chaîne hôtelière indépendante site web demodé contact", country: "FR", lang: "fr", sector: "hotel" },
+  { query: "hotel palace suisse vieux site internet reservation", country: "CH", lang: "fr", sector: "hotel" },
+  { query: "resort luxury old website redesign contact", country: "AE", lang: "en", sector: "hotel" },
+  { query: "hotel gruppe schweiz website veraltet kontakt", country: "CH", lang: "de", sector: "hotel" },
+  // Cabinets d'avocats / notaires / huissiers — grands cabinets avec vieux sites
+  { query: "cabinet avocats associés paris site web vieillissant", country: "FR", lang: "fr", sector: "avocat" },
+  { query: "étude notariale paris ile de france site web contact", country: "FR", lang: "fr", sector: "notaire" },
+  { query: "law firm established 1990 website contact london", country: "GB", lang: "en", sector: "lawyer" },
+  { query: "despacho abogados madrid establecido site web contacto", country: "ES", lang: "es", sector: "abogado" },
+  { query: "anwaltskanzlei münchen hamburg website kontakt", country: "DE", lang: "de", sector: "anwalt" },
+  { query: "großes notariat rechtsanwalt wien website kontakt", country: "AT", lang: "de", sector: "anwalt" },
+  // Agences événementielles / lieux de réception — secteur avec gros budgets
+  { query: "event management company established UAE website contact", country: "AE", lang: "en", sector: "events" },
+  { query: "lieu de réception événementiel château site web contact", country: "FR", lang: "fr", sector: "evenementiel" },
+  { query: "salle réception mariage domaine site web vieux contact", country: "FR", lang: "fr", sector: "evenementiel" },
+  { query: "event venue conference center old website contact", country: "GB", lang: "en", sector: "events" },
+  { query: "convention center event space website dated", country: "US", lang: "en", sector: "events" },
+  // Cabinets d'architecture — grands bureaux avec sites dépassés
+  { query: "bureau architecture urbanisme paris etabli site web contact", country: "FR", lang: "fr", sector: "architecte" },
+  { query: "architecture firm established 20 years website old contact", country: "GB", lang: "en", sector: "architect" },
+  { query: "arquitectos estudio grande madrid barcelona web contacto", country: "ES", lang: "es", sector: "arquitecto" },
+  { query: "architektur büro zürich bern wien website kontakt", country: "CH", lang: "de", sector: "architekt" },
+  // Industries / BTP / Construction — PME avec gros CA, sites catastrophiques
+  { query: "entreprise btp construction 50 salariés site web contact", country: "FR", lang: "fr", sector: "btp" },
+  { query: "entreprise travaux publics industrielle site web vieux", country: "FR", lang: "fr", sector: "industrie" },
+  { query: "construction company established website contact uk", country: "GB", lang: "en", sector: "construction" },
+  { query: "manufacturing company old website contact email", country: "DE", lang: "de", sector: "industrie" },
+  // Cliniques / cabinets médicaux privés multi-praticiens
+  { query: "clinique privée soins esthétiques paris site web contact", country: "FR", lang: "fr", sector: "clinique" },
+  { query: "centre médical pluridisciplinaire site web vieux rdv", country: "FR", lang: "fr", sector: "medecin" },
+  { query: "private medical clinic old website contact", country: "AE", lang: "en", sector: "medecin" },
+  { query: "klinik privatpraxis website veraltet kontakt", country: "DE", lang: "de", sector: "klinik" },
+  // Immobilier de prestige — agents / promoteurs avec vieux sites
+  { query: "agence immobilière prestige luxe paris site web contact", country: "FR", lang: "fr", sector: "immobilier" },
+  { query: "promoteur immobilier luxe programme neuf site web", country: "FR", lang: "fr", sector: "immobilier" },
+  { query: "luxury real estate agency old website contact dubai", country: "AE", lang: "en", sector: "real estate" },
+  { query: "luxury real estate broker established london website", country: "GB", lang: "en", sector: "real estate" },
+  // Restaurants gastronomiques / groupes de restauration
+  { query: "groupe restauration plusieurs établissements site web contact", country: "FR", lang: "fr", sector: "restaurant" },
+  { query: "restaurant gastronomique étoilé vieux site web", country: "FR", lang: "fr", sector: "restaurant" },
+  { query: "fine dining restaurant established website old contact", country: "AE", lang: "en", sector: "restaurant" },
+  { query: "restaurant chain group old website contact email", country: "GB", lang: "en", sector: "restaurant" },
 ];
 
 // ── Annuaires internationaux ────────────────────────────────────────────────

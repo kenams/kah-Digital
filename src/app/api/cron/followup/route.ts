@@ -313,17 +313,18 @@ export async function POST(req: Request) {
     }
   }
 
-  // J+5 : ouvert il y a 5-10 jours, pas répondu, pas déjà relancé J+5
+  // J+5 : ouvert ou cliqué, followup2 jamais envoyé, envoyé il y a 5-45 jours
+  // Bug fix: ancienne fenêtre 5-10j laissait 553 prospects bloqués indéfiniment
+  const j45Cutoff = new Date(now.getTime() - 45 * 86400000).toISOString();
   const { data: j7Prospects } = await supabase
     .from("prospects")
     .select("id, businessName, website, email, language")
     .eq("status", "sent")
-    .not("openedAt", "is", null)
     .is("followup2SentAt", null)
     .lte("sentAt", j7Cutoff)
-    .gte("sentAt", j10Cutoff)
+    .gte("sentAt", j45Cutoff)
     .not("email", "is", null)
-    .limit(10);
+    .limit(15);
 
   for (const p of (j7Prospects ?? [])) {
     try {
