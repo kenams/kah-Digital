@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { sendAdminNotification } from "@/lib/gmail";
+import { sendTelegramAlert } from "@/lib/notify";
 
 function getSupabase() {
   return createClient(
@@ -109,6 +110,16 @@ async function checkGmailReplies(): Promise<{
       // Notification admin
       const name = prospect.businessName ?? prospect.website;
       const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+
+      // Telegram — alerte instantanée
+      void sendTelegramAlert(
+        `🔥 <b>RÉPONSE PROSPECT !</b>\n\n` +
+        `🏢 <b>${name}</b>\n` +
+        `📧 ${match.from}\n` +
+        `💬 ${match.subject}\n\n` +
+        `<a href="https://mail.google.com/mail/u/0/#inbox">📬 Voir Gmail</a> · <a href="${siteUrl}/admin/prospection">📊 Admin</a>`
+      ).catch(console.error);
+
       void sendAdminNotification({
         subject: `🔥 RÉPONSE — ${name}`,
         body: `<strong style="font-size:15px;">${name}</strong> a répondu à ton email de prospection !<br><br>
