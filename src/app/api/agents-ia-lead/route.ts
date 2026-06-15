@@ -1,28 +1,18 @@
 import { NextResponse } from "next/server";
 import { sendTelegramAlert } from "@/lib/notify";
 import { sendAdminNotification } from "@/lib/gmail";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export const dynamic = "force-dynamic";
 
 const CALENDLY = "https://calendly.com/kahdigital42";
 
-function getBrevo() {
-  return nodemailer.createTransport({
-    host: "smtp-relay.brevo.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.BREVO_SMTP_USER!,
-      pass: process.env.BREVO_SMTP_PASS!,
-    },
-  });
-}
-
 async function sendConfirmation(to: string, name: string | undefined, agent: string | undefined) {
+  const resend = new Resend(process.env.RESEND_API_KEY!);
   const firstName = name?.split(" ")[0] ?? "vous";
   const agentLabel = agent && agent !== "" ? agent : "un agent IA";
-  await getBrevo().sendMail({
+
+  await resend.emails.send({
     from: "KAH Digital <contact@kah-digital.ch>",
     to,
     replyTo: "kahdigital42@gmail.com",
@@ -60,7 +50,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email requis" }, { status: 400 });
     }
 
-    // Telegram — alerte immédiate
     void sendTelegramAlert(
       `🤖 <b>NOUVEAU LEAD AGENTS IA !</b>\n\n` +
       `👤 <b>${name ?? "Anonyme"}</b>\n` +
@@ -70,7 +59,6 @@ export async function POST(req: Request) {
       `\n<a href="https://kah-digital.ch/admin/prospection">📊 Admin</a>`
     ).catch(console.error);
 
-    // Email admin
     void sendAdminNotification({
       subject: `🤖 LEAD AGENTS IA — ${name ?? email}`,
       body: `<strong style="color:#7c3aed;font-size:17px;">Nouveau lead page Agents IA !</strong><br/><br/>
@@ -80,7 +68,6 @@ export async function POST(req: Request) {
 ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #7c3aed;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${message}</div>` : ""}`,
     }).catch(console.error);
 
-    // Email confirmation au prospect avec lien Calendly — awaité pour éviter coupure Vercel
     await sendConfirmation(email, name, agent).catch(console.error);
 
     return NextResponse.json({ ok: true });
