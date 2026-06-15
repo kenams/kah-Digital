@@ -1,9 +1,8 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { discoverLeads } from "@/lib/agents/lead-discovery";
 import { auditWebsite } from "@/lib/agents/website-auditor";
 import { composeProspectingEmail } from "@/lib/agents/email-composer";
-import { getResendFromAddress } from "@/lib/mail";
 import {
   compactProspectionError,
   createProspectionBatch,
@@ -72,25 +71,33 @@ async function websiteAlreadySent(client: SupabaseClient, website: string, email
   return false;
 }
 
+function getBrevoTransport() {
+  return nodemailer.createTransport({
+    host: "smtp-relay.brevo.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.BREVO_SMTP_USER!,
+      pass: process.env.BREVO_SMTP_PASS!,
+    },
+  });
+}
+
 async function sendProspectingEmail(
-  resend: Resend,
+  transport: nodemailer.Transporter,
   to: string,
   subject: string | null | undefined,
   html: string,
   textFallback: string,
-  prospectId?: string
 ) {
-  const { error } = await resend.emails.send({
-    from: getResendFromAddress(),
+  await transport.sendMail({
+    from: "KAH Digital <contact@kah-digital.ch>",
     to,
     replyTo: "kahdigital42@gmail.com",
     subject: sanitizeEmailSubject(subject),
     html,
     text: textFallback || htmlToTextFallback(html),
-    ...(prospectId ? { tags: [{ name: "prospect_id", value: prospectId }] } : {}),
   });
-
-  if (error) throw new Error(error.message);
 }
 
 function rememberError(errors: string[], message: string) {
@@ -99,12 +106,12 @@ function rememberError(errors: string[], message: string) {
 
 async function sendBacklog(params: {
   supabase: SupabaseClient;
-  resend: Resend;
+  transport: nodemailer.Transporter;
   batchId: string | null;
   errors: string[];
   maxEmails: number;
 }) {
-  const { supabase, resend, batchId, errors, maxEmails } = params;
+  const { supabase, transport, batchId, errors, maxEmails } = params;
   let sent = 0;
 
   if (maxEmails <= 0) return sent;
@@ -131,12 +138,11 @@ async function sendBacklog(params: {
       if (!prospect.email || !prospect.emailBody) continue;
 
       await sendProspectingEmail(
-        resend,
+        transport,
         prospect.email,
         prospect.emailSubject,
         prospect.emailBody,
         "",
-        prospect.id
       );
 
       await supabase
@@ -162,14 +168,14 @@ async function sendBacklog(params: {
 
 async function discoverAnalyzeAndSend(params: {
   supabase: SupabaseClient;
-  resend: Resend;
+  transport: nodemailer.Transporter;
   batchId: string | null;
   errors: string[];
   maxEmails: number;
   alreadySent: number;
   siteUrl: string;
 }) {
-  const { supabase, resend, batchId, errors, maxEmails, alreadySent, siteUrl } = params;
+  const { supabase, transport, batchId, errors, maxEmails, alreadySent, siteUrl } = params;
   let sent = 0;
 
   if (alreadySent >= maxEmails) return { found: 0, sent };
@@ -244,7 +250,7 @@ async function discoverAnalyzeAndSend(params: {
       // Bloquer les emails devinés — taux de bounce 46% vs 17% pour les emails réels
       if (!lead.email || lead.emailGuessed) continue;
 
-      await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback, prospect.id as string);
+      await sendProspectingEmail(transport, lead.email, emailSubject, email.html, email.textFallback);
       await supabase
         .from("prospects")
         .update({ status: "sent", sentAt: new Date().toISOString() })
@@ -266,11 +272,12 @@ async function discoverAnalyzeAndSend(params: {
 export async function runProspectionBatch(
   options: { source?: "cron" | "manual"; maxEmails?: number; batchId?: string | null; slot?: ProspectionSlot } = {}
 ) {
-  const resendKey = process.env.RESEND_API_KEY;
-  if (!resendKey) throw new Error("RESEND_API_KEY manquant");
+  if (!process.env.BREVO_SMTP_USER || !process.env.BREVO_SMTP_PASS) {
+    throw new Error("BREVO_SMTP_USER / BREVO_SMTP_PASS manquants");
+  }
 
   const supabase = getSupabase();
-  const resend = new Resend(resendKey);
+  const transport = getBrevoTransport();
   const slot = options.slot ?? getProspectionSlot();
   const batchId = typeof options.batchId === "undefined" ? await createProspectionBatch(supabase, slot) : options.batchId;
   const errors: string[] = [];
@@ -282,12 +289,12 @@ export async function runProspectionBatch(
   console.log(`[prospection:${options.source ?? "cron"}] start slot=${slot} max=${maxEmails} batch=${batchId ?? "none"}`);
 
   try {
-    backlogSent = await sendBacklog({ supabase, resend, batchId, errors, maxEmails });
+    backlogSent = await sendBacklog({ supabase, transport, batchId, errors, maxEmails });
     sent += backlogSent;
 
     const discovery = await discoverAnalyzeAndSend({
       supabase,
-      resend,
+      transport,
       batchId,
       errors,
       maxEmails,
