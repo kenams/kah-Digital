@@ -342,6 +342,83 @@ const TARGETS = [
   { query: "restaurant gastronomique étoilé vieux site web", country: "FR", lang: "fr", sector: "restaurant" },
   { query: "fine dining restaurant established website old contact", country: "AE", lang: "en", sector: "restaurant" },
   { query: "restaurant chain group old website contact email", country: "GB", lang: "en", sector: "restaurant" },
+
+  // ── France — villes non encore ciblées ────────────────────────────────────
+  { query: "cabinet avocat reims site web contact", country: "FR", lang: "fr", sector: "avocat" },
+  { query: "restaurant gastronomique rouen site web contact", country: "FR", lang: "fr", sector: "restaurant" },
+  { query: "architecte dijon site web cabinet", country: "FR", lang: "fr", sector: "architecte" },
+  { query: "medecin specialiste angers site web rdv", country: "FR", lang: "fr", sector: "medecin" },
+  { query: "coach business tours site web indépendant", country: "FR", lang: "fr", sector: "coach" },
+  { query: "avocat droit social amiens site web cabinet", country: "FR", lang: "fr", sector: "avocat" },
+  { query: "restaurant brasserie nimes site web contact", country: "FR", lang: "fr", sector: "restaurant" },
+  { query: "pme industrie perpignan site web contact", country: "FR", lang: "fr", sector: "industrie" },
+  { query: "notaire brest finistere site web etude", country: "FR", lang: "fr", sector: "notaire" },
+  { query: "cabinet kinesitherapeute caen site web rdv", country: "FR", lang: "fr", sector: "sante" },
+  { query: "salon coiffure coloriste pau site web", country: "FR", lang: "fr", sector: "coiffure" },
+  { query: "expert comptable clermont site web cabinet", country: "FR", lang: "fr", sector: "comptable" },
+  { query: "restaurant brasserie metz site web contact", country: "FR", lang: "fr", sector: "restaurant" },
+  { query: "agence immobiliere saint etienne site web", country: "FR", lang: "fr", sector: "immobilier" },
+  { query: "osteopathe reims site web rdv en ligne", country: "FR", lang: "fr", sector: "sante" },
+  { query: "startup tech nantes site web mvp", country: "FR", lang: "fr", sector: "startup" },
+  { query: "cabinet psychologue bordeaux site web consultation", country: "FR", lang: "fr", sector: "sante" },
+  { query: "traiteur mariage rouen site web contact", country: "FR", lang: "fr", sector: "evenementiel" },
+  { query: "spa bien etre massage strasbourg site web reservation", country: "FR", lang: "fr", sector: "bien-etre" },
+  { query: "agence recrutement rh tours site web", country: "FR", lang: "fr", sector: "recrutement" },
+
+  // ── Nouveaux secteurs France ──────────────────────────────────────────────
+  { query: "maison de retraite ehpad site web contact", country: "FR", lang: "fr", sector: "sante" },
+  { query: "ecole privee college lycee site web contact", country: "FR", lang: "fr", sector: "education" },
+  { query: "cabinet expertise comptable region site web", country: "FR", lang: "fr", sector: "comptable" },
+  { query: "clinique chirurgicale privee site web prise rdv", country: "FR", lang: "fr", sector: "clinique" },
+  { query: "agence de publicite media site web paris", country: "FR", lang: "fr", sector: "agence" },
+  { query: "transporteur logistique pme site web contact", country: "FR", lang: "fr", sector: "logistique" },
+  { query: "consultant indépendant management site web", country: "FR", lang: "fr", sector: "consultant" },
+  { query: "cabinet architecture paysagere site web", country: "FR", lang: "fr", sector: "architecte" },
+  { query: "grossiste fournisseur b2b site web contact", country: "FR", lang: "fr", sector: "commerce" },
+  { query: "centre reeducation kine sport site web contact", country: "FR", lang: "fr", sector: "sante" },
+
+  // ── Portugal / Brésil ─────────────────────────────────────────────────────
+  { query: "advogado escritório lisboa site web contacto", country: "PT", lang: "pt", sector: "avocat" },
+  { query: "restaurante boutique porto website contacto", country: "PT", lang: "pt", sector: "restaurant" },
+  { query: "arquitecto estudio lisboa website portfolio", country: "PT", lang: "pt", sector: "architecte" },
+  { query: "médico clínica privada lisboa website marcação", country: "PT", lang: "pt", sector: "medecin" },
+  { query: "coach empresarial portugal website", country: "PT", lang: "pt", sector: "coach" },
+  { query: "advogado escritório são paulo site web contato", country: "BR", lang: "pt", sector: "avocat" },
+  { query: "restaurante boutique rio de janeiro site web", country: "BR", lang: "pt", sector: "restaurant" },
+  { query: "arquiteto studio design são paulo site web", country: "BR", lang: "pt", sector: "architecte" },
+  { query: "clinica medica estetica brasilia site web contato", country: "BR", lang: "pt", sector: "medecin" },
+  { query: "startup tech fintech brasil website contato", country: "BR", lang: "pt", sector: "startup" },
+
+  // ── Italie ────────────────────────────────────────────────────────────────
+  { query: "avvocato studio legale milano sito web contatti", country: "IT", lang: "it", sector: "avocat" },
+  { query: "ristorante boutique firenze sito web prenotazioni", country: "IT", lang: "it", sector: "restaurant" },
+  { query: "architetto studio roma sito web portfolio", country: "IT", lang: "it", sector: "architecte" },
+  { query: "medico clinica privata torino sito web appuntamento", country: "IT", lang: "it", sector: "medecin" },
+  { query: "commercialista studio contabile napoli sito web", country: "IT", lang: "it", sector: "comptable" },
+  { query: "hotel boutique toscana sito web prenotazione", country: "IT", lang: "it", sector: "hotel" },
+  { query: "agenzia immobiliare lusso venezia sito web", country: "IT", lang: "it", sector: "immobilier" },
+
+  // ── Allemagne / Autriche ──────────────────────────────────────────────────
+  { query: "anwalt rechtsanwalt köln düsseldorf website", country: "DE", lang: "de", sector: "avocat" },
+  { query: "architekt studio stuttgart website portfolio", country: "DE", lang: "de", sector: "architecte" },
+  { query: "unternehmensberater consultant frankfurt website", country: "DE", lang: "de", sector: "consultant" },
+  { query: "zahnarzt praxis berlin website termin", country: "DE", lang: "de", sector: "dentiste" },
+  { query: "boutique hotel schwarzwald website buchung", country: "DE", lang: "de", sector: "hotel" },
+  { query: "steuerberater kanzlei münchen website", country: "DE", lang: "de", sector: "comptable" },
+  { query: "rechtsanwalt wien graz website kanzlei kontakt", country: "AT", lang: "de", sector: "avocat" },
+  { query: "unternehmensberatung wien website kontakt", country: "AT", lang: "de", sector: "consultant" },
+
+  // ── France — requêtes formulées différemment (résultats DDG différents) ──
+  { query: "site web médecin généraliste cabinet france contact", country: "FR", lang: "fr", sector: "medecin" },
+  { query: "site professionnel artisan france devis en ligne", country: "FR", lang: "fr", sector: "artisan" },
+  { query: "site web PME france B2B contact formulaire", country: "FR", lang: "fr", sector: "pme" },
+  { query: "freelance développeur web france portfolio contact", country: "FR", lang: "fr", sector: "tech" },
+  { query: "agence marketing digital france site web client", country: "FR", lang: "fr", sector: "agence" },
+  { query: "cabinet conseil formation entreprise france site web", country: "FR", lang: "fr", sector: "formation" },
+  { query: "thérapeute sophrologue hypnothérapeute france site web", country: "FR", lang: "fr", sector: "sante" },
+  { query: "décorateur home stager france site web portfolio", country: "FR", lang: "fr", sector: "deco" },
+  { query: "courtier en prêt immobilier france site web contact", country: "FR", lang: "fr", sector: "finance" },
+  { query: "agence relations presse france site web contact", country: "FR", lang: "fr", sector: "agence" },
 ];
 
 // ── Annuaires internationaux ────────────────────────────────────────────────
@@ -791,7 +868,7 @@ function getStaticFallback(count: number): DiscoveredLead[] {
 }
 
 // ── Point d'entrée ───────────────────────────────────────────────────────────
-const DDG_OFFSETS = [0, 10, 20, 30, 40];
+const DDG_OFFSETS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
 
 export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   const MIN_DDG_LEADS = Math.max(3, Math.ceil(count / 5)); // seuil minimum avant de tenter les fallbacks
