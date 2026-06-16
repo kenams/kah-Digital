@@ -12,10 +12,10 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 5;
+export const PROSPECTION_EMAILS_PER_RUN = 2;
 
-const SCORE_THRESHOLD = 65; // Max score — au-delà = site correct, pas besoin de nous
-const SCORE_MIN = 25;       // Min score — en-dessous = site mort, pas de budget
+const SCORE_THRESHOLD = 58; // Site trop bon = pas besoin de nous
+const SCORE_MIN = 32;       // Site mort = pas de budget
 const SEND_DELAY_MS = 400;
 
 type ProspectBacklogRow = {
