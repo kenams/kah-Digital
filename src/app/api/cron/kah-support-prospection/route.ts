@@ -65,7 +65,7 @@ function buildJ0(p: Prospect) {
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j0" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Voir l'assistant en 2 min →</a>
   </p>
   <p style="font-size:13px;color:#6b7280;margin:0 0 28px;">Essai 14 jours gratuit, sans carte bancaire.</p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Bonne journée,<br>Kenams — KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Bonne journée,<br>KAH Digital</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${APP_URL} · ${REPLY_TO}</p>
 </div>
 </body></html>`;
@@ -91,7 +91,7 @@ function buildJ3(p: Prospect) {
   <p style="margin:0 0 28px;">
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j3" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Voir comment ça fonctionne →</a>
   </p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Kenams — KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${REPLY_TO}</p>
 </div>
 </body></html>`;
@@ -120,7 +120,7 @@ function buildJ7(p: Prospect) {
   <p style="margin:0 0 28px;">
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j7" style="display:inline-block;background:#374151;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Démarrer l'essai gratuit →</a>
   </p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Kenams — KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${APP_URL} · ${REPLY_TO}</p>
 </div>
 </body></html>`;

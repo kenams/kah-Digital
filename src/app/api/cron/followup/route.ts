@@ -58,7 +58,7 @@ En attendant, voici notre page dédiée avec notre offre complète — peut-êtr
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Voir nos offres →</a><br><br>
 Bonne continuation !`,
     signoff: "Cordialement,",
-    from: "Kenams — KAH Digital",
+    from: "KAH Digital",
     unsubscribe: "Répondez STOP pour ne plus recevoir de messages.",
   },
   en: {

@@ -15,35 +15,35 @@ function getSupabase() {
 
 // Prompt par langue pour la réponse auto
 const REPLY_PROMPT: Record<string, (name: string, sector: string, isQuote: boolean) => string> = {
-  fr: (name, sector, isQuote) => `Tu es Kenams, fondateur de KAH Digital (studio digital).
+  fr: (name, sector, isQuote) => `Tu représentes KAH Digital (studio digital).
 Un prospect "${name}" (${sector}) vient de ${isQuote ? "demander un devis" : "cliquer sur ton email de prospection"}.
 Écris un email de suivi court et chaleureux (5-6 phrases) — personnel, direct, sans template.
 ${isQuote ? "Remercie-les, confirme un devis sous 24h, demande leur budget et délai." : "Engager la conversation, mentionner leur secteur, proposer un appel de 15 min cette semaine."}
-Texte simple, pas de HTML, pas de listes. Termine par: Kenams — KAH Digital | contact@kah-digital.ch`,
+Texte simple, pas de HTML, pas de listes. Termine par: KAH Digital | contact@kah-digital.ch`,
 
-  en: (name, sector, isQuote) => `You are Kenan, founder of KAH Digital (digital studio).
+  en: (name, sector, isQuote) => `You represent KAH Digital (digital studio).
 A prospect "${name}" (${sector}) just ${isQuote ? "requested a quote" : "clicked your prospecting email"}.
 Write a short, warm follow-up email (5-6 sentences) — personal, direct, no template.
 ${isQuote ? "Thank them, confirm a quote within 24h, ask about budget and timeline." : "Start the conversation, mention their sector, suggest a quick 15-min call this week."}
-Plain text only, no HTML, no bullet points. End with: Kenan — KAH Digital | contact@kah-digital.ch`,
+Plain text only, no HTML, no bullet points. End with: KAH Digital | contact@kah-digital.ch`,
 
-  es: (name, sector, isQuote) => `Eres Kenan, fundador de KAH Digital (estudio digital).
+  es: (name, sector, isQuote) => `Representas a KAH Digital (estudio digital).
 Un prospecto "${name}" (${sector}) acaba de ${isQuote ? "solicitar un presupuesto" : "hacer clic en tu email de prospección"}.
 Escribe un email de seguimiento corto y cálido (5-6 frases) — personal, directo, sin plantilla.
 ${isQuote ? "Agradéceles, confirma un presupuesto en 24h, pregunta por su presupuesto y plazos." : "Inicia la conversación, menciona su sector, propón una llamada rápida de 15 min."}
-Solo texto, sin HTML. Termina con: Kenan — KAH Digital | contact@kah-digital.ch`,
+Solo texto, sin HTML. Termina con: KAH Digital | contact@kah-digital.ch`,
 
-  de: (name, sector, isQuote) => `Du bist Kenan, Gründer von KAH Digital (digitales Studio).
+  de: (name, sector, isQuote) => `Du vertrittst KAH Digital (digitales Studio).
 Ein Interessent "${name}" (${sector}) hat gerade ${isQuote ? "ein Angebot angefordert" : "auf deine Prospektions-E-Mail geklickt"}.
 Schreibe eine kurze, herzliche Folge-E-Mail (5-6 Sätze) — persönlich, direkt, kein Template.
 ${isQuote ? "Bedanke dich, bestätige ein Angebot innerhalb von 24h, frage nach Budget und Zeitplan." : "Beginne das Gespräch, erwähne ihre Branche, schlage einen kurzen 15-Minuten-Anruf vor."}
-Nur Text, kein HTML. Ende mit: Kenan — KAH Digital | contact@kah-digital.ch`,
+Nur Text, kein HTML. Ende mit: KAH Digital | contact@kah-digital.ch`,
 
-  it: (name, sector, isQuote) => `Sei Kenan, fondatore di KAH Digital (studio digitale).
+  it: (name, sector, isQuote) => `Rappresenti KAH Digital (studio digitale).
 Un potenziale cliente "${name}" (${sector}) ha appena ${isQuote ? "richiesto un preventivo" : "cliccato sulla tua email di prospezione"}.
 Scrivi un'email di follow-up breve e calorosa (5-6 frasi) — personale, diretta, senza template.
 ${isQuote ? "Ringraziali, conferma un preventivo entro 24h, chiedi del budget e delle tempistiche." : "Inizia la conversazione, menziona il loro settore, proponi una breve chiamata di 15 min."}
-Solo testo, nessun HTML. Termina con: Kenan — KAH Digital | contact@kah-digital.ch`,
+Solo testo, nessun HTML. Termina con: KAH Digital | contact@kah-digital.ch`,
 };
 
 const REPLY_SUBJECT: Record<string, (name: string, isQuote: boolean) => string> = {
