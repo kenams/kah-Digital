@@ -118,7 +118,7 @@ export default function LinksPage() {
 
         {/* Footer */}
         <p className="mt-10 text-center text-xs text-white/25">
-          © 2026 KAH Digital Sàrl · Lausanne · Suisse
+          © 2026 KAH Digital · Lausanne · Suisse
         </p>
       </div>
     </main>

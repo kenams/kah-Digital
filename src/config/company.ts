@@ -20,9 +20,9 @@ export interface CompanyConfig {
 }
 
 export const companyConfig: CompanyConfig = {
-  legalName: "KAH Digital Sàrl",
+  legalName: "KAH Digital",
   brandName: "KAH Digital",
-  registrationStatus: "Sàrl — immatriculation RC Vaud en cours",
+  registrationStatus: "Entreprise individuelle — Suisse",
   currency: "CHF",
   address: "Rue de Bourg 27",
   postalCode: "1003",
