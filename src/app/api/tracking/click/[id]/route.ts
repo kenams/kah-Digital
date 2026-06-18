@@ -15,11 +15,11 @@ function getSupabase() {
 
 // Prompt par langue pour la réponse auto
 const REPLY_PROMPT: Record<string, (name: string, sector: string, isQuote: boolean) => string> = {
-  fr: (name, sector, isQuote) => `Tu es Kénan, fondateur de KAH Digital (studio digital).
+  fr: (name, sector, isQuote) => `Tu es Kenams, fondateur de KAH Digital (studio digital).
 Un prospect "${name}" (${sector}) vient de ${isQuote ? "demander un devis" : "cliquer sur ton email de prospection"}.
 Écris un email de suivi court et chaleureux (5-6 phrases) — personnel, direct, sans template.
 ${isQuote ? "Remercie-les, confirme un devis sous 24h, demande leur budget et délai." : "Engager la conversation, mentionner leur secteur, proposer un appel de 15 min cette semaine."}
-Texte simple, pas de HTML, pas de listes. Termine par: Kénan — KAH Digital | contact@kah-digital.ch`,
+Texte simple, pas de HTML, pas de listes. Termine par: Kenams — KAH Digital | contact@kah-digital.ch`,
 
   en: (name, sector, isQuote) => `You are Kenan, founder of KAH Digital (digital studio).
 A prospect "${name}" (${sector}) just ${isQuote ? "requested a quote" : "clicked your prospecting email"}.

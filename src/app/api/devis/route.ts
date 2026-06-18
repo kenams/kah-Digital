@@ -36,7 +36,7 @@ ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "KAH Digital <contact@KAH Digital.ch>",
+          from: "KAH Digital <contact@kah-digital.ch>",
           to: [email],
           reply_to: ["kahdigital42@gmail.com"],
           subject: `Votre demande reçue${company ? ` — ${company}` : ""} · Réponse sous 24h`,
@@ -45,7 +45,7 @@ ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;
 <p>J'ai bien reçu votre demande concernant <strong>${company ?? "votre projet"}</strong>.</p>
 <p>Je vous prépare une proposition personnalisée et reviens vers vous dans les <strong>24 heures</strong> avec tous les détails.</p>
 <p>En attendant, si vous avez des questions, répondez directement à cet email — je lis tous les messages.</p>
-<p style="margin-top:24px;color:#6b7280;">À très bientôt,<br/><strong style="color:#111827;">Kénan</strong><br/>KAH Digital · <a href="https://kah-digital.ch" style="color:#6366f1;">KAH Digital.ch</a></p>
+<p style="margin-top:24px;color:#6b7280;">À très bientôt,<br/><strong style="color:#111827;">Kenams</strong><br/>KAH Digital · <a href="https://kah-digital.ch" style="color:#6366f1;">KAH Digital.ch</a></p>
 </div>`,
         }),
       }).catch(console.error);

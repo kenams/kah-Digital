@@ -56,7 +56,7 @@ function buildClickerFollowup(p: Prospect): { subject: string; html: string } {
     fr: {
       subject: `Re: ${name}`,
       body: `Bonjour,\n\nJ'ai vu que vous avez consulté l'analyse de votre site.\n\nEst-ce que c'est quelque chose qui vous intéresse en ce moment, ou ce n'est pas le bon timing ?\n\nUne ligne suffit — je m'adapte à votre réponse.`,
-      signoff: `Kénan — KAH Digital\n${REPLY_TO}`,
+      signoff: `Kenams — KAH Digital\n${REPLY_TO}`,
     },
     en: {
       subject: `Re: ${name}`,
