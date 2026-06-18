@@ -163,7 +163,7 @@ RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
 - Mentionne 1 seul problème concret (le plus impactant)
 - CTA = "répondez à cet email" uniquement, aucun lien
 - Zéro prix, zéro chiffre, zéro promesse vague
-- Signature = "Kenams — KAH Digital" uniquement
+- Signature = "KAH Digital" uniquement — jamais de prénom, jamais de nom de personne
 - Pas de bullet points, pas de tableau
 
 Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`;
@@ -175,14 +175,14 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     // Fallback statique si LLM échoue
     const fallbacks: Record<string, string> = {
       fr: isBigCorp
-        ? `J'ai analysé le site de ${bName} cette semaine et ai identifié ${topProblem.toLowerCase()}.\n\nChez KAH Digital, nous accompagnons des structures comme la vôtre sur ce type de problématique. Si cela correspond à une priorité actuelle, je suis disponible pour en échanger.\n\nKenams — KAH Digital`
-        : `J'ai regardé votre site cette semaine — et honnêtement, ${topProblem.toLowerCase()} c'est exactement ce qui freine la conversion.\n\nOn règle ce genre de chose chez KAH Digital, souvent plus vite qu'on ne le croit. Si vous êtes curieux, répondez à cet email.\n\nKenams — KAH Digital`,
+        ? `J'ai analysé le site de ${bName} cette semaine et ai identifié ${topProblem.toLowerCase()}.\n\nChez KAH Digital, nous accompagnons des structures comme la vôtre sur ce type de problématique. Si cela correspond à une priorité actuelle, je suis disponible pour en échanger.\n\nKAH Digital`
+        : `J'ai regardé votre site cette semaine — et honnêtement, ${topProblem.toLowerCase()} c'est exactement ce qui freine la conversion.\n\nOn règle ce genre de chose chez KAH Digital, souvent plus vite qu'on ne le croit. Si vous êtes curieux, répondez à cet email.\n\nKAH Digital`,
       en: isBigCorp
-        ? `I reviewed ${bName}'s website this week and noticed ${topProblem.toLowerCase()}.\n\nAt KAH Digital, we help organisations like yours address these kinds of issues. If this is currently a priority, I'd be happy to discuss further.\n\nKenams — KAH Digital`
-        : `Took a look at your website this week — ${topProblem.toLowerCase()} is genuinely holding you back.\n\nWe fix this kind of thing at KAH Digital, usually faster than you'd expect. If you're curious, just reply.\n\nKenams — KAH Digital`,
+        ? `I reviewed ${bName}'s website this week and noticed ${topProblem.toLowerCase()}.\n\nAt KAH Digital, we help organisations like yours address these kinds of issues. If this is currently a priority, I'd be happy to discuss further.\n\nKAH Digital`
+        : `Took a look at your website this week — ${topProblem.toLowerCase()} is genuinely holding you back.\n\nWe fix this kind of thing at KAH Digital, usually faster than you'd expect. If you're curious, just reply.\n\nKAH Digital`,
       de: isBigCorp
-        ? `Ich habe die Website von ${bName} diese Woche analysiert und ${topProblem.toLowerCase()} festgestellt.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei solchen Herausforderungen. Falls dies aktuell eine Priorität ist, stehe ich gerne für ein Gespräch zur Verfügung.\n\nKenams — KAH Digital`
-        : `Ich habe Ihre Website diese Woche angeschaut — ${topProblem.toLowerCase()} bremst Sie wirklich aus.\n\nSolche Probleme lösen wir bei KAH Digital, meistens schneller als erwartet. Antworten Sie einfach auf diese Mail.\n\nKenams — KAH Digital`,
+        ? `Ich habe die Website von ${bName} diese Woche analysiert und ${topProblem.toLowerCase()} festgestellt.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei solchen Herausforderungen. Falls dies aktuell eine Priorität ist, stehe ich gerne für ein Gespräch zur Verfügung.\n\nKAH Digital`
+        : `Ich habe Ihre Website diese Woche angeschaut — ${topProblem.toLowerCase()} bremst Sie wirklich aus.\n\nSolche Probleme lösen wir bei KAH Digital, meistens schneller als erwartet. Antworten Sie einfach auf diese Mail.\n\nKAH Digital`,
     };
     body = fallbacks[lang] ?? fallbacks.fr ?? "";
   }
