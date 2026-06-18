@@ -135,20 +135,35 @@ export async function composeProspectingEmail(
     ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
     : `Pitch : propose une refonte de leur site web car il a des problèmes techniques graves.`;
 
-  const prompt = `Tu représentes KAH Digital, un studio digital.
+  // Grandes entreprises (banques, cabinets, hôpitaux, assurances, groupes) = ton formel
+  const bigCorpSectors = ["finance", "banque", "assurance", "avocat", "notaire", "medecin", "clinique", "hopital", "pharmacie", "fiduciaire", "audit", "consulting", "groupe", "holding"];
+  const isBigCorp = bigCorpSectors.some(s => audit.sector?.toLowerCase().includes(s));
+
+  const toneInstruction = isBigCorp
+    ? `Ton : professionnel et formel. Vouvoiement obligatoire. Pas de familiarité. Sobre, direct, crédible.`
+    : `Ton : humain, naturel, légèrement direct. Tutoiement possible selon le secteur. Pas de langue de bois.`;
+
+  const prompt = `Tu représentes KAH Digital, un studio digital basé à Lausanne.
 Écris un email de prospection en "${lang}" pour : ${bName} (${audit.sector}).
 ${pitchInstruction}
 
 Problèmes réels trouvés sur ${lead.website} :
 ${top2Problems || "- Présence digitale limitée"}
 
-Règles STRICTES :
-- Max 6 lignes de texte, ton naturel et humain
-- Mentionne 1 seul problème concret de leur site (le plus impactant)
-- CTA = "répondez à cet email" uniquement, aucun autre lien
+${toneInstruction}
+
+RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
+- JAMAIS : "il est essentiel de", "dans un premier temps", "n'hésitez pas à", "je me permets de", "impact significatif", "solution complète", "Bien sûr", "Absolument"
+- JAMAIS de phrases miroir (A fait X. B fait Y. C fait Z.)
+- JAMAIS de paragraphes identiques en longueur
+- Varier les longueurs de phrases — alterner courtes et longues
+- Commencer par une observation directe sur LEUR site, pas une intro générique
+- 1 seule imperfection stylistique légère autorisée (naturel humain)
+- Max 5-6 lignes au total
+- Mentionne 1 seul problème concret (le plus impactant)
+- CTA = "répondez à cet email" uniquement, aucun lien
 - Zéro prix, zéro chiffre, zéro promesse vague
-- Signature = "KAH Digital" uniquement, pas de prénom
-- Pas de "Bonjour [Nom]" générique — commence directement
+- Signature = "Kenams — KAH Digital" uniquement
 - Pas de bullet points, pas de tableau
 
 Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`;
@@ -159,9 +174,15 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
   } catch {
     // Fallback statique si LLM échoue
     const fallbacks: Record<string, string> = {
-      fr: `J'ai regardé le site de ${bName} et j'ai remarqué ${topProblem.toLowerCase()}.\n\nOn travaille sur ce genre de problème chez KAH Digital — si c'est quelque chose qui vous préoccupe, répondez à cet email et on en parle.\n\nKAH Digital`,
-      en: `I looked at ${bName}'s website and noticed ${topProblem.toLowerCase()}.\n\nWe handle this kind of issue at KAH Digital — if it's something you care about, just reply to this email.\n\nKAH Digital`,
-      de: `Ich habe die Website von ${bName} angeschaut und ${topProblem.toLowerCase()} bemerkt.\n\nWir arbeiten bei KAH Digital an solchen Problemen — wenn Sie Interesse haben, antworten Sie einfach auf diese E-Mail.\n\nKAH Digital`,
+      fr: isBigCorp
+        ? `J'ai analysé le site de ${bName} cette semaine et ai identifié ${topProblem.toLowerCase()}.\n\nChez KAH Digital, nous accompagnons des structures comme la vôtre sur ce type de problématique. Si cela correspond à une priorité actuelle, je suis disponible pour en échanger.\n\nKenams — KAH Digital`
+        : `J'ai regardé votre site cette semaine — et honnêtement, ${topProblem.toLowerCase()} c'est exactement ce qui freine la conversion.\n\nOn règle ce genre de chose chez KAH Digital, souvent plus vite qu'on ne le croit. Si vous êtes curieux, répondez à cet email.\n\nKenams — KAH Digital`,
+      en: isBigCorp
+        ? `I reviewed ${bName}'s website this week and noticed ${topProblem.toLowerCase()}.\n\nAt KAH Digital, we help organisations like yours address these kinds of issues. If this is currently a priority, I'd be happy to discuss further.\n\nKenams — KAH Digital`
+        : `Took a look at your website this week — ${topProblem.toLowerCase()} is genuinely holding you back.\n\nWe fix this kind of thing at KAH Digital, usually faster than you'd expect. If you're curious, just reply.\n\nKenams — KAH Digital`,
+      de: isBigCorp
+        ? `Ich habe die Website von ${bName} diese Woche analysiert und ${topProblem.toLowerCase()} festgestellt.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei solchen Herausforderungen. Falls dies aktuell eine Priorität ist, stehe ich gerne für ein Gespräch zur Verfügung.\n\nKenams — KAH Digital`
+        : `Ich habe Ihre Website diese Woche angeschaut — ${topProblem.toLowerCase()} bremst Sie wirklich aus.\n\nSolche Probleme lösen wir bei KAH Digital, meistens schneller als erwartet. Antworten Sie einfach auf diese Mail.\n\nKenams — KAH Digital`,
     };
     body = fallbacks[lang] ?? fallbacks.fr ?? "";
   }
