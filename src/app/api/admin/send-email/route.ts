@@ -4,10 +4,15 @@ import nodemailer from "nodemailer";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
-// Sécurisé par token secret — jamais exposé publiquement
+// Accepte ADMIN_API_TOKEN (Bearer) ou ADMIN_SECRET_TOKEN (x-admin-token)
 function isAuthorized(req: NextRequest): boolean {
-  const token = req.headers.get("x-admin-token");
-  return token === process.env.ADMIN_SECRET_TOKEN;
+  const apiToken = process.env.ADMIN_API_TOKEN;
+  const secretToken = process.env.ADMIN_SECRET_TOKEN;
+  const bearer = req.headers.get("authorization");
+  const xToken = req.headers.get("x-admin-token");
+  if (apiToken && bearer === `Bearer ${apiToken}`) return true;
+  if (secretToken && xToken === secretToken) return true;
+  return false;
 }
 
 function getTransport() {
