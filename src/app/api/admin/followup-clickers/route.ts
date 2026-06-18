@@ -61,22 +61,22 @@ function buildClickerFollowup(p: Prospect): { subject: string; html: string } {
     en: {
       subject: `Re: ${name}`,
       body: `Hello,\n\nI noticed you checked the analysis of your website.\n\nIs this something you're interested in right now, or is the timing not right?\n\nOne line is enough — I'll take it from there.`,
-      signoff: `Kenan — KAH Digital\n${REPLY_TO}`,
+      signoff: `KAH Digital\n${REPLY_TO}`,
     },
     de: {
       subject: `Re: ${name}`,
       body: `Hallo,\n\nIch habe gesehen, dass Sie die Analyse Ihrer Website angeschaut haben.\n\nIst das gerade ein Thema für Sie, oder passt der Zeitpunkt nicht?\n\nEine kurze Antwort genügt — ich passe mich an.`,
-      signoff: `Kenan — KAH Digital\n${REPLY_TO}`,
+      signoff: `KAH Digital\n${REPLY_TO}`,
     },
     es: {
       subject: `Re: ${name}`,
       body: `Hola,\n\nVi que consultó el análisis de su sitio web.\n\n¿Es esto algo que le interesa ahora, o no es el momento adecuado?\n\nUna línea es suficiente — me adapto a su respuesta.`,
-      signoff: `Kenan — KAH Digital\n${REPLY_TO}`,
+      signoff: `KAH Digital\n${REPLY_TO}`,
     },
     it: {
       subject: `Re: ${name}`,
       body: `Buongiorno,\n\nHo visto che ha consultato l'analisi del suo sito.\n\nÈ qualcosa che la interessa in questo momento, o il momento non è giusto?\n\nUna riga basta — mi adatto alla sua risposta.`,
-      signoff: `Kenan — KAH Digital\n${REPLY_TO}`,
+      signoff: `KAH Digital\n${REPLY_TO}`,
     },
   };
 

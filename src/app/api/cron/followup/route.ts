@@ -89,7 +89,7 @@ In the meantime, here's our full offer page for future reference:<br><br>
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/en/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">See our offers →</a><br><br>
 All the best!`,
     signoff: "Best regards,",
-    from: "Kenan — KAH Digital",
+    from: "KAH Digital",
     unsubscribe: "Reply STOP to unsubscribe.",
   },
   es: {
@@ -119,7 +119,7 @@ Entiendo que el momento quizás no es el adecuado. Si cambia de opinión, no dud
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Ver nuestras ofertas →</a><br><br>
 ¡Mucho éxito!`,
     signoff: "Saludos,",
-    from: "Kenan — KAH Digital",
+    from: "KAH Digital",
     unsubscribe: "Responda STOP para darse de baja.",
   },
   de: {
@@ -149,7 +149,7 @@ Ich verstehe, dass der Zeitpunkt vielleicht nicht passt. Falls Sie Ihre Meinung 
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Unsere Angebote ansehen →</a><br><br>
 Alles Gute!`,
     signoff: "Mit freundlichen Grüßen,",
-    from: "Kenan — KAH Digital",
+    from: "KAH Digital",
     unsubscribe: "Antworten Sie mit STOP, um sich abzumelden.",
   },
   it: {
@@ -179,7 +179,7 @@ Capisco che i tempi potrebbero non essere favorevoli. Se dovesse cambiare idea, 
 <a href="${s}/api/tracking/click/${id}?target=quote&redirect=${encodeURIComponent(s + '/offres')}" style="display:inline-block;background:#1f2937;color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">Vedi le nostre offerte →</a><br><br>
 In bocca al lupo!`,
     signoff: "Cordiali saluti,",
-    from: "Kenan — KAH Digital",
+    from: "KAH Digital",
     unsubscribe: "Rispondi STOP per annullare l'iscrizione.",
   },
 };

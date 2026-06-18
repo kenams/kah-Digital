@@ -201,7 +201,7 @@ export default function AuditGratuitPageEn() {
         <div className="mx-auto max-w-2xl px-4 text-center">
           <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Limited spots</p>
           <h2 className="mb-4 text-2xl font-extrabold text-white">2 free audits available this month</h2>
-          <p className="mb-8 text-gray-400">Each audit is prepared manually by Kénan. Spots are limited to guarantee quality.</p>
+          <p className="mb-8 text-gray-400">Each audit is prepared manually by our studio. Spots are limited to guarantee quality.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href={WA_AUDIT_URL}

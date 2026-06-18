@@ -52,8 +52,8 @@ export function HeroSection({ stats }: HeroProps) {
 
   const waText = encodeURIComponent(
     isEnglish
-      ? "Hi Kénan, I'd like to book a free 15-min discovery call to discuss my project."
-      : "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min pour discuter de mon projet."
+      ? "Hi, I'd like to book a free 15-min discovery call with KAH Digital to discuss my project."
+      : "Bonjour, je voudrais réserver un appel découverte de 15 min avec KAH Digital pour discuter de mon projet."
   );
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${waText}`;
 

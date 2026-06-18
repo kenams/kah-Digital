@@ -91,7 +91,7 @@ const CASES = [
       { value: "5★", label: "Satisfaction" },
     ],
     quote:
-      "En 3 semaines j'avais un site vitrine propre et professionnel. Kénan a cadré rapidement ce que je voulais, sans réunions interminables. Résultat : 4 nouveaux clients le premier mois.",
+      "En 3 semaines j'avais un site vitrine propre et professionnel. KAH Digital a cadré rapidement ce que je voulais, sans réunions interminables. Résultat : 4 nouveaux clients le premier mois.",
     author: "S. M. — Coach business, Lyon",
     color: "from-blue-500/20 to-violet-500/20",
     accentColor: "text-blue-400",

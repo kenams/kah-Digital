@@ -705,7 +705,7 @@ export function HomePageClient({ data }: HomePageClientProps) {
                     {isEnglish ? "Start a project" : "Démarrer un projet"}
                   </Link>
                   <a
-                    href={`https://wa.me/33759558414?text=${encodeURIComponent(isEnglish ? "Hi Kénan, I'd like to book a free 15-min discovery call." : "Bonjour Kénan, je voudrais réserver un appel découverte de 15 min.")}`}
+                    href={`https://wa.me/33759558414?text=${encodeURIComponent(isEnglish ? "Hi, I'd like to book a free 15-min discovery call with KAH Digital." : "Bonjour, je voudrais réserver un appel découverte de 15 min avec KAH Digital.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-6 py-3 font-semibold text-[#25D366] transition hover:bg-[#25D366]/20"

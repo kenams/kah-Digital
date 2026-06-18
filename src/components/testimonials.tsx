@@ -21,7 +21,7 @@ const testimonialsFr = [
     name: "Ruby M.",
     role: "Artiste peintre · Ruby Gallery",
     quote:
-      "Kénan a compris l'ambiance dès le premier appel. Mon site met en valeur mes œuvres sans les écraser, je gère le catalogue seule sans toucher au code. 3 ventes Stripe les 2 premières semaines.",
+      "KAH Digital a compris l'ambiance dès le premier appel. Mon site met en valeur mes œuvres sans les écraser, je gère le catalogue seule sans toucher au code. 3 ventes Stripe les 2 premières semaines.",
   },
   {
     name: "Amadou K.",
@@ -33,7 +33,7 @@ const testimonialsFr = [
     name: "Thomas F.",
     role: "Porteur de projet · DroPiPêche",
     quote:
-      "App complète en 8 semaines — double parcours pêcheur/acheteur, géolocalisation, chat temps réel, QR code de livraison. Kénan a cadré le projet rapidement et livré quelque chose de vraiment structuré.",
+      "App complète en 8 semaines — double parcours pêcheur/acheteur, géolocalisation, chat temps réel, QR code de livraison. KAH Digital a cadré le projet rapidement et livré quelque chose de vraiment structuré.",
   },
   {
     name: "Jordan T.",
@@ -60,7 +60,7 @@ const testimonialsEn = [
     name: "Ruby M.",
     role: "Painter · Ruby Gallery",
     quote:
-      "Kénan understood the vibe from the first call. My site showcases my work without overwhelming it. I manage the catalogue myself without touching code. 3 Stripe sales in the first 2 weeks.",
+      "KAH Digital understood the vibe from the first call. My site showcases my work without overwhelming it. I manage the catalogue myself without touching code. 3 Stripe sales in the first 2 weeks.",
   },
   {
     name: "Amadou K.",
@@ -72,7 +72,7 @@ const testimonialsEn = [
     name: "Thomas F.",
     role: "Project lead · DroPiPêche",
     quote:
-      "Full app in 8 weeks — dual fisherman/buyer flow, geolocation, real-time chat, delivery QR code. Kénan scoped the project fast and delivered something genuinely structured.",
+      "Full app in 8 weeks — dual fisherman/buyer flow, geolocation, real-time chat, delivery QR code. KAH Digital scoped the project fast and delivered something genuinely structured.",
   },
   {
     name: "Jordan T.",

@@ -24,7 +24,7 @@ export default function MerciPage() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            href="https://wa.me/33759558414?text=Bonjour%20Kénan%2C%20je%20viens%20de%20vous%20envoyer%20une%20demande%20et%20je%20voudrais%20en%20discuter%20rapidement."
+            href="https://wa.me/33759558414?text=Bonjour%20KAH%20Digital%2C%20je%20viens%20de%20vous%20envoyer%20une%20demande%20et%20je%20voudrais%20en%20discuter%20rapidement."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:brightness-110"

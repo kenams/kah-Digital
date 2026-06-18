@@ -39,7 +39,7 @@ const TESTIMONIALS = {
       highlight: false,
     },
     {
-      quote: "Mon ancien site était lent, non mobile, introuvable sur Google. Kénan a tout refait en 3 semaines. Depuis, 3 à 4 demandes par semaine via le site.",
+      quote: "Mon ancien site était lent, non mobile, introuvable sur Google. KAH Digital a tout refait en 3 semaines. Depuis, 3 à 4 demandes par semaine via le site.",
       author: "M. L.",
       role: "Avocate",
       city: "Lausanne",

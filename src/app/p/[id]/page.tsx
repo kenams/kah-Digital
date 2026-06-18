@@ -169,10 +169,10 @@ export default async function ProspectLandingPage({ params }: Props) {
   const devisUrl = `${siteUrl}/devis?company=${encodeURIComponent(name)}&site=${encodeURIComponent(prospect.website)}&ref=email`;
   const lang = prospect.language ?? "fr";
   const waMsgMap: Record<string, string> = {
-    fr: `Bonjour Kénan, j'ai vu l'analyse de mon site ${prospect.website}. Je suis intéressé(e) par vos services.`,
-    en: `Hello Kenan, I saw the analysis of my website ${prospect.website}. I'm interested in your services.`,
-    de: `Hallo Kenan, ich habe die Analyse meiner Website ${prospect.website} gesehen. Ich bin interessiert.`,
-    es: `Hola Kenan, vi el análisis de mi sitio ${prospect.website}. Estoy interesado/a en sus servicios.`,
+    fr: `Bonjour, j'ai vu l'analyse de mon site ${prospect.website}. Je suis intéressé(e) par vos services. — KAH Digital`,
+    en: `Hello, I saw the analysis of my website ${prospect.website}. I'm interested in your services. — KAH Digital`,
+    de: `Hallo, ich habe die Analyse meiner Website ${prospect.website} gesehen. Ich bin interessiert. — KAH Digital`,
+    es: `Hola, vi el análisis de mi sitio ${prospect.website}. Estoy interesado/a en sus servicios. — KAH Digital`,
   };
   const waMsg = encodeURIComponent(waMsgMap[lang] ?? waMsgMap.fr);
   const waUrl = `https://wa.me/33759558414?text=${waMsg}`;

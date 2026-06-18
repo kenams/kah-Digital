@@ -40,7 +40,8 @@ export async function GET(request: NextRequest) {
     return json;
   }
 
-  const totpFactor = factorsData?.totp?.[0] ?? null;
+  // Check all factors (including unverified) to avoid re-enrolling when one is pending
+  const totpFactor = (factorsData?.all ?? factorsData?.totp ?? []).find((f: { factor_type: string }) => f.factor_type === "totp") ?? null;
   if (totpFactor) {
     const json = NextResponse.json({ status: "verify", factorId: totpFactor.id }, { status: 200 });
     applySupabaseCookies(response, json);

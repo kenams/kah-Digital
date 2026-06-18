@@ -93,11 +93,11 @@ async function generateAndSendAutoReply(prospect: {
   // Fallback statique si aucune IA
   if (!draft) {
     const fallbacks: Record<string, string> = {
-      fr: `Bonjour,\n\nMerci pour votre intérêt pour KAH Digital ! J'ai bien noté votre demande concernant ${name}.\n\nJe vous prépare une proposition personnalisée et reviens vers vous dans les 24 heures avec tous les détails.\n\nÀ très bientôt,\nKénan — KAH Digital | contact@kah-digital.ch`,
-      en: `Hello,\n\nThank you for your interest in KAH Digital! I've noted your request regarding ${name}.\n\nI'm preparing a personalised proposal and will get back to you within 24 hours with full details.\n\nBest regards,\nKenan — KAH Digital | contact@kah-digital.ch`,
-      es: `Hola,\n\nGracias por su interés en KAH Digital. He recibido su solicitud sobre ${name}.\n\nLe prepararé una propuesta personalizada y le responderé en las próximas 24 horas.\n\nSaludos,\nKenan — KAH Digital | contact@kah-digital.ch`,
-      de: `Hallo,\n\nVielen Dank für Ihr Interesse an KAH Digital! Ich habe Ihre Anfrage bezüglich ${name} erhalten.\n\nIch bereite ein persönliches Angebot vor und melde mich innerhalb von 24 Stunden bei Ihnen.\n\nMit freundlichen Grüßen,\nKenan — KAH Digital | contact@kah-digital.ch`,
-      it: `Buongiorno,\n\nGrazie per il suo interesse per KAH Digital! Ho ricevuto la sua richiesta riguardo a ${name}.\n\nSto preparando una proposta personalizzata e la ricontatterò entro 24 ore.\n\nCordiali saluti,\nKenan — KAH Digital | contact@kah-digital.ch`,
+      fr: `Bonjour,\n\nMerci pour votre intérêt pour KAH Digital ! J'ai bien noté votre demande concernant ${name}.\n\nJe vous prépare une proposition personnalisée et reviens vers vous dans les 24 heures avec tous les détails.\n\nÀ très bientôt,\nKAH Digital | contact@kah-digital.ch`,
+      en: `Hello,\n\nThank you for your interest in KAH Digital! I've noted your request regarding ${name}.\n\nI'm preparing a personalised proposal and will get back to you within 24 hours with full details.\n\nBest regards,\nKAH Digital | contact@kah-digital.ch`,
+      es: `Hola,\n\nGracias por su interés en KAH Digital. He recibido su solicitud sobre ${name}.\n\nLe prepararé una propuesta personalizada y le responderé en las próximas 24 horas.\n\nSaludos,\nKAH Digital | contact@kah-digital.ch`,
+      de: `Hallo,\n\nVielen Dank für Ihr Interesse an KAH Digital! Ich habe Ihre Anfrage bezüglich ${name} erhalten.\n\nIch bereite ein persönliches Angebot vor und melde mich innerhalb von 24 Stunden bei Ihnen.\n\nMit freundlichen Grüßen,\nKAH Digital | contact@kah-digital.ch`,
+      it: `Buongiorno,\n\nGrazie per il suo interesse per KAH Digital! Ho ricevuto la sua richiesta riguardo a ${name}.\n\nSto preparando una proposta personalizzata e la ricontatterò entro 24 ore.\n\nCordiali saluti,\nKAH Digital | contact@kah-digital.ch`,
     };
     draft = fallbacks[lang] ?? fallbacks.fr;
   }
