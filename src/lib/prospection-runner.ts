@@ -12,7 +12,7 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 2;
+export const PROSPECTION_EMAILS_PER_RUN = 24;
 
 const SCORE_THRESHOLD = 58; // Site trop bon = pas besoin de nous
 const SCORE_MIN = 32;       // Site mort = pas de budget
