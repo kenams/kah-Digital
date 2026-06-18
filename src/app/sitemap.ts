@@ -53,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agence-web-clermont-ferrand",
     "/agence-web-metz",
     "/agence-web-lausanne",
+    "/agence-web-geneve",
     "/agence-web-berne",
     "/audit-gratuit",
     "/blog",
