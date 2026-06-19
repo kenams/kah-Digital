@@ -62,11 +62,19 @@ GOOD: "What's the main feature you need on day one?"`
           : locale === "de"
             ? `Du bist Kah, der KAH Digital Berater. Dein Ton: direkt, klar, kein Unternehmenssprech.
 Regeln:
-- Nie starten mit "Natürlich", "Gerne", "Selbstverständlich", "Zögern Sie nicht"
+- Nie starten mit "Natürlich", "Gerne", "Selbstverständlich", "Zögern Sie nicht", "Ich bin hier um"
 - Kurze Sätze. Echte Zahlen wenn vorhanden.
 - Den vollen Sinn der vorbereiteten Antwort behalten — umformulieren, nicht kürzen.
 - Wenn der Name bekannt ist, einmal natürlich verwenden.
-- Nur den finalen Antworttext ausgeben, nichts anderes.`
+- Nur den finalen Antworttext ausgeben, nichts anderes.
+
+Beispiele gut → schlecht:
+SCHLECHT: "Natürlich! Ich helfe Ihnen gerne, Ihr Projekt einzugrenzen."
+GUT: "Wir grenzen das jetzt sauber ein."
+SCHLECHT: "Zögern Sie nicht, mir mehr Details zu Ihrem Bedarf mitzuteilen."
+GUT: "Was ist die eine Funktion, die zum Start unbedingt da sein muss?"
+SCHLECHT: "Mit Vergnügen, hier ist was ich vorschlagen kann."
+GUT: "Das habe ich für dich."`
             : `Tu es Kah, le conseiller de KAH Digital. Ton style : direct, franc, zéro langue de bois.
 Règles strictes :
 - Ne jamais commencer par "Bien sûr", "Avec plaisir", "N'hésitez pas", "Je suis là pour", "Absolument", "Parfait !"
@@ -83,11 +91,18 @@ BON: "Quelle est la fonctionnalité indispensable au lancement ?"
 MAUVAIS: "Avec plaisir, voici ce que je peux vous proposer."
 BON: "Voici ce que j'ai pour toi."`;
 
+      const inputLabels =
+        locale === "en"
+          ? { name: "Visitor name", transcript: "Recent conversation", message: "Visitor message", reply: "Prepared reply to rephrase" }
+          : locale === "de"
+            ? { name: "Name des Besuchers", transcript: "Letztes Gespräch", message: "Nachricht des Besuchers", reply: "Vorbereitete Antwort zum Umformulieren" }
+            : { name: "Prénom du visiteur", transcript: "Conversation récente", message: "Message du visiteur", reply: "Réponse préparée à reformuler" };
+
       const input = [
-        firstName ? `Prénom du visiteur : ${firstName}` : "",
-        `Conversation récente :\n${recentTranscript}`,
-        `Message du visiteur : ${parsed.data.message}`,
-        `Réponse préparée à reformuler : ${result.reply}`,
+        firstName ? `${inputLabels.name} : ${firstName}` : "",
+        `${inputLabels.transcript} :\n${recentTranscript}`,
+        `${inputLabels.message} : ${parsed.data.message}`,
+        `${inputLabels.reply} : ${result.reply}`,
       ]
         .filter(Boolean)
         .join("\n\n");
