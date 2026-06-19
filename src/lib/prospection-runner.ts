@@ -248,7 +248,8 @@ async function discoverAnalyzeAndSend(params: {
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
 
-      if (!lead.email) continue;
+      // Ne pas envoyer si email deviné (info@domain) — audit confidentiel + taux de bounce élevé
+      if (!lead.email || lead.emailGuessed) continue;
 
       await sendProspectingEmail(transport, lead.email, emailSubject, email.html, email.textFallback);
       await supabase
