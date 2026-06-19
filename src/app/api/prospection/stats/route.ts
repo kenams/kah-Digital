@@ -63,6 +63,7 @@ export async function GET() {
     backlogCountRes,
     sent24hRes,
     blockedCountRes,
+    dailyRawRes,
   ] = await Promise.all([
     supabase.from("prospects").select("status, openedAt, clickedAt, repliedAt, sentAt, email, createdAt"),
     fetchBatches(supabase),
@@ -96,6 +97,10 @@ export async function GET() {
     supabase.from("prospects")
       .select("id", { count: "exact", head: true })
       .eq("status", "rejected"),
+    supabase.from("prospects")
+      .select("sentAt, openedAt, clickedAt, repliedAt")
+      .gte("sentAt", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
+      .not("sentAt", "is", null),
   ]);
 
   const prospects = (prospectsRes.data ?? []) as ProspectStatRow[];
@@ -128,6 +133,23 @@ export async function GET() {
     warnings.push("Des objets email invalides ont ete detectes recemment.");
   }
 
+  // Daily breakdown — last 30 days
+  type DailyRow = { sentAt: string | null; openedAt: string | null; clickedAt: string | null; repliedAt: string | null };
+  const dailyMap = new Map<string, { sent: number; opened: number; clicked: number; replied: number }>();
+  for (const row of (dailyRawRes.data ?? []) as DailyRow[]) {
+    if (!row.sentAt) continue;
+    const day = row.sentAt.slice(0, 10);
+    if (!dailyMap.has(day)) dailyMap.set(day, { sent: 0, opened: 0, clicked: 0, replied: 0 });
+    const d = dailyMap.get(day)!;
+    d.sent++;
+    if (row.openedAt) d.opened++;
+    if (row.clickedAt) d.clicked++;
+    if (row.repliedAt) d.replied++;
+  }
+  const dailyStats = Array.from(dailyMap.entries())
+    .map(([date, counts]) => ({ date, ...counts }))
+    .sort((a, b) => b.date.localeCompare(a.date));
+
   const stats = {
     total: prospects.length,
     sent: prospects.filter((prospect) => prospect.sentAt).length,
@@ -150,6 +172,7 @@ export async function GET() {
 
   return NextResponse.json({
     stats,
+    dailyStats,
     batches,
     hotProspects: hotRes.data ?? [],
     noEmailProspects: noEmailRes.data ?? [],

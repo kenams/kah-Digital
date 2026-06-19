@@ -61,8 +61,11 @@ type NoEmailProspect = { id: string; businessName: string | null; website: strin
 
 type BatchStats = { id: string; createdAt?: string; runAt?: string; slot: string; found: number; sent: number; errors: string[] };
 
+type DailyStat = { date: string; sent: number; opened: number; clicked: number; replied: number };
+
 type LiveStats = {
   stats: { total: number; sent: number; opened: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
+  dailyStats?: DailyStat[];
   batches: BatchStats[];
   hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null; draftReply: string | null }>;
   noEmailProspects: NoEmailProspect[];
@@ -665,6 +668,7 @@ export function ProspectionDashboard() {
         </div>
       )}
 
+      {/* ── Stats par jour ───────────────────────────────────────────────────── */}
       {/* ── TAB: LIVE ────────────────────────────────────────────────────────── */}
       {activeTab === "live" && (
         <div className="mx-auto max-w-7xl px-6 py-6 space-y-6">
@@ -683,6 +687,39 @@ export function ProspectionDashboard() {
                 </div>
                 <p className="mt-2 text-xs text-yellow-400/80">⚠️ Une vraie réponse email arrive dans <strong>kahdigital42@gmail.com</strong> directement — ce tableau ne la capture pas.</p>
               </div>
+
+              {/* ─ Stats par jour ─ */}
+              {liveStats.dailyStats && liveStats.dailyStats.length > 0 && (
+                <div className="rounded-2xl border border-white/[0.07] bg-[#13141a] p-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">📅 Activité par jour (30 derniers jours)</p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="text-xs text-gray-600 border-b border-white/[0.05]">
+                          <th className="pb-2 text-left font-medium">Date</th>
+                          <th className="pb-2 text-right font-medium">📤 Envoyés</th>
+                          <th className="pb-2 text-right font-medium">👁 Ouverts</th>
+                          <th className="pb-2 text-right font-medium">🖱 Cliqués</th>
+                          <th className="pb-2 text-right font-medium">🔥 Chauds</th>
+                          <th className="pb-2 text-right font-medium">Taux ouv.</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/[0.03]">
+                        {liveStats.dailyStats.map((d) => (
+                          <tr key={d.date} className="hover:bg-white/[0.02]">
+                            <td className="py-2 text-gray-400">{new Date(d.date).toLocaleDateString("fr-FR", { weekday: "short", day: "2-digit", month: "short" })}</td>
+                            <td className="py-2 text-right text-white font-medium">{d.sent}</td>
+                            <td className="py-2 text-right text-blue-400">{d.opened}</td>
+                            <td className="py-2 text-right text-orange-400">{d.clicked}</td>
+                            <td className="py-2 text-right text-emerald-400">{d.replied}</td>
+                            <td className="py-2 text-right text-gray-500">{d.sent > 0 ? `${Math.round((d.opened / d.sent) * 100)}%` : "—"}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
               {liveStats.diagnostics && (
                 <div className={`rounded-2xl border p-5 ${
