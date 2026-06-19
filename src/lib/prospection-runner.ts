@@ -121,6 +121,7 @@ async function sendBacklog(params: {
     .from("prospects")
     .select("id, businessName, website, email, emailSubject, emailBody")
     .eq("status", "analyzed")
+    .eq("emailGuessed", false)
     .not("email", "is", null)
     .not("emailBody", "is", null)
     .order("createdAt", { ascending: true })
