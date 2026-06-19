@@ -14,8 +14,8 @@ import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-emai
 
 export const PROSPECTION_EMAILS_PER_RUN = 24;
 
-const SCORE_THRESHOLD = 58; // Site trop bon = pas besoin de nous
-const SCORE_MIN = 32;       // Site mort = pas de budget
+const SCORE_THRESHOLD = 78; // Site trop bon = pas besoin de nous
+const SCORE_MIN = 20;       // Site mort = pas de budget
 const SEND_DELAY_MS = 400;
 
 type ProspectBacklogRow = {
@@ -248,8 +248,7 @@ async function discoverAnalyzeAndSend(params: {
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
 
-      // Bloquer les emails devinés — taux de bounce 46% vs 17% pour les emails réels
-      if (!lead.email || lead.emailGuessed) continue;
+      if (!lead.email) continue;
 
       await sendProspectingEmail(transport, lead.email, emailSubject, email.html, email.textFallback);
       await supabase
