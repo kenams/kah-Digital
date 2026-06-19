@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
-import { FiArrowUpRight, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
+import { FiArrowUpRight, FiMaximize2, FiMinimize2, FiRotateCcw, FiSend, FiX } from "react-icons/fi";
 import { trackEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/locale";
 import { withLocalePrefix } from "@/lib/locales";
@@ -412,6 +412,8 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   const [isStreaming, setIsStreaming] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [widgetWidth, setWidgetWidth] = useState(352); // 22rem default
+  const [widgetHeight, setWidgetHeight] = useState(640);
   const transcript = useMemo(() => session?.transcript ?? [], [session?.transcript]);
   const hasConversation = transcript.length > 0 || Boolean(summary) || Boolean(pendingUserMessage) || Boolean(streamingReply);
   const fullName = joinName(firstName, lastName);
@@ -453,8 +455,11 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
   }, [lastActivityAt, session, summary, storageKey]);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [transcript, open, summary]);
+    const t = setTimeout(() => {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+    return () => clearTimeout(t);
+  }, [transcript, open, summary, pendingUserMessage, streamingReply]);
 
   const resetConversation = useMemo(
     () =>
@@ -814,13 +819,13 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
 
   return (
     <div className="pointer-events-none fixed inset-x-4 bottom-4 z-[80] flex justify-end sm:inset-x-6 sm:bottom-6">
-      <div className="pointer-events-auto w-full max-w-[22rem]">
+      <div className="pointer-events-auto w-full" style={{ maxWidth: widgetWidth }}>
 
         {/* ── Widget panel ── */}
         {open ? (
           <div
             className="flex flex-col overflow-hidden rounded-[1.25rem] border border-white/[0.09] bg-[#0d0e12] shadow-[0_32px_80px_rgba(0,0,0,0.8),0_0_0_0.5px_rgba(255,255,255,0.06)]"
-            style={{ maxHeight: "min(90dvh, 640px)" }}
+            style={{ height: Math.min(widgetHeight, window.innerHeight * 0.9) }}
           >
             {/* Header */}
             <div className="flex shrink-0 items-center justify-between gap-3 border-b border-white/[0.07] bg-[#13141a] px-4 py-3">
@@ -842,6 +847,18 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
                 </div>
               </div>
               <div className="flex items-center gap-0.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const isExpanded = widgetWidth > 400;
+                    setWidgetWidth(isExpanded ? 352 : 560);
+                    setWidgetHeight(isExpanded ? 640 : 760);
+                  }}
+                  className="rounded-full p-2 text-gray-600 transition hover:bg-white/[0.06] hover:text-gray-300"
+                  title={widgetWidth > 400 ? "Réduire" : "Agrandir"}
+                >
+                  {widgetWidth > 400 ? <FiMinimize2 size={13} /> : <FiMaximize2 size={13} />}
+                </button>
                 <button
                   type="button"
                   onClick={() => resetConversation()}
