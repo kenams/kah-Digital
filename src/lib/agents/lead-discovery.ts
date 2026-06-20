@@ -429,6 +429,40 @@ const TARGETS = [
   { query: "décorateur home stager france site web portfolio", country: "FR", lang: "fr", sector: "deco" },
   { query: "courtier en prêt immobilier france site web contact", country: "FR", lang: "fr", sector: "finance" },
   { query: "agence relations presse france site web contact", country: "FR", lang: "fr", sector: "agence" },
+
+  // ── ESN / Intégrateurs IT — cible assistant-pme (canal indirect) ──────────
+  { query: "prestataire informatique PME france site web contact", country: "FR", lang: "fr", sector: "esn" },
+  { query: "infogérance PME ile-de-france site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "société informatique support IT PME france site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "intégrateur IT solutions entreprises france site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "DSI externalisée PME france contact site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "helpdesk support informatique entreprise france site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "managed service provider MSP france site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "prestataire IT TPE PME lyon marseille bordeaux site web", country: "FR", lang: "fr", sector: "esn" },
+  { query: "infogérance PME suisse romande site web contact", country: "CH", lang: "fr", sector: "esn" },
+  { query: "IT support managed services belgique site web", country: "BE", lang: "fr", sector: "esn" },
+
+  // ── PME avec équipes — cible assistant-pme (vente directe) ───────────────
+  { query: "cabinet expertise comptable equipe france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "agence immobiliere reseau agences france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "clinique centre médical equipe soignante france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "bureau etudes ingenierie france equipe site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "groupement artisans batiment france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "franchise restaurant reseau france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "syndic copropriete gestionnaire france site web", country: "FR", lang: "fr", sector: "pme-it" },
+  { query: "laboratoire analyses medicales france site web", country: "FR", lang: "fr", sector: "pme-it" },
+
+  // ── Cibles app mobile / web app sur mesure ────────────────────────────────
+  { query: "startup tech france mvp application mobile site web", country: "FR", lang: "fr", sector: "app" },
+  { query: "startup fintech france application web investisseur", country: "FR", lang: "fr", sector: "app" },
+  { query: "portail client entreprise france application web", country: "FR", lang: "fr", sector: "app" },
+  { query: "startup santé france application patient site web", country: "FR", lang: "fr", sector: "app" },
+  { query: "marketplace plateforme france site web startup", country: "FR", lang: "fr", sector: "app" },
+  { query: "startup RH france logiciel gestion application", country: "FR", lang: "fr", sector: "app" },
+  { query: "application gestion restaurant france logiciel commande", country: "FR", lang: "fr", sector: "app" },
+  { query: "startup immobilier proptech france site web", country: "FR", lang: "fr", sector: "app" },
+  { query: "startup lausanne geneve application mobile mvp", country: "CH", lang: "fr", sector: "app" },
+  { query: "startup bruxelles application web saas site web", country: "BE", lang: "fr", sector: "app" },
 ];
 
 // ── Annuaires internationaux ────────────────────────────────────────────────

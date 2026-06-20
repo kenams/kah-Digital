@@ -39,9 +39,12 @@ async function callLLMFast(prompt: string): Promise<string> {
   throw new Error("No AI provider");
 }
 
-// Pitch agents IA → sites avec score >= 45 (base correcte, peut automatiser)
-// Pitch refonte site → sites avec score < 45 (base trop faible, besoin urgent)
-function getTrack(audit: SiteAudit): "agent" | "site" {
+// Routing par secteur + score
+function getTrack(audit: SiteAudit): "esn" | "pme-it" | "app" | "agent" | "site" {
+  const s = (audit.sector ?? "").toLowerCase();
+  if (s === "esn") return "esn";
+  if (s === "pme-it") return "pme-it";
+  if (s === "app") return "app";
   return audit.score >= 45 ? "agent" : "site";
 }
 
@@ -131,9 +134,16 @@ export async function composeProspectingEmail(
 
   // Prompt LLM : email court, naturel, basé sur l'audit réel
   const top2Problems = audit.problems.slice(0, 2).map((p) => `- ${p.title}: ${p.detail}`).join("\n");
-  const pitchInstruction = track === "agent"
-    ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
-    : `Pitch : propose une refonte de leur site web car il a des problèmes techniques graves.`;
+  const pitchInstruction =
+    track === "esn"
+      ? `Pitch : propose à cette ESN / société IT de tester notre outil de gestion de tickets IA (triage auto, réponses niveau 1, tableau de bord) pour leurs clients PME — en marque blanche si souhaité. Objectif = décrocher un appel de 20 min, pas vendre directement. Mentionne qu'on gère le niveau 1 à leur place, ça libère leurs équipes.`
+      : track === "pme-it"
+      ? `Pitch : propose à cette PME un support informatique IA disponible 7j/7 pour leurs équipes — incidents résolus rapidement, sans prestataire à l'heure. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix. Juste un appel de 20 min pour voir si ça colle.`
+      : track === "app"
+      ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
+      : track === "agent"
+      ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
+      : `Pitch : propose une refonte de leur site web car il a des problèmes techniques graves.`;
 
   // Grandes entreprises (banques, cabinets, hôpitaux, assurances, groupes) = ton formel
   const bigCorpSectors = ["finance", "banque", "assurance", "avocat", "notaire", "medecin", "clinique", "hopital", "pharmacie", "fiduciaire", "audit", "consulting", "groupe", "holding"];
@@ -161,9 +171,9 @@ RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
 - 1 seule imperfection stylistique légère autorisée (naturel humain)
 - Max 5-6 lignes au total
 - Mentionne 1 seul problème concret (le plus impactant)
-- CTA = "répondez à cet email" uniquement, aucun lien
-- Zéro prix, zéro chiffre, zéro promesse vague
-- Signature = "KAH Digital" uniquement — jamais de prénom, jamais de nom de personne
+- CTA = "répondez à cet email" OU "appelez le 07 59 55 84 14" OU "kah-digital.ch" — selon le contexte
+- Zéro prix, zéro promesse vague
+- Signature = "KAH Digital — kah-digital.ch" — jamais de prénom seul
 - Pas de bullet points, pas de tableau
 
 Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`;
