@@ -15,7 +15,7 @@ const links = [
     emoji: "🏆",
     name: "ANTE — Défis financiers",
     desc: "Mise réelle. Check-in. Le dernier debout rafle tout. #CoupeduMonde2026",
-    url: "https://stackr-app-three.vercel.app",
+    url: "https://clutch.kah-digital.ch",
     color: "from-amber-500 to-yellow-400",
     badge: "🔥 NOUVEAU",
     hot: true,

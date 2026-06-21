@@ -40,7 +40,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       secondary: "#1a1a1f",
       accent: "#eab308",
     },
-    website: "https://stackr-app-three.vercel.app/",
+    website: "https://clutch.kah-digital.ch/",
     mockups: {
       primary: "/mockups/clutch.png",
       gallery: ["/mockups/clutch.png"],
