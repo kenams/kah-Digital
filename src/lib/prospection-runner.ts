@@ -211,14 +211,30 @@ async function discoverAnalyzeAndSend(params: {
         continue;
       }
 
+      // Ne pas traiter les emails devinés (info@domain) — bounce élevé + réputation Brevo
+      if (!lead.email || lead.emailGuessed) {
+        await supabase.from("prospects").insert({
+          businessName: audit.businessName,
+          website: lead.website,
+          email: lead.email ?? null,
+          emailGuessed: true,
+          sector: audit.sector,
+          country: lead.country,
+          language: audit.language,
+          status: "no_email",
+          audit: { score: audit.score, problems: audit.problems, recommendations: audit.recommendations },
+        });
+        continue;
+      }
+
       const { data: prospect, error: insertError } = await supabase
         .from("prospects")
         .insert({
           businessName: audit.businessName,
           website: lead.website,
-          email: lead.email ?? null,
+          email: lead.email,
           phone: lead.phone ?? null,
-          emailGuessed: lead.emailGuessed ?? false,
+          emailGuessed: false,
           sector: audit.sector,
           country: lead.country,
           language: audit.language,
@@ -248,9 +264,6 @@ async function discoverAnalyzeAndSend(params: {
         .from("prospects")
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
-
-      // Ne pas envoyer si email deviné (info@domain) — audit confidentiel + taux de bounce élevé
-      if (!lead.email || lead.emailGuessed) continue;
 
       await sendProspectingEmail(transport, lead.email, emailSubject, email.html, email.textFallback);
       await supabase

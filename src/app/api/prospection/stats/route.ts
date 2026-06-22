@@ -89,6 +89,7 @@ export async function GET() {
     supabase.from("prospects")
       .select("id", { count: "exact", head: true })
       .eq("status", "analyzed")
+      .eq("emailGuessed", false)
       .not("email", "is", null)
       .not("emailBody", "is", null),
     supabase.from("prospects")
