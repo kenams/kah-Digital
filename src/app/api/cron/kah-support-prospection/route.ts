@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 const FROM = "KAH Digital <contact@kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
 const EMAILS_PER_RUN = 5;
-const APP_URL = "https://kah-support.ch";
+const APP_URL = "https://assistant-pme.vercel.app";
 
 function getSupabase() {
   return createClient(
