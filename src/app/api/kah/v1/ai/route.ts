@@ -7,10 +7,13 @@ export const maxDuration = 60
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-// In-memory rate limit: max 60 req/hour per API key
+// In-memory rate limit — best-effort per replica (serverless: pair with upstream WAF for hard enforcement)
 const rateMap = new Map<string, { count: number; resetAt: number }>()
 const RATE_LIMIT = 60
 const RATE_WINDOW = 60 * 60 * 1000
+const MAX_MESSAGES = 20
+const MAX_TOTAL_CHARS = 80_000
+const MAX_PER_MESSAGE = 8_000
 
 function checkRate(key: string): boolean {
   const now = Date.now()
@@ -33,20 +36,27 @@ export async function POST(req: Request) {
     system?: string
     model?: string
     max_tokens?: number
-    temperature?: number
   }
 
   if (!body.messages?.length)
     return NextResponse.json({ error: 'messages required' }, { status: 400 })
 
+  // Cap message count
+  if (body.messages.length > MAX_MESSAGES)
+    return NextResponse.json({ error: `Max ${MAX_MESSAGES} messages per request` }, { status: 400 })
+
+  const messages = body.messages.map(m => ({
+    role: m.role as 'user' | 'assistant',
+    content: String(m.content ?? '').slice(0, MAX_PER_MESSAGE).replace(/[\x00-\x08\x0b\x0e-\x1f]/g, ''),
+  }))
+
+  // Cap total prompt size
+  const totalChars = messages.reduce((s, m) => s + m.content.length, 0)
+  if (totalChars > MAX_TOTAL_CHARS)
+    return NextResponse.json({ error: 'Prompt too large' }, { status: 400 })
+
   const model = body.model ?? 'claude-sonnet-4-6'
   const maxTokens = Math.min(body.max_tokens ?? 1024, 4096)
-
-  // Sanitize: strip control chars from all messages
-  const messages = body.messages.map(m => ({
-    role: m.role,
-    content: String(m.content ?? '').slice(0, 8000).replace(/[\x00-\x08\x0b\x0e-\x1f]/g, ''),
-  }))
 
   const systemPrompt = body.system
     ? String(body.system).slice(0, 4000).replace(/[\x00-\x08\x0b\x0e-\x1f]/g, '')
