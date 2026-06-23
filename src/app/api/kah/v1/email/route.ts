@@ -7,7 +7,7 @@ const RESEND_API = 'https://api.resend.com/emails'
 
 // Pinned FROM addresses per project — callers cannot override to other domains
 const PROJECT_SENDERS: Record<string, string> = {
-  'w11-control-center': 'Support IT ADF <support@adf-group.com>',
+  'w11-control-center': 'KAH Digital <contact@kah-digital.ch>',
   'vellio-shop':        'Vellio <contact@kah-digital.ch>',
   'assistant-pme':      'Assistant PME <contact@kah-digital.ch>',
   'kotizy':             'Kotizy <contact@kah-digital.ch>',
