@@ -257,4 +257,188 @@ export const portfolioProjects: PortfolioProject[] = [
       gallery: ["/mockups/castly-screenshot.png"],
     },
   },
+  {
+    slug: "kotizy",
+    name: "Kotizy",
+    type: "Application / Tontines digitales",
+    tagline:
+      "La tontine de la diaspora — épargne collective en ligne, sécurisée et automatisée.",
+    shortDescription:
+      "PWA Next.js + application mobile Expo pour organiser des tontines entre proches. Cotisations automatiques, tirage au sort, historique complet et paiements Stripe.",
+    description:
+      "Kotizy réinvente la tontine, cette pratique d'épargne collective venue d'Afrique et des Caraïbes, pour la diaspora connectée. Plus de collecte d'argent en cash, plus de confiance aveugle : chaque cycle est automatisé, chaque paiement tracé, chaque tirage au sort auditable. Disponible en PWA sur navigateur et en application mobile via Expo.",
+    challenge:
+      "Digitaliser une pratique communautaire profondément humaine sans en trahir l'esprit — garder la confiance, supprimer les frictions et sécuriser les fonds sans barrière technologique.",
+    solution:
+      "Stack Next.js PWA + Expo React Native, Supabase pour la base de données temps réel, Stripe pour les paiements automatiques, système de tirage au sort vérifiable et notifications push multiplateforme.",
+    stack: ["Next.js", "Expo", "TypeScript", "Supabase", "Stripe", "PostgreSQL"],
+    result:
+      "Application live, 19 bugs corrigés en QA exhaustive, 56/56 tests passés. Prête pour onboarding des premiers cercles de tontine.",
+    timeline: "6 semaines",
+    deliverables: [
+      "PWA accessible sur tous les navigateurs",
+      "Application mobile Android & iOS (Expo)",
+      "Gestion des cycles, cotisations et tirages au sort",
+      "Paiements Stripe automatisés",
+      "Notifications push temps réel",
+    ],
+    metrics: [
+      { label: "Tests QA passés", value: "56/56" },
+      { label: "Plateformes", value: "Web + Android + iOS" },
+      { label: "Bugs corrigés", value: "19" },
+    ],
+    highlights: [
+      "Tirage au sort auditable et transparent",
+      "Cotisations automatiques via Stripe",
+      "PWA + mobile natif — zéro friction d'adoption",
+    ],
+    palette: {
+      primary: "#0f172a",
+      secondary: "#1e293b",
+      accent: "#f59e0b",
+    },
+    website: "https://kotizy.kah-digital.ch/",
+    mockups: {
+      primary: "/mockups/kotizy-screenshot.png",
+      gallery: ["/mockups/kotizy-screenshot.png"],
+    },
+  },
+  {
+    slug: "vellio",
+    name: "Vellio Shop",
+    type: "E-commerce / Maison & Design",
+    tagline:
+      "Une boutique en ligne haut de gamme pour une marque de sélection contemporaine.",
+    shortDescription:
+      "E-commerce Next.js avec Stripe live, 21 produits répartis en 8 catégories, prospection automatisée et design premium.",
+    description:
+      "Vellio est une maison de sélection contemporaine — décoration, mobilier et objets de style. La boutique a été construite pour offrir une expérience d'achat premium : navigation fluide, fiches produits soignées, paiement Stripe sécurisé et gestion des commandes intégrée. Le tout deployé sur Vercel avec des performances Lighthouse au top.",
+    challenge:
+      "Créer l'environnement digital d'une marque premium avec un budget maîtrisé — sans sacrifier le design, la performance ni la conversion.",
+    solution:
+      "Next.js App Router, Stripe Checkout en mode live, catalogue géré via fichiers statiques typés, emails transactionnels Resend, déploiement continu Vercel.",
+    stack: ["Next.js", "TypeScript", "Stripe", "Resend", "Vercel", "Tailwind CSS"],
+    result:
+      "Boutique live avec 21 produits, paiements Stripe en production, emails de confirmation automatiques et design premium prêt à convertir.",
+    timeline: "3 semaines",
+    deliverables: [
+      "Boutique e-commerce complète 21 produits / 8 catégories",
+      "Paiement Stripe live sécurisé",
+      "Emails de confirmation Resend",
+      "Design premium responsive",
+      "Déploiement Vercel continu",
+    ],
+    metrics: [
+      { label: "Produits", value: "21" },
+      { label: "Catégories", value: "8" },
+      { label: "Paiements", value: "Stripe Live" },
+    ],
+    highlights: [
+      "Design premium niveau agence — typographie, espacements, palette neutre",
+      "Stripe live — pas de mode test, ventes réelles dès le jour 1",
+      "Performance Vercel Edge — temps de chargement < 1s",
+    ],
+    palette: {
+      primary: "#111111",
+      secondary: "#1c1c1c",
+      accent: "#c9a96e",
+    },
+    website: "https://vellio.kah-digital.ch/",
+    mockups: {
+      primary: "/mockups/vellio-screenshot.png",
+      gallery: ["/mockups/vellio-screenshot.png"],
+    },
+  },
+  {
+    slug: "assistant-pme",
+    name: "Assistant PME IA",
+    type: "Application SaaS / Support IT & IA",
+    tagline:
+      "Un assistant IA spécialisé support informatique pour les PME — disponible 24h/24, sans technicien.",
+    shortDescription:
+      "Application SaaS live avec OpenAI, abonnement Stripe, base PostgreSQL et interface admin complète. Support IT automatisé pour les petites entreprises.",
+    description:
+      "L'Assistant PME IA est né d'un constat terrain : les PME n'ont pas les moyens d'un service IT dédié mais subissent autant de pannes et de questions techniques. Cette application propose un assistant conversationnel formé sur les problèmes IT les plus courants — réseau, imprimantes, accès, logiciels — accessible depuis n'importe quel appareil, à n'importe quelle heure.",
+    challenge:
+      "Rendre l'expertise IT accessible aux PME sans technicien à plein temps — fiable, abordable et suffisamment intelligent pour traiter 80% des demandes de niveau 1.",
+    solution:
+      "Next.js + PostgreSQL (Render), OpenAI GPT-4 via API, abonnements Stripe avec différents niveaux d'accès, panel admin pour gérer les entreprises clientes, emails Resend.",
+    stack: ["Next.js", "PostgreSQL", "OpenAI", "Stripe", "Render", "Resend"],
+    result:
+      "Application live en production sur Render, abonnements Stripe actifs, interface admin opérationnelle. Prêt pour acquisition clients PME.",
+    timeline: "4 semaines",
+    deliverables: [
+      "Assistant IA conversationnel spécialisé IT",
+      "Système d'abonnement Stripe multi-plans",
+      "Panel admin de gestion clients",
+      "Base de connaissances IT intégrée",
+      "Emails automatiques Resend",
+    ],
+    metrics: [
+      { label: "Modèle IA", value: "GPT-4" },
+      { label: "Disponibilité", value: "24h/24 7j/7" },
+      { label: "Paiements", value: "Stripe Live" },
+    ],
+    highlights: [
+      "Répond aux demandes IT niveau 1 sans intervention humaine",
+      "Stripe live — abonnements mensuels actifs",
+      "Déployé sur Render avec PostgreSQL en production",
+    ],
+    palette: {
+      primary: "#0a0a14",
+      secondary: "#13131f",
+      accent: "#6366f1",
+    },
+    website: "https://pme.kah-digital.ch/",
+    mockups: {
+      primary: "/mockups/assistant-pme-screenshot.png",
+      gallery: ["/mockups/assistant-pme-screenshot.png"],
+    },
+  },
+  {
+    slug: "w11-control-center",
+    name: "W11 Control Center",
+    type: "Application SaaS / Dashboard IT",
+    tagline:
+      "Un tableau de bord interne pour piloter la migration Windows 11 d'un parc informatique de 379 machines.",
+    shortDescription:
+      "Dashboard Next.js avec authentification par rôles, suivi de migration par site, import CSV, IA Groq intégrée et cron Vercel pour les snapshots automatiques.",
+    description:
+      "W11 Control Center est un outil de pilotage interne développé pour ADF Group afin de gérer la migration de leur parc informatique vers Windows 11. 379 machines, plusieurs sites géographiques, différents profils d'utilisateurs (admin, DSI, pilote, viewer) — tout est centralisé dans un seul dashboard sécurisé, avec un assistant IA pour répondre aux questions techniques en temps réel.",
+    challenge:
+      "Piloter une migration Windows 11 à grande échelle dans un groupe industriel multi-sites, avec des équipes IT dispersées et des données machines hétérogènes.",
+    solution:
+      "Next.js 16 App Router, Supabase avec Row Level Security, auth multi-rôles, import CSV batch, assistant IA Groq (Llama 3.3 70b gratuit), cron Vercel pour snapshots quotidiens, export XLSX.",
+    stack: ["Next.js 16", "Supabase", "TypeScript", "Groq AI", "Vercel", "Playwright"],
+    result:
+      "379 machines trackées, 30% déjà migrées. Dashboard live avec stats temps réel, import batch et IA contextuelle pour l'équipe IT.",
+    timeline: "2 semaines",
+    deliverables: [
+      "Dashboard de pilotage multi-sites",
+      "Auth multi-rôles (admin / DSI / pilote / viewer)",
+      "Import CSV batch de machines",
+      "Assistant IA contextuel (Groq Llama 3.3)",
+      "Cron snapshots + export XLSX",
+    ],
+    metrics: [
+      { label: "Machines trackées", value: "379" },
+      { label: "Taux migration", value: "30%" },
+      { label: "Rôles utilisateurs", value: "4" },
+    ],
+    highlights: [
+      "IA Groq Llama 3.3 70b — gratuite, rapide, contextuelle",
+      "RLS Supabase — chaque rôle voit uniquement ses données",
+      "Stats temps réel via fonction SQL optimisée (1 requête au lieu de 8)",
+    ],
+    palette: {
+      primary: "#0d1117",
+      secondary: "#161b22",
+      accent: "#3b82f6",
+    },
+    website: "https://w11.kah-digital.ch/",
+    mockups: {
+      primary: "/mockups/w11-screenshot.png",
+      gallery: ["/mockups/w11-screenshot.png"],
+    },
+  },
 ];
