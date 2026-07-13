@@ -12,7 +12,11 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 
-export const PROSPECTION_EMAILS_PER_RUN = 5;
+// Ramp progressif (2026-07-13) : 5 → 12 par run × 2 runs/j = 24/j.
+// Warmup domaine sûr (open rate ~52% = réputation saine), sous le plafond
+// Resend Free (100/j). Palier suivant vers plus de volume = domaine d'envoi
+// dédié + plan Resend Pro (voir mémoire projet). Réversible : remettre 5.
+export const PROSPECTION_EMAILS_PER_RUN = 12;
 
 const SCORE_THRESHOLD = 78; // Site trop bon = pas besoin de nous
 const SCORE_MIN = 20;       // Site mort = pas de budget
