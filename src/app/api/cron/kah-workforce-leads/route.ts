@@ -31,6 +31,21 @@ const TARGETS = [
   { q: "wedding planner independante site web contact", sector: "evenementiel", role: "Indépendant" },
   { q: "artiste peintre sculpteur portfolio site web contact", sector: "artiste", role: "Indépendant" },
   { q: "musicien producteur independant site web contact", sector: "musique", role: "Indépendant" },
+  // Micro-structures / TPE mono-gérant FR (1-3 personnes, une seule personne gère l'admin)
+  { q: "artisan menuisier electricien plombier solo site web contact", sector: "artisan", role: "Gérant" },
+  { q: "osteopathe cabinet individuel site web contact", sector: "sante", role: "Praticien" },
+  { q: "kinesitherapeute cabinet individuel site web contact", sector: "sante", role: "Praticien" },
+  { q: "boutique independante commerce local site web contact", sector: "commerce", role: "Gérant" },
+  { q: "agence immobiliere independante 1 personne site web contact", sector: "immobilier", role: "Gérant" },
+  { q: "traiteur cuisinier independant site web contact", sector: "restauration", role: "Gérant" },
+  { q: "esthéticienne institut beauté solo site web contact", sector: "esthetique", role: "Gérant" },
+  { q: "coiffeur independant salon solo site web contact", sector: "coiffure", role: "Gérant" },
+  { q: "fleuriste independant boutique site web contact", sector: "fleuriste", role: "Gérant" },
+  { q: "avocat independant cabinet individuel site web contact", sector: "avocat", role: "Gérant" },
+  // Micro-structures Suisse romande
+  { q: "artisan independant lausanne geneve site web contact", sector: "artisan", role: "Gérant" },
+  { q: "osteopathe cabinet individuel lausanne geneve site web contact", sector: "sante", role: "Praticien" },
+  { q: "boutique independante lausanne geneve site web contact", sector: "commerce", role: "Gérant" },
   // Suisse romande
   { q: "freelance graphiste independant lausanne geneve site web contact", sector: "graphiste", role: "Indépendant" },
   { q: "photographe independant lausanne geneve site web contact", sector: "photographe", role: "Indépendant" },
