@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { ProspectionDashboard } from "@/components/admin-prospection-dashboard";
 import { AdminKahSupportBoard } from "@/components/admin-kah-support-board";
+import { AdminKahWorkforceBoard } from "@/components/admin-kah-workforce-board";
 
-export function ProspectionTabs({ defaultTab }: { defaultTab: "web" | "kah-support" }) {
-  const [tab, setTab] = useState<"web" | "kah-support">(defaultTab);
+type Tab = "web" | "kah-support" | "kah-workforce";
+
+export function ProspectionTabs({ defaultTab }: { defaultTab: Tab }) {
+  const [tab, setTab] = useState<Tab>(defaultTab);
 
   return (
     <div>
@@ -32,10 +35,20 @@ export function ProspectionTabs({ defaultTab }: { defaultTab: "web" | "kah-suppo
           >
             🎯 KAH-Support GLPI
           </button>
+          <button
+            onClick={() => setTab("kah-workforce")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+              tab === "kah-workforce"
+                ? "border-violet-400 text-violet-300"
+                : "border-transparent text-white/45 hover:text-white/70"
+            }`}
+          >
+            🤖 KAH Workforce
+          </button>
         </div>
       </div>
 
-      {tab === "web" ? <ProspectionDashboard /> : <AdminKahSupportBoard />}
+      {tab === "web" ? <ProspectionDashboard /> : tab === "kah-support" ? <AdminKahSupportBoard /> : <AdminKahWorkforceBoard />}
     </div>
   );
 }

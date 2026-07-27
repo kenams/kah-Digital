@@ -16,7 +16,10 @@ export default async function ProspectionPage(props: {
   if (accessState) return accessState;
 
   const searchParams = (await props.searchParams) ?? {};
-  const tab = searchParams.tab === "kah-support" ? "kah-support" : "web";
+  const tab =
+    searchParams.tab === "kah-support" ? "kah-support" :
+    searchParams.tab === "kah-workforce" ? "kah-workforce" :
+    "web";
 
   return <ProspectionTabs defaultTab={tab} />;
 }

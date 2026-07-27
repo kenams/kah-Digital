@@ -10,6 +10,8 @@
     { "path": "/api/cron/kah-support-leads",       "schedule": "0 8 * * 1-5"  },
     { "path": "/api/cron/kah-support-prospection", "schedule": "0 13 * * 1-5" },
     { "path": "/api/cron/kah-support-followup",    "schedule": "0 11 * * 2,4" },
+    { "path": "/api/cron/kah-workforce-leads",       "schedule": "30 8 * * 1-5"  },
+    { "path": "/api/cron/kah-workforce-prospection", "schedule": "30 13 * * 1-5" },
     { "path": "/api/cron/keepalive",            "schedule": "0 6 * * *"       },
     { "path": "/api/cron/kotizy-prospection",   "schedule": "0 10 * * 1,3,5"  },
     { "path": "/api/cron/kotizy-sequence",         "schedule": "0 9 * * 1,3,5" },
