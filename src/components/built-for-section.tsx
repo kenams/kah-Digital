@@ -180,10 +180,10 @@ export function BuiltForSection() {
 
   const copy =
     locale === "en"
-      ? { eyebrow: "Built for modern businesses", title: "Whatever your industry,", title2: "we build systems that grow it.", sub: "From a local restaurant to a funded startup — the same premium approach, adapted to your reality." }
+      ? { eyebrow: "Built for one job at a time", title: "Whatever your industry,", title2: "we build the agent that runs it.", sub: "From a local restaurant to a funded startup — same rigor, a vertical agent adapted to your reality." }
       : locale === "de"
-      ? { eyebrow: "Für moderne Unternehmen", title: "Egal welche Branche,", title2: "wir bauen Systeme, die sie wachsen lassen.", sub: "Vom lokalen Restaurant bis zum finanzierten Startup — dieselbe Premium-Qualität, angepasst an Ihre Realität." }
-      : { eyebrow: "Conçu pour les entreprises modernes", title: "Quelle que soit votre industrie,", title2: "on construit des systèmes qui la font croître.", sub: "Du restaurant local à la startup financée — la même approche premium, adaptée à votre réalité." };
+      ? { eyebrow: "Gebaut für einen Job", title: "Egal welche Branche,", title2: "wir bauen den Agenten, der ihn führt.", sub: "Vom lokalen Restaurant bis zum finanzierten Startup — gleiche Sorgfalt, ein vertikaler Agent, angepasst an Ihre Realität." }
+      : { eyebrow: "Conçu pour un métier à la fois", title: "Quelle que soit votre industrie,", title2: "on construit l'agent qui la fait tourner.", sub: "Du restaurant local à la startup financée — même exigence, un agent vertical adapté à votre réalité." };
 
   return (
     <section className="bg-gray-950 py-28">

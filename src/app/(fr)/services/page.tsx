@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/services",
-  title: "Services digitaux",
+  title: "Services — Agents IA verticaux & digital",
   description:
-    "Landing pages, sites web professionnels, applications mobiles, SaaS et outils web métier — KAH Digital, studio digital. Devis gratuit sous 24h.",
+    "Agents IA verticaux sur mesure, landing pages, sites web professionnels, applications mobiles, SaaS et outils web métier — KAH Digital, studio digital. Devis gratuit sous 24h.",
 });
 
 export default function ServicesPage() {

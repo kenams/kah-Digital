@@ -2,6 +2,47 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsEn: PortfolioProject[] = [
   {
+    slug: "kah-workforce",
+    name: "KAH Workforce",
+    type: "Vertical AI agent / Chief-of-staff for independent artists",
+    tagline:
+      "KAH Digital's flagship product — an AI agent wired into an independent artist's business, end to end.",
+    shortDescription:
+      "Autonomous AI chief-of-staff for independent artists: contracts, tour dates, socials, royalties, and everyday decisions handled without manual work.",
+    description:
+      "KAH Workforce isn't a chatbot bolted onto a website — it's a vertical AI agent that knows the independent artist's job end to end. Contracts, tour dates, social media, royalties, follow-ups: the agent acts in the artist's place on everyday decisions, with persistent memory and integration into their real tools. This is the live proof of KAH Digital's positioning: vertical AI agents, not another website.",
+    challenge:
+      "Give an independent artist, without a management team, the equivalent of a chief-of-staff available 24/7 — able to track their real business, not just answer generic questions.",
+    solution:
+      "A vertical AI agent built on Claude, integrated with Supabase for memory and business data, Stripe for financial flows, and a Next.js interface designed for frictionless daily piloting.",
+    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    result:
+      "A vertical AI agent live in production, an autonomous chief-of-staff for independent artists — the product that embodies KAH Digital's positioning.",
+    timeline: "Ongoing development",
+    deliverables: [
+      "Vertical AI agent integrated with the artist's real tools",
+      "Contract, tour and royalty tracking",
+      "Everyday decisions delegated",
+      "Persistent memory and 24/7 piloting",
+    ],
+    metrics: [
+      { label: "Availability", value: "24/7" },
+      { label: "Job covered", value: "One, fully" },
+      { label: "Status", value: "Live" },
+    ],
+    highlights: [
+      "KAH Digital's flagship product — live proof of the vertical AI agent positioning",
+      "A vertical agent, not a generic chatbot",
+      "The model behind KAH Digital's custom vertical AI agents",
+    ],
+    palette: {
+      primary: "#0a0612",
+      secondary: "#1a0f2e",
+      accent: "#8b5cf6",
+    },
+    website: "https://kah-workforce.vercel.app",
+  },
+  {
     slug: "clutch",
     name: "CLUTCH",
     type: "App / financial challenges between friends",

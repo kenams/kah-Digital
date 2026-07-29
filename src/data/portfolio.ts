@@ -32,6 +32,47 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    slug: "kah-workforce",
+    name: "KAH Workforce",
+    type: "Agent IA vertical / Chef de cabinet pour artistes indépendants",
+    tagline:
+      "Le produit phare de KAH Digital — un agent IA branché sur le business d'un artiste indépendant, de bout en bout.",
+    shortDescription:
+      "Chef de cabinet IA autonome pour artistes indépendants : contrats, tournées, réseaux, royalties et décisions courantes gérés sans intervention manuelle.",
+    description:
+      "KAH Workforce n'est pas un chatbot posé sur un site — c'est un agent IA vertical qui connaît le métier d'artiste indépendant de bout en bout. Contrats, dates de tournée, réseaux sociaux, royalties, relances : l'agent agit à la place de l'artiste sur les décisions courantes, avec mémoire persistante et intégration à ses outils réels. C'est la preuve en production du positionnement KAH Digital : des agents IA verticaux, pas des sites de plus.",
+    challenge:
+      "Donner à un artiste indépendant, sans équipe de management, l'équivalent d'un chef de cabinet disponible 24h/24 — capable de suivre son business réel, pas juste de répondre à des questions génériques.",
+    solution:
+      "Agent IA vertical construit sur Claude, intégré à Supabase pour la mémoire et les données métier, Stripe pour les flux financiers, et une interface Next.js pensée pour un pilotage quotidien sans friction.",
+    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    result:
+      "Agent IA vertical en production, chef de cabinet autonome pour artistes indépendants — le produit qui illustre le positionnement KAH Digital.",
+    timeline: "En développement continu",
+    deliverables: [
+      "Agent IA vertical intégré aux outils réels de l'artiste",
+      "Suivi contrats, tournées et royalties",
+      "Décisions courantes déléguées",
+      "Mémoire persistante et pilotage 24h/24",
+    ],
+    metrics: [
+      { label: "Disponibilité", value: "24h/24" },
+      { label: "Métier couvert", value: "1 seul, à fond" },
+      { label: "Statut", value: "En prod" },
+    ],
+    highlights: [
+      "Produit phare de KAH Digital — preuve concrète du positionnement agents IA verticaux",
+      "Agent vertical, pas un chatbot générique",
+      "Modèle repris pour les agents IA verticaux sur mesure vendus par KAH Digital",
+    ],
+    palette: {
+      primary: "#0a0612",
+      secondary: "#1a0f2e",
+      accent: "#8b5cf6",
+    },
+    website: "https://kah-workforce.vercel.app",
+  },
+  {
     slug: "clutch",
     name: "CLUTCH",
     type: "Application / défis financiers entre amis",

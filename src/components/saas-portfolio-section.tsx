@@ -2,6 +2,22 @@ import Link from "next/link";
 
 const PRODUCTS = [
   {
+    emoji: "🎤",
+    name: "KAH Workforce",
+    tagline: "Chef de cabinet IA pour artistes indépendants",
+    desc: "Agent IA vertical branché sur le business d'un artiste, de bout en bout : contrats, tournées, réseaux, royalties, décisions courantes. Il agit, pas juste il répond.",
+    tags: ["Vertical AI Agent", "Next.js", "Claude", "Supabase", "Stripe"],
+    url: "https://kah-workforce.vercel.app",
+    metrics: [
+      { label: "Disponibilité", value: "24h/24" },
+      { label: "Métier", value: "1 seul, à fond" },
+      { label: "Statut", value: "En prod" },
+    ],
+    color: "from-fuchsia-500/10 to-fuchsia-900/20",
+    border: "border-fuchsia-500/20",
+    accent: "text-fuchsia-400",
+  },
+  {
     emoji: "🌍",
     name: "Kotizy",
     tagline: "La tontine digitale de la diaspora",
@@ -74,15 +90,15 @@ export function SaasPortfolioSection({ lang = "fr" }: { lang?: string }) {
     <section className="border-t border-white/6 py-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mb-3 text-center text-xs font-bold uppercase tracking-widest text-white/30">
-          {isEn ? "Our SaaS Products" : "Nos produits SaaS"}
+          {isEn ? "Our AI Agents & SaaS Products" : "Nos agents IA & produits SaaS"}
         </div>
         <h2 className="mb-4 text-center text-3xl font-black tracking-tight text-white md:text-4xl">
           {isEn ? "We build. We operate. We scale." : "On construit. On opère. On scale."}
         </h2>
         <p className="mb-12 mx-auto max-w-2xl text-center text-white/40">
           {isEn
-            ? "KAH Digital doesn't just build for clients — we operate our own SaaS products, e-commerce, and fintech platforms. This is the proof."
-            : "KAH Digital ne livre pas seulement pour ses clients — on opère nos propres SaaS, e-commerce et plateformes fintech. C'est notre preuve."}
+            ? "KAH Digital doesn't just build for clients — we operate our own vertical AI agent, SaaS products, e-commerce, and fintech platforms. This is the proof."
+            : "KAH Digital ne livre pas seulement pour ses clients — on opère notre propre agent IA vertical, nos SaaS, e-commerce et plateformes fintech. C'est notre preuve."}
         </p>
 
         <div className="grid gap-6 md:grid-cols-2">

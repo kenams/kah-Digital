@@ -2,6 +2,47 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsDe: PortfolioProject[] = [
   {
+    slug: "kah-workforce",
+    name: "KAH Workforce",
+    type: "Vertikaler KI-Agent / Kabinettschef für unabhängige Künstler",
+    tagline:
+      "Das Vorzeigeprodukt von KAH Digital — ein KI-Agent, der Ende-zu-Ende in das Geschäft eines unabhängigen Künstlers eingebettet ist.",
+    shortDescription:
+      "Autonomer KI-Kabinettschef für unabhängige Künstler: Verträge, Tourdaten, Social Media, Tantiemen und alltägliche Entscheidungen ohne manuellen Aufwand.",
+    description:
+      "KAH Workforce ist kein Chatbot auf einer Website — es ist ein vertikaler KI-Agent, der den Job eines unabhängigen Künstlers Ende-zu-Ende kennt. Verträge, Tourdaten, Social Media, Tantiemen, Follow-ups: Der Agent handelt anstelle des Künstlers bei alltäglichen Entscheidungen, mit persistentem Gedächtnis und Integration in seine echten Tools. Das ist der Live-Beweis für die Positionierung von KAH Digital: vertikale KI-Agenten, keine weitere Website.",
+    challenge:
+      "Einem unabhängigen Künstler ohne Management-Team das Äquivalent eines rund um die Uhr verfügbaren Kabinettschefs geben — fähig, sein echtes Geschäft zu verfolgen, nicht nur generische Fragen zu beantworten.",
+    solution:
+      "Ein vertikaler KI-Agent auf Basis von Claude, integriert mit Supabase für Gedächtnis und Geschäftsdaten, Stripe für Finanzflüsse und einer Next.js-Oberfläche für reibungsloses tägliches Steuern.",
+    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    result:
+      "Ein vertikaler KI-Agent live im Einsatz, ein autonomer Kabinettschef für unabhängige Künstler — das Produkt, das die Positionierung von KAH Digital verkörpert.",
+    timeline: "Laufende Entwicklung",
+    deliverables: [
+      "Vertikaler KI-Agent, integriert in die echten Tools des Künstlers",
+      "Verfolgung von Verträgen, Touren und Tantiemen",
+      "Alltägliche Entscheidungen delegiert",
+      "Persistentes Gedächtnis und 24/7-Steuerung",
+    ],
+    metrics: [
+      { label: "Verfügbarkeit", value: "24/7" },
+      { label: "Abgedeckter Job", value: "Einer, vollständig" },
+      { label: "Status", value: "Live" },
+    ],
+    highlights: [
+      "Vorzeigeprodukt von KAH Digital — Live-Beweis für die vertikale KI-Agenten-Positionierung",
+      "Ein vertikaler Agent, kein generischer Chatbot",
+      "Das Vorbild für die massgeschneiderten vertikalen KI-Agenten von KAH Digital",
+    ],
+    palette: {
+      primary: "#0a0612",
+      secondary: "#1a0f2e",
+      accent: "#8b5cf6",
+    },
+    website: "https://kah-workforce.vercel.app",
+  },
+  {
     slug: "clutch",
     name: "CLUTCH",
     type: "App / Finanzielle Challenges zwischen Freunden",

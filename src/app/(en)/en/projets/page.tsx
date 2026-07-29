@@ -4,12 +4,12 @@ import { portfolioProjectsEn } from "@/data/portfolio.en";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Websites, applications, and support solutions delivered by KAH Digital for French-speaking, English-speaking, and international companies.";
+  "Vertical AI agents, websites, applications, and support solutions delivered by KAH Digital — including KAH Workforce, an AI chief-of-staff for independent artists.";
 
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/projets",
-  title: "Projects",
+  title: "Projects — KAH Workforce & our work",
   description: projectsDescription,
 });
 

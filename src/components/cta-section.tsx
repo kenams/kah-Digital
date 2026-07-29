@@ -38,10 +38,10 @@ export function CTASection() {
   const copy =
     locale === "en"
       ? {
-          eyebrow: "Ready to grow?",
+          eyebrow: "Ready for your own agent?",
           title: "Your business deserves",
-          title2: "better than an average site.",
-          sub: "Book a free 15-minute call. No commitment, no sales pitch. Just a real conversation about your project.",
+          title2: "an agent, not another site.",
+          sub: "Book a free 15-minute call. No commitment, no sales pitch. Just a real conversation about the job you want to delegate.",
           cta1: "Get a free quote",
           cta2: "Chat on WhatsApp",
           waText: "Hi KAH Digital, I'd like to discuss my project.",
@@ -50,10 +50,10 @@ export function CTASection() {
         }
       : locale === "de"
       ? {
-          eyebrow: "Bereit zu wachsen?",
-          title: "Ihr Unternehmen verdient",
-          title2: "mehr als eine durchschnittliche Website.",
-          sub: "Buchen Sie ein kostenloses 15-Minuten-Gespräch. Keine Verpflichtung, kein Verkaufsgespräch.",
+          eyebrow: "Bereit für Ihren eigenen Agenten?",
+          title: "Ihr Business verdient",
+          title2: "einen Agenten, keine weitere Website.",
+          sub: "Buchen Sie ein kostenloses 15-Minuten-Gespräch. Keine Verpflichtung, kein Verkaufsgespräch — nur ein echtes Gespräch über den Job, den Sie delegieren wollen.",
           cta1: "Kostenlose Offerte",
           cta2: "WhatsApp schreiben",
           waText: "Hallo KAH Digital, ich möchte mein Projekt besprechen.",
@@ -61,10 +61,10 @@ export function CTASection() {
           available: "Jetzt verfügbar · Plätze werden knapp",
         }
       : {
-          eyebrow: "Prêt à passer à la vitesse supérieure ?",
+          eyebrow: "Prêt pour votre agent IA ?",
           title: "Votre business mérite",
-          title2: "mieux qu'un site banal.",
-          sub: "Réservez un call de 15 min. Sans engagement, sans pitch commercial. Juste une vraie conversation sur votre projet.",
+          title2: "un agent, pas un site de plus.",
+          sub: "Réservez un call de 15 min. Sans engagement, sans pitch commercial. Juste une vraie conversation sur le métier que vous voulez déléguer.",
           cta1: "Obtenir un devis gratuit",
           cta2: "Écrire sur WhatsApp",
           waText: "Bonjour KAH Digital, je voudrais discuter de mon projet.",

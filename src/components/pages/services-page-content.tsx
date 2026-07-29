@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FiArrowRight, FiGlobe, FiSmartphone, FiTool } from "react-icons/fi";
+import { FiArrowRight, FiCpu, FiGlobe, FiSmartphone, FiTool } from "react-icons/fi";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
 
@@ -10,17 +10,25 @@ type ServicesPageContentProps = {
 const copy = {
   fr: {
     eyebrow: "Francophone, anglophone, PME et structures en croissance",
-    title: "Des solutions digitales utiles pour les entreprises",
+    title: "Un agent IA vertical, et les fondations digitales qui vont avec",
     intro:
-      "KAH Digital conçoit des sites web, des applications et des parcours support plus lisibles pour entreprises qui veulent vendre mieux, s'organiser plus clairement ou fluidifier leur support.",
+      "KAH Digital conçoit des agents IA verticaux — branchés sur un seul métier, de bout en bout — ainsi que les sites web, applications et parcours support qui les accompagnent. Preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
     sectionTitle: "Un positionnement simple",
     sectionBody:
-      "Nous ne cherchons pas à tout promettre. Nous construisons des bases utiles, propres et crédibles pour aider une entreprise à mieux se présenter, mieux s'organiser ou mieux accompagner ses utilisateurs.",
+      "Nous ne cherchons pas à tout promettre. Nous construisons des agents et des bases utiles, propres et crédibles pour aider une entreprise à déléguer un métier, mieux se présenter ou mieux accompagner ses utilisateurs.",
     ctaTitle: "Besoin d'une solution sur mesure ?",
-    ctaBody: "Parlons du bon niveau de site, d'application ou de parcours support pour votre entreprise.",
+    ctaBody: "Parlons du bon niveau d'agent, de site ou d'application pour votre entreprise.",
     ctaLabel: "Demander un devis",
     learnMore: "En savoir plus",
     services: [
+      {
+        icon: FiCpu,
+        title: "Agent IA vertical",
+        description:
+          "Un agent branché sur votre métier de bout en bout, qui agit à votre place — pas un chatbot générique. Sur le modèle de KAH Workforce.",
+        href: "/agents-ia",
+        features: ["Intégré à vos outils réels", "Autonome, pas piloté au prompt", "Mémoire persistante", "Code source livré"],
+      },
       {
         icon: FiGlobe,
         title: "Sites web pour entreprises",
@@ -49,17 +57,25 @@ const copy = {
   },
   en: {
     eyebrow: "French-speaking, English-speaking, SMBs, and growing teams",
-    title: "Useful digital services for companies",
+    title: "A vertical AI agent, and the digital foundations to match",
     intro:
-      "KAH Digital designs websites, applications, and clearer support workflows for companies that need clearer positioning, smoother operations, or better support.",
+      "KAH Digital designs vertical AI agents — wired into one job, end to end — plus the websites, applications, and support workflows around them. Live proof: KAH Workforce, an AI chief-of-staff for independent artists.",
     sectionTitle: "A simple positioning",
     sectionBody:
-      "We do not try to promise everything. We build useful, clean, credible foundations to help a company present itself better, operate more smoothly, or support its users more clearly.",
+      "We do not try to promise everything. We build agents and useful, clean, credible foundations to help a company delegate a job, present itself better, or support its users more clearly.",
     ctaTitle: "Need a tailored solution?",
-    ctaBody: "Let's talk about the right level of website, application, or support workflow for your company.",
+    ctaBody: "Let's talk about the right level of agent, website, or application for your company.",
     ctaLabel: "Request a quote",
     learnMore: "Learn more",
     services: [
+      {
+        icon: FiCpu,
+        title: "Vertical AI agent",
+        description:
+          "An agent wired into your business end to end, acting in your place — not a generic chatbot. Built on the KAH Workforce model.",
+        href: "/agents-ia",
+        features: ["Integrated into your real tools", "Autonomous, not prompt-driven", "Persistent memory", "Source code delivered"],
+      },
       {
         icon: FiGlobe,
         title: "Business websites",
@@ -88,17 +104,25 @@ const copy = {
   },
   de: {
     eyebrow: "Frankophon, englischsprachig, KMU und wachsende Teams",
-    title: "Digitale Leistungen mit echtem Nutzen für Unternehmen",
+    title: "Ein vertikaler KI-Agent, und die passenden digitalen Grundlagen",
     intro:
-      "KAH Digital entwickelt Websites, Anwendungen und klarere Support-Abläufe für Unternehmen, die klarer verkaufen, besser organisieren oder Support sinnvoll strukturieren wollen.",
+      "KAH Digital entwickelt vertikale KI-Agenten — Ende-zu-Ende auf einen Job spezialisiert — sowie die Websites, Anwendungen und Support-Abläufe drumherum. Live-Beweis: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler.",
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
-      "Wir versprechen nicht alles. Wir bauen nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen sich besser präsentieren, besser organisieren oder Nutzer klarer begleiten können.",
+      "Wir versprechen nicht alles. Wir bauen Agenten und nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen einen Job delegieren, sich besser präsentieren oder Nutzer klarer begleiten können.",
     ctaTitle: "Braucht ihr eine passende Lösung?",
-    ctaBody: "Lass uns über das richtige Niveau für Website, Anwendung oder Support-Workflow sprechen.",
+    ctaBody: "Lass uns über das richtige Niveau für Agent, Website oder Anwendung sprechen.",
     ctaLabel: "Projekt anfragen",
     learnMore: "Mehr erfahren",
     services: [
+      {
+        icon: FiCpu,
+        title: "Vertikaler KI-Agent",
+        description:
+          "Ein Agent, der Ende-zu-Ende in Ihr Geschäft eingebettet ist und für Sie handelt — kein generischer Chatbot. Nach dem Vorbild von KAH Workforce.",
+        href: "/agents-ia",
+        features: ["In Ihre echten Tools integriert", "Autonom, nicht prompt-gesteuert", "Persistentes Gedächtnis", "Quellcode geliefert"],
+      },
       {
         icon: FiGlobe,
         title: "Unternehmenswebsites",

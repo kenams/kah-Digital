@@ -28,9 +28,9 @@ const REASONS = {
     {
       icon: FiCpu,
       accent: "#10b981",
-      tag: "IA intégrée",
-      title: "Intelligence artificielle",
-      desc: "Chatbot IA, automatisations, agents personnalisés. L'IA n'est pas un bonus — c'est notre stack de base.",
+      tag: "Agent vertical",
+      title: "Un agent, pas un chatbot",
+      desc: "Branché sur votre métier de bout en bout, pas un chatbot générique posé sur un site. C'est notre stack de base, pas une option.",
       featured: false,
     },
     {
@@ -94,9 +94,9 @@ const REASONS = {
     {
       icon: FiCpu,
       accent: "#10b981",
-      tag: "Built-in AI",
-      title: "Artificial intelligence",
-      desc: "AI chatbot, automations, custom agents. AI isn't a bonus — it's our default stack.",
+      tag: "Vertical agent",
+      title: "An agent, not a chatbot",
+      desc: "Wired into your business end to end, not a generic chatbot bolted onto a website. It's our default stack, not an add-on.",
       featured: false,
     },
     {
@@ -160,9 +160,9 @@ const REASONS = {
     {
       icon: FiCpu,
       accent: "#10b981",
-      tag: "KI integriert",
-      title: "Künstliche Intelligenz",
-      desc: "KI-Chatbot, Automatisierungen, individuelle Agenten. KI ist kein Bonus — es ist unser Standard-Stack.",
+      tag: "Vertikaler Agent",
+      title: "Ein Agent, kein Chatbot",
+      desc: "Ende-zu-Ende in Ihr Geschäft eingebettet, kein generischer Chatbot auf einer Website. Das ist unser Standard-Stack, keine Option.",
       featured: false,
     },
     {
@@ -211,21 +211,21 @@ const REASONS = {
 const COPY = {
   fr: {
     eyebrow: "Pourquoi KAH Digital",
-    title: "Un niveau de qualité",
+    title: "Un niveau d'exigence",
     title2: "qui change tout.",
-    sub: "On ne livre pas des sites. On livre des systèmes qui fonctionnent — rapides, beaux, mesurables.",
+    sub: "On ne livre pas un site de plus. On livre des agents IA verticaux qui tournent vraiment — rapides, fiables, mesurables.",
   },
   en: {
     eyebrow: "Why KAH Digital",
     title: "A quality standard",
     title2: "that changes everything.",
-    sub: "We don't deliver websites. We deliver systems that work — fast, beautiful, measurable.",
+    sub: "We don't deliver another website. We deliver vertical AI agents that actually run — fast, reliable, measurable.",
   },
   de: {
     eyebrow: "Warum KAH Digital",
     title: "Ein Qualitätsniveau,",
     title2: "das alles verändert.",
-    sub: "Wir liefern keine Websites. Wir liefern Systeme, die funktionieren — schnell, schön, messbar.",
+    sub: "Wir liefern keine weitere Website. Wir liefern vertikale KI-Agenten, die wirklich laufen — schnell, zuverlässig, messbar.",
   },
 };
 

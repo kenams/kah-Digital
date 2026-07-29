@@ -5,9 +5,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/services",
-  title: "Digital services",
+  title: "Services — Vertical AI Agents & digital",
   description:
-    "Websites, custom applications, and GLPI-connected support workflows for French-speaking, English-speaking, and international companies.",
+    "Custom vertical AI agents, websites, custom applications, and GLPI-connected support workflows for French-speaking, English-speaking, and international companies.",
 });
 
 export default function ServicesPageEn() {

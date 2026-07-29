@@ -9,11 +9,11 @@ const FAQS = {
   fr: [
     {
       q: "Combien de temps faut-il pour livrer mon site ?",
-      a: "Starter (1 page) : 5 jours ouvrés. Business (5 pages) : 14 jours. Premium AI (système complet) : 28 jours. Une fois le devis validé et vos assets envoyés (photos, couleurs, police), on démarre immédiatement.",
+      a: "Starter (1 page) : 5 jours ouvrés. Business (5 pages) : 14 jours. Agent IA vertical (système complet) : 28 jours. Une fois le devis validé et vos assets envoyés (photos, couleurs, police), on démarre immédiatement.",
     },
     {
       q: "Puis-je upgrader vers un plan supérieur après la livraison ?",
-      a: "Oui, à tout moment. Vous démarrez avec le Starter pour tester, et on peut faire évoluer vers Business ou Premium AI quand vous êtes prêt. Chaque étape s'appuie sur la précédente — rien n'est à refaire.",
+      a: "Oui, à tout moment. Vous démarrez avec le Starter pour tester, et on peut faire évoluer vers Business ou Agent IA vertical quand vous êtes prêt. Chaque étape s'appuie sur la précédente — rien n'est à refaire.",
     },
     {
       q: "Le site m'appartient-il intégralement ?",
@@ -29,25 +29,25 @@ const FAQS = {
     },
     {
       q: "Puis-je payer en plusieurs fois ?",
-      a: "Oui. Le paiement standard est 50 % au démarrage, 50 % à la livraison. Pour les projets Business et Premium AI, un échelonnement en 3 fois est possible. On en discute avant tout engagement.",
+      a: "Oui. Le paiement standard est 50 % au démarrage, 50 % à la livraison. Pour les projets Business et Agent IA vertical, un échelonnement en 3 fois est possible. On en discute avant tout engagement.",
     },
     {
       q: "Y a-t-il un support après la livraison ?",
-      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Premium AI : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 89 €/mois pour la suite.",
+      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Agent IA vertical : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 89 €/mois pour la suite.",
     },
     {
-      q: "L'IA est-elle disponible dans tous les plans ?",
-      a: "Le chatbot IA et les automatisations sont inclus dans le plan Premium AI. Pour les autres plans, le chatbot IA est disponible en option à 349 € et l'automatisation à partir de 490 €. On peut ajouter l'IA à n'importe quel plan existant.",
+      q: "Quelle est la différence entre un agent IA vertical et ChatGPT ?",
+      a: "ChatGPT ou Claude sont génériques : ils ne connaissent ni vos outils, ni votre historique, ni votre vocabulaire métier. Un agent KAH Digital est branché sur votre business — il agit, se souvient et prend des décisions courantes à votre place, sans que vous ayez à le piloter au prompt. Exemple en production : KAH Workforce.",
     },
   ],
   en: [
     {
       q: "How long does it take to deliver my site?",
-      a: "Starter (1 page): 5 business days. Business (5 pages): 14 days. Premium AI (full system): 28 days. Once your quote is approved and assets sent (photos, colours, font), we start immediately.",
+      a: "Starter (1 page): 5 business days. Business (5 pages): 14 days. Vertical AI Agent (full system): 28 days. Once your quote is approved and assets sent (photos, colours, font), we start immediately.",
     },
     {
       q: "Can I upgrade to a higher plan after delivery?",
-      a: "Yes, at any time. Start with Starter to test the waters, then move to Business or Premium AI when you're ready. Each step builds on the previous — nothing needs to be redone.",
+      a: "Yes, at any time. Start with Starter to test the waters, then move to Business or Vertical AI Agent when you're ready. Each step builds on the previous — nothing needs to be redone.",
     },
     {
       q: "Do I fully own my website?",
@@ -63,25 +63,25 @@ const FAQS = {
     },
     {
       q: "Can I pay in instalments?",
-      a: "Yes. Standard payment is 50% upfront, 50% on delivery. For Business and Premium AI projects, a 3-instalment split is possible. We discuss this before any commitment.",
+      a: "Yes. Standard payment is 50% upfront, 50% on delivery. For Business and Vertical AI Agent projects, a 3-instalment split is possible. We discuss this before any commitment.",
     },
     {
       q: "Is there support after delivery?",
-      a: "Business: 1 month support included (fixes, minor adjustments). Premium AI: 3 months priority support. Monthly maintenance plans are available from $89/month for ongoing care.",
+      a: "Business: 1 month support included (fixes, minor adjustments). Vertical AI Agent: 3 months priority support. Monthly maintenance plans are available from $89/month for ongoing care.",
     },
     {
-      q: "Is AI available in all plans?",
-      a: "AI chatbot and automations are included in Premium AI. For other plans, the AI chatbot is available as an add-on at $349, and automation from $490. AI can be added to any existing plan.",
+      q: "What's the difference between a vertical AI agent and ChatGPT?",
+      a: "ChatGPT or Claude are generic: they don't know your tools, your history, or your business vocabulary. A KAH Digital agent is wired into your business — it acts, remembers, and makes everyday decisions in your place, with no need to prompt it. Live proof: KAH Workforce.",
     },
   ],
   de: [
     {
       q: "Wie lange dauert die Lieferung meiner Website?",
-      a: "Starter (1 Seite): 5 Werktage. Business (5 Seiten): 14 Tage. Premium AI (vollständiges System): 28 Tage. Sobald Ihr Angebot bestätigt und Assets gesendet sind (Fotos, Farben, Schrift), starten wir sofort.",
+      a: "Starter (1 Seite): 5 Werktage. Business (5 Seiten): 14 Tage. Vertikaler KI-Agent (vollständiges System): 28 Tage. Sobald Ihr Angebot bestätigt und Assets gesendet sind (Fotos, Farben, Schrift), starten wir sofort.",
     },
     {
       q: "Kann ich nach der Lieferung auf einen höheren Plan upgraden?",
-      a: "Ja, jederzeit. Starten Sie mit dem Starter zum Testen und wechseln Sie zu Business oder Premium AI, wenn Sie bereit sind. Jeder Schritt baut auf dem vorherigen auf — nichts muss neu gemacht werden.",
+      a: "Ja, jederzeit. Starten Sie mit dem Starter zum Testen und wechseln Sie zu Business oder Vertikaler KI-Agent, wenn Sie bereit sind. Jeder Schritt baut auf dem vorherigen auf — nichts muss neu gemacht werden.",
     },
     {
       q: "Gehört mir die Website vollständig?",
@@ -97,15 +97,15 @@ const FAQS = {
     },
     {
       q: "Kann ich in Raten zahlen?",
-      a: "Ja. Die Standardzahlung ist 50 % bei Start, 50 % bei Lieferung. Für Business- und Premium AI-Projekte ist eine 3-Raten-Zahlung möglich. Das besprechen wir vor jeder Verpflichtung.",
+      a: "Ja. Die Standardzahlung ist 50 % bei Start, 50 % bei Lieferung. Für Business- und Vertikaler KI-Agent-Projekte ist eine 3-Raten-Zahlung möglich. Das besprechen wir vor jeder Verpflichtung.",
     },
     {
       q: "Gibt es Support nach der Lieferung?",
-      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Premium AI: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 89/Monat verfügbar.",
+      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Vertikaler KI-Agent: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 89/Monat verfügbar.",
     },
     {
-      q: "Ist KI in allen Plänen verfügbar?",
-      a: "KI-Chatbot und Automatisierungen sind im Premium AI-Plan enthalten. Für andere Pläne ist der KI-Chatbot als Option für CHF 349 verfügbar, Automatisierung ab CHF 490. KI kann jedem bestehenden Plan hinzugefügt werden.",
+      q: "Was unterscheidet einen vertikalen KI-Agenten von ChatGPT?",
+      a: "ChatGPT oder Claude sind generisch: Sie kennen weder Ihre Tools noch Ihre Historie noch Ihr Fachvokabular. Ein KAH Digital Agent ist in Ihr Geschäft eingebettet — er handelt, erinnert sich und trifft alltägliche Entscheidungen für Sie, ohne dass Sie ihn per Prompt steuern müssen. Live-Beispiel: KAH Workforce.",
     },
   ],
 };

@@ -3,12 +3,12 @@ import { portfolioProjects } from "@/data/portfolio";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Sites web, applications et solutions support livres par KAH Digital pour entreprises francophones, anglophones et internationales.";
+  "Agents IA verticaux, sites web, applications et solutions support livrés par KAH Digital — dont KAH Workforce, chef de cabinet IA pour artistes indépendants.";
 
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/projets",
-  title: "Projets",
+  title: "Projets — KAH Workforce & réalisations",
   description: projectsDescription,
 });
 

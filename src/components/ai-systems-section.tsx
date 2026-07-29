@@ -6,6 +6,14 @@ import { FiCpu, FiTrendingUp, FiZap, FiGlobe, FiLayers, FiBarChart2 } from "reac
 
 const SYSTEMS = [
   {
+    icon: FiCpu,
+    color: "text-emerald-400",
+    bg: "bg-emerald-500/10 border-emerald-500/20",
+    fr: { title: "Agent IA vertical sur mesure", desc: "Branché sur un seul métier, de bout en bout — comme KAH Workforce pour les artistes. Il agit pour vous, 24h/24." },
+    en: { title: "Custom Vertical AI Agent", desc: "Wired into one job, end to end — like KAH Workforce for artists. It acts for you, 24/7." },
+    de: { title: "Individueller vertikaler KI-Agent", desc: "Ende-zu-Ende auf einen Job spezialisiert — wie KAH Workforce für Künstler. Er handelt für Sie, 24/7." },
+  },
+  {
     icon: FiZap,
     color: "text-blue-400",
     bg: "bg-blue-500/10 border-blue-500/20",
@@ -28,14 +36,6 @@ const SYSTEMS = [
     fr: { title: "Plateformes premium", desc: "Sites web, apps SaaS, e-commerce. Architectures scalables, design haut de gamme, performances Lighthouse 95+." },
     en: { title: "Premium Platforms", desc: "Websites, SaaS apps, e-commerce. Scalable architectures, high-end design, 95+ Lighthouse performance." },
     de: { title: "Premium-Plattformen", desc: "Websites, SaaS-Apps, E-Commerce. Skalierbare Architekturen, hochwertiges Design, 95+ Lighthouse-Performance." },
-  },
-  {
-    icon: FiCpu,
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/20",
-    fr: { title: "Agents IA sur mesure", desc: "Chatbots, assistants internes, agents de prospection. L'IA travaille pour vous 24h/24." },
-    en: { title: "Custom AI Agents", desc: "Chatbots, internal assistants, prospecting agents. AI works for you 24/7." },
-    de: { title: "Individuelle KI-Agenten", desc: "Chatbots, interne Assistenten, Prospecting-Agenten. KI arbeitet 24/7 für Sie." },
   },
   {
     icon: FiLayers,
@@ -63,21 +63,21 @@ export function AiSystemsSection() {
       ? {
           eyebrow: "What we build",
           title: "Not just a website.",
-          title2: "A growth system.",
-          sub: "We design and deliver end-to-end digital systems — from the first pixel to the last automation — so your business runs smarter.",
+          title2: "A vertical AI agent.",
+          sub: "We design and ship agents wired into one job end to end — from the first pixel to the last automation — so your business runs itself.",
         }
       : locale === "de"
       ? {
           eyebrow: "Was wir bauen",
           title: "Nicht nur eine Website.",
-          title2: "Ein Wachstumssystem.",
-          sub: "Wir konzipieren und liefern vollständige digitale Systeme — vom ersten Pixel bis zur letzten Automatisierung — damit Ihr Unternehmen intelligenter läuft.",
+          title2: "Ein vertikaler KI-Agent.",
+          sub: "Wir konzipieren und liefern Agenten, die Ende-zu-Ende auf einen Job spezialisiert sind — vom ersten Pixel bis zur letzten Automatisierung — damit Ihr Business sich selbst führt.",
         }
       : {
           eyebrow: "Ce qu'on construit",
           title: "Pas juste un site web.",
-          title2: "Un système de croissance.",
-          sub: "On conçoit et livre des systèmes digitaux complets — du premier pixel à la dernière automatisation — pour que votre business tourne plus intelligemment.",
+          title2: "Un agent IA vertical.",
+          sub: "On conçoit et livre des agents branchés sur un seul métier, de bout en bout — du premier pixel à la dernière automatisation — pour que votre business tourne tout seul.",
         };
 
   return (

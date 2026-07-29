@@ -11,19 +11,19 @@ export function ProblemSection() {
   const copy = {
     fr: {
       eyebrow: "Le problème",
-      title: "Votre business ne manque pas d'ambition. Il manque de système.",
-      body: "La plupart des entreprises ont un site vitrine, pas un moteur de croissance. Résultat : des prospects perdus, des processus manuels, et une visibilité qui stagne.",
+      title: "Votre métier ne manque pas d'ambition. Il manque d'un agent.",
+      body: "La plupart des entreprises jonglent avec des outils génériques (ChatGPT, tableurs, apps) qui ne connaissent rien de leur métier. Résultat : tout se reformule à chaque fois, rien n'est autonome, et le temps part en admin.",
       problems: [
         {
           icon: FiTrendingDown,
-          title: "Zéro automatisation",
-          desc: "Vos équipes passent des heures sur des tâches répétitives. Qualification de leads, relances, reporting — tout à la main.",
+          title: "Zéro autonomie",
+          desc: "Vos équipes repassent derrière chaque outil. Qualification, relances, reporting — rien n'agit vraiment à votre place.",
           color: "#ef4444",
         },
         {
           icon: FiEyeOff,
-          title: "Conversion insuffisante",
-          desc: "Votre site existe mais ne convertit pas. Pas de funnel clair, pas de CTA performant, pas de suivi post-visite.",
+          title: "Un chatbot générique",
+          desc: "ChatGPT ou Claude ne connaissent ni vos process, ni vos outils, ni votre vocabulaire métier. Vous recommencez à zéro à chaque conversation.",
           color: "#f59e0b",
         },
         {
@@ -34,29 +34,29 @@ export function ProblemSection() {
         },
         {
           icon: FiAlertTriangle,
-          title: "Pas d'infrastructure IA",
-          desc: "Vos concurrents déploient des agents IA et des automatisations. Vous regardez passer le train.",
+          title: "Pas d'agent vertical",
+          desc: "Vos concurrents déploient déjà des agents IA branchés sur un seul métier, de bout en bout. Vous regardez passer le train.",
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital ne livre pas un site. On livre un système complet : acquisition, conversion, automatisation et infrastructure — conçu pour faire croître votre business.",
+      solution: "KAH Digital ne livre pas un site de plus. On livre un agent IA vertical, branché sur votre métier — preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
       cta: "Voir comment ça se passe",
     },
     en: {
       eyebrow: "The problem",
-      title: "Your business doesn't lack ambition. It lacks a system.",
-      body: "Most businesses have a brochure website, not a growth engine. Result: lost prospects, manual processes, and stagnating visibility.",
+      title: "Your business doesn't lack ambition. It lacks an agent.",
+      body: "Most businesses juggle generic tools (ChatGPT, spreadsheets, apps) that know nothing about their trade. Result: everything gets re-explained every time, nothing runs on its own, and time bleeds into admin.",
       problems: [
         {
           icon: FiTrendingDown,
-          title: "Zero automation",
-          desc: "Your teams spend hours on repetitive tasks. Lead qualification, follow-ups, reporting — all done manually.",
+          title: "Zero autonomy",
+          desc: "Your teams still babysit every tool. Qualification, follow-ups, reporting — nothing truly acts in your place.",
           color: "#ef4444",
         },
         {
           icon: FiEyeOff,
-          title: "Poor conversion",
-          desc: "Your site exists but doesn't convert. No clear funnel, no high-performing CTA, no post-visit tracking.",
+          title: "A generic chatbot",
+          desc: "ChatGPT or Claude don't know your process, your tools, or your vocabulary. You start from zero in every conversation.",
           color: "#f59e0b",
         },
         {
@@ -67,29 +67,29 @@ export function ProblemSection() {
         },
         {
           icon: FiAlertTriangle,
-          title: "No AI infrastructure",
-          desc: "Your competitors are deploying AI agents and automations. You're watching from the sidelines.",
+          title: "No vertical agent",
+          desc: "Your competitors are already running AI agents wired into one job, end to end. You're watching from the sidelines.",
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital doesn't deliver a website. We deliver a complete system: acquisition, conversion, automation and infrastructure — built to grow your business.",
+      solution: "KAH Digital doesn't deliver another website. We deliver a vertical AI agent, wired into your business — flagship proof: KAH Workforce, a live AI chief-of-staff for independent artists.",
       cta: "See how it works",
     },
     de: {
       eyebrow: "Das Problem",
-      title: "Ihrem Unternehmen fehlt kein Ehrgeiz. Es fehlt ein System.",
-      body: "Die meisten Unternehmen haben eine Broschüren-Website, keinen Wachstumsmotor. Das Ergebnis: verlorene Interessenten, manuelle Prozesse, stagnierende Sichtbarkeit.",
+      title: "Ihrem Business fehlt kein Ehrgeiz. Es fehlt ein Agent.",
+      body: "Die meisten Unternehmen jonglieren mit generischen Tools (ChatGPT, Excel, Apps), die ihr Geschäft nicht kennen. Das Ergebnis: alles wird jedes Mal neu erklärt, nichts läuft autonom, und die Zeit versickert in der Verwaltung.",
       problems: [
         {
           icon: FiTrendingDown,
-          title: "Keine Automatisierung",
-          desc: "Ihre Teams verbringen Stunden mit repetitiven Aufgaben. Lead-Qualifizierung, Follow-ups, Reporting — alles manuell.",
+          title: "Keine Autonomie",
+          desc: "Ihre Teams müssen jedes Tool selbst bedienen. Qualifizierung, Follow-ups, Reporting — nichts handelt wirklich für Sie.",
           color: "#ef4444",
         },
         {
           icon: FiEyeOff,
-          title: "Schwache Conversion",
-          desc: "Ihre Website existiert, konvertiert aber nicht. Kein klarer Funnel, kein starker CTA, kein Post-Visit-Tracking.",
+          title: "Ein generischer Chatbot",
+          desc: "ChatGPT oder Claude kennen weder Ihre Prozesse noch Ihre Tools noch Ihr Fachvokabular. Sie beginnen bei jedem Gespräch bei null.",
           color: "#f59e0b",
         },
         {
@@ -100,12 +100,12 @@ export function ProblemSection() {
         },
         {
           icon: FiAlertTriangle,
-          title: "Keine KI-Infrastruktur",
-          desc: "Ihre Mitbewerber setzen KI-Agenten und Automatisierungen ein. Sie schauen zu.",
+          title: "Kein vertikaler Agent",
+          desc: "Ihre Mitbewerber setzen bereits KI-Agenten ein, die auf einen Job spezialisiert sind — von A bis Z. Sie schauen zu.",
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital liefert keine Website. Wir liefern ein komplettes System: Akquise, Conversion, Automatisierung und Infrastruktur — designed für Ihr Wachstum.",
+      solution: "KAH Digital liefert keine weitere Website. Wir liefern einen vertikalen KI-Agenten, der in Ihr Geschäft eingebettet ist — Aushängeschild: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler, live im Einsatz.",
       cta: "So funktioniert es",
     },
   }[locale];

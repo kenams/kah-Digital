@@ -11,12 +11,24 @@ export function ServicesGrid() {
     fr: {
       badge: "Prestations ajustables",
       title: "Ce que je crée pour vous",
-      body: "Des solutions digitales claires et accessibles, du site vitrine à l'application mobile, en passant par le SaaS et les outils métier.",
+      body: "Des agents IA verticaux branchés sur un seul métier, et les fondations digitales qui vont avec — du site vitrine au SaaS sur mesure.",
       cta: "Demander un devis personnalisé",
       forLabel: "Pour qui",
       fromLabel: "Approche",
       delayLabel: "Délai estimé",
       items: [
+        {
+          icon: FiBox,
+          accent: "#8b5cf6",
+          title: "Agent IA vertical",
+          eyebrow: "Solution phare",
+          forWho: "Artistes indépendants, PME, indépendants qui veulent déléguer un métier entier",
+          description: "Un agent branché sur votre métier de bout en bout — pas un chatbot générique. Preuve en production : KAH Workforce, chef de cabinet IA pour artistes.",
+          includes: ["Intégré à vos outils réels", "Autonome, pas piloté au prompt", "Mémoire persistante", "Décisions courantes déléguées"],
+          price: "Périmètre défini après échange",
+          delay: "Selon périmètre",
+          href: "/devis",
+        },
         {
           icon: FiLayout,
           accent: "#10b981",
@@ -82,12 +94,24 @@ export function ServicesGrid() {
     en: {
       badge: "Adjustable services",
       title: "What I build for you",
-      body: "Clear, affordable digital solutions: landing pages, mobile apps, SaaS and business tools.",
+      body: "Vertical AI agents wired into one job, plus the digital foundations that come with them — from landing pages to custom SaaS.",
       cta: "Request a custom quote",
       forLabel: "For whom",
       fromLabel: "Approach",
       delayLabel: "Estimated timeline",
       items: [
+        {
+          icon: FiBox,
+          accent: "#8b5cf6",
+          title: "Vertical AI agent",
+          eyebrow: "Flagship solution",
+          forWho: "Independent artists, SMEs, freelancers who want to delegate an entire job",
+          description: "An agent wired into your business end to end — not a generic chatbot. Flagship proof: KAH Workforce, a live AI chief-of-staff for artists.",
+          includes: ["Integrated into your real tools", "Autonomous, not prompt-driven", "Persistent memory", "Everyday decisions delegated"],
+          price: "Scope defined after discussion",
+          delay: "Based on scope",
+          href: "/devis",
+        },
         {
           icon: FiLayout,
           accent: "#10b981",
@@ -153,12 +177,24 @@ export function ServicesGrid() {
     de: {
       badge: "Anpassbare Leistungen",
       title: "Was ich für Sie erstelle",
-      body: "Klare, erschwingliche digitale Lösungen: Landing Pages, mobile Apps, SaaS und Business-Tools.",
+      body: "Vertikale KI-Agenten, die auf einen Job spezialisiert sind, plus die digitalen Grundlagen dazu — von der Landing Page bis zum massgeschneiderten SaaS.",
       cta: "Individuelle Offerte anfragen",
       forLabel: "Für wen",
       fromLabel: "Ansatz",
       delayLabel: "Geschätzte Dauer",
       items: [
+        {
+          icon: FiBox,
+          accent: "#8b5cf6",
+          title: "Vertikaler KI-Agent",
+          eyebrow: "Vorzeigelösung",
+          forWho: "Unabhängige Künstler, KMU, Selbstständige, die einen ganzen Job delegieren wollen",
+          description: "Ein Agent, der Ende-zu-Ende in Ihr Geschäft eingebettet ist — kein generischer Chatbot. Aushängeschild: KAH Workforce, ein live KI-Kabinettschef für Künstler.",
+          includes: ["In Ihre echten Tools integriert", "Autonom, nicht prompt-gesteuert", "Persistentes Gedächtnis", "Alltägliche Entscheidungen delegiert"],
+          price: "Umfang nach Gespräch definiert",
+          delay: "Je nach Umfang",
+          href: "/devis",
+        },
         {
           icon: FiLayout,
           accent: "#10b981",

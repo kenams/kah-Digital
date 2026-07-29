@@ -4,12 +4,12 @@ import { portfolioProjectsDe } from "@/data/portfolio.de";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Websites, Anwendungen und Support-Lösungen von KAH Digital für deutsch- und französischsprachige sowie internationale Unternehmen.";
+  "Vertikale KI-Agenten, Websites, Anwendungen und Support-Lösungen von KAH Digital — darunter KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler.";
 
 export const metadata: Metadata = buildPageMetadata({
   locale: "de",
   path: "/projets",
-  title: "Referenzen",
+  title: "Referenzen — KAH Workforce & unsere Arbeit",
   description: projectsDescription,
 });
 
