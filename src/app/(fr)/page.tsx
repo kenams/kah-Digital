@@ -24,17 +24,17 @@ import { SaasPortfolioSection } from "@/components/saas-portfolio-section";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/",
-  title: "KAH Digital — AI-Powered Growth Systems · Lausanne · International",
+  title: "KAH Digital — Agents IA verticaux pour indépendants · Lausanne · International",
   description:
-    "KAH Digital conçoit des systèmes de croissance digitale : automatisation IA, plateformes premium, infrastructure scalable. Studio basé à Lausanne, opérant à l'international. Audit gratuit sous 24h.",
+    "KAH Digital conçoit des agents IA verticaux — pas des sites de plus. Chef de cabinet IA pour artistes indépendants (KAH Workforce), automatisations métier sur-mesure. Studio basé à Lausanne, opérant à l'international.",
   keywords: [
-    "AI automation agency",
-    "agence automatisation IA Lausanne",
-    "système digital croissance",
-    "création site web premium Suisse",
-    "agence IA Suisse",
-    "automatisation business",
-    "digital growth systems",
+    "agent IA vertical",
+    "agence IA Lausanne",
+    "chef de cabinet IA artiste",
+    "automatisation métier IA",
+    "AI agent for musicians",
+    "KAH Workforce",
+    "agence automatisation IA Suisse",
   ],
 });
 
@@ -44,18 +44,18 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Qu'est-ce qu'un AI-Powered Growth System ?",
+      name: "Qu'est-ce qu'un agent IA vertical ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Un système de croissance digitale combine site web premium, automatisation IA, agents intelligents et infrastructure scalable. L'objectif : faire croître votre business de façon autonome, sans recruter ni complexifier vos opérations.",
+        text: "Un agent IA vertical est branché sur un seul métier, du début à la fin — contrairement à ChatGPT ou Claude génériques. Il connaît vos process, vos outils, votre vocabulaire, et agit à votre place (admin, suivi, relances, décisions courantes). Exemple en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
       },
     },
     {
       "@type": "Question",
-      name: "Quelle est la différence avec une agence web classique ?",
+      name: "Pourquoi pas juste utiliser ChatGPT ou Claude directement ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Une agence web livre un site. KAH Digital livre un système complet : acquisition de leads automatisée, conversion optimisée, reporting temps réel, automatisations métier. Le site n'est qu'une pièce du puzzle.",
+        text: "Un chatbot générique ne connaît ni votre historique, ni vos outils, ni les spécificités de votre métier — vous reformulez tout à chaque fois. Un agent KAH Digital est intégré à vos outils réels, se souvient de tout, et agit de façon autonome sans que vous ayez à le piloter au prompt.",
       },
     },
     {
@@ -112,14 +112,14 @@ const organizationJsonLd = {
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital construit des AI-Powered Growth Systems — automatisation IA, plateformes premium, infrastructure digitale scalable — pour les entreprises qui veulent croître.",
+    "KAH Digital construit des agents IA verticaux — pas des sites de plus. Chef de cabinet IA pour artistes indépendants (KAH Workforce), automatisations métier sur-mesure pour indépendants et PME.",
   serviceType: [
-    "AI Automation",
-    "Digital Growth Systems",
-    "Premium Web Platforms",
+    "Vertical AI Agents",
+    "AI Chief of Staff for Artists",
+    "Business Process Automation",
     "Custom AI Agents",
+    "Premium Web Platforms",
     "SaaS Development",
-    "Digital Infrastructure",
   ],
   sameAs: [
     "https://www.linkedin.com/in/kah-digital-95128b408/",
