@@ -10,6 +10,7 @@ export interface CompanyConfig {
   email: string;
   phone: string;
   siren: string;
+  apeCode: string;
   vatNumber: string;
   hosting: string;
   iban: string;
@@ -19,18 +20,23 @@ export interface CompanyConfig {
   vat?: string;
 }
 
+// Entité active : micro-entreprise française (SIREN 953058427, immatriculée
+// le 30/07/2026). La Sàrl suisse (domiciliation Lausanne signée) n'est pas
+// encore inscrite au Registre du Commerce — à rebasculer ici une fois
+// l'immatriculation suisse effective.
 export const companyConfig: CompanyConfig = {
-  legalName: "KAH Digital",
+  legalName: "Namake Keita",
   brandName: "KAH Digital",
-  registrationStatus: "Entreprise individuelle — Suisse",
-  currency: "CHF",
-  address: "Rue de Bourg 27",
-  postalCode: "1003",
-  city: "Lausanne",
-  country: "Switzerland",
+  registrationStatus: "Entreprise individuelle — France",
+  currency: "EUR",
+  address: "",
+  postalCode: "31200",
+  city: "Toulouse",
+  country: "France",
   email: "contact@kah-digital.ch",
   phone: "+33 7 59 55 84 14",
-  siren: "",
+  siren: "953 058 427",
+  apeCode: "62.01Z",
   vatNumber: "",
   hosting: "Vercel Inc., 340 Pine Street, Suite 900, San Francisco, CA 94104 (USA)",
   iban: "",

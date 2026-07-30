@@ -21,8 +21,9 @@ const copy = {
           ["Ville", `${companyConfig.postalCode} ${companyConfig.city}, ${companyConfig.country}`],
           ["Email", companyConfig.email],
           ["Téléphone", companyConfig.phone],
-          ["Numéro IDE/UID", companyConfig.uid],
-          ["Numéro TVA", companyConfig.vatNumber],
+          ["Numéro SIREN", companyConfig.siren],
+          ["Code APE", companyConfig.apeCode],
+          ["TVA", "Non applicable — franchise en base de TVA"],
           ["Directeur de la publication", companyConfig.legalName],
         ],
       },
@@ -55,7 +56,7 @@ const copy = {
       },
       {
         title: "Droit applicable",
-        paragraphs: ["Les présentes mentions légales sont soumises au droit suisse. Tout litige relatif à l'utilisation de ce site relève de la compétence exclusive des tribunaux suisses."],
+        paragraphs: ["Les présentes mentions légales sont soumises au droit français. Tout litige relatif à l'utilisation de ce site relève de la compétence exclusive des tribunaux français."],
       },
       {
         title: "Contact",
@@ -78,8 +79,9 @@ const copy = {
           ["City", `${companyConfig.postalCode} ${companyConfig.city}, ${companyConfig.country}`],
           ["Email", companyConfig.email],
           ["Phone", companyConfig.phone],
-          ["UID number", companyConfig.uid],
-          ["VAT number", companyConfig.vatNumber],
+          ["SIREN number", companyConfig.siren],
+          ["APE code", companyConfig.apeCode],
+          ["VAT", "Not applicable — VAT exemption (franchise en base)"],
           ["Publishing director", companyConfig.legalName],
         ],
       },
@@ -109,7 +111,7 @@ const copy = {
       },
       {
         title: "Applicable law",
-        paragraphs: ["This legal notice is governed by Swiss law. Any dispute related to the use of this site falls under the exclusive jurisdiction of Swiss courts."],
+        paragraphs: ["This legal notice is governed by French law. Any dispute related to the use of this site falls under the exclusive jurisdiction of French courts."],
       },
       {
         title: "Contact",
@@ -132,8 +134,9 @@ const copy = {
           ["Ort", `${companyConfig.postalCode} ${companyConfig.city}, ${companyConfig.country}`],
           ["E-Mail", companyConfig.email],
           ["Telefon", companyConfig.phone],
-          ["UID-Nummer", companyConfig.uid],
-          ["MWST-Nummer", companyConfig.vatNumber],
+          ["SIREN-Nummer", companyConfig.siren],
+          ["APE-Code", companyConfig.apeCode],
+          ["MWST", "Nicht anwendbar — MWST-befreit (franchise en base)"],
           ["Verantwortlich für die Publikation", companyConfig.legalName],
         ],
       },
@@ -163,7 +166,7 @@ const copy = {
       },
       {
         title: "Anwendbares Recht",
-        paragraphs: ["Dieses Impressum untersteht dem Schweizer Recht. Für Streitigkeiten im Zusammenhang mit der Nutzung dieser Website sind ausschließlich Schweizer Gerichte zuständig."],
+        paragraphs: ["Dieses Impressum untersteht dem französischen Recht. Für Streitigkeiten im Zusammenhang mit der Nutzung dieser Website sind ausschließlich französische Gerichte zuständig."],
       },
       {
         title: "Kontakt",

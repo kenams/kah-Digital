@@ -130,7 +130,9 @@ export function InvoicePreview({
           </p>
           <p className="text-slate-700">Email: {companyConfig.email}</p>
           <p className="text-slate-700">{copy.phone}: {companyConfig.phone}</p>
+          {companyConfig.siren ? <p className="text-slate-700">SIREN: {companyConfig.siren}</p> : null}
           {companyConfig.uid ? <p className="text-slate-700">IDE: {companyConfig.uid}</p> : null}
+          <p className="text-slate-700">TVA non applicable, art. 293 B du CGI</p>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.client}</h3>
