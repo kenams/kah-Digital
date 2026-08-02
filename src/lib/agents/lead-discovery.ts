@@ -527,6 +527,40 @@ function extractBraveUrls(html: string): string[] {
   return [...new Set(urls)].slice(0, 20);
 }
 
+// Google Custom Search JSON API (2026-08-02) — DuckDuckGo/Brave scraping se
+// fait bloquer/throttler depuis les IP serveur de Vercel (marche depuis un
+// poste normal, jamais depuis prod — vérifié). L'API officielle a un tier
+// gratuit de 100 requêtes/jour, largement suffisant pour ce volume (12
+// emails/run). Utilisée en priorité ; DDG/Brave restent en repli si la clé
+// n'est pas configurée ou si le quota gratuit est dépassé pour la journée.
+async function searchGoogleCSE(query: string, start = 1): Promise<string[]> {
+  const apiKey = process.env.GOOGLE_CSE_API_KEY;
+  const cx = process.env.GOOGLE_CSE_CX;
+  if (!apiKey || !cx) return [];
+
+  const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}&start=${start}`;
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 10000);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(t);
+    if (!res.ok) {
+      // 429 = quota gratuit journalier (100/j) dépassé — pas une erreur à
+      // logger bruyamment, juste basculer sur le repli DDG/Brave pour le reste du run.
+      if (res.status !== 429) console.warn(`[lead-discovery] Google CSE HTTP ${res.status}`);
+      return [];
+    }
+    const data = (await res.json()) as { items?: Array<{ link?: string }> };
+    const urls = (data.items ?? [])
+      .map((item) => item.link)
+      .filter((link): link is string => Boolean(link) && !isBlacklisted(link!));
+    return [...new Set(urls)];
+  } catch {
+    clearTimeout(t);
+    return [];
+  }
+}
+
 async function searchDuckDuckGo(query: string, offset = 0): Promise<string[]> {
   const ua = DDG_USER_AGENTS[Math.floor(Math.random() * DDG_USER_AGENTS.length)];
   const endpoints = [
@@ -938,10 +972,19 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   // Map url → meta pour préserver le bon pays/secteur par URL
   const urlMetaMap = new Map<string, { country: string; language: string; sector: string }>();
 
+  const useGoogleCSE = Boolean(process.env.GOOGLE_CSE_API_KEY && process.env.GOOGLE_CSE_CX);
+
   for (const target of selected) {
-    const offset = DDG_OFFSETS[Math.floor(Math.random() * DDG_OFFSETS.length)];
-    console.log(`[lead-discovery] DDG: "${target.query}" offset=${offset}`);
-    const urls = await searchDuckDuckGo(target.query, offset);
+    let urls: string[] = [];
+    if (useGoogleCSE) {
+      console.log(`[lead-discovery] Google CSE: "${target.query}"`);
+      urls = await searchGoogleCSE(target.query);
+    }
+    if (urls.length === 0) {
+      const offset = DDG_OFFSETS[Math.floor(Math.random() * DDG_OFFSETS.length)];
+      console.log(`[lead-discovery] DDG: "${target.query}" offset=${offset}`);
+      urls = await searchDuckDuckGo(target.query, offset);
+    }
     for (const url of urls) {
       if (!urlMetaMap.has(url)) {
         urlMetaMap.set(url, { country: target.country, language: target.lang, sector: target.sector });
