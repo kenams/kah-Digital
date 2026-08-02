@@ -182,19 +182,64 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
   try {
     body = (await callLLMFast(prompt)).trim();
   } catch {
-    // Fallback statique si LLM échoue
-    const fallbacks: Record<string, string> = {
-      fr: isBigCorp
-        ? `J'ai analysé le site de ${bName} cette semaine et ai identifié ${topProblem.toLowerCase()}.\n\nChez KAH Digital, nous accompagnons des structures comme la vôtre sur ce type de problématique. Si cela correspond à une priorité actuelle, je suis disponible pour en échanger.\n\nKAH Digital`
-        : `J'ai regardé votre site cette semaine — et honnêtement, ${topProblem.toLowerCase()} c'est exactement ce qui freine la conversion.\n\nOn règle ce genre de chose chez KAH Digital, souvent plus vite qu'on ne le croit. Si vous êtes curieux, répondez à cet email.\n\nKAH Digital`,
-      en: isBigCorp
-        ? `I reviewed ${bName}'s website this week and noticed ${topProblem.toLowerCase()}.\n\nAt KAH Digital, we help organisations like yours address these kinds of issues. If this is currently a priority, I'd be happy to discuss further.\n\nKAH Digital`
-        : `Took a look at your website this week — ${topProblem.toLowerCase()} is genuinely holding you back.\n\nWe fix this kind of thing at KAH Digital, usually faster than you'd expect. If you're curious, just reply.\n\nKAH Digital`,
-      de: isBigCorp
-        ? `Ich habe die Website von ${bName} diese Woche analysiert und ${topProblem.toLowerCase()} festgestellt.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei solchen Herausforderungen. Falls dies aktuell eine Priorität ist, stehe ich gerne für ein Gespräch zur Verfügung.\n\nKAH Digital`
-        : `Ich habe Ihre Website diese Woche angeschaut — ${topProblem.toLowerCase()} bremst Sie wirklich aus.\n\nSolche Probleme lösen wir bei KAH Digital, meistens schneller als erwartet. Antworten Sie einfach auf diese Mail.\n\nKAH Digital`,
+    // Fallback SANS LLM (clés IA invalides en prod au 2026-08-02 — voir
+    // audit) : construit un email réellement personnalisé à partir des
+    // VRAIS problèmes détectés par ruleBasedAudit (viewport, meta, schema,
+    // jquery, analytics, CTA, https — pas des placeholders). Mentionne 2
+    // problèmes distincts au lieu d'un seul, avec une variation de
+    // formulation déterministe (basée sur le nom du prospect, donc stable
+    // pour un même prospect mais différente d'un prospect à l'autre — pas
+    // aléatoire à chaque renvoi).
+    const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    const secondProblem = audit.problems[1]?.detail;
+
+    const openers: Record<string, string[]> = {
+      fr: [
+        `Je suis tombé sur le site de ${bName} en cherchant des ${audit.sector} dans le coin.`,
+        `J'ai regardé le site de ${bName} cette semaine.`,
+        `Petit mot rapide après avoir vu le site de ${bName}.`,
+      ],
+      en: [
+        `I came across ${bName}'s website while looking at ${audit.sector} businesses nearby.`,
+        `Took a look at ${bName}'s website this week.`,
+        `Quick note after checking out ${bName}'s site.`,
+      ],
+      de: [
+        `Ich bin bei der Suche nach ${audit.sector} in der Gegend auf die Website von ${bName} gestoßen.`,
+        `Ich habe die Website von ${bName} diese Woche angeschaut.`,
+      ],
     };
-    body = fallbacks[lang] ?? fallbacks.fr ?? "";
+    const closers: Record<string, string[]> = {
+      fr: [
+        `On corrige ce genre de choses chez KAH Digital, souvent plus vite qu'on ne le croit. Curieux ? Répondez à cet email.`,
+        `Chez KAH Digital, c'est exactement le type de truc qu'on règle en premier. Si ça vous parle, répondez-moi ou appelez le 07 59 55 84 14.`,
+      ],
+      en: [
+        `We fix exactly this kind of thing at KAH Digital, usually faster than expected. Curious? Just reply.`,
+        `At KAH Digital, that's the first thing we'd sort out. If it resonates, reply or call +41 75 955 84 14.`,
+      ],
+      de: [
+        `Genau solche Sachen lösen wir bei KAH Digital, meistens schneller als gedacht. Interessiert? Einfach antworten.`,
+      ],
+    };
+    const openerList = openers[lang] ?? openers.fr!;
+    const closerList = closers[lang] ?? closers.fr!;
+    const opener = openerList[seed % openerList.length];
+    const closer = closerList[seed % closerList.length];
+
+    const bigCorpLine: Record<string, string> = {
+      fr: `J'y ai repéré ${topProblem.toLowerCase()}${secondProblem ? `, et aussi : ${secondProblem.toLowerCase()}` : ""}.\n\nChez KAH Digital, on accompagne des structures comme la vôtre sur ce type de problématique. Si c'est une priorité actuelle, je suis disponible pour en échanger.`,
+      en: `I noticed ${topProblem.toLowerCase()}${secondProblem ? `, along with: ${secondProblem.toLowerCase()}` : ""}.\n\nAt KAH Digital, we help organisations like yours with exactly this. If it's a current priority, happy to discuss.`,
+      de: `Mir ist ${topProblem.toLowerCase()}${secondProblem ? ` sowie ${secondProblem.toLowerCase()}` : ""} aufgefallen.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei genau solchen Themen. Falls das aktuell relevant ist, stehe ich gerne für ein Gespräch bereit.`,
+    };
+    const regularLine: Record<string, string> = {
+      fr: `Concrètement : ${topProblem.toLowerCase()}${secondProblem ? `. Et aussi : ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
+      en: `Specifically: ${topProblem.toLowerCase()}${secondProblem ? `. Also: ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
+      de: `Konkret: ${topProblem.toLowerCase()}${secondProblem ? `. Außerdem: ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
+    };
+
+    const middle = isBigCorp ? (bigCorpLine[lang] ?? bigCorpLine.fr!) : (regularLine[lang] ?? regularLine.fr!);
+    body = `${opener}\n\n${middle}\n\nKAH Digital`;
   }
 
   // HTML minimaliste — ressemble à un vrai email perso

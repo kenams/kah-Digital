@@ -773,8 +773,21 @@ async function extractSiteInfo(url: string): Promise<{ name: string; email: stri
 // ── Blacklist ────────────────────────────────────────────────────────────────
 function isBlacklisted(url: string): boolean {
   const blocked = [
-    // Réseaux sociaux
-    "facebook.com","instagram.com","twitter.com","x.com","linkedin.com","youtube.com","tiktok.com","pinterest.com","snapchat.com",
+    // Réseaux sociaux (préfixe sans TLD fixe : "pinterest." attrape
+    // pinterest.com ET pinterest.de/.fr/etc. — bug corrigé le 2026-08-02,
+    // "pinterest.com" seul laissait passer les profils Pinterest sur
+    // d'autres domaines nationaux, remontés comme "vraies entreprises")
+    "facebook.com","instagram.com","twitter.com","x.com","linkedin.com","youtube.com","tiktok.com","pinterest.","snapchat.com",
+    // Trackers / CDN / consent managers — jamais des sites d'entreprise,
+    // remontaient pourtant comme prospects (ex: cdn.consentmanager.net,
+    // a.delivery.consentmanager.net avec businessName "cdn" ou "a")
+    "consentmanager.net","cookiebot.com","onetrust.com","iubenda.com","usercentrics.eu",
+    "cookie-script.com","quantserve.com","doubleclick.net","googletagmanager.com",
+    "google-analytics.com","googlesyndication.com","hotjar.com","segment.com","gstatic.com",
+    "unpkg.com","jsdelivr.net","cdnjs.cloudflare.com",
+    // Plateformes hors sujet remontées par erreur (ex: hackerone.com/brave
+    // classé "real estate"/"finance" par le classifieur sectoriel)
+    "hackerone.com","bugcrowd.com","medium.com","substack.com","notion.site","github.io",
     // Annuaires / agrégateurs
     "tripadvisor","yelp.com","pagesjaunes","lafourchette","thefork","pagesjaunes.fr","pagesjaunes.be",
     "local.ch","yell.com","gelbeseiten.de","paginegialle.it","paginasamarillas.es","canada411",
