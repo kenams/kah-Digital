@@ -50,7 +50,8 @@ const PLANS = {
       highlight: true,
       accent: "violet",
       includes: [
-        "Jusqu'à 6 pages",
+        "Jusqu'à 6 pages incluses",
+        "Logo & identité visuelle inclus",
         "SEO technique complet inclus",
         "Design premium niveau SaaS",
         "Animations & micro-interactions",
@@ -256,30 +257,31 @@ const PLANS = {
   ],
 };
 
+// 2026-08-02 : "Logo simple" et "Page supplémentaire" retirés de la liste à
+// la carte (demande de Kenams — un logo à 149€ alors que ChatGPT/Canva le
+// font gratuitement en 2 min sabote la crédibilité "on maîtrise l'IA").
+// Le logo est maintenant inclus dans le plan Business (voir PLANS
+// ci-dessus) ; les pages supplémentaires étaient déjà couvertes par
+// "jusqu'à 6 pages". Ce qui reste ici, ce sont uniquement des options
+// vraiment liées à l'IA/l'automatisation — cohérent avec le positionnement.
 const OPTIONS = {
   fr: [
-    { icon: "📄", label: "Page supplémentaire", price: "89 €" },
     { icon: "🔍", label: "SEO avancé", price: "249 €" },
-    { icon: "🎨", label: "Logo simple", price: "149 €" },
     { icon: "🤖", label: "Chatbot IA", price: "349 €" },
     { icon: "⚙️", label: "Automatisation", price: "dès 490 €" },
-    { icon: "🛠️", label: "Maintenance mensuelle", price: "89 €/mois" },
+    { icon: "🛠️", label: "Maintenance mensuelle", price: "dès 79 €/mois" },
   ],
   en: [
-    { icon: "📄", label: "Extra page", price: "$89" },
     { icon: "🔍", label: "Advanced SEO", price: "$249" },
-    { icon: "🎨", label: "Simple logo", price: "$149" },
     { icon: "🤖", label: "AI chatbot", price: "$349" },
     { icon: "⚙️", label: "Automation", price: "from $490" },
-    { icon: "🛠️", label: "Monthly maintenance", price: "$89/mo" },
+    { icon: "🛠️", label: "Monthly maintenance", price: "from $79/mo" },
   ],
   de: [
-    { icon: "📄", label: "Zusätzliche Seite", price: "CHF 99" },
     { icon: "🔍", label: "Erweitertes SEO", price: "CHF 270" },
-    { icon: "🎨", label: "Einfaches Logo", price: "CHF 160" },
     { icon: "🤖", label: "KI-Chatbot", price: "CHF 380" },
     { icon: "⚙️", label: "Automatisierung", price: "ab CHF 530" },
-    { icon: "🛠️", label: "Monatliche Wartung", price: "CHF 99/Mt." },
+    { icon: "🛠️", label: "Monatliche Wartung", price: "ab CHF 79/Mt." },
   ],
 };
 

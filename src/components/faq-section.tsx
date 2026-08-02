@@ -21,7 +21,7 @@ const FAQS = {
     },
     {
       q: "Le SEO est-il inclus dans les plans ?",
-      a: "Le SEO technique de base (balises meta, sitemap, structure URL, vitesse) est inclus dans tous les plans. Le SEO avancé (pages locales, contenu optimisé, link building, suivi de positions) est disponible en option à 149 €.",
+      a: "Le SEO technique de base (balises meta, sitemap, structure URL, vitesse) est inclus dans tous les plans. Le SEO avancé (pages locales, contenu optimisé, link building, suivi de positions) est disponible en option à 249 €.",
     },
     {
       q: "Le site sera-t-il optimisé pour mobile ?",

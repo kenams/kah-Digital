@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "Combien coûte une automatisation IA pour une PME ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Le coût dépend de la complexité du workflow. Un système d'automatisation simple (scoring de leads, emails automatisés) est accessible à partir de 2 500 CHF en formule Starter. Un système complet avec agents IA, Supabase et tableaux de bord commence à 6 900 CHF. Le ROI est généralement atteint en 1 à 3 mois.",
+        text: "Le coût dépend de la complexité du workflow. Une automatisation simple (scoring de leads, emails automatisés) est accessible dès 490 €. Un agent IA vertical complet, avec Supabase, tableaux de bord et automatisations CRM, démarre à 890 € (formule Agent IA vertical). Le ROI est généralement atteint en 1 à 3 mois.",
       },
     },
     {
