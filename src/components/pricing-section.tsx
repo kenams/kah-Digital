@@ -487,7 +487,7 @@ export function PricingSection() {
             </div>
             <p className="text-sm text-gray-500">{copy.optionsSub}</p>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mx-auto grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
             {options.map((opt) => (
               <div
                 key={opt.label}

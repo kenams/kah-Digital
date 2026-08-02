@@ -12,10 +12,21 @@ export function FloatingCTA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 500);
+    // Masqué aussi près du bas de page : sinon il flotte par-dessus les
+    // mentions légales / sélecteur de langue du footer (signalé par Kenams,
+    // ça brouille la vue).
+    const handleScroll = () => {
+      const distanceFromBottom =
+        document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+      setVisible(window.scrollY > 500 && distanceFromBottom > 400);
+    };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const waText = encodeURIComponent(
