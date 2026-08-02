@@ -191,55 +191,72 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     // pour un même prospect mais différente d'un prospect à l'autre — pas
     // aléatoire à chaque renvoi).
     const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
-    const secondProblem = audit.problems[1]?.detail;
 
     const openers: Record<string, string[]> = {
       fr: [
-        `Je suis tombé sur le site de ${bName} en cherchant des ${audit.sector} dans le coin.`,
-        `J'ai regardé le site de ${bName} cette semaine.`,
-        `Petit mot rapide après avoir vu le site de ${bName}.`,
+        `Je suis tombé sur ${bName} en cherchant des ${audit.sector} dans le coin.`,
+        `J'ai regardé l'activité de ${bName} cette semaine.`,
+        `Petit mot rapide en découvrant ${bName}.`,
       ],
       en: [
-        `I came across ${bName}'s website while looking at ${audit.sector} businesses nearby.`,
-        `Took a look at ${bName}'s website this week.`,
-        `Quick note after checking out ${bName}'s site.`,
+        `I came across ${bName} while looking at ${audit.sector} businesses nearby.`,
+        `Took a look at ${bName} this week.`,
+        `Quick note after discovering ${bName}.`,
       ],
       de: [
-        `Ich bin bei der Suche nach ${audit.sector} in der Gegend auf die Website von ${bName} gestoßen.`,
-        `Ich habe die Website von ${bName} diese Woche angeschaut.`,
-      ],
-    };
-    const closers: Record<string, string[]> = {
-      fr: [
-        `On corrige ce genre de choses chez KAH Digital, souvent plus vite qu'on ne le croit. Curieux ? Répondez à cet email.`,
-        `Chez KAH Digital, c'est exactement le type de truc qu'on règle en premier. Si ça vous parle, répondez-moi ou appelez le 07 59 55 84 14.`,
-      ],
-      en: [
-        `We fix exactly this kind of thing at KAH Digital, usually faster than expected. Curious? Just reply.`,
-        `At KAH Digital, that's the first thing we'd sort out. If it resonates, reply or call +41 75 955 84 14.`,
-      ],
-      de: [
-        `Genau solche Sachen lösen wir bei KAH Digital, meistens schneller als gedacht. Interessiert? Einfach antworten.`,
+        `Ich bin bei der Suche nach ${audit.sector} in der Gegend auf ${bName} gestoßen.`,
+        `Ich habe mir ${bName} diese Woche angeschaut.`,
       ],
     };
     const openerList = openers[lang] ?? openers.fr!;
-    const closerList = closers[lang] ?? closers.fr!;
     const opener = openerList[seed % openerList.length];
-    const closer = closerList[seed % closerList.length];
 
-    const bigCorpLine: Record<string, string> = {
-      fr: `J'y ai repéré ${topProblem.toLowerCase()}${secondProblem ? `, et aussi : ${secondProblem.toLowerCase()}` : ""}.\n\nChez KAH Digital, on accompagne des structures comme la vôtre sur ce type de problématique. Si c'est une priorité actuelle, je suis disponible pour en échanger.`,
-      en: `I noticed ${topProblem.toLowerCase()}${secondProblem ? `, along with: ${secondProblem.toLowerCase()}` : ""}.\n\nAt KAH Digital, we help organisations like yours with exactly this. If it's a current priority, happy to discuss.`,
-      de: `Mir ist ${topProblem.toLowerCase()}${secondProblem ? ` sowie ${secondProblem.toLowerCase()}` : ""} aufgefallen.\n\nBei KAH Digital unterstützen wir Unternehmen wie Ihres bei genau solchen Themen. Falls das aktuell relevant ist, stehe ich gerne für ein Gespräch bereit.`,
+    // Pitch IA/automatisation par secteur — jamais "votre site a des
+    // problèmes techniques" (positionnement KAH Digital = IA, pas refonte
+    // de site, cf. pivot 2026-08). Miroir non-LLM du pitchInstruction ci-dessus.
+    const pitchByTrack: Record<string, Record<string, string>> = {
+      esn: {
+        fr: `On a développé un outil IA qui prend en charge le triage et les réponses de niveau 1 sur vos tickets support — en marque blanche si besoin, pour vos clients PME. Ça libère vos équipes des trucs répétitifs.`,
+        en: `We built an AI tool that handles triage and level-1 replies on your support tickets — white-label if needed, for your SME clients. Frees your team from the repetitive stuff.`,
+        de: `Wir haben ein KI-Tool entwickelt, das Triage und Level-1-Antworten auf Ihre Support-Tickets übernimmt — bei Bedarf White-Label für Ihre KMU-Kunden. Entlastet Ihr Team von den repetitiven Aufgaben.`,
+      },
+      "pme-it": {
+        fr: `On propose un support informatique IA disponible 7j/7 pour vos équipes — incidents résolus vite, sans prestataire facturé à l'heure.`,
+        en: `We offer AI-powered IT support available 7 days a week for your teams — incidents resolved fast, no hourly-billed provider.`,
+        de: `Wir bieten IT-Support mit KI, der 7 Tage die Woche für Ihre Teams verfügbar ist — Vorfälle schnell gelöst, ohne stundenweise abgerechneten Dienstleister.`,
+      },
+      app: {
+        fr: `KAH Digital développe des applications mobiles/web sur mesure — MVP livré en semaines, pas en mois, stack moderne.`,
+        en: `KAH Digital builds custom mobile/web apps — MVP delivered in weeks, not months, modern stack.`,
+        de: `KAH Digital entwickelt maßgeschneiderte Mobile-/Web-Apps — MVP in Wochen statt Monaten, moderner Stack.`,
+      },
+      agent: {
+        fr: `On met en place des agents IA qui automatisent la prospection ou le support client — pas un site à refaire, juste l'agent qui bosse à votre place.`,
+        en: `We set up AI agents that automate prospecting or customer support — no website rebuild, just the agent doing the work.`,
+        de: `Wir richten KI-Agenten ein, die Akquise oder Kundensupport automatisieren — kein Website-Relaunch, nur der Agent, der die Arbeit übernimmt.`,
+      },
+      site: {
+        fr: `On met en place des outils IA (support, prospection, automatisation) adaptés à votre activité.`,
+        en: `We set up AI tools (support, prospecting, automation) tailored to your business.`,
+        de: `Wir richten KI-Tools (Support, Akquise, Automatisierung) passend zu Ihrem Geschäft ein.`,
+      },
     };
-    const regularLine: Record<string, string> = {
-      fr: `Concrètement : ${topProblem.toLowerCase()}${secondProblem ? `. Et aussi : ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
-      en: `Specifically: ${topProblem.toLowerCase()}${secondProblem ? `. Also: ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
-      de: `Konkret: ${topProblem.toLowerCase()}${secondProblem ? `. Außerdem: ${secondProblem.toLowerCase()}` : ""}.\n\n${closer}`,
-    };
+    const pitch = pitchByTrack[track]?.[lang] ?? pitchByTrack[track]?.fr ?? pitchByTrack.agent!.fr!;
 
-    const middle = isBigCorp ? (bigCorpLine[lang] ?? bigCorpLine.fr!) : (regularLine[lang] ?? regularLine.fr!);
-    body = `${opener}\n\n${middle}\n\nKAH Digital`;
+    const ctas: Record<string, string> = {
+      fr: isBigCorp
+        ? `Si c'est une priorité actuelle, je suis disponible pour en échanger.`
+        : `Curieux ? Répondez à cet email ou appelez le 07 59 55 84 14.`,
+      en: isBigCorp
+        ? `If it's a current priority, happy to discuss.`
+        : `Curious? Just reply or call +41 75 955 84 14.`,
+      de: isBigCorp
+        ? `Falls das aktuell relevant ist, stehe ich gerne für ein Gespräch bereit.`
+        : `Interessiert? Einfach antworten oder anrufen: +41 75 955 84 14.`,
+    };
+    const cta = ctas[lang] ?? ctas.fr!;
+
+    body = `${opener}\n\n${pitch} ${cta}\n\nKAH Digital`;
   }
 
   // HTML minimaliste — ressemble à un vrai email perso
