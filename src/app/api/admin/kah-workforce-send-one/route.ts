@@ -58,7 +58,7 @@ function buildHtml(p: Prospect): string {
       Entre les emails à trier, les factures à relancer et les échéances à suivre, l'administratif prend vite plus de temps que le travail lui-même.
     </p>
     <p style="color:#374151;font-size:15px;margin:0 0 22px;line-height:1.65;">
-      KAH Workforce est une équipe d'employés IA qui s'en charge à ta place — un vrai résumé chaque matin, aucune action envoyée sans ta validation.
+      KAH Workforce, c'est une équipe complète d'employés IA — Email Manager, Marketing, Community, Agenda, Comptable, Juridique, Mémoire — qui bosse pour toi 24h/24. Un vrai résumé chaque matin, aucune action envoyée sans ta validation.
     </p>
     <div style="text-align:center;margin-bottom:26px;">
       <a href="${APP_URL}" style="display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">Voir KAH Workforce →</a>
@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Déjà envoyé", skipped: true });
   }
 
-  const subject = `Une équipe qui gère ton administratif à ta place`;
+  const subject = `Et si tu avais 7 employés qui ne dorment jamais ?`;
   const html = buildHtml(p);
 
   const resendRes = await fetch("https://api.resend.com/emails", {

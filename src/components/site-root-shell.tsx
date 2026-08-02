@@ -5,7 +5,6 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteProviders } from "@/components/site-providers";
-import ExitIntentPopup from "@/components/exit-intent-popup";
 import { UrgencyBanner } from "@/components/urgency-banner";
 import { CursorGlow } from "@/components/cursor-glow";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -74,7 +73,6 @@ gtag('config', '${GA_MEASUREMENT_ID}');`}
           <SiteHeader />
           <main className="main-surface min-h-screen">{children}</main>
           <SiteFooter />
-          <ExitIntentPopup />
           <FloatingCTA />
         </SiteProviders>
       </body>

@@ -2,24 +2,19 @@
 import { HeroSection } from "@/components/hero-section";
 import { StatsBar } from "@/components/stats-bar";
 import { AiSystemsSection } from "@/components/ai-systems-section";
-import { FreeCallSection } from "@/components/free-call-section";
 import { TrustBar } from "@/components/trust-bar";
-import { ProblemSection } from "@/components/problem-section";
-import { WhyChooseSection } from "@/components/why-choose-section";
-import { TestimonialsSection } from "@/components/testimonials-section";
-import { CaseStudySection } from "@/components/case-study-section";
 import { PricingSection } from "@/components/pricing-section";
-import { ProcessSection } from "@/components/process-section";
-import { GlobalTrustSection } from "@/components/global-trust-section";
 import { FAQSection } from "@/components/faq-section";
-import { BuiltForSection } from "@/components/built-for-section";
-import { SocialProofSection } from "@/components/social-proof-section";
-import { PortfolioSection } from "@/components/portfolio-section";
-import { ROICalculator } from "@/components/roi-calculator";
-import { BookingSection } from "@/components/booking-section";
-import { SocialContentSection } from "@/components/social-content-section";
 import { CTASection } from "@/components/cta-section";
-import { SaasPortfolioSection } from "@/components/saas-portfolio-section";
+
+// Nettoyage homepage 2026-08-02 (demande explicite de Kenams : "c'est
+// brouillon [...] on ne sait pas ce que je fais, site web ? appli ? IA ?
+// refactoring ?"). Page ramenée à un seul fil narratif — Hero → Offre IA →
+// Preuve → Prix → FAQ → CTA — plutôt que 18 sections qui racontaient
+// plusieurs métiers différents à la fois (agence web générique, SaaS,
+// portfolio, process...). Composants retirés toujours présents dans
+// src/components/ si besoin de les réutiliser ailleurs (ex: page /offres),
+// juste plus sur la home.
 
 export const metadata = buildPageMetadata({
   locale: "fr",
@@ -134,23 +129,9 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
       <StatsBar />
-      <SaasPortfolioSection lang="fr" />
       <AiSystemsSection />
-      <FreeCallSection />
       <TrustBar />
-      <ProblemSection />
-      <WhyChooseSection />
-      <CaseStudySection />
-      <SocialProofSection />
-      <ROICalculator />
-      <TestimonialsSection />
-      <BuiltForSection />
-      <PortfolioSection />
       <PricingSection />
-      <BookingSection />
-      <ProcessSection />
-      <GlobalTrustSection />
-      <SocialContentSection />
       <FAQSection />
       <CTASection />
     </>

@@ -42,7 +42,7 @@ type Prospect = {
 function buildJ0(p: Prospect) {
   const first = esc(p.name?.split(" ").pop() ?? "");
   const greeting = first ? `Bonjour ${first},` : "Bonjour,";
-  const subject = `Une équipe qui gère ton administratif à ta place`;
+  const subject = `Et si tu avais 7 employés qui ne dorment jamais ?`;
   const noteHtml = p.personal_note
     ? `<p style="font-size:14px;color:#374151;margin:0 0 14px;font-style:italic;">${esc(p.personal_note)}</p>`
     : "";
@@ -52,16 +52,16 @@ function buildJ0(p: Prospect) {
   <p style="font-size:15px;color:#111;margin:0 0 16px;line-height:1.6;">${greeting}</p>
   ${noteHtml}
   <p style="font-size:15px;color:#374151;margin:0 0 14px;line-height:1.7;">
-    Je te contacte parce que j'ai construit KAH Workforce — une équipe d'employés IA qui trient tes emails, préparent tes relances de factures et suivent tes échéances, chaque matin, sans que tu aies à y penser.
+    Combien de temps tu perds chaque semaine à trier tes emails, relancer une facture impayée ou courir après une échéance ? Chez la plupart des indépendants, c'est plusieurs heures — du temps volé au vrai travail.
   </p>
   <p style="font-size:15px;color:#374151;margin:0 0 14px;line-height:1.7;">
-    Tu gardes toujours le contrôle — aucune action n'est envoyée sans ta validation. Le palier de base (Email Manager + Mémoire) est gratuit.
+    J'ai construit <strong>KAH Workforce</strong> : une équipe complète d'employés IA — Email Manager, Marketing, Community, Agenda, Comptable, Juridique, Mémoire — qui bosse pour toi 24h/24. Chaque matin, un vrai résumé t'attend. Zéro action envoyée sans ta validation.
   </p>
   <p style="font-size:15px;color:#374151;margin:0 0 20px;line-height:1.7;">
-    Ça vaut le coup d'y jeter un œil ?
+    Email Manager + Mémoire sont gratuits à vie. Le reste de l'équipe se débloque à 29€/mois, sans engagement.
   </p>
   <p style="margin:0 0 8px;">
-    <a href="${APP_URL}?utm_source=cold&utm_campaign=j0" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Voir KAH Workforce →</a>
+    <a href="${APP_URL}?utm_source=cold&utm_campaign=j0" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Recruter mon équipe →</a>
   </p>
   <p style="font-size:13px;color:#6b7280;margin:0 0 28px;">Gratuit pour commencer, sans carte bancaire.</p>
   <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Bonne journée,<br>KAH Digital</p>
