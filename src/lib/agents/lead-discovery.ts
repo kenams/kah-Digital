@@ -906,10 +906,19 @@ function isBlacklisted(url: string): boolean {
     // liste des thérapeutes, pas le site d'un thérapeute) — remonté et rejeté
     // par Resend le 2026-08-03 (email = info@agenda.ch, pas un vrai prospect)
     "agenda.ch",
+    // italiaonline.it = espace client d'un hébergeur/portail italien (pas une
+    // entreprise) ; pgol.it = CDN d'images/favicons — voir filtre extension
+    // ci-dessous, ce sont littéralement des fichiers .png/.ico remontés
+    // comme "prospects" le 2026-08-03 (email deviné info@img.pgol.it)
+    "italiaonline.it", "pgol.it",
   ];
 
   const lower = url.toLowerCase();
   if (blocked.some((b) => lower.includes(b))) return true;
+
+  // Fichiers statiques (images, styles, scripts) remontés par erreur par le
+  // moteur de recherche comme si c'était une page d'entreprise
+  if (/\.(png|jpe?g|gif|svg|ico|webp|css|js|pdf|xml|json)(\?.*)?$/i.test(lower)) return true;
 
   // Filtre chemins d'agrégateurs : URL contenant des segments typiques de pages catégorie
   try {
