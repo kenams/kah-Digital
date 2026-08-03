@@ -759,14 +759,47 @@ async function guessMxEmail(url: string): Promise<{ email: string; guessed: true
 }
 
 // ── Site info extraction ─────────────────────────────────────────────────────
+// Titres de sous-pages génériques (contact/à-propos/accueil...) qui ne sont
+// jamais le nom réel de l'entreprise — trouvés en prod le 2026-08-03 :
+// businessName = "À propos" / "Nous joindre" / "Home" envoyés tels quels
+// dans les emails ("j'ai regardé le site de À propos" — non-sens qui
+// sabote la personnalisation et probablement le taux de réponse).
+const GENERIC_TITLES = [
+  "contact", "contacto", "kontakt", "contatti", "nous joindre", "nous contacter",
+  "à propos", "a propos", "about", "about us", "qui sommes-nous", "who we are",
+  "über uns", "chi siamo", "sobre nos", "home", "accueil", "welcome",
+  "team", "équipe", "equipe", "impressum", "mentions légales", "legal", "menu",
+];
+
+function isGenericTitle(title: string): boolean {
+  const t = title.trim().toLowerCase();
+  return GENERIC_TITLES.includes(t) || t.length < 3;
+}
+
 async function extractSiteInfo(url: string): Promise<{ name: string; email: string | null; phone: string | null; emailGuessed: boolean }> {
   const html = await fetchHtml(url);
   if (!html) return { name: new URL(url).hostname.replace("www.", "").split(".")[0], email: null, phone: null, emailGuessed: false };
 
   const titleMatch = html.match(/<title[^>]*>([^<]{2,80})<\/title>/i);
-  const name = titleMatch?.[1]
+  let name = titleMatch?.[1]
     ? titleMatch[1].trim().replace(/\s*[-|–—]\s*.*/g, "").trim().slice(0, 60)
     : new URL(url).hostname.replace("www.", "").split(".")[0];
+
+  // Le titre trouvé est générique ou l'URL n'est pas la racine du domaine
+  // → le vrai nom d'entreprise est presque toujours sur la homepage, pas
+  // la sous-page remontée par la recherche. On va chercher là-bas.
+  const isRoot = new URL(url).pathname === "/" || new URL(url).pathname === "";
+  if (!isRoot || isGenericTitle(name)) {
+    try {
+      const homeUrl = new URL(url).origin;
+      const homeHtml = await fetchHtml(homeUrl, 7000);
+      const homeTitleMatch = homeHtml?.match(/<title[^>]*>([^<]{2,80})<\/title>/i);
+      const homeName = homeTitleMatch?.[1]
+        ? homeTitleMatch[1].trim().replace(/\s*[-|–—]\s*.*/g, "").trim().slice(0, 60)
+        : null;
+      if (homeName && !isGenericTitle(homeName)) name = homeName;
+    } catch { /* garde le titre trouvé initialement */ }
+  }
 
   let email = extractEmailFromHtml(html);
   let phone = extractPhoneFromHtml(html);
@@ -867,8 +900,12 @@ function isBlacklisted(url: string): boolean {
     // "à propos" génériques, pas des prospects PME), termidesign.de = post
     // de blog d'une agence tierce sur un projet client (pas termidesign
     // elle-même le prospect visé).
-    "yp.ca","hotelleriesuisse.ch","gruppenreise-portal.com","compass.com",
+    "yp.ca","pj.ca","hotelleriesuisse.ch","gruppenreise-portal.com","compass.com",
     "swissotel.","sv-group.com","termidesign.de",
+    // agenda.ch = annuaire d'événements/professionnels (ex: /fr/s/therapeute/sion
+    // liste des thérapeutes, pas le site d'un thérapeute) — remonté et rejeté
+    // par Resend le 2026-08-03 (email = info@agenda.ch, pas un vrai prospect)
+    "agenda.ch",
   ];
 
   const lower = url.toLowerCase();
