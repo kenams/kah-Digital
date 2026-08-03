@@ -857,6 +857,18 @@ function isBlacklisted(url: string): boolean {
     "cuatrecasas.","linklaters.","cliffordchance.","freshfields.","deloitte.","pwc.com","kpmg.","ey.com",
     // Autres
     "cloudflare.com","sentry.io","jsdelivr.net","cdnjs.cloudflare","jsdelivr.com",
+    // Annuaires/portails/groupes remontés le 2026-08-03 comme "vraies
+    // entreprises" (businessName = titre de page portail, pas un vrai
+    // prospect) : yp.ca = Pages Jaunes Canada, hotelleriesuisse.ch =
+    // annuaire des membres de l'association hôtelière suisse,
+    // gruppenreise-portal.com = portail de réservation groupée,
+    // compass.com = page de listing d'agents immobiliers (pas une agence),
+    // swissotel.fr/sv-group.com = grandes chaînes internationales (pages
+    // "à propos" génériques, pas des prospects PME), termidesign.de = post
+    // de blog d'une agence tierce sur un projet client (pas termidesign
+    // elle-même le prospect visé).
+    "yp.ca","hotelleriesuisse.ch","gruppenreise-portal.com","compass.com",
+    "swissotel.","sv-group.com","termidesign.de",
   ];
 
   const lower = url.toLowerCase();
