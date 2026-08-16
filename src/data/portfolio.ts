@@ -19,6 +19,7 @@ export type PortfolioProject = {
     accent: string;
   };
   website?: string;
+  hideLiveLink?: boolean;
   demoRequest?: boolean;
   downloadLinks?: {
     android?: string;
@@ -44,7 +45,7 @@ export const portfolioProjects: PortfolioProject[] = [
     challenge:
       "Donner à un artiste indépendant, sans équipe de management, l'équivalent d'un chef de cabinet disponible 24h/24 — capable de suivre son business réel, pas juste de répondre à des questions génériques.",
     solution:
-      "Agent IA vertical construit sur Claude, intégré à Supabase pour la mémoire et les données métier, Stripe pour les flux financiers, et une interface Next.js pensée pour un pilotage quotidien sans friction.",
+      "Un agent IA vertical pensé pour un métier précis, avec une mémoire persistante et un pilotage quotidien sans friction — l'architecture technique détaillée reste réservée aux échanges commerciaux.",
     stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
     result:
       "Agent IA vertical en production, chef de cabinet autonome pour artistes indépendants — le produit qui illustre le positionnement KAH Digital.",
@@ -71,6 +72,7 @@ export const portfolioProjects: PortfolioProject[] = [
       accent: "#8b5cf6",
     },
     website: "https://kah-workforce.vercel.app",
+    hideLiveLink: true,
   },
   {
     slug: "clutch",
@@ -441,29 +443,29 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "W11 Control Center",
     type: "Application SaaS / Dashboard IT",
     tagline:
-      "Un tableau de bord interne pour piloter la migration Windows 11 d'un parc informatique de 379 machines.",
+      "Un tableau de bord interne pour piloter une migration Windows 11 à grande échelle sur un parc informatique multi-sites.",
     shortDescription:
-      "Dashboard Next.js avec authentification par rôles, suivi de migration par site, import CSV, IA Groq intégrée et cron Vercel pour les snapshots automatiques.",
+      "Dashboard Next.js avec authentification par rôles, suivi de migration par site, import CSV, IA intégrée et cron Vercel pour les snapshots automatiques.",
     description:
-      "W11 Control Center est un outil de pilotage interne développé pour ADF Group afin de gérer la migration de leur parc informatique vers Windows 11. 379 machines, plusieurs sites géographiques, différents profils d'utilisateurs (admin, DSI, pilote, viewer) — tout est centralisé dans un seul dashboard sécurisé, avec un assistant IA pour répondre aux questions techniques en temps réel.",
+      "W11 Control Center est un outil de pilotage interne développé pour un groupe industriel multi-sites afin de gérer une migration de parc informatique vers Windows 11 à grande échelle. Plusieurs centaines de postes, plusieurs sites géographiques, différents profils d'utilisateurs (admin, DSI, pilote, viewer) — tout est centralisé dans un seul dashboard sécurisé, avec un assistant IA pour répondre aux questions techniques en temps réel.",
     challenge:
       "Piloter une migration Windows 11 à grande échelle dans un groupe industriel multi-sites, avec des équipes IT dispersées et des données machines hétérogènes.",
     solution:
-      "Next.js 16 App Router, Supabase avec Row Level Security, auth multi-rôles, import CSV batch, assistant IA Groq (Llama 3.3 70b gratuit), cron Vercel pour snapshots quotidiens, export XLSX.",
+      "Dashboard sécurisé avec authentification par rôles, import de données par lot, assistant IA contextuel et snapshots automatiques — l'architecture technique détaillée reste réservée aux échanges commerciaux.",
     stack: ["Next.js 16", "Supabase", "TypeScript", "Groq AI", "Vercel", "Playwright"],
     result:
-      "379 machines trackées, 30% déjà migrées. Dashboard live avec stats temps réel, import batch et IA contextuelle pour l'équipe IT.",
+      "Plusieurs centaines de machines trackées, migration en cours. Dashboard live avec stats temps réel, import batch et IA contextuelle pour l'équipe IT.",
     timeline: "2 semaines",
     deliverables: [
       "Dashboard de pilotage multi-sites",
       "Auth multi-rôles (admin / DSI / pilote / viewer)",
       "Import CSV batch de machines",
-      "Assistant IA contextuel (Groq Llama 3.3)",
+      "Assistant IA contextuel",
       "Cron snapshots + export XLSX",
     ],
     metrics: [
-      { label: "Machines trackées", value: "379" },
-      { label: "Taux migration", value: "30%" },
+      { label: "Machines trackées", value: "350+" },
+      { label: "Migration", value: "En cours" },
       { label: "Rôles utilisateurs", value: "4" },
     ],
     highlights: [
@@ -477,6 +479,7 @@ export const portfolioProjects: PortfolioProject[] = [
       accent: "#3b82f6",
     },
     website: "https://w11.kah-digital.ch/",
+    hideLiveLink: true,
     mockups: {
       primary: "/mockups/w11-screenshot.png",
       gallery: ["/mockups/w11-screenshot.png"],

@@ -104,7 +104,7 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
             <span className="h-3 w-3 rounded-full bg-[#ff5f57]/90" />
             <span className="h-3 w-3 rounded-full bg-[#febc2e]/90" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]/90" />
-            {project.website && (
+            {project.website && !project.hideLiveLink && (
               <div className="ml-3 flex-1 overflow-hidden rounded-lg border border-white/10 bg-white/5 px-4 py-1.5 text-center">
                 <span className="text-[0.62rem] font-mono text-white/40">
                   {project.website.replace(/^https?:\/\//, "")}
@@ -114,9 +114,9 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
           </div>
           {/* Screenshot */}
           <a
-            href={project.website ?? "#"}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={project.hideLiveLink ? href : (project.website ?? "#")}
+            target={project.hideLiveLink ? undefined : "_blank"}
+            rel={project.hideLiveLink ? undefined : "noopener noreferrer"}
             className="group/img relative block aspect-[16/7] overflow-hidden lg:aspect-[21/8]"
           >
             <Image
@@ -177,7 +177,7 @@ function FeaturedProjectCard({ project, locale }: { project: PortfolioProject; l
             >
               {c.viewCase} <FiArrowRight size={14} />
             </Link>
-            {project.website && !project.downloadLinks && (
+            {project.website && !project.downloadLinks && !project.hideLiveLink && (
               <a
                 href={project.website}
                 target="_blank"

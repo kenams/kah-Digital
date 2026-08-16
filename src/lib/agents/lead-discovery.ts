@@ -773,7 +773,13 @@ const GENERIC_TITLES = [
 
 function isGenericTitle(title: string): boolean {
   const t = title.trim().toLowerCase();
-  return GENERIC_TITLES.includes(t) || t.length < 3;
+  if (GENERIC_TITLES.includes(t) || t.length < 3) return true;
+  // Trouvé le 2026-08-17 : des titres qui sont en fait un slogan/une phrase
+  // complète ("Une vision augmentée du conseil au service de votre
+  // réussite") remontaient tels quels comme businessName — un vrai nom
+  // d'entreprise dépasse rarement 5-6 mots.
+  if (t.split(/\s+/).length > 6) return true;
+  return false;
 }
 
 async function extractSiteInfo(url: string): Promise<{ name: string; email: string | null; phone: string | null; emailGuessed: boolean }> {
@@ -799,6 +805,10 @@ async function extractSiteInfo(url: string): Promise<{ name: string; email: stri
         : null;
       if (homeName && !isGenericTitle(homeName)) name = homeName;
     } catch { /* garde le titre trouvé initialement */ }
+    // Toujours générique après le fallback homepage (ex: slogan en guise de
+    // <title> sur tout le site) → dernier recours, le nom de domaine reste
+    // plus fiable qu'une phrase complète envoyée comme "nom d'entreprise".
+    if (isGenericTitle(name)) name = new URL(url).hostname.replace("www.", "").split(".")[0];
   }
 
   let email = extractEmailFromHtml(html);
@@ -911,6 +921,11 @@ function isBlacklisted(url: string): boolean {
     // ci-dessous, ce sont littéralement des fichiers .png/.ico remontés
     // comme "prospects" le 2026-08-03 (email deviné info@img.pgol.it)
     "italiaonline.it", "pgol.it",
+    // Grands réseaux/franchises comptables nationaux remontés le 2026-08-17
+    // sur des recherches "comptable" — pas la cible : ce sont des groupes
+    // avec leur propre IT, pas des indépendants qui ont besoin d'un agent
+    // IA sur mesure. In Extenso, Dougs, Cabex, Keobiz = réseaux établis.
+    "inextenso.fr","dougs.fr","reseau-cabex.fr","keobiz.fr","welyb.fr",
   ];
 
   const lower = url.toLowerCase();

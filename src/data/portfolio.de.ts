@@ -14,7 +14,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     challenge:
       "Einem unabhängigen Künstler ohne Management-Team das Äquivalent eines rund um die Uhr verfügbaren Kabinettschefs geben — fähig, sein echtes Geschäft zu verfolgen, nicht nur generische Fragen zu beantworten.",
     solution:
-      "Ein vertikaler KI-Agent auf Basis von Claude, integriert mit Supabase für Gedächtnis und Geschäftsdaten, Stripe für Finanzflüsse und einer Next.js-Oberfläche für reibungsloses tägliches Steuern.",
+      "Ein vertikaler KI-Agent für einen einzigen Job, mit persistentem Gedächtnis und reibungsloser täglicher Steuerung — die genaue technische Architektur bleibt Verkaufsgesprächen vorbehalten.",
     stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
     result:
       "Ein vertikaler KI-Agent live im Einsatz, ein autonomer Kabinettschef für unabhängige Künstler — das Produkt, das die Positionierung von KAH Digital verkörpert.",
@@ -41,6 +41,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       accent: "#8b5cf6",
     },
     website: "https://kah-workforce.vercel.app",
+    hideLiveLink: true,
   },
   {
     slug: "clutch",

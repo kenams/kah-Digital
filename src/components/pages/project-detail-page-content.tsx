@@ -119,7 +119,7 @@ export function ProjectDetailPageContent({ locale, project }: Props) {
             <Link href={withLocalePrefix("/", locale)} className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
               {text.backHome}
             </Link>
-            {project.website && !project.downloadLinks ? (
+            {project.website && !project.downloadLinks && !project.hideLiveLink ? (
               <a href={project.website} target="_blank" rel="noreferrer" className="rounded-full border border-white/20 px-4 py-2 transition hover:border-white hover:text-white">
                 {text.liveSite}
               </a>
@@ -265,7 +265,7 @@ export function ProjectDetailPageContent({ locale, project }: Props) {
                   <Link href={withLocalePrefix("/devis", locale)} className="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700">
                     {text.nextPrimary}
                   </Link>
-                  {project.website ? (
+                  {project.website && !project.hideLiveLink ? (
                     <a href={project.website} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-900 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white">
                       {text.liveSite}
                     </a>

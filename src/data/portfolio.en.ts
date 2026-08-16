@@ -14,7 +14,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     challenge:
       "Give an independent artist, without a management team, the equivalent of a chief-of-staff available 24/7 — able to track their real business, not just answer generic questions.",
     solution:
-      "A vertical AI agent built on Claude, integrated with Supabase for memory and business data, Stripe for financial flows, and a Next.js interface designed for frictionless daily piloting.",
+      "A vertical AI agent built for one job, with persistent memory and frictionless daily piloting — the detailed technical architecture stays reserved for sales conversations.",
     stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
     result:
       "A vertical AI agent live in production, an autonomous chief-of-staff for independent artists — the product that embodies KAH Digital's positioning.",
@@ -41,6 +41,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       accent: "#8b5cf6",
     },
     website: "https://kah-workforce.vercel.app",
+    hideLiveLink: true,
   },
   {
     slug: "clutch",
