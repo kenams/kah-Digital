@@ -33,10 +33,9 @@ const FOLLOWUP_COPY: Record<string, {
   fr: {
     j1Subject: (n) => `Avez-vous eu le temps de voir ? — ${n}`,
     j1Body: (n, w, s, id) => `Bonjour,<br><br>
-Je vois que vous avez ouvert mon email concernant <strong>${n}</strong>.<br><br>
-J'ai préparé une <strong>page d'analyse personnalisée</strong> pour votre site — elle contient le rapport complet, les problèmes détectés, et notre proposition chiffrée.<br><br>
-C'est gratuit, sans engagement, et ça prend 2 minutes à consulter :<br><br>
-<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Voir mon analyse →</a><br><br>
+Je vois que vous avez ouvert mon email concernant <strong>${n}</strong>, sans avoir eu l'occasion de répondre.<br><br>
+Je reste dispo pour en parler 10 minutes si ça vous intéresse — sans engagement.<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 En savoir plus →</a><br><br>
 Si vous avez une question, répondez directement à cet email — je réponds le jour même.`,
     j3Subject: (n) => `Un mot rapide — ${n}`,
     j3Body: (n, w, s, id) => `Bonjour,<br><br>
@@ -64,10 +63,9 @@ Bonne continuation !`,
   en: {
     j1Subject: (n) => `Did you get a chance to look? — ${n}`,
     j1Body: (n, w, s, id) => `Hi,<br><br>
-I can see you opened my email about <strong>${n}</strong>.<br><br>
-I've prepared a <strong>personalised analysis page</strong> for your website — it contains the full report, detected issues, and our detailed proposal.<br><br>
-Free, no commitment, takes 2 minutes to read:<br><br>
-<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 See my analysis →</a><br><br>
+I can see you opened my email about <strong>${n}</strong> without getting a chance to reply.<br><br>
+Happy to chat for 10 minutes if it's of interest — no commitment.<br><br>
+<a href="${s}/api/tracking/click/${id}?target=prospect_page&redirect=${encodeURIComponent(s + '/p/' + id)}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#7c3aed);color:#fff;padding:12px 28px;border-radius:9999px;text-decoration:none;font-weight:700;">📊 Learn more →</a><br><br>
 If you have any questions, just reply — I respond the same day.`,
     j3Subject: (n) => `Quick follow-up — ${n}`,
     j3Body: (n, w, s, id) => `Hi,<br><br>

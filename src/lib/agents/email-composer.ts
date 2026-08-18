@@ -259,6 +259,17 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     body = `${opener}\n\n${pitch} ${cta}\n\nKAH Digital`;
   }
 
+  // Lien traçable discret : remplace la mention "kah-digital.ch" du corps
+  // par un vrai lien cliquable (via /api/tracking/click) quand présente,
+  // sinon on l'ajoute en petite ligne sous le texte — sans jamais afficher
+  // la page comme un audit/rapport qu'on n'a pas réellement préparé.
+  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}?target=site&redirect=${encodeURIComponent(baseUrl)}`;
+  const escapedBody = body.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const domainMention = /kah-digital\.ch/i;
+  const bodyHtml = domainMention.test(escapedBody)
+    ? escapedBody.replace(domainMention, `<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`)
+    : `${escapedBody}\n\n<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`;
+
   // HTML minimaliste — ressemble à un vrai email perso
   const html = `<!DOCTYPE html>
 <html lang="${lang}">
@@ -269,7 +280,7 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
 <tr><td>
 
   <!-- Corps email -->
-  <div style="font-size:15px;color:#1f2937;line-height:1.75;white-space:pre-line;">${body.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+  <div style="font-size:15px;color:#1f2937;line-height:1.75;white-space:pre-line;">${bodyHtml}</div>
 
   <!-- Optout discret -->
   <div style="margin-top:32px;padding-top:16px;border-top:1px solid #e5e7eb;">
