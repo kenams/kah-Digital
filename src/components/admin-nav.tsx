@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import { FiBarChart2, FiLayers, FiCreditCard, FiMessageSquare, FiTarget, FiRadio } from "react-icons/fi";
+import { FiBarChart2, FiLayers, FiCreditCard, FiMessageSquare, FiTarget, FiRadio, FiBriefcase } from "react-icons/fi";
 import { AdminSignOutButton } from "@/components/admin-signout-button";
 
 const navItems = [
@@ -33,6 +33,12 @@ const navItems = [
     icon: FiMessageSquare,
     match: (p: string, s: URLSearchParams) =>
       s.get("section") === "assistant" || p.startsWith("/admin/assistant"),
+  },
+  {
+    label: "Portfolio",
+    href: "/admin/portfolio",
+    icon: FiBriefcase,
+    match: (p: string) => p.startsWith("/admin/portfolio"),
   },
   {
     label: "Prospection",
