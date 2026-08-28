@@ -2,10 +2,19 @@ import Link from "next/link";
 import type { AssistantRecord } from "@/lib/assistant/schema";
 import type { QuotePipelineStatus, QuoteRecord } from "@/lib/quote";
 import { formatChfFromCents } from "@/lib/quote-payments";
+import { formatEur } from "@/lib/portfolio";
+
+export type PortfolioSummary = {
+  count: number;
+  clients: number;
+  billed: number;
+  collected: number;
+};
 
 type Props = {
   quotes: QuoteRecord[];
   assistantItems: AssistantRecord[];
+  portfolio: PortfolioSummary;
 };
 
 const pipelineLabels: Record<QuotePipelineStatus, string> = {
@@ -104,7 +113,7 @@ function KpiCard({ label, value, hint, tone = "default", href }: KpiProps) {
 
 type AlertItem = { label: string; count: number; href: string; tone: "rose" | "amber" | "sky" };
 
-export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
+export function AdminBusinessDashboard({ quotes, assistantItems, portfolio }: Props) {
   const quotes30d = quotes.filter((q) => isWithinDays(q.submittedAt, 30));
   const assistant30d = assistantItems.filter((a) => isWithinDays(a.submittedAt, 30));
   const wonQuotes = quotes.filter((q) => (q.pipeline ?? "new") === "won");
@@ -122,11 +131,6 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
   const hotLeads = assistantItems.filter((a) => a.score === "hot").length;
   const urgentLeads = assistantItems.filter((a) => a.score === "support_urgent").length;
   const newAssistant = assistantItems.filter((a) => a.status === "new").length;
-  const avgWonTicket = wonQuotes.length
-    ? Math.round(
-        wonQuotes.reduce((s, q) => s + Math.max(0, q.paymentTotalAmount ?? 0), 0) / wonQuotes.length
-      )
-    : 0;
   const conversionRate = quotes.length ? Math.round((qualifiedQuotes.length / quotes.length) * 100) : 0;
 
   const pipelineStats = pipelineOrder.map((status) => {
@@ -135,10 +139,6 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
     return { status, count: items.length, value: totalValue };
   });
   const maxPipelineCount = Math.max(1, ...pipelineStats.map((s) => s.count));
-
-  const focusWeb = quotes.filter((q) => (q.projectFocus ?? "web") === "web").length;
-  const focusMobile = quotes.filter((q) => q.projectFocus === "mobile").length;
-  const focusAssistant = assistantItems.filter((a) => a.intent === "project_quote").length;
 
   // Build alerts
   const alerts: AlertItem[] = [];
@@ -163,7 +163,7 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
           <p className="text-[0.68rem] uppercase tracking-[0.35em] text-white/40">Pilotage commercial</p>
           <h1 className="mt-2 text-2xl font-semibold text-white">Tableau de bord</h1>
           <p className="mt-1.5 max-w-xl text-sm text-white/55">
-            Vue unifiée — {quotes.length} demandes · {assistantItems.length} leads assistant · {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })}
+            {portfolio.count} prestation{portfolio.count > 1 ? "s" : ""} · {portfolio.clients} client{portfolio.clients > 1 ? "s" : ""} · {quotes.length} demande{quotes.length > 1 ? "s" : ""} · {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -216,28 +216,28 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
         </div>
       )}
 
-      {/* KPIs row 1 */}
+      {/* KPIs row 1 — activité réelle KAH Digital */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <KpiCard
+          label="Chiffre d'affaires"
+          value={formatEur(portfolio.billed)}
+          hint={`${portfolio.count} prestation${portfolio.count > 1 ? "s" : ""} livrée${portfolio.count > 1 ? "s" : ""} · ${portfolio.clients} client${portfolio.clients > 1 ? "s" : ""}`}
+          tone={portfolio.billed > 0 ? "emerald" : "default"}
+          href="/admin/portfolio"
+        />
+        <KpiCard
+          label="Encaissé"
+          value={formatEur(portfolio.collected)}
+          hint="Prestations marquées payées"
+          tone={portfolio.collected > 0 ? "emerald" : "default"}
+          href="/admin/portfolio"
+        />
         <KpiCard
           label="Demandes — 30 jours"
           value={String(quotes30d.length)}
           hint={`${qualifiedQuotes.length} dossiers qualifiés · ${quotes.length} au total`}
           tone={quotes30d.length > 0 ? "sky" : "default"}
           href="/admin/demandes?section=demandes&view=pipeline"
-        />
-        <KpiCard
-          label="Pipeline actif"
-          value={formatChfFromCents(activePipelineValue)}
-          hint="Valeur cumulée hors dossiers gagnés/perdus"
-          tone={activePipelineValue > 0 ? "emerald" : "default"}
-          href="/admin/demandes?section=demandes&view=kanban"
-        />
-        <KpiCard
-          label="Encaissé total"
-          value={formatChfFromCents(collectedTotal)}
-          hint={`${configuredPayments} dossiers configurés · ${activePaymentLinks} liens actifs`}
-          tone={collectedTotal > 0 ? "emerald" : "default"}
-          href="/admin/demandes?section=demandes&view=payments"
         />
         <KpiCard
           label="Assistant — à traiter"
@@ -248,32 +248,34 @@ export function AdminBusinessDashboard({ quotes, assistantItems }: Props) {
         />
       </div>
 
-      {/* KPIs row 2 */}
+      {/* KPIs row 2 — pipeline & paiements devis (Stripe) */}
       <div className="mt-3 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <KpiCard
+          label="Pipeline actif"
+          value={formatChfFromCents(activePipelineValue)}
+          hint="Valeur cumulée hors dossiers gagnés/perdus"
+          tone={activePipelineValue > 0 ? "emerald" : "default"}
+          href="/admin/demandes?section=demandes&view=kanban"
+        />
+        <KpiCard
+          label="Encaissé devis (Stripe)"
+          value={formatChfFromCents(collectedTotal)}
+          hint={`${configuredPayments} dossiers configurés · ${activePaymentLinks} liens actifs`}
+          tone={collectedTotal > 0 ? "emerald" : "default"}
+          href="/admin/demandes?section=demandes&view=payments"
+        />
         <KpiCard
           label="Reste à encaisser"
           value={formatChfFromCents(remainingTotal)}
           hint="Montant configuré non encore perçu"
-          tone={remainingTotal > 0 ? "amber" : "emerald"}
+          tone={remainingTotal > 0 ? "amber" : "default"}
           href="/admin/demandes?section=demandes&view=payments"
-        />
-        <KpiCard
-          label="Dossiers gagnés"
-          value={String(wonQuotes.length)}
-          hint={`Panier moyen : ${formatChfFromCents(avgWonTicket)}`}
-          tone={wonQuotes.length > 0 ? "emerald" : "default"}
         />
         <KpiCard
           label="Taux de conversion"
           value={`${conversionRate}%`}
-          hint="Part des demandes passées au stade qualifié"
+          hint={`${wonQuotes.length} gagné${wonQuotes.length > 1 ? "s" : ""} · part des demandes qualifiées`}
           tone={conversionRate >= 50 ? "emerald" : conversionRate >= 25 ? "amber" : "default"}
-        />
-        <KpiCard
-          label="Mix commercial"
-          value={`Web ${focusWeb} · Mobile ${focusMobile}`}
-          hint={`${focusAssistant} projets via assistant IA`}
-          tone="default"
         />
       </div>
 
