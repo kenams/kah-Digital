@@ -65,7 +65,7 @@ const COPY = {
         desc: "Chatbot formé sur votre base de connaissance. Répond instantanément 24/7, escalade proprement vers votre équipe si besoin. Compatible Slack, WhatsApp, site web, widget.",
         metrics: ["Réponse < 5 secondes", "Escalade automatique", "Base de connaissance sur mesure"],
         roi: "-65% de charge support en moyenne",
-        price: "890€",
+        price: "1 690€",
         forWho: "E-commerce, SaaS, services",
       },
       {
@@ -168,7 +168,7 @@ const COPY = {
         name: "Support Agent", tagline: "70% of tickets resolved without human intervention.",
         desc: "Chatbot trained on your knowledge base. Answers instantly 24/7, escalates cleanly to your team when needed. Compatible with Slack, WhatsApp, website, widget.",
         metrics: ["Response < 5 seconds", "Automatic escalation", "Custom knowledge base"],
-        roi: "-65% support load on average", price: "€890", forWho: "E-commerce, SaaS, services",
+        roi: "-65% support load on average", price: "€1 690", forWho: "E-commerce, SaaS, services",
       },
       {
         icon: FiFileText, accent: "#8b5cf6", accentBg: "#8b5cf610", badge: "Quotes",
@@ -258,7 +258,7 @@ const COPY = {
         name: "Support-Agent", tagline: "70% der Tickets ohne menschliche Intervention gelöst.",
         desc: "Chatbot auf Ihrer Wissensbasis trainiert. Antwortet sofort 24/7, eskaliert sauber zu Ihrem Team bei Bedarf. Kompatibel mit Slack, WhatsApp, Website, Widget.",
         metrics: ["Antwort < 5 Sekunden", "Automatische Eskalation", "Individuelle Wissensbasis"],
-        roi: "-65% Support-Aufwand im Schnitt", price: "890€", forWho: "E-Commerce, SaaS, Dienstleistungen",
+        roi: "-65% Support-Aufwand im Schnitt", price: "1 690€", forWho: "E-Commerce, SaaS, Dienstleistungen",
       },
       {
         icon: FiFileText, accent: "#8b5cf6", accentBg: "#8b5cf610", badge: "Angebote",

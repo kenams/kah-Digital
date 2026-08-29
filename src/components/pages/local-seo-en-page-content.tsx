@@ -32,7 +32,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
       { q: "Do you work with London businesses remotely?", a: "Yes, fully remote. We're based in Lausanne, Switzerland. The entire process — briefing, build, deploy — runs online. No London agency overhead." },
       { q: "How fast can you deploy AI automation for a London company?", a: "10 days from kickoff to live deployment. First measurable results at D+30. No 6-month workshop, no unnecessary complexity." },
       { q: "What AI use cases work best for UK businesses?", a: "Lead qualification (only hot leads reach your sales team), 24/7 customer support with clean human handoff, email automation, and CRM enrichment. We identify your top 3 highest-ROI automations in the free audit." },
-      { q: "What does it cost to build an AI agent?", a: "AI chatbot add-on from £349. Full AI system (Premium AI plan) from £890 — includes website, chatbot, lead automation, and 3 months priority support." },
+      { q: "What does it cost to build an AI agent?", a: "AI chatbot add-on from £349. Full AI system (Premium AI plan) from £1,690 — includes website, chatbot, lead automation, and 3 months priority support." },
     ],
   },
   "web-development-london": {
@@ -47,7 +47,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Why use a Swiss studio instead of a London agency?", a: "Swiss precision at a fraction of London agency rates. You talk directly to the founder — no account manager relay. Fixed price, 14-day delivery, 100% code ownership. No monthly retainers." },
-      { q: "How much does a business website cost in London?", a: "Starter from £142 (landing page, 5 days). Business from £390 (up to 6 pages, SEO, 14 days). Premium AI from £890 (full system with AI chatbot). Fixed price, no surprises." },
+      { q: "How much does a business website cost in London?", a: "Starter from £142 (landing page, 5 days). Business from £790 (up to 6 pages, SEO, 14 days). Premium AI from £1,690 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "What's included in the Business plan?", a: "Up to 6 pages, full technical SEO, SaaS-level premium design, animations, contact form, Core Web Vitals 95+, 3 revisions, 2 months support, delivered in 14 days." },
       { q: "Do you deliver the source code?", a: "Yes, 100%. Code, domain, hosting — everything is yours on delivery. No vendor lock-in, no monthly fees, no dependency of any kind." },
     ],
@@ -65,7 +65,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     faq: [
       { q: "How does working with a European AI agency benefit NYC businesses?", a: "Access to Swiss-precision execution at rates well below Manhattan agency pricing. Direct founder access, no middleman, fixed price, 10-day deployment. We operate across US, Europe, and Africa." },
       { q: "What AI automations work for New York companies?", a: "Lead scoring and qualification, 24/7 customer support with clean escalation, email drip automation, CRM enrichment, document processing, appointment scheduling. We audit your workflows and identify the 3 highest-ROI automations free." },
-      { q: "What does a custom GPT-4 agent cost?", a: "AI chatbot add-on from $349. Full AI system (Premium AI) from $890 — includes website, chatbot, lead automation, acquisition strategy, and 3 months priority support." },
+      { q: "What does a custom GPT-4 agent cost?", a: "AI chatbot add-on from $349. Full AI system (Premium AI) from $1,690 — includes website, chatbot, lead automation, acquisition strategy, and 3 months priority support." },
       { q: "Can you integrate with our existing CRM and tools?", a: "Yes — Salesforce, HubSpot, Pipedrive, Notion, Slack, and virtually any tool via direct API, Zapier, Make, or n8n. Full integration is scoped before any commitment." },
     ],
   },
@@ -80,7 +80,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     sectors: ["SaaS & Tech Startups", "FinTech & WealthTech", "E-Commerce & D2C", "Agencies & Consultants", "Media & Publishing", "Real Estate & PropTech"],
     proofLine: "Reply within 24h · Fixed price · 100% ownership",
     faq: [
-      { q: "What does a business website cost in New York?", a: "Starter from $142 (landing page, 5 days). Business from $390 (6 pages, SEO, 14 days). Premium AI from $890 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
+      { q: "What does a business website cost in New York?", a: "Starter from $142 (landing page, 5 days). Business from $790 (6 pages, SEO, 14 days). Premium AI from $1,690 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
       { q: "Why work with a Swiss studio instead of a NYC agency?", a: "Swiss execution quality, without NYC agency pricing. You work directly with the founder. Fixed price, fast turnaround, 100% yours. No retainers, no lock-in." },
       { q: "Can you build a SaaS MVP for a New York startup?", a: "Yes. Functional V1 in 4 weeks on Next.js 15 + Supabase + TypeScript. The same stack as well-funded startups. Scalable from day one, no rewrite in 6 months." },
       { q: "Do you handle SEO for the US market?", a: "Yes, full technical SEO, structured data, Core Web Vitals 95+, clean URLs. Included from the Business plan. Optimised for Google US." },
@@ -98,7 +98,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Do you build Arabic-English bilingual websites?", a: "Yes, we build fully bilingual and RTL-ready websites in Arabic and English (and French). Proper hreflang, clean URL structure, SEO in both languages." },
-      { q: "How much does a business website cost in Dubai?", a: "Starter from $142 (landing page, 5 days). Business from $390 (up to 6 pages, full SEO, 14 days). Premium AI from $890 (complete system with AI chatbot). Fixed price, no surprises." },
+      { q: "How much does a business website cost in Dubai?", a: "Starter from $142 (landing page, 5 days). Business from $790 (up to 6 pages, full SEO, 14 days). Premium AI from $1,690 (complete system with AI chatbot). Fixed price, no surprises." },
       { q: "How fast can you deliver a website for a UAE business?", a: "Starter in 5 business days. Business website in 14 days. All timelines are confirmed in writing before kickoff. No delays." },
       { q: "Do you handle SEO for the UAE and GCC market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean Arabic and English URLs. Included from the Business plan. Optimised for Google UAE." },
     ],
@@ -117,7 +117,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
       { q: "Do you build AI chatbots in Arabic for Dubai businesses?", a: "Yes, our GPT-4 agents can be trained in Arabic, English, and French. Ideal for Dubai's multilingual customer base." },
       { q: "How quickly can KAH Digital deploy AI for a UAE company?", a: "10 days from kickoff to production. We work fully remote — brief online, deploy globally. No local office required, no setup friction." },
       { q: "What AI use cases work for Dubai real estate and hospitality?", a: "Lead qualification for property inquiries, 24/7 multilingual guest support, automated booking follow-ups, CRM enrichment. High ROI sectors we've already worked in." },
-      { q: "What does it cost?", a: "AI chatbot add-on from $349. Full AI system from $890 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
+      { q: "What does it cost?", a: "AI chatbot add-on from $349. Full AI system from $1,690 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
     ],
   },
   "web-development-geneva": {
@@ -132,7 +132,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Do you work with Geneva-based clients?", a: "Yes, we're based in Lausanne — 40 minutes from Geneva. We meet in person or work fully remote, whichever suits you. No difference in price or quality." },
-      { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 149 (landing page, 5 days). Business CHF 420 (up to 6 pages, SEO, 14 days). Premium AI CHF 950 (full AI system). Fixed price, no hidden costs." },
+      { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 149 (landing page, 5 days). Business CHF 790 (up to 6 pages, SEO, 14 days). Premium AI CHF 1'690 (full AI system). Fixed price, no hidden costs." },
       { q: "Can you build multilingual sites for Geneva's international audience?", a: "Yes — French, English, German, and more. hreflang, clean URL structure, SEO per language. Standard on Business and above." },
       { q: "Do you work with NGOs and international organisations?", a: "Yes. We have experience with compliance-sensitive sectors and can adapt our process to your procurement constraints." },
     ],
@@ -149,7 +149,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Based in Lausanne · Reply within 24h · Fixed price",
     faq: [
       { q: "Are you based in Lausanne?", a: "Yes, KAH Digital is based in Lausanne. You can meet us in person, or we work fully remote — same quality, same price." },
-      { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 149 (landing page, 5 days). Business from CHF 420 (6 pages, SEO, 14 days). Premium AI from CHF 950 (full system with AI chatbot). Fixed price, no surprises." },
+      { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 149 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 14 days). Premium AI from CHF 1'690 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
       { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
     ],
@@ -271,8 +271,8 @@ export function LocalSeoEnPageContent({ data }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "$142", sub: "Landing page · 5 days" },
-              { label: "Business", price: "$390", sub: "Up to 6 pages · 14 days · SEO" },
-              { label: "Premium AI", price: "$890", sub: "Full AI system · 28 days" },
+              { label: "Business", price: "$790", sub: "Up to 6 pages · 14 days · SEO" },
+              { label: "Premium AI", price: "$1,690", sub: "Full AI system · 28 days" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">
                 <div className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">{item.label}</div>

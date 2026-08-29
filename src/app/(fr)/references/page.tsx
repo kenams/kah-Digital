@@ -1,151 +1,172 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
+import { FiArrowRight, FiCheck, FiExternalLink, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Références clients — Résultats concrets | KAH Digital",
+  title: "Références — Projets livrés, en ligne | KAH Digital",
   description:
-    "Cas clients réels : +30% réservations restaurant Genève, 4 nouveaux clients mois 1 pour une coach, dashboard PME en prod depuis 4 mois. Voyez ce qu'on peut faire pour vous.",
+    "Des projets réels livrés par KAH Digital : site vitrine avec réservation, boutique e-commerce Stripe, refonte avec prise de rendez-vous automatisée. Tout est en ligne — ouvrez et jugez.",
   keywords: [
     "références agence web",
-    "cas clients site web",
-    "résultats création site web",
-    "témoignages clients KAH Digital",
-    "agence web résultats prouvés",
+    "projets site web KAH Digital",
+    "portfolio création site web",
+    "réalisations agence web Suisse",
+    "exemples sites livrés",
   ],
   alternates: { canonical: "https://kah-digital.ch/references" },
   openGraph: {
-    title: "Références clients — Résultats concrets | KAH Digital",
+    title: "Références — Projets livrés, en ligne | KAH Digital",
     description:
-      "Cas clients réels avec résultats chiffrés. Site vitrine, app métier, refonte. Livraison en 1-3 semaines.",
+      "Projets réels : site vitrine + réservation, e-commerce Stripe, refonte + RDV automatisé. En ligne et vérifiables.",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Références clients KAH Digital",
-  description: "Cas clients avec résultats chiffrés — sites web, applications et solutions digitales livrés par KAH Digital",
+  name: "Projets livrés par KAH Digital",
+  description:
+    "Sites web et applications livrés par KAH Digital, en ligne et accessibles publiquement.",
   itemListElement: [
     {
       "@type": "ListItem",
       position: 1,
-      name: "Ashanti Beauty — Site vitrine premium",
-      description: "Site vitrine premium livré en 1 semaine pour un institut de beauté à Balma. Réservations Planity intégrées, vidéo HD mobile et desktop.",
+      name: "BCS Nettoyage — Site vitrine + réservation en ligne",
+      url: "https://bcs-nettoyage.fr",
+      description:
+        "Site vitrine Next.js pour une entreprise de nettoyage à Toulouse : services, tarifs, galerie avant/après et réservation de créneau en ligne. En production sur son domaine.",
     },
     {
       "@type": "ListItem",
       position: 2,
-      name: "Coach business Lyon — +4 clients le premier mois",
-      description: "Site vitrine professionnel livré en 3 semaines. 4 nouveaux clients obtenus le premier mois suivant la mise en ligne.",
+      name: "Vellio Shop — Boutique e-commerce",
+      url: "https://vellio.kah-digital.ch",
+      description:
+        "Boutique Next.js avec paiement Stripe en production, 21 produits, emails de confirmation automatiques et design premium.",
     },
     {
       "@type": "ListItem",
       position: 3,
-      name: "Restaurant Genève — +30% réservations en 2 mois",
-      description: "Refonte complète site restaurant. Site rapide, mobile-first. Réservations en hausse de 30% deux mois après la mise en ligne.",
+      name: "DSE Yana — Refonte + prise de rendez-vous automatisée",
+      url: "https://dse-yana-premium-client.vercel.app",
+      description:
+        "Refonte du site d'un bureau d'études fluides en Guyane : réservation d'appel de cadrage en autonomie (créneaux, confirmation, rappel), espace admin.",
     },
     {
       "@type": "ListItem",
       position: 4,
-      name: "PME Lausanne — Dashboard app métier en prod",
-      description: "Application de gestion interne livrée en 6 semaines. En production depuis 4 mois, zéro bug signalé.",
+      name: "Kotizy — Application de tontines digitales",
+      url: "https://tontineapp-web.vercel.app",
+      description:
+        "Application de gestion de tontines : cycles automatisés, notifications, tableau de bord communautaire.",
     },
   ],
 };
 
-const CASES = [
+type Ref = {
+  sector: string;
+  location: string;
+  type: string;
+  name: string;
+  challenge: string;
+  solution: string;
+  facts: { value: string; label: string }[];
+  url: string;
+  urlLabel: string;
+  color: string;
+  accentColor: string;
+  borderColor: string;
+};
+
+const CASES: Ref[] = [
   {
-    sector: "Institut de beauté",
-    location: "Balma, France",
-    type: "Site vitrine premium",
-    name: "Ashanti Beauty",
+    sector: "Entreprise de nettoyage",
+    location: "Toulouse, France",
+    type: "Site vitrine + réservation en ligne",
+    name: "BCS Nettoyage",
     challenge:
-      "Un salon de beauté haut de gamme sans présence en ligne cohérente avec son positionnement. Les clients ne pouvaient pas visualiser les prestations ni réserver facilement.",
+      "Acquisition 100 % au téléphone et au bouche-à-oreille. Pas de site pour rassurer un nouveau client ni prendre une demande de rendez-vous en dehors des heures d'appel.",
     solution:
-      "Site Next.js premium avec vidéo hero HD responsive, 5 pôles de prestations cliquables, boutons Planity sur chaque offre, galerie, avis clients et Google Maps.",
-    metrics: [
-      { value: "1 sem.", label: "Délai de livraison" },
-      { value: "5", label: "Pôles de prestations" },
-      { value: "9", label: "Partenaires intégrés" },
+      "Site vitrine sur mesure centré sur les résultats (galerie avant/après), tarifs transparents par prestation, formulaire de réservation avec date et créneau, raccourcis WhatsApp / appel / email. Next.js, déployé sur Vercel avec domaine propre.",
+    facts: [
+      { value: "≈ 1 sem.", label: "Livraison" },
+      { value: "En ligne", label: "Sur son domaine" },
+      { value: "Réservation", label: "Créneau en ligne" },
     ],
-    quote: "Un site qui reflète enfin notre image. Les clientes nous disent qu'elles ont réservé directement depuis le site.",
-    author: "Direction Ashanti Beauty",
-    color: "from-pink-500/20 to-rose-500/20",
-    accentColor: "text-pink-400",
-    borderColor: "border-pink-500/20",
-  },
-  {
-    sector: "Coach business indépendante",
-    location: "Lyon, France",
-    type: "Site vitrine professionnel",
-    name: "Coaching & Développement",
-    challenge:
-      "Aucune vitrine digitale. Acquisition 100% bouche à oreille, impossible à scaler. Besoin d'un site qui présente l'offre clairement et incite à prendre contact.",
-    solution:
-      "Site vitrine 5 pages : accueil orienté résultats, services détaillés, parcours, témoignages et formulaire de contact. Livré en 3 semaines, SEO de base inclus.",
-    metrics: [
-      { value: "3 sem.", label: "Délai de livraison" },
-      { value: "+4", label: "Clients mois 1" },
-      { value: "5★", label: "Satisfaction" },
-    ],
-    quote:
-      "En 3 semaines j'avais un site vitrine propre et professionnel. KAH Digital a cadré rapidement ce que je voulais, sans réunions interminables. Résultat : 4 nouveaux clients le premier mois.",
-    author: "S. M. — Coach business, Lyon",
-    color: "from-blue-500/20 to-violet-500/20",
-    accentColor: "text-blue-400",
-    borderColor: "border-blue-500/20",
-  },
-  {
-    sector: "Restauration",
-    location: "Genève, Suisse",
-    type: "Refonte site web",
-    name: "Restaurant — Genève",
-    challenge:
-      "Site existant lent, non mobile, sans intégration de réservation. Perte de clients potentiels sur Google. Image qui ne correspondait plus au restaurant.",
-    solution:
-      "Refonte complète : nouveau design moderne, site ultra-rapide (100/100 Lighthouse), compatible mobile, intégration TheFork/réservation en ligne et carte dynamique.",
-    metrics: [
-      { value: "+30%", label: "Réservations en 2 mois" },
-      { value: "100/100", label: "Score Lighthouse" },
-      { value: "2 sem.", label: "Délai de livraison" },
-    ],
-    quote:
-      "Notre site était catastrophique. Le nouveau est rapide, adapté mobile, et les réservations ont augmenté de 30% en deux mois. Devis clair, livraison dans les délais.",
-    author: "A. B. — Restaurateur, Genève",
-    color: "from-emerald-500/20 to-teal-500/20",
+    url: "https://bcs-nettoyage.fr",
+    urlLabel: "bcs-nettoyage.fr",
+    color: "from-emerald-500/15 to-teal-500/10",
     accentColor: "text-emerald-400",
     borderColor: "border-emerald-500/20",
   },
   {
-    sector: "PME / Industrie",
-    location: "Lausanne, Suisse",
-    type: "Application métier sur mesure",
-    name: "PME — Lausanne",
+    sector: "E-commerce · Maison & design",
+    location: "En ligne",
+    type: "Boutique e-commerce",
+    name: "Vellio Shop",
     challenge:
-      "Gestion interne sur Excel et emails. Perte de temps, erreurs de saisie, impossibilité de travailler à plusieurs en simultané. Besoin d'un outil digital fiable pour la saison.",
+      "Lancer une marque de sélection contemporaine avec une vraie boutique en ligne — design premium, paiement fiable, budget maîtrisé.",
     solution:
-      "Dashboard métier sur mesure : authentification sécurisée, gestion des plannings, suivi des dossiers clients, export PDF et accès multi-utilisateurs. Livré en 6 semaines.",
-    metrics: [
-      { value: "6 sem.", label: "Délai de livraison" },
-      { value: "4 mois", label: "En prod, zéro bug" },
-      { value: "100%", label: "Délai respecté" },
+      "Next.js App Router, Stripe Checkout en mode live (ventes réelles dès le jour 1), catalogue typé de 21 produits en 8 catégories, emails transactionnels Resend, déploiement continu Vercel.",
+    facts: [
+      { value: "21", label: "Produits en ligne" },
+      { value: "Stripe Live", label: "Paiements réels" },
+      { value: "≈ 3 sem.", label: "Livraison" },
     ],
-    quote:
-      "KAH Digital a créé notre application en 6 semaines. Très réactif, explique bien les choix techniques. On a pu lancer notre saison avec l'outil en main.",
-    author: "C. R. — Directrice opérationnelle, PME Lausanne",
-    color: "from-amber-500/20 to-orange-500/20",
+    url: "https://vellio.kah-digital.ch",
+    urlLabel: "vellio.kah-digital.ch",
+    color: "from-amber-500/12 to-orange-500/8",
     accentColor: "text-amber-400",
     borderColor: "border-amber-500/20",
+  },
+  {
+    sector: "Bureau d'études fluides",
+    location: "Guyane française",
+    type: "Refonte + rendez-vous automatisé",
+    name: "DSE Yana",
+    challenge:
+      "Un site daté qui ne reflétait plus le niveau du bureau, et aucun moyen pour un client de réserver un premier échange sans jouer au ping-pong d'emails.",
+    solution:
+      "Refonte complète (identité, contenu, SEO), et surtout une prise de rendez-vous en autonomie : le client choisit son créneau, le valide, reçoit sa confirmation avec fichier agenda et lien d'annulation. Rappel automatique la veille. Espace admin pour les demandes et les RDV.",
+    facts: [
+      { value: "Refonte", label: "Site complet" },
+      { value: "RDV", label: "En autonomie" },
+      { value: "Rappel", label: "Automatique la veille" },
+    ],
+    url: "https://dse-yana-premium-client.vercel.app",
+    urlLabel: "dse-yana-premium-client.vercel.app",
+    color: "from-violet-500/15 to-fuchsia-500/8",
+    accentColor: "text-violet-400",
+    borderColor: "border-violet-500/20",
+  },
+  {
+    sector: "Application · Finance communautaire",
+    location: "En ligne",
+    type: "Application métier",
+    name: "Kotizy",
+    challenge:
+      "Digitaliser la tontine — l'épargne rotative entre proches — avec des cycles fiables, des relances et une vue claire pour tout le groupe.",
+    solution:
+      "Application web : cycles de tontine automatisés, notifications, tableau de bord communautaire, gestion des paiements. Next.js, Supabase, déploiement Vercel.",
+    facts: [
+      { value: "Cycles", label: "Automatisés" },
+      { value: "Notifs", label: "Relances intégrées" },
+      { value: "En ligne", label: "Application live" },
+    ],
+    url: "https://tontineapp-web.vercel.app",
+    urlLabel: "tontineapp-web.vercel.app",
+    color: "from-blue-500/15 to-cyan-500/8",
+    accentColor: "text-blue-400",
+    borderColor: "border-blue-500/20",
   },
 ];
 
 const GUARANTEES = [
   "Devis gratuit et lisible sous 24h",
-  "Délai et budget respectés",
-  "Livraison ou remboursement",
-  "Support inclus 30 jours après livraison",
+  "Prix fixe confirmé avant de commencer",
+  "Paiement après livraison",
+  "Code source livré — le site vous appartient",
 ];
 
 export default function ReferencesPage() {
@@ -159,13 +180,14 @@ export default function ReferencesPage() {
         <div className="absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="relative mx-auto max-w-3xl px-4 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm text-emerald-300">
-            <FiCheck size={13} /> Résultats vérifiables
+            <FiCheck size={13} /> En ligne, vérifiable
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Ce que nos clients ont<br />obtenu concrètement
+            Ce qu&apos;on a livré.<br />Ouvrez, jugez.
           </h1>
           <p className="mb-8 text-lg text-gray-400 leading-relaxed">
-            Pas de mockups inventés. Des cas réels — avec les délais, les chiffres et les mots de nos clients.
+            Pas de mockups inventés, pas de faux avis. Des projets réels, en production, que vous
+            pouvez ouvrir maintenant dans un nouvel onglet.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
@@ -175,7 +197,7 @@ export default function ReferencesPage() {
               Discuter de mon projet <FiArrowRight size={15} />
             </Link>
             <a
-              href="https://wa.me/33759558414?text=Bonjour%2C%20j'ai%20vu%20vos%20références%20et%20j'aimerais%20discuter%20de%20mon%20projet."
+              href="https://wa.me/33759558414?text=Bonjour%2C%20j'ai%20vu%20vos%20r%C3%A9f%C3%A9rences%20et%20j'aimerais%20discuter%20de%20mon%20projet."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
@@ -186,18 +208,18 @@ export default function ReferencesPage() {
         </div>
       </section>
 
-      {/* Stats strip */}
+      {/* Stats strip — factuels uniquement */}
       <section className="border-b border-white/6 py-10">
         <div className="mx-auto max-w-4xl px-4">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
               { value: "1–6 sem.", label: "Délai de livraison" },
-              { value: "30+", label: "Projets livrés" },
-              { value: "5★", label: "Note moyenne clients" },
-              { value: "0", label: "Dépassements de budget" },
+              { value: "Prix fixe", label: "Confirmé avant de commencer" },
+              { value: "Paiement", label: "Après livraison" },
+              { value: "Code source", label: "Livré, le site est à vous" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-2xl font-extrabold text-white sm:text-3xl">{stat.value}</p>
+                <p className="text-2xl font-extrabold text-white sm:text-[1.7rem]">{stat.value}</p>
                 <p className="mt-1 text-xs text-gray-500">{stat.label}</p>
               </div>
             ))}
@@ -205,9 +227,9 @@ export default function ReferencesPage() {
         </div>
       </section>
 
-      {/* Case studies */}
+      {/* Projets */}
       <section className="mx-auto max-w-5xl px-4 py-20 space-y-16">
-        {CASES.map((c, i) => (
+        {CASES.map((c) => (
           <div key={c.name} className={`rounded-2xl border ${c.borderColor} bg-gradient-to-br ${c.color} p-8`}>
             <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
               <div>
@@ -218,47 +240,65 @@ export default function ReferencesPage() {
                 </div>
                 <h2 className="text-xl font-bold text-white">{c.name}</h2>
               </div>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <svg key={j} viewBox="0 0 24 24" fill="#fbbf24" className="h-4 w-4">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                ))}
-              </div>
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Ouvrir le site <FiExternalLink size={13} />
+              </a>
             </div>
 
             <div className="mb-6 grid gap-6 sm:grid-cols-2">
               <div>
-                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">Problème</p>
+                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">Le besoin</p>
                 <p className="text-sm text-gray-300 leading-relaxed">{c.challenge}</p>
               </div>
               <div>
-                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">Solution livrée</p>
+                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">Ce qui a été livré</p>
                 <p className="text-sm text-gray-300 leading-relaxed">{c.solution}</p>
               </div>
             </div>
 
             <div className="mb-6 grid grid-cols-3 gap-4 rounded-xl border border-white/8 bg-black/20 p-4">
-              {c.metrics.map((m) => (
+              {c.facts.map((m) => (
                 <div key={m.label} className="text-center">
-                  <p className={`text-xl font-extrabold ${c.accentColor}`}>{m.value}</p>
+                  <p className={`text-lg font-extrabold ${c.accentColor}`}>{m.value}</p>
                   <p className="mt-0.5 text-xs text-gray-500">{m.label}</p>
                 </div>
               ))}
             </div>
 
-            <blockquote className="rounded-xl border border-white/8 bg-black/20 p-5">
-              <p className="mb-3 text-sm italic leading-relaxed text-gray-300">"{c.quote}"</p>
-              <p className="text-xs font-semibold text-gray-500">— {c.author}</p>
-            </blockquote>
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/8 bg-black/20 px-5 py-3 text-sm text-gray-300 transition hover:border-white/20 hover:text-white"
+            >
+              <span className="text-gray-500">En ligne :</span>
+              <span className="font-mono">{c.urlLabel}</span>
+              <FiExternalLink size={12} />
+            </a>
           </div>
         ))}
       </section>
 
-      {/* Guarantees */}
+      {/* Avis clients — transparent */}
+      <section className="border-t border-white/6 py-14">
+        <div className="mx-auto max-w-2xl px-4 text-center">
+          <p className="text-sm text-gray-400 leading-relaxed">
+            <strong className="text-white">Les avis clients arrivent.</strong> On préfère afficher
+            zéro témoignage que d&apos;en inventer. En attendant, chaque projet ci-dessus est
+            public — ouvrez-les, testez la réservation, regardez la vitesse de chargement.
+          </p>
+        </div>
+      </section>
+
+      {/* Ce qui est garanti */}
       <section className="border-t border-white/6 py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="mb-8 text-2xl font-bold text-white">Ce que vous pouvez attendre à chaque fois</h2>
+          <h2 className="mb-8 text-2xl font-bold text-white">Ce qui est garanti à chaque projet</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {GUARANTEES.map((g) => (
               <div key={g} className="flex items-center gap-3 rounded-xl border border-white/8 bg-gray-900/50 p-4 text-left">
@@ -285,7 +325,7 @@ export default function ReferencesPage() {
               Obtenir mon devis gratuit <FiArrowRight size={16} />
             </Link>
             <a
-              href="https://wa.me/33759558414?text=Bonjour%2C%20j'ai%20vu%20vos%20références%20et%20j'aimerais%20discuter%20de%20mon%20projet."
+              href="https://wa.me/33759558414?text=Bonjour%2C%20j'ai%20vu%20vos%20r%C3%A9f%C3%A9rences%20et%20j'aimerais%20discuter%20de%20mon%20projet."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-bold text-white shadow-lg shadow-black/20 transition hover:brightness-110"
@@ -293,7 +333,7 @@ export default function ReferencesPage() {
               <FiMessageCircle size={16} /> WhatsApp
             </a>
           </div>
-          <p className="mt-4 text-xs text-gray-600">Réponse sous 24h · Sans engagement · France & Suisse</p>
+          <p className="mt-4 text-xs text-gray-600">Réponse sous 24h · Sans engagement · France &amp; Suisse</p>
         </div>
       </section>
     </div>

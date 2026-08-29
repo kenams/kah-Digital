@@ -43,7 +43,7 @@ const faqJsonLd = {
       "name": "Was kostet KI-Automatisierung für ein KMU?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ein einfacher KI-Chatbot ist ab CHF/€ 349 erhältlich. Ein vollständiges Automatisierungssystem (Lead-Qualifizierung + Support + E-Mail) beginnt ab CHF/€ 890. Die laufenden Kosten (API-Nutzung) betragen typischerweise CHF/€ 30–80 pro Monat für KMU-Volumen."
+        "text": "Ein einfacher KI-Chatbot ist ab CHF/€ 349 erhältlich. Ein vollständiges Automatisierungssystem (Lead-Qualifizierung + Support + E-Mail) beginnt ab CHF/€ 1 690. Die laufenden Kosten (API-Nutzung) betragen typischerweise CHF/€ 30–80 pro Monat für KMU-Volumen."
       }
     },
     {
@@ -229,7 +229,7 @@ export default function KiAutomatisierungKMUPage() {
             {[
               { type: "Einfacher KI-Chatbot", price: "ab CHF/€ 349", timeline: "5–7 Tage", note: "FAQ, Produkt-Info, Kontaktweiterleitung" },
               { type: "Lead-Qualifizierungsagent", price: "ab CHF/€ 590", timeline: "7–10 Tage", note: "CRM-Integration, Scoring, Auto-Antwort" },
-              { type: "Vollständiges Automatisierungssystem", price: "ab CHF/€ 890", timeline: "10–15 Tage", note: "Support + Lead + E-Mail kombiniert" },
+              { type: "Vollständiges Automatisierungssystem", price: "ab CHF/€ 1 690", timeline: "10–15 Tage", note: "Support + Lead + E-Mail kombiniert" },
               { type: "Dokumentenverarbeitung + ERP-Sync", price: "ab CHF/€ 1.200", timeline: "15–20 Tage", note: "OCR, Extraktion, Systemintegration" },
             ].map((item) => (
               <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900/60 p-5">

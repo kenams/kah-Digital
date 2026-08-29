@@ -121,7 +121,7 @@ const faqs = [
 ];
 
 const stats = [
-  { label: "Premium projects", value: "70+" },
+  { label: "Projects & systems shipped", value: "20+" },
   { label: "Satisfaction", value: "9.6/10" },
   { label: "Average timeline", value: "4-6 weeks" },
 ];

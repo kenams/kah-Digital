@@ -112,7 +112,7 @@ const faqs = [
 ];
 
 const stats = [
-  { label: "Projets livrés", value: "70+" },
+  { label: "Projets & systèmes livrés", value: "20+" },
   { label: "Satisfaction client", value: "9.6/10" },
   { label: "Délai maîtrisé", value: "4–6 semaines" },
 ];

@@ -30,7 +30,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     proofLine: "Antwort in 24h · Kostenlose Offerte · Unverbindlich",
     faq: [
       { q: "Arbeiten Sie mit Kunden in Zürich?", a: "Ja, wir arbeiten remote für ganz Zürich und die Deutschschweiz. Der gesamte Prozess läuft online — Briefing per Video, Lieferung digital. Bei Bedarf kommen wir nach Zürich." },
-      { q: "Was kostet eine Website für ein Zürcher Unternehmen?", a: "Starter ab CHF 149 (Landing Page, 5 Tage). Business ab CHF 420 (bis 6 Seiten, 14 Tage, SEO inklusive). Premium AI ab CHF 950 (komplettes System mit KI-Automatisierung). Fester Preis garantiert." },
+      { q: "Was kostet eine Website für ein Zürcher Unternehmen?", a: "Starter ab CHF 149 (Landing Page, 5 Tage). Business ab CHF 790 (bis 6 Seiten, 14 Tage, SEO inklusive). Premium AI ab CHF 1'690 (komplettes System mit KI-Automatisierung). Fester Preis garantiert." },
       { q: "Wie lange dauert die Entwicklung?", a: "Starter: 5 Werktage. Business-Website: 14 Tage. Individuelle Web-App: 4-6 Wochen. Alle Fristen werden vor Projektbeginn schriftlich fixiert." },
       { q: "Liefern Sie den kompletten Quellcode?", a: "Ja, 100%. Code, Domain, Hosting — alles gehört Ihnen. Kein Lock-in, keine monatlichen Gebühren, keine Anbieterabhängigkeit." },
     ],
@@ -48,7 +48,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Was automatisiert eine KI-Agentur für mein Zürcher Unternehmen?", a: "Lead-Qualifizierung, Kundensupport 24/7, E-Mail-Automatisierung, CRM-Updates, Dokumentenverarbeitung, intelligentes Routing. Wir identifizieren die 3 ROI-stärksten Anwendungsfälle im kostenlosen Audit." },
       { q: "Wie schnell ist die KI einsatzbereit?", a: "Deployment in 10 Tagen. Erste messbare Ergebnisse in 30 Tagen. Kein 6-Monat-Workshop, keine unnötige Komplexität." },
-      { q: "Was kostet eine KI-Automatisierung?", a: "KI-Chatbot ab CHF 380. Vollautomatisiertes Lead-System im Premium AI Paket ab CHF 950. Fester Preis, keine versteckten Kosten." },
+      { q: "Was kostet eine KI-Automatisierung?", a: "KI-Chatbot ab CHF 380. Vollautomatisiertes Lead-System im Premium AI Paket ab CHF 1'690. Fester Preis, keine versteckten Kosten." },
       { q: "Funktioniert die KI mit unserem bestehenden CRM?", a: "Ja, wir integrieren in Salesforce, HubSpot, Pipedrive, Notion und alle gängigen Tools via API oder Zapier/Make/n8n." },
     ],
   },
@@ -64,7 +64,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     proofLine: "Antwort in 24h · Kostenlose Offerte · Fester Preis",
     faq: [
       { q: "Arbeiten Sie mit Kunden in München remote?", a: "Ja, der gesamte Prozess läuft online. Briefing per Video, wöchentliche Updates, Lieferung digital. Kein Münchener Agenturaufschlag." },
-      { q: "Was kostet eine Website für ein Münchner Unternehmen?", a: "Starter ab €142 (Landing Page, 5 Tage). Business ab €390 (bis 6 Seiten, 14 Tage). Premium AI ab €890 (komplettes System). Fester Preis, keine Überraschungen." },
+      { q: "Was kostet eine Website für ein Münchner Unternehmen?", a: "Starter ab €142 (Landing Page, 5 Tage). Business ab €790 (bis 6 Seiten, 14 Tage). Premium AI ab €1 690 (komplettes System). Fester Preis, keine Überraschungen." },
       { q: "Warum einen Schweizer Studio statt einer Münchner Agentur?", a: "Schweizer Qualität zu einem Bruchteil der lokalen Agenturpreise. Direkt zum Gründer, kein Account Manager, kein Overhead. Ergebnisorientiert, nicht stundenbezogen." },
       { q: "Liefern Sie SEO für den deutschen Markt?", a: "Ja, technisches SEO, strukturierte Daten, Core Web Vitals 95+, saubere URLs — alles inklusive ab Business. Suchmaschinen-optimiert für Google Deutschland." },
     ],
@@ -82,7 +82,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Warum KAH Digital für ein Berliner Startup?", a: "Wir kennen die Sprache der Startups: schnell, iterativ, kein Overhead. Starter in 5 Tagen. Business in 14 Tagen. Kein 2-Monats-Workshop, kein unnötiger Prozess." },
       { q: "Können Sie für Berliner Startups skalierbare Systeme bauen?", a: "Ja, Next.js 15 + Supabase + TypeScript strict. Dieselbe Stack wie gut finanzierte Startups. Skalierbar von Tag 1, ohne Refactoring in 6 Monaten." },
-      { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €142 (Landing Page, 5 Tage). Business €390 (bis 6 Seiten, SEO, Animationen, 14 Tage). Premium AI €890 (komplettes System, KI-Chatbot, 28 Tage)." },
+      { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €142 (Landing Page, 5 Tage). Business €790 (bis 6 Seiten, SEO, Animationen, 14 Tage). Premium AI €1 690 (komplettes System, KI-Chatbot, 28 Tage)." },
       { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, funktionale V1 in 4 Wochen. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
     ],
   },
@@ -100,7 +100,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
       { q: "Welche KI-Anwendungsfälle eignen sich für Berliner Startups?", a: "Lead-Scoring und Qualifizierung, 24/7 Kundensupport mit sauberem Escalation-Flow, E-Mail-Drip-Automatisierung, CRM-Enrichment, Onboarding-Assistenten. Wir identifizieren Ihre Top-3-ROI-Automationen kostenlos." },
       { q: "Wie schnell ist die KI live?", a: "10 Tage Deployment. Erste messbare Ergebnisse an T+30. Kein monatelanger Workshop — direkt starten, bauen, testen, live gehen." },
       { q: "Kann eure KI in unser bestehendes Tech-Stack integriert werden?", a: "Ja, wir integrieren in Notion, Linear, Slack, HubSpot, Intercom, Stripe und praktisch jedes Tool via API, Zapier, Make oder n8n." },
-      { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €890 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
+      { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €1 690 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
     ],
   },
   "ki-agentur-muenchen": {
@@ -116,7 +116,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Was kann KI für mein Münchner Unternehmen automatisieren?", a: "Lead-Qualifizierung (nur heiße Leads erreichen Sie), 24/7 Kundensupport, E-Mail-Sequenzen, CRM-Updates, Dokumentenverarbeitung, Angebotsassistenten. Wir identifizieren die 3 besten Anwendungsfälle im kostenlosen Audit." },
       { q: "Wie lange dauert die KI-Implementierung?", a: "10 Tage Deployment, messbare Ergebnisse in 30 Tagen. Kein monatelanger Workshop. Wir starten, bauen, testen und liefern — schnell und direkt." },
-      { q: "Was kostet ein KI-Chatbot für Bayern?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €890 inklusive Website, Chatbot, Lead-Automatisierung und 3 Monate Support." },
+      { q: "Was kostet ein KI-Chatbot für Bayern?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €1 690 inklusive Website, Chatbot, Lead-Automatisierung und 3 Monate Support." },
       { q: "Funktioniert Ihre KI auf Deutsch?", a: "Ja, unsere GPT-4-Agenten werden auf Ihren deutschen Inhalten trainiert und antworten auf Deutsch, Englisch oder Französisch — je nach Bedarf Ihres Unternehmens." },
     ],
   },
@@ -237,8 +237,8 @@ export function LocalSeoDePageContent({ data }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "CHF 149", sub: "Landing Page · 5 Tage" },
-              { label: "Business", price: "CHF 420", sub: "Bis 6 Seiten · 14 Tage · SEO" },
-              { label: "Premium AI", price: "CHF 950", sub: "KI-System · 28 Tage · komplett" },
+              { label: "Business", price: "CHF 790", sub: "Bis 6 Seiten · 14 Tage · SEO" },
+              { label: "Premium AI", price: "CHF 1'690", sub: "KI-System · 28 Tage · komplett" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">
                 <div className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">{item.label}</div>

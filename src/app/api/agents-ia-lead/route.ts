@@ -52,7 +52,7 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
       "Base de connaissance mise à jour en continu",
     ],
     proof: "\"On a économisé 15h/semaine. L'agent répond mieux que ce qu'on faisait à la main.\" — M.A., fondateur SaaS",
-    price: "890€ — prix fixe, tout inclus. Développement, intégration, formation, code source, 1 mois de support.",
+    price: "1 690€ — prix fixe, tout inclus. Développement, intégration, formation, code source, 1 mois de support.",
     guarantee: "Résultats mesurables à J+30 ou on corrige gratuitement.",
     ctaLabel: "Démarrer mon agent support",
   },

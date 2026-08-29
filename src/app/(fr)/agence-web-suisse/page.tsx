@@ -191,8 +191,8 @@ export default function AgenceWebSuissePage() {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "CHF 149", sub: "Landing page · 5 jours", highlight: false },
-              { label: "Business", price: "CHF 420", sub: "Jusqu'à 6 pages · SEO · 14 jours", highlight: true },
-              { label: "Premium IA", price: "CHF 950", sub: "Système complet + IA · 28 jours", highlight: false },
+              { label: "Business", price: "CHF 790", sub: "Jusqu'à 6 pages · SEO · 14 jours", highlight: true },
+              { label: "Premium IA", price: "CHF 1'690", sub: "Système complet + IA · 28 jours", highlight: false },
             ].map((item) => (
               <div
                 key={item.label}
