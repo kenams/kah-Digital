@@ -2,6 +2,52 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsEn: PortfolioProject[] = [
   {
+    slug: "bcs-nettoyage",
+    name: "BCS Nettoyage",
+    type: "Brochure site + online booking / Cleaning company, Toulouse",
+    tagline:
+      "The website of a home cleaning company, with online appointment booking — delivered ready to take requests.",
+    shortDescription:
+      "Next.js brochure site for a cleaning company in Toulouse: services, pricing, before/after gallery and online slot booking.",
+    description:
+      "BCS Nettoyage works at customers' homes in Toulouse — cars, apartments, textiles. The goal: a clear site that builds trust and turns a visitor into a booking, without a phone call. Custom design centred on results (before/after gallery), transparent per-service pricing, and a booking form with date and time slot. The site is live on its own domain.",
+    challenge:
+      "Give a small cleaning company a site that reassures as much as word of mouth, and captures appointment requests directly — without relying only on the phone.",
+    solution:
+      "Next.js App Router, mobile-first design centred on result visuals, per-service pricing page, booking form (date + slot) and WhatsApp / call / email shortcuts. Continuous deployment on Vercel.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    result:
+      "Live on bcs-nettoyage.fr, with working slot booking and a multi-channel contact flow.",
+    timeline: "≈ 1 week",
+    deliverables: [
+      "Full brochure site (services, pricing, before/after, FAQ, contact)",
+      "Online slot booking (date + time)",
+      "WhatsApp, call and email shortcuts",
+      "Custom mobile-first design",
+      "Vercel deployment + own domain",
+    ],
+    metrics: [
+      { label: "Go-live", value: "Own domain" },
+      { label: "Booking", value: "Online" },
+      { label: "Contact", value: "Multi-channel" },
+    ],
+    highlights: [
+      "Real client — cleaning company in Toulouse, site in production on its own domain",
+      "Online appointment booking built in, not just a contact form",
+      "Conversion-focused design around before/after results",
+    ],
+    palette: {
+      primary: "#0b1f3a",
+      secondary: "#12335c",
+      accent: "#2eb872",
+    },
+    website: "https://bcs-nettoyage.fr",
+    mockups: {
+      primary: "/mockups/bcs-nettoyage-screenshot.png",
+      gallery: ["/mockups/bcs-nettoyage-screenshot.png"],
+    },
+  },
+  {
     slug: "kah-workforce",
     name: "KAH Workforce",
     type: "Vertical AI agent / Chief-of-staff for independent artists",

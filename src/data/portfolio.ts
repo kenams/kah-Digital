@@ -33,6 +33,52 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    slug: "bcs-nettoyage",
+    name: "BCS Nettoyage",
+    type: "Site vitrine + réservation en ligne / Entreprise de nettoyage, Toulouse",
+    tagline:
+      "Le site d'une entreprise de nettoyage à domicile, avec prise de rendez-vous en ligne — livré prêt à recevoir des demandes.",
+    shortDescription:
+      "Site vitrine Next.js pour une entreprise de nettoyage à Toulouse : services, tarifs, galerie avant/après et réservation de créneau en ligne.",
+    description:
+      "BCS Nettoyage intervient à domicile sur Toulouse — voitures, appartements, textiles. L'objectif : un site clair qui inspire confiance et transforme un visiteur en rendez-vous, sans passer par un appel. Design sur mesure centré sur les résultats (galerie avant/après), tarifs transparents par prestation, et un formulaire de réservation avec date et créneau. Le site est en ligne sur son propre domaine.",
+    challenge:
+      "Donner à une petite entreprise de nettoyage un site qui rassure autant qu'un bouche-à-oreille, et qui capte les demandes de rendez-vous directement — sans dépendre uniquement du téléphone.",
+    solution:
+      "Next.js App Router, design mobile-first centré sur les visuels de résultats, page tarifs par prestation, formulaire de réservation (date + créneau) et raccourcis WhatsApp / appel / email. Déploiement continu sur Vercel.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    result:
+      "Site en ligne sur bcs-nettoyage.fr, avec réservation de créneau opérationnelle et un parcours de contact multi-canal.",
+    timeline: "≈ 1 semaine",
+    deliverables: [
+      "Site vitrine complet (services, tarifs, avant/après, FAQ, contact)",
+      "Réservation de créneau en ligne (date + horaire)",
+      "Raccourcis WhatsApp, appel et email",
+      "Design mobile-first sur mesure",
+      "Déploiement Vercel + domaine propre",
+    ],
+    metrics: [
+      { label: "Mise en ligne", value: "Domaine propre" },
+      { label: "Réservation", value: "En ligne" },
+      { label: "Contact", value: "Multi-canal" },
+    ],
+    highlights: [
+      "Client réel — entreprise de nettoyage à Toulouse, site en production sur son domaine",
+      "Prise de rendez-vous en ligne intégrée, pas juste un formulaire de contact",
+      "Design orienté conversion autour des résultats avant/après",
+    ],
+    palette: {
+      primary: "#0b1f3a",
+      secondary: "#12335c",
+      accent: "#2eb872",
+    },
+    website: "https://bcs-nettoyage.fr",
+    mockups: {
+      primary: "/mockups/bcs-nettoyage-screenshot.png",
+      gallery: ["/mockups/bcs-nettoyage-screenshot.png"],
+    },
+  },
+  {
     slug: "kah-workforce",
     name: "KAH Workforce",
     type: "Agent IA vertical / Chef de cabinet pour artistes indépendants",
