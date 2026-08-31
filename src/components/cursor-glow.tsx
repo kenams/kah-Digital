@@ -65,31 +65,33 @@ export function CursorGlow() {
         prevHovering = hovering;
         prevPressing = pressing;
 
+        // Dark core + bright ring => always visible, on white OR dark backgrounds.
         if (pressing) {
-          inner.style.width  = "6px";
-          inner.style.height = "6px";
-          inner.style.background  = "rgba(255,255,255,1)";
-          inner.style.boxShadow   = "0 0 12px 4px rgba(255,255,255,0.5)";
+          inner.style.width  = "7px";
+          inner.style.height = "7px";
+          inner.style.background  = "rgba(9,9,14,1)";
+          inner.style.boxShadow   = "0 0 0 2px rgba(255,255,255,0.95), 0 0 12px 4px rgba(255,255,255,0.35)";
           inner.style.border      = "none";
         } else if (hovering) {
           inner.style.width  = "40px";
           inner.style.height = "40px";
-          inner.style.background  = "rgba(99,102,241,0.08)";
-          inner.style.boxShadow   = "0 0 0 1.5px rgba(99,102,241,0.75), 0 0 22px 4px rgba(99,102,241,0.18)";
+          inner.style.background  = "rgba(99,102,241,0.10)";
+          inner.style.boxShadow   =
+            "0 0 0 1.5px rgba(99,102,241,0.95), 0 0 0 3px rgba(255,255,255,0.35), 0 0 22px 4px rgba(99,102,241,0.18)";
           inner.style.border      = "none";
         } else {
-          inner.style.width  = "8px";
-          inner.style.height = "8px";
-          inner.style.background  = "rgba(255,255,255,0.92)";
+          inner.style.width  = "10px";
+          inner.style.height = "10px";
+          inner.style.background  = "rgba(9,9,14,0.95)";
           inner.style.border      = "none";
         }
       }
 
-      // Dynamic glow follows speed when not hovering
+      // Dynamic glow follows speed when not hovering — keep the white ring at all times
       if (!hovering && !pressing) {
-        const gR = (4 + speed * 0.36).toFixed(1);
-        const gO = Math.min(0.13 + speed * 0.009, 0.38).toFixed(3);
-        inner.style.boxShadow = `0 0 ${gR}px 1px rgba(255,255,255,${gO})`;
+        const gR = (5 + speed * 0.36).toFixed(1);
+        const gO = Math.min(0.16 + speed * 0.009, 0.4).toFixed(3);
+        inner.style.boxShadow = `0 0 0 1.6px rgba(255,255,255,0.92), 0 0 ${gR}px 1px rgba(255,255,255,${gO})`;
       }
 
       raf = requestAnimationFrame(tick);
@@ -121,10 +123,10 @@ export function CursorGlow() {
         ref={innerRef}
         className="rounded-full"
         style={{
-          width: 8,
-          height: 8,
-          background: "rgba(255,255,255,0.92)",
-          boxShadow: "0 0 5px 1px rgba(255,255,255,0.15)",
+          width: 10,
+          height: 10,
+          background: "rgba(9,9,14,0.95)",
+          boxShadow: "0 0 0 1.6px rgba(255,255,255,0.92), 0 0 6px 1px rgba(255,255,255,0.2)",
           transformOrigin: "center",
           willChange: "transform",
           transition: "width 0.18s ease, height 0.18s ease, background 0.18s ease, box-shadow 0.22s ease",
