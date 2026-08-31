@@ -53,22 +53,25 @@ async function delayAfterSend() {
 async function websiteAlreadySent(client: SupabaseClient, website: string, email?: string | null) {
   const domain = extractRootDomain(website);
 
-  // Only block domains already contacted (sent/replied/clicked) — not rejected/analyzed
+  // Block domains déjà contactés (sent/replied/clicked) ET les désinscrits
+  // (rejected = clic sur "se désinscrire" OU réponse "STOP" traitée à la main).
+  // Un opt-out ne doit JAMAIS être re-prospecté — question de délivrabilité et de loi.
+  const BLOCKED = ["sent", "replied", "clicked", "rejected"];
   const { data: byDomain } = await client
     .from("prospects")
     .select("id")
     .ilike("website", `%${domain}%`)
-    .in("status", ["sent", "replied", "clicked"])
+    .in("status", BLOCKED)
     .limit(1);
   if ((byDomain?.length ?? 0) > 0) return true;
 
-  // Check by email — prevent same address getting multiple series
+  // Check by email — prevent same address getting multiple series / re-prospect d'un opt-out
   if (email) {
     const { data: byEmail } = await client
       .from("prospects")
       .select("id")
       .eq("email", email.toLowerCase().trim())
-      .in("status", ["sent", "replied", "clicked"])
+      .in("status", BLOCKED)
       .limit(1);
     if ((byEmail?.length ?? 0) > 0) return true;
   }
