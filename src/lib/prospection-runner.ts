@@ -53,25 +53,26 @@ async function delayAfterSend() {
 async function websiteAlreadySent(client: SupabaseClient, website: string, email?: string | null) {
   const domain = extractRootDomain(website);
 
-  // Block domains déjà contactés (sent/replied/clicked) ET les désinscrits
-  // (rejected = clic sur "se désinscrire" OU réponse "STOP" traitée à la main).
-  // Un opt-out ne doit JAMAIS être re-prospecté — question de délivrabilité et de loi.
-  const BLOCKED = ["sent", "replied", "clicked", "rejected"];
+  // Domaine déjà contacté (sent/replied/clicked). Match par sous-chaîne : au pire
+  // on saute un lead, jamais grave. On n'y met PAS "rejected" pour éviter qu'un
+  // opt-out (potentiellement déclenché par un scanner d'e-mails qui suit le lien
+  // de désinscription) ne balaie des domaines voisins par simple sous-chaîne.
   const { data: byDomain } = await client
     .from("prospects")
     .select("id")
     .ilike("website", `%${domain}%`)
-    .in("status", BLOCKED)
+    .in("status", ["sent", "replied", "clicked"])
     .limit(1);
   if ((byDomain?.length ?? 0) > 0) return true;
 
-  // Check by email — prevent same address getting multiple series / re-prospect d'un opt-out
+  // Par e-mail (match EXACT) : empêche plusieurs séries sur la même adresse ET
+  // re-prospecter une personne qui s'est désinscrite (status='rejected').
   if (email) {
     const { data: byEmail } = await client
       .from("prospects")
       .select("id")
       .eq("email", email.toLowerCase().trim())
-      .in("status", BLOCKED)
+      .in("status", ["sent", "replied", "clicked", "rejected"])
       .limit(1);
     if ((byEmail?.length ?? 0) > 0) return true;
   }
