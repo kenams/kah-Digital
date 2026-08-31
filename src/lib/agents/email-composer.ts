@@ -100,6 +100,26 @@ const SUBJECTS: Record<string, string[]> = {
   ],
 };
 
+// Références clients réelles — prestations livrées, en prod, vérifiables.
+// Sert de preuve concrète dans les emails (une seule par email, choisie par seed).
+type ClientRef = { fr: string; en: string; de: string };
+const CLIENT_REFS: ClientRef[] = [
+  {
+    fr: "On a livré récemment bcs-nettoyage.fr — le site d'une entreprise de nettoyage à Toulouse, avec prise de rendez-vous en ligne, en prod sur son domaine.",
+    en: "We recently delivered bcs-nettoyage.fr — the site of a cleaning company in Toulouse, with online booking, live on its own domain.",
+    de: "Wir haben kürzlich bcs-nettoyage.fr geliefert — die Website einer Reinigungsfirma in Toulouse, mit Online-Terminbuchung, live auf eigener Domain.",
+  },
+  {
+    fr: "Dernier projet en date : www.dse-yana.com, pour un bureau d'études techniques en Guyane — prise de rendez-vous en autonomie et espace d'administration.",
+    en: "Latest project: www.dse-yana.com, for an engineering firm in French Guiana — self-service appointment booking and an admin back-office.",
+    de: "Letztes Projekt: www.dse-yana.com, für ein Ingenieurbüro in Französisch-Guayana — Selbstbedienungs-Terminbuchung und Admin-Backoffice.",
+  },
+];
+function pickRef(seed: number, lang: string): string {
+  const r = CLIENT_REFS[seed % CLIENT_REFS.length]!;
+  return (r as Record<string, string>)[lang] ?? r.fr;
+}
+
 // Optout texts courts
 const OPTOUT: Record<string, string> = {
   fr: "Pas intéressé(e) ? Répondez juste \"stop\".",
@@ -124,6 +144,10 @@ export async function composeProspectingEmail(
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
   const topProblem = audit.problems[0]?.title ?? "point à améliorer";
   const track = getTrack(audit);
+  const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  // Preuve client concrète — pertinente pour les pitchs "app / site / agent"
+  // (sites livrés), pas pour "esn / pme-it" (pitch support IT interne).
+  const clientRef = ["app", "site", "agent"].includes(track) ? pickRef(seed, lang) : "";
 
   // Subject A/B
   const abVariant = Math.floor(Date.now() / 86400000) % 6;
@@ -159,7 +183,7 @@ ${pitchInstruction}
 
 Problèmes réels trouvés sur ${lead.website} :
 ${top2Problems || "- Présence digitale limitée"}
-
+${clientRef ? `\nRéférence réelle à glisser en 1 phrase, naturellement, sans en faire un argument lourd (garde-la seulement si elle sert le propos) : "${clientRef}"\n` : ""}
 ${toneInstruction}
 
 RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
@@ -189,8 +213,7 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     // problèmes distincts au lieu d'un seul, avec une variation de
     // formulation déterministe (basée sur le nom du prospect, donc stable
     // pour un même prospect mais différente d'un prospect à l'autre — pas
-    // aléatoire à chaque renvoi).
-    const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    // aléatoire à chaque renvoi). `seed` est défini plus haut.
 
     const openers: Record<string, string[]> = {
       fr: [
@@ -256,7 +279,8 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     };
     const cta = ctas[lang] ?? ctas.fr!;
 
-    body = `${opener}\n\n${pitch} ${cta}\n\nKAH Digital`;
+    const refLine = clientRef ? `\n\n${clientRef}` : "";
+    body = `${opener}\n\n${pitch}${refLine}\n\n${cta}\n\nKAH Digital`;
   }
 
   // Lien traçable discret : remplace la mention "kah-digital.ch" du corps
