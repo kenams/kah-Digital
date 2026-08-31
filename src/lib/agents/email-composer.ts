@@ -167,7 +167,7 @@ export async function composeProspectingEmail(
       ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
       : track === "agent"
       ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
-      : `Pitch : propose une refonte de leur site web car il a des problèmes techniques graves.`;
+      : `Pitch : c'est un commerce / artisan de service local. Propose un site pro avec PRISE DE RENDEZ-VOUS EN LIGNE intégrée (le client choisit son créneau seul, confirmation et rappel automatiques), livré en 5 jours, prix fixe. Angle : leurs clients qui les cherchent le soir tombent sur un site cassé ou rien. Objectif = un appel de 10 min ou une réponse au mail. Tu peux mentionner "à partir de 790 €" si le contexte s'y prête, sinon reste sur "prix fixe". Appel : 07 59 55 84 14.`;
 
   // Grandes entreprises (banques, cabinets, hôpitaux, assurances, groupes) = ton formel
   const bigCorpSectors = ["finance", "banque", "assurance", "avocat", "notaire", "medecin", "clinique", "hopital", "pharmacie", "fiduciaire", "audit", "consulting", "groupe", "holding"];
@@ -259,9 +259,9 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         de: `Wir richten KI-Agenten ein, die Akquise oder Kundensupport automatisieren — kein Website-Relaunch, nur der Agent, der die Arbeit übernimmt.`,
       },
       site: {
-        fr: `On met en place des outils IA (support, prospection, automatisation) adaptés à votre activité.`,
-        en: `We set up AI tools (support, prospecting, automation) tailored to your business.`,
-        de: `Wir richten KI-Tools (Support, Akquise, Automatisierung) passend zu Ihrem Geschäft ein.`,
+        fr: `On fait des sites pros avec prise de rendez-vous en ligne intégrée — le client choisit son créneau seul, confirmation et rappel automatiques. Livré en 5 jours, prix fixe.`,
+        en: `We build professional sites with online booking built in — the client picks their own slot, automatic confirmation and reminder. Delivered in 5 days, fixed price.`,
+        de: `Wir bauen professionelle Websites mit integrierter Online-Terminbuchung — der Kunde wählt seinen Termin selbst, automatische Bestätigung und Erinnerung. In 5 Tagen geliefert, Festpreis.`,
       },
     };
     const pitch = pitchByTrack[track]?.[lang] ?? pitchByTrack[track]?.fr ?? pitchByTrack.agent!.fr!;
