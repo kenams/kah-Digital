@@ -2,6 +2,52 @@ import type { PortfolioProject } from "@/data/portfolio";
 
 export const portfolioProjectsEn: PortfolioProject[] = [
   {
+    slug: "dse-yana",
+    name: "DSE Yana",
+    type: "Premium site + appointment booking / MEP engineering firm, French Guiana",
+    tagline:
+      "The website of a technical engineering firm in French Guiana — MEP execution drawings, self-service appointment booking and an admin back-office. Real client, in production on its own domain.",
+    shortDescription:
+      "Custom Next.js site for a French Guiana MEP engineering firm: the 4 trades (electrical, plumbing, solar hot water, HVAC), online booking on Guiana time and a back-office.",
+    description:
+      "DSE — Dessin & Suivi Économique is a technical engineering firm based in Matoury, French Guiana. The old site did not do the work justice. New identity derived from the logo, content rewritten to be understood by a homeowner as much as a company, sections for the 4 MEP trades, a real deliverable (an anonymised execution drawing) and construction cost tracking. Visitors can book an appointment on their own, with no email back-and-forth, with confirmation, a calendar file and an automatic reminder the day before.",
+    challenge:
+      "Lift the image of an engineering firm with no marketing team, make a technical trade accessible to the general public, and turn inbound requests into qualified appointments without endless email back-and-forth.",
+    solution:
+      "Next.js App Router, identity and palette derived from the logo, plain-language content, an in-house booking module (slots on America/Cayenne time, confirmation + calendar file, one-click cancellation, automatic day-before reminder via scheduled task), an admin area (requests, appointments) and a study form wired to the database. Supabase database, Resend emails, Vercel deployment.",
+    stack: ["Next.js", "TypeScript", "Prisma", "Supabase", "Resend", "Vercel"],
+    result:
+      "Live on its own domain, self-service appointment booking operational and an admin back-office delivered.",
+    timeline: "≈ 2 weeks",
+    deliverables: [
+      "Custom premium site (identity, 8 sections, rewritten content)",
+      "Self-service booking module (Guiana time, calendar file, day-before reminder)",
+      "Admin area (contact requests, appointments)",
+      "Study form wired to the database",
+      "Full SEO, go-live on own domain",
+    ],
+    metrics: [
+      { label: "MEP trades", value: "4" },
+      { label: "Booking", value: "Self-service" },
+      { label: "Go-live", value: "Own domain" },
+    ],
+    highlights: [
+      "Real client — engineering firm in French Guiana, site in production on its own domain",
+      "Full appointment booking (slots, confirmation, cancellation, reminder), not just a contact form",
+      "Technical content made accessible to homeowners and companies alike",
+    ],
+    palette: {
+      primary: "#6d28d9",
+      secondary: "#4c1d95",
+      accent: "#10b981",
+    },
+    website: "https://www.dse-yana.com",
+    mockups: {
+      primary: "/mockups/dse-yana-screenshot.png",
+      gallery: ["/mockups/dse-yana-screenshot.png"],
+    },
+  },
+  {
     slug: "bcs-nettoyage",
     name: "BCS Nettoyage",
     type: "Brochure site + online booking / Cleaning company, Toulouse",

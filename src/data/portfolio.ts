@@ -33,6 +33,52 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    slug: "dse-yana",
+    name: "DSE Yana",
+    type: "Site premium + prise de rendez-vous / Bureau d'études fluides, Guyane",
+    tagline:
+      "Le site d'un bureau d'études techniques en Guyane — plans d'exécution fluides, prise de rendez-vous en autonomie et espace d'administration. Client réel, en production sur son domaine.",
+    shortDescription:
+      "Site sur-mesure Next.js pour un bureau d'études fluides guyanais : présentation des 4 lots (électricité, plomberie, eau chaude solaire, climatisation-ventilation), prise de rendez-vous en ligne au fuseau de Guyane et back-office.",
+    description:
+      "DSE — Dessin & Suivi Économique est un bureau d'études techniques basé à Matoury, en Guyane. L'ancien site ne rendait pas justice au métier. Nouvelle identité dérivée du logo, contenu réécrit pour être compris autant par un particulier que par une entreprise, sections dédiées aux 4 lots fluides, à un livrable réel (plan d'exécution anonymisé) et au suivi économique de chantier. Le visiteur peut réserver un rendez-vous seul, sans échange d'emails, avec confirmation, fichier agenda et rappel automatique la veille.",
+    challenge:
+      "Faire monter en gamme l'image d'un bureau d'études sans équipe marketing, rendre un métier technique accessible au grand public, et transformer les demandes entrantes en rendez-vous qualifiés sans multiplier les allers-retours par email.",
+    solution:
+      "Next.js App Router, identité et palette dérivées du logo, contenu vulgarisé, module de prise de rendez-vous maison (créneaux au fuseau America/Cayenne, confirmation + fichier agenda, annulation en un clic, rappel automatique la veille via tâche planifiée), espace d'administration (demandes, rendez-vous) et formulaire d'étude connecté à la base. Base Supabase, emails Resend, déploiement Vercel.",
+    stack: ["Next.js", "TypeScript", "Prisma", "Supabase", "Resend", "Vercel"],
+    result:
+      "Site en ligne sur son propre domaine, prise de rendez-vous en autonomie opérationnelle et espace d'administration livré.",
+    timeline: "≈ 2 semaines",
+    deliverables: [
+      "Site premium sur-mesure (identité, 8 sections, contenu réécrit)",
+      "Module de prise de rendez-vous en autonomie (fuseau Guyane, fichier agenda, rappel la veille)",
+      "Espace d'administration (demandes de contact, rendez-vous)",
+      "Formulaire d'étude connecté à la base de données",
+      "SEO complet, mise en production sur domaine propre",
+    ],
+    metrics: [
+      { label: "Lots fluides", value: "4" },
+      { label: "Prise de RDV", value: "En autonomie" },
+      { label: "Mise en ligne", value: "Domaine propre" },
+    ],
+    highlights: [
+      "Client réel — bureau d'études en Guyane, site en production sur son domaine",
+      "Prise de rendez-vous complète (créneaux, confirmation, annulation, rappel), pas un simple formulaire",
+      "Contenu technique rendu accessible aux particuliers comme aux entreprises",
+    ],
+    palette: {
+      primary: "#6d28d9",
+      secondary: "#4c1d95",
+      accent: "#10b981",
+    },
+    website: "https://www.dse-yana.com",
+    mockups: {
+      primary: "/mockups/dse-yana-screenshot.png",
+      gallery: ["/mockups/dse-yana-screenshot.png"],
+    },
+  },
+  {
     slug: "bcs-nettoyage",
     name: "BCS Nettoyage",
     type: "Site vitrine + réservation en ligne / Entreprise de nettoyage, Toulouse",
