@@ -1,0 +1,42 @@
+name: Prospection KAH Digital
+
+# Le plan Vercel Hobby limite les crons (2 max, 1x/jour). On pilote donc
+# la prospection depuis GitHub Actions (gratuit, illimité).
+# Cron GitHub = UTC. Jours ouvrés, matin + apres-midi + relances.
+
+on:
+  schedule:
+    - cron: "10 8 * * 1-5"    # prospection ~10h Paris
+    - cron: "10 13 * * 1-5"   # prospection ~15h Paris
+    - cron: "0 10 * * *"      # relances ~12h Paris
+    - cron: "0 17 * * *"      # relances ~19h Paris
+  workflow_dispatch:
+
+concurrency:
+  group: prospection
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prospection (nouveaux prospects)
+        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["10 8 * * 1-5","10 13 * * 1-5"]'), github.event.schedule)
+        run: |
+          for i in 1 2 3; do
+            CODE=$(curl -s -o /tmp/p.json -w "%{http_code}" --max-time 290 -X POST \
+              -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+              https://kah-digital.ch/api/cron/prospection || echo 000)
+            echo "prospection run $i -> $CODE"; head -c 500 /tmp/p.json; echo
+            [ "$CODE" = "200" ] && break
+            sleep 15
+          done
+
+      - name: Relances (followup)
+        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["0 10 * * *","0 17 * * *"]'), github.event.schedule)
+        run: |
+          CODE=$(curl -s -o /tmp/f.json -w "%{http_code}" --max-time 290 -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://kah-digital.ch/api/cron/followup || echo 000)
+          echo "followup -> $CODE"; head -c 500 /tmp/f.json; echo
+          [ "$CODE" = "200" ]
