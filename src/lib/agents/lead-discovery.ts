@@ -694,7 +694,11 @@ function extractEmailFromHtml(html: string): string | null {
 }
 
 function isValidEmail(e: string): boolean {
-  if (!e || e.length > 80 || !e.includes("@")) return false;
+  if (!e || e.length > 80) return false;
+  // Strict format check — a loose ".includes('@')" let a raw "mailto:x@y.z"
+  // slip through once (2026-09-17: stored as literal "mailto:mail@semrush.com",
+  // which Resend then rejected on every single send attempt from then on).
+  if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(e)) return false;
   const lower = e.toLowerCase();
   if (EMAIL_BLACKLIST.some((d) => lower.includes(d))) return false;
   if (lower.startsWith("no-reply") || lower.startsWith("noreply") || lower.startsWith("donotreply")) return false;
@@ -926,6 +930,11 @@ function isBlacklisted(url: string): boolean {
     // avec leur propre IT, pas des indépendants qui ont besoin d'un agent
     // IA sur mesure. In Extenso, Dougs, Cabex, Keobiz = réseaux établis.
     "inextenso.fr","dougs.fr","reseau-cabex.fr","keobiz.fr","welyb.fr",
+    // agencies.semrush.com/list/... = annuaire d'agences partenaires SEMrush
+    // (pas une entreprise) — remonté le 2026-09-17 avec un email cassé
+    // "mailto:mail@semrush.com" qui bloquait la file d'envoi à chaque run
+    // (Resend rejette systématiquement ce "to" invalide).
+    "semrush.com",
   ];
 
   const lower = url.toLowerCase();
@@ -942,7 +951,7 @@ function isBlacklisted(url: string): boolean {
       "/lessons/","/search/","/record/","/annonce/","/offre-","/recherche/","/trouver-",
       "/liste-","/category/","/categories/","/tag/","/tags/","/page/","/results/",
       "/annuaire/","/directory/","/profils/","/profiles/","/members/","/membres/",
-      "/jobs/","/emploi/","/recrutement/","/offres-emploi/",
+      "/jobs/","/emploi/","/recrutement/","/offres-emploi/","/list/",
     ];
     if (badPathSegments.some((seg) => path.includes(seg))) return true;
 
