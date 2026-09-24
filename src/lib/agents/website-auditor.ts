@@ -174,12 +174,12 @@ const AUDIT_PROMPT: Record<string, string> = {
 // Orientation commerciale adaptée au marché local, sans prix public.
 function getPricingGuide(country: string): string {
   const currency = country === "CH" ? "CHF" : "EUR";
-  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 890 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1690 for a weak/critical site needing a full rebuild, both with an optional maintenance subscription starting at 89/month. Pick whichever forfait matches the site's actual state.`;
+  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 890 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1590 for a weak/critical site needing a full rebuild, both with an optional maintenance subscription starting at 89/month. Pick whichever forfait matches the site's actual state.`;
 }
 
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
   const currency = country === "CH" ? "CHF" : "EUR";
-  if (quality === "poor") return { price: 1690, range: `Dès ${1690} ${currency}` };
+  if (quality === "poor") return { price: 1590, range: `Dès ${1590} ${currency}` };
   if (quality === "medium") return { price: 890, range: `Dès ${890} ${currency}` };
   return { price: 890, range: `Dès ${890} ${currency}` };
 }
@@ -243,7 +243,7 @@ Score evaluation rules:
 - 71-100: good site (skip if > 65)
 
 ${pricingGuide}
-Set estimatedPrice to 890 or 1690 (whichever forfait fits, based on the score) and priceRange to a short string like "Dès 890 €" or "Dès 1690 CHF" (use the right currency and amount) translated naturally in language "${lang}".
+Set estimatedPrice to 890 or 1590 (whichever forfait fits, based on the score) and priceRange to a short string like "Dès 890 €" or "Dès 1590 CHF" (use the right currency and amount) translated naturally in language "${lang}".
 
 Return 3-5 problems and 2-3 recommendations, all written in language "${lang}".`;
 

@@ -465,7 +465,7 @@ const TARGETS = [
   { query: "startup bruxelles application web saas site web", country: "BE", lang: "fr", sector: "app" },
 
   // ── Segment "artisans / jeunes entreprises" — combo création d'entreprise
-  // (89€, offert avec pack site 890/1690€) + site (2026-09-24, demande Kenams).
+  // (89€, offert avec pack site 890/1590€) + site (2026-09-24, demande Kenams).
   // Cible : artisans indépendants, professions libérales et auto-entrepreneurs
   // avec un site minimal/vieillissant ou pas de vraie présence pro — signe
   // probable qu'ils n'ont pas encore structuré leur activité (pas de SIRENE/
