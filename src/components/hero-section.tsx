@@ -31,9 +31,9 @@ function WordReveal({
             initial={{ y: "115%", opacity: 0 }}
             animate={{ y: "0%", opacity: 1 }}
             transition={{
-              duration: 0.75,
+              duration: 0.45,
               ease: [0.22, 1, 0.36, 1],
-              delay: delay + i * 0.08,
+              delay: delay + i * 0.035,
             }}
           >
             {word}
@@ -59,7 +59,7 @@ function RotatingText({
     const t = setTimeout(() => {
       const id = setInterval(() => setIndex((i) => (i + 1) % lines.length), 3200);
       return () => clearInterval(id);
-    }, delay * 1000 + 1800);
+    }, delay * 1000 + 900);
     return () => clearTimeout(t);
   }, [lines.length, delay]);
 
@@ -228,12 +228,12 @@ export function HeroSection() {
         {/* Headline — line 1 (word-by-word reveal) */}
         <h1 className="mb-6 text-5xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]">
           <span className="block">
-            <WordReveal text={copy.title1} delay={0.1} />
+            <WordReveal text={copy.title1} delay={0} />
           </span>
 
           {/* Line 2 — rotating gradient text */}
           <span className="mt-1 block min-h-[1.2em]">
-            <RotatingText lines={copy.lines2} delay={0.4} />
+            <RotatingText lines={copy.lines2} delay={0.15} />
           </span>
         </h1>
 

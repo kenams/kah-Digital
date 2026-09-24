@@ -47,7 +47,7 @@ export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
         <script
           type="application/ld+json"
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         />
         {GA_MEASUREMENT_ID ? (
           <>
