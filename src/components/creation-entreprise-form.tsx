@@ -131,13 +131,16 @@ export function CreationEntrepriseForm() {
 
   const isSubmitting = status === "loading";
   const fieldClassName =
-    "w-full rounded-2xl border border-white/20 bg-slate-950/55 px-4 py-3 text-white placeholder:text-white/55 focus:border-sky-300 focus:outline-none";
+    "w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20";
+  const labelClassName = "text-sm font-medium text-white/85";
 
   return (
     <form
-      className="premium-card rounded-[32px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur"
+      className="premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8"
       onSubmit={handleSubmit}
     >
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+
       <input
         type="text"
         name="website"
@@ -148,75 +151,99 @@ export function CreationEntrepriseForm() {
         defaultValue=""
       />
 
-      <div className="mb-6 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Délai</p>
-          <p className="mt-2 text-sm text-white/75">Réponse sous 24h, dossier finalisé rapidement.</p>
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Sans erreur</p>
-          <p className="mt-2 text-sm text-white/75">Dossier vérifié par un humain avant envoi.</p>
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Simple</p>
-          <p className="mt-2 text-sm text-white/75">Un seul interlocuteur, zéro paperasse pour toi.</p>
-        </div>
+      <div className="relative mb-8">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-300">
+          3 minutes chrono
+        </span>
+        <h2 className="mt-3 text-xl font-bold text-white sm:text-2xl">Ta demande de création</h2>
+        <p className="mt-1.5 text-sm text-white/60">Réponse sous 24h, dossier vérifié par un humain.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="lastName" className="text-sm font-medium text-white/90">Nom *</label>
-          <input id="lastName" name="lastName" required className={fieldClassName} placeholder="Ex : Martin" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="firstName" className="text-sm font-medium text-white/90">Prénom *</label>
-          <input id="firstName" name="firstName" required className={fieldClassName} placeholder="Ex : Alex" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="birthDate" className="text-sm font-medium text-white/90">Date de naissance *</label>
-          <input id="birthDate" type="date" name="birthDate" required className={fieldClassName} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="birthPlace" className="text-sm font-medium text-white/90">Lieu de naissance *</label>
-          <input id="birthPlace" name="birthPlace" required className={fieldClassName} placeholder="Ex : Toulouse" />
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="address" className="text-sm font-medium text-white/90">Adresse du domicile *</label>
-          <input id="address" name="address" required className={fieldClassName} placeholder="Numéro, rue, code postal, ville" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="nationality" className="text-sm font-medium text-white/90">Nationalité *</label>
-          <input id="nationality" name="nationality" required className={fieldClassName} placeholder="Ex : Française" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="text-sm font-medium text-white/90">Téléphone *</label>
-          <input id="phone" type="tel" name="phone" required className={fieldClassName} placeholder="+33 6 12 34 56 78" />
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-2">
-          <label htmlFor="email" className="text-sm font-medium text-white/90">Email *</label>
-          <input id="email" type="email" name="email" required className={fieldClassName} placeholder="toi@email.com" />
-        </div>
-        <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
-          <label htmlFor="activity" className="text-sm font-medium text-white/95">Activité envisagée *</label>
-          <textarea
-            id="activity"
-            name="activity"
-            required
-            rows={5}
-            placeholder="Décris l'activité que tu veux exercer en auto-entreprise."
-            className={`${fieldClassName} min-h-[140px]`}
-          />
-        </div>
+      <div className="relative space-y-8">
+        <fieldset className="space-y-4">
+          <legend className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-300/80">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-500/15 text-[10px] text-sky-300">1</span>
+            État civil
+          </legend>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="lastName" className={labelClassName}>Nom *</label>
+              <input id="lastName" name="lastName" required className={fieldClassName} placeholder="Ex : Martin" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="firstName" className={labelClassName}>Prénom *</label>
+              <input id="firstName" name="firstName" required className={fieldClassName} placeholder="Ex : Alex" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="birthDate" className={labelClassName}>Date de naissance *</label>
+              <input id="birthDate" type="date" name="birthDate" required className={`${fieldClassName} [color-scheme:dark]`} />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="birthPlace" className={labelClassName}>Lieu de naissance *</label>
+              <input id="birthPlace" name="birthPlace" required className={fieldClassName} placeholder="Ex : Toulouse" />
+            </div>
+            <div className="md:col-span-2 flex flex-col gap-2">
+              <label htmlFor="address" className={labelClassName}>Adresse du domicile *</label>
+              <input id="address" name="address" required className={fieldClassName} placeholder="Numéro, rue, code postal, ville" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="nationality" className={labelClassName}>Nationalité *</label>
+              <input id="nationality" name="nationality" required className={fieldClassName} placeholder="Ex : Française" />
+            </div>
+          </div>
+        </fieldset>
+
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        <fieldset className="space-y-4">
+          <legend className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-300/80">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-500/15 text-[10px] text-sky-300">2</span>
+            Contact
+          </legend>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="phone" className={labelClassName}>Téléphone *</label>
+              <input id="phone" type="tel" name="phone" required className={fieldClassName} placeholder="+33 6 12 34 56 78" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className={labelClassName}>Email *</label>
+              <input id="email" type="email" name="email" required className={fieldClassName} placeholder="toi@email.com" />
+            </div>
+          </div>
+        </fieldset>
+
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        <fieldset className="space-y-4">
+          <legend className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-sky-300/80">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-500/15 text-[10px] text-sky-300">3</span>
+            Activité
+          </legend>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="activity" className={labelClassName}>Activité envisagée *</label>
+            <textarea
+              id="activity"
+              name="activity"
+              required
+              rows={5}
+              placeholder="Décris l'activité que tu veux exercer en auto-entreprise."
+              className={`${fieldClassName} min-h-[140px] resize-none`}
+            />
+          </div>
+        </fieldset>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/12 bg-black/15 p-4 text-sm text-white/75">
-        Pas besoin de joindre ta pièce d'identité maintenant : on te la demandera par email (recto/verso) après le premier contact.
+      <div className="relative mt-6 rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-white/65">
+        Pas besoin de joindre ta pièce d&apos;identité maintenant : on te la demandera par email (recto/verso) après le premier contact.
       </div>
 
-      <div className="mt-6 space-y-3 rounded-2xl border border-white/12 bg-white/5 p-4">
-        <p className="text-sm font-medium text-white/95">Vérification anti-spam</p>
+      <div className="relative mt-6 space-y-3 rounded-2xl border border-white/10 bg-black/20 p-4">
+        <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-sky-500/15 text-[10px] text-sky-300">4</span>
+          Vérification anti-spam
+        </p>
         {siteKey ? (
-          <div className="min-h-[96px] rounded-2xl border border-white/15 bg-slate-950/45 p-4 flex items-center">
+          <div className="flex min-h-[80px] items-center rounded-xl border border-white/10 bg-slate-950/50 p-3">
             <TurnstileWidget
               ref={widgetRef}
               siteKey={siteKey}
@@ -232,25 +259,41 @@ export function CreationEntrepriseForm() {
         {captchaError ? <p className="text-sm text-rose-200">{captchaError}</p> : null}
       </div>
 
-      <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
-        <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent" />
-        <label htmlFor="privacy" className="text-sm text-white/75">
-          J'accepte que mes données soient utilisées pour traiter ma demande de création d'auto-entreprise. Consultez notre{" "}
-          <a href="/confidentialite" className="underline hover:text-white">politique de confidentialité</a>.
+      <div className="relative mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
+        <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 shrink-0 rounded border-white/30 bg-transparent accent-sky-500" />
+        <label htmlFor="privacy" className="text-sm text-white/70">
+          J&apos;accepte que mes données soient utilisées pour traiter ma demande de création d&apos;auto-entreprise. Consultez notre{" "}
+          <a href="/confidentialite" className="underline underline-offset-2 hover:text-white">politique de confidentialité</a>.
         </label>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="relative mt-6 flex flex-col gap-3">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
         >
-          {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
+          {isSubmitting ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+              Envoi en cours...
+            </>
+          ) : (
+            "Envoyer ma demande"
+          )}
         </button>
 
         {serverMessage ? (
-          <p className={`text-sm ${status === "error" ? "text-rose-200" : "text-emerald-200"}`}>{serverMessage}</p>
+          <p
+            role="status"
+            className={`rounded-xl border px-4 py-3 text-sm ${
+              status === "error"
+                ? "border-rose-500/25 bg-rose-500/10 text-rose-200"
+                : "border-emerald-500/25 bg-emerald-500/10 text-emerald-200"
+            }`}
+          >
+            {serverMessage}
+          </p>
         ) : null}
       </div>
     </form>
