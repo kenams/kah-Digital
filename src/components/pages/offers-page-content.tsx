@@ -385,7 +385,7 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                 <div className="mb-5 flex items-end justify-between rounded-xl border border-white/8 bg-black/20 px-4 py-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-500">
-                      {locale === "fr" ? "Type de besoin" : locale === "en" ? "Need type" : "Bedarf"}
+                      {locale === "fr" ? "Prix" : locale === "en" ? "Price" : "Preis"}
                     </p>
                     <p className="mt-0.5 text-xl font-extrabold text-white">{offer.price}</p>
                   </div>

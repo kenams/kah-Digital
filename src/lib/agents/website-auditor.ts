@@ -174,7 +174,7 @@ const AUDIT_PROMPT: Record<string, string> = {
 // Orientation commerciale adaptée au marché local, sans prix public.
 function getPricingGuide(country: string): string {
   const currency = country === "CH" ? "CHF" : "EUR";
-  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 790 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1490 for a weak/critical site needing a full rebuild, both with an optional 39/month maintenance & hosting subscription. Pick whichever forfait matches the site's actual state.`;
+  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 790 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1490 for a weak/critical site needing a full rebuild, both with an optional maintenance subscription starting at 79/month. Pick whichever forfait matches the site's actual state.`;
 }
 
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
