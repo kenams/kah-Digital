@@ -8,9 +8,9 @@ const cards = [
 ];
 
 const steps = [
-  { icon: FiCheckCircle, title: "Tu remplis le formulaire", body: "État civil, adresse, activité envisagée : 5 minutes suffisent." },
+  { icon: FiCheckCircle, title: "Tu remplis le formulaire", body: "État civil, adresse, activité envisagée : 3 minutes suffisent." },
   { icon: FiClock, title: "On te recontacte sous 24h", body: "Validation des infos et demande de ta pièce d'identité par email." },
-  { icon: FiShield, title: "On dépose ton dossier officiel", body: "Immatriculation suivie de A à Z, sans jargon ni allers-retours inutiles." },
+  { icon: FiShield, title: "On s'occupe de tout", body: "De A à Z, sans jargon ni allers-retours inutiles — toi tu n'as rien à gérer." },
   { icon: FiZap, title: "Ton auto-entreprise est lancée", body: "SIREN reçu, tu peux facturer. On peut enchaîner avec ton site pro." },
 ];
 
@@ -24,6 +24,12 @@ export function CreationEntreprisePageContent() {
           <p className="text-xl text-white/85">
             On s'occupe de toutes les démarches, vite et sans erreur, pendant que tu te concentres sur ton activité.
           </p>
+
+          <div className="mt-8 inline-flex flex-col items-center gap-1 rounded-3xl border border-white/25 bg-white/10 px-8 py-5 backdrop-blur">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/70">Ton auto-entreprise lancée pour</p>
+            <p className="text-5xl font-extrabold text-white">89€</p>
+            <p className="text-sm text-white/70">Offert si tu prends un pack site avec nous</p>
+          </div>
         </div>
       </section>
 
