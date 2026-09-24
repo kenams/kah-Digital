@@ -2,7 +2,7 @@ import { FiCheckCircle, FiClock, FiShield, FiZap } from "react-icons/fi";
 import { CreationEntrepriseForm } from "@/components/creation-entreprise-form";
 
 const cards = [
-  { eyebrow: "Rapide", title: "24h pour lancer le dossier", body: "Dès ta demande envoyée, on prépare et vérifie ton immatriculation INPI." },
+  { eyebrow: "Rapide", title: "24h pour lancer le dossier", body: "Dès ta demande envoyée, on prépare et vérifie ton dossier de A à Z." },
   { eyebrow: "Zéro erreur", title: "Dossier vérifié par un humain", body: "Chaque champ est contrôlé avant transmission, pas de rejet administratif évitable." },
   { eyebrow: "Zéro prise de tête", title: "Un seul interlocuteur", body: "Tu ne gères ni formulaires, ni démarches, ni relances. On s'occupe de tout jusqu'au SIREN." },
 ];
@@ -10,7 +10,7 @@ const cards = [
 const steps = [
   { icon: FiCheckCircle, title: "Tu remplis le formulaire", body: "État civil, adresse, activité envisagée : 5 minutes suffisent." },
   { icon: FiClock, title: "On te recontacte sous 24h", body: "Validation des infos et demande de ta pièce d'identité par email." },
-  { icon: FiShield, title: "On dépose ton dossier à l'INPI", body: "Immatriculation suivie de A à Z, sans jargon ni allers-retours inutiles." },
+  { icon: FiShield, title: "On dépose ton dossier officiel", body: "Immatriculation suivie de A à Z, sans jargon ni allers-retours inutiles." },
   { icon: FiZap, title: "Ton auto-entreprise est lancée", body: "SIREN reçu, tu peux facturer. On peut enchaîner avec ton site pro." },
 ];
 
@@ -22,7 +22,7 @@ export function CreationEntreprisePageContent() {
           <p className="mb-4 text-sm uppercase tracking-[0.3em] text-white/70">Création d'entreprise</p>
           <h1 className="mb-6 text-4xl font-bold sm:text-5xl">Lance ton auto-entreprise sans prise de tête</h1>
           <p className="text-xl text-white/85">
-            On s'occupe de ton immatriculation INPI, vite et sans erreur, pendant que tu te concentres sur ton activité.
+            On s'occupe de toutes les démarches, vite et sans erreur, pendant que tu te concentres sur ton activité.
           </p>
         </div>
       </section>
@@ -54,7 +54,7 @@ export function CreationEntreprisePageContent() {
             <div className="rounded-3xl border border-white/10 bg-black/20 p-6">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Pourquoi passer par KAH Digital</p>
               <ul className="mt-4 space-y-2 text-sm text-white/75">
-                <li>Immatriculation INPI suivie par un vrai humain, pas un formulaire perdu</li>
+                <li>Dossier suivi par un vrai humain, pas un formulaire perdu</li>
                 <li>Service gratuit si couplé à un pack site (890€ / 1590€ + abo)</li>
                 <li>Un seul interlocuteur pour ton entreprise ET ton site web</li>
               </ul>
