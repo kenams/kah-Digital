@@ -466,6 +466,26 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
           </div>
         </div>
 
+        {/* Création d'auto-entreprise (FR uniquement) */}
+        {locale === "fr" && (
+          <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-2xl border border-sky-500/20 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 p-8 sm:flex-row">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-sky-300">Bonus</p>
+              <h2 className="mt-1 text-xl font-bold text-white">Pas encore d'auto-entreprise ?</h2>
+              <p className="mt-1 text-sm text-gray-400">
+                On lance ton immatriculation INPI gratuitement si couplée à un pack site.
+              </p>
+            </div>
+            <Link
+              href="/creation-entreprise"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-neutral-200"
+            >
+              Créer mon auto-entreprise
+              <FiArrowRight size={13} />
+            </Link>
+          </div>
+        )}
+
         {/* Maintenance section */}
         <div className="mt-16">
           <div className="mb-10 text-center">
