@@ -1,6 +1,5 @@
 ﻿import { buildPageMetadata } from "@/lib/shared-metadata";
 import { HeroSection } from "@/components/hero-section";
-import { StatsBar } from "@/components/stats-bar";
 import { AiSystemsSection } from "@/components/ai-systems-section";
 import { TrustBar } from "@/components/trust-bar";
 import { PricingSection } from "@/components/pricing-section";
@@ -128,7 +127,6 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
-      <StatsBar />
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
