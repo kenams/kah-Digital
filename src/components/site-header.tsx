@@ -51,6 +51,7 @@ export function SiteHeader() {
         nav: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
+          { label: "Créer mon entreprise", href: "/creation-entreprise" },
           { label: "Agents IA", href: "/agents-ia", highlight: true },
           { label: "Réalisations", href: "/projets" },
           { label: "Références", href: "/references" },

@@ -155,11 +155,11 @@ export function CreationEntrepriseForm() {
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
           <p className="text-xs uppercase tracking-[0.3em] text-white/60">Sans erreur</p>
-          <p className="mt-2 text-sm text-white/75">Immatriculation INPI vérifiée avant envoi.</p>
+          <p className="mt-2 text-sm text-white/75">Dossier vérifié par un humain avant envoi.</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Gratuit</p>
-          <p className="mt-2 text-sm text-white/75">Création auto-entreprise sans frais officiels.</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Simple</p>
+          <p className="mt-2 text-sm text-white/75">Un seul interlocuteur, zéro paperasse pour toi.</p>
         </div>
       </div>
 
