@@ -40,11 +40,16 @@ async function callLLMFast(prompt: string): Promise<string> {
 }
 
 // Routing par secteur + score
-function getTrack(audit: SiteAudit): "esn" | "pme-it" | "app" | "agent" | "site" {
+function getTrack(audit: SiteAudit, lead?: DiscoveredLead): "esn" | "pme-it" | "app" | "creation" | "agent" | "site" {
+  // Segment "artisan-creation" (2026-09-24) : le tag vient de lead.sector
+  // (fixé par lead-discovery.ts, pas réécrit par le LLM d'audit) — plus fiable
+  // qu'audit.sector qui peut être reformulé par le modèle.
+  if (lead?.sector === "artisan-creation") return "creation";
   const s = (audit.sector ?? "").toLowerCase();
   if (s === "esn") return "esn";
   if (s === "pme-it") return "pme-it";
   if (s === "app") return "app";
+  if (s === "artisan-creation") return "creation";
   return audit.score >= 45 ? "agent" : "site";
 }
 
@@ -143,11 +148,11 @@ export async function composeProspectingEmail(
 
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
   const topProblem = audit.problems[0]?.title ?? "point à améliorer";
-  const track = getTrack(audit);
+  const track = getTrack(audit, lead);
   const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
   // Preuve client concrète — pertinente pour les pitchs "app / site / agent"
   // (sites livrés), pas pour "esn / pme-it" (pitch support IT interne).
-  const clientRef = ["app", "site", "agent"].includes(track) ? pickRef(seed, lang) : "";
+  const clientRef = ["app", "site", "agent", "creation"].includes(track) ? pickRef(seed, lang) : "";
 
   // Subject A/B
   const abVariant = Math.floor(Date.now() / 86400000) % 6;
@@ -167,6 +172,8 @@ export async function composeProspectingEmail(
       ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
       : track === "agent"
       ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
+      : track === "creation"
+      ? `Pitch : c'est un artisan / indépendant / auto-entrepreneur, probablement en début d'activité ou pas encore structuré. Propose le combo KAH Digital : on peut gérer la création de sa structure (auto-entreprise, 89€, offerte si elle prend un pack site) ET son site pro avec prise de rendez-vous en ligne intégrée, livré rapidement, prix fixe (à partir de 890€, ou 89€ seul pour la création si elle a déjà un statut). Angle : si elle n'a pas encore les deux (structure officielle + site), elle perd des clients qui la cherchent et ne la trouvent pas, ou ne peut pas facturer proprement. Reste crédible : ne présume jamais à 100% qu'elle n'a rien, pose-le comme une hypothèse ("si ce n'est pas encore fait"). Objectif = un appel de 10 min ou une réponse au mail. Appel : 07 59 55 84 14.`
       : `Pitch : c'est un commerce / artisan de service local. Propose un site pro avec PRISE DE RENDEZ-VOUS EN LIGNE intégrée (le client choisit son créneau seul, confirmation et rappel automatiques), livré en 5 jours, prix fixe. Angle : leurs clients qui les cherchent le soir tombent sur un site cassé ou rien. Objectif = un appel de 10 min ou une réponse au mail. Tu peux mentionner "à partir de 890 €" si le contexte s'y prête, sinon reste sur "prix fixe". Appel : 07 59 55 84 14.`;
 
   // Grandes entreprises (banques, cabinets, hôpitaux, assurances, groupes) = ton formel
@@ -262,6 +269,11 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         fr: `On fait des sites pros avec prise de rendez-vous en ligne intégrée — le client choisit son créneau seul, confirmation et rappel automatiques. Livré en 5 jours, prix fixe.`,
         en: `We build professional sites with online booking built in — the client picks their own slot, automatic confirmation and reminder. Delivered in 5 days, fixed price.`,
         de: `Wir bauen professionelle Websites mit integrierter Online-Terminbuchung — der Kunde wählt seinen Termin selbst, automatische Bestätigung und Erinnerung. In 5 Tagen geliefert, Festpreis.`,
+      },
+      creation: {
+        fr: `Si ce n'est pas encore fait : on peut gérer la création de ta structure (auto-entreprise, 89€, offerte si tu prends un pack site) et ton site pro avec prise de rendez-vous en ligne, prix fixe dès 890€.`,
+        en: `If it's not done yet: we can handle setting up your business structure (89€, free with a site package) and a professional site with online booking, fixed price from 890€.`,
+        de: `Falls noch nicht erledigt: Wir übernehmen die Gründung deiner Struktur (89€, gratis bei einem Site-Paket) und eine professionelle Website mit Online-Terminbuchung, Festpreis ab 890€.`,
       },
     };
     const pitch = pitchByTrack[track]?.[lang] ?? pitchByTrack[track]?.fr ?? pitchByTrack.agent!.fr!;

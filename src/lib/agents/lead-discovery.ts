@@ -463,7 +463,53 @@ const TARGETS = [
   { query: "startup immobilier proptech france site web", country: "FR", lang: "fr", sector: "app" },
   { query: "startup lausanne geneve application mobile mvp", country: "CH", lang: "fr", sector: "app" },
   { query: "startup bruxelles application web saas site web", country: "BE", lang: "fr", sector: "app" },
+
+  // ── Segment "artisans / jeunes entreprises" — combo création d'entreprise
+  // (89€, offert avec pack site 890/1690€) + site (2026-09-24, demande Kenams).
+  // Cible : artisans indépendants, professions libérales et auto-entrepreneurs
+  // avec un site minimal/vieillissant ou pas de vraie présence pro — signe
+  // probable qu'ils n'ont pas encore structuré leur activité (pas de SIRENE/
+  // INSEE dispo dans ce repo, donc ciblage par requêtes de recherche comme le
+  // reste du système, pas par date d'immatriculation réelle — voir note plus
+  // bas). Sector suffixé "-creation" pour router vers le pitch combo.
+  { query: "auto-entrepreneur artisan batiment site web debut activite", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "jeune artisan plombier electricien site web contact", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan peintre platrier independant site web devis", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan carreleur macon independant site web contact", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan couvreur charpentier independant site web", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan jardinier paysagiste independant site web devis", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan serrurier independant site web contact devis", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "coiffeuse coiffeur independant a domicile site web reservation", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "esthéticienne independante a domicile site web reservation", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "prothesiste ongulaire independante site web reservation", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "masseur masseuse bien-etre independant site web reservation", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "coach sportif independant nouvellement installe site web", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "traiteur cuisinier independant nouvelle activite site web", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "photographe independant debut activite portfolio site web", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "graphiste freelance debut activite portfolio site web", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "consultant freelance nouvellement independant site web contact", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "infirmier liberal nouvellement installe site web cabinet", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "sophrologue hypnotherapeute independant site web nouvelle activite", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "toiletteur canin independant site web nouvelle activite", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "auto-entrepreneur services a la personne site web contact", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "declaration auto-entrepreneur artisan micro-entreprise site web pro", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan independant toulouse lyon bordeaux site web debut", country: "FR", lang: "fr", sector: "artisan-creation" },
+  { query: "artisan menuisier plombier lausanne geneve independant site web", country: "CH", lang: "fr", sector: "artisan-creation" },
+  { query: "coiffeuse esthéticienne independante lausanne geneve site web", country: "CH", lang: "fr", sector: "artisan-creation" },
+  { query: "coach independant nouvelle activite lausanne geneve site web", country: "CH", lang: "fr", sector: "artisan-creation" },
+  { query: "photographe freelance debut activite geneve lausanne site web", country: "CH", lang: "fr", sector: "artisan-creation" },
 ];
+
+// ── Note source de données (2026-09-24) ────────────────────────────────────
+// Ce repo n'a PAS d'accès à l'API SIRENE/INSEE (aucune clé/route configurée
+// pour ça) — donc AUCUNE immatriculation récente réelle n'est utilisée ici.
+// Le segment "artisan-creation" ci-dessus réutilise la même source que le
+// reste du système (recherche web via Google CSE/DuckDuckGo/Brave + annuaires),
+// avec des requêtes ciblées sur les métiers d'artisans/indépendants les plus
+// susceptibles de ne pas avoir de vraie structure/site pro. Si un accès
+// SIRENE/INSEE réel est branché un jour (clé API + `SIRENE_API_KEY` dans
+// Vercel), on pourra remplacer ces requêtes par un vrai filtre "date de
+// création < 6 mois" — à valider avec Kenams avant de l'ajouter.
 
 // ── Annuaires internationaux ────────────────────────────────────────────────
 const DIRECTORY_SEARCHES: Array<{ url: string; country: string; language: string; sector: string }> = [
