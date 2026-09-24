@@ -129,44 +129,45 @@ export default function ExitIntentPopup() {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{ cursor: "none" }}>
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={dismiss} />
-      <div className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gray-900 p-8 shadow-2xl">
+      <div className="relative w-full max-w-md overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.5)] backdrop-blur sm:p-8">
+        <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-sky-500/10 blur-3xl" />
         <button
           onClick={dismiss}
           aria-label={copy.close}
-          className="absolute right-4 top-4 rounded-lg p-1 text-gray-500 transition hover:text-white"
+          className="absolute right-4 top-4 rounded-lg p-1.5 text-white/50 transition hover:bg-white/10 hover:text-white"
         >
           <FiX size={20} />
         </button>
 
         {submitted ? (
-          <div className="py-4 text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20">
+          <div className="relative py-4 text-center">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15">
               <FiCheck size={28} className="text-emerald-400" />
             </div>
             <h3 className="mb-2 text-xl font-bold text-white">{copy.success_title}</h3>
-            <p className="text-sm text-gray-400">{copy.success_body}</p>
+            <p className="text-sm text-white/60">{copy.success_body}</p>
           </div>
         ) : (
-          <>
-            <div className="mb-1 inline-block rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-400">
+          <div className="relative">
+            <div className="mb-1 inline-block rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-xs font-semibold text-rose-300">
               {copy.badge}
             </div>
             <h2 className="mb-2 mt-3 text-2xl font-extrabold text-white">{copy.title}</h2>
-            <p className="mb-6 text-sm leading-relaxed text-gray-400">{copy.body}</p>
+            <p className="mb-6 text-sm leading-relaxed text-white/60">{copy.body}</p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="text"
                 placeholder={copy.placeholder_company}
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               />
               <input
                 type="text"
                 placeholder={copy.placeholder_website}
                 value={website}
                 onChange={(e) => setWebsite(e.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               />
               <input
                 type="email"
@@ -174,18 +175,28 @@ export default function ExitIntentPopup() {
                 placeholder={copy.placeholder_email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-gray-800 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 px-6 py-3.5 font-bold text-white transition hover:brightness-110 disabled:opacity-60"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
               >
-                {loading ? copy.loading : <><span>{copy.cta}</span><FiArrowRight size={15} /></>}
+                {loading ? (
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+                    {copy.loading}
+                  </>
+                ) : (
+                  <>
+                    <span>{copy.cta}</span>
+                    <FiArrowRight size={15} />
+                  </>
+                )}
               </button>
             </form>
-            <p className="mt-3 text-center text-xs text-gray-600">{copy.footer}</p>
-          </>
+            <p className="mt-3 text-center text-xs text-white/40">{copy.footer}</p>
+          </div>
         )}
       </div>
     </div>

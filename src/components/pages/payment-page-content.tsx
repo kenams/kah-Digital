@@ -122,7 +122,7 @@ export function PaymentPageContent({ locale }: Props) {
                   value={amount}
                   onChange={(event) => setAmount(event.target.value)}
                   placeholder="1200.00"
-                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition placeholder:text-white/28 focus:border-[#d6b36a]/70"
+                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition-all duration-150 placeholder:text-white/28 focus:border-[#d6b36a]/70 focus:ring-2 focus:ring-[#d6b36a]/20 hover:border-white/20"
                 />
               </label>
 
@@ -134,7 +134,7 @@ export function PaymentPageContent({ locale }: Props) {
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   placeholder="client@email.com"
-                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition placeholder:text-white/28 focus:border-[#d6b36a]/70"
+                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition-all duration-150 placeholder:text-white/28 focus:border-[#d6b36a]/70 focus:ring-2 focus:ring-[#d6b36a]/20 hover:border-white/20"
                 />
               </label>
 
@@ -144,7 +144,7 @@ export function PaymentPageContent({ locale }: Props) {
                   value={reference}
                   onChange={(event) => setReference(event.target.value)}
                   placeholder={content.referencePlaceholder}
-                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition placeholder:text-white/28 focus:border-[#d6b36a]/70"
+                  className="h-13 rounded-2xl border border-white/12 bg-black/30 px-4 text-base text-white outline-none transition-all duration-150 placeholder:text-white/28 focus:border-[#d6b36a]/70 focus:ring-2 focus:ring-[#d6b36a]/20 hover:border-white/20"
                 />
               </label>
 
@@ -155,7 +155,7 @@ export function PaymentPageContent({ locale }: Props) {
                   onChange={(event) => setNote(event.target.value)}
                   placeholder={content.notePlaceholder}
                   rows={4}
-                  className="resize-none rounded-2xl border border-white/12 bg-black/30 px-4 py-3 text-base text-white outline-none transition placeholder:text-white/28 focus:border-[#d6b36a]/70"
+                  className="resize-none rounded-2xl border border-white/12 bg-black/30 px-4 py-3 text-base text-white outline-none transition-all duration-150 placeholder:text-white/28 focus:border-[#d6b36a]/70 focus:ring-2 focus:ring-[#d6b36a]/20 hover:border-white/20"
                 />
               </label>
 
@@ -164,9 +164,13 @@ export function PaymentPageContent({ locale }: Props) {
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-[#d6b36a] px-5 font-bold text-[#11131b] transition hover:bg-[#f0d99b] disabled:cursor-not-allowed disabled:opacity-55"
+                className="group inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-[#d6b36a] px-5 font-bold text-[#11131b] shadow-lg shadow-[#d6b36a]/20 transition-all hover:gap-3 hover:bg-[#f0d99b] disabled:cursor-not-allowed disabled:opacity-55 disabled:hover:gap-2"
               >
-                <FiCreditCard size={18} aria-hidden="true" />
+                {loading ? (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#11131b]/30 border-t-[#11131b]" />
+                ) : (
+                  <FiCreditCard size={18} aria-hidden="true" />
+                )}
                 {loading ? content.loading : content.submit}
               </button>
             </div>

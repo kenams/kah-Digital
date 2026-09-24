@@ -284,9 +284,10 @@ export function QuoteForm() {
   return (
     <form
       ref={formRef}
-      className="quote-form premium-card rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-2xl shadow-black/30 backdrop-blur"
+      className="quote-form premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8"
       onSubmit={handleSubmit}
     >
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
       <input
         type="text"
         name="website"
@@ -312,7 +313,7 @@ export function QuoteForm() {
           <select
             id="clientType"
             name="clientType"
-            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             required
             defaultValue=""
           >
@@ -328,7 +329,7 @@ export function QuoteForm() {
           <input
             id="companyName"
             name="companyName"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. Kah-Digital LLC" : "Ex : Kah-Digital SAS"}
           />
         </div>
@@ -338,7 +339,7 @@ export function QuoteForm() {
             id="name"
             name="name"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. Alex Martin" : "Ex : Alex Martin"}
           />
         </div>
@@ -349,7 +350,7 @@ export function QuoteForm() {
             type="email"
             name="email"
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder="contact@company.com"
           />
         </div>
@@ -362,7 +363,7 @@ export function QuoteForm() {
               id="phoneCountry"
               name="phoneCountry"
               defaultValue="+41"
-              className="min-w-[170px] rounded-2xl border border-white/10 bg-gray-900 px-3 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+              className="min-w-[170px] rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             >
               {countryDialCodesSorted.map((entry) => (
                 <option key={entry.iso} value={entry.code}>
@@ -374,7 +375,7 @@ export function QuoteForm() {
               id="phone"
               name="phone"
               inputMode="tel"
-              className="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+              className="min-w-[200px] flex-1 rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               placeholder="00 00 00 00 00"
             />
           </div>
@@ -385,7 +386,7 @@ export function QuoteForm() {
             id="projectType"
             name="projectType"
             required
-            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
           >
             <option value={isEnglish ? "Showcase website" : "Site vitrine"}>{isEnglish ? "Showcase website" : "Site vitrine"}</option>
             <option value="E-commerce">{isEnglish ? "E-commerce" : "E-commerce"}</option>
@@ -400,7 +401,7 @@ export function QuoteForm() {
             name="goal"
             required
             rows={3}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={
               isEnglish
                 ? "e.g. Present the company and generate qualified leads."
@@ -417,7 +418,7 @@ export function QuoteForm() {
                   type="checkbox"
                   name="pages"
                   value={page}
-                  className="h-4 w-4 rounded border-white/20 bg-transparent text-black focus:ring-white/60"
+                  className="h-4 w-4 rounded border-white/20 bg-transparent accent-sky-500 focus:ring-sky-500/60"
                 />
                 {page}
               </label>
@@ -433,7 +434,7 @@ export function QuoteForm() {
                   type="checkbox"
                   name="aiModules"
                   value={module}
-                  className="h-4 w-4 rounded border-white/20 bg-transparent text-black focus:ring-white/60"
+                  className="h-4 w-4 rounded border-white/20 bg-transparent accent-sky-500 focus:ring-sky-500/60"
                 />
                 {module}
               </label>
@@ -447,7 +448,7 @@ export function QuoteForm() {
           <input
             id="inspirations"
             name="inspirations"
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder="https://site-you-like.com"
           />
         </div>
@@ -457,7 +458,7 @@ export function QuoteForm() {
             id="budget"
             name="budget"
             required
-            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
           >
             <option value="" disabled>{isEnglish ? "Select" : "Sélectionne"}</option>
             {budgetOptions.map((value) => (
@@ -473,7 +474,7 @@ export function QuoteForm() {
             id="timeline"
             name="timeline"
             required
-            className="rounded-2xl border border-white/10 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
           >
             <option value="" disabled>{isEnglish ? "Choose" : "Choisis"}</option>
             {timelineOptions.map((value) => (
@@ -491,7 +492,7 @@ export function QuoteForm() {
             id="message"
             name="message"
             rows={4}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={
               isEnglish
                 ? "Share your universe, what matters most..."
@@ -503,7 +504,7 @@ export function QuoteForm() {
       <div className="mt-6 space-y-2 text-sm text-white/70">
         <p>{isEnglish ? "Anti-spam verification" : "Vérification anti-spam"}</p>
         {siteKey ? (
-          <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
+          <div className="flex min-h-[80px] items-center rounded-xl border border-white/10 bg-slate-950/50 p-3">
             <TurnstileWidget
               ref={widgetRef}
               siteKey={siteKey}
@@ -522,14 +523,19 @@ export function QuoteForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
         >
-          {isSubmitting ? (isEnglish ? "Sending..." : "Envoi en cours...") : isEnglish ? "Send my request" : "Envoyer ma demande"}
+          {isSubmitting ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+              {isEnglish ? "Sending..." : "Envoi en cours..."}
+            </>
+          ) : isEnglish ? "Send my request" : "Envoyer ma demande"}
         </button>
         <button
           type="button"
           onClick={exportPdf}
-          className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/80 transition hover:border-white hover:text-white"
+          className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-6 py-3 text-white/80 transition hover:border-white/30 hover:text-white"
         >
           {isEnglish ? "Export to PDF" : "Exporter en PDF"}
         </button>
@@ -545,8 +551,11 @@ export function QuoteForm() {
         </p>
         {serverMessage && (
           <p
-            className={`text-sm ${
-              status === "error" ? "text-rose-200" : "text-emerald-200"
+            role="status"
+            className={`rounded-xl border px-4 py-3 text-sm ${
+              status === "error"
+                ? "border-rose-500/25 bg-rose-500/10 text-rose-200"
+                : "border-emerald-500/25 bg-emerald-500/10 text-emerald-200"
             }`}
           >
             {serverMessage}

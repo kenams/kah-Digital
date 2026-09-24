@@ -415,19 +415,19 @@ function AgentContactForm({ locale }: { locale: Locale }) {
                   type="text"
                   placeholder={fc.name}
                   required
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+                  className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-violet-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-violet-500/20 hover:border-white/20"
                 />
                 <input
                   name="email"
                   type="email"
                   placeholder={fc.email}
                   required
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+                  className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-violet-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-violet-500/20 hover:border-white/20"
                 />
               </div>
               <select
                 name="agent"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-300 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-gray-300 [color-scheme:dark] transition-all duration-150 focus:border-violet-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-violet-500/20 hover:border-white/20"
               >
                 <option value="">{fc.agent}</option>
                 {fc.agentOptions.map((opt) => (
@@ -438,17 +438,24 @@ function AgentContactForm({ locale }: { locale: Locale }) {
                 name="message"
                 rows={3}
                 placeholder={fc.message}
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-gray-600 focus:border-violet-500/50 focus:outline-none focus:ring-1 focus:ring-violet-500/30 resize-none"
+                className="w-full resize-none rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-violet-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-violet-500/20 hover:border-white/20"
               />
               {status === "error" && (
-                <p className="text-xs text-red-400">{fc.error}</p>
+                <p role="status" className="rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-xs text-rose-200">{fc.error}</p>
               )}
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full rounded-xl bg-gradient-to-r from-violet-500 to-blue-500 py-3.5 font-bold text-white shadow-lg shadow-violet-500/20 transition-all hover:brightness-110 disabled:opacity-60"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-500 to-blue-500 py-3.5 font-bold text-white shadow-lg shadow-violet-500/20 transition-all hover:gap-3 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:gap-2"
               >
-                {status === "loading" ? fc.submitting : fc.submit}
+                {status === "loading" ? (
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                    {fc.submitting}
+                  </>
+                ) : (
+                  fc.submit
+                )}
               </button>
             </form>
           )}

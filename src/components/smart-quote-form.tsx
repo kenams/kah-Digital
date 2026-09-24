@@ -362,7 +362,7 @@ export function SmartQuoteForm({
                     value={form[key as keyof typeof form]}
                     onChange={(e) => update(key as keyof typeof form, e.target.value)}
                     placeholder={placeholder}
-                    className="w-full rounded-xl border border-white/10 bg-white/8 px-4 py-3 text-sm text-white placeholder-white/30 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/25"
+                    className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
                   />
                 </label>
               ))}
@@ -381,7 +381,7 @@ export function SmartQuoteForm({
                 value={form.message}
                 onChange={(e) => update("message", e.target.value)}
                 placeholder={c.messagePlaceholder}
-                className="w-full resize-y rounded-xl border border-white/10 bg-white/8 px-4 py-3 text-sm leading-6 text-white placeholder-white/30 outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/25"
+                className="w-full resize-y rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm leading-6 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               />
             </label>
           </div>
@@ -393,7 +393,7 @@ export function SmartQuoteForm({
             <select
               value={form.timeline}
               onChange={(e) => update("timeline", e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-[#0d1525] px-4 py-3 text-sm text-white outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-500/25"
+              className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             >
               <option value="">{c.timelineDefault}</option>
               {c.timelines.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -459,7 +459,10 @@ export function SmartQuoteForm({
         )}
 
         {serverMessage && status === "error" && (
-          <p className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">
+          <p
+            role="status"
+            className="rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200"
+          >
             {serverMessage}
           </p>
         )}
@@ -467,9 +470,16 @@ export function SmartQuoteForm({
         <button
           type="submit"
           disabled={status === "loading" || !selectedService}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#2ea8ff,#1d4ed8)] px-6 py-4 text-base font-bold text-white shadow-[0_12px_40px_rgba(46,168,255,0.35)] transition hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-4 text-base font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:gap-2"
         >
-          {status === "loading" ? `⟳ ${c.submitting}` : c.submit}
+          {status === "loading" ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+              {c.submitting}
+            </>
+          ) : (
+            c.submit
+          )}
         </button>
 
         <p className="text-center text-xs text-white/30">{c.disclaimer}</p>

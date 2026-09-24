@@ -233,13 +233,16 @@ export function ContactForm() {
 
   const isSubmitting = status === "loading";
   const fieldClassName =
-    "w-full rounded-2xl border border-white/20 bg-slate-950/55 px-4 py-3 text-white placeholder:text-white/55 focus:border-sky-300 focus:outline-none";
+    "w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20";
+  const labelClassName = "text-sm font-medium text-white/85";
 
   return (
     <form
-      className="premium-card rounded-[32px] border border-white/10 bg-white/5 p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur"
+      className="premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8"
       onSubmit={handleSubmit}
     >
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+
       <input
         type="text"
         name="website"
@@ -250,7 +253,7 @@ export function ContactForm() {
         defaultValue=""
       />
 
-      <div className="mb-6 grid gap-3 sm:grid-cols-3">
+      <div className="relative mb-6 grid gap-3 sm:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
           <p className="text-xs uppercase tracking-[0.3em] text-white/60">{copy.response}</p>
           <p className="mt-2 text-sm text-white/75">{copy.responseDetail}</p>
@@ -265,36 +268,36 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="relative grid grid-cols-1 gap-5 md:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="firstName" className="text-sm font-medium text-white/90">
+          <label htmlFor="firstName" className={labelClassName}>
             {copy.firstName}
           </label>
           <input id="firstName" name="firstName" required className={fieldClassName} placeholder={copy.firstNamePlaceholder} />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="lastName" className="text-sm font-medium text-white/90">
+          <label htmlFor="lastName" className={labelClassName}>
             {copy.lastName}
           </label>
           <input id="lastName" name="lastName" required className={fieldClassName} placeholder={copy.lastNamePlaceholder} />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-sm font-medium text-white/90">
+          <label htmlFor="email" className={labelClassName}>
             Email *
           </label>
           <input id="email" type="email" name="email" required className={fieldClassName} placeholder="contact@entreprise.com" />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="company" className="text-sm font-medium text-white/90">
+          <label htmlFor="company" className={labelClassName}>
             {copy.company}
           </label>
           <input id="company" name="company" className={fieldClassName} placeholder={copy.companyPlaceholder} />
         </div>
-        <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
+        <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
           <label htmlFor="subject" className="text-sm font-medium text-white/95">
             {copy.subject}
           </label>
-          <select id="subject" name="subject" required className={`${fieldClassName} text-white`} defaultValue="">
+          <select id="subject" name="subject" required className={`${fieldClassName} text-white [color-scheme:dark]`} defaultValue="">
             <option value="" disabled>
               {copy.subjectPlaceholder}
             </option>
@@ -304,7 +307,7 @@ export function ContactForm() {
             <option value="autre">{copy.other}</option>
           </select>
         </div>
-        <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/12 bg-white/5 p-4">
+        <div className="md:col-span-2 flex flex-col gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
           <label htmlFor="message" className="text-sm font-medium text-white/95">
             {copy.message}
           </label>
@@ -314,15 +317,15 @@ export function ContactForm() {
             required
             rows={6}
             placeholder={copy.messagePlaceholder}
-            className={`${fieldClassName} min-h-[180px]`}
+            className={`${fieldClassName} min-h-[180px] resize-none`}
           />
         </div>
       </div>
 
-      <div className="mt-6 space-y-3 rounded-2xl border border-white/12 bg-white/5 p-4">
+      <div className="relative mt-6 space-y-3 rounded-2xl border border-white/10 bg-black/20 p-4">
         <p className="text-sm font-medium text-white/95">{copy.antiSpam}</p>
         {siteKey ? (
-          <div className="min-h-[96px] rounded-2xl border border-white/15 bg-slate-950/45 p-4 flex items-center">
+          <div className="flex min-h-[80px] items-center rounded-xl border border-white/10 bg-slate-950/50 p-3">
             <TurnstileWidget
               ref={widgetRef}
               siteKey={siteKey}
@@ -338,13 +341,13 @@ export function ContactForm() {
         {captchaError ? <p className="text-sm text-rose-200">{captchaError}</p> : null}
       </div>
 
-      <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
-        <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent" />
-        <label htmlFor="privacy" className="text-sm text-white/75">
+      <div className="relative mt-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-black/15 p-4">
+        <input type="checkbox" id="privacy" name="privacy" required className="mt-1 h-4 w-4 shrink-0 rounded border-white/30 bg-transparent accent-sky-500" />
+        <label htmlFor="privacy" className="text-sm text-white/70">
           {copy.privacyIntro}
           <a
             href={locale === "en" ? "/en/politique-de-confidentialite" : locale === "de" ? "/confidentialite" : "/confidentialite"}
-            className="underline hover:text-white"
+            className="underline underline-offset-2 hover:text-white"
           >
             {copy.privacyLink}
           </a>
@@ -352,17 +355,33 @@ export function ContactForm() {
         </label>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="relative mt-6 flex flex-col gap-3">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
         >
-          {isSubmitting ? copy.sending : copy.send}
+          {isSubmitting ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+              {copy.sending}
+            </>
+          ) : (
+            copy.send
+          )}
         </button>
 
         {serverMessage ? (
-          <p className={`text-sm ${status === "error" ? "text-rose-200" : "text-emerald-200"}`}>{serverMessage}</p>
+          <p
+            role="status"
+            className={`rounded-xl border px-4 py-3 text-sm ${
+              status === "error"
+                ? "border-rose-500/25 bg-rose-500/10 text-rose-200"
+                : "border-emerald-500/25 bg-emerald-500/10 text-emerald-200"
+            }`}
+          >
+            {serverMessage}
+          </p>
         ) : null}
       </div>
     </form>

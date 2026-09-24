@@ -1078,14 +1078,15 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
   }
 
   return (
-    <div className="premium-card space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-white shadow-[0_25px_70px_rgba(0,0,0,0.45)]">
-      <div className="flex flex-col gap-2">
+    <div className="premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8 space-y-4">
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+      <div className="relative flex flex-col gap-2">
         <p className="text-sm uppercase tracking-[0.3em] text-white/60">{text.validation}</p>
         <h3 className="text-2xl font-semibold text-white">{text.title}</h3>
         <p className="text-white/70">{text.description}</p>
         {!ready && <p className="text-sm text-amber-300">{text.missingSteps}</p>}
       </div>
-      <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
+      <form className="relative grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-2">
           <label className="text-sm text-white/70">{text.statusLabel}</label>
           <div className="flex gap-3">
@@ -1096,7 +1097,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
                 value="entreprise"
                 checked={clientType === "entreprise"}
                 onChange={() => setClientType("entreprise")}
-                className="h-4 w-4 rounded border-white/30 text-black focus:ring-white/70"
+                className="h-4 w-4 border-white/30 accent-sky-500 focus:ring-sky-500/60"
               />
               {text.company}
             </label>
@@ -1107,7 +1108,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
                 value="particulier"
                 checked={clientType === "particulier"}
                 onChange={() => setClientType("particulier")}
-                className="h-4 w-4 rounded border-white/30 text-black focus:ring-white/70"
+                className="h-4 w-4 border-white/30 accent-sky-500 focus:ring-sky-500/60"
               />
               {text.individual}
             </label>
@@ -1118,7 +1119,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           <input
             value={companyName}
             onChange={(event) => setCompanyName(event.target.value)}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={text.companyPlaceholder}
           />
         </div>
@@ -1128,7 +1129,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
             value={name}
             onChange={(event) => setName(event.target.value)}
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={text.namePlaceholder}
           />
         </div>
@@ -1139,7 +1140,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             required
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={text.emailPlaceholder}
           />
         </div>
@@ -1149,7 +1150,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
             <select
               value={phoneCountry}
               onChange={(event) => setPhoneCountry(event.target.value)}
-              className="min-w-[170px] rounded-2xl border border-white/10 bg-white/10 px-3 py-3 text-white focus:border-white/60"
+              className="min-w-[170px] rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             >
               {countryDialCodesSorted.map((entry) => (
                 <option key={entry.iso} value={entry.code} className="text-black">
@@ -1161,7 +1162,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
               inputMode="tel"
-              className="min-w-[200px] flex-1 rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+              className="min-w-[200px] flex-1 rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               placeholder={text.phonePlaceholder}
             />
           </div>
@@ -1172,14 +1173,14 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
             rows={4}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={text.notesPlaceholder}
           />
         </div>
         <div className="md:col-span-2 space-y-2 text-sm text-white/70">
           <p>{text.captcha}</p>
           {siteKey ? (
-            <div className="min-h-[96px] rounded-2xl border border-white/10 bg-white/5 p-4 flex items-center">
+            <div className="flex min-h-[80px] items-center rounded-xl border border-white/10 bg-slate-950/50 p-3">
               <TurnstileWidget
                 ref={widgetRef}
                 siteKey={siteKey}
@@ -1197,13 +1198,29 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         <div className="md:col-span-2 flex flex-col gap-3">
           <button
             type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
             disabled={isSubmitting || !ready || !name || !email}
           >
-            {isSubmitting ? text.sending : text.send}
+            {isSubmitting ? (
+              <>
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+                {text.sending}
+              </>
+            ) : (
+              text.send
+            )}
           </button>
           {serverMessage && (
-            <p className={`text-sm ${status === "error" ? "text-rose-200" : "text-emerald-200"}`}>{serverMessage}</p>
+            <p
+              role="status"
+              className={`rounded-xl border px-4 py-3 text-sm ${
+                status === "error"
+                  ? "border-rose-500/25 bg-rose-500/10 text-rose-200"
+                  : "border-emerald-500/25 bg-emerald-500/10 text-emerald-200"
+              }`}
+            >
+              {serverMessage}
+            </p>
           )}
           {!ready && <p className="text-xs text-white/60">{text.missingItems}</p>}
         </div>

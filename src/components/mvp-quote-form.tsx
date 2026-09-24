@@ -308,9 +308,10 @@ export function MvpQuoteForm() {
   return (
     <form
       ref={formRef}
-      className="premium-card rounded-[36px] border border-white/15 bg-gradient-to-br from-[#0b0c23] via-[#170f32] to-[#2a1854] p-6 text-white shadow-[0_35px_120px_rgba(72,33,128,0.45)]"
+      className="premium-card relative overflow-hidden rounded-[36px] border border-white/15 bg-gradient-to-br from-[#0b0c23] via-[#170f32] to-[#2a1854] p-6 text-white shadow-[0_35px_120px_rgba(72,33,128,0.45)] sm:p-8"
       onSubmit={handleSubmit}
     >
+      <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-fuchsia-500/15 blur-3xl" />
       <input
         type="text"
         name="website"
@@ -335,7 +336,7 @@ export function MvpQuoteForm() {
             id="clientType"
             name="clientType"
             required
-            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             defaultValue=""
           >
             <option value="" disabled>{isEnglish ? "Select" : "Choisir"}</option>
@@ -350,7 +351,7 @@ export function MvpQuoteForm() {
           <input
             id="companyName"
             name="companyName"
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. Studio Nova" : "Ex : Studio Nova"}
           />
         </div>
@@ -360,7 +361,7 @@ export function MvpQuoteForm() {
             id="name"
             name="name"
             required
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. Alex Martin" : "Ex : Alex Martin"}
           />
         </div>
@@ -371,7 +372,7 @@ export function MvpQuoteForm() {
             type="email"
             name="email"
             required
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder="contact@company.com"
           />
         </div>
@@ -394,7 +395,7 @@ export function MvpQuoteForm() {
               id="phone"
               name="phone"
               inputMode="tel"
-              className="min-w-[200px] flex-1 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+              className="min-w-[200px] flex-1 rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
               placeholder="00 00 00 00 00"
             />
           </div>
@@ -406,7 +407,7 @@ export function MvpQuoteForm() {
             name="idea"
             required
             rows={3}
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={
               isEnglish
                 ? "e.g. Nutrition coaching app with weekly tracking and audio content."
@@ -425,7 +426,7 @@ export function MvpQuoteForm() {
                   type="checkbox"
                   name="mobilePlatforms"
                   value={platform}
-                  className="h-4 w-4 rounded border-white/40 bg-transparent text-white focus:ring-white/70"
+                  className="h-4 w-4 rounded border-white/40 bg-transparent accent-fuchsia-500 focus:ring-fuchsia-400/60"
                 />
                 {platform}
               </label>
@@ -443,7 +444,7 @@ export function MvpQuoteForm() {
                   type="checkbox"
                   name="mobileFeatures"
                   value={feature}
-                  className="h-4 w-4 rounded border-white/40 bg-transparent text-white focus:ring-white/70"
+                  className="h-4 w-4 rounded border-white/40 bg-transparent accent-fuchsia-500 focus:ring-fuchsia-400/60"
                 />
                 {feature}
               </label>
@@ -457,7 +458,7 @@ export function MvpQuoteForm() {
             name="flows"
             required
             rows={3}
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={
               isEnglish
                 ? "e.g. 3-step onboarding, personalized feed, coach booking."
@@ -471,7 +472,7 @@ export function MvpQuoteForm() {
             id="visualMood"
             name="visualMood"
             required
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. dark luxury, gold accents." : "Ex : sombre luxe, touches or & violet."}
           />
         </div>
@@ -480,7 +481,7 @@ export function MvpQuoteForm() {
           <input
             id="techStack"
             name="techStack"
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "e.g. Supabase, Stripe, Notion, internal API..." : "Ex : Supabase, Stripe, Notion, API interne..."}
           />
         </div>
@@ -490,7 +491,7 @@ export function MvpQuoteForm() {
             id="storeSupport"
             name="storeSupport"
             required
-            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             defaultValue=""
           >
             <option value="" disabled>{isEnglish ? "Select" : "Choisir"}</option>
@@ -506,7 +507,7 @@ export function MvpQuoteForm() {
           <input
             id="inspirations"
             name="inspirations"
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder="Headspace, Uber, Notion..."
           />
         </div>
@@ -516,7 +517,7 @@ export function MvpQuoteForm() {
             id="budget"
             name="budget"
             required
-            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             defaultValue=""
           >
             <option value="" disabled>{isEnglish ? "Select" : "Sélectionne"}</option>
@@ -533,7 +534,7 @@ export function MvpQuoteForm() {
             id="timeline"
             name="timeline"
             required
-            className="rounded-2xl border border-white/20 bg-gray-900 px-4 py-3 text-white [color-scheme:dark] focus:border-white/40 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             defaultValue=""
           >
             <option value="" disabled>{isEnglish ? "Choose" : "Choisis"}</option>
@@ -550,7 +551,7 @@ export function MvpQuoteForm() {
             id="notes"
             name="notes"
             rows={4}
-            className="rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-white/60 focus:outline-none"
+            className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
             placeholder={isEnglish ? "Constraints, team, roadmap, etc." : "Contraintes, équipe, roadmap, etc."}
           />
         </div>
@@ -558,7 +559,7 @@ export function MvpQuoteForm() {
       <div className="mt-6 space-y-2 text-sm text-white/70">
         <p>{isEnglish ? "Anti-spam verification" : "Vérification anti-spam"}</p>
         {siteKey ? (
-          <div className="min-h-[96px] rounded-2xl border border-white/15 bg-white/5 p-4 flex items-center">
+          <div className="flex min-h-[80px] items-center rounded-xl border border-white/15 bg-black/30 p-3">
             <TurnstileWidget
               ref={widgetRef}
               siteKey={siteKey}
@@ -577,14 +578,19 @@ export function MvpQuoteForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-violet-500 px-6 py-3.5 font-bold text-slate-950 shadow-lg shadow-fuchsia-500/25 transition-all hover:gap-3 hover:shadow-fuchsia-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
         >
-          {isSubmitting ? (isEnglish ? "Sending..." : "Envoi en cours...") : isEnglish ? "Send my MVP request" : "Envoyer ma demande MVP"}
+          {isSubmitting ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+              {isEnglish ? "Sending..." : "Envoi en cours..."}
+            </>
+          ) : isEnglish ? "Send my MVP request" : "Envoyer ma demande MVP"}
         </button>
         <button
           type="button"
           onClick={exportPdf}
-          className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-white/80 transition hover:border-white hover:text-white"
+          className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-6 py-3 text-white/80 transition hover:border-white/30 hover:text-white"
         >
           {isEnglish ? "Export to PDF" : "Exporter en PDF"}
         </button>
@@ -600,8 +606,11 @@ export function MvpQuoteForm() {
         </p>
         {serverMessage && (
           <p
-            className={`text-sm ${
-              status === "error" ? "text-rose-200" : "text-emerald-200"
+            role="status"
+            className={`rounded-xl border px-4 py-3 text-sm ${
+              status === "error"
+                ? "border-rose-500/25 bg-rose-500/10 text-rose-200"
+                : "border-emerald-500/25 bg-emerald-500/10 text-emerald-200"
             }`}
           >
             {serverMessage}

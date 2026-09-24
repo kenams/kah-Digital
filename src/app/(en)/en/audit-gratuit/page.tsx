@@ -81,60 +81,68 @@ export default function AuditGratuitPageEn() {
 
       <div className="mx-auto max-w-3xl px-4 pb-24 grid gap-12 lg:grid-cols-2">
         <div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="mb-1.5 block text-sm font-semibold text-gray-300">Company name *</label>
+          <form onSubmit={handleSubmit} className="premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8 space-y-4">
+            <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
+            <div className="relative">
+              <label className="mb-1.5 block text-sm font-medium text-white/85">Company name *</label>
               <input
                 type="text"
                 value={form.businessName}
                 onChange={(e) => setForm({ ...form, businessName: e.target.value })}
                 placeholder="Ex: Dupont Consulting, Le Moulin Restaurant..."
-                className="w-full rounded-xl border border-white/10 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-blue-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-white/20"
               />
             </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-semibold text-gray-300">Website URL *</label>
+            <div className="relative">
+              <label className="mb-1.5 block text-sm font-medium text-white/85">Website URL *</label>
               <input
                 type="url"
                 required
                 value={form.website}
                 onChange={(e) => setForm({ ...form, website: e.target.value })}
                 placeholder="https://your-website.com"
-                className="w-full rounded-xl border border-white/10 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-blue-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-white/20"
               />
             </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-semibold text-gray-300">Your email *</label>
+            <div className="relative">
+              <label className="mb-1.5 block text-sm font-medium text-white/85">Your email *</label>
               <input
                 type="email"
                 required
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="you@your-company.com"
-                className="w-full rounded-xl border border-white/10 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-blue-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-white/20"
               />
             </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-semibold text-gray-300">Phone (optional)</label>
+            <div className="relative">
+              <label className="mb-1.5 block text-sm font-medium text-white/85">Phone (optional)</label>
               <input
                 type="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 placeholder="+33 6 00 00 00 00"
-                className="w-full rounded-xl border border-white/10 bg-gray-900 px-4 py-3 text-white placeholder-gray-600 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-blue-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-white/20"
               />
             </div>
             {state === "error" && (
-              <p className="text-sm text-red-400">An error occurred. Please retry or email contact@kah-digital.ch.</p>
+              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">An error occurred. Please retry or email contact@kah-digital.ch.</p>
             )}
             <button
               type="submit"
               disabled={state === "loading"}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 disabled:opacity-60"
+              className="group relative flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:gap-3 hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
             >
-              {state === "loading" ? "Analysing..." : <>Launch my free audit <FiArrowRight size={16} /></>}
+              {state === "loading" ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                  Analysing...
+                </>
+              ) : (
+                <>Launch my free audit <FiArrowRight size={16} /></>
+              )}
             </button>
-            <p className="text-center text-xs text-gray-600">No credit card · Results by email · 100% free</p>
+            <p className="relative text-center text-xs text-gray-600">No credit card · Results by email · 100% free</p>
           </form>
           <div className="mt-6 rounded-2xl border border-[#25D366]/25 bg-[#25D366]/8 p-4 text-center">
             <p className="mb-2 text-sm font-semibold text-white">Prefer a direct reply?</p>

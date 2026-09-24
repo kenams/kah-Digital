@@ -67,25 +67,26 @@ export default function QuickContactForm({ prospectId, siteUrl, businessName, la
 
   if (done) {
     return (
-      <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/8 p-5 text-center">
+      <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-5 text-center">
         <FiCheck size={24} className="mx-auto mb-2 text-emerald-400" />
-        <p className="font-semibold text-emerald-300">{label.success}</p>
+        <p className="font-semibold text-emerald-200">{label.success}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-5">
-      <p className="mb-1 text-center font-bold text-white">{label.title}</p>
-      <p className="mb-4 text-center text-xs text-gray-500">{label.sub}</p>
-      <form onSubmit={submit} className="flex flex-col gap-2">
+    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] backdrop-blur">
+      <div aria-hidden className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-sky-500/10 blur-2xl" />
+      <p className="relative mb-1 text-center font-bold text-white">{label.title}</p>
+      <p className="relative mb-4 text-center text-xs text-white/50">{label.sub}</p>
+      <form onSubmit={submit} className="relative flex flex-col gap-2.5">
         <input
           type="text"
           placeholder={label.namePh}
           value={name}
           onChange={e => setName(e.target.value)}
           required
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none"
+          className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
         />
         <input
           type="email"
@@ -93,21 +94,25 @@ export default function QuickContactForm({ prospectId, siteUrl, businessName, la
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none"
+          className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
         />
         <input
           type="tel"
           placeholder={label.phonePh}
           value={phone}
           onChange={e => setPhone(e.target.value)}
-          className="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none"
+          className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-white placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
         />
         <button
           type="submit"
           disabled={loading || !name.trim() || !email.trim()}
-          className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 py-3 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 disabled:opacity-60"
+          className="group flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-400 to-blue-500 py-3 font-bold text-slate-950 shadow-lg shadow-sky-500/25 transition-all hover:gap-3 hover:shadow-sky-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
         >
-          {loading ? "..." : <>{label.cta} <FiArrowRight size={15} /></>}
+          {loading ? (
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950" />
+          ) : (
+            <>{label.cta} <FiArrowRight size={15} /></>
+          )}
         </button>
       </form>
     </div>
