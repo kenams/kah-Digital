@@ -55,7 +55,7 @@ export function CreationEntreprisePageContent() {
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">Pourquoi passer par KAH Digital</p>
               <ul className="mt-4 space-y-2 text-sm text-white/75">
                 <li>Immatriculation INPI suivie par un vrai humain, pas un formulaire perdu</li>
-                <li>Service gratuit si couplé à un pack site (790€ / 1490€ + abo)</li>
+                <li>Service gratuit si couplé à un pack site (890€ / 1690€ + abo)</li>
                 <li>Un seul interlocuteur pour ton entreprise ET ton site web</li>
               </ul>
             </div>

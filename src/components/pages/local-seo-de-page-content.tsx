@@ -30,7 +30,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     proofLine: "Antwort in 24h · Kostenlose Offerte · Unverbindlich",
     faq: [
       { q: "Arbeiten Sie mit Kunden in Zürich?", a: "Ja, wir arbeiten remote für ganz Zürich und die Deutschschweiz. Der gesamte Prozess läuft online — Briefing per Video, Lieferung digital. Bei Bedarf kommen wir nach Zürich." },
-      { q: "Was kostet eine Website für ein Zürcher Unternehmen?", a: "Starter ab CHF 149 (Landing Page, 5 Tage). Business ab CHF 790 (bis 6 Seiten, 14 Tage, SEO inklusive). Premium AI ab CHF 1'690 (komplettes System mit KI-Automatisierung). Fester Preis garantiert." },
+      { q: "Was kostet eine Website für ein Zürcher Unternehmen?", a: "Starter ab CHF 149 (Landing Page, 5 Tage). Business ab CHF 890 (bis 6 Seiten, 14 Tage, SEO inklusive). Premium AI ab CHF 1'690 (komplettes System mit KI-Automatisierung). Fester Preis garantiert." },
       { q: "Wie lange dauert die Entwicklung?", a: "Starter: 5 Werktage. Business-Website: 14 Tage. Individuelle Web-App: 4-6 Wochen. Alle Fristen werden vor Projektbeginn schriftlich fixiert." },
       { q: "Liefern Sie den kompletten Quellcode?", a: "Ja, 100%. Code, Domain, Hosting — alles gehört Ihnen. Kein Lock-in, keine monatlichen Gebühren, keine Anbieterabhängigkeit." },
     ],
@@ -64,7 +64,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     proofLine: "Antwort in 24h · Kostenlose Offerte · Fester Preis",
     faq: [
       { q: "Arbeiten Sie mit Kunden in München remote?", a: "Ja, der gesamte Prozess läuft online. Briefing per Video, wöchentliche Updates, Lieferung digital. Kein Münchener Agenturaufschlag." },
-      { q: "Was kostet eine Website für ein Münchner Unternehmen?", a: "Starter ab €142 (Landing Page, 5 Tage). Business ab €790 (bis 6 Seiten, 14 Tage). Premium AI ab €1 690 (komplettes System). Fester Preis, keine Überraschungen." },
+      { q: "Was kostet eine Website für ein Münchner Unternehmen?", a: "Starter ab €142 (Landing Page, 5 Tage). Business ab €890 (bis 6 Seiten, 14 Tage). Premium AI ab €1 690 (komplettes System). Fester Preis, keine Überraschungen." },
       { q: "Warum einen Schweizer Studio statt einer Münchner Agentur?", a: "Schweizer Qualität zu einem Bruchteil der lokalen Agenturpreise. Direkt zum Gründer, kein Account Manager, kein Overhead. Ergebnisorientiert, nicht stundenbezogen." },
       { q: "Liefern Sie SEO für den deutschen Markt?", a: "Ja, technisches SEO, strukturierte Daten, Core Web Vitals 95+, saubere URLs — alles inklusive ab Business. Suchmaschinen-optimiert für Google Deutschland." },
     ],
@@ -82,7 +82,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Warum KAH Digital für ein Berliner Startup?", a: "Wir kennen die Sprache der Startups: schnell, iterativ, kein Overhead. Starter in 5 Tagen. Business in 14 Tagen. Kein 2-Monats-Workshop, kein unnötiger Prozess." },
       { q: "Können Sie für Berliner Startups skalierbare Systeme bauen?", a: "Ja, Next.js 15 + Supabase + TypeScript strict. Dieselbe Stack wie gut finanzierte Startups. Skalierbar von Tag 1, ohne Refactoring in 6 Monaten." },
-      { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €142 (Landing Page, 5 Tage). Business €790 (bis 6 Seiten, SEO, Animationen, 14 Tage). Premium AI €1 690 (komplettes System, KI-Chatbot, 28 Tage)." },
+      { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €142 (Landing Page, 5 Tage). Business €890 (bis 6 Seiten, SEO, Animationen, 14 Tage). Premium AI €1 690 (komplettes System, KI-Chatbot, 28 Tage)." },
       { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, funktionale V1 in 4 Wochen. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
     ],
   },
@@ -237,7 +237,7 @@ export function LocalSeoDePageContent({ data }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "CHF 149", sub: "Landing Page · 5 Tage" },
-              { label: "Business", price: "CHF 790", sub: "Bis 6 Seiten · 14 Tage · SEO" },
+              { label: "Business", price: "CHF 890", sub: "Bis 6 Seiten · 14 Tage · SEO" },
               { label: "Premium AI", price: "CHF 1'690", sub: "KI-System · 28 Tage · komplett" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">

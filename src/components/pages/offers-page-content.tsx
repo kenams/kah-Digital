@@ -27,7 +27,7 @@ const copy = {
       plans: [
         {
           name: "Essentiel",
-          price: "79 € / mois",
+          price: "89 € / mois",
           desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
           items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
         },
@@ -76,7 +76,7 @@ const copy = {
         id: "business",
         tag: "Le plus demandé",
         title: "Business",
-        price: "790 €",
+        price: "890 €",
         timeline: "14 jours",
         summary: "Le site professionnel complet qui convertit les visiteurs en clients et s'impose face à la concurrence.",
         includes: [
@@ -117,7 +117,7 @@ const copy = {
         { label: "Application mobile", price: "dès 3 500 €" },
         { label: "E-commerce complet", price: "dès 1 990 €" },
         { label: "Parcours support GLPI", price: "devis sur mesure" },
-        { label: "Refonte + migration", price: "dès 790 €" },
+        { label: "Refonte + migration", price: "dès 890 €" },
       ],
     },
   },
@@ -140,7 +140,7 @@ const copy = {
       plans: [
         {
           name: "Essential",
-          price: "€79 / month",
+          price: "€89 / month",
           desc: "Security updates, backups, uptime monitoring.",
           items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
         },
@@ -185,7 +185,7 @@ const copy = {
         id: "business",
         tag: "Most requested",
         title: "Business",
-        price: "€790",
+        price: "€890",
         timeline: "14 days",
         summary: "The complete professional site that converts visitors into clients and stands out from competitors.",
         includes: [
@@ -226,7 +226,7 @@ const copy = {
         { label: "Mobile app", price: "from €3,500" },
         { label: "Full e-commerce", price: "from €1,990" },
         { label: "GLPI support flow", price: "custom quote" },
-        { label: "Redesign + migration", price: "from €790" },
+        { label: "Redesign + migration", price: "from €890" },
       ],
     },
   },
@@ -294,7 +294,7 @@ const copy = {
         id: "business",
         tag: "Beste Wahl",
         title: "Business",
-        price: "CHF 790",
+        price: "CHF 890",
         timeline: "14 Tage",
         summary: "Die vollständige professionelle Website, die Besucher in Kunden verwandelt und Mitbewerber aussticht.",
         includes: [
@@ -335,7 +335,7 @@ const copy = {
         { label: "Mobile App", price: "Schätzung nach Scoping" },
         { label: "Vollständiger E-Commerce", price: "Umfang gemeinsam definiert" },
         { label: "GLPI-Support-Workflow", price: "An eure Organisation angepasst" },
-        { label: "Redesign + Migration", price: "ab CHF 790" },
+        { label: "Redesign + Migration", price: "ab CHF 890" },
       ],
     },
   },
