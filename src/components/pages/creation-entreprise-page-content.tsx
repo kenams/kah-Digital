@@ -4,7 +4,7 @@ import { CreationEntrepriseForm } from "@/components/creation-entreprise-form";
 const cards = [
   { eyebrow: "Rapide", title: "24h pour lancer le dossier", body: "Dès ta demande envoyée, on prépare et vérifie ton immatriculation INPI." },
   { eyebrow: "Zéro erreur", title: "Dossier vérifié par un humain", body: "Chaque champ est contrôlé avant transmission, pas de rejet administratif évitable." },
-  { eyebrow: "Gratuit à créer", title: "Aucun frais officiel", body: "La création d'auto-entreprise ne coûte rien. On facture uniquement notre accompagnement (offert avec un pack site)." },
+  { eyebrow: "Zéro prise de tête", title: "Un seul interlocuteur", body: "Tu ne gères ni formulaires, ni démarches, ni relances. On s'occupe de tout jusqu'au SIREN." },
 ];
 
 const steps = [
@@ -69,9 +69,9 @@ export function CreationEntreprisePageContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Pourquoi c'est simple</p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900">Une formalité gratuite, un accompagnement qui ne l'est pas.</h2>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900">Zéro démarche, zéro erreur, zéro perte de temps.</h2>
             <p className="mt-4 text-lg text-slate-600">
-              L'auto-entreprise ne coûte rien à créer. Ce que tu paies, c'est la garantie de zéro erreur et zéro perte de temps.
+              On gère les pièges administratifs qui font traîner ou rejeter un dossier mal préparé. Toi, tu n'as rien à démêler seul.
             </p>
           </div>
 
