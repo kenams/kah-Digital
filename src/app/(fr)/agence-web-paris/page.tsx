@@ -2,12 +2,12 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Cr�ation site web Paris � KAH Digital | Devis personnalis�",
-  description: "Studio digital franco-suisse. Cr�ation de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalis� sous 24h, adapt� au besoin r�el.",
-  keywords: ["cr�ation site web Paris", "agence web Paris", "site internet Paris", "d�veloppeur web Paris freelance"],
+  title: "Création site web Paris — KAH Digital | Devis personnalisé",
+  description: "Studio digital franco-suisse. Création de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Paris", "agence web Paris", "site internet Paris", "développeur web Paris freelance"],
   openGraph: {
-    title: "Cr�ation site web Paris � KAH Digital",
-    description: "Studio digital pour entreprises parisiennes. Sites, apps, IA. Process clair. Devis personnalis�.",
+    title: "Création site web Paris — KAH Digital",
+    description: "Studio digital pour entreprises parisiennes. Sites, apps, IA. Process clair. Devis personnalisé.",
   },
   alternates: { canonical: "https://kah-digital.ch/agence-web-paris" },
 };

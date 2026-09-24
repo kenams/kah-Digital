@@ -2,12 +2,12 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Cr�ation site web Dijon � KAH Digital | Devis personnalis�",
-  description: "Studio digital pour Dijon et la Bourgogne. Sites web pour vignobles, restaurants gastronomiques, cabinets et PME. Devis personnalis� sous 24h, adapt� au besoin r�el.",
-  keywords: ["cr�ation site web Dijon", "agence web Dijon", "site internet Dijon", "d�veloppeur web Bourgogne", "agence digitale Dijon"],
+  title: "Création site web Dijon — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Dijon et la Bourgogne. Sites web pour vignobles, restaurants gastronomiques, cabinets et PME. Devis personnalisé sous 24h, adapté au besoin réel.",
+  keywords: ["création site web Dijon", "agence web Dijon", "site internet Dijon", "développeur web Bourgogne", "agence digitale Dijon"],
   openGraph: {
-    title: "Cr�ation site web Dijon � KAH Digital",
-    description: "Studio digital pour vignobles et entreprises dijonnaises. Sites, apps, e-commerce. Devis personnalis�.",
+    title: "Création site web Dijon — KAH Digital",
+    description: "Studio digital pour vignobles et entreprises dijonnaises. Sites, apps, e-commerce. Devis personnalisé.",
   },
   alternates: { canonical: "https://kah-digital.ch/agence-web-dijon" },
 };

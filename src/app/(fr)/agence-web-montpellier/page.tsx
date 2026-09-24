@@ -2,10 +2,10 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Cr�ation site web Montpellier � KAH Digital | Devis personnalis�",
-  description: "Studio digital pour Montpellier. Sites web pour m�decins, startups, restaurants et entreprises m�diterran�ennes. Devis gratuit sous 24h.",
-  keywords: ["cr�ation site web Montpellier", "agence web Montpellier", "site internet Montpellier", "d�veloppeur web H�rault"],
-  openGraph: { title: "Cr�ation site web Montpellier � KAH Digital", description: "Studio digital pour entreprises montpelli�raines. Sites, apps. Devis personnalis�." },
+  title: "Création site web Montpellier — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Montpellier. Sites web pour médecins, startups, restaurants et entreprises méditerranéennes. Devis gratuit sous 24h.",
+  keywords: ["création site web Montpellier", "agence web Montpellier", "site internet Montpellier", "développeur web Hérault"],
+  openGraph: { title: "Création site web Montpellier — KAH Digital", description: "Studio digital pour entreprises montpelliéraines. Sites, apps. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-montpellier" },
 };
 

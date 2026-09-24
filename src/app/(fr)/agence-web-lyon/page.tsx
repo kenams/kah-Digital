@@ -2,12 +2,12 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Cr�ation site web Lyon � KAH Digital | Devis personnalis�",
-  description: "Studio digital pour Lyon et la r�gion Auvergne-Rh�ne-Alpes. Sites web, apps et solutions IA pour PME et ind�pendants. Devis gratuit sous 24h.",
-  keywords: ["cr�ation site web Lyon", "agence web Lyon", "site internet Lyon", "d�veloppeur web Lyon"],
+  title: "Création site web Lyon — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Lyon et la région Auvergne-Rhône-Alpes. Sites web, apps et solutions IA pour PME et indépendants. Devis gratuit sous 24h.",
+  keywords: ["création site web Lyon", "agence web Lyon", "site internet Lyon", "développeur web Lyon"],
   openGraph: {
-    title: "Cr�ation site web Lyon � KAH Digital",
-    description: "Studio digital pour entreprises lyonnaises. Sites, apps, IA. Devis personnalis�.",
+    title: "Création site web Lyon — KAH Digital",
+    description: "Studio digital pour entreprises lyonnaises. Sites, apps, IA. Devis personnalisé.",
   },
   alternates: { canonical: "https://kah-digital.ch/agence-web-lyon" },
 };

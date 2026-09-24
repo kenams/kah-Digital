@@ -2,10 +2,10 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Cr�ation site web Nice � KAH Digital | Devis personnalis�",
-  description: "Studio digital pour Nice et la C�te d'Azur. Sites web multilingues pour h�tels, restaurants gastronomiques et professions lib�rales. Devis sous 24h.",
-  keywords: ["cr�ation site web Nice", "agence web Nice", "site internet C�te d'Azur", "d�veloppeur web Nice"],
-  openGraph: { title: "Cr�ation site web Nice � KAH Digital", description: "Studio digital pour entreprises ni�oises. Sites multilingues, apps. Devis personnalis�." },
+  title: "Création site web Nice — KAH Digital | Devis personnalisé",
+  description: "Studio digital pour Nice et la Côte d'Azur. Sites web multilingues pour hôtels, restaurants gastronomiques et professions libérales. Devis sous 24h.",
+  keywords: ["création site web Nice", "agence web Nice", "site internet Côte d'Azur", "développeur web Nice"],
+  openGraph: { title: "Création site web Nice — KAH Digital", description: "Studio digital pour entreprises niçoises. Sites multilingues, apps. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-nice" },
 };
 
