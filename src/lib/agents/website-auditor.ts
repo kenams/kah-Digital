@@ -173,25 +173,15 @@ const AUDIT_PROMPT: Record<string, string> = {
 
 // Orientation commerciale adaptée au marché local, sans prix public.
 function getPricingGuide(country: string): string {
-  const guides: Record<string, string> = {
-    CH: `Swiss market: emphasize premium positioning, trust, clarity, and an estimate adapted after scoping. Do not provide public amounts.`,
-    GB: `UK market: emphasize conversion, credibility, and an estimate adapted after scoping. Do not provide public amounts.`,
-    US: `US market: emphasize business outcome, speed, and an estimate adapted after scoping. Do not provide public amounts.`,
-    AU: `Australian market: emphasize clarity, trust, and an estimate adapted after scoping. Do not provide public amounts.`,
-    CA: `Canadian market: emphasize clear scope, trust, and an estimate adapted after scoping. Do not provide public amounts.`,
-    MA: `Moroccan market: adapt the recommendation to local buying power, but do not provide public amounts.`,
-    SN: `Senegal/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
-    CI: `Ivory Coast/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
-    CM: `Cameroon/West Africa market: adapt the recommendation to local buying power, but do not provide public amounts.`,
-    TN: `Tunisian market: adapt the recommendation to local buying power, but do not provide public amounts.`,
-  };
-  return guides[country] ?? `European market: no public fixed pricing. Each proposal is adjusted after scoping the real need, complexity, timeline, support level, useful features, available budget, and business priorities.`;
+  const currency = country === "CH" ? "CHF" : "EUR";
+  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 790 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1490 for a weak/critical site needing a full rebuild, both with an optional 39/month maintenance & hosting subscription. Pick whichever forfait matches the site's actual state.`;
 }
 
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
-  void country;
-  void quality;
-  return { price: 0, range: "Devis personnalisé après cadrage" };
+  const currency = country === "CH" ? "CHF" : "EUR";
+  if (quality === "poor") return { price: 1490, range: `Dès ${1490} ${currency}` };
+  if (quality === "medium") return { price: 790, range: `Dès ${790} ${currency}` };
+  return { price: 790, range: `Dès ${790} ${currency}` };
 }
 
 export async function auditWebsite(lead: DiscoveredLead): Promise<SiteAudit | null> {
@@ -253,7 +243,7 @@ Score evaluation rules:
 - 71-100: good site (skip if > 65)
 
 ${pricingGuide}
-Do not output public fixed prices, currencies, or pricing ranges. Use estimatedPrice: 0 and priceRange: a custom quote / personalized estimate message in language "${lang}".
+Set estimatedPrice to 790 or 1490 (whichever forfait fits, based on the score) and priceRange to a short string like "Dès 790 €" or "Dès 1490 CHF" (use the right currency and amount) translated naturally in language "${lang}".
 
 Return 3-5 problems and 2-3 recommendations, all written in language "${lang}".`;
 

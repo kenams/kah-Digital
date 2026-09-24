@@ -274,14 +274,12 @@ export default async function ProspectLandingPage({ params }: Props) {
         <div className="mb-8 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-6 text-center">
           <div className="text-sm text-gray-400">{c.priceLabel}</div>
           <div className="mt-1 text-2xl font-black text-white">
-            {lang === "en"
-              ? "Adjusted after a short scoping call"
-              : "Ajustée après un court échange de cadrage"}
+            {audit.priceRange || (audit.estimatedPrice ? `${audit.estimatedPrice.toLocaleString(lang === "en" ? "en-US" : "fr-FR")} €` : (lang === "en" ? "Adjusted after a short scoping call" : "Ajustée après un court échange de cadrage"))}
           </div>
           <div className="mt-2 text-xs text-gray-500">
             {lang === "en"
-              ? "Clear custom quote · No obligation"
-              : "Devis personnalisé clair · Sans engagement"}
+              ? "Estimate based on your analysis · Final quote confirmed on a quick call"
+              : "Estimation basée sur votre analyse · Devis final confirmé lors d'un court échange"}
           </div>
         </div>
 
