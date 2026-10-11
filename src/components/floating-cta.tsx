@@ -41,7 +41,7 @@ export function FloatingCTA() {
     locale === "en" ? "Get a free quote" : locale === "de" ? "Kostenlose Offerte" : "Devis gratuit";
 
   const priceLine =
-    locale === "en" ? "From $142 · 5-day delivery" : locale === "de" ? "Ab CHF 149 · 5 Tage" : "Dès 142 € · 5 jours";
+    locale === "en" ? "From $290 · 5-day delivery" : locale === "de" ? "Ab CHF 290 · 5 Tage" : "Dès 290 € · 5 jours";
 
   return (
     <div

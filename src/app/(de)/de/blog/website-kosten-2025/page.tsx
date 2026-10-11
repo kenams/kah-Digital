@@ -35,7 +35,7 @@ const faqJsonLd = {
       "name": "Was kostet eine professionelle Website in der Schweiz 2025?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Eine Landing Page kostet CHF 149–500. Ein professionelles Business-Site mit 5–10 Seiten kostet CHF 890–2.500. Eine vollständige Website mit CMS, Mehrsprachigkeit und SEO-Optimierung liegt bei CHF 1'690–5.000+. Die Preise variieren je nach Komplexität, Design-Aufwand und Funktionsumfang."
+        "text": "Eine Landing Page kostet CHF 290–500. Ein professionelles Business-Site mit 5–10 Seiten kostet CHF 790–2.500. Eine vollständige Website mit CMS, Mehrsprachigkeit und SEO-Optimierung liegt bei CHF 2'490–5.000+. Die Preise variieren je nach Komplexität, Design-Aufwand und Funktionsumfang."
       }
     },
     {
@@ -104,7 +104,7 @@ const hiddenCosts = [
 const kahdPricing = [
   {
     label: "Starter",
-    price: "CHF 149",
+    price: "CHF 290",
     priceDE: "€ 139",
     desc: "Landing Page oder Portfolio",
     features: ["1 Seite, vollständig optimiert", "Mobil-First Design", "Kontaktformular", "SEO-Basis", "Deployment inklusive"],
@@ -114,8 +114,8 @@ const kahdPricing = [
   },
   {
     label: "Business",
-    price: "CHF 890",
-    priceDE: "€ 890",
+    price: "CHF 790",
+    priceDE: "€ 790",
     desc: "Professionelle Business-Website",
     features: ["5–10 Seiten", "On-Page SEO", "Google Maps", "Analytics", "Kontaktformular pro", "1 Monat Support"],
     timeline: "1–2 Wochen",
@@ -125,8 +125,8 @@ const kahdPricing = [
   },
   {
     label: "Premium AI",
-    price: "CHF 1'690",
-    priceDE: "€ 1 690",
+    price: "CHF 2'490",
+    priceDE: "€ 2 490",
     desc: "Website + KI-Integration",
     features: ["10–20 Seiten", "KI-Chatbot inklusive", "Mehrsprachigkeit", "CMS-Integration", "Conversion-Architektur", "3 Monate Support"],
     timeline: "3–4 Wochen",
@@ -166,7 +166,7 @@ export default function WebsiteKosten2025Page() {
         {/* TL;DR */}
         <div className="mb-10 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
           <p className="text-sm leading-relaxed text-amber-200">
-            <strong>Kurzfassung:</strong> Landing Page ab CHF 149 · Business-Website ab CHF 890 · Premium mit KI ab CHF 1'690. Versteckte Kosten (Hosting, Plugins, Wartung) können bei WordPress-Sites CHF 3.000–8.000 über 3 Jahre zusätzlich ausmachen.
+            <strong>Kurzfassung:</strong> Landing Page ab CHF 290 · Business-Website ab CHF 790 · Premium mit KI ab CHF 2'490. Versteckte Kosten (Hosting, Plugins, Wartung) können bei WordPress-Sites CHF 3.000–8.000 über 3 Jahre zusätzlich ausmachen.
           </p>
         </div>
 

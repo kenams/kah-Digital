@@ -33,7 +33,7 @@ const FAQS = {
     },
     {
       q: "Y a-t-il un support après la livraison ?",
-      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Agent IA vertical : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 89 €/mois pour la suite.",
+      a: "Business : 1 mois de support inclus (corrections, ajustements mineurs). Agent IA vertical : 3 mois de support prioritaire. Des formules de maintenance mensuelle sont disponibles à partir de 49 €/mois pour la suite.",
     },
     {
       q: "Quelle est la différence entre un agent IA vertical et ChatGPT ?",
@@ -67,7 +67,7 @@ const FAQS = {
     },
     {
       q: "Is there support after delivery?",
-      a: "Business: 1 month support included (fixes, minor adjustments). Vertical AI Agent: 3 months priority support. Monthly maintenance plans are available from $89/month for ongoing care.",
+      a: "Business: 1 month support included (fixes, minor adjustments). Vertical AI Agent: 3 months priority support. Monthly maintenance plans are available from $49/month for ongoing care.",
     },
     {
       q: "What's the difference between a vertical AI agent and ChatGPT?",
@@ -89,7 +89,7 @@ const FAQS = {
     },
     {
       q: "Ist SEO in den Plänen enthalten?",
-      a: "Technisches Basis-SEO (Meta-Tags, Sitemap, URL-Struktur, Geschwindigkeit) ist in allen Plänen enthalten. Erweitertes SEO (lokale Seiten, optimierter Content, Link-Building, Ranking-Tracking) ist als Option für CHF 149 verfügbar.",
+      a: "Technisches Basis-SEO (Meta-Tags, Sitemap, URL-Struktur, Geschwindigkeit) ist in allen Plänen enthalten. Erweitertes SEO (lokale Seiten, optimierter Content, Link-Building, Ranking-Tracking) ist als Option für CHF 290 verfügbar.",
     },
     {
       q: "Wird meine Website für Mobilgeräte optimiert?",
@@ -101,7 +101,7 @@ const FAQS = {
     },
     {
       q: "Gibt es Support nach der Lieferung?",
-      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Vertikaler KI-Agent: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 89/Monat verfügbar.",
+      a: "Business: 1 Monat Support inklusive (Korrekturen, kleinere Anpassungen). Vertikaler KI-Agent: 3 Monate Prioritäts-Support. Monatliche Wartungspläne sind ab CHF 49/Monat verfügbar.",
     },
     {
       q: "Was unterscheidet einen vertikalen KI-Agenten von ChatGPT?",

@@ -23,12 +23,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-lausanne": {
     city: "Lausanne", country: "Suisse", region: "Vaud", locale: "fr", slug: "site-web-lausanne",
     headline: "Création de site web à Lausanne",
-    subline: "Studio basé à Lausanne — Next.js 15, Lighthouse 95+, SEO technique. Dès CHF 149, livré en 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital est basé à Lausanne. Nous créons des sites web haute-performance sur Next.js 15 pour les PME, indépendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intégré. Starter dès CHF 149 — Business dès CHF 890 — Système IA complet dès CHF 1'690. Devis gratuit en 24h, sans engagement.",
+    subline: "Studio basé à Lausanne — Next.js 15, Lighthouse 95+, SEO technique. Dès CHF 290, livré en 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital est basé à Lausanne. Nous créons des sites web haute-performance sur Next.js 15 pour les PME, indépendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intégré. Starter dès CHF 290 — Business dès CHF 790 — Système IA complet dès CHF 2'490. Devis gratuit en 24h, sans engagement.",
     sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Médecins & professions libérales"],
-    proofLine: "Studio · Lausanne · Réponse 24h · Prix fixe CHF 149 — Sans engagement",
+    proofLine: "Studio · Lausanne · Réponse 24h · Prix fixe CHF 290 — Sans engagement",
     faq: [
-      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 890, livré en 14 jours. Système complet avec IA dès CHF 1'690. Prix fixe garanti avant de commencer, zéro surprise." },
+      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 790, livré en 14 jours. Système complet avec IA dès CHF 2'490. Prix fixe garanti avant de commencer, zéro surprise." },
       { q: "Vous êtes vraiment basés à Lausanne ?", a: "Oui, KAH Digital est basé à Lausanne. Vous pouvez nous rencontrer en personne ou travailler entièrement à distance — même qualité, même prix." },
       { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
       { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui — SEO technique complet, données structurées, Core Web Vitals 95+, URLs propres, sitemap. Inclus dès le plan Business. Optimisé pour Google CH." },
@@ -37,12 +37,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-geneve": {
     city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "site-web-geneve",
     headline: "Création de site web à Genève",
-    subline: "Studio romand proche de Genève — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 149, 14 jours. Prix fixe.",
+    subline: "Studio romand proche de Genève — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 290, 14 jours. Prix fixe.",
     intro: "KAH Digital accompagne les entreprises genevaises dans leur présence digitale : cabinets d'avocats, fiduciaires, ONG, hôtels, startups, médecins. Sites web haute-performance en français, anglais et allemand. Basé à Lausanne, à 45 min de Genève. Devis gratuit sous 24h, prix fixe, code 100% à vous.",
     sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hôtels & restauration de luxe", "Startups Geneva Lake", "Médecins & cliniques"],
-    proofLine: "· 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 149 — Réponse 24h",
+    proofLine: "· 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 290 — Réponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe confirmé avant tout démarrage." },
+      { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe confirmé avant tout démarrage." },
       { q: "êtes-vous basés à Genève ?", a: "Notre studio est à Lausanne, à 45 min de Genève. Nous rencontrons nos clients genevois en personne si besoin ou travaillons entièrement à distance — même qualité, même prix." },
       { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dès le plan Business." },
       { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui. Nous avons l'expérience des secteurs sensibles aux conformités et pouvons adapter notre process à vos contraintes de procurement." },
@@ -51,12 +51,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-fribourg": {
     city: "Fribourg", country: "Suisse", region: "Fribourg", locale: "fr", slug: "site-web-fribourg",
     headline: "Création de site web à Fribourg",
-    subline: "Studio romand bilingue FR/DE — Next.js 15, SEO technique, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
-    intro: "KAH Digital crée des sites web professionnels pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, nous comprenons les besoins spécifiques du marché fribourgeois. Sites haute-performance, SEO local, design premium. Starter dès CHF 149 — Business dès CHF 890 — Devis gratuit en 24h.",
+    subline: "Studio romand bilingue FR/DE — Next.js 15, SEO technique, prix fixe. Dès CHF 290, livré en 5 jours. Sans engagement.",
+    intro: "KAH Digital crée des sites web professionnels pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, nous comprenons les besoins spécifiques du marché fribourgeois. Sites haute-performance, SEO local, design premium. Starter dès CHF 290 — Business dès CHF 790 — Devis gratuit en 24h.",
     sectors: ["Artisans & PME fribourgeois", "Restaurants & cafés", "Coachs & formateurs", "Agriculture & terroir", "Associations & institutions", "Professions libérales"],
-    proofLine: "Bilingue FR/DE · Prix fixe CHF 149 — Réponse 24h · Sans engagement",
+    proofLine: "Bilingue FR/DE · Prix fixe CHF 290 — Réponse 24h · Sans engagement",
     faq: [
-      { q: "Combien coûte un site web professionnel à Fribourg ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe, zéro surprise." },
+      { q: "Combien coûte un site web professionnel à Fribourg ?", a: "Starter (landing page bilingue FR/DE) dès CHF 290, livré en 5 jours. Business (6 pages, SEO) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, zéro surprise." },
       { q: "Faites-vous des sites bilingues français-allemand pour le marché fribourgeois ?", a: "Oui — sites FR/DE parfaitement bilingues avec hreflang correct, URLs propres par langue, SEO optimisé dans les deux langues. Idéal pour le marché fribourgeois." },
       { q: "Peut-on se rencontrer à Fribourg ?", a: "Nous pouvons nous déplacer à Fribourg pour les projets importants. La plupart des échanges se font en visioconférence depuis Lausanne." },
     ],
@@ -142,12 +142,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-berne": {
     city: "Berne", country: "Suisse", region: "Berne", locale: "fr", slug: "agence-web-berne",
     headline: "Création de site web à Berne",
-    subline: "Studio digital suisse bilingue FR/DE — Next.js 15, Lighthouse 95+, prix fixe. Dès CHF 149, livré en 5 jours. Sans engagement.",
-    intro: "KAH Digital accompagne les entreprises et indépendants de la région bernoise dans leur présence digitale. Bilingue français-allemand, notre studio est parfaitement adapté aux besoins du marché bernois : fédéral, institutionnel, ou PME de proximité. Starter dès CHF 149 — Business dès CHF 890 — Système IA dès CHF 1'690. Devis gratuit en 24h.",
+    subline: "Studio digital suisse bilingue FR/DE — Next.js 15, Lighthouse 95+, prix fixe. Dès CHF 290, livré en 5 jours. Sans engagement.",
+    intro: "KAH Digital accompagne les entreprises et indépendants de la région bernoise dans leur présence digitale. Bilingue français-allemand, notre studio est parfaitement adapté aux besoins du marché bernois : fédéral, institutionnel, ou PME de proximité. Starter dès CHF 290 — Business dès CHF 790 — Système IA dès CHF 2'490. Devis gratuit en 24h.",
     sectors: ["Institutions & administrations fédérales", "Cabinets & consultants", "PME bilingues FR/DE", "Artisans & indépendants", "Associations & ONG", "Startups bernoises"],
-    proofLine: "Studio Suisse · Bilingue FR/DE · Prix fixe CHF 149 — Réponse 24h",
+    proofLine: "Studio Suisse · Bilingue FR/DE · Prix fixe CHF 290 — Réponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Berne ?", a: "Starter (landing page bilingue FR/DE) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe, devis confirmé avant de commencer." },
+      { q: "Combien coûte un site web professionnel à Berne ?", a: "Starter (landing page bilingue FR/DE) dès CHF 290, livré en 5 jours. Business (6 pages, SEO) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, devis confirmé avant de commencer." },
       { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui, sites institutionnels, portails de services et intranets. Expérience avec les structures fédérales et cantonales suisses." },
       { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH Digital produit des sites en allemand, français et anglais. Idéal pour le marché bilingue bernois." },
       { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne." },
@@ -221,12 +221,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-zurich": {
     city: "Zurich", country: "Suisse", region: "Zurich", locale: "fr", slug: "agence-web-zurich",
     headline: "Création de site web à Zurich",
-    subline: "Studio digital suisse multilingue DE/FR/EN — Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital accompagne les entreprises de Zurich dans leur présence digitale. Zurich est la capitale économique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles — notre studio crée des sites professionnels multilingues (DE/FR/EN) adaptés au marché zurichois. Starter dès CHF 149 — Business dès CHF 890 — Système IA dès CHF 1'690. Devis gratuit en 24h.",
+    subline: "Studio digital suisse multilingue DE/FR/EN — Next.js 15, Lighthouse 95+. Dès CHF 290, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Zurich dans leur présence digitale. Zurich est la capitale économique suisse : banques, cabinets d'avocats, startups fintech, PME industrielles — notre studio crée des sites professionnels multilingues (DE/FR/EN) adaptés au marché zurichois. Starter dès CHF 290 — Business dès CHF 790 — Système IA dès CHF 2'490. Devis gratuit en 24h.",
     sectors: ["Finance & banques", "Cabinets d'avocats & fiduciaires", "Startups fintech & crypto", "Hôtels & restauration", "PME Suisse alémanique", "Professions libérales"],
-    proofLine: "Studio Suisse · Multilingue DE/FR/EN · Prix fixe CHF 149 — Réponse 24h",
+    proofLine: "Studio Suisse · Multilingue DE/FR/EN · Prix fixe CHF 290 — Réponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Zurich ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe confirmé avant tout démarrage." },
+      { q: "Combien coûte un site web professionnel à Zurich ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe confirmé avant tout démarrage." },
       { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, français et anglais. SEO optimisé dans chaque langue. Idéal pour les entreprises qui ciblent la Suisse alémanique et internationale." },
       { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. On connaît les exigences du marché financier suisse et les standards LPD." },
       { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation depuis notre siège à Lausanne, en CHF." },
@@ -235,12 +235,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-basel": {
     city: "Basel", country: "Suisse", region: "Bâle", locale: "fr", slug: "agence-web-basel",
     headline: "Création de site web à Bâle",
-    subline: "Studio digital suisse trilingue FR/DE/EN — Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital crée des sites web pour les entreprises bâloises. Bâle est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptés aux entreprises qui opèrent en France, Allemagne et Suisse. Starter dès CHF 149 — Business dès CHF 890 — Système IA dès CHF 1'690.",
+    subline: "Studio digital suisse trilingue FR/DE/EN — Next.js 15, Lighthouse 95+. Dès CHF 290, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital crée des sites web pour les entreprises bâloises. Bâle est un carrefour international unique : industrie pharmaceutique, foires internationales, culture et banques. Notre studio propose des sites multilingues adaptés aux entreprises qui opèrent en France, Allemagne et Suisse. Starter dès CHF 290 — Business dès CHF 790 — Système IA dès CHF 2'490.",
     sectors: ["Pharma & life sciences", "Industrie & manufacturing", "Culture & art Basel", "PME transfrontalières CH/DE/FR", "Cabinets & consultants", "Restaurants & hôtels"],
-    proofLine: "Studio Suisse · Trilingue FR/DE/EN · Prix fixe CHF 149 — Réponse 24h",
+    proofLine: "Studio Suisse · Trilingue FR/DE/EN · Prix fixe CHF 290 — Réponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Bâle ?", a: "Starter (landing page trilingue) dès CHF 149, livré en 5 jours. Business (6 pages, SEO dans 3 langues) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe, zéro surprise." },
+      { q: "Combien coûte un site web professionnel à Bâle ?", a: "Starter (landing page trilingue) dès CHF 290, livré en 5 jours. Business (6 pages, SEO dans 3 langues) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, zéro surprise." },
       { q: "Faites-vous des sites trilingues pour les entreprises bâloises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue et hreflang correct. Idéal pour le marché rhénan et les foires internationales." },
       { q: "Avez-vous travaillé avec des entreprises du secteur pharma ?", a: "Oui, sites institutionnels, portails partenaires et intranets. Nous respectons les exigences LPD et les standards de conformité du secteur." },
       { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
@@ -249,12 +249,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-lausanne": {
     city: "Lausanne", country: "Suisse", region: "Vaud", locale: "fr", slug: "agence-web-lausanne",
     headline: "Agence web à Lausanne",
-    subline: "Studio digital basé à Lausanne — Next.js 15, Lighthouse 95+, SEO local Vaud. Dès CHF 149, livré en 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital est votre agence web à Lausanne. Nous créons des sites web haute-performance pour les PME, indépendants, startups et professions libérales vaudoises. Basés au cœur de Lausanne, nous combinons design premium, SEO technique et intégration IA pour donner à votre entreprise une présence digitale qui génère de vrais clients. Starter dès CHF 149 — Business dès CHF 890 — Système IA dès CHF 1'690. Devis gratuit sous 24h.",
+    subline: "Studio digital basé à Lausanne — Next.js 15, Lighthouse 95+, SEO local Vaud. Dès CHF 290, livré en 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital est votre agence web à Lausanne. Nous créons des sites web haute-performance pour les PME, indépendants, startups et professions libérales vaudoises. Basés au cœur de Lausanne, nous combinons design premium, SEO technique et intégration IA pour donner à votre entreprise une présence digitale qui génère de vrais clients. Starter dès CHF 290 — Business dès CHF 790 — Système IA dès CHF 2'490. Devis gratuit sous 24h.",
     sectors: ["Avocats & fiduciaires vaudois", "Restaurants & hôtels lausannois", "Coachs & thérapeutes", "Startups EPFL & Scale-up", "PME & artisans du Vaud", "Médecins & professions de santé"],
-    proofLine: "Agence basée à Lausanne · Réponse 24h · Prix fixe CHF 149 · Sans engagement",
+    proofLine: "Agence basée à Lausanne · Réponse 24h · Prix fixe CHF 290 · Sans engagement",
     faq: [
-      { q: "Combien coûte une agence web à Lausanne ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO local Lausanne) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe garanti, zéro surprise — contrairement à beaucoup d'agences lausannoises qui facturent à l'heure." },
+      { q: "Combien coûte une agence web à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO local Lausanne) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe garanti, zéro surprise — contrairement à beaucoup d'agences lausannoises qui facturent à l'heure." },
       { q: "Vous êtes vraiment une agence web basée à Lausanne ?", a: "Oui, KAH Digital est basé à Lausanne (Rue de Bourg 27, 1003 Lausanne). Vous pouvez nous rencontrer en personne pour votre projet ou travailler entièrement à distance — même qualité, même prix." },
       { q: "Faites-vous du SEO local pour Lausanne ?", a: "Oui — SEO technique complet, Google Business Profile, données structurées Schema.org, Core Web Vitals 95+, sitemap. Optimisé pour apparaître sur les recherches 'agence web Lausanne' et 'création site web Vaud'." },
       { q: "Quels délais pour un projet web à Lausanne ?", a: "Landing page : 5 jours. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage." },
@@ -263,12 +263,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-geneve": {
     city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "agence-web-geneve",
     headline: "Agence web à Genève",
-    subline: "Studio digital romand multilingue FR/EN/DE pour entreprises genevoises — Next.js 15, Lighthouse 95+. Dès CHF 149, prix fixe.",
+    subline: "Studio digital romand multilingue FR/EN/DE pour entreprises genevoises — Next.js 15, Lighthouse 95+. Dès CHF 290, prix fixe.",
     intro: "KAH Digital accompagne les entreprises genevoises dans leur transformation digitale. Cabinets d'avocats, ONG internationales, fiduciaires, hôtels de luxe, cliniques, startups — nous créons des sites web et applications multilingues (FR/EN/DE) adaptés aux exigences du marché genevois. Studio basé à Lausanne, à 45 minutes de Genève. Devis gratuit sous 24h, code source 100% à vous.",
     sectors: ["Cabinets d'avocats & notaires", "ONG & organisations internationales", "Fiduciaires & wealth management", "Hôtels & restauration de luxe", "Cliniques & médecins", "Startups Geneva Lake"],
-    proofLine: "À 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 149 · Réponse 24h",
+    proofLine: "À 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 290 · Réponse 24h",
     faq: [
-      { q: "Combien coûte une agence web à Genève ?", a: "Starter (landing page) dès CHF 149. Business (6 pages, SEO multilingue) dès CHF 890. Système IA dès CHF 1'690. Prix fixe confirmé avant démarrage. Beaucoup d'agences genevoises facturent 3x ce tarif pour un résultat équivalent." },
+      { q: "Combien coûte une agence web à Genève ?", a: "Starter (landing page) dès CHF 290. Business (6 pages, SEO multilingue) dès CHF 790. Système IA dès CHF 2'490. Prix fixe confirmé avant démarrage. Beaucoup d'agences genevoises facturent 3x ce tarif pour un résultat équivalent." },
       { q: "Êtes-vous basés à Genève ?", a: "Notre studio est à Lausanne, à 45 min de Genève. Nous rencontrons nos clients genevois en personne si nécessaire, ou travaillons entièrement à distance. Même qualité, même prix." },
       { q: "Faites-vous des sites web multilingues pour entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO optimisé dans chaque langue. Standard dès le plan Business. Idéal pour les organisations internationales de Genève." },
       { q: "Travaillez-vous avec des ONG et institutions internationales ?", a: "Oui, nous avons l'expérience des secteurs exigeants en conformité et pouvons adapter notre process à vos contraintes de procurement et validation interne." },
@@ -277,12 +277,12 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "agence-web-lugano": {
     city: "Lugano", country: "Suisse", region: "Tessin", locale: "fr", slug: "agence-web-lugano",
     headline: "Création de site web à Lugano",
-    subline: "Studio digital suisse trilingue IT/FR/DE — Next.js 15, Lighthouse 95+. Dès CHF 149, 5 jours. Prix fixe garanti.",
-    intro: "KAH Digital accompagne les entreprises de Lugano dans leur présence digitale. Le Tessin est unique en Suisse : italien de cœur, suisse d'esprit, tournée vers l'Italie et le monde. Notre studio crée des sites multilingues adaptés aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME. Starter dès CHF 149 — Business dès CHF 890 — Devis gratuit en 24h.",
+    subline: "Studio digital suisse trilingue IT/FR/DE — Next.js 15, Lighthouse 95+. Dès CHF 290, 5 jours. Prix fixe garanti.",
+    intro: "KAH Digital accompagne les entreprises de Lugano dans leur présence digitale. Le Tessin est unique en Suisse : italien de cœur, suisse d'esprit, tournée vers l'Italie et le monde. Notre studio crée des sites multilingues adaptés aux besoins des entreprises tessinoises : finance, tourisme, luxe, PME. Starter dès CHF 290 — Business dès CHF 790 — Devis gratuit en 24h.",
     sectors: ["Finance & wealth management", "Tourisme & hôtellerie luxe", "Luxe & mode", "PME tessinoises", "Restaurants & cafés", "Professions libérales"],
-    proofLine: "Studio Suisse · Trilingue IT/FR/DE · Prix fixe CHF 149 — Réponse 24h",
+    proofLine: "Studio Suisse · Trilingue IT/FR/DE · Prix fixe CHF 290 — Réponse 24h",
     faq: [
-      { q: "Combien coûte un site web professionnel à Lugano ?", a: "Starter (landing page) dès CHF 149, livré en 5 jours. Business (6 pages, SEO) dès CHF 890. Système IA complet dès CHF 1'690. Prix fixe, devis confirmé avant de commencer." },
+      { q: "Combien coûte un site web professionnel à Lugano ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, devis confirmé avant de commencer." },
       { q: "Faites-vous des sites en italien pour des entreprises de Lugano ?", a: "Oui, sites natifs en italien, français, allemand et anglais. Le Tessin est notre marché naturel pour l'italien." },
       { q: "Créez-vous des sites pour le secteur wealth management à Lugano ?", a: "Oui, sites institutionnels discrets, sécurisés, conformes LPD et RGPD. Rigueur et élégance — les standards suisses." },
       { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF depuis Lausanne." },
@@ -412,9 +412,9 @@ export function LocalSeoPageContent({ data }: Props) {
   const isSwiss = SWISS_CITIES.includes(data.city);
   const WA_URL = isSwiss ? WA_URL_CH : WA_URL_FR;
   const currency = isSwiss ? "CHF" : "€";
-  const priceStarter = isSwiss ? "CHF 149" : "149 €";
-  const priceBusiness = isSwiss ? "CHF 890" : "890 €";
-  const priceAI = isSwiss ? "CHF 1'690" : "1 690 €";
+  const priceStarter = isSwiss ? "CHF 290" : "290 €";
+  const priceBusiness = isSwiss ? "CHF 790" : "790 €";
+  const priceAI = isSwiss ? "CHF 2'490" : "2 490 €";
 
   const jsonLd = [
     {

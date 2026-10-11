@@ -27,20 +27,20 @@ const copy = {
       plans: [
         {
           name: "Essentiel",
-          price: "89 € / mois",
+          price: "49 € / mois",
           desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
           items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
         },
         {
           name: "Confort",
-          price: "149 € / mois",
+          price: "99 € / mois",
           desc: "Tout Essentiel + corrections mineures et ajouts de contenu.",
           items: ["Tout du plan Essentiel", "2h de modifications / mois", "Ajouts textes et images", "Support prioritaire (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "299 € / mois",
+          price: "199 € / mois",
           desc: "Tout Confort + développement léger et suivi analytique mensuel.",
           items: ["Tout du plan Confort", "5h de développement / mois", "Rapport analytique mensuel", "Support dédié (réponse jour-même)"],
         },
@@ -50,7 +50,7 @@ const copy = {
     },
     // 2026-08-02 : réaligné sur les 3 forfaits de la home (pricing-section.tsx)
     // — cette page avait sa propre grille de prix (490 à 2990€) totalement
-    // déconnectée des prix affichés sur la home (142/390/1 690€), ce qui rendait
+    // déconnectée des prix affichés sur la home (290/390/2 490€), ce qui rendait
     // le site incohérent pour un visiteur qui compare les deux. Même 3
     // forfaits, mêmes prix, partout.
     offers: [
@@ -58,7 +58,7 @@ const copy = {
         id: "starter",
         tag: null,
         title: "Starter",
-        price: "142 €",
+        price: "290 €",
         timeline: "5 jours",
         summary: "Présence en ligne propre et rapide. Une page qui donne confiance dès le premier regard.",
         includes: [
@@ -76,7 +76,7 @@ const copy = {
         id: "business",
         tag: "Le plus demandé",
         title: "Business",
-        price: "890 €",
+        price: "790 €",
         timeline: "14 jours",
         summary: "Le site professionnel complet qui convertit les visiteurs en clients et s'impose face à la concurrence.",
         includes: [
@@ -95,7 +95,7 @@ const copy = {
         id: "agent-ia",
         tag: "Agent inclus",
         title: "Agent IA vertical",
-        price: "1 690 €",
+        price: "2 490 €",
         timeline: "28 jours",
         summary: "Un agent IA branché sur votre métier, qui travaille pour vous 24h/24 — sur le modèle de KAH Workforce.",
         includes: [
@@ -117,7 +117,7 @@ const copy = {
         { label: "Application mobile", price: "dès 3 500 €" },
         { label: "E-commerce complet", price: "dès 1 990 €" },
         { label: "Parcours support GLPI", price: "devis sur mesure" },
-        { label: "Refonte + migration", price: "dès 890 €" },
+        { label: "Refonte + migration", price: "dès 790 €" },
       ],
     },
   },
@@ -140,20 +140,20 @@ const copy = {
       plans: [
         {
           name: "Essential",
-          price: "€89 / month",
+          price: "€49 / month",
           desc: "Security updates, backups, uptime monitoring.",
           items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
         },
         {
           name: "Comfort",
-          price: "€149 / month",
+          price: "€99 / month",
           desc: "Everything in Essential + minor fixes and content additions.",
           items: ["Everything in Essential", "2h of changes / month", "Text and image updates", "Priority support (24h)"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "€299 / month",
+          price: "€199 / month",
           desc: "Everything in Comfort + light development and monthly analytics report.",
           items: ["Everything in Comfort", "5h of development / month", "Monthly analytics report", "Dedicated support (same-day)"],
         },
@@ -167,7 +167,7 @@ const copy = {
         id: "starter",
         tag: null,
         title: "Starter",
-        price: "€142",
+        price: "€290",
         timeline: "5 days",
         summary: "Clean and fast online presence. One page that builds trust from the first look.",
         includes: [
@@ -185,7 +185,7 @@ const copy = {
         id: "business",
         tag: "Most requested",
         title: "Business",
-        price: "€890",
+        price: "€790",
         timeline: "14 days",
         summary: "The complete professional site that converts visitors into clients and stands out from competitors.",
         includes: [
@@ -204,7 +204,7 @@ const copy = {
         id: "agent-ia",
         tag: "Agent included",
         title: "Vertical AI Agent",
-        price: "€1 690",
+        price: "€2 490",
         timeline: "28 days",
         summary: "An AI agent wired into your business, working for you 24/7 — on the KAH Workforce model.",
         includes: [
@@ -226,7 +226,7 @@ const copy = {
         { label: "Mobile app", price: "from €3,500" },
         { label: "Full e-commerce", price: "from €1,990" },
         { label: "GLPI support flow", price: "custom quote" },
-        { label: "Redesign + migration", price: "from €890" },
+        { label: "Redesign + migration", price: "from €790" },
       ],
     },
   },
@@ -294,7 +294,7 @@ const copy = {
         id: "business",
         tag: "Beste Wahl",
         title: "Business",
-        price: "CHF 890",
+        price: "CHF 790",
         timeline: "14 Tage",
         summary: "Die vollständige professionelle Website, die Besucher in Kunden verwandelt und Mitbewerber aussticht.",
         includes: [
@@ -313,7 +313,7 @@ const copy = {
         id: "agent-ia",
         tag: "Agent inklusive",
         title: "Vertikaler KI-Agent",
-        price: "CHF 1'690",
+        price: "CHF 2'490",
         timeline: "28 Tage",
         summary: "Ein KI-Agent, der in Ihr Geschäft eingebettet ist und 24/7 für Sie arbeitet — nach dem Vorbild von KAH Workforce.",
         includes: [
@@ -335,7 +335,7 @@ const copy = {
         { label: "Mobile App", price: "Schätzung nach Scoping" },
         { label: "Vollständiger E-Commerce", price: "Umfang gemeinsam definiert" },
         { label: "GLPI-Support-Workflow", price: "An eure Organisation angepasst" },
-        { label: "Redesign + Migration", price: "ab CHF 890" },
+        { label: "Redesign + Migration", price: "ab CHF 790" },
       ],
     },
   },

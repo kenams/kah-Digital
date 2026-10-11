@@ -36,7 +36,7 @@ const jsonLd = {
   "address": { "@type": "PostalAddress", "addressLocality": "Lausanne", "addressRegion": "Vaud", "addressCountry": "CH" },
   "areaServed": { "@type": "Country", "name": "Suisse" },
   "openingHours": "Mo-Fr 09:00-18:00",
-  "priceRange": "CHF 149 - CHF 2500",
+  "priceRange": "CHF 290 - CHF 2500",
 };
 
 export default function AgenceWebSuissePage() {
@@ -113,7 +113,7 @@ export default function AgenceWebSuissePage() {
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
               { value: "7 cantons", label: "couverts en Suisse" },
-              { value: "dès CHF 149", label: "Prix fixe garanti" },
+              { value: "dès CHF 290", label: "Prix fixe garanti" },
               { value: "5 jours", label: "Délai minimum" },
               { value: "24h", label: "Réponse garantie" },
             ].map((s) => (
@@ -170,7 +170,7 @@ export default function AgenceWebSuissePage() {
               { title: "Facturation CHF + TWINT", body: "Tous vos règlements en francs suisses. Virement bancaire CHF, TWINT ou carte bancaire — à votre convenance." },
               { title: "Conforme LPD", body: "Vos données et celles de vos clients traitées selon la loi suisse sur la protection des données (LPD). Standard par défaut." },
               { title: "Multilingue natif", body: "Sites en français, allemand, anglais et italien. SEO optimisé dans chaque langue pour couvrir toute la Suisse." },
-              { title: "Prix fixe transparent", body: "Devis fixe avant de commencer. Zéro surprise, zéro dépassement. Starter dès CHF 149, livré en 5 jours." },
+              { title: "Prix fixe transparent", body: "Devis fixe avant de commencer. Zéro surprise, zéro dépassement. Starter dès CHF 290, livré en 5 jours." },
               { title: "Réponse en 24h", body: "Accès direct au fondateur. Pas de chef de projet intermédiaire, pas de délai de routing. Un studio, pas une usine." },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6">
@@ -190,9 +190,9 @@ export default function AgenceWebSuissePage() {
           <p className="mb-8 text-gray-500">Prix fixes, transparents, facturés en francs suisses. Zéro abonnement, zéro lock-in.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Starter", price: "CHF 149", sub: "Landing page · 5 jours", highlight: false },
-              { label: "Business", price: "CHF 890", sub: "Jusqu'à 6 pages · SEO · 14 jours", highlight: true },
-              { label: "Premium IA", price: "CHF 1'690", sub: "Système complet + IA · 28 jours", highlight: false },
+              { label: "Starter", price: "CHF 290", sub: "Landing page · 5 jours", highlight: false },
+              { label: "Business", price: "CHF 790", sub: "Jusqu'à 6 pages · SEO · 14 jours", highlight: true },
+              { label: "Premium IA", price: "CHF 2'490", sub: "Système complet + IA · 28 jours", highlight: false },
             ].map((item) => (
               <div
                 key={item.label}
