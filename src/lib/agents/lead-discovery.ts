@@ -535,6 +535,31 @@ const SERVICE_LOCAL_TARGETS: typeof TARGETS = [
   { query: "osteopathe physiotherapeute lausanne geneve site web rendez-vous", country: "CH", lang: "fr", sector: "service-local" },
 ];
 
+// Même niche, villes françaises hors Paris (2026-10-11).
+const SERVICE_LOCAL_CITIES = ["lyon", "bordeaux", "nantes", "lille", "marseille", "montpellier", "rennes", "strasbourg", "nice", "grenoble", "toulouse"];
+const SERVICE_LOCAL_TRADES = [
+  "entreprise de nettoyage locaux",
+  "plombier chauffagiste",
+  "electricien",
+  "peintre en batiment",
+  "paysagiste jardinier",
+  "menuisier agenceur",
+  "macon renovation",
+  "institut de beaute esthetique",
+  "serrurier depannage",
+  "couvreur zingueur",
+];
+for (const city of SERVICE_LOCAL_CITIES) {
+  for (const trade of SERVICE_LOCAL_TRADES) {
+    SERVICE_LOCAL_TARGETS.push({
+      query: `${trade} ${city} entreprise artisan site officiel contact devis`,
+      country: "FR",
+      lang: "fr",
+      sector: "service-local",
+    });
+  }
+}
+
 function isServiceLocalTarget(t: { country: string; sector: string }): boolean {
   return SERVICE_LOCAL_COUNTRIES.has(t.country) && SERVICE_LOCAL_SECTORS.has(t.sector);
 }
