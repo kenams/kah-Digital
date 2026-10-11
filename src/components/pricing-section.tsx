@@ -267,19 +267,19 @@ const PLANS = {
 const OPTIONS = {
   fr: [
     { icon: "🔍", label: "SEO avancé", price: "249 €" },
-    { icon: "🤖", label: "Chatbot IA", price: "349 €" },
+    { icon: "📅", label: "Prise de RDV en ligne + admin", price: "+700 €" },
     { icon: "⚙️", label: "Automatisation", price: "dès 490 €" },
     { icon: "🛠️", label: "Maintenance mensuelle", price: "dès 49 €/mois" },
   ],
   en: [
     { icon: "🔍", label: "Advanced SEO", price: "$249" },
-    { icon: "🤖", label: "AI chatbot", price: "$349" },
+    { icon: "📅", label: "Online booking + admin", price: "+$700" },
     { icon: "⚙️", label: "Automation", price: "from $490" },
     { icon: "🛠️", label: "Monthly maintenance", price: "from $49/mo" },
   ],
   de: [
     { icon: "🔍", label: "Erweitertes SEO", price: "CHF 270" },
-    { icon: "🤖", label: "KI-Chatbot", price: "CHF 380" },
+    { icon: "📅", label: "Online-Terminbuchung + Admin", price: "+CHF 700" },
     { icon: "⚙️", label: "Automatisierung", price: "ab CHF 530" },
     { icon: "🛠️", label: "Monatliche Wartung", price: "ab CHF 49/Mt." },
   ],
