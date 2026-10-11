@@ -511,6 +511,34 @@ const TARGETS = [
 // Vercel), on pourra remplacer ces requêtes par un vrai filtre "date de
 // création < 6 mois" — à valider avec Kenams avant de l'ajouter.
 
+// ── Cible 2026 : services locaux FR + Suisse romande (OFFRE-2026.md) ─────────
+// Une seule niche : site pro + prise de rendez-vous en ligne. Les anciennes
+// requêtes hors cible restent dans le fichier mais ne sont plus utilisées.
+const SERVICE_LOCAL_COUNTRIES = new Set(["FR", "CH"]);
+const SERVICE_LOCAL_SECTORS = new Set([
+  "service-local", "artisan-creation", "artisan", "plomberie", "electricite", "menuiserie",
+  "btp", "construction", "geometre", "esthetique",
+]);
+
+const SERVICE_LOCAL_TARGETS: typeof TARGETS = [
+  { query: "entreprise de nettoyage locaux bureaux toulouse site web devis", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "societe de nettoyage professionnel haute-garonne contact devis", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "entreprise de nettoyage lausanne vaud site web devis", country: "CH", lang: "fr", sector: "service-local" },
+  { query: "bureau d'etudes fluides thermique toulouse site web contact", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "chauffagiste installateur sanitaire toulouse site web devis", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "paysagiste entretien jardins toulouse site web devis", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "demenageur toulouse independant site web devis", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "depannage serrurier plombier urgence toulouse site web", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "kinesitherapeute osteopathe cabinet toulouse site web rendez-vous", country: "FR", lang: "fr", sector: "service-local" },
+  { query: "installateur electricien chauffagiste lausanne vaud site web devis", country: "CH", lang: "fr", sector: "service-local" },
+  { query: "paysagiste jardinier geneve lausanne site web devis", country: "CH", lang: "fr", sector: "service-local" },
+  { query: "osteopathe physiotherapeute lausanne geneve site web rendez-vous", country: "CH", lang: "fr", sector: "service-local" },
+];
+
+function isServiceLocalTarget(t: { country: string; sector: string }): boolean {
+  return SERVICE_LOCAL_COUNTRIES.has(t.country) && SERVICE_LOCAL_SECTORS.has(t.sector);
+}
+
 // ── Annuaires internationaux ────────────────────────────────────────────────
 const DIRECTORY_SEARCHES: Array<{ url: string; country: string; language: string; sector: string }> = [
   { url: "https://www.pagesjaunes.fr/pagesblanches/recherche?quoi=dentiste&ou=nantes", country: "FR", language: "fr", sector: "dentiste" },
@@ -1044,48 +1072,6 @@ async function buildLeadsFromUrls(
 }
 
 // ── Fallback statique ────────────────────────────────────────────────────────
-const STATIC_FALLBACKS: Array<{ businessName: string; website: string; country: string; language: string; sector: string }> = [
-  { businessName: "Plomberie Girard Lyon", website: "https://www.plomberie-girard-lyon.fr", country: "FR", language: "fr", sector: "plomberie" },
-  { businessName: "Coiffure Atelier Paris", website: "https://www.coiffure-atelier-paris.fr", country: "FR", language: "fr", sector: "coiffure" },
-  { businessName: "Boulangerie Artisan Bordeaux", website: "https://www.boulangerie-artisan-bordeaux.fr", country: "FR", language: "fr", sector: "boulangerie" },
-  { businessName: "Cabinet Dentaire Dupont", website: "https://www.cabinet-dentaire-dupont.fr", country: "FR", language: "fr", sector: "dentiste" },
-  { businessName: "Restaurant Le Moulin", website: "https://www.restaurant-lemoulin.fr", country: "FR", language: "fr", sector: "restaurant" },
-  { businessName: "Fleuriste Au Jardin Vert", website: "https://www.fleuriste-jardinvert.fr", country: "FR", language: "fr", sector: "fleuriste" },
-  { businessName: "Institut Beauté Nantes", website: "https://www.institut-beaute-nantes.fr", country: "FR", language: "fr", sector: "esthetique" },
-  { businessName: "Menuiserie Leblanc Rennes", website: "https://www.menuiserie-leblanc-rennes.fr", country: "FR", language: "fr", sector: "menuiserie" },
-  { businessName: "Auto École Horizon Toulouse", website: "https://www.autoecole-horizon-toulouse.fr", country: "FR", language: "fr", sector: "auto-ecole" },
-  { businessName: "Brasserie du Sablon Bruxelles", website: "https://www.brasserie-sablon.be", country: "BE", language: "fr", sector: "restaurant" },
-  { businessName: "Salon Coiffure Liège", website: "https://www.salon-coiffure-liege.be", country: "BE", language: "fr", sector: "coiffure" },
-  { businessName: "Restaurant du Lac Genève", website: "https://www.restaurant-dulac-geneve.ch", country: "CH", language: "fr", sector: "restaurant" },
-  { businessName: "Horlogerie Dubois Lausanne", website: "https://www.horlogerie-dubois.ch", country: "CH", language: "fr", sector: "horlogerie" },
-  { businessName: "The Cosy Bistro London", website: "https://www.cosybistro-london.co.uk", country: "GB", language: "en", sector: "restaurant" },
-  { businessName: "Hair Studio Manchester", website: "https://www.hairstudio-manchester.co.uk", country: "GB", language: "en", sector: "hair salon" },
-  { businessName: "Restaurante Casa Pepe Madrid", website: "https://www.restaurante-casapepe.es", country: "ES", language: "es", sector: "restaurante" },
-  { businessName: "Friseur Stil Berlin", website: "https://www.friseur-stil-berlin.de", country: "DE", language: "de", sector: "friseur" },
-  { businessName: "Ristorante Bella Roma", website: "https://www.ristorante-bellaroma.it", country: "IT", language: "it", sector: "ristorante" },
-  { businessName: "Resto Québécois Montréal", website: "https://www.resto-quebecois-montreal.ca", country: "CA", language: "fr", sector: "restaurant" },
-];
-
-function getStaticFallback(count: number): DiscoveredLead[] {
-  const shuffled = [...STATIC_FALLBACKS].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count).map((f, i) => {
-    // Deviner info@domain pour le fallback statique (toujours envoyable)
-    const domain = new URL(f.website).hostname.replace(/^www\./, "");
-    return {
-      businessName: f.businessName,
-      website: f.website,
-      address: f.country,
-      country: f.country,
-      language: f.language,
-      sector: f.sector,
-      placeId: `static-${i}-${Date.now()}`,
-      email: `info@${domain}`,
-      emailGuessed: true,
-      phone: null,
-    };
-  });
-}
-
 // ── Point d'entrée ───────────────────────────────────────────────────────────
 const DDG_OFFSETS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
 
@@ -1093,8 +1079,9 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   const MIN_DDG_LEADS = Math.max(3, Math.ceil(count / 5)); // seuil minimum avant de tenter les fallbacks
 
   // Sélection pondérée : 4 slots CH garantis + 8 slots aléatoires (CH = 25.5% click rate)
-  const chTargets = TARGETS.filter(t => t.country === "CH").sort(() => Math.random() - 0.5).slice(0, 4);
-  const otherTargets = TARGETS.filter(t => t.country !== "CH").sort(() => Math.random() - 0.5).slice(0, 8);
+  const pool = [...SERVICE_LOCAL_TARGETS, ...TARGETS.filter(isServiceLocalTarget)];
+  const chTargets = pool.filter(t => t.country === "CH").sort(() => Math.random() - 0.5).slice(0, 4);
+  const otherTargets = pool.filter(t => t.country !== "CH").sort(() => Math.random() - 0.5).slice(0, 8);
   const selected = [...chTargets, ...otherTargets].sort(() => Math.random() - 0.5);
 
   // Map url → meta pour préserver le bon pays/secteur par URL
@@ -1155,7 +1142,8 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   // DDG insuffisant (throttling Vercel) → compléter avec l'annuaire
   console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative annuaire`);
   const remaining = count - ddgLeads.length;
-  const dirTarget = DIRECTORY_SEARCHES[Math.floor(Math.random() * DIRECTORY_SEARCHES.length)];
+  const dirPool = DIRECTORY_SEARCHES.filter(isServiceLocalTarget);
+  const dirTarget = dirPool[Math.floor(Math.random() * dirPool.length)];
   console.log(`[lead-discovery] Annuaire: ${dirTarget.url}`);
   const dirUrls = await scrapeDirectory(dirTarget.url);
   if (dirUrls.length > 0) {
@@ -1169,6 +1157,8 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
 
   // Fallback statique si tout échoue
   if (ddgLeads.length > 0) return ddgLeads;
-  console.warn("[lead-discovery] Fallback statique");
-  return getStaticFallback(count);
+  // Pas de fallback statique : les entreprises fictives avec e-mail deviné
+  // abîment la réputation d'envoi. Mieux vaut zéro envoi qu'un faux lead.
+  console.warn("[lead-discovery] Aucun lead trouvé — run vide");
+  return [];
 }
