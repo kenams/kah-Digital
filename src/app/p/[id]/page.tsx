@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import QuickContactForm from "./QuickContactForm";
@@ -157,7 +157,11 @@ export default async function ProspectLandingPage({ params }: Props) {
   const { id } = await params;
   const prospect = await getProspect(id);
 
-  if (!prospect || !prospect.audit) notFound();
+  if (!prospect) notFound();
+  if (!prospect.audit) {
+    const company = encodeURIComponent(prospect.businessName ?? "");
+    redirect(`/devis?company=${company}&ref=email`);
+  }
 
   const c = getCopy(prospect.language);
   const { audit } = prospect;
