@@ -325,7 +325,7 @@ const FORM_COPY = {
     submit: "Envoyer ma demande",
     submitting: "Envoi...",
     success: "Message reçu ! On vous répond sous 2h.",
-    error: "Erreur, réessayez ou écrivez à contact@kah-digital.ch",
+    error: "Erreur, réessayez ou écrivez à kahdigital42@gmail.com",
   },
   en: {
     title: "Tell us about your project",
@@ -338,7 +338,7 @@ const FORM_COPY = {
     submit: "Send my request",
     submitting: "Sending...",
     success: "Message received! We'll reply within 2h.",
-    error: "Error, please retry or email contact@kah-digital.ch",
+    error: "Error, please retry or email kahdigital42@gmail.com",
   },
   de: {
     title: "Erzählen Sie uns von Ihrem Projekt",
@@ -351,7 +351,7 @@ const FORM_COPY = {
     submit: "Anfrage senden",
     submitting: "Senden...",
     success: "Nachricht erhalten! Wir antworten innerhalb von 2h.",
-    error: "Fehler, bitte erneut versuchen oder an contact@kah-digital.ch schreiben",
+    error: "Fehler, bitte erneut versuchen oder an kahdigital42@gmail.com schreiben",
   },
 };
 

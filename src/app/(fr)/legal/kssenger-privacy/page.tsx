@@ -45,7 +45,7 @@ const sections: { title: string; paragraphs?: string[]; items?: string[] }[] = [
   {
     title: "Vos droits",
     paragraphs: [
-      "Vous pouvez à tout moment demander la suppression de votre compte et de vos données depuis l'application (Profil → Données du compte), ou en nous contactant à contact@kah-digital.ch. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.",
+      "Vous pouvez à tout moment demander la suppression de votre compte et de vos données depuis l'application (Profil → Données du compte), ou en nous contactant à kahdigital42@gmail.com. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.",
     ],
   },
   {
@@ -74,7 +74,7 @@ export default function KssengerPrivacyPage() {
           Politique de confidentialité — K-ssenger
         </h1>
         <p className="mb-8 text-center text-sm text-gray-500">
-          Éditeur : KAH Digital — Contact : contact@kah-digital.ch — Dernière mise à jour : 24 septembre 2026
+          Éditeur : KAH Digital — Contact : kahdigital42@gmail.com — Dernière mise à jour : 24 septembre 2026
         </p>
 
         <div className="space-y-8">

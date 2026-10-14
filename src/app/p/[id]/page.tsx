@@ -164,7 +164,7 @@ export default async function ProspectLandingPage({ params }: Props) {
   const name = prospect.businessName ?? prospect.website;
   const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+33 7 59 55 84 14";
   const phoneRaw = phone.replace(/\s/g, "");
-  const email = "contact@kah-digital.ch";
+  const email = "kahdigital42@gmail.com";
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
   const devisUrl = `${siteUrl}/devis?company=${encodeURIComponent(name)}&site=${encodeURIComponent(prospect.website)}&ref=email`;
   const lang = prospect.language ?? "fr";

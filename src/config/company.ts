@@ -33,7 +33,7 @@ export const companyConfig: CompanyConfig = {
   postalCode: "31200",
   city: "Toulouse",
   country: "France",
-  email: "contact@kah-digital.ch",
+  email: "kahdigital42@gmail.com",
   phone: "+33 7 59 55 84 14",
   siren: "953 058 427",
   apeCode: "62.01Z",

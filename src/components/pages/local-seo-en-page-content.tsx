@@ -168,7 +168,7 @@ export function LocalSeoEnPageContent({ data }: Props) {
     description: `Premium web development & AI automation for ${data.city} — Next.js 15 websites, GPT-4 agents, measurable results.`,
     url: `https://kah-digital.ch/en/${data.slug}`,
     telephone: "+33759558414",
-    email: "contact@kah-digital.ch",
+    email: "kahdigital42@gmail.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lausanne",

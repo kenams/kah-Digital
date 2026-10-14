@@ -126,7 +126,7 @@ export default function AuditGratuitPageEn() {
               />
             </div>
             {state === "error" && (
-              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">An error occurred. Please retry or email contact@kah-digital.ch.</p>
+              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">An error occurred. Please retry or email kahdigital42@gmail.com.</p>
             )}
             <button
               type="submit"

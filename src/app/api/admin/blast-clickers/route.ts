@@ -124,7 +124,7 @@ function buildHtml(body: string, lang: string, id: string): string {
     <div style="font-size:15px;color:#374151;line-height:1.8;white-space:pre-line;">${body}</div>
     <div style="margin-top:28px;font-size:14px;color:#374151;">
       KAH Digital<br/>
-      <span style="color:#6b7280;font-size:12px;">contact@kah-digital.ch · <a href="${SITE}" style="color:#7c3aed;">kah-digital.ch</a></span>
+      <span style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com · <a href="${SITE}" style="color:#7c3aed;">kah-digital.ch</a></span>
     </div>
   </td></tr>
   <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:12px 28px;">

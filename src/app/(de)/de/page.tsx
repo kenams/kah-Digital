@@ -86,7 +86,7 @@ const organizationJsonLd = {
   alternateName: "KAH Digital",
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
-  email: "contact@kah-digital.ch",
+  email: "kahdigital42@gmail.com",
   telephone: "+41759558414",
   address: {
     "@type": "PostalAddress",

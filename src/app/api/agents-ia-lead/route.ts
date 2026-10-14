@@ -221,7 +221,7 @@ function buildEmail(firstName: string, tpl: AgentTemplate): string {
             <p style="margin:0 0 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;">KAH Digital</p>
             <p style="margin:0;font-size:11px;color:#d1d5db;">
               <a href="${SITE}" style="color:#7c3aed;text-decoration:none;">kah-digital.ch</a>
-              &nbsp;·&nbsp;contact@kah-digital.ch
+              &nbsp;·&nbsp;kahdigital42@gmail.com
               &nbsp;·&nbsp;Lausanne, Suisse
             </p>
           </td>

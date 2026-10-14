@@ -225,7 +225,7 @@ export default function MonBoumProposalPage() {
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
-              href="mailto:contact@kah-digital.ch?subject=Mon%20Boum%20%E2%80%94%20appel%20de%20cadrage&body=Bonjour%2C%20j%27ai%20re%C3%A7u%20votre%20proposition%20et%20je%20voudrais%20planifier%20un%20appel."
+              href="mailto:kahdigital42@gmail.com?subject=Mon%20Boum%20%E2%80%94%20appel%20de%20cadrage&body=Bonjour%2C%20j%27ai%20re%C3%A7u%20votre%20proposition%20et%20je%20voudrais%20planifier%20un%20appel."
               className="inline-block rounded-full bg-white px-8 py-3.5 text-sm font-bold text-black hover:bg-white/90 transition-colors"
             >
               Répondre par email
@@ -242,7 +242,7 @@ export default function MonBoumProposalPage() {
         </section>
 
         <p className="mt-10 text-center text-xs text-white/20">
-          KAH Digital · Lausanne · contact@kah-digital.ch · kah-digital.ch
+          KAH Digital · Lausanne · kahdigital42@gmail.com · kah-digital.ch
         </p>
       </div>
     </main>
