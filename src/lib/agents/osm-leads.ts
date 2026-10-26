@@ -47,7 +47,7 @@ function cleanUrl(raw: string): string | null {
   }
 }
 
-export async function discoverOsmUrls(limit = 40): Promise<OsmLeadUrl[]> {
+async function queryOverpass(limit: number): Promise<OsmLeadUrl[]> {
   const target = pick(OSM_CITIES);
   const trade = pick(TRADES);
   const query = `[out:json][timeout:40];area["name"="${target.city}"]["boundary"="administrative"]->.a;${trade.filter}(area.a);out tags ${limit * 2};`;
@@ -79,4 +79,19 @@ export async function discoverOsmUrls(limit = 40): Promise<OsmLeadUrl[]> {
   }
   console.warn(`[osm-leads] aucun miroir Overpass disponible pour ${target.city}`);
   return [];
+}
+
+// Une ville + un métier tirés au hasard donnent parfois 0 site (petites villes) :
+// on enchaîne jusqu'à 5 tirages et on agrège.
+export async function discoverOsmUrls(limit = 40): Promise<OsmLeadUrl[]> {
+  const seen = new Set<string>();
+  const all: OsmLeadUrl[] = [];
+  for (let attempt = 0; attempt < 5 && all.length < limit; attempt++) {
+    for (const lead of await queryOverpass(limit)) {
+      if (seen.has(lead.url)) continue;
+      seen.add(lead.url);
+      all.push(lead);
+    }
+  }
+  return all.slice(0, limit);
 }

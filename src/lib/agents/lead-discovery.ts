@@ -1172,8 +1172,9 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
   console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative OpenStreetMap`);
   const osmUrls = (await discoverOsmUrls(count * 6)).filter((o) => !isBlacklisted(o.url));
   const osmLeads: DiscoveredLead[] = [];
+  const osmDeadline = Date.now() + 110_000; // la fonction Vercel est limitée à 300 s
   for (const o of osmUrls) {
-    if (ddgLeads.length + osmLeads.length >= count) break;
+    if (ddgLeads.length + osmLeads.length >= count || Date.now() > osmDeadline) break;
     try {
       const hostname = new URL(o.url).hostname;
       const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(o.url);
