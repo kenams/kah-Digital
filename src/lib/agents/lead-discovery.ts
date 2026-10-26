@@ -6,6 +6,7 @@
 
 import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
 import { discoverOsmUrls } from "@/lib/agents/osm-leads";
+import { safeFetch } from "@/lib/safe-fetch";
 
 export type DiscoveredLead = {
   businessName: string;
@@ -839,7 +840,7 @@ async function fetchHtml(url: string, timeoutMs = 10000): Promise<string> {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), timeoutMs);
     try {
-      const res = await fetch(u, {
+      const res = await safeFetch(u, {
         signal: ctrl.signal,
         headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.ch)" },
       });

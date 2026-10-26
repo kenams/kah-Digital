@@ -130,6 +130,8 @@ export type SiteAudit = {
   screenshotUrl: string | null;
 };
 
+import { safeFetch } from "@/lib/safe-fetch";
+
 async function fetchWebsiteContent(url: string): Promise<string> {
   const normalized = url.startsWith("http") ? url : `https://${url}`;
   const attempts = [normalized];
@@ -139,7 +141,7 @@ async function fetchWebsiteContent(url: string): Promise<string> {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 20000);
     try {
-      const res = await fetch(u, {
+      const res = await safeFetch(u, {
         signal: ctrl.signal,
         headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.fr)" },
       });
