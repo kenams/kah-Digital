@@ -17,6 +17,8 @@ const PLACEHOLDER_LOCALS = new Set([
 const THIRD_PARTY_DOMAINS = [
   "cloudbeds.com", "wix.com", "wixsite.com", "sentry", "godaddy.com", "ovh.", "gandi.net",
   "hostinger.", "squarespace.com", "shopify.com", "jimdo.com", "weebly.com", "semrush.com",
+  "booksy.com", "planity.com", "treatwell.", "fresha.com", "doctolib.", "mindbody", "calendly.com",
+  "pagesjaunes.", "tripadvisor.", "yelp.", "facebook.com", "instagram.com", "google.com", "groupon.",
 ];
 
 export function isPlaceholderEmail(email: string | null | undefined): boolean {
