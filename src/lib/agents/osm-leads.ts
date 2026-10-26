@@ -38,27 +38,39 @@ function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// Les tags OSM sont saisis par n'importe qui : on refuse les hôtes internes
+// (SSRF) avant que le pipeline ne télécharge la page.
+function isPublicHost(hostname: string): boolean {
+  const h = hostname.toLowerCase();
+  if (h === "localhost" || h.endsWith(".local") || h.endsWith(".internal") || !h.includes(".")) return false;
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(h) || h.includes(":")) return false;
+  return true;
+}
+
 function cleanUrl(raw: string): string | null {
   try {
     const u = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`);
+    if (!/^https?:$/.test(u.protocol) || !isPublicHost(u.hostname)) return null;
     return `${u.protocol}//${u.hostname}${u.pathname === "/" ? "" : u.pathname}`.replace(/\/$/, "");
   } catch {
     return null;
   }
 }
 
-async function queryOverpass(limit: number): Promise<OsmLeadUrl[]> {
+async function queryOverpass(limit: number, deadline: number): Promise<OsmLeadUrl[]> {
   const target = pick(OSM_CITIES);
   const trade = pick(TRADES);
   const query = `[out:json][timeout:40];area["name"="${target.city}"]["boundary"="administrative"]->.a;${trade.filter}(area.a);out tags ${limit * 2};`;
 
   for (const endpoint of ENDPOINTS) {
+    const remaining = deadline - Date.now();
+    if (remaining < 3000) break;
     try {
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "kah-digital-prospection/1.0 (kahdigital42@gmail.com)" },
         body: `data=${encodeURIComponent(query)}`,
-        signal: AbortSignal.timeout(45000),
+        signal: AbortSignal.timeout(Math.min(15000, remaining)),
       });
       if (!res.ok) continue;
       const json = (await res.json()) as { elements?: { tags?: Record<string, string> }[] };
@@ -86,8 +98,12 @@ async function queryOverpass(limit: number): Promise<OsmLeadUrl[]> {
 export async function discoverOsmUrls(limit = 40): Promise<OsmLeadUrl[]> {
   const seen = new Set<string>();
   const all: OsmLeadUrl[] = [];
-  for (let attempt = 0; attempt < 5 && all.length < limit; attempt++) {
-    for (const lead of await queryOverpass(limit)) {
+  // Budget global : la fonction Vercel est limitée à 300 s et le reste du pipeline
+  // (téléchargement des sites, audit, envoi) a besoin de temps.
+  const deadline = Date.now() + 40_000;
+  const enough = Math.min(limit, 20);
+  for (let attempt = 0; attempt < 5 && all.length < enough && Date.now() < deadline; attempt++) {
+    for (const lead of await queryOverpass(limit, deadline)) {
       if (seen.has(lead.url)) continue;
       seen.add(lead.url);
       all.push(lead);

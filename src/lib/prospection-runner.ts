@@ -182,8 +182,9 @@ async function discoverAnalyzeAndSend(params: {
   maxEmails: number;
   alreadySent: number;
   siteUrl: string;
+  deadline: number;
 }) {
-  const { supabase, resend, batchId, errors, maxEmails, alreadySent, siteUrl } = params;
+  const { supabase, resend, batchId, errors, maxEmails, alreadySent, siteUrl, deadline } = params;
   let sent = 0;
 
   if (alreadySent >= maxEmails) return { found: 0, sent };
@@ -195,6 +196,11 @@ async function discoverAnalyzeAndSend(params: {
 
   for (const lead of leads) {
     if (alreadySent + sent >= maxEmails) break;
+    // La fonction Vercel est tuée à 300 s : on s'arrête proprement avant.
+    if (Date.now() > deadline) {
+      rememberError(errors, "Budget temps atteint — run arrêté avant la fin de la liste");
+      break;
+    }
     if (!lead.website) continue;
 
     try {
@@ -303,6 +309,7 @@ export async function runProspectionBatch(
   const batchId = typeof options.batchId === "undefined" ? await createProspectionBatch(supabase, slot) : options.batchId;
   const errors: string[] = [];
   const maxEmails = options.maxEmails ?? PROSPECTION_EMAILS_PER_RUN;
+  const runStartedAt = Date.now();
   let found = 0;
   let sent = 0;
   let backlogSent = 0;
@@ -321,6 +328,7 @@ export async function runProspectionBatch(
       maxEmails,
       alreadySent: sent,
       siteUrl: getSiteUrl(),
+      deadline: runStartedAt + 250_000,
     });
 
     found = discovery.found;
