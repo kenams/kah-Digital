@@ -53,11 +53,11 @@ const PRODUCTS = [
     emoji: "🤖",
     name: "KAH Support",
     tagline: "Assistant IA support IT pour PME",
-    desc: "SaaS qui résout 70% des tickets N1 automatiquement, 24h/24. Connecté à GLPI, Freshdesk, Zendesk. Multi-tenant, Stripe live, déploiement en 5 minutes.",
+    desc: "SaaS conçu pour traiter automatiquement les tickets N1, 24h/24. Connecté à GLPI, Freshdesk, Zendesk. Multi-tenant, Stripe live, déploiement en 5 minutes.",
     tags: ["SaaS", "Node.js", "OpenAI", "PostgreSQL", "Stripe"],
     url: "https://kah-support.ch",
     metrics: [
-      { label: "Tickets auto", value: "70%" },
+      { label: "Tickets N1", value: "Auto" },
       { label: "Déploiement", value: "< 5 min" },
       { label: "Plans", value: "299-999€/mois" },
     ],

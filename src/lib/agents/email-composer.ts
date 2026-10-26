@@ -184,7 +184,7 @@ export async function composeProspectingEmail(
     ? `Ton : professionnel et formel. Vouvoiement obligatoire. Pas de familiarité. Sobre, direct, crédible.`
     : `Ton : humain, naturel, légèrement direct. Tutoiement possible selon le secteur. Pas de langue de bois.`;
 
-  const prompt = `Tu représentes KAH Digital, un studio digital basé à Lausanne.
+  const prompt = `Tu représentes KAH Digital, un studio digital basé à Toulouse, 100 % à distance (France et Suisse).
 Écris un email de prospection en "${lang}" pour : ${bName} (${audit.sector}).
 ${pitchInstruction}
 
@@ -284,10 +284,10 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         : `Curieux ? Répondez à cet email ou appelez le 07 59 55 84 14.`,
       en: isBigCorp
         ? `If it's a current priority, happy to discuss.`
-        : `Curious? Just reply or call +41 75 955 84 14.`,
+        : `Curious? Just reply or call +33 7 59 55 84 14.`,
       de: isBigCorp
         ? `Falls das aktuell relevant ist, stehe ich gerne für ein Gespräch bereit.`
-        : `Interessiert? Einfach antworten oder anrufen: +41 75 955 84 14.`,
+        : `Interessiert? Einfach antworten oder anrufen: +33 7 59 55 84 14.`,
     };
     const cta = ctas[lang] ?? ctas.fr!;
 

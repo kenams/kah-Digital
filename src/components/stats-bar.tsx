@@ -12,7 +12,7 @@ export function StatsBar() {
           { value: "5 days", label: "First delivery" },
           { value: "20+", label: "Projects & systems shipped" },
           { value: "24h", label: "Response time" },
-          { value: "100%", label: "On-budget" },
+          { value: "100%", label: "Code delivered" },
         ]
       : locale === "de"
       ? [
@@ -20,14 +20,14 @@ export function StatsBar() {
           { value: "5 Tage", label: "Erste Lieferung" },
           { value: "20+", label: "Projekte & Systeme geliefert" },
           { value: "24h", label: "Antwortzeit" },
-          { value: "100%", label: "Budget eingehalten" },
+          { value: "100%", label: "Code geliefert" },
         ]
       : [
           { value: "290 €", label: "Dès ce prix" },
           { value: "5 jours", label: "1ère livraison" },
           { value: "20+", label: "Projets & systèmes livrés" },
           { value: "24h", label: "Délai de réponse" },
-          { value: "100%", label: "Budget respecté" },
+          { value: "100%", label: "Code livré" },
         ];
 
   return (

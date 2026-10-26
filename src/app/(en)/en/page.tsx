@@ -11,12 +11,12 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/",
-  title: "KAH Digital — Vertical AI Agents for Independents · Lausanne · International",
+  title: "KAH Digital — Vertical AI Agents for Independents · Toulouse · France & Switzerland",
   description:
-    "KAH Digital builds vertical AI agents — not another website. AI chief-of-staff for independent artists (KAH Workforce), custom business automation. Studio based in Lausanne, operating internationally.",
+    "KAH Digital builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
   keywords: [
     "vertical AI agent",
-    "AI agency Lausanne",
+    "AI agency Switzerland", "AI agency France",
     "AI chief of staff for artists",
     "business process AI automation",
     "AI agent for musicians",
@@ -88,18 +88,17 @@ const organizationJsonLd = {
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
-  telephone: "+41759558414",
+  telephone: "+33759558414",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Rue de Bourg 27",
-    postalCode: "1003",
-    addressLocality: "Lausanne",
-    addressCountry: "CH",
+    addressLocality: "Toulouse",
+    addressRegion: "Occitanie",
+    addressCountry: "FR",
   },
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital builds vertical AI agents — not another website. AI chief-of-staff for independent artists (KAH Workforce), custom business automation for independents and SMEs.",
+    "KAH Digital builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

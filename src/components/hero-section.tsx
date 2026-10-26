@@ -96,22 +96,22 @@ export function HeroSection() {
             "built for one job, not a template.",
             "that replace a full team.",
           ],
-          body: "Not another website builder — a vertical AI agent that knows your business by heart. Flagship: KAH Workforce, live AI chief-of-staff for independent artists. Fixed price, zero surprises. Scope validated → live in 7 days.",
+          body: "Websites with online booking and custom AI agents for independents and small businesses in France and Switzerland. Fixed price, scope agreed before we start, you own the code.",
           primary: "Talk to us about your agent",
           secondary: "See KAH Workforce live",
           wa: "WhatsApp — reply in 2h",
           waText: "Hi KAH Digital, I'd like to talk about an AI agent for my business.",
-          trustLine: "70+ systems shipped · Vertical AI agents · From $349 · Live in 7 days",
+          trustLine: "Vertical AI agents · From €290 · Live in 7 days",
           proof: [
-            { value: "$349", label: "From" },
+            { value: "€290", label: "From" },
             { value: "7 days", label: "First delivery" },
             { value: "24h", label: "Response time" },
-            { value: "100%", label: "On-budget" },
+            { value: "Fixed", label: "Price" },
           ],
           cards: [
-            { title: "KAH Workforce · Artists", value: "24/7", sub: "AI chief-of-staff", color: "#8b5cf6" },
-            { title: "FinTech Startup · Lausanne", value: "98/100", sub: "Lighthouse score", color: "#0ea5e9" },
-            { title: "Law firm · Lausanne", value: "#1", sub: "Google local", color: "#ec4899" },
+            { title: "KAH Workforce · Independents", value: "24/7", sub: "AI chief-of-staff", color: "#8b5cf6" },
+            { title: "Showcase site", value: "Next.js", sub: "Example mockup", color: "#0ea5e9" },
+            { title: "Booking site", value: "24/7", sub: "Example mockup", color: "#ec4899" },
           ],
         }
       : locale === "de"
@@ -124,22 +124,22 @@ export function HeroSection() {
             "gebaut für einen Job, kein Template.",
             "die ein ganzes Team ersetzen.",
           ],
-          body: "Kein weiterer Website-Baukasten — ein vertikaler KI-Agent, der Ihr Geschäft wirklich kennt. Aushängeschild: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler, live im Einsatz. Fester Preis, null Überraschungen.",
+          body: "Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU in Frankreich und der Schweiz. Fester Preis, Umfang vorab geklärt, der Code gehört Ihnen.",
           primary: "Über meinen KI-Agenten sprechen",
           secondary: "KAH Workforce live sehen",
           wa: "WhatsApp — Antwort in 2h",
           waText: "Hallo KAH Digital, ich möchte über einen KI-Agenten für mein Business sprechen.",
-          trustLine: "70+ Systeme geliefert · Vertikale KI-Agenten · Ab CHF 350 · Live in 7 Tagen",
+          trustLine: "Vertikale KI-Agenten · Ab 290 € · Live in 7 Tagen",
           proof: [
-            { value: "CHF 350", label: "Ab" },
+            { value: "290 €", label: "Ab" },
             { value: "7 Tage", label: "Erste Lieferung" },
             { value: "24h", label: "Antwortzeit" },
-            { value: "100%", label: "Budget" },
+            { value: "Fest", label: "Preis" },
           ],
           cards: [
-            { title: "KAH Workforce · Künstler", value: "24/7", sub: "KI-Kabinettschef", color: "#8b5cf6" },
-            { title: "FinTech · Lausanne", value: "98/100", sub: "Lighthouse Score", color: "#0ea5e9" },
-            { title: "Anwaltskanzlei", value: "#1", sub: "Google lokal", color: "#ec4899" },
+            { title: "KAH Workforce · Selbstständige", value: "24/7", sub: "KI-Kabinettschef", color: "#8b5cf6" },
+            { title: "Vitrinen-Website", value: "Next.js", sub: "Beispiel-Mockup", color: "#0ea5e9" },
+            { title: "Buchungs-Website", value: "24/7", sub: "Beispiel-Mockup", color: "#ec4899" },
           ],
         }
       : {
@@ -151,22 +151,22 @@ export function HeroSection() {
             "faits pour un métier, pas un template.",
             "qui remplacent une équipe entière.",
           ],
-          body: "Pas un site de plus — un agent IA vertical qui connaît votre métier par cœur. Vitrine : KAH Workforce, chef de cabinet IA en production pour des artistes indépendants. Prix fixe, zéro surprise. Périmètre validé → en ligne en 7 jours.",
+          body: "Sites vitrines avec prise de rendez-vous en ligne et agents IA sur mesure, pour les indépendants et PME en France et en Suisse. Prix fixe, périmètre validé avant de démarrer, code livré.",
           primary: "Parler de mon agent IA",
           secondary: "Voir KAH Workforce en action",
           wa: "WhatsApp — réponse en 2h",
           waText: "Bonjour KAH Digital, je voudrais parler d'un agent IA pour mon business.",
-          trustLine: "70+ systèmes livrés · Agents IA verticaux · Dès 349 € · En ligne en 7 jours",
+          trustLine: "Agents IA verticaux · Dès 290 € · En ligne en 7 jours",
           proof: [
-            { value: "349 €", label: "Dès" },
+            { value: "290 €", label: "Dès" },
             { value: "7 jours", label: "1ère livraison" },
             { value: "24h", label: "Délai de réponse" },
-            { value: "100%", label: "Budget respecté" },
+            { value: "Fixe", label: "Prix" },
           ],
           cards: [
-            { title: "KAH Workforce · Artistes", value: "24/7", sub: "chef de cabinet IA", color: "#8b5cf6" },
-            { title: "Startup FinTech · Lausanne", value: "98/100", sub: "Lighthouse score", color: "#0ea5e9" },
-            { title: "Cabinet juridique", value: "#1", sub: "Google local Lausanne", color: "#ec4899" },
+            { title: "KAH Workforce · Indépendants", value: "24/7", sub: "chef de cabinet IA", color: "#8b5cf6" },
+            { title: "Site vitrine", value: "Next.js", sub: "Exemple (maquette)", color: "#0ea5e9" },
+            { title: "Site + réservation", value: "24/7", sub: "Exemple (maquette)", color: "#ec4899" },
           ],
         };
 
@@ -226,7 +226,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* Headline — line 1 (word-by-word reveal) */}
-        <h1 className="mb-6 text-5xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]">
+        <h1 className="mb-6 text-5xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem] text-balance">
           <span className="block">
             <WordReveal text={copy.title1} delay={0} />
           </span>

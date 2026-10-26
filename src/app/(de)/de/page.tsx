@@ -10,12 +10,12 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/",
-  title: "KAH Digital — Vertikale KI-Agenten für Selbstständige · Lausanne · Schweiz",
+  title: "KAH Digital — Vertikale KI-Agenten für Selbstständige · Toulouse · Frankreich & Schweiz",
   description:
-    "KAH Digital baut vertikale KI-Agenten — keine weitere Website. KI-Kabinettschef für unabhängige Künstler (KAH Workforce), massgeschneiderte Business-Automatisierung. Studio in Lausanne, international tätig.",
+    "KAH Digital baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   keywords: [
     "vertikaler KI-Agent",
-    "KI Agentur Lausanne",
+    "KI Agentur Schweiz", "KI Agentur Frankreich",
     "KI-Kabinettschef für Künstler",
     "Business-Prozess-KI-Automatisierung",
     "KI-Agent für Musiker",
@@ -87,18 +87,17 @@ const organizationJsonLd = {
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
-  telephone: "+41759558414",
+  telephone: "+33759558414",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Rue de Bourg 27",
-    postalCode: "1003",
-    addressLocality: "Lausanne",
-    addressCountry: "CH",
+    addressLocality: "Toulouse",
+    addressRegion: "Occitanie",
+    addressCountry: "FR",
   },
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital baut vertikale KI-Agenten — keine weitere Website. KI-Kabinettschef für unabhängige Künstler (KAH Workforce), massgeschneiderte Business-Automatisierung für Selbstständige und KMU.",
+    "KAH Digital baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

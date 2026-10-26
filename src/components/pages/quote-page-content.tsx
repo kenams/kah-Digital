@@ -19,26 +19,9 @@ const COPY = {
       { value: "290 €", label: "Dès ce prix" },
       { value: "5 jours", label: "1ère livraison" },
       { value: "24h", label: "Délai de réponse" },
-      { value: "100%", label: "Budget respecté" },
+      { value: "0 €", label: "Avant validation" },
     ],
-    testimonials: [
-      {
-        quote: "4 nouveaux clients le premier mois après la mise en ligne.",
-        author: "S. M.", role: "Coach business, Lyon",
-      },
-      {
-        quote: "Les réservations ont augmenté de 30% en deux mois.",
-        author: "A. B.", role: "Restaurateur, Genève",
-      },
-      {
-        quote: "10 jours après le brief, mon site était en ligne.",
-        author: "T. K.", role: "Développeur freelance, Paris",
-      },
-      {
-        quote: "Dashboard en prod depuis 4 mois sans aucun bug.",
-        author: "J. F.", role: "Co-fondateur startup, Fribourg",
-      },
-    ],
+    testimonials: [] as { quote: string; author: string; role: string }[],
     process: [
       { step: "1", label: "Tu envoies ce formulaire", desc: "2 minutes max" },
       { step: "2", label: "On analyse & on discute", desc: "Sous 24h — budget inclus" },
@@ -62,26 +45,9 @@ const COPY = {
       { value: "$290", label: "Starting price" },
       { value: "5 days", label: "First delivery" },
       { value: "24h", label: "Response time" },
-      { value: "100%", label: "Budget respected" },
+      { value: "$0", label: "Before you commit" },
     ],
-    testimonials: [
-      {
-        quote: "4 new clients in the first month after launch.",
-        author: "S. M.", role: "Business coach, Lyon",
-      },
-      {
-        quote: "Bookings increased 30% in two months.",
-        author: "A. B.", role: "Restaurant owner, Geneva",
-      },
-      {
-        quote: "10 days after the brief, my site was live.",
-        author: "T. K.", role: "Freelance developer, Paris",
-      },
-      {
-        quote: "Dashboard in prod for 4 months with zero bugs.",
-        author: "J. F.", role: "Co-founder startup, Fribourg",
-      },
-    ],
+    testimonials: [] as { quote: string; author: string; role: string }[],
     process: [
       { step: "1", label: "You send this form", desc: "Takes 2 minutes" },
       { step: "2", label: "We analyse & discuss", desc: "Within 24h — budget included" },
@@ -105,26 +71,9 @@ const COPY = {
       { value: "CHF 290", label: "Ab diesem Preis" },
       { value: "5 Tage", label: "Erste Lieferung" },
       { value: "24h", label: "Antwortzeit" },
-      { value: "100%", label: "Budget eingehalten" },
+      { value: "0 €", label: "Vor Ihrer Zusage" },
     ],
-    testimonials: [
-      {
-        quote: "4 neue Kunden im ersten Monat nach dem Launch.",
-        author: "S. M.", role: "Business-Coach, Lyon",
-      },
-      {
-        quote: "Die Reservierungen stiegen in zwei Monaten um 30 %.",
-        author: "A. B.", role: "Restaurantbesitzer, Genf",
-      },
-      {
-        quote: "10 Tage nach dem Briefing war meine Website live.",
-        author: "T. K.", role: "Freiberuflicher Entwickler, Paris",
-      },
-      {
-        quote: "Dashboard seit 4 Monaten in Produktion — kein einziger Bug.",
-        author: "J. F.", role: "Mitgründer Startup, Freiburg",
-      },
-    ],
+    testimonials: [] as { quote: string; author: string; role: string }[],
     process: [
       { step: "1", label: "Sie senden dieses Formular", desc: "Dauert 2 Minuten" },
       { step: "2", label: "Wir analysieren & besprechen", desc: "In 24h — Budget inklusive" },
@@ -186,7 +135,8 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
                 ))}
               </div>
 
-              {/* Testimonials */}
+              {/* Aucun avis inventé : le bloc n'apparaît que si de vrais avis sont renseignés */}
+              {c.testimonials.length > 0 && (
               <div className="rounded-2xl border border-white/8 bg-white/4 p-5">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/40">{c.proofTitle}</p>
                 <div className="space-y-4">
@@ -198,6 +148,7 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
                   ))}
                 </div>
               </div>
+              )}
 
               {/* Process */}
               <div className="rounded-2xl border border-white/8 bg-white/4 p-5">

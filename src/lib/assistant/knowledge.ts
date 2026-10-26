@@ -313,11 +313,11 @@ export const assistantKnowledge = {
       key: "commencer",
       keywords: ["comment commencer", "comment démarrer", "how to start", "wie anfangen", "par où commencer", "première étape", "first step", "je suis intéressé", "interested", "je veux démarrer", "lancer le projet", "contacter"],
       answerFr:
-        "La suite la plus propre : remplis le formulaire de devis sur KAH Digital.ch/devis — tu reçois une réponse concrète sous 24h. Si tu veux d'abord cadrer le projet ici, je peux t'y aider et préparer un résumé clair pour accélérer le devis.",
+        "La suite la plus propre : remplis le formulaire de devis sur kah-digital.ch/devis — tu reçois une réponse concrète sous 24h. Si tu veux d'abord cadrer le projet ici, je peux t'y aider et préparer un résumé clair pour accélérer le devis.",
       answerEn:
-        "The cleanest next step: fill in the quote form at KAH Digital.ch/devis — you get a concrete response within 24h. If you want to frame the project here first, I can help and prepare a clear summary to speed up the quote.",
+        "The cleanest next step: fill in the quote form at kah-digital.ch/devis — you get a concrete response within 24h. If you want to frame the project here first, I can help and prepare a clear summary to speed up the quote.",
       answerDe:
-        "Der sauberste nächste Schritt: Angebotsformular ausfüllen auf KAH Digital.ch/devis — du erhältst innerhalb von 24h eine konkrete Antwort. Wenn du das Projekt hier zuerst eingrenzen willst, helfe ich dabei und bereite eine klare Zusammenfassung vor.",
+        "Der sauberste nächste Schritt: Angebotsformular ausfüllen auf kah-digital.ch/devis — du erhältst innerhalb von 24h eine konkrete Antwort. Wenn du das Projekt hier zuerst eingrenzen willst, helfe ich dabei und bereite eine klare Zusammenfassung vor.",
     },
   ],
 } as const;

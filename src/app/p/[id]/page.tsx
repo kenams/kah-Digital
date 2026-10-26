@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import QuickContactForm from "./QuickContactForm";
-import { FiCheckCircle, FiAlertCircle, FiAlertTriangle, FiArrowRight, FiPhone, FiMail, FiStar } from "react-icons/fi";
+import { FiCheckCircle, FiAlertCircle, FiAlertTriangle, FiArrowRight, FiPhone, FiMail } from "react-icons/fi";
 import { ProspectCountdown } from "@/components/prospect-countdown";
 
 type Props = { params: Promise<{ id: string }> };
@@ -148,9 +148,10 @@ const SEV_TEXT: Record<string, string> = {
   low:      "text-blue-400",
 };
 
+// Références réelles uniquement (sites livrés et en ligne).
 const SOCIAL_PROOF = [
-  { initials: "S.M.", quote: { fr: "Site livré en 3 semaines. 4 nouveaux clients le premier mois.", en: "Site delivered in 3 weeks. 4 new clients in the first month." } },
-  { initials: "A.B.", quote: { fr: "Réservations +30% en deux mois. Devis clair, livraison dans les délais.", en: "+30% bookings in two months. Clear quote, on time." } },
+  { initials: "BCS", quote: { fr: "BCS Nettoyage — site avec réservation en ligne, réalisé par KAH Digital : bcs-nettoyage.fr", en: "BCS Nettoyage — website with online booking, built by KAH Digital: bcs-nettoyage.fr" } },
+  { initials: "DSE", quote: { fr: "DSE Yana — site avec prise de rendez-vous automatique, réalisé par KAH Digital : dse-yana.com", en: "DSE Yana — website with automated appointment booking, built by KAH Digital: dse-yana.com" } },
 ];
 
 export default async function ProspectLandingPage({ params }: Props) {
@@ -335,13 +336,8 @@ export default async function ProspectLandingPage({ params }: Props) {
                   {s.initials}
                 </div>
                 <div>
-                  <div className="mb-1 flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <FiStar key={j} size={11} className="fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
                   <p className="text-xs leading-relaxed text-gray-400">
-                    "{(s.quote as Record<string, string>)[lang] ?? s.quote.fr}"
+                    {(s.quote as Record<string, string>)[lang] ?? s.quote.fr}
                   </p>
                 </div>
               </div>

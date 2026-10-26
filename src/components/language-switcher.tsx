@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { getLocaleFromPathname, localizePath, type Locale } from "@/lib/locale";
+import { getLocaleFromPathname, localizePath, stripLocalePrefix, type Locale } from "@/lib/locale";
+import { LOCALE_ROUTES } from "@/lib/locale-routes";
 
 const labels: Record<Locale, string> = {
   fr: "FR",
@@ -16,6 +17,15 @@ const ariaLabels: Record<Locale, string> = {
   de: "Website auf Deutsch anzeigen",
 };
 
+// Une page n'existe pas toujours dans les trois langues : dans ce cas on renvoie
+// vers l'accueil de la langue plutôt que vers un 404.
+function targetHref(pathname: string | null, locale: Locale) {
+  const base = stripLocalePrefix(pathname) || "/";
+  const normalized = base.length > 1 ? base.replace(/\/$/, "") : base;
+  if (LOCALE_ROUTES[locale].includes(normalized)) return localizePath(pathname, locale);
+  return localizePath("/", locale);
+}
+
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const currentLocale = getLocaleFromPathname(pathname);
@@ -27,7 +37,7 @@ export function LanguageSwitcher() {
         return (
           <Link
             key={locale}
-            href={localizePath(pathname, locale)}
+            href={targetHref(pathname, locale)}
             className={`rounded-full px-2.5 py-1 transition ${
               active ? "bg-white text-black" : "text-white/70 hover:text-white"
             }`}

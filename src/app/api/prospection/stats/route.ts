@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { isAdminUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type ProspectStatRow = {
   status: string | null;
@@ -49,7 +51,24 @@ function hoursSince(value: string | null) {
   return Math.round((Date.now() - new Date(value).getTime()) / 36_000) / 100;
 }
 
-export async function GET() {
+async function isAuthorized(req: Request) {
+  const cronSecret = process.env.CRON_SECRET;
+  if (cronSecret && req.headers.get("authorization") === `Bearer ${cronSecret}`) return true;
+  try {
+    const auth = await createSupabaseServerClient();
+    if (!auth) return false;
+    const { data: { user } } = await auth.auth.getUser();
+    return Boolean(user && isAdminUser(user));
+  } catch {
+    return false;
+  }
+}
+
+export async function GET(req: Request) {
+  // Ces statistiques commerciales internes ne doivent pas être publiques.
+  if (!(await isAuthorized(req))) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   const supabase = getSupabase();
   const since24h = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 

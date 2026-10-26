@@ -4,9 +4,9 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Automatisation IA pour PME : 5 cas concrets qui font gagner du temps en 2026 — KAH Digital",
+  title: "Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026 — KAH Digital",
   description:
-    "Découvrez comment les PME utilisent l'automatisation IA pour qualifier des leads, automatiser leur reporting et réduire les tâches répétitives. 5 cas réels avec résultats mesurables.",
+    "Découvrez comment les PME utilisent l'automatisation IA pour qualifier des leads, automatiser leur reporting et réduire les tâches répétitives. 5 exemples types de ce qu'on peut automatiser, avec les objectifs à viser.",
   keywords: [
     "automatisation ia pme",
     "automatisation intelligence artificielle entreprise",
@@ -18,16 +18,16 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/blog/automatisation-ia-pme" },
   openGraph: {
-    title: "Automatisation IA pour PME : 5 cas concrets en 2026",
+    title: "Automatisation IA pour PME : 5 exemples concrets en 2026",
     description:
-      "Comment les PME gagnent 10h+ par semaine grâce à l'automatisation IA — qualification de leads, reporting, relances, support client.",
+      "Ce que l'automatisation IA peut apporter aux PME — qualification de leads, reporting, relances, support client.",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Automatisation IA pour PME : 5 cas concrets qui font gagner du temps en 2026",
+  headline: "Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026",
   datePublished: "2026-05-19",
   dateModified: "2026-05-19",
   author: { "@type": "Organization", name: "KAH Digital" },
@@ -77,88 +77,83 @@ const faqJsonLd = {
 const CASES = [
   {
     step: "01",
-    title: "Qualification de leads — 4h/jour économisées",
-    content: `**La situation :** Une startup SaaS B2B dont les commerciaux passaient 4 heures par jour à trier manuellement les demandes entrantes, vérifier les profils LinkedIn, et envoyer des emails de qualification. Taux de conversion initial : 2%.
+    title: "Exemple type — Qualification de leads",
+    content: `**Le scénario (hypothétique) :** Une startup SaaS B2B dont les commerciaux passent plusieurs heures par jour à trier manuellement les demandes entrantes, vérifier les profils LinkedIn et envoyer des emails de qualification.
 
-**Le système mis en place :**
-- Agent IA Claude connecté au formulaire de contact
-- Scoring automatique basé sur 12 critères (secteur, taille d'entreprise, message, heure de soumission)
+**Le système qu'on pourrait mettre en place :**
+- Agent IA connecté au formulaire de contact
+- Scoring automatique basé sur des critères définis ensemble (secteur, taille d'entreprise, message, heure de soumission)
 - Séquence d'emails personnalisés par secteur sur 10 jours
-- Alerte commerciale uniquement pour les leads scorés 7/10+
+- Alerte commerciale uniquement pour les leads au-dessus d'un seuil de score
 
-**Résultats en 60 jours :**
-- 6× plus de leads qualifiés traités par semaine
-- −80% de temps commercial sur la qualification
-- Taux de conversion passé de 2% à 11%
-- ROI atteint en 3 semaines après livraison`,
+**Objectifs visés (non garantis, à mesurer ensemble) :**
+- Moins de temps commercial passé sur la qualification
+- Plus de leads qualifiés traités chaque semaine
+- Un meilleur taux de conversion, suivi dès les premières semaines`,
   },
   {
     step: "02",
-    title: "Reporting automatique — 2h récupérées chaque semaine",
-    content: `**La situation :** Une PME de 40 personnes dont le directeur opérations passait 2 heures chaque lundi à compiler manuellement des données Excel issues de 4 systèmes différents pour produire le rapport de la semaine.
+    title: "Exemple type — Reporting automatique",
+    content: `**Le scénario (hypothétique) :** Une PME dont le directeur opérations passe du temps chaque lundi à compiler manuellement des données Excel issues de plusieurs systèmes pour produire le rapport de la semaine.
 
-**Le système mis en place :**
-- Connexion Supabase aux 4 sources de données via API
+**Le système qu'on pourrait mettre en place :**
+- Connexion Supabase aux sources de données via API
 - Dashboard React temps réel accessible depuis n'importe quel appareil
-- Génération PDF automatique chaque lundi à 7h00
+- Génération PDF automatique chaque lundi matin
 - Alertes email sur les KPIs critiques (seuils paramétrables)
 
-**Résultats :**
-- 2h récupérées chaque semaine (104h/an)
-- Données disponibles en temps réel, pas à J+1
-- Zéro bug en 6 mois de production
-- 3e projet déjà planifié avec le même client`,
+**Objectifs visés (non garantis, à mesurer ensemble) :**
+- Du temps récupéré chaque semaine
+- Données disponibles en temps réel plutôt qu'à J+1
+- Un rapport fiable, sans ressaisie manuelle`,
   },
   {
     step: "03",
-    title: "Support client IA — 70% de tickets traités automatiquement",
-    content: `**La situation :** Une boutique e-commerce recevant 80 à 120 messages/semaine sur les mêmes questions (délais de livraison, politique de retour, tailles disponibles). Une personne y passait 15h/semaine.
+    title: "Exemple type — Support client IA",
+    content: `**Le scénario (hypothétique) :** Une boutique e-commerce qui reçoit chaque semaine de nombreux messages sur les mêmes questions (délais de livraison, politique de retour, tailles disponibles) et dont une personne passe une grande partie de son temps à y répondre.
 
-**Le système mis en place :**
+**Le système qu'on pourrait mettre en place :**
 - Agent IA entraîné sur la base de connaissances produit
-- Réponse automatique aux 40 questions les plus fréquentes
+- Réponse automatique aux questions les plus fréquentes
 - Escalade vers un humain uniquement pour les cas complexes ou insatisfaits
 - Intégration directe dans Shopify et email support
 
-**Résultats :**
-- 70% des tickets traités sans intervention humaine
-- Temps de réponse moyen : 3 minutes (contre 4h avant)
-- Satisfaction client notée 4,7/5 post-déploiement
-- 12h/semaine libérées pour la gestion produit`,
+**Objectifs visés (non garantis, à mesurer ensemble) :**
+- Une part importante des demandes simples traitée sans intervention humaine
+- Un temps de réponse réduit
+- Du temps libéré pour la gestion produit`,
   },
   {
     step: "04",
-    title: "Relances commerciales — pipeline multiplié par 3",
-    content: `**La situation :** Un cabinet de conseil dont les prospects ne recevaient aucun suivi après le premier contact. 60% des devis envoyés restaient sans réponse faute de relance systématique.
+    title: "Exemple type — Relances commerciales",
+    content: `**Le scénario (hypothétique) :** Un cabinet de conseil dont les prospects ne reçoivent aucun suivi après le premier contact, faute de relance systématique après l'envoi d'un devis.
 
-**Le système mis en place :**
+**Le système qu'on pourrait mettre en place :**
 - Pipeline automatisé : J+3, J+7, J+14 après envoi de devis
 - Personnalisation IA de chaque relance selon le contenu du devis
 - Détection des ouvertures email + déclenchement conditionnel
 - Tableau de bord commercial avec statut de chaque prospect
 
-**Résultats :**
-- Taux de réponse aux devis : +68%
-- Pipeline actif multiplié par 3 en 8 semaines
-- Temps commercial récupéré : 6h/semaine
-- Chiffre d'affaires additionnel estimé : +40% en 3 mois`,
+**Objectifs visés (non garantis, à mesurer ensemble) :**
+- Un meilleur taux de réponse aux devis
+- Un pipeline commercial mieux suivi
+- Du temps commercial récupéré`,
   },
   {
     step: "05",
-    title: "Veille concurrentielle automatisée — insights quotidiens",
-    content: `**La situation :** Une direction marketing passant 3h/semaine à surveiller manuellement les publications des concurrents, les tendances sectorielles et les nouvelles opportunités de contenu.
+    title: "Exemple type — Veille concurrentielle automatisée",
+    content: `**Le scénario (hypothétique) :** Une direction marketing qui passe plusieurs heures par semaine à surveiller manuellement les publications des concurrents, les tendances sectorielles et les nouvelles opportunités de contenu.
 
-**Le système mis en place :**
-- Agent IA scrappant 15 sources définies toutes les 24h
+**Le système qu'on pourrait mettre en place :**
+- Agent IA analysant des sources définies toutes les 24h
 - Résumé personnalisé livré par email chaque matin
 - Détection des opportunités de mots-clés et sujets tendance
 - Suggestions de contenus à produire basées sur les gaps détectés
 
-**Résultats :**
-- 3h/semaine économisées en veille manuelle
-- 2× plus de sujets de contenu identifiés par mois
-- Réactivité aux trends : de J+7 à J+1
-- Coût total du système : 1 400 CHF (ROI < 2 mois)`,
+**Objectifs visés (non garantis, à mesurer ensemble) :**
+- Moins de temps passé en veille manuelle
+- Plus de sujets de contenu identifiés
+- Une meilleure réactivité face aux tendances`,
   },
 ];
 
@@ -197,10 +192,10 @@ export default function AutomatisationIaPmePage() {
               </span>
             </div>
             <h1 className="mb-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Automatisation IA pour PME : 5 cas concrets qui font gagner du temps en 2026
+              Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026
             </h1>
             <p className="text-lg leading-relaxed text-gray-400">
-              L'IA n'est plus réservée aux grandes entreprises. En 2026, une PME de 5 à 50 personnes peut automatiser ses tâches répétitives, qualifier ses leads et générer des rapports sans recruter — et sans budget colossal. Voici 5 cas réels avec résultats mesurables.
+              L'IA n'est plus réservée aux grandes entreprises. En 2026, une PME de 5 à 50 personnes peut automatiser ses tâches répétitives, qualifier ses leads et générer des rapports sans recruter — et sans budget colossal. Voici 5 exemples types avec les objectifs à viser.
             </p>
           </div>
         </section>
@@ -214,7 +209,7 @@ export default function AutomatisationIaPmePage() {
               {[
                 "5 usages concrets de l'automatisation IA pour PME",
                 "Les outils utilisés : Claude, Supabase, Resend, n8n",
-                "Les résultats mesurables pour chaque cas",
+                "Les objectifs à viser pour chaque exemple",
                 "Le coût et le délai de mise en place",
                 "Comment démarrer sans être technique",
               ].map((item) => (
@@ -237,7 +232,7 @@ export default function AutomatisationIaPmePage() {
                 La vraie question n'est plus "est-ce que l'IA peut faire ça ?" mais "quelles tâches ai-je intérêt à automatiser en premier ?". La réponse : les tâches à faible valeur ajoutée, répétitives, à fort volume — et celles qui créent des délais dans votre pipeline commercial.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                Voici 5 cas réels déployés par KAH Digital pour des PME entre 2025 et 2026.
+                Voici 5 exemples types (scénarios hypothétiques, pas des études de cas clients) de ce que KAH Digital peut mettre en place pour une PME.
               </p>
             </div>
           </section>

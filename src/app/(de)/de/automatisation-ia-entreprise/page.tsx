@@ -6,10 +6,10 @@ export const metadata = buildPageMetadata({
   path: "/automatisation-ia-entreprise",
   title: "KI-Automatisierung für Unternehmen · Agenten & Workflows | KAH Digital",
   description:
-    "KI-Automatisierung: Lead-Qualifizierung, Kundensupport, intelligentes Routing, individuelle GPT-4-Agenten. Betriebskosten um 40–70% senken. Kostenloses Audit in 24h.",
+    "KI-Automatisierung: Lead-Qualifizierung, Kundensupport, intelligentes Routing, individuelle GPT-4-Agenten. Zeitaufwand für wiederkehrende Aufgaben senken. Kostenloses Audit in 24h.",
   keywords: [
     "KI Automatisierung Schweiz",
-    "AI Automatisierung Lausanne",
+    "AI Automatisierung Schweiz",
     "GPT-4 Agenten Schweiz",
     "Business Automatisierung KI",
     "KI Agentur Schweiz",

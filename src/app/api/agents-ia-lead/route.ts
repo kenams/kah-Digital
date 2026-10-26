@@ -259,7 +259,7 @@ export async function POST(req: Request) {
     const tpl = getTemplate(agent);
 
     // Telegram — alerte immédiate
-    void sendTelegramAlert(
+    const telegramAlert = sendTelegramAlert(
       `🤖 <b>NOUVEAU LEAD AGENTS IA !</b>\n\n` +
       `👤 <b>${name ?? "Anonyme"}</b>\n` +
       `📧 ${email}\n` +
@@ -269,7 +269,7 @@ export async function POST(req: Request) {
     ).catch(console.error);
 
     // Email admin
-    void sendAdminNotification({
+    const adminMail = sendAdminNotification({
       subject: `🤖 LEAD AGENTS IA — ${name ?? email} · ${agent ?? "?"}`,
       body: `<strong style="color:#7c3aed;font-size:17px;">Nouveau lead page Agents IA !</strong><br/><br/>
 <strong>Nom :</strong> ${name ?? "?"}<br/>
@@ -278,6 +278,9 @@ export async function POST(req: Request) {
 ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #7c3aed;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${message}</div>` : ""}
 <br/><br/><a href="${CALENDLY}" style="background:#7c3aed;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:700;">📅 Voir Calendly</a>`,
     }).catch(console.error);
+
+    // Vercel gèle la fonction après la réponse : on attend les notifications.
+    await Promise.allSettled([telegramAlert, adminMail]);
 
     // Email proposition complète au prospect
     const resend = new Resend(process.env.RESEND_API_KEY!);

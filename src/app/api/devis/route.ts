@@ -1,6 +1,10 @@
 ﻿import { NextResponse } from "next/server";
 import { sendAdminNotification } from "@/lib/gmail";
 
+function esc(value: unknown) {
+  return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
@@ -16,20 +20,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email ou téléphone requis" }, { status: 400 });
     }
 
-    void sendAdminNotification({
-      subject: `💰 DEVIS — ${company ?? "Prospect direct"}`,
+    const adminMail = sendAdminNotification({
+      subject: `💰 DEVIS — ${esc(company) || "Prospect direct"}`,
       body: `<strong style="color:#16a34a;font-size:17px;">Nouvelle demande de devis !</strong><br/><br/>
-<strong>Entreprise :</strong> ${company ?? "?"}<br/>
-<strong>Site :</strong> ${site ? `<a href="${site}">${site}</a>` : "?"}<br/>
-<strong>Source :</strong> ${ref ?? "direct"}<br/>
-<strong>Email :</strong> ${email ? `<a href="mailto:${email}">${email}</a>` : "non renseigné"}<br/>
-<strong>Téléphone :</strong> ${phone ?? "non renseigné"}<br/>
-<strong>Budget :</strong> ${budget || "Non précisé"}<br/>
-${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #6366f1;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${message}</div>` : ""}`,
+<strong>Entreprise :</strong> ${esc(company) || "?"}<br/>
+<strong>Site :</strong> ${site ? esc(site) : "?"}<br/>
+<strong>Source :</strong> ${esc(ref) || "direct"}<br/>
+<strong>Email :</strong> ${email ? `${esc(email)}` : "non renseigné"}<br/>
+<strong>Téléphone :</strong> ${esc(phone) || "non renseigné"}<br/>
+<strong>Budget :</strong> ${esc(budget) || "Non précisé"}<br/>
+${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #6366f1;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${esc(message)}</div>` : ""}`,
     }).catch(console.error);
 
+    let clientMail: Promise<unknown> = Promise.resolve();
     if (email && process.env.RESEND_API_KEY) {
-      fetch("https://api.resend.com/emails", {
+      clientMail = fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
@@ -39,17 +44,20 @@ ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;
           from: "KAH Digital <contact@kah-digital.ch>",
           to: [email],
           reply_to: ["kahdigital42@gmail.com"],
-          subject: `Votre demande reçue${company ? ` — ${company}` : ""} · Réponse sous 24h`,
+          subject: `Votre demande reçue${company ? ` — ${String(company).slice(0, 80)}` : ""} · Réponse sous 24h`,
           html: `<div style="font-family:Arial,sans-serif;max-width:520px;color:#374151;font-size:15px;line-height:1.8;">
 <p>Bonjour,</p>
-<p>J'ai bien reçu votre demande concernant <strong>${company ?? "votre projet"}</strong>.</p>
+<p>J'ai bien reçu votre demande concernant <strong>${esc(company) || "votre projet"}</strong>.</p>
 <p>Je vous prépare une proposition personnalisée et reviens vers vous dans les <strong>24 heures</strong> avec tous les détails.</p>
 <p>En attendant, si vous avez des questions, répondez directement à cet email — je lis tous les messages.</p>
-<p style="margin-top:24px;color:#6b7280;">À très bientôt,<br/><strong style="color:#111827;">KAH Digital</strong> · <a href="https://kah-digital.ch" style="color:#6366f1;">KAH Digital.ch</a></p>
+<p style="margin-top:24px;color:#6b7280;">À très bientôt,<br/><strong style="color:#111827;">KAH Digital</strong> · <a href="https://kah-digital.ch" style="color:#6366f1;">kah-digital.ch</a></p>
 </div>`,
         }),
       }).catch(console.error);
     }
+
+    // Vercel gèle la fonction après la réponse : on attend l'envoi des deux mails.
+    await Promise.allSettled([adminMail, clientMail]);
 
     return NextResponse.json({ ok: true });
   } catch {

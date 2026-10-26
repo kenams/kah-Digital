@@ -4,9 +4,9 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Site web pour restaurant : ce qu'il faut vraiment en 2026 � KAH Digital",
-  description: "Menu en ligne, r�servation, Google Maps, avis � ce dont un restaurant a besoin sur son site web. Devis et guide pratique.",
-  keywords: ["site web restaurant", "site internet restaurant", "cr�ation site restaurant", "site web bar", "site web pizzeria", "r�servation en ligne restaurant"],
+  title: "Site web pour restaurant : ce qu'il faut vraiment en 2026 — KAH Digital",
+  description: "Menu en ligne, réservation, Google Maps, avis — ce dont un restaurant a besoin sur son site web. Devis et guide pratique.",
+  keywords: ["site web restaurant", "site internet restaurant", "création site restaurant", "site web bar", "site web pizzeria", "réservation en ligne restaurant"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-restaurant" },
   openGraph: {
     title: "Site web pour restaurant : ce qu'il faut vraiment en 2026",
@@ -29,20 +29,20 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "comment estimer un site web pour un restaurant ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site restaurant complet (menu, r�servation, photos, Google Maps) s'estime apr�s cadrage selon les fonctionnalit�s." } },
-    { "@type": "Question", "name": "Vaut-il mieux un site ou une fiche Google My Business ?", "acceptedAnswer": { "@type": "Answer", "text": "Les deux sont compl�mentaires. La fiche Google capte les recherches locales imm�diates, le site convertit les visiteurs et vous appartient vraiment." } },
-    { "@type": "Question", "name": "Faut-il int�grer la r�servation en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui si votre restaurant prend des r�servations. Un syst�me simple (TheFork, Formitable, ou un formulaire) peut doubler vos r�servations en ligne." } },
-    { "@type": "Question", "name": "Mon site doit-il �tre mobile-first ?", "acceptedAnswer": { "@type": "Answer", "text": "Absolument. Plus de 70% des recherches restaurant se font sur mobile, souvent au moment o� la personne cherche o� manger maintenant." } },
+    { "@type": "Question", "name": "comment estimer un site web pour un restaurant ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site restaurant complet (menu, réservation, photos, Google Maps) s'estime après cadrage selon les fonctionnalités." } },
+    { "@type": "Question", "name": "Vaut-il mieux un site ou une fiche Google My Business ?", "acceptedAnswer": { "@type": "Answer", "text": "Les deux sont complémentaires. La fiche Google capte les recherches locales immédiates, le site convertit les visiteurs et vous appartient vraiment." } },
+    { "@type": "Question", "name": "Faut-il intégrer la réservation en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui si votre restaurant prend des réservations. Un système simple (TheFork, Formitable, ou un formulaire) peut doubler vos réservations en ligne." } },
+    { "@type": "Question", "name": "Mon site doit-il être mobile-first ?", "acceptedAnswer": { "@type": "Answer", "text": "Absolument. Plus de 70% des recherches restaurant se font sur mobile, souvent au moment où la personne cherche où manger maintenant." } },
   ],
 };
 
 const MUST_HAVES = [
-  { emoji: "???", title: "Menu � jour", detail: "Le menu est la raison n�1 des visites. Il doit �tre lisible, � jour et ne pas �tre un PDF non zoomable sur mobile." },
-  { emoji: "??", title: "Adresse + Google Maps int�gr�", detail: "L'utilisateur doit pouvoir cliquer directement pour obtenir l'itin�raire. Indispensable sur mobile." },
-  { emoji: "??", title: "R�servation en ligne", detail: "Formulaire simple, lien TheFork ou Formitable. R�duisez la friction � chaque clic perdu est une table vide." },
-  { emoji: "??", title: "Photos de qualit�", detail: "Les photos de plats s�duisent avant m�me que le client arrive. Pas besoin d'un photographe pro � un bon t�l�phone en lumi�re naturelle suffit." },
-  { emoji: "?", title: "Avis Google visibles", detail: "Int�grez un widget ou un lien direct vers vos avis. 90% des gens lisent les avis avant de choisir un restaurant." },
-  { emoji: "??", title: "T�l�phone cliquable", detail: "Votre num�ro doit �tre cliquable sur mobile. Une �vidence que trop de sites ratent encore." },
+  { emoji: "🍽️", title: "Menu à jour", detail: "Le menu est la raison n°1 des visites. Il doit être lisible, à jour et ne pas être un PDF non zoomable sur mobile." },
+  { emoji: "📍", title: "Adresse + Google Maps intégré", detail: "L'utilisateur doit pouvoir cliquer directement pour obtenir l'itinéraire. Indispensable sur mobile." },
+  { emoji: "📅", title: "Réservation en ligne", detail: "Formulaire simple, lien TheFork ou Formitable. Réduisez la friction — chaque clic perdu est une table vide." },
+  { emoji: "📸", title: "Photos de qualité", detail: "Les photos de plats séduisent avant même que le client arrive. Pas besoin d'un photographe pro — un bon téléphone en lumière naturelle suffit." },
+  { emoji: "⭐", title: "Avis Google visibles", detail: "Intégrez un widget ou un lien direct vers vos avis. 90% des gens lisent les avis avant de choisir un restaurant." },
+  { emoji: "📞", title: "Téléphone cliquable", detail: "Votre numéro doit être cliquable sur mobile. Une évidence que trop de sites ratent encore." },
 ];
 
 export default function SiteWebRestaurantPage() {
@@ -57,13 +57,13 @@ export default function SiteWebRestaurantPage() {
           <Link href="/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
             <span className="rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-400">Restaurants</span>
-            <span className="text-xs text-gray-600">4 mai 2026 � 5 min de lecture</span>
+            <span className="text-xs text-gray-600">4 mai 2026 · 5 min de lecture</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             Site web pour restaurant : ce qu'il faut vraiment en 2026
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Menu introuvable, site non mobile, pas de r�servation en ligne � voici les erreurs qui font fuir les clients avant m�me qu'ils entrent dans votre restaurant.
+            Menu introuvable, site non mobile, pas de réservation en ligne — voici les erreurs qui font fuir les clients avant même qu'ils entrent dans votre restaurant.
           </p>
         </div>
       </section>
@@ -71,19 +71,19 @@ export default function SiteWebRestaurantPage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-red-500/20 bg-red-500/5 p-5">
           <p className="text-sm leading-relaxed text-red-200">
-            <strong>TL;DR :</strong> Menu lisible sur mobile + photos attractives + r�servation en ligne + avis Google visibles. Ces 4 �l�ments font la diff�rence entre un site qui ram�ne des clients et un site vitrine inutile.
+            <strong>TL;DR :</strong> Menu lisible sur mobile + photos attractives + réservation en ligne + avis Google visibles. Ces 4 éléments font la différence entre un site qui ramène des clients et un site vitrine inutile.
           </p>
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Le comportement r�el d'un client en 2026</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Le comportement réel d'un client en 2026</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          Voici comment �a se passe dans 80% des cas : la personne cherche "restaurant italien Lyon" sur Google � 12h30. Elle regarde 2-3 r�sultats, clique sur le premier qui a de belles photos, essaie de voir le menu � et si le menu est un PDF non lisible sur mobile ou introuvable, elle revient en arri�re et choisit le concurrent.
+          Voici comment ça se passe dans 80% des cas : la personne cherche "restaurant italien Lyon" sur Google à 12h30. Elle regarde 2-3 résultats, clique sur le premier qui a de belles photos, essaie de voir le menu — et si le menu est un PDF non lisible sur mobile ou introuvable, elle revient en arrière et choisit le concurrent.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          Vous n'avez pas 10 secondes. Vous avez 3. Votre site doit r�pondre imm�diatement � "est-ce que �a me correspond et comment je r�serve ?".
+          Vous n'avez pas 10 secondes. Vous avez 3. Votre site doit répondre immédiatement à "est-ce que ça me correspond et comment je réserve ?".
         </p>
 
-        <h2 className="mb-8 text-2xl font-bold text-white">Les 6 �l�ments indispensables</h2>
+        <h2 className="mb-8 text-2xl font-bold text-white">Les 6 éléments indispensables</h2>
         <div className="mb-12 grid gap-4 sm:grid-cols-2">
           {MUST_HAVES.map((item) => (
             <div key={item.title} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
@@ -94,21 +94,21 @@ export default function SiteWebRestaurantPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Site web vs. fiche Google My Business � les deux</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Site web vs. fiche Google My Business — les deux</h2>
         <p className="mb-6 text-gray-400 leading-relaxed">
-          Beaucoup de restaurateurs pensent que leur fiche Google suffit. C'est faux. La fiche Google capte l'intention imm�diate ("restaurant proche"), mais votre site est votre outil de conversion : menu complet, ambiance, histoire, r�servation directe sans commission.
+          Beaucoup de restaurateurs pensent que leur fiche Google suffit. C'est faux. La fiche Google capte l'intention immédiate ("restaurant proche"), mais votre site est votre outil de conversion : menu complet, ambiance, histoire, réservation directe sans commission.
         </p>
         <p className="mb-10 text-gray-400 leading-relaxed">
-          TheFork prend une commission sur chaque couvert. Un formulaire de r�servation sur votre propre site vous s'estime z�ro commission.
+          TheFork prend une commission sur chaque couvert. Un formulaire de réservation sur votre propre site vous s'estime zéro commission.
         </p>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Combien �a s'estime ?</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Combien ça s'estime ?</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site vitrine simple (4-5 pages)", price: "selon le p�rim�tre", delay: "1�2 semaines" },
-            { label: "Avec r�servation en ligne", price: "selon le p�rim�tre", delay: "2�3 semaines" },
-            { label: "Avec commande en ligne", price: "selon le p�rim�tre", delay: "3�4 semaines" },
-            { label: "Maintenance + mises � jour menu", price: "selon le p�rim�tre", delay: "Support inclus" },
+            { label: "Site vitrine simple (4-5 pages)", price: "selon le périmètre", delay: "1–2 semaines" },
+            { label: "Avec réservation en ligne", price: "selon le périmètre", delay: "2–3 semaines" },
+            { label: "Avec commande en ligne", price: "selon le périmètre", delay: "3–4 semaines" },
+            { label: "Maintenance + mises à jour menu", price: "selon le périmètre", delay: "Support inclus" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>
@@ -118,7 +118,7 @@ export default function SiteWebRestaurantPage() {
           ))}
         </div>
 
-        <h2 className="mb-6 text-2xl font-bold text-white">Questions fr�quentes</h2>
+        <h2 className="mb-6 text-2xl font-bold text-white">Questions fréquentes</h2>
         <div className="mb-12 space-y-4">
           {faqJsonLd.mainEntity.map((f) => (
             <div key={f.name} className="rounded-xl border border-white/8 bg-gray-900/50 p-5">
@@ -130,7 +130,7 @@ export default function SiteWebRestaurantPage() {
 
         <div className="rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-orange-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Un site qui fait venir des clients dans votre restaurant</h2>
-          <p className="mb-6 text-gray-400">R�ponse sous 24h � Devis personnalis� � Devis personnalis�</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-red-500/30">
               Demander un devis <FiArrowRight size={15} />

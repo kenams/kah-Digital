@@ -3,11 +3,11 @@ import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-pa
 
 export const metadata: Metadata = {
   title: "Agence web Lausanne — KAH Digital | Création site web dès CHF 290",
-  description: "Agence web basée à Lausanne. Création de sites web, apps et solutions IA pour PME, indépendants et startups vaudoises. Prix fixe CHF 290, livré en 5 jours. Devis gratuit sous 24h.",
+  description: "Agence web à distance pour Lausanne et le Vaud. Création de sites web, apps et solutions IA pour PME, indépendants et startups vaudoises. Prix fixe CHF 290, livré en 5 jours. Devis gratuit sous 24h.",
   keywords: ["agence web Lausanne", "création site web Lausanne", "site internet Lausanne", "développeur web Lausanne", "agence digitale Lausanne"],
   openGraph: {
     title: "Agence web Lausanne — KAH Digital",
-    description: "Studio digital basé à Lausanne. Sites web, apps et IA pour PME vaudoises. Prix fixe CHF 290, réponse 24h.",
+    description: "Studio digital à distance. Sites web, apps et IA pour PME vaudoises. Prix fixe CHF 290, réponse 24h.",
   },
   alternates: { canonical: "https://kah-digital.ch/agence-web-lausanne" },
 };

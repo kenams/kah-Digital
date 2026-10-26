@@ -242,7 +242,7 @@ export default function MonBoumProposalPage() {
         </section>
 
         <p className="mt-10 text-center text-xs text-white/20">
-          KAH Digital · Lausanne · kahdigital42@gmail.com · kah-digital.ch
+          KAH Digital · Toulouse · kahdigital42@gmail.com · kah-digital.ch
         </p>
       </div>
     </main>

@@ -9,7 +9,6 @@ import { UrgencyBanner } from "@/components/urgency-banner";
 import { CursorGlow } from "@/components/cursor-glow";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { FloatingCTA } from "@/components/floating-cta";
-import { SocialProofToast } from "@/components/social-proof-toast";
 import { GA_MEASUREMENT_ID, structuredData } from "@/lib/shared-metadata";
 
 const dmSans = DM_Sans({
@@ -58,6 +57,7 @@ export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
             <Script id="ga4" strategy="afterInteractive">
               {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');`}
             </Script>
@@ -67,7 +67,6 @@ gtag('config', '${GA_MEASUREMENT_ID}');`}
           <CursorGlow />
           <ScrollProgress />
           <UrgencyBanner />
-          <SocialProofToast />
           <ScrollToTop />
           <FlashInteractions />
           <SiteHeader />

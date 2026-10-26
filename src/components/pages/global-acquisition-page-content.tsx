@@ -51,7 +51,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Livraison en 14 jours", body: "Starter en 5 jours. Business en 14. Cadrage court, décisions claires, zéro réunion inutile." },
         { icon: FiGlobe, title: "Stack monde réel", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. La même stack que les startups qui lèvent des millions." },
-        { icon: FiTrendingUp, title: "+40% de conversions", body: "Structure claire, CTA optimisés, vitesse de chargement — chaque détail est pensé pour convertir." },
+        { icon: FiTrendingUp, title: "Pensé pour convertir", body: "Structure claire, CTA optimisés, vitesse de chargement — chaque détail vise à transformer vos visiteurs en demandes." },
       ],
       ctaTitle: "Votre site perd des clients chaque jour.",
       ctaBody: "Audit gratuit en 24h. On identifie exactement ce qui freine votre conversion et ce qu'il faut corriger en priorité.",
@@ -62,17 +62,17 @@ const content = {
       title: "Votre site actuel coûte des clients.",
       title2: "On le transforme.",
       intro:
-        "Un site lent, mal structuré ou visuellement faible ne pardonne pas en 2025. KAH Digital reprend tout — structure, UX, vitesse, conversion — et livre une machine à leads en 14 à 28 jours. Résultat garanti ou remboursé.",
+        "Un site lent, mal structuré ou visuellement faible ne pardonne pas en 2025. KAH Digital reprend tout — structure, UX, vitesse, conversion — et livre une machine à leads en 14 à 28 jours. Devis ferme avant démarrage, code 100% à vous.",
       stats: [
-        { value: "+40%", label: "Conversions" },
+        { value: "24h", label: "Réponse à votre demande" },
         { value: "<2s", label: "Chargement" },
         { value: "95+", label: "Lighthouse" },
         { value: "14j", label: "Livraison" },
       ],
       benefitsTitle: "Ce qu'une vraie refonte change",
       benefits: [
-        "Taux de rebond réduit de 30 à 60% avec une UX repensée",
-        "Temps de chargement divisé par 3 grâce à Next.js 15",
+        "Une UX repensée pour réduire le taux de rebond",
+        "Temps de chargement fortement réduit grâce à Next.js 15",
         "Positionnement SEO amélioré dès la mise en ligne",
         "Demandes entrantes mieux qualifiées et plus nombreuses",
       ],
@@ -136,20 +136,20 @@ const content = {
     "automatisation-ia-entreprise": {
       eyebrow: "IA · Agents · Automatisation · ROI mesurable",
       title: "Réduisez vos coûts opérationnels",
-      title2: "de 40 à 70% avec l'IA.",
+      title2: "grâce à l'IA.",
       intro:
         "Pas de l'IA gadget — des agents GPT-4 qui qualifient vos leads, répondent à vos clients et automatisent vos workflows. KAH Digital implémente des automatisations IA concrètes, intégrées à votre stack existant, avec un ROI mesurable dès le premier mois.",
       stats: [
-        { value: "-70%", label: "Tâches manuelles" },
+        { value: "100%", label: "Code livré" },
         { value: "24/7", label: "Disponibilité" },
         { value: "10j", label: "Déploiement" },
-        { value: "x3", label: "Qualification leads" },
+        { value: "24h", label: "Audit gratuit" },
       ],
       benefitsTitle: "Ce que l'automatisation IA apporte",
       benefits: [
         "Qualification de leads automatique — seuls les prospects chauds vous atteignent",
         "Support client 24/7 avec escalade propre vers un humain si besoin",
-        "Réduction de 70% des tâches répétitives — votre équipe se concentre sur la valeur",
+        "Moins de tâches répétitives — votre équipe se concentre sur la valeur",
         "ROI mesurable dès le premier mois — temps, leads, satisfaction",
       ],
       profilesTitle: "L'IA fait sens pour vous si…",
@@ -165,7 +165,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Agents GPT-4 sur mesure", body: "Chatbot de qualification, support, résumé automatique, routage intelligent. Entraîné sur vos données." },
         { icon: FiUsers, title: "Humain + IA parfaitement calibré", body: "L'escalade vers un humain reste propre et sans friction quand le bot atteint sa limite." },
-        { icon: FiTrendingUp, title: "ROI en 30 jours", body: "Déploiement en 10 jours, résultats mesurables à J+30. Temps, leads, satisfaction — tout est tracé." },
+        { icon: FiTrendingUp, title: "Résultats mesurés dès J+30", body: "Déploiement en 10 jours, indicateurs suivis dès J+30. Temps, leads, satisfaction — tout est tracé." },
       ],
       ctaTitle: "Votre équipe perd combien d'heures par semaine sur des tâches automatisables ?",
       ctaBody: "Audit IA gratuit en 24h. On identifie vos 3 automations à plus fort ROI et on estime le gain concret.",
@@ -205,7 +205,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Delivered in 14 days", body: "Starter in 5 days. Business in 14. Short scoping, clear decisions, zero unnecessary meetings." },
         { icon: FiGlobe, title: "Real-world stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. The same stack as startups raising millions." },
-        { icon: FiTrendingUp, title: "+40% conversions", body: "Clear structure, optimised CTAs, load speed — every detail is built to convert." },
+        { icon: FiTrendingUp, title: "Built to convert", body: "Clear structure, optimised CTAs, load speed — every detail aims to turn visitors into enquiries." },
       ],
       ctaTitle: "Your site is losing clients every day.",
       ctaBody: "Free audit within 24h. We identify exactly what's blocking your conversion and what to fix first.",
@@ -216,17 +216,17 @@ const content = {
       title: "Your current site is costing you clients.",
       title2: "We'll rebuild it.",
       intro:
-        "A slow, poorly structured, or visually weak site doesn't forgive in 2025. KAH Digital rebuilds everything — structure, UX, speed, conversion — and delivers a lead machine in 14 to 28 days. Results guaranteed.",
+        "A slow, poorly structured, or visually weak site doesn't forgive in 2025. KAH Digital rebuilds everything — structure, UX, speed, conversion — and delivers a lead machine in 14 to 28 days. Fixed quote before we start, 100% of the code is yours.",
       stats: [
-        { value: "+40%", label: "Conversions" },
+        { value: "24h", label: "Reply to your request" },
         { value: "<2s", label: "Load time" },
         { value: "95+", label: "Lighthouse" },
         { value: "14d", label: "Delivery" },
       ],
       benefitsTitle: "What a real redesign changes",
       benefits: [
-        "Bounce rate reduced 30–60% with a rebuilt UX",
-        "Load time cut 3x with Next.js 15",
+        "A rebuilt UX designed to reduce bounce rate",
+        "Load time sharply reduced with Next.js 15",
         "SEO ranking improved from day one",
         "Better qualified and more numerous inbound leads",
       ],
@@ -290,20 +290,20 @@ const content = {
     "automatisation-ia-entreprise": {
       eyebrow: "AI · Agents · Automation · Measurable ROI",
       title: "Cut operational costs",
-      title2: "40–70% with AI.",
+      title2: "with AI.",
       intro:
         "Not gimmick AI — GPT-4 agents that qualify your leads, answer your clients, and automate your workflows. KAH Digital implements concrete AI automations, integrated into your existing stack, with measurable ROI from month one.",
       stats: [
-        { value: "-70%", label: "Manual tasks" },
+        { value: "100%", label: "Code delivered" },
         { value: "24/7", label: "Availability" },
         { value: "10d", label: "Deployment" },
-        { value: "x3", label: "Lead qualification" },
+        { value: "24h", label: "Free audit" },
       ],
       benefitsTitle: "What AI automation delivers",
       benefits: [
         "Automatic lead qualification — only hot prospects reach you",
         "24/7 customer support with clean handoff to a human when needed",
-        "70% reduction in repetitive tasks — your team focuses on value",
+        "Fewer repetitive tasks — your team focuses on value",
         "Measurable ROI from month one: time, leads, satisfaction",
       ],
       profilesTitle: "AI makes sense for you if…",
@@ -319,7 +319,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Custom GPT-4 agents", body: "Qualification chatbot, support, automatic summaries, smart routing. Trained on your data." },
         { icon: FiUsers, title: "Human + AI perfectly calibrated", body: "Escalation to a human stays clean and frictionless when the bot reaches its limit." },
-        { icon: FiTrendingUp, title: "ROI in 30 days", body: "Deployed in 10 days, measurable results at D+30. Time, leads, satisfaction — all tracked." },
+        { icon: FiTrendingUp, title: "Results measured from D+30", body: "Deployed in 10 days, metrics tracked from D+30. Time, leads, satisfaction — all tracked." },
       ],
       ctaTitle: "How many hours per week does your team spend on automatable tasks?",
       ctaBody: "Free AI audit within 24h. We identify your 3 highest-ROI automations and estimate the concrete gain.",
@@ -359,7 +359,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Lieferung in 14 Tagen", body: "Starter in 5 Tagen. Business in 14. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings." },
         { icon: FiGlobe, title: "Real-World-Stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. Derselbe Stack wie Startups, die Millionen einsammeln." },
-        { icon: FiTrendingUp, title: "+40% Conversions", body: "Klare Struktur, optimierte CTAs, Ladegeschwindigkeit — jedes Detail ist auf Conversion ausgelegt." },
+        { icon: FiTrendingUp, title: "Auf Conversion ausgelegt", body: "Klare Struktur, optimierte CTAs, Ladegeschwindigkeit — jedes Detail zielt darauf, Besucher in Anfragen zu verwandeln." },
       ],
       ctaTitle: "Ihre Website verliert täglich Kunden.",
       ctaBody: "Kostenloses Audit innerhalb von 24h. Wir identifizieren genau, was Ihre Conversion blockiert.",
@@ -372,15 +372,15 @@ const content = {
       intro:
         "Eine langsame, schlecht strukturierte oder visuell schwache Website verzeiht 2025 nichts. KAH Digital baut alles neu — Struktur, UX, Geschwindigkeit, Conversion — und liefert eine Lead-Maschine in 14 bis 28 Tagen.",
       stats: [
-        { value: "+40%", label: "Conversions" },
+        { value: "24h", label: "Antwort auf Ihre Anfrage" },
         { value: "<2s", label: "Ladezeit" },
         { value: "95+", label: "Lighthouse" },
         { value: "14T", label: "Lieferzeit" },
       ],
       benefitsTitle: "Was eine echte Refonte verändert",
       benefits: [
-        "Absprungrate um 30–60% reduziert durch neu gedachte UX",
-        "Ladezeit durch Next.js 15 um Faktor 3 reduziert",
+        "Neu gedachte UX, um die Absprungrate zu senken",
+        "Ladezeit durch Next.js 15 deutlich reduziert",
         "SEO-Ranking ab dem ersten Tag verbessert",
         "Mehr und besser qualifizierte eingehende Leads",
       ],
@@ -444,20 +444,20 @@ const content = {
     "automatisation-ia-entreprise": {
       eyebrow: "KI · Agenten · Automation · Messbarer ROI",
       title: "Betriebskosten um",
-      title2: "40–70% mit KI senken.",
+      title2: "mit KI senken.",
       intro:
         "Keine Gadget-KI — GPT-4-Agenten, die Ihre Leads qualifizieren, Kunden antworten und Workflows automatisieren. KAH Digital implementiert konkrete KI-Automationen, integriert in Ihren bestehenden Stack, mit messbarem ROI ab Monat eins.",
       stats: [
-        { value: "-70%", label: "Manuelle Aufgaben" },
+        { value: "100%", label: "Code geliefert" },
         { value: "24/7", label: "Verfügbarkeit" },
         { value: "10T", label: "Deployment" },
-        { value: "x3", label: "Lead-Qualität" },
+        { value: "24h", label: "Gratis-Audit" },
       ],
       benefitsTitle: "Was KI-Automatisierung liefert",
       benefits: [
         "Automatische Lead-Qualifizierung — nur heiße Interessenten erreichen Sie",
         "24/7 Kundensupport mit sauberer Übergabe an Menschen bei Bedarf",
-        "70% weniger repetitive Aufgaben — Ihr Team konzentriert sich auf Wert",
+        "Weniger repetitive Aufgaben — Ihr Team konzentriert sich auf Wert",
         "Messbarer ROI ab Monat eins: Zeit, Leads, Zufriedenheit",
       ],
       profilesTitle: "KI macht für Sie Sinn wenn…",
@@ -473,7 +473,7 @@ const content = {
       highlights: [
         { icon: FiZap, title: "Individuelle GPT-4-Agenten", body: "Qualifizierungs-Chatbot, Support, automatische Zusammenfassungen, intelligentes Routing. Auf Ihren Daten trainiert." },
         { icon: FiUsers, title: "Mensch + KI perfekt kalibriert", body: "Eskalation zu einem Menschen bleibt sauber und reibungslos, wenn der Bot seine Grenze erreicht." },
-        { icon: FiTrendingUp, title: "ROI in 30 Tagen", body: "Deployment in 10 Tagen, messbare Ergebnisse an T+30. Zeit, Leads, Zufriedenheit — alles getrackt." },
+        { icon: FiTrendingUp, title: "Ergebnisse messbar ab T+30", body: "Deployment in 10 Tagen, Kennzahlen ab T+30 verfolgt. Zeit, Leads, Zufriedenheit — alles getrackt." },
       ],
       ctaTitle: "Wieviele Stunden pro Woche verbringt Ihr Team mit automatisierbaren Aufgaben?",
       ctaBody: "Kostenloses KI-Audit in 24h. Wir identifizieren Ihre 3 ROI-stärksten Automationen und schätzen den konkreten Gewinn.",

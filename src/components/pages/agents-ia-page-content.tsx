@@ -27,7 +27,7 @@ const COPY = {
     ctaSecondary: "Voir les tarifs",
     stats: [
       { value: "120", unit: "", label: "contacts ciblés/jour" },
-      { value: "70", unit: "%", label: "tickets résolus sans humain" },
+      { value: "24", unit: "/7", label: "support disponible" },
       { value: "30", unit: "s", label: "pour générer un devis" },
       { value: "10", unit: "j", label: "pour être en production" },
     ],
@@ -51,8 +51,8 @@ const COPY = {
         tagline: "120 contacts ciblés par jour, en automatique.",
         desc: "L'agent identifie vos prospects idéaux, rédige des messages personnalisés selon leur secteur, envoie, relance J+3 et J+7, et vous livre uniquement les réponses positives. Zéro prospection manuelle.",
         metrics: ["120 envois/jour", "Relances J+3 et J+7", "Réponses filtrées"],
-        roi: "+8 RDV qualifiés/mois en moyenne",
-        price: "490€",
+        roi: "Plus de rendez-vous qualifiés, sans prospection manuelle",
+        price: "Dès 2 490€",
         forWho: "Freelances, agences, commerciaux",
       },
       {
@@ -61,11 +61,11 @@ const COPY = {
         accentBg: "#10b98110",
         badge: "Support",
         name: "Agent Support",
-        tagline: "70% des tickets résolus sans intervention humaine.",
+        tagline: "Les demandes de niveau 1 traitées sans intervention humaine.",
         desc: "Chatbot formé sur votre base de connaissance. Répond instantanément 24/7, escalade proprement vers votre équipe si besoin. Compatible Slack, WhatsApp, site web, widget.",
         metrics: ["Réponse < 5 secondes", "Escalade automatique", "Base de connaissance sur mesure"],
-        roi: "-65% de charge support en moyenne",
-        price: "2 490€",
+        roi: "Moins de charge support, réponses 24/7",
+        price: "Dès 2 490€",
         forWho: "E-commerce, SaaS, services",
       },
       {
@@ -77,8 +77,8 @@ const COPY = {
         tagline: "Un devis structuré en 30 secondes, 24h/24.",
         desc: "Le prospect remplit un formulaire intelligent. L'agent analyse la demande, génère un devis professionnel et l'envoie par email en moins d'une minute. Vous validez, vous signez.",
         metrics: ["Devis en 30 secondes", "Envoi automatique", "Format signable"],
-        roi: "+40% de devis envoyés sans effort supplémentaire",
-        price: "690€",
+        roi: "Devis envoyés plus vite, sans effort supplémentaire",
+        price: "Dès 2 490€",
         forWho: "Artisans, agences, prestataires",
       },
       {
@@ -90,8 +90,8 @@ const COPY = {
         tagline: "Le bon talent trouvé en quelques secondes.",
         desc: "Pour les créatifs, labels et marques : l'agent analyse votre brief de casting, parcourt la base d'artistes et vous propose les 5 meilleurs profils avec scoring automatique. Fini les heures de tri.",
         metrics: ["Matching IA instantané", "Scoring multi-critères", "Brief → profils en < 1 min"],
-        roi: "-80% du temps de présélection",
-        price: "1 490€",
+        roi: "Présélection beaucoup plus rapide",
+        price: "Dès 2 490€",
         forWho: "Labels, agences créatives, marques",
       },
     ],
@@ -104,17 +104,11 @@ const COPY = {
     whyTitle: "Pourquoi KAH Digital plutôt qu'une autre agence IA ?",
     whyPoints: [
       { title: "Opérationnel en 10 jours", desc: "Pas 3 mois de workshop et de consulting. L'agent est en prod en 10 jours ou remboursé." },
-      { title: "Prix fixe et transparent", desc: "490€ à 1 490€ selon l'agent. Pas d'abonnement caché, pas de coût par requête. Vous payez une fois." },
+      { title: "Prix fixe et transparent", desc: "Dès 2 490€ selon l'agent. Pas d'abonnement caché, pas de coût par requête. Vous payez une fois." },
       { title: "Code source livré", desc: "Vous possédez l'agent à 100%. Aucune dépendance à notre plateforme. Vous pouvez le modifier ou le confier à un autre prestataire." },
       { title: "ROI mesurable à J+30", desc: "On définit ensemble des métriques avant de commencer. Si les objectifs ne sont pas atteints à J+30, on corrige gratuitement." },
       { title: "Support fondateur direct", desc: "Pas un account manager junior. Le fondateur répond dans les 2h, Slack ou WhatsApp, pendant tout le premier mois." },
       { title: "Intégration à vos outils existants", desc: "CRM, Slack, WhatsApp, email, site web — l'agent s'adapte à votre stack, pas l'inverse." },
-    ],
-    testimonialsTitle: "Ce que disent nos clients",
-    testimonials: [
-      { quote: "On a économisé 15h/semaine sur le support client. L'agent répond mieux que ce qu'on faisait à la main.", name: "M. A.", role: "Fondateur SaaS, Paris" },
-      { quote: "120 emails de prospection envoyés chaque matin sans rien faire. 6 RDV qualifiés la première semaine.", name: "T. K.", role: "Commercial indépendant, Lyon" },
-      { quote: "Nos devis partent en 30 secondes maintenant. Avant on perdait des clients parce qu'on répondait le lendemain.", name: "S. B.", role: "Architecte d'intérieur, Lausanne" },
     ],
     faqTitle: "Questions fréquentes",
     faq: [
@@ -123,13 +117,13 @@ const COPY = {
       { q: "Combien ça coûte vraiment, tout inclus ?", a: "Le prix affiché est le prix final. Pas d'abonnement mensuel, pas de coût par requête, pas de frais cachés. Vous payez une seule fois et l'agent est à vous." },
       { q: "L'agent peut-il s'intégrer à mes outils existants ?", a: "Oui. On s'intègre à votre CRM, Slack, WhatsApp, email, Notion, ou n'importe quel outil avec une API. On évalue ça lors de la démo." },
       { q: "Est-ce que je garde le contrôle sur ce que l'agent dit ?", a: "Complètement. Vous validez tous les scripts et réponses avant la mise en production. L'agent ne peut répondre qu'avec ce que vous avez approuvé." },
-      { q: "Dans combien de temps je vois un retour sur investissement ?", a: "La plupart de nos clients voient un ROI positif en 3 à 6 semaines. On mesure ensemble dès J+7 et on ajuste si besoin." },
+      { q: "Dans combien de temps je vois un retour sur investissement ?", a: "Cela dépend du cas d'usage et du volume traité : le retour sur investissement ne se promet pas à l'avance. On définit ensemble des indicateurs avant de démarrer, on mesure dès J+7 et on ajuste si besoin." },
     ],
     ctaFinalTitle: "Votre premier agent IA en 10 jours.",
     ctaFinalBody: "Démo gratuite de 20 min — on vous montre l'agent en action sur votre cas concret. Aucun engagement, aucune carte bancaire.",
     ctaFinal: "Réserver ma démo gratuite",
     ctaFinalSecondary: "Envoyer un message WhatsApp",
-    ctaFinalSub: "Réponse sous 2h · Démo en visio ou présentiel · CH / FR / BE",
+    ctaFinalSub: "Réponse sous 2h · Démo en visio · CH / FR / BE",
   },
   en: {
     eyebrow: "Custom AI Agents · KAH Digital",
@@ -141,7 +135,7 @@ const COPY = {
     ctaSecondary: "See pricing",
     stats: [
       { value: "120", unit: "", label: "targeted contacts/day" },
-      { value: "70", unit: "%", label: "tickets resolved without humans" },
+      { value: "24", unit: "/7", label: "support available" },
       { value: "30", unit: "s", label: "to generate a quote" },
       { value: "10", unit: "d", label: "to go live" },
     ],
@@ -161,28 +155,28 @@ const COPY = {
         name: "Prospecting Agent", tagline: "120 targeted contacts per day, on autopilot.",
         desc: "The agent identifies your ideal prospects, writes personalised messages per sector, sends, follows up D+3 and D+7, and delivers only positive replies to you. Zero manual prospecting.",
         metrics: ["120 sends/day", "D+3 and D+7 follow-ups", "Filtered replies only"],
-        roi: "+8 qualified meetings/month on average", price: "€490", forWho: "Freelancers, agencies, sales reps",
+        roi: "More qualified meetings, no manual prospecting", price: "From €2,490", forWho: "Freelancers, agencies, sales reps",
       },
       {
         icon: FiHeadphones, accent: "#10b981", accentBg: "#10b98110", badge: "Support",
-        name: "Support Agent", tagline: "70% of tickets resolved without human intervention.",
+        name: "Support Agent", tagline: "Level-1 requests handled without human intervention.",
         desc: "Chatbot trained on your knowledge base. Answers instantly 24/7, escalates cleanly to your team when needed. Compatible with Slack, WhatsApp, website, widget.",
         metrics: ["Response < 5 seconds", "Automatic escalation", "Custom knowledge base"],
-        roi: "-65% support load on average", price: "€2 490", forWho: "E-commerce, SaaS, services",
+        roi: "Lighter support load, 24/7 answers", price: "From €2,490", forWho: "E-commerce, SaaS, services",
       },
       {
         icon: FiFileText, accent: "#8b5cf6", accentBg: "#8b5cf610", badge: "Quotes",
         name: "Quote Agent", tagline: "A structured quote in 30 seconds, round the clock.",
         desc: "The prospect fills in a smart form. The agent analyses the request, generates a professional quote and sends it by email in under a minute. You approve, you sign.",
         metrics: ["Quote in 30 seconds", "Automatic sending", "Signable format"],
-        roi: "+40% more quotes sent without extra effort", price: "€690", forWho: "Tradespeople, agencies, service providers",
+        roi: "Quotes sent faster, no extra effort", price: "From €2,490", forWho: "Tradespeople, agencies, service providers",
       },
       {
         icon: FiStar, accent: "#f59e0b", accentBg: "#f59e0b10", badge: "Casting",
         name: "Castly Agent", tagline: "The right talent found in seconds.",
         desc: "For creatives, labels and brands: the agent analyses your casting brief, scans the artist database and proposes the 5 best profiles with automatic scoring. No more hours of sorting.",
         metrics: ["Instant AI matching", "Multi-criteria scoring", "Brief → profiles in < 1 min"],
-        roi: "-80% pre-selection time", price: "€1,490", forWho: "Labels, creative agencies, brands",
+        roi: "Much faster pre-selection", price: "From €2,490", forWho: "Labels, creative agencies, brands",
       },
     ],
     howTitle: "From zero to a live agent in 10 days",
@@ -194,17 +188,11 @@ const COPY = {
     whyTitle: "Why KAH Digital over any other AI agency?",
     whyPoints: [
       { title: "Live in 10 days", desc: "Not 3 months of workshops and consulting. The agent is live in 10 days or you get your money back." },
-      { title: "Fixed and transparent price", desc: "€490 to €1,490 depending on the agent. No hidden subscription, no per-request cost. You pay once." },
+      { title: "Fixed and transparent price", desc: "From €2,490 depending on the agent. No hidden subscription, no per-request cost. You pay once." },
       { title: "Source code delivered", desc: "You own the agent 100%. No dependency on our platform. You can modify it or hand it to another developer." },
       { title: "Measurable ROI at D+30", desc: "We define metrics together before starting. If targets aren't hit by D+30, we fix it for free." },
       { title: "Direct founder support", desc: "Not a junior account manager. The founder replies within 2h, Slack or WhatsApp, throughout the first month." },
       { title: "Integration with your existing tools", desc: "CRM, Slack, WhatsApp, email, website — the agent adapts to your stack, not the other way around." },
-    ],
-    testimonialsTitle: "What our clients say",
-    testimonials: [
-      { quote: "We saved 15h/week on customer support. The agent answers better than what we used to do manually.", name: "M. A.", role: "SaaS Founder, Paris" },
-      { quote: "120 prospecting emails sent every morning without doing anything. 6 qualified meetings the first week.", name: "T. K.", role: "Independent sales rep, Lyon" },
-      { quote: "Our quotes go out in 30 seconds now. Before we were losing clients because we replied the next day.", name: "S. B.", role: "Interior designer, Lausanne" },
     ],
     faqTitle: "Frequently asked questions",
     faq: [
@@ -213,13 +201,13 @@ const COPY = {
       { q: "What does it really cost, all in?", a: "The listed price is the final price. No monthly subscription, no per-request cost, no hidden fees. You pay once and the agent is yours." },
       { q: "Can the agent integrate with my existing tools?", a: "Yes. We integrate with your CRM, Slack, WhatsApp, email, Notion, or any tool with an API. We assess this during the demo." },
       { q: "Do I keep control over what the agent says?", a: "Completely. You approve all scripts and responses before go-live. The agent can only respond with what you've approved." },
-      { q: "How quickly will I see a return on investment?", a: "Most of our clients see a positive ROI within 3 to 6 weeks. We measure together from D+7 and adjust if needed." },
+      { q: "How quickly will I see a return on investment?", a: "It depends on the use case and the volume handled: return on investment can't be promised upfront. We define indicators together before starting, measure from D+7 and adjust if needed." },
     ],
     ctaFinalTitle: "Your first AI agent in 10 days.",
     ctaFinalBody: "Free 20-min demo — we show the agent in action on your specific case. No commitment, no credit card.",
     ctaFinal: "Book my free demo",
     ctaFinalSecondary: "Message us on WhatsApp",
-    ctaFinalSub: "Reply within 2h · Demo via video call or in person · CH / FR / BE",
+    ctaFinalSub: "Reply within 2h · Demo via video call · CH / FR / BE",
   },
   de: {
     eyebrow: "Individuelle KI-Agenten · KAH Digital",
@@ -231,7 +219,7 @@ const COPY = {
     ctaSecondary: "Preise ansehen",
     stats: [
       { value: "120", unit: "", label: "Zielkontakte/Tag" },
-      { value: "70", unit: "%", label: "Tickets ohne Mensch gelöst" },
+      { value: "24", unit: "/7", label: "Support verfügbar" },
       { value: "30", unit: "s", label: "für ein Angebot" },
       { value: "10", unit: "T", label: "bis Go Live" },
     ],
@@ -251,28 +239,28 @@ const COPY = {
         name: "Akquise-Agent", tagline: "120 zielgerichtete Kontakte pro Tag, automatisch.",
         desc: "Der Agent identifiziert Ihre Wunschkunden, schreibt personalisierte Nachrichten je Branche, sendet, followt T+3 und T+7 nach und liefert Ihnen nur positive Antworten. Null manuelle Akquise.",
         metrics: ["120 Versendungen/Tag", "Nachfassen T+3 und T+7", "Gefilterte Antworten"],
-        roi: "+8 qualifizierte Termine/Monat im Schnitt", price: "490€", forWho: "Freelancer, Agenturen, Vertrieb",
+        roi: "Mehr qualifizierte Termine, ohne manuelle Akquise", price: "Ab 2.490€", forWho: "Freelancer, Agenturen, Vertrieb",
       },
       {
         icon: FiHeadphones, accent: "#10b981", accentBg: "#10b98110", badge: "Support",
-        name: "Support-Agent", tagline: "70% der Tickets ohne menschliche Intervention gelöst.",
+        name: "Support-Agent", tagline: "Level-1-Anfragen ohne menschliche Intervention bearbeitet.",
         desc: "Chatbot auf Ihrer Wissensbasis trainiert. Antwortet sofort 24/7, eskaliert sauber zu Ihrem Team bei Bedarf. Kompatibel mit Slack, WhatsApp, Website, Widget.",
         metrics: ["Antwort < 5 Sekunden", "Automatische Eskalation", "Individuelle Wissensbasis"],
-        roi: "-65% Support-Aufwand im Schnitt", price: "2 490€", forWho: "E-Commerce, SaaS, Dienstleistungen",
+        roi: "Weniger Support-Aufwand, Antworten rund um die Uhr", price: "Ab 2.490€", forWho: "E-Commerce, SaaS, Dienstleistungen",
       },
       {
         icon: FiFileText, accent: "#8b5cf6", accentBg: "#8b5cf610", badge: "Angebote",
         name: "Angebots-Agent", tagline: "Ein strukturiertes Angebot in 30 Sekunden, rund um die Uhr.",
         desc: "Der Interessent füllt ein intelligentes Formular aus. Der Agent analysiert die Anfrage, erstellt ein professionelles Angebot und sendet es per E-Mail in unter einer Minute.",
         metrics: ["Angebot in 30 Sekunden", "Automatischer Versand", "Unterzeichenbares Format"],
-        roi: "+40% mehr Angebote ohne Mehraufwand", price: "690€", forWho: "Handwerker, Agenturen, Dienstleister",
+        roi: "Angebote schneller versendet, ohne Mehraufwand", price: "Ab 2.490€", forWho: "Handwerker, Agenturen, Dienstleister",
       },
       {
         icon: FiStar, accent: "#f59e0b", accentBg: "#f59e0b10", badge: "Casting",
         name: "Castly-Agent", tagline: "Das richtige Talent in Sekunden gefunden.",
         desc: "Für Kreative, Labels und Marken: Der Agent analysiert Ihr Casting-Brief, durchsucht die Datenbank und schlägt die 5 besten Profile mit automatischem Scoring vor.",
         metrics: ["Sofortiges KI-Matching", "Multi-Kriterien-Scoring", "Brief → Profile in < 1 Min"],
-        roi: "-80% der Vorauswahlzeit", price: "1.490€", forWho: "Labels, Kreativagenturen, Marken",
+        roi: "Deutlich schnellere Vorauswahl", price: "Ab 2.490€", forWho: "Labels, Kreativagenturen, Marken",
       },
     ],
     howTitle: "Von null zum Live-Agenten in 10 Tagen",
@@ -284,17 +272,11 @@ const COPY = {
     whyTitle: "Warum KAH Digital statt einer anderen KI-Agentur?",
     whyPoints: [
       { title: "Live in 10 Tagen", desc: "Nicht 3 Monate Workshops. Der Agent ist in 10 Tagen live oder Sie erhalten Ihr Geld zurück." },
-      { title: "Fester und transparenter Preis", desc: "490€ bis 1.490€ je nach Agent. Kein verstecktes Abo, keine Kosten pro Anfrage. Einmalige Zahlung." },
+      { title: "Fester und transparenter Preis", desc: "Ab 2.490€ je nach Agent. Kein verstecktes Abo, keine Kosten pro Anfrage. Einmalige Zahlung." },
       { title: "Quellcode geliefert", desc: "Sie besitzen den Agenten zu 100%. Keine Abhängigkeit von unserer Plattform." },
       { title: "Messbarer ROI an T+30", desc: "Wir definieren vor dem Start gemeinsam Metriken. Wenn die Ziele nicht erreicht werden, korrigieren wir kostenlos." },
       { title: "Direkter Support vom Gründer", desc: "Kein Junior-Account-Manager. Der Gründer antwortet in 2h, Slack oder WhatsApp, den ganzen ersten Monat." },
       { title: "Integration in bestehende Tools", desc: "CRM, Slack, WhatsApp, E-Mail, Website — der Agent passt sich Ihrem Stack an." },
-    ],
-    testimonialsTitle: "Was unsere Kunden sagen",
-    testimonials: [
-      { quote: "Wir haben 15h/Woche im Kundensupport gespart. Der Agent antwortet besser als wir manuell.", name: "M. A.", role: "SaaS-Gründer, Paris" },
-      { quote: "120 Akquise-E-Mails jeden Morgen automatisch. 6 qualifizierte Termine in der ersten Woche.", name: "T. K.", role: "Selbstständiger Vertrieb, Lyon" },
-      { quote: "Unsere Angebote gehen jetzt in 30 Sekunden raus. Vorher haben wir Kunden verloren, weil wir am nächsten Tag geantwortet haben.", name: "S. B.", role: "Innenarchitektin, Lausanne" },
     ],
     faqTitle: "Häufig gestellte Fragen",
     faq: [
@@ -303,13 +285,13 @@ const COPY = {
       { q: "Was kostet es wirklich, alles inklusive?", a: "Der angegebene Preis ist der Endpreis. Kein Monatsabo, keine Kosten pro Anfrage, keine versteckten Gebühren." },
       { q: "Kann der Agent in meine bestehenden Tools integriert werden?", a: "Ja. Wir integrieren in Ihr CRM, Slack, WhatsApp, E-Mail, Notion oder jedes Tool mit einer API." },
       { q: "Behalte ich die Kontrolle über das, was der Agent sagt?", a: "Vollständig. Sie genehmigen alle Skripte und Antworten vor dem Go-Live." },
-      { q: "Wie schnell sehe ich eine Kapitalrendite?", a: "Die meisten unserer Kunden sehen eine positive ROI innerhalb von 3 bis 6 Wochen." },
+      { q: "Wie schnell sehe ich eine Kapitalrendite?", a: "Das hängt vom Anwendungsfall und vom Volumen ab: eine Rendite lässt sich nicht im Voraus versprechen. Wir definieren vorab gemeinsam Kennzahlen, messen ab T+7 und passen bei Bedarf an." },
     ],
     ctaFinalTitle: "Ihr erster KI-Agent in 10 Tagen.",
     ctaFinalBody: "Kostenlose 20-Min-Demo — wir zeigen den Agenten in Aktion auf Ihren konkreten Fall. Kein Engagement, keine Kreditkarte.",
     ctaFinal: "Kostenlose Demo buchen",
     ctaFinalSecondary: "WhatsApp-Nachricht senden",
-    ctaFinalSub: "Antwort in 2h · Demo per Video oder persönlich · CH / FR / BE",
+    ctaFinalSub: "Antwort in 2h · Demo per Video · CH / FR / BE",
   },
 };
 
@@ -755,44 +737,6 @@ export function AgentsIaPageContent({ locale }: Props) {
                 </div>
                 <p className="mb-1.5 font-bold text-white">{pt.title}</p>
                 <p className="text-sm leading-relaxed text-gray-500">{pt.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TESTIMONIALS ─────────────────────────────────────────────── */}
-      <section className="bg-gray-950 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-12 text-center"
-          >
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">{c.testimonialsTitle}</h2>
-          </motion.div>
-
-          <div className="grid gap-6 sm:grid-cols-3">
-            {c.testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-3xl border border-white/8 bg-white/[0.025] p-7"
-              >
-                <div className="mb-4 flex gap-0.5">
-                  {[...Array(5)].map((_, s) => (
-                    <FiStar key={s} size={13} className="fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="mb-5 text-sm leading-relaxed text-gray-300">"{t.quote}"</p>
-                <div>
-                  <p className="font-bold text-white">{t.name}</p>
-                  <p className="text-xs text-gray-600">{t.role}</p>
-                </div>
               </motion.div>
             ))}
           </div>

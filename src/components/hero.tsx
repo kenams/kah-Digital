@@ -81,8 +81,8 @@ export function HeroSection({ stats }: HeroProps) {
     step2: isEnglish ? "2. Scope + budget within 48h." : "2. Périmètre + budget envoyés sous 48h.",
     step3: isEnglish ? "3. Milestone updates — full visibility." : "3. Points d'avancement — visibilité totale.",
     trust: isEnglish
-      ? "Trusted by: Ashanti Beauty · TechCash Academy · restaurants · artisans · startups"
-      : "Ils nous font confiance : Ashanti Beauty · TechCash Academy · restaurants · artisans · startups",
+      ? "Live projects: BCS Nettoyage · DSE Yana · Vellio Shop · Kotizy"
+      : "Projets en ligne : BCS Nettoyage · DSE Yana · Vellio Shop · Kotizy",
   };
 
   return (

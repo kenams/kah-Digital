@@ -18,12 +18,12 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/",
-  title: "KAH Digital — Agents IA verticaux pour indépendants · Lausanne · International",
+  title: "KAH Digital — Agents IA verticaux pour indépendants · Toulouse · France & Suisse",
   description:
-    "KAH Digital conçoit des agents IA verticaux — pas des sites de plus. Chef de cabinet IA pour artistes indépendants (KAH Workforce), automatisations métier sur-mesure. Studio basé à Lausanne, opérant à l'international.",
+    "KAH Digital crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   keywords: [
     "agent IA vertical",
-    "agence IA Lausanne",
+    "agence IA Suisse", "agence IA France",
     "chef de cabinet IA artiste",
     "automatisation métier IA",
     "AI agent for musicians",
@@ -95,18 +95,17 @@ const organizationJsonLd = {
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
-  telephone: "+41759558414",
+  telephone: "+33759558414",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Rue de Bourg 27",
-    postalCode: "1003",
-    addressLocality: "Lausanne",
-    addressCountry: "CH",
+    addressLocality: "Toulouse",
+    addressRegion: "Occitanie",
+    addressCountry: "FR",
   },
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital construit des agents IA verticaux — pas des sites de plus. Chef de cabinet IA pour artistes indépendants (KAH Workforce), automatisations métier sur-mesure pour indépendants et PME.",
+    "KAH Digital crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

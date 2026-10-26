@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/de/agents-ia",
   title: "Individuelle KI-Agenten · Akquise, Support, Angebote, Casting | KAH Digital",
   description:
-    "KAH Digital entwickelt fertige KI-Agenten, live in 10 Tagen: 120 Kontakte/Tag, 70% Tickets automatisch gelöst, Angebote in 30 Sekunden, Castly-Agent. Kostenlose 20-Min-Demo.",
+    "KAH Digital entwickelt fertige KI-Agenten, live in 10 Tagen: automatisierte Akquise, Level-1-Support automatisiert, Angebote in 30 Sekunden, Castly-Agent. Kostenlose 20-Min-Demo.",
   keywords: [
     "individueller KI-Agent",
     "KI-Automatisierung Unternehmen",
@@ -16,7 +16,7 @@ export const metadata = buildPageMetadata({
     "Castly Casting KI",
     "KI für Händler",
     "KI für KMU",
-    "KI-Agent Lausanne",
+    "KI-Agent Schweiz",
   ],
 });
 

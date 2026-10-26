@@ -9,6 +9,7 @@ import { Resend } from "resend";
 import { getResendFromAddress } from "@/lib/mail";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
 
 function getSupabase() {
   return createClient(
@@ -215,7 +216,8 @@ function buildFollowupHtml(body: string, signoff: string, fromName: string, unsu
 </body></html>`;
 }
 
-async function sendFollowup(to: string, subject: string, html: string): Promise<void> {
+async function sendFollowup(to: string, subject: string, html: string, prospectId?: string): Promise<void> {
+  if (isPlaceholderEmail(to)) throw new Error(`Adresse non prospectable: ${to}`);
   const resend = new Resend(process.env.RESEND_API_KEY!);
   const { error } = await resend.emails.send({
     from: getResendFromAddress(),
@@ -223,6 +225,7 @@ async function sendFollowup(to: string, subject: string, html: string): Promise<
     replyTo: "kahdigital42@gmail.com",
     subject,
     html,
+    tags: prospectId ? [{ name: "prospect_id", value: prospectId }] : undefined,
   });
   if (error) throw new Error(error.message);
 }
@@ -274,7 +277,7 @@ export async function POST(req: Request) {
       const name = p.businessName ?? p.website;
       const body = c.j1Body(name, p.website, siteUrl, p.id);
       const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
-      await sendFollowup(p.email!, c.j1Subject(name), html);
+      await sendFollowup(p.email!, c.j1Subject(name), html, p.id);
       await supabase.from("prospects").update({ followup1SentAt: now.toISOString() }).eq("id", p.id);
       j1Sent++;
       await new Promise((r) => setTimeout(r, 1000));
@@ -302,7 +305,7 @@ export async function POST(req: Request) {
       const name = p.businessName ?? p.website;
       const body = c.j3Body(name, p.website, siteUrl, p.id);
       const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
-      await sendFollowup(p.email!, c.j3Subject(name), html);
+      await sendFollowup(p.email!, c.j3Subject(name), html, p.id);
       await supabase.from("prospects").update({ followup1SentAt: now.toISOString() }).eq("id", p.id);
       j3Sent++;
       await new Promise((r) => setTimeout(r, 1500));
@@ -331,7 +334,7 @@ export async function POST(req: Request) {
       const name = p.businessName ?? p.website;
       const body = c.j7Body(name, p.website, siteUrl, p.id);
       const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
-      await sendFollowup(p.email!, c.j7Subject(name), html);
+      await sendFollowup(p.email!, c.j7Subject(name), html, p.id);
       await supabase.from("prospects").update({ followup2SentAt: now.toISOString() }).eq("id", p.id);
       j7Sent++;
       await new Promise((r) => setTimeout(r, 1500));
@@ -358,7 +361,7 @@ export async function POST(req: Request) {
       const name = p.businessName ?? p.website;
       const body = c.j10Body(name, p.website, siteUrl, p.id);
       const html = buildFollowupHtml(body, c.signoff, c.from, c.unsubscribe, `${siteUrl}/api/unsubscribe?id=${p.id}`);
-      await sendFollowup(p.email!, c.j10Subject(name), html);
+      await sendFollowup(p.email!, c.j10Subject(name), html, p.id);
       await supabase.from("prospects").update({ followup3SentAt: now.toISOString() }).eq("id", p.id);
       j10Sent++;
       await new Promise((r) => setTimeout(r, 1500));

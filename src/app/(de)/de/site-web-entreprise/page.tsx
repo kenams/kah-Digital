@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   keywords: [
     "Business Website Schweiz",
     "Unternehmenswebsite Next.js",
-    "Premium Webentwicklung Lausanne",
+    "Premium Webentwicklung Schweiz",
     "Website KMU Schweiz",
     "professionelle Website Schweiz",
   ],

@@ -121,6 +121,35 @@ async function sendEmailNotification(quote: QuoteRecord) {
   });
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+// Accusé de réception : le visiteur qui demande un devis doit savoir que sa
+// demande est arrivée et quand il aura une réponse.
+async function sendClientAcknowledgement(quote: QuoteRecord) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey || !quote.email) return;
+  const name = escapeHtml(quote.name.split(" ")[0] || "");
+  await new Resend(apiKey).emails.send({
+    from: getResendFromAddress(),
+    to: quote.email,
+    replyTo: "kahdigital42@gmail.com",
+    subject: "Votre demande de devis est bien reçue — réponse sous 24h",
+    html: `<div style="font-family:Arial,sans-serif;max-width:520px;color:#374151;font-size:15px;line-height:1.7;">
+<p>Bonjour${name ? ` ${name}` : ""},</p>
+<p>J'ai bien reçu votre demande de devis. Je l'étudie et je reviens vers vous avec une proposition claire <strong>sous 24 heures</strong> (jours ouvrés).</p>
+<p>Si vous souhaitez ajouter une précision, répondez simplement à cet email : je lis tous les messages.</p>
+<p style="margin-top:24px;">KAH Digital<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14 · kah-digital.ch</span></p>
+</div>`,
+    text: `Bonjour,
+
+J'ai bien reçu votre demande de devis. Je reviens vers vous avec une proposition sous 24 heures (jours ouvrés).
+
+KAH Digital - kahdigital42@gmail.com - 07 59 55 84 14`,
+  });
+}
+
 async function sendWebhookBackup(quote: QuoteRecord) {
   if (!webhookUrl) {
     console.info("[notifyQuote] Webhook backup désactivé (GOOGLE_SHEET_WEBHOOK manquant)");
@@ -143,6 +172,7 @@ export async function notifyQuote(quote: QuoteRecord) {
   const results = await Promise.allSettled([
     sendEmailNotification(quote),
     sendWebhookBackup(quote),
+    sendClientAcknowledgement(quote),
     sendAdminWhatsAppNotification({
       title: `Nouveau devis - ${quote.name}`,
       source: "quote",
@@ -156,7 +186,7 @@ export async function notifyQuote(quote: QuoteRecord) {
 
   results.forEach((result, index) => {
     if (result.status === "rejected") {
-      const channel = index === 0 ? "email" : index === 1 ? "webhook" : "whatsapp";
+      const channel = index === 0 ? "email" : index === 1 ? "webhook" : index === 2 ? "client-ack" : "whatsapp";
       console.error(`[notifyQuote] ${channel} failed`, result.reason);
     }
   });

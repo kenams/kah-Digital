@@ -122,7 +122,7 @@ const faqs = [
 
 const stats = [
   { label: "Projects & systems shipped", value: "20+" },
-  { label: "Satisfaction", value: "9.6/10" },
+  { label: "Reply to your request", value: "within 24h" },
   { label: "Average timeline", value: "4-6 weeks" },
 ];
 

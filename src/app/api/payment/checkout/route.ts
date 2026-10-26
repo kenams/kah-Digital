@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
             unit_amount: amount,
             product_data: {
               name: label,
-              description: note || "Paiement en ligne via KAH Digital.ch",
+              description: note || "Paiement en ligne via kah-digital.ch",
             },
           },
         },

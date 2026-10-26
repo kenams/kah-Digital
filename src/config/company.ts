@@ -21,7 +21,7 @@ export interface CompanyConfig {
 }
 
 // Entité active : micro-entreprise française (SIREN 953058427, immatriculée
-// le 30/07/2026). La Sàrl suisse (domiciliation Lausanne signée) n'est pas
+// le 30/07/2026). La Sàrl suisse (domiciliation Lausanne RÉSILIÉE en juillet 2026) n'est pas
 // encore inscrite au Registre du Commerce — à rebasculer ici une fois
 // l'immatriculation suisse effective.
 export const companyConfig: CompanyConfig = {

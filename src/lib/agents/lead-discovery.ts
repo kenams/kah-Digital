@@ -4,6 +4,9 @@
  * Extraction : email (multi-chemin) + téléphone
  */
 
+import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
+import { discoverOsmUrls } from "@/lib/agents/osm-leads";
+
 export type DiscoveredLead = {
   businessName: string;
   website: string;
@@ -799,6 +802,7 @@ function isValidEmail(e: string): boolean {
   // which Resend then rejected on every single send attempt from then on).
   if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(e)) return false;
   const lower = e.toLowerCase();
+  if (isPlaceholderEmail(lower)) return false;
   if (EMAIL_BLACKLIST.some((d) => lower.includes(d))) return false;
   if (lower.startsWith("no-reply") || lower.startsWith("noreply") || lower.startsWith("donotreply")) return false;
   const ext = lower.split(".").pop() ?? "";
@@ -1164,8 +1168,39 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
     return ddgLeads;
   }
 
-  // DDG insuffisant (throttling Vercel) → compléter avec l'annuaire
-  console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative annuaire`);
+  // DDG insuffisant (IP Vercel/GitHub bloquées) → OpenStreetMap, source sans clé ni blocage
+  console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative OpenStreetMap`);
+  const osmUrls = (await discoverOsmUrls(count * 6)).filter((o) => !isBlacklisted(o.url));
+  const osmLeads: DiscoveredLead[] = [];
+  for (const o of osmUrls) {
+    if (ddgLeads.length + osmLeads.length >= count) break;
+    try {
+      const hostname = new URL(o.url).hostname;
+      const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(o.url);
+      if (!email) continue;
+      osmLeads.push({
+        businessName: o.name || businessName,
+        website: o.url,
+        address: o.country,
+        country: o.country,
+        language: o.language,
+        sector: o.sector,
+        placeId: `${hostname}-${Date.now()}`,
+        email,
+        phone,
+        emailGuessed,
+      });
+      await new Promise((r) => setTimeout(r, 400));
+    } catch { /* skip */ }
+  }
+  if (ddgLeads.length + osmLeads.length >= MIN_DDG_LEADS) {
+    console.log(`[lead-discovery] DDG+OSM: ${ddgLeads.length + osmLeads.length} leads`);
+    return [...ddgLeads, ...osmLeads];
+  }
+
+  // Dernier recours : annuaire
+  console.warn(`[lead-discovery] OSM insuffisant (${osmLeads.length}) — tentative annuaire`);
+  ddgLeads.push(...osmLeads);
   const remaining = count - ddgLeads.length;
   const dirPool = DIRECTORY_SEARCHES.filter(isServiceLocalTarget);
   const dirTarget = dirPool[Math.floor(Math.random() * dirPool.length)];

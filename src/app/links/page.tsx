@@ -41,7 +41,7 @@ const links = [
   {
     emoji: "⚡",
     name: "KAH Digital — Agence IA",
-    desc: "On construit des SaaS, apps et systèmes d'automatisation. Basé à Lausanne.",
+    desc: "On construit des SaaS, apps et systèmes d'automatisation. Basé à Toulouse.",
     url: "https://kah-digital.ch",
     color: "from-emerald-500 to-teal-600",
     badge: null,
@@ -67,7 +67,7 @@ export default function LinksPage() {
             K
           </div>
           <h1 className="text-xl font-black tracking-tight">KAH Digital</h1>
-          <p className="text-sm text-white/50 mt-1">Apps · SaaS · Automatisation · Lausanne</p>
+          <p className="text-sm text-white/50 mt-1">Apps · SaaS · Automatisation · Toulouse</p>
           <div className="mt-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold">
             🏟️ Coupe du Monde 2026 — ANTE est live
           </div>
@@ -118,7 +118,7 @@ export default function LinksPage() {
 
         {/* Footer */}
         <p className="mt-10 text-center text-xs text-white/25">
-          © 2026 KAH Digital · Lausanne · Suisse
+          © 2026 KAH Digital · Toulouse · France
         </p>
       </div>
     </main>

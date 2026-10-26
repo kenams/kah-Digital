@@ -179,21 +179,12 @@ export default function AuditGratuitPageEn() {
               ))}
             </div>
           </div>
-          <div className="rounded-2xl border border-white/8 bg-gray-900/50 p-5">
-            <div className="flex gap-0.5 mb-2">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" fill="#fbbf24" className="h-3.5 w-3.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              ))}
-            </div>
-            <p className="text-sm text-gray-300 italic">"In 3 weeks I had a clean, professional website. 4 new clients in the first month."</p>
-            <p className="mt-2 text-xs text-gray-600">S.M. — Business coach, Lyon</p>
-          </div>
         </div>
       </div>
 
       <section className="border-t border-white/6 py-16">
         <div className="mx-auto max-w-3xl px-4">
-          <h2 className="mb-8 text-center text-xl font-bold text-white">What the audit analyses</h2>
+          <h2 className="mb-8 text-center text-xl font-bold text-white">Your audit lands in your inbox</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {CHECKS.map((item) => (
               <div key={item.label} className="flex flex-col items-center gap-2 rounded-xl border border-white/8 bg-gray-900/50 p-4 text-center">
@@ -207,9 +198,9 @@ export default function AuditGratuitPageEn() {
 
       <section className="border-t border-white/6 bg-gradient-to-r from-blue-950/60 to-violet-950/40 py-14">
         <div className="mx-auto max-w-2xl px-4 text-center">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Limited spots</p>
-          <h2 className="mb-4 text-2xl font-extrabold text-white">2 free audits available this month</h2>
-          <p className="mb-8 text-gray-400">Each audit is prepared manually by our studio. Spots are limited to guarantee quality.</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Report by email</p>
+          <h2 className="mb-4 text-2xl font-extrabold text-white">Your audit lands in your inbox</h2>
+          <p className="mb-8 text-gray-400">Your site is analysed automatically and the report is emailed to you, with a clear proposal.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href={WA_AUDIT_URL}

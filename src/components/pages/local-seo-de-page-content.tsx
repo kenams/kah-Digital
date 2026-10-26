@@ -25,7 +25,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "webentwicklung-zuerich",
     headline: "Webentwicklung Zürich",
     subline: "Premium Webentwicklung für Zürich — Next.js 15, SaaS-Level Design, Lighthouse 95+. In 14 Tagen geliefert.",
-    intro: "KAH Digital entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Studio in Lausanne, remote für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
+    intro: "KAH Digital entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Studio in Toulouse (Frankreich), remote für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
     sectors: ["FinTech & Banking", "Beratung & Consulting", "KMU & Handwerk", "Restaurants & Gastronomie", "Startups & Scale-ups", "Anwaltskanzleien & Treuhänder"],
     proofLine: "Antwort in 24h · Kostenlose Offerte · Unverbindlich",
     faq: [
@@ -42,13 +42,13 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "ki-agentur-zuerich",
     headline: "KI-Agentur Zürich",
     subline: "GPT-4 Agenten, KI-Automatisierung und Chatbots für Zürcher Unternehmen. ROI messbar ab Monat 1.",
-    intro: "KAH Digital ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Studio in Lausanne, remote für die ganze Schweiz.",
+    intro: "KAH Digital ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Studio in Toulouse (Frankreich), remote für die ganze Schweiz.",
     sectors: ["FinTech & Versicherungen", "Beratung & Consulting", "E-Commerce & Retail", "Immobilien", "Gesundheit & Medizin", "SaaS & Tech-Startups"],
     proofLine: "Kostenloses KI-Audit · Antwort in 24h · Unverbindlich",
     faq: [
       { q: "Was automatisiert eine KI-Agentur für mein Zürcher Unternehmen?", a: "Lead-Qualifizierung, Kundensupport 24/7, E-Mail-Automatisierung, CRM-Updates, Dokumentenverarbeitung, intelligentes Routing. Wir identifizieren die 3 ROI-stärksten Anwendungsfälle im kostenlosen Audit." },
       { q: "Wie schnell ist die KI einsatzbereit?", a: "Deployment in 10 Tagen. Erste messbare Ergebnisse in 30 Tagen. Kein 6-Monat-Workshop, keine unnötige Komplexität." },
-      { q: "Was kostet eine KI-Automatisierung?", a: "KI-Chatbot ab CHF 380. Vollautomatisiertes Lead-System im Premium AI Paket ab CHF 2'490. Fester Preis, keine versteckten Kosten." },
+      { q: "Was kostet eine KI-Automatisierung?", a: "KI-Chatbot ab CHF 490. Vollautomatisiertes Lead-System im Premium AI Paket ab CHF 2'490. Fester Preis, keine versteckten Kosten." },
       { q: "Funktioniert die KI mit unserem bestehenden CRM?", a: "Ja, wir integrieren in Salesforce, HubSpot, Pipedrive, Notion und alle gängigen Tools via API oder Zapier/Make/n8n." },
     ],
   },
@@ -100,7 +100,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
       { q: "Welche KI-Anwendungsfälle eignen sich für Berliner Startups?", a: "Lead-Scoring und Qualifizierung, 24/7 Kundensupport mit sauberem Escalation-Flow, E-Mail-Drip-Automatisierung, CRM-Enrichment, Onboarding-Assistenten. Wir identifizieren Ihre Top-3-ROI-Automationen kostenlos." },
       { q: "Wie schnell ist die KI live?", a: "10 Tage Deployment. Erste messbare Ergebnisse an T+30. Kein monatelanger Workshop — direkt starten, bauen, testen, live gehen." },
       { q: "Kann eure KI in unser bestehendes Tech-Stack integriert werden?", a: "Ja, wir integrieren in Notion, Linear, Slack, HubSpot, Intercom, Stripe und praktisch jedes Tool via API, Zapier, Make oder n8n." },
-      { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €2 490 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
+      { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €490. Vollständiges KI-System (Premium AI) ab €2 490 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
     ],
   },
   "ki-agentur-muenchen": {
@@ -116,7 +116,7 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Was kann KI für mein Münchner Unternehmen automatisieren?", a: "Lead-Qualifizierung (nur heiße Leads erreichen Sie), 24/7 Kundensupport, E-Mail-Sequenzen, CRM-Updates, Dokumentenverarbeitung, Angebotsassistenten. Wir identifizieren die 3 besten Anwendungsfälle im kostenlosen Audit." },
       { q: "Wie lange dauert die KI-Implementierung?", a: "10 Tage Deployment, messbare Ergebnisse in 30 Tagen. Kein monatelanger Workshop. Wir starten, bauen, testen und liefern — schnell und direkt." },
-      { q: "Was kostet ein KI-Chatbot für Bayern?", a: "KI-Chatbot-Add-on ab €349. Vollständiges KI-System (Premium AI) ab €2 490 inklusive Website, Chatbot, Lead-Automatisierung und 3 Monate Support." },
+      { q: "Was kostet ein KI-Chatbot für Bayern?", a: "KI-Chatbot-Add-on ab €490. Vollständiges KI-System (Premium AI) ab €2 490 inklusive Website, Chatbot, Lead-Automatisierung und 3 Monate Support." },
       { q: "Funktioniert Ihre KI auf Deutsch?", a: "Ja, unsere GPT-4-Agenten werden auf Ihren deutschen Inhalten trainiert und antworten auf Deutsch, Englisch oder Französisch — je nach Bedarf Ihres Unternehmens." },
     ],
   },
@@ -137,8 +137,8 @@ export function LocalSeoDePageContent({ data }: Props) {
     email: "kahdigital42@gmail.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lausanne",
-      addressCountry: "CH",
+      addressLocality: "Toulouse",
+      addressCountry: "FR",
     },
     areaServed: { "@type": "City", name: data.city },
     openingHours: "Mo-Fr 09:00-18:00",
@@ -268,19 +268,6 @@ export function LocalSeoDePageContent({ data }: Props) {
       {/* CTA */}
       <section className="py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
-          <div className="mx-auto mb-8 max-w-sm rounded-2xl border border-white/8 bg-gray-900/60 p-5">
-            <div className="mb-2 flex justify-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" fill="#fbbf24" className="h-3.5 w-3.5">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
-            </div>
-            <p className="text-sm italic text-gray-300">
-              &ldquo;Seit dem Relaunch erhalte ich 3–4 Anfragen pro Woche. ROI bereits im ersten Monat.&rdquo;
-            </p>
-            <p className="mt-2 text-xs text-gray-600">M.L. — Anwältin, Lausanne</p>
-          </div>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">
             Ihr Projekt in {data.city} — wir sprechen?
           </h2>

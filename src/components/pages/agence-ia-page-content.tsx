@@ -10,13 +10,13 @@ type Props = { locale: Locale };
 
 const COPY = {
   fr: {
-    eyebrow: "Agence IA · Lausanne · International",
+    eyebrow: "Agence IA · Toulouse · France & Suisse",
     title: "L'agence IA qui livre",
     title2: "des résultats, pas des slides.",
     intro: "KAH Digital est une agence spécialisée en intelligence artificielle appliquée aux entreprises. Chatbots GPT-4, agents d'automatisation, systèmes de qualification leads, intégrations CRM — on construit ce qui fonctionne en production, pas ce qui impressionne en démo.",
     stats: [
-      { value: "120+", label: "Projets livrés" },
-      { value: "-70%", label: "Tâches manuelles" },
+      { value: "20+", label: "Projets & systèmes livrés" },
+      { value: "100%", label: "Code source livré" },
       { value: "10j", label: "Déploiement moyen" },
       { value: "24/7", label: "Disponibilité IA" },
     ],
@@ -26,13 +26,13 @@ const COPY = {
         icon: FiCpu,
         accent: "#3b82f6",
         title: "Qualification leads automatique",
-        desc: "Un agent GPT-4 qualifie vos prospects entrants, pose les bonnes questions et ne vous transfère que les leads chauds. Résultat : 3x plus de conversions, 0 temps perdu.",
+        desc: "Un agent GPT-4 qualifie vos prospects entrants, pose les bonnes questions et ne vous transfère que les leads chauds. Objectif : plus de conversions, moins de temps perdu.",
       },
       {
         icon: FiZap,
         accent: "#10b981",
         title: "Support client 24/7",
-        desc: "Chatbot IA formé sur votre base de connaissance. Répond instantanément, escalade proprement vers un humain si besoin. Réduit les tickets de 60%.",
+        desc: "Chatbot IA formé sur votre base de connaissance. Répond instantanément, escalade proprement vers un humain si besoin. Vise à réduire le volume de tickets.",
       },
       {
         icon: FiTrendingUp,
@@ -80,13 +80,13 @@ const COPY = {
     ctaSub: "Gratuit · Sans engagement · Réponse sous 24h",
   },
   en: {
-    eyebrow: "AI Agency · Lausanne · International",
+    eyebrow: "AI Agency · Toulouse · France & Switzerland",
     title: "The AI agency that delivers",
     title2: "results, not slides.",
     intro: "KAH Digital is an agency specialising in applied AI for businesses. GPT-4 chatbots, automation agents, lead qualification systems, CRM integrations — we build what works in production, not what impresses in demos.",
     stats: [
-      { value: "120+", label: "Projects delivered" },
-      { value: "-70%", label: "Manual tasks" },
+      { value: "20+", label: "Projects & systems shipped" },
+      { value: "100%", label: "Source code delivered" },
       { value: "10d", label: "Avg. deployment" },
       { value: "24/7", label: "AI availability" },
     ],
@@ -96,13 +96,13 @@ const COPY = {
         icon: FiCpu,
         accent: "#3b82f6",
         title: "Automatic lead qualification",
-        desc: "A GPT-4 agent qualifies your inbound prospects, asks the right questions, and only transfers hot leads to you. Result: 3x more conversions, zero time wasted.",
+        desc: "A GPT-4 agent qualifies your inbound prospects, asks the right questions, and only transfers hot leads to you. Goal: more conversions, less time wasted.",
       },
       {
         icon: FiZap,
         accent: "#10b981",
         title: "24/7 customer support",
-        desc: "AI chatbot trained on your knowledge base. Answers instantly, escalates cleanly to a human when needed. Reduces tickets by 60%.",
+        desc: "AI chatbot trained on your knowledge base. Answers instantly, escalates cleanly to a human when needed. Aims to reduce ticket volume.",
       },
       {
         icon: FiTrendingUp,
@@ -150,13 +150,13 @@ const COPY = {
     ctaSub: "Free · No commitment · Reply within 24h",
   },
   de: {
-    eyebrow: "KI-Agentur · Lausanne · International",
+    eyebrow: "KI-Agentur · Toulouse · Frankreich & Schweiz",
     title: "Die KI-Agentur, die",
     title2: "Ergebnisse liefert, keine Slides.",
     intro: "KAH Digital ist eine auf angewandte KI für Unternehmen spezialisierte Agentur. GPT-4-Chatbots, Automatisierungsagenten, Lead-Qualifizierungssysteme, CRM-Integrationen — wir bauen, was in der Produktion funktioniert, nicht was in der Demo beeindruckt.",
     stats: [
-      { value: "120+", label: "Projekte geliefert" },
-      { value: "-70%", label: "Manuelle Aufgaben" },
+      { value: "20+", label: "Projekte & Systeme geliefert" },
+      { value: "100%", label: "Quellcode geliefert" },
       { value: "10T", label: "Ø Deployment" },
       { value: "24/7", label: "KI-Verfügbarkeit" },
     ],
@@ -166,13 +166,13 @@ const COPY = {
         icon: FiCpu,
         accent: "#3b82f6",
         title: "Automatische Lead-Qualifizierung",
-        desc: "Ein GPT-4-Agent qualifiziert eingehende Interessenten, stellt die richtigen Fragen und leitet nur heiße Leads weiter. Ergebnis: 3x mehr Conversions, null Zeitverlust.",
+        desc: "Ein GPT-4-Agent qualifiziert eingehende Interessenten, stellt die richtigen Fragen und leitet nur heiße Leads weiter. Ziel: mehr Conversions, weniger Zeitverlust.",
       },
       {
         icon: FiZap,
         accent: "#10b981",
         title: "24/7 Kundensupport",
-        desc: "KI-Chatbot auf Ihrer Wissensbasis trainiert. Antwortet sofort, eskaliert sauber zu einem Menschen bei Bedarf. Reduziert Tickets um 60%.",
+        desc: "KI-Chatbot auf Ihrer Wissensbasis trainiert. Antwortet sofort, eskaliert sauber zu einem Menschen bei Bedarf. Zielt darauf, das Ticketvolumen zu senken.",
       },
       {
         icon: FiTrendingUp,

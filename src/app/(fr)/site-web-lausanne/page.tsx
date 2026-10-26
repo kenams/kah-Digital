@@ -3,11 +3,11 @@ import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-pa
 
 export const metadata: Metadata = {
   title: "Création site web Lausanne — KAH Digital | Devis personnalisé",
-  description: "Studio digital à Lausanne. Création de sites web, apps et solutions IA pour indépendants, PME et startups vaudoises. Devis personnalisé sous 24h, adapté au besoin réel.",
+  description: "Studio digital à distance pour Lausanne et le Vaud. Création de sites web, apps et solutions IA pour indépendants, PME et startups vaudoises. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Lausanne", "agence web Lausanne", "site internet Lausanne", "développeur web Lausanne"],
   openGraph: {
     title: "Création site web Lausanne — KAH Digital",
-    description: "Studio digital basé à Lausanne. Sites, apps et IA pour PME et indépendants vaudois. Devis personnalisé.",
+    description: "Studio digital à distance. Sites, apps et IA pour PME et indépendants vaudois. Devis personnalisé.",
   },
   alternates: { canonical: "https://kah-digital.ch/site-web-lausanne" },
 };

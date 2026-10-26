@@ -5,12 +5,12 @@ import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
   title: "KI-Automatisierung für KMU 2025: Was wirklich funktioniert (und was nicht) — KAH Digital",
-  description: "Nicht jede KI-Lösung lohnt sich für KMU. Hier sind die 5 Anwendungsfälle mit nachgewiesenem ROI — und warum die meisten KI-Projekte scheitern.",
+  description: "Nicht jede KI-Lösung lohnt sich für KMU. Hier sind die 5 Anwendungsfälle mit realistischem ROI-Potenzial — und warum die meisten KI-Projekte scheitern.",
   keywords: ["KI Automatisierung KMU", "KI für kleine Unternehmen", "Chatbot KMU", "KI ROI Unternehmen"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/ki-automatisierung-kmu" },
   openGraph: {
     title: "KI-Automatisierung für KMU 2025: Was wirklich funktioniert (und was nicht)",
-    description: "Nicht jede KI-Lösung lohnt sich für KMU. Hier sind die 5 Anwendungsfälle mit nachgewiesenem ROI — und warum die meisten KI-Projekte scheitern.",
+    description: "Nicht jede KI-Lösung lohnt sich für KMU. Hier sind die 5 Anwendungsfälle mit realistischem ROI-Potenzial — und warum die meisten KI-Projekte scheitern.",
   },
 };
 
@@ -43,7 +43,7 @@ const faqJsonLd = {
       "name": "Was kostet KI-Automatisierung für ein KMU?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ein einfacher KI-Chatbot ist ab CHF/€ 349 erhältlich. Ein vollständiges Automatisierungssystem (Lead-Qualifizierung + Support + E-Mail) beginnt ab CHF/€ 2 490. Die laufenden Kosten (API-Nutzung) betragen typischerweise CHF/€ 30–80 pro Monat für KMU-Volumen."
+        "text": "Ein einfacher KI-Chatbot ist ab CHF/€ 490 erhältlich. Ein vollständiges Automatisierungssystem (Lead-Qualifizierung + Support + E-Mail) beginnt ab CHF/€ 2 490. Die laufenden Kosten (API-Nutzung) betragen typischerweise CHF/€ 30–80 pro Monat für KMU-Volumen."
       }
     },
     {
@@ -61,35 +61,35 @@ const useCases = [
   {
     num: "01",
     title: "Lead-Qualifizierung",
-    roi: "2–5× mehr qualifizierte Leads",
-    desc: "Ein KI-Agent qualifiziert eingehende Anfragen automatisch: Budget, Zeitrahmen, Entscheidungsträger, spezifischer Bedarf. Der Vertrieb erhält nur vorqualifizierte Leads mit komplettem Kontext. Typisches Ergebnis: 60–80% weniger Zeit pro Lead-Aufnahme, 2× höhere Abschlussrate bei bearbeitetem Volumen.",
+    roi: "Richtwert: 2–5× mehr qualifizierte Leads",
+    desc: "Ein KI-Agent qualifiziert eingehende Anfragen automatisch: Budget, Zeitrahmen, Entscheidungsträger, spezifischer Bedarf. Der Vertrieb erhält nur vorqualifizierte Leads mit komplettem Kontext. Mögliches Ergebnis (Richtwert, kein garantiertes Resultat): deutlich weniger Zeit pro Lead-Aufnahme und eine höhere Abschlussrate bei bearbeitetem Volumen.",
     stack: "Webhook-Trigger → GPT-4o → CRM-Integration",
   },
   {
     num: "02",
     title: "Kundensupport 24/7",
-    roi: "40–70% Ticket-Deflection",
-    desc: "Ein KI-Chatbot beantwortet häufige Anfragen (Öffnungszeiten, Preise, Lieferstatus, FAQ) rund um die Uhr. Komplexe Anfragen werden automatisch eskaliert mit Kontext übergeben. KMU sparen typischerweise 15–25 Stunden pro Woche an Support-Aufwand — ohne Qualitätseinbußen.",
+    roi: "Richtwert: 40–70% Ticket-Deflection",
+    desc: "Ein KI-Chatbot beantwortet häufige Anfragen (Öffnungszeiten, Preise, Lieferstatus, FAQ) rund um die Uhr. Komplexe Anfragen werden automatisch eskaliert mit Kontext übergeben. Je nach Anfragevolumen kann das mehrere Stunden Support-Aufwand pro Woche einsparen — ohne Qualitätseinbußen.",
     stack: "Website-Widget → RAG-System → Eskalations-Logik",
   },
   {
     num: "03",
     title: "E-Mail-Automatisierung",
-    roi: "+35% Antwortrate, −80% manuelle Arbeit",
+    roi: "Richtwert: +35% Antwortrate, −80% manuelle Arbeit",
     desc: "KI analysiert eingehende E-Mails, kategorisiert sie, schlägt Antworten vor oder antwortet automatisch bei definierten Typen. Follow-up-Sequenzen werden automatisch ausgelöst. Besonders wirkungsvoll bei Angebots-Follow-ups, die ohne Automatisierung regelmäßig vergessen werden.",
     stack: "Gmail/Outlook-Integration → Klassifizierung → Auto-Antwort",
   },
   {
     num: "04",
     title: "Dokumentenverarbeitung",
-    roi: "−90% manuelle Verarbeitungszeit",
-    desc: "KI extrahiert strukturierte Daten aus Rechnungen, Bestellformularen, Verträgen und Bewerbungen. Daten werden direkt in ERP/CRM/Buchhaltungssysteme übertragen. Ein KMU, das 50 Rechnungen pro Woche manuell verarbeitet, spart 8–12 Stunden — ohne Fehlerquote.",
+    roi: "Richtwert: −90% manuelle Verarbeitungszeit",
+    desc: "KI extrahiert strukturierte Daten aus Rechnungen, Bestellformularen, Verträgen und Bewerbungen. Daten werden direkt in ERP/CRM/Buchhaltungssysteme übertragen. Ein KMU, das 50 Rechnungen pro Woche manuell verarbeitet, kann je nach Dokumenttyp mehrere Stunden pro Woche sparen — bei geringerer Fehlerquote.",
     stack: "OCR + GPT-4 Vision → Extraktion → System-Sync",
   },
   {
     num: "05",
     title: "Termin- und Angebotsprozesse",
-    roi: "−60% Admin-Aufwand, +25% Buchungsrate",
+    roi: "Richtwert: −60% Admin-Aufwand, +25% Buchungsrate",
     desc: "KI-Agent nimmt Terminanfragen entgegen, prüft Verfügbarkeit, sendet Bestätigungen und Erinnerungen. Angebotserstellung wird auf Basis von Kundenanfragen automatisch vorausgefüllt und zur Prüfung vorgelegt. Besonders wirkungsvoll für Dienstleister, Handwerker und Berater.",
     stack: "Kalender-API → NLP-Verarbeitung → Automatisierter Workflow",
   },
@@ -124,7 +124,7 @@ export default function KiAutomatisierungKMUPage() {
             KI-Automatisierung für KMU 2025: Was wirklich funktioniert (und was nicht)
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            KI-Versprechen sind billig. ROI ist selten. Dieser Leitfaden zeigt Ihnen die 5 Automatisierungsanwendungen, die für KMU nachweislich funktionieren — mit realistischen Zahlen, Deployment-Zeiten und warum die meisten KI-Projekte trotzdem scheitern.
+            KI-Versprechen sind billig. ROI ist selten. Dieser Leitfaden zeigt Ihnen die 5 Automatisierungsanwendungen, die sich für KMU eignen — mit Richtwerten, Deployment-Zeiten und warum die meisten KI-Projekte trotzdem scheitern.
           </p>
         </div>
       </section>
@@ -142,7 +142,7 @@ export default function KiAutomatisierungKMUPage() {
         <section className="py-8">
           <h2 className="mb-4 text-2xl font-extrabold text-white">Warum die meisten KI-Projekte in KMU scheitern</h2>
           <p className="mb-4 text-gray-300 leading-relaxed">
-            Laut einer McKinsey-Studie scheitern über 70% aller KI-Initiativen, bevor sie messbare Ergebnisse liefern. Für KMU ist die Quote noch höher — aus strukturellen Gründen, die nichts mit der Technologie zu tun haben.
+            Branchenanalysen zufolge scheitert ein großer Teil aller KI-Initiativen, bevor sie messbare Ergebnisse liefern. Für KMU ist das Risiko oft noch höher — aus strukturellen Gründen, die nichts mit der Technologie zu tun haben.
           </p>
           <p className="mb-4 text-gray-300 leading-relaxed">
             Das Hauptproblem ist Komplexität-Fetischismus. Agenturen verkaufen komplexe, maßgeschneiderte KI-Systeme, weil Komplexität höhere Margen rechtfertigt. Dabei lösen 80% der KMU-Aufgaben mit fertigen API-Calls, strukturierten Prompts und einer einfachen Workflow-Logik. Kein eigenes Modell, kein Datenzentrum, keine 6-monatige Implementierung.
@@ -165,7 +165,7 @@ export default function KiAutomatisierungKMUPage() {
 
         {/* Section 2 — 5 Use Cases */}
         <section className="py-8">
-          <h2 className="mb-6 text-2xl font-extrabold text-white">5 KI-Anwendungsfälle mit nachgewiesenem ROI für KMU</h2>
+          <h2 className="mb-6 text-2xl font-extrabold text-white">5 KI-Anwendungsfälle mit realistischem ROI-Potenzial für KMU</h2>
           <div className="space-y-6">
             {useCases.map((uc) => (
               <div key={uc.num} className="rounded-2xl border border-white/8 bg-gray-900 p-6">
@@ -227,7 +227,7 @@ export default function KiAutomatisierungKMUPage() {
           </p>
           <div className="space-y-3 mb-6">
             {[
-              { type: "Einfacher KI-Chatbot", price: "ab CHF/€ 349", timeline: "5–7 Tage", note: "FAQ, Produkt-Info, Kontaktweiterleitung" },
+              { type: "Einfacher KI-Chatbot", price: "ab CHF/€ 490", timeline: "5–7 Tage", note: "FAQ, Produkt-Info, Kontaktweiterleitung" },
               { type: "Lead-Qualifizierungsagent", price: "ab CHF/€ 590", timeline: "7–10 Tage", note: "CRM-Integration, Scoring, Auto-Antwort" },
               { type: "Vollständiges Automatisierungssystem", price: "ab CHF/€ 2 490", timeline: "10–15 Tage", note: "Support + Lead + E-Mail kombiniert" },
               { type: "Dokumentenverarbeitung + ERP-Sync", price: "ab CHF/€ 1.200", timeline: "15–20 Tage", note: "OCR, Extraktion, Systemintegration" },

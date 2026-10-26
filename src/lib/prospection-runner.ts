@@ -11,6 +11,7 @@ import {
   updateProspectionBatch,
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
+import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
 
 // Ramp progressif (2026-07-13) : 5 → 12 par run × 2 runs/j = 24/j.
 // Warmup domaine sûr (open rate ~52% = réputation saine), sous le plafond
@@ -90,7 +91,9 @@ async function sendProspectingEmail(
   subject: string | null | undefined,
   html: string,
   textFallback: string,
+  prospectId?: string,
 ) {
+  if (isPlaceholderEmail(to)) throw new Error(`Adresse non prospectable: ${to}`);
   const { error } = await resend.emails.send({
     from: "KAH Digital <contact@kah-digital.ch>",
     to,
@@ -98,6 +101,7 @@ async function sendProspectingEmail(
     subject: sanitizeEmailSubject(subject),
     html,
     text: textFallback || htmlToTextFallback(html),
+    tags: prospectId ? [{ name: "prospect_id", value: prospectId }] : undefined,
   });
   if (error) throw new Error(error.message);
 }
@@ -146,6 +150,7 @@ async function sendBacklog(params: {
         prospect.emailSubject,
         prospect.emailBody,
         "",
+        prospect.id,
       );
 
       await supabase
@@ -266,7 +271,7 @@ async function discoverAnalyzeAndSend(params: {
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
 
-      await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback);
+      await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback, prospect.id as string);
       await supabase
         .from("prospects")
         .update({ status: "sent", sentAt: new Date().toISOString() })

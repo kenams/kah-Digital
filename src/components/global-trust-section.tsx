@@ -56,8 +56,8 @@ export function GlobalTrustSection() {
             { label: "AI automation", href: "/automatisation-ia-entreprise" },
           ],
           stats: [
-            { value: "120+", label: "Projects" },
-            { value: "98%", label: "Satisfied" },
+            { value: "20+", label: "Projects & systems" },
+            { value: "5 days", label: "Fastest delivery" },
             { value: "€0", label: "Hidden fees" },
             { value: "24h", label: "Response" },
           ],
@@ -102,8 +102,8 @@ export function GlobalTrustSection() {
             { label: "KI-Automatisierung", href: "/automatisation-ia-entreprise" },
           ],
           stats: [
-            { value: "120+", label: "Projekte" },
-            { value: "98%", label: "Zufrieden" },
+            { value: "20+", label: "Projekte & Systeme" },
+            { value: "5 Tage", label: "Schnellste Lieferung" },
             { value: "CHF 0", label: "Versteckte Kosten" },
             { value: "24h", label: "Antwortzeit" },
           ],
@@ -147,8 +147,8 @@ export function GlobalTrustSection() {
             { label: "Automatisation IA entreprise", href: "/automatisation-ia-entreprise" },
           ],
           stats: [
-            { value: "120+", label: "Projets" },
-            { value: "98%", label: "Satisfaits" },
+            { value: "20+", label: "Projets & systèmes" },
+            { value: "5 jours", label: "Livraison la plus rapide" },
             { value: "0 €", label: "Frais cachés" },
             { value: "24h", label: "Réponse" },
           ],

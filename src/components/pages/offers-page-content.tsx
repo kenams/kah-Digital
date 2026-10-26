@@ -114,8 +114,8 @@ const copy = {
       title: "Projet hors catalogue ?",
       body: "Application mobile, e-commerce avancé, parcours GLPI, refonte complète. Tout besoin est évalué sur mesure.",
       items: [
-        { label: "Application mobile", price: "dès 3 500 €" },
-        { label: "E-commerce complet", price: "dès 1 990 €" },
+        { label: "Application mobile", price: "devis sur mesure" },
+        { label: "E-commerce complet", price: "devis sur mesure" },
         { label: "Parcours support GLPI", price: "devis sur mesure" },
         { label: "Refonte + migration", price: "dès 790 €" },
       ],
@@ -223,8 +223,8 @@ const copy = {
       title: "Off-catalogue project?",
       body: "Mobile app, advanced e-commerce, GLPI workflow, full redesign. Any need is evaluated on a custom basis.",
       items: [
-        { label: "Mobile app", price: "from €3,500" },
-        { label: "Full e-commerce", price: "from €1,990" },
+        { label: "Mobile app", price: "custom quote" },
+        { label: "Full e-commerce", price: "custom quote" },
         { label: "GLPI support flow", price: "custom quote" },
         { label: "Redesign + migration", price: "from €790" },
       ],
@@ -276,7 +276,7 @@ const copy = {
         id: "starter",
         tag: null,
         title: "Starter",
-        price: "CHF 149",
+        price: "CHF 290",
         timeline: "5 Tage",
         summary: "Saubere und schnelle Online-Präsenz. Eine Seite, die vom ersten Blick an Vertrauen schafft.",
         includes: [

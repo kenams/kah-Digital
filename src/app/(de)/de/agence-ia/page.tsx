@@ -6,10 +6,10 @@ export const metadata = buildPageMetadata({
   path: "/agence-ia",
   title: "KI-Agentur · GPT-4 Agenten, Automatisierung & Chatbots | KAH Digital",
   description:
-    "KAH Digital ist die KI-Agentur, die Ihre Prozesse automatisiert: Lead-Qualifizierung, 24/7-Support, individuelle GPT-4-Agenten, CRM-Integrationen. Messbarer ROI an T+30. Kostenloses Audit in 24h.",
+    "KAH Digital ist die KI-Agentur, die Ihre Prozesse automatisiert: Lead-Qualifizierung, 24/7-Support, individuelle GPT-4-Agenten, CRM-Integrationen. Erfolgskennzahlen ab T+30. Kostenloses Audit in 24h.",
   keywords: [
     "KI Agentur Schweiz",
-    "KI Agentur Lausanne",
+    "KI Agentur Schweiz",
     "GPT-4 Agenten Unternehmen",
     "KI Chatbot Agentur Schweiz",
     "Business Automatisierung KI",

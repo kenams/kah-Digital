@@ -495,7 +495,7 @@ export const portfolioProjects: PortfolioProject[] = [
     description:
       "L'Assistant PME IA est né d'un constat terrain : les PME n'ont pas les moyens d'un service IT dédié mais subissent autant de pannes et de questions techniques. Cette application propose un assistant conversationnel formé sur les problèmes IT les plus courants — réseau, imprimantes, accès, logiciels — accessible depuis n'importe quel appareil, à n'importe quelle heure.",
     challenge:
-      "Rendre l'expertise IT accessible aux PME sans technicien à plein temps — fiable, abordable et suffisamment intelligent pour traiter 80% des demandes de niveau 1.",
+      "Rendre l'expertise IT accessible aux PME sans technicien à plein temps — fiable, abordable et suffisamment intelligent pour traiter seul les demandes de niveau 1.",
     solution:
       "Next.js + PostgreSQL (Render), OpenAI GPT-4 via API, abonnements Stripe avec différents niveaux d'accès, panel admin pour gérer les entreprises clientes, emails Resend.",
     stack: ["Next.js", "PostgreSQL", "OpenAI", "Stripe", "Render", "Resend"],

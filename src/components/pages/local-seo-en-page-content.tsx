@@ -25,14 +25,14 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-london",
     headline: "AI Agency London",
     subline: "GPT-4 agents, AI automation & chatbots for London businesses. Measurable ROI from month one. Deployed in 10 days.",
-    intro: "KAH Digital is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Based in Lausanne, remote for all of Europe and the UK. Free AI audit within 24 hours.",
+    intro: "KAH Digital is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Based in Toulouse, France, working remotely across Europe and the UK. Free AI audit within 24 hours.",
     sectors: ["FinTech & InsurTech", "Consulting & Professional Services", "E-Commerce & D2C", "Real Estate & PropTech", "SaaS & Tech Startups", "Legal & Compliance"],
     proofLine: "Free AI audit · Reply within 24h · No commitment",
     faq: [
-      { q: "Do you work with London businesses remotely?", a: "Yes, fully remote. We're based in Lausanne, Switzerland. The entire process — briefing, build, deploy — runs online. No London agency overhead." },
+      { q: "Do you work with London businesses remotely?", a: "Yes, fully remote. We're based in Toulouse, France. The entire process — briefing, build, deploy — runs online. No London agency overhead." },
       { q: "How fast can you deploy AI automation for a London company?", a: "10 days from kickoff to live deployment. First measurable results at D+30. No 6-month workshop, no unnecessary complexity." },
       { q: "What AI use cases work best for UK businesses?", a: "Lead qualification (only hot leads reach your sales team), 24/7 customer support with clean human handoff, email automation, and CRM enrichment. We identify your top 3 highest-ROI automations in the free audit." },
-      { q: "What does it cost to build an AI agent?", a: "AI chatbot add-on from £349. Full AI system (Premium AI plan) from £2,490 — includes website, chatbot, lead automation, and 3 months priority support." },
+      { q: "What does it cost to build an AI agent?", a: "AI chatbot add-on from £490. Full AI system (Premium AI plan) from £2,490 — includes website, chatbot, lead automation, and 3 months priority support." },
     ],
   },
   "web-development-london": {
@@ -59,13 +59,13 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-new-york",
     headline: "AI Agency New York",
     subline: "GPT-4 agents, AI automation & chatbots for NYC businesses. 10-day deployment. Measurable ROI from month one.",
-    intro: "KAH Digital serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Based in Lausanne, operating internationally. Free AI audit delivered within 24 hours.",
+    intro: "KAH Digital serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Based in Toulouse, France, operating internationally. Free AI audit delivered within 24 hours.",
     sectors: ["FinTech & WealthTech", "Consulting & Professional Services", "E-Commerce & D2C Brands", "Real Estate & PropTech", "SaaS & B2B Tech", "Media & Content"],
     proofLine: "Free AI audit · 24h reply · No commitment",
     faq: [
       { q: "How does working with a European AI agency benefit NYC businesses?", a: "Access to Swiss-precision execution at rates well below Manhattan agency pricing. Direct founder access, no middleman, fixed price, 10-day deployment. We operate across US, Europe, and Africa." },
       { q: "What AI automations work for New York companies?", a: "Lead scoring and qualification, 24/7 customer support with clean escalation, email drip automation, CRM enrichment, document processing, appointment scheduling. We audit your workflows and identify the 3 highest-ROI automations free." },
-      { q: "What does a custom GPT-4 agent cost?", a: "AI chatbot add-on from $349. Full AI system (Premium AI) from $2,490 — includes website, chatbot, lead automation, acquisition strategy, and 3 months priority support." },
+      { q: "What does a custom GPT-4 agent cost?", a: "AI chatbot add-on from $490. Full AI system (Premium AI) from $2,490 — includes website, chatbot, lead automation, acquisition strategy, and 3 months priority support." },
       { q: "Can you integrate with our existing CRM and tools?", a: "Yes — Salesforce, HubSpot, Pipedrive, Notion, Slack, and virtually any tool via direct API, Zapier, Make, or n8n. Full integration is scoped before any commitment." },
     ],
   },
@@ -117,7 +117,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
       { q: "Do you build AI chatbots in Arabic for Dubai businesses?", a: "Yes, our GPT-4 agents can be trained in Arabic, English, and French. Ideal for Dubai's multilingual customer base." },
       { q: "How quickly can KAH Digital deploy AI for a UAE company?", a: "10 days from kickoff to production. We work fully remote — brief online, deploy globally. No local office required, no setup friction." },
       { q: "What AI use cases work for Dubai real estate and hospitality?", a: "Lead qualification for property inquiries, 24/7 multilingual guest support, automated booking follow-ups, CRM enrichment. High ROI sectors we've already worked in." },
-      { q: "What does it cost?", a: "AI chatbot add-on from $349. Full AI system from $2,490 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
+      { q: "What does it cost?", a: "AI chatbot add-on from $490. Full AI system from $2,490 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
     ],
   },
   "web-development-geneva": {
@@ -127,11 +127,11 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-geneva",
     headline: "Web Development Geneva",
     subline: "Premium websites for Geneva businesses — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 14 days.",
-    intro: "KAH Digital builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Based in Lausanne, 40 minutes from Geneva. No lock-in, 100% yours.",
+    intro: "KAH Digital builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Working remotely with Geneva businesses. No lock-in, 100% yours.",
     sectors: ["Finance & Private Banking", "Consulting & Advisory", "NGOs & International Organisations", "Hospitality & Luxury", "Healthcare & MedTech", "SaaS & Tech Startups"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
-      { q: "Do you work with Geneva-based clients?", a: "Yes, we're based in Lausanne — 40 minutes from Geneva. We meet in person or work fully remote, whichever suits you. No difference in price or quality." },
+      { q: "Do you work with Geneva-based clients?", a: "Yes — we work 100% remotely with Geneva clients from our studio in Toulouse, France. Same price, same quality." },
       { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 290 (landing page, 5 days). Business CHF 790 (up to 6 pages, SEO, 14 days). Premium AI CHF 2'490 (full AI system). Fixed price, no hidden costs." },
       { q: "Can you build multilingual sites for Geneva's international audience?", a: "Yes — French, English, German, and more. hreflang, clean URL structure, SEO per language. Standard on Business and above." },
       { q: "Do you work with NGOs and international organisations?", a: "Yes. We have experience with compliance-sensitive sectors and can adapt our process to your procurement constraints." },
@@ -143,12 +143,12 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     region: "Vaud",
     slug: "web-development-lausanne",
     headline: "Web Development Lausanne",
-    subline: "Premium websites for Lausanne & the Lake Geneva region — Next.js 15, fast delivery, fixed price. Based in Lausanne.",
-    intro: "KAH Digital is based in Lausanne — your local studio for high-performance websites and custom web applications. Sport tech, health, e-commerce, consulting, startups — we build fast, scalable, and visually premium products on Next.js 15. 100% code ownership, no lock-in, transparent fixed prices.",
+    subline: "Premium websites for Lausanne & the Lake Geneva region — Next.js 15, fast delivery, fixed price. Working remotely.",
+    intro: "KAH Digital works remotely with Lausanne businesses — a studio for high-performance websites and custom web applications. Sport tech, health, e-commerce, consulting, startups — we build fast, scalable, and visually premium products on Next.js 15. 100% code ownership, no lock-in, transparent fixed prices.",
     sectors: ["Sport Tech & Olympic Ecosystem", "Health & MedTech", "Education & EdTech", "Consulting & Agencies", "E-Commerce & D2C", "SaaS & Tech Startups"],
-    proofLine: "Based in Lausanne · Reply within 24h · Fixed price",
+    proofLine: "Remote studio · Reply within 24h · Fixed price",
     faq: [
-      { q: "Are you based in Lausanne?", a: "Yes, KAH Digital is based in Lausanne. You can meet us in person, or we work fully remote — same quality, same price." },
+      { q: "Do you have an office in Lausanne?", a: "No — KAH Digital is based in Toulouse, France, and works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
       { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 290 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 14 days). Premium AI from CHF 2'490 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
       { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
@@ -171,8 +171,8 @@ export function LocalSeoEnPageContent({ data }: Props) {
     email: "kahdigital42@gmail.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lausanne",
-      addressCountry: "CH",
+      addressLocality: "Toulouse",
+      addressCountry: "FR",
     },
     areaServed: { "@type": "City", name: data.city },
     openingHours: "Mo-Fr 09:00-18:00",
@@ -302,19 +302,6 @@ export function LocalSeoEnPageContent({ data }: Props) {
       {/* CTA */}
       <section className="py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
-          <div className="mx-auto mb-8 max-w-sm rounded-2xl border border-white/8 bg-gray-900/60 p-5">
-            <div className="mb-2 flex justify-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" fill="#fbbf24" className="h-3.5 w-3.5">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
-            </div>
-            <p className="text-sm italic text-gray-300">
-              &ldquo;Since the redesign I receive 3–4 qualified leads per week. ROI from the first month.&rdquo;
-            </p>
-            <p className="mt-2 text-xs text-gray-600">M.L. — Lawyer, Lausanne</p>
-          </div>
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-white">
             Your project in {data.city} — let&apos;s talk?
           </h2>

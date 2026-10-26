@@ -75,18 +75,23 @@ export function SiteHeader() {
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm lg:flex xl:gap-5 xl:text-base">
-            {localeCopy.nav.map((link) => (
+          <nav className="hidden items-center gap-4 text-sm lg:flex xl:gap-5">
+            {localeCopy.nav.map((link) => {
+              // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
+              // liens secondaires (accueil = logo, références, blog) jusqu'à 2xl.
+              const secondary = link.href === homeHref || /\/(references|blog)$/.test(link.href);
+              return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={(link as { highlight?: boolean }).highlight
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
-                  : "whitespace-nowrap text-white/80 transition-colors hover:text-white"}
+                  : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden 2xl:inline" : ""}`}
               >
                 {(link as { highlight?: boolean }).highlight && <span className="mr-1">⚡</span>}{link.label}
               </Link>
-            ))}
+              );
+            })}
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
