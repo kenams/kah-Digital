@@ -39,3 +39,14 @@ for (const lang of ["fr", "en", "de"]) {
     assert.ok(!/service-local/i.test(mail.html));
   });
 }
+
+test("service local avec score moyen : pitch site + réservation, jamais agent IA (régression 27/10)", async () => {
+  const lead = {
+    businessName: "Ardoise et Zinc", website: "https://www.ardoise-zinc.fr", country: "FR", language: "fr",
+    sector: "service-local", email: "ardoise-zinc@orange.fr", placeId: "a", address: "FR",
+  } as never;
+  const a = { ...(audit("fr") as object), businessName: "Ardoise et Zinc", score: 52 } as never;
+  const mail = await composeProspectingEmail(lead, a, "https://kah-digital.ch", ID);
+  assert.ok(/rendez-vous/i.test(mail.textFallback), mail.textFallback);
+  assert.ok(!/agent/i.test(mail.textFallback), mail.textFallback);
+});

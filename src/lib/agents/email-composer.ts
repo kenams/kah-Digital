@@ -50,6 +50,9 @@ function getTrack(audit: SiteAudit, lead?: DiscoveredLead): "esn" | "pme-it" | "
   if (s === "pme-it") return "pme-it";
   if (s === "app") return "app";
   if (s === "artisan-creation") return "creation";
+  // Services locaux (la cible actuelle, offre "site + réservation en ligne") : toujours la piste
+  // site, sinon un score moyen déclenchait un pitch "agent IA" sans rapport avec le défaut cité.
+  if (lead?.sector === "service-local" || s === "service-local") return "site";
   return audit.score >= 45 ? "agent" : "site";
 }
 
