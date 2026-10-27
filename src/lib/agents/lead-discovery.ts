@@ -4,7 +4,7 @@
  * Extraction : email (multi-chemin) + téléphone
  */
 
-import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
+import { isPlaceholderEmail, isProspectableLead, isNetworkOrLocatorUrl } from "@/lib/prospect-email-guard";
 import { discoverOsmUrls } from "@/lib/agents/osm-leads";
 import { safeFetch } from "@/lib/safe-fetch";
 
@@ -1171,29 +1171,41 @@ export async function discoverLeads(count = 5): Promise<DiscoveredLead[]> {
 
   // DDG insuffisant (IP Vercel/GitHub bloquées) → OpenStreetMap, source sans clé ni blocage
   console.warn(`[lead-discovery] DDG insuffisant (${ddgLeads.length}/${MIN_DDG_LEADS}) — tentative OpenStreetMap`);
-  const osmUrls = (await discoverOsmUrls(count * 6)).filter((o) => !isBlacklisted(o.url));
+  const osmUrls = (await discoverOsmUrls(count * 6)).filter((o) => !isBlacklisted(o.url) && !isNetworkOrLocatorUrl(o.url));
   const osmLeads: DiscoveredLead[] = [];
-  const osmDeadline = Date.now() + 110_000; // la fonction Vercel est limitée à 300 s
-  for (const o of osmUrls) {
+  const osmDeadline = Date.now() + 90_000; // la fonction Vercel est limitée à 300 s
+  const CONCURRENCY = 4; // extractSiteInfo est surtout de l'attente réseau
+  for (let i = 0; i < osmUrls.length; i += CONCURRENCY) {
     if (ddgLeads.length + osmLeads.length >= count || Date.now() > osmDeadline) break;
-    try {
-      const hostname = new URL(o.url).hostname;
-      const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(o.url);
-      if (!email) continue;
-      osmLeads.push({
-        businessName: o.name || businessName,
-        website: o.url,
-        address: o.country,
-        country: o.country,
-        language: o.language,
-        sector: o.sector,
-        placeId: `${hostname}-${Date.now()}`,
-        email,
-        phone,
-        emailGuessed,
-      });
-      await new Promise((r) => setTimeout(r, 400));
-    } catch { /* skip */ }
+    const batch = osmUrls.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async (o): Promise<DiscoveredLead | null> => {
+        try {
+          const hostname = new URL(o.url).hostname;
+          const { name: businessName, email, phone, emailGuessed } = await extractSiteInfo(o.url);
+          if (!email) return null;
+          // Adresse à nous de la bonne entreprise (pas l'agence web ni un siège)
+          if (!emailGuessed && !isProspectableLead({ website: o.url, email }).ok) return null;
+          return {
+            businessName: o.name || businessName,
+            website: o.url,
+            address: o.country,
+            country: o.country,
+            language: o.language,
+            sector: o.sector,
+            placeId: `${hostname}-${Date.now()}`,
+            email,
+            phone,
+            emailGuessed,
+          };
+        } catch {
+          return null;
+        }
+      })
+    );
+    for (const r of results) {
+      if (r && ddgLeads.length + osmLeads.length < count) osmLeads.push(r);
+    }
   }
   if (ddgLeads.length + osmLeads.length >= MIN_DDG_LEADS) {
     console.log(`[lead-discovery] DDG+OSM: ${ddgLeads.length + osmLeads.length} leads`);

@@ -11,7 +11,7 @@ import {
   updateProspectionBatch,
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
-import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
+import { isPlaceholderEmail, isProspectableLead } from "@/lib/prospect-email-guard";
 
 // Ramp progressif (2026-07-13) : 5 → 12 par run × 2 runs/j = 24/j.
 // Warmup domaine sûr (open rate ~52% = réputation saine), sous le plafond
@@ -202,14 +202,18 @@ async function discoverAnalyzeAndSend(params: {
       break;
     }
     if (!lead.website) continue;
+    const fit = isProspectableLead(lead);
+    if (!fit.ok) {
+      console.log(`[prospection] skip ${lead.website}: ${fit.reason}`);
+      continue;
+    }
 
     try {
       if (await websiteAlreadySent(supabase, lead.website, lead.email)) continue;
 
       const audit = await auditWebsite(lead);
       if (!audit) {
-        rememberError(errors, `Audit failed: ${lead.website}`);
-        await updateProspectionBatch(supabase, batchId, { found, sent: alreadySent + sent, errors });
+        console.log(`[prospection] skip ${lead.website}: injoignable ou rien de vérifiable à signaler`);
         continue;
       }
 

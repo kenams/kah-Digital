@@ -125,6 +125,17 @@ function pickRef(seed: number, lang: string): string {
   return (r as Record<string, string>)[lang] ?? r.fr;
 }
 
+// Le secteur interne ("service-local") ne doit jamais apparaître tel quel dans un mail.
+function humanSector(sector: string, lang: string): string {
+  const key = (sector || "").trim().toLowerCase();
+  const labels: Record<string, Record<string, string>> = {
+    "service-local": { fr: "professionnels de proximité", en: "local service businesses", de: "lokale Dienstleister" },
+  };
+  const hit = labels[key]?.[lang] ?? labels[key]?.fr;
+  if (hit) return hit;
+  return key.replace(/[-_]+/g, " ") || (lang === "en" ? "local businesses" : lang === "de" ? "lokale Betriebe" : "entreprises locales");
+}
+
 // Optout texts courts
 const OPTOUT: Record<string, string> = {
   fr: "Pas intéressé(e) ? Répondez juste \"stop\".",
@@ -146,6 +157,7 @@ export async function composeProspectingEmail(
   const pixelUrl = `${baseUrl}/api/tracking/open/${prospectId}`;
   const unsubUrl = `${baseUrl}/api/unsubscribe?id=${prospectId}`;
 
+  const sectorLabel = humanSector(audit.sector, lang);
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
   const topProblem = audit.problems[0]?.title ?? "point à améliorer";
   const track = getTrack(audit, lead);
@@ -224,17 +236,17 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
 
     const openers: Record<string, string[]> = {
       fr: [
-        `Je suis tombé sur ${bName} en cherchant des ${audit.sector} dans le coin.`,
+        `Je suis tombé sur ${bName} en cherchant des ${sectorLabel} dans le coin.`,
         `J'ai regardé l'activité de ${bName} cette semaine.`,
         `Petit mot rapide en découvrant ${bName}.`,
       ],
       en: [
-        `I came across ${bName} while looking at ${audit.sector} businesses nearby.`,
+        `I came across ${bName} while looking at ${sectorLabel} nearby.`,
         `Took a look at ${bName} this week.`,
         `Quick note after discovering ${bName}.`,
       ],
       de: [
-        `Ich bin bei der Suche nach ${audit.sector} in der Gegend auf ${bName} gestoßen.`,
+        `Ich bin bei der Suche nach ${sectorLabel} in der Gegend auf ${bName} gestoßen.`,
         `Ich habe mir ${bName} diese Woche angeschaut.`,
       ],
     };

@@ -2,9 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
-import { Resend } from "resend";
 import { sendAdminNotification } from "@/lib/gmail";
-import { getResendFromAddress } from "@/lib/mail";
 
 function getSupabase() {
   return createClient(
@@ -46,21 +44,13 @@ ${isQuote ? "Ringraziali, conferma un preventivo entro 24h, chiedi del budget e 
 Solo testo, nessun HTML. Termina con: KAH Digital | kahdigital42@gmail.com`,
 };
 
-const REPLY_SUBJECT: Record<string, (name: string, isQuote: boolean) => string> = {
-  fr: (n, q) => q ? `Re: Devis pour ${n} — sous 24h` : `Re: ${n} — suite à votre intérêt`,
-  en: (n, q) => q ? `Re: Quote for ${n} — within 24h` : `Re: ${n} — following your interest`,
-  es: (n, q) => q ? `Re: Presupuesto para ${n} — en 24h` : `Re: ${n} — tras su interés`,
-  de: (n, q) => q ? `Re: Angebot für ${n} — innerhalb 24h` : `Re: ${n} — nach Ihrem Interesse`,
-  it: (n, q) => q ? `Re: Preventivo per ${n} — entro 24h` : `Re: ${n} — a seguito del suo interesse`,
-};
-
-async function generateAndSendAutoReply(prospect: {
+async function generateReplyDraft(prospect: {
   id: string; businessName: string | null; website: string; email: string;
   sector: string | null; language: string | null;
 }, target: string): Promise<string> {
   const lang = prospect.language ?? "fr";
   const name = prospect.businessName ?? prospect.website;
-  const sector = prospect.sector ?? "PME";
+  const sector = (prospect.sector ?? "PME").replace(/[-_]+/g, " ");
   const isQuote = target === "quote";
 
   let draft = "";
@@ -102,25 +92,6 @@ async function generateAndSendAutoReply(prospect: {
     draft = fallbacks[lang] ?? fallbacks.fr;
   }
 
-  // Envoyer la réponse auto via Resend
-  if (process.env.RESEND_API_KEY) {
-    try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
-      const subjectFn = REPLY_SUBJECT[lang] ?? REPLY_SUBJECT.fr;
-      const htmlBody = `<div style="font-family:-apple-system,Arial,sans-serif;font-size:15px;line-height:1.7;color:#374151;max-width:560px;">${draft.replace(/\n/g, "<br/>")}</div>`;
-      await resend.emails.send({
-        from: getResendFromAddress(),
-        to: prospect.email,
-        replyTo: "kahdigital42@gmail.com",
-        subject: subjectFn(name, isQuote),
-        html: htmlBody,
-        text: draft,
-      });
-    } catch (err) {
-      console.error("[auto-reply] Erreur envoi:", err);
-    }
-  }
-
   return draft;
 }
 
@@ -133,19 +104,27 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
   let prospect: {
     id: string; businessName: string | null; website: string; email: string | null;
-    sector: string | null; language: string | null; clickedAt: string | null;
+    sector: string | null; language: string | null; clickedAt: string | null; sentAt: string | null;
   } | null = null;
 
   try {
     const supabase = getSupabase();
     const { data } = await supabase
       .from("prospects")
-      .select("id, businessName, website, email, sector, language, clickedAt")
+      .select("id, businessName, website, email, sector, language, clickedAt, sentAt")
       .eq("id", id)
       .single();
     prospect = data;
 
-    if (prospect && !prospect.clickedAt) {
+    // Les filtres anti-spam des entreprises ouvrent tous les liens dans les secondes
+    // qui suivent la réception : ce n'est pas un humain, on ne le compte pas.
+    const ua = req.headers.get("user-agent") ?? "";
+    const sentMs = prospect?.sentAt ? Date.parse(prospect.sentAt) : NaN;
+    const looksLikeScanner =
+      /bot|crawler|spider|scanner|preview|headless|python-requests|curl\/|wget|go-http|java\/|mimecast|proofpoint|barracuda|mailinblack|safelinks|trend ?micro|symantec|forcepoint|cisco|sophos|fortinet/i.test(ua) ||
+      (Number.isFinite(sentMs) && Date.now() - sentMs < 120_000);
+
+    if (prospect && !prospect.clickedAt && !looksLikeScanner) {
       // Marquer "clicked" seulement — pas "replied" (réservé aux vrais formulaires soumis)
       await supabase
         .from("prospects")
@@ -156,7 +135,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       let draft = "";
       if (prospect.email) {
         try {
-          draft = await generateAndSendAutoReply(
+          draft = await generateReplyDraft(
             { ...prospect, email: prospect.email },
             target
           );

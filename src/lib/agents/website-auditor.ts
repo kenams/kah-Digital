@@ -46,52 +46,66 @@ async function callLLM(prompt: string, maxTokens: number): Promise<string> {
   throw new Error("No AI provider available");
 }
 
-function ruleBasedAudit(lead: DiscoveredLead, html: string): SiteAudit {
+const BOOKING_PROVIDERS = /planity|calendly|doctolib|resalib|setmore|reservio|simplybook|bookly|timify|kiute|mindbody|treatwell|fresha|booksy|zenchef|thefork|rendez-vous en ligne|réserver en ligne|reserver en ligne|prise de rendez-vous en ligne|book online|online booking/i;
+
+// Lit les balises <meta> une à une : le texte d'une description contient souvent
+// une apostrophe, qui casse n'importe quel regex "tout-en-un".
+function hasMetaDescription(html: string): boolean {
+  for (const tag of html.match(/<meta[^>]*>/gi) ?? []) {
+    if (!/name\s*=\s*["']?description["']?/i.test(tag)) continue;
+    const m = tag.match(/content\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+    if ((m?.[1] ?? m?.[2] ?? "").trim().length >= 20) return true;
+  }
+  return false;
+}
+
+// Audit sans IA. Il lit le HTML brut et ne signale que ce qui est réellement
+// constaté ; s'il n'y a rien de vrai à dire, il renvoie null (le lead est écarté
+// plutôt que d'envoyer une accroche inventée).
+function ruleBasedAudit(lead: DiscoveredLead, page: FetchedPage): SiteAudit | null {
+  if (!page.ok) return null;
+  const html = page.html;
   const lower = html.toLowerCase();
+  if (lower.length < 500) return null; // page vide / JS only : rien de fiable à mesurer
+  if (BOOKING_PROVIDERS.test(html)) return null; // réservation en ligne déjà en place : notre pitch ne lui apporte rien
+
   const problems: SiteAudit["problems"] = [];
   const recommendations: SiteAudit["recommendations"] = [];
-  let score = 60;
+  let score = 70;
 
-  if (!lower.includes('viewport')) {
+  if (!lower.includes("viewport")) {
     problems.push({ title: "Invisible sur mobile", detail: "Plus de 60% de vos visiteurs arrivent sur mobile — et repartent sans prendre contact.", severity: "critical", category: "mobile" });
-    score -= 20;
+    score -= 22;
   }
-  if (!lower.includes('<meta name="description"') && !lower.includes("<meta name='description'")) {
-    problems.push({ title: "Absent des résultats Google", detail: "Votre site n'apparaît pas correctement dans Google — vos concurrents captent ces clients à votre place.", severity: "critical", category: "seo" });
-    score -= 15;
+  if (!hasMetaDescription(html)) {
+    problems.push({ title: "Mal présenté dans Google", detail: "Votre site n'affiche pas de description claire dans les résultats Google — des clients passent à côté de vous.", severity: "critical", category: "seo" });
+    score -= 12;
   }
-  if (!lower.includes('schema.org') && !lower.includes('application/ld+json')) {
+  if (!lower.includes("schema.org") && !lower.includes("application/ld+json")) {
     problems.push({ title: "Non référencé localement", detail: "Votre activité n'apparaît pas dans les recherches de proximité — vous perdez des clients qui cherchent exactement ce que vous faites.", severity: "medium", category: "seo" });
-    score -= 10;
+    score -= 8;
   }
-  if (lower.includes('jquery-1.') || lower.includes('jquery-2.') || lower.includes('jquery/1.') || lower.includes('jquery/2.')) {
+  if (/jquery[-/.]?(1|2)\.\d/.test(lower)) {
     problems.push({ title: "Site lent — visiteurs qui fuient", detail: "Un site qui charge trop lentement perd 53% de ses visiteurs avant même qu'ils voient votre offre.", severity: "medium", category: "speed" });
     score -= 8;
   }
-  if (!lower.includes('gtag') && !lower.includes('google-analytics') && !lower.includes('googletagmanager')) {
-    problems.push({ title: "Aucune mesure des résultats", detail: "Vous ne savez pas combien de clients votre site génère — ni pourquoi certains repartent sans vous contacter.", severity: "low", category: "conversion" });
-    score -= 5;
+  if (!page.https) {
+    problems.push({ title: "Site signalé comme non sécurisé", detail: "Les navigateurs affichent un avertissement de sécurité à vos visiteurs — ça détruit la confiance avant même qu'ils lisent votre offre.", severity: "critical", category: "security" });
+    score -= 18;
   }
-  if (!lower.includes('button') && !lower.includes('cta') && !lower.includes('contact') && !lower.includes('rdv') && !lower.includes('appointment')) {
-    problems.push({ title: "Visiteurs sans direction claire", detail: "Vos visiteurs ne savent pas quoi faire sur votre site — ils repartent sans vous contacter.", severity: "medium", category: "conversion" });
+  if (/(©|&copy;|copyright)\s*(19\d\d|200\d|201[0-8])\b/i.test(html)) {
+    problems.push({ title: "Design qui date — crédibilité en jeu", detail: "La première impression se fait en quelques secondes — un site qui n'a pas bougé depuis des années fait douter de votre sérieux.", severity: "medium", category: "design" });
     score -= 10;
   }
-  if (lower.includes('http://') && !lower.includes('https://')) {
-    problems.push({ title: "Site signalé comme non sécurisé", detail: "Les navigateurs affichent un avertissement de sécurité à vos visiteurs — ça détruit la confiance avant même qu'ils lisent votre offre.", severity: "critical", category: "security" });
-    score -= 15;
-  }
 
-  if (problems.length === 0) {
-    problems.push({ title: "Design qui date — crédibilité en jeu", detail: "La première impression se fait en 0.05 secondes — un site vieillissant fait douter de votre sérieux.", severity: "medium", category: "design" });
-    score -= 12;
-  }
+  // Un seul point faible mineur ne justifie pas de déranger quelqu'un : il faut du solide.
+  if (!problems.some((p) => p.severity === "critical") && problems.length < 2) return null;
 
-  recommendations.push({ title: "Site qui convertit des visiteurs en clients", detail: "KAH Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
-  recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à ranker et à générer du trafic qualifié.", impact: "high" });
-  recommendations.push({ title: "Clients qui passent à l'action", detail: "Chaque page est conçue pour guider vos visiteurs vers un appel, une réservation ou un achat.", impact: "medium" });
+  recommendations.push({ title: "Un site qui prend les rendez-vous à votre place", detail: "KAH Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
+  recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à générer du trafic qualifié.", impact: "high" });
 
-  const finalScore = Math.max(22, Math.min(58, score));
-  const quality = finalScore < 30 ? "poor" : finalScore < 45 ? "medium" : "ok";
+  const finalScore = Math.max(25, Math.min(60, score));
+  const quality = finalScore < 35 ? "poor" : "medium";
   const { price, range } = getCountryBasePrice(lead.country ?? "FR", quality);
 
   return {
@@ -132,32 +146,35 @@ export type SiteAudit = {
 
 import { safeFetch } from "@/lib/safe-fetch";
 
-async function fetchWebsiteContent(url: string): Promise<string> {
+type FetchedPage = { ok: boolean; html: string; text: string; https: boolean };
+
+async function fetchWebsiteContent(url: string): Promise<FetchedPage> {
   const normalized = url.startsWith("http") ? url : `https://${url}`;
   const attempts = [normalized];
   if (normalized.startsWith("https://")) attempts.push(normalized.replace("https://", "http://"));
 
   for (const u of attempts) {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 20000);
+    const t = setTimeout(() => ctrl.abort(), 10000);
     try {
       const res = await safeFetch(u, {
         signal: ctrl.signal,
-        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.fr)" },
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; KAH-Digital-Scout/1.0; +https://kah-digital.ch)" },
       });
       if (!res.ok) continue;
-      const html = await res.text();
-      return html
+      const html = (await res.text()).slice(0, 400_000);
+      const text = html
         .replace(/<script[\s\S]*?<\/script>/gi, "")
         .replace(/<style[\s\S]*?<\/style>/gi, "")
         .replace(/<[^>]+>/g, " ")
         .replace(/\s{3,}/g, "  ")
         .slice(0, 7000);
+      return { ok: true, html, text, https: u.startsWith("https://") };
     } catch { /* try next */ } finally {
       clearTimeout(t);
     }
   }
-  return `[Contenu non récupérable] URL: ${url}`;
+  return { ok: false, html: "", text: "", https: true };
 }
 
 export function getScreenshotUrl(_url: string): string | null {
@@ -187,12 +204,19 @@ function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok")
 }
 
 export async function auditWebsite(lead: DiscoveredLead): Promise<SiteAudit | null> {
-  const content = await fetchWebsiteContent(lead.website);
+  const page = await fetchWebsiteContent(lead.website);
+  const content = page.text;
   const screenshotUrl = getScreenshotUrl(lead.website);
+
+  // Site injoignable : aucun constat fiable possible, on n'écrit pas à l'aveugle.
+  if (!page.ok) return null;
+  if (BOOKING_PROVIDERS.test(page.html)) return null; // déjà équipé : hors cible
+
+  const withShot = (a: SiteAudit | null) => (a ? { ...a, screenshotUrl } : null);
 
   // Fallback sans IA si aucune clé disponible
   if (!process.env.ANTHROPIC_API_KEY && !process.env.OPENAI_API_KEY) {
-    return { ...ruleBasedAudit(lead, content), screenshotUrl };
+    return withShot(ruleBasedAudit(lead, page));
   }
 
   const sysIntro = AUDIT_PROMPT[lead.language] ?? AUDIT_PROMPT.en;
@@ -253,16 +277,16 @@ Return 3-5 problems and 2-3 recommendations, all written in language "${lang}".`
   try {
     text = await callLLM(prompt, 2000);
   } catch {
-    return { ...ruleBasedAudit(lead, content), screenshotUrl };
+    return withShot(ruleBasedAudit(lead, page));
   }
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
-  if (start === -1 || end === -1) return { ...ruleBasedAudit(lead, content), screenshotUrl };
+  if (start === -1 || end === -1) return withShot(ruleBasedAudit(lead, page));
 
   try {
     const audit = JSON.parse(text.slice(start, end + 1)) as SiteAudit;
     return { ...audit, screenshotUrl };
   } catch {
-    return { ...ruleBasedAudit(lead, content), screenshotUrl };
+    return withShot(ruleBasedAudit(lead, page));
   }
 }
