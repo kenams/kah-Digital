@@ -345,4 +345,17 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
       { q: "Do you work with Luxembourg-based companies near Metz?", a: "Yes, our studio works across the whole Greater Region. Sites in French, German and English are available." },
     ],
   },
+  "site-web-fribourg": {
+    city: "Fribourg", country: "Switzerland", region: "Fribourg", slug: "site-web-fribourg",
+    headline: "Web Development in Fribourg",
+    subline: "Bilingual FR/DE digital studio — Next.js 15, technical SEO, fixed price. From CHF 290, delivered in 5 days. No commitment.",
+    intro: `KAH Digital builds professional websites for businesses, craftspeople and independents in the canton of Fribourg. Bilingual French-German, our studio can serve the specific needs of the Fribourg market. High-performance sites, local SEO, premium design. ${CH_PRICES} Free quote within 24h.`,
+    sectors: ["Fribourg craftspeople & SMEs", "Restaurants & cafés", "Coaches & trainers", "Agriculture & local produce", "Associations & institutions", "Professional practices"],
+    proofLine: "Bilingual FR/DE · Fixed price from CHF 290 — Reply within 24h · No commitment",
+    faq: [
+      { q: "How much does a professional website cost in Fribourg?", a: "Starter (bilingual FR/DE landing page) from CHF 290, delivered in 5 days. Business (6 pages, SEO) from CHF 790. Full AI system from CHF 2,490. Fixed price, no surprises." },
+      { q: "Do you build bilingual French-German sites for the Fribourg market?", a: "Yes — fully bilingual FR/DE sites with correct hreflang, clean URLs per language and SEO optimised in both languages. Ideal for the Fribourg market." },
+      { q: "Can we meet in Fribourg?", a: "We work remotely with Fribourg businesses. All exchanges take place by video call." },
+    ],
+  },
 };

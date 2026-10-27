@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://kah-digital.ch/agence-web-suisse" },
   openGraph: {
     title: "Agence web Suisse — KAH Digital",
-    description: "Studio digital 100 % à distance. Sites web, apps et IA pour toute la Suisse. Devis en CHF, TWINT accepté, conforme LPD.",
+    description: "Studio digital 100 % à distance. Sites web, apps et IA pour toute la Suisse. Devis en CHF, TWINT accepté, LPD prise en compte.",
   },
 };
 
@@ -65,7 +65,7 @@ export default function AgenceWebSuissePage() {
             Sites web · Applications · Solutions IA
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Studio digital basé à Toulouse, 100 % à distance. Next.js 15, Lighthouse 95+, SEO technique. Facturation en CHF, TWINT accepté, conforme LPD. Devis gratuit en 24h.
+            Studio digital basé à Toulouse, 100 % à distance. Next.js 15, Lighthouse 95+, SEO technique. Facturation en CHF, TWINT accepté, LPD prise en compte. Devis gratuit en 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -81,10 +81,10 @@ export default function AgenceWebSuissePage() {
               className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
             >
               <FiMessageCircle size={15} />
-              WhatsApp — réponse 2h
+              WhatsApp — réponse rapide
             </a>
           </div>
-          <p className="mt-5 text-sm text-gray-600">Studio Suisse · Facturation CHF · TWINT · LPD · Réponse 24h</p>
+          <p className="mt-5 text-sm text-gray-600">Studio à distance · Facturation CHF · TWINT · LPD · Réponse 24h</p>
         </div>
       </section>
 
@@ -95,7 +95,7 @@ export default function AgenceWebSuissePage() {
             {[
               { icon: "🇨🇭", label: "Travail 100 % à distance · France & Suisse" },
               { icon: "💳", label: "Facturation CHF · TWINT accepté" },
-              { icon: "🔒", label: "Conforme LPD (loi suisse protection des données)" },
+              { icon: "🔒", label: "LPD prise en compte (loi suisse sur la protection des données)" },
               { icon: "🌐", label: "FR · DE · EN · IT — sites multilingues" },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-1.5 rounded-full border border-emerald-500/15 bg-emerald-500/5 px-3 py-1.5">
@@ -112,10 +112,10 @@ export default function AgenceWebSuissePage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { value: "7 cantons", label: "couverts en Suisse" },
+              { value: "7 régions", label: "desservies à distance" },
               { value: "dès CHF 290", label: "Prix fixe garanti" },
               { value: "5 jours", label: "Délai minimum" },
-              { value: "24h", label: "Réponse garantie" },
+              { value: "24h", label: "Délai de réponse" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-xl font-black text-white sm:text-2xl">{s.value}</div>
@@ -132,7 +132,7 @@ export default function AgenceWebSuissePage() {
           <h2 className="mb-3 text-center text-2xl font-extrabold tracking-tight text-white">
             Toutes les villes suisses
           </h2>
-          <p className="mb-10 text-center text-gray-500">Présence locale dans les 7 principaux cantons. Même qualité, même prix, partout en Suisse.</p>
+          <p className="mb-10 text-center text-gray-500">Nous travaillons à distance avec les entreprises des principales régions. Même qualité, même prix, partout en Suisse.</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {SWISS_CITIES.map((c) => (
               <Link
@@ -168,7 +168,7 @@ export default function AgenceWebSuissePage() {
             {[
               { title: "Clients en Suisse", body: "Studio basé à Toulouse, 100 % à distance. Échanges en visioconférence, facturation en CHF possible." },
               { title: "Facturation CHF + TWINT", body: "Tous vos règlements en francs suisses. Virement bancaire CHF, TWINT ou carte bancaire — à votre convenance." },
-              { title: "Conforme LPD", body: "Vos données et celles de vos clients traitées selon la loi suisse sur la protection des données (LPD). Standard par défaut." },
+              { title: "LPD prise en compte", body: "Vos données et celles de vos clients sont traitées en tenant compte de la loi suisse sur la protection des données (LPD)." },
               { title: "Multilingue natif", body: "Sites en français, allemand, anglais et italien. SEO optimisé dans chaque langue pour couvrir toute la Suisse." },
               { title: "Prix fixe transparent", body: "Devis fixe avant de commencer. Zéro surprise, zéro dépassement. Starter dès CHF 290, livré en 5 jours." },
               { title: "Réponse en 24h", body: "Accès direct au fondateur. Pas de chef de projet intermédiaire, pas de délai de routing. Un studio, pas une usine." },

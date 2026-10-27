@@ -61,7 +61,8 @@ const baseMetadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "KAH Digital",
-    template: "%s | KAH Digital",
+    // Les titres de page contiennent déjà la marque : un suffixe doublonnait « | KAH Digital | KAH Digital ».
+    template: "%s",
   },
   category: "technology",
   robots: {

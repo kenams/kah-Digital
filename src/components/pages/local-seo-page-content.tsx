@@ -51,7 +51,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-fribourg": {
     city: "Fribourg", country: "Suisse", region: "Fribourg", locale: "fr", slug: "site-web-fribourg",
     headline: "Création de site web à Fribourg",
-    subline: "Studio romand bilingue FR/DE — Next.js 15, SEO technique, prix fixe. Dès CHF 290, livré en 5 jours. Sans engagement.",
+    subline: "Studio digital bilingue FR/DE — Next.js 15, SEO technique, prix fixe. Dès CHF 290, livré en 5 jours. Sans engagement.",
     intro: "KAH Digital crée des sites web professionnels pour les entreprises, artisans et indépendants du canton de Fribourg. Bilingue français-allemand, nous comprenons les besoins spécifiques du marché fribourgeois. Sites haute-performance, SEO local, design premium. Starter dès CHF 290 — Business dès CHF 790 — Devis gratuit en 24h.",
     sectors: ["Artisans & PME fribourgeois", "Restaurants & cafés", "Coachs & formateurs", "Agriculture & terroir", "Associations & institutions", "Professions libérales"],
     proofLine: "Bilingue FR/DE · Prix fixe CHF 290 — Réponse 24h · Sans engagement",

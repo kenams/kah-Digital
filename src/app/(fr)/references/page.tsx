@@ -165,7 +165,7 @@ const CASES: Ref[] = [
 const GUARANTEES = [
   "Devis gratuit et lisible sous 24h",
   "Prix fixe confirmé avant de commencer",
-  "Paiement après livraison",
+  "Acompte 30 %, solde à la livraison",
   "Code source livré — le site vous appartient",
 ];
 
@@ -213,9 +213,9 @@ export default function ReferencesPage() {
         <div className="mx-auto max-w-4xl px-4">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { value: "1–6 sem.", label: "Délai de livraison" },
+              { value: "5 jours", label: "Site vitrine, après réception du contenu" },
               { value: "Prix fixe", label: "Confirmé avant de commencer" },
-              { value: "Paiement", label: "Après livraison" },
+              { value: "Acompte 30 %", label: "Solde à la livraison" },
               { value: "Code source", label: "Livré, le site est à vous" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
