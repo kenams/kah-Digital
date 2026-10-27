@@ -20,6 +20,10 @@ on:
         description: "Simulation : tout est étudié et contrôlé, rien n'est envoyé"
         type: boolean
         default: false
+      selftest:
+        description: "Envoie un seul mail de test (expéditeur de prospection) à la boîte admin"
+        type: boolean
+        default: false
 
 concurrency:
   group: prospection
@@ -46,6 +50,7 @@ jobs:
         run: |
           DRY=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then DRY="?dry=1"; fi
+          if [ "${{ github.event.inputs.selftest }}" = "true" ]; then DRY="?selftest=1"; fi
           CODE=000
           for i in 1 2 3; do
             CODE=$(curl -s -o /tmp/p.json -w "%{http_code}" --max-time 290 -X POST \
