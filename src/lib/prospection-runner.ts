@@ -15,6 +15,7 @@ import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-emai
 import { isPlaceholderEmail, isProspectableLead } from "@/lib/prospect-email-guard";
 import { assertSendable, checkSendable, SendBlockedError } from "@/lib/prospect-send-gate";
 import { getSendBudget } from "@/lib/prospection-safety";
+import { PROSPECTION_FROM, PROSPECTION_REPLY_TO } from "@/lib/prospection-sender";
 import { sendAdminNotification } from "@/lib/gmail";
 
 // Ramp progressif (2026-07-13) : 5 → 12 par run × 2 runs/j = 24/j.
@@ -111,9 +112,9 @@ async function sendProspectingEmail(
   if (isPlaceholderEmail(to)) throw new Error(`Adresse non prospectable: ${to}`);
   await assertSendable({ to, website: ctx.website, businessName: ctx.businessName, subject, html });
   const { error } = await resend.emails.send({
-    from: "KAH Digital <contact@kah-digital.ch>",
+    from: PROSPECTION_FROM,
     to,
-    replyTo: "kahdigital42@gmail.com",
+    replyTo: PROSPECTION_REPLY_TO,
     subject: sanitizeEmailSubject(subject),
     html,
     text: textFallback || htmlToTextFallback(html),

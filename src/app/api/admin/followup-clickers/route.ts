@@ -10,7 +10,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getResendFromAddress } from "@/lib/mail";
+import { PROSPECTION_FROM } from "@/lib/prospection-sender";
 import { checkSendable } from "@/lib/prospect-send-gate";
 import { getSendBudget } from "@/lib/prospection-safety";
 
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
   const budget = await getSendBudget(supabase, limit);
   if (budget.paused) return NextResponse.json({ ok: true, sent: 0, paused: true, message: budget.reason });
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const from = getResendFromAddress();
+  const from = PROSPECTION_FROM;
   const cutoff = new Date(Date.now() - minHoursAgo * 3600 * 1000).toISOString();
 
   const { data: prospects } = await supabase

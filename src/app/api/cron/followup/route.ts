@@ -13,7 +13,7 @@ import { cleanUrl } from "@/lib/clean-url";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
-import { getResendFromAddress } from "@/lib/mail";
+import { PROSPECTION_FROM, PROSPECTION_REPLY_TO } from "@/lib/prospection-sender";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isPlaceholderEmail } from "@/lib/prospect-email-guard";
@@ -105,9 +105,9 @@ async function sendFollowup(to: string, subject: string, html: string, text: str
   if (isPlaceholderEmail(to)) throw new Error(`Adresse non prospectable: ${to}`);
   const resend = new Resend(process.env.RESEND_API_KEY!);
   const { error } = await resend.emails.send({
-    from: getResendFromAddress(),
+    from: PROSPECTION_FROM,
     to,
-    replyTo: "kahdigital42@gmail.com",
+    replyTo: PROSPECTION_REPLY_TO,
     subject,
     html,
     text,
