@@ -1,3 +1,4 @@
+import { EN_AGENCY_CITIES } from "./local-seo-en-cities";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiClock, FiMapPin, FiMessageCircle, FiZap } from "react-icons/fi";
@@ -17,7 +18,7 @@ export type EnCity = {
   faq: Array<{ q: string; a: string }>;
 };
 
-export const EN_CITY_PAGES: Record<string, EnCity> = {
+const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
   "ai-agency-london": {
     city: "London",
     country: "United Kingdom",
@@ -155,6 +156,8 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     ],
   },
 };
+
+export const EN_CITY_PAGES: Record<string, EnCity> = { ...BASE_EN_CITY_PAGES, ...EN_AGENCY_CITIES };
 
 type Props = { data: EnCity };
 
