@@ -1,4 +1,5 @@
 import { cleanUrl, safeSiteRedirect } from "@/lib/clean-url";
+import { isScannerClick } from "@/lib/prospection-safety";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
@@ -106,13 +107,14 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   let prospect: {
     id: string; businessName: string | null; website: string; email: string | null;
     sector: string | null; language: string | null; clickedAt: string | null; sentAt: string | null;
+    followup1SentAt: string | null; followup2SentAt: string | null; followup3SentAt: string | null;
   } | null = null;
 
   try {
     const supabase = getSupabase();
     const { data } = await supabase
       .from("prospects")
-      .select("id, businessName, website, email, sector, language, clickedAt, sentAt")
+      .select("id, businessName, website, email, sector, language, clickedAt, sentAt, followup1SentAt, followup2SentAt, followup3SentAt")
       .eq("id", id)
       .single();
     prospect = data;
@@ -120,10 +122,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     // Les filtres anti-spam des entreprises ouvrent tous les liens dans les secondes
     // qui suivent la réception : ce n'est pas un humain, on ne le compte pas.
     const ua = req.headers.get("user-agent") ?? "";
-    const sentMs = prospect?.sentAt ? Date.parse(prospect.sentAt) : NaN;
     const looksLikeScanner =
       /bot|crawler|spider|scanner|preview|headless|python-requests|curl\/|wget|go-http|java\/|mimecast|proofpoint|barracuda|mailinblack|safelinks|trend ?micro|symantec|forcepoint|cisco|sophos|fortinet/i.test(ua) ||
-      (Number.isFinite(sentMs) && Date.now() - sentMs < 120_000);
+      isScannerClick(Date.now(), [prospect?.sentAt, prospect?.followup1SentAt, prospect?.followup2SentAt, prospect?.followup3SentAt]);
 
     if (prospect && !prospect.clickedAt && !looksLikeScanner) {
       // Marquer "clicked" seulement — pas "replied" (réservé aux vrais formulaires soumis)

@@ -76,3 +76,14 @@ export async function getSendBudget(supabase: SupabaseClient, wantedThisRun: num
   const left = Math.max(0, cap - (sentToday ?? 0));
   return { cap, sentToday: sentToday ?? 0, allowed: Math.min(wantedThisRun, left), paused: false, reason: left === 0 ? `plafond journalier atteint (${cap})` : undefined };
 }
+
+// Un clic dans les 2 minutes qui suivent N'IMPORTE QUEL envoi (premier mail ou relance) vient d'un
+// scanner anti-spam d'entreprise, pas d'une personne.
+export const SCANNER_WINDOW_MS = 120_000;
+
+export function isScannerClick(nowMs: number, sentAts: (string | null | undefined)[]): boolean {
+  return sentAts.some((t) => {
+    const ms = t ? Date.parse(t) : NaN;
+    return Number.isFinite(ms) && nowMs - ms >= 0 && nowMs - ms < SCANNER_WINDOW_MS;
+  });
+}

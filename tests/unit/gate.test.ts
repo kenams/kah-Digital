@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { checkContent, checkSendable } from "../../src/lib/prospect-send-gate";
-import { evaluateBounces, startOfParisDayIso, dailyCap, DEFAULT_DAILY_CAP } from "../../src/lib/prospection-safety";
+import { evaluateBounces, startOfParisDayIso, dailyCap, DEFAULT_DAILY_CAP, isScannerClick } from "../../src/lib/prospection-safety";
 
 const ID = "3db78a00-a892-43a3-815e-2871e53e8958";
 const okHtml = `<p>${"Bonjour, un message tout à fait normal. ".repeat(5)}</p><a href="https://kah-digital.ch/api/unsubscribe?id=${ID}">Se désinscrire</a>`;
@@ -63,4 +63,14 @@ test("plafond journalier par défaut et surcharge", () => {
   process.env.PROSPECTION_DAILY_CAP = "3";
   assert.equal(dailyCap(), 3);
   delete process.env.PROSPECTION_DAILY_CAP;
+});
+
+test("clic de scanner : juste après le premier mail OU après une relance (régression sydneybusiness)", () => {
+  const now = Date.parse("2026-10-27T09:23:23Z");
+  const firstMail = "2026-10-20T10:00:00Z";
+  assert.equal(isScannerClick(now, [firstMail, "2026-10-27T09:23:05Z"]), true); // relance il y a 18 s
+  assert.equal(isScannerClick(now, [firstMail, null]), false); // clic humain, 7 jours après
+  assert.equal(isScannerClick(now, ["2026-10-27T09:22:00Z"]), true); // 83 s après l'envoi
+  assert.equal(isScannerClick(now, ["2026-10-27T09:10:00Z"]), false); // 13 min après : humain
+  assert.equal(isScannerClick(now, [undefined, null]), false);
 });

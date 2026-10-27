@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { isScannerClick } from "@/lib/prospection-safety";
 import { createHmac, timingSafeEqual } from "crypto";
 
 function getSupabase() {
@@ -75,11 +76,11 @@ export async function POST(req: NextRequest) {
     if (type === "email.clicked") {
       const { data: existing } = await supabase
         .from("prospects")
-        .select("clickedAt, sentAt")
+        .select("clickedAt, sentAt, followup1SentAt, followup2SentAt, followup3SentAt")
         .eq("id", prospectId)
         .single();
       // Les filtres anti-spam cliquent dans les secondes qui suivent la réception : pas un humain.
-      const tooFast = existing?.sentAt ? Date.now() - Date.parse(existing.sentAt) < 120_000 : false;
+      const tooFast = isScannerClick(Date.now(), [existing?.sentAt, existing?.followup1SentAt, existing?.followup2SentAt, existing?.followup3SentAt]);
       if (!existing?.clickedAt && !tooFast) {
         await supabase
           .from("prospects")
