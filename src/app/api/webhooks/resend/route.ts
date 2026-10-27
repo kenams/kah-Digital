@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
     if (!prospectId) return NextResponse.json({ ok: true });
 
     if (type === "email.bounced" || type === "email.complained") {
-      await supabase.from("prospects").update({ status: "rejected" }).eq("id", prospectId);
+      await supabase.from("prospects").update({ status: "rejected", bouncedAt: new Date().toISOString() }).eq("id", prospectId);
     }
 
     if (type === "email.opened") {
@@ -75,10 +75,12 @@ export async function POST(req: NextRequest) {
     if (type === "email.clicked") {
       const { data: existing } = await supabase
         .from("prospects")
-        .select("clickedAt")
+        .select("clickedAt, sentAt")
         .eq("id", prospectId)
         .single();
-      if (!existing?.clickedAt) {
+      // Les filtres anti-spam cliquent dans les secondes qui suivent la réception : pas un humain.
+      const tooFast = existing?.sentAt ? Date.now() - Date.parse(existing.sentAt) < 120_000 : false;
+      if (!existing?.clickedAt && !tooFast) {
         await supabase
           .from("prospects")
           .update({ clickedAt: new Date().toISOString() })

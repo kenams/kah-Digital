@@ -31,7 +31,9 @@ export async function POST(req: Request) {
   }
 
   try {
-    const result = await runProspectionBatch({ source: "cron", maxEmails: PROSPECTION_EMAILS_PER_RUN });
+    // ?dry=1 : simulation complète (découverte, audit, rédaction, contrôle) sans rien envoyer ni écrire.
+    const dryRun = new URL(req.url).searchParams.get("dry") === "1";
+    const result = await runProspectionBatch({ source: "cron", maxEmails: PROSPECTION_EMAILS_PER_RUN, dryRun });
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

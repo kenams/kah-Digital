@@ -12,12 +12,15 @@ import {
 } from "@/lib/prospection-batches";
 import { htmlToTextFallback, sanitizeEmailSubject } from "@/lib/prospection-email";
 import { isPlaceholderEmail, isProspectableLead } from "@/lib/prospect-email-guard";
+import { assertSendable, checkSendable, SendBlockedError } from "@/lib/prospect-send-gate";
+import { getSendBudget } from "@/lib/prospection-safety";
+import { sendAdminNotification } from "@/lib/gmail";
 
 // Ramp progressif (2026-07-13) : 5 → 12 par run × 2 runs/j = 24/j.
 // Warmup domaine sûr (open rate ~52% = réputation saine), sous le plafond
 // Resend Free (100/j). Palier suivant vers plus de volume = domaine d'envoi
 // dédié + plan Resend Pro (voir mémoire projet). Réversible : remettre 5.
-export const PROSPECTION_EMAILS_PER_RUN = 12;
+export const PROSPECTION_EMAILS_PER_RUN = 4; // peu mais sûr : 2 runs/jour, plafond journalier dans prospection-safety.ts
 
 const SCORE_THRESHOLD = 78; // Site trop bon = pas besoin de nous
 const SCORE_MIN = 20;       // Site mort = pas de budget
@@ -66,6 +69,16 @@ async function websiteAlreadySent(client: SupabaseClient, website: string, email
     .limit(1);
   if ((byDomain?.length ?? 0) > 0) return true;
 
+  // Domaine d'un prospect qui s'est désinscrit ou a rebondi : comparaison EXACTE du
+  // domaine racine (pas de sous-chaîne, pour ne pas balayer des domaines voisins).
+  const { data: rejectedSites } = await client
+    .from("prospects")
+    .select("website")
+    .ilike("website", `%${domain}%`)
+    .eq("status", "rejected")
+    .limit(20);
+  if ((rejectedSites ?? []).some((r) => extractRootDomain(String(r.website ?? "")) === domain)) return true;
+
   // Par e-mail (match EXACT) : empêche plusieurs séries sur la même adresse ET
   // re-prospecter une personne qui s'est désinscrite (status='rejected').
   if (email) {
@@ -91,9 +104,11 @@ async function sendProspectingEmail(
   subject: string | null | undefined,
   html: string,
   textFallback: string,
-  prospectId?: string,
+  prospectId: string | undefined,
+  ctx: { website: string | null; businessName: string | null },
 ) {
   if (isPlaceholderEmail(to)) throw new Error(`Adresse non prospectable: ${to}`);
+  await assertSendable({ to, website: ctx.website, businessName: ctx.businessName, subject, html });
   const { error } = await resend.emails.send({
     from: "KAH Digital <contact@kah-digital.ch>",
     to,
@@ -109,6 +124,17 @@ async function sendProspectingEmail(
 function rememberError(errors: string[], message: string) {
   errors.push(compactProspectionError(message));
 }
+
+export type DryRunItem = {
+  to: string;
+  website: string;
+  businessName: string;
+  subject: string;
+  problems: string[];
+  score: number;
+  verdict: string;
+  html: string;
+};
 
 async function sendBacklog(params: {
   supabase: SupabaseClient;
@@ -151,6 +177,7 @@ async function sendBacklog(params: {
         prospect.emailBody,
         "",
         prospect.id,
+        { website: prospect.website, businessName: prospect.businessName },
       );
 
       await supabase
@@ -163,6 +190,11 @@ async function sendBacklog(params: {
       console.log(`[prospection] backlog sent: ${prospect.businessName ?? prospect.website}`);
       await delayAfterSend();
     } catch (error) {
+      if (error instanceof SendBlockedError) {
+        console.log(`[prospection] backlog bloqué ${prospect.website}: ${error.reasons.join(", ")}`);
+        await supabase.from("prospects").update({ status: "no_email" }).eq("id", prospect.id);
+        continue;
+      }
       rememberError(
         errors,
         `Backlog ${prospect.website ?? prospect.id}: ${error instanceof Error ? error.message : String(error)}`
@@ -183,8 +215,10 @@ async function discoverAnalyzeAndSend(params: {
   alreadySent: number;
   siteUrl: string;
   deadline: number;
+  dryRun?: boolean;
+  preview?: DryRunItem[];
 }) {
-  const { supabase, resend, batchId, errors, maxEmails, alreadySent, siteUrl, deadline } = params;
+  const { supabase, resend, batchId, errors, maxEmails, alreadySent, siteUrl, deadline, dryRun, preview } = params;
   let sent = 0;
 
   if (alreadySent >= maxEmails) return { found: 0, sent };
@@ -208,6 +242,7 @@ async function discoverAnalyzeAndSend(params: {
       continue;
     }
 
+    let createdId: string | null = null;
     try {
       if (await websiteAlreadySent(supabase, lead.website, lead.email)) continue;
 
@@ -243,6 +278,26 @@ async function discoverAnalyzeAndSend(params: {
         continue;
       }
 
+      if (dryRun) {
+        // Simulation : on compose et on contrôle exactement comme en vrai, sans rien écrire ni envoyer.
+        const fakeId = "00000000-0000-4000-8000-000000000000";
+        const email = await composeProspectingEmail(lead, audit, siteUrl, fakeId);
+        const subject = sanitizeEmailSubject(email.subject);
+        const verdict = await checkSendable({ to: lead.email, website: lead.website, businessName: audit.businessName, subject, html: email.html });
+        preview?.push({
+          to: lead.email,
+          website: lead.website,
+          businessName: audit.businessName,
+          subject,
+          problems: audit.problems.map((p) => p.title),
+          score: audit.score,
+          verdict: verdict.ok ? "ENVOYABLE" : `BLOQUÉ: ${verdict.reasons.join(", ")}`,
+          html: email.html,
+        });
+        if (verdict.ok) sent++;
+        continue;
+      }
+
       const { data: prospect, error: insertError } = await supabase
         .from("prospects")
         .insert({
@@ -273,6 +328,7 @@ async function discoverAnalyzeAndSend(params: {
         continue;
       }
 
+      createdId = prospect.id as string;
       const email = await composeProspectingEmail(lead, audit, siteUrl, prospect.id as string);
       const emailSubject = sanitizeEmailSubject(email.subject);
 
@@ -281,7 +337,10 @@ async function discoverAnalyzeAndSend(params: {
         .update({ emailSubject, emailBody: email.html })
         .eq("id", prospect.id);
 
-      await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback, prospect.id as string);
+      await sendProspectingEmail(resend, lead.email, emailSubject, email.html, email.textFallback, prospect.id as string, {
+        website: lead.website,
+        businessName: audit.businessName,
+      });
       await supabase
         .from("prospects")
         .update({ status: "sent", sentAt: new Date().toISOString() })
@@ -292,6 +351,12 @@ async function discoverAnalyzeAndSend(params: {
       console.log(`[prospection] sent: ${lead.businessName} (${lead.email})`);
       await delayAfterSend();
     } catch (error) {
+      if (error instanceof SendBlockedError) {
+        // Bloqué par le contrôle final : rien n'est parti, on supprime la fiche créée pour ne pas la relancer.
+        console.log(`[prospection] bloqué ${lead.website}: ${error.reasons.join(", ")}`);
+        if (createdId) await supabase.from("prospects").delete().eq("id", createdId);
+        continue;
+      }
       rememberError(errors, `${lead.website}: ${error instanceof Error ? error.message : String(error)}`);
       await updateProspectionBatch(supabase, batchId, { found, sent: alreadySent + sent, errors });
     }
@@ -301,28 +366,46 @@ async function discoverAnalyzeAndSend(params: {
 }
 
 export async function runProspectionBatch(
-  options: { source?: "cron" | "manual"; maxEmails?: number; batchId?: string | null; slot?: ProspectionSlot } = {}
+  options: { source?: "cron" | "manual"; maxEmails?: number; batchId?: string | null; slot?: ProspectionSlot; dryRun?: boolean } = {}
 ) {
   if (!process.env.RESEND_API_KEY) {
     throw new Error("RESEND_API_KEY manquant");
   }
 
+  const dryRun = options.dryRun === true;
   const supabase = getSupabase();
   const resend = getResendClient();
   const slot = options.slot ?? getProspectionSlot();
-  const batchId = typeof options.batchId === "undefined" ? await createProspectionBatch(supabase, slot) : options.batchId;
+
+  // Volume : plafond journalier, interrupteur manuel, coupe-circuit sur les rebonds.
+  const budget = await getSendBudget(supabase, options.maxEmails ?? PROSPECTION_EMAILS_PER_RUN);
+  if (!dryRun && budget.allowed <= 0) {
+    console.warn(`[prospection] aucun envoi: ${budget.reason ?? "budget nul"}`);
+    if (budget.paused) {
+      void sendAdminNotification({
+        subject: "⏸️ Prospection en pause",
+        body: `<strong>La prospection ne part pas.</strong><br/>${budget.reason}<br/><br/>Plafond/jour : ${budget.cap} · envoyés aujourd'hui : ${budget.sentToday}`,
+      }).catch(console.error);
+    }
+    return { ok: true, slot, found: 0, sent: 0, backlogSent: 0, errors: 0, batchId: null, skipped: budget.reason ?? "budget nul", paused: budget.paused };
+  }
+
+  const batchId = dryRun ? null : typeof options.batchId === "undefined" ? await createProspectionBatch(supabase, slot) : options.batchId;
   const errors: string[] = [];
-  const maxEmails = options.maxEmails ?? PROSPECTION_EMAILS_PER_RUN;
+  const maxEmails = dryRun ? (options.maxEmails ?? PROSPECTION_EMAILS_PER_RUN) : budget.allowed;
   const runStartedAt = Date.now();
+  const preview: DryRunItem[] = [];
   let found = 0;
   let sent = 0;
   let backlogSent = 0;
 
-  console.log(`[prospection:${options.source ?? "cron"}] start slot=${slot} max=${maxEmails} batch=${batchId ?? "none"}`);
+  console.log(`[prospection:${options.source ?? "cron"}] start slot=${slot} max=${maxEmails} (jour ${budget.sentToday}/${budget.cap}) dry=${dryRun} batch=${batchId ?? "none"}`);
 
   try {
-    backlogSent = await sendBacklog({ supabase, resend, batchId, errors, maxEmails });
-    sent += backlogSent;
+    if (!dryRun) {
+      backlogSent = await sendBacklog({ supabase, resend, batchId, errors, maxEmails });
+      sent += backlogSent;
+    }
 
     const discovery = await discoverAnalyzeAndSend({
       supabase,
@@ -333,13 +416,31 @@ export async function runProspectionBatch(
       alreadySent: sent,
       siteUrl: getSiteUrl(),
       deadline: runStartedAt + 250_000,
+      dryRun,
+      preview,
     });
 
     found = discovery.found;
     sent += discovery.sent;
 
     await updateProspectionBatch(supabase, batchId, { found, sent, errors });
-    return { ok: true, slot, found, sent, backlogSent, errors: errors.length, batchId };
+
+    if (!dryRun && sent > 0) {
+      const { data: rows } = await supabase
+        .from("prospects")
+        .select("id, businessName, website, email, emailSubject")
+        .gte("sentAt", new Date(runStartedAt).toISOString())
+        .order("sentAt", { ascending: true });
+      const list = (rows ?? [])
+        .map((r) => `<li><strong>${r.businessName}</strong> — ${r.email}<br/><span style="color:#6b7280;">${r.emailSubject}</span> · <a href="${getSiteUrl()}/p/${r.id}">sa page</a></li>`)
+        .join("");
+      void sendAdminNotification({
+        subject: `📤 Prospection : ${sent} mail(s) envoyé(s)`,
+        body: `<strong>${sent} envoi(s)</strong> sur ${found} lead(s) étudiés — aujourd'hui ${budget.sentToday + sent}/${budget.cap}.<ul>${list}</ul>${errors.length ? `<p style="color:#b45309;">Avertissements : ${errors.join(" | ")}</p>` : ""}`,
+      }).catch(console.error);
+    }
+
+    return { ok: true, slot, found, sent, backlogSent, errors: errors.length, batchId, ...(dryRun ? { dryRun: true, preview } : {}) };
   } catch (error) {
     rememberError(errors, `Critical: ${error instanceof Error ? error.message : String(error)}`);
     await updateProspectionBatch(supabase, batchId, { found, sent, errors });

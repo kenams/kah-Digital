@@ -62,7 +62,7 @@ function hasMetaDescription(html: string): boolean {
 // Audit sans IA. Il lit le HTML brut et ne signale que ce qui est réellement
 // constaté ; s'il n'y a rien de vrai à dire, il renvoie null (le lead est écarté
 // plutôt que d'envoyer une accroche inventée).
-function ruleBasedAudit(lead: DiscoveredLead, page: FetchedPage): SiteAudit | null {
+export function ruleBasedAudit(lead: DiscoveredLead, page: FetchedPage): SiteAudit | null {
   if (!page.ok) return null;
   const html = page.html;
   const lower = html.toLowerCase();
@@ -146,7 +146,7 @@ export type SiteAudit = {
 
 import { safeFetch } from "@/lib/safe-fetch";
 
-type FetchedPage = { ok: boolean; html: string; text: string; https: boolean };
+export type FetchedPage = { ok: boolean; html: string; text: string; https: boolean };
 
 async function fetchWebsiteContent(url: string): Promise<FetchedPage> {
   const normalized = url.startsWith("http") ? url : `https://${url}`;

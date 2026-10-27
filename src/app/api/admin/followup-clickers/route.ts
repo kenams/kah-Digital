@@ -10,6 +10,8 @@ import { Resend } from "resend";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getResendFromAddress } from "@/lib/mail";
+import { checkSendable } from "@/lib/prospect-send-gate";
+import { getSendBudget } from "@/lib/prospection-safety";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
@@ -54,27 +56,27 @@ function buildClickerFollowup(p: Prospect): { subject: string; html: string } {
 
   const copy: Record<string, { subject: string; body: string; signoff: string }> = {
     fr: {
-      subject: `Re: ${name}`,
+      subject: `À propos de ${name}`,
       body: `Bonjour,\n\nJ'ai vu que vous avez consulté l'analyse de votre site.\n\nEst-ce que c'est quelque chose qui vous intéresse en ce moment, ou ce n'est pas le bon timing ?\n\nUne ligne suffit — je m'adapte à votre réponse.`,
       signoff: `KAH Digital\n${REPLY_TO}`,
     },
     en: {
-      subject: `Re: ${name}`,
+      subject: `About ${name}`,
       body: `Hello,\n\nI noticed you checked the analysis of your website.\n\nIs this something you're interested in right now, or is the timing not right?\n\nOne line is enough — I'll take it from there.`,
       signoff: `KAH Digital\n${REPLY_TO}`,
     },
     de: {
-      subject: `Re: ${name}`,
+      subject: `Zu ${name}`,
       body: `Hallo,\n\nIch habe gesehen, dass Sie die Analyse Ihrer Website angeschaut haben.\n\nIst das gerade ein Thema für Sie, oder passt der Zeitpunkt nicht?\n\nEine kurze Antwort genügt — ich passe mich an.`,
       signoff: `KAH Digital\n${REPLY_TO}`,
     },
     es: {
-      subject: `Re: ${name}`,
+      subject: `Sobre ${name}`,
       body: `Hola,\n\nVi que consultó el análisis de su sitio web.\n\n¿Es esto algo que le interesa ahora, o no es el momento adecuado?\n\nUna línea es suficiente — me adapto a su respuesta.`,
       signoff: `KAH Digital\n${REPLY_TO}`,
     },
     it: {
-      subject: `Re: ${name}`,
+      subject: `Su ${name}`,
       body: `Buongiorno,\n\nHo visto che ha consultato l'analisi del suo sito.\n\nÈ qualcosa che la interessa in questo momento, o il momento non è giusto?\n\nUna riga basta — mi adatto alla sua risposta.`,
       signoff: `KAH Digital\n${REPLY_TO}`,
     },
@@ -89,6 +91,7 @@ function buildClickerFollowup(p: Prospect): { subject: string; html: string } {
 <p style="font-size:15px;color:#111;line-height:1.7;white-space:pre-line;">${htmlBody}</p>
 <p style="margin-top:16px;font-size:12px;color:#9ca3af;">
   <a href="${prospectPageUrl}" style="color:#9ca3af;">Voir l'analyse →</a>
+  &nbsp;·&nbsp; <a href="${SITE_URL}/api/unsubscribe?id=${p.id}" style="color:#9ca3af;">Se désinscrire</a>
 </p>
 </div>
 </body></html>`;
@@ -102,7 +105,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json().catch(() => ({})) as { limit?: number; minHoursAgo?: number };
-  const limit = Math.min(body.limit ?? 20, 50);
+  const limit = Math.min(body.limit ?? 3, 3); // peu mais sûr : 3 max par passage
   const minHoursAgo = body.minHoursAgo ?? 24; // ne pas relancer trop vite
 
   if (!process.env.RESEND_API_KEY) {
@@ -110,6 +113,8 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = getSupabase();
+  const budget = await getSendBudget(supabase, limit);
+  if (budget.paused) return NextResponse.json({ ok: true, sent: 0, paused: true, message: budget.reason });
   const resend = new Resend(process.env.RESEND_API_KEY);
   const from = getResendFromAddress();
   const cutoff = new Date(Date.now() - minHoursAgo * 3600 * 1000).toISOString();
@@ -121,10 +126,11 @@ export async function POST(req: NextRequest) {
     .is("repliedAt", null)
     .is("followup3SentAt", null) // pas encore eu la relance J+10
     .neq("status", "rejected")
+    .is("bouncedAt", null)
     .not("email", "is", null)
     .lte("clickedAt", cutoff) // a cliqué il y a plus de X heures
     .order("clickedAt", { ascending: false })
-    .limit(limit);
+    .limit(30);
 
   if (!prospects?.length) {
     return NextResponse.json({ ok: true, sent: 0, message: "Aucun cliqueur éligible" });
@@ -135,8 +141,17 @@ export async function POST(req: NextRequest) {
   const results: Array<{ email: string; ok: boolean; error?: string }> = [];
 
   for (const p of prospects as Prospect[]) {
+    if (sent >= limit) break;
     try {
+      // Un clic dans les 2 minutes qui suivent l'envoi vient d'un scanner anti-spam, pas d'une personne.
+      if (p.sentAt && Date.parse(p.clickedAt) - Date.parse(p.sentAt) < 120_000) continue;
+
       const { subject, html } = buildClickerFollowup(p);
+      const verdict = await checkSendable({ to: p.email, website: p.website, businessName: p.businessName ?? p.website, subject, html });
+      if (!verdict.ok) {
+        results.push({ email: p.email, ok: false, error: `bloqué: ${verdict.reasons.join(", ")}` });
+        continue;
+      }
       await resend.emails.send({
         from,
         to: [p.email],

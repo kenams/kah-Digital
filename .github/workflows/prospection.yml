@@ -3,6 +3,10 @@ name: Prospection KAH Digital
 # Le plan Vercel Hobby limite les crons (2 max, 1x/jour). On pilote donc
 # la prospection depuis GitHub Actions (gratuit, illimité).
 # Cron GitHub = UTC. Jours ouvrés, matin + apres-midi + relances.
+#
+# Sûreté : aucun envoi ne part si les tests (ciblage, audit, contrôle final,
+# coupe-circuit) ne passent pas. Plafond journalier, interrupteur
+# PROSPECTION_PAUSED=1 et coupe-circuit rebonds sont gérés côté serveur.
 
 on:
   schedule:
@@ -11,32 +15,60 @@ on:
     - cron: "0 10 * * *"      # relances ~12h Paris
     - cron: "0 17 * * *"      # relances ~19h Paris
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simulation : tout est étudié et contrôlé, rien n'est envoyé"
+        type: boolean
+        default: false
 
 concurrency:
   group: prospection
   cancel-in-progress: false
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run verify
+
   run:
+    needs: verify
     runs-on: ubuntu-latest
     steps:
       - name: Prospection (nouveaux prospects)
         if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["10 8 * * 1-5","10 13 * * 1-5"]'), github.event.schedule)
         run: |
+          DRY=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then DRY="?dry=1"; fi
+          CODE=000
           for i in 1 2 3; do
             CODE=$(curl -s -o /tmp/p.json -w "%{http_code}" --max-time 290 -X POST \
               -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-              https://kah-digital.ch/api/cron/prospection || echo 000)
-            echo "prospection run $i -> $CODE"; head -c 500 /tmp/p.json; echo
+              "https://kah-digital.ch/api/cron/prospection$DRY" || echo 000)
+            echo "prospection run $i -> $CODE"; head -c 600 /tmp/p.json; echo
             [ "$CODE" = "200" ] && break
             sleep 15
           done
+          [ "$CODE" = "200" ] || { echo "::error::Prospection KO (HTTP $CODE)"; exit 1; }
+          jq -e '.ok == true' /tmp/p.json >/dev/null || { echo "::error::Réponse prospection ok != true"; exit 1; }
+          if jq -e '.paused == true' /tmp/p.json >/dev/null; then
+            echo "::warning::Prospection en pause : $(jq -r '.skipped' /tmp/p.json)"
+          fi
 
       - name: Relances (followup)
         if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["0 10 * * *","0 17 * * *"]'), github.event.schedule)
         run: |
+          DRY=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then DRY="?dry=1"; fi
           CODE=$(curl -s -o /tmp/f.json -w "%{http_code}" --max-time 290 -X POST \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            https://kah-digital.ch/api/cron/followup || echo 000)
-          echo "followup -> $CODE"; head -c 500 /tmp/f.json; echo
-          [ "$CODE" = "200" ]
+            "https://kah-digital.ch/api/cron/followup$DRY" || echo 000)
+          echo "followup -> $CODE"; head -c 600 /tmp/f.json; echo
+          [ "$CODE" = "200" ] || { echo "::error::Relances KO (HTTP $CODE)"; exit 1; }
+          jq -e '.ok == true' /tmp/f.json >/dev/null || { echo "::error::Réponse relances ok != true"; exit 1; }
