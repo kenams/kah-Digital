@@ -313,7 +313,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
             <div className="absolute inset-0 bg-gradient-to-br from-[#0c0f2c]/60 via-black/10 to-[#1f1244]/70" />
             <Image
               src="/mockups/global-dashboard.svg"
-              alt="Aperçu dashboard Kah-Digital"
+              alt="Aperçu dashboard KAH Digital Studio"
               width={640}
               height={320}
               className="relative h-32 w-full object-cover opacity-80"
@@ -322,7 +322,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
           </div>
           <div className="mt-4 flex items-center gap-3">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/40">
-              <Image src="/favicon.svg" alt="Kah-Digital" width={20} height={20} />
+              <Image src="/favicon.svg" alt="KAH Digital Studio" width={20} height={20} />
             </span>
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/60">Admin</p>

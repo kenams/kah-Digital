@@ -140,7 +140,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "CLUTCH",
     type: "App / financial challenges between friends",
     tagline:
-      "A KAH-Digital app to put real money on your sports predictions — World Cup 2026, friend groups, live leaderboard.",
+      "A KAH Digital Studio app to put real money on your sports predictions — World Cup 2026, friend groups, live leaderboard.",
     shortDescription:
       "Financial challenges between friends: real stake, match-by-match predictions, live ranking, Stripe integrated, Android APK and PWA.",
     description:
@@ -184,7 +184,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Music label / production",
-    tagline: "A KAH-Digital build for an independent label shaped around artists, releases, and image.",
+    tagline: "A KAH Digital Studio build for an independent label shaped around artists, releases, and image.",
     shortDescription:
       "Premium label website with real sections for Label, Artists, Releases, Clips, Events, Networks, and Contact.",
     description:
@@ -219,7 +219,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "MineAlert",
     type: "SaaS / mining intelligence",
     tagline:
-      "A KAH-Digital build focused on minerals, price tracking, market news, and user alerts.",
+      "A KAH Digital Studio build focused on minerals, price tracking, market news, and user alerts.",
     shortDescription:
       "Business dashboard, Supabase auth, watchlist, alerts, live scraping, and Vercel deployment for a private beta-ready product.",
     description:
@@ -236,7 +236,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       "Vercel",
     ],
     result:
-      "A live mining intelligence SaaS, automated, easier to read, and already usable as a KAH-Digital product reference.",
+      "A live mining intelligence SaaS, automated, easier to read, and already usable as a KAH Digital Studio product reference.",
     timeline: "3 weeks",
     deliverables: [
       "Product direction and dashboard UX",
@@ -270,7 +270,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "TechCash Academy",
     type: "Training platform / Stripe checkout",
     tagline:
-      "A KAH-Digital platform built to sell digital training products with a catalog, member area, and product-based access.",
+      "A KAH Digital Studio platform built to sell digital training products with a catalog, member area, and product-based access.",
     shortDescription:
       "Multi-product catalog, Supabase auth, Stripe checkout, member dashboard, and text, PDF, resource, video, or coming-soon content.",
     description:
@@ -314,9 +314,9 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     slug: "castly",
     name: "Castly",
     type: "SaaS / Casting platform",
-    tagline: "A KAH-Digital platform connecting recruiters and artists in a few clicks — no agency, no waiting.",
+    tagline: "A KAH Digital Studio platform connecting recruiters and artists in a few clicks — no agency, no waiting.",
     shortDescription: "Artist / recruiter matching with a credit system, live Stripe, Supabase auth and verified profiles.",
-    description: "Castly is a platform designed by KAH-Digital to modernise independent casting. Recruiters post their offers, artists apply with their profile, and contact is unlocked via a credit system. No subscription, no agency — just the right profile at the right time.",
+    description: "Castly is a platform designed by KAH Digital Studio to modernise independent casting. Recruiters post their offers, artists apply with their profile, and contact is unlocked via a credit system. No subscription, no agency — just the right profile at the right time.",
     challenge: "Build a two-sided marketplace (artists / recruiters) with simple credit-based monetisation, a premium design experience, and a reliable backend for auth, payments and matching.",
     solution: "Full-stack Next.js, Supabase for auth and DB, live Stripe for credit packs (5 / 20 / 50 credits), full-bleed hero video, scrolled transparent nav, testimonials and integrated FAQ.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],

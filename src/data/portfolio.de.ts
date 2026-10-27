@@ -48,11 +48,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "CLUTCH",
     type: "App / Finanzielle Challenges zwischen Freunden",
     tagline:
-      "Eine KAH-Digital App, um echtes Geld auf Sportprognosen zu setzen — WM 2026, Freundesgruppen, Live-Rangliste.",
+      "Eine KAH Digital Studio App, um echtes Geld auf Sportprognosen zu setzen — WM 2026, Freundesgruppen, Live-Rangliste.",
     shortDescription:
       "Finanzielle Challenges zwischen Freunden: echter Einsatz, Spiel-für-Spiel-Prognosen, Live-Ranking, Stripe, Android APK und PWA.",
     description:
-      "CLUTCH ist ein von KAH-Digital entwickeltes Produkt. Die Idee: Sportprognosen zwischen Freunden mit echten Einsätzen spannender machen. Jeder Teilnehmer zahlt eine Kaution, tippt jeden Match und sammelt Punkte (3 für Ergebnis, 1 für Sieger). Am Ende gewinnt der Beste den Topf. Ohne Wettanbieter — 100% unter Freunden.",
+      "CLUTCH ist ein von KAH Digital Studio entwickeltes Produkt. Die Idee: Sportprognosen zwischen Freunden mit echten Einsätzen spannender machen. Jeder Teilnehmer zahlt eine Kaution, tippt jeden Match und sammelt Punkte (3 für Ergebnis, 1 für Sieger). Am Ende gewinnt der Beste den Topf. Ohne Wettanbieter — 100% unter Freunden.",
     challenge:
       "Ein wettbewerbsfähiges Erlebnis schaffen, das jeden WM-2026-Match intensiver macht — mit echtem Geld, aber ohne Glücksspiellizenz.",
     solution:
@@ -92,11 +92,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     slug: "kah-prod",
     name: "KAH Prod",
     type: "Musiklabel / Produktion",
-    tagline: "Eine KAH-Digital Realisierung fuer ein unabhaengiges Label mit Fokus auf Bild, Artists und Releases.",
+    tagline: "Eine KAH Digital Studio Realisierung fuer ein unabhaengiges Label mit Fokus auf Bild, Artists und Releases.",
     shortDescription:
       "Premium-Website fuer ein Label mit klaren Bereichen fuer Label, Artists, Releases, Clips, Events, Netzwerke und Kontakt.",
     description:
-      "KAH Prod gehoert zu den Projekten, die von KAH-Digital entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identitaet, Artists, Releases, Clips, Events und Business-Kontakte in einem staerkeren visuellen Rahmen zu praesentieren.",
+      "KAH Prod gehoert zu den Projekten, die von KAH Digital Studio entwickelt wurden. Die Live-Website schafft eine klare Basis, um Identitaet, Artists, Releases, Clips, Events und Business-Kontakte in einem staerkeren visuellen Rahmen zu praesentieren.",
     challenge:
       "Dem Label eine staerkere visuelle Praesenz und eine klarere Struktur geben, damit Identitaet, Artists und Releases ohne Informationschaos und mit hochwertiger Wahrnehmung praesentiert werden.",
     solution:
@@ -127,11 +127,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "MineAlert",
     type: "SaaS / Mining Intelligence",
     tagline:
-      "Ein KAH-Digital Produkt fuer Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
+      "Ein KAH Digital Studio Produkt fuer Mineralien, Preisbeobachtung, Marktnews und Nutzer-Alerts.",
     shortDescription:
       "Business-Dashboard, Supabase Auth, Watchlist, Alerts, Live-Scraping und Vercel-Deployment fuer ein produktionsnahes Beta-Setup.",
     description:
-      "MineAlert gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenfuehrt.",
+      "MineAlert gehoert zu den Produkten, die von KAH Digital Studio entwickelt wurden. Ziel war ein klares Mining-Intelligence-Cockpit, das Preise, News-Signale, Watchlists und Alerts in einer besser lesbaren und nutzbaren Oberfläche zusammenfuehrt.",
     challenge:
       "Ein Intelligence-Tool entwickeln, das klar, schnell erfassbar und technisch stabil genug bleibt, um echte Datenquellen, Authentifizierung und Monitoring aufzunehmen, ohne unruhig zu wirken.",
     solution:
@@ -144,7 +144,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       "Vercel",
     ],
     result:
-      "Ein live erreichbares Mining-Intelligence-SaaS, automatisiert, lesbarer aufgebaut und bereits als KAH-Digital Referenz nutzbar.",
+      "Ein live erreichbares Mining-Intelligence-SaaS, automatisiert, lesbarer aufgebaut und bereits als KAH Digital Studio Referenz nutzbar.",
     timeline: "3 Wochen",
     deliverables: [
       "Produktdirection und Dashboard-UX",
@@ -178,11 +178,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "TechCash Academy",
     type: "Trainingsplattform / Stripe Checkout",
     tagline:
-      "Eine KAH-Digital Plattform, um digitale Trainingsangebote mit Katalog, Mitgliederbereich und produktbezogenem Zugang zu verkaufen.",
+      "Eine KAH Digital Studio Plattform, um digitale Trainingsangebote mit Katalog, Mitgliederbereich und produktbezogenem Zugang zu verkaufen.",
     shortDescription:
       "Multi-Produkt-Katalog, Supabase Auth, Stripe Checkout, Member-Dashboard sowie Text-, PDF-, Ressourcen-, Video- und Coming-soon-Inhalte.",
     description:
-      "TechCash Academy gehoert zu den Produkten, die von KAH-Digital entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
+      "TechCash Academy gehoert zu den Produkten, die von KAH Digital Studio entwickelt wurden. Die Plattform wurde als saubere Basis aufgebaut, um mehrere digitale Trainingsangebote zu verkaufen, den Katalog klar zu strukturieren, vor dem Checkout Vertrauen aufzubauen und den Zugang pro Produkt freizuschalten.",
     challenge:
       "Eine klarere Academy-Plattform aufbauen, die mehrere Angebote ohne unruhigen Funnel verkaufen kann und gleichzeitig einen lesbaren Mitgliederbereich, einen stabilen Checkout und eine einfache, erweiterbare Zugangslogik behaelt.",
     solution:
@@ -221,7 +221,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     type: "SaaS / Casting-Plattform",
     tagline: "Eine KAH-Digital-Plattform, die Recruiter und Künstler in wenigen Klicks verbindet — ohne Agentur, ohne Wartezeit.",
     shortDescription: "Künstler-/Recruiter-Matching mit Kreditsystem, Stripe live, Supabase-Auth und verifizierten Profilen.",
-    description: "Castly ist eine von KAH-Digital entwickelte Plattform zur Modernisierung des unabhängigen Castings. Recruiter veröffentlichen ihre Angebote, Künstler bewerben sich mit ihrem Profil, und der Kontakt wird über ein Kreditsystem freigeschaltet.",
+    description: "Castly ist eine von KAH Digital Studio entwickelte Plattform zur Modernisierung des unabhängigen Castings. Recruiter veröffentlichen ihre Angebote, Künstler bewerben sich mit ihrem Profil, und der Kontakt wird über ein Kreditsystem freigeschaltet.",
     challenge: "Einen zweiseitigen Marktplatz (Künstler / Recruiter) mit einfacher kreditbasierter Monetarisierung, einem Premium-Design und einem zuverlässigen Backend für Auth, Zahlungen und Matching aufbauen.",
     solution: "Full-Stack Next.js, Supabase für Auth und DB, Stripe live für Kreditpakete (5 / 20 / 50 Credits), Vollbild-Hero-Video, transparente scrollende Nav, Testimonials und FAQ.",
     stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],

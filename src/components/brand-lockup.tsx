@@ -43,6 +43,7 @@ export function BrandLockup({
           <span>KAH</span>
           <span className="mx-[0.16em] inline-block align-middle text-[#d0a762]">-</span>
           <span className={theme === "dark" ? "text-[#dfc18a]" : "text-[#9b6f36]"}>DIGITAL</span>
+          <span className={`ml-[0.5em] align-middle text-[0.5em] tracking-[0.3em] ${theme === "dark" ? "text-[#dfc18a]" : "text-[#9b6f36]"}`}>STUDIO</span>
         </p>
         {subtitle ? (
           <p className={`mt-1 text-[10px] font-medium uppercase tracking-[0.34em] ${subtitleClassName}`}>

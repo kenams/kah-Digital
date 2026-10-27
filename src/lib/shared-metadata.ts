@@ -122,7 +122,7 @@ export function buildPageMetadata({
       siteName: "KAH Digital Studio",
       images: [
         {
-          url: "/og-KAH Digital Studio.png",
+          url: "/og-kah-digital.png",
           width: 1200,
           height: 630,
           alt: content.openGraphAlt,
@@ -133,7 +133,7 @@ export function buildPageMetadata({
       card: "summary_large_image",
       title: sanitizePageTitle(title),
       description,
-      images: ["/og-KAH Digital Studio.png"],
+      images: ["/og-kah-digital.png"],
     },
   };
 }
@@ -178,7 +178,7 @@ export function getSiteMetadata(locale: Locale): Metadata {
       siteName: "KAH Digital Studio",
       images: [
         {
-          url: "/og-KAH Digital Studio.png",
+          url: "/og-kah-digital.png",
           width: 1200,
           height: 630,
           alt: content.openGraphAlt,
@@ -189,7 +189,7 @@ export function getSiteMetadata(locale: Locale): Metadata {
       card: "summary_large_image",
       title: "KAH Digital Studio",
       description: content.twitterDescription,
-      images: ["/og-KAH Digital Studio.png"],
+      images: ["/og-kah-digital.png"],
     },
   };
 }
@@ -217,7 +217,7 @@ export const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "KAH Digital Studio",
-  image: `${SITE_URL}/og-KAH Digital Studio.png`,
+  image: `${SITE_URL}/og-kah-digital.png`,
   url: SITE_URL,
   telephone: companyConfig.phone,
   address: {

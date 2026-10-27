@@ -161,7 +161,7 @@ type ProjectReplyProfile = {
   full: string;
 };
 
-const signatureLines = ["--", "Kah-Digital", brandContact.email, brandContact.phone].filter(Boolean);
+const signatureLines = ["--", "KAH Digital Studio", brandContact.email, brandContact.phone].filter(Boolean);
 const signatureBlock = `\n\n${signatureLines.join("\n")}`;
 
 const getGreeting = (name?: string) => {
@@ -442,7 +442,7 @@ const replyTemplates: ReplyTemplate[] = [
   {
     id: "feasible",
     label: "Faisable",
-    subject: (item) => `Votre demande Kah-Digital - ${item.projectType ?? "projet"}`,
+    subject: (item) => `Votre demande KAH Digital Studio - ${item.projectType ?? "projet"}`,
     body: (item, ctx) => {
       const greeting = getGreeting(item.name);
       const projectLabel = item.projectType ?? "votre projet";
@@ -465,7 +465,7 @@ const replyTemplates: ReplyTemplate[] = [
   {
     id: "need-info",
     label: "Infos manquantes",
-    subject: () => "Votre demande Kah-Digital - infos manquantes",
+    subject: () => "Votre demande KAH Digital Studio - infos manquantes",
     body: (item, ctx) => {
       const greeting = getGreeting(item.name);
       const projectLabel = item.projectType ?? "votre projet";
@@ -483,7 +483,7 @@ const replyTemplates: ReplyTemplate[] = [
   {
     id: "budget-low",
     label: "Budget trop bas",
-    subject: () => "Votre demande Kah-Digital - budget à ajuster",
+    subject: () => "Votre demande KAH Digital Studio - budget à ajuster",
     body: (item, ctx) => {
       const greeting = getGreeting(item.name);
       const projectLabel = item.projectType ?? "votre projet";
@@ -505,7 +505,7 @@ const replyTemplates: ReplyTemplate[] = [
   {
     id: "changes",
     label: "Ajustements proposés",
-    subject: () => "Votre demande Kah-Digital - proposition d'ajustement",
+    subject: () => "Votre demande KAH Digital Studio - proposition d'ajustement",
     body: (item, ctx) => {
       const greeting = getGreeting(item.name);
       const projectLabel = item.projectType ?? "votre projet";
@@ -528,7 +528,7 @@ const replyTemplates: ReplyTemplate[] = [
   {
     id: "not-feasible",
     label: "Non faisable",
-    subject: () => "Votre demande Kah-Digital - retour",
+    subject: () => "Votre demande KAH Digital Studio - retour",
     body: (item, ctx) => {
       const greeting = getGreeting(item.name);
       const notes = cleanValue(ctx.notes);

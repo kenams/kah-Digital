@@ -171,7 +171,7 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "CLUTCH",
     type: "Application / défis financiers entre amis",
     tagline:
-      "Une application KAH-Digital pour mettre de l'argent réel sur ses pronostics sportifs — CDM 2026, groupes d'amis, classement live.",
+      "Une application KAH Digital Studio pour mettre de l'argent réel sur ses pronostics sportifs — CDM 2026, groupes d'amis, classement live.",
     shortDescription:
       "Défis financiers entre amis : caution réelle, pronostics match par match, classement en temps réel, Stripe intégré, APK Android et PWA.",
     description:
@@ -217,7 +217,7 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "KAH Prod",
     type: "Label / production musicale",
     tagline:
-      "Une realisation KAH-Digital pour un label independant construit autour de l'image, des artistes et des sorties.",
+      "Une realisation KAH Digital Studio pour un label independant construit autour de l'image, des artistes et des sorties.",
     shortDescription:
       "Site label premium avec navigation Le Label, Artistes, Sorties, Clips, Evenements, Reseaux et Contact.",
     description:
@@ -262,7 +262,7 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "MineAlert",
     type: "SaaS / veille miniere",
     tagline:
-      "Une application KAH-Digital de veille sur les minerais, les prix, les actualites et les alertes utilisateur.",
+      "Une application KAH Digital Studio de veille sur les minerais, les prix, les actualites et les alertes utilisateur.",
     shortDescription:
       "Dashboard metiers, auth Supabase, watchlist, alertes, scraping live, et deploiement Vercel pour un produit exploitable en beta privee.",
     description:
@@ -307,7 +307,7 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "TechCash Academy",
     type: "Plateforme de formation / checkout Stripe",
     tagline:
-      "Une plateforme KAH-Digital pour vendre des formations digitales avec catalogue, espace membre et acces par produit.",
+      "Une plateforme KAH Digital Studio pour vendre des formations digitales avec catalogue, espace membre et acces par produit.",
     shortDescription:
       "Catalogue multi-produits, auth Supabase, checkout Stripe, dashboard membre et contenus texte, PDF, ressources, video ou a venir.",
     description:
@@ -352,11 +352,11 @@ export const portfolioProjects: PortfolioProject[] = [
     name: "Castly",
     type: "SaaS / Plateforme de casting",
     tagline:
-      "Une plateforme KAH-Digital qui connecte recruteurs et artistes en quelques clics — sans agence, sans attente.",
+      "Une plateforme KAH Digital Studio qui connecte recruteurs et artistes en quelques clics — sans agence, sans attente.",
     shortDescription:
       "Matching artistes / recruteurs avec système de crédits, Stripe live, auth Supabase et profils vérifiés.",
     description:
-      "Castly est une plateforme conçue par KAH-Digital pour moderniser le casting indépendant. Les recruteurs publient leurs offres, les artistes postulent avec leur profil, et le contact se débloque via un système de crédits. Pas d'abonnement, pas d'agence — juste le bon profil au bon moment.",
+      "Castly est une plateforme conçue par KAH Digital Studio pour moderniser le casting indépendant. Les recruteurs publient leurs offres, les artistes postulent avec leur profil, et le contact se débloque via un système de crédits. Pas d'abonnement, pas d'agence — juste le bon profil au bon moment.",
     challenge:
       "Créer un marché biface (artistes / recruteurs) avec une monétisation simple par crédits, une expérience premium côté design, et un backend fiable pour gérer l'auth, les paiements et le matching.",
     solution:

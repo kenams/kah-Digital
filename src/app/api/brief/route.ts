@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
 
     const summary = buildSummary(fields, locale);
     const subject =
-      locale === "en" ? "Your Kah-Digital project brief" : "Votre cahier des charges Kah-Digital";
+      locale === "en" ? "Your KAH Digital Studio project brief" : "Votre cahier des charges KAH Digital Studio";
     const text =
       locale === "en"
         ? `Hello,\n\nHere is your filled project brief. We will review it and get back to you shortly.\n\n${summary}\n\nOptional: premium AI modules are available (automation, chatbot, scoring).\n\nBest,\nKah-Digital`
