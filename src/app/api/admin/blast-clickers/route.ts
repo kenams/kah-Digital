@@ -9,6 +9,9 @@ import { Resend } from "resend";
 import { sendTelegramAlert } from "@/lib/notify";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { checkSendable } from "@/lib/prospect-send-gate";
+import { getSendBudget, isScannerClick } from "@/lib/prospection-safety";
+import { PROSPECTION_FROM } from "@/lib/prospection-sender";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -146,14 +149,20 @@ export async function POST(req: Request) {
   const sb = getSupabase();
   const resend = new Resend(process.env.RESEND_API_KEY!);
 
+  // Peu mais sûr : 3 envois maximum par passage, interrupteur et coupe-circuit rebonds respectés.
+  const MAX_PER_PASS = 3;
+  const budget = await getSendBudget(sb, MAX_PER_PASS);
+  if (budget.paused) return NextResponse.json({ ok: true, sent: 0, paused: true, message: budget.reason });
+
   // Prospects qui ont cliqué mais pas répondu + pas encore "hot"
   const { data: clickers } = await sb
     .from("prospects")
-    .select("id, businessName, website, email, language, clickedAt")
+    .select("id, businessName, website, email, language, clickedAt, sentAt, followup1SentAt, followup2SentAt, followup3SentAt")
     .not("clickedAt", "is", null)
     .not("status", "in", '("replied","rejected","hot","unsubscribed")')
+    .is("bouncedAt", null)
     .order("clickedAt", { ascending: false })
-    .limit(20);
+    .limit(30);
 
   if (!clickers?.length) {
     return NextResponse.json({ ok: true, sent: 0, message: "Aucun cliqueur à relancer" });
@@ -163,7 +172,10 @@ export async function POST(req: Request) {
   const failed: string[] = [];
 
   for (const p of clickers) {
+    if (sent >= MAX_PER_PASS) break;
     if (!p.email) continue;
+    // Clic dans les 2 minutes après un envoi = scanner anti-spam, pas une personne.
+    if (isScannerClick(Date.parse(p.clickedAt), [p.sentAt, p.followup1SentAt, p.followup2SentAt, p.followup3SentAt])) continue;
     const lang = p.language ?? "fr";
     const copy = COPY[lang] ?? COPY.fr;
     const name = p.businessName ?? p.website ?? "votre entreprise";
@@ -171,8 +183,13 @@ export async function POST(req: Request) {
     const html = buildHtml(body, lang, p.id);
 
     try {
+      const verdict = await checkSendable({ to: p.email, website: p.website, businessName: name, subject: copy.subject(name), html });
+      if (!verdict.ok) {
+        failed.push(`${p.email}: bloqué (${verdict.reasons.join(", ")})`);
+        continue;
+      }
       const { error } = await resend.emails.send({
-        from: "KAH Digital <contact@kah-digital.ch>",
+        from: PROSPECTION_FROM,
         to: p.email,
         replyTo: "kahdigital42@gmail.com",
         subject: copy.subject(name),
@@ -202,6 +219,8 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true, sent, failed });
 }
 
+// GET ne déclenche JAMAIS d'envoi (un simple aperçu de lien ou un rechargement ne doit pas envoyer de mails).
 export async function GET(req: Request) {
-  return POST(req);
+  if (!(await authorize(req))) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  return NextResponse.json({ ok: true, info: "POST pour lancer (3 envois maximum par passage)" });
 }

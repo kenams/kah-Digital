@@ -12,7 +12,7 @@ function getSupabase() {
 
 async function verifySignature(req: NextRequest, rawBody: string): Promise<boolean> {
   const secret = process.env.RESEND_WEBHOOK_SECRET;
-  if (!secret) return true; // pas de secret configuré → on accepte (à configurer)
+  if (!secret) return false; // échec fermé : sans secret configuré, aucun webhook n'est accepté
 
   const svixId        = req.headers.get("svix-id");
   const svixTimestamp = req.headers.get("svix-timestamp");
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     const { type, data } = body;
 
     const prospectId = data?.tags?.prospect_id;
-    if (!prospectId) return NextResponse.json({ ok: true });
+    if (!prospectId || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(prospectId)) return NextResponse.json({ ok: true });
 
     if (type === "email.bounced" || type === "email.complained") {
       await supabase.from("prospects").update({ status: "rejected", bouncedAt: new Date().toISOString() }).eq("id", prospectId);

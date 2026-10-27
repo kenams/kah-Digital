@@ -12,7 +12,7 @@ import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { PROSPECTION_FROM } from "@/lib/prospection-sender";
 import { checkSendable } from "@/lib/prospect-send-gate";
-import { getSendBudget } from "@/lib/prospection-safety";
+import { getSendBudget, isScannerClick } from "@/lib/prospection-safety";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
@@ -47,6 +47,9 @@ type Prospect = {
   language: string | null;
   clickedAt: string;
   sentAt: string | null;
+  followup1SentAt: string | null;
+  followup2SentAt: string | null;
+  followup3SentAt: string | null;
 };
 
 // Email de relance ultra-court, texte simple, 1 seule question
@@ -122,7 +125,7 @@ export async function POST(req: NextRequest) {
 
   const { data: prospects } = await supabase
     .from("prospects")
-    .select("id, businessName, website, email, sector, language, clickedAt, sentAt")
+    .select("id, businessName, website, email, sector, language, clickedAt, sentAt, followup1SentAt, followup2SentAt, followup3SentAt")
     .not("clickedAt", "is", null)
     .is("repliedAt", null)
     .is("followup3SentAt", null) // pas encore eu la relance J+10
@@ -144,8 +147,8 @@ export async function POST(req: NextRequest) {
   for (const p of prospects as Prospect[]) {
     if (sent >= limit) break;
     try {
-      // Un clic dans les 2 minutes qui suivent l'envoi vient d'un scanner anti-spam, pas d'une personne.
-      if (p.sentAt && Date.parse(p.clickedAt) - Date.parse(p.sentAt) < 120_000) continue;
+      // Un clic dans les 2 minutes qui suivent un envoi (mail ou relance) vient d'un scanner anti-spam.
+      if (isScannerClick(Date.parse(p.clickedAt), [p.sentAt, p.followup1SentAt, p.followup2SentAt, p.followup3SentAt])) continue;
 
       const { subject, html } = buildClickerFollowup(p);
       const verdict = await checkSendable({ to: p.email, website: p.website, businessName: p.businessName ?? p.website, subject, html });
