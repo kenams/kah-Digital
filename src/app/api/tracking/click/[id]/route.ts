@@ -1,4 +1,4 @@
-import { cleanUrl } from "@/lib/clean-url";
+import { cleanUrl, safeSiteRedirect } from "@/lib/clean-url";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
@@ -166,9 +166,8 @@ ${draft ? `<p style="margin:4px 0 8px;font-size:12px;color:#6b7280;">Brouillon p
   }
 
   // Destination — page personnalisée prospect
-  let destination = redirect
-    ? decodeURIComponent(redirect)
-    : `${siteUrl}/p/${id}`;
+  // Redirection limitée à notre propre site (sinon : open redirect exploitable dans un mail).
+  let destination = safeSiteRedirect(redirect, siteUrl, `${siteUrl}/p/${id}`);
 
   if (destination.includes("/devis") && prospect) {
     try {
