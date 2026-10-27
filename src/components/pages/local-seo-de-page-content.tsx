@@ -1,3 +1,4 @@
+import { DE_AGENCY_CITIES } from "./local-seo-de-cities";
 import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiClock, FiMapPin, FiMessageCircle, FiZap } from "react-icons/fi";
@@ -17,7 +18,7 @@ export type DeCity = {
   faq: Array<{ q: string; a: string }>;
 };
 
-export const DE_CITY_PAGES: Record<string, DeCity> = {
+const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
   "webentwicklung-zuerich": {
     city: "Zürich",
     country: "Schweiz",
@@ -121,6 +122,8 @@ export const DE_CITY_PAGES: Record<string, DeCity> = {
     ],
   },
 };
+
+export const DE_CITY_PAGES: Record<string, DeCity> = { ...BASE_DE_CITY_PAGES, ...DE_AGENCY_CITIES };
 
 type Props = { data: DeCity };
 
