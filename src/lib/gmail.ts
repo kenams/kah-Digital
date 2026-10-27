@@ -30,7 +30,7 @@ export type SendEmailOptions = {
 
 export async function sendGmail(opts: SendEmailOptions): Promise<void> {
   const transport = createTransport();
-  const from = `KAH Digital <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
+  const from = `KAH Digital Studio <${process.env.GMAIL_USER ?? "kahdigital42@gmail.com"}>`;
 
   await transport.sendMail({
     from,
@@ -54,7 +54,7 @@ export async function sendAdminNotification(opts: {
   await transport.sendMail({
     from,
     to: adminEmail,
-    subject: `[KAH Digital] ${opts.subject}`,
+    subject: `[KAH Digital Studio] ${opts.subject}`,
     html: `<div style="font-family:Arial,sans-serif;padding:20px;max-width:500px;">
       <h2 style="color:#1e3a8a;">${opts.subject}</h2>
       <p style="color:#4b5563;line-height:1.6;">${opts.body}</p>

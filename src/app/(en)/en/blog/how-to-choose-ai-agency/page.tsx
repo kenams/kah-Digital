@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "How to Choose an AI Agency in 2025: 7 Questions to Ask Before Signing — KAH Digital",
+  title: "How to Choose an AI Agency in 2025: 7 Questions to Ask Before Signing — KAH Digital Studio",
   description: "Not all AI agencies deliver real results. Here are 7 hard questions to separate serious AI agencies from hype sellers — before you commit a budget.",
   keywords: ["how to choose AI agency", "AI agency evaluation", "best AI agency 2025", "AI automation agency"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/how-to-choose-ai-agency" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "How to Choose an AI Agency in 2025: 7 Questions to Ask Before Signing",
   "datePublished": "2026-05-20",
   "dateModified": "2026-05-20",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/en/blog/how-to-choose-ai-agency",
 };
 

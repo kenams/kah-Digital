@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "AI automation for small businesses: 5 concrete examples to save time in 2026 — KAH Digital",
+  title: "AI automation for small businesses: 5 concrete examples to save time in 2026 — KAH Digital Studio",
   description:
     "Discover how small businesses use AI automation to qualify leads, automate reporting and cut repetitive tasks. 5 typical examples of what can be automated, with the goals to aim for.",
   keywords: [
@@ -30,8 +30,8 @@ const jsonLd = {
   headline: "AI automation for small businesses: 5 concrete examples to save time in 2026",
   datePublished: "2026-05-19",
   dateModified: "2026-05-19",
-  author: { "@type": "Organization", name: "KAH Digital" },
-  publisher: { "@type": "Organization", name: "KAH Digital", url: "https://kah-digital.ch" },
+  author: { "@type": "Organization", name: "KAH Digital Studio" },
+  publisher: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/en/blog/automatisation-ia-pme",
 };
 
@@ -68,7 +68,7 @@ const faqJsonLd = {
       name: "Do you need to be technical to automate with AI?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. KAH Digital delivers turnkey systems: you get a simple dashboard to follow the results and adjust settings. No technical skill is required for daily use.",
+        text: "No. KAH Digital Studio delivers turnkey systems: you get a simple dashboard to follow the results and adjust settings. No technical skill is required for daily use.",
       },
     },
   ],
@@ -232,7 +232,7 @@ export default function EnAutomatisationIaPmePage() {
                 The real question is no longer “can AI do that?” but “which tasks should I automate first?”. The answer: low-value, repetitive, high-volume tasks — and the ones that create delays in your sales pipeline.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                Here are 5 typical examples (hypothetical scenarios, not client case studies) of what KAH Digital can set up for a small business.
+                Here are 5 typical examples (hypothetical scenarios, not client case studies) of what KAH Digital Studio can set up for a small business.
               </p>
             </div>
           </section>
@@ -350,7 +350,7 @@ export default function EnAutomatisationIaPmePage() {
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Ready to automate?</p>
             <h2 className="mb-3 text-2xl font-extrabold text-white">Get a free audit of your situation</h2>
             <p className="mb-6 text-gray-400 text-sm leading-relaxed">
-              KAH Digital analyses your current workflow and identifies the 3 priority automations for your small business. Results within 24h, no commitment.
+              KAH Digital Studio analyses your current workflow and identifies the 3 priority automations for your small business. Results within 24h, no commitment.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link

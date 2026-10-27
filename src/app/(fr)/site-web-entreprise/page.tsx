@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/site-web-entreprise",
-  title: "Site web entreprise premium · Livré en 5 jours ouvrés | KAH Digital",
+  title: "Site web entreprise premium · Livré en 5 jours ouvrés | KAH Digital Studio",
   description:
     "Site web entreprise Next.js 15 — design niveau SaaS, Core Web Vitals 95+, SEO technique inclus. Livré en 5 jours ouvrés, propriété 100% à vous. Devis gratuit sous 24h.",
 });

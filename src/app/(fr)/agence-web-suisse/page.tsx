@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Agence web Suisse — KAH Digital | Lausanne · Genève · Zurich · Berne",
+  title: "Agence web Suisse — KAH Digital Studio | Lausanne · Genève · Zurich · Berne",
   description: "Studio digital basé à Toulouse, 100 % à distance. Création de sites web, apps et solutions IA pour PME, startups et indépendants en Suisse romande, alémanique et tessinoise. Devis CHF en 24h. TWINT accepté.",
   keywords: ["agence web suisse", "création site web suisse", "développeur web suisse", "studio digital suisse", "site internet suisse pme", "application web suisse"],
   alternates: { canonical: "https://kah-digital.ch/agence-web-suisse" },
   openGraph: {
-    title: "Agence web Suisse — KAH Digital",
+    title: "Agence web Suisse — KAH Digital Studio",
     description: "Studio digital 100 % à distance. Sites web, apps et IA pour toute la Suisse. Devis en CHF, TWINT accepté, LPD prise en compte.",
   },
 };
@@ -28,7 +28,7 @@ const WA_URL = "https://wa.me/33759558414?text=Bonjour%20KAH%20Digital%2C%20je%2
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "KAH Digital — Agence web Suisse",
+  "name": "KAH Digital Studio — Agence web Suisse",
   "description": "Studio digital basé à Toulouse, 100 % à distance. Création de sites web, applications et solutions IA pour entreprises suisses.",
   "url": "https://kah-digital.ch/agence-web-suisse",
   "telephone": "+33759558414",
@@ -162,7 +162,7 @@ export default function AgenceWebSuissePage() {
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Pourquoi KAH Digital pour votre projet suisse ?
+            Pourquoi KAH Digital Studio pour votre projet suisse ?
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[

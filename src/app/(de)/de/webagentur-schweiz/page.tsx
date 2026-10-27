@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Webagentur Schweiz — KAH Digital | Zürich · Bern · Basel · Lausanne",
+  title: "Webagentur Schweiz — KAH Digital Studio | Zürich · Bern · Basel · Lausanne",
   description: "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte in CHF innert 24h. TWINT akzeptiert.",
   keywords: ["Webagentur Schweiz", "Website erstellen Schweiz", "Webentwickler Schweiz", "Digitalstudio Schweiz", "Website KMU Schweiz", "Webanwendung Schweiz"],
   alternates: { canonical: "https://kah-digital.ch/de/webagentur-schweiz" },
   openGraph: {
-    title: "Webagentur Schweiz — KAH Digital",
+    title: "Webagentur Schweiz — KAH Digital Studio",
     description: "Digitalstudio 100 % auf Distanz. Websites, Apps und KI für die ganze Schweiz. Offerten in CHF, TWINT akzeptiert, Datenschutzgesetz (DSG) berücksichtigt.",
   },
 };
@@ -28,7 +28,7 @@ const WA_URL = "https://wa.me/33759558414?text=Hallo%20KAH%20Digital%2C%20ich%20
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "KAH Digital — Webagentur Schweiz",
+  "name": "KAH Digital Studio — Webagentur Schweiz",
   "description": "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Anwendungen und KI-Lösungen für Schweizer Unternehmen.",
   "url": "https://kah-digital.ch/de/webagentur-schweiz",
   "telephone": "+33759558414",
@@ -162,7 +162,7 @@ export default function WebagenturSchweizPage() {
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Warum KAH Digital für Ihr Schweizer Projekt?
+            Warum KAH Digital Studio für Ihr Schweizer Projekt?
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[

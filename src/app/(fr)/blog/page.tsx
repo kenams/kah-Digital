@@ -3,8 +3,8 @@ import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Blog KAH Digital — Conseils sites web, SEO et digital pour PME",
-  description: "Guides pratiques sur la création de site web, Les formats, la refonte et le SEO pour PME et indépendants. Par KAH Digital, studio digital à distance (France & Suisse).",
+  title: "Blog KAH Digital Studio — Conseils sites web, SEO et digital pour PME",
+  description: "Guides pratiques sur la création de site web, Les formats, la refonte et le SEO pour PME et indépendants. Par KAH Digital Studio, studio digital à distance (France & Suisse).",
   alternates: { canonical: "https://kah-digital.ch/blog" },
 };
 
@@ -109,7 +109,7 @@ export default function BlogPage() {
       <section className="relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
         <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Blog KAH Digital</h1>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Blog KAH Digital Studio</h1>
           <p className="text-lg text-gray-400">Conseils pratiques sur les sites web, le SEO et le digital pour PME et indépendants.</p>
         </div>
       </section>

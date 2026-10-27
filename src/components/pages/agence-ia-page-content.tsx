@@ -13,7 +13,7 @@ const COPY = {
     eyebrow: "Agence IA · Toulouse · France & Suisse",
     title: "L'agence IA qui livre",
     title2: "des résultats, pas des slides.",
-    intro: "KAH Digital est une agence spécialisée en intelligence artificielle appliquée aux entreprises. Chatbots GPT-4, agents d'automatisation, systèmes de qualification leads, intégrations CRM — on construit ce qui fonctionne en production, pas ce qui impressionne en démo.",
+    intro: "KAH Digital Studio est une agence spécialisée en intelligence artificielle appliquée aux entreprises. Chatbots GPT-4, agents d'automatisation, systèmes de qualification leads, intégrations CRM — on construit ce qui fonctionne en production, pas ce qui impressionne en démo.",
     stats: [
       { value: "20+", label: "Projets & systèmes livrés" },
       { value: "100%", label: "Code source livré" },
@@ -59,7 +59,7 @@ const COPY = {
         desc: "Make, Zapier, n8n, API directes — on connecte vos outils entre eux et on automatise les flux sans coder de zéro.",
       },
     ],
-    whyTitle: "Pourquoi KAH Digital plutôt qu'une grande agence IA ?",
+    whyTitle: "Pourquoi KAH Digital Studio plutôt qu'une grande agence IA ?",
     whyPoints: [
       "Vous parlez au fondateur, pas à un account manager qui relaie",
       "Déploiement en 10 jours — pas 6 mois de workshop",
@@ -83,7 +83,7 @@ const COPY = {
     eyebrow: "AI Agency · Toulouse · France & Switzerland",
     title: "The AI agency that delivers",
     title2: "results, not slides.",
-    intro: "KAH Digital is an agency specialising in applied AI for businesses. GPT-4 chatbots, automation agents, lead qualification systems, CRM integrations — we build what works in production, not what impresses in demos.",
+    intro: "KAH Digital Studio is an agency specialising in applied AI for businesses. GPT-4 chatbots, automation agents, lead qualification systems, CRM integrations — we build what works in production, not what impresses in demos.",
     stats: [
       { value: "20+", label: "Projects & systems shipped" },
       { value: "100%", label: "Source code delivered" },
@@ -129,7 +129,7 @@ const COPY = {
         desc: "Make, Zapier, n8n, direct APIs — we connect your tools and automate flows without building from scratch.",
       },
     ],
-    whyTitle: "Why KAH Digital over a big AI agency?",
+    whyTitle: "Why KAH Digital Studio over a big AI agency?",
     whyPoints: [
       "You talk to the founder, not an account manager who relays",
       "Deployed in 10 days — not 6 months of workshops",
@@ -153,7 +153,7 @@ const COPY = {
     eyebrow: "KI-Agentur · Toulouse · Frankreich & Schweiz",
     title: "Die KI-Agentur, die",
     title2: "Ergebnisse liefert, keine Slides.",
-    intro: "KAH Digital ist eine auf angewandte KI für Unternehmen spezialisierte Agentur. GPT-4-Chatbots, Automatisierungsagenten, Lead-Qualifizierungssysteme, CRM-Integrationen — wir bauen, was in der Produktion funktioniert, nicht was in der Demo beeindruckt.",
+    intro: "KAH Digital Studio ist eine auf angewandte KI für Unternehmen spezialisierte Agentur. GPT-4-Chatbots, Automatisierungsagenten, Lead-Qualifizierungssysteme, CRM-Integrationen — wir bauen, was in der Produktion funktioniert, nicht was in der Demo beeindruckt.",
     stats: [
       { value: "20+", label: "Projekte & Systeme geliefert" },
       { value: "100%", label: "Quellcode geliefert" },
@@ -199,7 +199,7 @@ const COPY = {
         desc: "Make, Zapier, n8n, direkte APIs — wir verbinden Ihre Tools und automatisieren Abläufe ohne Neubau.",
       },
     ],
-    whyTitle: "Warum KAH Digital statt einer großen KI-Agentur?",
+    whyTitle: "Warum KAH Digital Studio statt einer großen KI-Agentur?",
     whyPoints: [
       "Sie sprechen mit dem Gründer, nicht mit einem Account Manager",
       "Deployment in 10 Tagen — nicht 6 Monate Workshops",

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Web Agency Switzerland — KAH Digital | Lausanne · Geneva · Zurich · Bern",
+  title: "Web Agency Switzerland — KAH Digital Studio | Lausanne · Geneva · Zurich · Bern",
   description: "Digital studio based in Toulouse, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote in CHF within 24h. TWINT accepted.",
   keywords: ["web agency Switzerland", "website development Switzerland", "web developer Switzerland", "digital studio Switzerland", "SME website Switzerland", "web application Switzerland"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-suisse" },
   openGraph: {
-    title: "Web Agency Switzerland — KAH Digital",
+    title: "Web Agency Switzerland — KAH Digital Studio",
     description: "100% remote digital studio. Websites, apps and AI for all of Switzerland. Quotes in CHF, TWINT accepted, Swiss data protection act (FADP) taken into account.",
   },
 };
@@ -28,7 +28,7 @@ const WA_URL = "https://wa.me/33759558414?text=Hello%20KAH%20Digital%2C%20I%27m%
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "KAH Digital — Web Agency Switzerland",
+  "name": "KAH Digital Studio — Web Agency Switzerland",
   "description": "Digital studio based in Toulouse, 100% remote. Websites, applications and AI solutions for Swiss businesses.",
   "url": "https://kah-digital.ch/en/agence-web-suisse",
   "telephone": "+33759558414",
@@ -162,7 +162,7 @@ export default function AgenceWebSuisseEnPage() {
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Why KAH Digital for your Swiss project?
+            Why KAH Digital Studio for your Swiss project?
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[

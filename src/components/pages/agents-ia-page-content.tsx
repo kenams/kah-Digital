@@ -18,10 +18,10 @@ const DEVIS_URL = "/devis";
 
 const COPY = {
   fr: {
-    eyebrow: "Agents IA sur mesure · KAH Digital",
+    eyebrow: "Agents IA sur mesure · KAH Digital Studio",
     title: "Des agents IA qui travaillent",
     titleAccent: "pendant que vous dormez.",
-    intro: "KAH Digital conçoit des agents IA packagés, opérationnels en 10 jours. Prospection, support, devis, casting — chaque agent est formé sur votre métier et livré avec le code source. Preuve que ça marche en production : KAH Workforce, notre agent vertical sur-mesure pour artistes indépendants. Résultats mesurables dès J+30 ou on corrige gratuitement.",
+    intro: "KAH Digital Studio conçoit des agents IA packagés, opérationnels en 10 jours. Prospection, support, devis, casting — chaque agent est formé sur votre métier et livré avec le code source. Preuve que ça marche en production : KAH Workforce, notre agent vertical sur-mesure pour artistes indépendants. Résultats mesurables dès J+30 ou on corrige gratuitement.",
     cta: "Réserver ma démo gratuite",
     ctaSub: "Réponse sous 2h · Sans engagement · Démo sur votre cas concret",
     ctaSecondary: "Voir les tarifs",
@@ -31,7 +31,7 @@ const COPY = {
       { value: "30", unit: "s", label: "pour générer un devis" },
       { value: "10", unit: "j", label: "pour être en production" },
     ],
-    beforeAfterTitle: "Avant / Après un agent KAH Digital",
+    beforeAfterTitle: "Avant / Après un agent KAH Digital Studio",
     beforeAfterSub: "Ce que ça change concrètement dans votre quotidien",
     beforeAfter: [
       { before: "3h/jour à envoyer des emails de prospection", after: "120 contacts ciblés envoyés automatiquement, chaque matin" },
@@ -39,7 +39,7 @@ const COPY = {
       { before: "Devis préparés à la main, envoyés le lendemain", after: "Devis généré et envoyé en 30 secondes, la nuit incluse" },
       { before: "Des heures à trier des profils de casting", after: "Les 5 meilleurs profils proposés en moins d'une minute" },
     ],
-    agentsTitle: "Les 4 agents KAH Digital",
+    agentsTitle: "Les 4 agents KAH Digital Studio",
     agentsSub: "Chaque agent est un produit packagé avec code source, documentation et formation. Pas un projet sur-mesure de 6 mois.",
     agents: [
       {
@@ -101,7 +101,7 @@ const COPY = {
       { num: "02", title: "Configuration & formation — 5 jours", desc: "On paramètre l'agent sur votre métier, vos données, votre ton. Tests en conditions réelles, ajustements jusqu'à satisfaction.", icon: FiShield },
       { num: "03", title: "Mise en production — J+10", desc: "L'agent tourne en autonomie. Reporting hebdomadaire inclus. On reste disponibles pour les ajustements le premier mois.", icon: FiTrendingUp },
     ],
-    whyTitle: "Pourquoi KAH Digital plutôt qu'une autre agence IA ?",
+    whyTitle: "Pourquoi KAH Digital Studio plutôt qu'une autre agence IA ?",
     whyPoints: [
       { title: "Opérationnel en 10 jours", desc: "Pas 3 mois de workshop et de consulting. L'agent est en prod en 10 jours ou remboursé." },
       { title: "Prix fixe et transparent", desc: "Dès 2 490€ selon l'agent. Pas d'abonnement caché, pas de coût par requête. Vous payez une fois." },
@@ -126,10 +126,10 @@ const COPY = {
     ctaFinalSub: "Réponse sous 2h · Démo en visio · CH / FR / BE",
   },
   en: {
-    eyebrow: "Custom AI Agents · KAH Digital",
+    eyebrow: "Custom AI Agents · KAH Digital Studio",
     title: "AI agents that work",
     titleAccent: "while you sleep.",
-    intro: "KAH Digital builds packaged AI agents, live in 10 days. Prospecting, support, quotes, casting — each agent is trained on your business and delivered with full source code. Live proof it works: KAH Workforce, our custom vertical agent for independent artists. Measurable results by D+30 or we fix it for free.",
+    intro: "KAH Digital Studio builds packaged AI agents, live in 10 days. Prospecting, support, quotes, casting — each agent is trained on your business and delivered with full source code. Live proof it works: KAH Workforce, our custom vertical agent for independent artists. Measurable results by D+30 or we fix it for free.",
     cta: "Book my free demo",
     ctaSub: "Reply within 2h · No commitment · Demo on your specific case",
     ctaSecondary: "See pricing",
@@ -139,7 +139,7 @@ const COPY = {
       { value: "30", unit: "s", label: "to generate a quote" },
       { value: "10", unit: "d", label: "to go live" },
     ],
-    beforeAfterTitle: "Before / After a KAH Digital agent",
+    beforeAfterTitle: "Before / After a KAH Digital Studio agent",
     beforeAfterSub: "What concretely changes in your day-to-day",
     beforeAfter: [
       { before: "3h/day sending prospecting emails", after: "120 targeted contacts sent automatically, every morning" },
@@ -147,7 +147,7 @@ const COPY = {
       { before: "Quotes prepared by hand, sent the next day", after: "Quote generated and sent in 30 seconds, nights included" },
       { before: "Hours sorting through casting profiles", after: "Top 5 profiles suggested in under a minute" },
     ],
-    agentsTitle: "The 4 KAH Digital agents",
+    agentsTitle: "The 4 KAH Digital Studio agents",
     agentsSub: "Each agent is a packaged product with source code, documentation and training. Not a 6-month bespoke project.",
     agents: [
       {
@@ -185,7 +185,7 @@ const COPY = {
       { num: "02", title: "Setup & training — 5 days", desc: "We configure the agent for your business, your data, your tone. Real-condition tests, adjustments until satisfied.", icon: FiShield },
       { num: "03", title: "Go live — D+10", desc: "The agent runs autonomously. Weekly reporting included. We stay available for adjustments during the first month.", icon: FiTrendingUp },
     ],
-    whyTitle: "Why KAH Digital over any other AI agency?",
+    whyTitle: "Why KAH Digital Studio over any other AI agency?",
     whyPoints: [
       { title: "Live in 10 days", desc: "Not 3 months of workshops and consulting. The agent is live in 10 days or you get your money back." },
       { title: "Fixed and transparent price", desc: "From €2,490 depending on the agent. No hidden subscription, no per-request cost. You pay once." },
@@ -210,10 +210,10 @@ const COPY = {
     ctaFinalSub: "Reply within 2h · Demo via video call · CH / FR / BE",
   },
   de: {
-    eyebrow: "Individuelle KI-Agenten · KAH Digital",
+    eyebrow: "Individuelle KI-Agenten · KAH Digital Studio",
     title: "KI-Agenten, die arbeiten,",
     titleAccent: "während Sie schlafen.",
-    intro: "KAH Digital entwickelt fertige KI-Agenten, die in 10 Tagen live gehen. Akquise, Support, Angebote, Casting — jeder Agent wird auf Ihr Geschäft trainiert und mit vollständigem Quellcode geliefert. Live-Beweis, dass es funktioniert: KAH Workforce, unser massgeschneiderter vertikaler Agent für unabhängige Künstler. Messbare Ergebnisse bis T+30 oder wir korrigieren kostenlos.",
+    intro: "KAH Digital Studio entwickelt fertige KI-Agenten, die in 10 Tagen live gehen. Akquise, Support, Angebote, Casting — jeder Agent wird auf Ihr Geschäft trainiert und mit vollständigem Quellcode geliefert. Live-Beweis, dass es funktioniert: KAH Workforce, unser massgeschneiderter vertikaler Agent für unabhängige Künstler. Messbare Ergebnisse bis T+30 oder wir korrigieren kostenlos.",
     cta: "Kostenlose Demo buchen",
     ctaSub: "Antwort in 2h · Unverbindlich · Demo zu Ihrem konkreten Fall",
     ctaSecondary: "Preise ansehen",
@@ -223,7 +223,7 @@ const COPY = {
       { value: "30", unit: "s", label: "für ein Angebot" },
       { value: "10", unit: "T", label: "bis Go Live" },
     ],
-    beforeAfterTitle: "Vor / Nach einem KAH Digital Agenten",
+    beforeAfterTitle: "Vor / Nach einem KAH Digital Studio Agenten",
     beforeAfterSub: "Was sich konkret in Ihrem Alltag ändert",
     beforeAfter: [
       { before: "3h/Tag E-Mails für die Akquise schreiben", after: "120 zielgerichtete Kontakte automatisch jeden Morgen versendet" },
@@ -231,7 +231,7 @@ const COPY = {
       { before: "Angebote manuell erstellt, am nächsten Tag gesendet", after: "Angebot in 30 Sekunden erstellt und gesendet, auch nachts" },
       { before: "Stunden damit verbringen, Casting-Profile zu sortieren", after: "Top 5 Profile in weniger als einer Minute vorgeschlagen" },
     ],
-    agentsTitle: "Die 4 KAH Digital Agenten",
+    agentsTitle: "Die 4 KAH Digital Studio Agenten",
     agentsSub: "Jeder Agent ist ein Fertigprodukt mit Quellcode, Dokumentation und Schulung. Kein 6-monatiges Individualprojekt.",
     agents: [
       {
@@ -269,7 +269,7 @@ const COPY = {
       { num: "02", title: "Konfiguration & Training — 5 Tage", desc: "Wir konfigurieren den Agenten für Ihr Geschäft, Ihre Daten, Ihren Ton. Tests unter realen Bedingungen.", icon: FiShield },
       { num: "03", title: "Go Live — T+10", desc: "Der Agent läuft autonom. Wöchentliches Reporting inklusive. Wir bleiben im ersten Monat für Anpassungen erreichbar.", icon: FiTrendingUp },
     ],
-    whyTitle: "Warum KAH Digital statt einer anderen KI-Agentur?",
+    whyTitle: "Warum KAH Digital Studio statt einer anderen KI-Agentur?",
     whyPoints: [
       { title: "Live in 10 Tagen", desc: "Nicht 3 Monate Workshops. Der Agent ist in 10 Tagen live oder Sie erhalten Ihr Geld zurück." },
       { title: "Fester und transparenter Preis", desc: "Ab 2.490€ je nach Agent. Kein verstecktes Abo, keine Kosten pro Anfrage. Einmalige Zahlung." },
@@ -376,7 +376,7 @@ function AgentContactForm({ locale }: { locale: Locale }) {
         >
           <div className="mb-8 text-center">
             <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/8 px-3 py-1 text-xs font-semibold text-violet-400">
-              <FiZap size={11} /> KAH Digital
+              <FiZap size={11} /> KAH Digital Studio
             </span>
             <h2 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">{fc.title}</h2>
             <p className="mt-2 text-sm text-gray-500">{fc.sub}</p>

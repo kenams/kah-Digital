@@ -182,13 +182,13 @@ export async function composeProspectingEmail(
     track === "esn"
       ? `Pitch : propose à cette ESN / société IT de tester notre outil de gestion de tickets IA (triage auto, réponses niveau 1, tableau de bord) pour leurs clients PME — en marque blanche si souhaité. Objectif = décrocher un appel de 20 min, pas vendre directement. Mentionne qu'on gère le niveau 1 à leur place, ça libère leurs équipes.`
       : track === "pme-it"
-      ? `Pitch : propose à cette PME un support informatique IA disponible 7j/7 pour leurs équipes — incidents résolus rapidement, sans prestataire à l'heure. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix. Juste un appel de 20 min pour voir si ça colle.`
+      ? `Pitch : propose à cette PME un support informatique IA disponible 7j/7 pour leurs équipes — incidents résolus rapidement, sans prestataire à l'heure. Objectif = les amener à contacter KAH Digital Studio ou appeler le 07 59 55 84 14. Pas de prix. Juste un appel de 20 min pour voir si ça colle.`
       : track === "app"
-      ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
+      ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital Studio. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital Studio ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
       : track === "agent"
       ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
       : track === "creation"
-      ? `Pitch : c'est un artisan / indépendant / auto-entrepreneur, probablement en début d'activité ou pas encore structuré. Propose le combo KAH Digital : on peut gérer la création de sa structure (auto-entreprise, 89€, offerte si elle prend un pack site) ET son site pro avec prise de rendez-vous en ligne intégrée, livré rapidement, prix fixe (à partir de 790€, ou 89€ seul pour la création si elle a déjà un statut). Angle : si elle n'a pas encore les deux (structure officielle + site), elle perd des clients qui la cherchent et ne la trouvent pas, ou ne peut pas facturer proprement. Reste crédible : ne présume jamais à 100% qu'elle n'a rien, pose-le comme une hypothèse ("si ce n'est pas encore fait"). Objectif = un appel de 10 min ou une réponse au mail. Appel : 07 59 55 84 14.`
+      ? `Pitch : c'est un artisan / indépendant / auto-entrepreneur, probablement en début d'activité ou pas encore structuré. Propose le combo KAH Digital Studio : on peut gérer la création de sa structure (auto-entreprise, 89€, offerte si elle prend un pack site) ET son site pro avec prise de rendez-vous en ligne intégrée, livré rapidement, prix fixe (à partir de 790€, ou 89€ seul pour la création si elle a déjà un statut). Angle : si elle n'a pas encore les deux (structure officielle + site), elle perd des clients qui la cherchent et ne la trouvent pas, ou ne peut pas facturer proprement. Reste crédible : ne présume jamais à 100% qu'elle n'a rien, pose-le comme une hypothèse ("si ce n'est pas encore fait"). Objectif = un appel de 10 min ou une réponse au mail. Appel : 07 59 55 84 14.`
       : `Pitch : c'est un commerce / artisan de service local. Propose un site pro avec PRISE DE RENDEZ-VOUS EN LIGNE intégrée (le client choisit son créneau seul, confirmation et rappel automatiques), livré en 5 jours, prix fixe. Angle : leurs clients qui les cherchent le soir tombent sur un site cassé ou rien. Objectif = un appel de 10 min ou une réponse au mail. Tu peux mentionner "à partir de 790 €" si le contexte s'y prête, sinon reste sur "prix fixe". Appel : 07 59 55 84 14.`;
 
   // Grandes entreprises (banques, cabinets, hôpitaux, assurances, groupes) = ton formel
@@ -199,7 +199,7 @@ export async function composeProspectingEmail(
     ? `Ton : professionnel et formel. Vouvoiement obligatoire. Pas de familiarité. Sobre, direct, crédible.`
     : `Ton : humain, naturel, légèrement direct. Tutoiement possible selon le secteur. Pas de langue de bois.`;
 
-  const prompt = `Tu représentes KAH Digital, un studio digital basé à Toulouse, 100 % à distance (France et Suisse).
+  const prompt = `Tu représentes KAH Digital Studio, un studio digital basé à Toulouse, 100 % à distance (France et Suisse).
 Écris un email de prospection en "${lang}" pour : ${bName} (${audit.sector}).
 ${pitchInstruction}
 
@@ -219,7 +219,7 @@ RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
 - Mentionne 1 seul problème concret (le plus impactant)
 - CTA = "répondez à cet email" OU "appelez le 07 59 55 84 14" OU "kah-digital.ch" — selon le contexte
 - Zéro prix, zéro promesse vague
-- Signature = "KAH Digital — kah-digital.ch" — jamais de prénom seul
+- Signature = "KAH Digital Studio — kah-digital.ch" — jamais de prénom seul
 - Pas de bullet points, pas de tableau
 
 Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`;
@@ -257,7 +257,7 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     const opener = openerList[seed % openerList.length];
 
     // Pitch IA/automatisation par secteur — jamais "votre site a des
-    // problèmes techniques" (positionnement KAH Digital = IA, pas refonte
+    // problèmes techniques" (positionnement KAH Digital Studio = IA, pas refonte
     // de site, cf. pivot 2026-08). Miroir non-LLM du pitchInstruction ci-dessus.
     const pitchByTrack: Record<string, Record<string, string>> = {
       esn: {
@@ -271,9 +271,9 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         de: `Wir bieten IT-Support mit KI, der 7 Tage die Woche für Ihre Teams verfügbar ist — Vorfälle schnell gelöst, ohne stundenweise abgerechneten Dienstleister.`,
       },
       app: {
-        fr: `KAH Digital développe des applications mobiles/web sur mesure — MVP livré en semaines, pas en mois, stack moderne.`,
-        en: `KAH Digital builds custom mobile/web apps — MVP delivered in weeks, not months, modern stack.`,
-        de: `KAH Digital entwickelt maßgeschneiderte Mobile-/Web-Apps — MVP in Wochen statt Monaten, moderner Stack.`,
+        fr: `KAH Digital Studio développe des applications mobiles/web sur mesure — MVP livré en semaines, pas en mois, stack moderne.`,
+        en: `KAH Digital Studio builds custom mobile/web apps — MVP delivered in weeks, not months, modern stack.`,
+        de: `KAH Digital Studio entwickelt maßgeschneiderte Mobile-/Web-Apps — MVP in Wochen statt Monaten, moderner Stack.`,
       },
       agent: {
         fr: `On met en place des agents IA qui automatisent la prospection ou le support client — pas un site à refaire, juste l'agent qui bosse à votre place.`,
@@ -307,7 +307,7 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     const cta = ctas[lang] ?? ctas.fr!;
 
     const refLine = clientRef ? `\n\n${clientRef}` : "";
-    body = `${opener}\n\n${pitch}${refLine}\n\n${cta}\n\nKAH Digital`;
+    body = `${opener}\n\n${pitch}${refLine}\n\n${cta}\n\nKAH Digital Studio`;
   }
 
   // Lien traçable discret : remplace la mention "kah-digital.ch" du corps

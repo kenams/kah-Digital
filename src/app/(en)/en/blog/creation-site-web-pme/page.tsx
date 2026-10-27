@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Creating a website for a small business: the complete 2026 guide — KAH Digital",
+  title: "Creating a website for a small business: the complete 2026 guide — KAH Digital Studio",
   description: "Everything a small business should know before ordering a website: from brief to launch, mistakes to avoid and how to choose a provider.",
   keywords: ["create a small business website", "site web entreprise", "professional website creation for SMEs", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/creation-site-web-pme" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Creating a website for a small business: the complete 2026 guide",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 export default function EnCreationSiteWebPMEPage() {
@@ -145,7 +145,7 @@ export default function EnCreationSiteWebPMEPage() {
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Ready to launch your website?</h2>
-          <p className="mb-6 text-gray-400">KAH Digital supports small businesses in Switzerland and France. Custom quote within 24h.</p>
+          <p className="mb-6 text-gray-400">KAH Digital Studio supports small businesses in Switzerland and France. Custom quote within 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/en/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Request a quote <FiArrowRight size={15} />

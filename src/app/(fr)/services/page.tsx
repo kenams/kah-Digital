@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/services",
   title: "Services — Agents IA verticaux & digital",
   description:
-    "Agents IA verticaux sur mesure, landing pages, sites web professionnels, applications mobiles, SaaS et outils web métier — KAH Digital, studio digital. Devis gratuit sous 24h.",
+    "Agents IA verticaux sur mesure, landing pages, sites web professionnels, applications mobiles, SaaS et outils web métier — KAH Digital Studio, studio digital. Devis gratuit sous 24h.",
 });
 
 export default function ServicesPage() {

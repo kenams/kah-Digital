@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Création de site web pour PME : guide complet 2026 — KAH Digital",
+  title: "Création de site web pour PME : guide complet 2026 — KAH Digital Studio",
   description: "Tout ce qu'une PME doit savoir avant de commander un site web : du brief au lancement, les erreurs à éviter et comment choisir son prestataire.",
   keywords: ["créer site web PME", "site web entreprise", "création site professionnel PME", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/blog/creation-site-web-pme" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Création de site web pour PME : guide complet 2026",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 export default function CreationSiteWebPMEPage() {
@@ -145,7 +145,7 @@ export default function CreationSiteWebPMEPage() {
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Prêt à lancer votre site web ?</h2>
-          <p className="mb-6 text-gray-400">KAH Digital accompagne les PME de la Suisse et de la France. Devis personnalisé sous 24h.</p>
+          <p className="mb-6 text-gray-400">KAH Digital Studio accompagne les PME de la Suisse et de la France. Devis personnalisé sous 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Demander un devis <FiArrowRight size={15} />

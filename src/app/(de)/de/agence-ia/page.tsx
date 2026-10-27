@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/agence-ia",
-  title: "KI-Agentur · GPT-4 Agenten, Automatisierung & Chatbots | KAH Digital",
+  title: "KI-Agentur · GPT-4 Agenten, Automatisierung & Chatbots | KAH Digital Studio",
   description:
-    "KAH Digital ist die KI-Agentur, die Ihre Prozesse automatisiert: Lead-Qualifizierung, 24/7-Support, individuelle GPT-4-Agenten, CRM-Integrationen. Erfolgskennzahlen ab T+30. Kostenloses Audit in 24h.",
+    "KAH Digital Studio ist die KI-Agentur, die Ihre Prozesse automatisiert: Lead-Qualifizierung, 24/7-Support, individuelle GPT-4-Agenten, CRM-Integrationen. Erfolgskennzahlen ab T+30. Kostenloses Audit in 24h.",
   keywords: [
     "KI Agentur Schweiz",
     "KI Agentur Schweiz",

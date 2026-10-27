@@ -4,7 +4,7 @@ import { LocalSeoEnPageContent, EN_CITY_PAGES } from "@/components/pages/local-s
 const data = EN_CITY_PAGES["agence-web-angers"]!;
 
 export const metadata: Metadata = {
-  title: "Web Development Angers — KAH Digital | Custom Quote",
+  title: "Web Development Angers — KAH Digital Studio | Custom Quote",
   description: `${data.subline} Free quote within 24h.`,
   keywords: ["web development Angers", "website Angers", "web agency Angers"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-angers" },

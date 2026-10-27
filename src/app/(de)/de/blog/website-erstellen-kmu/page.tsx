@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website für ein KMU erstellen: der komplette Leitfaden 2026 — KAH Digital",
+  title: "Website für ein KMU erstellen: der komplette Leitfaden 2026 — KAH Digital Studio",
   description: "Alles, was ein KMU vor der Bestellung einer Website wissen sollte: vom Briefing bis zum Launch, Fehler, die Sie vermeiden, und wie Sie den Anbieter wählen.",
   keywords: ["KMU-Website erstellen", "site web entreprise", "professionelle Website für KMU erstellen", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-erstellen-kmu" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website für ein KMU erstellen: der komplette Leitfaden 2026",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 export default function DeCreationSiteWebPMEPage() {
@@ -145,7 +145,7 @@ export default function DeCreationSiteWebPMEPage() {
 
         <div className="rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Bereit, Ihre Website zu lancieren?</h2>
-          <p className="mb-6 text-gray-400">KAH Digital begleitet KMU in der Schweiz und in Frankreich. Individuelle Offerte in 24h.</p>
+          <p className="mb-6 text-gray-400">KAH Digital Studio begleitet KMU in der Schweiz und in Frankreich. Individuelle Offerte in 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Offerte anfordern <FiArrowRight size={15} />

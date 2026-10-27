@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: chatId,
-          text: `✅ KAH Digital — Notifications activées, ${firstName} !\n\nTu recevras une alerte ici dès qu'un prospect remplit le formulaire ou répond à un email.`,
+          text: `✅ KAH Digital Studio — Notifications activées, ${firstName} !\n\nTu recevras une alerte ici dès qu'un prospect remplit le formulaire ou répond à un email.`,
           parse_mode: "HTML",
         }),
       });

@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/agence-ia",
-  title: "AI Agency · GPT-4 Agents, Automation & Chatbots | KAH Digital",
+  title: "AI Agency · GPT-4 Agents, Automation & Chatbots | KAH Digital Studio",
   description:
-    "KAH Digital is the AI agency that automates your processes: lead qualification, 24/7 support, custom GPT-4 agents, CRM integrations. Results metrics tracked from D+30. Free audit within 24h.",
+    "KAH Digital Studio is the AI agency that automates your processes: lead qualification, 24/7 support, custom GPT-4 agents, CRM integrations. Results metrics tracked from D+30. Free audit within 24h.",
   keywords: [
     "AI agency Switzerland",
     "AI agency Switzerland",

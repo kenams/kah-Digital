@@ -4,7 +4,7 @@ import { portfolioProjectsEn } from "@/data/portfolio.en";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Vertical AI agents, websites, applications, and support solutions delivered by KAH Digital — including KAH Workforce, an AI chief-of-staff for independent artists.";
+  "Vertical AI agents, websites, applications, and support solutions delivered by KAH Digital Studio — including KAH Workforce, an AI chief-of-staff for independent artists.";
 
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",

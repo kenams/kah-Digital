@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
   const transport = getTransport();
 
   await transport.sendMail({
-    from: from ?? "KAH Digital <contact@kah-digital.ch>",
+    from: from ?? "KAH Digital Studio <contact@kah-digital.ch>",
     to,
     replyTo: replyTo ?? "kahdigital42@gmail.com",
     subject,

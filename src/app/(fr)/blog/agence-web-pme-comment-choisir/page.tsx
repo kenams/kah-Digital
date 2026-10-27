@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Comment choisir une agence web pour votre PME — Guide 2026 — KAH Digital",
+  title: "Comment choisir une agence web pour votre PME — Guide 2026 — KAH Digital Studio",
   description: "devis, red flags, questions à poser, critères clés : tout ce qu'une PME doit savoir avant de choisir une agence web ou un développeur freelance.",
   keywords: ["choisir agence web PME", "agence web PME", "comment choisir agence digitale", "freelance vs agence web", "agence web petite entreprise"],
   alternates: { canonical: "https://kah-digital.ch/blog/agence-web-pme-comment-choisir" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Comment choisir une agence web pour votre PME — Guide 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/blog/agence-web-pme-comment-choisir",
 };
 

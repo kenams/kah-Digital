@@ -210,19 +210,19 @@ const REASONS = {
 
 const COPY = {
   fr: {
-    eyebrow: "Pourquoi KAH Digital",
+    eyebrow: "Pourquoi KAH Digital Studio",
     title: "Un niveau d'exigence",
     title2: "qui change tout.",
     sub: "On ne livre pas un site de plus. On livre des agents IA verticaux qui tournent vraiment — rapides, fiables, mesurables.",
   },
   en: {
-    eyebrow: "Why KAH Digital",
+    eyebrow: "Why KAH Digital Studio",
     title: "A quality standard",
     title2: "that changes everything.",
     sub: "We don't deliver another website. We deliver vertical AI agents that actually run — fast, reliable, measurable.",
   },
   de: {
-    eyebrow: "Warum KAH Digital",
+    eyebrow: "Warum KAH Digital Studio",
     title: "Ein Qualitätsniveau,",
     title2: "das alles verändert.",
     sub: "Wir liefern keine weitere Website. Wir liefern vertikale KI-Agenten, die wirklich laufen — schnell, zuverlässig, messbar.",

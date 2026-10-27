@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/site-web-entreprise",
-  title: "Premium business website · Delivered in 5 business days | KAH Digital",
+  title: "Premium business website · Delivered in 5 business days | KAH Digital Studio",
   description:
     "Enterprise-grade business website on Next.js 15 — SaaS-level design, Core Web Vitals 95+, technical SEO included. Delivered in 5 business days, 100% yours. Free quote within 24h.",
 });

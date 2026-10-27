@@ -47,7 +47,7 @@ export async function sendAdminEmail(subject: string, html: string): Promise<voi
   if (!apiKey) return;
   const resend = new Resend(apiKey);
   await resend.emails.send({
-    from: "KAH Digital <noreply@kah-digital.ch>",
+    from: "KAH Digital Studio <noreply@kah-digital.ch>",
     to: "kahdigital42@gmail.com",
     subject,
     html,

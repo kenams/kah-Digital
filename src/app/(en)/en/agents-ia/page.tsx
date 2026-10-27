@@ -4,9 +4,9 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/en/agents-ia",
-  title: "Custom AI Agents · Prospecting, Support, Quotes, Casting | KAH Digital",
+  title: "Custom AI Agents · Prospecting, Support, Quotes, Casting | KAH Digital Studio",
   description:
-    "KAH Digital builds packaged AI agents live in 10 days: automated prospecting, level-1 support automation, 30-second quotes, Castly casting agent. Free 20-min demo.",
+    "KAH Digital Studio builds packaged AI agents live in 10 days: automated prospecting, level-1 support automation, 30-second quotes, Castly casting agent. Free 20-min demo.",
   keywords: [
     "custom AI agent",
     "AI automation for business",

@@ -29,7 +29,7 @@ export function InvoicePreview({
   vat = 0,
   totalWithVat = 2800,
 }: InvoicePreviewProps) {
-  const brandName = companyConfig.brandName || "KAH Digital";
+  const brandName = companyConfig.brandName || "KAH Digital Studio";
   const currency = companyConfig.currency || "CHF";
   const signatureName = brandName; // pas de nom légal sur les documents
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
@@ -37,7 +37,7 @@ export function InvoicePreview({
   const copy = {
     fr: {
       invoice: "Facture",
-      document: "Document de facturation KAH Digital",
+      document: "Document de facturation KAH Digital Studio",
       issuer: "Emetteur",
       phone: "Tel",
       client: "Client",
@@ -71,7 +71,7 @@ export function InvoicePreview({
     },
     en: {
       invoice: "Invoice",
-      document: "KAH Digital billing document",
+      document: "KAH Digital Studio billing document",
       issuer: "Issuer",
       phone: "Phone",
       client: "Client",

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website für Handwerker: der komplette Leitfaden 2026 — KAH Digital",
+  title: "Website für Handwerker: der komplette Leitfaden 2026 — KAH Digital Studio",
   description: "Wie erstellt man eine wirksame Website für Handwerker? Offerte, Zeitplan, was unbedingt dazugehört. Praxisleitfaden für Sanitär, Elektro, Schreiner und Maurer.",
   keywords: ["site web artisan", "Website für Handwerker erstellen", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-handwerker" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website für Handwerker: der komplette Leitfaden 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/de/blog/website-handwerker",
 };
 

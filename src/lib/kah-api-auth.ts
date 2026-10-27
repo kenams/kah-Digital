@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from 'crypto'
 
 /**
- * KAH Digital API Gateway — auth middleware
+ * KAH Digital Studio API Gateway — auth middleware
  * Timing-safe key comparison to prevent timing oracle attacks
  */
 export function validateApiKey(req: Request): { ok: true; project: string } | { ok: false; status: number; error: string } {

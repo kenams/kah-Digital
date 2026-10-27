@@ -31,10 +31,10 @@ export function FloatingCTA() {
 
   const waText = encodeURIComponent(
     locale === "en"
-      ? "Hi KAH Digital, I'd like to discuss my project."
+      ? "Hi KAH Digital Studio, I'd like to discuss my project."
       : locale === "de"
-      ? "Hallo KAH Digital, ich möchte mein Projekt besprechen."
-      : "Bonjour KAH Digital, je voudrais discuter de mon projet."
+      ? "Hallo KAH Digital Studio, ich möchte mein Projekt besprechen."
+      : "Bonjour KAH Digital Studio, je voudrais discuter de mon projet."
   );
 
   const ctaLabel =

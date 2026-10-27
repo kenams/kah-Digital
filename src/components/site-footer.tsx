@@ -43,10 +43,10 @@ export function SiteFooter() {
   const { locale, prefix } = useLocale();
   const homeHref = prefix || "/";
   const waMsg = locale === "en"
-    ? "Hi KAH Digital, I have a project to discuss."
+    ? "Hi KAH Digital Studio, I have a project to discuss."
     : locale === "de"
-    ? "Hallo KAH Digital, ich habe ein Projekt zu besprechen."
-    : "Bonjour KAH Digital, j'ai un projet à discuter.";
+    ? "Hallo KAH Digital Studio, ich habe ein Projekt zu besprechen."
+    : "Bonjour KAH Digital Studio, j'ai un projet à discuter.";
   const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
 
   const copy = {
@@ -318,7 +318,7 @@ export function SiteFooter() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-5 border-t border-white/8 pt-8 sm:flex-row">
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} KAH Digital. {copy.rights}
+            © {new Date().getFullYear()} KAH Digital Studio. {copy.rights}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

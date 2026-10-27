@@ -4,7 +4,7 @@ import { LocalSeoEnPageContent, EN_CITY_PAGES } from "@/components/pages/local-s
 const data = EN_CITY_PAGES["agence-web-berne"]!;
 
 export const metadata: Metadata = {
-  title: "Web Agency Bern — KAH Digital | Custom Quote",
+  title: "Web Agency Bern — KAH Digital Studio | Custom Quote",
   description: `${data.subline} Free quote within 24h.`,
   keywords: ["web development Bern", "website Bern", "web agency Bern"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-berne" },

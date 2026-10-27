@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital",
+  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital Studio",
   description: "Landing page or showcase site: what is the difference, what does each cost, and for which goal? A guide to choosing the right option for your situation.",
   keywords: ["landing page vs site vitrine", "landing page vs showcase site difference", "quand choisir landing page", "landing page or website"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/landing-page-vs-site-vitrine" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Landing page vs site vitrine : lequel choisir ?",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/en/blog/landing-page-vs-site-vitrine",
 };
 

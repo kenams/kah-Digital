@@ -37,7 +37,7 @@ const FAQS = {
     },
     {
       q: "Quelle est la différence entre un agent IA vertical et ChatGPT ?",
-      a: "ChatGPT ou Claude sont génériques : ils ne connaissent ni vos outils, ni votre historique, ni votre vocabulaire métier. Un agent KAH Digital est branché sur votre business — il agit, se souvient et prend des décisions courantes à votre place, sans que vous ayez à le piloter au prompt. Exemple en production : KAH Workforce.",
+      a: "ChatGPT ou Claude sont génériques : ils ne connaissent ni vos outils, ni votre historique, ni votre vocabulaire métier. Un agent KAH Digital Studio est branché sur votre business — il agit, se souvient et prend des décisions courantes à votre place, sans que vous ayez à le piloter au prompt. Exemple en production : KAH Workforce.",
     },
   ],
   en: [
@@ -71,7 +71,7 @@ const FAQS = {
     },
     {
       q: "What's the difference between a vertical AI agent and ChatGPT?",
-      a: "ChatGPT or Claude are generic: they don't know your tools, your history, or your business vocabulary. A KAH Digital agent is wired into your business — it acts, remembers, and makes everyday decisions in your place, with no need to prompt it. Live proof: KAH Workforce.",
+      a: "ChatGPT or Claude are generic: they don't know your tools, your history, or your business vocabulary. A KAH Digital Studio agent is wired into your business — it acts, remembers, and makes everyday decisions in your place, with no need to prompt it. Live proof: KAH Workforce.",
     },
   ],
   de: [
@@ -105,7 +105,7 @@ const FAQS = {
     },
     {
       q: "Was unterscheidet einen vertikalen KI-Agenten von ChatGPT?",
-      a: "ChatGPT oder Claude sind generisch: Sie kennen weder Ihre Tools noch Ihre Historie noch Ihr Fachvokabular. Ein KAH Digital Agent ist in Ihr Geschäft eingebettet — er handelt, erinnert sich und trifft alltägliche Entscheidungen für Sie, ohne dass Sie ihn per Prompt steuern müssen. Live-Beispiel: KAH Workforce.",
+      a: "ChatGPT oder Claude sind generisch: Sie kennen weder Ihre Tools noch Ihre Historie noch Ihr Fachvokabular. Ein KAH Digital Studio Agent ist in Ihr Geschäft eingebettet — er handelt, erinnert sich und trifft alltägliche Entscheidungen für Sie, ohne dass Sie ihn per Prompt steuern müssen. Live-Beispiel: KAH Workforce.",
     },
   ],
 };

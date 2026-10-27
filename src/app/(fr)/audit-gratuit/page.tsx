@@ -75,7 +75,7 @@ export default function AuditGratuitPage() {
             Obtenez l'audit gratuit<br />de votre site web
           </h1>
           <p className="mb-8 text-lg text-gray-400">
-            KAH Digital analyse votre site et vous envoie un rapport complet : score, problèmes détectés, recommandations et estimation de budget.
+            KAH Digital Studio analyse votre site et vous envoie un rapport complet : score, problèmes détectés, recommandations et estimation de budget.
           </p>
         </div>
       </section>
@@ -128,7 +128,7 @@ export default function AuditGratuitPage() {
               />
             </div>
             {state === "error" && (
-              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">Une erreur est survenue. Réessayez ou envoyez un email à contact@KAH Digital.ch.</p>
+              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">Une erreur est survenue. Réessayez ou envoyez un email à contact@KAH Digital Studio.ch.</p>
             )}
             <button
               type="submit"

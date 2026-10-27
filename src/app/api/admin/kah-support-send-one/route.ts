@@ -6,7 +6,7 @@ import { isAdminUser } from "@/lib/auth";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
-const FROM = "KAH Digital <contact@kah-digital.ch>";
+const FROM = "KAH Digital Studio <contact@kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
 
 type Prospect = {
@@ -49,7 +49,7 @@ function buildHtml(p: Prospect): string {
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,sans-serif;">
 <div style="max-width:600px;margin:40px auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
   <div style="background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:28px 36px;">
-    <span style="color:#fff;font-size:15px;font-weight:700;">🤖 Assistant IT — KAH Digital</span><br/>
+    <span style="color:#fff;font-size:15px;font-weight:700;">🤖 Assistant IT — KAH Digital Studio</span><br/>
     <span style="color:rgba(255,255,255,.7);font-size:12px;">kah-support.ch</span>
   </div>
   <div style="padding:32px 36px;">
@@ -79,7 +79,7 @@ function buildHtml(p: Prospect): string {
     <p style="color:#6b7280;font-size:13px;margin:0;"><strong>PS :</strong> Si vous voulez voir ça sur un GLPI réel, répondez à cet email pour une démo de 10 min.</p>
   </div>
   <div style="padding:14px 36px;text-align:center;border-top:1px solid #f3f4f6;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · <a href="https://kah-support.ch" style="color:#9ca3af;">kah-support.ch</a></p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital Studio · <a href="https://kah-support.ch" style="color:#9ca3af;">kah-support.ch</a></p>
   </div>
 </div>
 </body></html>`;

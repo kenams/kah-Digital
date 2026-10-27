@@ -86,7 +86,7 @@ function buildKotizyJ0(p: KProspect) {
     <p style="color:#78350f;font-size:13px;margin:0;line-height:1.6;"><strong>PS :</strong> Si vous gérez déjà une tontine active, je peux vous aider à la migrer sur Kotizy en 15 minutes. Répondez à cet email.</p>
   </div>
   <div style="padding:12px 36px;text-align:center;border-top:1px solid #f3f4f6;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">Kotizy by KAH Digital · <a href="https://kah-digital.ch/unsubscribe" style="color:#9ca3af;">Se désabonner</a></p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">Kotizy by KAH Digital Studio · <a href="https://kah-digital.ch/unsubscribe" style="color:#9ca3af;">Se désabonner</a></p>
   </div>
 </div></body></html>`;
   return { subject, html };

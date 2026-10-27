@@ -98,18 +98,18 @@ export const portfolioProjectsEn: PortfolioProject[] = [
     name: "KAH Workforce",
     type: "Vertical AI agent / Chief-of-staff for independent artists",
     tagline:
-      "KAH Digital's flagship product — an AI agent wired into an independent artist's business, end to end.",
+      "KAH Digital Studio's flagship product — an AI agent wired into an independent artist's business, end to end.",
     shortDescription:
       "Autonomous AI chief-of-staff for independent artists: contracts, tour dates, socials, royalties, and everyday decisions handled without manual work.",
     description:
-      "KAH Workforce isn't a chatbot bolted onto a website — it's a vertical AI agent that knows the independent artist's job end to end. Contracts, tour dates, social media, royalties, follow-ups: the agent acts in the artist's place on everyday decisions, with persistent memory and integration into their real tools. This is the live proof of KAH Digital's positioning: vertical AI agents, not another website.",
+      "KAH Workforce isn't a chatbot bolted onto a website — it's a vertical AI agent that knows the independent artist's job end to end. Contracts, tour dates, social media, royalties, follow-ups: the agent acts in the artist's place on everyday decisions, with persistent memory and integration into their real tools. This is the live proof of KAH Digital Studio's positioning: vertical AI agents, not another website.",
     challenge:
       "Give an independent artist, without a management team, the equivalent of a chief-of-staff available 24/7 — able to track their real business, not just answer generic questions.",
     solution:
       "A vertical AI agent built for one job, with persistent memory and frictionless daily piloting — the detailed technical architecture stays reserved for sales conversations.",
     stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
     result:
-      "A vertical AI agent live in production, an autonomous chief-of-staff for independent artists — the product that embodies KAH Digital's positioning.",
+      "A vertical AI agent live in production, an autonomous chief-of-staff for independent artists — the product that embodies KAH Digital Studio's positioning.",
     timeline: "Ongoing development",
     deliverables: [
       "Vertical AI agent integrated with the artist's real tools",
@@ -123,9 +123,9 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       { label: "Status", value: "Live" },
     ],
     highlights: [
-      "KAH Digital's flagship product — live proof of the vertical AI agent positioning",
+      "KAH Digital Studio's flagship product — live proof of the vertical AI agent positioning",
       "A vertical agent, not a generic chatbot",
-      "The model behind KAH Digital's custom vertical AI agents",
+      "The model behind KAH Digital Studio's custom vertical AI agents",
     ],
     palette: {
       primary: "#0a0612",

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiAlertCircle, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website redesign: when and how? — KAH Digital",
+  title: "Website redesign: when and how? — KAH Digital Studio",
   description: "The 7 signs it is time to redesign your website, and the method to get it right without wasting budget.",
   keywords: ["refonte site web", "renovate a website", "update a website", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/refonte-site-web" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website redesign: when should you start and how should you go about it?",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 const SIGNALS = [

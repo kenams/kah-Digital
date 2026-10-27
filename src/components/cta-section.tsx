@@ -44,7 +44,7 @@ export function CTASection() {
           sub: "Book a free 15-minute call. No commitment, no sales pitch. Just a real conversation about the job you want to delegate.",
           cta1: "Get a free quote",
           cta2: "Chat on WhatsApp",
-          waText: "Hi KAH Digital, I'd like to discuss my project.",
+          waText: "Hi KAH Digital Studio, I'd like to discuss my project.",
           badges: ["5-day delivery", "No commitment", "Reply in 24h"],
           available: "Available now · Slots filling up",
         }
@@ -56,7 +56,7 @@ export function CTASection() {
           sub: "Buchen Sie ein kostenloses 15-Minuten-Gespräch. Keine Verpflichtung, kein Verkaufsgespräch — nur ein echtes Gespräch über den Job, den Sie delegieren wollen.",
           cta1: "Kostenlose Offerte",
           cta2: "WhatsApp schreiben",
-          waText: "Hallo KAH Digital, ich möchte mein Projekt besprechen.",
+          waText: "Hallo KAH Digital Studio, ich möchte mein Projekt besprechen.",
           badges: ["5 Tage Lieferung", "Keine Verpflichtung", "Antwort in 24h"],
           available: "Jetzt verfügbar · Plätze werden knapp",
         }
@@ -67,7 +67,7 @@ export function CTASection() {
           sub: "Réservez un call de 15 min. Sans engagement, sans pitch commercial. Juste une vraie conversation sur le métier que vous voulez déléguer.",
           cta1: "Obtenir un devis gratuit",
           cta2: "Écrire sur WhatsApp",
-          waText: "Bonjour KAH Digital, je voudrais discuter de mon projet.",
+          waText: "Bonjour KAH Digital Studio, je voudrais discuter de mon projet.",
           badges: ["Livraison 5 jours", "Sans engagement", "Réponse en 24h"],
           available: "Disponible maintenant · Places qui se remplissent",
         };

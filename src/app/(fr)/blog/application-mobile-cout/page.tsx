@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "comment estimer une application mobile en 2026 ? — KAH Digital",
+  title: "comment estimer une application mobile en 2026 ? — KAH Digital Studio",
   description: "critères de cadrage pour une app mobile en 2026 : application vitrine, MVP, application native ou React Native. Guide pour obtenir un devis personnalisé.",
   keywords: ["estimation application mobile", "devis application mobile", "comment estimer une app", "développement application mobile sur mesure", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/blog/application-mobile-cout" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "comment estimer une application mobile en 2026 ?",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/blog/application-mobile-cout",
 };
 

@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/refonte-site-web",
-  title: "Website redesign · built to convert | KAH Digital",
+  title: "Website redesign · built to convert | KAH Digital Studio",
   description:
     "Website redesign on Next.js 15: premium UX, sub-2s load time, conversion-optimised. Your old site is losing you clients — we turn it into a lead machine. Free audit.",
 });

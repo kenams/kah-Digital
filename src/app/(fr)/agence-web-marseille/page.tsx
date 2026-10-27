@@ -2,11 +2,11 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Marseille — KAH Digital | Devis personnalisé",
+  title: "Création site web Marseille — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital pour Marseille et la région PACA. Sites web, apps et solutions IA pour PME, restaurateurs et artisans. Devis gratuit sous 24h.",
   keywords: ["création site web Marseille", "agence web Marseille", "site internet Marseille", "développeur web Marseille"],
   openGraph: {
-    title: "Création site web Marseille — KAH Digital",
+    title: "Création site web Marseille — KAH Digital Studio",
     description: "Studio digital pour entreprises marseillaises. Sites, apps, IA. Devis personnalisé.",
   },
   alternates: { canonical: "https://kah-digital.ch/agence-web-marseille" },

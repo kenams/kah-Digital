@@ -127,7 +127,7 @@ export function renderBrandedEmail({
                   K
                 </div>
                 <div>
-                  <div style="font-size: 21px; line-height: 1.2; font-weight: 800; color: #f8fafc;">KAH Digital</div>
+                  <div style="font-size: 21px; line-height: 1.2; font-weight: 800; color: #f8fafc;">KAH Digital Studio</div>
                   <div style="font-size: 11px; color: #94a3b8; letter-spacing: 0.14em; text-transform: uppercase;">Digital Studio</div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export function renderBrandedEmail({
               ${renderedCta}
             </div>
             <div style="padding: 18px 28px 26px; border-top: 1px solid #1e293b; font-size: 12px; line-height: 1.7; color: #94a3b8;">
-              ${footer ? formatValue(footer) : "Notification automatique KAH Digital."}<br />
+              ${footer ? formatValue(footer) : "Notification automatique KAH Digital Studio."}<br />
               <a href="${siteUrl}" style="color: #d4af63; text-decoration: none;">${siteUrl.replace(/^https?:\/\//, "")}</a>
             </div>
           </div>

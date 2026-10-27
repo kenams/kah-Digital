@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/application-web-sur-mesure",
-  title: "Custom web application | KAH Digital",
+  title: "Custom web application | KAH Digital Studio",
   description:
     "Custom web application development for portals, dashboards, internal tools, client areas, and business workflows.",
 });

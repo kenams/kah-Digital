@@ -100,7 +100,7 @@ export function HeroSection() {
           primary: "Talk to us about your agent",
           secondary: "See KAH Workforce live",
           wa: "WhatsApp — reply in 2h",
-          waText: "Hi KAH Digital, I'd like to talk about an AI agent for my business.",
+          waText: "Hi KAH Digital Studio, I'd like to talk about an AI agent for my business.",
           trustLine: "Vertical AI agents · From €290 · Live in 7 days",
           proof: [
             { value: "€290", label: "From" },
@@ -128,7 +128,7 @@ export function HeroSection() {
           primary: "Über meinen KI-Agenten sprechen",
           secondary: "KAH Workforce live sehen",
           wa: "WhatsApp — Antwort in 2h",
-          waText: "Hallo KAH Digital, ich möchte über einen KI-Agenten für mein Business sprechen.",
+          waText: "Hallo KAH Digital Studio, ich möchte über einen KI-Agenten für mein Business sprechen.",
           trustLine: "Vertikale KI-Agenten · Ab 290 € · Live in 7 Tagen",
           proof: [
             { value: "290 €", label: "Ab" },
@@ -155,7 +155,7 @@ export function HeroSection() {
           primary: "Parler de mon agent IA",
           secondary: "Voir KAH Workforce en action",
           wa: "WhatsApp — réponse en 2h",
-          waText: "Bonjour KAH Digital, je voudrais parler d'un agent IA pour mon business.",
+          waText: "Bonjour KAH Digital Studio, je voudrais parler d'un agent IA pour mon business.",
           trustLine: "Agents IA verticaux · Dès 290 € · En ligne en 7 jours",
           proof: [
             { value: "290 €", label: "Dès" },

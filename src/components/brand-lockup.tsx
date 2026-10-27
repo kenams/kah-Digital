@@ -27,7 +27,7 @@ export function BrandLockup({
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <Image
         src="/kah-logo.jpg"
-        alt="KAH Digital"
+        alt="KAH Digital Studio"
         aria-hidden="true"
         width={compact ? 44 : 64}
         height={compact ? 44 : 64}

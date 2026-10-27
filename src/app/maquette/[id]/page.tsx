@@ -30,7 +30,7 @@ async function getProspect(id: string): Promise<Row | null> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const p = await getProspect(id);
-  return { title: `Maquette — ${p?.businessName ?? "votre site"} | KAH Digital`, robots: { index: false, follow: false } };
+  return { title: `Maquette — ${p?.businessName ?? "votre site"} | KAH Digital Studio`, robots: { index: false, follow: false } };
 }
 
 type Profile = { accent: string; tagline: string; services: [string, string][]; cta: string };
@@ -84,12 +84,12 @@ export default async function MaquettePage({ params }: Props) {
 
   return (
     <div style={style} className="min-h-screen bg-stone-50 text-stone-900 antialiased [font-family:ui-sans-serif,system-ui,-apple-system,'Segoe_UI',sans-serif]">
-      {/* Bandeau KAH Digital */}
+      {/* Bandeau KAH Digital Studio */}
       <div className="sticky top-0 z-30 border-b border-stone-800 bg-stone-950 text-stone-100">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-2.5 text-sm sm:px-6">
           <p className="min-w-0">
             <span className="font-semibold">Maquette gratuite</span>
-            <span className="text-stone-400"> préparée par KAH Digital pour {name}</span>
+            <span className="text-stone-400"> préparée par KAH Digital Studio pour {name}</span>
           </p>
           <div className="flex items-center gap-3">
             <a href="tel:+33759558414" className="text-stone-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">07 59 55 84 14</a>

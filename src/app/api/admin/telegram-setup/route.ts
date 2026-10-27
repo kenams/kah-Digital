@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
   await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text: "✅ KAH Digital — Notifications activées. Vous recevrez une alerte dès qu'un client répond." }),
+    body: JSON.stringify({ chat_id: chatId, text: "✅ KAH Digital Studio — Notifications activées. Vous recevrez une alerte dès qu'un client répond." }),
   });
 
   return NextResponse.json({ ok: true, chatId: "***" + chatId.slice(-3), firstName });

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Site web pour artisan : guide complet 2026 — KAH Digital",
+  title: "Site web pour artisan : guide complet 2026 — KAH Digital Studio",
   description: "Comment créer un site web efficace pour un artisan ? devis, délais, ce qu'il faut absolument avoir. Guide pratique pour plombiers, électriciens, menuisiers, maçons.",
   keywords: ["site web artisan", "création site artisan", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-artisan" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Site web pour artisan : guide complet 2026",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/blog/site-web-artisan",
 };
 

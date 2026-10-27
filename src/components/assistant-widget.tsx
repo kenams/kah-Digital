@@ -38,7 +38,7 @@ const ASSISTANT_SESSION_TTL_MS = 60 * 60 * 1000;
 const widgetCopy = {
   fr: {
     button: "Parler à Kayla",
-    title: "Kayla · KAH Digital",
+    title: "Kayla · KAH Digital Studio",
     subtitle: "Devis en 24h · Projet · Support",
     introTitle: "Juste quelques infos",
     introBody: "Prénom, nom et email pour démarrer. Kayla s'occupe du reste — c'est rapide.",
@@ -52,7 +52,7 @@ const widgetCopy = {
     companyPlaceholder: "Nom de ta société",
     startChat: "Démarrer la conversation",
     identityRequired: "Prénom, nom et email requis pour commencer.",
-    welcome: "Bonjour ! 👋 Je suis Kayla, de KAH Digital. Dis-moi ce que tu veux créer ou améliorer — même si c'est encore flou, j'aide à y voir clair.",
+    welcome: "Bonjour ! 👋 Je suis Kayla, de KAH Digital Studio. Dis-moi ce que tu veux créer ou améliorer — même si c'est encore flou, j'aide à y voir clair.",
     suggestions: ["Je veux un site web", "Besoin d'une appli", "Refaire mon site", "Automatisation IA"],
     placeholder: "Écris ton message...",
     send: "Envoyer",
@@ -68,7 +68,7 @@ const widgetCopy = {
     ctaQuote: "Obtenir un devis personnalisé",
     ctaOffers: "Voir les offres",
     purchaseHint: "Projet bien cadré. Prochaine étape : devis personnalisé ou échange de 15 min.",
-    consent: "J'accepte que KAH Digital conserve ce résumé pour me recontacter.",
+    consent: "J'accepte que KAH Digital Studio conserve ce résumé pour me recontacter.",
     email: "Email",
     name: "Nom",
     reset: "Nouveau chat",
@@ -85,7 +85,7 @@ const widgetCopy = {
   },
   en: {
     button: "Chat with Kayla",
-    title: "Kayla · KAH Digital",
+    title: "Kayla · KAH Digital Studio",
     subtitle: "Quote in 24h · Project · Support",
     introTitle: "Quick intro",
     introBody: "First name, last name and email to start. Kayla handles the rest — it's fast.",
@@ -99,7 +99,7 @@ const widgetCopy = {
     companyPlaceholder: "Your company",
     startChat: "Start conversation",
     identityRequired: "First name, last name and email required.",
-    welcome: "Hey! 👋 I'm Kayla from KAH Digital. Tell me what you want to build or improve — even if it's still rough, I'll help you shape it.",
+    welcome: "Hey! 👋 I'm Kayla from KAH Digital Studio. Tell me what you want to build or improve — even if it's still rough, I'll help you shape it.",
     suggestions: ["I need a website", "Build an app", "Redesign my site", "AI automation"],
     placeholder: "Type your message...",
     send: "Send",
@@ -115,7 +115,7 @@ const widgetCopy = {
     ctaQuote: "Get a custom quote",
     ctaOffers: "Browse offers",
     purchaseHint: "Project well scoped. Next step: custom quote or a 15-min discovery call.",
-    consent: "I agree KAH Digital can keep this summary to follow up.",
+    consent: "I agree KAH Digital Studio can keep this summary to follow up.",
     email: "Email",
     name: "Name",
     reset: "New chat",
@@ -132,7 +132,7 @@ const widgetCopy = {
   },
   de: {
     button: "Mit Kayla sprechen",
-    title: "Kayla · KAH Digital",
+    title: "Kayla · KAH Digital Studio",
     subtitle: "Angebot in 24h · Projekt · Support",
     introTitle: "Kurze Vorstellung",
     introBody: "Vorname, Nachname und E-Mail zum Start. Kayla übernimmt den Rest — geht schnell.",
@@ -146,7 +146,7 @@ const widgetCopy = {
     companyPlaceholder: "Unternehmen",
     startChat: "Gespräch starten",
     identityRequired: "Vorname, Nachname und E-Mail erforderlich.",
-    welcome: "Hallo! 👋 Ich bin Kayla von KAH Digital. Erzähl mir, was du aufbauen oder verbessern möchtest — auch wenn es noch nicht klar ist, ich helfe dir dabei.",
+    welcome: "Hallo! 👋 Ich bin Kayla von KAH Digital Studio. Erzähl mir, was du aufbauen oder verbessern möchtest — auch wenn es noch nicht klar ist, ich helfe dir dabei.",
     suggestions: ["Ich brauche eine Website", "App entwickeln", "Website neu machen", "KI-Automatisierung"],
     placeholder: "Schreib eine Nachricht...",
     send: "Senden",
@@ -162,7 +162,7 @@ const widgetCopy = {
     ctaQuote: "Individuelles Angebot anfragen",
     ctaOffers: "Angebote ansehen",
     purchaseHint: "Projekt gut eingegrenzt. Nächster Schritt: Angebot oder 15-min Gespräch.",
-    consent: "Ich stimme zu, dass KAH Digital die Zusammenfassung speichert.",
+    consent: "Ich stimme zu, dass KAH Digital Studio die Zusammenfassung speichert.",
     email: "E-Mail",
     name: "Name",
     reset: "Neues Gespräch",
@@ -1216,7 +1216,7 @@ function AssistantWidgetInner({ locale }: { locale: "fr" | "en" | "de" }) {
               </span>
             </div>
             <div className="hidden sm:block">
-              <span className="block text-[10px] uppercase tracking-[0.18em] text-gray-600">KAH Digital</span>
+              <span className="block text-[10px] uppercase tracking-[0.18em] text-gray-600">KAH Digital Studio</span>
               <span className="mt-0.5 block text-[13px] font-semibold text-white">{copy.button}</span>
             </div>
           </button>

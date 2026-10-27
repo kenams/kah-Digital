@@ -6,7 +6,7 @@ import { isAdminUser } from "@/lib/auth";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
-const FROM = "KAH Digital <contact@kah-digital.ch>";
+const FROM = "KAH Digital Studio <contact@kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
 const EMAILS_PER_RUN = 5;
 const APP_URL = "https://kah-workforce.vercel.app";
@@ -64,7 +64,7 @@ function buildJ0(p: Prospect) {
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j0" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Recruter mon équipe →</a>
   </p>
   <p style="font-size:13px;color:#6b7280;margin:0 0 28px;">Gratuit pour commencer, sans carte bancaire.</p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Bonne journée,<br>KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">Bonne journée,<br>KAH Digital Studio</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${APP_URL} · ${REPLY_TO}</p>
 </div>
 </body></html>`;
@@ -89,7 +89,7 @@ function buildJ3(p: Prospect) {
   <p style="margin:0 0 28px;">
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j3" style="display:inline-block;background:#6366f1;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Voir comment ça marche →</a>
   </p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital Studio</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${REPLY_TO}</p>
 </div>
 </body></html>`;
@@ -117,7 +117,7 @@ function buildJ7(p: Prospect) {
   <p style="margin:0 0 28px;">
     <a href="${APP_URL}?utm_source=cold&utm_campaign=j7" style="display:inline-block;background:#374151;color:#fff;padding:11px 26px;border-radius:7px;text-decoration:none;font-weight:700;font-size:14px;">Démarrer gratuitement →</a>
   </p>
-  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital</p>
+  <p style="font-size:15px;color:#374151;margin:0 0 6px;line-height:1.6;">KAH Digital Studio</p>
   <p style="font-size:12px;color:#9ca3af;margin:0;">${APP_URL} · ${REPLY_TO}</p>
 </div>
 </body></html>`;

@@ -18,9 +18,9 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/",
-  title: "KAH Digital — Agents IA verticaux pour indépendants · Toulouse · France & Suisse",
+  title: "KAH Digital Studio — Agents IA verticaux pour indépendants · Toulouse · France & Suisse",
   description:
-    "KAH Digital crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
+    "KAH Digital Studio crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   keywords: [
     "agent IA vertical",
     "agence IA Suisse", "agence IA France",
@@ -49,7 +49,7 @@ const faqJsonLd = {
       name: "Pourquoi pas juste utiliser ChatGPT ou Claude directement ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Un chatbot générique ne connaît ni votre historique, ni vos outils, ni les spécificités de votre métier — vous reformulez tout à chaque fois. Un agent KAH Digital est intégré à vos outils réels, se souvient de tout, et agit de façon autonome sans que vous ayez à le piloter au prompt.",
+        text: "Un chatbot générique ne connaît ni votre historique, ni vos outils, ni les spécificités de votre métier — vous reformulez tout à chaque fois. Un agent KAH Digital Studio est intégré à vos outils réels, se souvient de tout, et agit de façon autonome sans que vous ayez à le piloter au prompt.",
       },
     },
     {
@@ -65,7 +65,7 @@ const faqJsonLd = {
       name: "Travaillez-vous avec des clients en dehors de la Suisse ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Oui. KAH Digital opère à l'international — Suisse, France, Belgique, Canada, Afrique francophone, UK, US. Tout se fait à distance sans friction.",
+        text: "Oui. KAH Digital Studio opère à l'international — Suisse, France, Belgique, Canada, Afrique francophone, UK, US. Tout se fait à distance sans friction.",
       },
     },
     {
@@ -90,8 +90,8 @@ const faqJsonLd = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
-  name: "KAH Digital",
-  alternateName: "KAH Digital",
+  name: "KAH Digital Studio",
+  alternateName: "KAH Digital Studio",
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
@@ -105,7 +105,7 @@ const organizationJsonLd = {
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
+    "KAH Digital Studio crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = await getProspect(id);
   const name = p?.businessName ?? "Votre projet";
   return {
-    title: `Analyse de ${name} — KAH Digital`,
+    title: `Analyse de ${name} — KAH Digital Studio`,
     robots: { index: false, follow: false },
   };
 }
@@ -75,7 +75,7 @@ const COPY: Record<string, {
 }> = {
   fr: {
     greeting: (n) => `Bonjour ${n},`,
-    subtitle: "Voici l'analyse personnalisée de votre site web par KAH Digital.",
+    subtitle: "Voici l'analyse personnalisée de votre site web par KAH Digital Studio.",
     scoreLabel: "Score digital actuel",
     problemsTitle: "Ce qu'on a détecté",
     recoTitle: "Notre proposition",
@@ -84,13 +84,13 @@ const COPY: Record<string, {
     ctaCall: "Appeler maintenant",
     ctaEmail: "Répondre par email",
     ctaQuote: "Demander un devis personnalisé",
-    footer: "Cette analyse a été réalisée gratuitement par KAH Digital. Aucun engagement de votre part.",
+    footer: "Cette analyse a été réalisée gratuitement par KAH Digital Studio. Aucun engagement de votre part.",
     sevLabel: { critical: "Critique", medium: "Moyen", low: "Mineur" },
     socialTitle: "Ils nous ont fait confiance",
   },
   en: {
     greeting: (n) => `Hello ${n},`,
-    subtitle: "Here is your personalised website analysis by KAH Digital.",
+    subtitle: "Here is your personalised website analysis by KAH Digital Studio.",
     scoreLabel: "Current digital score",
     problemsTitle: "What we found",
     recoTitle: "Our proposal",
@@ -99,7 +99,7 @@ const COPY: Record<string, {
     ctaCall: "Call now",
     ctaEmail: "Reply by email",
     ctaQuote: "Request a custom quote",
-    footer: "This analysis was performed for free by KAH Digital. No commitment required.",
+    footer: "This analysis was performed for free by KAH Digital Studio. No commitment required.",
     sevLabel: { critical: "Critical", medium: "Medium", low: "Minor" },
     socialTitle: "They trusted us",
   },
@@ -151,8 +151,8 @@ const SEV_TEXT: Record<string, string> = {
 
 // Références réelles uniquement (sites livrés et en ligne).
 const SOCIAL_PROOF = [
-  { initials: "BCS", quote: { fr: "BCS Nettoyage — site avec réservation en ligne, réalisé par KAH Digital : bcs-nettoyage.fr", en: "BCS Nettoyage — website with online booking, built by KAH Digital: bcs-nettoyage.fr" } },
-  { initials: "DSE", quote: { fr: "DSE Yana — site avec prise de rendez-vous automatique, réalisé par KAH Digital : dse-yana.com", en: "DSE Yana — website with automated appointment booking, built by KAH Digital: dse-yana.com" } },
+  { initials: "BCS", quote: { fr: "BCS Nettoyage — site avec réservation en ligne, réalisé par KAH Digital Studio : bcs-nettoyage.fr", en: "BCS Nettoyage — website with online booking, built by KAH Digital Studio: bcs-nettoyage.fr" } },
+  { initials: "DSE", quote: { fr: "DSE Yana — site avec prise de rendez-vous automatique, réalisé par KAH Digital Studio : dse-yana.com", en: "DSE Yana — website with automated appointment booking, built by KAH Digital Studio: dse-yana.com" } },
 ];
 
 export default async function ProspectLandingPage({ params }: Props) {
@@ -175,10 +175,10 @@ export default async function ProspectLandingPage({ params }: Props) {
   const devisUrl = `${siteUrl}/devis?company=${encodeURIComponent(name)}&site=${encodeURIComponent(prospect.website)}&ref=email`;
   const lang = prospect.language ?? "fr";
   const waMsgMap: Record<string, string> = {
-    fr: `Bonjour, j'ai vu l'analyse de mon site ${prospect.website}. Je suis intéressé(e) par vos services. — KAH Digital`,
-    en: `Hello, I saw the analysis of my website ${prospect.website}. I'm interested in your services. — KAH Digital`,
-    de: `Hallo, ich habe die Analyse meiner Website ${prospect.website} gesehen. Ich bin interessiert. — KAH Digital`,
-    es: `Hola, vi el análisis de mi sitio ${prospect.website}. Estoy interesado/a en sus servicios. — KAH Digital`,
+    fr: `Bonjour, j'ai vu l'analyse de mon site ${prospect.website}. Je suis intéressé(e) par vos services. — KAH Digital Studio`,
+    en: `Hello, I saw the analysis of my website ${prospect.website}. I'm interested in your services. — KAH Digital Studio`,
+    de: `Hallo, ich habe die Analyse meiner Website ${prospect.website} gesehen. Ich bin interessiert. — KAH Digital Studio`,
+    es: `Hola, vi el análisis de mi sitio ${prospect.website}. Estoy interesado/a en sus servicios. — KAH Digital Studio`,
   };
   const waMsg = encodeURIComponent(waMsgMap[lang] ?? waMsgMap.fr);
   const waUrl = `https://wa.me/33759558414?text=${waMsg}`;
@@ -187,7 +187,7 @@ export default async function ProspectLandingPage({ params }: Props) {
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
       <div className="border-b border-white/8 bg-gray-900/80 px-4 py-4 text-center">
-        <div className="text-lg font-bold tracking-tight">KAH Digital</div>
+        <div className="text-lg font-bold tracking-tight">KAH Digital Studio</div>
         <div className="text-xs text-gray-500">Studio digital — sites, apps &amp; IA</div>
       </div>
 

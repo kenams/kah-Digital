@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/devis",
-  title: "Devis personnalisé — Agent IA, site web ou application | KAH Digital",
-  description: "Décrivez votre besoin même sans cahier des charges complet. KAH Digital prépare une proposition claire, ajustable et sans engagement sous 24h — de l'agent IA vertical au site web.",
+  title: "Devis personnalisé — Agent IA, site web ou application | KAH Digital Studio",
+  description: "Décrivez votre besoin même sans cahier des charges complet. KAH Digital Studio prépare une proposition claire, ajustable et sans engagement sous 24h — de l'agent IA vertical au site web.",
   keywords: ["devis agent IA vertical", "devis personnalisé site web", "devis agence web Suisse", "demande devis application", "solution digitale sur mesure"],
 });
 

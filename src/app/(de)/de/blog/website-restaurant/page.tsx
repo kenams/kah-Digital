@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website für Restaurants: was Sie 2026 wirklich brauchen — KAH Digital",
+  title: "Website für Restaurants: was Sie 2026 wirklich brauchen — KAH Digital Studio",
   description: "Online-Speisekarte, Reservation, Google Maps, Bewertungen — was ein Restaurant auf seiner Website braucht. Offerte und Praxisleitfaden.",
   keywords: ["site web restaurant", "site internet restaurant", "Restaurant-Website erstellen", "site web bar", "site web pizzeria", "Online-Reservation Restaurant"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-restaurant" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website für Restaurants: was Sie 2026 wirklich brauchen",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/de/blog/website-restaurant",
 };
 

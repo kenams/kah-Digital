@@ -322,7 +322,7 @@ export function PricingSection() {
       optionsSub: "Personalise your project. Add only what you need.",
       bottomCta: "Get my free quote",
       bottomWa: "Chat on WhatsApp",
-      waText: "Hi KAH Digital, I'd like a quote for my project.",
+      waText: "Hi KAH Digital Studio, I'd like a quote for my project.",
       bottomNote: "No commitment · Fixed price · Reply within 24h",
     } : isDE ? {
       eyebrow: "Transparente Preise",
@@ -335,7 +335,7 @@ export function PricingSection() {
       optionsSub: "Passen Sie Ihr Projekt an. Fügen Sie nur das hinzu, was Sie brauchen.",
       bottomCta: "Kostenlose Offerte erhalten",
       bottomWa: "WhatsApp schreiben",
-      waText: "Hallo KAH Digital, ich möchte ein Projekt besprechen.",
+      waText: "Hallo KAH Digital Studio, ich möchte ein Projekt besprechen.",
       bottomNote: "Unverbindlich · Fester Preis · Antwort in 24h",
     } : {
       eyebrow: "Tarifs transparents",
@@ -348,7 +348,7 @@ export function PricingSection() {
       optionsSub: "Personnalisez votre projet. Ajoutez uniquement ce dont vous avez besoin.",
       bottomCta: "Obtenir mon devis gratuit",
       bottomWa: "Écrire sur WhatsApp",
-      waText: "Bonjour KAH Digital, je voudrais discuter d'un projet.",
+      waText: "Bonjour KAH Digital Studio, je voudrais discuter d'un projet.",
       bottomNote: "Sans engagement · Prix fixe · Réponse sous 24h",
     };
 

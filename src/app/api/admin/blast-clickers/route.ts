@@ -120,13 +120,13 @@ function buildHtml(body: string, lang: string, id: string): string {
 <tr><td align="center">
 <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);max-width:560px;">
   <tr><td style="background:linear-gradient(135deg,#1e3a8a,#7c3aed);padding:18px 28px;">
-    <div style="color:#fff;font-size:18px;font-weight:800;">KAH Digital</div>
+    <div style="color:#fff;font-size:18px;font-weight:800;">KAH Digital Studio</div>
     <div style="color:rgba(255,255,255,0.6);font-size:11px;">Studio digital — sites, apps & IA</div>
   </td></tr>
   <tr><td style="padding:28px 28px 20px;">
     <div style="font-size:15px;color:#374151;line-height:1.8;white-space:pre-line;">${body}</div>
     <div style="margin-top:28px;font-size:14px;color:#374151;">
-      KAH Digital<br/>
+      KAH Digital Studio<br/>
       <span style="color:#6b7280;font-size:12px;">kahdigital42@gmail.com · <a href="${SITE}" style="color:#7c3aed;">kah-digital.ch</a></span>
     </div>
   </td></tr>

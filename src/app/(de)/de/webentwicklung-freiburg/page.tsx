@@ -4,7 +4,7 @@ import { LocalSeoDePageContent, DE_CITY_PAGES } from "@/components/pages/local-s
 const data = DE_CITY_PAGES["webentwicklung-freiburg"]!;
 
 export const metadata: Metadata = {
-  title: "Webentwicklung Freiburg — KAH Digital | Individuelle Offerte",
+  title: "Webentwicklung Freiburg — KAH Digital Studio | Individuelle Offerte",
   description: `${data.subline} Kostenlose Offerte in 24h.`,
   keywords: ["Webentwicklung Freiburg", "Website erstellen Freiburg", "Webagentur Freiburg"],
   alternates: { canonical: "https://kah-digital.ch/de/webentwicklung-freiburg" },

@@ -101,7 +101,7 @@ export function ruleBasedAudit(lead: DiscoveredLead, page: FetchedPage): SiteAud
   // Un seul point faible mineur ne justifie pas de déranger quelqu'un : il faut du solide.
   if (!problems.some((p) => p.severity === "critical") && problems.length < 2) return null;
 
-  recommendations.push({ title: "Un site qui prend les rendez-vous à votre place", detail: "KAH Digital prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
+  recommendations.push({ title: "Un site qui prend les rendez-vous à votre place", detail: "KAH Digital Studio prend en charge la conception et la livraison complète — vous validez, on livre.", impact: "high" });
   recommendations.push({ title: "Visible sur Google dès le lancement", detail: "Votre site sort optimisé SEO du premier jour — prêt à générer du trafic qualifié.", impact: "high" });
 
   const finalScore = Math.max(25, Math.min(60, score));
@@ -193,7 +193,7 @@ const AUDIT_PROMPT: Record<string, string> = {
 // Orientation commerciale adaptée au marché local, sans prix public.
 function getPricingGuide(country: string): string {
   const currency = country === "CH" ? "CHF" : "EUR";
-  return `Official KAH Digital offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 790 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1490 for a weak/critical site needing a full rebuild, both with an optional maintenance subscription starting at 89/month. Pick whichever forfait matches the site's actual state.`;
+  return `Official KAH Digital Studio offer (use these exact figures, adapt currency symbol to ${currency}): "Forfait Essentiel" at 790 for a decent/average site needing targeted fixes, "Forfait Refonte" at 1490 for a weak/critical site needing a full rebuild, both with an optional maintenance subscription starting at 89/month. Pick whichever forfait matches the site's actual state.`;
 }
 
 function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok"): { price: number; range: string } {
@@ -253,7 +253,7 @@ Return ONLY a valid JSON object (no markdown):
   "recommendations": [
     {
       "title": "outcome-focused title (what the client gains)",
-      "detail": "What KAH Digital delivers as an outcome — NOT technical steps. e.g. 'Un site livré en 3 semaines, optimisé pour convertir vos visiteurs en clients.' Never say 'add viewport meta tag' or 'compress images'.",
+      "detail": "What KAH Digital Studio delivers as an outcome — NOT technical steps. e.g. 'Un site livré en 3 semaines, optimisé pour convertir vos visiteurs en clients.' Never say 'add viewport meta tag' or 'compress images'.",
       "impact": "high|medium|low"
     }
   ],

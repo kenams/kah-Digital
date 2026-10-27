@@ -4,19 +4,19 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiExternalLink, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "References — Delivered projects, live online | KAH Digital",
+  title: "References — Delivered projects, live online | KAH Digital Studio",
   description:
-    "Real projects delivered by KAH Digital: showcase site with online booking, Stripe e-commerce shop, redesign with automated appointment booking. Everything is live — open it and judge for yourself.",
+    "Real projects delivered by KAH Digital Studio: showcase site with online booking, Stripe e-commerce shop, redesign with automated appointment booking. Everything is live — open it and judge for yourself.",
   keywords: [
     "web agency references",
-    "KAH Digital website projects",
+    "KAH Digital Studio website projects",
     "web design portfolio",
     "web agency case studies",
     "delivered website examples",
   ],
   alternates: { canonical: "https://kah-digital.ch/en/references" },
   openGraph: {
-    title: "References — Delivered projects, live online | KAH Digital",
+    title: "References — Delivered projects, live online | KAH Digital Studio",
     description:
       "Real projects: showcase site + booking, Stripe e-commerce, redesign + automated appointments. Live and verifiable.",
   },
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Projects delivered by KAH Digital",
+  name: "Projects delivered by KAH Digital Studio",
   description:
-    "Websites and applications delivered by KAH Digital, live and publicly accessible.",
+    "Websites and applications delivered by KAH Digital Studio, live and publicly accessible.",
   itemListElement: [
     {
       "@type": "ListItem",

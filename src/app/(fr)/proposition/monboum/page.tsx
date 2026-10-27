@@ -3,7 +3,7 @@ import { buildNoIndexMetadata } from "@/lib/shared-metadata";
 export const metadata = buildNoIndexMetadata({
   locale: "fr",
   path: "/proposition/monboum",
-  title: "Proposition KAH Digital × Mon Boum",
+  title: "Proposition KAH Digital Studio × Mon Boum",
   description: "Proposition sur mesure — commande en ligne, refonte, fidélisation.",
 });
 
@@ -93,7 +93,7 @@ export default function MonBoumProposalPage() {
       {/* Top bar */}
       <div className="border-b border-white/10 px-6 py-4">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
-          <span className="text-sm font-bold tracking-widest text-white/30 uppercase">KAH Digital</span>
+          <span className="text-sm font-bold tracking-widest text-white/30 uppercase">KAH Digital Studio</span>
           <span className="rounded-full border border-amber-500/30 px-3 py-1 text-xs font-semibold text-amber-400">
             Confidentiel — Mon Boum
           </span>
@@ -231,7 +231,7 @@ export default function MonBoumProposalPage() {
               Répondre par email
             </a>
             <a
-              href={`https://wa.me/33759558414?text=${encodeURIComponent("Bonjour KAH Digital, j'ai reçu la proposition pour Mon Boum, je voudrais en discuter.")}`}
+              href={`https://wa.me/33759558414?text=${encodeURIComponent("Bonjour KAH Digital Studio, j'ai reçu la proposition pour Mon Boum, je voudrais en discuter.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block rounded-full border border-white/20 px-8 py-3.5 text-sm font-bold text-white hover:bg-white/5 transition-colors"
@@ -242,7 +242,7 @@ export default function MonBoumProposalPage() {
         </section>
 
         <p className="mt-10 text-center text-xs text-white/20">
-          KAH Digital · Toulouse · kahdigital42@gmail.com · kah-digital.ch
+          KAH Digital Studio · Toulouse · kahdigital42@gmail.com · kah-digital.ch
         </p>
       </div>
     </main>

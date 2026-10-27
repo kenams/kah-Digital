@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "So schätzen Sie die Kosten einer professionellen Website 2026 — KAH Digital",
+  title: "So schätzen Sie die Kosten einer professionellen Website 2026 — KAH Digital Studio",
   description: "Eine klare Methode, eine professionelle Website zu planen: tatsächlicher Bedarf, Umfang, Funktionen, Zeitplan, Begleitung und individuelle Offerte.",
   keywords: ["devis site web", "devis site web professionnel", "Website-Kosten schätzen", "Kostenschätzung Website 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-schaetzen" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "So schätzen Sie die Kosten einer professionellen Website 2026",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/de/blog/website-kosten-schaetzen",
 };
 

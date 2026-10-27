@@ -97,8 +97,8 @@ export function SaasPortfolioSection({ lang = "fr" }: { lang?: string }) {
         </h2>
         <p className="mb-12 mx-auto max-w-2xl text-center text-white/40">
           {isEn
-            ? "KAH Digital doesn't just build for clients — we operate our own vertical AI agent, SaaS products, e-commerce, and fintech platforms. This is the proof."
-            : "KAH Digital ne livre pas seulement pour ses clients — on opère notre propre agent IA vertical, nos SaaS, e-commerce et plateformes fintech. C'est notre preuve."}
+            ? "KAH Digital Studio doesn't just build for clients — we operate our own vertical AI agent, SaaS products, e-commerce, and fintech platforms. This is the proof."
+            : "KAH Digital Studio ne livre pas seulement pour ses clients — on opère notre propre agent IA vertical, nos SaaS, e-commerce et plateformes fintech. C'est notre preuve."}
         </p>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -146,8 +146,8 @@ export function SaasPortfolioSection({ lang = "fr" }: { lang?: string }) {
 
         <p className="mt-8 text-center text-sm text-white/30">
           {isEn
-            ? "All products designed, developed and operated by KAH Digital. From concept to production in weeks, not months."
-            : "Tous les produits conçus, développés et opérés par KAH Digital. Du concept à la production en semaines, pas en mois."}
+            ? "All products designed, developed and operated by KAH Digital Studio. From concept to production in weeks, not months."
+            : "Tous les produits conçus, développés et opérés par KAH Digital Studio. Du concept à la production en semaines, pas en mois."}
         </p>
       </div>
     </section>

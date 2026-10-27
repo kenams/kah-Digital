@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiAlertCircle, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Refonte de site web : quand et comment ? — KAH Digital",
+  title: "Refonte de site web : quand et comment ? — KAH Digital Studio",
   description: "Les 7 signaux qui indiquent qu'il est temps de refondre votre site web, et la méthode pour réussir votre refonte sans gaspiller de Périmètre.",
   keywords: ["refonte site web", "rénover site web", "mettre à jour site internet", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/blog/refonte-site-web" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Refonte de site web : quand faut-il se lancer et comment s'y prendre ?",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 const SIGNALS = [

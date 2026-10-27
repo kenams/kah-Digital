@@ -55,7 +55,7 @@ const TARGETS = [
   { query: "kinesitherapeute toulouse site web", country: "FR", lang: "fr", sector: "sante" },
   { query: "boutique mode paris site web ecommerce", country: "FR", lang: "fr", sector: "ecommerce" },
   { query: "salle de sport fitness paris site web tarifs", country: "FR", lang: "fr", sector: "sport" },
-  // ── Suisse romande — priorité haute (marché local KAH Digital) ──
+  // ── Suisse romande — priorité haute (marché local KAH Digital Studio) ──
   { query: "avocat geneve site web cabinet", country: "CH", lang: "fr", sector: "avocat" },
   { query: "architecte lausanne site web cabinet", country: "CH", lang: "fr", sector: "architecte" },
   { query: "fiduciaire geneve site web", country: "CH", lang: "fr", sector: "comptable" },

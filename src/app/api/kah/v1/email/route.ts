@@ -7,13 +7,13 @@ const RESEND_API = 'https://api.resend.com/emails'
 
 // Pinned FROM addresses per project — callers cannot override to other domains
 const PROJECT_SENDERS: Record<string, string> = {
-  'w11-control-center': 'KAH Digital <contact@kah-digital.ch>',
+  'w11-control-center': 'KAH Digital Studio <contact@kah-digital.ch>',
   'vellio-shop':        'Vellio <contact@kah-digital.ch>',
   'assistant-pme':      'Assistant PME <contact@kah-digital.ch>',
   'kotizy':             'Kotizy <contact@kah-digital.ch>',
   'clutch':             'CLUTCH <contact@kah-digital.ch>',
 }
-const DEFAULT_SENDER = 'KAH Digital <contact@kah-digital.ch>'
+const DEFAULT_SENDER = 'KAH Digital Studio <contact@kah-digital.ch>'
 
 // Per-project daily caps (best-effort per replica — note: serverless multi-instance = approximate)
 const PROJECT_CAPS: Record<string, number> = {

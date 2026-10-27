@@ -4,19 +4,19 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiExternalLink, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Referenzen — Gelieferte Projekte, online | KAH Digital",
+  title: "Referenzen — Gelieferte Projekte, online | KAH Digital Studio",
   description:
-    "Echte, von KAH Digital gelieferte Projekte: Website mit Online-Buchung, Stripe-Onlineshop, Relaunch mit automatisierter Terminbuchung. Alles ist online — öffnen und selbst urteilen.",
+    "Echte, von KAH Digital Studio gelieferte Projekte: Website mit Online-Buchung, Stripe-Onlineshop, Relaunch mit automatisierter Terminbuchung. Alles ist online — öffnen und selbst urteilen.",
   keywords: [
     "Referenzen Webagentur",
-    "KAH Digital Website-Projekte",
+    "KAH Digital Studio Website-Projekte",
     "Webdesign Portfolio",
     "Referenzen Webagentur Schweiz",
     "Beispiele gelieferter Websites",
   ],
   alternates: { canonical: "https://kah-digital.ch/de/referenzen" },
   openGraph: {
-    title: "Referenzen — Gelieferte Projekte, online | KAH Digital",
+    title: "Referenzen — Gelieferte Projekte, online | KAH Digital Studio",
     description:
       "Echte Projekte: Website + Buchung, Stripe-E-Commerce, Relaunch + automatisierte Termine. Online und überprüfbar.",
   },
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Von KAH Digital gelieferte Projekte",
+  name: "Von KAH Digital Studio gelieferte Projekte",
   description:
-    "Von KAH Digital gelieferte Websites und Anwendungen, online und öffentlich zugänglich.",
+    "Von KAH Digital Studio gelieferte Websites und Anwendungen, online und öffentlich zugänglich.",
   itemListElement: [
     {
       "@type": "ListItem",

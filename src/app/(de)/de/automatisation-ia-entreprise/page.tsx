@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/automatisation-ia-entreprise",
-  title: "KI-Automatisierung für Unternehmen · Agenten & Workflows | KAH Digital",
+  title: "KI-Automatisierung für Unternehmen · Agenten & Workflows | KAH Digital Studio",
   description:
     "KI-Automatisierung: Lead-Qualifizierung, Kundensupport, intelligentes Routing, individuelle GPT-4-Agenten. Zeitaufwand für wiederkehrende Aufgaben senken. Kostenloses Audit in 24h.",
   keywords: [

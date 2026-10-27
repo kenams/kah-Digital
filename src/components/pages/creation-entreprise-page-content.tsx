@@ -58,7 +58,7 @@ export function CreationEntreprisePageContent() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-black/20 p-6">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/55">Pourquoi passer par KAH Digital</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-white/55">Pourquoi passer par KAH Digital Studio</p>
               <ul className="mt-4 space-y-2 text-sm text-white/75">
                 <li>Dossier suivi par un vrai humain, pas un formulaire perdu</li>
                 <li>Service gratuit si couplé à un pack site (790€ / 1490€ + abo)</li>

@@ -28,7 +28,7 @@ export function SiteHeader() {
         subtitle: "AI Growth Systems",
         openMenu: "Open menu",
         closeMenu: "Close menu",
-        homeLabel: "KAH Digital - Home",
+        homeLabel: "KAH Digital Studio - Home",
       }
     : locale === "de"
     ? {
@@ -45,7 +45,7 @@ export function SiteHeader() {
         subtitle: "AI Growth Systems",
         openMenu: "Menü öffnen",
         closeMenu: "Menü schließen",
-        homeLabel: "KAH Digital - Startseite",
+        homeLabel: "KAH Digital Studio - Startseite",
       }
     : {
         nav: [
@@ -64,7 +64,7 @@ export function SiteHeader() {
         subtitle: "AI Growth Systems",
         openMenu: "Ouvrir le menu",
         closeMenu: "Fermer le menu",
-        homeLabel: "KAH Digital - Accueil",
+        homeLabel: "KAH Digital Studio - Accueil",
       };
 
   return (

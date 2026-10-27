@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "SEO local pour PME : apparaître en 1ère page Google en 2026 — KAH Digital",
+  title: "SEO local pour PME : apparaître en 1ère page Google en 2026 — KAH Digital Studio",
   description:
     "Guide complet SEO local pour PME : Google Business Profile, avis clients, pages locales, balises schema. Les actions concrètes pour que vos clients locaux vous trouvent.",
   keywords: [
@@ -29,8 +29,8 @@ const jsonLd = {
   headline: "SEO local pour PME : apparaître en 1ère page Google en 2026",
   datePublished: "2026-05-04",
   dateModified: "2026-05-04",
-  author: { "@type": "Organization", name: "KAH Digital" },
-  publisher: { "@type": "Organization", name: "KAH Digital", url: "https://kah-digital.ch" },
+  author: { "@type": "Organization", name: "KAH Digital Studio" },
+  publisher: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/blog/seo-local-pme",
 };
 
@@ -67,7 +67,7 @@ const faqJsonLd = {
       name: "comment estimer le SEO local pour une PME ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mettre en place une base SEO locale solide (page optimisée, schema, Google Business Profile) s'estime après cadrage selon la concurrence locale, les villes ciblées et le niveau de suivi souhaité. KAH Digital intègre le SEO local directement dans la création du site.",
+        text: "Mettre en place une base SEO locale solide (page optimisée, schema, Google Business Profile) s'estime après cadrage selon la concurrence locale, les villes ciblées et le niveau de suivi souhaité. KAH Digital Studio intègre le SEO local directement dans la création du site.",
       },
     },
   ],
@@ -200,7 +200,7 @@ export default function SeoLocalPmePage() {
             46% des recherches Google ont une intention locale. Si votre entreprise n'apparaît pas dans le Pack Local (les 3 résultats avec carte), vous perdez la moitié de vos clients potentiels. Voici les 6 actions concrètes pour y remédier.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-            <span>KAH Digital</span>
+            <span>KAH Digital Studio</span>
             <span>·</span>
             <span>8 min de lecture</span>
           </div>

@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/application-web-sur-mesure",
-  title: "Individuelle Web-App · MVP in 4 Wochen | KAH Digital",
+  title: "Individuelle Web-App · MVP in 4 Wochen | KAH Digital Studio",
   description:
     "Maßgeschneiderte Web-Anwendungen auf Next.js 15 + Supabase: B2B-Portale, Dashboards, SaaS, interne Tools. Funktionale V1 in 4 Wochen, 100% Ihr Eigentum. Kostenloses Scoping in 48h.",
   keywords: [

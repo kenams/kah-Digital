@@ -26,7 +26,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-london",
     headline: "AI Agency London",
     subline: "GPT-4 agents, AI automation & chatbots for London businesses. Measurable ROI from month one. Deployed in 10 days.",
-    intro: "KAH Digital is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Based in Toulouse, France, working remotely across Europe and the UK. Free AI audit within 24 hours.",
+    intro: "KAH Digital Studio is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Based in Toulouse, France, working remotely across Europe and the UK. Free AI audit within 24 hours.",
     sectors: ["FinTech & InsurTech", "Consulting & Professional Services", "E-Commerce & D2C", "Real Estate & PropTech", "SaaS & Tech Startups", "Legal & Compliance"],
     proofLine: "Free AI audit · Reply within 24h · No commitment",
     faq: [
@@ -43,7 +43,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-london",
     headline: "Web Development London",
     subline: "Premium web development for London — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 5 business days.",
-    intro: "KAH Digital builds high-performance websites and web applications for London startups, agencies, and businesses. FinTech, consulting, e-commerce, SaaS — we deliver Stripe-level design with Next.js 15 at a fraction of London agency prices. Remote from Switzerland, no lock-in, 100% yours on delivery.",
+    intro: "KAH Digital Studio builds high-performance websites and web applications for London startups, agencies, and businesses. FinTech, consulting, e-commerce, SaaS — we deliver Stripe-level design with Next.js 15 at a fraction of London agency prices. Remote from Switzerland, no lock-in, 100% yours on delivery.",
     sectors: ["FinTech & Banking", "Consulting & Agencies", "SaaS & Tech Startups", "E-Commerce & Retail", "Real Estate", "Legal & Professional Services"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
@@ -60,7 +60,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-new-york",
     headline: "AI Agency New York",
     subline: "GPT-4 agents, AI automation & chatbots for NYC businesses. 10-day deployment. Measurable ROI from month one.",
-    intro: "KAH Digital serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Based in Toulouse, France, operating internationally. Free AI audit delivered within 24 hours.",
+    intro: "KAH Digital Studio serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Based in Toulouse, France, operating internationally. Free AI audit delivered within 24 hours.",
     sectors: ["FinTech & WealthTech", "Consulting & Professional Services", "E-Commerce & D2C Brands", "Real Estate & PropTech", "SaaS & B2B Tech", "Media & Content"],
     proofLine: "Free AI audit · 24h reply · No commitment",
     faq: [
@@ -77,7 +77,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-new-york",
     headline: "Web Development New York",
     subline: "Premium web development for NYC — Next.js 15, startup-grade design, 14-day delivery. No agency markup.",
-    intro: "KAH Digital builds high-performance websites for New York startups, businesses, and agencies. From sleek landing pages to full SaaS platforms — we deliver Stripe, Linear, and Framer-level design on Next.js 15. Remote from Switzerland, 100% code ownership, fixed price. No Manhattan overhead.",
+    intro: "KAH Digital Studio builds high-performance websites for New York startups, businesses, and agencies. From sleek landing pages to full SaaS platforms — we deliver Stripe, Linear, and Framer-level design on Next.js 15. Remote from Switzerland, 100% code ownership, fixed price. No Manhattan overhead.",
     sectors: ["SaaS & Tech Startups", "FinTech & WealthTech", "E-Commerce & D2C", "Agencies & Consultants", "Media & Publishing", "Real Estate & PropTech"],
     proofLine: "Reply within 24h · Fixed price · 100% ownership",
     faq: [
@@ -94,7 +94,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-dubai",
     headline: "Web Development Dubai",
     subline: "Premium web development for Dubai & UAE — Next.js 15, multilingual, SaaS-level design. Delivered in 5 business days.",
-    intro: "KAH Digital builds high-performance websites for Dubai and UAE businesses: real estate portals, hospitality, e-commerce, consulting, and SaaS. We deliver multilingual sites (Arabic, English, French) on Next.js 15 — fast, scalable, and 100% yours. Remote from Switzerland, no local overhead.",
+    intro: "KAH Digital Studio builds high-performance websites for Dubai and UAE businesses: real estate portals, hospitality, e-commerce, consulting, and SaaS. We deliver multilingual sites (Arabic, English, French) on Next.js 15 — fast, scalable, and 100% yours. Remote from Switzerland, no local overhead.",
     sectors: ["Real Estate & PropTech", "Hospitality & Tourism", "E-Commerce & Luxury Retail", "Consulting & Advisory", "FinTech & Payments", "Healthcare & Wellness"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
@@ -111,12 +111,12 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-dubai",
     headline: "AI Agency Dubai",
     subline: "GPT-4 agents, AI automation & chatbots for Dubai businesses. Arabic, English & French. 10-day deployment.",
-    intro: "KAH Digital builds AI automation systems for Dubai and UAE businesses: lead qualification agents, 24/7 Arabic-English customer support, CRM integrations, and smart workflows. We operate in English, French, and German and deploy AI that generates real ROI — not marketing promises. Free audit within 24 hours.",
+    intro: "KAH Digital Studio builds AI automation systems for Dubai and UAE businesses: lead qualification agents, 24/7 Arabic-English customer support, CRM integrations, and smart workflows. We operate in English, French, and German and deploy AI that generates real ROI — not marketing promises. Free audit within 24 hours.",
     sectors: ["Real Estate & PropTech", "E-Commerce & Retail", "Hospitality & Tourism", "FinTech & Payments", "Consulting & Advisory", "Healthcare & Wellness"],
     proofLine: "Free AI audit · Reply within 24h · Remote & fast",
     faq: [
       { q: "Do you build AI chatbots in Arabic for Dubai businesses?", a: "Yes, our GPT-4 agents can be trained in Arabic, English, and French. Ideal for Dubai's multilingual customer base." },
-      { q: "How quickly can KAH Digital deploy AI for a UAE company?", a: "10 days from kickoff to production. We work fully remote — brief online, deploy globally. No local office required, no setup friction." },
+      { q: "How quickly can KAH Digital Studio deploy AI for a UAE company?", a: "10 days from kickoff to production. We work fully remote — brief online, deploy globally. No local office required, no setup friction." },
       { q: "What AI use cases work for Dubai real estate and hospitality?", a: "Lead qualification for property inquiries, 24/7 multilingual guest support, automated booking follow-ups, CRM enrichment. High ROI sectors we've already worked in." },
       { q: "What does it cost?", a: "AI chatbot add-on from $490. Full AI system from $2,490 — website, chatbot, lead automation, 3 months support. Fixed price, no surprises." },
     ],
@@ -128,7 +128,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-geneva",
     headline: "Web Development Geneva",
     subline: "Premium websites for Geneva businesses — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 5 business days.",
-    intro: "KAH Digital builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Working remotely with Geneva businesses. No lock-in, 100% yours.",
+    intro: "KAH Digital Studio builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Working remotely with Geneva businesses. No lock-in, 100% yours.",
     sectors: ["Finance & Private Banking", "Consulting & Advisory", "NGOs & International Organisations", "Hospitality & Luxury", "Healthcare & MedTech", "SaaS & Tech Startups"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
@@ -145,11 +145,11 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "web-development-lausanne",
     headline: "Web Development Lausanne",
     subline: "Premium websites for Lausanne & the Lake Geneva region — Next.js 15, fast delivery, fixed price. Working remotely.",
-    intro: "KAH Digital works remotely with Lausanne businesses — a studio for high-performance websites and custom web applications. Sport tech, health, e-commerce, consulting, startups — we build fast, scalable, and visually premium products on Next.js 15. 100% code ownership, no lock-in, transparent fixed prices.",
+    intro: "KAH Digital Studio works remotely with Lausanne businesses — a studio for high-performance websites and custom web applications. Sport tech, health, e-commerce, consulting, startups — we build fast, scalable, and visually premium products on Next.js 15. 100% code ownership, no lock-in, transparent fixed prices.",
     sectors: ["Sport Tech & Olympic Ecosystem", "Health & MedTech", "Education & EdTech", "Consulting & Agencies", "E-Commerce & D2C", "SaaS & Tech Startups"],
     proofLine: "Remote studio · Reply within 24h · Fixed price",
     faq: [
-      { q: "Do you have an office in Lausanne?", a: "No — KAH Digital is based in Toulouse, France, and works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
+      { q: "Do you have an office in Lausanne?", a: "No — KAH Digital Studio is based in Toulouse, France, and works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
       { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 290 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 5 business days). Premium AI from CHF 2'490 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
       { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
@@ -167,7 +167,7 @@ export function LocalSeoEnPageContent({ data }: Props) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "KAH Digital",
+    name: "KAH Digital Studio",
     description: `Premium web development & AI automation for ${data.city} — Next.js 15 websites, GPT-4 agents, measurable results.`,
     url: `https://kah-digital.ch/en/${data.slug}`,
     telephone: "+33759558414",
@@ -248,7 +248,7 @@ export function LocalSeoEnPageContent({ data }: Props) {
       <section className="bg-gray-900/50 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Why KAH Digital for {data.city}?
+            Why KAH Digital Studio for {data.city}?
           </h2>
           <div className="grid gap-5 sm:grid-cols-3">
             {[

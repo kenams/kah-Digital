@@ -12,7 +12,7 @@ const copy = {
     eyebrow: "Francophone, anglophone, PME et structures en croissance",
     title: "Un agent IA vertical, et les fondations digitales qui vont avec",
     intro:
-      "KAH Digital conçoit des agents IA verticaux — branchés sur un seul métier, de bout en bout — ainsi que les sites web, applications et parcours support qui les accompagnent. Preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
+      "KAH Digital Studio conçoit des agents IA verticaux — branchés sur un seul métier, de bout en bout — ainsi que les sites web, applications et parcours support qui les accompagnent. Preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
     sectionTitle: "Un positionnement simple",
     sectionBody:
       "Nous ne cherchons pas à tout promettre. Nous construisons des agents et des bases utiles, propres et crédibles pour aider une entreprise à déléguer un métier, mieux se présenter ou mieux accompagner ses utilisateurs.",
@@ -59,7 +59,7 @@ const copy = {
     eyebrow: "French-speaking, English-speaking, SMBs, and growing teams",
     title: "A vertical AI agent, and the digital foundations to match",
     intro:
-      "KAH Digital designs vertical AI agents — wired into one job, end to end — plus the websites, applications, and support workflows around them. Live proof: KAH Workforce, an AI chief-of-staff for independent artists.",
+      "KAH Digital Studio designs vertical AI agents — wired into one job, end to end — plus the websites, applications, and support workflows around them. Live proof: KAH Workforce, an AI chief-of-staff for independent artists.",
     sectionTitle: "A simple positioning",
     sectionBody:
       "We do not try to promise everything. We build agents and useful, clean, credible foundations to help a company delegate a job, present itself better, or support its users more clearly.",
@@ -106,7 +106,7 @@ const copy = {
     eyebrow: "Frankophon, englischsprachig, KMU und wachsende Teams",
     title: "Ein vertikaler KI-Agent, und die passenden digitalen Grundlagen",
     intro:
-      "KAH Digital entwickelt vertikale KI-Agenten — Ende-zu-Ende auf einen Job spezialisiert — sowie die Websites, Anwendungen und Support-Abläufe drumherum. Live-Beweis: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler.",
+      "KAH Digital Studio entwickelt vertikale KI-Agenten — Ende-zu-Ende auf einen Job spezialisiert — sowie die Websites, Anwendungen und Support-Abläufe drumherum. Live-Beweis: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler.",
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
       "Wir versprechen nicht alles. Wir bauen Agenten und nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen einen Job delegieren, sich besser präsentieren oder Nutzer klarer begleiten können.",

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiAlertCircle, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website-Relaunch: Wann und wie? — KAH Digital",
+  title: "Website-Relaunch: Wann und wie? — KAH Digital Studio",
   description: "Die 7 Anzeichen, dass es Zeit für einen Relaunch Ihrer Website ist, und die Methode, ihn ohne Budgetverschwendung zu meistern.",
   keywords: ["refonte site web", "Website erneuern", "Website aktualisieren", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-relaunch" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website-Relaunch: Wann sollten Sie starten und wie gehen Sie vor?",
   "datePublished": "2026-04-24",
   "dateModified": "2026-04-24",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
 };
 
 const SIGNALS = [

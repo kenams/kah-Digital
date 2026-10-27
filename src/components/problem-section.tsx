@@ -39,7 +39,7 @@ export function ProblemSection() {
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital ne livre pas un site de plus. On livre un agent IA vertical, branché sur votre métier — preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
+      solution: "KAH Digital Studio ne livre pas un site de plus. On livre un agent IA vertical, branché sur votre métier — preuve en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
       cta: "Voir comment ça se passe",
     },
     en: {
@@ -72,7 +72,7 @@ export function ProblemSection() {
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital doesn't deliver another website. We deliver a vertical AI agent, wired into your business — flagship proof: KAH Workforce, a live AI chief-of-staff for independent artists.",
+      solution: "KAH Digital Studio doesn't deliver another website. We deliver a vertical AI agent, wired into your business — flagship proof: KAH Workforce, a live AI chief-of-staff for independent artists.",
       cta: "See how it works",
     },
     de: {
@@ -105,7 +105,7 @@ export function ProblemSection() {
           color: "#3b82f6",
         },
       ],
-      solution: "KAH Digital liefert keine weitere Website. Wir liefern einen vertikalen KI-Agenten, der in Ihr Geschäft eingebettet ist — Aushängeschild: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler, live im Einsatz.",
+      solution: "KAH Digital Studio liefert keine weitere Website. Wir liefern einen vertikalen KI-Agenten, der in Ihr Geschäft eingebettet ist — Aushängeschild: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler, live im Einsatz.",
       cta: "So funktioniert es",
     },
   }[locale];

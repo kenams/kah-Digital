@@ -42,11 +42,11 @@ function buildAuditDeliveryEmail(name: string, audit: DeliveredAudit, reportUrl:
 ${audit.priceRange ? `<p>Budget indicatif : <strong>${esc(audit.priceRange)}</strong></p>` : ""}
 <p><a href="${reportUrl}" style="display:inline-block;background:#4f46e5;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:700;">Voir mon rapport complet</a></p>
 <p>Une question ? Répondez simplement à cet email, je lis tous les messages. Pour un devis : <a href="${quoteUrl}">${quoteUrl}</a></p>
-<p style="margin-top:24px;">KAH Digital<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14</span></p>
+<p style="margin-top:24px;">KAH Digital Studio<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14</span></p>
 </div>`;
   const NL = String.fromCharCode(10);
   const bullets = audit.problems.slice(0, 5).map((p) => `- ${p.title}`).join(NL);
-  const text = ["Bonjour,", "", `Voici l'audit gratuit de ${name} : score ${audit.score}/100.`, "", "Points à améliorer :", bullets, "", `Rapport complet : ${reportUrl}`, `Devis : ${quoteUrl}`, "", "KAH Digital"].join(NL);
+  const text = ["Bonjour,", "", `Voici l'audit gratuit de ${name} : score ${audit.score}/100.`, "", "Points à améliorer :", bullets, "", `Rapport complet : ${reportUrl}`, `Devis : ${quoteUrl}`, "", "KAH Digital Studio"].join(NL);
   return { subject, html, text };
 }
 

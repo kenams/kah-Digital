@@ -3,7 +3,7 @@ import { portfolioProjects } from "@/data/portfolio";
 import { buildPageMetadata } from "@/lib/shared-metadata";
 
 const projectsDescription =
-  "Agents IA verticaux, sites web, applications et solutions support livrés par KAH Digital — dont KAH Workforce, chef de cabinet IA pour artistes indépendants.";
+  "Agents IA verticaux, sites web, applications et solutions support livrés par KAH Digital Studio — dont KAH Workforce, chef de cabinet IA pour artistes indépendants.";
 
 export const metadata = buildPageMetadata({
   locale: "fr",

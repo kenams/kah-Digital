@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KAH Digital — Toutes nos apps",
-  description: "ANTE · Vellio · TechCash · KAH Digital — Défis financiers, e-commerce premium, formations digitales.",
+  title: "KAH Digital Studio — Toutes nos apps",
+  description: "ANTE · Vellio · TechCash · KAH Digital Studio — Défis financiers, e-commerce premium, formations digitales.",
   openGraph: {
-    title: "KAH Digital — Toutes nos apps",
-    description: "ANTE · Vellio · TechCash · KAH Digital",
+    title: "KAH Digital Studio — Toutes nos apps",
+    description: "ANTE · Vellio · TechCash · KAH Digital Studio",
     images: [{ url: "https://kah-digital.ch/og-links.png", width: 1200, height: 630 }],
   },
 };
@@ -40,7 +40,7 @@ const links = [
   },
   {
     emoji: "⚡",
-    name: "KAH Digital — Agence IA",
+    name: "KAH Digital Studio — Agence IA",
     desc: "On construit des SaaS, apps et systèmes d'automatisation. Basé à Toulouse.",
     url: "https://kah-digital.ch",
     color: "from-emerald-500 to-teal-600",
@@ -66,7 +66,7 @@ export default function LinksPage() {
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center text-3xl font-black text-black mb-3 shadow-lg shadow-amber-500/30">
             K
           </div>
-          <h1 className="text-xl font-black tracking-tight">KAH Digital</h1>
+          <h1 className="text-xl font-black tracking-tight">KAH Digital Studio</h1>
           <p className="text-sm text-white/50 mt-1">Apps · SaaS · Automatisation · Toulouse</p>
           <div className="mt-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold">
             🏟️ Coupe du Monde 2026 — ANTE est live
@@ -118,7 +118,7 @@ export default function LinksPage() {
 
         {/* Footer */}
         <p className="mt-10 text-center text-xs text-white/25">
-          © 2026 KAH Digital · Toulouse · France
+          © 2026 KAH Digital Studio · Toulouse · France
         </p>
       </div>
     </main>

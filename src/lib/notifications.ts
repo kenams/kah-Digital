@@ -109,7 +109,7 @@ async function sendEmailNotification(quote: QuoteRecord) {
     from: getResendFromAddress(),
     to: notificationEmail.split(",").map((mail) => mail.trim()),
     replyTo: quote.email,
-    subject: `Nouveau devis KAH Digital - ${quote.name}`,
+    subject: `Nouveau devis KAH Digital Studio - ${quote.name}`,
     html,
     text: `Projet: ${quote.projectType} / Budget: ${quote.budget} / Timeline: ${quote.timeline}\nClient: ${
       quote.clientType ?? "-"
@@ -140,13 +140,13 @@ async function sendClientAcknowledgement(quote: QuoteRecord) {
 <p>Bonjour${name ? ` ${name}` : ""},</p>
 <p>J'ai bien reçu votre demande de devis. Je l'étudie et je reviens vers vous avec une proposition claire <strong>sous 24 heures</strong> (jours ouvrés).</p>
 <p>Si vous souhaitez ajouter une précision, répondez simplement à cet email : je lis tous les messages.</p>
-<p style="margin-top:24px;">KAH Digital<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14 · kah-digital.ch</span></p>
+<p style="margin-top:24px;">KAH Digital Studio<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14 · kah-digital.ch</span></p>
 </div>`,
     text: `Bonjour,
 
 J'ai bien reçu votre demande de devis. Je reviens vers vous avec une proposition sous 24 heures (jours ouvrés).
 
-KAH Digital - kahdigital42@gmail.com - 07 59 55 84 14`,
+KAH Digital Studio - kahdigital42@gmail.com - 07 59 55 84 14`,
   });
 }
 

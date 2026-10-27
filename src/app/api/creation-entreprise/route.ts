@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
     });
 
     const clientHtml = renderBrandedEmail({
-      eyebrow: "KAH Digital",
+      eyebrow: "KAH Digital Studio",
       title: `Merci ${data.firstName}, on s'occupe de tout`,
       intro:
         "Ta demande de création d'auto-entreprise a bien été reçue. On revient vers toi sous 24h pour finaliser ton immatriculation à l'INPI, sans erreur et sans perte de temps.",
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     await resendClient.emails.send({
       from: getResendFromAddress(),
       to: [data.email],
-      subject: "KAH Digital — Demande de création d'auto-entreprise reçue",
+      subject: "KAH Digital Studio — Demande de création d'auto-entreprise reçue",
       html: clientHtml,
       text: `Merci ${data.firstName}, ta demande a bien été reçue. On revient vers toi sous 24h pour finaliser ton auto-entreprise. On te demandera ta pièce d'identité (recto/verso) par email après le premier contact.`,
     });

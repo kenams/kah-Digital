@@ -18,7 +18,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Paris", country: "France", region: "Île-de-France", slug: "agence-web-paris",
     headline: "Web Development in Paris",
     subline: "Remote digital studio — websites, apps and digital solutions for Parisian freelancers, small businesses and startups.",
-    intro: "KAH Digital helps Parisian businesses and independents build their online presence. Based in Toulouse, our studio works remotely for all of France. Clear process, fast replies and custom quotes after a first conversation.",
+    intro: "KAH Digital Studio helps Parisian businesses and independents build their online presence. Based in Toulouse, our studio works remotely for all of France. Clear process, fast replies and custom quotes after a first conversation.",
     sectors: ["Lawyers & accountants", "Agencies & consultants", "E-commerce & shops", "Coaches & trainers", "Startups & scale-ups", "Freelancers & creatives"],
     proofLine: PROOF,
     faq: [
@@ -31,7 +31,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Lyon", country: "France", region: "Auvergne-Rhône-Alpes", slug: "agence-web-lyon",
     headline: "Web Development in Lyon",
     subline: "Digital studio — professional websites, apps and digital solutions for businesses and independents in Lyon and the region.",
-    intro: "KAH Digital builds websites and digital solutions for Lyon businesses. Simple process, clear quotes, fast delivery — whether you run a restaurant, an industrial SME or a professional practice.",
+    intro: "KAH Digital Studio builds websites and digital solutions for Lyon businesses. Simple process, clear quotes, fast delivery — whether you run a restaurant, an industrial SME or a professional practice.",
     sectors: ["Restaurants & local bistros", "Industrial SMEs", "Practices & professionals", "E-commerce & shops", "Startups & incubators", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -44,7 +44,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Marseille", country: "France", region: "Provence-Alpes-Côte d'Azur", slug: "agence-web-marseille",
     headline: "Web Development in Marseille",
     subline: "Digital studio for Marseille and the Provence region — websites, apps and digital solutions for small businesses, independents and shops.",
-    intro: "KAH Digital supports Marseille businesses with their online presence. Restaurants, practices, shops, craftspeople: a clean, fast website that converts. Clear process and custom quotes after a first conversation.",
+    intro: "KAH Digital Studio supports Marseille businesses with their online presence. Restaurants, practices, shops, craftspeople: a clean, fast website that converts. Clear process and custom quotes after a first conversation.",
     sectors: ["Restaurants & shops", "Craftspeople & independents", "Professional practices", "Tourism & hospitality", "E-commerce", "Provence startups"],
     proofLine: PROOF,
     faq: [
@@ -57,7 +57,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Bordeaux", country: "France", region: "Nouvelle-Aquitaine", slug: "agence-web-bordeaux",
     headline: "Web Development in Bordeaux",
     subline: "Digital studio — websites and applications for small businesses, independents and startups in Bordeaux and the region.",
-    intro: "KAH Digital builds professional websites for Bordeaux businesses. Wine estates, practices, startups, shops: a clear, fast website adapted to your activity, delivered on the agreed schedule.",
+    intro: "KAH Digital Studio builds professional websites for Bordeaux businesses. Wine estates, practices, startups, shops: a clear, fast website adapted to your activity, delivered on the agreed schedule.",
     sectors: ["Wine estates & châteaux", "Practices & consultants", "Startups & scale-ups", "Restaurants & hotels", "E-commerce", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -70,7 +70,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Nantes", country: "France", region: "Pays de la Loire", slug: "agence-web-nantes",
     headline: "Web Development in Nantes",
     subline: "Digital studio for Nantes and the region — websites, apps and AI automations for businesses and independents.",
-    intro: "KAH Digital supports Nantes businesses with their online presence. Nantes is one of France's most active startup ecosystems, and our studio can serve the tech needs of scale-ups and very small businesses alike.",
+    intro: "KAH Digital Studio supports Nantes businesses with their online presence. Nantes is one of France's most active startup ecosystems, and our studio can serve the tech needs of scale-ups and very small businesses alike.",
     sectors: ["Startups & tech", "Practices & consultants", "E-commerce", "Associations & NGOs", "Craftspeople & independents", "Restaurants & shops"],
     proofLine: PROOF,
     faq: [
@@ -83,7 +83,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Strasbourg", country: "France", region: "Alsace", slug: "agence-web-strasbourg",
     headline: "Web Development in Strasbourg",
     subline: "Trilingual FR/DE/EN digital studio — websites and applications for Alsatian, cross-border and international businesses.",
-    intro: "KAH Digital suits Strasbourg businesses: trilingual French-German-English, we understand cross-border markets. Showcase sites, business applications or digital solutions. Clear process, fast delivery.",
+    intro: "KAH Digital Studio suits Strasbourg businesses: trilingual French-German-English, we understand cross-border markets. Showcase sites, business applications or digital solutions. Clear process, fast delivery.",
     sectors: ["Cross-border FR/DE businesses", "Institutions & local authorities", "Law firms", "E-commerce", "Craftspeople & SMEs", "Tourism & culture"],
     proofLine: "Trilingual FR/DE/EN · Custom quote · No commitment",
     faq: [
@@ -96,13 +96,13 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Bern", country: "Switzerland", region: "Bern", slug: "agence-web-berne",
     headline: "Web Development in Bern",
     subline: "Bilingual FR/DE digital studio — Next.js 15, Lighthouse 95+, fixed price. From CHF 290, delivered in 5 days. No commitment.",
-    intro: `KAH Digital supports businesses and independents in the Bern region with their online presence. Bilingual French-German, our studio fits the Bernese market: federal, institutional or local SMEs. ${CH_PRICES} Free quote within 24h.`,
+    intro: `KAH Digital Studio supports businesses and independents in the Bern region with their online presence. Bilingual French-German, our studio fits the Bernese market: federal, institutional or local SMEs. ${CH_PRICES} Free quote within 24h.`,
     sectors: ["Institutions & federal administrations", "Practices & consultants", "Bilingual FR/DE SMEs", "Craftspeople & independents", "Associations & NGOs", "Bern startups"],
     proofLine: "Remote studio · Bilingual FR/DE · Fixed price from CHF 290 — Reply within 24h",
     faq: [
       { q: "How much does a professional website cost in Bern?", a: "Starter (bilingual FR/DE landing page) from CHF 290, delivered in 5 days. Business (6 pages, SEO) from CHF 790. Full AI system from CHF 2,490. Fixed price, quote confirmed before we start." },
       { q: "Do you build websites for Bernese institutions?", a: "Yes: institutional sites, service portals and intranets, built to your specification." },
-      { q: "Do you work in German for Bernese clients?", a: "Yes, KAH Digital produces sites in German, French and English — ideal for the bilingual Bernese market." },
+      { q: "Do you work in German for Bernese clients?", a: "Yes, KAH Digital Studio produces sites in German, French and English — ideal for the bilingual Bernese market." },
       { q: ACCEPT_Q, a: ACCEPT_A },
     ],
   },
@@ -110,7 +110,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Toulouse", country: "France", region: "Occitanie", slug: "agence-web-toulouse",
     headline: "Web Development in Toulouse",
     subline: "Digital studio for Toulouse and Occitanie — websites, apps and digital solutions for small businesses, startups and independents.",
-    intro: "KAH Digital is based in Toulouse and supports local businesses with their online presence. Toulouse is France's fourth-largest city and a major tech hub, from aerospace SMEs to restaurants around the Capitole. Clear process, custom quotes, fast delivery.",
+    intro: "KAH Digital Studio is based in Toulouse and supports local businesses with their online presence. Toulouse is France's fourth-largest city and a major tech hub, from aerospace SMEs to restaurants around the Capitole. Clear process, custom quotes, fast delivery.",
     sectors: ["Aerospace & engineering", "Restaurants & shops", "Practices & professionals", "Startups & tech", "Craftspeople & independents", "E-commerce"],
     proofLine: PROOF,
     faq: [
@@ -123,7 +123,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Nice", country: "France", region: "French Riviera", slug: "agence-web-nice",
     headline: "Web Development in Nice",
     subline: "Digital studio for Nice and the French Riviera — professional websites for hotels, restaurants, practices and shops.",
-    intro: "KAH Digital builds websites for Nice businesses. Tourism, hospitality, fine dining, medical practices, boutiques: a fast, mobile-first site that converts. The Riviera deserves an online presence to match.",
+    intro: "KAH Digital Studio builds websites for Nice businesses. Tourism, hospitality, fine dining, medical practices, boutiques: a fast, mobile-first site that converts. The Riviera deserves an online presence to match.",
     sectors: ["Hotels & residences", "Fine-dining restaurants", "Boutiques & luxury", "Doctors & therapists", "Real estate agencies", "Craftspeople & service providers"],
     proofLine: PROOF,
     faq: [
@@ -136,7 +136,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Lille", country: "France", region: "Hauts-de-France", slug: "agence-web-lille",
     headline: "Web Development in Lille",
     subline: "Digital studio for Lille and Hauts-de-France — websites, apps and digital solutions for small businesses, independents and shops.",
-    intro: "KAH Digital supports Lille businesses with their online presence. At the crossroads of Paris, Brussels and London, Lille is a dynamic market. Our studio builds effective websites for craftspeople, practices, startups and shops in the region.",
+    intro: "KAH Digital Studio supports Lille businesses with their online presence. At the crossroads of Paris, Brussels and London, Lille is a dynamic market. Our studio builds effective websites for craftspeople, practices, startups and shops in the region.",
     sectors: ["Shops & boutiques", "Industrial SMEs", "Practices & consultants", "Restaurants & cafés", "Startups & tech", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -149,7 +149,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Montpellier", country: "France", region: "Occitanie", slug: "agence-web-montpellier",
     headline: "Web Development in Montpellier",
     subline: "Digital studio for Montpellier — websites, apps and digital solutions for startups, healthcare professionals and Mediterranean businesses.",
-    intro: "KAH Digital builds professional websites for Montpellier businesses. Montpellier is a lively city: startups, doctors, lawyers, restaurants, e-commerce. Our process is simple: online brief, quote within 24h, delivery in 5 business days after we receive your content for a showcase site.",
+    intro: "KAH Digital Studio builds professional websites for Montpellier businesses. Montpellier is a lively city: startups, doctors, lawyers, restaurants, e-commerce. Our process is simple: online brief, quote within 24h, delivery in 5 business days after we receive your content for a showcase site.",
     sectors: ["Healthcare professionals", "Startups & tech", "Law firms", "Restaurants & shops", "E-commerce", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -162,7 +162,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Rennes", country: "France", region: "Brittany", slug: "agence-web-rennes",
     headline: "Web Development in Rennes",
     subline: "Digital studio for Rennes and Brittany — websites, apps and digital solutions for startups, small businesses and independents.",
-    intro: "KAH Digital supports Rennes businesses with their online presence. Rennes is one of the most active tech ecosystems in western France. Our studio builds websites and applications for startups, freelancers, craftspeople and very small businesses in the region.",
+    intro: "KAH Digital Studio supports Rennes businesses with their online presence. Rennes is one of the most active tech ecosystems in western France. Our studio builds websites and applications for startups, freelancers, craftspeople and very small businesses in the region.",
     sectors: ["Startups & tech", "Craftspeople & independents", "Restaurants & shops", "Practices & professionals", "E-commerce", "Associations & NGOs"],
     proofLine: PROOF,
     faq: [
@@ -175,7 +175,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Zurich", country: "Switzerland", region: "Zurich", slug: "agence-web-zurich",
     headline: "Web Development in Zurich",
     subline: "Multilingual DE/FR/EN digital studio — Next.js 15, Lighthouse 95+. From CHF 290, 5 days. Fixed price guaranteed.",
-    intro: `KAH Digital supports Zurich businesses with their online presence. Zurich is Switzerland's economic capital: banks, law firms, fintech startups, industrial SMEs — our studio builds professional multilingual (DE/FR/EN) websites suited to the Zurich market. ${CH_PRICES} Free quote within 24h.`,
+    intro: `KAH Digital Studio supports Zurich businesses with their online presence. Zurich is Switzerland's economic capital: banks, law firms, fintech startups, industrial SMEs — our studio builds professional multilingual (DE/FR/EN) websites suited to the Zurich market. ${CH_PRICES} Free quote within 24h.`,
     sectors: ["Finance & banking", "Law firms & fiduciaries", "Fintech & crypto startups", "Hotels & catering", "German-Swiss SMEs", "Professional practices"],
     proofLine: "Remote studio · Multilingual DE/FR/EN · Fixed price from CHF 290 — Reply within 24h",
     faq: [
@@ -189,7 +189,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Basel", country: "Switzerland", region: "Basel", slug: "agence-web-basel",
     headline: "Web Development in Basel",
     subline: "Trilingual FR/DE/EN digital studio — Next.js 15, Lighthouse 95+. From CHF 290, 5 days. Fixed price guaranteed.",
-    intro: `KAH Digital builds websites for Basel businesses. Basel is a unique international crossroads: pharmaceuticals, trade fairs, culture and banking. Our studio builds multilingual sites for companies operating in France, Germany and Switzerland. ${CH_PRICES}`,
+    intro: `KAH Digital Studio builds websites for Basel businesses. Basel is a unique international crossroads: pharmaceuticals, trade fairs, culture and banking. Our studio builds multilingual sites for companies operating in France, Germany and Switzerland. ${CH_PRICES}`,
     sectors: ["Pharma & life sciences", "Industry & manufacturing", "Culture & art (Art Basel)", "Cross-border CH/DE/FR SMEs", "Practices & consultants", "Restaurants & hotels"],
     proofLine: "Remote studio · Trilingual FR/DE/EN · Fixed price from CHF 290 — Reply within 24h",
     faq: [
@@ -203,12 +203,12 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Lausanne", country: "Switzerland", region: "Vaud", slug: "agence-web-lausanne",
     headline: "Web Agency in Lausanne",
     subline: "Remote digital studio for businesses in Lausanne and Vaud — Next.js 15, Lighthouse 95+, local SEO for Vaud. From CHF 290, delivered in 5 days. Fixed price guaranteed.",
-    intro: `KAH Digital is your remote web agency for Lausanne. We build high-performance websites for Vaud SMEs, independents, startups and professional practices. Working remotely with French-speaking Switzerland, we combine premium design, technical SEO and AI integration to give your business an online presence that brings in real customers. ${CH_PRICES} Free quote within 24h.`,
+    intro: `KAH Digital Studio is your remote web agency for Lausanne. We build high-performance websites for Vaud SMEs, independents, startups and professional practices. Working remotely with French-speaking Switzerland, we combine premium design, technical SEO and AI integration to give your business an online presence that brings in real customers. ${CH_PRICES} Free quote within 24h.`,
     sectors: ["Vaud lawyers & fiduciaries", "Lausanne restaurants & hotels", "Coaches & therapists", "EPFL startups & scale-ups", "Vaud SMEs & craftspeople", "Doctors & healthcare professionals"],
     proofLine: "100% remote agency · Reply within 24h · Fixed price from CHF 290 · No commitment",
     faq: [
       { q: "How much does a web agency cost in Lausanne?", a: "Starter (landing page) from CHF 290, delivered in 5 days. Business (6 pages, local SEO for Lausanne) from CHF 790. Full AI system from CHF 2,490. Fixed price guaranteed, no surprises." },
-      { q: "Do you have an office in Lausanne?", a: "No: KAH Digital is based in Toulouse (France) and works 100% remotely with clients in France and Switzerland, including Lausanne — same quality, same price." },
+      { q: "Do you have an office in Lausanne?", a: "No: KAH Digital Studio is based in Toulouse (France) and works 100% remotely with clients in France and Switzerland, including Lausanne — same quality, same price." },
       { q: "Do you do local SEO for Lausanne?", a: "Yes — full technical SEO, Google Business Profile, Schema.org structured data, Core Web Vitals 95+ and a sitemap, aimed at searches such as “web agency Lausanne” and “website creation Vaud”." },
       { q: "How long does a web project in Lausanne take?", a: "Landing page: 5 days. Complete showcase site: 5 business days after we receive your content. Application or AI system: 28 days. Deadlines confirmed in writing before we start." },
     ],
@@ -217,7 +217,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Geneva", country: "Switzerland", region: "Geneva", slug: "agence-web-geneve",
     headline: "Web Agency in Geneva",
     subline: "Multilingual FR/EN/DE digital studio for Geneva businesses — Next.js 15, Lighthouse 95+. From CHF 290, fixed price.",
-    intro: "KAH Digital supports Geneva businesses with their digital transformation. Law firms, international NGOs, fiduciaries, luxury hotels, clinics, startups — we build multilingual (FR/EN/DE) websites and applications suited to the Geneva market. A 100% remote studio working with Geneva companies. Free quote within 24h, source code 100% yours.",
+    intro: "KAH Digital Studio supports Geneva businesses with their digital transformation. Law firms, international NGOs, fiduciaries, luxury hotels, clinics, startups — we build multilingual (FR/EN/DE) websites and applications suited to the Geneva market. A 100% remote studio working with Geneva companies. Free quote within 24h, source code 100% yours.",
     sectors: ["Law firms & notaries", "NGOs & international organisations", "Fiduciaries & wealth management", "Luxury hotels & dining", "Clinics & doctors", "Lake Geneva startups"],
     proofLine: "100% remote · Multilingual FR/EN/DE · Fixed price from CHF 290 · Reply within 24h",
     faq: [
@@ -231,7 +231,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Lugano", country: "Switzerland", region: "Ticino", slug: "agence-web-lugano",
     headline: "Web Development in Lugano",
     subline: "Trilingual IT/FR/DE digital studio — Next.js 15, Lighthouse 95+. From CHF 290, 5 days. Fixed price guaranteed.",
-    intro: "KAH Digital supports Lugano businesses with their online presence. Ticino is unique in Switzerland: Italian at heart, Swiss in spirit, looking towards Italy and the world. Our studio builds multilingual sites suited to Ticino businesses: finance, tourism, luxury, SMEs. Starter from CHF 290 — Business from CHF 790 — Free quote within 24h.",
+    intro: "KAH Digital Studio supports Lugano businesses with their online presence. Ticino is unique in Switzerland: Italian at heart, Swiss in spirit, looking towards Italy and the world. Our studio builds multilingual sites suited to Ticino businesses: finance, tourism, luxury, SMEs. Starter from CHF 290 — Business from CHF 790 — Free quote within 24h.",
     sectors: ["Finance & wealth management", "Tourism & luxury hospitality", "Luxury & fashion", "Ticino SMEs", "Restaurants & cafés", "Professional practices"],
     proofLine: "Remote studio · Trilingual IT/FR/DE · Fixed price from CHF 290 — Reply within 24h",
     faq: [
@@ -245,7 +245,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Grenoble", country: "France", region: "Auvergne-Rhône-Alpes", slug: "agence-web-grenoble",
     headline: "Web Development in Grenoble",
     subline: "Digital studio for Grenoble and the Isère — websites, apps and digital solutions for deeptech startups, SMEs and independents.",
-    intro: "KAH Digital supports Grenoble businesses with their online presence. Grenoble is one of France's most innovative cities: nanotechnology, engineering, deeptech startups. Our studio builds websites and applications that reflect your level of expertise: clear, fast and well referenced.",
+    intro: "KAH Digital Studio supports Grenoble businesses with their online presence. Grenoble is one of France's most innovative cities: nanotechnology, engineering, deeptech startups. Our studio builds websites and applications that reflect your level of expertise: clear, fast and well referenced.",
     sectors: ["Deeptech & engineering startups", "Industrial & high-tech SMEs", "Healthcare professionals", "Practices & consultants", "Restaurants & shops", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -258,7 +258,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Rouen", country: "France", region: "Normandy", slug: "agence-web-rouen",
     headline: "Web Development in Rouen",
     subline: "Digital studio for Rouen and Normandy — professional websites for SMEs, craftspeople and Norman shops.",
-    intro: "KAH Digital builds professional websites for Rouen businesses. Rouen is a lively city with a dense economic fabric: SMEs, craftspeople, shops, professional practices. Our process is simple: online brief, quote within 24h, and a showcase site delivered in 5 business days after we receive your content.",
+    intro: "KAH Digital Studio builds professional websites for Rouen businesses. Rouen is a lively city with a dense economic fabric: SMEs, craftspeople, shops, professional practices. Our process is simple: online brief, quote within 24h, and a showcase site delivered in 5 business days after we receive your content.",
     sectors: ["Norman SMEs", "Shops & boutiques", "Craftspeople & independents", "Practices & professionals", "Restaurants & hotels", "E-commerce"],
     proofLine: PROOF,
     faq: [
@@ -271,7 +271,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Aix-en-Provence", country: "France", region: "Provence-Alpes-Côte d'Azur", slug: "agence-web-aix-en-provence",
     headline: "Web Development in Aix-en-Provence",
     subline: "Digital studio for Aix-en-Provence and the Provence region — elegant websites for practices, wine estates, boutiques and professionals.",
-    intro: "KAH Digital supports Aix-en-Provence businesses with their online presence. Aix is a city of high purchasing power and demanding clients: law firms, wine estates, premium boutiques, doctors. Our studio builds websites worthy of your reputation.",
+    intro: "KAH Digital Studio supports Aix-en-Provence businesses with their online presence. Aix is a city of high purchasing power and demanding clients: law firms, wine estates, premium boutiques, doctors. Our studio builds websites worthy of your reputation.",
     sectors: ["Law firms & notaries", "Wine estates", "Boutiques & luxury", "Doctors & therapists", "Startups & tech", "Fine-dining restaurants"],
     proofLine: PROOF,
     faq: [
@@ -284,7 +284,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Angers", country: "France", region: "Pays de la Loire", slug: "agence-web-angers",
     headline: "Web Development in Angers",
     subline: "Digital studio for Angers and Maine-et-Loire — websites, apps and digital solutions for startups, small businesses and independents.",
-    intro: "KAH Digital supports Angers businesses with their online presence. Angers is a student and entrepreneurial city: startups, craftspeople, Loire Valley vineyards, professional practices. Our studio builds effective sites with a clear process and custom quotes.",
+    intro: "KAH Digital Studio supports Angers businesses with their online presence. Angers is a student and entrepreneurial city: startups, craftspeople, Loire Valley vineyards, professional practices. Our studio builds effective sites with a clear process and custom quotes.",
     sectors: ["Startups & tech", "Wine estates", "Craftspeople & independents", "Professional practices", "Restaurants & shops", "Associations & NGOs"],
     proofLine: PROOF,
     faq: [
@@ -297,7 +297,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Dijon", country: "France", region: "Bourgogne-Franche-Comté", slug: "agence-web-dijon",
     headline: "Web Development in Dijon",
     subline: "Digital studio for Dijon and Burgundy — professional websites for wine estates, fine-dining restaurants, SMEs and independents.",
-    intro: "KAH Digital builds websites for Dijon businesses. Dijon is the capital of Burgundy's gastronomy and wines. Our studio can serve the needs of wine estates, starred restaurants, law firms and local SMEs: elegant, fast, well-referenced sites.",
+    intro: "KAH Digital Studio builds websites for Dijon businesses. Dijon is the capital of Burgundy's gastronomy and wines. Our studio can serve the needs of wine estates, starred restaurants, law firms and local SMEs: elegant, fast, well-referenced sites.",
     sectors: ["Wine estates", "Fine-dining restaurants", "Practices & professionals", "SMEs & craftspeople", "Tourism & culture", "E-commerce"],
     proofLine: PROOF,
     faq: [
@@ -310,7 +310,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Caen", country: "France", region: "Normandy", slug: "agence-web-caen",
     headline: "Web Development in Caen",
     subline: "Digital studio for Caen and Calvados — professional websites for SMEs, craftspeople and Norman independents.",
-    intro: "KAH Digital builds websites for Caen businesses. Caen is a lively city at the heart of Normandy: craftspeople, SMEs, shops, professional practices. Our process is simple: custom quote within 24h, delivery of a showcase site in 5 business days after we receive your content, no jargon.",
+    intro: "KAH Digital Studio builds websites for Caen businesses. Caen is a lively city at the heart of Normandy: craftspeople, SMEs, shops, professional practices. Our process is simple: custom quote within 24h, delivery of a showcase site in 5 business days after we receive your content, no jargon.",
     sectors: ["Norman SMEs", "Craftspeople & independents", "Restaurants & shops", "Professional practices", "E-commerce", "Associations & culture"],
     proofLine: PROOF,
     faq: [
@@ -323,7 +323,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Clermont-Ferrand", country: "France", region: "Auvergne-Rhône-Alpes", slug: "agence-web-clermont-ferrand",
     headline: "Web Development in Clermont-Ferrand",
     subline: "Digital studio for Clermont-Ferrand and Auvergne — websites, apps and digital solutions for SMEs, startups and independents.",
-    intro: "KAH Digital supports Clermont-Ferrand businesses with their online presence. Clermont-Ferrand is an industrial and entrepreneurial city: Michelin, startups, food-industry SMEs, professional practices. Our studio builds effective websites with a clear process and custom quotes after a first conversation.",
+    intro: "KAH Digital Studio supports Clermont-Ferrand businesses with their online presence. Clermont-Ferrand is an industrial and entrepreneurial city: Michelin, startups, food-industry SMEs, professional practices. Our studio builds effective websites with a clear process and custom quotes after a first conversation.",
     sectors: ["Industrial SMEs", "Startups & tech", "Food industry & local produce", "Craftspeople & independents", "Practices & professionals", "Restaurants & shops"],
     proofLine: PROOF,
     faq: [
@@ -336,7 +336,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Metz", country: "France", region: "Grand Est", slug: "agence-web-metz",
     headline: "Web Development in Metz",
     subline: "Digital studio for Metz and the Grand Est — websites, apps and digital solutions for SMEs, independents and cross-border businesses.",
-    intro: "KAH Digital builds websites for Metz businesses. Metz is a strategic city at the crossroads of France, Luxembourg and Germany: industrial SMEs, shops, professional practices, cross-border companies. Professional websites, multilingual if needed, delivered quickly.",
+    intro: "KAH Digital Studio builds websites for Metz businesses. Metz is a strategic city at the crossroads of France, Luxembourg and Germany: industrial SMEs, shops, professional practices, cross-border companies. Professional websites, multilingual if needed, delivered quickly.",
     sectors: ["SMEs & industry", "Cross-border FR/LU/DE businesses", "Shops & boutiques", "Practices & professionals", "Restaurants & hotels", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
@@ -349,7 +349,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Fribourg", country: "Switzerland", region: "Fribourg", slug: "site-web-fribourg",
     headline: "Web Development in Fribourg",
     subline: "Bilingual FR/DE digital studio — Next.js 15, technical SEO, fixed price. From CHF 290, delivered in 5 days. No commitment.",
-    intro: `KAH Digital builds professional websites for businesses, craftspeople and independents in the canton of Fribourg. Bilingual French-German, our studio can serve the specific needs of the Fribourg market. High-performance sites, local SEO, premium design. ${CH_PRICES} Free quote within 24h.`,
+    intro: `KAH Digital Studio builds professional websites for businesses, craftspeople and independents in the canton of Fribourg. Bilingual French-German, our studio can serve the specific needs of the Fribourg market. High-performance sites, local SEO, premium design. ${CH_PRICES} Free quote within 24h.`,
     sectors: ["Fribourg craftspeople & SMEs", "Restaurants & cafés", "Coaches & trainers", "Agriculture & local produce", "Associations & institutions", "Professional practices"],
     proofLine: "Bilingual FR/DE · Fixed price from CHF 290 — Reply within 24h · No commitment",
     faq: [

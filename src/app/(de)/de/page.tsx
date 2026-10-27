@@ -10,9 +10,9 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/",
-  title: "KAH Digital — Vertikale KI-Agenten für Selbstständige · Toulouse · Frankreich & Schweiz",
+  title: "KAH Digital Studio — Vertikale KI-Agenten für Selbstständige · Toulouse · Frankreich & Schweiz",
   description:
-    "KAH Digital baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
+    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   keywords: [
     "vertikaler KI-Agent",
     "KI Agentur Schweiz", "KI Agentur Frankreich",
@@ -41,7 +41,7 @@ const faqJsonLd = {
       name: "Warum nicht einfach ChatGPT oder Claude direkt nutzen?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ein generischer Chatbot kennt weder Ihre Historie noch Ihre Tools noch die Besonderheiten Ihres Geschäfts — Sie erklären jedes Mal alles neu. Ein KAH Digital Agent ist in Ihre echten Tools integriert, erinnert sich an alles und handelt autonom, ohne dass Sie ihn per Prompt steuern müssen.",
+        text: "Ein generischer Chatbot kennt weder Ihre Historie noch Ihre Tools noch die Besonderheiten Ihres Geschäfts — Sie erklären jedes Mal alles neu. Ein KAH Digital Studio Agent ist in Ihre echten Tools integriert, erinnert sich an alles und handelt autonom, ohne dass Sie ihn per Prompt steuern müssen.",
       },
     },
     {
@@ -57,7 +57,7 @@ const faqJsonLd = {
       name: "Arbeiten Sie mit Kunden ausserhalb der Schweiz?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja. KAH Digital ist international tätig — Schweiz, Frankreich, Belgien, Kanada, frankophones Afrika, UK, USA. Alles läuft remote, ohne Reibungsverluste.",
+        text: "Ja. KAH Digital Studio ist international tätig — Schweiz, Frankreich, Belgien, Kanada, frankophones Afrika, UK, USA. Alles läuft remote, ohne Reibungsverluste.",
       },
     },
     {
@@ -82,8 +82,8 @@ const faqJsonLd = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
-  name: "KAH Digital",
-  alternateName: "KAH Digital",
+  name: "KAH Digital Studio",
+  alternateName: "KAH Digital Studio",
   url: "https://kah-digital.ch",
   logo: "https://kah-digital.ch/favicon.svg",
   email: "kahdigital42@gmail.com",
@@ -97,7 +97,7 @@ const organizationJsonLd = {
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
+    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

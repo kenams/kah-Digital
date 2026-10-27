@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Politique de confidentialité — K-ssenger",
   description:
-    "Politique de confidentialité de l'application K-ssenger, éditée par KAH Digital.",
+    "Politique de confidentialité de l'application K-ssenger, éditée par KAH Digital Studio.",
   alternates: {
     canonical: "/legal/kssenger-privacy",
   },
@@ -13,7 +13,7 @@ const sections: { title: string; paragraphs?: string[]; items?: string[] }[] = [
   {
     title: "Ce que K-ssenger fait",
     paragraphs: [
-      "K-ssenger est une application de messagerie personnelle. Les conversations privées et de groupe sont chiffrées de bout en bout (protocole de type Signal) : le contenu de vos messages est chiffré sur votre appareil avant d'être transmis, et n'est déchiffré que sur l'appareil du ou des destinataires. KAH Digital n'a pas techniquement accès au contenu de vos messages.",
+      "K-ssenger est une application de messagerie personnelle. Les conversations privées et de groupe sont chiffrées de bout en bout (protocole de type Signal) : le contenu de vos messages est chiffré sur votre appareil avant d'être transmis, et n'est déchiffré que sur l'appareil du ou des destinataires. KAH Digital Studio n'a pas techniquement accès au contenu de vos messages.",
     ],
   },
   {
@@ -74,7 +74,7 @@ export default function KssengerPrivacyPage() {
           Politique de confidentialité — K-ssenger
         </h1>
         <p className="mb-8 text-center text-sm text-gray-500">
-          Éditeur : KAH Digital — Contact : kahdigital42@gmail.com — Dernière mise à jour : 24 septembre 2026
+          Éditeur : KAH Digital Studio — Contact : kahdigital42@gmail.com — Dernière mise à jour : 24 septembre 2026
         </p>
 
         <div className="space-y-8">
@@ -99,7 +99,7 @@ export default function KssengerPrivacyPage() {
           ))}
 
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-            KAH Digital — {new Date().toLocaleDateString("fr-FR")}
+            KAH Digital Studio — {new Date().toLocaleDateString("fr-FR")}
           </div>
         </div>
       </div>

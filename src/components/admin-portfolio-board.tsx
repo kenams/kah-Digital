@@ -137,7 +137,7 @@ export function AdminPortfolioBoard({ initialItems }: Props) {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-white/60">Portfolio clients</p>
-            <h1 className="mt-3 text-3xl font-semibold">Suivi des prestations KAH Digital</h1>
+            <h1 className="mt-3 text-3xl font-semibold">Suivi des prestations KAH Digital Studio</h1>
             <p className="mt-3 max-w-3xl text-sm text-white/70">
               Chaque site, application ou prestation livrée, avec le client, le lien, le prix et le statut.
               L&apos;historique complet de l&apos;activité, année après année.

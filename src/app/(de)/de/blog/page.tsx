@@ -3,8 +3,8 @@ import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "KAH Digital Blog — Tipps zu Website, SEO und Digitalem für KMU",
-  description: "Praxisleitfäden zu Website-Erstellung, Offerten, Relaunch und SEO für KMU und Selbstständige. Von KAH Digital, einem Digitalstudio auf Distanz für Frankreich und die Schweiz.",
+  title: "KAH Digital Studio Blog — Tipps zu Website, SEO und Digitalem für KMU",
+  description: "Praxisleitfäden zu Website-Erstellung, Offerten, Relaunch und SEO für KMU und Selbstständige. Von KAH Digital Studio, einem Digitalstudio auf Distanz für Frankreich und die Schweiz.",
   alternates: { canonical: "https://kah-digital.ch/de/blog" },
 };
 
@@ -117,7 +117,7 @@ export default function BlogDePage() {
       <section className="relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
         <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">KAH Digital Blog</h1>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">KAH Digital Studio Blog</h1>
           <p className="text-lg text-gray-400">Praxistipps zu Websites, SEO und Digitalem für KMU und Selbstständige.</p>
         </div>
       </section>

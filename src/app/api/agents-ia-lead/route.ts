@@ -27,7 +27,7 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
   "Prospection automatique": {
     subject: "Votre agent de prospection — tout est là",
     headline: "120 prospects contactés chaque matin. Sans vous.",
-    pitch: "L'Agent Prospection KAH Digital identifie vos cibles idéales, rédige un message personnalisé selon leur secteur, envoie, relance J+3 et J+7 — et vous livre uniquement les réponses positives dans votre boîte mail.",
+    pitch: "L'Agent Prospection KAH Digital Studio identifie vos cibles idéales, rédige un message personnalisé selon leur secteur, envoie, relance J+3 et J+7 — et vous livre uniquement les réponses positives dans votre boîte mail.",
     benefits: [
       "120 emails ciblés envoyés automatiquement chaque jour",
       "Relances J+3 et J+7 intégrées — zéro suivi manuel",
@@ -43,7 +43,7 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
   "Support client IA": {
     subject: "Votre agent support — 70% des tickets résolus sans vous",
     headline: "Vos clients répondus en 5 secondes. 24h/24, 7j/7.",
-    pitch: "L'Agent Support KAH Digital est formé sur votre base de connaissance, répond instantanément à vos clients sur votre site, WhatsApp ou Slack — et escalade proprement les cas complexes vers vous.",
+    pitch: "L'Agent Support KAH Digital Studio est formé sur votre base de connaissance, répond instantanément à vos clients sur votre site, WhatsApp ou Slack — et escalade proprement les cas complexes vers vous.",
     benefits: [
       "70% des tickets résolus sans intervention humaine",
       "Réponse en moins de 5 secondes, même la nuit",
@@ -59,7 +59,7 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
   "Devis automatique": {
     subject: "Votre agent devis — un devis en 30 secondes, automatiquement",
     headline: "Un devis structuré envoyé en 30 secondes. La nuit incluse.",
-    pitch: "L'Agent Devis KAH Digital analyse la demande de votre prospect, génère un devis professionnel personnalisé et l'envoie par email en moins d'une minute. Vous recevez une notification — vous validez quand vous voulez.",
+    pitch: "L'Agent Devis KAH Digital Studio analyse la demande de votre prospect, génère un devis professionnel personnalisé et l'envoie par email en moins d'une minute. Vous recevez une notification — vous validez quand vous voulez.",
     benefits: [
       "Devis généré et envoyé en 30 secondes",
       "Format professionnel signable directement",
@@ -75,7 +75,7 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
   "Casting IA": {
     subject: "Votre agent casting — les 5 meilleurs profils en moins d'une minute",
     headline: "Brief → 5 profils parfaits. En moins d'une minute.",
-    pitch: "L'Agent Castly KAH Digital analyse votre brief de casting, parcourt votre base d'artistes ou de talents, et vous propose les 5 meilleurs profils avec scoring automatique multi-critères. Fini les heures de tri.",
+    pitch: "L'Agent Castly KAH Digital Studio analyse votre brief de casting, parcourt votre base d'artistes ou de talents, et vous propose les 5 meilleurs profils avec scoring automatique multi-critères. Fini les heures de tri.",
     benefits: [
       "Brief → profils en moins d'une minute",
       "Scoring multi-critères automatique",
@@ -91,9 +91,9 @@ const AGENT_TEMPLATES: Record<string, AgentTemplate> = {
 };
 
 const DEFAULT_TEMPLATE: AgentTemplate = {
-  subject: "Votre agent IA KAH Digital — proposition complète",
+  subject: "Votre agent IA KAH Digital Studio — proposition complète",
   headline: "Un agent IA opérationnel en 10 jours. Adapté à votre activité.",
-  pitch: "KAH Digital conçoit des agents IA sur mesure pour automatiser ce qui vous prend du temps : prospection, support client, devis, casting. Chaque agent est livré avec le code source, la documentation et 1 mois de support inclus.",
+  pitch: "KAH Digital Studio conçoit des agents IA sur mesure pour automatiser ce qui vous prend du temps : prospection, support client, devis, casting. Chaque agent est livré avec le code source, la documentation et 1 mois de support inclus.",
   benefits: [
     "Opérationnel en 10 jours — pas 3 mois",
     "Prix fixe tout inclus — aucun abonnement",
@@ -101,7 +101,7 @@ const DEFAULT_TEMPLATE: AgentTemplate = {
     "ROI mesurable à J+30 ou correction gratuite",
     "Support fondateur direct pendant le premier mois",
   ],
-  proof: "\"En 10 jours on avait un agent qui travaillait à notre place. Le ROI a été immédiat.\" — Client KAH Digital",
+  proof: "\"En 10 jours on avait un agent qui travaillait à notre place. Le ROI a été immédiat.\" — Client KAH Digital Studio",
   price: "À partir de 490€ selon l'agent — prix fixe, tout inclus.",
   guarantee: "Résultats mesurables à J+30 ou on corrige gratuitement.",
   ctaLabel: "Réserver ma démo gratuite",
@@ -138,7 +138,7 @@ function buildEmail(firstName: string, tpl: AgentTemplate): string {
   <!-- HEADER -->
   <tr>
     <td style="background:linear-gradient(135deg,#1e1b4b 0%,#4c1d95 50%,#1e3a8a 100%);padding:32px;">
-      <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;">KAH Digital · Agents IA</p>
+      <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;">KAH Digital Studio · Agents IA</p>
       <h1 style="margin:0;font-size:22px;font-weight:800;color:#ffffff;line-height:1.3;">${tpl.headline}</h1>
     </td>
   </tr>
@@ -218,7 +218,7 @@ function buildEmail(firstName: string, tpl: AgentTemplate): string {
       <table cellpadding="0" cellspacing="0" width="100%" style="border-top:1px solid #f3f4f6;padding-top:20px;">
         <tr>
           <td style="text-align:center;padding:0 4px;">
-            <p style="margin:0 0 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;">KAH Digital</p>
+            <p style="margin:0 0 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;">KAH Digital Studio</p>
             <p style="margin:0;font-size:11px;color:#d1d5db;">
               <a href="${SITE}" style="color:#7c3aed;text-decoration:none;">kah-digital.ch</a>
               &nbsp;·&nbsp;kahdigital42@gmail.com
@@ -285,7 +285,7 @@ ${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;
     // Email proposition complète au prospect
     const resend = new Resend(process.env.RESEND_API_KEY!);
     await resend.emails.send({
-      from: "KAH Digital <contact@kah-digital.ch>",
+      from: "KAH Digital Studio <contact@kah-digital.ch>",
       to: email,
       replyTo: "kahdigital42@gmail.com",
       subject: tpl.subject,

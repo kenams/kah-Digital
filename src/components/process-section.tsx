@@ -102,7 +102,7 @@ export function ProcessSection() {
         sub: "From first contact to live site — fast, clear, and without unnecessary meetings.",
         cta: "Start now",
         wa: "Chat on WhatsApp",
-        waText: "Hi KAH Digital, I'd like to discuss a project.",
+        waText: "Hi KAH Digital Studio, I'd like to discuss a project.",
       }
     : isDE
     ? {
@@ -112,7 +112,7 @@ export function ProcessSection() {
         sub: "Vom ersten Kontakt bis zur fertigen Website — schnell, klar und ohne unnötige Meetings.",
         cta: "Jetzt starten",
         wa: "WhatsApp schreiben",
-        waText: "Hallo KAH Digital, ich möchte ein Projekt besprechen.",
+        waText: "Hallo KAH Digital Studio, ich möchte ein Projekt besprechen.",
       }
     : {
         eyebrow: "Comment ça marche",
@@ -121,7 +121,7 @@ export function ProcessSection() {
         sub: "Du premier contact au site en ligne — rapide, clair, sans réunions inutiles.",
         cta: "Démarrer maintenant",
         wa: "Écrire sur WhatsApp",
-        waText: "Bonjour KAH Digital, je voudrais discuter d'un projet.",
+        waText: "Bonjour KAH Digital Studio, je voudrais discuter d'un projet.",
       };
 
   const withPrefix = (p: string) => (prefix ? `${prefix}${p}` : p);

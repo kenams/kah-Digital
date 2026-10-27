@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     const origin = getSiteOrigin(request);
     const urls = getPaymentResultUrls({ locale, origin });
     const stripe = getStripeClient();
-    const label = reference ? `Paiement KAH Digital - ${reference}` : "Paiement KAH Digital";
+    const label = reference ? `Paiement KAH Digital Studio - ${reference}` : "Paiement KAH Digital Studio";
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

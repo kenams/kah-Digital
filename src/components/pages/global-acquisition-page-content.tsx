@@ -24,7 +24,7 @@ const content = {
       title: "Un site web entreprise qui convertit,",
       title2: "livré en 5 jours ouvrés.",
       intro:
-        "Fini les sites génériques qui ne donnent pas confiance. KAH Digital conçoit des sites entreprise niveau SaaS — design premium, Core Web Vitals 95+, SEO technique inclus. Vous possédez 100% du code à la livraison.",
+        "Fini les sites génériques qui ne donnent pas confiance. KAH Digital Studio conçoit des sites entreprise niveau SaaS — design premium, Core Web Vitals 95+, SEO technique inclus. Vous possédez 100% du code à la livraison.",
       stats: [
         { value: "14j", label: "Délai Business" },
         { value: "95+", label: "Lighthouse" },
@@ -62,7 +62,7 @@ const content = {
       title: "Votre site actuel coûte des clients.",
       title2: "On le transforme.",
       intro:
-        "Un site lent, mal structuré ou visuellement faible ne pardonne pas en 2025. KAH Digital reprend tout — structure, UX, vitesse, conversion — et livre une machine à leads en 14 à 28 jours. Devis ferme avant démarrage, code 100% à vous.",
+        "Un site lent, mal structuré ou visuellement faible ne pardonne pas en 2025. KAH Digital Studio reprend tout — structure, UX, vitesse, conversion — et livre une machine à leads en 14 à 28 jours. Devis ferme avant démarrage, code 100% à vous.",
       stats: [
         { value: "24h", label: "Réponse à votre demande" },
         { value: "<2s", label: "Chargement" },
@@ -85,7 +85,7 @@ const content = {
       ],
       contextTitle: "On ne repeint pas — on reconstruit",
       contextBody:
-        "Une refonte KAH Digital, c'est une chirurgie complète : nouvelle architecture, contenu recentré sur la conversion, vitesse maximale, SEO natif. Pas un lifting visuel — un système de croissance.",
+        "Une refonte KAH Digital Studio, c'est une chirurgie complète : nouvelle architecture, contenu recentré sur la conversion, vitesse maximale, SEO natif. Pas un lifting visuel — un système de croissance.",
       highlights: [
         { icon: FiZap, title: "Refonte complète en 28j", body: "Architecture, UX, copy, performance. Tout revu, tout reconstruit. Livré proprement." },
         { icon: FiUsers, title: "Analyse conversion incluse", body: "Audit de l'existant avant de toucher quoi que ce soit. On corrige ce qui coûte des leads." },
@@ -100,7 +100,7 @@ const content = {
       title: "Une application web qui",
       title2: "règle un vrai problème.",
       intro:
-        "Pas de feature-creep. Pas de sur-ingénierie. KAH Digital livre des applications web utiles, rapides et évolutives : portails B2B, dashboards, espaces clients, outils internes. V1 fonctionnelle en 4 semaines.",
+        "Pas de feature-creep. Pas de sur-ingénierie. KAH Digital Studio livre des applications web utiles, rapides et évolutives : portails B2B, dashboards, espaces clients, outils internes. V1 fonctionnelle en 4 semaines.",
       stats: [
         { value: "4sem", label: "V1 livrée" },
         { value: "100%", label: "Propriété code" },
@@ -138,7 +138,7 @@ const content = {
       title: "Réduisez vos coûts opérationnels",
       title2: "grâce à l'IA.",
       intro:
-        "Pas de l'IA gadget — des agents GPT-4 qui qualifient vos leads, répondent à vos clients et automatisent vos workflows. KAH Digital implémente des automatisations IA concrètes, intégrées à votre stack existant, avec un ROI mesurable dès le premier mois.",
+        "Pas de l'IA gadget — des agents GPT-4 qui qualifient vos leads, répondent à vos clients et automatisent vos workflows. KAH Digital Studio implémente des automatisations IA concrètes, intégrées à votre stack existant, avec un ROI mesurable dès le premier mois.",
       stats: [
         { value: "100%", label: "Code livré" },
         { value: "24/7", label: "Disponibilité" },
@@ -178,7 +178,7 @@ const content = {
       title: "A business website that converts,",
       title2: "delivered in 5 business days.",
       intro:
-        "No more generic sites that lose clients on first visit. KAH Digital builds SaaS-level business websites — premium design, Lighthouse 95+, technical SEO included. 100% yours on delivery, no lock-in ever.",
+        "No more generic sites that lose clients on first visit. KAH Digital Studio builds SaaS-level business websites — premium design, Lighthouse 95+, technical SEO included. 100% yours on delivery, no lock-in ever.",
       stats: [
         { value: "14d", label: "Business delivery" },
         { value: "95+", label: "Lighthouse" },
@@ -216,7 +216,7 @@ const content = {
       title: "Your current site is costing you clients.",
       title2: "We'll rebuild it.",
       intro:
-        "A slow, poorly structured, or visually weak site doesn't forgive in 2025. KAH Digital rebuilds everything — structure, UX, speed, conversion — and delivers a lead machine in 14 to 28 days. Fixed quote before we start, 100% of the code is yours.",
+        "A slow, poorly structured, or visually weak site doesn't forgive in 2025. KAH Digital Studio rebuilds everything — structure, UX, speed, conversion — and delivers a lead machine in 14 to 28 days. Fixed quote before we start, 100% of the code is yours.",
       stats: [
         { value: "24h", label: "Reply to your request" },
         { value: "<2s", label: "Load time" },
@@ -239,7 +239,7 @@ const content = {
       ],
       contextTitle: "We don't repaint — we rebuild",
       contextBody:
-        "A KAH Digital redesign is a full rebuild: new architecture, conversion-focused content, maximum speed, native SEO. Not a visual refresh — a growth system.",
+        "A KAH Digital Studio redesign is a full rebuild: new architecture, conversion-focused content, maximum speed, native SEO. Not a visual refresh — a growth system.",
       highlights: [
         { icon: FiZap, title: "Full rebuild in 28 days", body: "Architecture, UX, copy, performance. Everything reviewed and rebuilt. Clean delivery." },
         { icon: FiUsers, title: "Conversion audit included", body: "We audit your existing site before touching anything. We fix what's costing you leads." },
@@ -254,7 +254,7 @@ const content = {
       title: "A web application that",
       title2: "solves a real problem.",
       intro:
-        "No feature creep. No over-engineering. KAH Digital delivers useful, fast, scalable web applications: B2B portals, dashboards, client spaces, internal tools. Functional V1 in 4 weeks.",
+        "No feature creep. No over-engineering. KAH Digital Studio delivers useful, fast, scalable web applications: B2B portals, dashboards, client spaces, internal tools. Functional V1 in 4 weeks.",
       stats: [
         { value: "4wk", label: "V1 delivered" },
         { value: "100%", label: "Code ownership" },
@@ -292,7 +292,7 @@ const content = {
       title: "Cut operational costs",
       title2: "with AI.",
       intro:
-        "Not gimmick AI — GPT-4 agents that qualify your leads, answer your clients, and automate your workflows. KAH Digital implements concrete AI automations, integrated into your existing stack, with measurable ROI from month one.",
+        "Not gimmick AI — GPT-4 agents that qualify your leads, answer your clients, and automate your workflows. KAH Digital Studio implements concrete AI automations, integrated into your existing stack, with measurable ROI from month one.",
       stats: [
         { value: "100%", label: "Code delivered" },
         { value: "24/7", label: "Availability" },
@@ -332,7 +332,7 @@ const content = {
       title: "Eine Business-Website, die konvertiert,",
       title2: "in 5 Werktagen geliefert.",
       intro:
-        "Schluss mit generischen Websites, die beim ersten Besuch Kunden verlieren. KAH Digital entwickelt SaaS-Level Business-Websites — Premium-Design, Lighthouse 95+, technisches SEO inklusive. 100% Ihr Eigentum bei Lieferung, kein Lock-in.",
+        "Schluss mit generischen Websites, die beim ersten Besuch Kunden verlieren. KAH Digital Studio entwickelt SaaS-Level Business-Websites — Premium-Design, Lighthouse 95+, technisches SEO inklusive. 100% Ihr Eigentum bei Lieferung, kein Lock-in.",
       stats: [
         { value: "14T", label: "Lieferzeit" },
         { value: "95+", label: "Lighthouse" },
@@ -370,7 +370,7 @@ const content = {
       title: "Ihre aktuelle Website kostet Sie Kunden.",
       title2: "Wir bauen sie neu.",
       intro:
-        "Eine langsame, schlecht strukturierte oder visuell schwache Website verzeiht 2025 nichts. KAH Digital baut alles neu — Struktur, UX, Geschwindigkeit, Conversion — und liefert eine Lead-Maschine in 14 bis 28 Tagen.",
+        "Eine langsame, schlecht strukturierte oder visuell schwache Website verzeiht 2025 nichts. KAH Digital Studio baut alles neu — Struktur, UX, Geschwindigkeit, Conversion — und liefert eine Lead-Maschine in 14 bis 28 Tagen.",
       stats: [
         { value: "24h", label: "Antwort auf Ihre Anfrage" },
         { value: "<2s", label: "Ladezeit" },
@@ -393,7 +393,7 @@ const content = {
       ],
       contextTitle: "Wir streichen nicht — wir bauen neu",
       contextBody:
-        "Eine KAH Digital Refonte ist ein kompletter Neubau: neue Architektur, conversion-fokussierter Inhalt, maximale Geschwindigkeit, natives SEO. Kein visuelles Lifting — ein Wachstumssystem.",
+        "Eine KAH Digital Studio Refonte ist ein kompletter Neubau: neue Architektur, conversion-fokussierter Inhalt, maximale Geschwindigkeit, natives SEO. Kein visuelles Lifting — ein Wachstumssystem.",
       highlights: [
         { icon: FiZap, title: "Komplettumbau in 28 Tagen", body: "Architektur, UX, Copy, Performance. Alles überprüft und neu gebaut. Saubere Lieferung." },
         { icon: FiUsers, title: "Conversion-Audit inklusive", body: "Wir auditieren Ihre bestehende Website, bevor wir etwas anfassen. Wir beheben, was Leads kostet." },
@@ -408,7 +408,7 @@ const content = {
       title: "Eine Web-App, die",
       title2: "ein echtes Problem löst.",
       intro:
-        "Kein Feature-Creep. Keine Über-Engineering. KAH Digital liefert nützliche, schnelle und skalierbare Web-Anwendungen: B2B-Portale, Dashboards, Kundenbereiche, interne Tools. Funktionale V1 in 4 Wochen.",
+        "Kein Feature-Creep. Keine Über-Engineering. KAH Digital Studio liefert nützliche, schnelle und skalierbare Web-Anwendungen: B2B-Portale, Dashboards, Kundenbereiche, interne Tools. Funktionale V1 in 4 Wochen.",
       stats: [
         { value: "4Wo", label: "V1 geliefert" },
         { value: "100%", label: "Code-Eigentum" },
@@ -446,7 +446,7 @@ const content = {
       title: "Betriebskosten um",
       title2: "mit KI senken.",
       intro:
-        "Keine Gadget-KI — GPT-4-Agenten, die Ihre Leads qualifizieren, Kunden antworten und Workflows automatisieren. KAH Digital implementiert konkrete KI-Automationen, integriert in Ihren bestehenden Stack, mit messbarem ROI ab Monat eins.",
+        "Keine Gadget-KI — GPT-4-Agenten, die Ihre Leads qualifizieren, Kunden antworten und Workflows automatisieren. KAH Digital Studio implementiert konkrete KI-Automationen, integriert in Ihren bestehenden Stack, mit messbarem ROI ab Monat eins.",
       stats: [
         { value: "100%", label: "Code geliefert" },
         { value: "24/7", label: "Verfügbarkeit" },
@@ -633,7 +633,7 @@ export function GlobalAcquisitionPageContent({ locale, page }: Props) {
               <div className="absolute right-1/4 bottom-0 h-[200px] w-[200px] rounded-full bg-violet-500/10 blur-[80px]" />
             </div>
             <div className="relative">
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">KAH Digital</p>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">KAH Digital Studio</p>
               <h2 className="text-3xl font-extrabold text-white sm:text-4xl">{pageContent.ctaTitle}</h2>
               <p className="mx-auto mt-4 max-w-xl text-gray-400">{pageContent.ctaBody}</p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -29,7 +29,7 @@ const content = {
       eyebrow: "Sites vitrines, sites corporate et plateformes de présentation",
       title: "Des sites web clairs, crédibles et utiles pour votre entreprise",
       body:
-        "KAH Digital conçoit des sites web pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'être en ligne, mais de mieux présenter votre activité, rassurer vos clients et faciliter la prise de contact.",
+        "KAH Digital Studio conçoit des sites web pour entreprises francophones, anglophones et internationales. L'objectif n'est pas juste d'être en ligne, mais de mieux présenter votre activité, rassurer vos clients et faciliter la prise de contact.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/projets/kah-prod",
@@ -150,7 +150,7 @@ const content = {
       eyebrow: "Applications web, outils metier et experiences mobiles",
       title: "Des applications utiles, pas des usines a gaz",
       body:
-        "KAH Digital conçoit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activité, avec une logique de production simple et exploitable.",
+        "KAH Digital Studio conçoit des applications web et mobiles pour entreprises qui veulent mieux organiser, automatiser ou fluidifier une partie de leur activité, avec une logique de production simple et exploitable.",
       primaryHref: "/devis",
       primaryLabel: "Demander un devis",
       secondaryHref: "/contact",
@@ -255,8 +255,8 @@ const content = {
       eyebrow: "Parcours support, aide virtuelle et tickets GLPI",
       title: "Un support plus simple autour de GLPI",
       body:
-        "KAH Digital ne remplace pas votre équipe GLPI et ne vend pas une infogérance déguisée. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une création de ticket quand le besoin doit être repris proprement.",
-      heroNote: "Solution proprietaire KAH Digital, adaptee a votre organisation support",
+        "KAH Digital Studio ne remplace pas votre équipe GLPI et ne vend pas une infogérance déguisée. Nous construisons un parcours plus fluide autour de votre support, avec une aide virtuelle de premier niveau et une création de ticket quand le besoin doit être repris proprement.",
+      heroNote: "Solution proprietaire KAH Digital Studio, adaptee a votre organisation support",
       primaryHref: "/devis",
       primaryLabel: "Obtenir un devis",
       secondaryHref: "/services/glpi#services",
@@ -392,7 +392,7 @@ const content = {
       eyebrow: "Showcase websites, corporate sites, and presentation platforms",
       title: "Clear, credible, useful websites for companies",
       body:
-        "KAH Digital builds websites for French-speaking, English-speaking, and international companies. The goal is not just to be online, but to present the business more clearly, reassure prospects, and make contact easier.",
+        "KAH Digital Studio builds websites for French-speaking, English-speaking, and international companies. The goal is not just to be online, but to present the business more clearly, reassure prospects, and make contact easier.",
       primaryHref: "/devis",
       primaryLabel: "Request a quote",
       secondaryHref: "/projets/kah-prod",
@@ -488,7 +488,7 @@ const content = {
       eyebrow: "Web applications, business tools, and mobile experiences",
       title: "Useful applications, not overbuilt machinery",
       body:
-        "KAH Digital builds web and mobile applications for companies that need to organise, automate, or simplify part of their activity, with a production logic that stays clear and usable.",
+        "KAH Digital Studio builds web and mobile applications for companies that need to organise, automate, or simplify part of their activity, with a production logic that stays clear and usable.",
       primaryHref: "/devis",
       primaryLabel: "Request a quote",
       secondaryHref: "/contact",
@@ -561,8 +561,8 @@ const content = {
       eyebrow: "Support journey, virtual help, and GLPI tickets",
       title: "A simpler support layer around GLPI",
       body:
-        "KAH Digital does not replace your GLPI team and does not pretend to be full GLPI management. We build a smoother support journey around your existing setup, with first-level virtual help and ticket creation when real support needs to take over.",
-      heroNote: "KAH Digital proprietary solution, adapted to your support organisation",
+        "KAH Digital Studio does not replace your GLPI team and does not pretend to be full GLPI management. We build a smoother support journey around your existing setup, with first-level virtual help and ticket creation when real support needs to take over.",
+      heroNote: "KAH Digital Studio proprietary solution, adapted to your support organisation",
       primaryHref: "/devis",
       primaryLabel: "Request a quote",
       secondaryHref: "/services/glpi#services",
@@ -649,7 +649,7 @@ const content = {
       eyebrow: "Corporate Websites und Präsentationsplattformen",
       title: "Klare, glaubwürdige und nützliche Websites für Unternehmen",
       body:
-        "KAH Digital entwickelt Websites für frankophone, englischsprachige und internationale Unternehmen. Ziel ist nicht nur online zu sein, sondern das Unternehmen klarer zu präsentieren und den Kontakt zu vereinfachen.",
+        "KAH Digital Studio entwickelt Websites für frankophone, englischsprachige und internationale Unternehmen. Ziel ist nicht nur online zu sein, sondern das Unternehmen klarer zu präsentieren und den Kontakt zu vereinfachen.",
       primaryHref: "/devis",
       primaryLabel: "Projekt anfragen",
       secondaryHref: "/projets/kah-prod",
@@ -732,7 +732,7 @@ const content = {
       eyebrow: "Web-Apps, Business-Tools und mobile Produkte",
       title: "Nützliche Anwendungen statt überladener Systeme",
       body:
-        "KAH Digital entwickelt Web- und Mobile-Anwendungen für Unternehmen, die einen Teil ihrer Aktivität strukturieren, automatisieren oder vereinfachen wollen - mit einer Logik, die klar, sauber und nutzbar bleibt.",
+        "KAH Digital Studio entwickelt Web- und Mobile-Anwendungen für Unternehmen, die einen Teil ihrer Aktivität strukturieren, automatisieren oder vereinfachen wollen - mit einer Logik, die klar, sauber und nutzbar bleibt.",
       primaryHref: "/devis",
       primaryLabel: "Projekt anfragen",
       secondaryHref: "/contact",
@@ -803,8 +803,8 @@ const content = {
       eyebrow: "Support-Journey, virtuelle Hilfe und GLPI-Tickets",
       title: "Eine einfachere Support-Schicht rund um GLPI",
       body:
-        "KAH Digital ersetzt weder euer GLPI-Team noch verkauft es eine komplette GLPI-Betreuung. Wir entwickeln einen klareren Support-Ablauf rund um euer bestehendes Setup - mit virtueller Ersthilfe und Ticket-Erstellung, wenn echter Support übernehmen muss.",
-      heroNote: "Proprietäre KAH Digital Lösung, abgestimmt auf eure Support-Organisation",
+        "KAH Digital Studio ersetzt weder euer GLPI-Team noch verkauft es eine komplette GLPI-Betreuung. Wir entwickeln einen klareren Support-Ablauf rund um euer bestehendes Setup - mit virtueller Ersthilfe und Ticket-Erstellung, wenn echter Support übernehmen muss.",
+      heroNote: "Proprietäre KAH Digital Studio Lösung, abgestimmt auf eure Support-Organisation",
       primaryHref: "/devis",
       primaryLabel: "Projekt anfragen",
       secondaryHref: "/services/glpi#services",

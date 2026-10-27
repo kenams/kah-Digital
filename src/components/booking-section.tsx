@@ -23,7 +23,7 @@ export function BookingSection() {
           cta: "Book my free audit",
           waLabel: "Prefer WhatsApp?",
           waCta: "Send a message",
-          waText: "Hi KAH Digital, I'd like to book a free strategic audit.",
+          waText: "Hi KAH Digital Studio, I'd like to book a free strategic audit.",
           benefits: [
             { icon: FiZap, text: "Instant diagnosis of your digital presence" },
             { icon: FiCheck, text: "Clear action plan adapted to your budget" },
@@ -44,7 +44,7 @@ export function BookingSection() {
           cta: "Kostenloses Audit buchen",
           waLabel: "Lieber WhatsApp?",
           waCta: "Nachricht senden",
-          waText: "Hallo KAH Digital, ich möchte ein kostenloses strategisches Audit buchen.",
+          waText: "Hallo KAH Digital Studio, ich möchte ein kostenloses strategisches Audit buchen.",
           benefits: [
             { icon: FiZap, text: "Sofortige Diagnose Ihrer digitalen Präsenz" },
             { icon: FiCheck, text: "Klarer Aktionsplan, angepasst an Ihr Budget" },
@@ -64,7 +64,7 @@ export function BookingSection() {
           cta: "Réserver mon audit gratuit",
           waLabel: "Vous préférez WhatsApp ?",
           waCta: "Envoyer un message",
-          waText: "Bonjour KAH Digital, je voudrais réserver un audit stratégique gratuit.",
+          waText: "Bonjour KAH Digital Studio, je voudrais réserver un audit stratégique gratuit.",
           benefits: [
             { icon: FiZap, text: "Diagnostic instantané de votre présence digitale" },
             { icon: FiCheck, text: "Plan d'action clair adapté à votre budget" },

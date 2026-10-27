@@ -21,14 +21,14 @@ interface QuotePreviewProps {
 
 export function QuotePreview({ clientName, clientCompany, items, total = 2800, validUntil }: QuotePreviewProps) {
   const { locale } = useLocale();
-  const brandName = companyConfig.brandName || "KAH Digital";
+  const brandName = companyConfig.brandName || "KAH Digital Studio";
   const currency = companyConfig.currency || "CHF";
   const signatureName = brandName; // pas de nom légal sur les documents
 
   const copy = {
     fr: {
       documentLabel: "Devis",
-      documentBody: "Document commercial KAH Digital",
+      documentBody: "Document commercial KAH Digital Studio",
       from: "De",
       to: "Pour",
       quoteNumber: "Numéro de devis",
@@ -62,7 +62,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
     },
     en: {
       documentLabel: "Quote",
-      documentBody: "KAH Digital commercial document",
+      documentBody: "KAH Digital Studio commercial document",
       from: "From",
       to: "For",
       quoteNumber: "Quote number",
@@ -96,7 +96,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
     },
     de: {
       documentLabel: "Offerte",
-      documentBody: "KAH Digital Geschäftsdokument",
+      documentBody: "KAH Digital Studio Geschäftsdokument",
       from: "Von",
       to: "Für",
       quoteNumber: "Offertnummer",

@@ -26,7 +26,7 @@ export interface CompanyConfig {
 // l'immatriculation suisse effective.
 export const companyConfig: CompanyConfig = {
   legalName: "Namake Keita",
-  brandName: "KAH Digital",
+  brandName: "KAH Digital Studio",
   registrationStatus: "Entreprise individuelle — France",
   currency: "EUR",
   address: "",

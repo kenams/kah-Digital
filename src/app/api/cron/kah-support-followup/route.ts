@@ -31,7 +31,7 @@ function buildFollowup1Html(firstName: string, company: string): string {
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,sans-serif;">
 <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
   <div style="background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:22px 32px;">
-    <span style="color:#fff;font-size:14px;font-weight:700;">🤖 KAH Digital — Assistant IT</span>
+    <span style="color:#fff;font-size:14px;font-weight:700;">🤖 KAH Digital Studio — Assistant IT</span>
   </div>
   <div style="padding:28px 32px;">
     <p style="color:#111827;font-size:15px;margin:0 0 14px;">Bonjour ${esc(firstName)},</p>
@@ -52,7 +52,7 @@ function buildFollowup1Html(firstName: string, company: string): string {
     </p>
   </div>
   <div style="padding:14px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · kahdigital42@gmail.com</p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital Studio · kah-support.ch · kahdigital42@gmail.com</p>
   </div>
 </div>
 </body></html>`;
@@ -64,7 +64,7 @@ function buildFollowup2Html(firstName: string, company: string): string {
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:Arial,sans-serif;">
 <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);">
   <div style="background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:22px 32px;">
-    <span style="color:#fff;font-size:14px;font-weight:700;">🤖 KAH Digital — Assistant IT</span>
+    <span style="color:#fff;font-size:14px;font-weight:700;">🤖 KAH Digital Studio — Assistant IT</span>
   </div>
   <div style="padding:28px 32px;">
     <p style="color:#111827;font-size:15px;margin:0 0 14px;">Bonjour ${esc(firstName)},</p>
@@ -85,7 +85,7 @@ function buildFollowup2Html(firstName: string, company: string): string {
     </div>
   </div>
   <div style="padding:14px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital · kah-support.ch · kahdigital42@gmail.com</p>
+    <p style="color:#9ca3af;font-size:11px;margin:0;">KAH Digital Studio · kah-support.ch · kahdigital42@gmail.com</p>
   </div>
 </div>
 </body></html>`;
@@ -99,7 +99,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "KAH Digital <contact@kah-digital.ch>",
+      from: "KAH Digital Studio <contact@kah-digital.ch>",
       to: [to],
       reply_to: ["kahdigital42@gmail.com"],
       subject,

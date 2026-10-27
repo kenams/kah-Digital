@@ -43,7 +43,7 @@ function buildAdminUrl(path?: string) {
 
 function buildWhatsappBody(input: AdminAlertInput) {
   const lines = [
-    `KAH Digital`,
+    `KAH Digital Studio`,
     `Nouvelle alerte: ${input.title}`,
     `Source: ${input.source}`,
     input.company ? `Societe: ${input.company}` : null,

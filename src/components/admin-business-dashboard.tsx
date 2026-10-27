@@ -216,7 +216,7 @@ export function AdminBusinessDashboard({ quotes, assistantItems, portfolio }: Pr
         </div>
       )}
 
-      {/* KPIs row 1 — activité réelle KAH Digital */}
+      {/* KPIs row 1 — activité réelle KAH Digital Studio */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <KpiCard
           label="Chiffre d'affaires"

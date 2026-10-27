@@ -74,7 +74,7 @@ export default function AuditGratuitPageEn() {
             Get your free website audit
           </h1>
           <p className="mb-8 text-lg text-gray-400">
-            KAH Digital analyses your website and sends you a complete report: score, detected issues, recommendations and budget estimate.
+            KAH Digital Studio analyses your website and sends you a complete report: score, detected issues, recommendations and budget estimate.
           </p>
         </div>
       </section>

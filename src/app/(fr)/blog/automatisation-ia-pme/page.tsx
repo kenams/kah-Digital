@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026 — KAH Digital",
+  title: "Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026 — KAH Digital Studio",
   description:
     "Découvrez comment les PME utilisent l'automatisation IA pour qualifier des leads, automatiser leur reporting et réduire les tâches répétitives. 5 exemples types de ce qu'on peut automatiser, avec les objectifs à viser.",
   keywords: [
@@ -30,8 +30,8 @@ const jsonLd = {
   headline: "Automatisation IA pour PME : 5 exemples concrets pour gagner du temps en 2026",
   datePublished: "2026-05-19",
   dateModified: "2026-05-19",
-  author: { "@type": "Organization", name: "KAH Digital" },
-  publisher: { "@type": "Organization", name: "KAH Digital", url: "https://kah-digital.ch" },
+  author: { "@type": "Organization", name: "KAH Digital Studio" },
+  publisher: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/blog/automatisation-ia-pme",
 };
 
@@ -68,7 +68,7 @@ const faqJsonLd = {
       name: "Faut-il être technique pour automatiser avec l'IA ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Non. KAH Digital livre des systèmes clé en main : vous recevez un tableau de bord simple pour suivre les résultats et ajuster les paramètres. Aucune compétence technique requise pour l'utilisation quotidienne.",
+        text: "Non. KAH Digital Studio livre des systèmes clé en main : vous recevez un tableau de bord simple pour suivre les résultats et ajuster les paramètres. Aucune compétence technique requise pour l'utilisation quotidienne.",
       },
     },
   ],
@@ -232,7 +232,7 @@ export default function AutomatisationIaPmePage() {
                 La vraie question n'est plus "est-ce que l'IA peut faire ça ?" mais "quelles tâches ai-je intérêt à automatiser en premier ?". La réponse : les tâches à faible valeur ajoutée, répétitives, à fort volume — et celles qui créent des délais dans votre pipeline commercial.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                Voici 5 exemples types (scénarios hypothétiques, pas des études de cas clients) de ce que KAH Digital peut mettre en place pour une PME.
+                Voici 5 exemples types (scénarios hypothétiques, pas des études de cas clients) de ce que KAH Digital Studio peut mettre en place pour une PME.
               </p>
             </div>
           </section>
@@ -350,7 +350,7 @@ export default function AutomatisationIaPmePage() {
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Prêt à automatiser ?</p>
             <h2 className="mb-3 text-2xl font-extrabold text-white">Obtenez un audit gratuit de votre situation</h2>
             <p className="mb-6 text-gray-400 text-sm leading-relaxed">
-              KAH Digital analyse votre workflow actuel et identifie les 3 automations prioritaires pour votre PME. Résultats sous 24h, sans engagement.
+              KAH Digital Studio analyse votre workflow actuel et identifie les 3 automations prioritaires pour votre PME. Résultats sous 24h, sans engagement.
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link

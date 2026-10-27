@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Local SEO for small businesses: reaching Google's first page in 2026 — KAH Digital",
+  title: "Local SEO for small businesses: reaching Google's first page in 2026 — KAH Digital Studio",
   description:
     "A complete local SEO guide for small businesses: Google Business Profile, customer reviews, local pages, schema markup. The concrete actions that help local customers find you.",
   keywords: [
@@ -29,8 +29,8 @@ const jsonLd = {
   headline: "Local SEO for small businesses: reaching Google's first page in 2026",
   datePublished: "2026-05-04",
   dateModified: "2026-05-04",
-  author: { "@type": "Organization", name: "KAH Digital" },
-  publisher: { "@type": "Organization", name: "KAH Digital", url: "https://kah-digital.ch" },
+  author: { "@type": "Organization", name: "KAH Digital Studio" },
+  publisher: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   mainEntityOfPage: "https://kah-digital.ch/en/blog/seo-local-pme",
 };
 
@@ -67,7 +67,7 @@ const faqJsonLd = {
       name: "How is local SEO priced for a small business?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Setting up a solid local SEO base (optimised page, schema, Google Business Profile) is priced after scoping, depending on local competition, the cities targeted and the level of follow-up wanted. KAH Digital builds local SEO directly into site creation.",
+        text: "Setting up a solid local SEO base (optimised page, schema, Google Business Profile) is priced after scoping, depending on local competition, the cities targeted and the level of follow-up wanted. KAH Digital Studio builds local SEO directly into site creation.",
       },
     },
   ],
@@ -200,7 +200,7 @@ export default function EnSeoLocalPmePage() {
             46% of Google searches have local intent. If your business does not appear in the Local Pack (the 3 results with a map), you lose half of your potential customers. Here are the 6 concrete actions to fix that.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-            <span>KAH Digital</span>
+            <span>KAH Digital Studio</span>
             <span>·</span>
             <span>8 min read</span>
           </div>

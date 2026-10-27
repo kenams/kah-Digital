@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website-Kosten 2025: Was kostet eine professionelle Website in der Schweiz und Deutschland? — KAH Digital",
+  title: "Website-Kosten 2025: Was kostet eine professionelle Website in der Schweiz und Deutschland? — KAH Digital Studio",
   description: "Transparente Übersicht der echten Kosten für eine professionelle Website 2025 — Landing Page, Business-Site, Web-App. Mit Preisvergleich und worauf man achten sollte.",
   keywords: ["Website Kosten 2025", "was kostet eine Website Schweiz", "Webseite erstellen Kosten Deutschland", "professionelle Website Preis"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-2025" },
@@ -20,8 +20,8 @@ const jsonLd = {
   "headline": "Website-Kosten 2025: Was kostet eine professionelle Website in der Schweiz und Deutschland?",
   "datePublished": "2026-05-20",
   "dateModified": "2026-05-20",
-  "author": { "@type": "Organization", "name": "KAH Digital" },
-  "publisher": { "@type": "Organization", "name": "KAH Digital", "url": "https://kah-digital.ch" },
+  "author": { "@type": "Organization", "name": "KAH Digital Studio" },
+  "publisher": { "@type": "Organization", "name": "KAH Digital Studio", "url": "https://kah-digital.ch" },
   "mainEntityOfPage": "https://kah-digital.ch/de/blog/website-kosten-2025",
   "inLanguage": "de",
 };
@@ -180,7 +180,7 @@ export default function WebsiteKosten2025Page() {
             Was rechtfertigt welchen Preis? Der größte Kostentreiber ist nicht die Anzahl der Seiten, sondern der Aufwand für Design-Konzeption, Conversion-Architektur, technisches SEO und die Integration mit Ihren Systemen. Eine schlichte 5-seitige Website kann günstiger sein als eine Einzelseite mit komplexen Animationen und CRM-Integration.
           </p>
           <p className="text-gray-300 leading-relaxed">
-            Die Schweiz hat typischerweise 20–35% höhere Entwicklungspreise als Deutschland, bedingt durch Lebenshaltungskosten und Tarifsätze. Internationale Agenturen wie KAH Digital bieten Schweizer Qualitätsstandards zu mitteleuropäischen Preisen — mit Festpreisgarantie.
+            Die Schweiz hat typischerweise 20–35% höhere Entwicklungspreise als Deutschland, bedingt durch Lebenshaltungskosten und Tarifsätze. Internationale Agenturen wie KAH Digital Studio bieten Schweizer Qualitätsstandards zu mitteleuropäischen Preisen — mit Festpreisgarantie.
           </p>
         </section>
 
@@ -284,9 +284,9 @@ export default function WebsiteKosten2025Page() {
           </p>
         </section>
 
-        {/* Section 5 — KAH Digital Preise */}
+        {/* Section 5 — KAH Digital Studio Preise */}
         <section className="py-8">
-          <h2 className="mb-6 text-2xl font-extrabold text-white">KAH Digital Preise 2025</h2>
+          <h2 className="mb-6 text-2xl font-extrabold text-white">KAH Digital Studio Preise 2025</h2>
           <p className="mb-6 text-gray-300 leading-relaxed">
             Festpreise, transparente Lieferzeiten, volles Code-Eigentum. Keine versteckten Folgekosten, kein Lock-in.
           </p>

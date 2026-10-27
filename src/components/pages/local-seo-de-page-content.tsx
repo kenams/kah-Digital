@@ -26,7 +26,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "webentwicklung-zuerich",
     headline: "Webentwicklung Zürich",
     subline: "Premium Webentwicklung für Zürich — Next.js 15, SaaS-Level Design, Lighthouse 95+. In 5 Werktagen geliefert.",
-    intro: "KAH Digital entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Studio in Toulouse (Frankreich), remote für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
+    intro: "KAH Digital Studio entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Studio in Toulouse (Frankreich), remote für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
     sectors: ["FinTech & Banking", "Beratung & Consulting", "KMU & Handwerk", "Restaurants & Gastronomie", "Startups & Scale-ups", "Anwaltskanzleien & Treuhänder"],
     proofLine: "Antwort in 24h · Kostenlose Offerte · Unverbindlich",
     faq: [
@@ -43,7 +43,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "ki-agentur-zuerich",
     headline: "KI-Agentur Zürich",
     subline: "GPT-4 Agenten, KI-Automatisierung und Chatbots für Zürcher Unternehmen. ROI messbar ab Monat 1.",
-    intro: "KAH Digital ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Studio in Toulouse (Frankreich), remote für die ganze Schweiz.",
+    intro: "KAH Digital Studio ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Studio in Toulouse (Frankreich), remote für die ganze Schweiz.",
     sectors: ["FinTech & Versicherungen", "Beratung & Consulting", "E-Commerce & Retail", "Immobilien", "Gesundheit & Medizin", "SaaS & Tech-Startups"],
     proofLine: "Kostenloses KI-Audit · Antwort in 24h · Unverbindlich",
     faq: [
@@ -60,7 +60,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "webentwicklung-muenchen",
     headline: "Webentwicklung München",
     subline: "Premium Webentwicklung für München — Next.js, SaaS-Design, Lighthouse 95+. Deutsch-Schweizer Qualität.",
-    intro: "KAH Digital entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in München und Bayern. Tech-Startups, Beratung, E-Commerce, Mittelstand — wir liefern Websites auf dem Niveau von Stripe, Linear und Framer. Remote, schnell, kein Lock-in.",
+    intro: "KAH Digital Studio entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in München und Bayern. Tech-Startups, Beratung, E-Commerce, Mittelstand — wir liefern Websites auf dem Niveau von Stripe, Linear und Framer. Remote, schnell, kein Lock-in.",
     sectors: ["Tech-Startups & Scale-ups", "Beratung & Consulting", "E-Commerce & Marktplätze", "Restaurants & Gastronomie", "Mittelstand & Industrie", "Medien & Kreativwirtschaft"],
     proofLine: "Antwort in 24h · Kostenlose Offerte · Fester Preis",
     faq: [
@@ -77,11 +77,11 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "webentwicklung-berlin",
     headline: "Webentwicklung Berlin",
     subline: "Startup-Level Webentwicklung für Berlin — Next.js 15, premium Design, schnelle Lieferung. Kein Lock-in.",
-    intro: "KAH Digital entwickelt websites und web-Anwendungen für Berliner Startups, Agenturen und Unternehmen. Berlin ist Europas Startup-Hauptstadt — wir liefern das passende Webniveau: Stripe-Design, SaaS-Performance, technisches SEO. Remote aus der Schweiz, ohne lokale Agenturpreise.",
+    intro: "KAH Digital Studio entwickelt websites und web-Anwendungen für Berliner Startups, Agenturen und Unternehmen. Berlin ist Europas Startup-Hauptstadt — wir liefern das passende Webniveau: Stripe-Design, SaaS-Performance, technisches SEO. Remote aus der Schweiz, ohne lokale Agenturpreise.",
     sectors: ["Startups & Venture-backed", "Agenturen & Kreativwirtschaft", "E-Commerce & D2C Brands", "NGOs & Non-profit", "Fintech & PropTech", "Freelancer & Solopreneure"],
     proofLine: "Antwort in 24h · Fester Preis · 100% Eigentum",
     faq: [
-      { q: "Warum KAH Digital für ein Berliner Startup?", a: "Wir kennen die Sprache der Startups: schnell, iterativ, kein Overhead. Starter in 5 Tagen. Business in 5 Werktagen. Kein 2-Monats-Workshop, kein unnötiger Prozess." },
+      { q: "Warum KAH Digital Studio für ein Berliner Startup?", a: "Wir kennen die Sprache der Startups: schnell, iterativ, kein Overhead. Starter in 5 Tagen. Business in 5 Werktagen. Kein 2-Monats-Workshop, kein unnötiger Prozess." },
       { q: "Können Sie für Berliner Startups skalierbare Systeme bauen?", a: "Ja, Next.js 15 + Supabase + TypeScript strict. Dieselbe Stack wie gut finanzierte Startups. Skalierbar von Tag 1, ohne Refactoring in 6 Monaten." },
       { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €290 (Landing Page, 5 Tage). Business €790 (bis 6 Seiten, SEO, Animationen, 5 Werktage). Premium AI €2 490 (komplettes System, KI-Chatbot, 28 Tage)." },
       { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, funktionale V1 in 4 Wochen. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
@@ -94,7 +94,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "ki-agentur-berlin",
     headline: "KI-Agentur Berlin",
     subline: "GPT-4 Agenten & KI-Automatisierung für Berliner Startups und Scale-ups. Deployment in 10 Tagen.",
-    intro: "KAH Digital baut KI-Automatisierungssysteme für Berliner Unternehmen: Lead-Qualifizierung, 24/7-Kundensupport, CRM-Integration, individuelle GPT-4-Agenten. Berlin ist Europas Startup-Hauptstadt — wir liefern das passende KI-Niveau. Remote aus der Schweiz, ohne Berliner Agenturpreise.",
+    intro: "KAH Digital Studio baut KI-Automatisierungssysteme für Berliner Unternehmen: Lead-Qualifizierung, 24/7-Kundensupport, CRM-Integration, individuelle GPT-4-Agenten. Berlin ist Europas Startup-Hauptstadt — wir liefern das passende KI-Niveau. Remote aus der Schweiz, ohne Berliner Agenturpreise.",
     sectors: ["Tech-Startups & Venture-backed", "E-Commerce & D2C Brands", "Agenturen & Kreativwirtschaft", "FinTech & InsurTech", "B2B SaaS", "NGOs & Non-profit"],
     proofLine: "Kostenloses KI-Audit · Antwort in 24h · ROI in 30 Tagen",
     faq: [
@@ -111,7 +111,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "ki-agentur-muenchen",
     headline: "KI-Agentur München",
     subline: "GPT-4 Agenten, Automatisierung und KI-Chatbots für Münchner Unternehmen. Deployment in 10 Tagen.",
-    intro: "KAH Digital automatisiert Geschäftsprozesse für Münchner Unternehmen mit KI: Lead-Qualifizierung, Kundensupport, CRM-Integration, individuelle GPT-4-Agenten. Kein Marketing-KI — echte Automatisierungen mit messbarem ROI ab dem ersten Monat. Remote aus der Schweiz, ohne Münchner Agenturpreise.",
+    intro: "KAH Digital Studio automatisiert Geschäftsprozesse für Münchner Unternehmen mit KI: Lead-Qualifizierung, Kundensupport, CRM-Integration, individuelle GPT-4-Agenten. Kein Marketing-KI — echte Automatisierungen mit messbarem ROI ab dem ersten Monat. Remote aus der Schweiz, ohne Münchner Agenturpreise.",
     sectors: ["Tech-Startups & Scale-ups", "Mittelstand & Industrie", "E-Commerce & Retail", "Beratung & Consulting", "Immobilien & PropTech", "Medizin & Gesundheit"],
     proofLine: "Kostenloses KI-Audit · Antwort in 24h · ROI in 30 Tagen",
     faq: [
@@ -133,7 +133,7 @@ export function LocalSeoDePageContent({ data }: Props) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "KAH Digital",
+    name: "KAH Digital Studio",
     description: `Webentwicklung & KI-Automatisierung für ${data.city} — Premium Next.js Websites, GPT-4 Agenten, messbare Ergebnisse.`,
     url: `https://kah-digital.ch/de/${data.slug}`,
     telephone: "+33759558414",
@@ -214,7 +214,7 @@ export function LocalSeoDePageContent({ data }: Props) {
       <section className="bg-gray-900/50 py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
-            Warum KAH Digital für {data.city}?
+            Warum KAH Digital Studio für {data.city}?
           </h2>
           <div className="grid gap-5 sm:grid-cols-3">
             {[

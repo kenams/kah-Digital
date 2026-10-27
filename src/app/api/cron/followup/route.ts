@@ -89,7 +89,7 @@ function buildFollowupHtml(body: string, c: Copy, unsubscribeUrl: string): strin
   <tr><td style="padding:28px 28px 20px;">
     <div style="font-size:15px;color:#374151;line-height:1.7;">${body}</div>
     <div style="margin-top:24px;font-size:14px;color:#374151;">${c.signoff}<br/>
-    <strong>KAH Digital</strong><br/>
+    <strong>KAH Digital Studio</strong><br/>
     <span style="color:#6b7280;font-size:12px;">kah-digital.ch</span></div>
   </td></tr>
   <tr><td style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:12px 28px;">
