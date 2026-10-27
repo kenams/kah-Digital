@@ -18,8 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/refonte-site-web",
     "/application-web-sur-mesure",
     "/automatisation-ia-entreprise",
-    "/automatisation-ia-suisse",
-    "/application-web-suisse",
     "/agence-ia",
     "/agents-ia",
     "/projets",
@@ -69,7 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/automatisation-ia-pme",
     "/references",
     "/mentions-legales",
-    "/politique-de-confidentialite",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
@@ -93,8 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/projets",
     "/en/site-web-geneve",
     "/en/site-web-lausanne",
-    "/en/automatisation-ia-suisse",
-    "/en/application-web-suisse",
     "/en/application-web-sur-mesure",
     "/en/services/site-web",
     "/en/services/applications",
@@ -102,7 +97,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/audit-gratuit",
     "/en/lexique",
     "/en/mentions-legales",
-    "/en/politique-de-confidentialite",
     // EN city pages — SEO international
     "/en/ai-agency-london",
     "/en/web-development-london",
