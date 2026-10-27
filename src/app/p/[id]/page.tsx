@@ -296,6 +296,16 @@ export default async function ProspectLandingPage({ params }: Props) {
           )}
         </div>
 
+        <div className="mb-4 text-center">
+          <Link
+            href={`/maquette/${prospect.id}`}
+            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+          >
+            {lang === "en" ? "See a free mockup of your future site" : "Voir une maquette gratuite de votre futur site"}
+            <FiArrowRight size={14} />
+          </Link>
+        </div>
+
         {/* CTAs */}
         <div className="mb-4 rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 text-center">
           <p className="text-sm text-amber-300 font-medium">
