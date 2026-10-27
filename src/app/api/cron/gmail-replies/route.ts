@@ -4,6 +4,7 @@
  * Auth : GMAIL_USER + GMAIL_APP_PASSWORD (IMAP)
  */
 
+import { cleanUrl } from "@/lib/clean-url";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { sendAdminNotification } from "@/lib/gmail";
@@ -109,7 +110,7 @@ async function checkGmailReplies(): Promise<{
 
       // Notification admin
       const name = prospect.businessName ?? prospect.website;
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+      const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 
       // Telegram — alerte instantanée
       void sendTelegramAlert(

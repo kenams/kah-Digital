@@ -1,3 +1,4 @@
+import { cleanUrl } from "@/lib/clean-url";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
@@ -170,7 +171,7 @@ export default async function ProspectLandingPage({ params }: Props) {
   const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "+33 7 59 55 84 14";
   const phoneRaw = phone.replace(/\s/g, "");
   const email = "kahdigital42@gmail.com";
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+  const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
   const devisUrl = `${siteUrl}/devis?company=${encodeURIComponent(name)}&site=${encodeURIComponent(prospect.website)}&ref=email`;
   const lang = prospect.language ?? "fr";
   const waMsgMap: Record<string, string> = {
@@ -235,11 +236,11 @@ export default async function ProspectLandingPage({ params }: Props) {
         </div>
 
         {/* Problems */}
-        {audit.problems.length > 0 && (
+        {(audit.problems ?? []).length > 0 && (
           <div className="mb-6">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-widest text-gray-500">{c.problemsTitle}</h2>
             <div className="space-y-3">
-              {audit.problems.map((p, i) => (
+              {(audit.problems ?? []).map((p, i) => (
                 <div key={i} className={`flex items-start gap-3 rounded-xl border p-4 ${SEV_CLASS[p.severity] ?? SEV_CLASS.low}`}>
                   {SEV_ICON[p.severity] ?? SEV_ICON.low}
                   <div>
@@ -258,11 +259,11 @@ export default async function ProspectLandingPage({ params }: Props) {
         )}
 
         {/* Recommendations */}
-        {audit.recommendations.length > 0 && (
+        {(audit.recommendations ?? []).length > 0 && (
           <div className="mb-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-widest text-emerald-400">{c.recoTitle}</h2>
             <div className="space-y-3">
-              {audit.recommendations.map((r, i) => (
+              {(audit.recommendations ?? []).map((r, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <FiCheckCircle size={15} className="mt-0.5 shrink-0 text-emerald-400" />
                   <div>

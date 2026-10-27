@@ -9,6 +9,7 @@
  *  - coupe-circuit : à l'arrêt si les rebonds dépassent le seuil.
  */
 
+import { cleanUrl } from "@/lib/clean-url";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
@@ -132,7 +133,7 @@ export async function POST(req: Request) {
 
   const dryRun = new URL(req.url).searchParams.get("dry") === "1";
   const supabase = getSupabase();
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch").trim();
+  const siteUrl = (cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch").trim();
   const now = Date.now();
 
   // Interrupteur manuel ou coupe-circuit rebonds : aucune relance non plus.

@@ -1,3 +1,4 @@
+import { cleanUrl } from "@/lib/clean-url";
 import { waitUntil } from "@vercel/functions";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
@@ -59,7 +60,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch").trim();
+    const siteUrl = (cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch").trim();
     const supabase = getSupabase();
 
     // Vérifie si déjà prospecté

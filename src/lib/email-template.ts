@@ -1,4 +1,5 @@
-﻿type EmailMetric = {
+﻿import { cleanUrl } from "@/lib/clean-url";
+type EmailMetric = {
   label: string;
   value: string;
 };
@@ -25,7 +26,7 @@ type BrandedEmailOptions = {
 };
 
 const fallbackSiteUrl = "https://kah-digital.ch";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "") || fallbackSiteUrl;
+const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL)?.trim().replace(/\/+$/, "") || fallbackSiteUrl;
 
 function escapeHtml(value: string) {
   return value

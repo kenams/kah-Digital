@@ -1,4 +1,5 @@
-﻿type AdminAlertInput = {
+﻿import { cleanUrl } from "@/lib/clean-url";
+type AdminAlertInput = {
   title: string;
   source: "quote" | "assistant" | "contact" | "brief";
   summary: string;
@@ -32,7 +33,7 @@ function normalizeWhatsappAddress(value: string) {
 }
 
 function buildAdminUrl(path?: string) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://kah-digital.ch";
+  const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL)?.trim() || "https://kah-digital.ch";
   if (!path) {
     return `${siteUrl.replace(/\/+$/, "")}/admin`;
   }

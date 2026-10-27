@@ -4,6 +4,7 @@
  * POST /api/admin/followup-clickers
  */
 
+import { cleanUrl } from "@/lib/clean-url";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
@@ -17,7 +18,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
 const REPLY_TO = "kahdigital42@gmail.com";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+const SITE_URL = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 
 function getSupabase() {
   return createClient(

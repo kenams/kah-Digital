@@ -1,3 +1,4 @@
+import { cleanUrl } from "@/lib/clean-url";
 import type { NextRequest } from "next/server";
 import Stripe from "stripe";
 import type { Locale } from "@/lib/locales";
@@ -5,7 +6,7 @@ import { withLocalePrefix } from "@/lib/locales";
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || process.env.SITE_URL?.trim();
+const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL)?.trim() || process.env.SITE_URL?.trim();
 
 let stripeClient: Stripe | null = null;
 

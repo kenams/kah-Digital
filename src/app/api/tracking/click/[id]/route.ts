@@ -1,3 +1,4 @@
+import { cleanUrl } from "@/lib/clean-url";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import Anthropic from "@anthropic-ai/sdk";
@@ -100,7 +101,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   const { searchParams } = new URL(req.url);
   const target = searchParams.get("target") ?? "reply";
   const redirect = searchParams.get("redirect");
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+  const siteUrl = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 
   let prospect: {
     id: string; businessName: string | null; website: string; email: string | null;

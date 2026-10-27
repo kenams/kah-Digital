@@ -1,3 +1,4 @@
+import { cleanUrl } from "@/lib/clean-url";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 import { discoverLeads } from "@/lib/agents/lead-discovery";
@@ -43,7 +44,7 @@ function getSupabase() {
 }
 
 function getSiteUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+  return cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 }
 
 function extractRootDomain(website: string) {

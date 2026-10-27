@@ -3,6 +3,7 @@
  * Expéditeur : kahdigital42@gmail.com
  */
 
+import { cleanUrl } from "@/lib/clean-url";
 import nodemailer from "nodemailer";
 
 function createTransport() {
@@ -58,7 +59,7 @@ export async function sendAdminNotification(opts: {
       <h2 style="color:#1e3a8a;">${opts.subject}</h2>
       <p style="color:#4b5563;line-height:1.6;">${opts.body}</p>
       <p style="margin-top:20px;">
-        <a href="${process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital-site.vercel.app"}/admin/prospection"
+        <a href="${cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital-site.vercel.app"}/admin/prospection"
            style="background:#7c3aed;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;">
           Voir dans l'admin →
         </a>

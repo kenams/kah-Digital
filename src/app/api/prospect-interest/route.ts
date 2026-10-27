@@ -1,9 +1,10 @@
 export const dynamic = "force-dynamic";
+import { cleanUrl } from "@/lib/clean-url";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { notifyNewLead } from "@/lib/notify";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kah-digital.ch";
+const SITE_URL = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 
 export async function POST(req: NextRequest) {
   try {
