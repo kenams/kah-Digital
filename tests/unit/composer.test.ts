@@ -50,3 +50,23 @@ test("service local avec score moyen : pitch site + réservation, jamais agent I
   assert.ok(/rendez-vous/i.test(mail.textFallback), mail.textFallback);
   assert.ok(!/agent/i.test(mail.textFallback), mail.textFallback);
 });
+
+test("test A/B : visibilité locale pour une moitié des entreprises locales FR/EN, jamais en DE", async () => {
+  const seen = { visibilite: 0, site: 0 };
+  for (const lang of ["fr", "en", "de"]) {
+    for (const name of ["Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta"]) {
+      const lead = { businessName: name, website: `https://${name.toLowerCase()}.fr`, country: "FR", language: lang, sector: "service-local", email: `a@${name.toLowerCase()}.fr`, placeId: "p", address: "FR" } as never;
+      const a = { ...(audit(lang) as object), businessName: name } as never;
+      const mail = await composeProspectingEmail(lead, a, "https://kah-digital.ch", ID);
+      assert.deepEqual(checkContent({ businessName: name, subject: mail.subject, html: mail.html }), []);
+      const isVis = /visibilit|visibility/i.test(mail.html);
+      if (lang === "de") assert.ok(!isVis, "pas de variante visibilité en DE");
+      else if (isVis) {
+        seen.visibilite++;
+        assert.ok(mail.html.includes(encodeURIComponent(lang === "en" ? "https://kah-digital.ch/en/visibilite-locale" : "https://kah-digital.ch/visibilite-locale")));
+        assert.ok(/39/.test(mail.html) && /(attente|waitlist)/i.test(mail.html));
+      } else seen.site++;
+    }
+  }
+  assert.ok(seen.visibilite > 0 && seen.site > 0, JSON.stringify(seen));
+});

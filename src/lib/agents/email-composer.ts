@@ -163,8 +163,11 @@ export async function composeProspectingEmail(
   const sectorLabel = humanSector(audit.sector, lang);
   const bName = audit.businessName.trim() || lead.website.replace(/https?:\/\/(www\.)?/, "").split(/[/?#]/)[0];
   const topProblem = audit.problems[0]?.title ?? "point à améliorer";
-  const track = getTrack(audit, lead);
   const seed = [...bName].reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  // Test de l'offre « Visibilité locale » (liste d'attente) : une entreprise locale sur deux
+  // (parité du nom, stable d'un envoi à l'autre), FR/EN seulement : la page n'existe pas en DE.
+  const baseTrack = getTrack(audit, lead);
+  const track = baseTrack === "site" && lang !== "de" && seed % 2 === 1 ? "visibilite" : baseTrack;
   // Preuve client concrète — pertinente pour les pitchs "app / site / agent"
   // (sites livrés), pas pour "esn / pme-it" (pitch support IT interne).
   const clientRef = ["app", "site", "agent", "creation"].includes(track) ? pickRef(seed, lang) : "";
@@ -185,6 +188,8 @@ export async function composeProspectingEmail(
       ? `Pitch : propose à cette PME un support informatique IA disponible 7j/7 pour leurs équipes — incidents résolus rapidement, sans prestataire à l'heure. Objectif = les amener à contacter KAH Digital Studio ou appeler le 07 59 55 84 14. Pas de prix. Juste un appel de 20 min pour voir si ça colle.`
       : track === "app"
       ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital Studio. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital Studio ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
+      : track === "visibilite"
+      ? `Pitch : on prépare un suivi mensuel de la visibilité locale (ce que Google, Maps et les assistants IA répondent quand on cherche leur métier dans leur ville, plus trois actions concrètes par mois), tarif prévu 39 €/mois. Le produit n'est pas encore ouvert : invite à rejoindre la liste d'attente sur kah-digital.ch, sans jamais prétendre qu'il existe déjà ni citer de résultats.`
       : track === "agent"
       ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
       : track === "creation"
@@ -280,6 +285,11 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         en: `We set up AI agents that automate prospecting or customer support — no website rebuild, just the agent doing the work.`,
         de: `Wir richten KI-Agenten ein, die Akquise oder Kundensupport automatisieren — kein Website-Relaunch, nur der Agent, der die Arbeit übernimmt.`,
       },
+      visibilite: {
+        fr: `On prépare un suivi mensuel de votre visibilité locale : ce que Google, Maps et les assistants IA répondent quand on cherche votre métier dans votre ville, et trois actions concrètes pour y apparaître. Tarif prévu : 39 €/mois. Pas encore ouvert : la liste d'attente est sur kah-digital.ch, et l'audit gratuit de votre site est disponible dès maintenant.`,
+        en: `We're preparing a monthly local visibility check: what Google, Maps and AI assistants answer when someone searches for your trade in your town, plus three concrete actions to show up. Planned price: €39/month. Not open yet: the waitlist is on kah-digital.ch, and the free audit of your website is available right now.`,
+        de: ``,
+      },
       site: {
         fr: `On fait des sites pros avec prise de rendez-vous en ligne intégrée — le client choisit son créneau seul, confirmation et rappel automatiques. Livré en 5 jours, prix fixe.`,
         en: `We build professional sites with online booking built in — the client picks their own slot, automatic confirmation and reminder. Delivered in 5 days, fixed price.`,
@@ -314,7 +324,8 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
   // par un vrai lien cliquable (via /api/tracking/click) quand présente,
   // sinon on l'ajoute en petite ligne sous le texte — sans jamais afficher
   // la page comme un audit/rapport qu'on n'a pas réellement préparé.
-  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}?target=site&redirect=${encodeURIComponent(baseUrl)}`;
+  const landing = track === "visibilite" ? `${baseUrl}${lang === "en" ? "/en" : ""}/visibilite-locale` : baseUrl;
+  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}?target=site&redirect=${encodeURIComponent(landing)}`;
   const escapedBody = body.replace(/</g, "&lt;").replace(/>/g, "&gt;");
   const domainMention = /kah-digital\.ch/i;
   const bodyHtml = domainMention.test(escapedBody)
