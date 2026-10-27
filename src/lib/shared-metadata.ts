@@ -222,9 +222,7 @@ export const structuredData = {
   telephone: companyConfig.phone,
   address: {
     "@type": "PostalAddress",
-    streetAddress: companyConfig.address,
     addressLocality: companyConfig.city,
-    postalCode: companyConfig.postalCode,
     addressCountry: companyConfig.country,
   },
   sameAs: ["https://www.linkedin.com/company/kah-digital", "https://x.com/DigitalKah42"],

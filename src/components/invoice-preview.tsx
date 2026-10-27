@@ -31,7 +31,7 @@ export function InvoicePreview({
 }: InvoicePreviewProps) {
   const brandName = companyConfig.brandName || "KAH Digital";
   const currency = companyConfig.currency || "CHF";
-  const signatureName = companyConfig.legalName || brandName;
+  const signatureName = brandName; // pas de nom légal sur les documents
   const hasIban = Boolean(companyConfig.iban && companyConfig.iban.trim());
   const isEnglish = locale === "en";
   const copy = {
@@ -124,7 +124,6 @@ export function InvoicePreview({
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.issuer}</h3>
           <p className="font-semibold text-slate-900">{brandName}</p>
-          <p className="text-slate-700">{companyConfig.address}</p>
           <p className="text-slate-700">
             {companyConfig.city}, {companyConfig.country}
           </p>

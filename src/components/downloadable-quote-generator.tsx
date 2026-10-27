@@ -247,9 +247,9 @@ export function DownloadableQuoteGenerator() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(71, 85, 105);
-    doc.text(companyConfig.address, left, y + 14);
-    doc.text(`${companyConfig.postalCode} ${companyConfig.city}, ${companyConfig.country}`, left, y + 19);
-    doc.text(`Email : ${companyConfig.email}`, left, y + 24);
+    // Confidentialité : ni rue ni code postal sur les documents, seulement la ville.
+    doc.text(`${companyConfig.city}, ${companyConfig.country}`, left, y + 14);
+    doc.text(`Email : ${companyConfig.email}`, left, y + 19);
     if (info.clientName) doc.text(`Contact : ${info.clientName}`, 112, y + 14);
     if (info.email) doc.text(`Email : ${info.email}`, 112, y + 19);
     if (info.phone) doc.text(`Tél : ${info.phone}`, 112, y + 24);

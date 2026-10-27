@@ -23,10 +23,7 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
   const { locale } = useLocale();
   const brandName = companyConfig.brandName || "KAH Digital";
   const currency = companyConfig.currency || "CHF";
-  const signatureName =
-    companyConfig.legalName && companyConfig.legalName !== "[A_REMPLACER_NOM_LEGAL_COMPLET]"
-      ? companyConfig.legalName
-      : brandName;
+  const signatureName = brandName; // pas de nom légal sur les documents
 
   const copy = {
     fr: {
@@ -153,7 +150,6 @@ export function QuotePreview({ clientName, clientCompany, items, total = 2800, v
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
           <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{copy.from}</h3>
           <p className="font-semibold text-slate-900">{brandName}</p>
-          {companyConfig.address !== "[A_REMPLACER_ADRESSE_OFFICIELLE]" ? <p className="text-slate-700">{companyConfig.address}</p> : null}
           <p className="text-slate-700">
             {companyConfig.city}, {companyConfig.country}
           </p>
