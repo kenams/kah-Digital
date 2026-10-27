@@ -29,9 +29,8 @@ const nextConfig: NextConfig = {
         destination: "/en/projets",
         permanent: true,
       },
-      // Le blog et la page services n'existent qu'en français : on évite le 404
+      // Le blog DE et la page services DE n'existent qu'en français (le blog EN existe maintenant) : on évite le 404
       // quand un article EN/DE ou une page DE renvoie vers son index.
-      { source: "/en/blog", destination: "/blog", permanent: false },
       { source: "/de/blog", destination: "/blog", permanent: false },
       { source: "/de/services", destination: "/services", permanent: false },
       {
