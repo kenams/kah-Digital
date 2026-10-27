@@ -130,7 +130,7 @@ export default function SiteWebRestaurantPage() {
 
         <div className="rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/10 to-orange-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Un site qui fait venir des clients dans votre restaurant</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-red-500/30">
               Demander un devis <FiArrowRight size={15} />

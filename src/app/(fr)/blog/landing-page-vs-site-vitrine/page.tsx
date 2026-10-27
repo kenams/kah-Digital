@@ -31,7 +31,7 @@ const faqJsonLd = {
   "mainEntity": [
     { "@type": "Question", "name": "Qu'est-ce qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page est une page unique conçue pour un objectif précis : capturer des leads, vendre un produit, promouvoir un événement. Elle n'a pas de menu de navigation pour garder le visiteur concentré sur l'action." } },
     { "@type": "Question", "name": "Quand choisir un site vitrine plutôt qu'une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Choisissez un site vitrine quand vous avez plusieurs services, que vous voulez être trouvé sur Google sur plusieurs mots-clés, ou que vous avez besoin de présenter votre entreprise dans sa globalité." } },
-    { "@type": "Question", "name": "comment estimer une landing page vs un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page s'estime après cadrage et peut être livrée en une semaine. Un site vitrine s'estime après cadrage pour 5-8 pages, livré en 2-3 semaines." } },
+    { "@type": "Question", "name": "comment estimer une landing page vs un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page s'estime après cadrage et peut être livrée en 5 jours. Un site vitrine s'estime après cadrage pour 5-8 pages, livré en 5 jours ouvrés après réception du contenu." } },
     { "@type": "Question", "name": "Peut-on avoir les deux ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, c'est même recommandé. Le site vitrine assure votre présence générale et votre référencement, tandis que des landing pages spécifiques maximisent les conversions pour des campagnes précises." } },
   ],
 };
@@ -151,7 +151,7 @@ export default function LandingPageVsSiteVitrinePage() {
 
         <div className="rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 to-blue-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Landing page ou site vitrine — on vous conseille gratuitement</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-emerald-500/30">
               Demander un devis <FiArrowRight size={15} />

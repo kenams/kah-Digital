@@ -32,7 +32,7 @@ const faqJsonLd = {
     { "@type": "Question", "name": "comment estimer un site web pour un artisan ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel pour artisan s'estime après cadrage selon les pages, les photos et les fonctionnalités (formulaire, Google Maps, avis)." } },
     { "@type": "Question", "name": "Un artisan a-t-il vraiment besoin d'un site web ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. 80% des clients cherchent sur Google avant de choisir un artisan. Sans site, vous n'existez pas pour eux. Un site simple et bien référencé peut générer plusieurs contacts qualifiés par semaine." } },
     { "@type": "Question", "name": "Quel contenu mettre sur un site artisan ?", "acceptedAnswer": { "@type": "Answer", "text": "L'essentiel : vos services et zone d'intervention, des photos de vos réalisations, vos coordonnées visibles, un formulaire ou bouton WhatsApp, et si possible des avis clients." } },
-    { "@type": "Question", "name": "En combien de temps un site artisan peut-il être en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec un brief clair et vos photos prêtes, un site vitrine artisan peut être en ligne en 1 à 2 semaines." } },
+    { "@type": "Question", "name": "En combien de temps un site artisan peut-il être en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec un brief clair et vos photos prêtes, un site vitrine artisan peut être en ligne en 5 jours ouvrés." } },
   ],
 };
 
@@ -71,7 +71,7 @@ export default function SiteWebArtisanPage() {
       <article className="mx-auto max-w-3xl px-4 pb-24">
         <div className="mb-10 rounded-2xl border border-orange-500/20 bg-orange-500/5 p-5">
           <p className="text-sm leading-relaxed text-orange-200">
-            <strong>TL;DR :</strong> Site vitrine artisan selon le périmètre · En ligne en 1–2 semaines · Essentiel : photos de réalisations + zone d'intervention + formulaire contact.
+            <strong>TL;DR :</strong> Site vitrine artisan selon le périmètre · En ligne en 5 jours ouvrés · Essentiel : photos de réalisations + zone d'intervention + formulaire contact.
           </p>
         </div>
 
@@ -143,7 +143,7 @@ export default function SiteWebArtisanPage() {
 
         <div className="rounded-2xl border border-orange-500/20 bg-gradient-to-br from-orange-500/10 to-amber-600/10 p-8 text-center">
           <h2 className="mb-3 text-2xl font-bold text-white">Un site web professionnel pour votre activité</h2>
-          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Devis personnalisé</p>
+          <p className="mb-6 text-gray-400">Réponse sous 24h · Devis personnalisé · Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-orange-500/30">
               Demander un devis <FiArrowRight size={15} />

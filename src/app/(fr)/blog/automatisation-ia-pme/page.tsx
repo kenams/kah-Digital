@@ -367,7 +367,7 @@ export default function AutomatisationIaPmePage() {
                 className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
               >
                 <FiMessageCircle size={15} />
-                WhatsApp — réponse sous 2h
+                WhatsApp — réponse rapide
               </a>
             </div>
             <p className="mt-4 text-xs text-gray-600">100% gratuit · Sans engagement · Résultats personnalisés</p>

@@ -110,7 +110,7 @@ export default function RefonteWebPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Combien de temps prend une refonte ?</h2>
         <div className="mb-12 grid gap-3 sm:grid-cols-3">
           {[
-            { type: "Site vitrine", delay: "2 – 3 semaines" },
+            { type: "Site vitrine", delay: "5 jours ouvrés" },
             { type: "Site corporate", delay: "3 – 6 semaines" },
             { type: "Application web", delay: "6 – 12 semaines" },
           ].map((item) => (

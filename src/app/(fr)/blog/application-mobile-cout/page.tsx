@@ -37,7 +37,7 @@ const faqJsonLd = {
 };
 
 const TIERS = [
-  { label: "PWA / Web App mobile", price: "selon le périmètre", delay: "2–3 sem.", desc: "Une application web qui s'installe comme une app. Pas dans les stores, mais fonctionne hors-ligne et s'utilise comme une app native.", tech: "Next.js · React · Service Workers" },
+  { label: "PWA / Web App mobile", price: "selon le périmètre", delay: "5 jours ouvrés", desc: "Une application web qui s'installe comme une app. Pas dans les stores, mais fonctionne hors-ligne et s'utilise comme une app native.", tech: "Next.js · React · Service Workers" },
   { label: "MVP React Native", price: "selon le périmètre", delay: "4–6 sem.", desc: "Application iOS + Android avec une base de code commune. Idéal pour valider une idée avec un Périmètre maîtrisé.", tech: "React Native · Expo · Supabase" },
   { label: "Application complète", price: "selon le périmètre", delay: "8–14 sem.", desc: "Produit complet avec auth, paiement, dashboard admin, notifications push, API sur mesure.", tech: "React Native · Node.js · PostgreSQL" },
   { label: "Application native iOS/Android", price: "selon le périmètre", delay: "12–24 sem.", desc: "Deux bases de code séparées, performances maximales, accès complet aux APIs système. Pour des produits établis.", tech: "Swift + Kotlin ou SwiftUI + Compose" },

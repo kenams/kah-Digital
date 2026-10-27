@@ -30,15 +30,15 @@ const faqJsonLd = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "comment estimer une landing page ?", "acceptedAnswer": { "@type": "Answer", "text": "Une landing page simple s'estime après cadrage selon la complexité du design et les intégrations nécessaires." } },
-    { "@type": "Question", "name": "Quel est le devis pour un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel s'estime après cadrage, livré en 2 à 3 semaines." } },
+    { "@type": "Question", "name": "Quel est le devis pour un site vitrine ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine professionnel s'estime après cadrage, livré en 5 jours ouvrés après réception du contenu." } },
     { "@type": "Question", "name": "comment estimer un site corporate ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site corporate complet (5-15 pages, CMS, multilingue) s'estime après cadrage." } },
     { "@type": "Question", "name": "Quel Périmètre pour une application web ?", "acceptedAnswer": { "@type": "Answer", "text": "Une application web sur mesure s'estime après cadrage selon la complexité des fonctionnalités." } },
   ],
 };
 
 const TIERS = [
-  { label: "Landing / Portfolio", price: "devis personnalisé", delay: "1–2 sem.", desc: "Une page claire et professionnelle. Idéal pour freelances, coachs, lancement de produit ou test d'idée.", included: ["Design sur mesure", "Responsive mobile", "Formulaire de contact", "SEO de base", "Déploiement inclus"] },
-  { label: "Site vitrine", price: "devis personnalisé", delay: "2–3 sem.", desc: "Présence complète pour une PME ou un indépendant. Pages : accueil, services, à propos, contact.", included: ["5 à 8 pages", "SEO optimisé", "Google Maps", "Formulaire pro", "Analytics"] },
+  { label: "Landing / Portfolio", price: "devis personnalisé", delay: "5 jours", desc: "Une page claire et professionnelle. Idéal pour freelances, coachs, lancement de produit ou test d'idée.", included: ["Design sur mesure", "Responsive mobile", "Formulaire de contact", "SEO de base", "Déploiement inclus"] },
+  { label: "Site vitrine", price: "devis personnalisé", delay: "5 jours ouvrés", desc: "Présence complète pour une PME ou un indépendant. Pages : accueil, services, à propos, contact.", included: ["5 à 8 pages", "SEO optimisé", "Google Maps", "Formulaire pro", "Analytics"] },
   { label: "Site corporate", price: "devis personnalisé", delay: "3–5 sem.", desc: "Site complet pour entreprise établie : multilingue, CMS, pages multiples, design premium.", included: ["10–20 pages", "CMS admin", "Multilingue", "Blog intégré", "Performance optimisée"] },
   { label: "Application web / IA", price: "devis personnalisé", delay: "4–10 sem.", desc: "Dashboard, SaaS, app métier, intégration IA. Développement full-stack sur mesure.", included: ["Auth utilisateurs", "Base de données", "API REST / webhooks", "Intégration IA", "Tests & déploiement"] },
 ];
