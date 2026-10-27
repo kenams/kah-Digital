@@ -346,6 +346,32 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
   const quoteHref = withLocalePrefix("/devis", locale);
   const contactHref = withLocalePrefix("/contact", locale);
 
+  // Offre de lancement : réelle et tenue (5 premières places, jusqu'au 31/12/2026).
+  const launchCopy: Record<string, { badge: string; title: string; body: string; terms: string; cta: string }> = {
+    fr: {
+      badge: "Offre de lancement",
+      title: "Site + réservation en ligne : 1 290 € au lieu de 1 490 €",
+      body: "Pour les 5 premiers clients, jusqu'au 31 décembre 2026. Site pro, prise de rendez-vous en autonomie, espace admin, livré en 5 jours ouvrés après réception du contenu.",
+      terms: "Acompte 30 %, solde à la livraison · une série de retouches incluse · paiement en 2 fois possible",
+      cta: "Réserver ma place",
+    },
+    en: {
+      badge: "Launch offer",
+      title: "Website + online booking: €1,290 instead of €1,490",
+      body: "For our first 5 clients, until 31 December 2026. Professional site, self-service booking, admin area, delivered 5 working days after we receive your content.",
+      terms: "30% deposit, balance on delivery · one round of revisions included · payment in 2 instalments available",
+      cta: "Reserve my spot",
+    },
+    de: {
+      badge: "Startangebot",
+      title: "Website + Online-Terminbuchung: CHF 1'290 statt CHF 1'490",
+      body: "Für unsere ersten 5 Kunden, bis 31. Dezember 2026. Professionelle Website, Terminbuchung in Eigenregie, Admin-Bereich, Lieferung 5 Werktage nach Erhalt der Inhalte.",
+      terms: "30 % Anzahlung, Rest bei Lieferung · eine Korrekturrunde inklusive · Zahlung in 2 Raten möglich",
+      cta: "Platz sichern",
+    },
+  };
+  const launch = launchCopy[locale] ?? launchCopy.fr;
+
   return (
     <div className="min-h-screen bg-gray-950 pb-24 pt-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -358,6 +384,31 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
           <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{content.title}</h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-400">{content.body}</p>
         </div>
+
+        {/* Offre de lancement */}
+        <section
+          aria-label={launch.badge}
+          className="mb-10 overflow-hidden rounded-2xl border border-violet-500/30 bg-gradient-to-r from-violet-500/10 via-blue-500/5 to-transparent p-6 sm:p-8"
+        >
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-2xl">
+              <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/15 px-3 py-1 text-xs font-semibold text-violet-300">
+                <FiZap size={11} />
+                {launch.badge}
+              </span>
+              <h2 className="text-xl font-bold text-white sm:text-2xl">{launch.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-gray-300">{launch.body}</p>
+              <p className="mt-3 text-xs text-gray-500">{launch.terms}</p>
+            </div>
+            <Link
+              href={quoteHref}
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
+            >
+              {launch.cta}
+              <FiArrowRight size={14} />
+            </Link>
+          </div>
+        </section>
 
         {/* Offer cards grid */}
         <div className="grid gap-6 md:grid-cols-2">
