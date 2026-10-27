@@ -88,7 +88,8 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/site-web-entreprise",
     "/site-web-fribourg",
     "/site-web-geneve",
-    "/site-web-lausanne"
+    "/site-web-lausanne",
+    "/visibilite-locale"
   ],
   "en": [
     "/",
@@ -176,6 +177,7 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/site-web-fribourg",
     "/site-web-geneve",
     "/site-web-lausanne",
+    "/visibilite-locale",
     "/web-development-dubai",
     "/web-development-london",
     "/web-development-new-york"

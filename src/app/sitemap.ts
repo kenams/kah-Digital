@@ -54,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agence-web-geneve",
     "/agence-web-berne",
     "/audit-gratuit",
+    "/visibilite-locale",
     "/blog",
     "/blog/prix-site-web-professionnel",
     "/blog/refonte-site-web",
