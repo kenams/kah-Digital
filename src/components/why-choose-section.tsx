@@ -14,7 +14,7 @@ const REASONS = {
       accent: "#3b82f6",
       tag: "5 à 28 jours",
       title: "Exécution ultra rapide",
-      desc: "Starter livré en 5 jours. Business en 14 jours. Un cadrage court, des décisions claires, zéro réunion inutile.",
+      desc: "Starter livré en 5 jours. Business en 5 jours ouvrés. Un cadrage court, des décisions claires, zéro réunion inutile.",
       featured: true,
     },
     {
@@ -80,7 +80,7 @@ const REASONS = {
       accent: "#3b82f6",
       tag: "5 to 28 days",
       title: "Ultra-fast execution",
-      desc: "Starter delivered in 5 days. Business in 14. Short scoping, clear decisions, zero unnecessary meetings.",
+      desc: "Starter delivered in 5 days. Business in 5 business days. Short scoping, clear decisions, zero unnecessary meetings.",
       featured: true,
     },
     {
@@ -146,7 +146,7 @@ const REASONS = {
       accent: "#3b82f6",
       tag: "5 bis 28 Tage",
       title: "Ultra-schnelle Umsetzung",
-      desc: "Starter in 5 Tagen geliefert. Business in 14 Tagen. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings.",
+      desc: "Starter in 5 Tagen geliefert. Business in 5 Werktagen. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings.",
       featured: true,
     },
     {

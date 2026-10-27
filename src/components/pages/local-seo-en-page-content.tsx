@@ -41,14 +41,14 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     region: "England",
     slug: "web-development-london",
     headline: "Web Development London",
-    subline: "Premium web development for London — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 14 days.",
+    subline: "Premium web development for London — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 5 business days.",
     intro: "KAH Digital builds high-performance websites and web applications for London startups, agencies, and businesses. FinTech, consulting, e-commerce, SaaS — we deliver Stripe-level design with Next.js 15 at a fraction of London agency prices. Remote from Switzerland, no lock-in, 100% yours on delivery.",
     sectors: ["FinTech & Banking", "Consulting & Agencies", "SaaS & Tech Startups", "E-Commerce & Retail", "Real Estate", "Legal & Professional Services"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Why use a Swiss studio instead of a London agency?", a: "Swiss precision at a fraction of London agency rates. You talk directly to the founder — no account manager relay. Fixed price, 14-day delivery, 100% code ownership. No monthly retainers." },
-      { q: "How much does a business website cost in London?", a: "Starter from £290 (landing page, 5 days). Business from £790 (up to 6 pages, SEO, 14 days). Premium AI from £2,490 (full system with AI chatbot). Fixed price, no surprises." },
-      { q: "What's included in the Business plan?", a: "Up to 6 pages, full technical SEO, SaaS-level premium design, animations, contact form, Core Web Vitals 95+, 3 revisions, 2 months support, delivered in 14 days." },
+      { q: "How much does a business website cost in London?", a: "Starter from £290 (landing page, 5 days). Business from £790 (up to 6 pages, SEO, 5 business days). Premium AI from £2,490 (full system with AI chatbot). Fixed price, no surprises." },
+      { q: "What's included in the Business plan?", a: "Up to 6 pages, full technical SEO, SaaS-level premium design, animations, contact form, Core Web Vitals 95+, 3 revisions, 2 months support, delivered in 5 business days." },
       { q: "Do you deliver the source code?", a: "Yes, 100%. Code, domain, hosting — everything is yours on delivery. No vendor lock-in, no monthly fees, no dependency of any kind." },
     ],
   },
@@ -80,7 +80,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     sectors: ["SaaS & Tech Startups", "FinTech & WealthTech", "E-Commerce & D2C", "Agencies & Consultants", "Media & Publishing", "Real Estate & PropTech"],
     proofLine: "Reply within 24h · Fixed price · 100% ownership",
     faq: [
-      { q: "What does a business website cost in New York?", a: "Starter from $290 (landing page, 5 days). Business from $790 (6 pages, SEO, 14 days). Premium AI from $2,490 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
+      { q: "What does a business website cost in New York?", a: "Starter from $290 (landing page, 5 days). Business from $790 (6 pages, SEO, 5 business days). Premium AI from $2,490 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
       { q: "Why work with a Swiss studio instead of a NYC agency?", a: "Swiss execution quality, without NYC agency pricing. You work directly with the founder. Fixed price, fast turnaround, 100% yours. No retainers, no lock-in." },
       { q: "Can you build a SaaS MVP for a New York startup?", a: "Yes. Functional V1 in 4 weeks on Next.js 15 + Supabase + TypeScript. The same stack as well-funded startups. Scalable from day one, no rewrite in 6 months." },
       { q: "Do you handle SEO for the US market?", a: "Yes, full technical SEO, structured data, Core Web Vitals 95+, clean URLs. Included from the Business plan. Optimised for Google US." },
@@ -92,14 +92,14 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     region: "Dubai",
     slug: "web-development-dubai",
     headline: "Web Development Dubai",
-    subline: "Premium web development for Dubai & UAE — Next.js 15, multilingual, SaaS-level design. Delivered in 14 days.",
+    subline: "Premium web development for Dubai & UAE — Next.js 15, multilingual, SaaS-level design. Delivered in 5 business days.",
     intro: "KAH Digital builds high-performance websites for Dubai and UAE businesses: real estate portals, hospitality, e-commerce, consulting, and SaaS. We deliver multilingual sites (Arabic, English, French) on Next.js 15 — fast, scalable, and 100% yours. Remote from Switzerland, no local overhead.",
     sectors: ["Real Estate & PropTech", "Hospitality & Tourism", "E-Commerce & Luxury Retail", "Consulting & Advisory", "FinTech & Payments", "Healthcare & Wellness"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Do you build Arabic-English bilingual websites?", a: "Yes, we build fully bilingual and RTL-ready websites in Arabic and English (and French). Proper hreflang, clean URL structure, SEO in both languages." },
-      { q: "How much does a business website cost in Dubai?", a: "Starter from $290 (landing page, 5 days). Business from $790 (up to 6 pages, full SEO, 14 days). Premium AI from $2,490 (complete system with AI chatbot). Fixed price, no surprises." },
-      { q: "How fast can you deliver a website for a UAE business?", a: "Starter in 5 business days. Business website in 14 days. All timelines are confirmed in writing before kickoff. No delays." },
+      { q: "How much does a business website cost in Dubai?", a: "Starter from $290 (landing page, 5 days). Business from $790 (up to 6 pages, full SEO, 5 business days). Premium AI from $2,490 (complete system with AI chatbot). Fixed price, no surprises." },
+      { q: "How fast can you deliver a website for a UAE business?", a: "Starter in 5 business days. Business website in 5 business days. All timelines are confirmed in writing before kickoff. No delays." },
       { q: "Do you handle SEO for the UAE and GCC market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean Arabic and English URLs. Included from the Business plan. Optimised for Google UAE." },
     ],
   },
@@ -126,13 +126,13 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     region: "Geneva",
     slug: "web-development-geneva",
     headline: "Web Development Geneva",
-    subline: "Premium websites for Geneva businesses — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 14 days.",
+    subline: "Premium websites for Geneva businesses — Next.js 15, SaaS-level design, Lighthouse 95+. Delivered in 5 business days.",
     intro: "KAH Digital builds high-performance websites and web applications for Geneva businesses, NGOs, startups, and international organisations. Finance, consulting, hospitality, health — we deliver Stripe-level design at transparent fixed prices. Working remotely with Geneva businesses. No lock-in, 100% yours.",
     sectors: ["Finance & Private Banking", "Consulting & Advisory", "NGOs & International Organisations", "Hospitality & Luxury", "Healthcare & MedTech", "SaaS & Tech Startups"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
       { q: "Do you work with Geneva-based clients?", a: "Yes — we work 100% remotely with Geneva clients from our studio in Toulouse, France. Same price, same quality." },
-      { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 290 (landing page, 5 days). Business CHF 790 (up to 6 pages, SEO, 14 days). Premium AI CHF 2'490 (full AI system). Fixed price, no hidden costs." },
+      { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 290 (landing page, 5 days). Business CHF 790 (up to 6 pages, SEO, 5 business days). Premium AI CHF 2'490 (full AI system). Fixed price, no hidden costs." },
       { q: "Can you build multilingual sites for Geneva's international audience?", a: "Yes — French, English, German, and more. hreflang, clean URL structure, SEO per language. Standard on Business and above." },
       { q: "Do you work with NGOs and international organisations?", a: "Yes. We have experience with compliance-sensitive sectors and can adapt our process to your procurement constraints." },
     ],
@@ -149,7 +149,7 @@ export const EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Remote studio · Reply within 24h · Fixed price",
     faq: [
       { q: "Do you have an office in Lausanne?", a: "No — KAH Digital is based in Toulouse, France, and works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
-      { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 290 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 14 days). Premium AI from CHF 2'490 (full system with AI chatbot). Fixed price, no surprises." },
+      { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 290 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 5 business days). Premium AI from CHF 2'490 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
       { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
     ],
@@ -249,7 +249,7 @@ export function LocalSeoEnPageContent({ data }: Props) {
           </h2>
           <div className="grid gap-5 sm:grid-cols-3">
             {[
-              { icon: FiZap, title: "Delivered in 5–14 days", body: "Starter in 5 days. Business in 14 days. Short brief, clear decisions, zero unnecessary meetings. Not 2 months." },
+              { icon: FiZap, title: "Delivered in 5 business days", body: "Starter in 5 days. Business in 5 business days. Short brief, clear decisions, zero unnecessary meetings. Not 2 months." },
               { icon: FiClock, title: "Reply within 24h", body: "First reply next business day. Direct founder access — no account manager, no relay, no delay." },
               { icon: FiMapPin, title: "Fixed price guaranteed", body: "Fixed quote before starting. No surprises, no hidden costs. 100% code ownership on delivery." },
             ].map((item) => (
@@ -271,7 +271,7 @@ export function LocalSeoEnPageContent({ data }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "$290", sub: "Landing page · 5 days" },
-              { label: "Business", price: "$790", sub: "Up to 6 pages · 14 days · SEO" },
+              { label: "Business", price: "$790", sub: "Up to 6 pages · 5 business days · SEO" },
               { label: "Premium AI", price: "$2,490", sub: "Full AI system · 28 days" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">

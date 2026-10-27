@@ -22,7 +22,7 @@ const content = {
     "site-web-entreprise": {
       eyebrow: "Site vitrine · Corporate · Conversion",
       title: "Un site web entreprise qui convertit,",
-      title2: "livré en 14 jours.",
+      title2: "livré en 5 jours ouvrés.",
       intro:
         "Fini les sites génériques qui ne donnent pas confiance. KAH Digital conçoit des sites entreprise niveau SaaS — design premium, Core Web Vitals 95+, SEO technique inclus. Vous possédez 100% du code à la livraison.",
       stats: [
@@ -49,7 +49,7 @@ const content = {
       contextBody:
         "On ne livre pas des maquettes. On livre des systèmes performants : structure orientée conversion, contenu utile, rendu optimisé, SEO intégré dès le premier jour. Votre site travaille pendant que vous dormez.",
       highlights: [
-        { icon: FiZap, title: "Livraison en 14 jours", body: "Starter en 5 jours. Business en 14. Cadrage court, décisions claires, zéro réunion inutile." },
+        { icon: FiZap, title: "Livraison en 5 jours ouvrés", body: "Starter en 5 jours. Business en 5 jours ouvrés. Cadrage court, décisions claires, zéro réunion inutile." },
         { icon: FiGlobe, title: "Stack monde réel", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. La même stack que les startups qui lèvent des millions." },
         { icon: FiTrendingUp, title: "Pensé pour convertir", body: "Structure claire, CTA optimisés, vitesse de chargement — chaque détail vise à transformer vos visiteurs en demandes." },
       ],
@@ -176,7 +176,7 @@ const content = {
     "site-web-entreprise": {
       eyebrow: "Business website · Corporate · Conversion machine",
       title: "A business website that converts,",
-      title2: "delivered in 14 days.",
+      title2: "delivered in 5 business days.",
       intro:
         "No more generic sites that lose clients on first visit. KAH Digital builds SaaS-level business websites — premium design, Lighthouse 95+, technical SEO included. 100% yours on delivery, no lock-in ever.",
       stats: [
@@ -203,7 +203,7 @@ const content = {
       contextBody:
         "We don't deliver mockups. We deliver performant systems: conversion-oriented structure, useful content, optimised rendering, SEO from day one. Your site works while you sleep.",
       highlights: [
-        { icon: FiZap, title: "Delivered in 14 days", body: "Starter in 5 days. Business in 14. Short scoping, clear decisions, zero unnecessary meetings." },
+        { icon: FiZap, title: "Delivered in 5 business days", body: "Starter in 5 days. Business in 5 business days. Short scoping, clear decisions, zero unnecessary meetings." },
         { icon: FiGlobe, title: "Real-world stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. The same stack as startups raising millions." },
         { icon: FiTrendingUp, title: "Built to convert", body: "Clear structure, optimised CTAs, load speed — every detail aims to turn visitors into enquiries." },
       ],
@@ -330,7 +330,7 @@ const content = {
     "site-web-entreprise": {
       eyebrow: "Business-Website · Corporate · Conversion-Maschine",
       title: "Eine Business-Website, die konvertiert,",
-      title2: "in 14 Tagen geliefert.",
+      title2: "in 5 Werktagen geliefert.",
       intro:
         "Schluss mit generischen Websites, die beim ersten Besuch Kunden verlieren. KAH Digital entwickelt SaaS-Level Business-Websites — Premium-Design, Lighthouse 95+, technisches SEO inklusive. 100% Ihr Eigentum bei Lieferung, kein Lock-in.",
       stats: [
@@ -357,7 +357,7 @@ const content = {
       contextBody:
         "Wir liefern keine Mockups. Wir liefern performante Systeme: conversion-orientierte Struktur, nützlicher Inhalt, optimiertes Rendering, SEO ab Tag eins. Ihre Website arbeitet, während Sie schlafen.",
       highlights: [
-        { icon: FiZap, title: "Lieferung in 14 Tagen", body: "Starter in 5 Tagen. Business in 14. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings." },
+        { icon: FiZap, title: "Lieferung in 5 Werktagen", body: "Starter in 5 Tagen. Business in 5 Werktagen. Kurzes Briefing, klare Entscheidungen, null unnötige Meetings." },
         { icon: FiGlobe, title: "Real-World-Stack", body: "Next.js 15, TypeScript strict, Tailwind, Vercel. Derselbe Stack wie Startups, die Millionen einsammeln." },
         { icon: FiTrendingUp, title: "Auf Conversion ausgelegt", body: "Klare Struktur, optimierte CTAs, Ladegeschwindigkeit — jedes Detail zielt darauf, Besucher in Anfragen zu verwandeln." },
       ],

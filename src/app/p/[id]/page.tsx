@@ -287,6 +287,13 @@ export default async function ProspectLandingPage({ params }: Props) {
               ? "Estimate based on your analysis · Final quote confirmed on a quick call"
               : "Estimation basée sur votre analyse · Devis final confirmé lors d'un court échange"}
           </div>
+          {(audit.estimatedPrice ?? 0) >= 1490 && (
+            <div className="mt-4 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-3 text-sm text-violet-200">
+              {lang === "en"
+                ? "Launch offer: €1,290 instead of €1,490 for our first 5 clients, until 31 December 2026."
+                : "Offre de lancement : 1 290 € au lieu de 1 490 € pour nos 5 premiers clients, jusqu'au 31 décembre 2026."}
+            </div>
+          )}
         </div>
 
         {/* CTAs */}

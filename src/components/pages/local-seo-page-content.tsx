@@ -28,16 +28,16 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Médecins & professions libérales"],
     proofLine: "Studio à distance · Lausanne · Réponse 24h · Prix fixe CHF 290 — Sans engagement",
     faq: [
-      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 790, livré en 14 jours. Système complet avec IA dès CHF 2'490. Prix fixe garanti avant de commencer, zéro surprise." },
+      { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 790, livré en 5 jours ouvrés. Système complet avec IA dès CHF 2'490. Prix fixe garanti avant de commencer, zéro surprise." },
       { q: "Vous êtes vraiment basés à Lausanne ?", a: "Non : KAH Digital est un studio basé à Toulouse (France), 100 % à distance. Nous travaillons avec des clients en France et en Suisse, par visioconférence et en ligne — même qualité, même prix." },
-      { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
+      { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 5 jours ouvrés. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
       { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui — SEO technique complet, données structurées, Core Web Vitals 95+, URLs propres, sitemap. Inclus dès le plan Business. Optimisé pour Google CH." },
     ],
   },
   "site-web-geneve": {
     city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "site-web-geneve",
     headline: "Création de site web à Genève",
-    subline: "Studio romand proche de Genève — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 290, 14 jours. Prix fixe.",
+    subline: "Studio romand proche de Genève — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 290, 5 jours ouvrés. Prix fixe.",
     intro: "KAH Digital accompagne les entreprises genevaises dans leur présence digitale : cabinets d'avocats, fiduciaires, ONG, hôtels, startups, médecins. Sites web haute-performance en français, anglais et allemand. Studio 100 % à distance, nous travaillons avec les entreprises de Genève. Devis gratuit sous 24h, prix fixe, code 100% à vous.",
     sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hôtels & restauration de luxe", "Startups Geneva Lake", "Médecins & cliniques"],
     proofLine: "· 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 290 — Réponse 24h",
@@ -257,7 +257,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
       { q: "Combien coûte une agence web à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO local Lausanne) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe garanti, zéro surprise — contrairement à beaucoup d'agences lausannoises qui facturent à l'heure." },
       { q: "Avez-vous un bureau à Lausanne ?", a: "Non : KAH Digital est basé à Toulouse (France) et travaille 100 % à distance avec des clients en France et en Suisse, dont Lausanne — même qualité, même prix." },
       { q: "Faites-vous du SEO local pour Lausanne ?", a: "Oui — SEO technique complet, Google Business Profile, données structurées Schema.org, Core Web Vitals 95+, sitemap. Optimisé pour apparaître sur les recherches 'agence web Lausanne' et 'création site web Vaud'." },
-      { q: "Quels délais pour un projet web à Lausanne ?", a: "Landing page : 5 jours. Site vitrine complet : 14 jours. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage." },
+      { q: "Quels délais pour un projet web à Lausanne ?", a: "Landing page : 5 jours. Site vitrine complet : 5 jours ouvrés. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage." },
     ],
   },
   "agence-web-geneve": {
@@ -561,8 +561,8 @@ export function LocalSeoPageContent({ data }: Props) {
             {[
               {
                 icon: FiZap,
-                title: "Livré en 5 à 14 jours",
-                body: "Starter en 5 jours. Business en 14 jours. Brief court, décisions rapides, zéro aller-retour inutile. Pas 6 semaines.",
+                title: "Livré en 5 jours ouvrés",
+                body: "Starter en 5 jours. Business en 5 jours ouvrés. Brief court, décisions rapides, zéro aller-retour inutile. Pas 6 semaines.",
               },
               {
                 icon: FiClock,
@@ -593,7 +593,7 @@ export function LocalSeoPageContent({ data }: Props) {
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: priceStarter, sub: `Landing page — 5 jours`, highlight: false },
-              { label: "Business", price: priceBusiness, sub: `Jusqu'à 6 pages · SEO · 14 jours`, highlight: true },
+              { label: "Business", price: priceBusiness, sub: `Jusqu'à 6 pages · SEO · 5 jours ouvrés`, highlight: true },
               { label: "Premium IA", price: priceAI, sub: `Système complet + IA — 28 jours`, highlight: false },
             ].map((item) => (
               <div

@@ -77,7 +77,7 @@ const copy = {
         tag: "Le plus demandé",
         title: "Business",
         price: "790 €",
-        timeline: "14 jours",
+        timeline: "5 jours ouvrés",
         summary: "Le site professionnel complet qui convertit les visiteurs en clients et s'impose face à la concurrence.",
         includes: [
           "Jusqu'à 6 pages incluses",
@@ -186,7 +186,7 @@ const copy = {
         tag: "Most requested",
         title: "Business",
         price: "€790",
-        timeline: "14 days",
+        timeline: "5 business days",
         summary: "The complete professional site that converts visitors into clients and stands out from competitors.",
         includes: [
           "Up to 6 pages included",
@@ -295,7 +295,7 @@ const copy = {
         tag: "Beste Wahl",
         title: "Business",
         price: "CHF 790",
-        timeline: "14 Tage",
+        timeline: "5 Werktage",
         summary: "Die vollständige professionelle Website, die Besucher in Kunden verwandelt und Mitbewerber aussticht.",
         includes: [
           "Bis zu 6 Seiten inklusive",
