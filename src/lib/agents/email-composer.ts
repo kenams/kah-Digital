@@ -189,7 +189,7 @@ export async function composeProspectingEmail(
       : track === "app"
       ? `Pitch : propose à cette startup / entreprise de développer leur application mobile ou web sur mesure avec KAH Digital Studio. Angle : MVP rapide, stack moderne, livraison en semaines pas en mois. Objectif = les amener à contacter KAH Digital Studio ou appeler le 07 59 55 84 14. Pas de prix, juste une conversation.`
       : track === "visibilite"
-      ? `Pitch : on prépare un suivi mensuel de la visibilité locale (ce que Google, Maps et les assistants IA répondent quand on cherche leur métier dans leur ville, plus trois actions concrètes par mois), tarif prévu 39 €/mois. Le produit n'est pas encore ouvert : invite à rejoindre la liste d'attente sur kah-digital.ch, sans jamais prétendre qu'il existe déjà ni citer de résultats.`
+      ? `Pitch : on prépare un service qui s'occupe de la visibilité locale à leur place (demande d'avis automatique après chaque client, fiche Google tenue à jour, réponses aux avis rédigées, bilan chiffré chaque mois), tarif prévu 39 €/mois. Le produit n'est pas encore ouvert : invite à rejoindre la liste d'attente sur kah-digital.ch, sans jamais prétendre qu'il existe déjà ni citer de résultats.`
       : track === "agent"
       ? `Pitch : propose un agent IA qui automatise la prospection ou le support client de leur activité. Pas de site à refaire, juste l'agent IA.`
       : track === "creation"
@@ -286,8 +286,8 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
         de: `Wir richten KI-Agenten ein, die Akquise oder Kundensupport automatisieren — kein Website-Relaunch, nur der Agent, der die Arbeit übernimmt.`,
       },
       visibilite: {
-        fr: `On prépare un suivi mensuel de votre visibilité locale : ce que Google, Maps et les assistants IA répondent quand on cherche votre métier dans votre ville, et trois actions concrètes pour y apparaître. Tarif prévu : 39 €/mois. Pas encore ouvert : la liste d'attente est sur kah-digital.ch, et l'audit gratuit de votre site est disponible dès maintenant.`,
-        en: `We're preparing a monthly local visibility check: what Google, Maps and AI assistants answer when someone searches for your trade in your town, plus three concrete actions to show up. Planned price: €39/month. Not open yet: the waitlist is on kah-digital.ch, and the free audit of your website is available right now.`,
+        fr: `On prépare un service qui s'occupe de votre visibilité locale à votre place : demande d'avis automatique après chaque client, fiche Google tenue à jour, réponses aux avis rédigées, et un bilan chiffré chaque mois. Tarif prévu : 39 €/mois. Pas encore ouvert : la liste d'attente est sur kah-digital.ch, et l'audit gratuit de votre site est disponible dès maintenant.`,
+        en: `We're preparing a service that handles your local visibility for you: automatic review requests after each customer, a Google profile kept up to date, review replies written for you, and a numbers-based report each month. Planned price: €39/month. Not open yet: the waitlist is on kah-digital.ch, and the free audit of your website is available right now.`,
         de: ``,
       },
       site: {

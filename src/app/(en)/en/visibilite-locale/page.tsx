@@ -6,9 +6,9 @@ import { FiArrowRight, FiCheckCircle, FiMapPin, FiMessageSquare, FiTrendingUp, F
 import { trackEvent } from "@/lib/analytics";
 
 const STEPS = [
-  { icon: FiSearch, title: "We measure", text: "Your Google profile, your website, your reviews, and what AI assistants answer when someone searches for your trade in your town." },
-  { icon: FiTrendingUp, title: "We compare", text: "Your score against the businesses showing up in your place, and what makes the difference." },
-  { icon: FiMessageSquare, title: "We tell you what to do", text: "Three concrete actions a month, ranked by expected impact. Not a dashboard to decipher." },
+  { icon: FiSearch, title: "We collect your reviews", text: "After each customer, an automatic message asks for a review. More recent reviews is what lifts a local listing." },
+  { icon: FiTrendingUp, title: "We keep your profile live", text: "Opening hours, services, photos, posts, and review replies written for you. Your profile stays alive without you touching it." },
+  { icon: FiMessageSquare, title: "We show you the result", text: "Each month, a short numbers-based report: new reviews, how your profile evolved, and what we do next month." },
 ];
 
 export default function VisibilityPageEn() {
@@ -46,8 +46,8 @@ export default function VisibilityPageEn() {
             When people search for your trade<br />in your town, who do they find?
           </h1>
           <p className="mx-auto mb-9 max-w-xl text-lg leading-relaxed text-gray-400">
-            Google, Maps, and now AI assistants: your future customers ask, and get a handful of names back.
-            Each month we check whether yours is among them, and what to change to get in.
+            Your future customers pick the businesses with recent reviews and a well-kept profile, on Google, Maps or by asking an AI.
+            We take care of your local visibility for you, and show you the numbers every month.
           </p>
 
           {state === "done" ? (

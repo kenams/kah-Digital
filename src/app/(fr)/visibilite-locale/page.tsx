@@ -6,9 +6,9 @@ import { FiArrowRight, FiCheckCircle, FiMapPin, FiMessageSquare, FiTrendingUp, F
 import { trackEvent } from "@/lib/analytics";
 
 const STEPS = [
-  { icon: FiSearch, title: "On mesure", text: "Votre fiche Google, votre site, vos avis, et ce que répondent les assistants IA quand on cherche votre métier dans votre ville." },
-  { icon: FiTrendingUp, title: "On compare", text: "Votre score face aux entreprises qui apparaissent à votre place, avec ce qui fait la différence." },
-  { icon: FiMessageSquare, title: "On vous dit quoi faire", text: "Trois actions concrètes par mois, classées par effet attendu. Pas un tableau de bord à déchiffrer." },
+  { icon: FiSearch, title: "On récolte vos avis", text: "Après chaque client, un message automatique lui demande son avis. Plus d'avis récents, c'est ce qui fait remonter une fiche locale." },
+  { icon: FiTrendingUp, title: "On tient votre fiche", text: "Horaires, services, photos, publications, et réponses aux avis rédigées pour vous. Votre fiche reste vivante sans que vous y touchiez." },
+  { icon: FiMessageSquare, title: "On vous montre le résultat", text: "Chaque mois, un bilan court et chiffré : nouveaux avis, évolution de votre fiche, et ce que nous faisons le mois suivant." },
 ];
 
 export default function VisibiliteLocalePage() {
@@ -46,8 +46,8 @@ export default function VisibiliteLocalePage() {
             Quand on cherche votre métier<br />dans votre ville, on tombe sur qui ?
           </h1>
           <p className="mx-auto mb-9 max-w-xl text-lg leading-relaxed text-gray-400">
-            Google, Maps, et maintenant les assistants IA : vos futurs clients demandent, on leur répond par quelques noms.
-            Nous suivons chaque mois si le vôtre en fait partie, et ce qu&apos;il faut changer pour y entrer.
+            Vos futurs clients choisissent ceux qui ont des avis récents et une fiche soignée, sur Google, Maps ou en demandant à une IA.
+            Nous nous occupons de votre visibilité locale à votre place, et nous vous montrons les chiffres chaque mois.
           </p>
 
           {state === "done" ? (
