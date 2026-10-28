@@ -203,6 +203,7 @@ export async function runPulseAgent(params: {
   const message = params.message.slice(0, 1200);
   const providers: Array<() => Promise<AgentResult>> = [];
   if (process.env.ANTHROPIC_API_KEY) providers.push(() => runWithAnthropic(process.env.ANTHROPIC_API_KEY!, system, message));
+  if (process.env.OPENAI_API_KEY2) providers.push(() => runWithOpenAI(process.env.OPENAI_API_KEY2!, system, message));
   if (process.env.OPENAI_API_KEY) providers.push(() => runWithOpenAI(process.env.OPENAI_API_KEY!, system, message));
   if (providers.length === 0) throw new Error("IA non configurée.");
 
