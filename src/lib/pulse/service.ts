@@ -1,5 +1,6 @@
 import { runPulseAgent, type AgentAppointment } from "@/lib/pulse/agent";
 import { applyOps, publicView, type PulseContent } from "@/lib/pulse/content";
+import { sendTelegramAlert } from "@/lib/notify";
 import { db, logUpdate, saveContent, type PulseAppointment, type PulseSite } from "@/lib/pulse/store";
 
 /** Convertit « AAAA-MM-JJTHH:mm » (heure locale d'un fuseau IANA) en ISO UTC. */
@@ -129,8 +130,16 @@ export async function handlePulseMessage(
     };
   } catch (error) {
     console.error("[pulse] message failed", error);
-    const reply = "Une erreur est survenue, votre demande n'a pas été appliquée. Réessayez dans un instant.";
+    const reply = "Le service est momentanément indisponible. Votre message est bien reçu et sera appliqué à la main par KAH Digital Studio dans l'heure.";
     await logUpdate({ siteId: site.id, source, message: text, ops: null, reply, status: "error" }).catch(() => {});
+    // Aucun message client ne doit se perdre : on prévient Kenams pour qu'il l'applique à la main.
+    if (source !== "demo") {
+      const esc = (v: string) => v.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+      await sendTelegramAlert(`⚠️ <b>PULSE — message client NON traité (IA indisponible)</b>
+Site : ${esc(site.client_name)} (${esc(site.site_key)})
+Canal : ${source}
+« ${esc(text.slice(0, 400))} »`).catch(() => {});
+    }
     return { ...base, reply, status: "error" };
   }
 }
