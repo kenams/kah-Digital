@@ -192,7 +192,7 @@ async function runWithOpenAI(apiKey: string, system: string, message: string): P
   return parseToolInput(JSON.parse(args));
 }
 
-/** Comprend le message du commerçant. Claude si la clé existe, sinon OpenAI (déjà utilisé par le site). */
+/** Comprend le message du commerçant : Claude d'abord, OpenAI en secours (déjà utilisé par le site). */
 export async function runPulseAgent(params: {
   clientName: string;
   content: PulseContent;
@@ -201,7 +201,20 @@ export async function runPulseAgent(params: {
 }): Promise<AgentResult> {
   const system = systemPrompt(params.clientName, params.content, params.timeZone);
   const message = params.message.slice(0, 1200);
-  if (process.env.ANTHROPIC_API_KEY) return runWithAnthropic(process.env.ANTHROPIC_API_KEY, system, message);
-  if (process.env.OPENAI_API_KEY) return runWithOpenAI(process.env.OPENAI_API_KEY, system, message);
-  throw new Error("IA non configurée.");
+  const providers: Array<() => Promise<AgentResult>> = [];
+  if (process.env.ANTHROPIC_API_KEY) providers.push(() => runWithAnthropic(process.env.ANTHROPIC_API_KEY!, system, message));
+  if (process.env.OPENAI_API_KEY) providers.push(() => runWithOpenAI(process.env.OPENAI_API_KEY!, system, message));
+  if (providers.length === 0) throw new Error("IA non configurée.");
+
+  // Si un fournisseur est en panne ou sans crédit, on bascule sur l'autre.
+  let lastError: unknown;
+  for (const run of providers) {
+    try {
+      return await run();
+    } catch (error) {
+      lastError = error;
+      console.error("[pulse] provider failed, trying next", error instanceof Error ? error.message.slice(0, 160) : error);
+    }
+  }
+  throw lastError;
 }
