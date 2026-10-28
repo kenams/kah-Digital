@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 180" role="img" aria-label="KAH Digital Studio">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&amp;display=swap');
+    .f{font-family:'Playfair Display','Didot','Bodoni MT',Georgia,serif}</style>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8e9c0"/><stop offset=".5" stop-color="#d4a85a"/><stop offset="1" stop-color="#9c6c2c"/>
+    </linearGradient>
+  </defs>
+  <rect width="580" height="180" fill="#05070f"/>
+  <g transform="translate(24 15)">
+    <path d="M8 146V60A52 52 0 0 1 112 60V146Z" fill="#080c1a" stroke="url(#g)" stroke-width="2.5"/>
+    <path d="M16 138V60A44 44 0 0 1 104 60V138Z" fill="none" stroke="#d4a85a" stroke-opacity=".4"/>
+    <path d="M60 3l6 7-6 7-6-7Z" fill="url(#g)"/>
+    <g fill="url(#g)" stroke="url(#g)">
+      <rect x="43" y="49" width="11" height="63" stroke="none"/><rect x="36" y="47" width="25" height="3" stroke="none"/><rect x="36" y="110" width="25" height="3" stroke="none"/>
+      <path d="M55 82L83 51" stroke-width="3" fill="none"/><rect x="76" y="47" width="16" height="3" stroke="none"/>
+      <path d="M59 77L88 111" stroke-width="9" fill="none"/><rect x="76" y="110" width="22" height="3" stroke="none"/>
+    </g>
+    <path d="M40 126H80" stroke="url(#g)" stroke-width="1.5"/><path d="M60 122l3 4-3 4-3-4Z" fill="url(#g)"/>
+  </g>
+  <text class="f" x="190" y="104" font-size="104" font-weight="700" fill="url(#g)" textLength="340" lengthAdjust="spacing">KAH</text>
+  <path d="M192 118H530" stroke="url(#g)" stroke-width="1" opacity=".6"/>
+  <text class="f" x="190" y="152" font-size="25" font-weight="500" fill="#f6efe0" textLength="340" lengthAdjust="spacing">DIGITAL  ◆  STUDIO</text>
+</svg>
