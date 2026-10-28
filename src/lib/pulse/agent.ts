@@ -190,7 +190,10 @@ async function runWithOpenAI(apiKey: string, system: string, message: string, pr
       tool_choice: { type: "function", function: { name: TOOL.name } },
     }),
   });
-  if (!res.ok) throw new Error(`${provider.name} ${res.status}`);
+  if (!res.ok) {
+    const detail = (await res.text().catch(() => "")).slice(0, 200);
+    throw new Error(`${provider.name} ${res.status} ${detail}`);
+  }
   const json = (await res.json()) as { choices?: Array<{ message?: { tool_calls?: Array<{ function?: { arguments?: string } }> } }> };
   const args = json.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
   if (!args) throw new Error("Réponse IA invalide.");
