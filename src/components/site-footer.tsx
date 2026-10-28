@@ -60,6 +60,7 @@ export function SiteFooter() {
         links: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
+          { label: "Commander mon site", href: "/commander" },
           { label: "Réalisations", href: "/projets" },
           { label: "Devis", href: "/devis" },
           { label: "Contact", href: "/contact" },

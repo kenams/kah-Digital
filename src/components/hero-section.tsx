@@ -282,6 +282,15 @@ export function HeroSection() {
           </a>
         </motion.div>
 
+        {locale !== "en" && locale !== "de" && (
+          <p className="mt-6 text-sm text-gray-400">
+            Un site standard ?{" "}
+            <Link href="/commander" className="font-semibold text-[#e0c48e] underline-offset-4 transition hover:text-[#f3d089] hover:underline">
+              Commandez-le en ligne : Starter 290 € · Business 790 € →
+            </Link>
+          </p>
+        )}
+
         {/* Trust line */}
         <motion.p
           initial={{ opacity: 0 }}

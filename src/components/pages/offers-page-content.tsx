@@ -28,21 +28,21 @@ const copy = {
         {
           name: "Essentiel",
           price: "49 € / mois",
-          desc: "Mises à jour sécurité, sauvegardes, monitoring uptime.",
-          items: ["Mises à jour CMS / dépendances", "Sauvegarde hebdomadaire", "Monitoring uptime 24/7", "Support email (48h)"],
+          desc: "On s'occupe de tout : hébergement, domaine, sécurité, sauvegardes.",
+          items: ["Hébergement, domaine, sécurité, sauvegardes", "1 petite modification par mois", "Surveillance du site", "Réponse sous 72 h"],
         },
         {
           name: "Confort",
           price: "99 € / mois",
-          desc: "Tout Essentiel + corrections mineures et ajouts de contenu.",
-          items: ["Tout du plan Essentiel", "2h de modifications / mois", "Ajouts textes et images", "Support prioritaire (24h)"],
+          desc: "Tout Essentiel + modifications régulières, rapport mensuel et suivi des avis.",
+          items: ["Tout du plan Essentiel", "3 modifications par mois", "Rapport mensuel + suivi des avis Google", "Réponse sous 24 h"],
           popular: true,
         },
         {
           name: "Pro",
           price: "199 € / mois",
-          desc: "Tout Confort + développement léger et suivi analytique mensuel.",
-          items: ["Tout du plan Confort", "5h de développement / mois", "Rapport analytique mensuel", "Support dédié (réponse jour-même)"],
+          desc: "Tout Confort + accompagnement renforcé.",
+          items: ["Tout du plan Confort", "Modifications illimitées (usage raisonnable)", "Mise à jour mensuelle des sections", "Support WhatsApp direct, réponse sous 4 h ouvrées"],
         },
       ],
       note: "Le niveau de support est ajusté après livraison selon votre autonomie, vos priorités et le rythme d'évolution souhaité.",
@@ -472,17 +472,36 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                 </div>
 
                 {/* CTA */}
-                <Link
-                  href={quoteHref}
-                  className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
-                    isPopular
-                      ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 shadow-md"
-                      : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
-                  }`}
-                >
-                  {content.requestQuote}
-                  <FiArrowRight size={14} />
-                </Link>
+                {locale === "fr" && (offer.id === "starter" || offer.id === "business") ? (
+                  <>
+                    <Link
+                      href={`/commander?pack=${offer.id}`}
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
+                        isPopular
+                          ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 shadow-md"
+                          : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                      }`}
+                    >
+                      Commander — {offer.price}
+                      <FiArrowRight size={14} />
+                    </Link>
+                    <Link href={quoteHref} className="mt-2 block text-center text-xs text-gray-500 transition hover:text-gray-300">
+                      ou demander un devis sur mesure
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    href={quoteHref}
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
+                      isPopular
+                        ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 shadow-md"
+                        : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {content.requestQuote}
+                    <FiArrowRight size={14} />
+                  </Link>
+                )}
               </div>
             );
           })}

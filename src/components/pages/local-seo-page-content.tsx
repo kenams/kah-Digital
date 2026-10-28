@@ -473,6 +473,14 @@ export function LocalSeoPageContent({ data }: Props) {
             >
               Devis gratuit en 24h <FiArrowRight size={15} />
             </Link>
+            {!isSwiss && (
+              <Link
+                href="/commander"
+                className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
+              >
+                Commander dès {priceStarter}
+              </Link>
+            )}
             <a
               href={WA_URL}
               target="_blank"
@@ -589,7 +597,7 @@ export function LocalSeoPageContent({ data }: Props) {
       <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-white">Tarifs pour {data.city}</h2>
-          <p className="mb-8 text-gray-500">Prix fixes et transparents. Zéro abonnement, zéro lock-in, 100% à vous à la livraison.</p>
+          <p className="mb-8 text-gray-500">Prix fixes et transparents. Aucun lock-in : le site est 100 % à vous à la livraison, l&apos;abonnement d&apos;hébergement est optionnel.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: priceStarter, sub: `Landing page — 5 jours`, highlight: false },
@@ -651,6 +659,14 @@ export function LocalSeoPageContent({ data }: Props) {
             >
               Demander mon devis gratuit <FiArrowRight size={15} />
             </Link>
+            {!isSwiss && (
+              <Link
+                href="/commander"
+                className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-4 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
+              >
+                Commander en ligne
+              </Link>
+            )}
             <a
               href={WA_URL}
               target="_blank"

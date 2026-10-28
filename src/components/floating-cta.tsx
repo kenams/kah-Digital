@@ -38,10 +38,10 @@ export function FloatingCTA() {
   );
 
   const ctaLabel =
-    locale === "en" ? "Get a free quote" : locale === "de" ? "Kostenlose Offerte" : "Devis gratuit";
+    locale === "en" ? "Get a free quote" : locale === "de" ? "Kostenlose Offerte" : "Commander mon site";
 
   const priceLine =
-    locale === "en" ? "From $290 · 5-day delivery" : locale === "de" ? "Ab CHF 290 · 5 Tage" : "Dès 290 € · 5 jours";
+    locale === "en" ? "From $290 · 5-day delivery" : locale === "de" ? "Ab CHF 290 · 5 Tage" : "Dès 290 € · livré en 5 jours";
 
   return (
     <div
@@ -68,7 +68,7 @@ export function FloatingCTA() {
 
         {/* CTA button */}
         <Link
-          href={`${prefix ?? ""}/devis`}
+          href={locale === "en" || locale === "de" ? `${prefix ?? ""}/devis` : "/commander"}
           className="group flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition hover:gap-4 hover:shadow-blue-500/35"
         >
           <span className="flex flex-col items-start leading-none">

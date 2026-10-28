@@ -150,6 +150,9 @@ export default function ApplicationMobileCoutPage() {
             <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-violet-500/30">
               Demander un devis <FiArrowRight size={15} />
             </Link>
+            <Link href="/commander" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Commander mon site dès 290 €
+            </Link>
             <Link href="/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
               Voir nos offres
             </Link>

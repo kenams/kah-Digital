@@ -56,6 +56,7 @@ export function SiteHeader() {
           { label: "Réalisations", href: "/projets" },
           { label: "Références", href: "/references" },
           { label: "Blog", href: "/blog" },
+          { label: "Commander", href: "/commander", accent: true },
           { label: "Devis", href: "/devis" },
           { label: "Contact", href: "/contact" },
         ],
@@ -86,6 +87,8 @@ export function SiteHeader() {
                 href={link.href}
                 className={(link as { highlight?: boolean }).highlight
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
+                  : (link as { accent?: boolean }).accent
+                  ? "whitespace-nowrap font-semibold text-[#e0c48e] transition-colors hover:text-[#f3d089]"
                   : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden 2xl:inline" : ""}`}
               >
                 {(link as { highlight?: boolean }).highlight && <span className="mr-1">⚡</span>}{link.label}
