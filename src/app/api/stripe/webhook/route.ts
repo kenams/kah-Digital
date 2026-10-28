@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendQuoteActivity } from "@/lib/admin-activity-store";
+import { handlePackOrderCompleted } from "@/lib/pack-order-notify";
 import { computeNextPaymentStatus, getQuotePaymentStatusLabel } from "@/lib/quote-payments";
 import { getQuoteRecord, isSupabaseConfigured, updateQuoteRecord } from "@/lib/quote-store";
 import { getStripeClient, getStripeWebhookSecret, isStripeConfigured } from "@/lib/stripe";
@@ -7,10 +8,6 @@ import { getStripeClient, getStripeWebhookSecret, isStripeConfigured } from "@/l
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  if (!isSupabaseConfigured()) {
-    return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
-  }
-
   if (!isStripeConfigured()) {
     return NextResponse.json({ error: "Stripe non configure" }, { status: 503 });
   }
@@ -26,6 +23,16 @@ export async function POST(request: NextRequest) {
     const payload = await request.text();
     const stripe = getStripeClient();
     const event = stripe.webhooks.constructEvent(payload, signature, webhookSecret);
+
+    // Commandes de packs en ligne (/commander) : alertes + e-mails, sans dépendre de Supabase.
+    if (event.type === "checkout.session.completed" && event.data.object.metadata?.paymentType === "pack_order") {
+      await handlePackOrderCompleted(event.data.object);
+      return NextResponse.json({ ok: true });
+    }
+
+    if (!isSupabaseConfigured()) {
+      return NextResponse.json({ error: "Configuration Supabase manquante" }, { status: 503 });
+    }
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;

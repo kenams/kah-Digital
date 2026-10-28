@@ -47,6 +47,8 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/blog/site-web-artisan",
     "/blog/site-web-restaurant",
     "/cahier-des-charges",
+    "/commander",
+    "/commander/merci",
     "/confidentialite",
     "/configurateur",
     "/contact",

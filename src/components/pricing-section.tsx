@@ -37,7 +37,7 @@ const PLANS = {
         "Modifications illimitées",
       ],
       cta: "Lancer avec 290 €",
-      note: "Sans engagement · Paiement après livraison",
+      note: "Paiement sécurisé en ligne · Abonnement optionnel",
     },
     {
       id: "business",
@@ -461,7 +461,7 @@ export function PricingSection() {
 
               {/* CTA */}
               <Link
-                href={withPrefix("/devis")}
+                href={!isEN && !isDE && (plan.id === "starter" || plan.id === "business") ? `/commander?pack=${plan.id}` : withPrefix("/devis")}
                 className={`mt-auto inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold transition-all hover:gap-3 ${ACCENT_CTA[plan.accent as keyof typeof ACCENT_CTA]}`}
               >
                 {plan.cta}
