@@ -172,12 +172,17 @@ async function runWithAnthropic(apiKey: string, system: string, message: string)
   return parseToolInput(block.input);
 }
 
-async function runWithOpenAI(apiKey: string, system: string, message: string): Promise<AgentResult> {
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+type ChatProvider = { name: string; url: string; model: string };
+const OPENAI: ChatProvider = { name: "OpenAI", url: "https://api.openai.com/v1/chat/completions", model: process.env.PULSE_OPENAI_MODEL || "gpt-4o-mini" };
+// Groq : offre gratuite, API compatible OpenAI.
+const GROQ: ChatProvider = { name: "Groq", url: "https://api.groq.com/openai/v1/chat/completions", model: process.env.PULSE_GROQ_MODEL || "llama-3.3-70b-versatile" };
+
+async function runWithOpenAI(apiKey: string, system: string, message: string, provider: ChatProvider = OPENAI): Promise<AgentResult> {
+  const res = await fetch(provider.url, {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: process.env.PULSE_OPENAI_MODEL || "gpt-4o-mini",
+      model: provider.model,
       max_tokens: 900,
       temperature: 0,
       messages: [{ role: "system", content: system }, { role: "user", content: message }],
@@ -185,7 +190,7 @@ async function runWithOpenAI(apiKey: string, system: string, message: string): P
       tool_choice: { type: "function", function: { name: TOOL.name } },
     }),
   });
-  if (!res.ok) throw new Error(`OpenAI ${res.status}`);
+  if (!res.ok) throw new Error(`${provider.name} ${res.status}`);
   const json = (await res.json()) as { choices?: Array<{ message?: { tool_calls?: Array<{ function?: { arguments?: string } }> } }> };
   const args = json.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
   if (!args) throw new Error("Réponse IA invalide.");
@@ -205,6 +210,7 @@ export async function runPulseAgent(params: {
   if (process.env.ANTHROPIC_API_KEY) providers.push(() => runWithAnthropic(process.env.ANTHROPIC_API_KEY!, system, message));
   if (process.env.OPENAI_API_KEY2) providers.push(() => runWithOpenAI(process.env.OPENAI_API_KEY2!, system, message));
   if (process.env.OPENAI_API_KEY) providers.push(() => runWithOpenAI(process.env.OPENAI_API_KEY!, system, message));
+  if (process.env.GROQ_API_KEY) providers.push(() => runWithOpenAI(process.env.GROQ_API_KEY!, system, message, GROQ));
   if (providers.length === 0) throw new Error("IA non configurée.");
 
   // Si un fournisseur est en panne ou sans crédit, on bascule sur l'autre.
