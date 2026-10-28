@@ -1,6 +1,6 @@
 import { runPulseAgent, type AgentAppointment } from "@/lib/pulse/agent";
 import { applyOps, publicView, type PulseContent } from "@/lib/pulse/content";
-import { sendTelegramAlert } from "@/lib/notify";
+import { sendAdminEmail } from "@/lib/notify";
 import { db, logUpdate, saveContent, type PulseAppointment, type PulseSite } from "@/lib/pulse/store";
 
 /** Convertit « AAAA-MM-JJTHH:mm » (heure locale d'un fuseau IANA) en ISO UTC. */
@@ -135,10 +135,13 @@ export async function handlePulseMessage(
     // Aucun message client ne doit se perdre : on prévient Kenams pour qu'il l'applique à la main.
     if (source !== "demo") {
       const esc = (v: string) => v.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-      await sendTelegramAlert(`⚠️ <b>PULSE — message client NON traité (IA indisponible)</b>
-Site : ${esc(site.client_name)} (${esc(site.site_key)})
-Canal : ${source}
-« ${esc(text.slice(0, 400))} »`).catch(() => {});
+      await sendAdminEmail(
+        `PULSE — message client à traiter à la main (${site.client_name})`,
+        `<p><strong>Un message client n'a pas pu être traité (IA indisponible).</strong></p>
+<p>Site : ${esc(site.client_name)} (${esc(site.site_key)})<br>Canal : ${source}</p>
+<blockquote style="border-left:3px solid #c9a24a;margin:12px 0;padding:4px 12px">${esc(text.slice(0, 1200))}</blockquote>
+<p>À appliquer à la main. Le client a été prévenu que son message sera traité dans l'heure.</p>`,
+      ).catch(() => {});
     }
     return { ...base, reply, status: "error" };
   }
