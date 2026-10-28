@@ -83,13 +83,24 @@ const TOOL: Anthropic.Tool = {
   },
 };
 
+function calendar(timeZone: string) {
+  const iso = new Intl.DateTimeFormat("en-CA", { timeZone });
+  const day = new Intl.DateTimeFormat("fr-FR", { timeZone, weekday: "long" });
+  const start = Date.now();
+  return Array.from({ length: 14 }, (_, i) => {
+    const d = new Date(start + i * 86_400_000);
+    return `${day.format(d)} ${iso.format(d)}`;
+  }).join(", ");
+}
+
 function systemPrompt(clientName: string, content: PulseContent, timeZone: string) {
   const today = todayIn(timeZone);
   const weekday = new Intl.DateTimeFormat("fr-FR", { timeZone, weekday: "long" }).format(new Date());
   const current = describeContent(content);
   return [
     `Tu es l'assistant qui met à jour le site web de « ${clientName} » et gère son agenda, à partir des messages du commerçant (souvent écrits vite, sur WhatsApp).`,
-    `Aujourd'hui : ${weekday} ${today} (fuseau ${timeZone}). Convertis toutes les dates relatives (demain, lundi prochain, la semaine prochaine…) en AAAA-MM-JJ.`,
+    `Aujourd'hui : ${weekday} ${today} (fuseau ${timeZone}). Convertis toutes les dates relatives (demain, lundi prochain, la semaine prochaine, ce week-end…) en AAAA-MM-JJ.`,
+    `Calendrier des 14 prochains jours (utilise-le tel quel, ne calcule pas les jours toi-même) : ${calendar(timeZone)}.`,
     "",
     "Ce que tu peux faire, UNIQUEMENT via l'outil apply_updates :",
     "- annonce / bandeau (set_announcement, clear_announcement)",
