@@ -24,12 +24,12 @@ export function BrandLockup({
   return (
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <Image
-        src="/kah-studio-mark.svg"
+        src="/kah-logo.jpg"
         alt=""
         aria-hidden="true"
         width={size}
         height={size}
-        className="shrink-0"
+        className="shrink-0 rounded-full object-cover"
         style={{ width: size, height: size }}
         priority
       />
