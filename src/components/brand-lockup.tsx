@@ -16,16 +16,22 @@ export function BrandLockup({
   subtitle,
   theme = "dark",
 }: BrandLockupProps) {
-  const wrapClass = compact ? "h-14 w-[84px] md:h-[72px] md:w-[124px]" : "h-[88px] w-[88px]";
+  const wrapClass = compact ? "h-14 w-[92px] md:h-[72px] md:w-[148px]" : "h-[88px] w-[88px]";
   const medalClass = compact
-    ? "absolute left-1 top-[-4px] h-20 w-20 md:left-3 md:h-[116px] md:w-[116px]"
+    ? "absolute left-2 top-[2px] h-20 w-20 md:left-5 md:top-[6px] md:h-[116px] md:w-[116px]"
     : "absolute inset-0 h-[88px] w-[88px]";
 
   return (
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <span className={`relative block shrink-0 ${wrapClass}`}>
         <span className={medalClass}>
-          {theme === "dark" ? <span className="kah-halo" aria-hidden="true" /> : null}
+          {theme === "dark" ? (
+            <>
+              <span className="kah-void" aria-hidden="true" />
+              <span className="kah-lens" aria-hidden="true" />
+              <span className="kah-disc" aria-hidden="true" />
+            </>
+          ) : null}
           <span className="kah-orbit" aria-hidden="true">
             <i style={{ "--a": "0deg", "--d": "0s" } as CSSProperties} />
             <i style={{ "--a": "120deg", "--d": "1.2s" } as CSSProperties} />
