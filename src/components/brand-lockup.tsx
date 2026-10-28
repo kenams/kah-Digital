@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type BrandLockupProps = {
   className?: string;
@@ -16,18 +16,35 @@ export function BrandLockup({
   subtitle,
   theme = "dark",
 }: BrandLockupProps) {
-  const sizeClass = compact ? "h-14 w-14 md:h-[72px] md:w-[72px]" : "h-[88px] w-[88px]";
+  const wrapClass = compact ? "h-14 w-[84px] md:h-[72px] md:w-[124px]" : "h-[88px] w-[88px]";
+  const medalClass = compact
+    ? "absolute left-1 top-[-4px] h-20 w-20 md:left-3 md:h-[116px] md:w-[116px]"
+    : "absolute inset-0 h-[88px] w-[88px]";
+
   return (
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
-      <Image
-        src="/kah-logo.jpg"
-        alt=""
-        aria-hidden="true"
-        width={176}
-        height={176}
-        className={`${sizeClass} shrink-0 rounded-full object-cover`}
-        priority
-      />
+      <span className={`relative block shrink-0 ${wrapClass}`}>
+        <span className={medalClass}>
+          <span className="kah-orbit" aria-hidden="true">
+            <i style={{ "--a": "0deg", "--d": "0s" } as CSSProperties} />
+            <i style={{ "--a": "120deg", "--d": "1.2s" } as CSSProperties} />
+            <i style={{ "--a": "240deg", "--d": "2.4s" } as CSSProperties} />
+          </span>
+          <span className="kah-orbit kah-orbit-b" aria-hidden="true">
+            <i style={{ "--a": "60deg", "--d": "0.6s" } as CSSProperties} />
+            <i style={{ "--a": "240deg", "--d": "2s" } as CSSProperties} />
+          </span>
+          <Image
+            src="/kah-logo.jpg"
+            alt=""
+            aria-hidden="true"
+            width={232}
+            height={232}
+            className="kah-medal relative h-full w-full rounded-full object-cover"
+            priority
+          />
+        </span>
+      </span>
 
       <BrandTitle compact={compact} subtitle={subtitle} theme={theme} />
     </div>
@@ -54,17 +71,13 @@ export function BrandTitle({
         </p>
         <p className={`mt-1 flex items-center gap-2 ${center ? "justify-center" : ""}`}>
           <span
-            className={`${studioSize} font-bold italic uppercase leading-none tracking-[0.3em] bg-clip-text text-transparent ${
-              dark
-                ? "bg-[linear-gradient(135deg,#f6e4b8,#d9ae62_55%,#b98441)]"
-                : "bg-[linear-gradient(135deg,#b98441,#8a5f27)]"
-            }`}
+            className={`${studioSize} font-bold italic uppercase leading-none tracking-[0.3em] bg-clip-text text-transparent ${dark ? "kah-shimmer" : "kah-shimmer-light"}`}
           >
             Studio
           </span>
           <span
             aria-hidden="true"
-            className={`h-px flex-1 min-w-3 ${dark ? "bg-[#d9ae62]/50" : "bg-[#9b6f36]/50"}`}
+            className={`h-[2px] flex-1 min-w-3 ${dark ? "kah-sweep" : "bg-[#9b6f36]/50"}`}
           />
         </p>
         {subtitle && !compact ? (

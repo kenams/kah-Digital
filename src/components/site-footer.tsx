@@ -231,7 +231,7 @@ export function SiteFooter() {
 
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-1">
-            <Link href={homeHref} className="mb-5 inline-block">
+            <Link href={homeHref} className="mb-5 inline-block !overflow-visible">
               <BrandLockup subtitle={copy.tagline} className="mb-0" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">{copy.description}</p>

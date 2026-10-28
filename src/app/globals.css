@@ -649,3 +649,36 @@ textarea {
     opacity: 0.8;
   }
 }
+
+/* ── Marque KAH Digital Studio : orbes lumineuses autour de la médaille + reflet doré ── */
+.kah-orbit { position: absolute; inset: -12px; border-radius: 9999px; pointer-events: none; animation: kah-spin 9s linear infinite; }
+.kah-orbit-b { inset: -4px; animation-duration: 14s; animation-direction: reverse; }
+.kah-orbit i { position: absolute; inset: 0; transform: rotate(var(--a)); }
+.kah-orbit i::before {
+  content: ""; position: absolute; left: 50%; top: -2.5px; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 9999px;
+  background: #fff1c2; box-shadow: 0 0 9px 3px rgba(255, 214, 120, 0.85); opacity: 0;
+  animation: kah-twinkle 3.6s ease-in-out infinite; animation-delay: var(--d);
+}
+.kah-orbit-b i::before { background: #d6e5ff; box-shadow: 0 0 9px 3px rgba(80, 140, 255, 0.9); width: 4px; height: 4px; margin-left: -2px; top: -2px; }
+.kah-medal { animation: kah-glow 4.5s ease-in-out infinite; }
+.kah-shimmer {
+  background-image: linear-gradient(110deg, #b98441 0%, #d9ae62 30%, #fff3c4 46%, #d9ae62 60%, #b98441 100%);
+  background-size: 250% 100%; animation: kah-shimmer 5.5s linear infinite;
+}
+.kah-shimmer-light {
+  background-image: linear-gradient(110deg, #8a5f27 0%, #b98441 35%, #e9c27a 48%, #b98441 62%, #8a5f27 100%);
+  background-size: 250% 100%; animation: kah-shimmer 5.5s linear infinite;
+}
+.kah-sweep {
+  background: linear-gradient(90deg, transparent, #fff3c4, transparent) no-repeat -60% 0 / 35% 100%, rgba(217, 174, 98, 0.45);
+  animation: kah-sweep 3.4s ease-in-out infinite;
+}
+@keyframes kah-spin { to { transform: rotate(360deg); } }
+@keyframes kah-twinkle { 0%, 100% { opacity: 0; transform: scale(0.3); } 25%, 55% { opacity: 1; transform: scale(1); } 80% { opacity: 0; transform: scale(0.4); } }
+@keyframes kah-glow { 0%, 100% { box-shadow: 0 0 14px 1px rgba(220, 174, 92, 0.22); } 50% { box-shadow: 0 0 28px 5px rgba(220, 174, 92, 0.5); } }
+@keyframes kah-shimmer { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+@keyframes kah-sweep { from { background-position: -60% 0, 0 0; } to { background-position: 160% 0, 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .kah-orbit, .kah-medal, .kah-shimmer, .kah-shimmer-light, .kah-sweep { animation: none; }
+  .kah-orbit i::before { opacity: 0.7; animation: none; }
+}
