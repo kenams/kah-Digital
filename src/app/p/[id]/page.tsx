@@ -310,9 +310,9 @@ export default async function ProspectLandingPage({ params }: Props) {
         </div>
 
         {/* Commande directe (sites standard) */}
-        {(audit.estimatedPrice ?? 0) < 1490 && (() => {
+        {(audit.estimatedPrice ?? PACKS.business.price) <= PACKS.business.price && (() => {
           const orderLocale = lang === "en" || lang === "de" ? lang : "fr";
-          const packId = (audit.estimatedPrice ?? 790) <= 400 ? "starter" : "business";
+          const packId = (audit.estimatedPrice ?? PACKS.business.price) <= 400 ? "starter" : "business";
           const price = formatMoney(PACKS[packId].price, resolveCurrency(orderLocale, undefined));
           const label =
             orderLocale === "en"
