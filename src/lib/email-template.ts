@@ -123,12 +123,10 @@ export function renderBrandedEmail({
           <div style="max-width: 680px; margin: 0 auto; border: 1px solid #212a38; border-radius: 28px; overflow: hidden; background: #0b1220;">
             <div style="padding: 28px 28px 22px; border-bottom: 1px solid #1e293b; background: linear-gradient(180deg, rgba(212,175,99,0.08), rgba(11,18,32,0));">
               <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px;">
-                <div style="width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(135deg, #d4af63 0%, #f3d089 100%); color: #111827; font-weight: 800; font-size: 22px; line-height: 42px; text-align: center;">
-                  K
-                </div>
-                <div>
-                  <div style="font-size: 21px; line-height: 1.2; font-weight: 800; color: #f8fafc;">KAH Digital Studio</div>
-                  <div style="font-size: 11px; color: #94a3b8; letter-spacing: 0.14em; text-transform: uppercase;">Digital Studio</div>
+                <img src="https://kah-digital.ch/kah-logo.jpg" width="52" height="52" alt="KAH Digital Studio" style="display: block; width: 52px; height: 52px; border-radius: 26px;" />
+                <div style="font-family: Georgia, 'Palatino Linotype', serif;">
+                  <div style="font-size: 17px; line-height: 1.1; font-weight: 700; color: #f8f3ea; letter-spacing: 0.2em; text-transform: uppercase;">KAH Digital</div>
+                  <div style="margin-top: 3px; font-size: 21px; line-height: 1.1; font-weight: 700; font-style: italic; color: #dcae5c; letter-spacing: 0.3em; text-transform: uppercase;">Studio</div>
                 </div>
               </div>
               ${eyebrow ? `<div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #d4af63; margin-bottom: 10px;">${escapeHtml(eyebrow)}</div>` : ""}

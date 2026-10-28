@@ -2,6 +2,7 @@ import { cleanUrl } from "@/lib/clean-url";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
+import { BrandLockup } from "@/components/brand-lockup";
 import { createClient } from "@supabase/supabase-js";
 import QuickContactForm from "./QuickContactForm";
 import { FiCheckCircle, FiAlertCircle, FiAlertTriangle, FiArrowRight, FiPhone, FiMail } from "react-icons/fi";
@@ -187,8 +188,8 @@ export default async function ProspectLandingPage({ params }: Props) {
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Header */}
       <div className="border-b border-white/8 bg-gray-900/80 px-4 py-4 text-center">
-        <div className="text-lg font-bold tracking-tight">KAH Digital Studio</div>
-        <div className="text-xs text-gray-500">Studio digital — sites, apps &amp; IA</div>
+        <BrandLockup compact />
+        <div className="mt-1 text-xs text-gray-500">Studio digital — sites, apps &amp; IA</div>
       </div>
 
       <div className="mx-auto max-w-2xl px-4 py-8">

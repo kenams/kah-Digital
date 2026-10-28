@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { BrandTitle } from "@/components/brand-lockup";
 
 export const metadata: Metadata = {
   title: "KAH Digital Studio — Toutes nos apps",
@@ -63,10 +65,9 @@ export default function LinksPage() {
 
         {/* Avatar + nom */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center text-3xl font-black text-black mb-3 shadow-lg shadow-amber-500/30">
-            K
-          </div>
-          <h1 className="text-xl font-black tracking-tight">KAH Digital Studio</h1>
+          <Image src="/kah-logo.jpg" alt="KAH Digital Studio" width={96} height={96} priority className="mb-4 h-24 w-24 rounded-full object-cover shadow-lg shadow-amber-500/20" />
+          <h1 className="sr-only">KAH Digital Studio</h1>
+          <BrandTitle center />
           <p className="text-sm text-white/50 mt-1">Apps · SaaS · Automatisation · Toulouse</p>
           <div className="mt-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold">
             🏟️ Coupe du Monde 2026 — ANTE est live

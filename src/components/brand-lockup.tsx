@@ -16,11 +16,7 @@ export function BrandLockup({
   subtitle,
   theme = "dark",
 }: BrandLockupProps) {
-  const dark = theme === "dark";
   const size = compact ? 44 : 64;
-  const lineSize = compact ? "text-[0.95rem]" : "text-[1.55rem]";
-  const studioSize = compact ? "text-[1.15rem]" : "text-[1.9rem]";
-
   return (
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <Image
@@ -34,13 +30,30 @@ export function BrandLockup({
         priority
       />
 
-      <div className="min-w-0" style={{ fontFamily: serif }}>
+      <BrandTitle compact={compact} subtitle={subtitle} theme={theme} />
+    </div>
+  );
+}
+
+export function BrandTitle({
+  compact = false,
+  subtitle,
+  theme = "dark",
+  center = false,
+  large = false,
+}: Omit<BrandLockupProps, "className"> & { center?: boolean; large?: boolean }) {
+  const dark = theme === "dark";
+  const lineSize = large ? "text-[2rem]" : compact ? "text-[0.95rem]" : "text-[1.55rem]";
+  const studioSize = large ? "text-[2.4rem]" : compact ? "text-[1.15rem]" : "text-[1.9rem]";
+
+  return (
+    <div className={`min-w-0 ${center ? "text-center" : ""}`} style={{ fontFamily: serif }}>
         <p
           className={`${lineSize} font-bold uppercase leading-none tracking-[0.2em] ${dark ? "text-[#f8f3ea]" : "text-[#20160c]"}`}
         >
           KAH Digital
         </p>
-        <p className="mt-1 flex items-center gap-2">
+        <p className={`mt-1 flex items-center gap-2 ${center ? "justify-center" : ""}`}>
           <span
             className={`${studioSize} font-bold italic uppercase leading-none tracking-[0.3em] bg-clip-text text-transparent ${
               dark
@@ -63,6 +76,5 @@ export function BrandLockup({
           </p>
         ) : null}
       </div>
-    </div>
   );
 }
