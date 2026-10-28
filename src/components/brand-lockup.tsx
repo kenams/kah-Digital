@@ -65,7 +65,7 @@ export function BrandTitle({
   const studioSize = large ? "text-[2.4rem]" : compact ? "text-[1.15rem]" : "text-[1.9rem]";
 
   return (
-    <div className={`min-w-0 ${center ? "text-center" : ""}`} style={{ fontFamily: serif }}>
+    <div className={`relative z-10 min-w-0 ${center ? "text-center" : ""}`} style={{ fontFamily: serif }}>
         <p
           className={`${lineSize} font-bold uppercase leading-none tracking-[0.2em] ${dark ? "text-[#f8f3ea]" : "text-[#20160c]"}`}
         >
