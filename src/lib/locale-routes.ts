@@ -62,6 +62,7 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/mentions-legales",
     "/merci",
     "/offres",
+    "/partenaires",
     "/payer",
     "/payment/cancel",
     "/payment/success",
