@@ -74,6 +74,9 @@ export default function WebagenturSchweizPage() {
             >
               Kostenlose Offerte in CHF <FiArrowRight size={15} />
             </Link>
+            <Link href="/de/commander" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Ab CHF 290 bestellen
+            </Link>
             <a
               href={WA_URL}
               target="_blank"
@@ -224,6 +227,9 @@ export default function WebagenturSchweizPage() {
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-10 py-4 font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:shadow-emerald-500/40"
             >
               Meine kostenlose Offerte anfordern <FiArrowRight size={15} />
+            </Link>
+            <Link href="/de/commander" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Ab CHF 290 bestellen
             </Link>
             <a
               href={WA_URL}

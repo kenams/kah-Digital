@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { BrandLockup } from "@/components/brand-lockup";
 import { companyConfig } from "@/config/company";
 import { useLocale } from "@/lib/locale";
+import { orderHref } from "@/lib/order-links";
 import { FiArrowRight, FiMail, FiPhone } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
@@ -41,6 +43,7 @@ const SOCIAL_LINKS = [
 
 export function SiteFooter() {
   const { locale, prefix } = useLocale();
+  const pathname = usePathname();
   const homeHref = prefix || "/";
   const waMsg = locale === "en"
     ? "Hi KAH Digital Studio, I have a project to discuss."
@@ -108,6 +111,7 @@ export function SiteFooter() {
         links: [
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
+          { label: "Order my website", href: "/en/commander" },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Quote", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
@@ -154,6 +158,7 @@ export function SiteFooter() {
         links: [
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
+          { label: "Website bestellen", href: "/de/commander" },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Offerte", href: "/de/devis" },
           { label: "Kontakt", href: "/de/contact" },
@@ -279,7 +284,7 @@ export function SiteFooter() {
             <ul className="space-y-3">
               {copy.nav.links.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-white">
+                  <Link href={link.href.endsWith("/commander") ? orderHref(locale, { pathname }) : link.href} className="text-sm text-white/60 transition-colors hover:text-white">
                     {link.label}
                   </Link>
                 </li>

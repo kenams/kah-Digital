@@ -1,17 +1,24 @@
 import { Resend } from "resend";
 import type Stripe from "stripe";
 import { renderBrandedEmail, getSiteUrl } from "@/lib/email-template";
+import { withLocalePrefix, type Locale } from "@/lib/locales";
 import { getResendFromAddress } from "@/lib/mail";
 import { sendAdminEmail, sendTelegramAlert } from "@/lib/notify";
+import { ORDER_COPY } from "@/lib/order-copy";
 import {
   ORDER_CONTACT,
   PACKS,
   SUBSCRIPTIONS,
   SUBSCRIPTION_TRIAL_DAYS,
   escapeTelegramHtml,
-  formatEuro,
+  formatMoney,
+  isCurrency,
+  isOrderLocale,
   isPackId,
   isSubscriptionId,
+  type Currency,
+  type PackId,
+  type SubscriptionId,
 } from "@/lib/pack-orders";
 
 const handledSessions = new Set<string>();
@@ -22,9 +29,11 @@ export type ParsedOrder = {
   name: string;
   company: string;
   phone: string;
-  packName: string;
+  pack: PackId;
+  plan: SubscriptionId;
+  currency: Currency;
+  locale: Locale;
   packPrice: number;
-  planName: string;
   planPrice: number;
   hasSubscription: boolean;
   amountPaidNow: number;
@@ -34,7 +43,8 @@ export function parsePackOrder(session: Stripe.Checkout.Session): ParsedOrder | 
   const m = session.metadata ?? {};
   if (m.paymentType !== "pack_order" || !isPackId(m.pack) || !isSubscriptionId(m.plan)) return null;
 
-  const pack = PACKS[m.pack];
+  const currency: Currency = isCurrency(m.currency) ? m.currency : "eur";
+  const locale: Locale = isOrderLocale(m.locale) ? m.locale : "fr";
   const plan = SUBSCRIPTIONS[m.plan];
   return {
     sessionId: session.id,
@@ -42,26 +52,39 @@ export function parsePackOrder(session: Stripe.Checkout.Session): ParsedOrder | 
     name: m.name || session.customer_details?.name || "",
     company: m.company || "",
     phone: session.customer_details?.phone || m.phone || "",
-    packName: pack.name,
-    packPrice: pack.price,
-    planName: plan.name,
+    pack: m.pack,
+    plan: m.plan,
+    currency,
+    locale,
+    packPrice: PACKS[m.pack].price,
     planPrice: plan.price,
-    hasSubscription: Boolean(plan.stripePriceId),
+    hasSubscription: Boolean(plan.stripeProductId),
     amountPaidNow: (session.amount_total ?? 0) / 100,
   };
 }
 
-function briefUrl(sessionId: string) {
-  return `${getSiteUrl()}/commander/merci?session_id=${encodeURIComponent(sessionId)}`;
+function briefUrl(o: ParsedOrder) {
+  return `${getSiteUrl()}${withLocalePrefix("/commander/merci", o.locale)}?session_id=${encodeURIComponent(o.sessionId)}`;
+}
+
+/** Noms français pour les alertes admin (c'est Kenams qui les lit). */
+function adminPackName(o: ParsedOrder) {
+  return ORDER_COPY.fr.packs[o.pack].name;
+}
+function adminPlanName(o: ParsedOrder) {
+  return ORDER_COPY.fr.plans[o.plan].name;
+}
+function localeTag(o: ParsedOrder) {
+  return `${o.locale.toUpperCase()} · ${o.currency.toUpperCase()}`;
 }
 
 export function buildAdminTelegramMessage(o: ParsedOrder) {
   const e = escapeTelegramHtml;
   return [
-    `💰 <b>NOUVELLE COMMANDE — Pack ${e(o.packName)}</b>`,
-    `Payé : <b>${formatEuro(o.amountPaidNow)}</b>`,
+    `💰 <b>NOUVELLE COMMANDE — Pack ${e(adminPackName(o))}</b>`,
+    `Payé : <b>${formatMoney(o.amountPaidNow, o.currency)}</b> (${localeTag(o)})`,
     o.hasSubscription
-      ? `Abonnement : <b>${e(o.planName)} ${formatEuro(o.planPrice)}/mois</b> (1er prélèvement à J+${SUBSCRIPTION_TRIAL_DAYS})`
+      ? `Abonnement : <b>${e(adminPlanName(o))} ${formatMoney(o.planPrice, o.currency)}/mois</b> (1er prélèvement à J+${SUBSCRIPTION_TRIAL_DAYS})`
       : "Abonnement : aucun",
     `Client : ${e(o.name)}${o.company ? ` — ${e(o.company)}` : ""}`,
     `E-mail : ${e(o.email)}`,
@@ -76,45 +99,47 @@ async function sendClientEmail(o: ParsedOrder) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey || !o.email) return;
 
+  const c = ORDER_COPY[o.locale];
+  const packName = c.packs[o.pack].name;
+  const planName = c.plans[o.plan].name;
+  const first = o.name.split(" ")[0] || "";
+  const planPriceText = formatMoney(o.planPrice, o.currency);
+
   const html = renderBrandedEmail({
-    eyebrow: "Commande confirmée",
-    title: `Merci ${o.name.split(" ")[0] || ""}, votre pack ${o.packName} est lancé`.replace("  ", " "),
-    intro:
-      "Votre paiement est bien reçu. Pour tenir le délai de 5 jours ouvrés, il me manque vos contenus : cela prend 5 minutes.",
+    eyebrow: c.email.confirmedEyebrow,
+    title: c.email.title(first, packName).replace("  ", " "),
+    intro: c.email.intro,
     metrics: [
-      { label: "Pack", value: `${o.packName} — ${formatEuro(o.packPrice)}` },
+      { label: c.email.packLabel, value: `${packName} — ${formatMoney(o.packPrice, o.currency)}` },
       {
-        label: "Abonnement",
-        value: o.hasSubscription ? `${o.planName} — ${formatEuro(o.planPrice)}/mois` : "Aucun",
+        label: c.email.planLabel,
+        value: o.hasSubscription ? `${planName} — ${planPriceText}${c.perMonth}` : c.email.planNone,
       },
     ],
     sections: [
       {
-        title: "La suite",
+        title: c.email.nextTitle,
         items: [
-          { label: "1. Vos contenus", value: "Remplissez le formulaire de démarrage (lien ci-dessous) : activité, textes, photos, couleurs." },
-          { label: "2. Réalisation", value: "Livraison sous 5 jours ouvrés après réception de vos contenus." },
+          { label: c.email.step1[0], value: c.email.step1[1] },
+          { label: c.email.step2[0], value: c.email.step2[1] },
           {
-            label: "3. Abonnement",
-            value: o.hasSubscription
-              ? `Le premier prélèvement de ${formatEuro(o.planPrice)} aura lieu ${SUBSCRIPTION_TRIAL_DAYS} jours après la commande, puis chaque mois. Sans engagement, résiliable avec un mois de préavis.`
-              : "Vous recevrez les accès à la livraison. Hébergement et mises à jour restent à votre charge.",
+            label: c.email.step3[0],
+            value: o.hasSubscription ? c.email.step3Sub(planPriceText, SUBSCRIPTION_TRIAL_DAYS) : c.email.step3None,
           },
         ],
       },
     ],
-    ctaLabel: "Remplir mon formulaire de démarrage",
-    ctaUrl: briefUrl(o.sessionId),
-    footer: `Une question ? ${ORDER_CONTACT.email} · ${ORDER_CONTACT.phone}`,
+    ctaLabel: c.email.cta,
+    ctaUrl: briefUrl(o),
+    footer: `${ORDER_CONTACT.email} · ${ORDER_CONTACT.phone}`,
   });
 
-  const resend = new Resend(apiKey);
-  await resend.emails
+  await new Resend(apiKey).emails
     .send({
       from: getResendFromAddress(),
       to: o.email,
       replyTo: ORDER_CONTACT.email,
-      subject: `Commande confirmée — Pack ${o.packName} KAH Digital Studio`,
+      subject: c.email.subject(packName),
       html,
     })
     .catch((error) => console.warn("[pack-order] client email failed", error));
@@ -127,18 +152,19 @@ export async function handlePackOrderCompleted(session: Stripe.Checkout.Session)
   if (handledSessions.has(session.id)) return true;
   handledSessions.add(session.id);
 
+  const packName = adminPackName(order);
   await Promise.allSettled([
     sendTelegramAlert(buildAdminTelegramMessage(order)),
     sendAdminEmail(
-      `💰 Commande ${order.packName} — ${order.name}`,
+      `💰 Commande ${packName} — ${order.name}`,
       renderBrandedEmail({
         eyebrow: "Nouvelle commande",
-        title: `Pack ${order.packName} — ${formatEuro(order.amountPaidNow)} payés`,
+        title: `Pack ${packName} — ${formatMoney(order.amountPaidNow, order.currency)} payés`,
         metrics: [
-          { label: "Pack", value: `${order.packName} — ${formatEuro(order.packPrice)}` },
+          { label: "Pack", value: `${packName} — ${formatMoney(order.packPrice, order.currency)}` },
           {
             label: "Abonnement",
-            value: order.hasSubscription ? `${order.planName} — ${formatEuro(order.planPrice)}/mois` : "Aucun",
+            value: order.hasSubscription ? `${adminPlanName(order)} — ${formatMoney(order.planPrice, order.currency)}/mois` : "Aucun",
           },
         ],
         sections: [
@@ -149,6 +175,7 @@ export async function handlePackOrderCompleted(session: Stripe.Checkout.Session)
               { label: "Entreprise", value: order.company || "—" },
               { label: "E-mail", value: order.email },
               { label: "Téléphone", value: order.phone || "—" },
+              { label: "Langue · devise", value: localeTag(order) },
             ],
           },
           {
@@ -183,9 +210,10 @@ export type BriefInput = {
 
 export async function handleBriefSubmitted(order: ParsedOrder, brief: BriefInput) {
   const e = escapeTelegramHtml;
+  const packName = adminPackName(order);
   const tg = [
     `📝 <b>BRIEF REÇU — ${e(order.name)}${order.company ? ` (${e(order.company)})` : ""}</b>`,
-    `Pack ${e(order.packName)} — ${order.hasSubscription ? `${e(order.planName)} ${order.planPrice} €/mois` : "sans abonnement"}`,
+    `Pack ${e(packName)} — ${order.hasSubscription ? `${e(adminPlanName(order))} ${formatMoney(order.planPrice, order.currency)}/mois` : "sans abonnement"} (${localeTag(order)})`,
     `Activité : ${e(brief.activity)}`,
     brief.city ? `Ville : ${e(brief.city)}` : "",
     "⏱ Le délai de 5 jours ouvrés démarre maintenant.",
@@ -215,14 +243,15 @@ export async function handleBriefSubmitted(order: ParsedOrder, brief: BriefInput
     },
   ];
 
+  const c = ORDER_COPY[order.locale];
   await Promise.allSettled([
     sendTelegramAlert(tg),
     sendAdminEmail(
-      `📝 Brief reçu — ${order.name} (${order.packName})`,
+      `📝 Brief reçu — ${order.name} (${packName})`,
       renderBrandedEmail({
         eyebrow: "Brief client",
-        title: `${order.name} — Pack ${order.packName}`,
-        intro: `E-mail : ${order.email}${order.phone ? ` · Tél : ${order.phone}` : ""}`,
+        title: `${order.name} — Pack ${packName}`,
+        intro: `E-mail : ${order.email}${order.phone ? ` · Tél : ${order.phone}` : ""} · ${localeTag(order)}`,
         sections,
       }),
     ),
@@ -234,11 +263,11 @@ export async function handleBriefSubmitted(order: ParsedOrder, brief: BriefInput
           from: getResendFromAddress(),
           to: order.email,
           replyTo: ORDER_CONTACT.email,
-          subject: "Votre brief est bien reçu — KAH Digital Studio",
+          subject: c.email.briefSubject,
           html: renderBrandedEmail({
-            eyebrow: "Brief reçu",
-            title: "Merci, je m'y mets",
-            intro: "Voici le récapitulatif de ce que vous m'avez envoyé. Le délai de 5 jours ouvrés démarre maintenant. Si quelque chose est faux, répondez simplement à cet e-mail.",
+            eyebrow: c.email.briefEyebrow,
+            title: c.email.briefTitle,
+            intro: c.email.briefIntro,
             sections,
             footer: `${ORDER_CONTACT.email} · ${ORDER_CONTACT.phone}`,
           }),

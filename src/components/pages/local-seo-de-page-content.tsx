@@ -129,6 +129,7 @@ type Props = { data: DeCity };
 
 export function LocalSeoDePageContent({ data }: Props) {
   const devisUrl = `/de/devis?city=${encodeURIComponent(data.city)}&ref=local-seo-de`;
+  const orderUrl = "/de/commander";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -171,6 +172,9 @@ export function LocalSeoDePageContent({ data }: Props) {
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:gap-3 hover:shadow-blue-500/40"
             >
               Kostenlose Offerte in 24h <FiArrowRight size={15} />
+            </Link>
+            <Link href={orderUrl} className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Ab CHF 290 bestellen
             </Link>
             <a
               href={WA_URL}
@@ -281,6 +285,9 @@ export function LocalSeoDePageContent({ data }: Props) {
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-10 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40"
             >
               Kostenlose Offerte anfragen <FiArrowRight size={15} />
+            </Link>
+            <Link href={orderUrl} className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-4 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Online bestellen
             </Link>
             <a
               href={WA_URL}

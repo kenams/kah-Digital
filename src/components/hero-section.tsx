@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/lib/locale";
+import { orderHref } from "@/lib/order-links";
 import { FiArrowRight, FiMessageCircle, FiPlay } from "react-icons/fi";
 import { useEffect, useState } from "react";
 
@@ -282,14 +283,16 @@ export function HeroSection() {
           </a>
         </motion.div>
 
-        {locale !== "en" && locale !== "de" && (
-          <p className="mt-6 text-sm text-gray-400">
-            Un site standard ?{" "}
-            <Link href="/commander" className="font-semibold text-[#e0c48e] underline-offset-4 transition hover:text-[#f3d089] hover:underline">
-              Commandez-le en ligne : Starter 290 € · Business 790 € →
-            </Link>
-          </p>
-        )}
+        <p className="mt-6 text-sm text-gray-400">
+          {locale === "en" ? "A standard website?" : locale === "de" ? "Eine Standard-Website?" : "Un site standard ?"}{" "}
+          <Link href={orderHref(locale)} className="font-semibold text-[#e0c48e] underline-offset-4 transition hover:text-[#f3d089] hover:underline">
+            {locale === "en"
+              ? "Order it online: Starter $290 · Business $790 →"
+              : locale === "de"
+              ? "Online bestellen: Starter CHF 290 · Business CHF 790 →"
+              : "Commandez-le en ligne : Starter 290 € · Business 790 € →"}
+          </Link>
+        </p>
 
         {/* Trust line */}
         <motion.p

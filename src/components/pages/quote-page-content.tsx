@@ -99,14 +99,16 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
         <div className="border-b border-white/6 bg-white/4 py-2 text-center text-xs font-medium text-white/70">
           {c.urgency}
         </div>
-        {locale === "fr" && (
-          <div className="border-b border-[#e0c48e]/20 bg-[#e0c48e]/10 py-2.5 text-center text-sm text-[#f3d089]">
-            Un site standard (landing page ou site 6 pages) ?{" "}
-            <a href="/commander" className="font-bold underline underline-offset-4 hover:text-white">
-              Commandez-le en ligne, livré en 5 jours →
-            </a>
-          </div>
-        )}
+        <div className="border-b border-[#e0c48e]/20 bg-[#e0c48e]/10 py-2.5 text-center text-sm text-[#f3d089]">
+          {locale === "en"
+            ? "A standard website (landing page or 6-page site)? "
+            : locale === "de"
+            ? "Eine Standard-Website (Landingpage oder 6-Seiten-Site)? "
+            : "Un site standard (landing page ou site 6 pages) ? "}
+          <a href={locale === "en" ? "/en/commander" : locale === "de" ? "/de/commander" : "/commander"} className="font-bold underline underline-offset-4 hover:text-white">
+            {locale === "en" ? "Order it online, delivered in 5 days →" : locale === "de" ? "Online bestellen, Lieferung in 5 Tagen →" : "Commandez-le en ligne, livré en 5 jours →"}
+          </a>
+        </div>
 
         {/* Hero */}
         <section className="border-b border-white/8 px-4 pb-10 pt-12 text-center sm:px-6">

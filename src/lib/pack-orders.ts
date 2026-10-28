@@ -1,92 +1,33 @@
 /**
- * Achat en ligne des packs (Starter / Business) + abonnement mensuel.
- * Source de vérité des prix : OFFRE-2026.md (v2). Les prix d'abonnement sont des Price Stripe LIVE.
+ * Achat en ligne des packs (Starter / Business) + abonnement mensuel — FR / EN / DE, EUR / CHF / USD.
+ * Source de vérité des prix : OFFRE-2026.md (v2). Parité nominale entre devises (290 € = CHF 290 = $290),
+ * comme sur les pages du site. Les textes sont dans `order-copy.ts`.
  */
+import type { Locale } from "@/lib/locales";
 
 export type PackId = "starter" | "business";
 export type SubscriptionId = "none" | "essentiel" | "confort" | "pro";
+export type Currency = "eur" | "chf" | "usd";
 
-export type Pack = {
-  id: PackId;
-  name: string;
-  price: number; // EUR, une seule fois
-  delivery: string;
-  summary: string;
-  points: string[];
-};
-
+export type Pack = { id: PackId; price: number };
 export type SubscriptionPlan = {
   id: SubscriptionId;
-  name: string;
-  price: number; // EUR / mois
-  stripePriceId: string | null;
-  tagline: string;
-  points: string[];
+  price: number; // par mois, même nombre dans chaque devise
+  stripeProductId: string | null;
+  /** Price Stripe LIVE en EUR. Pour CHF / USD on passe par price_data sur le même produit. */
+  stripePriceIdEur: string | null;
 };
 
 export const PACKS: Record<PackId, Pack> = {
-  starter: {
-    id: "starter",
-    name: "Starter",
-    price: 290,
-    delivery: "5 jours ouvrés",
-    summary: "Une landing page propre et rapide qui donne confiance dès le premier regard.",
-    points: [
-      "1 landing page complète (hero, services, contact)",
-      "Formulaire de contact + design mobile",
-      "SEO technique de base",
-      "Livraison en 5 jours ouvrés après réception de vos contenus",
-    ],
-  },
-  business: {
-    id: "business",
-    name: "Business",
-    price: 790,
-    delivery: "5 jours ouvrés",
-    summary: "Le site professionnel complet, jusqu'à 6 pages, pensé pour transformer les visiteurs en clients.",
-    points: [
-      "Jusqu'à 6 pages, logo et identité visuelle inclus",
-      "SEO technique complet, design premium",
-      "Formulaire de devis + WhatsApp",
-      "3 retouches incluses",
-      "Livraison en 5 jours ouvrés après réception de vos contenus",
-    ],
-  },
+  starter: { id: "starter", price: 290 },
+  business: { id: "business", price: 790 },
 };
 
 export const SUBSCRIPTIONS: Record<SubscriptionId, SubscriptionPlan> = {
-  essentiel: {
-    id: "essentiel",
-    name: "Essentiel",
-    price: 49,
-    stripePriceId: "price_1UVUQ3GSZgm5QCNLCVqkGom2",
-    tagline: "On s'occupe de tout",
-    points: ["Hébergement, domaine, sécurité, sauvegardes", "1 petite modification par mois", "Réponse sous 72 h"],
-  },
-  confort: {
-    id: "confort",
-    name: "Confort",
-    price: 99,
-    stripePriceId: "price_1UVUR6GSZgm5QCNL92S2ZOvG",
-    tagline: "Pour un site qui évolue",
-    points: ["Tout Essentiel", "3 modifications par mois", "Rapport mensuel + suivi des avis Google", "Réponse sous 24 h"],
-  },
-  pro: {
-    id: "pro",
-    name: "Pro",
-    price: 199,
-    stripePriceId: "price_1UVUSDGSZgm5QCNLSjt4vVEC",
-    tagline: "Accompagnement renforcé",
-    points: ["Tout Confort", "Modifications illimitées (usage raisonnable)", "Support WhatsApp direct", "Réponse sous 4 h ouvrées"],
-  },
-  none: {
-    id: "none",
-    name: "Sans abonnement",
-    price: 0,
-    stripePriceId: null,
-    tagline: "Je gère l'hébergement moi-même",
-    points: ["Je reçois les accès à la livraison", "Hébergement, domaine et mises à jour à ma charge"],
-  },
+  essentiel: { id: "essentiel", price: 49, stripeProductId: "prod_VWXVoMJpP2Wjzi", stripePriceIdEur: "price_1UVUQ3GSZgm5QCNLCVqkGom2" },
+  confort: { id: "confort", price: 99, stripeProductId: "prod_VWXWo3G3cJjh0J", stripePriceIdEur: "price_1UVUR6GSZgm5QCNL92S2ZOvG" },
+  pro: { id: "pro", price: 199, stripeProductId: "prod_VWXXxt3XQgK39L", stripePriceIdEur: "price_1UVUSDGSZgm5QCNLSjt4vVEC" },
+  none: { id: "none", price: 0, stripeProductId: null, stripePriceIdEur: null },
 };
 
 /** Le premier prélèvement de l'abonnement a lieu à la livraison, pas à la commande. */
@@ -105,14 +46,42 @@ export function isSubscriptionId(value: unknown): value is SubscriptionId {
   return value === "none" || value === "essentiel" || value === "confort" || value === "pro";
 }
 
-export function formatEuro(value: number) {
+export function isCurrency(value: unknown): value is Currency {
+  return value === "eur" || value === "chf" || value === "usd";
+}
+
+export function isOrderLocale(value: unknown): value is Locale {
+  return value === "fr" || value === "en" || value === "de";
+}
+
+/** Devise par défaut selon la langue de la page ; `devise=chf` sur les pages suisses en français. */
+export function defaultCurrency(locale: Locale): Currency {
+  if (locale === "en") return "usd";
+  if (locale === "de") return "chf";
+  return "eur";
+}
+
+export function resolveCurrency(locale: Locale, raw: unknown): Currency {
+  return isCurrency(raw) ? raw : defaultCurrency(locale);
+}
+
+export function formatMoney(value: number, currency: Currency) {
+  if (currency === "chf") return `CHF ${value.toLocaleString("de-CH").replace(/’/g, "'")}`;
+  if (currency === "usd") return `$${value.toLocaleString("en-US")}`;
   return `${value.toLocaleString("fr-FR")} €`;
+}
+
+/** Compatibilité : formatage en euros. */
+export function formatEuro(value: number) {
+  return formatMoney(value, "eur");
 }
 
 export type PackOrderMeta = {
   paymentType: "pack_order";
   pack: PackId;
   plan: SubscriptionId;
+  currency: Currency;
+  locale: Locale;
   name: string;
   company: string;
   phone: string;

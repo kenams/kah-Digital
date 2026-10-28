@@ -74,6 +74,9 @@ export default function AgenceWebSuisseEnPage() {
             >
               Free quote in CHF <FiArrowRight size={15} />
             </Link>
+            <Link href="/en/commander?devise=chf" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Order from CHF 290
+            </Link>
             <a
               href={WA_URL}
               target="_blank"
@@ -224,6 +227,9 @@ export default function AgenceWebSuisseEnPage() {
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-10 py-4 font-bold text-white shadow-lg shadow-emerald-500/25 transition hover:shadow-emerald-500/40"
             >
               Request my free quote <FiArrowRight size={15} />
+            </Link>
+            <Link href="/en/commander?devise=chf" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Order from CHF 290
             </Link>
             <a
               href={WA_URL}

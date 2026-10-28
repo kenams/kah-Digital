@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BrandLockup } from "@/components/brand-lockup";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLocale } from "@/lib/locale";
+import { orderHref } from "@/lib/order-links";
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { locale, prefix } = useLocale();
+  const pathname = usePathname();
   const homeHref = prefix || "/";
   const withPrefix = (path: string) => (prefix ? `${prefix}${path}` : path);
 
@@ -20,6 +23,7 @@ export function SiteHeader() {
           { label: "Offers", href: "/en/offres" },
           { label: "AI Agents", href: "/en/agents-ia", highlight: true },
           { label: "Portfolio", href: "/en/projets" },
+          { label: "Order", href: "/en/commander", accent: true },
           { label: "Quote", href: "/en/devis" },
           { label: "Contact", href: "/en/contact" },
         ],
@@ -37,6 +41,7 @@ export function SiteHeader() {
           { label: "Angebote", href: "/de/offres" },
           { label: "KI-Agenten", href: "/de/agents-ia", highlight: true },
           { label: "Referenzen", href: "/de/projets" },
+          { label: "Bestellen", href: "/de/commander", accent: true },
           { label: "Offerte", href: "/de/devis" },
           { label: "Kontakt", href: "/de/contact" },
         ],
@@ -84,7 +89,7 @@ export function SiteHeader() {
               return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={(link as { accent?: boolean }).accent ? orderHref(locale, { pathname }) : link.href}
                 className={(link as { highlight?: boolean }).highlight
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
                   : (link as { accent?: boolean }).accent
@@ -128,7 +133,7 @@ export function SiteHeader() {
               {localeCopy.nav.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={(link as { accent?: boolean }).accent ? orderHref(locale, { pathname }) : link.href}
                   className="text-white/80 transition-colors hover:text-white"
                   onClick={() => setIsMenuOpen(false)}
                 >

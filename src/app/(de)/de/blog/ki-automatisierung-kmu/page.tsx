@@ -274,6 +274,9 @@ export default function KiAutomatisierungKMUPage() {
           >
             Kostenloses KI-Audit anfragen <FiArrowRight size={15} />
           </Link>
+            <Link href="/de/commander" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Website bestellen ab CHF 290
+            </Link>
         </div>
       </article>
     </div>

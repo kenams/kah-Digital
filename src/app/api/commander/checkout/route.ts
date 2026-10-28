@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
+import { withLocalePrefix, type Locale } from "@/lib/locales";
+import { ORDER_COPY } from "@/lib/order-copy";
 import {
   PACKS,
   SUBSCRIPTIONS,
   SUBSCRIPTION_TRIAL_DAYS,
+  isCurrency,
+  isOrderLocale,
   isPackId,
   isSubscriptionId,
   type PackOrderMeta,
@@ -15,6 +19,27 @@ export const dynamic = "force-dynamic";
 
 const checkoutRateLimit = { windowMs: 10 * 60 * 1000, max: 8 };
 
+const MESSAGES: Record<Locale, { unavailable: string; tooMany: (s: number) => string; pack: string; plan: string; name: string; email: string; accept: string; currency: string }> = {
+  fr: {
+    unavailable: "Paiement indisponible pour le moment.",
+    tooMany: (s) => `Trop de tentatives. Réessayez dans ${s}s.`,
+    pack: "Pack inconnu.", plan: "Formule d'abonnement inconnue.", name: "Indiquez votre nom.",
+    email: "Adresse e-mail invalide.", accept: "Vous devez accepter les conditions pour continuer.", currency: "Devise inconnue.",
+  },
+  en: {
+    unavailable: "Payment is temporarily unavailable.",
+    tooMany: (s) => `Too many attempts. Try again in ${s}s.`,
+    pack: "Unknown pack.", plan: "Unknown subscription plan.", name: "Please enter your name.",
+    email: "Invalid email address.", accept: "You must accept the terms to continue.", currency: "Unknown currency.",
+  },
+  de: {
+    unavailable: "Die Zahlung ist vorübergehend nicht verfügbar.",
+    tooMany: (s) => `Zu viele Versuche. Bitte in ${s}s erneut versuchen.`,
+    pack: "Unbekanntes Paket.", plan: "Unbekanntes Abonnement.", name: "Bitte geben Sie Ihren Namen an.",
+    email: "Ungültige E-Mail-Adresse.", accept: "Sie müssen die Bedingungen akzeptieren, um fortzufahren.", currency: "Unbekannte Währung.",
+  },
+};
+
 function clean(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
@@ -24,21 +49,27 @@ function isValidEmail(value: string) {
 }
 
 export async function POST(request: NextRequest) {
-  if (!isStripeConfigured()) {
-    return NextResponse.json({ error: "Paiement indisponible pour le moment." }, { status: 503 });
-  }
+  let locale: Locale = "fr";
 
-  const rate = rateLimit(`commander:${getRequestIp(request)}`, checkoutRateLimit);
-  const rateHeaders = getRateLimitHeaders(rate, checkoutRateLimit.max);
-  if (!rate.allowed) {
-    return NextResponse.json(
-      { error: `Trop de tentatives. Réessayez dans ${rate.retryAfter}s.` },
-      { status: 429, headers: { ...rateHeaders, "Retry-After": String(rate.retryAfter) } },
-    );
+  if (!isStripeConfigured()) {
+    return NextResponse.json({ error: MESSAGES.fr.unavailable }, { status: 503 });
   }
 
   try {
     const body = await request.json();
+    locale = isOrderLocale(body?.locale) ? body.locale : "fr";
+    const msg = MESSAGES[locale];
+    const copy = ORDER_COPY[locale];
+
+    const rate = rateLimit(`commander:${getRequestIp(request)}`, checkoutRateLimit);
+    const rateHeaders = getRateLimitHeaders(rate, checkoutRateLimit.max);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        { error: msg.tooMany(rate.retryAfter) },
+        { status: 429, headers: { ...rateHeaders, "Retry-After": String(rate.retryAfter) } },
+      );
+    }
+
     const email = clean(body?.email, 160).toLowerCase();
     const name = clean(body?.name, 120);
     const company = clean(body?.company, 120);
@@ -46,16 +77,18 @@ export async function POST(request: NextRequest) {
 
     const packId: unknown = body?.pack;
     const planId: unknown = body?.plan;
-    if (!isPackId(packId)) return NextResponse.json({ error: "Pack inconnu." }, { status: 400 });
-    if (!isSubscriptionId(planId)) return NextResponse.json({ error: "Formule d'abonnement inconnue." }, { status: 400 });
-    if (name.length < 2) return NextResponse.json({ error: "Indiquez votre nom." }, { status: 400 });
-    if (!isValidEmail(email)) return NextResponse.json({ error: "Adresse e-mail invalide." }, { status: 400 });
-    if (body?.accept !== true) {
-      return NextResponse.json({ error: "Vous devez accepter les conditions pour continuer." }, { status: 400 });
-    }
+    const currencyId: unknown = body?.currency;
+    if (!isPackId(packId)) return NextResponse.json({ error: msg.pack }, { status: 400 });
+    if (!isSubscriptionId(planId)) return NextResponse.json({ error: msg.plan }, { status: 400 });
+    if (!isCurrency(currencyId)) return NextResponse.json({ error: msg.currency }, { status: 400 });
+    if (name.length < 2) return NextResponse.json({ error: msg.name }, { status: 400 });
+    if (!isValidEmail(email)) return NextResponse.json({ error: msg.email }, { status: 400 });
+    if (body?.accept !== true) return NextResponse.json({ error: msg.accept }, { status: 400 });
 
     const pack = PACKS[packId];
     const plan = SUBSCRIPTIONS[planId];
+    const packCopy = copy.packs[packId];
+    const planCopy = copy.plans[planId];
     const origin = getSiteOrigin(request);
     const stripe = getStripeClient();
 
@@ -63,6 +96,8 @@ export async function POST(request: NextRequest) {
       paymentType: "pack_order",
       pack: pack.id,
       plan: plan.id,
+      currency: currencyId,
+      locale,
       name,
       company,
       phone,
@@ -71,42 +106,50 @@ export async function POST(request: NextRequest) {
     const packLine: Stripe.Checkout.SessionCreateParams.LineItem = {
       quantity: 1,
       price_data: {
-        currency: "eur",
+        currency: currencyId,
         unit_amount: pack.price * 100,
         product_data: {
-          name: `KAH Digital Studio — Pack ${pack.name}`,
-          description: pack.summary,
+          name: `KAH Digital Studio — Pack ${packCopy.name}`,
+          description: packCopy.summary,
         },
       },
     };
 
     const common: Stripe.Checkout.SessionCreateParams = {
       customer_email: email,
-      locale: "fr",
-      success_url: `${origin}/commander/merci?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/commander?pack=${pack.id}&annule=1`,
+      locale,
+      success_url: `${origin}${withLocalePrefix("/commander/merci", locale)}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}${withLocalePrefix("/commander", locale)}?pack=${pack.id}&devise=${currencyId}&annule=1`,
       billing_address_collection: "auto",
       phone_number_collection: { enabled: true },
       metadata: { ...meta },
-      custom_text: {
-        submit: {
-          message:
-            "TVA non applicable, art. 293 B du CGI. Livraison sous 5 jours ouvrés après réception de vos contenus.",
-        },
-      },
+      custom_text: { submit: { message: copy.checkoutVat } },
     };
 
     let session: Stripe.Checkout.Session;
 
-    if (plan.stripePriceId) {
+    if (plan.stripeProductId) {
+      const recurringLine: Stripe.Checkout.SessionCreateParams.LineItem =
+        currencyId === "eur" && plan.stripePriceIdEur
+          ? { price: plan.stripePriceIdEur, quantity: 1 }
+          : {
+              quantity: 1,
+              price_data: {
+                currency: currencyId,
+                product: plan.stripeProductId,
+                unit_amount: plan.price * 100,
+                recurring: { interval: "month" },
+              },
+            };
+
       session = await stripe.checkout.sessions.create({
         ...common,
         mode: "subscription",
-        line_items: [{ price: plan.stripePriceId, quantity: 1 }, packLine],
+        line_items: [recurringLine, packLine],
         subscription_data: {
           // Le pack est facturé tout de suite ; le 1er mois d'abonnement démarre à la livraison.
           trial_period_days: SUBSCRIPTION_TRIAL_DAYS,
-          description: `Abonnement ${plan.name} — KAH Digital Studio`,
+          description: `${planCopy.name} — KAH Digital Studio`,
           metadata: { ...meta },
         },
       });
@@ -119,8 +162,8 @@ export async function POST(request: NextRequest) {
         invoice_creation: {
           enabled: true,
           invoice_data: {
-            description: `Pack ${pack.name} — KAH Digital Studio`,
-            footer: "TVA non applicable, art. 293 B du CGI.",
+            description: `Pack ${packCopy.name} — KAH Digital Studio`,
+            footer: copy.checkoutVat,
             metadata: { ...meta },
           },
         },
@@ -131,6 +174,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, url: session.url }, { headers: rateHeaders });
   } catch (error) {
     console.error("[api/commander/checkout]", error);
-    return NextResponse.json({ error: "Impossible d'ouvrir le paiement. Réessayez ou contactez-nous." }, { status: 400 });
+    return NextResponse.json({ error: ORDER_COPY[locale].errorGeneric }, { status: 400 });
   }
 }

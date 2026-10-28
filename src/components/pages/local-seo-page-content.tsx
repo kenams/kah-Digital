@@ -412,6 +412,7 @@ export function LocalSeoPageContent({ data }: Props) {
   const isSwiss = SWISS_CITIES.includes(data.city);
   const WA_URL = isSwiss ? WA_URL_CH : WA_URL_FR;
   const currency = isSwiss ? "CHF" : "€";
+  const orderUrl = isSwiss ? "/commander?devise=chf" : "/commander";
   const priceStarter = isSwiss ? "CHF 290" : "290 €";
   const priceBusiness = isSwiss ? "CHF 790" : "790 €";
   const priceAI = isSwiss ? "CHF 2'490" : "2 490 €";
@@ -473,14 +474,12 @@ export function LocalSeoPageContent({ data }: Props) {
             >
               Devis gratuit en 24h <FiArrowRight size={15} />
             </Link>
-            {!isSwiss && (
-              <Link
-                href="/commander"
-                className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
-              >
-                Commander dès {priceStarter}
-              </Link>
-            )}
+            <Link
+              href={orderUrl}
+              className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
+            >
+              Commander dès {priceStarter}
+            </Link>
             <a
               href={WA_URL}
               target="_blank"
@@ -659,14 +658,12 @@ export function LocalSeoPageContent({ data }: Props) {
             >
               Demander mon devis gratuit <FiArrowRight size={15} />
             </Link>
-            {!isSwiss && (
-              <Link
-                href="/commander"
-                className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-4 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
-              >
-                Commander en ligne
-              </Link>
-            )}
+            <Link
+              href={orderUrl}
+              className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-4 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20"
+            >
+              Commander en ligne
+            </Link>
             <a
               href={WA_URL}
               target="_blank"

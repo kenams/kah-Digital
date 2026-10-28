@@ -245,6 +245,9 @@ export default function HowToChooseAIAgencyPage() {
           >
             Get my free AI audit <FiArrowRight size={15} />
           </Link>
+            <Link href="/en/commander" className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Order my website from $290
+            </Link>
         </div>
       </article>
     </div>

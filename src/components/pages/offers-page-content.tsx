@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
+import { orderHref } from "@/lib/order-links";
 import { FiCheck, FiArrowRight, FiZap, FiRefreshCw } from "react-icons/fi";
 
 type OffersPageContentProps = {
@@ -141,21 +142,21 @@ const copy = {
         {
           name: "Essential",
           price: "€49 / month",
-          desc: "Security updates, backups, uptime monitoring.",
-          items: ["CMS / dependency updates", "Weekly backup", "24/7 uptime monitoring", "Email support (48h)"],
+          desc: "We take care of everything: hosting, domain, security, backups.",
+          items: ["Hosting, domain, security, backups", "1 small edit per month", "Site monitoring", "Reply within 72 h"],
         },
         {
           name: "Comfort",
           price: "€99 / month",
-          desc: "Everything in Essential + minor fixes and content additions.",
-          items: ["Everything in Essential", "2h of changes / month", "Text and image updates", "Priority support (24h)"],
+          desc: "Everything in Essential + regular edits, monthly report and reviews follow-up.",
+          items: ["Everything in Essential", "3 edits per month", "Monthly report + Google reviews follow-up", "Reply within 24 h"],
           popular: true,
         },
         {
           name: "Pro",
           price: "€199 / month",
-          desc: "Everything in Comfort + light development and monthly analytics report.",
-          items: ["Everything in Comfort", "5h of development / month", "Monthly analytics report", "Dedicated support (same-day)"],
+          desc: "Everything in Comfort + enhanced support.",
+          items: ["Everything in Comfort", "Unlimited edits (fair use)", "Monthly section updates", "Direct WhatsApp support, reply within 4 working hours"],
         },
       ],
       note: "Support level is adjusted after delivery according to autonomy, priorities and desired pace of evolution.",
@@ -248,23 +249,23 @@ const copy = {
       body: "Jedes gelieferte Projekt kann durch einen Monatsplan ergänzt werden. Updates, Korrekturen, kleine Ergänzungen, Performance-Monitoring.",
       plans: [
         {
-          name: "Basis",
-          price: "Leichter Support",
-          desc: "Sicherheitsupdates, Backups, Uptime-Monitoring.",
-          items: ["CMS- / Abhängigkeits-Updates", "Wöchentliches Backup", "24/7 Uptime-Monitoring", "E-Mail-Support (48h)"],
+          name: "Essentiel",
+          price: "CHF 49 / Monat",
+          desc: "Wir kümmern uns um alles: Hosting, Domain, Sicherheit, Backups.",
+          items: ["Hosting, Domain, Sicherheit, Backups", "1 kleine Änderung pro Monat", "Überwachung der Website", "Antwort innert 72 h"],
         },
         {
-          name: "Komfort",
-          price: "Erweiterter Support",
-          desc: "Alles aus Basis + kleinere Korrekturen und Inhaltsaktualisierungen.",
-          items: ["Alles aus Basis", "2h Änderungen / Monat", "Text- und Bildaktualisierungen", "Prioritäts-Support (24h)"],
+          name: "Confort",
+          price: "CHF 99 / Monat",
+          desc: "Alles aus Essentiel + regelmässige Änderungen, Monatsbericht und Bewertungs-Monitoring.",
+          items: ["Alles aus Essentiel", "3 Änderungen pro Monat", "Monatsbericht + Google-Bewertungen im Blick", "Antwort innert 24 h"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "Priorisierte Begleitung",
-          desc: "Alles aus Komfort + leichte Entwicklung und monatlicher Analytics-Bericht.",
-          items: ["Alles aus Komfort", "5h Entwicklung / Monat", "Monatlicher Analytics-Bericht", "Dedizierter Support (am selben Tag)"],
+          price: "CHF 199 / Monat",
+          desc: "Alles aus Confort + verstärkte Betreuung.",
+          items: ["Alles aus Confort", "Unbegrenzte Änderungen (angemessene Nutzung)", "Monatliche Aktualisierung der Bereiche", "Direkter WhatsApp-Support, Antwort innert 4 Arbeitsstunden"],
         },
       ],
       note: "Der Support wird nach Lieferung an Autonomie, Prioritäten und gewünschtes Entwicklungstempo angepasst.",
@@ -472,21 +473,21 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                 </div>
 
                 {/* CTA */}
-                {locale === "fr" && (offer.id === "starter" || offer.id === "business") ? (
+                {offer.id === "starter" || offer.id === "business" ? (
                   <>
                     <Link
-                      href={`/commander?pack=${offer.id}`}
+                      href={orderHref(locale, { pack: offer.id, currency: locale === "en" ? "eur" : undefined })}
                       className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
                         isPopular
                           ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 shadow-md"
                           : "border border-white/15 bg-white/5 text-white hover:bg-white/10"
                       }`}
                     >
-                      Commander — {offer.price}
+                      {locale === "en" ? "Order" : locale === "de" ? "Bestellen" : "Commander"} — {offer.price}
                       <FiArrowRight size={14} />
                     </Link>
                     <Link href={quoteHref} className="mt-2 block text-center text-xs text-gray-500 transition hover:text-gray-300">
-                      ou demander un devis sur mesure
+                      {locale === "en" ? "or request a custom quote" : locale === "de" ? "oder individuelle Offerte anfragen" : "ou demander un devis sur mesure"}
                     </Link>
                   </>
                 ) : (

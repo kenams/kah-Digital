@@ -163,6 +163,9 @@ type Props = { data: EnCity };
 
 export function LocalSeoEnPageContent({ data }: Props) {
   const devisUrl = `/en/devis?city=${encodeURIComponent(data.city)}&ref=local-seo-en`;
+  const isSwiss = ["Geneva", "Zurich", "Basel", "Bern", "Berne", "Lausanne", "Lugano", "Fribourg", "Switzerland"].includes(data.city);
+  const orderUrl = isSwiss ? "/en/commander?devise=chf" : "/en/commander";
+  const orderFrom = isSwiss ? "CHF 290" : "$290";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -205,6 +208,9 @@ export function LocalSeoEnPageContent({ data }: Props) {
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:gap-3 hover:shadow-blue-500/40"
             >
               Free quote in 24h <FiArrowRight size={15} />
+            </Link>
+            <Link href={orderUrl} className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Order from {orderFrom}
             </Link>
             <a
               href={WA_URL}
@@ -315,6 +321,9 @@ export function LocalSeoEnPageContent({ data }: Props) {
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-10 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40"
             >
               Request my free quote <FiArrowRight size={15} />
+            </Link>
+            <Link href={orderUrl} className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-4 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
+              Order online
             </Link>
             <a
               href={WA_URL}
