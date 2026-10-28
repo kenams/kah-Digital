@@ -682,3 +682,6 @@ textarea {
   .kah-orbit, .kah-medal, .kah-shimmer, .kah-shimmer-light, .kah-sweep { animation: none; }
   .kah-orbit i::before { opacity: 0.7; animation: none; }
 }
+
+/* Halo sombre derrière la médaille : estompe le filet du header qui passait derrière */
+.kah-halo { position: absolute; inset: -34px; border-radius: 9999px; pointer-events: none; background: radial-gradient(circle, #000 52%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0) 72%); }

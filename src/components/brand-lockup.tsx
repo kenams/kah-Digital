@@ -25,6 +25,7 @@ export function BrandLockup({
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <span className={`relative block shrink-0 ${wrapClass}`}>
         <span className={medalClass}>
+          {theme === "dark" ? <span className="kah-halo" aria-hidden="true" /> : null}
           <span className="kah-orbit" aria-hidden="true">
             <i style={{ "--a": "0deg", "--d": "0s" } as CSSProperties} />
             <i style={{ "--a": "120deg", "--d": "1.2s" } as CSSProperties} />
