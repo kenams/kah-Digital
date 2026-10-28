@@ -103,8 +103,8 @@ const FR: OrderCopy = {
   },
   plans: {
     essentiel: { name: "Essentiel", tagline: "On s'occupe de tout", points: ["Hébergement, domaine, sécurité, sauvegardes", "1 petite modification par mois", "Réponse sous 72 h"] },
-    confort: { name: "Confort", tagline: "Pour un site qui évolue", points: ["Tout Essentiel", "3 modifications par mois", "Rapport mensuel + suivi des avis Google", "Réponse sous 24 h"] },
-    pro: { name: "Pro", tagline: "Accompagnement renforcé", points: ["Tout Confort", "Modifications illimitées (usage raisonnable)", "Support WhatsApp direct", "Réponse sous 4 h ouvrées"] },
+    confort: { name: "Confort", tagline: "Pour un site qui évolue", points: ["Tout Essentiel", "Mises à jour du site par message (KAH Pulse)", "3 modifications de fond par mois", "Rapport mensuel + suivi des avis Google", "Réponse sous 24 h"] },
+    pro: { name: "Pro", tagline: "Accompagnement renforcé", points: ["Tout Confort", "Rappels de RDV + demandes d'avis Google automatiques", "Modifications de fond illimitées (usage raisonnable)", "Support WhatsApp direct, réponse sous 4 h ouvrées"] },
     none: { name: "Sans abonnement", tagline: "Je gère l'hébergement moi-même", points: ["Je reçois les accès à la livraison", "Hébergement, domaine et mises à jour à ma charge"] },
   },
   perMonth: "/mois",
@@ -211,8 +211,8 @@ const EN: OrderCopy = {
   },
   plans: {
     essentiel: { name: "Essential", tagline: "We take care of everything", points: ["Hosting, domain, security, backups", "1 small edit per month", "Reply within 72 h"] },
-    confort: { name: "Comfort", tagline: "For a site that evolves", points: ["Everything in Essential", "3 edits per month", "Monthly report + Google reviews follow-up", "Reply within 24 h"] },
-    pro: { name: "Pro", tagline: "Enhanced support", points: ["Everything in Comfort", "Unlimited edits (fair use)", "Direct WhatsApp support", "Reply within 4 working hours"] },
+    confort: { name: "Comfort", tagline: "For a site that evolves", points: ["Everything in Essential", "Site updates by message (KAH Pulse)", "3 deeper edits per month", "Monthly report + Google reviews follow-up", "Reply within 24 h"] },
+    pro: { name: "Pro", tagline: "Enhanced support", points: ["Everything in Comfort", "Automatic appointment reminders + Google review requests", "Unlimited deeper edits (fair use)", "Direct WhatsApp support, reply within 4 working hours"] },
     none: { name: "No subscription", tagline: "I'll handle hosting myself", points: ["I receive the access details at delivery", "Hosting, domain and updates are my responsibility"] },
   },
   perMonth: "/month",
@@ -319,8 +319,8 @@ const DE: OrderCopy = {
   },
   plans: {
     essentiel: { name: "Essentiel", tagline: "Wir kümmern uns um alles", points: ["Hosting, Domain, Sicherheit, Backups", "1 kleine Änderung pro Monat", "Antwort innert 72 h"] },
-    confort: { name: "Confort", tagline: "Für eine Website, die sich weiterentwickelt", points: ["Alles aus Essentiel", "3 Änderungen pro Monat", "Monatsbericht + Google-Bewertungen im Blick", "Antwort innert 24 h"] },
-    pro: { name: "Pro", tagline: "Verstärkte Betreuung", points: ["Alles aus Confort", "Unbegrenzte Änderungen (angemessene Nutzung)", "Direkter WhatsApp-Support", "Antwort innert 4 Arbeitsstunden"] },
+    confort: { name: "Confort", tagline: "Für eine Website, die sich weiterentwickelt", points: ["Alles aus Essentiel", "Website-Updates per Nachricht (KAH Pulse)", "3 grössere Änderungen pro Monat", "Monatsbericht + Google-Bewertungen im Blick", "Antwort innert 24 h"] },
+    pro: { name: "Pro", tagline: "Verstärkte Betreuung", points: ["Alles aus Confort", "Automatische Terminerinnerungen + Google-Bewertungsanfragen", "Unbegrenzte grössere Änderungen (angemessene Nutzung)", "Direkter WhatsApp-Support, Antwort innert 4 Arbeitsstunden"] },
     none: { name: "Ohne Abonnement", tagline: "Ich kümmere mich selbst ums Hosting", points: ["Ich erhalte die Zugänge bei der Lieferung", "Hosting, Domain und Updates liegen bei mir"] },
   },
   perMonth: "/Monat",

@@ -81,6 +81,7 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/projets/w11-control-center",
     "/proposition/ashanti-beauty-balma",
     "/proposition/monboum",
+    "/pulse",
     "/references",
     "/refonte-site-web",
     "/services",

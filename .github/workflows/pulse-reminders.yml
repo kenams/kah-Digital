@@ -1,0 +1,26 @@
+name: KAH Pulse — rappels de RDV et demandes d'avis
+
+# Le plan Vercel Hobby limite les crons (1x/jour) : on pilote donc les rappels depuis GitHub Actions.
+# Toutes les 30 minutes. Chaque rappel n'est envoyé qu'une seule fois (marqué avant l'envoi côté serveur).
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: pulse-reminders
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rappels + avis
+        run: |
+          CODE=$(curl -s -o /tmp/r.json -w "%{http_code}" --max-time 100 -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://kah-digital.ch/api/cron/pulse-reminders" || echo 000)
+          echo "pulse-reminders -> $CODE"; head -c 400 /tmp/r.json; echo
+          [ "$CODE" = "200" ] || { echo "::error::Pulse reminders KO (HTTP $CODE)"; exit 1; }
+          jq -e '.ok == true' /tmp/r.json >/dev/null || { echo "::error::Réponse ok != true"; exit 1; }
