@@ -17,6 +17,8 @@ type CatalogItem = {
   description: string;
   price: number;
   unit: Unit;
+  recurring?: boolean;
+  paymentLink?: string;
 };
 
 const CATALOG: CatalogItem[] = [
@@ -29,7 +31,9 @@ const CATALOG: CatalogItem[] = [
   { id: "app-mobile",       label: "Application mobile MVP",      description: "iOS + Android (React Native), fonctionnalités clés, 6–10 semaines",                              price: 2500, unit: "forfait" },
   { id: "saas-mvp",         label: "SaaS MVP",                    description: "Produit web en ligne — auth, paiement, tableau de bord client, 8–12 semaines",                   price: 3000, unit: "forfait" },
   { id: "chatbot-ia",       label: "Chatbot / Intégration IA",    description: "Assistant IA pour site ou app (API Claude/OpenAI), 2–4 semaines",                                price: 800,  unit: "forfait" },
-  { id: "maintenance",      label: "Maintenance mensuelle",       description: "Mises à jour, hébergement, support réactif, sauvegardes incluses",                               price: 150,  unit: "mois"    },
+  { id: "abo-essentiel",    label: "Abonnement Essentiel",        description: "Hébergement, domaine, sécurité, sauvegardes + 1 modification/mois — sans engagement",            price: 49,   unit: "mois", recurring: true, paymentLink: "https://buy.stripe.com/eVq00jfFr0VI8fD8KC1oI00" },
+  { id: "abo-confort",      label: "Abonnement Confort",          description: "Essentiel + 3 modifications/mois, rapport mensuel, suivi des avis Google, réponse sous 24 h",      price: 99,   unit: "mois", recurring: true, paymentLink: "https://buy.stripe.com/4gM28r2SF5bY9jHe4W1oI01" },
+  { id: "abo-pro",          label: "Abonnement Pro",              description: "Confort + modifications illimitées, mise à jour mensuelle, support WhatsApp, réponse sous 4 h",   price: 199,  unit: "mois", recurring: true, paymentLink: "https://buy.stripe.com/28EaEX2SF47UcvT4um1oI02" },
   { id: "seo",              label: "SEO & référencement",         description: "Audit technique + optimisations + contenu optimisé, livraison 2–4 semaines",                     price: 500,  unit: "forfait" },
   { id: "audit-conseil",    label: "Audit & conseil",             description: "Analyse complète du site ou projet, recommandations priorisées, livrable PDF",                   price: 350,  unit: "forfait" },
   { id: "formation",        label: "Formation / accompagnement",  description: "Formation CMS, outils digitaux ou process — en visioconférence",                                 price: 200,  unit: "heure"   },
@@ -46,6 +50,7 @@ type QuoteLine = {
   quantity: number;
   unit: Unit;
   unitPrice: number;
+  recurring: boolean;
 };
 
 type ClientInfo = {
@@ -80,6 +85,7 @@ function newLine(catalog?: CatalogItem): QuoteLine {
     quantity: 1,
     unit: item.unit,
     unitPrice: item.price,
+    recurring: Boolean(item.recurring),
   };
 }
 
@@ -184,11 +190,22 @@ const initialInfo: ClientInfo = {
 
 export function DownloadableQuoteGenerator() {
   const [info, setInfo] = useState<ClientInfo>(initialInfo);
-  const [lines, setLines] = useState<QuoteLine[]>([newLine(CATALOG[0])]);
+  const [lines, setLines] = useState<QuoteLine[]>([newLine(CATALOG[0]), newLine(CATALOG.find((c) => c.id === "abo-essentiel"))]);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const total = useMemo(
-    () => lines.reduce((sum, l) => sum + Math.max(0, l.quantity) * Math.max(0, l.unitPrice), 0),
+    () => lines.filter((l) => !l.recurring).reduce((sum, l) => sum + Math.max(0, l.quantity) * Math.max(0, l.unitPrice), 0),
+    [lines]
+  );
+  const monthly = useMemo(
+    () => lines.filter((l) => l.recurring).reduce((sum, l) => sum + Math.max(0, l.unitPrice), 0),
+    [lines]
+  );
+  const subscriptionLinks = useMemo(
+    () => lines
+      .filter((l) => l.recurring)
+      .map((l) => ({ label: l.label, url: CATALOG.find((c) => c.id === l.catalogId)?.paymentLink }))
+      .filter((x): x is { label: string; url: string } => Boolean(x.url)),
     [lines]
   );
 
@@ -201,7 +218,7 @@ export function DownloadableQuoteGenerator() {
   }
 
   function selectCatalog(lineId: string, item: CatalogItem) {
-    updateLine(lineId, { catalogId: item.id, label: item.label, unit: item.unit, unitPrice: item.price });
+    updateLine(lineId, { catalogId: item.id, label: item.label, unit: item.unit, unitPrice: item.price, recurring: Boolean(item.recurring), quantity: 1 });
   }
 
   function addLine() {
@@ -222,7 +239,7 @@ export function DownloadableQuoteGenerator() {
     drawKahDigitalPdfLogo(doc, left, y);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
-    doc.setTextColor(46, 168, 255);
+    doc.setTextColor(160, 110, 40);
     doc.text("DEVIS", right, y + 8, { align: "right" });
     doc.setTextColor(15, 23, 42);
     doc.setFontSize(17);
@@ -310,16 +327,16 @@ export function DownloadableQuoteGenerator() {
       const lineTotal = Math.max(0, line.quantity) * Math.max(0, line.unitPrice);
       doc.setDrawColor(226, 232, 240);
       doc.roundedRect(left, rowStart, 178, rowHeight, 2, 2);
-      doc.text(String(line.quantity || 0), 144, rowStart + 9, { align: "center" });
+      doc.text(String(line.recurring ? 1 : line.quantity || 0), 144, rowStart + 9, { align: "center" });
       doc.text(`${formatMoney(line.unitPrice || 0)}${unitLabel}`, 166, rowStart + 9, { align: "right" });
       doc.setFont("helvetica", "bold");
-      doc.text(formatMoney(lineTotal), right - 4, rowStart + 9, { align: "right" });
+      doc.text(line.recurring ? `${formatMoney(line.unitPrice || 0)} /mois` : formatMoney(lineTotal), right - 4, rowStart + 9, { align: "right" });
       y = rowStart + rowHeight + 3;
     });
 
     y += 4;
     doc.setFillColor(241, 245, 249);
-    doc.roundedRect(118, y, 76, 26, 3, 3, "F");
+    doc.roundedRect(118, y, 76, monthly > 0 ? 34 : 26, 3, 3, "F");
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(71, 85, 105);
@@ -330,8 +347,14 @@ export function DownloadableQuoteGenerator() {
     doc.setTextColor(15, 23, 42);
     doc.text("Total TTC", 124, y + 23);
     doc.text(formatMoney(total), right - 5, y + 23, { align: "right" });
+    if (monthly > 0) {
+      doc.setFontSize(9);
+      doc.setTextColor(30, 100, 160);
+      doc.text("+ Abonnement mensuel", 124, y + 31);
+      doc.text(`${formatMoney(monthly)} /mois`, right - 5, y + 31, { align: "right" });
+    }
 
-    y += 40;
+    y += monthly > 0 ? 48 : 40;
     if (y > 235) { doc.addPage(); y = 20; }
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
@@ -340,7 +363,26 @@ export function DownloadableQuoteGenerator() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8.5);
     doc.setTextColor(51, 65, 85);
-    y = addWrappedText(doc, info.paymentTerms, left, y, 178, 4.4) + 10;
+    y = addWrappedText(doc, info.paymentTerms, left, y, 178, 4.4) + 4;
+    if (subscriptionLinks.length > 0) {
+      if (y > 225) { doc.addPage(); y = 20; }
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9);
+      doc.setTextColor(15, 23, 42);
+      doc.text("Abonnement mensuel", left, y + 3);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.setTextColor(51, 65, 85);
+      y = addWrappedText(doc, "Prélèvement automatique mensuel, sans engagement, résiliable avec un mois de préavis. Activation à la livraison du site via le lien sécurisé ci-dessous.", left, y + 8, 178, 4.4);
+      subscriptionLinks.forEach((l) => {
+        doc.setTextColor(29, 78, 216);
+        doc.textWithLink(`${l.label} : ${l.url}`, left, y + 4, { url: l.url });
+        y += 5;
+      });
+      y += 3;
+    } else {
+      y += 6;
+    }
 
     if (y > 247) { doc.addPage(); y = 24; }
     doc.setDrawColor(226, 232, 240);
@@ -354,7 +396,7 @@ export function DownloadableQuoteGenerator() {
     doc.setFontSize(7);
     doc.setTextColor(148, 163, 184);
     doc.text(`${info.quoteNumber} — ${info.companyName || info.clientName || "Client"}`, left, 286);
-    doc.text(`Total : ${formatMoney(total)}`, right, 286, { align: "right" });
+    doc.text(`Total : ${formatMoney(total)}${monthly > 0 ? ` + ${formatMoney(monthly)}/mois` : ""}`, right, 286, { align: "right" });
 
     const filename = `devis-${sanitizeFilename(info.companyName || info.clientName)}-KAH Digital Studio.pdf`;
     doc.save(filename);
@@ -417,8 +459,8 @@ export function DownloadableQuoteGenerator() {
                 </div>
 
                 {/* Quantité + Prix */}
-                <div className="grid grid-cols-2 gap-3">
-                  <label className="block">
+                <div className={`grid gap-3 ${line.recurring ? "grid-cols-1" : "grid-cols-2"}`}>
+                  {!line.recurring && (<label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                       {line.unit === "mois" ? "Nb de mois" : line.unit === "heure" ? "Nb d'heures" : "Quantité"}
                     </span>
@@ -429,7 +471,7 @@ export function DownloadableQuoteGenerator() {
                       onChange={(e) => updateLine(line.id, { quantity: Number(e.target.value) || 1 })}
                       className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-400 focus:ring-3 focus:ring-sky-100"
                     />
-                  </label>
+                  </label>)}
                   <label className="block">
                     <span className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                       Prix {line.unit === "mois" ? "(€/mois)" : line.unit === "heure" ? "(€/h)" : "(€)"}
@@ -453,7 +495,7 @@ export function DownloadableQuoteGenerator() {
                     <input
                       type="text"
                       value={line.detail}
-                      placeholder={`ex. ${line.catalogId === "site-vitrine" ? "5 pages + formulaire contact + Google Maps" : line.catalogId === "maintenance" ? "hébergement Vercel + mises à jour mensuelles" : "détails spécifiques de cette prestation"}`}
+                      placeholder={`ex. ${line.catalogId === "site-vitrine" ? "5 pages + formulaire contact + Google Maps" : line.recurring ? "ex. à activer à la livraison du site" : "détails spécifiques de cette prestation"}`}
                       onChange={(e) => updateLine(line.id, { detail: e.target.value })}
                       className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-400 focus:ring-3 focus:ring-sky-100"
                     />
@@ -540,10 +582,10 @@ export function DownloadableQuoteGenerator() {
                     <p className="text-sm font-semibold text-slate-900">{line.label}</p>
                     {line.detail && <p className="mt-0.5 text-xs text-slate-500">{line.detail}</p>}
                     <p className="mt-1 text-xs text-slate-400">
-                      {line.quantity} × {formatMoney(line.unitPrice)}{line.unit === "mois" ? "/mois" : line.unit === "heure" ? "/h" : ""}
+                      {line.recurring ? "Abonnement mensuel, sans engagement" : `${line.quantity} × ${formatMoney(line.unitPrice)}${line.unit === "mois" ? "/mois" : line.unit === "heure" ? "/h" : ""}`}
                     </p>
                   </div>
-                  <p className="shrink-0 text-sm font-bold text-slate-950">{formatMoney(lineTotal)}</p>
+                  <p className="shrink-0 text-sm font-bold text-slate-950">{line.recurring ? `${formatMoney(line.unitPrice)}/mois` : formatMoney(lineTotal)}</p>
                 </div>
               </div>
             );
@@ -553,6 +595,9 @@ export function DownloadableQuoteGenerator() {
         <div className="rounded-2xl bg-slate-950 p-5 text-white">
           <p className="text-xs uppercase tracking-widest text-white/40">Total TTC</p>
           <p className="mt-1 text-4xl font-black">{formatMoney(total)}</p>
+          {monthly > 0 && (
+            <p className="mt-2 text-sm font-semibold text-sky-300">+ {formatMoney(monthly)} / mois (abonnement)</p>
+          )}
           <p className="mt-1 text-xs text-white/50">TVA non applicable — article 293 B du CGI</p>
         </div>
 
