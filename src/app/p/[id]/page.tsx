@@ -7,6 +7,8 @@ import { createClient } from "@supabase/supabase-js";
 import QuickContactForm from "./QuickContactForm";
 import { FiCheckCircle, FiAlertCircle, FiAlertTriangle, FiArrowRight, FiPhone, FiMail } from "react-icons/fi";
 import { ProspectCountdown } from "@/components/prospect-countdown";
+import { orderHref } from "@/lib/order-links";
+import { PACKS, formatMoney, resolveCurrency } from "@/lib/pack-orders";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -306,6 +308,30 @@ export default async function ProspectLandingPage({ params }: Props) {
             <FiArrowRight size={14} />
           </Link>
         </div>
+
+        {/* Commande directe (sites standard) */}
+        {(audit.estimatedPrice ?? 0) < 1490 && (() => {
+          const orderLocale = lang === "en" || lang === "de" ? lang : "fr";
+          const packId = (audit.estimatedPrice ?? 790) <= 400 ? "starter" : "business";
+          const price = formatMoney(PACKS[packId].price, resolveCurrency(orderLocale, undefined));
+          const label =
+            orderLocale === "en"
+              ? `Or order it online now — ${packId === "starter" ? "landing page" : "professional site"} ${price}`
+              : orderLocale === "de"
+              ? `Oder jetzt online bestellen — ${packId === "starter" ? "Landingpage" : "professionelle Website"} ${price}`
+              : `Ou commandez-le directement en ligne — ${packId === "starter" ? "landing page" : "site professionnel"} ${price}`;
+          return (
+            <div className="mb-4 text-center">
+              <Link
+                href={orderHref(orderLocale, { pack: packId })}
+                className="inline-flex items-center gap-2 rounded-xl border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-5 py-3 text-sm font-semibold text-[#f3d089] transition-colors hover:bg-[#e0c48e]/20"
+              >
+                {label}
+                <FiArrowRight size={14} />
+              </Link>
+            </div>
+          );
+        })()}
 
         {/* CTAs */}
         <div className="mb-4 rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-3 text-center">

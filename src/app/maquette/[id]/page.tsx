@@ -95,6 +95,7 @@ export default async function MaquettePage({ params }: Props) {
           </p>
           <div className="flex items-center gap-3">
             <a href="tel:+33759558414" className="text-stone-300 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">07 59 55 84 14</a>
+            <Link href="/commander?pack=business" className="rounded-lg border border-[#e0c48e]/60 px-3 py-1.5 font-semibold text-[#f3d089] hover:bg-[#e0c48e]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Commander ce site</Link>
             <Link href="/devis" className="rounded-lg bg-white px-3 py-1.5 font-semibold text-stone-950 hover:bg-stone-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Demander un devis</Link>
           </div>
         </div>
