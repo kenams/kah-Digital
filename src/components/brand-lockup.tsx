@@ -16,17 +16,16 @@ export function BrandLockup({
   subtitle,
   theme = "dark",
 }: BrandLockupProps) {
-  const size = compact ? 44 : 64;
+  const sizeClass = compact ? "h-14 w-14 md:h-[72px] md:w-[72px]" : "h-[88px] w-[88px]";
   return (
     <div className={`inline-flex items-center gap-3 ${className}`.trim()}>
       <Image
         src="/kah-logo.jpg"
         alt=""
         aria-hidden="true"
-        width={size}
-        height={size}
-        className="shrink-0 rounded-full object-cover"
-        style={{ width: size, height: size }}
+        width={176}
+        height={176}
+        className={`${sizeClass} shrink-0 rounded-full object-cover`}
         priority
       />
 
