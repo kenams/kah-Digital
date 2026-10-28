@@ -65,7 +65,7 @@ export default function LinksPage() {
 
         {/* Avatar + nom */}
         <div className="flex flex-col items-center mb-8">
-          <Image src="/kah-logo.jpg" alt="KAH Digital Studio" width={96} height={96} priority className="mb-4 h-24 w-24 rounded-full object-cover shadow-lg shadow-amber-500/20" />
+          <Image src="/brand/medal-compact.svg" unoptimized alt="KAH Digital Studio" width={96} height={96} priority className="mb-4 h-24 w-24 rounded-full object-cover shadow-lg shadow-amber-500/20" />
           <h1 className="sr-only">KAH Digital Studio</h1>
           <BrandTitle center />
           <p className="text-sm text-white/50 mt-1">Apps · SaaS · Automatisation · Toulouse</p>

@@ -321,7 +321,7 @@ export function AdminLoginForm({ errorParam, infoParam }: AdminLoginFormProps) {
             />
           </div>
           <div className="mt-4 flex items-center gap-3">
-            <Image src="/kah-logo.jpg" alt="KAH Digital Studio" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+            <Image src="/brand/medal-compact.svg" unoptimized alt="KAH Digital Studio" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/60">Admin</p>
               <h1 className="mt-1 text-2xl font-semibold">Connexion</h1>

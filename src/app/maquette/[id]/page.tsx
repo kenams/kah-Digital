@@ -89,7 +89,7 @@ export default async function MaquettePage({ params }: Props) {
       <div className="sticky top-0 z-30 border-b border-stone-800 bg-stone-950 text-stone-100">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-2.5 text-sm sm:px-6">
           <p className="flex min-w-0 items-center gap-2.5">
-            <Image src="/kah-logo.jpg" alt="KAH Digital Studio" width={28} height={28} className="h-7 w-7 shrink-0 rounded-full object-cover" />
+            <Image src="/brand/medal-compact.svg" unoptimized alt="KAH Digital Studio" width={28} height={28} className="h-7 w-7 shrink-0 rounded-full object-cover" />
             <span className="font-semibold">Maquette gratuite</span>
             <span className="text-stone-400"> préparée par KAH Digital Studio pour {name}</span>
           </p>

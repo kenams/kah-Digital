@@ -35,7 +35,8 @@ export function BrandLockup({
             <i style={{ "--a": "240deg", "--d": "2s" } as CSSProperties} />
           </span>
           <Image
-            src="/kah-logo.jpg"
+            src="/brand/medal-compact.svg"
+            unoptimized
             alt=""
             aria-hidden="true"
             width={232}
