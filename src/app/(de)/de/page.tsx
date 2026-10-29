@@ -5,12 +5,13 @@ import { TrustBar } from "@/components/trust-bar";
 import { PricingSection } from "@/components/pricing-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
+import { CyberBandSection } from "@/components/cyber-band-section";
 // Nettoyage 2026-08-02 — voir (fr)/page.tsx pour le détail.
 
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/",
-  title: "KAH Digital Studio — Vertikale KI-Agenten für Selbstständige · Toulouse · Frankreich & Schweiz",
+  title: "KAH Digital Studio — Websites, KI-Agenten & Cybersicherheit · Toulouse · Frankreich & Schweiz",
   description:
     "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   keywords: [
@@ -121,6 +122,7 @@ export default function HomePageDe() {
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
+      <CyberBandSection />
       <FAQSection />
       <CTASection />
     </>

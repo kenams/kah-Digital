@@ -22,6 +22,7 @@ export function SiteHeader() {
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
           { label: "AI Agents", href: "/en/agents-ia", highlight: true },
+          { label: "Cybersecurity", href: "/en/cybersecurite" },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Order", href: "/en/commander", accent: true },
           { label: "Quote", href: "/en/devis" },
@@ -40,6 +41,7 @@ export function SiteHeader() {
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
           { label: "KI-Agenten", href: "/de/agents-ia", highlight: true },
+          { label: "Cybersicherheit", href: "/de/cybersecurite" },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Bestellen", href: "/de/commander", accent: true },
           { label: "Offerte", href: "/de/devis" },
@@ -58,6 +60,7 @@ export function SiteHeader() {
           { label: "Offres", href: "/offres" },
           { label: "Créer mon entreprise", href: "/creation-entreprise" },
           { label: "Agents IA", href: "/agents-ia", highlight: true },
+          { label: "Cybersécurité", href: "/cybersecurite" },
           { label: "Réalisations", href: "/projets" },
           { label: "Références", href: "/references" },
           { label: "Blog", href: "/blog" },
@@ -81,11 +84,11 @@ export function SiteHeader() {
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm lg:flex xl:gap-5">
+          <nav className="hidden items-center gap-4 text-sm xl:flex xl:gap-5">
             {localeCopy.nav.map((link) => {
               // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
-              // liens secondaires (accueil = logo, références, blog) jusqu'à 2xl.
-              const secondary = link.href === homeHref || /\/(references|blog)$/.test(link.href);
+              // liens secondaires (accueil = logo, références, blog, création d'entreprise) jusqu'à 1680px.
+              const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise)$/.test(link.href);
               return (
               <Link
                 key={link.href}
@@ -94,7 +97,7 @@ export function SiteHeader() {
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
                   : (link as { accent?: boolean }).accent
                   ? "whitespace-nowrap font-semibold text-[#e0c48e] transition-colors hover:text-[#f3d089]"
-                  : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden 2xl:inline" : ""}`}
+                  : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden min-[1680px]:inline" : ""}`}
               >
                 {(link as { highlight?: boolean }).highlight && <span className="mr-1">⚡</span>}{link.label}
               </Link>
@@ -114,7 +117,7 @@ export function SiteHeader() {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white md:hidden"
+            className="text-white xl:hidden"
             aria-label={isMenuOpen ? localeCopy.closeMenu : localeCopy.openMenu}
           >
             {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -122,7 +125,7 @@ export function SiteHeader() {
         </div>
 
         {isMenuOpen ? (
-          <div className="border-t border-white/10 py-4 md:hidden">
+          <div className="border-t border-white/10 py-4 xl:hidden">
             <nav className="flex flex-col space-y-4">
               <Link href={homeHref} className="pb-2 !overflow-visible" onClick={() => setIsMenuOpen(false)} aria-label={localeCopy.homeLabel}>
                 <BrandLockup compact subtitle={localeCopy.subtitle} />

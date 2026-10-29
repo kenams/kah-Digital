@@ -5,6 +5,7 @@ import { TrustBar } from "@/components/trust-bar";
 import { PricingSection } from "@/components/pricing-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
+import { CyberBandSection } from "@/components/cyber-band-section";
 
 // Nettoyage homepage 2026-08-02 (demande explicite de Kenams : "c'est
 // brouillon [...] on ne sait pas ce que je fais, site web ? appli ? IA ?
@@ -18,7 +19,7 @@ import { CTASection } from "@/components/cta-section";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/",
-  title: "KAH Digital Studio — Agents IA verticaux pour indépendants · Toulouse · France & Suisse",
+  title: "KAH Digital Studio — Sites web, agents IA et cybersécurité · Toulouse · France & Suisse",
   description:
     "KAH Digital Studio crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   keywords: [
@@ -129,6 +130,7 @@ export default function Home() {
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
+      <CyberBandSection />
       <FAQSection />
       <CTASection />
     </>

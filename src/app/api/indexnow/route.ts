@@ -23,7 +23,7 @@ const URLS = [
   "/agence-web-angers", "/agence-web-dijon", "/agence-web-caen",
   "/agence-web-clermont-ferrand", "/agence-web-metz", "/agence-web-lausanne",
   "/agence-web-suisse",
-  "/agence-ia", "/agents-ia",
+  "/agence-ia", "/agents-ia", "/cybersecurite",
   "/en/agence-ia", "/en/agents-ia",
   "/de/agence-ia", "/de/agents-ia",
   "/automatisation-ia-entreprise", "/automatisation-ia-suisse",

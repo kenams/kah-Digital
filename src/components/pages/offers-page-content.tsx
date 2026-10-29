@@ -347,6 +347,49 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
   const quoteHref = withLocalePrefix("/devis", locale);
   const contactHref = withLocalePrefix("/contact", locale);
 
+  const cyberCopy: Record<string, { eyebrow: string; title: string; body: string; items: { label: string; price: string }[]; addon: string; cta: string }> = {
+    fr: {
+      eyebrow: "Nouveau",
+      title: "Cybersécurité & conformité",
+      body: "Avec un expert cybersécurité partenaire : diagnostic, RGPD, analyse de risques, sensibilisation, RSSI à temps partagé. Périmètre clair, prix annoncé avant de commencer.",
+      items: [
+        { label: "Diagnostic cybersécurité", price: "dès 790 € HT" },
+        { label: "Mise en conformité RGPD", price: "dès 1 490 € HT" },
+        { label: "Sensibilisation des équipes", price: "dès 690 € HT" },
+        { label: "RSSI à temps partagé", price: "dès 890 € HT / mois" },
+      ],
+      addon: "Pour nos clients web : revue de sécurité du site + RGPD (mentions, cookies, formulaires) en option, dès 290 € HT.",
+      cta: "Voir la cybersécurité",
+    },
+    en: {
+      eyebrow: "New",
+      title: "Cybersecurity & compliance",
+      body: "With a partner cybersecurity expert: assessment, GDPR, risk analysis, awareness training, part-time security officer. Clear scope, price agreed before we start.",
+      items: [
+        { label: "Cybersecurity assessment", price: "from €790 excl. tax" },
+        { label: "GDPR compliance", price: "from €1,490 excl. tax" },
+        { label: "Team awareness training", price: "from €690 excl. tax" },
+        { label: "Part-time security officer", price: "from €890 excl. tax / month" },
+      ],
+      addon: "For our web clients: optional site security review + GDPR (notices, cookies, forms), from €290 excl. tax.",
+      cta: "See cybersecurity",
+    },
+    de: {
+      eyebrow: "Neu",
+      title: "Cybersicherheit & Compliance",
+      body: "Mit einem Partner-Experten für Cybersicherheit: Analyse, DSGVO, Risikoanalyse, Sensibilisierung, Sicherheitsverantwortlicher auf Teilzeit. Klarer Umfang, Preis vor Projektbeginn.",
+      items: [
+        { label: "Cybersicherheits-Analyse", price: "ab 790 € netto" },
+        { label: "DSGVO-Konformität", price: "ab 1 490 € netto" },
+        { label: "Sensibilisierung der Teams", price: "ab 690 € netto" },
+        { label: "Sicherheitsverantwortlicher auf Teilzeit", price: "ab 890 € netto / Monat" },
+      ],
+      addon: "Für unsere Web-Kunden: optionale Sicherheitsprüfung der Website + DSGVO (Impressum, Cookies, Formulare), ab 290 € netto.",
+      cta: "Cybersicherheit ansehen",
+    },
+  };
+  const cyber = cyberCopy[locale];
+
   // Offre de lancement : réelle et tenue (5 premières places, jusqu'au 31/12/2026).
   const launchCopy: Record<string, { badge: string; title: string; body: string; terms: string; cta: string }> = {
     fr: {
@@ -533,6 +576,34 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
             >
               {content.customCta}
               <FiArrowRight size={13} />
+            </Link>
+          </div>
+        </div>
+
+        {/* Cybersécurité & conformité */}
+        <div className="mt-12 rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/[0.07] to-transparent p-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-emerald-300">{cyber.eyebrow}</p>
+          <h2 className="mt-1 text-xl font-bold text-white">{cyber.title}</h2>
+          <p className="mt-2 max-w-3xl text-sm text-gray-300">{cyber.body}</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {cyber.items.map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-gray-950 px-5 py-4"
+              >
+                <span className="text-sm text-gray-300">{item.label}</span>
+                <span className="shrink-0 text-sm font-semibold text-emerald-300">{item.price}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <p className="max-w-2xl text-sm text-gray-400">{cyber.addon}</p>
+            <Link
+              href={withLocalePrefix("/cybersecurite", locale)}
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-5 py-2.5 text-sm font-bold text-[#04120c] transition hover:bg-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+            >
+              {cyber.cta}
+              <FiArrowRight size={13} aria-hidden="true" />
             </Link>
           </div>
         </div>

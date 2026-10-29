@@ -79,6 +79,7 @@ export function SiteFooter() {
           { label: "Application web", href: "/application-web-sur-mesure" },
           { label: "Automatisation IA", href: "/automatisation-ia-entreprise" },
           { label: "Agence IA", href: "/agence-ia" },
+          { label: "Cybersécurité", href: "/cybersecurite" },
         ],
       },
       zones: {
@@ -127,6 +128,7 @@ export function SiteFooter() {
           { label: "Web application", href: "/en/application-web-sur-mesure" },
           { label: "AI automation", href: "/en/automatisation-ia-entreprise" },
           { label: "AI Agency", href: "/en/agence-ia" },
+          { label: "Cybersecurity", href: "/en/cybersecurite" },
         ],
       },
       zones: {
@@ -174,6 +176,7 @@ export function SiteFooter() {
           { label: "Web-App", href: "/de/application-web-sur-mesure" },
           { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
           { label: "KI-Agentur", href: "/de/agence-ia" },
+          { label: "Cybersicherheit", href: "/de/cybersecurite" },
         ],
       },
       zones: {

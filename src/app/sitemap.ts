@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/application-web-sur-mesure",
     "/automatisation-ia-entreprise",
     "/agence-ia",
+    "/cybersecurite",
     "/agents-ia",
     "/projets",
     "/lexique",
@@ -87,6 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/application-web-sur-mesure",
     "/en/automatisation-ia-entreprise",
     "/en/agence-ia",
+    "/en/cybersecurite",
     "/en/agents-ia",
     "/en/projets",
     "/en/site-web-geneve",
@@ -165,6 +167,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/de/application-web-sur-mesure",
     "/de/automatisation-ia-entreprise",
     "/de/agence-ia",
+    "/de/cybersecurite",
     "/de/agents-ia",
     // DE city pages — SEO DACH + international
     "/de/webentwicklung-zuerich",

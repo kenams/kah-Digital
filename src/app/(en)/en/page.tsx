@@ -5,13 +5,14 @@ import { TrustBar } from "@/components/trust-bar";
 import { PricingSection } from "@/components/pricing-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
+import { CyberBandSection } from "@/components/cyber-band-section";
 // Nettoyage 2026-08-02 — voir (fr)/page.tsx pour le détail : même
 // simplification appliquée ici pour rester cohérent entre les 3 langues.
 
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/",
-  title: "KAH Digital Studio — Vertical AI Agents for Independents · Toulouse · France & Switzerland",
+  title: "KAH Digital Studio — Websites, AI Agents & Cybersecurity · Toulouse · France & Switzerland",
   description:
     "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
   keywords: [
@@ -122,6 +123,7 @@ export default function HomePageEn() {
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
+      <CyberBandSection />
       <FAQSection />
       <CTASection />
     </>
