@@ -65,7 +65,7 @@ const COPY: Record<Locale, Copy> = {
     title: "Une sécurité et une conformité",
     title2: "claires, chiffrées et suivies.",
     intro:
-      "KAH Digital Studio s'appuie sur un expert cybersécurité et conformité : 11 ans d'IT dont 7 en cybersécurité. On vous dit où vous en êtes, ce qui compte vraiment et dans quel ordre agir, puis on pilote la mise en œuvre. Sans jargon, avec un prix annoncé avant de commencer.",
+      "KAH Digital Studio s'appuie sur Vincent L’helgoual’ch, expert cybersécurité et conformité : 11 ans d'IT dont 7 en cybersécurité. On vous dit où vous en êtes, ce qui compte vraiment et dans quel ordre agir, puis on pilote la mise en œuvre. Sans jargon, avec un prix annoncé avant de commencer.",
     ctaPrimary: "Demander un diagnostic",
     ctaSecondary: "Poser une question",
     proof: [
@@ -99,7 +99,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiSearch,
         title: "Diagnostic cybersécurité",
-        price: "dès 790 €",
+        price: "dès 1 000 €",
         unit: "HT · 1 à 2 jours",
         forWho: "Pour savoir où vous en êtes, sans vous noyer dans un audit de 200 pages.",
         items: [
@@ -112,7 +112,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiFileText,
         title: "Mise en conformité RGPD",
-        price: "dès 1 490 €",
+        price: "dès 3 000 €",
         unit: "HT · 2 à 4 semaines",
         forWho: "Pour être en règle et pouvoir le prouver, sans immobiliser vos équipes.",
         items: [
@@ -125,7 +125,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiTarget,
         title: "Analyse de risques EBIOS RM",
-        price: "dès 2 900 €",
+        price: "dès 6 000 €",
         unit: "HT · sur devis",
         forWho: "Pour décider vos investissements sécurité sur des risques réels, pas sur des impressions.",
         items: [
@@ -138,8 +138,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiUsers,
         title: "Sensibilisation des équipes",
-        price: "dès 690 €",
-        unit: "HT · demi-journée",
+        price: "dès 1 000 €",
+        unit: "HT · 1 session, préparation incluse",
         forWho: "Pour faire de vos équipes la première ligne de défense.",
         items: [
           "Hameçonnage, mots de passe, usages mobiles, télétravail",
@@ -151,8 +151,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiShield,
         title: "RSSI à temps partagé",
-        price: "dès 890 €",
-        unit: "HT / mois · sans engagement long",
+        price: "dès 1 900 €",
+        unit: "HT / mois · 2 jours par mois, sans engagement long",
         forWho: "Un responsable sécurité à la journée, sans en recruter un.",
         items: [
           "Roadmap sécurité annuelle et tableau de bord",
@@ -183,16 +183,16 @@ const COPY: Record<Locale, Copy> = {
       { title: "Plan d'action chiffré", desc: "Vous savez quoi faire, dans quel ordre, pour quel budget." },
       { title: "Mise en œuvre et suivi", desc: "On pilote ou on vous accompagne, avec un point régulier jusqu'aux preuves de conformité." },
     ],
-    expertTitle: "L'expertise derrière la prestation",
+    expertTitle: "Votre expert : Vincent L’helgoual’ch",
     expertIntro:
-      "Un profil de terrain, formé en sécurité informatique (Master Sécurité Informatique), qui a travaillé aussi bien côté technique que côté gouvernance, dans de grandes organisations.",
+      "Vincent est un profil de terrain, formé en sécurité informatique (Master Sécurité Informatique), qui a travaillé aussi bien côté technique que côté gouvernance, dans de grandes organisations.",
     skills: [
       { group: "Gouvernance et conformité", items: ["ISO 27001 / 27005", "NIST, CIS", "RGPD, Privacy by Design", "DORA", "EBIOS RM", "Gestion des tiers (TPRM)"] },
       { group: "Pilotage sécurité", items: ["Programmes et roadmaps sécurité", "Audits et tests d'intrusion : cadrage et suivi", "Comités opérationnels et de pilotage", "Sensibilisation"] },
       { group: "Technique et outils", items: ["Scans de vulnérabilités web (DAST)", "CI/CD, Jenkins, gestion des secrets (Vault)", "Durcissement Linux (CIS)", "Azure, ServiceNow"] },
     ],
     credentials: ["Master Sécurité Informatique", "CSX Fundamentals (ISACA)", "EBIOS RM (EGÉRIE)", "Anglais courant (TOEIC 970)"],
-    trackTitle: "Dans les missions précédentes de notre expert",
+    trackTitle: "Dans les missions précédentes de Vincent",
     track: [
       "Plus de 100 projets accompagnés sur la conformité et la sécurité",
       "Plus de 30 tests d'intrusion suivis, avec plans de correction",
@@ -204,7 +204,7 @@ const COPY: Record<Locale, Copy> = {
       "Nous cadrons, pilotons et suivons les audits et les tests d'intrusion. Les tests offensifs eux-mêmes sont confiés à un prestataire spécialisé que nous aidons à choisir. Aucune mission n'est lancée sans accord écrit sur le périmètre, et vos données restent confidentielles.",
     webTitle: "Un site web livré sécurisé",
     webBody:
-      "Pour nos clients web : revue de sécurité du site (en-têtes, accès, sauvegardes) et mentions légales, cookies et formulaires conformes au RGPD, en option à partir de 290 € HT.",
+      "Pour nos clients web : revue de sécurité du site (en-têtes, accès, sauvegardes) et mentions légales, cookies et formulaires conformes au RGPD, en option à partir de 490 € HT.",
     webCta: "Voir les offres web",
     ctaTitle: "Savoir où vous en êtes en 2 jours",
     ctaBody: "Un échange de 30 minutes, gratuit. Vous repartez avec une idée claire du périmètre et du prix, sans engagement.",
@@ -216,7 +216,7 @@ const COPY: Record<Locale, Copy> = {
     title: "Security and compliance that are",
     title2: "clear, priced and followed through.",
     intro:
-      "KAH Digital Studio works with a cybersecurity and compliance expert: 11 years in IT, 7 of them in cybersecurity. We tell you where you stand, what really matters and in which order to act, then we lead the implementation. No jargon, and the price is agreed before we start.",
+      "KAH Digital Studio works with Vincent L’helgoual’ch, a cybersecurity and compliance expert: 11 years in IT, 7 of them in cybersecurity. We tell you where you stand, what really matters and in which order to act, then we lead the implementation. No jargon, and the price is agreed before we start.",
     ctaPrimary: "Request an assessment",
     ctaSecondary: "Ask a question",
     proof: [
@@ -250,7 +250,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiSearch,
         title: "Cybersecurity assessment",
-        price: "from €790",
+        price: "from €1,000",
         unit: "excl. tax · 1 to 2 days",
         forWho: "To know where you stand, without a 200-page audit.",
         items: [
@@ -263,7 +263,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiFileText,
         title: "GDPR compliance",
-        price: "from €1,490",
+        price: "from €3,000",
         unit: "excl. tax · 2 to 4 weeks",
         forWho: "To be compliant and able to prove it, without tying up your teams.",
         items: [
@@ -276,7 +276,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiTarget,
         title: "EBIOS RM risk analysis",
-        price: "from €2,900",
+        price: "from €6,000",
         unit: "excl. tax · on quote",
         forWho: "To decide your security spending on real risks, not impressions.",
         items: [
@@ -289,8 +289,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiUsers,
         title: "Team awareness training",
-        price: "from €690",
-        unit: "excl. tax · half-day",
+        price: "from €1,000",
+        unit: "excl. tax · 1 session, preparation included",
         forWho: "To turn your people into the first line of defence.",
         items: [
           "Phishing, passwords, mobile use, remote work",
@@ -302,8 +302,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiShield,
         title: "Part-time security officer",
-        price: "from €890",
-        unit: "excl. tax / month · no long commitment",
+        price: "from €1,900",
+        unit: "excl. tax / month · 2 days per month, no long commitment",
         forWho: "A security lead by the day, without hiring one.",
         items: [
           "Annual security roadmap and dashboard",
@@ -334,16 +334,16 @@ const COPY: Record<Locale, Copy> = {
       { title: "Costed action plan", desc: "You know what to do, in which order and for what budget." },
       { title: "Delivery and follow-up", desc: "We lead or support delivery, with regular check-ins until the compliance evidence is in place." },
     ],
-    expertTitle: "The expertise behind the service",
+    expertTitle: "Your expert: Vincent L’helgoual’ch",
     expertIntro:
-      "A field-tested profile, trained in information security (Master's degree), who has worked on both the technical and governance sides in large organisations.",
+      "Vincent is a field-tested profile, trained in information security (Master's degree), who has worked on both the technical and governance sides in large organisations.",
     skills: [
       { group: "Governance and compliance", items: ["ISO 27001 / 27005", "NIST, CIS", "GDPR, Privacy by Design", "DORA", "EBIOS RM", "Third-party risk (TPRM)"] },
       { group: "Security leadership", items: ["Security programmes and roadmaps", "Audits and penetration tests: scoping and follow-up", "Operational and steering committees", "Awareness training"] },
       { group: "Technical and tooling", items: ["Web vulnerability scanning (DAST)", "CI/CD, Jenkins, secrets management (Vault)", "Linux hardening (CIS)", "Azure, ServiceNow"] },
     ],
     credentials: ["Master's in Information Security", "CSX Fundamentals (ISACA)", "EBIOS RM (EGÉRIE)", "Fluent English (TOEIC 970)"],
-    trackTitle: "From our expert's previous engagements",
+    trackTitle: "From Vincent's previous engagements",
     track: [
       "100+ compliance and security projects supported",
       "30+ penetration tests followed, with remediation plans",
@@ -355,7 +355,7 @@ const COPY: Record<Locale, Copy> = {
       "We scope, lead and follow up audits and penetration tests. The offensive tests themselves are carried out by a specialist provider that we help you choose. No engagement starts without written agreement on scope, and your data stays confidential.",
     webTitle: "A website delivered secure",
     webBody:
-      "For our web clients: a security review of the site (headers, access, backups) and legal notices, cookies and forms compliant with GDPR, optional from €290 excl. tax.",
+      "For our web clients: a security review of the site (headers, access, backups) and legal notices, cookies and forms compliant with GDPR, optional from €490 excl. tax.",
     webCta: "See web offers",
     ctaTitle: "Know where you stand within 2 days",
     ctaBody: "A free 30-minute call. You leave with a clear view of scope and price, no commitment.",
@@ -367,7 +367,7 @@ const COPY: Record<Locale, Copy> = {
     title: "Sicherheit und Compliance,",
     title2: "klar, bepreist und nachverfolgt.",
     intro:
-      "KAH Digital Studio arbeitet mit einem Experten für Cybersicherheit und Compliance: 11 Jahre IT, davon 7 in der Cybersicherheit. Wir zeigen Ihnen, wo Sie stehen, was wirklich zählt und in welcher Reihenfolge Sie handeln sollten, und steuern dann die Umsetzung. Ohne Fachjargon, mit einem Preis vor Projektbeginn.",
+      "KAH Digital Studio arbeitet mit Vincent L’helgoual’ch, Experte für Cybersicherheit und Compliance: 11 Jahre IT, davon 7 in der Cybersicherheit. Wir zeigen Ihnen, wo Sie stehen, was wirklich zählt und in welcher Reihenfolge Sie handeln sollten, und steuern dann die Umsetzung. Ohne Fachjargon, mit einem Preis vor Projektbeginn.",
     ctaPrimary: "Analyse anfragen",
     ctaSecondary: "Frage stellen",
     proof: [
@@ -401,7 +401,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiSearch,
         title: "Cybersicherheits-Analyse",
-        price: "ab 790 €",
+        price: "ab 1 000 €",
         unit: "netto · 1 bis 2 Tage",
         forWho: "Um zu wissen, wo Sie stehen, ohne ein Audit von 200 Seiten.",
         items: [
@@ -414,7 +414,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiFileText,
         title: "DSGVO-Konformität",
-        price: "ab 1 490 €",
+        price: "ab 3 000 €",
         unit: "netto · 2 bis 4 Wochen",
         forWho: "Um konform zu sein und es nachweisen zu können, ohne Ihre Teams zu blockieren.",
         items: [
@@ -427,7 +427,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiTarget,
         title: "Risikoanalyse EBIOS RM",
-        price: "ab 2 900 €",
+        price: "ab 6 000 €",
         unit: "netto · auf Anfrage",
         forWho: "Um Ihre Sicherheitsinvestitionen auf echte Risiken zu stützen, nicht auf Eindrücke.",
         items: [
@@ -440,8 +440,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiUsers,
         title: "Sensibilisierung der Teams",
-        price: "ab 690 €",
-        unit: "netto · halber Tag",
+        price: "ab 1 000 €",
+        unit: "netto · 1 Sitzung, inkl. Vorbereitung",
         forWho: "Damit Ihre Teams zur ersten Verteidigungslinie werden.",
         items: [
           "Phishing, Passwörter, mobile Nutzung, Homeoffice",
@@ -453,8 +453,8 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiShield,
         title: "Sicherheitsverantwortlicher auf Teilzeit",
-        price: "ab 890 €",
-        unit: "netto / Monat · ohne lange Bindung",
+        price: "ab 1 900 €",
+        unit: "netto / Monat · 2 Tage pro Monat, ohne lange Bindung",
         forWho: "Ein Sicherheitsverantwortlicher tageweise, ohne Neueinstellung.",
         items: [
           "Jährliche Sicherheits-Roadmap und Dashboard",
@@ -485,16 +485,16 @@ const COPY: Record<Locale, Copy> = {
       { title: "Bezifferter Massnahmenplan", desc: "Sie wissen, was zu tun ist, in welcher Reihenfolge und mit welchem Budget." },
       { title: "Umsetzung und Nachverfolgung", desc: "Wir steuern oder begleiten die Umsetzung, mit regelmässigen Terminen bis zu den Compliance-Nachweisen." },
     ],
-    expertTitle: "Die Expertise hinter der Leistung",
+    expertTitle: "Ihr Experte: Vincent L’helgoual’ch",
     expertIntro:
-      "Ein praxiserprobtes Profil mit Ausbildung in Informationssicherheit (Master), das in grossen Organisationen sowohl auf der technischen als auch auf der Governance-Seite gearbeitet hat.",
+      "Vincent ist ein praxiserprobtes Profil mit Ausbildung in Informationssicherheit (Master), das in grossen Organisationen sowohl auf der technischen als auch auf der Governance-Seite gearbeitet hat.",
     skills: [
       { group: "Governance und Compliance", items: ["ISO 27001 / 27005", "NIST, CIS", "DSGVO, Privacy by Design", "DORA", "EBIOS RM", "Drittparteien-Risiken (TPRM)"] },
       { group: "Sicherheitssteuerung", items: ["Sicherheitsprogramme und Roadmaps", "Audits und Penetrationstests: Planung und Nachverfolgung", "Operative und strategische Gremien", "Sensibilisierung"] },
       { group: "Technik und Werkzeuge", items: ["Web-Schwachstellenscans (DAST)", "CI/CD, Jenkins, Geheimnisverwaltung (Vault)", "Linux-Härtung (CIS)", "Azure, ServiceNow"] },
     ],
     credentials: ["Master in Informationssicherheit", "CSX Fundamentals (ISACA)", "EBIOS RM (EGÉRIE)", "Fliessend Englisch (TOEIC 970)"],
-    trackTitle: "Aus früheren Einsätzen unseres Experten",
+    trackTitle: "Aus früheren Einsätzen von Vincent",
     track: [
       "Über 100 begleitete Compliance- und Sicherheitsprojekte",
       "Über 30 begleitete Penetrationstests mit Korrekturplänen",
@@ -506,7 +506,7 @@ const COPY: Record<Locale, Copy> = {
       "Wir planen, steuern und verfolgen Audits und Penetrationstests. Die offensiven Tests selbst übernimmt ein spezialisierter Dienstleister, bei dessen Auswahl wir helfen. Kein Auftrag beginnt ohne schriftliche Einigung über den Umfang, und Ihre Daten bleiben vertraulich.",
     webTitle: "Eine sicher gelieferte Website",
     webBody:
-      "Für unsere Web-Kunden: Sicherheitsprüfung der Website (Header, Zugänge, Backups) sowie DSGVO-konformes Impressum, Cookies und Formulare, optional ab 290 € netto.",
+      "Für unsere Web-Kunden: Sicherheitsprüfung der Website (Header, Zugänge, Backups) sowie DSGVO-konformes Impressum, Cookies und Formulare, optional ab 490 € netto.",
     webCta: "Web-Angebote ansehen",
     ctaTitle: "In 2 Tagen wissen, wo Sie stehen",
     ctaBody: "Ein kostenloses Gespräch von 30 Minuten. Sie gehen mit einer klaren Vorstellung von Umfang und Preis, unverbindlich.",

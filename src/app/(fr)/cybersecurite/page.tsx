@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/cybersecurite",
   title: "Cybersécurité & conformité pour PME : RGPD, ISO 27001, DORA | KAH Digital Studio",
   description:
-    "Diagnostic cybersécurité, mise en conformité RGPD, analyse de risques EBIOS RM, sensibilisation des équipes, RSSI à temps partagé. Un expert avec 7 ans en cybersécurité, prix annoncés avant de commencer.",
+    "Diagnostic cybersécurité, mise en conformité RGPD, analyse de risques EBIOS RM, sensibilisation des équipes, RSSI à temps partagé. Avec Vincent L’helgoual’ch, 7 ans en cybersécurité, prix annoncés avant de commencer.",
   keywords: [
     "cybersécurité PME",
     "diagnostic cybersécurité",
@@ -25,6 +25,7 @@ const jsonLd = {
   name: "Cybersécurité et conformité pour PME",
   provider: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   areaServed: ["FR", "CH"],
+  performer: { "@type": "Person", name: "Vincent L’helgoual’ch", jobTitle: "Expert cybersécurité et conformité" },
   serviceType: "Conseil en cybersécurité et conformité",
   description:
     "Diagnostic cybersécurité, conformité RGPD, analyse de risques EBIOS RM, sensibilisation des équipes, RSSI à temps partagé, accompagnement ISO 27001 et DORA.",
