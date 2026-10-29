@@ -81,12 +81,12 @@ const COPY: Record<Locale, Copy> = {
         desc: "Savoir si vos accès, sauvegardes, messageries et postes tiennent face aux risques courants, et être en règle avec le RGPD.",
       },
       {
-        title: "Professions réglementées et intermédiaires financiers",
-        desc: "Cabinets, courtiers, assureurs, conseillers : exigences RGPD, gestion des prestataires et résilience numérique (DORA).",
+        title: "Professions réglementées",
+        desc: "Avocats, experts-comptables, courtiers, conseillers en gestion de patrimoine : données sensibles, obligations RGPD et questionnaires de sécurité de vos clients.",
       },
       {
         title: "Startups et éditeurs SaaS",
-        desc: "Sécurité intégrée à vos projets : revue des pipelines CI/CD, gestion des secrets, durcissement des serveurs Linux, tests applicatifs.",
+        desc: "Sécurité intégrée à vos projets : pipelines CI/CD, gestion des secrets, durcissement Linux, tests applicatifs. Pour les prestataires de banques et d'assureurs : les preuves de sécurité attendues au titre de DORA.",
       },
       {
         title: "Entreprises qui répondent à un client exigeant",
@@ -232,12 +232,12 @@ const COPY: Record<Locale, Copy> = {
         desc: "Know whether your access, backups, email and devices stand up to common threats, and be compliant with GDPR.",
       },
       {
-        title: "Regulated professions and financial intermediaries",
-        desc: "Firms, brokers, insurers, advisers: GDPR requirements, supplier management and digital operational resilience (DORA).",
+        title: "Regulated professions",
+        desc: "Lawyers, accountants, brokers, wealth advisers: sensitive data, GDPR obligations and your clients' security questionnaires.",
       },
       {
         title: "Startups and SaaS vendors",
-        desc: "Security built into your projects: CI/CD pipeline review, secrets management, Linux server hardening, application testing.",
+        desc: "Security built into your projects: CI/CD pipelines, secrets management, Linux hardening, application testing. For suppliers to banks and insurers: the security evidence expected under DORA.",
       },
       {
         title: "Companies answering a demanding customer",
@@ -383,12 +383,12 @@ const COPY: Record<Locale, Copy> = {
         desc: "Wissen, ob Zugänge, Backups, E-Mail und Geräte gängigen Risiken standhalten, und die DSGVO einhalten.",
       },
       {
-        title: "Regulierte Berufe und Finanzvermittler",
-        desc: "Kanzleien, Makler, Versicherer, Berater: DSGVO-Anforderungen, Dienstleistersteuerung und digitale operative Resilienz (DORA).",
+        title: "Regulierte Berufe",
+        desc: "Anwälte, Steuer- und Wirtschaftsprüfer, Makler, Vermögensberater: sensible Daten, DSGVO-Pflichten und die Sicherheitsfragebögen Ihrer Kunden.",
       },
       {
         title: "Startups und SaaS-Anbieter",
-        desc: "Sicherheit in Ihren Projekten: Prüfung der CI/CD-Pipelines, Geheimnisverwaltung, Härtung von Linux-Servern, Anwendungstests.",
+        desc: "Sicherheit in Ihren Projekten: CI/CD-Pipelines, Geheimnisverwaltung, Linux-Härtung, Anwendungstests. Für Dienstleister von Banken und Versicherern: die unter DORA erwarteten Sicherheitsnachweise.",
       },
       {
         title: "Unternehmen mit anspruchsvollen Kunden",
