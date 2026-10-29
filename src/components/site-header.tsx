@@ -78,17 +78,17 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[68px] items-center md:h-[88px] justify-between gap-4">
-          <Link href={homeHref} className="shrink-0 !overflow-visible" aria-label={localeCopy.homeLabel}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-[1680px]:max-w-[1600px]">
+        <div className="flex h-[68px] items-center justify-between gap-4 md:h-[88px] xl:grid xl:grid-cols-[1fr_auto_1fr]">
+          <Link href={homeHref} className="shrink-0 !overflow-visible xl:justify-self-start" aria-label={localeCopy.homeLabel}>
             <BrandLockup compact subtitle={localeCopy.subtitle} />
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm xl:flex xl:gap-5">
+          <nav className="hidden items-center gap-4 text-sm xl:flex xl:justify-self-center xl:gap-2.5 xl:text-[13px] min-[1536px]:gap-3 min-[1536px]:text-sm min-[1680px]:gap-3.5">
             {localeCopy.nav.map((link) => {
               // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
               // liens secondaires (accueil = logo, références, blog, création d'entreprise) jusqu'à 1680px.
-              const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise)$/.test(link.href);
+              const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise)$/.test(link.href) || (locale === "de" && /\/devis$/.test(link.href)); // DE : « Offerte » = doublon du bouton « Kostenlos anfragen » (/de/devis)
               return (
               <Link
                 key={link.href}
@@ -105,7 +105,7 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 md:ml-auto md:flex xl:ml-0 xl:justify-self-end">
             <LanguageSwitcher />
             <Link
               href={localeCopy.ctaHref}
