@@ -79,3 +79,13 @@ jobs:
           echo "followup -> $CODE"; head -c 600 /tmp/f.json; echo
           [ "$CODE" = "200" ] || { echo "::error::Relances KO (HTTP $CODE)"; exit 1; }
           jq -e '.ok == true' /tmp/f.json >/dev/null || { echo "::error::Réponse relances ok != true"; exit 1; }
+
+      - name: Détection des réponses (Gmail)
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        run: |
+          CODE=$(curl -s -o /tmp/g.json -w "%{http_code}" --max-time 120 -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://kah-digital.ch/api/cron/gmail-replies" || echo 000)
+          echo "gmail-replies -> $CODE"; head -c 600 /tmp/g.json; echo
+          [ "$CODE" = "200" ] || { echo "::error::gmail-replies KO (HTTP $CODE)"; exit 1; }
