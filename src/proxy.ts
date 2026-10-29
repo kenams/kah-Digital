@@ -21,6 +21,23 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set("origin-agent-cluster", "?1");
   // CSP partielle sans risque : anti-clickjacking, anti-injection de <base>, pas de plugins, formulaires vers le site seulement.
   response.headers.set("content-security-policy", "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'");
+  // Politique complète en MODE RAPPORT SEUL (ne bloque rien) : on observe les violations via /api/csp-report avant de la rendre bloquante.
+  response.headers.set("content-security-policy-report-only", [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https:",
+    "font-src 'self' data:",
+    "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://challenges.cloudflare.com",
+    "frame-src https://challenges.cloudflare.com",
+    "worker-src 'self' blob:",
+    "manifest-src 'self'",
+    "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "form-action 'self'",
+    "report-uri /api/csp-report",
+  ].join("; "));
   return response;
 }
 

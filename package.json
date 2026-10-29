@@ -44,10 +44,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
-    "puppeteer": "^24.42.0",
+    "puppeteer": "^25.16.0",
     "tailwindcss": "^4",
     "tsx": "^4.19.2",
-    "typescript": "^5",
-    "vercel": "^50.1.3"
+    "typescript": "^5"
   }
 }

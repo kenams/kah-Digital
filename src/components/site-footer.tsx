@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CookieSettingsButton } from "@/components/cookie-consent";
 import { motion } from "framer-motion";
 import { BrandLockup } from "@/components/brand-lockup";
 import { companyConfig } from "@/config/company";
@@ -192,8 +193,8 @@ export function SiteFooter() {
       legal: {
         title: "Rechtliches",
         links: [
-          { label: "Impressum", href: "/de/devis" },
-          { label: "Datenschutz", href: "/de/devis" },
+          { label: "Impressum", href: "/mentions-legales" },
+          { label: "Datenschutz", href: "/confidentialite" },
         ],
       },
       location: "Toulouse, Frankreich",
@@ -338,6 +339,10 @@ export function SiteFooter() {
                 {link.label}
               </Link>
             ))}
+            <CookieSettingsButton
+              label={locale === "fr" ? "Gérer les cookies" : locale === "en" ? "Manage cookies" : "Cookies verwalten"}
+              className="text-xs text-white/30 transition-colors hover:text-white/60"
+            />
             <span className="text-white/15">·</span>
             {/* Language switcher */}
             <div className="flex items-center gap-1.5">

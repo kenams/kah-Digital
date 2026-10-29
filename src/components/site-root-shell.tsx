@@ -1,5 +1,5 @@
 import { DM_Sans, Geist_Mono, Syne } from "next/font/google";
-import Script from "next/script";
+import { CookieConsent } from "@/components/cookie-consent";
 import { FlashInteractions } from "@/components/flash-interactions";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
@@ -48,21 +48,7 @@ export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         />
-        {GA_MEASUREMENT_ID ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-            </Script>
-          </>
-        ) : null}
+        <CookieConsent gaId={GA_MEASUREMENT_ID} />
         <SiteProviders>
           <CursorGlow />
           <ScrollProgress />
