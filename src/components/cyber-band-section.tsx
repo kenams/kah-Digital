@@ -58,6 +58,11 @@ export function CyberBandSection() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-sm text-gray-300">
+              <span className="font-semibold text-white">Vincent L’helgoual’ch</span> ·{" "}
+              <a href="tel:+33762607458" className="font-semibold text-emerald-300 underline-offset-4 hover:underline">+33 7 62 60 74 58</a> ·{" "}
+              <a href="mailto:vlhelgoualch@gmail.com" className="font-semibold text-emerald-300 underline-offset-4 hover:underline">vlhelgoualch@gmail.com</a>
+            </p>
           </div>
           <Link
             href={c.href}

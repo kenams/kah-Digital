@@ -25,7 +25,7 @@ const jsonLd = {
   name: "Cybersecurity and compliance for SMEs",
   provider: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   areaServed: ["FR", "CH"],
-  performer: { "@type": "Person", name: "Vincent L’helgoual’ch", jobTitle: "Cybersecurity and compliance expert" },
+  performer: { "@type": "Person", name: "Vincent L’helgoual’ch", jobTitle: "Cybersecurity and compliance expert", telephone: "+33762607458", email: "vlhelgoualch@gmail.com" },
   serviceType: "Cybersecurity and compliance consulting",
   description:
     "Cybersecurity assessment, GDPR compliance, EBIOS RM risk analysis, team awareness training, part-time security officer, ISO 27001 and DORA support.",

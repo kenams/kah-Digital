@@ -6,6 +6,8 @@ import {
   FiClipboard,
   FiFileText,
   FiLock,
+  FiMail,
+  FiPhone,
   FiSearch,
   FiShield,
   FiTarget,
@@ -16,6 +18,14 @@ import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
 
 type Props = { locale: Locale };
+
+const EXPERT = {
+  name: "Vincent L’helgoual’ch",
+  initials: "VL",
+  phoneDisplay: "+33 7 62 60 74 58",
+  phoneHref: "tel:+33762607458",
+  email: "vlhelgoualch@gmail.com",
+};
 
 type Offer = {
   icon: IconType;
@@ -43,6 +53,8 @@ type Copy = {
   methodTitle: string;
   steps: { title: string; desc: string }[];
   expertTitle: string;
+  expertRole: string;
+  directContact: string;
   expertIntro: string;
   skills: { group: string; items: string[] }[];
   credentials: string[];
@@ -183,6 +195,8 @@ const COPY: Record<Locale, Copy> = {
       { title: "Plan d'action chiffré", desc: "Vous savez quoi faire, dans quel ordre, pour quel budget." },
       { title: "Mise en œuvre et suivi", desc: "On pilote ou on vous accompagne, avec un point régulier jusqu'aux preuves de conformité." },
     ],
+    expertRole: "Expert cybersécurité et conformité",
+    directContact: "Contact direct",
     expertTitle: "Votre expert : Vincent L’helgoual’ch",
     expertIntro:
       "Vincent est un profil de terrain, formé en sécurité informatique (Master Sécurité Informatique), qui a travaillé aussi bien côté technique que côté gouvernance, dans de grandes organisations.",
@@ -334,6 +348,8 @@ const COPY: Record<Locale, Copy> = {
       { title: "Costed action plan", desc: "You know what to do, in which order and for what budget." },
       { title: "Delivery and follow-up", desc: "We lead or support delivery, with regular check-ins until the compliance evidence is in place." },
     ],
+    expertRole: "Cybersecurity and compliance expert",
+    directContact: "Direct contact",
     expertTitle: "Your expert: Vincent L’helgoual’ch",
     expertIntro:
       "Vincent is a field-tested profile, trained in information security (Master's degree), who has worked on both the technical and governance sides in large organisations.",
@@ -485,6 +501,8 @@ const COPY: Record<Locale, Copy> = {
       { title: "Bezifferter Massnahmenplan", desc: "Sie wissen, was zu tun ist, in welcher Reihenfolge und mit welchem Budget." },
       { title: "Umsetzung und Nachverfolgung", desc: "Wir steuern oder begleiten die Umsetzung, mit regelmässigen Terminen bis zu den Compliance-Nachweisen." },
     ],
+    expertRole: "Experte für Cybersicherheit und Compliance",
+    directContact: "Direkter Kontakt",
     expertTitle: "Ihr Experte: Vincent L’helgoual’ch",
     expertIntro:
       "Vincent ist ein praxiserprobtes Profil mit Ausbildung in Informationssicherheit (Master), das in grossen Organisationen sowohl auf der technischen als auch auf der Governance-Seite gearbeitet hat.",
@@ -515,6 +533,41 @@ const COPY: Record<Locale, Copy> = {
   },
 };
 
+function ExpertCard({ role, label, focus }: { role: string; label: string; focus: string }) {
+  return (
+    <div className="flex flex-col gap-4 rounded-2xl border border-emerald-400/25 bg-emerald-400/[0.06] p-4 sm:flex-row sm:items-center sm:gap-5 sm:px-5">
+      <div className="flex items-center gap-4">
+        <div
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-emerald-300/40 bg-[#04120c] text-lg font-extrabold text-emerald-300"
+          aria-hidden="true"
+        >
+          {EXPERT.initials}
+        </div>
+        <div>
+          <p className="text-lg font-extrabold leading-tight text-white">{EXPERT.name}</p>
+          <p className="text-sm text-emerald-200">{role}</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2 sm:ml-auto sm:items-end" aria-label={label}>
+        <a
+          href={EXPERT.phoneHref}
+          className={`inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-emerald-300 ${focus}`}
+        >
+          <FiPhone size={14} className="text-emerald-300" aria-hidden="true" />
+          {EXPERT.phoneDisplay}
+        </a>
+        <a
+          href={`mailto:${EXPERT.email}`}
+          className={`inline-flex items-center gap-2 break-all text-sm font-semibold text-white transition hover:text-emerald-300 ${focus}`}
+        >
+          <FiMail size={14} className="text-emerald-300" aria-hidden="true" />
+          {EXPERT.email}
+        </a>
+      </div>
+    </div>
+  );
+}
+
 export function CybersecurityPageContent({ locale }: Props) {
   const c = COPY[locale];
   const focus =
@@ -544,6 +597,10 @@ export function CybersecurityPageContent({ locale }: Props) {
             {c.title} <span className="text-emerald-300">{c.title2}</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-gray-300">{c.intro}</p>
+
+          <div className="mt-8 max-w-2xl">
+            <ExpertCard role={c.expertRole} label={c.directContact} focus={focus} />
+          </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -645,6 +702,9 @@ export function CybersecurityPageContent({ locale }: Props) {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-white">{c.expertTitle}</h2>
           <p className="mt-3 max-w-3xl text-gray-300">{c.expertIntro}</p>
+          <div className="mt-6 max-w-2xl">
+            <ExpertCard role={c.expertRole} label={c.directContact} focus={focus} />
+          </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {c.skills.map((g) => (
@@ -722,6 +782,16 @@ export function CybersecurityPageContent({ locale }: Props) {
             {c.ctaButton} <FiArrowRight size={16} aria-hidden="true" />
           </Link>
           <p className="mt-4 text-xs text-gray-400">{c.ctaSub}</p>
+          <p className="mt-5 text-sm text-gray-300">
+            {c.directContact} : {EXPERT.name} ·{" "}
+            <a href={EXPERT.phoneHref} className={`font-semibold text-emerald-300 underline-offset-4 hover:underline ${focus}`}>
+              {EXPERT.phoneDisplay}
+            </a>{" "}
+            ·{" "}
+            <a href={`mailto:${EXPERT.email}`} className={`font-semibold text-emerald-300 underline-offset-4 hover:underline ${focus}`}>
+              {EXPERT.email}
+            </a>
+          </p>
         </div>
       </section>
     </>

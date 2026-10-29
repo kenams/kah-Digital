@@ -25,7 +25,7 @@ const jsonLd = {
   name: "Cybersécurité et conformité pour PME",
   provider: { "@type": "Organization", name: "KAH Digital Studio", url: "https://kah-digital.ch" },
   areaServed: ["FR", "CH"],
-  performer: { "@type": "Person", name: "Vincent L’helgoual’ch", jobTitle: "Expert cybersécurité et conformité" },
+  performer: { "@type": "Person", name: "Vincent L’helgoual’ch", jobTitle: "Expert cybersécurité et conformité", telephone: "+33762607458", email: "vlhelgoualch@gmail.com" },
   serviceType: "Conseil en cybersécurité et conformité",
   description:
     "Diagnostic cybersécurité, conformité RGPD, analyse de risques EBIOS RM, sensibilisation des équipes, RSSI à temps partagé, accompagnement ISO 27001 et DORA.",
