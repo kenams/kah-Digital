@@ -10,8 +10,10 @@ name: Prospection KAH Digital
 
 on:
   schedule:
-    - cron: "10 8 * * 1-5"    # prospection ~10h Paris
-    - cron: "10 13 * * 1-5"   # prospection ~15h Paris
+    - cron: "10 8 * * 1-5"    # prospection ~9h10 Paris (hiver)
+    - cron: "10 11 * * 1-5"   # prospection ~12h10 Paris
+    - cron: "10 14 * * 1-5"   # prospection ~15h10 Paris
+    - cron: "10 17 * * 1-5"   # prospection ~18h10 Paris
     - cron: "0 10 * * *"      # relances ~12h Paris
     - cron: "0 17 * * *"      # relances ~19h Paris
   workflow_dispatch:
@@ -46,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Prospection (nouveaux prospects)
-        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["10 8 * * 1-5","10 13 * * 1-5"]'), github.event.schedule)
+        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["10 8 * * 1-5","10 11 * * 1-5","10 14 * * 1-5","10 17 * * 1-5"]'), github.event.schedule)
         run: |
           DRY=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then DRY="?dry=1"; fi
