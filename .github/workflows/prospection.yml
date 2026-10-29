@@ -87,5 +87,5 @@ jobs:
           CODE=$(curl -s -o /tmp/g.json -w "%{http_code}" --max-time 120 -X POST \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             "https://kah-digital.ch/api/cron/gmail-replies" || echo 000)
-          echo "gmail-replies -> $CODE"; head -c 600 /tmp/g.json; echo
+          echo "gmail-replies -> $CODE"; jq -r '"checked=\(.checked) matched=\(.matched)"' /tmp/g.json 2>/dev/null || true
           [ "$CODE" = "200" ] || { echo "::error::gmail-replies KO (HTTP $CODE)"; exit 1; }
