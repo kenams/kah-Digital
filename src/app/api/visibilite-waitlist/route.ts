@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 const SLUG = "visibilite-locale";
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -15,6 +16,10 @@ function getSupabase() {
 // l'alerte Telegram part toute seule à 15 inscrits.
 export async function POST(req: Request) {
   try {
+    const rate = rateLimit(`visibilite-waitlist:${getRequestIp(req)}`, { windowMs: 60 * 60 * 1000, max: 10 });
+    if (!rate.allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429, headers: { "Retry-After": String(rate.retryAfter) } });
+    }
     const body = (await req.json()) as { email?: string };
     const email = String(body.email ?? "").trim().toLowerCase();
     if (!EMAIL.test(email) || email.length > 200) {

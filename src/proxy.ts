@@ -19,6 +19,8 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set("cross-origin-opener-policy", "same-origin");
   response.headers.set("cross-origin-resource-policy", "same-origin");
   response.headers.set("origin-agent-cluster", "?1");
+  // CSP partielle sans risque : anti-clickjacking, anti-injection de <base>, pas de plugins, formulaires vers le site seulement.
+  response.headers.set("content-security-policy", "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'");
   return response;
 }
 

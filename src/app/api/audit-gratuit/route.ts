@@ -6,6 +6,8 @@ import { auditWebsite } from "@/lib/agents/website-auditor";
 import { sendAdminNotification } from "@/lib/gmail";
 import { Resend } from "resend";
 import { getResendFromAddress } from "@/lib/mail";
+import { isValidEmail } from "@/lib/html-escape";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 function getSupabase() {
   return createClient(
@@ -52,11 +54,16 @@ ${audit.priceRange ? `<p>Budget indicatif : <strong>${esc(audit.priceRange)}</st
 
 export async function POST(req: Request) {
   try {
+    // Endpoint public qui lance un audit (téléchargement d'un site, IA) et envoie un e-mail : on limite l'abus.
+    const rate = rateLimit(`audit-gratuit:${getRequestIp(req)}`, { windowMs: 60 * 60 * 1000, max: 5 });
+    if (!rate.allowed) {
+      return NextResponse.json({ error: "Trop de demandes. Réessayez plus tard." }, { status: 429, headers: { "Retry-After": String(rate.retryAfter) } });
+    }
     const { businessName, website, email, phone } = await req.json() as {
       businessName?: string; website?: string; email: string; phone?: string;
     };
 
-    if (!email) {
+    if (!email || !isValidEmail(email)) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 

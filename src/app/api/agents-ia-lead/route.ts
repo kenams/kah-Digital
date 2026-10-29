@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { sendTelegramAlert } from "@/lib/notify";
 import { sendAdminNotification } from "@/lib/gmail";
 import { Resend } from "resend";
+import { clip, escapeHtml, isValidEmail } from "@/lib/html-escape";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -242,29 +244,39 @@ function buildEmail(firstName: string, tpl: AgentTemplate): string {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json() as {
-      name?: string;
-      email?: string;
-      agent?: string;
-      message?: string;
-    };
-
-    const { name, email, agent, message } = body;
-
-    if (!email) {
-      return NextResponse.json({ error: "Email requis" }, { status: 400 });
+    const ip = getRequestIp(req);
+    const rate = rateLimit(`agents-lead:${ip}`, { windowMs: 60 * 60 * 1000, max: 5 });
+    if (!rate.allowed) {
+      return NextResponse.json({ error: "Trop de demandes. Réessayez plus tard." }, { status: 429, headers: { "Retry-After": String(rate.retryAfter) } });
     }
 
-    const firstName = name?.split(" ")[0] ?? "là";
+    const body = (await req.json().catch(() => ({}))) as Record<string, unknown>;
+    const email = clip(body.email, 200).toLowerCase();
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Email requis" }, { status: 400 });
+    }
+    const name = clip(body.name, 80) || undefined;
+    const agent = clip(body.agent, 80) || undefined;
+    const message = clip(body.message, 1000, true) || undefined;
+
+    // Un seul e-mail automatique par adresse et par jour : pas de relais pour inonder une boîte tierce.
+    const perEmail = rateLimit(`agents-lead-email:${email}`, { windowMs: 24 * 60 * 60 * 1000, max: 1 });
+    if (!perEmail.allowed) return NextResponse.json({ ok: true });
+
+    const safeName = name ? escapeHtml(name) : undefined;
+    const safeEmail = escapeHtml(email);
+    const safeAgent = agent ? escapeHtml(agent) : undefined;
+    const safeMessage = message ? escapeHtml(message).replace(/\n/g, "<br/>") : undefined;
+    const firstName = escapeHtml(name?.split(" ")[0] ?? "là");
     const tpl = getTemplate(agent);
 
     // Telegram — alerte immédiate
     const telegramAlert = sendTelegramAlert(
       `🤖 <b>NOUVEAU LEAD AGENTS IA !</b>\n\n` +
-      `👤 <b>${name ?? "Anonyme"}</b>\n` +
-      `📧 ${email}\n` +
-      `🎯 Agent : ${agent ?? "Non précisé"}\n` +
-      `${message ? `💬 ${message}\n` : ""}` +
+      `👤 <b>${safeName ?? "Anonyme"}</b>\n` +
+      `📧 ${safeEmail}\n` +
+      `🎯 Agent : ${safeAgent ?? "Non précisé"}\n` +
+      `${safeMessage ? `💬 ${safeMessage}\n` : ""}` +
       `\n<a href="${SITE}/admin/prospection">📊 Admin</a>`
     ).catch(console.error);
 
@@ -272,10 +284,10 @@ export async function POST(req: Request) {
     const adminMail = sendAdminNotification({
       subject: `🤖 LEAD AGENTS IA — ${name ?? email} · ${agent ?? "?"}`,
       body: `<strong style="color:#7c3aed;font-size:17px;">Nouveau lead page Agents IA !</strong><br/><br/>
-<strong>Nom :</strong> ${name ?? "?"}<br/>
-<strong>Email :</strong> <a href="mailto:${email}">${email}</a><br/>
-<strong>Agent demandé :</strong> ${agent ?? "Non précisé"}<br/>
-${message ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #7c3aed;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${message}</div>` : ""}
+<strong>Nom :</strong> ${safeName ?? "?"}<br/>
+<strong>Email :</strong> <a href="mailto:${safeEmail}">${safeEmail}</a><br/>
+<strong>Agent demandé :</strong> ${safeAgent ?? "Non précisé"}<br/>
+${safeMessage ? `<br/><strong>Message :</strong><br/><div style="background:#f9fafb;border-left:3px solid #7c3aed;padding:12px;margin-top:6px;border-radius:0 6px 6px 0;">${safeMessage}</div>` : ""}
 <br/><br/><a href="${CALENDLY}" style="background:#7c3aed;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:700;">📅 Voir Calendly</a>`,
     }).catch(console.error);
 

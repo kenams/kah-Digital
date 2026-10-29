@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { insertSocialLog } from "@/lib/social-store";
+import { safeEqual } from "@/lib/safe-equal";
 
 const WEBHOOK_SECRET = process.env.SOCIAL_WEBHOOK_SECRET ?? "";
 
 export async function POST(req: NextRequest) {
   try {
     const secret = req.headers.get("x-webhook-secret") ?? "";
-    if (WEBHOOK_SECRET && secret !== WEBHOOK_SECRET) {
+    if (!WEBHOOK_SECRET || !safeEqual(secret, WEBHOOK_SECRET)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

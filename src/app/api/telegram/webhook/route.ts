@@ -5,6 +5,8 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { escapeHtml } from "@/lib/html-escape";
+import { safeEqual } from "@/lib/safe-equal";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +28,14 @@ type TelegramUpdate = {
 
 export async function POST(req: NextRequest) {
   try {
+    // Sans ce secret (défini à l'enregistrement du webhook chez Telegram), n'importe qui pourrait
+    // remplacer le chat_id des alertes. Échec fermé si le secret n'est pas configuré.
+    const expected = process.env.TELEGRAM_WEBHOOK_SECRET ?? "";
+    const provided = req.headers.get("x-telegram-bot-api-secret-token") ?? "";
+    if (!expected || !safeEqual(provided, expected)) {
+      return NextResponse.json({ ok: false }, { status: 401 });
+    }
+
     const body = await req.json() as TelegramUpdate;
     const chat = body.message?.chat;
     if (!chat?.id) return NextResponse.json({ ok: true });
@@ -52,7 +62,7 @@ export async function POST(req: NextRequest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: chatId,
-          text: `✅ KAH Digital Studio — Notifications activées, ${firstName} !\n\nTu recevras une alerte ici dès qu'un prospect remplit le formulaire ou répond à un email.`,
+          text: `✅ KAH Digital Studio — Notifications activées, ${escapeHtml(firstName)} !\n\nTu recevras une alerte ici dès qu'un prospect remplit le formulaire ou répond à un email.`,
           parse_mode: "HTML",
         }),
       });

@@ -3,6 +3,8 @@ import { cleanUrl } from "@/lib/clean-url";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { notifyNewLead } from "@/lib/notify";
+import { UUID_RE, clip, isHttpUrl, isValidEmail } from "@/lib/html-escape";
+import { getRequestIp, rateLimit } from "@/lib/rate-limit";
 
 const SITE_URL = cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://kah-digital.ch";
 
@@ -13,14 +15,22 @@ export async function POST(req: NextRequest) {
       phone?: string; businessName?: string; siteUrl?: string;
     };
 
-    const safeName = (name ?? "").trim();
-    const safeEmail = (email ?? "").trim();
-    const safePhone = (phone ?? "").trim();
-    const safeBusiness = (businessName ?? siteUrl ?? "?").trim();
-    const safeSite = (siteUrl ?? "").trim();
+    const rate = rateLimit(`prospect-interest:${getRequestIp(req)}`, { windowMs: 60 * 60 * 1000, max: 10 });
+    if (!rate.allowed) {
+      return NextResponse.json({ ok: false, error: "Trop de demandes" }, { status: 429, headers: { "Retry-After": String(rate.retryAfter) } });
+    }
 
-    if (!safeName || !safeEmail) {
+    const safeName = clip(name, 80);
+    const safeEmail = clip(email, 200).toLowerCase();
+    const safePhone = clip(phone, 30);
+    const safeBusiness = clip(businessName ?? siteUrl ?? "?", 120) || "?";
+    const safeSite = isHttpUrl(siteUrl) ? siteUrl.trim() : "";
+
+    if (!safeName || !isValidEmail(safeEmail)) {
       return NextResponse.json({ ok: false, error: "name + email requis" }, { status: 400 });
+    }
+    if (prospectId && !UUID_RE.test(prospectId)) {
+      return NextResponse.json({ ok: false, error: "prospectId invalide" }, { status: 400 });
     }
 
     // Notif Telegram + Email (centralisé)

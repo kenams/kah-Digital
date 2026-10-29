@@ -4,6 +4,7 @@
  * Email : utilise Resend → kahdigital42@gmail.com
  */
 import { createClient } from "@supabase/supabase-js";
+import { escapeHtml, isHttpUrl } from "@/lib/html-escape";
 import { Resend } from "resend";
 
 function getSupabase() {
@@ -62,7 +63,12 @@ export async function notifyNewLead(params: {
   siteUrl?: string;
   prospectPageUrl?: string;
 }): Promise<void> {
-  const { businessName, name, email, phone, siteUrl, prospectPageUrl } = params;
+  const businessName = escapeHtml(params.businessName);
+  const name = escapeHtml(params.name);
+  const email = escapeHtml(params.email);
+  const phone = params.phone ? escapeHtml(params.phone) : undefined;
+  const siteUrl = params.siteUrl && isHttpUrl(params.siteUrl) ? escapeHtml(params.siteUrl) : undefined;
+  const { prospectPageUrl } = params;
   const waLink = phone ? `https://wa.me/${phone.replace(/[^0-9]/g, "")}` : null;
 
   // Telegram

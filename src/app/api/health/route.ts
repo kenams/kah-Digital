@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { safeEqual } from "@/lib/safe-equal";
 import Anthropic from "@anthropic-ai/sdk";
 import { getRecentAssistantRecords, isSupabaseConfigured as isAssistantSupabaseConfigured } from "@/lib/assistant-store";
 import { getRecentQuotes, isSupabaseConfigured as isQuoteSupabaseConfigured } from "@/lib/quote-store";
@@ -17,7 +18,22 @@ function makeCheck(status: CheckStatus, detail: string): ServiceCheck {
   return { status, detail };
 }
 
-export async function GET() {
+function isAuthorizedHealth(request: Request) {
+  const secret = process.env.CRON_SECRET ?? "";
+  const header = request.headers.get("authorization") ?? "";
+  return secret.length > 0 && safeEqual(header, `Bearer ${secret}`);
+}
+
+export async function GET(request: Request) {
+  // Public : simple signe de vie. Le détail des services (et le test de l'API IA, qui coûte du crédit)
+  // n'est accessible qu'avec le secret d'exploitation.
+  if (!isAuthorizedHealth(request)) {
+    return NextResponse.json(
+      { status: "ok", checkedAt: new Date().toISOString() },
+      { headers: { "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" } }
+    );
+  }
+
   const checks: Record<string, ServiceCheck> = {
     app: makeCheck("ok", "Application reachable"),
     resend: process.env.RESEND_API_KEY
