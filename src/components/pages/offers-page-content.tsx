@@ -589,7 +589,7 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
             {cyber.items.map((item) => (
               <div
                 key={item.label}
-                className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-gray-950 px-5 py-4"
+                className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border border-white/10 bg-gray-950 px-5 py-4"
               >
                 <span className="text-sm text-gray-300">{item.label}</span>
                 <span className="shrink-0 text-sm font-semibold text-emerald-300">{item.price}</span>

@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/contact",
-  title: "Contact",
+  title: "Contact — free quote within 24h | KAH Digital Studio",
   description: "Tell us about your website, app, AI, or support need. Clear reply within 24 hours.",
 });
 

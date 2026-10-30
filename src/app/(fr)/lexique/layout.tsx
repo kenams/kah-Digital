@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "fr",
   path: "/lexique",
-  title: "Lexique",
+  title: "Lexique web, produit et mobile : les termes expliqués | KAH Digital Studio",
   description: "Definitions claires pour les termes web, produit et mobile en quelques minutes.",
 });
 

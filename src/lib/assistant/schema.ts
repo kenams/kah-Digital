@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// Évite le test Function("") de zod, qui déclenche une violation de la politique de sécurité à chaque page vue.
+z.config({ jitless: true });
+
 export const assistantIntentSchema = z.enum([
   "project_quote",
   "support_glpi",

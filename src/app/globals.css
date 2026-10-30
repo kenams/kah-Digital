@@ -17,6 +17,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: radial-gradient(circle at 12% 18%, rgba(214, 179, 106, 0.18), transparent 52%),
     radial-gradient(circle at 80% 0%, rgba(127, 184, 199, 0.18), transparent 48%),

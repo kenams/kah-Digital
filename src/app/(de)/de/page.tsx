@@ -11,7 +11,7 @@ import { CyberBandSection } from "@/components/cyber-band-section";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/",
-  title: "KAH Digital Studio — Websites, KI-Agenten & Cybersicherheit · Toulouse · Frankreich & Schweiz",
+  title: "KAH Digital Studio — Websites, KI-Agenten & Cybersicherheit · Toulouse",
   description:
     "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
   keywords: [

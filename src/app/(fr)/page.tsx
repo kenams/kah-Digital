@@ -19,7 +19,7 @@ import { CyberBandSection } from "@/components/cyber-band-section";
 export const metadata = buildPageMetadata({
   locale: "fr",
   path: "/",
-  title: "KAH Digital Studio — Sites web, agents IA et cybersécurité · Toulouse · France & Suisse",
+  title: "KAH Digital Studio — Sites web, agents IA et cybersécurité · Toulouse",
   description:
     "KAH Digital Studio crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Studio à Toulouse, clients en France et en Suisse.",
   keywords: [

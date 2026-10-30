@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// Évite le test Function("") de zod, qui déclenche une violation de la politique de sécurité à chaque page vue.
+z.config({ jitless: true });
+
 const configuratorSchema = z
   .object({
     siteType: z.string().optional(),

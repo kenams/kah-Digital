@@ -12,7 +12,7 @@ import { CyberBandSection } from "@/components/cyber-band-section";
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/",
-  title: "KAH Digital Studio — Websites, AI Agents & Cybersecurity · Toulouse · France & Switzerland",
+  title: "KAH Digital Studio — Websites, AI Agents & Cybersecurity · Toulouse",
   description:
     "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
   keywords: [
