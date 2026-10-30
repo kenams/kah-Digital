@@ -72,7 +72,7 @@ const PLANS = {
       badge: "Agent inclus",
       badgeStyle: "amber",
       tagline: "Un agent IA branché sur votre métier, qui travaille pour vous 24h/24 — sur le modèle de KAH Workforce.",
-      delivery: "Livré en 28 jours",
+      delivery: "Livré en 10 à 28 jours",
       highlight: false,
       accent: "amber",
       includes: [
@@ -154,7 +154,7 @@ const PLANS = {
       badge: "Agent included",
       badgeStyle: "amber",
       tagline: "An AI agent wired into your business, working for you 24/7 — built on the KAH Workforce model.",
-      delivery: "Delivered in 28 days",
+      delivery: "Delivered in 10 to 28 days",
       highlight: false,
       accent: "amber",
       includes: [
@@ -236,7 +236,7 @@ const PLANS = {
       badge: "Agent inklusive",
       badgeStyle: "amber",
       tagline: "Ein KI-Agent, der in Ihr Geschäft eingebettet ist und 24/7 für Sie arbeitet — nach dem Vorbild von KAH Workforce.",
-      delivery: "Geliefert in 28 Tagen",
+      delivery: "Geliefert in 10 bis 28 Tagen",
       highlight: false,
       accent: "amber",
       includes: [

@@ -264,7 +264,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiSearch,
         title: "Cybersecurity assessment",
-        price: "from €1,000",
+        price: "from $1,000",
         unit: "excl. tax · 1 to 2 days",
         forWho: "To know where you stand, without a 200-page audit.",
         items: [
@@ -277,7 +277,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiFileText,
         title: "GDPR compliance",
-        price: "from €3,000",
+        price: "from $3,000",
         unit: "excl. tax · 2 to 4 weeks",
         forWho: "To be compliant and able to prove it, without tying up your teams.",
         items: [
@@ -290,7 +290,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiTarget,
         title: "EBIOS RM risk analysis",
-        price: "from €6,000",
+        price: "from $6,000",
         unit: "excl. tax · on quote",
         forWho: "To decide your security spending on real risks, not impressions.",
         items: [
@@ -303,7 +303,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiUsers,
         title: "Team awareness training",
-        price: "from €1,000",
+        price: "from $1,000",
         unit: "excl. tax · 1 session, preparation included",
         forWho: "To turn your people into the first line of defence.",
         items: [
@@ -316,7 +316,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiShield,
         title: "Part-time security officer",
-        price: "from €1,900",
+        price: "from $1,900",
         unit: "excl. tax / month · 2 days per month, no long commitment",
         forWho: "A security lead by the day, without hiring one.",
         items: [
@@ -371,7 +371,7 @@ const COPY: Record<Locale, Copy> = {
       "We scope, lead and follow up audits and penetration tests. The offensive tests themselves are carried out by a specialist provider that we help you choose. No engagement starts without written agreement on scope, and your data stays confidential.",
     webTitle: "A website delivered secure",
     webBody:
-      "For our web clients: a security review of the site (headers, access, backups) and legal notices, cookies and forms compliant with GDPR, optional from €490 excl. tax.",
+      "For our web clients: a security review of the site (headers, access, backups) and legal notices, cookies and forms compliant with GDPR, optional from $490 excl. tax.",
     webCta: "See web offers",
     ctaTitle: "Know where you stand within 2 days",
     ctaBody: "A free 30-minute call. You leave with a clear view of scope and price, no commitment.",
@@ -417,7 +417,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiSearch,
         title: "Cybersicherheits-Analyse",
-        price: "ab 1 000 €",
+        price: "ab CHF 1'000",
         unit: "netto · 1 bis 2 Tage",
         forWho: "Um zu wissen, wo Sie stehen, ohne ein Audit von 200 Seiten.",
         items: [
@@ -430,7 +430,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiFileText,
         title: "DSGVO-Konformität",
-        price: "ab 3 000 €",
+        price: "ab CHF 3'000",
         unit: "netto · 2 bis 4 Wochen",
         forWho: "Um konform zu sein und es nachweisen zu können, ohne Ihre Teams zu blockieren.",
         items: [
@@ -443,7 +443,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiTarget,
         title: "Risikoanalyse EBIOS RM",
-        price: "ab 6 000 €",
+        price: "ab CHF 6'000",
         unit: "netto · auf Anfrage",
         forWho: "Um Ihre Sicherheitsinvestitionen auf echte Risiken zu stützen, nicht auf Eindrücke.",
         items: [
@@ -456,7 +456,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiUsers,
         title: "Sensibilisierung der Teams",
-        price: "ab 1 000 €",
+        price: "ab CHF 1'000",
         unit: "netto · 1 Sitzung, inkl. Vorbereitung",
         forWho: "Damit Ihre Teams zur ersten Verteidigungslinie werden.",
         items: [
@@ -469,7 +469,7 @@ const COPY: Record<Locale, Copy> = {
       {
         icon: FiShield,
         title: "Sicherheitsverantwortlicher auf Teilzeit",
-        price: "ab 1 900 €",
+        price: "ab CHF 1'900",
         unit: "netto / Monat · 2 Tage pro Monat, ohne lange Bindung",
         forWho: "Ein Sicherheitsverantwortlicher tageweise, ohne Neueinstellung.",
         items: [
@@ -524,7 +524,7 @@ const COPY: Record<Locale, Copy> = {
       "Wir planen, steuern und verfolgen Audits und Penetrationstests. Die offensiven Tests selbst übernimmt ein spezialisierter Dienstleister, bei dessen Auswahl wir helfen. Kein Auftrag beginnt ohne schriftliche Einigung über den Umfang, und Ihre Daten bleiben vertraulich.",
     webTitle: "Eine sicher gelieferte Website",
     webBody:
-      "Für unsere Web-Kunden: Sicherheitsprüfung der Website (Header, Zugänge, Backups) sowie DSGVO-konformes Impressum, Cookies und Formulare, optional ab 490 € netto.",
+      "Für unsere Web-Kunden: Sicherheitsprüfung der Website (Header, Zugänge, Backups) sowie DSGVO-konformes Impressum, Cookies und Formulare, optional ab CHF 490 netto.",
     webCta: "Web-Angebote ansehen",
     ctaTitle: "In 2 Tagen wissen, wo Sie stehen",
     ctaBody: "Ein kostenloses Gespräch von 30 Minuten. Sie gehen mit einer klaren Vorstellung von Umfang und Preis, unverbindlich.",

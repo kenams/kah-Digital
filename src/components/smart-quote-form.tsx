@@ -118,7 +118,7 @@ const SERVICES: Service[] = [
     emoji: "🛡️",
     label:      { fr: "Cybersécurité & conformité", en: "Cybersecurity & compliance", de: "Cybersicherheit & Compliance" },
     shortDesc:  { fr: "Diagnostic, RGPD, ISO 27001, DORA",        en: "Assessment, GDPR, ISO 27001, DORA", de: "Analyse, DSGVO, ISO 27001, DORA" },
-    scopeLabel: { fr: "Diagnostic dès 1 000 € HT", en: "Assessment from €1,000 excl. tax", de: "Analyse ab 1 000 € netto" },
+    scopeLabel: { fr: "Diagnostic dès 1 000 € HT", en: "Assessment from $1,000 excl. tax", de: "Analyse ab CHF 1'000 netto" },
     delayLabel: { fr: "Devis sous 48 h",       en: "Quote within 48 h", de: "Angebot innert 48 h" },
     projectType:{ fr: "Cybersécurité & conformité", en: "Cybersecurity & compliance", de: "Cybersecurity & compliance" },
     budget: "Diagnostic dès 1 000 € HT",

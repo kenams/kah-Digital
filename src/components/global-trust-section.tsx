@@ -58,7 +58,7 @@ export function GlobalTrustSection() {
           stats: [
             { value: "20+", label: "Projects & systems" },
             { value: "5 days", label: "Fastest delivery" },
-            { value: "€0", label: "Hidden fees" },
+            { value: "$0", label: "Hidden fees" },
             { value: "24h", label: "Response" },
           ],
         }

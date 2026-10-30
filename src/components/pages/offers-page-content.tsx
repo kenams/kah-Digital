@@ -97,7 +97,7 @@ const copy = {
         tag: "Agent inclus",
         title: "Agent IA vertical",
         price: "2 490 €",
-        timeline: "28 jours",
+        timeline: "10 à 28 jours",
         summary: "Un agent IA branché sur votre métier, qui travaille pour vous 24h/24 — sur le modèle de KAH Workforce.",
         includes: [
           "Tout le plan Business",
@@ -141,20 +141,20 @@ const copy = {
       plans: [
         {
           name: "Essential",
-          price: "€49 / month",
+          price: "$49 / month",
           desc: "We take care of everything: hosting, domain, security, backups.",
           items: ["Hosting, domain, security, backups", "1 small edit per month", "Site monitoring", "Reply within 72 h"],
         },
         {
           name: "Comfort",
-          price: "€99 / month",
+          price: "$99 / month",
           desc: "Everything in Essential + regular edits, monthly report and reviews follow-up.",
           items: ["Everything in Essential", "Site updates by message (KAH Pulse)", "3 deeper edits per month", "Monthly report + Google reviews follow-up", "Reply within 24 h"],
           popular: true,
         },
         {
           name: "Pro",
-          price: "€199 / month",
+          price: "$199 / month",
           desc: "Everything in Comfort + enhanced support.",
           items: ["Everything in Comfort", "Automatic appointment reminders + Google review requests", "Unlimited deeper edits (fair use)", "Direct WhatsApp support, reply within 4 working hours"],
         },
@@ -168,7 +168,7 @@ const copy = {
         id: "starter",
         tag: null,
         title: "Starter",
-        price: "€290",
+        price: "$290",
         timeline: "5 days",
         summary: "Clean and fast online presence. One page that builds trust from the first look.",
         includes: [
@@ -186,7 +186,7 @@ const copy = {
         id: "business",
         tag: "Most requested",
         title: "Business",
-        price: "€790",
+        price: "$790",
         timeline: "5 business days",
         summary: "The complete professional site that converts visitors into clients and stands out from competitors.",
         includes: [
@@ -205,8 +205,8 @@ const copy = {
         id: "agent-ia",
         tag: "Agent included",
         title: "Vertical AI Agent",
-        price: "€2 490",
-        timeline: "28 days",
+        price: "$2,490",
+        timeline: "10 to 28 days",
         summary: "An AI agent wired into your business, working for you 24/7 — on the KAH Workforce model.",
         includes: [
           "Everything in Business",
@@ -227,7 +227,7 @@ const copy = {
         { label: "Mobile app", price: "custom quote" },
         { label: "Full e-commerce", price: "custom quote" },
         { label: "GLPI support flow", price: "custom quote" },
-        { label: "Redesign + migration", price: "from €790" },
+        { label: "Redesign + migration", price: "from $790" },
       ],
     },
   },
@@ -315,7 +315,7 @@ const copy = {
         tag: "Agent inklusive",
         title: "Vertikaler KI-Agent",
         price: "CHF 2'490",
-        timeline: "28 Tage",
+        timeline: "10 bis 28 Tage",
         summary: "Ein KI-Agent, der in Ihr Geschäft eingebettet ist und 24/7 für Sie arbeitet — nach dem Vorbild von KAH Workforce.",
         includes: [
           "Alles aus Business",
@@ -366,12 +366,12 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
       title: "Cybersecurity & compliance",
       body: "With Vincent L’helgoual’ch, cybersecurity expert: assessment, GDPR, risk analysis, awareness training, part-time security officer. Clear scope, price agreed before we start.",
       items: [
-        { label: "Cybersecurity assessment", price: "from €1,000 excl. tax" },
-        { label: "GDPR compliance", price: "from €3,000 excl. tax" },
-        { label: "Team awareness training", price: "from €1,000 excl. tax" },
-        { label: "Part-time security officer", price: "from €1,900 excl. tax / month" },
+        { label: "Cybersecurity assessment", price: "from $1,000 excl. tax" },
+        { label: "GDPR compliance", price: "from $3,000 excl. tax" },
+        { label: "Team awareness training", price: "from $1,000 excl. tax" },
+        { label: "Part-time security officer", price: "from $1,900 excl. tax / month" },
       ],
-      addon: "For our web clients: optional site security review + GDPR (notices, cookies, forms), from €490 excl. tax.",
+      addon: "For our web clients: optional site security review + GDPR (notices, cookies, forms), from $490 excl. tax.",
       cta: "See cybersecurity",
     },
     de: {
@@ -379,12 +379,12 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
       title: "Cybersicherheit & Compliance",
       body: "Mit Vincent L’helgoual’ch, Experte für Cybersicherheit: Analyse, DSGVO, Risikoanalyse, Sensibilisierung, Sicherheitsverantwortlicher auf Teilzeit. Klarer Umfang, Preis vor Projektbeginn.",
       items: [
-        { label: "Cybersicherheits-Analyse", price: "ab 1 000 € netto" },
-        { label: "DSGVO-Konformität", price: "ab 3 000 € netto" },
-        { label: "Sensibilisierung der Teams", price: "ab 1 000 € netto" },
-        { label: "Sicherheitsverantwortlicher auf Teilzeit", price: "ab 1 900 € netto / Monat" },
+        { label: "Cybersicherheits-Analyse", price: "ab CHF 1'000 netto" },
+        { label: "DSGVO-Konformität", price: "ab CHF 3'000 netto" },
+        { label: "Sensibilisierung der Teams", price: "ab CHF 1'000 netto" },
+        { label: "Sicherheitsverantwortlicher auf Teilzeit", price: "ab CHF 1'900 netto / Monat" },
       ],
-      addon: "Für unsere Web-Kunden: optionale Sicherheitsprüfung der Website + DSGVO (Impressum, Cookies, Formulare), ab 490 € netto.",
+      addon: "Für unsere Web-Kunden: optionale Sicherheitsprüfung der Website + DSGVO (Impressum, Cookies, Formulare), ab CHF 490 netto.",
       cta: "Cybersicherheit ansehen",
     },
   };
@@ -401,7 +401,7 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
     },
     en: {
       badge: "Launch offer",
-      title: "Website + online booking: €1,290 instead of €1,490",
+      title: "Website + online booking: $1,290 instead of $1,490",
       body: "For our first 5 clients, until 31 December 2026. Professional site, self-service booking, admin area, delivered 5 working days after we receive your content.",
       terms: "30% deposit, balance on delivery · one round of revisions included · payment in 2 instalments available",
       cta: "Reserve my spot",
@@ -519,7 +519,7 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                 {offer.id === "starter" || offer.id === "business" ? (
                   <>
                     <Link
-                      href={orderHref(locale, { pack: offer.id, currency: locale === "en" ? "eur" : undefined })}
+                      href={orderHref(locale, { pack: offer.id })}
                       className={`inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all ${
                         isPopular
                           ? "bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 shadow-md"
@@ -658,7 +658,7 @@ export function OffersPageContent({ locale }: OffersPageContentProps) {
                 >
                   {isPopular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-0.5 text-xs font-semibold text-emerald-300">
-                      Recommandé
+                      {locale === "en" ? "Recommended" : locale === "de" ? "Empfohlen" : "Recommandé"}
                     </div>
                   )}
                   <div className="mb-4">

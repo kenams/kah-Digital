@@ -409,7 +409,7 @@ const SWISS_LINKS = [
 
 export function LocalSeoPageContent({ data }: Props) {
   const devisUrl = `/devis?city=${encodeURIComponent(data.city)}&ref=local-seo`;
-  const isSwiss = SWISS_CITIES.includes(data.city);
+  const isSwiss = SWISS_CITIES.includes(data.city) || data.country === "Suisse";
   const WA_URL = isSwiss ? WA_URL_CH : WA_URL_FR;
   const currency = isSwiss ? "CHF" : "€";
   const orderUrl = isSwiss ? "/commander?devise=chf" : "/commander";

@@ -9,7 +9,7 @@ const FAQS = {
   fr: [
     {
       q: "Combien de temps faut-il pour livrer mon site ?",
-      a: "Starter (1 page) : 5 jours ouvrés. Business (5 pages) : 5 jours ouvrés. Agent IA vertical (système complet) : 28 jours. Une fois le devis validé et vos assets envoyés (photos, couleurs, police), on démarre immédiatement.",
+      a: "Starter (1 page) : 5 jours ouvrés. Business (jusqu'à 6 pages) : 5 jours ouvrés. Agent IA vertical : 10 jours (agent seul) à 28 jours (système complet avec site). Une fois le devis validé et vos assets envoyés (photos, couleurs, police), on démarre immédiatement.",
     },
     {
       q: "Puis-je upgrader vers un plan supérieur après la livraison ?",
@@ -43,7 +43,7 @@ const FAQS = {
   en: [
     {
       q: "How long does it take to deliver my site?",
-      a: "Starter (1 page): 5 business days. Business (5 pages): 5 business days. Vertical AI Agent (full system): 28 days. Once your quote is approved and assets sent (photos, colours, font), we start immediately.",
+      a: "Starter (1 page): 5 business days. Business (up to 6 pages): 5 business days. Vertical AI Agent: 10 days (agent only) to 28 days (full system with website). Once your quote is approved and assets sent (photos, colours, font), we start immediately.",
     },
     {
       q: "Can I upgrade to a higher plan after delivery?",
@@ -77,7 +77,7 @@ const FAQS = {
   de: [
     {
       q: "Wie lange dauert die Lieferung meiner Website?",
-      a: "Starter (1 Seite): 5 Werktage. Business (5 Seiten): 5 Werktage. Vertikaler KI-Agent (vollständiges System): 28 Tage. Sobald Ihr Angebot bestätigt und Assets gesendet sind (Fotos, Farben, Schrift), starten wir sofort.",
+      a: "Starter (1 Seite): 5 Werktage. Business (bis zu 6 Seiten): 5 Werktage. Vertikaler KI-Agent: 10 Tage (nur Agent) bis 28 Tage (vollständiges System mit Website). Sobald Ihr Angebot bestätigt und Assets gesendet sind (Fotos, Farben, Schrift), starten wir sofort.",
     },
     {
       q: "Kann ich nach der Lieferung auf einen höheren Plan upgraden?",

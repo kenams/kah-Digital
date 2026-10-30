@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
-import { orderHref } from "@/lib/order-links";
+import { orderHref, pageCurrency } from "@/lib/order-links";
+import { formatMoney } from "@/lib/pack-orders";
 
 const STORAGE_KEY = "kah_urgency_v4";
 
@@ -29,7 +30,8 @@ export function UrgencyBanner() {
   const short =
     locale === "en" ? "Custom proposal · 24h" : locale === "de" ? "Individuelle Offerte · 24h" : "Proposition personnalisée · 24h";
   const cta = locale === "en" ? "Discuss my project →" : locale === "de" ? "Projekt besprechen →" : "Parler de mon projet →";
-  const orderCta = locale === "en" ? "Order from $290" : locale === "de" ? "Ab CHF 290 bestellen" : "Commander dès 290 €";
+  const from = formatMoney(290, pageCurrency(locale, pathname));
+  const orderCta = locale === "en" ? `Order from ${from}` : locale === "de" ? `Ab ${from} bestellen` : `Commander dès ${from}`;
   const closeLabel = locale === "en" ? "Close" : locale === "de" ? "Schliessen" : "Fermer";
   const href = `${prefix ?? ""}/devis`;
 

@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
-import { orderHref } from "@/lib/order-links";
+import { orderHref, pageCurrency } from "@/lib/order-links";
+import { formatMoney } from "@/lib/pack-orders";
 import { FiArrowRight } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
@@ -43,8 +44,9 @@ export function FloatingCTA() {
   const ctaLabel =
     locale === "en" ? "Order my website" : locale === "de" ? "Website bestellen" : "Commander mon site";
 
+  const from = formatMoney(290, pageCurrency(locale, pathname));
   const priceLine =
-    locale === "en" ? "From $290 · 5-day delivery" : locale === "de" ? "Ab CHF 290 · 5 Tage" : "Dès 290 € · livré en 5 jours";
+    locale === "en" ? `From ${from} · 5-day delivery` : locale === "de" ? `Ab ${from} · 5 Tage` : `Dès ${from} · livré en 5 jours`;
 
   return (
     <div

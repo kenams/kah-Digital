@@ -90,7 +90,7 @@ export default function VisibilityPageEn() {
               Something went wrong. Please try again in a moment.
             </p>
           )}
-          <p className="mt-4 text-xs text-gray-500">Planned price: €39 per month, no commitment. No payment now.</p>
+          <p className="mt-4 text-xs text-gray-500">Planned price: $39 per month, no commitment. No payment now.</p>
         </div>
       </section>
 

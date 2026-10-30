@@ -1,10 +1,15 @@
 import type { Locale } from "@/lib/locales";
 import { withLocalePrefix } from "@/lib/locales";
-import type { Currency, PackId } from "@/lib/pack-orders";
+import { defaultCurrency, type Currency, type PackId } from "@/lib/pack-orders";
 
 /** Pages dont les prix sont affichés en CHF (villes et pages suisses, quelle que soit la langue). */
 const SWISS_PATH =
   /^(?:\/(?:en|de))?\/(?:agence-web-(?:geneve|lausanne|suisse|zurich|berne|basel|lugano)|site-web-(?:geneve|lausanne|fribourg)|application-web-suisse|automatisation-ia-suisse|webagentur-schweiz|webentwicklung-(?:zuerich|bern|basel|genf|lausanne))(?:\/|$)/;
+
+/** Devise affichée sur une page : CHF sur les pages suisses, sinon selon la langue (FR €, EN $, DE CHF). */
+export function pageCurrency(locale: Locale, pathname: string | null | undefined): Currency {
+  return isSwissPath(pathname) ? "chf" : defaultCurrency(locale);
+}
 
 export function isSwissPath(pathname: string | null | undefined) {
   return Boolean(pathname && SWISS_PATH.test(pathname));

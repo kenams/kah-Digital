@@ -279,9 +279,9 @@ export function LocalSeoEnPageContent({ data }: Props) {
           <p className="mb-8 text-gray-400">Transparent fixed prices. No hourly rates, no lock-in, 100% ownership.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Starter", price: "$290", sub: "Landing page · 5 days" },
-              { label: "Business", price: "$790", sub: "Up to 6 pages · 5 business days · SEO" },
-              { label: "Premium AI", price: "$2,490", sub: "Full AI system · 28 days" },
+              { label: "Starter", price: isSwiss ? "CHF 290" : "$290", sub: "Landing page · 5 days" },
+              { label: "Business", price: isSwiss ? "CHF 790" : "$790", sub: "Up to 6 pages · 5 business days · SEO" },
+              { label: "Premium AI", price: isSwiss ? "CHF 2'490" : "$2,490", sub: "Full AI system · 28 days" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">
                 <div className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">{item.label}</div>

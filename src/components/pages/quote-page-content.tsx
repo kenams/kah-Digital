@@ -72,7 +72,7 @@ const COPY = {
       { value: "CHF 290", label: "Ab diesem Preis" },
       { value: "5 Tage", label: "Erste Lieferung" },
       { value: "24h", label: "Antwortzeit" },
-      { value: "0 €", label: "Vor Ihrer Zusage" },
+      { value: "CHF 0", label: "Vor Ihrer Zusage" },
     ],
     testimonials: [] as { quote: string; author: string; role: string }[],
     process: [
