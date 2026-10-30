@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   }
 
   const path = typeof body.path === "string" ? body.path.split("?")[0].split("#")[0] : "";
-  if (!isTrackablePath(path)) return new NextResponse(null, { status: 204 });
+  if (!isTrackablePath(path) || !/^\/[a-zA-Z0-9/_%.-]{0,199}$/.test(path)) return new NextResponse(null, { status: 204 });
 
   const { locale, section } = classifyPath(path);
   const cyberCta = section === "devis" && body.service === "cyber";
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   if (typeof body.referrer === "string" && body.referrer) {
     try {
       const host = new URL(body.referrer).hostname.replace(/^www\./, "");
-      if (host && host !== "kah-digital.ch" && !host.endsWith(".vercel.app")) referrerHost = host.slice(0, 80);
+      if (/^[a-z0-9.-]{3,80}$/i.test(host) && host !== "kah-digital.ch" && !host.endsWith(".vercel.app")) referrerHost = host.toLowerCase();
     } catch {
       /* référent illisible : ignoré */
     }

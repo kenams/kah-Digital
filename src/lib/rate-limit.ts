@@ -71,14 +71,18 @@ export function rateLimit(key: string, config: RateLimitConfig): RateLimitResult
 }
 
 export function getRequestIp(request: Request) {
-  const cfConnecting = request.headers.get("cf-connecting-ip");
-  if (cfConnecting) return cfConnecting.trim();
+  // En-têtes posés par la plateforme (Vercel) en premier : un visiteur ne peut pas les falsifier.
+  const vercel = request.headers.get("x-vercel-forwarded-for");
+  if (vercel) return vercel.split(",")[0]?.trim() ?? "unknown";
+
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
 
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0]?.trim() ?? "unknown";
 
-  const realIp = request.headers.get("x-real-ip");
-  if (realIp) return realIp.trim();
+  const cfConnecting = request.headers.get("cf-connecting-ip");
+  if (cfConnecting) return cfConnecting.trim();
 
   const requestIp = (request as Request & { ip?: string }).ip;
   return requestIp ?? "unknown";

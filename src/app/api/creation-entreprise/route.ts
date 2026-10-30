@@ -64,6 +64,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true }, { headers: rateHeaders });
     }
 
+    if (!turnstileToken) {
+      // Captcha non chargé sur ce domaine : interrupteur serveur pour le rendre obligatoire, sinon limites strictes.
+      if (process.env.TURNSTILE_ENFORCE === "true") {
+        return NextResponse.json({ error: "Captcha requis" }, { status: 400, headers: rateHeaders });
+      }
+      const strict = rateLimit(`creation-nocaptcha:${ip}`, { windowMs: 10 * 60 * 1000, max: 3 });
+      const global = rateLimit("creation-nocaptcha:global", { windowMs: 60 * 60 * 1000, max: 60 });
+      if (!strict.allowed || !global.allowed) {
+        return NextResponse.json(
+          { error: "Trop de demandes. Réessaie plus tard ou écris-nous par e-mail." },
+          { status: 429, headers: { ...rateHeaders, "Retry-After": String(Math.max(strict.retryAfter, global.retryAfter, 60)) } }
+        );
+      }
+    }
+
     if (turnstileToken) {
       const verification = await verifyTurnstile(turnstileToken, remoteIp);
       if (!verification.success) {
