@@ -105,7 +105,7 @@ export function SiteHeader() {
     const target =
       (hovered && nav.querySelector<HTMLElement>(`[data-nav-href="${hovered}"]`)) ||
       nav.querySelector<HTMLElement>('[aria-current="page"]');
-    if (!target) {
+    if (!target || target.offsetWidth === 0) {
       pill.dataset.ready = "false";
       return;
     }
