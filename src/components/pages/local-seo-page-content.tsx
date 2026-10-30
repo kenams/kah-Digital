@@ -150,7 +150,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
       { q: "Combien coûte un site web professionnel à Berne ?", a: "Starter (landing page bilingue FR/DE) dès CHF 290, livré en 5 jours. Business (6 pages, SEO) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, devis confirmé avant de commencer." },
       { q: "Faites-vous des sites pour des institutions bernoises ?", a: "Oui : sites institutionnels, portails de services et intranets, réalisés sur cahier des charges." },
       { q: "Travaillez-vous en allemand pour les clients bernois ?", a: "Oui, KAH Digital Studio produit des sites en allemand, français et anglais. Idéal pour le marché bilingue bernois." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF possible." },
+      { q: "Acceptez-vous le paiement en CHF ?", a: "Oui — carte bancaire (Stripe) en CHF, ou virement SEPA en euros. Facturation en CHF possible." },
     ],
   },
   "agence-web-toulouse": {
@@ -229,7 +229,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
       { q: "Combien coûte un site web professionnel à Zurich ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe confirmé avant tout démarrage." },
       { q: "Faites-vous des sites en allemand pour des entreprises zurichoises ?", a: "Oui, sites natifs en allemand, français et anglais. SEO optimisé dans chaque langue. Idéal pour les entreprises qui ciblent la Suisse alémanique et internationale." },
       { q: "Travaillez-vous avec des startups fintech zurichoises ?", a: "Oui, portails client, dashboards, landing pages et MVPs. Nous tenons compte des exigences du marché financier suisse et de la LPD." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF possible." },
+      { q: "Acceptez-vous le paiement en CHF ?", a: "Oui — carte bancaire (Stripe) en CHF, ou virement SEPA en euros. Facturation en CHF possible." },
     ],
   },
   "agence-web-basel": {
@@ -243,7 +243,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
       { q: "Combien coûte un site web professionnel à Bâle ?", a: "Starter (landing page trilingue) dès CHF 290, livré en 5 jours. Business (6 pages, SEO dans 3 langues) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, zéro surprise." },
       { q: "Faites-vous des sites trilingues pour les entreprises bâloises ?", a: "Oui, sites natifs en FR, DE, EN avec SEO dans chaque langue et hreflang correct. Idéal pour le marché rhénan et les foires internationales." },
       { q: "Pouvez-vous créer des sites pour le secteur pharma ?", a: "Oui : sites institutionnels, portails partenaires et intranets, en tenant compte de la LPD et des exigences de conformité du secteur." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF possible." },
+      { q: "Acceptez-vous le paiement en CHF ?", a: "Oui — carte bancaire (Stripe) en CHF, ou virement SEPA en euros. Facturation en CHF possible." },
     ],
   },
   "agence-web-lausanne": {
@@ -285,7 +285,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
       { q: "Combien coûte un site web professionnel à Lugano ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe, devis confirmé avant de commencer." },
       { q: "Faites-vous des sites en italien pour des entreprises de Lugano ?", a: "Oui, sites natifs en italien, français, allemand et anglais. Le Tessin est notre marché naturel pour l'italien." },
       { q: "Créez-vous des sites pour le secteur wealth management à Lugano ?", a: "Oui, sites institutionnels discrets, sécurisés, conformes LPD et RGPD. Rigueur et élégance — les standards suisses." },
-      { q: "Acceptez-vous le paiement en CHF et TWINT ?", a: "Oui — virement bancaire CHF, TWINT et carte bancaire acceptés. Facturation en CHF possible." },
+      { q: "Acceptez-vous le paiement en CHF ?", a: "Oui — carte bancaire (Stripe) en CHF, ou virement SEPA en euros. Facturation en CHF possible." },
     ],
   },
   "agence-web-grenoble": {
@@ -520,7 +520,7 @@ export function LocalSeoPageContent({ data }: Props) {
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-emerald-400/80">
               {[
                 { icon: "🇨🇭", label: "Travail 100 % à distance · France & Suisse" },
-                { icon: "💳", label: "Facturation CHF · TWINT accepté" },
+                { icon: "💳", label: "Facturation en CHF possible" },
                 { icon: "🔒", label: "Conforme LPD (loi suisse protection des données)" },
                 { icon: "📋", label: "Devis en CHF possible" },
               ].map((item) => (
@@ -623,7 +623,7 @@ export function LocalSeoPageContent({ data }: Props) {
           </p>
           {isSwiss && (
             <p className="mt-3 text-xs text-emerald-500/60">
-              💳 Paiement accepté : virement bancaire CHF · TWINT · Carte bancaire (Stripe)
+              💳 Paiement accepté : carte bancaire (Stripe) en CHF · virement SEPA en €
             </p>
           )}
         </div>

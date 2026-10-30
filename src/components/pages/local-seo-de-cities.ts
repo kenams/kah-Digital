@@ -3,8 +3,8 @@
 import type { DeCity } from "./local-seo-de-page-content";
 
 const PREISE = "Starter ab CHF 290 — Business ab CHF 790 — KI-System ab CHF 2'490.";
-const ZAHLUNG_Q = "Akzeptieren Sie Zahlung in CHF und TWINT?";
-const ZAHLUNG_A = "Ja — Banküberweisung in CHF, TWINT und Kartenzahlung werden akzeptiert. Rechnungsstellung in CHF ist möglich.";
+const ZAHLUNG_Q = "Akzeptieren Sie Zahlung in CHF?";
+const ZAHLUNG_A = "Ja — Kartenzahlung (Stripe) in CHF oder SEPA-Überweisung in Euro. Rechnungsstellung in CHF ist möglich.";
 
 export const DE_AGENCY_CITIES: Record<string, DeCity> = {
   "webentwicklung-bern": {

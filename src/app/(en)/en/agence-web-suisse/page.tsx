@@ -4,12 +4,12 @@ import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi
 
 export const metadata: Metadata = {
   title: "Web Agency Switzerland — KAH Digital Studio | Lausanne · Geneva · Zurich · Bern",
-  description: "Digital studio based in Toulouse, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote in CHF within 24h. TWINT accepted.",
+  description: "Digital studio based in Toulouse, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote within 24h.",
   keywords: ["web agency Switzerland", "website development Switzerland", "web developer Switzerland", "digital studio Switzerland", "SME website Switzerland", "web application Switzerland"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-suisse" },
   openGraph: {
     title: "Web Agency Switzerland — KAH Digital Studio",
-    description: "100% remote digital studio. Websites, apps and AI for all of Switzerland. Quotes in CHF, TWINT accepted, Swiss data protection act (FADP) taken into account.",
+    description: "100% remote digital studio. Websites, apps and AI for all of Switzerland. Quotes in CHF possible, Swiss data protection act (FADP) taken into account.",
   },
 };
 
@@ -65,7 +65,7 @@ export default function AgenceWebSuisseEnPage() {
             Websites · Applications · AI solutions
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Digital studio based in Toulouse, 100% remote. Next.js 15, Lighthouse 95+, technical SEO. Invoicing in CHF, TWINT accepted, Swiss data protection act (FADP) taken into account. Free quote within 24h.
+            Digital studio based in Toulouse, 100% remote. Next.js 15, Lighthouse 95+, technical SEO. Invoicing in CHF possible, Swiss data protection act (FADP) taken into account. Free quote within 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -87,7 +87,7 @@ export default function AgenceWebSuisseEnPage() {
               WhatsApp — quick reply
             </a>
           </div>
-          <p className="mt-5 text-sm text-gray-600">Remote studio · CHF invoicing · TWINT · FADP · Reply within 24h</p>
+          <p className="mt-5 text-sm text-gray-600">Remote studio · CHF invoicing possible · FADP · Reply within 24h</p>
         </div>
       </section>
 
@@ -97,7 +97,7 @@ export default function AgenceWebSuisseEnPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-emerald-400/80">
             {[
               { icon: "🇨🇭", label: "100% remote work · France & Switzerland" },
-              { icon: "💳", label: "CHF invoicing · TWINT accepted" },
+              { icon: "💳", label: "CHF invoicing possible" },
               { icon: "🔒", label: "FADP taken into account (Swiss data protection act)" },
               { icon: "🌐", label: "FR · DE · EN · IT — multilingual sites" },
             ].map((item) => (
@@ -170,7 +170,7 @@ export default function AgenceWebSuisseEnPage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "Clients in Switzerland", body: "Studio based in Toulouse, 100% remote. Video-call meetings, invoicing in CHF possible." },
-              { title: "CHF invoicing + TWINT", body: "Pay everything in Swiss francs. CHF bank transfer, TWINT or card — whichever suits you." },
+              { title: "Pay in CHF if you prefer", body: "Card payment (Stripe) in Swiss francs, or a SEPA bank transfer in euros — whichever suits you." },
               { title: "FADP taken into account", body: "Your data and your customers' data are handled with the Swiss data protection act (FADP) in mind." },
               { title: "Natively multilingual", body: "Sites in French, German, English and Italian. SEO optimised in each language to cover all of Switzerland." },
               { title: "Transparent fixed price", body: "A fixed quote before we start. No surprises, no overruns. Starter from CHF 290, delivered in 5 days." },
@@ -211,7 +211,7 @@ export default function AgenceWebSuisseEnPage() {
             ))}
           </div>
           <p className="mt-5 text-xs text-emerald-500/60">
-            💳 Payment: CHF bank transfer · TWINT · Card (Stripe)
+            💳 Payment: card (Stripe) in CHF · SEPA transfer in €
           </p>
         </div>
       </section>
@@ -220,7 +220,7 @@ export default function AgenceWebSuisseEnPage() {
       <section className="border-t border-white/[0.06] py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">Your project in Switzerland — shall we talk?</h2>
-          <p className="mb-8 text-gray-500">Free quote in CHF · Reply within 24h · No commitment · TWINT accepted</p>
+          <p className="mb-8 text-gray-500">Free quote · Reply within 24h · No commitment</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/en/devis?ref=suisse-hub"

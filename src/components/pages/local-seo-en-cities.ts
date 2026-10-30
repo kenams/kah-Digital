@@ -10,8 +10,8 @@ const LOCAL_QUOTE_A = "Every project is scoped around your real needs, features,
 const BUDGET_Q = "How is the budget of a local project set?";
 const BUDGET_A = "We adapt the work to your context, business priorities and available budget — no rigid package, no useless extras.";
 const REMOTE_A = "Yes, the whole project runs online: video call for scoping, delivery and follow-up by email. No travel needed.";
-const ACCEPT_Q = "Do you accept payment in CHF and TWINT?";
-const ACCEPT_A = "Yes — CHF bank transfer, TWINT and card payments are accepted. Invoicing in CHF is possible.";
+const ACCEPT_Q = "Do you accept payment in CHF?";
+const ACCEPT_A = "Yes — card payment (Stripe) in CHF, or a SEPA transfer in euros. Invoicing in CHF is possible.";
 
 export const EN_AGENCY_CITIES: Record<string, EnCity> = {
   "agence-web-paris": {

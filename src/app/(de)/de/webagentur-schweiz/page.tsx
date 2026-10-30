@@ -4,12 +4,12 @@ import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi
 
 export const metadata: Metadata = {
   title: "Webagentur Schweiz — KAH Digital Studio | Zürich · Bern · Basel · Lausanne",
-  description: "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte in CHF innert 24h. TWINT akzeptiert.",
+  description: "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte innert 24h.",
   keywords: ["Webagentur Schweiz", "Website erstellen Schweiz", "Webentwickler Schweiz", "Digitalstudio Schweiz", "Website KMU Schweiz", "Webanwendung Schweiz"],
   alternates: { canonical: "https://kah-digital.ch/de/webagentur-schweiz" },
   openGraph: {
     title: "Webagentur Schweiz — KAH Digital Studio",
-    description: "Digitalstudio 100 % auf Distanz. Websites, Apps und KI für die ganze Schweiz. Offerten in CHF, TWINT akzeptiert, Datenschutzgesetz (DSG) berücksichtigt.",
+    description: "Digitalstudio 100 % auf Distanz. Websites, Apps und KI für die ganze Schweiz. Offerten in CHF möglich, Datenschutzgesetz (DSG) berücksichtigt.",
   },
 };
 
@@ -65,7 +65,7 @@ export default function WebagenturSchweizPage() {
             Websites · Anwendungen · KI-Lösungen
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Next.js 15, Lighthouse 95+, technisches SEO. Rechnungsstellung in CHF, TWINT akzeptiert, Datenschutzgesetz (DSG) berücksichtigt. Kostenlose Offerte in 24h.
+            Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Next.js 15, Lighthouse 95+, technisches SEO. Rechnungsstellung in CHF möglich, Datenschutzgesetz (DSG) berücksichtigt. Kostenlose Offerte in 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -87,7 +87,7 @@ export default function WebagenturSchweizPage() {
               WhatsApp — schnelle Antwort
             </a>
           </div>
-          <p className="mt-5 text-sm text-gray-600">Studio auf Distanz · Rechnung in CHF · TWINT · DSG · Antwort in 24h</p>
+          <p className="mt-5 text-sm text-gray-600">Studio auf Distanz · Rechnung in CHF möglich · DSG · Antwort in 24h</p>
         </div>
       </section>
 
@@ -97,7 +97,7 @@ export default function WebagenturSchweizPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-emerald-400/80">
             {[
               { icon: "🇨🇭", label: "100 % Arbeit auf Distanz · Frankreich & Schweiz" },
-              { icon: "💳", label: "Rechnung in CHF · TWINT akzeptiert" },
+              { icon: "💳", label: "Rechnung in CHF möglich" },
               { icon: "🔒", label: "DSG berücksichtigt (Schweizer Datenschutzgesetz)" },
               { icon: "🌐", label: "DE · FR · EN · IT — mehrsprachige Websites" },
             ].map((item) => (
@@ -170,7 +170,7 @@ export default function WebagenturSchweizPage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "Kunden in der Schweiz", body: "Studio mit Sitz in Toulouse, 100 % auf Distanz. Austausch per Videokonferenz, Rechnungsstellung in CHF möglich." },
-              { title: "Rechnung in CHF + TWINT", body: "Alle Zahlungen in Schweizer Franken. Banküberweisung in CHF, TWINT oder Karte — ganz nach Wunsch." },
+              { title: "Zahlung in CHF möglich", body: "Kartenzahlung (Stripe) in Schweizer Franken oder SEPA-Überweisung in Euro — ganz nach Wunsch." },
               { title: "DSG berücksichtigt", body: "Ihre Daten und die Ihrer Kunden werden unter Berücksichtigung des Schweizer Datenschutzgesetzes (DSG) verarbeitet." },
               { title: "Nativ mehrsprachig", body: "Websites auf Deutsch, Französisch, Englisch und Italienisch. SEO in jeder Sprache optimiert, um die ganze Schweiz abzudecken." },
               { title: "Transparenter Festpreis", body: "Eine feste Offerte vor Projektstart. Keine Überraschungen, keine Kostenüberschreitung. Starter ab CHF 290, geliefert in 5 Tagen." },
@@ -211,7 +211,7 @@ export default function WebagenturSchweizPage() {
             ))}
           </div>
           <p className="mt-5 text-xs text-emerald-500/60">
-            💳 Zahlung: Banküberweisung in CHF · TWINT · Karte (Stripe)
+            💳 Zahlung: Karte (Stripe) in CHF · SEPA-Überweisung in €
           </p>
         </div>
       </section>
@@ -220,7 +220,7 @@ export default function WebagenturSchweizPage() {
       <section className="border-t border-white/[0.06] py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">Ihr Projekt in der Schweiz — sprechen wir darüber?</h2>
-          <p className="mb-8 text-gray-500">Kostenlose Offerte in CHF · Antwort in 24h · Unverbindlich · TWINT akzeptiert</p>
+          <p className="mb-8 text-gray-500">Kostenlose Offerte · Antwort in 24h · Unverbindlich</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/de/devis?ref=suisse-hub"

@@ -1,3 +1,4 @@
+import { CyberBandSection } from "@/components/cyber-band-section";
 import { FiClock, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { ContactForm } from "@/components/contact-form";
 import type { Locale } from "@/lib/locales";
@@ -161,6 +162,7 @@ export function ContactPageContent({ locale }: ContactPageContentProps) {
           </div>
         </div>
       </section>
+      <CyberBandSection />
     </>
   );
 }

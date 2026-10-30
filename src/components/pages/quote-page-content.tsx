@@ -1,3 +1,4 @@
+import { CyberBandSection } from "@/components/cyber-band-section";
 import { SmartQuoteForm } from "@/components/smart-quote-form";
 import { QuoteForm } from "@/components/quote-form";
 import type { Locale } from "@/lib/locales";
@@ -206,6 +207,7 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
             ))}
           </div>
         </section>
+        <CyberBandSection />
       </main>
     );
   }
