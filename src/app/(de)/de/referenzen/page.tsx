@@ -202,7 +202,7 @@ export default function ReferenzenPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
             >
-              <FiMessageCircle size={15} /> WhatsApp direct
+              <FiMessageCircle size={15} /> WhatsApp direkt
             </a>
           </div>
         </div>

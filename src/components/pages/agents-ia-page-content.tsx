@@ -288,7 +288,7 @@ const COPY = {
       { q: "Wie schnell sehe ich eine Kapitalrendite?", a: "Das hängt vom Anwendungsfall und vom Volumen ab: eine Rendite lässt sich nicht im Voraus versprechen. Wir definieren vorab gemeinsam Kennzahlen, messen ab T+7 und passen bei Bedarf an." },
     ],
     ctaFinalTitle: "Ihr erster KI-Agent in 10 Tagen.",
-    ctaFinalBody: "Kostenlose 20-Min-Demo — wir zeigen den Agenten in Aktion auf Ihren konkreten Fall. Kein Engagement, keine Kreditkarte.",
+    ctaFinalBody: "Kostenlose 20-Min-Demo — wir zeigen den Agenten in Aktion auf Ihren konkreten Fall. Keine Verpflichtung, keine Kreditkarte.",
     ctaFinal: "Kostenlose Demo buchen",
     ctaFinalSecondary: "WhatsApp-Nachricht senden",
     ctaFinalSub: "Antwort in 2h · Demo per Video · CH / FR / BE",

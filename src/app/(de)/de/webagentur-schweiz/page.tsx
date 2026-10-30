@@ -238,7 +238,7 @@ export default function WebagenturSchweizPage() {
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#25D366]/10 px-8 py-4 font-semibold text-[#25D366] transition hover:bg-[#25D366] hover:text-white"
             >
               <FiMessageCircle size={15} />
-              WhatsApp direct
+              WhatsApp direkt
             </a>
           </div>
         </div>

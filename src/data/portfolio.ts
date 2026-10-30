@@ -273,7 +273,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Mise en place d'une base Next.js moderne, d'une auth Supabase email et Google, d'un pipeline de scraping pour les prix et les actualites, d'un dashboard oriente usage, puis d'un mode de rafraichissement gratuit adapte a une beta hebergee.",
     stack: ["Next.js", "TypeScript", "Supabase", "Playwright", "Vercel"],
     result:
-      "Un SaaS de veille miniere en ligne, automatise, lisible et deja exploitable comme reference produit KAH-Digital.",
+      "Un SaaS de veille miniere en ligne, automatise, lisible et déjà exploitable comme reference produit KAH-Digital.",
     timeline: "3 semaines",
     deliverables: [
       "Direction produit et UX dashboard",

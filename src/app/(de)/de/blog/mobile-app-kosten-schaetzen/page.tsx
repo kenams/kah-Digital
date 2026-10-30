@@ -48,7 +48,7 @@ const COST_DRIVERS = [
   { title: "In-App-Zahlungen", detail: "Stripe, In-App-Käufe bei Apple/Google und Abrechnungsabläufe erfordern eine spezifische Analyse." },
   { title: "Notifications push", detail: "Segmentierung, Versandregeln und Nutzerpräferenzen beeinflussen den Umfang." },
   { title: "Geolokalisierung", detail: "Kartendarstellung, Tracking, Routenberechnung und mobile Berechtigungen müssen fachlich validiert werden." },
-  { title: "Mode hors-ligne", detail: "Lokale Synchronisation und Konfliktbehandlung erhöhen die Produktkomplexität." },
+  { title: "Offline-Modus", detail: "Lokale Synchronisation und Konfliktbehandlung erhöhen die Produktkomplexität." },
   { title: "Dashboard admin web", detail: "Eine eigene Verwaltungsoberfläche ist als vollständiges eigenes Modul zu behandeln." },
 ];
 

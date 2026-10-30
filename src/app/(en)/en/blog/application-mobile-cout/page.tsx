@@ -48,7 +48,7 @@ const COST_DRIVERS = [
   { title: "In-app payments", detail: "Stripe, Apple/Google in-app purchases and billing flows call for specific analysis." },
   { title: "Notifications push", detail: "Segmentation, sending rules and user preferences influence the scope." },
   { title: "Geolocation", detail: "Mapping, tracking, route calculation and mobile permissions must be validated functionally." },
-  { title: "Mode hors-ligne", detail: "Local synchronisation and conflict handling increase product complexity." },
+  { title: "Offline mode", detail: "Local synchronisation and conflict handling increase product complexity." },
   { title: "Dashboard admin web", detail: "A dedicated management interface must be treated as a full module of its own." },
 ];
 
