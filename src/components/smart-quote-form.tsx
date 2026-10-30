@@ -7,16 +7,18 @@ import { TurnstileWidget } from "@/components/turnstile-widget";
 
 // ─── Catalogue ─────────────────────────────────────────────────────────────────
 
+type FormLocale = "fr" | "en" | "de";
+
 type Unit = "forfait" | "month" | "hour";
 
 type Service = {
   id: string;
   emoji: string;
-  label: Record<"fr" | "en", string>;
-  shortDesc: Record<"fr" | "en", string>;
-  scopeLabel: Record<"fr" | "en", string>;
-  delayLabel: Record<"fr" | "en", string>;
-  projectType: Record<"fr" | "en", string>;
+  label: Record<FormLocale, string>;
+  shortDesc: Record<FormLocale, string>;
+  scopeLabel: Record<FormLocale, string>;
+  delayLabel: Record<FormLocale, string>;
+  projectType: Record<FormLocale, string>;
   budget: string;
 };
 
@@ -24,101 +26,101 @@ const SERVICES: Service[] = [
   {
     id: "landing",
     emoji: "🚀",
-    label:      { fr: "Landing page",         en: "Landing page" },
-    shortDesc:  { fr: "1 page percutante avec CTA clair",         en: "1-page site with a clear call-to-action" },
-    scopeLabel: { fr: "Projet simple", en: "Simple project" },
-    delayLabel: { fr: "5–10 jours",            en: "5–10 days" },
-    projectType:{ fr: "Landing page",          en: "Landing page" },
+    label:      { fr: "Landing page",         en: "Landing page", de: "Landing Page" },
+    shortDesc:  { fr: "1 page percutante avec CTA clair",         en: "1-page site with a clear call-to-action", de: "1 Seite mit klarem Call-to-Action" },
+    scopeLabel: { fr: "Projet simple", en: "Simple project", de: "Einfaches Projekt" },
+    delayLabel: { fr: "5–10 jours",            en: "5–10 days", de: "5–10 Tage" },
+    projectType:{ fr: "Landing page",          en: "Landing page", de: "Landing page" },
     budget: "À définir après échange",
   },
   {
     id: "site-vitrine",
     emoji: "🌐",
-    label:      { fr: "Site vitrine",          en: "Business website" },
-    shortDesc:  { fr: "5–8 pages, SEO, formulaire contact",       en: "5–8 pages, SEO, contact form" },
-    scopeLabel: { fr: "Présence professionnelle", en: "Professional presence" },
-    delayLabel: { fr: "2–3 semaines",          en: "2–3 weeks" },
-    projectType:{ fr: "Site vitrine standard", en: "Standard business website" },
+    label:      { fr: "Site vitrine",          en: "Business website", de: "Unternehmenswebsite" },
+    shortDesc:  { fr: "5–8 pages, SEO, formulaire contact",       en: "5–8 pages, SEO, contact form", de: "5–8 Seiten, SEO, Kontaktformular" },
+    scopeLabel: { fr: "Présence professionnelle", en: "Professional presence", de: "Professioneller Auftritt" },
+    delayLabel: { fr: "2–3 semaines",          en: "2–3 weeks", de: "2–3 Wochen" },
+    projectType:{ fr: "Site vitrine standard", en: "Standard business website", de: "Standard business website" },
     budget: "À définir après échange",
   },
   {
     id: "site-premium",
     emoji: "✨",
-    label:      { fr: "Site corporate / premium", en: "Corporate / premium website" },
-    shortDesc:  { fr: "10–20 pages, SEO avancé, CRM",             en: "10–20 pages, advanced SEO, CRM" },
-    scopeLabel: { fr: "Projet évolutif", en: "Scalable project" },
-    delayLabel: { fr: "3–5 semaines",          en: "3–5 weeks" },
-    projectType:{ fr: "Site corporate / premium", en: "Corporate / premium website" },
+    label:      { fr: "Site corporate / premium", en: "Corporate / premium website", de: "Corporate-/Premium-Website" },
+    shortDesc:  { fr: "10–20 pages, SEO avancé, CRM",             en: "10–20 pages, advanced SEO, CRM", de: "10–20 Seiten, erweitertes SEO, CRM" },
+    scopeLabel: { fr: "Projet évolutif", en: "Scalable project", de: "Skalierbares Projekt" },
+    delayLabel: { fr: "3–5 semaines",          en: "3–5 weeks", de: "3–5 Wochen" },
+    projectType:{ fr: "Site corporate / premium", en: "Corporate / premium website", de: "Corporate / premium website" },
     budget: "À définir après échange",
   },
   {
     id: "ecommerce",
     emoji: "🛒",
-    label:      { fr: "Boutique en ligne",     en: "Online store" },
-    shortDesc:  { fr: "Catalogue produits, paiement Stripe",      en: "Product catalog, Stripe payments" },
-    scopeLabel: { fr: "Périmètre à cadrer", en: "Scope to define" },
-    delayLabel: { fr: "3–8 semaines",          en: "3–8 weeks" },
-    projectType:{ fr: "E-commerce",            en: "E-commerce" },
+    label:      { fr: "Boutique en ligne",     en: "Online store", de: "Online-Shop" },
+    shortDesc:  { fr: "Catalogue produits, paiement Stripe",      en: "Product catalog, Stripe payments", de: "Produktkatalog, Stripe-Zahlung" },
+    scopeLabel: { fr: "Périmètre à cadrer", en: "Scope to define", de: "Umfang zu klären" },
+    delayLabel: { fr: "3–8 semaines",          en: "3–8 weeks", de: "3–8 Wochen" },
+    projectType:{ fr: "E-commerce",            en: "E-commerce", de: "E-commerce" },
     budget: "À définir après échange",
   },
   {
     id: "outil-metier",
     emoji: "⚙️",
-    label:      { fr: "Outil métier / Dashboard", en: "Business tool / Dashboard" },
-    shortDesc:  { fr: "App interne, gestion données, rôles",      en: "Internal app, data management, roles" },
-    scopeLabel: { fr: "Projet sur mesure", en: "Custom project" },
-    delayLabel: { fr: "4–10 semaines",         en: "4–10 weeks" },
-    projectType:{ fr: "Outil web métier",      en: "Business web tool" },
+    label:      { fr: "Outil métier / Dashboard", en: "Business tool / Dashboard", de: "Fachanwendung / Dashboard" },
+    shortDesc:  { fr: "App interne, gestion données, rôles",      en: "Internal app, data management, roles", de: "Interne App, Datenverwaltung, Rollen" },
+    scopeLabel: { fr: "Projet sur mesure", en: "Custom project", de: "Individuelles Projekt" },
+    delayLabel: { fr: "4–10 semaines",         en: "4–10 weeks", de: "4–10 Wochen" },
+    projectType:{ fr: "Outil web métier",      en: "Business web tool", de: "Business web tool" },
     budget: "À définir après échange",
   },
   {
     id: "refonte",
     emoji: "🔄",
-    label:      { fr: "Refonte de site",       en: "Website redesign" },
-    shortDesc:  { fr: "Moderniser un site existant",              en: "Modernise an existing website" },
-    scopeLabel: { fr: "Diagnostic préalable", en: "Initial diagnosis" },
-    delayLabel: { fr: "2–4 semaines",          en: "2–4 weeks" },
-    projectType:{ fr: "Refonte de site",       en: "Website redesign" },
+    label:      { fr: "Refonte de site",       en: "Website redesign", de: "Website-Relaunch" },
+    shortDesc:  { fr: "Moderniser un site existant",              en: "Modernise an existing website", de: "Bestehende Website modernisieren" },
+    scopeLabel: { fr: "Diagnostic préalable", en: "Initial diagnosis", de: "Vorab-Analyse" },
+    delayLabel: { fr: "2–4 semaines",          en: "2–4 weeks", de: "2–4 Wochen" },
+    projectType:{ fr: "Refonte de site",       en: "Website redesign", de: "Website redesign" },
     budget: "À définir après échange",
   },
   {
     id: "app-mobile",
     emoji: "📱",
-    label:      { fr: "Application mobile",   en: "Mobile app" },
-    shortDesc:  { fr: "iOS + Android, MVP fonctionnel",           en: "iOS + Android, working MVP" },
-    scopeLabel: { fr: "MVP à cadrer", en: "MVP to scope" },
-    delayLabel: { fr: "6–12 semaines",         en: "6–12 weeks" },
-    projectType:{ fr: "Application mobile MVP", en: "Mobile app MVP" },
+    label:      { fr: "Application mobile",   en: "Mobile app", de: "Mobile App" },
+    shortDesc:  { fr: "iOS + Android, MVP fonctionnel",           en: "iOS + Android, working MVP", de: "iOS + Android, funktionsfähiges MVP" },
+    scopeLabel: { fr: "MVP à cadrer", en: "MVP to scope", de: "MVP zu klären" },
+    delayLabel: { fr: "6–12 semaines",         en: "6–12 weeks", de: "6–12 Wochen" },
+    projectType:{ fr: "Application mobile MVP", en: "Mobile app MVP", de: "Mobile app MVP" },
     budget: "À définir après échange",
   },
   {
     id: "saas",
     emoji: "☁️",
-    label:      { fr: "SaaS / Produit web",   en: "SaaS / Web product" },
-    shortDesc:  { fr: "Auth, paiement, dashboard client",         en: "Auth, payments, client dashboard" },
-    scopeLabel: { fr: "Produit évolutif", en: "Scalable product" },
-    delayLabel: { fr: "8–12 semaines",         en: "8–12 weeks" },
-    projectType:{ fr: "SaaS MVP",             en: "SaaS MVP" },
+    label:      { fr: "SaaS / Produit web",   en: "SaaS / Web product", de: "SaaS / Webprodukt" },
+    shortDesc:  { fr: "Auth, paiement, dashboard client",         en: "Auth, payments, client dashboard", de: "Login, Zahlung, Kunden-Dashboard" },
+    scopeLabel: { fr: "Produit évolutif", en: "Scalable product", de: "Skalierbares Produkt" },
+    delayLabel: { fr: "8–12 semaines",         en: "8–12 weeks", de: "8–12 Wochen" },
+    projectType:{ fr: "SaaS MVP",             en: "SaaS MVP", de: "SaaS MVP" },
     budget: "À définir après échange",
   },
   {
     id: "ia",
     emoji: "🤖",
-    label:      { fr: "IA / Chatbot",         en: "AI / Chatbot" },
-    shortDesc:  { fr: "Intégration IA, assistant, automatisation", en: "AI integration, assistant, automation" },
-    scopeLabel: { fr: "Automatisation adaptée", en: "Adapted automation" },
-    delayLabel: { fr: "2–6 semaines",          en: "2–6 weeks" },
-    projectType:{ fr: "Chatbot / Intégration IA", en: "Chatbot / AI integration" },
+    label:      { fr: "IA / Chatbot",         en: "AI / Chatbot", de: "KI / Chatbot" },
+    shortDesc:  { fr: "Intégration IA, assistant, automatisation", en: "AI integration, assistant, automation", de: "KI-Integration, Assistent, Automatisierung" },
+    scopeLabel: { fr: "Automatisation adaptée", en: "Adapted automation", de: "Passende Automatisierung" },
+    delayLabel: { fr: "2–6 semaines",          en: "2–6 weeks", de: "2–6 Wochen" },
+    projectType:{ fr: "Chatbot / Intégration IA", en: "Chatbot / AI integration", de: "Chatbot / AI integration" },
     budget: "À définir après échange",
   },
   {
     id: "autre",
     emoji: "💬",
-    label:      { fr: "Autre / Je ne sais pas", en: "Other / Not sure" },
-    shortDesc:  { fr: "Décrivez votre idée, on vous oriente",     en: "Describe your idea, we'll guide you" },
-    scopeLabel: { fr: "Devis personnalisé", en: "Custom quote" },
-    delayLabel: { fr: "À définir",             en: "To be defined" },
-    projectType:{ fr: "Autre projet",          en: "Other project" },
+    label:      { fr: "Autre / Je ne sais pas", en: "Other / Not sure", de: "Sonstiges / Weiss nicht" },
+    shortDesc:  { fr: "Décrivez votre idée, on vous oriente",     en: "Describe your idea, we'll guide you", de: "Beschreiben Sie Ihre Idee, wir beraten Sie" },
+    scopeLabel: { fr: "Devis personnalisé", en: "Custom quote", de: "Individuelle Offerte" },
+    delayLabel: { fr: "À définir",             en: "To be defined", de: "Noch offen" },
+    projectType:{ fr: "Autre projet",          en: "Other project", de: "Other project" },
     budget: "Budget à définir",
   },
 ];
@@ -204,6 +206,46 @@ const COPY = {
     noServiceError: "Please choose a project type.",
     networkError: "Network error. Please try again.",
   },
+  de: {
+    step1: "Schritt 1",
+    step1Title: "Welches Projekt haben Sie?",
+    step2: "Schritt 2",
+    step2Title: "Ihre Angaben",
+    projectTitle: "Beschreiben Sie Ihr Projekt",
+    name: "Name",
+    email: "E-Mail",
+    company: "Unternehmen",
+    companyHint: "optional",
+    phone: "Telefon",
+    phoneHint: "optional",
+    namePlaceholder: "Hans Muster",
+    emailPlaceholder: "hans@firma.ch",
+    companyPlaceholder: "Muster AG",
+    phonePlaceholder: "+41 79 …",
+    messagePlaceholder: "Z. B.: Ich führe ein Restaurant in Zürich und brauche eine moderne Website mit Online-Speisekarte, Reservationsformular und Fotogalerie. Sie soll auf dem Handy schnell sein und bei Google gut gefunden werden.",
+    messageLabel: "Was Sie brauchen",
+    timelineLabel: "Gewünschter Zeitrahmen",
+    timelineDefault: "Auswählen…",
+    timelines: ["So bald wie möglich", "Innerhalb eines Monats", "In 1 bis 3 Monaten", "In 3 bis 6 Monaten", "Kein fester Termin"],
+    recap: "Ihre Anfrage",
+    service: "Leistung",
+    estimation: "Art des Bedarfs",
+    contact: "Kontakt",
+    delay: "Gewünschter Zeitrahmen",
+    noService: "Nicht ausgewählt",
+    reassurance: [
+      { icon: "⚡", label: "Antwort innert 24 h", sub: "Werktage" },
+      { icon: "🔒", label: "Unverbindlich", sub: "Keine Verpflichtung" },
+      { icon: "💬", label: "Passende Schätzung", sub: "Nach Ihrem Bedarf" },
+      { icon: "🌍", label: "Frankreich & Schweiz", sub: "100 % remote" },
+    ],
+    submit: "Persönliche Offerte anfordern → Antwort innert 24 h",
+    submitting: "Wird gesendet…",
+    disclaimer: "Unverbindlich · Ihre Daten werden nicht weiterverkauft · DSGVO",
+    captchaError: "Bitte bestätigen Sie das Captcha.",
+    noServiceError: "Bitte wählen Sie eine Projektart.",
+    networkError: "Netzwerkfehler. Bitte erneut versuchen.",
+  },
 } as const;
 
 // ─── Component ─────────────────────────────────────────────────────────────────
@@ -213,7 +255,7 @@ export function SmartQuoteForm({
   defaultCompany = "",
   defaultSite = "",
 }: {
-  locale?: "fr" | "en";
+  locale?: FormLocale;
   defaultCompany?: string;
   defaultSite?: string;
 }) {
@@ -222,7 +264,7 @@ export function SmartQuoteForm({
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const defaultMessage = defaultSite ? (locale === "en" ? `My current site: ${defaultSite}. ` : `Mon site actuel : ${defaultSite}. `) : "";
+  const defaultMessage = defaultSite ? (locale === "en" ? `My current site: ${defaultSite}. ` : locale === "de" ? `Meine aktuelle Website: ${defaultSite}. ` : `Mon site actuel : ${defaultSite}. `) : "";
   const [form, setForm] = useState({ name: "", email: "", companyName: defaultCompany, phone: "", message: defaultMessage, timeline: "" });
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaError, setCaptchaError] = useState("");
@@ -248,8 +290,8 @@ export function SmartQuoteForm({
         email: form.email.trim(),
         companyName: form.companyName.trim() || undefined,
         phone: form.phone.trim() || undefined,
-        projectType: service?.projectType[locale] ?? "Other",
-        goal: form.message.trim() || `Quote request: ${service?.label[locale]}`,
+        projectType: service?.projectType[locale === "de" ? "en" : locale] ?? "Other",
+        goal: form.message.trim() || `Quote request: ${service?.label[locale === "de" ? "en" : locale]}`,
         budget: service?.budget ?? "To be defined",
         timeline: form.timeline || "Not specified",
         message: form.message.trim() || undefined,
@@ -264,7 +306,7 @@ export function SmartQuoteForm({
       });
 
       if (res.ok) {
-        router.push(locale === "en" ? "/en/merci" : "/merci");
+        router.push(locale === "en" ? "/en/merci" : locale === "de" ? "/de/merci" : "/merci");
       } else {
         const data = await res.json() as { error?: string };
         setServerMessage(data.error ?? "An error occurred.");
@@ -283,7 +325,7 @@ export function SmartQuoteForm({
         <div className="flex items-center gap-3 rounded-xl border border-sky-500/20 bg-sky-500/8 px-4 py-3 text-sm text-sky-300">
           <span className="text-base">🔍</span>
           <span>
-            {locale === "en" ? "Site analysed:" : "Site analysé :"}{" "}
+            {locale === "en" ? "Site analysed:" : locale === "de" ? "Analysierte Website:" : "Site analysé :"}{" "}
             <strong className="text-white">{defaultSite}</strong>
           </span>
         </div>

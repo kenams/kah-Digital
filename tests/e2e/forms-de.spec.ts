@@ -3,19 +3,16 @@ import { expect, test } from "@playwright/test";
 test("German quote form uses German labels", async ({ page }) => {
   await page.goto("/de/devis");
 
-  await expect(page.getByLabel("Du bist *")).toBeVisible();
-  await expect(page.getByLabel("Firmenname (falls Unternehmen)")).toBeVisible();
-  await expect(page.getByLabel("Projekttyp *")).toBeVisible();
-  await expect(page.getByText("Gewuenschte Seiten *")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Anfrage senden" })).toBeVisible();
+  await expect(page.getByText("Welches Projekt haben Sie?")).toBeVisible();
+  await expect(page.getByText("Landing Page").first()).toBeVisible();
+  await expect(page.getByText("Online-Shop").first()).toBeVisible();
+  await page.getByText("Online-Shop").first().click();
+  await expect(page.getByText("Ihre Angaben")).toBeVisible();
+  await expect(page.getByRole("button", { name: /Persönliche Offerte anfordern/ })).toBeVisible();
+  await expect(page.getByText(/Réponse|Demander/)).toHaveCount(0);
 });
 
-test("German MVP form uses German labels", async ({ page }) => {
-  await page.goto("/de/devis/mvp");
-
-  await expect(page.getByLabel("Du bist *")).toBeVisible();
-  await expect(page.getByLabel("Deine Idee / das Versprechen *")).toBeVisible();
-  await expect(page.getByText("Zielplattformen *")).toBeVisible();
-  await expect(page.getByLabel("Zeitplan *")).toBeVisible();
-  await expect(page.getByRole("button", { name: "MVP-Anfrage senden" })).toBeVisible();
+test("German thank-you page exists", async ({ page }) => {
+  await page.goto("/de/merci");
+  await expect(page.getByRole("heading", { name: /Danke/ })).toBeVisible();
 });
