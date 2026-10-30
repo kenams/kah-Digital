@@ -75,8 +75,13 @@ const baseMetadata = {
   },
 } satisfies Metadata;
 
-function sanitizePageTitle(title: string) {
-  return title.replace(/\s*\|\s*KAH Digital Studio\s*$/i, "").trim();
+/** Titre sans la marque en suffixe ; au-delà de 70 caractères, coupé au dernier séparateur (Google tronque vers 60). */
+export function sanitizePageTitle(title: string) {
+  const base = title.replace(/\s*\|\s*KAH Digital Studio\s*$/i, "").trim();
+  if (base.length <= 70) return base;
+  const head = base.slice(0, 66);
+  const cut = Math.max(head.lastIndexOf(" — "), head.lastIndexOf(" | "), head.lastIndexOf(" · "), head.lastIndexOf(": "), head.lastIndexOf(" - "));
+  return (cut > 25 ? head.slice(0, cut) : head.replace(/\s+\S*$/, "")).trim();
 }
 
 function mergeKeywords(locale: Locale, keywords: string[] = []) {
