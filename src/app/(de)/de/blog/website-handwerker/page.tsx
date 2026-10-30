@@ -37,12 +37,12 @@ const faqJsonLd = {
 };
 
 const CHECKLIST = [
-  { title: "Page d'accueil claire", detail: "Ihr Handwerk, Ihr Gebiet, Ihre Kontaktdaten — in 5 Sekunden versteht der Besucher, was Sie tun." },
+  { title: "Klare Startseite", detail: "Ihr Handwerk, Ihr Gebiet, Ihre Kontaktdaten — in 5 Sekunden versteht der Besucher, was Sie tun." },
   { title: "Liste Ihrer Leistungen", detail: "Beschreiben Sie jede Leistung. Das liest Google, um Sie für die richtigen Suchanfragen zu platzieren." },
   { title: "Fotos Ihrer Arbeiten", detail: "Vorher/Nachher, abgeschlossene Baustellen — Kunden kaufen mit den Augen. Auch gut eingestellte Handyfotos genügen." },
   { title: "Zone d'intervention", detail: "Nennen Sie ausdrücklich die Städte und Kantone, die Sie abdecken. Wesentlich für lokales SEO." },
   { title: "Kontaktformular oder WhatsApp", detail: "Reduzieren Sie Hürden. Ein Button „Jetzt anrufen“ oder ein kurzes Formular genügt." },
-  { title: "Avis clients (Google)", detail: "Binden Sie Ihre Google-Bewertungen ein oder bitten Sie Kunden um eine Bewertung. Das vervielfacht das Vertrauen." },
+  { title: "Kundenbewertungen (Google)", detail: "Binden Sie Ihre Google-Bewertungen ein oder bitten Sie Kunden um eine Bewertung. Das vervielfacht das Vertrauen." },
 ];
 
 export default function DeSiteWebArtisanPage() {
@@ -102,10 +102,10 @@ export default function DeSiteWebArtisanPage() {
         </p>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site basique (3-4 pages)", price: "je nach Umfang", delay: "1 semaine" },
-            { label: "Site complet (6-8 pages)", price: "je nach Umfang", delay: "2 semaines" },
-            { label: "Mit Galerie Ihrer Arbeiten", price: "je nach Umfang", delay: "+2-3 jours" },
-            { label: "Maintenance annuelle", price: "je nach Umfang", delay: "Support inclus" },
+            { label: "Basis-Website (3–4 Seiten)", price: "je nach Umfang", delay: "1 Woche" },
+            { label: "Komplette Website (6–8 Seiten)", price: "je nach Umfang", delay: "2 Wochen" },
+            { label: "Mit Galerie Ihrer Arbeiten", price: "je nach Umfang", delay: "+2–3 Tage" },
+            { label: "Jährliche Wartung", price: "je nach Umfang", delay: "Support inklusive" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>

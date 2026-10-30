@@ -173,7 +173,7 @@ export function SiteFooter() {
         title: "Leistungen",
         links: [
           { label: "Business-Website", href: "/de/site-web-entreprise" },
-          { label: "Website-Refonte", href: "/de/refonte-site-web" },
+          { label: "Website-Relaunch", href: "/de/refonte-site-web" },
           { label: "Web-App", href: "/de/application-web-sur-mesure" },
           { label: "KI-Automatisierung", href: "/de/automatisation-ia-entreprise" },
           { label: "KI-Agentur", href: "/de/agence-ia" },
@@ -199,7 +199,7 @@ export function SiteFooter() {
       },
       location: "Toulouse, Frankreich",
       rights: "Alle Rechte vorbehalten.",
-      madeWith: "Mit KI gebaut · Deployed on Vercel",
+      madeWith: "Mit KI gebaut · Auf Vercel bereitgestellt",
     },
   }[locale];
 

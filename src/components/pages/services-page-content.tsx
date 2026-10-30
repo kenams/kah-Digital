@@ -207,7 +207,7 @@ export function ServicesPageContent({ locale }: ServicesPageContentProps) {
                 ? "Des pages plus generales pour capter des besoins autour des sites web, de la refonte, des applications et de l'automatisation."
                 : locale === "en"
                   ? "More general entry pages to capture needs around websites, redesigns, applications, and automation."
-                  : "Allgemeinere Einstiegsseiten für Bedarf rund um Websites, Refonte, Anwendungen und Automatisierung."}
+                  : "Allgemeinere Einstiegsseiten für Bedarf rund um Websites, Relaunch, Anwendungen und Automatisierung."}
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">

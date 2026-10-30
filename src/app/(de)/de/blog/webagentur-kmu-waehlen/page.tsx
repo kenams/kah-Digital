@@ -37,7 +37,7 @@ const faqJsonLd = {
 
 const GOOD_SIGNS = [
   "Portfolio mit echten gelieferten Projekten (keine Mockups)",
-  "Process clair : brief ? maquette ? dev ? recette ? livraison",
+  "Klarer Prozess: Briefing → Mockup → Entwicklung → Abnahme → Lieferung",
   "Individuelle Offerte, nach einer einfachen ersten Planung erklärt",
   "Sie erhalten die Zugänge: Hosting, Domain, Quellcode",
   "Schnelle Antwort (innert 24–48h) ab dem ersten Kontakt",
@@ -64,7 +64,7 @@ export default function DeAgenceWebPmePage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/de/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">PME</span>
+            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">KMU</span>
             <span className="text-xs text-gray-600">4. Mai 2026 · 6 Min. Lesezeit</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -144,7 +144,7 @@ export default function DeAgenceWebPmePage() {
               Offerte anfordern <FiArrowRight size={15} />
             </Link>
             <Link href="/de/projets" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir notre portfolio
+              Unsere Referenzen ansehen
             </Link>
           </div>
         </div>

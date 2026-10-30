@@ -287,7 +287,7 @@ export function ProjectsPageContent({ locale, projects }: Props) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <div className="h-px flex-1 bg-white/8" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">Autres projets</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">{locale === "en" ? "Other projects" : locale === "de" ? "Weitere Projekte" : "Autres projets"}</span>
           <div className="h-px flex-1 bg-white/8" />
         </div>
       </div>

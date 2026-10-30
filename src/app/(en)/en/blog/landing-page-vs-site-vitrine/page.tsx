@@ -39,11 +39,11 @@ const faqJsonLd = {
 type CompareItem = { topic: string; landing: string; vitrine: string; landingOk?: boolean; vitrineOk?: boolean };
 
 const COMPARE: CompareItem[] = [
-  { topic: "Objectif", landing: "A single action (e.g. fill in a form, buy)", vitrine: "Present the business as a whole", landingOk: false, vitrineOk: false },
+  { topic: "Goal", landing: "A single action (e.g. fill in a form, buy)", vitrine: "Present the business as a whole", landingOk: false, vitrineOk: false },
   { topic: "Number of pages", landing: "1 page", vitrine: "5 to 15 pages", landingOk: false, vitrineOk: false },
   { topic: "SEO long-terme", landing: "Limited (one page only)", vitrine: "Strong — several pages, several keywords", landingOk: false, vitrineOk: true },
   { topic: "Conversion (pub payante)", landing: "Excellent — no distractions", vitrine: "Average — too many options kill the click rate", landingOk: true, vitrineOk: false },
-  { topic: "Time to go live", landing: "3-7 jours", vitrine: "2-3 semaines", landingOk: true, vitrineOk: false },
+  { topic: "Time to go live", landing: "3-7 days", vitrine: "2-3 weeks", landingOk: true, vitrineOk: false },
   { topic: "Cost", landing: "depending on scope", vitrine: "depending on scope", landingOk: true, vitrineOk: false },
   { topic: "Credibility / trust", landing: "Faible si seul", vitrine: "Strong — “About”, testimonials, blog", landingOk: false, vitrineOk: true },
 ];
@@ -92,14 +92,14 @@ export default function EnLandingPageVsSiteVitrinePage() {
           </p>
         </div>
 
-        <h2 className="mb-8 text-2xl font-bold text-white">Comparatif rapide</h2>
+        <h2 className="mb-8 text-2xl font-bold text-white">Quick comparison</h2>
         <div className="mb-12 overflow-hidden rounded-2xl border border-white/8">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/8 bg-white/5">
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-500">Criterion</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-blue-400">Landing page</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-emerald-400">Site vitrine</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-emerald-400">Showcase site</th>
               </tr>
             </thead>
             <tbody>

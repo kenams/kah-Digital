@@ -65,7 +65,7 @@ export function InvoicePreview({
       clientName: clientName,
       clientCompany: clientCompany,
       items: [
-        { description: "Developpement site web vitrine", quantity: 1, unitPrice: 2500, total: 2500 },
+        { description: "Développement site web vitrine", quantity: 1, unitPrice: 2500, total: 2500 },
         { description: "Formation et accompagnement", quantity: 1, unitPrice: 300, total: 300 },
       ],
     },

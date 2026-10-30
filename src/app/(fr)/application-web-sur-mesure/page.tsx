@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   path: "/application-web-sur-mesure",
   title: "Application web sur mesure | KAH Digital Studio",
   description:
-    "Developpement d'application web sur mesure : portail, dashboard, outil metier, espace client et workflow exploitable.",
+    "Développement d'application web sur mesure : portail, dashboard, outil métier, espace client et workflow exploitable.",
 });
 
 export default function ApplicationWebSurMesurePage() {

@@ -39,11 +39,11 @@ const faqJsonLd = {
 type CompareItem = { topic: string; landing: string; vitrine: string; landingOk?: boolean; vitrineOk?: boolean };
 
 const COMPARE: CompareItem[] = [
-  { topic: "Objectif", landing: "Eine einzige Handlung (z. B. Formular ausfüllen, kaufen)", vitrine: "Das Unternehmen als Ganzes vorstellen", landingOk: false, vitrineOk: false },
+  { topic: "Ziel", landing: "Eine einzige Handlung (z. B. Formular ausfüllen, kaufen)", vitrine: "Das Unternehmen als Ganzes vorstellen", landingOk: false, vitrineOk: false },
   { topic: "Anzahl Seiten", landing: "1 page", vitrine: "5 bis 15 Seiten", landingOk: false, vitrineOk: false },
   { topic: "SEO long-terme", landing: "Begrenzt (nur eine Seite)", vitrine: "Stark — mehrere Seiten, mehrere Suchbegriffe", landingOk: false, vitrineOk: true },
   { topic: "Conversion (pub payante)", landing: "Ausgezeichnet — keine Ablenkung", vitrine: "Mittel — zu viele Optionen senken die Klickrate", landingOk: true, vitrineOk: false },
-  { topic: "Zeit bis zum Online-Gang", landing: "3-7 jours", vitrine: "2-3 semaines", landingOk: true, vitrineOk: false },
+  { topic: "Zeit bis zum Online-Gang", landing: "3–7 Tage", vitrine: "2–3 Wochen", landingOk: true, vitrineOk: false },
   { topic: "Kosten", landing: "je nach Umfang", vitrine: "je nach Umfang", landingOk: true, vitrineOk: false },
   { topic: "Glaubwürdigkeit / Vertrauen", landing: "Faible si seul", vitrine: "Stark — „Über uns“, Referenzen, Blog", landingOk: false, vitrineOk: true },
 ];
@@ -92,14 +92,14 @@ export default function DeLandingPageVsSiteVitrinePage() {
           </p>
         </div>
 
-        <h2 className="mb-8 text-2xl font-bold text-white">Comparatif rapide</h2>
+        <h2 className="mb-8 text-2xl font-bold text-white">Kurzvergleich</h2>
         <div className="mb-12 overflow-hidden rounded-2xl border border-white/8">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/8 bg-white/5">
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-gray-500">Kriterium</th>
                 <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-blue-400">Landing page</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-emerald-400">Site vitrine</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-widest text-emerald-400">Präsentationswebsite</th>
               </tr>
             </thead>
             <tbody>

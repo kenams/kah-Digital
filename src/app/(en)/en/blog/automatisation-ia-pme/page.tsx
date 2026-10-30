@@ -182,10 +182,10 @@ export default function EnAutomatisationIaPmePage() {
             </Link>
             <div className="mb-4 flex flex-wrap gap-2">
               <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
-                Automatisation IA
+                AI automation
               </span>
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
-                19 mai 2026
+                19 May 2026
               </span>
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-400">
                 8 min read
@@ -357,7 +357,7 @@ export default function EnAutomatisationIaPmePage() {
                 href="/en/audit-gratuit"
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-7 py-3.5 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:shadow-blue-500/40 hover:gap-3"
               >
-                Obtenir mon audit gratuit
+                Get my free audit
                 <FiArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
@@ -380,9 +380,9 @@ export default function EnAutomatisationIaPmePage() {
             <h2 className="mb-6 text-lg font-bold text-white">Related articles</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { href: "/blog/creation-site-web-pme", title: "How to create a professional website for a small business in 2026", tag: "Site web" },
+                { href: "/blog/creation-site-web-pme", title: "How to create a professional website for a small business in 2026", tag: "Website" },
                 { href: "/blog/seo-local-pme", title: "Local SEO for small businesses: reaching Google's first page", tag: "SEO" },
-                { href: "/blog/refonte-site-web", title: "Website redesign: when and how to do it", tag: "Refonte" },
+                { href: "/blog/refonte-site-web", title: "Website redesign: when and how to do it", tag: "Redesign" },
               ].map((article) => (
                 <Link
                   key={article.href}
@@ -394,7 +394,7 @@ export default function EnAutomatisationIaPmePage() {
                   </span>
                   <p className="text-sm font-semibold text-white group-hover:text-blue-400 transition">{article.title}</p>
                   <p className="mt-1 text-xs text-gray-500 group-hover:text-gray-400 transition flex items-center gap-1">
-                    Lire l'article <FiArrowRight size={11} />
+                    Read the article <FiArrowRight size={11} />
                   </p>
                 </Link>
               ))}

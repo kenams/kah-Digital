@@ -110,9 +110,9 @@ export default function EnRefonteWebPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">How long does a redesign take?</h2>
         <div className="mb-12 grid gap-3 sm:grid-cols-3">
           {[
-            { type: "Site vitrine", delay: "5 business days" },
-            { type: "Site corporate", delay: "3 – 6 weeks" },
-            { type: "Application web", delay: "6 – 12 weeks" },
+            { type: "Showcase site", delay: "5 business days" },
+            { type: "Corporate site", delay: "3 – 6 weeks" },
+            { type: "Web application", delay: "6 – 12 weeks" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-4 text-center">
               <div className="text-sm text-gray-500">{item.type}</div>
@@ -127,10 +127,10 @@ export default function EnRefonteWebPage() {
           <p className="mb-6 text-gray-400">We analyse your site for free and tell you what needs to change.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/en/audit-gratuit" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-blue-500/30">
-              Audit gratuit <FiArrowRight size={15} />
+              Free audit <FiArrowRight size={15} />
             </Link>
             <Link href="/en/refonte-site-web" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Notre offre refonte
+              Our redesign offer
             </Link>
           </div>
         </div>

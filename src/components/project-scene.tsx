@@ -55,7 +55,7 @@ export type ProjectSceneVariant = "card" | "hero";
 const fallbackScene = (project: PortfolioProject, locale: "fr" | "en" | "de"): ProjectScene => ({
   badge: project.type,
   hero: project.tagline,
-  statLabel: locale === "en" ? "Result" : "Resultat",
+  statLabel: locale === "en" ? "Result" : locale === "de" ? "Ergebnis" : "Résultat",
   statValue: project.result,
   chip: project.timeline,
   callout: project.shortDescription,

@@ -69,9 +69,9 @@ export default function EnCreationSiteWebPMEPage() {
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
             { type: "Landing page", ideal: "Testing an offer, launching a product, freelancers", price: "custom quote" },
-            { type: "Site vitrine", ideal: "Local SMEs, professional practices, tradespeople", price: "custom quote" },
-            { type: "Site corporate", ideal: "Established companies, multilingual, CMS", price: "custom quote" },
-            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "custom quote" },
+            { type: "Showcase site", ideal: "Local SMEs, professional practices, tradespeople", price: "custom quote" },
+            { type: "Corporate site", ideal: "Established companies, multilingual, CMS", price: "custom quote" },
+            { type: "E-commerce", ideal: "Online sales, shop, subscriptions", price: "custom quote" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-5">
               <div className="mb-1 font-bold text-white text-sm">{item.type}</div>
@@ -113,7 +113,7 @@ export default function EnCreationSiteWebPMEPage() {
         <div className="mb-10 space-y-4">
           {[
             { type: "Freelance junior (Malt, Fiverr)", pro: "Flexibility and a quick start", con: "High risk on quality and deadlines, no support after delivery" },
-            { type: "Grande agence web", pro: "Structured process, full team", con: "Sometimes oversized proposals, changing contact person" },
+            { type: "Large web agency", pro: "Structured process, full team", con: "Sometimes oversized proposals, changing contact person" },
             { type: "Independent digital studio", pro: "Balance of quality and scoping, direct contact, responsive", con: "Limited parallel capacity (watch the deadlines)" },
             { type: "Constructeur DIY (Wix, Squarespace)", pro: "Very fast to launch", con: "Generic design, mediocre performance, hard to evolve, limited SEO" },
           ].map((item) => (
@@ -154,7 +154,7 @@ export default function EnCreationSiteWebPMEPage() {
               Order my website from $290
             </Link>
             <Link href="/en/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir nos offres
+              See our offers
             </Link>
           </div>
         </div>

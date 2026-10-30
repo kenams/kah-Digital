@@ -69,9 +69,9 @@ export default function DeCreationSiteWebPMEPage() {
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
             { type: "Landing page", ideal: "Ein Angebot testen, ein Produkt lancieren, Freelancer", price: "individuelle Offerte" },
-            { type: "Site vitrine", ideal: "Lokale KMU, freie Berufe, Handwerker", price: "individuelle Offerte" },
-            { type: "Site corporate", ideal: "Etablierte Unternehmen, mehrsprachig, CMS", price: "individuelle Offerte" },
-            { type: "E-commerce", ideal: "Vente en ligne, boutique, abonnements", price: "individuelle Offerte" },
+            { type: "Präsentationswebsite", ideal: "Lokale KMU, freie Berufe, Handwerker", price: "individuelle Offerte" },
+            { type: "Unternehmenswebsite", ideal: "Etablierte Unternehmen, mehrsprachig, CMS", price: "individuelle Offerte" },
+            { type: "E-commerce", ideal: "Online-Verkauf, Shop, Abos", price: "individuelle Offerte" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-5">
               <div className="mb-1 font-bold text-white text-sm">{item.type}</div>
@@ -113,7 +113,7 @@ export default function DeCreationSiteWebPMEPage() {
         <div className="mb-10 space-y-4">
           {[
             { type: "Freelance junior (Malt, Fiverr)", pro: "Flexibilität und schneller Start", con: "Hohes Risiko bei Qualität und Terminen, keine Unterstützung nach der Lieferung" },
-            { type: "Grande agence web", pro: "Strukturierter Prozess, komplettes Team", con: "Teils überdimensionierte Angebote, wechselnde Ansprechperson" },
+            { type: "Grosse Webagentur", pro: "Strukturierter Prozess, komplettes Team", con: "Teils überdimensionierte Angebote, wechselnde Ansprechperson" },
             { type: "Unabhängiges Digitalstudio", pro: "Gleichgewicht von Qualität und Planung, direkter Ansprechpartner, reaktiv", con: "Begrenzte Parallelkapazität (auf Termine achten)" },
             { type: "Constructeur DIY (Wix, Squarespace)", pro: "Sehr schnell startklar", con: "Generisches Design, mittelmässige Performance, wenig erweiterbar, begrenztes SEO" },
           ].map((item) => (
@@ -151,7 +151,7 @@ export default function DeCreationSiteWebPMEPage() {
               Offerte anfordern <FiArrowRight size={15} />
             </Link>
             <Link href="/de/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir nos offres
+              Unsere Angebote ansehen
             </Link>
           </div>
         </div>

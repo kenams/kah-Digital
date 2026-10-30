@@ -45,7 +45,7 @@ const TIERS = [
 
 const COST_DRIVERS = [
   { title: "Authentifizierung und Konten", detail: "Login, Profile, Rollen und Zugriffsrechte müssen von Anfang an geplant werden." },
-  { title: "Paiement in-app", detail: "Stripe, In-App-Käufe bei Apple/Google und Abrechnungsabläufe erfordern eine spezifische Analyse." },
+  { title: "In-App-Zahlungen", detail: "Stripe, In-App-Käufe bei Apple/Google und Abrechnungsabläufe erfordern eine spezifische Analyse." },
   { title: "Notifications push", detail: "Segmentierung, Versandregeln und Nutzerpräferenzen beeinflussen den Umfang." },
   { title: "Geolokalisierung", detail: "Kartendarstellung, Tracking, Routenberechnung und mobile Berechtigungen müssen fachlich validiert werden." },
   { title: "Mode hors-ligne", detail: "Lokale Synchronisation und Konfliktbehandlung erhöhen die Produktkomplexität." },
@@ -151,7 +151,7 @@ export default function DeApplicationMobileCoutPage() {
               Offerte anfordern <FiArrowRight size={15} />
             </Link>
             <Link href="/de/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir nos offres
+              Unsere Angebote ansehen
             </Link>
           </div>
         </div>

@@ -73,7 +73,7 @@ const copy = {
         lines: [
           ["Brand name", companyConfig.brandName],
           ["Legal entity", companyConfig.legalName],
-          ["Status", companyConfig.registrationStatus],
+          ["Status", "Sole proprietorship (entreprise individuelle) — France"],
           ["City", `${companyConfig.city}, ${companyConfig.country}`],
           ["Email", companyConfig.email],
           ["Phone", companyConfig.phone],
@@ -127,7 +127,7 @@ const copy = {
         lines: [
           ["Markenname", companyConfig.brandName],
           ["Rechtlicher Name", companyConfig.legalName],
-          ["Status", companyConfig.registrationStatus],
+          ["Status", "Einzelunternehmen (entreprise individuelle) — Frankreich"],
           ["Ort", `${companyConfig.city}, ${companyConfig.country}`],
           ["E-Mail", companyConfig.email],
           ["Telefon", companyConfig.phone],

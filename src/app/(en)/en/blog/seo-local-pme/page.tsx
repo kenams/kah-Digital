@@ -191,7 +191,7 @@ export default function EnSeoLocalPmePage() {
             </Link>
             <span className="text-xs text-gray-600">·</span>
             <span className="rounded-full bg-emerald-500/10 px-3 py-0.5 text-xs font-semibold text-emerald-400">SEO Local</span>
-            <span className="text-xs text-gray-600">4 mai 2026</span>
+            <span className="text-xs text-gray-600">4 May 2026</span>
           </div>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
             Local SEO for small businesses: reaching Google's first page in 2026
@@ -285,7 +285,7 @@ export default function EnSeoLocalPmePage() {
               href="/en/audit-gratuit"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-6 py-3 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:opacity-90"
             >
-              Obtenir mon audit gratuit <FiArrowRight size={15} />
+              Get my free audit <FiArrowRight size={15} />
             </Link>
             <a
               href="https://wa.me/33759558414?text=Bonjour%2C%20j'ai%20lu%20l'article%20SEO%20local%20et%20j'aimerais%20analyser%20mon%20site."

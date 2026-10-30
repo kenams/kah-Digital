@@ -37,12 +37,12 @@ const faqJsonLd = {
 };
 
 const CHECKLIST = [
-  { title: "Page d'accueil claire", detail: "Your trade, your area, your contact details — in 5 seconds the visitor understands what you do." },
+  { title: "Clear home page", detail: "Your trade, your area, your contact details — in 5 seconds the visitor understands what you do." },
   { title: "List of your services", detail: "Detail each service. This is what Google reads to rank you for the right queries." },
   { title: "Photos of your work", detail: "Before/after, finished jobs — customers buy with their eyes. Even well-framed phone photos are enough." },
   { title: "Zone d'intervention", detail: "Explicitly mention the cities and departments you cover. Essential for local SEO." },
   { title: "Contact form or WhatsApp", detail: "Reduce friction. A ‘Call now’ button or a short form is enough." },
-  { title: "Avis clients (Google)", detail: "Embed your Google reviews or ask your customers to leave one. It multiplies trust." },
+  { title: "Customer reviews (Google)", detail: "Embed your Google reviews or ask your customers to leave one. It multiplies trust." },
 ];
 
 export default function EnSiteWebArtisanPage() {
@@ -102,10 +102,10 @@ export default function EnSiteWebArtisanPage() {
         </p>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site basique (3-4 pages)", price: "depending on scope", delay: "1 semaine" },
-            { label: "Site complet (6-8 pages)", price: "depending on scope", delay: "2 semaines" },
-            { label: "With a gallery of your work", price: "depending on scope", delay: "+2-3 jours" },
-            { label: "Maintenance annuelle", price: "depending on scope", delay: "Support inclus" },
+            { label: "Basic site (3-4 pages)", price: "depending on scope", delay: "1 week" },
+            { label: "Full site (6-8 pages)", price: "depending on scope", delay: "2 weeks" },
+            { label: "With a gallery of your work", price: "depending on scope", delay: "+2-3 days" },
+            { label: "Annual maintenance", price: "depending on scope", delay: "Support included" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>

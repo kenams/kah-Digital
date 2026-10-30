@@ -105,10 +105,10 @@ export default function EnSiteWebRestaurantPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">How is it priced?</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site vitrine simple (4-5 pages)", price: "depending on scope", delay: "1–2 semaines" },
-            { label: "With online booking", price: "depending on scope", delay: "2–3 semaines" },
-            { label: "With online ordering", price: "depending on scope", delay: "3–4 semaines" },
-            { label: "Maintenance + menu updates", price: "depending on scope", delay: "Support inclus" },
+            { label: "Simple showcase site (4-5 pages)", price: "depending on scope", delay: "1–2 weeks" },
+            { label: "With online booking", price: "depending on scope", delay: "2–3 weeks" },
+            { label: "With online ordering", price: "depending on scope", delay: "3–4 weeks" },
+            { label: "Maintenance + menu updates", price: "depending on scope", delay: "Support included" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>

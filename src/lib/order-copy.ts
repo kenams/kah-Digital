@@ -318,9 +318,9 @@ const DE: OrderCopy = {
     },
   },
   plans: {
-    essentiel: { name: "Essentiel", tagline: "Wir kümmern uns um alles", points: ["Hosting, Domain, Sicherheit, Backups", "1 kleine Änderung pro Monat", "Antwort innert 72 h"] },
-    confort: { name: "Confort", tagline: "Für eine Website, die sich weiterentwickelt", points: ["Alles aus Essentiel", "Website-Updates per Nachricht (KAH Pulse)", "3 grössere Änderungen pro Monat", "Monatsbericht + Google-Bewertungen im Blick", "Antwort innert 24 h"] },
-    pro: { name: "Pro", tagline: "Verstärkte Betreuung", points: ["Alles aus Confort", "Automatische Terminerinnerungen + Google-Bewertungsanfragen", "Unbegrenzte grössere Änderungen (angemessene Nutzung)", "Direkter WhatsApp-Support, Antwort innert 4 Arbeitsstunden"] },
+    essentiel: { name: "Essential", tagline: "Wir kümmern uns um alles", points: ["Hosting, Domain, Sicherheit, Backups", "1 kleine Änderung pro Monat", "Antwort innert 72 h"] },
+    confort: { name: "Komfort", tagline: "Für eine Website, die sich weiterentwickelt", points: ["Alles aus Essential", "Website-Updates per Nachricht (KAH Pulse)", "3 grössere Änderungen pro Monat", "Monatsbericht + Google-Bewertungen im Blick", "Antwort innert 24 h"] },
+    pro: { name: "Pro", tagline: "Verstärkte Betreuung", points: ["Alles aus Komfort", "Automatische Terminerinnerungen + Google-Bewertungsanfragen", "Unbegrenzte grössere Änderungen (angemessene Nutzung)", "Direkter WhatsApp-Support, Antwort innert 4 Arbeitsstunden"] },
     none: { name: "Ohne Abonnement", tagline: "Ich kümmere mich selbst ums Hosting", points: ["Ich erhalte die Zugänge bei der Lieferung", "Hosting, Domain und Updates liegen bei mir"] },
   },
   perMonth: "/Monat",

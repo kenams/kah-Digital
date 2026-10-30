@@ -38,9 +38,9 @@ const faqJsonLd = {
 
 const TIERS = [
   { label: "Landing / Portfolio", price: "custom quote", delay: "5 days", desc: "A clear, professional page. Ideal for freelancers, coaches, a product launch or testing an idea.", included: ["Custom design", "Responsive mobile", "Contact form", "Basic SEO", "Deployment included"] },
-  { label: "Site vitrine", price: "custom quote", delay: "5 business days", desc: "A complete presence for a small business or an independent. Pages: home, services, about, contact.", included: ["5 to 8 pages", "Optimised SEO", "Google Maps", "Formulaire pro", "Analytics"] },
-  { label: "Site corporate", price: "custom quote", delay: "3–5 weeks", desc: "A complete site for an established company: multilingual, CMS, multiple pages, premium design.", included: ["10–20 pages", "CMS admin", "Multilingue", "Built-in blog", "Optimised performance"] },
-  { label: "Application web / IA", price: "custom quote", delay: "4–10 weeks", desc: "Dashboard, SaaS, business app, AI integration. Custom full-stack development.", included: ["Auth utilisateurs", "Database", "API REST / webhooks", "AI integration", "Tests & deployment"] },
+  { label: "Showcase site", price: "custom quote", delay: "5 business days", desc: "A complete presence for a small business or an independent. Pages: home, services, about, contact.", included: ["5 to 8 pages", "Optimised SEO", "Google Maps", "Formulaire pro", "Analytics"] },
+  { label: "Corporate site", price: "custom quote", delay: "3–5 weeks", desc: "A complete site for an established company: multilingual, CMS, multiple pages, premium design.", included: ["10–20 pages", "CMS admin", "Multilingual", "Built-in blog", "Optimised performance"] },
+  { label: "Web app / AI", price: "custom quote", delay: "4–10 weeks", desc: "Dashboard, SaaS, business app, AI integration. Custom full-stack development.", included: ["Auth utilisateurs", "Database", "API REST / webhooks", "AI integration", "Tests & deployment"] },
 ];
 
 export default function EnPrixSiteWebPage() {
@@ -55,7 +55,7 @@ export default function EnPrixSiteWebPage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/en/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">Devis</span>
+            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">Quote</span>
             <span className="text-xs text-gray-600">24 April 2026 · 6 min read</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -110,7 +110,7 @@ export default function EnPrixSiteWebPage() {
         <ul className="mb-10 space-y-3 text-gray-400 text-sm leading-relaxed">
           {[
             { title: "E-commerce", detail: "A product catalogue, payment, order management and customer follow-up call for a more structured scope." },
-            { title: "Multilingue", detail: "Translating and adapting the content (3 languages) adds 20 to 35% more work." },
+            { title: "Multilingual", detail: "Translating and adapting the content (3 languages) adds 20 to 35% more work." },
             { title: "Third-party integrations", detail: "CRM, booking calendar, ERP or custom APIs must be analysed before estimating." },
             { title: "Animations and micro-interactions", detail: "A heavily animated design can double front-end development time." },
             { title: "Advanced technical SEO", detail: "Audit, structured data and Core Web Vitals take serious work from the architecture stage." },

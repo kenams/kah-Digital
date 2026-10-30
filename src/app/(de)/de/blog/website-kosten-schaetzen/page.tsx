@@ -38,9 +38,9 @@ const faqJsonLd = {
 
 const TIERS = [
   { label: "Landing / Portfolio", price: "individuelle Offerte", delay: "5 Tage", desc: "Eine klare, professionelle Seite. Ideal für Freelancer, Coaches, Produktlancierungen oder um eine Idee zu testen.", included: ["Individuelles Design", "Responsive mobile", "Kontaktformular", "Basis-SEO", "Bereitstellung inklusive"] },
-  { label: "Site vitrine", price: "individuelle Offerte", delay: "5 Werktage", desc: "Eine vollständige Präsenz für ein KMU oder Selbstständige. Seiten: Startseite, Leistungen, Über uns, Kontakt.", included: ["5 bis 8 Seiten", "Optimiertes SEO", "Google Maps", "Formulaire pro", "Analytics"] },
-  { label: "Site corporate", price: "individuelle Offerte", delay: "3–5 Wochen", desc: "Eine vollständige Website für etablierte Unternehmen: mehrsprachig, CMS, mehrere Seiten, Premium-Design.", included: ["10–20 pages", "CMS admin", "Multilingue", "Integrierter Blog", "Optimierte Performance"] },
-  { label: "Application web / IA", price: "individuelle Offerte", delay: "4–10 Wochen", desc: "Dashboard, SaaS, Fachanwendung, KI-Integration. Individuelle Full-Stack-Entwicklung.", included: ["Auth utilisateurs", "Datenbank", "API REST / webhooks", "KI-Integration", "Tests & Bereitstellung"] },
+  { label: "Präsentationswebsite", price: "individuelle Offerte", delay: "5 Werktage", desc: "Eine vollständige Präsenz für ein KMU oder Selbstständige. Seiten: Startseite, Leistungen, Über uns, Kontakt.", included: ["5 bis 8 Seiten", "Optimiertes SEO", "Google Maps", "Formulaire pro", "Analytics"] },
+  { label: "Unternehmenswebsite", price: "individuelle Offerte", delay: "3–5 Wochen", desc: "Eine vollständige Website für etablierte Unternehmen: mehrsprachig, CMS, mehrere Seiten, Premium-Design.", included: ["10–20 pages", "CMS admin", "Mehrsprachigkeit", "Integrierter Blog", "Optimierte Performance"] },
+  { label: "Web-App / KI", price: "individuelle Offerte", delay: "4–10 Wochen", desc: "Dashboard, SaaS, Fachanwendung, KI-Integration. Individuelle Full-Stack-Entwicklung.", included: ["Auth utilisateurs", "Datenbank", "API REST / webhooks", "KI-Integration", "Tests & Bereitstellung"] },
 ];
 
 export default function DeDevisSiteWebPage() {
@@ -55,7 +55,7 @@ export default function DeDevisSiteWebPage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/de/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">Devis</span>
+            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">Offerte</span>
             <span className="text-xs text-gray-600">24. April 2026 · 6 Min. Lesezeit</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -110,7 +110,7 @@ export default function DeDevisSiteWebPage() {
         <ul className="mb-10 space-y-3 text-gray-400 text-sm leading-relaxed">
           {[
             { title: "E-commerce", detail: "Produktkatalog, Zahlung, Bestellverwaltung und Kundenbetreuung erfordern einen strukturierteren Umfang." },
-            { title: "Multilingue", detail: "Das Übersetzen und Anpassen der Inhalte (3 Sprachen) bedeutet 20 bis 35 % Mehraufwand." },
+            { title: "Mehrsprachigkeit", detail: "Das Übersetzen und Anpassen der Inhalte (3 Sprachen) bedeutet 20 bis 35 % Mehraufwand." },
             { title: "Drittanbieter-Integrationen", detail: "CRM, Buchungskalender, ERP oder individuelle APIs müssen vor der Schätzung analysiert werden." },
             { title: "Animationen und Mikrointeraktionen", detail: "Ein stark animiertes Design kann den Frontend-Aufwand verdoppeln." },
             { title: "Fortgeschrittenes technisches SEO", detail: "Audit, strukturierte Daten und Core Web Vitals erfordern von der Architektur an ernsthafte Arbeit." },

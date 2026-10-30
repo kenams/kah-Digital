@@ -332,7 +332,7 @@ export function HeroSection() {
           transition={{ delay: 1.5 }}
           className="mt-12 flex flex-wrap items-center justify-center gap-5"
         >
-          <span className="text-xs text-gray-700">Built with</span>
+          <span className="text-xs text-gray-700">{locale === "en" ? "Built with" : locale === "de" ? "Gebaut mit" : "Construit avec"}</span>
           {["Next.js", "Vercel", "Stripe", "Supabase", "OpenAI"].map((logo) => (
             <span
               key={logo}

@@ -194,7 +194,7 @@ const content = {
           items: [
             {
               icon: FiCode,
-              title: "Developpement sur mesure",
+              title: "Développement sur mesure",
               body: "Une application pensee pour votre besoin, pas un assemblage fragile de briques generiques.",
             },
             {

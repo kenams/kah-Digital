@@ -366,7 +366,7 @@ const content = {
       ctaQuote: "Kostenloses Audit anfragen",
     },
     "refonte-site-web": {
-      eyebrow: "Refonte · Neuausrichtung · Lead-Maschine",
+      eyebrow: "Relaunch · Neuausrichtung · Lead-Maschine",
       title: "Ihre aktuelle Website kostet Sie Kunden.",
       title2: "Wir bauen sie neu.",
       intro:
@@ -377,14 +377,14 @@ const content = {
         { value: "95+", label: "Lighthouse" },
         { value: "14T", label: "Lieferzeit" },
       ],
-      benefitsTitle: "Was eine echte Refonte verändert",
+      benefitsTitle: "Was ein echter Relaunch verändert",
       benefits: [
         "Neu gedachte UX, um die Absprungrate zu senken",
         "Ladezeit durch Next.js 15 deutlich reduziert",
         "SEO-Ranking ab dem ersten Tag verbessert",
         "Mehr und besser qualifizierte eingehende Leads",
       ],
-      profilesTitle: "Dringende Refonte wenn…",
+      profilesTitle: "Dringender Relaunch, wenn…",
       profiles: [
         "Ihre Website auf Mobil über 3 Sekunden lädt",
         "Das Design B2B-Interessenten kein Vertrauen mehr einflößt",
@@ -393,7 +393,7 @@ const content = {
       ],
       contextTitle: "Wir streichen nicht — wir bauen neu",
       contextBody:
-        "Eine KAH Digital Studio Refonte ist ein kompletter Neubau: neue Architektur, conversion-fokussierter Inhalt, maximale Geschwindigkeit, natives SEO. Kein visuelles Lifting — ein Wachstumssystem.",
+        "Ein KAH Digital Studio Relaunch ist ein kompletter Neubau: neue Architektur, conversion-fokussierter Inhalt, maximale Geschwindigkeit, natives SEO. Kein visuelles Lifting — ein Wachstumssystem.",
       highlights: [
         { icon: FiZap, title: "Komplettumbau in 28 Tagen", body: "Architektur, UX, Copy, Performance. Alles überprüft und neu gebaut. Saubere Lieferung." },
         { icon: FiUsers, title: "Conversion-Audit inklusive", body: "Wir auditieren Ihre bestehende Website, bevor wir etwas anfassen. Wir beheben, was Leads kostet." },

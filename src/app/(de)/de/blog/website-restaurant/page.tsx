@@ -105,10 +105,10 @@ export default function DeSiteWebRestaurantPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Wie wird es kalkuliert?</h2>
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {[
-            { label: "Site vitrine simple (4-5 pages)", price: "je nach Umfang", delay: "1–2 semaines" },
-            { label: "Mit Online-Reservation", price: "je nach Umfang", delay: "2–3 semaines" },
-            { label: "Mit Online-Bestellung", price: "je nach Umfang", delay: "3–4 semaines" },
-            { label: "Wartung + Aktualisierung der Speisekarte", price: "je nach Umfang", delay: "Support inclus" },
+            { label: "Einfache Präsentationswebsite (4–5 Seiten)", price: "je nach Umfang", delay: "1–2 Wochen" },
+            { label: "Mit Online-Reservation", price: "je nach Umfang", delay: "2–3 Wochen" },
+            { label: "Mit Online-Bestellung", price: "je nach Umfang", delay: "3–4 Wochen" },
+            { label: "Wartung + Aktualisierung der Speisekarte", price: "je nach Umfang", delay: "Support inklusive" },
           ].map((t) => (
             <div key={t.label} className="rounded-2xl border border-white/8 bg-gray-900 p-5">
               <p className="text-sm text-gray-500">{t.label}</p>

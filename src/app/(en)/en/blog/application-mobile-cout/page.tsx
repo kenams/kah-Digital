@@ -45,7 +45,7 @@ const TIERS = [
 
 const COST_DRIVERS = [
   { title: "Authentication and accounts", detail: "Login, profiles, roles and access rights must be scoped from the start." },
-  { title: "Paiement in-app", detail: "Stripe, Apple/Google in-app purchases and billing flows call for specific analysis." },
+  { title: "In-app payments", detail: "Stripe, Apple/Google in-app purchases and billing flows call for specific analysis." },
   { title: "Notifications push", detail: "Segmentation, sending rules and user preferences influence the scope." },
   { title: "Geolocation", detail: "Mapping, tracking, route calculation and mobile permissions must be validated functionally." },
   { title: "Mode hors-ligne", detail: "Local synchronisation and conflict handling increase product complexity." },
@@ -154,7 +154,7 @@ export default function EnApplicationMobileCoutPage() {
               Order my website from $290
             </Link>
             <Link href="/en/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir nos offres
+              See our offers
             </Link>
           </div>
         </div>

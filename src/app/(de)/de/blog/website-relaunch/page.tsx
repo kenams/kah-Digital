@@ -110,9 +110,9 @@ export default function DeRefonteWebPage() {
         <h2 className="mb-6 text-2xl font-bold text-white">Wie lange dauert ein Relaunch?</h2>
         <div className="mb-12 grid gap-3 sm:grid-cols-3">
           {[
-            { type: "Site vitrine", delay: "5 Werktage" },
-            { type: "Site corporate", delay: "3 – 6 Wochen" },
-            { type: "Application web", delay: "6 – 12 Wochen" },
+            { type: "Präsentationswebsite", delay: "5 Werktage" },
+            { type: "Unternehmenswebsite", delay: "3 – 6 Wochen" },
+            { type: "Web-Anwendung", delay: "6 – 12 Wochen" },
           ].map((item) => (
             <div key={item.type} className="rounded-xl border border-white/8 bg-gray-900 p-4 text-center">
               <div className="text-sm text-gray-500">{item.type}</div>
@@ -127,10 +127,10 @@ export default function DeRefonteWebPage() {
           <p className="mb-6 text-gray-400">Wir analysieren Ihre Website kostenlos und sagen Ihnen, was sich ändern muss.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link href="/audit-gratuit" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-blue-500/30">
-              Audit gratuit <FiArrowRight size={15} />
+              Kostenloses Audit <FiArrowRight size={15} />
             </Link>
             <Link href="/de/refonte-site-web" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Notre offre refonte
+              Unser Relaunch-Angebot
             </Link>
           </div>
         </div>

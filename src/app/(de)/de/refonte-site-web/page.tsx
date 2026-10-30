@@ -4,11 +4,11 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/refonte-site-web",
-  title: "Website-Refonte · auf Conversion ausgelegt | KAH Digital Studio",
+  title: "Website-Relaunch · auf Conversion ausgelegt | KAH Digital Studio",
   description:
-    "Website-Refonte auf Next.js 15: Premium UX, Ladezeit unter 2s, conversion-optimiert. Ihre alte Website kostet Sie Kunden — wir machen daraus eine Lead-Maschine. Kostenloses Audit.",
+    "Website-Relaunch auf Next.js 15: Premium UX, Ladezeit unter 2s, conversion-optimiert. Ihre alte Website kostet Sie Kunden — wir machen daraus eine Lead-Maschine. Kostenloses Audit.",
   keywords: [
-    "Website Refonte Schweiz",
+    "Website Relaunch Schweiz",
     "Website Redesign Schweiz",
     "Website Neugestaltung KMU",
     "Webseite modernisieren Schweiz",

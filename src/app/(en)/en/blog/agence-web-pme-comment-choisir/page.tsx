@@ -37,7 +37,7 @@ const faqJsonLd = {
 
 const GOOD_SIGNS = [
   "Portfolio with real delivered projects (not mockups)",
-  "Process clair : brief ? maquette ? dev ? recette ? livraison",
+  "Clear process: brief → mockup → development → testing → delivery",
   "Custom quote explained after a simple first scoping",
   "You receive the access: hosting, domain, source code",
   "Quick reply (within 24–48h) from the first contact",
@@ -64,7 +64,7 @@ export default function EnAgenceWebPmePage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/en/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">PME</span>
+            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">SMEs</span>
             <span className="text-xs text-gray-600">4 May 2026 · 6 min read</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -147,7 +147,7 @@ export default function EnAgenceWebPmePage() {
               Order my website from $290
             </Link>
             <Link href="/en/projets" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
-              Voir notre portfolio
+              See our portfolio
             </Link>
           </div>
         </div>
