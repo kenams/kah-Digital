@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "A website for tradespeople: the complete 2026 guide — KAH Digital Studio",
+  title: "A website for tradespeople: the complete 2026 guide",
   description: "How to create an effective website for a tradesperson? Quote, timeline, what you absolutely need. A practical guide for plumbers, electricians, carpenters and masons.",
   keywords: ["site web artisan", "tradesperson website", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/site-web-artisan" },

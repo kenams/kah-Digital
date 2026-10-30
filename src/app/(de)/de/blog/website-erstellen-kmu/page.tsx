@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website für ein KMU erstellen: der komplette Leitfaden 2026 — KAH Digital Studio",
+  title: "Website für ein KMU erstellen: der komplette Leitfaden 2026",
   description: "Alles, was ein KMU vor der Bestellung einer Website wissen sollte: vom Briefing bis zum Launch, Fehler, die Sie vermeiden, und wie Sie den Anbieter wählen.",
   keywords: ["KMU-Website erstellen", "site web entreprise", "professionelle Website für KMU erstellen", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-erstellen-kmu" },

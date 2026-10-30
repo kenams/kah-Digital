@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "AI automation for small businesses: 5 concrete examples to save time in 2026 — KAH Digital Studio",
+  title: "AI automation for small businesses: 5 concrete examples to save time in 2026",
   description:
     "Discover how small businesses use AI automation to qualify leads, automate reporting and cut repetitive tasks. 5 typical examples of what can be automated, with the goals to aim for.",
   keywords: [

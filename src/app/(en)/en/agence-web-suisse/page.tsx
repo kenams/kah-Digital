@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Web Agency Switzerland — KAH Digital Studio | Lausanne · Geneva · Zurich · Bern",
+  title: "Web Agency Switzerland — KAH Digital Studio | Lausanne · Geneva",
   description: "Digital studio based in Toulouse, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote within 24h.",
   keywords: ["web agency Switzerland", "website development Switzerland", "web developer Switzerland", "digital studio Switzerland", "SME website Switzerland", "web application Switzerland"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-suisse" },

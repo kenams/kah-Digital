@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Création de site web pour PME : guide complet 2026 — KAH Digital Studio",
+  title: "Création de site web pour PME : guide complet 2026",
   description: "Tout ce qu'une PME doit savoir avant de commander un site web : du brief au lancement, les erreurs à éviter et comment choisir son prestataire.",
   keywords: ["créer site web PME", "site web entreprise", "création site professionnel PME", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/blog/creation-site-web-pme" },

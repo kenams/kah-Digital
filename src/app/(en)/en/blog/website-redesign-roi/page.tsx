@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website Redesign ROI: What to Realistically Expect (With Real Numbers) — KAH Digital Studio",
+  title: "Website Redesign ROI: What to Realistically Expect (With Real Numbers)",
   description: "A website redesign costs money. Here's what it should return — conversion rate benchmarks, load time impact, and how to measure ROI in 90 days.",
   keywords: ["website redesign ROI", "website redesign results", "how much does a website redesign cost", "website conversion rate improvement"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/website-redesign-roi" },

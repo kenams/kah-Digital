@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Site web pour restaurant : ce qu'il faut vraiment en 2026 — KAH Digital Studio",
+  title: "Site web pour restaurant : ce qu'il faut vraiment en 2026",
   description: "Menu en ligne, réservation, Google Maps, avis — ce dont un restaurant a besoin sur son site web. Devis et guide pratique.",
   keywords: ["site web restaurant", "site internet restaurant", "création site restaurant", "site web bar", "site web pizzeria", "réservation en ligne restaurant"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-restaurant" },

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Local SEO for small businesses: reaching Google's first page in 2026 — KAH Digital Studio",
+  title: "Local SEO for small businesses: reaching Google's first page in 2026",
   description:
     "A complete local SEO guide for small businesses: Google Business Profile, customer reviews, local pages, schema markup. The concrete actions that help local customers find you.",
   keywords: [

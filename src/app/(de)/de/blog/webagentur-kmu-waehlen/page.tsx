@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "So wählen Sie eine Webagentur für Ihr KMU — Leitfaden 2026 — KAH Digital Studio",
+  title: "So wählen Sie eine Webagentur für Ihr KMU — Leitfaden 2026",
   description: "Offerte, Warnsignale, Fragen, Schlüsselkriterien: alles, was ein KMU vor der Wahl einer Webagentur oder eines freiberuflichen Entwicklers wissen sollte.",
   keywords: ["choisir agence web PME", "agence web PME", "Digitalagentur wählen", "freelance vs agence web", "agence web petite entreprise"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/webagentur-kmu-waehlen" },

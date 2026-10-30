@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "comment estimer un site web professionnel en 2026 ? — KAH Digital Studio",
+  title: "comment estimer un site web professionnel en 2026 ?",
   description: "Méthode claire pour cadrer un site web professionnel : besoin réel, périmètre, fonctionnalités, délais, accompagnement et devis personnalisé.",
   keywords: ["devis site web", "devis site web professionnel", "comment estimer un site internet", "estimation création site web 2026"],
   alternates: { canonical: "https://kah-digital.ch/blog/prix-site-web-professionnel" },

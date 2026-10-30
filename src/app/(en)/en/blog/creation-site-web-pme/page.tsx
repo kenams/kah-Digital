@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Creating a website for a small business: the complete 2026 guide — KAH Digital Studio",
+  title: "Creating a website for a small business: the complete 2026 guide",
   description: "Everything a small business should know before ordering a website: from brief to launch, mistakes to avoid and how to choose a provider.",
   keywords: ["create a small business website", "site web entreprise", "professional website creation for SMEs", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/creation-site-web-pme" },

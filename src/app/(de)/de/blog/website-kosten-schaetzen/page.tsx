@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "So schätzen Sie die Kosten einer professionellen Website 2026 — KAH Digital Studio",
+  title: "So schätzen Sie die Kosten einer professionellen Website 2026",
   description: "Eine klare Methode, eine professionelle Website zu planen: tatsächlicher Bedarf, Umfang, Funktionen, Zeitplan, Begleitung und individuelle Offerte.",
   keywords: ["devis site web", "devis site web professionnel", "Website-Kosten schätzen", "Kostenschätzung Website 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-schaetzen" },

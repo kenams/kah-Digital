@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "How to estimate the cost of a professional website in 2026 — KAH Digital Studio",
+  title: "How to estimate the cost of a professional website in 2026",
   description: "A clear method to scope a professional website: real need, scope, features, timeline, support and a custom quote.",
   keywords: ["devis site web", "devis site web professionnel", "how to estimate a website cost", "website cost estimate 2026"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/prix-site-web-professionnel" },
