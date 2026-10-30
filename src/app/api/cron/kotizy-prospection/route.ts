@@ -107,8 +107,8 @@ export async function GET(req: NextRequest) {
         if (sent >= 8) break;
       }
       if (sent >= 8) break;
-    } catch (err: any) {
-      errors.push(err.message);
+    } catch (err) {
+      errors.push(err instanceof Error ? err.message : String(err));
     }
   }
 

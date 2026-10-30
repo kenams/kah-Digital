@@ -4,17 +4,17 @@ const localeChecks = [
   {
     path: "/",
     lang: "fr",
-    marker: "Demander un devis",
+    marker: "Obtenir un devis gratuit",
   },
   {
     path: "/en",
     lang: "en",
-    marker: "Request a quote",
+    marker: "Get a free quote",
   },
   {
     path: "/de",
     lang: "de",
-    marker: "Projekt anfragen",
+    marker: "Kostenlose Offerte erhalten",
   },
 ] as const;
 

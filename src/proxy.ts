@@ -8,8 +8,11 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env
 
 function getLocaleFromPathname(pathname: string) {
   if (pathname === "/en" || pathname.startsWith("/en/")) return "en";
+  if (pathname === "/de" || pathname.startsWith("/de/")) return "de";
   return "fr";
 }
+
+const devEval = process.env.NODE_ENV === "production" ? "" : " 'unsafe-eval'";
 
 function applySecurityHeaders(response: NextResponse) {
   response.headers.set("x-content-type-options", "nosniff");
@@ -19,12 +22,11 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set("cross-origin-opener-policy", "same-origin");
   response.headers.set("cross-origin-resource-policy", "same-origin");
   response.headers.set("origin-agent-cluster", "?1");
-  // CSP partielle sans risque : anti-clickjacking, anti-injection de <base>, pas de plugins, formulaires vers le site seulement.
-  response.headers.set("content-security-policy", "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'");
-  // Politique complète en MODE RAPPORT SEUL (ne bloque rien) : on observe les violations via /api/csp-report avant de la rendre bloquante.
-  response.headers.set("content-security-policy-report-only", [
+  // Politique complète en mode bloquant (scan de 30 pages le 30/10/2026 : seule violation = test Function("") de zod, sans effet).
+  // Les violations restantes remontent encore via /api/csp-report.
+  response.headers.set("content-security-policy", [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com",
+    `script-src 'self' 'unsafe-inline'${devEval} https://www.googletagmanager.com https://challenges.cloudflare.com`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",

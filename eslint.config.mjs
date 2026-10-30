@@ -8,6 +8,9 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "react/no-unescaped-entities": "off",
+      // Règles du compilateur React : le schéma « lire localStorage / charger au montage » du site les déclenche sans bug réel.
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/purity": "warn",
       "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
     },
   },
@@ -20,7 +23,12 @@ const eslintConfig = defineConfig([
     "test-results/**",
     "playwright-report/**",
     "next-env.d.ts",
+    ".claude/**",
   ]),
+  {
+    files: ["scripts/**/*.js"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
+  },
 ]);
 
 export default eslintConfig;

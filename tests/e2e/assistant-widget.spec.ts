@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("assistant widget requires contact details before chat starts", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByRole("button", { name: /Assistant projet & support/i }).click();
+  await page.getByRole("button", { name: /Kayla/i }).first().click();
 
   await expect(page.getByText("Avant de commencer")).toBeVisible();
 

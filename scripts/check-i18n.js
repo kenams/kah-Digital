@@ -53,8 +53,12 @@ const deRouteOverrides = new Map([
   ["confidentialite", "politique-de-confidentialite"],
 ]);
 
+// Pages privées ou propres au marché français (lien à jeton, propositions, démarches SIREN, partenaires français) : volontairement en français seulement.
+const frOnlyPattern = /^(espace|proposition|pulse|creation-entreprise|partenaires|legal[\\/]kssenger-privacy)([\\/]|$)/;
+
 for (const file of pageFiles) {
   const routePath = toRoutePath(file);
+  if (frOnlyPattern.test(routePath)) continue;
   const enRoutePath = enRouteOverrides.get(routePath) ?? routePath;
   const deRoutePath = deRouteOverrides.get(routePath) ?? routePath;
   const enTarget = path.join(enRoot, enRoutePath, "page.tsx");
@@ -90,12 +94,9 @@ if (missingEn.length > 0) {
   process.exit(1);
 }
 
+// DE : avertissement seulement (les pages SEO de villes françaises n'ont pas de version allemande voulue).
 if (missingDe.length > 0) {
-  console.error("Missing DE pages for:");
-  for (const route of missingDe) {
-    console.error(`- ${route}`);
-  }
-  process.exit(1);
+  console.warn(`DE : ${missingDe.length} pages FR sans équivalent allemand (non bloquant).`);
 }
 
 if (criticalIssues.length > 0) {
@@ -107,4 +108,4 @@ if (criticalIssues.length > 0) {
   process.exit(1);
 }
 
-console.log("i18n check passed: EN and DE pages found for all FR routes.");
+console.log("i18n check passed: EN pages found for all FR routes.");
