@@ -1,6 +1,7 @@
 import { DM_Sans, Geist_Mono, Syne } from "next/font/google";
 import { CookieConsent } from "@/components/cookie-consent";
 import { FlashInteractions } from "@/components/flash-interactions";
+import { PageViewTracker } from "@/components/page-view-tracker";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -49,6 +50,7 @@ export function SiteRootShell({ children, htmlLang }: SiteRootShellProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         />
         <CookieConsent gaId={GA_MEASUREMENT_ID} />
+        <PageViewTracker />
         <SiteProviders>
           <CursorGlow />
           <ScrollProgress />

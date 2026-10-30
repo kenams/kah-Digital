@@ -4,8 +4,9 @@ import { useState } from "react";
 import { ProspectionDashboard } from "@/components/admin-prospection-dashboard";
 import { AdminKahSupportBoard } from "@/components/admin-kah-support-board";
 import { AdminKahWorkforceBoard } from "@/components/admin-kah-workforce-board";
+import { AdminCyberBoard } from "@/components/admin-cyber-board";
 
-type Tab = "web" | "kah-support" | "kah-workforce";
+type Tab = "web" | "kah-support" | "kah-workforce" | "cyber";
 
 export function ProspectionTabs({ defaultTab }: { defaultTab: Tab }) {
   const [tab, setTab] = useState<Tab>(defaultTab);
@@ -45,10 +46,20 @@ export function ProspectionTabs({ defaultTab }: { defaultTab: Tab }) {
           >
             🤖 KAH Workforce
           </button>
+          <button
+            onClick={() => setTab("cyber")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+              tab === "cyber"
+                ? "border-emerald-400 text-emerald-300"
+                : "border-transparent text-white/45 hover:text-white/70"
+            }`}
+          >
+            🛡️ Cybersécurité
+          </button>
         </div>
       </div>
 
-      {tab === "web" ? <ProspectionDashboard /> : tab === "kah-support" ? <AdminKahSupportBoard /> : <AdminKahWorkforceBoard />}
+      {tab === "web" ? <ProspectionDashboard /> : tab === "kah-support" ? <AdminKahSupportBoard /> : tab === "cyber" ? <AdminCyberBoard /> : <AdminKahWorkforceBoard />}
     </div>
   );
 }

@@ -125,13 +125,8 @@ export function ContactForm() {
   const submitContactRequest = useCallback(async (form: HTMLFormElement, token: string) => {
     const formData = new FormData(form);
 
-    if (!siteKey) {
-      setStatus("error");
-      setServerMessage(`${copy.captchaMissing} ${companyConfig.email}.`);
-      return;
-    }
-
-    if (!token) {
+    // Sans clé de captcha publique (domaine non déclaré chez Cloudflare), le formulaire reste utilisable : champ piège + limite de débit côté serveur.
+    if (siteKey && !token) {
       setStatus("error");
       setServerMessage(copy.captchaBeforeSend);
       return;
@@ -215,8 +210,7 @@ export function ContactForm() {
     const form = event.currentTarget;
 
     if (!siteKey) {
-      setStatus("error");
-      setServerMessage(`${copy.captchaMissing} ${companyConfig.email}.`);
+      void submitContactRequest(form, "");
       return;
     }
 

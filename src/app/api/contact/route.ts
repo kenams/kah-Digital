@@ -21,7 +21,7 @@ const contactSchema = z.object({
   subject: z.string().min(2),
   message: z.string().min(10),
   website: z.string().optional(),
-  turnstileToken: z.string().min(1),
+  turnstileToken: z.string().optional().default(""),
 });
 
 export async function POST(request: NextRequest) {
@@ -61,14 +61,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true }, { headers: rateHeaders });
     }
 
-    const verification = await verifyTurnstile(turnstileToken, remoteIp);
-    if (!verification.success) {
-      const errorCodes = verification["error-codes"] ?? [];
-      const errorSuffix = errorCodes.length ? ` (codes: ${errorCodes.join(", ")})` : "";
-      return NextResponse.json(
-        { error: `Captcha invalide${errorSuffix}`, details: errorCodes },
-        { status: 400, headers: rateHeaders }
-      );
+    if (turnstileToken) {
+      const verification = await verifyTurnstile(turnstileToken, remoteIp);
+      if (!verification.success) {
+        const errorCodes = verification["error-codes"] ?? [];
+        const errorSuffix = errorCodes.length ? ` (codes: ${errorCodes.join(", ")})` : "";
+        return NextResponse.json(
+          { error: `Captcha invalide${errorSuffix}`, details: errorCodes },
+          { status: 400, headers: rateHeaders }
+        );
+      }
     }
 
     const html = renderBrandedEmail({
