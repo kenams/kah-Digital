@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { BrandLockup } from "@/components/brand-lockup";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -11,6 +11,11 @@ import { orderHref } from "@/lib/order-links";
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  const shellRef = useRef<HTMLDivElement>(null);
   const { locale, prefix } = useLocale();
   const pathname = usePathname();
   const homeHref = prefix || "/";
@@ -81,15 +86,78 @@ export function SiteHeader() {
     return href === homeHref ? path === (homeHref.replace(/\/$/, "") || "/") : path === href || path.startsWith(`${href}/`);
   };
 
+  // Hystérésis : la capsule se forme après 48px de scroll et ne se rouvre qu'en revenant tout en haut (pas de scintillement).
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled((prev) => (prev ? y > 8 : y > 48));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // L'indicateur doré glisse vers le lien survolé, ou revient sur la page active.
+  const placePill = useCallback(() => {
+    const nav = navRef.current;
+    const pill = pillRef.current;
+    if (!nav || !pill) return;
+    const target =
+      (hovered && nav.querySelector<HTMLElement>(`[data-nav-href="${hovered}"]`)) ||
+      nav.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!target) {
+      pill.dataset.ready = "false";
+      return;
+    }
+    pill.style.width = `${target.offsetWidth + 12}px`;
+    pill.style.height = `${target.offsetHeight + 6}px`;
+    pill.style.transform = `translate(${target.offsetLeft - 6}px, ${target.offsetTop - 3}px)`;
+    pill.dataset.ready = "true";
+    pill.dataset.hover = hovered && target.getAttribute("aria-current") !== "page" ? "true" : "false";
+  }, [hovered]);
+
+  useLayoutEffect(() => {
+    placePill();
+  }, [placePill, pathname, locale, scrolled]);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(placePill);
+    observer.observe(nav);
+    return () => observer.disconnect();
+  }, [placePill]);
+
+  const onShellPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const shell = shellRef.current;
+    if (!shell) return;
+    shell.style.setProperty("--mx", `${event.clientX - shell.getBoundingClientRect().left}px`);
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-[1680px]:max-w-[1600px]">
-        <div className="flex h-[68px] items-center justify-between gap-4 md:h-[88px] xl:grid xl:grid-cols-[1fr_auto_1fr]">
+    <header className="pointer-events-none sticky top-0 z-50 h-[68px] md:h-[88px]">
+      <div
+        ref={shellRef}
+        data-scrolled={scrolled}
+        onPointerMove={onShellPointerMove}
+        className="kah-navshell pointer-events-auto"
+      >
+      <div className={`mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8 min-[1680px]:max-w-[1600px] ${isMenuOpen ? "overflow-visible" : ""}`}>
+        <div className="flex h-full items-center justify-between gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr]">
           <Link href={homeHref} className="shrink-0 !overflow-visible xl:justify-self-start" aria-label={localeCopy.homeLabel}>
-            <BrandLockup compact subtitle={localeCopy.subtitle} />
+            <span className="kah-navlogo block">
+              <BrandLockup compact subtitle={localeCopy.subtitle} />
+            </span>
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm xl:flex xl:justify-self-center xl:gap-2.5 xl:text-[13px] min-[1536px]:gap-3 min-[1536px]:text-sm min-[1680px]:gap-3.5">
+          <nav
+            ref={navRef}
+            onPointerLeave={() => setHovered(null)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setHovered(null);
+            }}
+            className="relative hidden items-center gap-4 text-sm xl:flex xl:justify-self-center xl:gap-2.5 xl:text-[13px] min-[1536px]:gap-3 min-[1536px]:text-sm min-[1680px]:gap-3.5">
+            <span ref={pillRef} className="kah-navpill" aria-hidden="true" />
             {localeCopy.nav.map((link) => {
               // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
               // liens secondaires (accueil = logo, références, blog, création d'entreprise) jusqu'à 1680px.
@@ -98,9 +166,12 @@ export function SiteHeader() {
               return (
               <Link
                 key={link.href}
+                data-nav-href={link.href}
                 href={(link as { accent?: boolean }).accent ? orderHref(locale, { pathname }) : link.href}
                 aria-current={active ? "page" : undefined}
-                className={`${active ? "kah-nav-active " : ""}${(link as { highlight?: boolean }).highlight
+                onPointerEnter={() => setHovered(link.href)}
+                onFocus={() => setHovered(link.href)}
+                className={`relative ${(link as { highlight?: boolean }).highlight
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
                   : (link as { accent?: boolean }).accent
                   ? "whitespace-nowrap font-semibold text-[#e0c48e] transition-colors hover:text-[#f3d089]"
@@ -132,7 +203,7 @@ export function SiteHeader() {
         </div>
 
         {isMenuOpen ? (
-          <div className="border-t border-white/10 py-4 xl:hidden">
+          <div className="absolute inset-x-0 top-full max-h-[calc(100vh-90px)] overflow-y-auto border-y border-white/10 bg-black/95 px-4 py-4 backdrop-blur-xl sm:px-6 xl:hidden">
             <nav className="flex flex-col space-y-4">
               <Link href={homeHref} className="pb-2 !overflow-visible" onClick={() => setIsMenuOpen(false)} aria-label={localeCopy.homeLabel}>
                 <BrandLockup compact subtitle={localeCopy.subtitle} />
@@ -161,6 +232,7 @@ export function SiteHeader() {
             </nav>
           </div>
         ) : null}
+      </div>
       </div>
     </header>
   );
