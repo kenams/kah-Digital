@@ -195,7 +195,7 @@ export default function AgenceWebSuisseEnPage() {
             {[
               { label: "Starter", price: "CHF 290", sub: "Landing page · 5 days", highlight: false },
               { label: "Business", price: "CHF 790", sub: "Up to 6 pages · SEO · 5 business days", highlight: true },
-              { label: "Premium IA", price: "CHF 2'490", sub: "Complete system + AI · 28 days", highlight: false },
+              { label: "Vertical AI Agent", price: "CHF 2'490", sub: "Complete system + AI · 28 days", highlight: false },
             ].map((item) => (
               <div
                 key={item.label}

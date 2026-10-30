@@ -601,7 +601,7 @@ export function LocalSeoPageContent({ data }: Props) {
             {[
               { label: "Starter", price: priceStarter, sub: `Landing page — 5 jours`, highlight: false },
               { label: "Business", price: priceBusiness, sub: `Jusqu'à 6 pages · SEO · 5 jours ouvrés`, highlight: true },
-              { label: "Premium IA", price: priceAI, sub: `Système complet + IA — 28 jours`, highlight: false },
+              { label: "Agent IA vertical", price: priceAI, sub: `Système complet + IA — 28 jours`, highlight: false },
             ].map((item) => (
               <div
                 key={item.label}

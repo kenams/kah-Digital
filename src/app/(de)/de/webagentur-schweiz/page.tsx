@@ -195,7 +195,7 @@ export default function WebagenturSchweizPage() {
             {[
               { label: "Starter", price: "CHF 290", sub: "Landingpage · 5 Tage", highlight: false },
               { label: "Business", price: "CHF 790", sub: "Bis zu 6 Seiten · SEO · 5 Werktage", highlight: true },
-              { label: "Premium IA", price: "CHF 2'490", sub: "Komplettsystem + KI · 28 Tage", highlight: false },
+              { label: "Vertikaler KI-Agent", price: "CHF 2'490", sub: "Komplettsystem + KI · 28 Tage", highlight: false },
             ].map((item) => (
               <div
                 key={item.label}
