@@ -8,7 +8,13 @@ const SWISS_PATH =
 
 /** Devise affichée sur une page : CHF sur les pages suisses, sinon selon la langue (FR €, EN $, DE CHF). */
 export function pageCurrency(locale: Locale, pathname: string | null | undefined): Currency {
+  if (isGermanPath(pathname)) return "eur";
   return isSwissPath(pathname) ? "chf" : defaultCurrency(locale);
+}
+
+/** Pages d'Allemagne (Berlin, Munich) : prix et commande en euros, même en allemand. */
+export function isGermanPath(pathname: string | null | undefined) {
+  return Boolean(pathname && /^\/de\/(?:webentwicklung|ki-agentur)-(?:berlin|muenchen)(?:\/|$)/.test(pathname));
 }
 
 export function isSwissPath(pathname: string | null | undefined) {
@@ -20,7 +26,7 @@ export function orderHref(locale: Locale, opts: { pathname?: string | null; pack
   const params: string[] = [];
   if (opts.pack) params.push(`pack=${opts.pack}`);
   const swiss = isSwissPath(opts.pathname);
-  const currency = opts.currency ?? (swiss && locale !== "de" ? "chf" : undefined);
+  const currency = opts.currency ?? (isGermanPath(opts.pathname) ? "eur" : swiss && locale !== "de" ? "chf" : undefined);
   if (currency) params.push(`devise=${currency}`);
   const base = withLocalePrefix("/commander", locale);
   return params.length ? `${base}?${params.join("&")}` : base;

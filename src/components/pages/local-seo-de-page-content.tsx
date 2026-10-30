@@ -129,7 +129,10 @@ type Props = { data: DeCity };
 
 export function LocalSeoDePageContent({ data }: Props) {
   const devisUrl = `/de/devis?city=${encodeURIComponent(data.city)}&ref=local-seo-de`;
-  const orderUrl = "/de/commander";
+  // Pages Allemagne (Berlin, Munich) : prix en euros, commande en EUR ; pages suisses : CHF.
+  const eur = data.country === "Deutschland";
+  const orderUrl = eur ? "/de/commander?devise=eur" : "/de/commander";
+  const price = (chf: string, euro: string) => (eur ? euro : chf);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -174,7 +177,7 @@ export function LocalSeoDePageContent({ data }: Props) {
               Kostenlose Offerte in 24h <FiArrowRight size={15} />
             </Link>
             <Link href={orderUrl} className="inline-flex items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-8 py-3.5 font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20">
-              Ab CHF 290 bestellen
+              Ab {price("CHF 290", "290 €")} bestellen
             </Link>
             <a
               href={WA_URL}
@@ -243,9 +246,9 @@ export function LocalSeoDePageContent({ data }: Props) {
           <p className="mb-8 text-gray-400">Transparente Festpreise. Kein Stundensatz, kein Lock-in, 100% Eigentum.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { label: "Starter", price: "CHF 290", sub: "Landing Page · 5 Tage" },
-              { label: "Business", price: "CHF 790", sub: "Bis 6 Seiten · 5 Werktage · SEO" },
-              { label: "Premium AI", price: "CHF 2'490", sub: "KI-System · 28 Tage · komplett" },
+              { label: "Starter", price: price("CHF 290", "290 €"), sub: "Landing Page · 5 Tage" },
+              { label: "Business", price: price("CHF 790", "790 €"), sub: "Bis 6 Seiten · 5 Werktage · SEO" },
+              { label: "Premium AI", price: price("CHF 2'490", "2 490 €"), sub: "KI-System · 28 Tage · komplett" },
             ].map((item) => (
               <div key={item.label} className="rounded-xl border border-white/8 bg-gray-900 p-5 text-left">
                 <div className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">{item.label}</div>
