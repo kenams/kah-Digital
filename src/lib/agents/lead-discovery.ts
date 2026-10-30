@@ -807,7 +807,7 @@ function isValidEmail(e: string): boolean {
   if (EMAIL_BLACKLIST.some((d) => lower.includes(d))) return false;
   if (lower.startsWith("no-reply") || lower.startsWith("noreply") || lower.startsWith("donotreply")) return false;
   const ext = lower.split(".").pop() ?? "";
-  if (["png","jpg","gif","svg","css","js","webp","woff","ttf","php","html","xml"].includes(ext)) return false;
+  if (["png","jpg","jpeg","gif","svg","css","js","mjs","map","json","webp","avif","ico","bmp","tif","tiff","pdf","zip","mp4","mp3","webm","woff","woff2","ttf","otf","eot","php","html","htm","xml","txt","ingest"].includes(ext)) return false;
   return true;
 }
 

@@ -40,7 +40,9 @@ async function callLLMFast(prompt: string): Promise<string> {
 }
 
 // Routing par secteur + score
-function getTrack(audit: SiteAudit, lead?: DiscoveredLead): "esn" | "pme-it" | "app" | "creation" | "agent" | "site" {
+function getTrack(audit: SiteAudit, lead?: DiscoveredLead): "esn" | "pme-it" | "app" | "creation" | "agent" | "site" | "rgpd" {
+  // Piste RGPD : le constat principal est un traceur sans consentement (cf. rgpd-audit.ts).
+  if (audit.problems[0]?.category === "privacy") return "rgpd";
   // Segment "artisan-creation" (2026-09-24) : le tag vient de lead.sector
   // (fixé par lead-discovery.ts, pas réécrit par le LLM d'audit) — plus fiable
   // qu'audit.sector qui peut être reformulé par le modèle.
@@ -149,6 +151,56 @@ const OPTOUT: Record<string, string> = {
   nl: "Geen interesse? Antwoord gewoon \"stop\".",
 };
 
+function finalizeEmail(p: {
+  subject: string; body: string; lang: string; baseUrl: string; prospectId: string;
+  landing: string; unsubUrl: string; pixelUrl: string;
+}): ComposedEmail {
+  const { subject, body, lang, baseUrl, prospectId, landing, unsubUrl, pixelUrl } = p;
+  // Lien traçable discret : remplace la mention "kah-digital.ch" du corps
+  // par un vrai lien cliquable (via /api/tracking/click) quand présente,
+  // sinon on l'ajoute en petite ligne sous le texte — sans jamais afficher
+  // la page comme un audit/rapport qu'on n'a pas réellement préparé.
+  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}?target=site&redirect=${encodeURIComponent(landing)}`;
+  const escapedBody = body.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const domainMention = /kah-digital\.ch/i;
+  const bodyHtml = domainMention.test(escapedBody)
+    ? escapedBody.replace(domainMention, `<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`)
+    : `${escapedBody}\n\n<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`;
+
+  // HTML minimaliste — ressemble à un vrai email perso
+  const html = `<!DOCTYPE html>
+<html lang="${lang}">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
+<body style="margin:0;padding:24px 12px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
+<tr><td>
+
+  <!-- Corps email -->
+  <div style="font-size:15px;color:#1f2937;line-height:1.75;white-space:pre-line;">${bodyHtml}</div>
+
+  <!-- Optout discret -->
+  <div style="margin-top:32px;padding-top:16px;border-top:1px solid #e5e7eb;">
+    <p style="margin:0;font-size:11px;color:#9ca3af;">
+      ${OPTOUT[lang] ?? OPTOUT.fr}
+      &nbsp;&mdash;&nbsp;
+      <a href="${unsubUrl}" style="color:#9ca3af;text-decoration:underline;">Se désinscrire</a>
+    </p>
+  </div>
+
+</td></tr>
+</table>
+
+<!-- Pixel tracking -->
+<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />
+</body>
+</html>`;
+
+  const textFallback = `${body}\n\n---\n${OPTOUT[lang] ?? OPTOUT.fr}`;
+
+  return { subject, html, textFallback };
+}
+
 export async function composeProspectingEmail(
   lead: DiscoveredLead,
   audit: SiteAudit,
@@ -171,6 +223,26 @@ export async function composeProspectingEmail(
   // Preuve client concrète — pertinente pour les pitchs "app / site / agent"
   // (sites livrés), pas pour "esn / pme-it" (pitch support IT interne).
   const clientRef = ["app", "site", "agent", "creation"].includes(track) ? pickRef(seed, lang) : "";
+
+
+  // Piste RGPD : texte déterministe (aucun modèle IA), uniquement ce que l'analyse du code permet d'affirmer.
+  if (track === "rgpd") {
+    const finding = audit.problems[0];
+    const names = (finding?.title ?? "Des traceurs").replace(/ sans outil de consentement$/, "");
+    const plural = / et |, /.test(names);
+    const noPolicy = /ni politique de confidentialité/.test(finding?.detail ?? "");
+    const shortName = bName.length > 40 ? `${bName.slice(0, 37)}...` : bName;
+    const rgpdSubject = `Votre site ${shortName} : cookies et consentement des visiteurs`;
+    const rgpdBody = [
+      "Bonjour,",
+      `En regardant le site de ${bName}, j'ai vu que ${names} ${plural ? "sont chargés" : "est chargé"} dès l'arrivée du visiteur, et je n'ai repéré aucun outil de consentement aux cookies${noPolicy ? ", ni politique de confidentialité" : ""}. Vous pouvez le vérifier en ouvrant votre site en navigation privée, puis en regardant les cookies dans les outils du navigateur.`,
+      "La CNIL demande l'accord du visiteur avant ce type de traceur, et elle contrôle régulièrement les sites de professionnels.",
+      "On peut régler ça sans toucher au reste de votre site : bannière de consentement conforme (refuser et accepter à égalité) et politique de confidentialité, 490 € HT, prix fixe, livré sous 3 jours ouvrés. Pour une mise en conformité RGPD complète, nous travaillons avec Vincent L’helgoual’ch, expert cybersécurité et conformité.",
+      "Un échange de 10 minutes ? Répondez simplement à cet email ou appelez le 07 59 55 84 14.",
+      "KAH Digital Studio — kah-digital.ch",
+    ].join("\n\n");
+    return finalizeEmail({ subject: rgpdSubject, body: rgpdBody, lang: "fr", baseUrl, prospectId, landing: baseUrl, unsubUrl, pixelUrl });
+  }
 
   // Subject A/B
   const abVariant = Math.floor(Date.now() / 86400000) % 6;
@@ -320,48 +392,6 @@ Réponds UNIQUEMENT avec le corps de l'email (pas de sujet, pas d'explication).`
     body = `${opener}\n\n${pitch}${refLine}\n\n${cta}\n\nKAH Digital Studio`;
   }
 
-  // Lien traçable discret : remplace la mention "kah-digital.ch" du corps
-  // par un vrai lien cliquable (via /api/tracking/click) quand présente,
-  // sinon on l'ajoute en petite ligne sous le texte — sans jamais afficher
-  // la page comme un audit/rapport qu'on n'a pas réellement préparé.
   const landing = track === "visibilite" ? `${baseUrl}${lang === "en" ? "/en" : ""}/visibilite-locale` : baseUrl;
-  const clickUrl = `${baseUrl}/api/tracking/click/${prospectId}?target=site&redirect=${encodeURIComponent(landing)}`;
-  const escapedBody = body.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const domainMention = /kah-digital\.ch/i;
-  const bodyHtml = domainMention.test(escapedBody)
-    ? escapedBody.replace(domainMention, `<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`)
-    : `${escapedBody}\n\n<a href="${clickUrl}" style="color:#1e3a8a;">kah-digital.ch</a>`;
-
-  // HTML minimaliste — ressemble à un vrai email perso
-  const html = `<!DOCTYPE html>
-<html lang="${lang}">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/></head>
-<body style="margin:0;padding:24px 12px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
-
-<table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;">
-<tr><td>
-
-  <!-- Corps email -->
-  <div style="font-size:15px;color:#1f2937;line-height:1.75;white-space:pre-line;">${bodyHtml}</div>
-
-  <!-- Optout discret -->
-  <div style="margin-top:32px;padding-top:16px;border-top:1px solid #e5e7eb;">
-    <p style="margin:0;font-size:11px;color:#9ca3af;">
-      ${OPTOUT[lang] ?? OPTOUT.fr}
-      &nbsp;&mdash;&nbsp;
-      <a href="${unsubUrl}" style="color:#9ca3af;text-decoration:underline;">Se désinscrire</a>
-    </p>
-  </div>
-
-</td></tr>
-</table>
-
-<!-- Pixel tracking -->
-<img src="${pixelUrl}" width="1" height="1" style="display:none;" alt="" />
-</body>
-</html>`;
-
-  const textFallback = `${body}\n\n---\n${OPTOUT[lang] ?? OPTOUT.fr}`;
-
-  return { subject, html, textFallback };
+  return finalizeEmail({ subject, body, lang, baseUrl, prospectId, landing, unsubUrl, pixelUrl });
 }

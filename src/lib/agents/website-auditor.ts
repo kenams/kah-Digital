@@ -7,6 +7,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import OpenAI from "openai";
 import type { DiscoveredLead } from "./lead-discovery";
+import { rgpdAudit } from "./rgpd-audit";
 
 const AUDIT_SYSTEM_PROMPT = `Tu es un expert en développement web, UX/UI et SEO technique. Tu analyses des sites de PME et commerces locaux pour identifier leurs faiblesses et proposer des améliorations concrètes. Tu génères des audits JSON précis, utiles et actionnables. Tu adaptes toujours ta réponse à la langue cible indiquée. Tu es direct, factuel et orienté résultats business.`;
 
@@ -131,7 +132,7 @@ export type SiteAudit = {
     title: string;
     detail: string;
     severity: "critical" | "medium" | "low";
-    category: "design" | "seo" | "mobile" | "speed" | "ux" | "conversion" | "security";
+    category: "design" | "seo" | "mobile" | "speed" | "ux" | "conversion" | "security" | "privacy";
   }>;
   recommendations: Array<{
     title: string;
@@ -203,7 +204,17 @@ function getCountryBasePrice(country: string, quality: "poor" | "medium" | "ok")
   return { price: 790, range: `Dès ${790} ${currency}` };
 }
 
+// Audit complet : d'abord la piste « site » (mobile, SEO, réservation…). Si elle ne trouve rien de vérifiable,
+// on tente la piste « RGPD » (traceurs chargés sans outil de consentement), pour les sites français.
 export async function auditWebsite(lead: DiscoveredLead): Promise<SiteAudit | null> {
+  const web = await auditWebsiteWeb(lead);
+  if (web) return web;
+  if (lead.language !== "fr") return null;
+  const page = await fetchWebsiteContent(lead.website);
+  return rgpdAudit(lead, page);
+}
+
+async function auditWebsiteWeb(lead: DiscoveredLead): Promise<SiteAudit | null> {
   const page = await fetchWebsiteContent(lead.website);
   const content = page.text;
   const screenshotUrl = getScreenshotUrl(lead.website);

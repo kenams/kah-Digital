@@ -12,7 +12,35 @@ const PLACEHOLDER_LOCALS = new Set([
   "john", "john.doe", "johndoe", "nom", "prenom", "prenom.nom", "name", "firstname", "email",
   "mail", "test", "exemple", "example", "user", "username", "adresse", "monemail", "mon.email",
   "admin@", "postmaster", "abuse", "webmaster", "hostmaster",
+  "marie.dupont", "pierre.martin", "jean.martin", "sophie.martin", "amelie.moreau", "jane.doe", "john.smith",
+  "nom.prenom", "mon.nom", "votre.nom", "pseudo", "contact.exemple", "info.exemple",
 ]);
+
+// Extensions de fichiers : « logo@2x.png », « 34gbb9s6ov0g@1280x854.jpeg »… ne sont pas des adresses.
+const FILE_EXTENSIONS = new Set([
+  "png", "jpg", "jpeg", "gif", "svg", "webp", "avif", "ico", "bmp", "tif", "tiff", "css", "js", "mjs", "map", "json",
+  "pdf", "zip", "mp4", "mp3", "webm", "woff", "woff2", "ttf", "otf", "eot", "php", "html", "htm", "xml", "txt", "ingest",
+]);
+
+// Identifiants techniques (Sentry, hachages, noms de fichiers générés) pris pour des adresses.
+export function looksLikeArtifactEmail(email: string): boolean {
+  const lower = email.trim().toLowerCase();
+  const at = lower.lastIndexOf("@");
+  if (at < 1) return true;
+  const local = lower.slice(0, at);
+  const domain = lower.slice(at + 1);
+  const labels = domain.split(".");
+  const tld = labels[labels.length - 1] ?? "";
+  if (FILE_EXTENSIONS.has(tld)) return true;
+  if (labels.some((l) => /^\d+x\d+/.test(l) || /^o\d{8,}$/.test(l))) return true;
+  if (/^[a-f0-9]{16,}$/.test(local)) return true;
+  // Identifiant aléatoire : alphanumérique, long, avec de nombreuses alternances chiffre/lettre.
+  if (/^[a-z0-9]{10,}$/.test(local)) {
+    const transitions = (local.match(/\d[a-z]|[a-z]\d/g) ?? []).length;
+    if (transitions >= 4) return true;
+  }
+  return false;
+}
 
 const THIRD_PARTY_DOMAINS = [
   "cloudbeds.com", "wix.com", "wixsite.com", "sentry", "godaddy.com", "ovh.", "gandi.net",
@@ -33,6 +61,7 @@ export function isPlaceholderEmail(email: string | null | undefined): boolean {
   if (PLACEHOLDER_LOCALS.has(local)) return true;
   if (/^(no-?reply|do-?not-?reply|mailer-daemon|bounce)/.test(local)) return true;
   if (/\d{6,}/.test(local)) return true;
+  if (looksLikeArtifactEmail(lower)) return true;
   return false;
 }
 
