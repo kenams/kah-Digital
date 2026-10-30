@@ -22,13 +22,6 @@ export function CreationEntrepriseForm() {
   const submitRequest = useCallback(async (form: HTMLFormElement, token: string) => {
     const formData = new FormData(form);
 
-    // Sans clé de captcha publique (domaine non déclaré chez Cloudflare), le formulaire reste utilisable : champ piège + limite de débit côté serveur.
-    if (siteKey && !token) {
-      setStatus("error");
-      setServerMessage("Valide le captcha avant d'envoyer.");
-      return;
-    }
-
     const payload = {
       lastName: String(formData.get("lastName") ?? "").trim(),
       firstName: String(formData.get("firstName") ?? "").trim(),
@@ -107,19 +100,7 @@ export function CreationEntrepriseForm() {
     event.preventDefault();
     const form = event.currentTarget;
 
-    if (!siteKey) {
-      void submitRequest(form, "");
-      return;
-    }
-
-    if (!captchaToken) {
-      pendingFormRef.current = form;
-      setServerMessage("");
-      setCaptchaError("");
-      widgetRef.current?.execute();
-      return;
-    }
-
+    // Le captcha Cloudflare n'est pas chargé sur ce domaine : on envoie sans bloquer (champ piège + limite de débit côté serveur), avec le jeton s'il existe.
     void submitRequest(form, captchaToken);
   }
 

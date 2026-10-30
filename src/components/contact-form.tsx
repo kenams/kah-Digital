@@ -125,13 +125,6 @@ export function ContactForm() {
   const submitContactRequest = useCallback(async (form: HTMLFormElement, token: string) => {
     const formData = new FormData(form);
 
-    // Sans clé de captcha publique (domaine non déclaré chez Cloudflare), le formulaire reste utilisable : champ piège + limite de débit côté serveur.
-    if (siteKey && !token) {
-      setStatus("error");
-      setServerMessage(copy.captchaBeforeSend);
-      return;
-    }
-
     const payload = {
       firstName: String(formData.get("firstName") ?? "").trim(),
       lastName: String(formData.get("lastName") ?? "").trim(),
@@ -209,19 +202,7 @@ export function ContactForm() {
     event.preventDefault();
     const form = event.currentTarget;
 
-    if (!siteKey) {
-      void submitContactRequest(form, "");
-      return;
-    }
-
-    if (!captchaToken) {
-      pendingFormRef.current = form;
-      setServerMessage("");
-      setCaptchaError("");
-      widgetRef.current?.execute();
-      return;
-    }
-
+    // Le captcha Cloudflare n'est pas chargé sur ce domaine : on envoie sans bloquer (champ piège + limite de débit côté serveur), avec le jeton s'il existe.
     void submitContactRequest(form, captchaToken);
   }
 
