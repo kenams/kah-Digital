@@ -60,7 +60,10 @@ function storeChoice(choice: Choice) {
   }
 }
 
-export function CookieConsent({ gaId }: { gaId: string }) {
+export function CookieConsent({ gaId: rawGaId }: { gaId: string }) {
+  // Une variable d'environnement saisie avec un retour à la ligne casserait le script inline : on nettoie et on valide.
+  const cleanGaId = (rawGaId ?? "").trim();
+  const gaId = /^G-[A-Z0-9]{4,20}$/.test(cleanGaId) ? cleanGaId : "";
   const { locale } = useLocale();
   const c = COPY[locale];
   const [ready, setReady] = useState(false);
