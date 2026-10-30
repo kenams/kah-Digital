@@ -76,6 +76,11 @@ export function SiteHeader() {
         homeLabel: "KAH Digital Studio - Accueil",
       };
 
+  const isActive = (href: string) => {
+    const path = pathname.replace(/\/$/, "") || "/";
+    return href === homeHref ? path === (homeHref.replace(/\/$/, "") || "/") : path === href || path.startsWith(`${href}/`);
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-[1680px]:max-w-[1600px]">
@@ -88,16 +93,18 @@ export function SiteHeader() {
             {localeCopy.nav.map((link) => {
               // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
               // liens secondaires (accueil = logo, références, blog, création d'entreprise) jusqu'à 1680px.
+              const active = isActive(link.href);
               const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise)$/.test(link.href) || (locale === "de" && /\/devis$/.test(link.href)); // DE : « Offerte » = doublon du bouton « Kostenlos anfragen » (/de/devis)
               return (
               <Link
                 key={link.href}
                 href={(link as { accent?: boolean }).accent ? orderHref(locale, { pathname }) : link.href}
-                className={(link as { highlight?: boolean }).highlight
+                aria-current={active ? "page" : undefined}
+                className={`${active ? "kah-nav-active " : ""}${(link as { highlight?: boolean }).highlight
                   ? "whitespace-nowrap rounded-full bg-violet-600/20 px-3 py-1 text-violet-300 ring-1 ring-violet-500/40 transition-colors hover:bg-violet-600/30 hover:text-violet-200"
                   : (link as { accent?: boolean }).accent
                   ? "whitespace-nowrap font-semibold text-[#e0c48e] transition-colors hover:text-[#f3d089]"
-                  : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden min-[1680px]:inline" : ""}`}
+                  : `whitespace-nowrap text-white/80 transition-colors hover:text-white ${secondary ? "hidden min-[1680px]:inline" : ""}`}`}
               >
                 {(link as { highlight?: boolean }).highlight && <span className="mr-1">⚡</span>}{link.label}
               </Link>
@@ -137,7 +144,8 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={(link as { accent?: boolean }).accent ? orderHref(locale, { pathname }) : link.href}
-                  className="text-white/80 transition-colors hover:text-white"
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={isActive(link.href) ? "border-l-2 border-[#e0c48e] pl-3 font-semibold text-white" : "text-white/80 transition-colors hover:text-white"}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
