@@ -1,27 +1,23 @@
 import { expect, test } from "@playwright/test";
 
-test("assistant widget requires contact details before chat starts", async ({ page }) => {
+test("assistant widget asks for name and email before the chat starts", async ({ page }) => {
   await page.goto("/");
 
   await page.getByRole("button", { name: /Kayla/i }).first().click();
 
-  await expect(page.getByText("Avant de commencer")).toBeVisible();
+  await expect(page.getByText(/Prénom, nom et email pour démarrer/)).toBeVisible();
 
-  const startButton = page.getByRole("button", { name: "Commencer le chat" });
+  const startButton = page.getByRole("button", { name: "Démarrer la conversation" });
   await expect(startButton).toBeDisabled();
 
   await page.getByLabel("Prénom *", { exact: true }).fill("Alex");
   await page.getByLabel("Nom *", { exact: true }).fill("Martin");
-  await page.getByLabel("Email", { exact: true }).fill("alex@example.com");
   await expect(startButton).toBeDisabled();
 
-  await page.getByLabel("Téléphone *", { exact: true }).fill("+41 79 000 00 00");
-  await page.getByLabel("Société *", { exact: true }).fill("Studio Nova");
+  await page.getByLabel("Email", { exact: true }).fill("alex@example.com");
   await expect(startButton).toBeEnabled();
 
   await startButton.click();
 
-  await expect(page.getByRole("button", { name: "Nouvelle conversation" })).toBeVisible();
-  await expect(page.getByPlaceholder("Décris ton besoin, ton projet ou ton problème...")).toBeEnabled();
-  await expect(page.getByText("Avant de commencer")).not.toBeVisible();
+  await expect(page.getByPlaceholder("Écris ton message...")).toBeEnabled();
 });
