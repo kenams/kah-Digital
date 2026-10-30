@@ -604,7 +604,7 @@ export function CybersecurityPageContent({ locale }: Props) {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href={withLocalePrefix("/devis", locale)}
+              href={`${withLocalePrefix("/devis", locale)}?service=cyber`}
               className={`inline-flex items-center justify-center gap-2 rounded-full bg-emerald-400 px-8 py-3.5 font-bold text-[#04120c] transition hover:-translate-y-0.5 hover:bg-emerald-300 ${focus}`}
             >
               {c.ctaPrimary} <FiArrowRight size={16} aria-hidden="true" />
@@ -776,7 +776,7 @@ export function CybersecurityPageContent({ locale }: Props) {
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">{c.ctaTitle}</h2>
           <p className="mx-auto mt-4 max-w-xl text-gray-300">{c.ctaBody}</p>
           <Link
-            href={withLocalePrefix("/devis", locale)}
+            href={`${withLocalePrefix("/devis", locale)}?service=cyber`}
             className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-400 px-10 py-4 font-bold text-[#04120c] transition hover:-translate-y-0.5 hover:bg-emerald-300 ${focus}`}
           >
             {c.ctaButton} <FiArrowRight size={16} aria-hidden="true" />

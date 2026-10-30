@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUtm } from "@/lib/utm";
 import { TurnstileWidget } from "@/components/turnstile-widget";
 
@@ -112,6 +112,16 @@ const SERVICES: Service[] = [
     delayLabel: { fr: "2–6 semaines",          en: "2–6 weeks", de: "2–6 Wochen" },
     projectType:{ fr: "Chatbot / Intégration IA", en: "Chatbot / AI integration", de: "Chatbot / AI integration" },
     budget: "À définir après échange",
+  },
+  {
+    id: "cyber",
+    emoji: "🛡️",
+    label:      { fr: "Cybersécurité & conformité", en: "Cybersecurity & compliance", de: "Cybersicherheit & Compliance" },
+    shortDesc:  { fr: "Diagnostic, RGPD, ISO 27001, DORA",        en: "Assessment, GDPR, ISO 27001, DORA", de: "Analyse, DSGVO, ISO 27001, DORA" },
+    scopeLabel: { fr: "Diagnostic dès 1 000 € HT", en: "Assessment from €1,000 excl. tax", de: "Analyse ab 1 000 € netto" },
+    delayLabel: { fr: "Devis sous 48 h",       en: "Quote within 48 h", de: "Angebot innert 48 h" },
+    projectType:{ fr: "Cybersécurité & conformité", en: "Cybersecurity & compliance", de: "Cybersecurity & compliance" },
+    budget: "Diagnostic dès 1 000 € HT",
   },
   {
     id: "autre",
@@ -266,6 +276,11 @@ export function SmartQuoteForm({
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const defaultMessage = defaultSite ? (locale === "en" ? `My current site: ${defaultSite}. ` : locale === "de" ? `Meine aktuelle Website: ${defaultSite}. ` : `Mon site actuel : ${defaultSite}. `) : "";
   const [form, setForm] = useState({ name: "", email: "", companyName: defaultCompany, phone: "", message: defaultMessage, timeline: "" });
+  // Les boutons de la page cybersécurité arrivent ici avec ?service=cyber : on présélectionne le service.
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get("service");
+    if (wanted && SERVICES.some((x) => x.id === wanted)) setSelectedService(wanted);
+  }, []);
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");

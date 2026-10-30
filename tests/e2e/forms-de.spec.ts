@@ -16,3 +16,14 @@ test("German thank-you page exists", async ({ page }) => {
   await page.goto("/de/merci");
   await expect(page.getByRole("heading", { name: /Danke/ })).toBeVisible();
 });
+
+test("cyber CTA preselects the cybersecurity service in every language", async ({ page }) => {
+  for (const [path, label] of [
+    ["/devis?service=cyber", "Cybersécurité & conformité"],
+    ["/en/devis?service=cyber", "Cybersecurity & compliance"],
+    ["/de/devis?service=cyber", "Cybersicherheit & Compliance"],
+  ] as const) {
+    await page.goto(path);
+    await expect(page.getByText(label).nth(1)).toBeVisible();
+  }
+});
