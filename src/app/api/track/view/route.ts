@@ -15,7 +15,7 @@ const BOT = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|monito
 // Mesure d'audience sans cookie ni adresse IP stockée : chemin, langue, rubrique, site d'origine, type d'appareil.
 export async function POST(request: Request) {
   const rate = rateLimit(`pv:${getRequestIp(request)}`, { windowMs: 60 * 1000, max: 90 });
-  if (!rate.allowed) return new NextResponse(null, { status: 429 });
+  if (!rate.allowed) return new NextResponse(null, { status: 204 }); // silencieux : pas d'erreur console côté visiteur
 
   const ua = request.headers.get("user-agent") ?? "";
   if (!ua || BOT.test(ua) || !supabase) return new NextResponse(null, { status: 204 });

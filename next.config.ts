@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   compress: true,
+  experimental: { globalNotFound: true },
   poweredByHeader: false,
   devIndicators: false,
   images: {

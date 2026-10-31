@@ -197,6 +197,7 @@ export function SiteHeader() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-white xl:hidden"
             aria-label={isMenuOpen ? localeCopy.closeMenu : localeCopy.openMenu}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
