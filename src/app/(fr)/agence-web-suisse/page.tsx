@@ -136,7 +136,7 @@ export default function AgenceWebSuissePage() {
           <h2 className="mb-3 text-center text-2xl font-extrabold tracking-tight text-white">
             Toutes les villes suisses
           </h2>
-          <p className="mb-10 text-center text-gray-500">Nous travaillons à distance avec les entreprises des principales régions. Même qualité, même prix, partout en Suisse.</p>
+          <p className="mb-10 text-center text-gray-400">Nous travaillons à distance avec les entreprises des principales régions. Même qualité, même prix, partout en Suisse.</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {SWISS_CITIES.map((c) => (
               <Link
@@ -153,7 +153,7 @@ export default function AgenceWebSuissePage() {
                     <span className="text-lg">{c.flag}</span>
                     <span className="font-bold text-white">{c.city}</span>
                   </div>
-                  <div className="mt-1 text-xs text-gray-500">{c.region}</div>
+                  <div className="mt-1 text-xs text-gray-400">{c.region}</div>
                 </div>
                 <FiArrowRight size={15} className="text-gray-400 transition group-hover:text-emerald-400" />
               </Link>
@@ -191,7 +191,7 @@ export default function AgenceWebSuissePage() {
       <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-white">Tarifs en CHF</h2>
-          <p className="mb-8 text-gray-500">Prix fixes, transparents, facturés en francs suisses. Zéro abonnement, zéro lock-in.</p>
+          <p className="mb-8 text-gray-400">Prix fixes, transparents, facturés en francs suisses. Zéro abonnement, zéro lock-in.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "CHF 290", sub: "Landing page · 5 jours", highlight: false },
@@ -206,7 +206,7 @@ export default function AgenceWebSuissePage() {
               >
                 <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-gray-400">{item.label}</div>
                 <div className="text-2xl font-black text-white">{item.price}</div>
-                <div className="mt-1 text-xs text-gray-500">{item.sub}</div>
+                <div className="mt-1 text-xs text-gray-400">{item.sub}</div>
                 {item.highlight && <div className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">Le plus populaire</div>}
               </div>
             ))}
@@ -221,7 +221,7 @@ export default function AgenceWebSuissePage() {
       <section className="border-t border-white/[0.06] py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">Votre projet en Suisse — on en parle ?</h2>
-          <p className="mb-8 text-gray-500">Devis gratuit · Réponse sous 24h · Sans engagement</p>
+          <p className="mb-8 text-gray-400">Devis gratuit · Réponse sous 24h · Sans engagement</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/devis?ref=suisse-hub"

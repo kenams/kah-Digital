@@ -136,7 +136,7 @@ export default function AgenceWebSuisseEnPage() {
           <h2 className="mb-3 text-center text-2xl font-extrabold tracking-tight text-white">
             All Swiss cities
           </h2>
-          <p className="mb-10 text-center text-gray-500">We work remotely with businesses in the main regions. Same quality, same price, everywhere in Switzerland.</p>
+          <p className="mb-10 text-center text-gray-400">We work remotely with businesses in the main regions. Same quality, same price, everywhere in Switzerland.</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {SWISS_CITIES.map((c) => (
               <Link
@@ -153,7 +153,7 @@ export default function AgenceWebSuisseEnPage() {
                     <span className="text-lg">{c.flag}</span>
                     <span className="font-bold text-white">{c.city}</span>
                   </div>
-                  <div className="mt-1 text-xs text-gray-500">{c.region}</div>
+                  <div className="mt-1 text-xs text-gray-400">{c.region}</div>
                 </div>
                 <FiArrowRight size={15} className="text-gray-400 transition group-hover:text-emerald-400" />
               </Link>
@@ -191,7 +191,7 @@ export default function AgenceWebSuisseEnPage() {
       <section className="border-t border-white/[0.06] py-16">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-white">Prices in CHF</h2>
-          <p className="mb-8 text-gray-500">Fixed, transparent prices, invoiced in Swiss francs. No lock-in.</p>
+          <p className="mb-8 text-gray-400">Fixed, transparent prices, invoiced in Swiss francs. No lock-in.</p>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starter", price: "CHF 290", sub: "Landing page · 5 days", highlight: false },
@@ -206,7 +206,7 @@ export default function AgenceWebSuisseEnPage() {
               >
                 <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-gray-400">{item.label}</div>
                 <div className="text-2xl font-black text-white">{item.price}</div>
-                <div className="mt-1 text-xs text-gray-500">{item.sub}</div>
+                <div className="mt-1 text-xs text-gray-400">{item.sub}</div>
                 {item.highlight && <div className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">Most popular</div>}
               </div>
             ))}
@@ -221,7 +221,7 @@ export default function AgenceWebSuisseEnPage() {
       <section className="border-t border-white/[0.06] py-20 text-center">
         <div className="mx-auto max-w-2xl px-4">
           <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white">Your project in Switzerland — shall we talk?</h2>
-          <p className="mb-8 text-gray-500">Free quote · Reply within 24h · No commitment</p>
+          <p className="mb-8 text-gray-400">Free quote · Reply within 24h · No commitment</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/en/devis?ref=suisse-hub"

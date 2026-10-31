@@ -286,7 +286,7 @@ export function SiteFooter() {
 
           {/* Nav */}
           <div>
-            <h3 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.nav.title}</h3>
+            <h2 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.nav.title}</h2>
             <ul className="space-y-3">
               {copy.nav.links.map((link) => (
                 <li key={link.label}>
@@ -300,7 +300,7 @@ export function SiteFooter() {
 
           {/* Services */}
           <div>
-            <h3 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.services.title}</h3>
+            <h2 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.services.title}</h2>
             <ul className="space-y-3">
               {copy.services.links.map((link) => (
                 <li key={link.label}>
@@ -314,7 +314,7 @@ export function SiteFooter() {
 
           {/* Zones */}
           <div>
-            <h3 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.zones.title}</h3>
+            <h2 className="mb-5 text-[10px] font-bold uppercase tracking-widest text-white/30">{copy.zones.title}</h2>
             <ul className="space-y-3">
               {copy.zones.links.map((link) => (
                 <li key={link.label}>

@@ -63,7 +63,7 @@ export function OrderPageContent({ locale, currency, initialPack, cancelled = fa
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0908] text-white">
+    <div className="min-h-screen bg-[#0a0908] text-white">
       <section className="section-shell">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d6b36a]/35 bg-[#d6b36a]/10 px-4 py-2 text-sm text-[#f0d99b]">
@@ -270,6 +270,6 @@ export function OrderPageContent({ locale, currency, initialPack, cancelled = fa
           </aside>
         </form>
       </section>
-    </main>
+    </div>
   );
 }

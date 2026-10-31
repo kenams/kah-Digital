@@ -1128,6 +1128,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           <label className="text-sm text-white/70">{text.phone}</label>
           <div className="flex flex-wrap gap-3">
             <select
+              aria-label="Indicatif / Dial code / Vorwahl"
               value={phoneCountry}
               onChange={(event) => setPhoneCountry(event.target.value)}
               className="min-w-[170px] rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white [color-scheme:dark] placeholder:text-white/40 transition-all duration-150 focus:border-sky-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-sky-500/20 hover:border-white/20"
