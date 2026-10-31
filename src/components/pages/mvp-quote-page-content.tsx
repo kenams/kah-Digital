@@ -39,8 +39,8 @@ const copy = {
   },
   de: {
     backHome: "Zur Startseite",
-    backSecondary: "Web-Konfigurator",
-    backSecondaryHref: "/configurateur",
+    backSecondary: "Web-Angebot",
+    backSecondaryHref: "/devis",
     eyebrow: "Mobile MVP Apps",
     title: "Erzähle uns von deiner iOS / Android App.",
     body: "Dieses Formular dient dazu, ein mobiles MVP sauber zu rahmen: Plattformen, Kernfunktionen, visueller Stil und mögliche Integrationen. Wir melden uns innerhalb von 24 Stunden mit Budgetrahmen, Timing, Architekturvorschlag und TestFlight / Play Store Plan.",

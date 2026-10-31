@@ -213,6 +213,7 @@ export const LOCALE_ROUTES: Record<"fr" | "en" | "de", readonly string[]> = {
     "/contact",
     "/cybersecurite",
     "/devis",
+    "/devis/mvp",
     "/ki-agentur-berlin",
     "/ki-agentur-muenchen",
     "/ki-agentur-zuerich",
