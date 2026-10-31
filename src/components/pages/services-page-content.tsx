@@ -110,7 +110,7 @@ const copy = {
     sectionTitle: "Eine einfache Positionierung",
     sectionBody:
       "Wir versprechen nicht alles. Wir bauen Agenten und nützliche, saubere und glaubwürdige Grundlagen, damit Unternehmen einen Job delegieren, sich besser präsentieren oder Nutzer klarer begleiten können.",
-    ctaTitle: "Braucht ihr eine passende Lösung?",
+    ctaTitle: "Brauchen Sie eine passende Lösung?",
     ctaBody: "Lass uns über das richtige Niveau für Agent, Website oder Anwendung sprechen.",
     ctaLabel: "Projekt anfragen",
     learnMore: "Mehr erfahren",
@@ -145,7 +145,7 @@ const copy = {
         description:
           "Virtuelle Hilfe, Qualifizierung von Anfragen und saubere Übergabe an GLPI, wenn First-Level-Support nicht mehr reicht.",
         href: "/services/glpi",
-        features: ["Klarerer Ablauf", "Saubere Eskalation", "Wissensbasis", "An euer Setup angepasst"],
+        features: ["Klarerer Ablauf", "Saubere Eskalation", "Wissensbasis", "An Ihr Setup angepasst"],
       },
     ],
   },

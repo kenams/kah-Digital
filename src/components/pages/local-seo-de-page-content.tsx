@@ -100,7 +100,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     faq: [
       { q: "Welche KI-Anwendungsfälle eignen sich für Berliner Startups?", a: "Lead-Scoring und Qualifizierung, 24/7 Kundensupport mit sauberem Escalation-Flow, E-Mail-Drip-Automatisierung, CRM-Enrichment, Onboarding-Assistenten. Wir identifizieren Ihre Top-3-ROI-Automationen kostenlos." },
       { q: "Wie schnell ist die KI live?", a: "10 Tage Deployment. Erste messbare Ergebnisse an T+30. Kein monatelanger Workshop — direkt starten, bauen, testen, live gehen." },
-      { q: "Kann eure KI in unser bestehendes Tech-Stack integriert werden?", a: "Ja, wir integrieren in Notion, Linear, Slack, HubSpot, Intercom, Stripe und praktisch jedes Tool via API, Zapier, Make oder n8n." },
+      { q: "Kann Ihre KI in unseren bestehenden Tech-Stack integriert werden?", a: "Ja, wir integrieren in Notion, Linear, Slack, HubSpot, Intercom, Stripe und praktisch jedes Tool via API, Zapier, Make oder n8n." },
       { q: "Was kostet ein GPT-4-Agent für ein Berliner Startup?", a: "KI-Chatbot-Add-on ab €490. Vollständiges KI-System (Vertikaler KI-Agent) ab €2 490 — Website, Chatbot, Lead-Automatisierung, Akquisitionsstrategie und 3 Monate Support." },
     ],
   },

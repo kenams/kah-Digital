@@ -335,7 +335,7 @@ const copy = {
       items: [
         { label: "Mobile App", price: "Schätzung nach Scoping" },
         { label: "Vollständiger E-Commerce", price: "Umfang gemeinsam definiert" },
-        { label: "GLPI-Support-Workflow", price: "An eure Organisation angepasst" },
+        { label: "GLPI-Support-Workflow", price: "An Ihre Organisation angepasst" },
         { label: "Redesign + Migration", price: "ab CHF 790" },
       ],
     },

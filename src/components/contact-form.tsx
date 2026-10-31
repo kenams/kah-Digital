@@ -105,7 +105,7 @@ export function ContactForm() {
       support: "Technischer Support",
       other: "Anderes",
       message: "Nachricht *",
-      messagePlaceholder: "Beschreibe dein Anliegen, den Kontext und was du erwartest.",
+      messagePlaceholder: "Beschreiben Sie Ihr Anliegen, den Kontext und Ihre Erwartungen.",
       antiSpam: "Anti-Spam-Verifizierung",
       privacyIntro: "Ich stimme zu, dass meine Daten zur Beantwortung meiner Anfrage verwendet werden. Zur ",
       privacyLink: "Datenschutzerklärung",

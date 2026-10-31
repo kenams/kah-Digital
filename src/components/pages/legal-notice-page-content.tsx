@@ -151,7 +151,7 @@ const copy = {
       },
       {
         title: "Personenbezogene Daten",
-        paragraphs: ["Informationen aus Formularen werden nur zur Beantwortung eurer Anfragen verwendet. Weitere Details stehen in unserer Datenschutzerklärung."],
+        paragraphs: ["Informationen aus Formularen werden nur zur Beantwortung Ihrer Anfragen verwendet. Weitere Details stehen in unserer Datenschutzerklärung."],
       },
       {
         title: "Cookies",
@@ -167,7 +167,7 @@ const copy = {
       },
       {
         title: "Kontakt",
-        paragraphs: [`Bei Fragen zu diesem Impressum erreicht ihr uns unter: ${companyConfig.email}`],
+        paragraphs: [`Bei Fragen zu diesem Impressum erreichen Sie uns unter: ${companyConfig.email}`],
       },
     ],
     privacyLabel: "Datenschutzerklärung",

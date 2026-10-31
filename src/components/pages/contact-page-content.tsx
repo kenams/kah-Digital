@@ -69,10 +69,10 @@ const copy = {
     heroTitle: "Kontakt",
     heroBody: "Frage, Bedarf oder Projekt? Schnelle Rückmeldung und klares Briefing.",
     direct: "Direkter Kontakt",
-    directTitle: "Lass uns konkret über dein Vorhaben sprechen.",
+    directTitle: "Lassen Sie uns konkret über Ihr Vorhaben sprechen.",
     directBody:
       "Wir begleiten frankophone, englischsprachige und internationale Kunden mit einer einfachen Organisation, gutem Tempo und ohne unnötige Reibung.",
-    canSend: "Was du schicken kannst",
+    canSend: "Was Sie senden können",
     canSendItems: [
       "Projektanfrage oder schnelles Briefing",
       "Frage zu Redesign, MVP oder Automatisierung",

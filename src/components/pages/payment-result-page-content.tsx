@@ -54,7 +54,7 @@ const copy = {
     cancel: {
       eyebrow: "Zahlung unterbrochen",
       title: "Die Zahlung wurde nicht abgeschlossen",
-      body: "Es wurde keine endgültige Belastung bestätigt. Du kannst später mit demselben Link fortfahren oder uns für eine andere Zahlungsart kontaktieren.",
+      body: "Es wurde keine endgültige Belastung bestätigt. Sie können später mit demselben Link fortfahren oder uns für eine andere Zahlungsart kontaktieren.",
       primary: "Zur Startseite",
       secondary: "KAH Digital Studio kontaktieren",
     },

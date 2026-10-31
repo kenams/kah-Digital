@@ -68,7 +68,7 @@ const copy = {
     processTitle: "Unser Rechnungsprozess",
     processBody: "Transparenz und Professionalität in allen finanziellen Schritten.",
     process: [
-      { title: "Offerte und Zahlungsplan", body: "Vor Projektstart erhaltet ihr eine vollständige CHF-Offerte mit Scope, Timing und Zahlungsbedingungen." },
+      { title: "Offerte und Zahlungsplan", body: "Vor Projektstart erhalten Sie eine vollständige CHF-Offerte mit Scope, Timing und Zahlungsbedingungen." },
       { title: "Online-Zahlung oder Überweisung", body: "Die Zahlung kann per sicherem Stripe-Link oder per Banküberweisung erfolgen, einmalig oder gemäß Zahlungsplan." },
       { title: "Referenz und Zahlungsdaten", body: "Zahlungslink, Bankdaten und Referenz stehen auf der bestätigten Offerte oder der finalen Rechnung." },
     ],

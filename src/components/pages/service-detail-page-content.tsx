@@ -696,7 +696,7 @@ const content = {
             {
               title: "Custom",
               price: "Individuelles Projekt",
-              points: ["Stärkere Premium-Richtung", "Schärferer Conversion-Flow", "Anbindung an eure Tools", "Individuelle Funktionen", "Priorisierter Launch"],
+              points: ["Stärkere Premium-Richtung", "Schärferer Conversion-Flow", "Anbindung an Ihre Tools", "Individuelle Funktionen", "Priorisierter Launch"],
               cta: "Dieses Format anfragen",
             },
           ],
@@ -706,7 +706,7 @@ const content = {
           sectionClassName: "bg-white py-16",
           items: [
             { icon: FiMonitor, title: "Präsentation und Vertrauen", body: "Klarere Struktur, bessere Inhalte und ein solideres Bild für Kunden, Partner oder Recruiting." },
-            { icon: FiCompass, title: "Direkterer Weg", body: "Nutzer verstehen schneller, was ihr macht, für wen es ist und wie sie euch erreichen." },
+            { icon: FiCompass, title: "Direkterer Weg", body: "Nutzer verstehen schneller, was Sie tun, für wen es ist und wie sie Sie erreichen." },
             { icon: FiCheck, title: "Dauerhafte Basis", body: "Die Website bleibt erweiterbar und kann später Tools, Kampagnen oder Automationen aufnehmen." },
           ],
           timelineTitle: "Arbeitsweise",
@@ -722,7 +722,7 @@ const content = {
       ],
       cta: {
         className: "bg-blue-600 py-16 text-white",
-        title: "Braucht ihr eine klarere Website für euer Unternehmen?",
+        title: "Brauchen Sie eine klarere Website für Ihr Unternehmen?",
         body: "Wir können eine starke Unternehmenswebsite mit dem passenden Finish für Markt, Tempo und Budget strukturieren.",
         label: "Kostenlose Offerte anfragen",
       },
@@ -793,8 +793,8 @@ const content = {
       ],
       cta: {
         className: "bg-blue-700 py-16 text-white",
-        title: "Braucht ihr ein Tool, das zu eurer Arbeitsweise passt?",
-        body: "Wir können eine klare, evolutive und wirklich nützliche Anwendung für euer Team oder eure Kunden strukturieren.",
+        title: "Brauchen Sie ein Tool, das zu Ihrer Arbeitsweise passt?",
+        body: "Wir können eine klare, evolutive und wirklich nützliche Anwendung für Ihr Team oder Ihre Kunden strukturieren.",
         label: "Individuelle Offerte anfragen",
       },
     },
@@ -803,8 +803,8 @@ const content = {
       eyebrow: "Support-Journey, virtuelle Hilfe und GLPI-Tickets",
       title: "Eine einfachere Support-Schicht rund um GLPI",
       body:
-        "KAH Digital Studio ersetzt weder euer GLPI-Team noch verkauft es eine komplette GLPI-Betreuung. Wir entwickeln einen klareren Support-Ablauf rund um euer bestehendes Setup - mit virtueller Ersthilfe und Ticket-Erstellung, wenn echter Support übernehmen muss.",
-      heroNote: "Proprietäre KAH Digital Studio Lösung, abgestimmt auf eure Support-Organisation",
+        "KAH Digital Studio ersetzt weder Ihr GLPI-Team noch verkauft es eine komplette GLPI-Betreuung. Wir entwickeln einen klareren Support-Ablauf rund um Ihr bestehendes Setup - mit virtueller Ersthilfe und Ticket-Erstellung, wenn echter Support übernehmen muss.",
+      heroNote: "Proprietäre KAH Digital Studio Lösung, abgestimmt auf Ihre Support-Organisation",
       primaryHref: "/devis",
       primaryLabel: "Projekt anfragen",
       secondaryHref: "/services/glpi#services",
@@ -814,14 +814,14 @@ const content = {
           kind: "simple-cards",
           sectionClassName: "bg-white py-16",
           title: "Wie diese Leistung zu verstehen ist",
-          body: "Eine nützliche Erweiterung für euren Support - ohne euer Tool oder eure Organisation zu ersetzen.",
+          body: "Eine nützliche Erweiterung für Ihren Support - ohne Ihr Tool oder Ihre Organisation zu ersetzen.",
           withCheck: true,
           items: [
             "Eine Support- und Hilfsschicht vor GLPI",
             "Ein einfacherer Einstieg für Nutzer mit Support-Bedarf",
             "Eine diskrete virtuelle Hilfe für einfache Probleme und Orientierung",
             "Ticket-Erstellung, wenn menschlicher Support übernehmen muss",
-            "Angepasst an eure bestehende Support-Organisation",
+            "Angepasst an Ihre bestehende Support-Organisation",
           ],
         },
         {
@@ -833,7 +833,7 @@ const content = {
             { icon: FiClock, title: "Weniger Reibung", body: "Nutzer erhalten eine erste Hilfe, bevor sofort ein Ticket entsteht." },
             { icon: FiUsers, title: "Besser gerahmte Anfragen", body: "Der Support erhält mehr Kontext und eine sauberere Übergabe." },
             { icon: FiShield, title: "Diskrete Positionierung", body: "Die Lösung lässt sich als virtuelle Hilfe und klarerer Support-Weg einführen." },
-            { icon: FiTrendingUp, title: "Saubere Eskalation", body: "Wenn die Ersthilfe nicht reicht, geht die Anfrage sauber in euer Ticket-Setup über." },
+            { icon: FiTrendingUp, title: "Saubere Eskalation", body: "Wenn die Ersthilfe nicht reicht, geht die Anfrage sauber in Ihr Ticket-Setup über." },
           ],
         },
         {
@@ -860,7 +860,7 @@ const content = {
           columns: 4,
           items: [
             { title: "Support-Journey Scoping", price: "Support-Diagnose", description: "Analyse häufiger Anfragen, Blocker und der Punkte, an denen menschlicher Support übernehmen soll." },
-            { title: "Virtuelle Ersthilfe", price: "Angepasste virtuelle Hilfe", description: "Ein nützlicher Hilfepunkt, verbunden mit euren Inhalten, Prozessen oder häufigen Fragen." },
+            { title: "Virtuelle Ersthilfe", price: "Angepasste virtuelle Hilfe", description: "Ein nützlicher Hilfepunkt, verbunden mit Ihren Inhalten, Prozessen oder häufigen Fragen." },
             { title: "GLPI Ticket-Übergabe", price: "Eingegrenzte Verbindung", description: "Sauberer Übergang von geführter Hilfe zur Ticket-Erstellung, wenn das Support-Team übernehmen muss." },
             { title: "Follow-up und Feintuning", price: "Anpassbare Begleitung", description: "Weiterentwicklung von Antworten, Journey und Übergabepunkten basierend auf echtem Feedback." },
           ],
@@ -871,14 +871,14 @@ const content = {
           title: "Was wir tun, und was wir nicht tun",
           items: [
             { icon: FiUsers, title: "Wir strukturieren die Journey", body: "Wir arbeiten an Einstieg, Nutzerhilfe, Anfragenlenkung und sauberer Ticket-Übergabe." },
-            { icon: FiClock, title: "Wir integrieren sauber", body: "Wir passen die Logik an euren Support-Ablauf an, ohne bestehende Gewohnheiten zu brechen." },
-            { icon: FiShield, title: "Wir ersetzen euer GLPI-Team nicht", body: "Der GLPI-Betrieb bleibt bei euch oder eurem bestehenden Partner. Wir arbeiten als Ergänzung." },
+            { icon: FiClock, title: "Wir integrieren sauber", body: "Wir passen die Logik an Ihren Support-Ablauf an, ohne bestehende Gewohnheiten zu brechen." },
+            { icon: FiShield, title: "Wir ersetzen Ihr GLPI-Team nicht", body: "Der GLPI-Betrieb bleibt bei Ihnen oder Ihrem bestehenden Partner. Wir arbeiten als Ergänzung." },
           ],
         },
       ],
       cta: {
         className: "bg-emerald-600 py-16 text-white",
-        title: "Braucht ihr einen flüssigeren Support rund um GLPI?",
+        title: "Brauchen Sie einen flüssigeren Support rund um GLPI?",
         body: "Wir können eine nützliche, diskrete und sauberere Journey für Nutzer und Support-Team strukturieren.",
         label: "Offerte anfragen",
       },
