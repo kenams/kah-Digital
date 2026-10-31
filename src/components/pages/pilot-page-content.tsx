@@ -161,7 +161,8 @@ export function PilotPageContent({ pilot }: { pilot: Pilot }) {
             ))}
           </div>
           <p className="mt-10 text-center text-sm text-white/60">
-            Autres pilotes en cours de constitution :{" "}
+            <Link href="/pilotes" className="underline underline-offset-4 hover:text-white">Tous les pilotes</Link>
+            {" · "}Autres pilotes en cours de constitution :{" "}
             {others.map((o, i) => (
               <span key={o.slug}>
                 {i > 0 ? " · " : ""}

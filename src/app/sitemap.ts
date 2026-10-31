@@ -69,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/automatisation-ia-pme",
     "/references",
     "/mentions-legales",
+    "/pilotes",
     "/pilotes/sitewatch",
     "/pilotes/relancecash",
     "/pilotes/scopelock",

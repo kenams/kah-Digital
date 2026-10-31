@@ -67,6 +67,7 @@ export function SiteFooter() {
           { label: "Commander mon site", href: "/commander" },
           { label: "Site qui se met à jour par message", href: "/pulse" },
           { label: "Devenir partenaire", href: "/partenaires" },
+          { label: "Pilotes SaaS", href: "/pilotes" },
           { label: "Réalisations", href: "/projets" },
           { label: "Devis", href: "/devis" },
           { label: "Contact", href: "/contact" },
