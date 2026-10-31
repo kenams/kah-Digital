@@ -61,3 +61,23 @@ test("footer links never leave the current language", async ({ page }) => {
     expect(foreign, `footer links outside ${prefix}`).toEqual([]);
   }
 });
+
+for (const slug of ["sitewatch", "relancecash", "scopelock"]) {
+  test(`pilot page ${slug} sends a tagged lead and promises 7 days`, async ({ page }) => {
+    let payload: Record<string, unknown> | null = null;
+    await page.route("**/api/quote", async (route) => {
+      payload = route.request().postDataJSON();
+      await route.fulfill({ status: 200, contentType: "application/json", body: '{"ok":true}' });
+    });
+    await page.goto(`/pilotes/${slug}`);
+    await expect(page.getByText("V1 pilote en 7 jours").first()).toBeVisible();
+    await page.fill("#pilot-name", "Test Fulltest");
+    await page.fill("#pilot-email", "test+fulltest@example.com");
+    await page.fill("#pilot-company", "Test SARL");
+    if (slug === "sitewatch") await page.fill("#pilot-site", "https://example.com");
+    await page.fill("#pilot-situation", "Situation de test Fulltest");
+    await page.locator('form button[type="submit"]').click();
+    await expect(page.getByText("Demande reçue")).toBeVisible();
+    expect((payload as unknown as { message: string }).message).toContain(`[${slug}]`);
+  });
+}

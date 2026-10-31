@@ -83,7 +83,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     faq: [
       { q: "What does a business website cost in New York?", a: "Starter from $290 (landing page, 5 days). Business from $790 (6 pages, SEO, 5 business days). Vertical AI Agent from $2,490 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
       { q: "Why work with a Swiss studio instead of a NYC agency?", a: "Swiss execution quality, without NYC agency pricing. You work directly with the founder. Fixed price, fast turnaround, 100% yours. No retainers, no lock-in." },
-      { q: "Can you build a SaaS MVP for a New York startup?", a: "Yes. Functional V1 in 4 weeks on Next.js 15 + Supabase + TypeScript. The same stack as well-funded startups. Scalable from day one, no rewrite in 6 months." },
+      { q: "Can you build a SaaS MVP for a New York startup?", a: "Yes. A pilot V1 in 7 days on a scoped perimeter, on Next.js 15 + Supabase + TypeScript. The same stack as well-funded startups. Scalable from day one, no rewrite in 6 months." },
       { q: "Do you handle SEO for the US market?", a: "Yes, full technical SEO, structured data, Core Web Vitals 95+, clean URLs. Included from the Business plan. Optimised for Google US." },
     ],
   },

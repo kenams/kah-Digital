@@ -84,7 +84,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
       { q: "Warum KAH Digital Studio für ein Berliner Startup?", a: "Wir kennen die Sprache der Startups: schnell, iterativ, kein Overhead. Starter in 5 Tagen. Business in 5 Werktagen. Kein 2-Monats-Workshop, kein unnötiger Prozess." },
       { q: "Können Sie für Berliner Startups skalierbare Systeme bauen?", a: "Ja, Next.js 15 + Supabase + TypeScript strict. Dieselbe Stack wie gut finanzierte Startups. Skalierbar von Tag 1, ohne Refactoring in 6 Monaten." },
       { q: "Was kostet eine Startup-Website in Berlin?", a: "Starter €290 (Landing Page, 5 Tage). Business €790 (bis 6 Seiten, SEO, Animationen, 5 Werktage). Vertikaler KI-Agent €2 490 (komplettes System, KI-Chatbot, 28 Tage)." },
-      { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, funktionale V1 in 4 Wochen. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
+      { q: "Bauen Sie auch MVPs und Web-Apps für Berliner Startups?", a: "Ja, eine Pilot-V1 in 7 Tagen im klar abgegrenzten Umfang. Next.js 15 + Supabase. Alles gehört Ihnen — kein Lock-in, kein Vendor-Abhängigkeit." },
     ],
   },
   "ki-agentur-berlin": {

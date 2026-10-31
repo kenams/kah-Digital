@@ -69,6 +69,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/automatisation-ia-pme",
     "/references",
     "/mentions-legales",
+    "/pilotes/sitewatch",
+    "/pilotes/relancecash",
+    "/pilotes/scopelock",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
