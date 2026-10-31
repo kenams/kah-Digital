@@ -1,0 +1,227 @@
+"use client";
+
+import { useState } from "react";
+import { FiArrowRight, FiCheckCircle, FiZap, FiSearch, FiTrendingUp, FiMessageCircle } from "react-icons/fi";
+import { trackEvent } from "@/lib/analytics";
+
+const WA_AUDIT_URL = "https://wa.me/33759558414?text=Guten%20Tag%20KAH%20Digital%2C%20ich%20h%C3%A4tte%20gern%20ein%20kostenloses%20Audit%20meiner%20Website.";
+
+const CHECKS = [
+  { icon: FiSearch, label: "Google-SEO-Ranking" },
+  { icon: FiZap, label: "Ladegeschwindigkeit" },
+  { icon: FiTrendingUp, label: "Konversionsrate" },
+  { icon: FiCheckCircle, label: "Mobile Darstellung" },
+];
+
+const inputClass =
+  "w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-white placeholder:text-white/40 transition-all duration-150 focus:border-blue-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 hover:border-white/20";
+
+export default function AuditGratuitPageDe() {
+  const [form, setForm] = useState({ businessName: "", website: "", email: "", phone: "" });
+  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.website || !form.email) return;
+    setState("loading");
+    try {
+      const res = await fetch("/api/audit-gratuit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, locale: "de" }),
+      });
+      if (!res.ok) throw new Error();
+      setState("done");
+      trackEvent("generate_lead", { form_name: "audit_gratuit_de", website: form.website });
+    } catch {
+      setState("error");
+    }
+  }
+
+  if (state === "done") {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center p-4">
+        <div className="max-w-md text-center">
+          <div className="mb-6 flex h-20 w-20 mx-auto items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-violet-600">
+            <FiCheckCircle size={36} className="text-white" />
+          </div>
+          <h1 className="mb-4 text-3xl font-extrabold text-white">Audit läuft!</h1>
+          <p className="mb-6 text-gray-400 leading-relaxed">
+            Ihr persönliches Audit wird vorbereitet. Sie erhalten das Ergebnis innerhalb weniger Stunden an <strong className="text-white">{form.email}</strong>.
+          </p>
+          <div className="rounded-2xl border border-white/8 bg-gray-900 p-5 text-left space-y-2">
+            <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">Sie erhalten:</p>
+            {["Digital-Score von 100", "Liste der erkannten Probleme", "Konkrete Empfehlungen", "Budgetschätzung"].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-sm text-gray-300">
+                <FiCheckCircle size={13} className="text-emerald-400 shrink-0" />
+                {item}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-xs text-gray-600">Unverbindlich · Persönliche Ergebnisse · Kostenlos</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-white">
+      <section className="relative overflow-hidden pt-20 pb-12">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-blue-600/15 blur-3xl" />
+        <div className="relative mx-auto max-w-3xl px-4 text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-sm text-amber-300">
+            <FiZap size={13} /> Kostenlose Analyse — unverbindlich
+          </div>
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            Ihr kostenloses Website-Audit
+          </h1>
+          <p className="mb-8 text-lg text-gray-400">
+            KAH Digital Studio analysiert Ihre Website und sendet Ihnen einen vollständigen Bericht: Score, erkannte Probleme, Empfehlungen und Budgetschätzung.
+          </p>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-3xl px-4 pb-24 grid gap-12 lg:grid-cols-2">
+        <div>
+          <form onSubmit={handleSubmit} className="premium-card relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur sm:p-8 space-y-4">
+            <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
+            <div className="relative">
+              <label htmlFor="audit-company" className="mb-1.5 block text-sm font-medium text-white/85">Firmenname</label>
+              <input
+                id="audit-company"
+                type="text"
+                value={form.businessName}
+                onChange={(e) => setForm({ ...form, businessName: e.target.value })}
+                placeholder="z. B. Müller Beratung, Restaurant zur Mühle..."
+                className={inputClass}
+              />
+            </div>
+            <div className="relative">
+              <label htmlFor="audit-website" className="mb-1.5 block text-sm font-medium text-white/85">Website-URL *</label>
+              <input
+                id="audit-website"
+                type="url"
+                required
+                value={form.website}
+                onChange={(e) => setForm({ ...form, website: e.target.value })}
+                placeholder="https://ihre-website.ch"
+                className={inputClass}
+              />
+            </div>
+            <div className="relative">
+              <label htmlFor="audit-email" className="mb-1.5 block text-sm font-medium text-white/85">Ihre E-Mail *</label>
+              <input
+                id="audit-email"
+                type="email"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="sie@ihr-unternehmen.ch"
+                className={inputClass}
+              />
+            </div>
+            <div className="relative">
+              <label htmlFor="audit-phone" className="mb-1.5 block text-sm font-medium text-white/85">Telefon (optional)</label>
+              <input
+                id="audit-phone"
+                type="tel"
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                placeholder="+41 79 000 00 00"
+                className={inputClass}
+              />
+            </div>
+            {state === "error" && (
+              <p role="status" className="relative rounded-xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">Es ist ein Fehler aufgetreten. Bitte erneut versuchen oder an kahdigital42@gmail.com schreiben.</p>
+            )}
+            <button
+              type="submit"
+              disabled={state === "loading"}
+              className="group relative flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-violet-600 px-8 py-4 font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:gap-3 hover:shadow-blue-500/40 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:gap-2"
+            >
+              {state === "loading" ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                  Wird analysiert...
+                </>
+              ) : (
+                <>Mein kostenloses Audit starten <FiArrowRight size={16} /></>
+              )}
+            </button>
+            <p className="relative text-center text-xs text-gray-600">Keine Kreditkarte · Ergebnis per E-Mail · 100 % kostenlos</p>
+          </form>
+          <div className="mt-6 rounded-2xl border border-[#25D366]/25 bg-[#25D366]/8 p-4 text-center">
+            <p className="mb-2 text-sm font-semibold text-white">Lieber eine direkte Antwort?</p>
+            <a
+              href={WA_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110"
+            >
+              <FiMessageCircle size={15} />
+              Per WhatsApp anfragen
+            </a>
+            <p className="mt-2 text-xs text-gray-500">Antwort innerhalb von 2 Std. an Werktagen</p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <h2 className="mb-4 text-lg font-bold text-white">Das erhalten Sie</h2>
+            <div className="space-y-3">
+              {[
+                { icon: FiSearch, title: "Digital-Score /100", desc: "Eine Gesamtbewertung der Qualität Ihrer Website." },
+                { icon: FiZap, title: "Erkannte Probleme", desc: "SEO, Geschwindigkeit, Mobile, UX — jede Schwachstelle im Detail." },
+                { icon: FiTrendingUp, title: "Empfehlungen", desc: "Konkrete Massnahmen, um Ihre Website sofort zu verbessern." },
+                { icon: FiCheckCircle, title: "Budgetschätzung", desc: "Richtwert für einen Relaunch oder eine Verbesserung." },
+              ].map((item) => (
+                <div key={item.title} className="flex items-start gap-3 rounded-xl border border-white/8 bg-gray-900/50 p-4">
+                  <item.icon size={16} className="mt-0.5 shrink-0 text-blue-400" />
+                  <div>
+                    <p className="text-sm font-semibold text-white">{item.title}</p>
+                    <p className="text-xs text-gray-500">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section className="border-t border-white/6 py-16">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="mb-8 text-center text-xl font-bold text-white">Was wir prüfen</h2>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {CHECKS.map((item) => (
+              <div key={item.label} className="flex flex-col items-center gap-2 rounded-xl border border-white/8 bg-gray-900/50 p-4 text-center">
+                <item.icon size={20} className="text-blue-400" />
+                <span className="text-xs text-gray-400">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/6 bg-gradient-to-r from-blue-950/60 to-violet-950/40 py-14">
+        <div className="mx-auto max-w-2xl px-4 text-center">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">Bericht per E-Mail</p>
+          <h2 className="mb-4 text-2xl font-extrabold text-white">Ihr Audit landet in Ihrem Postfach</h2>
+          <p className="mb-8 text-gray-400">Ihre Website wird automatisch analysiert und der Bericht mit einem klaren Vorschlag per E-Mail zugestellt.</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href={WA_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-7 py-3.5 font-bold text-white shadow-lg shadow-green-500/20 transition hover:brightness-110"
+            >
+              <FiMessageCircle size={16} />
+              Audit per WhatsApp anfragen
+            </a>
+          </div>
+          <p className="mt-4 text-xs text-gray-600">100 % kostenlos · Unverbindlich · Persönliche Ergebnisse</p>
+        </div>
+      </section>
+    </div>
+  );
+}

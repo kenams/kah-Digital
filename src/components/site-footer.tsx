@@ -135,11 +135,11 @@ export function SiteFooter() {
       zones: {
         title: "Cities",
         links: [
-          { label: "Lausanne", href: "/site-web-lausanne" },
-          { label: "Geneva", href: "/site-web-geneve" },
-          { label: "Paris", href: "/agence-web-paris" },
-          { label: "Lyon", href: "/agence-web-lyon" },
-          { label: "Zurich", href: "/agence-web-zurich" },
+          { label: "Lausanne", href: "/en/site-web-lausanne" },
+          { label: "Geneva", href: "/en/site-web-geneve" },
+          { label: "Paris", href: "/en/agence-web-paris" },
+          { label: "Lyon", href: "/en/agence-web-lyon" },
+          { label: "Zurich", href: "/en/agence-web-zurich" },
         ],
       },
       legal: {
@@ -183,18 +183,18 @@ export function SiteFooter() {
       zones: {
         title: "Regionen",
         links: [
-          { label: "Lausanne", href: "/site-web-lausanne" },
-          { label: "Genf", href: "/site-web-geneve" },
-          { label: "Freiburg", href: "/site-web-fribourg" },
-          { label: "Bern", href: "/de/devis" },
-          { label: "Zürich", href: "/agence-web-zurich" },
+          { label: "Zürich", href: "/de/webentwicklung-zuerich" },
+          { label: "Bern", href: "/de/webentwicklung-bern" },
+          { label: "Basel", href: "/de/webentwicklung-basel" },
+          { label: "Freiburg", href: "/de/webentwicklung-freiburg" },
+          { label: "München", href: "/de/webentwicklung-muenchen" },
         ],
       },
       legal: {
         title: "Rechtliches",
         links: [
-          { label: "Impressum", href: "/mentions-legales" },
-          { label: "Datenschutz", href: "/confidentialite" },
+          { label: "Impressum", href: "/de/mentions-legales" },
+          { label: "Datenschutz", href: "/de/politique-de-confidentialite" },
         ],
       },
       location: "Toulouse, Frankreich",

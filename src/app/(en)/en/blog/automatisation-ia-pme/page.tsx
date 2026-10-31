@@ -380,9 +380,9 @@ export default function EnAutomatisationIaPmePage() {
             <h2 className="mb-6 text-lg font-bold text-white">Related articles</h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { href: "/blog/creation-site-web-pme", title: "How to create a professional website for a small business in 2026", tag: "Website" },
-                { href: "/blog/seo-local-pme", title: "Local SEO for small businesses: reaching Google's first page", tag: "SEO" },
-                { href: "/blog/refonte-site-web", title: "Website redesign: when and how to do it", tag: "Redesign" },
+                { href: "/en/blog/creation-site-web-pme", title: "How to create a professional website for a small business in 2026", tag: "Website" },
+                { href: "/en/blog/seo-local-pme", title: "Local SEO for small businesses: reaching Google's first page", tag: "SEO" },
+                { href: "/en/blog/refonte-site-web", title: "Website redesign: when and how to do it", tag: "Redesign" },
               ].map((article) => (
                 <Link
                   key={article.href}

@@ -314,10 +314,10 @@ export default function EnSeoLocalPmePage() {
           <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">Related articles</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { href: "/blog/creation-site-web-pme", label: "Creating a website for a small business in 2026" },
-              { href: "/blog/prix-site-web-professionnel", label: "How to estimate a website cost?" },
-              { href: "/blog/refonte-site-web", label: "Website redesign: when and how?" },
-              { href: "/blog/site-web-artisan", label: "A website for tradespeople: the 2026 guide" },
+              { href: "/en/blog/creation-site-web-pme", label: "Creating a website for a small business in 2026" },
+              { href: "/en/blog/prix-site-web-professionnel", label: "How to estimate a website cost?" },
+              { href: "/en/blog/refonte-site-web", label: "Website redesign: when and how?" },
+              { href: "/en/blog/site-web-artisan", label: "A website for tradespeople: the 2026 guide" },
             ].map((article) => (
               <Link
                 key={article.href}

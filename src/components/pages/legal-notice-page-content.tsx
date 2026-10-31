@@ -47,7 +47,7 @@ const copy = {
       },
       {
         title: "Cookies",
-        paragraphs: ["Ce site n'utilise pas de cookies de suivi ou de marketing. Seuls des cookies techniques nécessaires au fonctionnement du site peuvent être utilisés."],
+        paragraphs: ["Ce site n'utilise pas de cookies publicitaires ou marketing. Seuls des cookies techniques nécessaires au fonctionnement du site sont utilisés ; la mesure d'audience (Google Analytics) n'est activée qu'avec votre accord, que vous pouvez refuser ou retirer à tout moment."],
       },
       {
         title: "Responsabilité",
@@ -101,7 +101,7 @@ const copy = {
       },
       {
         title: "Cookies",
-        paragraphs: ["This site does not use marketing or tracking cookies. Only technical cookies required for the proper operation of the site may be used."],
+        paragraphs: ["This site does not use advertising or marketing cookies. Only technical cookies required for the proper operation of the site are used; audience measurement (Google Analytics) is only enabled with your consent, which you can refuse or withdraw at any time."],
       },
       {
         title: "Liability",
@@ -155,7 +155,7 @@ const copy = {
       },
       {
         title: "Cookies",
-        paragraphs: ["Diese Website nutzt keine Marketing- oder Tracking-Cookies. Es können nur technisch notwendige Cookies für den Betrieb der Website eingesetzt werden."],
+        paragraphs: ["Diese Website nutzt keine Werbe- oder Marketing-Cookies. Es werden nur technisch notwendige Cookies für den Betrieb der Website eingesetzt; die Reichweitenmessung (Google Analytics) wird nur mit Ihrer Einwilligung aktiviert, die Sie jederzeit ablehnen oder widerrufen können."],
       },
       {
         title: "Haftung",
@@ -192,7 +192,7 @@ export function LegalNoticePageContent({ locale }: Props) {
                 <div className="space-y-2 text-gray-700">
                   {section.lines.filter(([, value]) => value).map(([label, value]) => (
                     <p key={label}>
-                      <strong>{label} :</strong> {value}
+                      <strong>{label}{locale === "fr" ? " :" : ":"}</strong> {value}
                     </p>
                   ))}
                 </div>
@@ -220,7 +220,7 @@ export function LegalNoticePageContent({ locale }: Props) {
           ))}
 
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR")}
+            {content.updatedAt} : {new Date().toLocaleDateString(locale === "en" ? "en-GB" : locale === "de" ? "de-CH" : "fr-FR")}
           </div>
         </div>
       </div>

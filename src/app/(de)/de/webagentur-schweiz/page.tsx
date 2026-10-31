@@ -14,12 +14,12 @@ export const metadata: Metadata = {
 };
 
 const SWISS_CITIES = [
-  { city: "Lausanne", region: "Waadt", href: "/en/site-web-lausanne", flag: "🇨🇭", highlight: true },
-  { city: "Genf", region: "Genf", href: "/en/site-web-geneve", flag: "🇨🇭", highlight: true },
+  { city: "Lausanne", region: "Waadt", href: "/de/devis?ref=suisse-lausanne", flag: "🇨🇭", highlight: true },
+  { city: "Genf", region: "Genf", href: "/de/devis?ref=suisse-genf", flag: "🇨🇭", highlight: true },
   { city: "Zürich", region: "Zürich", href: "/de/webentwicklung-zuerich", flag: "🇨🇭", highlight: false },
   { city: "Bern", region: "Bern", href: "/de/webentwicklung-bern", flag: "🇨🇭", highlight: false },
   { city: "Basel", region: "Basel-Stadt", href: "/de/webentwicklung-basel", flag: "🇨🇭", highlight: false },
-  { city: "Lugano", region: "Tessin", href: "/en/agence-web-lugano", flag: "🇨🇭", highlight: false },
+  { city: "Lugano", region: "Tessin", href: "/de/devis?ref=suisse-lugano", flag: "🇨🇭", highlight: false },
   { city: "Freiburg", region: "Freiburg", href: "/de/webentwicklung-freiburg", flag: "🇨🇭", highlight: false },
 ];
 

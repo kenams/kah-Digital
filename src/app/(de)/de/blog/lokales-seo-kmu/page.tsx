@@ -282,7 +282,7 @@ export default function DeSeoLocalPmePage() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/audit-gratuit"
+              href="/de/audit-gratuit"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-6 py-3 font-bold text-white shadow-lg shadow-blue-500/25 transition hover:opacity-90"
             >
               Kostenloses Audit anfordern <FiArrowRight size={15} />
@@ -314,10 +314,10 @@ export default function DeSeoLocalPmePage() {
           <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-500">Verwandte Artikel</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { href: "/blog/creation-site-web-pme", label: "Eine Website für ein KMU erstellen 2026" },
-              { href: "/blog/prix-site-web-professionnel", label: "Wie schätzt man die Kosten einer Website?" },
-              { href: "/blog/refonte-site-web", label: "Website-Relaunch: Wann und wie?" },
-              { href: "/blog/site-web-artisan", label: "Website für Handwerker: der Leitfaden 2026" },
+              { href: "/de/blog/website-erstellen-kmu", label: "Eine Website für ein KMU erstellen 2026" },
+              { href: "/de/blog/website-kosten-schaetzen", label: "Wie schätzt man die Kosten einer Website?" },
+              { href: "/de/blog/website-relaunch", label: "Website-Relaunch: Wann und wie?" },
+              { href: "/de/blog/website-handwerker", label: "Website für Handwerker: der Leitfaden 2026" },
             ].map((article) => (
               <Link
                 key={article.href}

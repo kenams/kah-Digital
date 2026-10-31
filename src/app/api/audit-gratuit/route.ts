@@ -29,27 +29,82 @@ type DeliveredAudit = {
   priceRange?: string;
 };
 
-// Le visiteur a demandé un audit : il reçoit le rapport (score, points faibles,
-// recommandations) et le lien vers sa page d'audit, pas un mail de prospection.
-function buildAuditDeliveryEmail(name: string, audit: DeliveredAudit, reportUrl: string, quoteUrl: string) {
-  const problems = audit.problems.slice(0, 5).map((p) => `<li style="margin-bottom:8px;"><strong>${esc(p.title)}</strong><br/><span style="color:#6b7280;">${esc(p.detail)}</span></li>`).join("");
-  const recos = audit.recommendations.slice(0, 3).map((r) => `<li style="margin-bottom:8px;"><strong>${esc(r.title)}</strong><br/><span style="color:#6b7280;">${esc(r.detail)}</span></li>`).join("");
-  const subject = `Votre audit gratuit — ${name} : ${audit.score}/100`;
-  const html = `<div style="font-family:Arial,sans-serif;max-width:560px;color:#374151;font-size:15px;line-height:1.7;">
-<p>Bonjour,</p>
-<p>Voici l'audit gratuit de <strong>${esc(name)}</strong> que vous avez demandé sur kah-digital.ch.</p>
-<p style="font-size:22px;margin:16px 0;"><strong>Score : ${audit.score}/100</strong></p>
-<p><strong>Points à améliorer</strong></p><ul style="padding-left:20px;">${problems}</ul>
-<p><strong>Nos recommandations</strong></p><ul style="padding-left:20px;">${recos}</ul>
-${audit.priceRange ? `<p>Budget indicatif : <strong>${esc(audit.priceRange)}</strong></p>` : ""}
-<p><a href="${reportUrl}" style="display:inline-block;background:#4f46e5;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:700;">Voir mon rapport complet</a></p>
-<p>Une question ? Répondez simplement à cet email, je lis tous les messages. Pour un devis : <a href="${quoteUrl}">${quoteUrl}</a></p>
+type AuditLocale = "fr" | "en" | "de";
+
+const MAIL_COPY: Record<AuditLocale, {
+  subject: (name: string, score: number) => string; hello: string; intro: (name: string) => string; score: string;
+  problems: string; recos: string; budget: string; cta: string; question: string;
+  text: { intro: (name: string, score: number) => string; problems: string; report: string; quote: string };
+  ackSubject: string; ackBody: (name: string) => string; quotePath: string;
+}> = {
+  fr: {
+    subject: (n, sc) => `Votre audit gratuit — ${n} : ${sc}/100`, hello: "Bonjour,",
+    intro: (n) => `Voici l'audit gratuit de <strong>${n}</strong> que vous avez demandé sur kah-digital.ch.`, score: "Score",
+    problems: "Points à améliorer", recos: "Nos recommandations", budget: "Budget indicatif", cta: "Voir mon rapport complet",
+    question: "Une question ? Répondez simplement à cet email, je lis tous les messages. Pour un devis :",
+    text: { intro: (n, sc) => `Voici l'audit gratuit de ${n} : score ${sc}/100.`, problems: "Points à améliorer :", report: "Rapport complet", quote: "Devis" },
+    ackSubject: "Votre demande d'audit gratuit est bien reçue",
+    ackBody: (n) => `Nous avons bien reçu votre demande d'audit pour <strong>${n}</strong>. Nous analysons votre site et revenons vers vous personnellement sous 24 h.`,
+    quotePath: "/devis?ref=audit",
+  },
+  en: {
+    subject: (n, sc) => `Your free audit — ${n}: ${sc}/100`, hello: "Hello,",
+    intro: (n) => `Here is the free audit of <strong>${n}</strong> you requested on kah-digital.ch.`, score: "Score",
+    problems: "Areas to improve", recos: "Our recommendations", budget: "Indicative budget", cta: "View my full report",
+    question: "Any question? Simply reply to this email, I read every message. For a quote:",
+    text: { intro: (n, sc) => `Here is the free audit of ${n}: score ${sc}/100.`, problems: "Areas to improve:", report: "Full report", quote: "Quote" },
+    ackSubject: "We received your free audit request",
+    ackBody: (n) => `We received your audit request for <strong>${n}</strong>. We are reviewing your site and will get back to you personally within 24 hours.`,
+    quotePath: "/en/devis?ref=audit",
+  },
+  de: {
+    subject: (n, sc) => `Ihr kostenloses Audit — ${n}: ${sc}/100`, hello: "Guten Tag,",
+    intro: (n) => `Hier ist das kostenlose Audit von <strong>${n}</strong>, das Sie auf kah-digital.ch angefordert haben.`, score: "Bewertung",
+    problems: "Verbesserungspunkte", recos: "Unsere Empfehlungen", budget: "Richtbudget", cta: "Vollständigen Bericht ansehen",
+    question: "Eine Frage? Antworten Sie einfach auf diese E-Mail, ich lese jede Nachricht. Für eine Offerte:",
+    text: { intro: (n, sc) => `Hier ist das kostenlose Audit von ${n}: Bewertung ${sc}/100.`, problems: "Verbesserungspunkte:", report: "Vollständiger Bericht", quote: "Offerte" },
+    ackSubject: "Ihre Anfrage für das kostenlose Audit ist eingegangen",
+    ackBody: (n) => `Wir haben Ihre Audit-Anfrage für <strong>${n}</strong> erhalten. Wir prüfen Ihre Website und melden uns innerhalb von 24 Stunden persönlich bei Ihnen.`,
+    quotePath: "/de/devis?ref=audit",
+  },
+};
+
+function mailShell(inner: string) {
+  return `<div style="font-family:Arial,sans-serif;max-width:560px;color:#374151;font-size:15px;line-height:1.7;">${inner}
 <p style="margin-top:24px;">KAH Digital Studio<br/><span style="color:#6b7280;font-size:13px;">kahdigital42@gmail.com · 07 59 55 84 14</span></p>
 </div>`;
+}
+
+// Le visiteur a demandé un audit : il reçoit le rapport (score, points faibles,
+// recommandations) et le lien vers sa page d'audit, pas un mail de prospection.
+function buildAuditDeliveryEmail(locale: AuditLocale, name: string, audit: DeliveredAudit, reportUrl: string, siteUrl: string) {
+  const c = MAIL_COPY[locale];
+  const quoteUrl = `${siteUrl}${c.quotePath}`;
+  const problems = audit.problems.slice(0, 5).map((p) => `<li style="margin-bottom:8px;"><strong>${esc(p.title)}</strong><br/><span style="color:#6b7280;">${esc(p.detail)}</span></li>`).join("");
+  const recos = audit.recommendations.slice(0, 3).map((r) => `<li style="margin-bottom:8px;"><strong>${esc(r.title)}</strong><br/><span style="color:#6b7280;">${esc(r.detail)}</span></li>`).join("");
+  const subject = c.subject(name, audit.score);
+  const html = mailShell(`
+<p>${c.hello}</p>
+<p>${c.intro(esc(name))}</p>
+<p style="font-size:22px;margin:16px 0;"><strong>${c.score} : ${audit.score}/100</strong></p>
+<p><strong>${c.problems}</strong></p><ul style="padding-left:20px;">${problems}</ul>
+<p><strong>${c.recos}</strong></p><ul style="padding-left:20px;">${recos}</ul>
+${audit.priceRange ? `<p>${c.budget} : <strong>${esc(audit.priceRange)}</strong></p>` : ""}
+<p><a href="${reportUrl}" style="display:inline-block;background:#4f46e5;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:700;">${c.cta}</a></p>
+<p>${c.question} <a href="${quoteUrl}">${quoteUrl}</a></p>`);
   const NL = String.fromCharCode(10);
   const bullets = audit.problems.slice(0, 5).map((p) => `- ${p.title}`).join(NL);
-  const text = ["Bonjour,", "", `Voici l'audit gratuit de ${name} : score ${audit.score}/100.`, "", "Points à améliorer :", bullets, "", `Rapport complet : ${reportUrl}`, `Devis : ${quoteUrl}`, "", "KAH Digital Studio"].join(NL);
+  const text = [c.hello, "", c.text.intro(name, audit.score), "", c.text.problems, bullets, "", `${c.text.report} : ${reportUrl}`, `${c.text.quote} : ${quoteUrl}`, "", "KAH Digital Studio"].join(NL);
   return { subject, html, text };
+}
+
+// Aucun constat fiable (site correct, déjà équipé, injoignable) : on accuse réception honnêtement au lieu de rester muet.
+function buildAuditAckEmail(locale: AuditLocale, name: string) {
+  const c = MAIL_COPY[locale];
+  const NL = String.fromCharCode(10);
+  const html = mailShell(`<p>${c.hello}</p><p>${c.ackBody(esc(name))}</p>`);
+  const text = `${c.hello}${NL}${NL}${c.ackBody(name).replace(/<[^>]+>/g, "")}`;
+  return { subject: c.ackSubject, html, text };
 }
 
 export async function POST(req: Request) {
@@ -59,9 +114,10 @@ export async function POST(req: Request) {
     if (!rate.allowed) {
       return NextResponse.json({ error: "Trop de demandes. Réessayez plus tard." }, { status: 429, headers: { "Retry-After": String(rate.retryAfter) } });
     }
-    const { businessName, website, email, phone } = await req.json() as {
-      businessName?: string; website?: string; email: string; phone?: string;
+    const { businessName, website, email, phone, locale: rawLocale } = await req.json() as {
+      businessName?: string; website?: string; email: string; phone?: string; locale?: string;
     };
+    const locale: AuditLocale = rawLocale === "en" || rawLocale === "de" ? rawLocale : "fr";
 
     if (!email || !isValidEmail(email)) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -92,8 +148,8 @@ export async function POST(req: Request) {
         email,
         phone: phone || null,
         status: siteWebsite ? "inbound" : "no-website",
-        language: "fr",
-        country: "FR",
+        language: locale,
+        country: locale === "de" ? "CH" : "FR",
         sentAt: new Date().toISOString(),
       })
       .select("id")
@@ -123,9 +179,9 @@ export async function POST(req: Request) {
         const lead = {
           businessName: businessName || siteWebsite,
           website: siteWebsite,
-          address: "FR",
-          country: "FR",
-          language: "fr",
+          address: locale === "de" ? "CH" : "FR",
+          country: locale === "de" ? "CH" : "FR",
+          language: locale,
           sector: "inbound",
           placeId: prospectId,
           email,
@@ -134,12 +190,17 @@ export async function POST(req: Request) {
         };
 
         const audit = await auditWebsite(lead);
-        if (!audit) return;
+        if (!audit) {
+          const ack = buildAuditAckEmail(locale, businessName || siteWebsite);
+          const resendAck = new Resend(process.env.RESEND_API_KEY!);
+          await resendAck.emails.send({ from: getResendFromAddress(), to: email, replyTo: "kahdigital42@gmail.com", subject: ack.subject, html: ack.html, text: ack.text });
+          return;
+        }
 
         await supabase.from("prospects").update({ audit, sector: audit.sector }).eq("id", prospectId);
 
         const displayName = businessName || siteWebsite;
-        const composed = buildAuditDeliveryEmail(displayName, audit, `${siteUrl}/p/${prospectId}`, `${siteUrl}/devis?ref=audit`);
+        const composed = buildAuditDeliveryEmail(locale, displayName, audit, `${siteUrl}/p/${prospectId}`, siteUrl);
 
         const resend = new Resend(process.env.RESEND_API_KEY!);
         await resend.emails.send({

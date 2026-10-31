@@ -153,10 +153,10 @@ export default function DeLandingPageVsSiteVitrinePage() {
           <h2 className="mb-3 text-2xl font-bold text-white">Landingpage oder Visitenkarten-Website — wir beraten Sie kostenlos</h2>
           <p className="mb-6 text-gray-400">Antwort in 24h · Individuelle Offerte · Unverbindlich</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-emerald-500/30">
+            <Link href="/de/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-blue-600 px-8 py-3.5 font-bold text-white shadow-lg transition hover:shadow-emerald-500/30">
               Offerte anfordern <FiArrowRight size={15} />
             </Link>
-            <Link href="/audit-gratuit" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
+            <Link href="/de/audit-gratuit" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
               Kostenloses Audit meiner Website
             </Link>
           </div>

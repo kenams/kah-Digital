@@ -147,7 +147,7 @@ export default function DeCreationSiteWebPMEPage() {
           <h2 className="mb-3 text-2xl font-bold text-white">Bereit, Ihre Website zu lancieren?</h2>
           <p className="mb-6 text-gray-400">KAH Digital Studio begleitet KMU in der Schweiz und in Frankreich. Individuelle Offerte in 24h.</p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link href="/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
+            <Link href="/de/devis" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-8 py-3.5 font-bold text-white shadow-lg transition">
               Offerte anfordern <FiArrowRight size={15} />
             </Link>
             <Link href="/de/offres" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-3.5 font-semibold text-white transition hover:border-white/40">
