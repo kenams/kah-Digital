@@ -100,9 +100,9 @@ const content = {
       title: "Une application web qui",
       title2: "règle un vrai problème.",
       intro:
-        "Pas de feature-creep. Pas de sur-ingénierie. KAH Digital Studio livre des applications web utiles, rapides et évolutives : portails B2B, dashboards, espaces clients, outils internes. V1 fonctionnelle en 4 semaines.",
+        "Pas de feature-creep. Pas de sur-ingénierie. KAH Digital Studio livre des applications web utiles, rapides et évolutives : portails B2B, dashboards, espaces clients, outils internes. V1 pilote en 7 jours sur un périmètre cadré.",
       stats: [
-        { value: "4sem", label: "V1 livrée" },
+        { value: "7j", label: "V1 pilote" },
         { value: "100%", label: "Propriété code" },
         { value: "0", label: "Vendor lock-in" },
         { value: "24h", label: "Premier retour" },
@@ -125,7 +125,7 @@ const content = {
       contextBody:
         "On scope une première version utilisable, testable et livrable. Pas de complexité inutile, pas d'architecture pour des besoins hypothétiques. La V1 sert de base solide — on construit dessus quand les usages le justifient.",
       highlights: [
-        { icon: FiZap, title: "MVP en 4 semaines", body: "V1 fonctionnelle, testable, déployable. On valide l'usage avant d'investir dans la complexité." },
+        { icon: FiZap, title: "V1 pilote en 7 jours", body: "Cadrage sous 48 h, puis V1 fonctionnelle et déployable en 7 jours maximum après validation écrite du périmètre et réception des accès et contenus. Un périmètre plus large reçoit un nouveau délai annoncé." },
         { icon: FiGlobe, title: "Stack production-ready", body: "Next.js 15, Supabase, TypeScript strict. Scalable par design dès la première ligne." },
         { icon: FiTrendingUp, title: "Base évolutive", body: "Architecture propre dès le départ. On ajoute des modules sans réécriture." },
       ],
@@ -254,9 +254,9 @@ const content = {
       title: "A web application that",
       title2: "solves a real problem.",
       intro:
-        "No feature creep. No over-engineering. KAH Digital Studio delivers useful, fast, scalable web applications: B2B portals, dashboards, client spaces, internal tools. Functional V1 in 4 weeks.",
+        "No feature creep. No over-engineering. KAH Digital Studio delivers useful, fast, scalable web applications: B2B portals, dashboards, client spaces, internal tools. Pilot V1 in 7 days on a scoped perimeter.",
       stats: [
-        { value: "4wk", label: "V1 delivered" },
+        { value: "7d", label: "Pilot V1" },
         { value: "100%", label: "Code ownership" },
         { value: "0", label: "Vendor lock-in" },
         { value: "24h", label: "First response" },
@@ -279,7 +279,7 @@ const content = {
       contextBody:
         "We scope a usable, testable, deliverable first version. No unnecessary complexity, no architecture for hypothetical needs. V1 serves as a solid base — we build on it when usage justifies it.",
       highlights: [
-        { icon: FiZap, title: "MVP in 4 weeks", body: "Functional, testable, deployable. Validate usage before investing in complexity." },
+        { icon: FiZap, title: "Pilot V1 in 7 days", body: "Scoping within 48 hours, then a working, deployable V1 within 7 days at most after written sign-off of the scope and receipt of the access and content needed. A wider scope gets a new, announced timeline." },
         { icon: FiGlobe, title: "Production-ready stack", body: "Next.js 15, Supabase, TypeScript strict. Scalable by design from line one." },
         { icon: FiTrendingUp, title: "Evolutive base", body: "Clean architecture from the start. Add modules without rewriting." },
       ],
@@ -408,9 +408,9 @@ const content = {
       title: "Eine Web-App, die",
       title2: "ein echtes Problem löst.",
       intro:
-        "Kein Feature-Creep. Keine Über-Engineering. KAH Digital Studio liefert nützliche, schnelle und skalierbare Web-Anwendungen: B2B-Portale, Dashboards, Kundenbereiche, interne Tools. Funktionale V1 in 4 Wochen.",
+        "Kein Feature-Creep. Keine Über-Engineering. KAH Digital Studio liefert nützliche, schnelle und skalierbare Web-Anwendungen: B2B-Portale, Dashboards, Kundenbereiche, interne Tools. Pilot-V1 in 7 Tagen im klar abgegrenzten Umfang.",
       stats: [
-        { value: "4Wo", label: "V1 geliefert" },
+        { value: "7T", label: "Pilot-V1" },
         { value: "100%", label: "Code-Eigentum" },
         { value: "0", label: "Vendor Lock-in" },
         { value: "24h", label: "Erste Antwort" },
@@ -433,7 +433,7 @@ const content = {
       contextBody:
         "Wir scopen eine nutzbare, testbare, lieferbare erste Version. Keine unnötige Komplexität, keine Architektur für hypothetische Bedürfnisse. V1 dient als solide Basis — wir bauen darauf auf, wenn der Einsatz es rechtfertigt.",
       highlights: [
-        { icon: FiZap, title: "MVP in 4 Wochen", body: "Funktional, testbar, deploybar. Einsatz validieren, bevor in Komplexität investiert wird." },
+        { icon: FiZap, title: "Pilot-V1 in 7 Tagen", body: "Scoping innerhalb von 48 Stunden, danach eine funktionsfähige, einsatzbereite V1 in höchstens 7 Tagen nach schriftlicher Freigabe des Umfangs und Erhalt der nötigen Zugänge und Inhalte. Ein grösserer Umfang erhält einen neuen, angekündigten Zeitplan." },
         { icon: FiGlobe, title: "Production-Ready-Stack", body: "Next.js 15, Supabase, TypeScript strict. Ab der ersten Zeile skalierbar." },
         { icon: FiTrendingUp, title: "Evolutive Basis", body: "Saubere Architektur von Anfang an. Module hinzufügen ohne Neuschluss." },
       ],
