@@ -939,15 +939,9 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
       return;
     }
 
-    if (!siteKey) {
-      setStatus("error");
-      setServerMessage(text.captchaNotConfigured);
-      return;
-    }
-
     const fallbackType = summary.type !== "-" ? summary.type : text.summaryFallback;
     const fullPhone = phone.trim() ? `${phoneCountry} ${phone.trim()}`.trim() : "";
-    const payload: QuoteRequest & { turnstileToken: string } = {
+    const payload: QuoteRequest & { turnstileToken?: string } = {
       name: name.trim(),
       email: email.trim(),
       phone: fullPhone || undefined,
@@ -973,7 +967,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
         features,
         integrations,
       },
-      turnstileToken: token,
+      turnstileToken: token || undefined,
     };
 
     setStatus("loading");
@@ -1057,20 +1051,6 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
     if (clientType === "entreprise" && !companyName.trim()) {
       setStatus("error");
       setServerMessage(text.companyRequired);
-      return;
-    }
-
-    if (!siteKey) {
-      setStatus("error");
-      setServerMessage(text.captchaNotConfigured);
-      return;
-    }
-
-    if (!captchaToken) {
-      pendingSubmitRef.current = true;
-      setServerMessage("");
-      setCaptchaError("");
-      widgetRef.current?.execute();
       return;
     }
 
@@ -1177,6 +1157,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
             placeholder={text.notesPlaceholder}
           />
         </div>
+        {siteKey && (
         <div className="md:col-span-2 space-y-2 text-sm text-white/70">
           <p>{text.captcha}</p>
           {siteKey ? (
@@ -1195,6 +1176,7 @@ function ConfiguratorFinalForm({ summary, features, integrations, aiModules, rea
           )}
           {captchaError && <p className="text-rose-200">{captchaError}</p>}
         </div>
+        )}
         <div className="md:col-span-2 flex flex-col gap-3">
           <button
             type="submit"

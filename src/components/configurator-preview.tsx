@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useLocale } from "@/lib/locale";
 import type { ConfigSummary } from "@/types/configurator";
 
 type ConfiguratorPreviewProps = {
@@ -24,6 +25,12 @@ type Palette = {
   muted: string;
 };
 
+const PREVIEW_COPY = {
+  fr: { none: "Aucune", noneM: "Aucun", noOption: "Aucune option sélectionnée.", eyebrow: "Aperçu configurateur", title: "Brief prêt à partager", ready: "Tu peux le copier/coller dans Notion, Slack ou le formulaire de devis.", notReady: "Complète les étapes pour activer l'aperçu complet.", visual: "Aperçu visuel", aria: "Aperçu dynamique du configurateur", type: "Type", vision: "Vision", style: "Style", features: "Fonctionnalités", integrations: "Intégrations", ai: "Modules IA", summary: "Résumé", copied: "Copié", copy: "Copier le brief", complete: "Brief complet", waiting: "En attente de sélection" },
+  en: { none: "None", noneM: "None", noOption: "No option selected.", eyebrow: "Configurator preview", title: "Brief ready to share", ready: "You can copy/paste it into Notion, Slack or the quote form.", notReady: "Complete the steps to unlock the full preview.", visual: "Visual preview", aria: "Dynamic configurator preview", type: "Type", vision: "Vision", style: "Style", features: "Features", integrations: "Integrations", ai: "AI modules", summary: "Summary", copied: "Copied", copy: "Copy the brief", complete: "Brief complete", waiting: "Waiting for selection" },
+  de: { none: "Keine", noneM: "Keine", noOption: "Keine Option ausgewählt.", eyebrow: "Konfigurator-Vorschau", title: "Brief zum Teilen bereit", ready: "Sie können ihn in Notion, Slack oder das Angebotsformular kopieren.", notReady: "Schliessen Sie die Schritte ab, um die vollständige Vorschau zu aktivieren.", visual: "Visuelle Vorschau", aria: "Dynamische Konfigurator-Vorschau", type: "Typ", vision: "Vision", style: "Stil", features: "Funktionen", integrations: "Integrationen", ai: "KI-Module", summary: "Zusammenfassung", copied: "Kopiert", copy: "Brief kopieren", complete: "Brief vollständig", waiting: "Warten auf Auswahl" },
+} as const;
+
 const normalizeText = (value: string) =>
   value
     .toLowerCase()
@@ -32,11 +39,11 @@ const normalizeText = (value: string) =>
 
 const detectLayout = (typeLabel: string): LayoutKind => {
   const text = normalizeText(typeLabel);
-  if (text.includes("boutique") || text.includes("shop") || text.includes("store")) return "shop";
+  if (text.includes("boutique") || text.includes("shop") || text.includes("store") || text.includes("onlineshop")) return "shop";
   if (text.includes("blog") || text.includes("magazine")) return "blog";
-  if (text.includes("saas") || text.includes("produit") || text.includes("product")) return "saas";
-  if (text.includes("evenement") || text.includes("event")) return "event";
-  if (text.includes("portail") || text.includes("portal") || text.includes("client")) return "portal";
+  if (text.includes("saas") || text.includes("produit") || text.includes("product") || text.includes("produkt")) return "saas";
+  if (text.includes("evenement") || text.includes("event") || text.includes("veranstaltung")) return "event";
+  if (text.includes("portail") || text.includes("portal") || text.includes("client") || text.includes("kunden")) return "portal";
   return "vitrine";
 };
 
@@ -52,7 +59,7 @@ const pickPalette = (moodLabel: string): Palette => {
       muted: "#8a8f9c",
     };
   }
-  if (mood.includes("vibrant") || mood.includes("colore") || mood.includes("color")) {
+  if (mood.includes("vibrant") || mood.includes("colore") || mood.includes("color") || mood.includes("farbig") || mood.includes("lebendig")) {
     return {
       canvas: "#0b1020",
       panel: "#121a2c",
@@ -72,7 +79,7 @@ const pickPalette = (moodLabel: string): Palette => {
       muted: "#a19a8d",
     };
   }
-  if (mood.includes("dark")) {
+  if (mood.includes("dark") || mood.includes("sombre") || mood.includes("dunkel")) {
     return {
       canvas: "#0a0c12",
       panel: "#111827",
@@ -93,20 +100,22 @@ const pickPalette = (moodLabel: string): Palette => {
 };
 
 export function ConfiguratorPreview({ summary, features, integrations, aiModules, ready }: ConfiguratorPreviewProps) {
+  const { locale } = useLocale();
+  const t = PREVIEW_COPY[locale];
   const [copied, setCopied] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
   const shareText = useMemo(() => {
     const lines = [
-      `Type: ${summary.type}`,
-      `Vision: ${summary.strategy}`,
-      `Style: ${summary.mood}`,
-      `Fonctionnalités: ${features.length ? features.join(", ") : "Aucune"}`,
-      `Intégrations: ${integrations.length ? integrations.join(", ") : "Aucune"}`,
-      `Modules IA: ${aiModules.length ? aiModules.join(", ") : "Aucun"}`,
+      `${t.type}: ${summary.type}`,
+      `${t.vision}: ${summary.strategy}`,
+      `${t.style}: ${summary.mood}`,
+      `${t.features}: ${features.length ? features.join(", ") : t.none}`,
+      `${t.integrations}: ${integrations.length ? integrations.join(", ") : t.none}`,
+      `${t.ai}: ${aiModules.length ? aiModules.join(", ") : t.noneM}`,
     ];
     return lines.join("\n");
-  }, [summary, features, integrations, aiModules]);
+  }, [summary, features, integrations, aiModules, t]);
 
   const layout = useMemo(() => detectLayout(summary.type), [summary.type]);
   const palette = useMemo(() => pickPalette(summary.mood), [summary.mood]);
@@ -172,7 +181,7 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
 
   const list = (items: string[]) =>
     items.length === 0 ? (
-      <p className="text-sm text-white/50">Aucune option sélectionnée.</p>
+      <p className="text-sm text-white/50">{t.noOption}</p>
     ) : (
       <ul className="mt-3 space-y-2 text-white/80">
         {items.map((value) => (
@@ -187,18 +196,18 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
   return (
     <div className="premium-card rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/0 p-6 text-white shadow-[0_25px_70px_rgba(0,0,0,0.45)]">
       <div className="flex flex-col gap-2">
-        <p className="text-xs uppercase tracking-[0.4em] text-white/60">Aperçu configurateur</p>
-        <h3 className="text-2xl font-semibold">Brief prêt à partager</h3>
+        <p className="text-xs uppercase tracking-[0.4em] text-white/60">{t.eyebrow}</p>
+        <h3 className="text-2xl font-semibold">{t.title}</h3>
         <p className="text-sm text-white/70">
           {ready
-            ? "Tu peux le copier/coller dans Notion, Slack ou le formulaire de devis."
-            : "Complète les étapes pour activer l'aperçu complet."}
+            ? t.ready
+            : t.notReady}
         </p>
       </div>
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
         <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.3em] text-white/60">
-          <span>Aperçu visuel</span>
+          <span>{t.visual}</span>
           <span className="rounded-full border border-white/20 px-3 py-1 text-[0.6rem] text-white/70">
             {summary.type}
           </span>
@@ -219,7 +228,7 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
                 viewBox="0 0 640 400"
                 className="h-full w-full"
                 role="img"
-                aria-label="Aperçu dynamique du configurateur"
+                aria-label={t.aria}
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <defs>
@@ -488,9 +497,9 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
 
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         {[
-          { label: "Type", value: summary.type },
-          { label: "Vision", value: summary.strategy },
-          { label: "Style", value: summary.mood },
+          { label: t.type, value: summary.type },
+          { label: t.vision, value: summary.strategy },
+          { label: t.style, value: summary.mood },
         ].map((item) => (
           <div key={item.label} className="rounded-2xl border border-white/10 bg-black/30 p-4">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">{item.label}</p>
@@ -500,15 +509,15 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
       </div>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Fonctionnalités</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{t.features}</p>
           {list(features)}
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Intégrations</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{t.integrations}</p>
           {list(integrations)}
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Modules IA</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{t.ai}</p>
           {list(aiModules)}
         </div>
       </div>
@@ -517,7 +526,7 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
         initial={{ opacity: 0.7 }}
         animate={{ opacity: ready ? 1 : 0.7 }}
       >
-        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Résumé</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-white/60">{t.summary}</p>
         <pre className="mt-3 whitespace-pre-wrap text-white/90">{shareText}</pre>
       </motion.div>
       <div className="mt-4 flex flex-wrap gap-3 text-sm">
@@ -527,10 +536,10 @@ export function ConfiguratorPreview({ summary, features, integrations, aiModules
           disabled={!ready}
           className="inline-flex items-center rounded-full bg-white px-5 py-2 font-semibold text-black transition hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {copied ? "Copié" : "Copier le brief"}
+          {copied ? t.copied : t.copy}
         </button>
         <span className="inline-flex items-center rounded-full border border-white/20 px-4 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
-          {ready ? "Brief complet" : "En attente de sélection"}
+          {ready ? t.complete : t.waiting}
         </span>
       </div>
     </div>

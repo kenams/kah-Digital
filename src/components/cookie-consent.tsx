@@ -35,7 +35,7 @@ const COPY = {
     refuse: "Alle ablehnen",
     accept: "Alle akzeptieren",
     policy: "Datenschutzerklärung",
-    policyHref: "/confidentialite",
+    policyHref: "/de/politique-de-confidentialite",
   },
 } as const;
 

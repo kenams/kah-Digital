@@ -173,6 +173,7 @@ const COPY = {
     submitting: "Envoi en cours…",
     disclaimer: "Sans engagement · Vos données ne sont pas revendues · RGPD",
     captchaError: "Merci de valider le captcha.",
+    pickService: "Choisissez d'abord un projet à l'étape 1.",
     noServiceError: "Veuillez choisir un type de projet.",
     networkError: "Erreur réseau. Réessayez.",
   },
@@ -213,6 +214,7 @@ const COPY = {
     submitting: "Sending…",
     disclaimer: "No commitment · Your data is never sold · GDPR",
     captchaError: "Please complete the captcha.",
+    pickService: "Please pick a project type in step 1 first.",
     noServiceError: "Please choose a project type.",
     networkError: "Network error. Please try again.",
   },
@@ -253,6 +255,7 @@ const COPY = {
     submitting: "Wird gesendet…",
     disclaimer: "Unverbindlich · Ihre Daten werden nicht weiterverkauft · DSGVO",
     captchaError: "Bitte bestätigen Sie das Captcha.",
+    pickService: "Bitte wählen Sie zuerst in Schritt 1 ein Projekt aus.",
     noServiceError: "Bitte wählen Sie eine Projektart.",
     networkError: "Netzwerkfehler. Bitte erneut versuchen.",
   },
@@ -539,6 +542,7 @@ export function SmartQuoteForm({
           )}
         </button>
 
+        {!selectedService && <p className="text-center text-xs text-amber-200/80">{c.pickService}</p>}
         <p className="text-center text-xs text-white/30">{c.disclaimer}</p>
       </div>
     </form>
