@@ -766,3 +766,10 @@ textarea {
   .kah-navpill::before, .kah-navpill::after { animation: none; offset-distance: 12%; }
   .kah-navpill::after { offset-distance: 62%; }
 }
+
+/* Contraste AA : les textes secondaires trop pâles sur fond sombre (axe-core : 1,7 à 4,4 sur 4,5 requis) */
+.text-white\/20, .text-white\/25, .text-white\/30 { color: rgba(255, 255, 255, 0.58); }
+.text-white\/45 { color: rgba(255, 255, 255, 0.6); }
+.bg-gray-950 .text-gray-600 { color: #8a93a3; }
+.bg-gray-900 .text-gray-500, .bg-gray-950 .text-gray-500 { color: #8e97a6; }
+.bg-slate-100 .text-slate-500 { color: #475569; }
