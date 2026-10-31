@@ -34,7 +34,7 @@ export default function DeCreationSiteWebPMEPage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Link href="/de/blog" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-300">? Blog</Link>
           <div className="mb-4 flex items-center gap-3">
-            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">Guide</span>
+            <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-400">Leitfaden</span>
             <span className="text-xs text-gray-600">24. April 2026 · 7 Min. Lesezeit</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
