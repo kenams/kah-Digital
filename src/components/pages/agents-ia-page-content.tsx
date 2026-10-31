@@ -409,6 +409,7 @@ function AgentContactForm({ locale }: { locale: Locale }) {
               </div>
               <select
                 name="agent"
+                aria-label={fc.agent}
                 className="w-full rounded-xl border border-white/12 bg-slate-950/60 px-4 py-3 text-sm text-gray-300 [color-scheme:dark] transition-all duration-150 focus:border-violet-400/60 focus:bg-slate-950/80 focus:outline-none focus:ring-2 focus:ring-violet-500/20 hover:border-white/20"
               >
                 <option value="">{fc.agent}</option>

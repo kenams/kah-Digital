@@ -94,7 +94,7 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
   if (locale === "fr" || locale === "en" || locale === "de") {
     const c = COPY[locale];
     return (
-      <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.18),transparent_50%),linear-gradient(180deg,#020b18_0%,#04070d_100%)]">
+      <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.18),transparent_50%),linear-gradient(180deg,#020b18_0%,#04070d_100%)]">
 
         {/* Urgency strip */}
         <div className="border-b border-white/6 bg-white/4 py-2 text-center text-xs font-medium text-white/70">
@@ -208,7 +208,7 @@ export function QuotePageContent({ locale, defaultCompany = "", defaultSite = ""
           </div>
         </section>
         <CyberBandSection />
-      </main>
+      </div>
     );
   }
 

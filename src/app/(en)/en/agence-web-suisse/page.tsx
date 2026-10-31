@@ -88,7 +88,7 @@ export default function AgenceWebSuisseEnPage() {
               WhatsApp — quick reply
             </a>
           </div>
-          <p className="mt-5 text-sm text-gray-600">Remote studio · CHF invoicing possible · FADP · Reply within 24h</p>
+          <p className="mt-5 text-sm text-gray-400">Remote studio · CHF invoicing possible · FADP · Reply within 24h</p>
         </div>
       </section>
 
@@ -123,7 +123,7 @@ export default function AgenceWebSuisseEnPage() {
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-xl font-black text-white sm:text-2xl">{s.value}</div>
-                <div className="mt-1 text-xs text-gray-600">{s.label}</div>
+                <div className="mt-1 text-xs text-gray-400">{s.label}</div>
               </div>
             ))}
           </div>
@@ -155,7 +155,7 @@ export default function AgenceWebSuisseEnPage() {
                   </div>
                   <div className="mt-1 text-xs text-gray-500">{c.region}</div>
                 </div>
-                <FiArrowRight size={15} className="text-gray-600 transition group-hover:text-emerald-400" />
+                <FiArrowRight size={15} className="text-gray-400 transition group-hover:text-emerald-400" />
               </Link>
             ))}
           </div>
@@ -204,7 +204,7 @@ export default function AgenceWebSuisseEnPage() {
                   ? "border border-emerald-500/30 bg-[linear-gradient(135deg,rgba(16,185,129,0.08),rgba(20,184,166,0.06))] shadow-lg shadow-emerald-500/10"
                   : "border border-white/[0.07] bg-white/[0.025]"}`}
               >
-                <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-gray-600">{item.label}</div>
+                <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-gray-400">{item.label}</div>
                 <div className="text-2xl font-black text-white">{item.price}</div>
                 <div className="mt-1 text-xs text-gray-500">{item.sub}</div>
                 {item.highlight && <div className="mt-3 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">Most popular</div>}
