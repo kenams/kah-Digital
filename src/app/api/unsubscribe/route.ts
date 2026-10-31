@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 function getSupabase() {
@@ -13,10 +13,10 @@ export async function GET(req: NextRequest) {
   if (!id) return new NextResponse("ID manquant", { status: 400 });
 
   try {
-    await getSupabase()
-      .from("prospects")
-      .update({ status: "rejected" })
-      .eq("id", id);
+    const supabase = getSupabase();
+    await supabase.from("prospects").update({ status: "rejected" }).eq("id", id);
+    // Prospects des pilotes SaaS : l'opposition est enregistrée dans leur propre suivi.
+    await supabase.from("pilot_prospects").update({ status: "opposition", updated_at: new Date().toISOString() }).eq("id", id);
   } catch { /* ignore — on affiche quand même la page de confirmation */ }
 
   return new NextResponse(
