@@ -66,6 +66,7 @@ export function SiteHeader() {
           { label: "Créer mon entreprise", href: "/creation-entreprise" },
           { label: "Agents IA", href: "/agents-ia", highlight: true },
           { label: "Cybersécurité", href: "/cybersecurite" },
+          { label: "Pilotes SaaS", href: "/pilotes", highlight: true },
           { label: "Réalisations", href: "/projets" },
           { label: "Références", href: "/references" },
           { label: "Blog", href: "/blog" },

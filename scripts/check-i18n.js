@@ -54,7 +54,7 @@ const deRouteOverrides = new Map([
 ]);
 
 // Pages privées ou propres au marché français (lien à jeton, propositions, démarches SIREN, partenaires français) : volontairement en français seulement.
-const frOnlyPattern = /^(espace|proposition|pulse|pilotes|scopelock|creation-entreprise|partenaires|legal[\\/]kssenger-privacy)([\\/]|$)/;
+const frOnlyPattern = /^(espace|proposition|pulse|pilotes|scopelock|relancecash|creation-entreprise|partenaires|legal[\\/]kssenger-privacy)([\\/]|$)/;
 
 for (const file of pageFiles) {
   const routePath = toRoutePath(file);
