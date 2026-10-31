@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["Website Kosten 2025", "was kostet eine Website Schweiz", "Webseite erstellen Kosten Deutschland", "professionelle Website Preis"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-2025" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Website-Kosten 2025: Was kostet eine professionelle Website in der Schweiz und Deutschland?",
     description: "Transparente Übersicht der echten Kosten für eine professionelle Website 2025 — Landing Page, Business-Site, Web-App. Mit Preisvergleich und worauf man achten sollte.",
   },

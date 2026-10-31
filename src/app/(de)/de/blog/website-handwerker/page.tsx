@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["site web artisan", "Website für Handwerker erstellen", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-handwerker" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Website für Handwerker: der komplette Leitfaden 2026",
     description: "Offerte, Zeitplan, wesentliche Inhalte. Alles, was Handwerker vor dem Erstellen ihrer Website wissen sollten.",
   },

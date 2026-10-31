@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Création site web Bâle — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital trilingue pour Bâle. Sites web FR/DE/EN pour pharma, PME transfrontalières et entreprises culturelles. Devis gratuit sous 24h.",
   keywords: ["création site web Bâle", "agence web Basel", "Webseite erstellen Basel", "studio digital Bâle"],
-  openGraph: { images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],  title: "Création site web Bâle — KAH Digital Studio", description: "Studio digital trilingue pour entreprises bâloises. Pharma, PME. Devis personnalisé." },
+  openGraph: { images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],  title: "Création site web Bâle — KAH Digital Studio", description: "Studio digital trilingue pour entreprises bâloises. Pharma, PME. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-basel" },
 };
 

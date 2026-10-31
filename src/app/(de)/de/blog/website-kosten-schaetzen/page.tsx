@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["devis site web", "devis site web professionnel", "Website-Kosten schätzen", "Kostenschätzung Website 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-schaetzen" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "So schätzen Sie die Kosten einer professionellen Website 2026",
     description: "Die Kriterien, die zu einer klaren, passenden Offerte führen.",
   },

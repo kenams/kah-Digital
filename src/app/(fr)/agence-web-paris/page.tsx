@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital franco-suisse. Création de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Paris", "agence web Paris", "site internet Paris", "développeur web Paris freelance"],
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Création site web Paris — KAH Digital Studio",
     description: "Studio digital pour entreprises parisiennes. Sites, apps, IA. Process clair. Devis personnalisé.",
   },

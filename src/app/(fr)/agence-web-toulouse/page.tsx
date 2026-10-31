@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Création site web Toulouse — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital pour Toulouse et l'Occitanie. Sites web, apps et solutions IA pour PME, aéronautique et startups. Devis gratuit sous 24h.",
   keywords: ["création site web Toulouse", "agence web Toulouse", "site internet Toulouse", "développeur web Occitanie"],
-  openGraph: { images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],  title: "Création site web Toulouse — KAH Digital Studio", description: "Studio digital pour entreprises toulousaines. Sites, apps, IA. Devis personnalisé." },
+  openGraph: { images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],  title: "Création site web Toulouse — KAH Digital Studio", description: "Studio digital pour entreprises toulousaines. Sites, apps, IA. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-toulouse" },
 };
 

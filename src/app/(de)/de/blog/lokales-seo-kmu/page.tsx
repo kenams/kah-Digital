@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/de/blog/lokales-seo-kmu" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Lokales SEO für KMU: 2026 auf der ersten Google-Seite erscheinen",
     description:
       "Die konkreten Massnahmen, damit Ihre lokalen Kunden Sie bei Google finden — ohne teure SEO-Agentur.",

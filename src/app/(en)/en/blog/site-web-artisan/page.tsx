@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["site web artisan", "tradesperson website", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/site-web-artisan" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "A website for tradespeople: the complete 2026 guide",
     description: "quote, timeline, essential content. Everything a tradesperson should know before creating a site.",
   },

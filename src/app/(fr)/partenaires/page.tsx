@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Comptables, courtiers, associations de commerçants, fédérations d'artisans : recommandez un site web à vos clients et touchez 10 % du prix du site, ou offrez-leur 10 % de remise.",
   alternates: { canonical: url },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Programme partenaire KAH Digital Studio",
     description: "Recommandez un site web à vos clients : 10 % du prix du site pour vous, ou 10 % de remise pour eux.",
     url,

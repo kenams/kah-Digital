@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["create a small business website", "site web entreprise", "professional website creation for SMEs", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/creation-site-web-pme" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Creating a website for a small business: the complete 2026 guide",
     description: "From brief to launch, everything a small business should know before ordering a website.",
   },

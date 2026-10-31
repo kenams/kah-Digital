@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     });
   }
 
-  const ogImage = project.mockups?.primary ?? "/og-kah-digital.png";
+  const ogImage = project.mockups?.primary ?? "/og-kah-studio.png";
   const title = `${project.name} | KAH Digital Studio`;
 
   return {

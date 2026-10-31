@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ["Webagentur Schweiz", "Website erstellen Schweiz", "Webentwickler Schweiz", "Digitalstudio Schweiz", "Website KMU Schweiz", "Webanwendung Schweiz"],
   alternates: { canonical: "https://kah-digital.ch/de/webagentur-schweiz" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Webagentur Schweiz — KAH Digital Studio",
     description: "Digitalstudio 100 % auf Distanz. Websites, Apps und KI für die ganze Schweiz. Offerten in CHF möglich, Datenschutzgesetz (DSG) berücksichtigt.",
   },

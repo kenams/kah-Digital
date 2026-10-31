@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Écrivez « fermé lundi » ou « plat du jour : … » : votre site se met à jour en quelques secondes. Rappels de rendez-vous et demandes d'avis Google automatiques. Dès 99 €/mois.",
   alternates: { canonical: url },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Votre site se met à jour par un simple message",
     description: "Horaires, fermetures, promos, plat du jour : écrivez, c'est en ligne. Rappels de RDV et avis Google en plus.",
     url,

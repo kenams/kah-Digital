@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Creazione sito web Lugano — KAH Digital Studio | Devis personnalisé",
   description: "Studio digitale per Lugano e il Ticino. Siti web IT/FR/DE/EN, app e soluzioni IA per aziende, finance e turismo. Preventivo gratuito in 24h.",
   keywords: ["creazione sito web Lugano", "agenzia web Lugano", "sito internet Ticino", "studio digitale Lugano"],
-  openGraph: { images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],  title: "Creazione sito web Lugano — KAH Digital Studio", description: "Studio digitale multilingue per aziende di Lugano. IT/FR/DE/EN. Preventivo personalizzato." },
+  openGraph: { images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],  title: "Creazione sito web Lugano — KAH Digital Studio", description: "Studio digitale multilingue per aziende di Lugano. IT/FR/DE/EN. Preventivo personalizzato." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-lugano" },
 };
 

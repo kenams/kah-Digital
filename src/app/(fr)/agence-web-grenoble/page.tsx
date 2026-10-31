@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Grenoble et l'Isère. Sites web, apps et solutions digitales pour startups deeptech, PME et indépendants. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Grenoble", "agence web Grenoble", "site internet Grenoble", "développeur web Grenoble", "agence digitale Isère"],
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Création site web Grenoble — KAH Digital Studio",
     description: "Studio digital pour startups et PME grenobloises. Sites, apps, SaaS. Process clair. Devis personnalisé.",
   },

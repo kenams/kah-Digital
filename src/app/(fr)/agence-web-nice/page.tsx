@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Création site web Nice — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital pour Nice et la Côte d'Azur. Sites web multilingues pour hôtels, restaurants gastronomiques et professions libérales. Devis sous 24h.",
   keywords: ["création site web Nice", "agence web Nice", "site internet Côte d'Azur", "développeur web Nice"],
-  openGraph: { images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],  title: "Création site web Nice — KAH Digital Studio", description: "Studio digital pour entreprises niçoises. Sites multilingues, apps. Devis personnalisé." },
+  openGraph: { images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],  title: "Création site web Nice — KAH Digital Studio", description: "Studio digital pour entreprises niçoises. Sites multilingues, apps. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-nice" },
 };
 

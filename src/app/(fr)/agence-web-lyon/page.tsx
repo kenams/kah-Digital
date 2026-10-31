@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Lyon et la région Auvergne-Rhône-Alpes. Sites web, apps et solutions IA pour PME et indépendants. Devis gratuit sous 24h.",
   keywords: ["création site web Lyon", "agence web Lyon", "site internet Lyon", "développeur web Lyon"],
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Création site web Lyon — KAH Digital Studio",
     description: "Studio digital pour entreprises lyonnaises. Sites, apps, IA. Devis personnalisé.",
   },

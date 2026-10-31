@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/en/blog/automatisation-ia-pme" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "AI automation for small businesses: 5 concrete examples in 2026",
     description:
       "What AI automation can bring to small businesses — lead qualification, reporting, follow-ups, customer support.",

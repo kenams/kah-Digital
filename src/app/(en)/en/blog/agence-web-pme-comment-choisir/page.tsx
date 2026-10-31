@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ["choisir agence web PME", "agence web PME", "how to choose a digital agency", "freelance vs agence web", "agence web petite entreprise"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/agence-web-pme-comment-choisir" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "How to choose a web agency for your small business",
     description: "The criteria that really matter, the red flags, and the right questions to ask.",
   },

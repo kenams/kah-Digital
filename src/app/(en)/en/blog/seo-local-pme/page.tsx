@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/en/blog/seo-local-pme" },
   openGraph: {
-    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
     title: "Local SEO for small businesses: reaching Google's first page in 2026",
     description:
       "The concrete actions that help your local customers find you on Google — without an expensive SEO agency.",
