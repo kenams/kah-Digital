@@ -166,7 +166,7 @@ const FR: OrderCopy = {
   brief: {
     businessName: "Nom à afficher sur le site", businessNamePh: "Boulangerie Dupont",
     activity: "Votre activité en une phrase *", activityPh: "Boulangerie artisanale, pains au levain et viennoiseries",
-    city: "Ville ou zone d'intervention", cityPh: "Toulouse et alentours",
+    city: "Ville ou zone d'intervention", cityPh: "Votre ville et alentours",
     services: "Vos services ou produits, horaires, tarifs à afficher", servicesPh: "Listez ce que vous proposez, vos horaires, vos tarifs si vous voulez les afficher…",
     tone: "Ton et couleurs souhaités", tonePh: "Chaleureux, tons crème et vert foncé",
     domain: "Nom de domaine existant (si vous en avez un)", domainPh: "boulangerie-dupont.fr",

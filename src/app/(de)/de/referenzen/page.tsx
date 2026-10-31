@@ -36,7 +36,7 @@ const jsonLd = {
       name: "BCS Nettoyage — Website + Online-Buchung",
       url: "https://bcs-nettoyage.fr",
       description:
-        "Next.js-Website für ein Reinigungsunternehmen in Toulouse: Leistungen, Preise, Vorher-nachher-Galerie und Online-Terminbuchung. Live auf der eigenen Domain.",
+        "Next.js-Website für ein Reinigungsunternehmen: Leistungen, Preise, Vorher-nachher-Galerie und Online-Terminbuchung. Live auf der eigenen Domain.",
     },
     {
       "@type": "ListItem",
@@ -83,7 +83,7 @@ type Ref = {
 const CASES: Ref[] = [
   {
     sector: "Reinigungsunternehmen",
-    location: "Toulouse, Frankreich",
+    location: "Frankreich",
     type: "Website + Online-Buchung",
     name: "BCS Nettoyage",
     challenge:

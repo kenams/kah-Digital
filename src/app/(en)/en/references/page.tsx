@@ -36,7 +36,7 @@ const jsonLd = {
       name: "BCS Nettoyage — Showcase site + online booking",
       url: "https://bcs-nettoyage.fr",
       description:
-        "Next.js showcase site for a cleaning company in Toulouse: services, pricing, before/after gallery and online slot booking. Live on its own domain.",
+        "Next.js showcase site for a cleaning company: services, pricing, before/after gallery and online slot booking. Live on its own domain.",
     },
     {
       "@type": "ListItem",

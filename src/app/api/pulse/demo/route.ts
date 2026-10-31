@@ -13,7 +13,7 @@ const RESET_AFTER_MS = 30 * 60 * 1000;
 
 export const DEMO_CONTENT: PulseContent = {
   hours: { mon: "Fermé", tue: "11h30-14h30 · 19h-22h", wed: "11h30-14h30 · 19h-22h", thu: "11h30-14h30 · 19h-22h", fri: "11h30-14h30 · 19h-23h", sat: "19h-23h", sun: "Fermé" },
-  contact: { phone: "05 00 00 00 00", address: "10 rue de la Démo, 31000 Toulouse" },
+  contact: { phone: "05 00 00 00 00", address: "10 rue de la Démo" },
 };
 
 async function demoSite(): Promise<PulseSite> {

@@ -81,13 +81,13 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "bcs-nettoyage",
     name: "BCS Nettoyage",
-    type: "Site vitrine + réservation en ligne / Entreprise de nettoyage, Toulouse",
+    type: "Site vitrine + réservation en ligne / Entreprise de nettoyage",
     tagline:
       "Le site d'une entreprise de nettoyage à domicile, avec prise de rendez-vous en ligne — livré prêt à recevoir des demandes.",
     shortDescription:
-      "Site vitrine Next.js pour une entreprise de nettoyage à Toulouse : services, tarifs, galerie avant/après et réservation de créneau en ligne.",
+      "Site vitrine Next.js pour une entreprise de nettoyage : services, tarifs, galerie avant/après et réservation de créneau en ligne.",
     description:
-      "BCS Nettoyage intervient à domicile sur Toulouse — voitures, appartements, textiles. L'objectif : un site clair qui inspire confiance et transforme un visiteur en rendez-vous, sans passer par un appel. Design sur mesure centré sur les résultats (galerie avant/après), tarifs transparents par prestation, et un formulaire de réservation avec date et créneau. Le site est en ligne sur son propre domaine.",
+      "BCS Nettoyage intervient à domicile — voitures, appartements, textiles. L'objectif : un site clair qui inspire confiance et transforme un visiteur en rendez-vous, sans passer par un appel. Design sur mesure centré sur les résultats (galerie avant/après), tarifs transparents par prestation, et un formulaire de réservation avec date et créneau. Le site est en ligne sur son propre domaine.",
     challenge:
       "Donner à une petite entreprise de nettoyage un site qui rassure autant qu'un bouche-à-oreille, et qui capte les demandes de rendez-vous directement — sans dépendre uniquement du téléphone.",
     solution:
@@ -109,7 +109,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { label: "Contact", value: "Multi-canal" },
     ],
     highlights: [
-      "Client réel — entreprise de nettoyage à Toulouse, site en production sur son domaine",
+      "Client réel — entreprise de nettoyage, site en production sur son domaine",
       "Prise de rendez-vous en ligne intégrée, pas juste un formulaire de contact",
       "Design orienté conversion autour des résultats avant/après",
     ],

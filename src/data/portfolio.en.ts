@@ -50,13 +50,13 @@ export const portfolioProjectsEn: PortfolioProject[] = [
   {
     slug: "bcs-nettoyage",
     name: "BCS Nettoyage",
-    type: "Brochure site + online booking / Cleaning company, Toulouse",
+    type: "Brochure site + online booking / Cleaning company",
     tagline:
       "The website of a home cleaning company, with online appointment booking — delivered ready to take requests.",
     shortDescription:
-      "Next.js brochure site for a cleaning company in Toulouse: services, pricing, before/after gallery and online slot booking.",
+      "Next.js brochure site for a cleaning company: services, pricing, before/after gallery and online slot booking.",
     description:
-      "BCS Nettoyage works at customers' homes in Toulouse — cars, apartments, textiles. The goal: a clear site that builds trust and turns a visitor into a booking, without a phone call. Custom design centred on results (before/after gallery), transparent per-service pricing, and a booking form with date and time slot. The site is live on its own domain.",
+      "BCS Nettoyage works at customers' homes — cars, apartments, textiles. The goal: a clear site that builds trust and turns a visitor into a booking, without a phone call. Custom design centred on results (before/after gallery), transparent per-service pricing, and a booking form with date and time slot. The site is live on its own domain.",
     challenge:
       "Give a small cleaning company a site that reassures as much as word of mouth, and captures appointment requests directly — without relying only on the phone.",
     solution:
@@ -78,7 +78,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       { label: "Contact", value: "Multi-channel" },
     ],
     highlights: [
-      "Real client — cleaning company in Toulouse, site in production on its own domain",
+      "Real client — cleaning company, site in production on its own domain",
       "Online appointment booking built in, not just a contact form",
       "Conversion-focused design around before/after results",
     ],

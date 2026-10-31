@@ -12,7 +12,7 @@ const provenFr = [
   {
     name: "BCS Nettoyage",
     type: "Site vitrine + réservation en ligne",
-    detail: "Entreprise de nettoyage à Toulouse. Réservation de créneau intégrée, en production sur son domaine.",
+    detail: "Entreprise de nettoyage. Réservation de créneau intégrée, en production sur son domaine.",
     url: "https://bcs-nettoyage.fr",
   },
   {
@@ -33,7 +33,7 @@ const provenEn = [
   {
     name: "BCS Nettoyage",
     type: "Brochure site + online booking",
-    detail: "Cleaning company in Toulouse. Built-in slot booking, live in production on its own domain.",
+    detail: "Cleaning company. Built-in slot booking, live in production on its own domain.",
     url: "https://bcs-nettoyage.fr",
   },
   {

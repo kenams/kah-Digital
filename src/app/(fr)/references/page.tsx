@@ -36,7 +36,7 @@ const jsonLd = {
       name: "BCS Nettoyage — Site vitrine + réservation en ligne",
       url: "https://bcs-nettoyage.fr",
       description:
-        "Site vitrine Next.js pour une entreprise de nettoyage à Toulouse : services, tarifs, galerie avant/après et réservation de créneau en ligne. En production sur son domaine.",
+        "Site vitrine Next.js pour une entreprise de nettoyage : services, tarifs, galerie avant/après et réservation de créneau en ligne. En production sur son domaine.",
     },
     {
       "@type": "ListItem",

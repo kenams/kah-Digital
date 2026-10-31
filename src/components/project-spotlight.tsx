@@ -55,13 +55,13 @@ function KahProdHeroPreview({ locale }: { locale: "fr" | "en" }) {
   const content =
     locale === "en"
       ? {
-          badge: "Independent label - Toulouse / France",
+          badge: "Independent label - France",
           lead: "Premium production, cinematic image, and tailored digital direction for ambitious French-speaking artists.",
           primary: "Discover artists",
           secondary: "View releases",
         }
       : {
-          badge: "Label independant - Toulouse / France",
+          badge: "Label independant - France",
           lead: "Production premium, image cine et direction digitale sur-mesure pour des artistes francophones ambitieux.",
           primary: "Decouvrir les artistes",
           secondary: "Voir les sorties",

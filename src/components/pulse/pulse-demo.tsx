@@ -59,7 +59,7 @@ export function PulseDemo() {
         <div data-pulse="announcement" className="empty:hidden bg-[#2b1d12] px-4 py-2 text-center text-sm font-medium text-[#fbf7ef]" />
 
         <div className="px-6 pb-8 pt-6 sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#a1692f]">Cuisine franco-africaine · Toulouse</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#a1692f]">Cuisine franco-africaine</p>
           <h3 className="mt-1 font-serif text-4xl font-bold">Chez Léna</h3>
           <p className="mt-2 max-w-md text-sm text-[#6b5844]">Une table généreuse, des plats faits maison, à deux pas du centre.</p>
 
