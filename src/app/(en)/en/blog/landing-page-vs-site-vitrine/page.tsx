@@ -4,13 +4,13 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital Studio",
+  title: "Landing page vs showcase site: which to choose? — KAH Digital Studio",
   description: "Landing page or showcase site: what is the difference, what does each cost, and for which goal? A guide to choosing the right option for your situation.",
   keywords: ["landing page vs site vitrine", "landing page vs showcase site difference", "quand choisir landing page", "landing page or website"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/landing-page-vs-site-vitrine" },
   openGraph: {
     images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
-    title: "Landing page vs site vitrine : lequel choisir ?",
+    title: "Landing page vs showcase site: which to choose?",
     description: "The real differences, the use cases, and how to decide based on your goal.",
   },
 };
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Landing page vs site vitrine : lequel choisir ?",
+  "headline": "Landing page vs showcase site: which to choose?",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
   "author": { "@type": "Organization", "name": "KAH Digital Studio" },
@@ -78,7 +78,7 @@ export default function EnLandingPageVsSiteVitrinePage() {
             <span className="text-xs text-gray-600">4 May 2026 · 5 min read</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Landing page vs site vitrine : lequel choisir ?
+            Landing page vs showcase site: which to choose?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
             They are not the same tools and they do not serve the same goals. Here is how to decide quickly depending on your situation.

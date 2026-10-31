@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ProjectDetailPageContent } from "@/components/pages/project-detail-page-content";
 import { portfolioProjects } from "@/data/portfolio";
+import { portfolioProjectsEn } from "@/data/portfolio.en";
 import { buildNoIndexMetadata } from "@/lib/shared-metadata";
 
 type ProjectPageProps = {
@@ -32,9 +33,8 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     description: project.shortDescription,
     alternates: {
       canonical: `/projets/${slug}`,
-      languages: {
-        en: `/en/projets/${slug}`,
-      },
+      // hreflang EN uniquement si la fiche anglaise existe (sinon 404)
+      languages: portfolioProjectsEn.some((p) => p.slug === slug) ? { en: `/en/projets/${slug}` } : undefined,
     },
     openGraph: {
       type: "article",

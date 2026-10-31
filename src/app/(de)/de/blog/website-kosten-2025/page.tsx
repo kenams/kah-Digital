@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website-Kosten 2025: Was kostet eine professionelle Website in der Schweiz und Deutschland?",
+  title: "Website-Kosten 2025: Was kostet eine Website in der Schweiz?",
   description: "Transparente Übersicht der echten Kosten für eine professionelle Website 2025 — Landing Page, Business-Site, Web-App. Mit Preisvergleich und worauf man achten sollte.",
   keywords: ["Website Kosten 2025", "was kostet eine Website Schweiz", "Webseite erstellen Kosten Deutschland", "professionelle Website Preis"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-kosten-2025" },

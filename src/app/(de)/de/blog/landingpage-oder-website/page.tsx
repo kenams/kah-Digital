@@ -4,13 +4,13 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital Studio",
+  title: "Landingpage oder Website: was passt zu Ihnen? — KAH Digital Studio",
   description: "Landingpage oder Visitenkarten-Website: was ist der Unterschied, was kostet was und für welches Ziel? Ein Leitfaden zur Wahl der passenden Option für Ihre Situation.",
   keywords: ["landing page vs site vitrine", "Unterschied Landingpage Visitenkarten-Website", "quand choisir landing page", "Landingpage oder Website"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/landingpage-oder-website" },
   openGraph: {
     images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
-    title: "Landing page vs site vitrine : lequel choisir ?",
+    title: "Landingpage oder Website: was passt zu Ihnen?",
     description: "Die wirklichen Unterschiede, die Einsatzfälle und wie Sie je nach Ziel entscheiden.",
   },
 };
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Landing page vs site vitrine : lequel choisir ?",
+  "headline": "Landingpage oder Website: was passt zu Ihnen?",
   "datePublished": "2026-05-04",
   "dateModified": "2026-05-04",
   "author": { "@type": "Organization", "name": "KAH Digital Studio" },
@@ -78,7 +78,7 @@ export default function DeLandingPageVsSiteVitrinePage() {
             <span className="text-xs text-gray-600">4. Mai 2026 · 5 Min. Lesezeit</span>
           </div>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Landing page vs site vitrine : lequel choisir ?
+            Landingpage oder Website: was passt zu Ihnen?
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
             Es sind nicht dieselben Werkzeuge und sie dienen nicht denselben Zielen. So entscheiden Sie je nach Situation schnell.

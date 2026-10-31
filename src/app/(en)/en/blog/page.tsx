@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "KAH Digital Studio Blog — Website, SEO and digital advice for small businesses",
+  title: "KAH Digital Studio Blog — Website, SEO and digital advice",
   description: "Practical guides on website creation, quotes, redesigns and SEO for small businesses and independents. By KAH Digital Studio, a remote digital studio working with France and Switzerland.",
   alternates: { canonical: "https://kah-digital.ch/en/blog" },
 };
