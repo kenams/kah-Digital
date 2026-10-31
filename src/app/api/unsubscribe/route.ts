@@ -9,15 +9,33 @@ function getSupabase() {
 }
 
 export async function GET(req: NextRequest) {
-  const id = req.nextUrl.searchParams.get("id");
-  if (!id) return new NextResponse("ID manquant", { status: 400 });
+  const id = req.nextUrl.searchParams.get("id") ?? "";
+  // L'identifiant est un UUID v4 aléatoire propre à chaque destinataire (il joue le rôle de jeton).
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
+    return new NextResponse("Lien invalide", { status: 400 });
+  }
 
+  // Les deux mises à jour sont indépendantes : l'échec de l'une n'empêche pas l'autre.
+  let failed = false;
   try {
     const supabase = getSupabase();
-    await supabase.from("prospects").update({ status: "rejected" }).eq("id", id);
-    // Prospects des pilotes SaaS : l'opposition est enregistrée dans leur propre suivi.
-    await supabase.from("pilot_prospects").update({ status: "opposition", updated_at: new Date().toISOString() }).eq("id", id);
-  } catch { /* ignore — on affiche quand même la page de confirmation */ }
+    const results = await Promise.allSettled([
+      supabase.from("prospects").update({ status: "rejected" }).eq("id", id),
+      // Prospects des pilotes SaaS : l'opposition est enregistrée dans leur propre suivi.
+      supabase.from("pilot_prospects").update({ status: "opposition", updated_at: new Date().toISOString() }).eq("id", id),
+    ]);
+    failed = results.some((r) => r.status === "rejected" || Boolean((r.value as { error?: unknown } | undefined)?.error));
+  } catch {
+    failed = true;
+  }
+  if (failed) {
+    // Ne jamais affirmer que l'opposition est enregistrée si ce n'est pas le cas.
+    console.error("[unsubscribe] échec d'enregistrement", id);
+    return new NextResponse(
+      `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Désinscription — KAH Digital Studio</title></head><body style="font-family:Arial,sans-serif;max-width:460px;margin:15vh auto;padding:0 20px;color:#111827;"><h2>Nous n'avons pas pu enregistrer votre demande</h2><p>Merci de réessayer dans quelques minutes, ou de nous écrire à <a href="mailto:kahdigital42@gmail.com?subject=Désinscription">kahdigital42@gmail.com</a> : nous traiterons votre opposition immédiatement.</p></body></html>`,
+      { status: 500, headers: { "Content-Type": "text/html; charset=utf-8" } },
+    );
+  }
 
   return new NextResponse(
     `<!DOCTYPE html>
