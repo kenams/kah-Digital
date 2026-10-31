@@ -211,7 +211,7 @@ export default function WebagenturSchweizPage() {
               </div>
             ))}
           </div>
-          <p className="mt-5 text-xs text-emerald-500/60">
+          <p className="mt-5 text-xs text-emerald-400/80">
             💳 Zahlung: Karte (Stripe) in CHF · SEPA-Überweisung in €
           </p>
         </div>

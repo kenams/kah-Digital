@@ -211,7 +211,7 @@ export default function AgenceWebSuissePage() {
               </div>
             ))}
           </div>
-          <p className="mt-5 text-xs text-emerald-500/60">
+          <p className="mt-5 text-xs text-emerald-400/80">
             💳 Paiement : carte bancaire (Stripe) en CHF · virement SEPA en €
           </p>
         </div>
