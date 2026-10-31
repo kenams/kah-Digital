@@ -320,7 +320,7 @@ export function ProspectionDashboard() {
     const score = prospect.audit?.problems?.length
       ? `J'ai détecté ${prospect.audit.problems.filter((p) => p.severity === "critical").length} point(s) critique(s) sur votre site`
       : "J'ai analysé votre site";
-    return `Bonjour,\n\nKAH Digital Studio ici — studio digital basé à Toulouse. ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement. Je peux vous préparer une proposition personnalisée après un court échange, selon votre besoin réel et vos priorités.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKAH Digital Studio\nkah-digital.ch`;
+    return `Bonjour,\n\nKAH Digital Studio ici — studio digital. ${score} (${name}).\n\nJe pense qu'on pourrait l'améliorer significativement. Je peux vous préparer une proposition personnalisée après un court échange, selon votre besoin réel et vos priorités.\n\nVous avez 10 min cette semaine pour en discuter ?\n\nKAH Digital Studio\nkah-digital.ch`;
   }
 
   function copyLinkedIn(prospect: Prospect) {

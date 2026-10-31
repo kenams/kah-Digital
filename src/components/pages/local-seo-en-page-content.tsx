@@ -26,11 +26,11 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-london",
     headline: "AI Agency London",
     subline: "GPT-4 agents, AI automation & chatbots for London businesses. Measurable ROI from month one. Deployed in 10 days.",
-    intro: "KAH Digital Studio is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Based in Toulouse, France, working remotely across Europe and the UK. Free AI audit within 24 hours.",
+    intro: "KAH Digital Studio is an AI agency serving London businesses: GPT-4 agents for lead qualification, 24/7 customer support automation, CRM integrations, and custom workflows. We build AI that works in production — not demos. Working remotely across Europe and the UK. Free AI audit within 24 hours.",
     sectors: ["FinTech & InsurTech", "Consulting & Professional Services", "E-Commerce & D2C", "Real Estate & PropTech", "SaaS & Tech Startups", "Legal & Compliance"],
     proofLine: "Free AI audit · Reply within 24h · No commitment",
     faq: [
-      { q: "Do you work with London businesses remotely?", a: "Yes, fully remote. We're based in Toulouse, France. The entire process — briefing, build, deploy — runs online. No London agency overhead." },
+      { q: "Do you work with London businesses remotely?", a: "Yes, fully remote. The entire process — briefing, build, deploy — runs online. No London agency overhead." },
       { q: "How fast can you deploy AI automation for a London company?", a: "10 days from kickoff to live deployment. First measurable results at D+30. No 6-month workshop, no unnecessary complexity." },
       { q: "What AI use cases work best for UK businesses?", a: "Lead qualification (only hot leads reach your sales team), 24/7 customer support with clean human handoff, email automation, and CRM enrichment. We identify your top 3 highest-ROI automations in the free audit." },
       { q: "What does it cost to build an AI agent?", a: "AI chatbot add-on from $490. Full AI system (Vertical AI Agent plan) from $2,490 — includes website, chatbot, lead automation, and 3 months priority support." },
@@ -60,7 +60,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     slug: "ai-agency-new-york",
     headline: "AI Agency New York",
     subline: "GPT-4 agents, AI automation & chatbots for NYC businesses. 10-day deployment. Measurable ROI from month one.",
-    intro: "KAH Digital Studio serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Based in Toulouse, France, operating internationally. Free AI audit delivered within 24 hours.",
+    intro: "KAH Digital Studio serves New York businesses with applied AI: custom GPT-4 agents, lead qualification systems, 24/7 support automation, CRM workflows. We build AI that generates measurable results — not slide decks. Operating internationally. Free AI audit delivered within 24 hours.",
     sectors: ["FinTech & WealthTech", "Consulting & Professional Services", "E-Commerce & D2C Brands", "Real Estate & PropTech", "SaaS & B2B Tech", "Media & Content"],
     proofLine: "Free AI audit · 24h reply · No commitment",
     faq: [
@@ -132,7 +132,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     sectors: ["Finance & Private Banking", "Consulting & Advisory", "NGOs & International Organisations", "Hospitality & Luxury", "Healthcare & MedTech", "SaaS & Tech Startups"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
-      { q: "Do you work with Geneva-based clients?", a: "Yes — we work 100% remotely with Geneva clients from our studio in Toulouse, France. Same price, same quality." },
+      { q: "Do you work with Geneva-based clients?", a: "Yes — we work 100% remotely with Geneva clients from our studio. Same price, same quality." },
       { q: "How much does a professional website cost in Geneva?", a: "Starter CHF 290 (landing page, 5 days). Business CHF 790 (up to 6 pages, SEO, 5 business days). Vertical AI Agent CHF 2'490 (full AI system). Fixed price, no hidden costs." },
       { q: "Can you build multilingual sites for Geneva's international audience?", a: "Yes — French, English, German, and more. hreflang, clean URL structure, SEO per language. Standard on Business and above." },
       { q: "Do you work with NGOs and international organisations?", a: "Yes. We have experience with compliance-sensitive sectors and can adapt our process to your procurement constraints." },
@@ -149,7 +149,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     sectors: ["Sport Tech & Olympic Ecosystem", "Health & MedTech", "Education & EdTech", "Consulting & Agencies", "E-Commerce & D2C", "SaaS & Tech Startups"],
     proofLine: "Remote studio · Reply within 24h · Fixed price",
     faq: [
-      { q: "Do you have an office in Lausanne?", a: "No — KAH Digital Studio is based in Toulouse, France, and works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
+      { q: "Do you have an office in Lausanne?", a: "No — KAH Digital Studio works 100% remotely with clients in France and Switzerland, including Lausanne. Same quality, same price." },
       { q: "How much does a website cost in Lausanne?", a: "Starter from CHF 290 (landing page, 5 days). Business from CHF 790 (6 pages, SEO, 5 business days). Vertical AI Agent from CHF 2'490 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "Can you work with Lausanne startups and scale-ups?", a: "Yes. We've built SaaS MVPs on Next.js 15 + Supabase + TypeScript. Scalable from day one. Ideal for EPFL spin-offs and pre-seed startups." },
       { q: "Do you handle French-language SEO for the Swiss market?", a: "Yes — technical SEO, structured data, Core Web Vitals 95+, clean French URLs. Included from the Business plan. Optimised for Google CH." },
@@ -177,7 +177,6 @@ export function LocalSeoEnPageContent({ data }: Props) {
     email: "kahdigital42@gmail.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Toulouse",
       addressCountry: "FR",
     },
     areaServed: { "@type": "City", name: data.city },

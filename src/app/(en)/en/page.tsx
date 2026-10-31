@@ -12,9 +12,9 @@ import { CyberBandSection } from "@/components/cyber-band-section";
 export const metadata = buildPageMetadata({
   locale: "en",
   path: "/",
-  title: "KAH Digital Studio — Websites, AI Agents & Cybersecurity · Toulouse",
+  title: "KAH Digital Studio — Websites, AI Agents & Cybersecurity",
   description:
-    "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
+    "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Serving France and Switzerland.",
   keywords: [
     "vertical AI agent",
     "AI agency Switzerland", "AI agency France",
@@ -92,14 +92,13 @@ const organizationJsonLd = {
   telephone: "+33759558414",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Toulouse",
     addressRegion: "Occitanie",
     addressCountry: "FR",
   },
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Studio in Toulouse, serving France and Switzerland.",
+    "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Serving France and Switzerland.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

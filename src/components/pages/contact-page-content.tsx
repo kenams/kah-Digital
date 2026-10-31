@@ -33,7 +33,7 @@ const copy = {
     contactCards: [
       { icon: FiMail, title: "Email", value: companyConfig.email },
       { icon: FiPhone, title: "Téléphone", value: companyConfig.phone },
-      { icon: FiMapPin, title: "Localisation", value: `${companyConfig.city}, ${companyConfig.country}` },
+      { icon: FiMapPin, title: "Localisation", value: "France · Suisse (remote)" },
       { icon: FiClock, title: "Disponibilité", value: "Lundi - Vendredi, 9h - 18h" },
     ],
   },
@@ -61,7 +61,7 @@ const copy = {
     contactCards: [
       { icon: FiMail, title: "Email", value: companyConfig.email },
       { icon: FiPhone, title: "Phone", value: companyConfig.phone },
-      { icon: FiMapPin, title: "Location", value: `${companyConfig.city}, ${companyConfig.country}` },
+      { icon: FiMapPin, title: "Location", value: "France · Switzerland (remote)" },
       { icon: FiClock, title: "Availability", value: "Monday - Friday, 9am - 6pm" },
     ],
   },
@@ -89,7 +89,7 @@ const copy = {
     contactCards: [
       { icon: FiMail, title: "E-Mail", value: companyConfig.email },
       { icon: FiPhone, title: "Telefon", value: companyConfig.phone },
-      { icon: FiMapPin, title: "Standort", value: `${companyConfig.city}, ${companyConfig.country}` },
+      { icon: FiMapPin, title: "Standort", value: "Frankreich · Schweiz (remote)" },
       { icon: FiClock, title: "Erreichbarkeit", value: "Montag - Freitag, 9:00 - 18:00" },
     ],
   },

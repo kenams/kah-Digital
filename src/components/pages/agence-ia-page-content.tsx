@@ -10,7 +10,7 @@ type Props = { locale: Locale };
 
 const COPY = {
   fr: {
-    eyebrow: "Agence IA · Toulouse · France & Suisse",
+    eyebrow: "Agence IA · France & Suisse",
     title: "L'agence IA qui livre",
     title2: "des résultats, pas des slides.",
     intro: "KAH Digital Studio est une agence spécialisée en intelligence artificielle appliquée aux entreprises. Chatbots GPT-4, agents d'automatisation, systèmes de qualification leads, intégrations CRM — on construit ce qui fonctionne en production, pas ce qui impressionne en démo.",
@@ -80,7 +80,7 @@ const COPY = {
     ctaSub: "Gratuit · Sans engagement · Réponse sous 24h",
   },
   en: {
-    eyebrow: "AI Agency · Toulouse · France & Switzerland",
+    eyebrow: "AI Agency · France & Switzerland",
     title: "The AI agency that delivers",
     title2: "results, not slides.",
     intro: "KAH Digital Studio is an agency specialising in applied AI for businesses. GPT-4 chatbots, automation agents, lead qualification systems, CRM integrations — we build what works in production, not what impresses in demos.",
@@ -150,7 +150,7 @@ const COPY = {
     ctaSub: "Free · No commitment · Reply within 24h",
   },
   de: {
-    eyebrow: "KI-Agentur · Toulouse · Frankreich & Schweiz",
+    eyebrow: "KI-Agentur · Frankreich & Schweiz",
     title: "Die KI-Agentur, die",
     title2: "Ergebnisse liefert, keine Slides.",
     intro: "KAH Digital Studio ist eine auf angewandte KI für Unternehmen spezialisierte Agentur. GPT-4-Chatbots, Automatisierungsagenten, Lead-Qualifizierungssysteme, CRM-Integrationen — wir bauen, was in der Produktion funktioniert, nicht was in der Demo beeindruckt.",

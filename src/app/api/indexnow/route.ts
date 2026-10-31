@@ -16,7 +16,7 @@ const URLS = [
   "/site-web-lausanne", "/site-web-geneve", "/site-web-fribourg",
   "/agence-web-paris", "/agence-web-lyon", "/agence-web-marseille", "/agence-web-bordeaux",
   "/agence-web-nantes", "/agence-web-strasbourg", "/agence-web-berne",
-  "/agence-web-toulouse", "/agence-web-nice", "/agence-web-lille",
+  "/agence-web-nice", "/agence-web-lille",
   "/agence-web-montpellier", "/agence-web-rennes",
   "/agence-web-zurich", "/agence-web-basel", "/agence-web-lugano",
   "/agence-web-grenoble", "/agence-web-rouen", "/agence-web-aix-en-provence",

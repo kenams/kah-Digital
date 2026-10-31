@@ -4,7 +4,7 @@ import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi
 
 export const metadata: Metadata = {
   title: "Agence web Suisse — KAH Digital Studio | Lausanne · Genève · Zurich · Berne",
-  description: "Studio digital basé à Toulouse, 100 % à distance. Création de sites web, apps et solutions IA pour PME, startups et indépendants en Suisse romande, alémanique et tessinoise. Devis en 24h.",
+  description: "Studio digital 100 % à distance. Création de sites web, apps et solutions IA pour PME, startups et indépendants en Suisse romande, alémanique et tessinoise. Devis en 24h.",
   keywords: ["agence web suisse", "création site web suisse", "développeur web suisse", "studio digital suisse", "site internet suisse pme", "application web suisse"],
   alternates: { canonical: "https://kah-digital.ch/agence-web-suisse" },
   openGraph: {
@@ -30,11 +30,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "KAH Digital Studio — Agence web Suisse",
-  "description": "Studio digital basé à Toulouse, 100 % à distance. Création de sites web, applications et solutions IA pour entreprises suisses.",
+  "description": "Studio digital 100 % à distance. Création de sites web, applications et solutions IA pour entreprises suisses.",
   "url": "https://kah-digital.ch/agence-web-suisse",
   "telephone": "+33759558414",
   "email": "kahdigital42@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "addressCountry": "FR" },
+  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
   "areaServed": { "@type": "Country", "name": "Suisse" },
   "openingHours": "Mo-Fr 09:00-18:00",
   "priceRange": "CHF 290 - CHF 2500",
@@ -57,7 +57,7 @@ export default function AgenceWebSuissePage() {
           </div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">
             <FiMapPin size={13} className="text-emerald-400" />
-            Toulouse, France · Clients en Suisse
+            Clients en Suisse
           </div>
           <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Agence web Suisse
@@ -66,7 +66,7 @@ export default function AgenceWebSuissePage() {
             Sites web · Applications · Solutions IA
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Studio digital basé à Toulouse, 100 % à distance. Next.js 15, Lighthouse 95+, SEO technique. Facturation en CHF possible, LPD prise en compte. Devis gratuit en 24h.
+            Studio digital 100 % à distance. Next.js 15, Lighthouse 95+, SEO technique. Facturation en CHF possible, LPD prise en compte. Devis gratuit en 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -170,7 +170,7 @@ export default function AgenceWebSuissePage() {
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { title: "Clients en Suisse", body: "Studio basé à Toulouse, 100 % à distance. Échanges en visioconférence, facturation en CHF possible." },
+              { title: "Clients en Suisse", body: "Studio 100 % à distance. Échanges en visioconférence, facturation en CHF possible." },
               { title: "Règlement en CHF possible", body: "Paiement par carte bancaire (Stripe) en francs suisses, ou virement SEPA en euros — à votre convenance." },
               { title: "LPD prise en compte", body: "Vos données et celles de vos clients sont traitées en tenant compte de la loi suisse sur la protection des données (LPD)." },
               { title: "Multilingue natif", body: "Sites en français, allemand, anglais et italien. SEO optimisé dans chaque langue pour couvrir toute la Suisse." },

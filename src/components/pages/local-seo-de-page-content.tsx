@@ -26,7 +26,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "webentwicklung-zuerich",
     headline: "Webentwicklung Zürich",
     subline: "Premium Webentwicklung für Zürich — Next.js 15, SaaS-Level Design, Lighthouse 95+. In 5 Werktagen geliefert.",
-    intro: "KAH Digital Studio entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Studio in Toulouse (Frankreich), remote für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
+    intro: "KAH Digital Studio entwickelt professionelle Websites und Web-Anwendungen für Unternehmen in Zürich und der ganzen Deutschschweiz. FinTech, Beratung, E-Commerce, KMU — wir liefern Websites, die konvertieren. Remote-Studio für ganz Europa. Kostenlose Offerte innerhalb von 24h.",
     sectors: ["FinTech & Banking", "Beratung & Consulting", "KMU & Handwerk", "Restaurants & Gastronomie", "Startups & Scale-ups", "Anwaltskanzleien & Treuhänder"],
     proofLine: "Antwort in 24h · Kostenlose Offerte · Unverbindlich",
     faq: [
@@ -43,7 +43,7 @@ const BASE_DE_CITY_PAGES: Record<string, DeCity> = {
     slug: "ki-agentur-zuerich",
     headline: "KI-Agentur Zürich",
     subline: "GPT-4 Agenten, KI-Automatisierung und Chatbots für Zürcher Unternehmen. ROI messbar ab Monat 1.",
-    intro: "KAH Digital Studio ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Studio in Toulouse (Frankreich), remote für die ganze Schweiz.",
+    intro: "KAH Digital Studio ist die KI-Agentur für Zürcher Unternehmen: GPT-4-Agenten, Lead-Qualifizierung, 24/7-Support-Chatbots, CRM-Automatisierung. Wir implementieren KI-Lösungen, die in der Produktion funktionieren — keine Demos, keine Versprechen, nur messbare Ergebnisse. Remote-Studio für die ganze Schweiz.",
     sectors: ["FinTech & Versicherungen", "Beratung & Consulting", "E-Commerce & Retail", "Immobilien", "Gesundheit & Medizin", "SaaS & Tech-Startups"],
     proofLine: "Kostenloses KI-Audit · Antwort in 24h · Unverbindlich",
     faq: [
@@ -144,7 +144,6 @@ export function LocalSeoDePageContent({ data }: Props) {
     email: "kahdigital42@gmail.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Toulouse",
       addressCountry: "FR",
     },
     areaServed: { "@type": "City", name: data.city },

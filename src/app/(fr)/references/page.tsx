@@ -83,7 +83,7 @@ type Ref = {
 const CASES: Ref[] = [
   {
     sector: "Entreprise de nettoyage",
-    location: "Toulouse, France",
+    location: "France",
     type: "Site vitrine + réservation en ligne",
     name: "BCS Nettoyage",
     challenge:

@@ -115,9 +115,9 @@ const SUBJECTS: Record<string, string[]> = {
 type ClientRef = { fr: string; en: string; de: string };
 const CLIENT_REFS: ClientRef[] = [
   {
-    fr: "On a livré récemment bcs-nettoyage.fr — le site d'une entreprise de nettoyage à Toulouse, avec prise de rendez-vous en ligne, en prod sur son domaine.",
-    en: "We recently delivered bcs-nettoyage.fr — the site of a cleaning company in Toulouse, with online booking, live on its own domain.",
-    de: "Wir haben kürzlich bcs-nettoyage.fr geliefert — die Website einer Reinigungsfirma in Toulouse, mit Online-Terminbuchung, live auf eigener Domain.",
+    fr: "On a livré récemment bcs-nettoyage.fr — le site d'une entreprise de nettoyage, avec prise de rendez-vous en ligne, en prod sur son domaine.",
+    en: "We recently delivered bcs-nettoyage.fr — the site of a cleaning company, with online booking, live on its own domain.",
+    de: "Wir haben kürzlich bcs-nettoyage.fr geliefert — die Website einer Reinigungsfirma, mit Online-Terminbuchung, live auf eigener Domain.",
   },
   {
     fr: "Dernier projet en date : www.dse-yana.com, pour un bureau d'études techniques en Guyane — prise de rendez-vous en autonomie et espace d'administration.",
@@ -276,7 +276,7 @@ export async function composeProspectingEmail(
     ? `Ton : professionnel et formel. Vouvoiement obligatoire. Pas de familiarité. Sobre, direct, crédible.`
     : `Ton : humain, naturel, légèrement direct. Tutoiement possible selon le secteur. Pas de langue de bois.`;
 
-  const prompt = `Tu représentes KAH Digital Studio, un studio digital basé à Toulouse, 100 % à distance (France et Suisse).
+  const prompt = `Tu représentes KAH Digital Studio, un studio digital 100 % à distance (France et Suisse).
 Écris un email de prospection en "${lang}" pour : ${bName} (${audit.sector}).
 ${pitchInstruction}
 

@@ -11,9 +11,9 @@ import { CyberBandSection } from "@/components/cyber-band-section";
 export const metadata = buildPageMetadata({
   locale: "de",
   path: "/",
-  title: "KAH Digital Studio — Websites, KI-Agenten & Cybersicherheit · Toulouse",
+  title: "KAH Digital Studio — Websites, KI-Agenten & Cybersicherheit",
   description:
-    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
+    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Kunden in Frankreich und der Schweiz.",
   keywords: [
     "vertikaler KI-Agent",
     "KI Agentur Schweiz", "KI Agentur Frankreich",
@@ -91,14 +91,13 @@ const organizationJsonLd = {
   telephone: "+33759558414",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Toulouse",
     addressRegion: "Occitanie",
     addressCountry: "FR",
   },
   areaServed: ["CH", "FR", "BE", "LU", "MA", "SN", "CI", "US", "GB", "DE"],
   availableLanguage: ["French", "English", "German"],
   description:
-    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Studio in Toulouse, Kunden in Frankreich und der Schweiz.",
+    "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Kunden in Frankreich und der Schweiz.",
   serviceType: [
     "Vertical AI Agents",
     "AI Chief of Staff for Artists",

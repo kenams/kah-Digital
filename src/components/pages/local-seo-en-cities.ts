@@ -18,7 +18,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     city: "Paris", country: "France", region: "Île-de-France", slug: "agence-web-paris",
     headline: "Web Development in Paris",
     subline: "Remote digital studio — websites, apps and digital solutions for Parisian freelancers, small businesses and startups.",
-    intro: "KAH Digital Studio helps Parisian businesses and independents build their online presence. Based in Toulouse, our studio works remotely for all of France. Clear process, fast replies and custom quotes after a first conversation.",
+    intro: "KAH Digital Studio helps Parisian businesses and independents build their online presence. Our studio works remotely for all of France. Clear process, fast replies and custom quotes after a first conversation.",
     sectors: ["Lawyers & accountants", "Agencies & consultants", "E-commerce & shops", "Coaches & trainers", "Startups & scale-ups", "Freelancers & creatives"],
     proofLine: PROOF,
     faq: [
@@ -35,7 +35,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     sectors: ["Restaurants & local bistros", "Industrial SMEs", "Practices & professionals", "E-commerce & shops", "Startups & incubators", "Craftspeople & independents"],
     proofLine: PROOF,
     faq: [
-      { q: "Do you meet clients in Lyon?", a: "Our studio is in Toulouse. Scoping is usually done by video call, and we can travel for larger projects." },
+      { q: "Do you meet clients in Lyon?", a: "Our studio works remotely. Scoping is usually done by video call, and we can travel for larger projects." },
       { q: LOCAL_QUOTE_Q, a: LOCAL_QUOTE_A },
       { q: "Can you support businesses in Lyon?", a: "Yes: restaurants, consulting firms, industrial SMEs. We adapt the site to your activity and your local customers." },
     ],
@@ -208,7 +208,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     proofLine: "100% remote agency · Reply within 24h · Fixed price from CHF 290 · No commitment",
     faq: [
       { q: "How much does a web agency cost in Lausanne?", a: "Starter (landing page) from CHF 290, delivered in 5 days. Business (6 pages, local SEO for Lausanne) from CHF 790. Full AI system from CHF 2,490. Fixed price guaranteed, no surprises." },
-      { q: "Do you have an office in Lausanne?", a: "No: KAH Digital Studio is based in Toulouse (France) and works 100% remotely with clients in France and Switzerland, including Lausanne — same quality, same price." },
+      { q: "Do you have an office in Lausanne?", a: "No: KAH Digital Studio works 100% remotely with clients in France and Switzerland, including Lausanne — same quality, same price." },
       { q: "Do you do local SEO for Lausanne?", a: "Yes — full technical SEO, Google Business Profile, Schema.org structured data, Core Web Vitals 95+ and a sitemap, aimed at searches such as “web agency Lausanne” and “website creation Vaud”." },
       { q: "How long does a web project in Lausanne take?", a: "Landing page: 5 days. Complete showcase site: 5 business days after we receive your content. Application or AI system: 28 days. Deadlines confirmed in writing before we start." },
     ],
@@ -222,7 +222,7 @@ export const EN_AGENCY_CITIES: Record<string, EnCity> = {
     proofLine: "100% remote · Multilingual FR/EN/DE · Fixed price from CHF 290 · Reply within 24h",
     faq: [
       { q: "How much does a web agency cost in Geneva?", a: "Starter (landing page) from CHF 290. Business (6 pages, multilingual SEO) from CHF 790. AI system from CHF 2,490. Fixed price confirmed before we start." },
-      { q: "Are you based in Geneva?", a: "No, our studio is based in Toulouse and works 100% remotely with Geneva businesses. Same quality, same price." },
+      { q: "Are you based in Geneva?", a: "No, our studio works 100% remotely with Geneva businesses. Same quality, same price." },
       { q: "Do you build multilingual websites for Geneva companies?", a: "Yes — French, English, German and more. Correct hreflang, clean URLs per language, SEO optimised in each language. Standard from the Business plan. Ideal for Geneva's international organisations." },
       { q: "Do you work with NGOs and international institutions?", a: "Yes, we can adapt our process to the compliance, procurement and internal validation constraints of demanding sectors." },
     ],

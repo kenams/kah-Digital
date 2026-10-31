@@ -4,7 +4,7 @@ import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi
 
 export const metadata: Metadata = {
   title: "Webagentur Schweiz — KAH Digital Studio | Zürich · Bern · Basel · Lausanne",
-  description: "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte innert 24h.",
+  description: "Digitalstudio, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte innert 24h.",
   keywords: ["Webagentur Schweiz", "Website erstellen Schweiz", "Webentwickler Schweiz", "Digitalstudio Schweiz", "Website KMU Schweiz", "Webanwendung Schweiz"],
   alternates: { canonical: "https://kah-digital.ch/de/webagentur-schweiz" },
   openGraph: {
@@ -30,11 +30,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "KAH Digital Studio — Webagentur Schweiz",
-  "description": "Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Websites, Anwendungen und KI-Lösungen für Schweizer Unternehmen.",
+  "description": "Digitalstudio, 100 % auf Distanz. Websites, Anwendungen und KI-Lösungen für Schweizer Unternehmen.",
   "url": "https://kah-digital.ch/de/webagentur-schweiz",
   "telephone": "+33759558414",
   "email": "kahdigital42@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "addressCountry": "FR" },
+  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
   "areaServed": { "@type": "Country", "name": "Schweiz" },
   "openingHours": "Mo-Fr 09:00-18:00",
   "priceRange": "CHF 290 - CHF 2500",
@@ -57,7 +57,7 @@ export default function WebagenturSchweizPage() {
           </div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">
             <FiMapPin size={13} className="text-emerald-400" />
-            Toulouse, Frankreich · Kunden in der Schweiz
+            Kunden in der Schweiz
           </div>
           <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Webagentur Schweiz
@@ -66,7 +66,7 @@ export default function WebagenturSchweizPage() {
             Websites · Anwendungen · KI-Lösungen
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Digitalstudio mit Sitz in Toulouse, 100 % auf Distanz. Next.js 15, Lighthouse 95+, technisches SEO. Rechnungsstellung in CHF möglich, Datenschutzgesetz (DSG) berücksichtigt. Kostenlose Offerte in 24h.
+            Digitalstudio, 100 % auf Distanz. Next.js 15, Lighthouse 95+, technisches SEO. Rechnungsstellung in CHF möglich, Datenschutzgesetz (DSG) berücksichtigt. Kostenlose Offerte in 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -170,7 +170,7 @@ export default function WebagenturSchweizPage() {
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { title: "Kunden in der Schweiz", body: "Studio mit Sitz in Toulouse, 100 % auf Distanz. Austausch per Videokonferenz, Rechnungsstellung in CHF möglich." },
+              { title: "Kunden in der Schweiz", body: "Studio 100 % auf Distanz. Austausch per Videokonferenz, Rechnungsstellung in CHF möglich." },
               { title: "Zahlung in CHF möglich", body: "Kartenzahlung (Stripe) in Schweizer Franken oder SEPA-Überweisung in Euro — ganz nach Wunsch." },
               { title: "DSG berücksichtigt", body: "Ihre Daten und die Ihrer Kunden werden unter Berücksichtigung des Schweizer Datenschutzgesetzes (DSG) verarbeitet." },
               { title: "Nativ mehrsprachig", body: "Websites auf Deutsch, Französisch, Englisch und Italienisch. SEO in jeder Sprache optimiert, um die ganze Schweiz abzudecken." },

@@ -29,7 +29,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     proofLine: "Studio à distance · Lausanne · Réponse 24h · Prix fixe CHF 290 — Sans engagement",
     faq: [
       { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 790, livré en 5 jours ouvrés. Système complet avec IA dès CHF 2'490. Prix fixe garanti avant de commencer, zéro surprise." },
-      { q: "Vous êtes vraiment basés à Lausanne ?", a: "Non : KAH Digital Studio est un studio basé à Toulouse (France), 100 % à distance. Nous travaillons avec des clients en France et en Suisse, par visioconférence et en ligne — même qualité, même prix." },
+      { q: "Vous êtes vraiment basés à Lausanne ?", a: "Non : KAH Digital Studio est un studio 100 % à distance. Nous travaillons avec des clients en France et en Suisse, par visioconférence et en ligne — même qualité, même prix." },
       { q: "Quels délais pour un site à Lausanne ?", a: "Landing page : 5 jours ouvrables. Site vitrine complet : 5 jours ouvrés. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage — pas de mauvaise surprise." },
       { q: "Faites-vous du SEO local pour Lausanne et le Vaud ?", a: "Oui — SEO technique complet, données structurées, Core Web Vitals 95+, URLs propres, sitemap. Inclus dès le plan Business. Optimisé pour Google CH." },
     ],
@@ -43,7 +43,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     proofLine: "· 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 290 — Réponse 24h",
     faq: [
       { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe confirmé avant tout démarrage." },
-      { q: "êtes-vous basés à Genève ?", a: "Non, notre studio est basé à Toulouse et travaille 100 % à distance avec les entreprises de Genève et de toute la Suisse romande — même qualité, même prix." },
+      { q: "êtes-vous basés à Genève ?", a: "Non, notre studio travaille 100 % à distance avec les entreprises de Genève et de toute la Suisse romande — même qualité, même prix." },
       { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dès le plan Business." },
       { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui. Nous avons l'expérience des secteurs sensibles aux conformités et pouvons adapter notre process à vos contraintes de procurement." },
     ],
@@ -65,7 +65,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     city: "Paris", country: "France", region: "Île-de-France", locale: "fr", slug: "agence-web-paris",
     headline: "Création de site web à Paris",
     subline: "Studio digital à distance — sites web, apps et solutions digitales pour freelances, PME et startups parisiennes.",
-    intro: "KAH Digital Studio accompagne les entreprises et indépendants parisiens dans leur présence digitale. Basé à Toulouse, notre studio travaille à distance pour toute la France. Process clair, réponse rapide et devis personnalisés après échange.",
+    intro: "KAH Digital Studio accompagne les entreprises et indépendants parisiens dans leur présence digitale. Notre studio travaille à distance pour toute la France. Process clair, réponse rapide et devis personnalisés après échange.",
     sectors: ["Avocats & experts-comptables", "Agences & consultants", "E-commerce & boutiques", "Coachs & formateurs", "Startups & scale-ups", "Freelances & créatifs"],
     proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
     faq: [
@@ -82,7 +82,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     sectors: ["Restaurants & bouchons lyonnais", "PME industrielles", "Cabinets & professions libérales", "E-commerce & boutiques", "Startups & incubateurs", "Artisans & indépendants"],
     proofLine: "Réponse en 24h · Devis personnalisé · Sans engagement",
     faq: [
-      { q: "Intervenez-vous à Lyon pour des réunions ?", a: "Notre studio est à Toulouse. Le cadrage se fait généralement en visio, et nous pouvons nous déplacer pour les projets importants." },
+      { q: "Intervenez-vous à Lyon pour des réunions ?", a: "Notre studio travaille à distance. Le cadrage se fait généralement en visio, et nous pouvons nous déplacer pour les projets importants." },
       { q: "Comment est défini le devis pour un projet local ?", a: "Chaque projet est cadré selon le besoin réel, les fonctionnalités, les délais et vos priorités. Le devis personnalisé est fourni après un court échange, sans engagement." },
       { q: "Pouvez-vous accompagner des entreprises lyonnaises ?", a: "Oui : restaurants, cabinets de conseil, PME industrielles. Nous adaptons le site à votre activité et à votre clientèle locale." },
     ],
@@ -255,7 +255,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     proofLine: "Agence 100 % à distance · Réponse 24h · Prix fixe CHF 290 · Sans engagement",
     faq: [
       { q: "Combien coûte une agence web à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO local Lausanne) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe garanti, zéro surprise." },
-      { q: "Avez-vous un bureau à Lausanne ?", a: "Non : KAH Digital Studio est basé à Toulouse (France) et travaille 100 % à distance avec des clients en France et en Suisse, dont Lausanne — même qualité, même prix." },
+      { q: "Avez-vous un bureau à Lausanne ?", a: "Non : KAH Digital Studio travaille 100 % à distance avec des clients en France et en Suisse, dont Lausanne — même qualité, même prix." },
       { q: "Faites-vous du SEO local pour Lausanne ?", a: "Oui — SEO technique complet, Google Business Profile, données structurées Schema.org, Core Web Vitals 95+, sitemap. Optimisé pour apparaître sur les recherches 'agence web Lausanne' et 'création site web Vaud'." },
       { q: "Quels délais pour un projet web à Lausanne ?", a: "Landing page : 5 jours. Site vitrine complet : 5 jours ouvrés. Application ou système IA : 28 jours. Délais confirmés par écrit avant démarrage." },
     ],
@@ -269,7 +269,7 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     proofLine: "100 % à distance · Multilingue FR/EN/DE · Prix fixe CHF 290 · Réponse 24h",
     faq: [
       { q: "Combien coûte une agence web à Genève ?", a: "Starter (landing page) dès CHF 290. Business (6 pages, SEO multilingue) dès CHF 790. Système IA dès CHF 2'490. Prix fixe confirmé avant démarrage." },
-      { q: "Êtes-vous basés à Genève ?", a: "Non, notre studio est basé à Toulouse et travaille 100 % à distance avec les entreprises de Genève. Même qualité, même prix." },
+      { q: "Êtes-vous basés à Genève ?", a: "Non, notre studio travaille 100 % à distance avec les entreprises de Genève. Même qualité, même prix." },
       { q: "Faites-vous des sites web multilingues pour entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO optimisé dans chaque langue. Standard dès le plan Business. Idéal pour les organisations internationales de Genève." },
       { q: "Travaillez-vous avec des ONG et institutions internationales ?", a: "Oui, nous pouvons adapter notre process à vos contraintes de conformité, de procurement et de validation interne." },
     ],
@@ -426,7 +426,7 @@ export function LocalSeoPageContent({ data }: Props) {
       "url": `https://kah-digital.ch/${data.slug}`,
       "telephone": "+33759558414",
       "email": "kahdigital42@gmail.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressCountry": "FR" },
+      "address": { "@type": "PostalAddress", "addressCountry": "FR" },
       "areaServed": { "@type": "City", "name": data.city },
       "openingHours": "Mo-Fr 09:00-18:00",
       "sameAs": ["https://www.linkedin.com/company/kah-digital-95128b408", "https://x.com/DigitalKah42"],

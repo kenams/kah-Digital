@@ -2,6 +2,7 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: "Création site web Toulouse — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital pour Toulouse et l'Occitanie. Sites web, apps et solutions IA pour PME, aéronautique et startups. Devis gratuit sous 24h.",
   keywords: ["création site web Toulouse", "agence web Toulouse", "site internet Toulouse", "développeur web Occitanie"],

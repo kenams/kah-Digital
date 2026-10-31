@@ -4,7 +4,7 @@ import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi
 
 export const metadata: Metadata = {
   title: "Web Agency Switzerland — KAH Digital Studio | Lausanne · Geneva",
-  description: "Digital studio based in Toulouse, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote within 24h.",
+  description: "Digital studio, 100% remote. Websites, apps and AI solutions for SMEs, startups and independents across French-, German- and Italian-speaking Switzerland. Quote within 24h.",
   keywords: ["web agency Switzerland", "website development Switzerland", "web developer Switzerland", "digital studio Switzerland", "SME website Switzerland", "web application Switzerland"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-suisse" },
   openGraph: {
@@ -30,11 +30,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "KAH Digital Studio — Web Agency Switzerland",
-  "description": "Digital studio based in Toulouse, 100% remote. Websites, applications and AI solutions for Swiss businesses.",
+  "description": "Digital studio, 100% remote. Websites, applications and AI solutions for Swiss businesses.",
   "url": "https://kah-digital.ch/en/agence-web-suisse",
   "telephone": "+33759558414",
   "email": "kahdigital42@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Toulouse", "addressRegion": "Occitanie", "addressCountry": "FR" },
+  "address": { "@type": "PostalAddress", "addressCountry": "FR" },
   "areaServed": { "@type": "Country", "name": "Switzerland" },
   "openingHours": "Mo-Fr 09:00-18:00",
   "priceRange": "CHF 290 - CHF 2500",
@@ -57,7 +57,7 @@ export default function AgenceWebSuisseEnPage() {
           </div>
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">
             <FiMapPin size={13} className="text-emerald-400" />
-            Toulouse, France · Clients in Switzerland
+            Clients in Switzerland
           </div>
           <h1 className="mb-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Web Agency Switzerland
@@ -66,7 +66,7 @@ export default function AgenceWebSuisseEnPage() {
             Websites · Applications · AI solutions
           </p>
           <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-400">
-            Digital studio based in Toulouse, 100% remote. Next.js 15, Lighthouse 95+, technical SEO. Invoicing in CHF possible, Swiss data protection act (FADP) taken into account. Free quote within 24h.
+            Digital studio, 100% remote. Next.js 15, Lighthouse 95+, technical SEO. Invoicing in CHF possible, Swiss data protection act (FADP) taken into account. Free quote within 24h.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -170,7 +170,7 @@ export default function AgenceWebSuisseEnPage() {
           </h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { title: "Clients in Switzerland", body: "Studio based in Toulouse, 100% remote. Video-call meetings, invoicing in CHF possible." },
+              { title: "Clients in Switzerland", body: "Studio 100% remote. Video-call meetings, invoicing in CHF possible." },
               { title: "Pay in CHF if you prefer", body: "Card payment (Stripe) in Swiss francs, or a SEPA bank transfer in euros — whichever suits you." },
               { title: "FADP taken into account", body: "Your data and your customers' data are handled with the Swiss data protection act (FADP) in mind." },
               { title: "Natively multilingual", body: "Sites in French, German, English and Italian. SEO optimised in each language to cover all of Switzerland." },
