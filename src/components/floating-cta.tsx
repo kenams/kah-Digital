@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
 import { orderHref, pageCurrency } from "@/lib/order-links";
-import { formatMoney } from "@/lib/pack-orders";
+import { formatMoney, type Currency } from "@/lib/pack-orders";
 import { FiArrowRight } from "react-icons/fi";
 
 const WA_NUMBER = "33759558414";
@@ -14,6 +14,12 @@ export function FloatingCTA() {
   const { locale } = useLocale();
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
+  // ?devise=eur|chf|usd (lien de commande) l'emporte : le prix affiché doit suivre la devise de la page de commande.
+  const [forced, setForced] = useState<Currency | null>(null);
+  useEffect(() => {
+    const d = new URLSearchParams(window.location.search).get("devise");
+    setForced(d === "eur" || d === "chf" || d === "usd" ? d : null);
+  }, [pathname]);
 
   useEffect(() => {
     // Masqué aussi près du bas de page : sinon il flotte par-dessus les
@@ -44,7 +50,7 @@ export function FloatingCTA() {
   const ctaLabel =
     locale === "en" ? "Order my website" : locale === "de" ? "Website bestellen" : "Commander mon site";
 
-  const from = formatMoney(290, pageCurrency(locale, pathname));
+  const from = formatMoney(290, forced ?? pageCurrency(locale, pathname));
   const priceLine =
     locale === "en" ? `From ${from} · 5-day delivery` : locale === "de" ? `Ab ${from} · 5 Tage` : `Dès ${from} · livré en 5 jours`;
 
@@ -73,7 +79,7 @@ export function FloatingCTA() {
 
         {/* CTA button */}
         <Link
-          href={orderHref(locale, { pathname })}
+          href={orderHref(locale, { pathname, currency: forced ?? undefined })}
           className="group flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition hover:gap-4 hover:shadow-blue-500/35"
         >
           <span className="flex flex-col items-start leading-none">

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLocale } from "@/lib/locale";
 import { orderHref, pageCurrency } from "@/lib/order-links";
-import { formatMoney } from "@/lib/pack-orders";
+import { formatMoney, type Currency } from "@/lib/pack-orders";
 
 const STORAGE_KEY = "kah_urgency_v4";
 
@@ -13,6 +13,12 @@ export function UrgencyBanner() {
   const { locale, prefix } = useLocale();
   const pathname = usePathname();
   const [show, setShow] = useState(false);
+  // ?devise=eur|chf|usd (lien de commande) l'emporte : le prix affiché doit suivre la devise de la page de commande.
+  const [forced, setForced] = useState<Currency | null>(null);
+  useEffect(() => {
+    const d = new URLSearchParams(window.location.search).get("devise");
+    setForced(d === "eur" || d === "chf" || d === "usd" ? d : null);
+  }, [pathname]);
 
   useEffect(() => {
     setShow(localStorage.getItem(STORAGE_KEY) !== "1");
@@ -30,7 +36,7 @@ export function UrgencyBanner() {
   const short =
     locale === "en" ? "Custom proposal · 24h" : locale === "de" ? "Individuelle Offerte · 24h" : "Proposition personnalisée · 24h";
   const cta = locale === "en" ? "Discuss my project →" : locale === "de" ? "Projekt besprechen →" : "Parler de mon projet →";
-  const from = formatMoney(290, pageCurrency(locale, pathname));
+  const from = formatMoney(290, forced ?? pageCurrency(locale, pathname));
   const orderCta = locale === "en" ? `Order from ${from}` : locale === "de" ? `Ab ${from} bestellen` : `Commander dès ${from}`;
   const closeLabel = locale === "en" ? "Close" : locale === "de" ? "Schliessen" : "Fermer";
   const href = `${prefix ?? ""}/devis`;
@@ -46,7 +52,7 @@ export function UrgencyBanner() {
         {cta}
       </Link>
       <Link
-        href={orderHref(locale, { pathname })}
+        href={orderHref(locale, { pathname, currency: forced ?? undefined })}
         className="hidden rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-3 py-0.5 text-xs font-semibold text-[#f3d089] transition hover:bg-[#e0c48e]/20 md:inline-block"
       >
         {orderCta}
