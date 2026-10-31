@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["website redesign ROI", "website redesign results", "how much does a website redesign cost", "website conversion rate improvement"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/website-redesign-roi" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Website Redesign ROI: What to Realistically Expect (With Real Numbers)",
     description: "A website redesign costs money. Here's what it should return — conversion rate benchmarks, load time impact, and how to measure ROI in 90 days.",
   },

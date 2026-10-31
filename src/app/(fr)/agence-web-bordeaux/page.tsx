@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Bordeaux et la Nouvelle-Aquitaine. Sites web, apps et solutions IA pour PME, vignobles et commerces. Devis gratuit sous 24h.",
   keywords: ["création site web Bordeaux", "agence web Bordeaux", "site internet Bordeaux", "développeur web Bordeaux"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Bordeaux — KAH Digital Studio",
     description: "Studio digital pour entreprises bordelaises. Sites, apps, IA. Devis personnalisé.",
   },

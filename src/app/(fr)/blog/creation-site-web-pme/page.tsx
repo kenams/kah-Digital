@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["créer site web PME", "site web entreprise", "création site professionnel PME", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/blog/creation-site-web-pme" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création de site web pour PME : guide complet 2026",
     description: "Du brief au lancement, tout ce qu'une PME doit savoir avant de commander un site web.",
   },

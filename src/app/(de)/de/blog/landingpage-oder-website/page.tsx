@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["landing page vs site vitrine", "Unterschied Landingpage Visitenkarten-Website", "quand choisir landing page", "Landingpage oder Website"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/landingpage-oder-website" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Landing page vs site vitrine : lequel choisir ?",
     description: "Die wirklichen Unterschiede, die Einsatzfälle und wie Sie je nach Ziel entscheiden.",
   },

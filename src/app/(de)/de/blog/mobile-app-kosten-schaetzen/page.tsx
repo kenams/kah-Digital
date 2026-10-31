@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["estimation application mobile", "devis application mobile", "App-Kosten schätzen", "individuelle Mobile-App-Entwicklung", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/mobile-app-kosten-schaetzen" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "So schätzen Sie die Kosten einer Mobile-App 2026",
     description: "Die Kriterien, die den Umfang einer Mobile-App strukturieren und Ihnen die Kontrolle erhalten.",
   },

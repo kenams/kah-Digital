@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["refonte site web", "rénover site web", "mettre à jour site internet", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/blog/refonte-site-web" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Refonte de site web : quand et comment ?",
     description: "7 signaux pour savoir si votre site a besoin d'une refonte, et la méthode pour le faire bien.",
   },

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Aix-en-Provence et la région PACA. Sites web pour cabinets, vignobles, boutiques et professions libérales. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Aix-en-Provence", "agence web Aix", "site internet Aix-en-Provence", "développeur web PACA", "agence digitale Aix"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Aix-en-Provence — KAH Digital Studio",
     description: "Studio digital pour entreprises aixoises. Sites élégants, apps, solutions digitales. Devis personnalisé.",
   },

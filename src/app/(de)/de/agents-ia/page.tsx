@@ -3,7 +3,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 
 export const metadata = buildPageMetadata({
   locale: "de",
-  path: "/de/agents-ia",
+  path: "/agents-ia",
   title: "Individuelle KI-Agenten · Akquise, Support, Angebote, Casting | KAH Digital Studio",
   description:
     "KAH Digital Studio entwickelt fertige KI-Agenten, live in 10 Tagen: automatisierte Akquise, Level-1-Support automatisiert, Angebote in 30 Sekunden, Castly-Agent. Kostenlose 20-Min-Demo.",

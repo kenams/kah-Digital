@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["estimation application mobile", "devis application mobile", "comment estimer une app", "développement application mobile sur mesure", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/blog/application-mobile-cout" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "comment estimer une application mobile en 2026 ?",
     description: "Les critères qui structurent le périmètre d'une application mobile et permettent de garder le contrôle.",
   },

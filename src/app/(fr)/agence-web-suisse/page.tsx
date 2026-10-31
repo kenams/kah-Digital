@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   keywords: ["agence web suisse", "création site web suisse", "développeur web suisse", "studio digital suisse", "site internet suisse pme", "application web suisse"],
   alternates: { canonical: "https://kah-digital.ch/agence-web-suisse" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Agence web Suisse — KAH Digital Studio",
     description: "Studio digital 100 % à distance. Sites web, apps et IA pour toute la Suisse. Devis en CHF possible, LPD prise en compte.",
   },

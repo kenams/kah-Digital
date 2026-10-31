@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Rouen et la Normandie. Sites web professionnels pour PME, artisans et commerces normands. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Rouen", "agence web Rouen", "site internet Rouen", "développeur web Rouen", "agence digitale Normandie"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Rouen — KAH Digital Studio",
     description: "Studio digital pour PME et artisans rouennais. Sites, apps, solutions digitales. Process clair. Devis personnalisé.",
   },

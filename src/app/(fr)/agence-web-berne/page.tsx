@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Berne et la Suisse. Sites web bilingues FR/DE, apps et solutions IA pour entreprises et institutions. Devis gratuit sous 24h.",
   keywords: ["création site web Berne", "agence web Berne", "site internet Berne", "développeur web Suisse"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Berne — KAH Digital Studio",
     description: "Studio digital pour entreprises bernoises. Bilingue FR/DE. Devis personnalisé.",
   },

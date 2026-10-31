@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/blog/automatisation-ia-pme" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Automatisation IA pour PME : 5 exemples concrets en 2026",
     description:
       "Ce que l'automatisation IA peut apporter aux PME — qualification de leads, reporting, relances, support client.",

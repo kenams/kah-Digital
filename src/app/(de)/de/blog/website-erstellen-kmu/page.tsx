@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["KMU-Website erstellen", "site web entreprise", "professionelle Website für KMU erstellen", "agence web PME", "site internet entreprise 2026"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/website-erstellen-kmu" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Website für ein KMU erstellen: der komplette Leitfaden 2026",
     description: "Vom Briefing bis zum Launch: alles, was ein KMU vor der Bestellung einer Website wissen sollte.",
   },

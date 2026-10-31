@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["choisir agence web PME", "agence web PME", "Digitalagentur wählen", "freelance vs agence web", "agence web petite entreprise"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/webagentur-kmu-waehlen" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "So wählen Sie eine Webagentur für Ihr KMU",
     description: "Die Kriterien, die wirklich zählen, die Warnsignale und die richtigen Fragen.",
   },

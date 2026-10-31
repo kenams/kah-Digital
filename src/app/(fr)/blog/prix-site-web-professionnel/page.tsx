@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["devis site web", "devis site web professionnel", "comment estimer un site internet", "estimation création site web 2026"],
   alternates: { canonical: "https://kah-digital.ch/blog/prix-site-web-professionnel" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "comment estimer un site web professionnel en 2026 ?",
     description: "Les critères qui permettent de recevoir un devis web clair et adapté.",
   },

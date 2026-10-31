@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Agence web pour entreprises genevoises. Sites web multilingues FR/EN/DE, apps et solutions IA. Cabinets d'avocats, ONG, fiduciaires, hôtels. Prix fixe CHF 290, devis sous 24h.",
   keywords: ["agence web Genève", "création site web Genève", "site internet Genève", "développeur web Genève", "agence digitale Genève"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Agence web Genève — KAH Digital Studio",
     description: "Studio digital romand pour entreprises genevoises. Sites web multilingues, apps et IA. Prix fixe CHF 290.",
   },

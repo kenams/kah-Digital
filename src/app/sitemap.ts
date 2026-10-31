@@ -219,5 +219,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn];
+  // Une URL ne doit apparaître qu'une fois dans le sitemap.
+  const seen = new Set<string>();
+  return [...routes, ...routesEn, ...routesDe, ...projectRoutes, ...projectRoutesEn].filter((entry) => {
+    if (seen.has(entry.url)) return false;
+    seen.add(entry.url);
+    return true;
+  });
 }

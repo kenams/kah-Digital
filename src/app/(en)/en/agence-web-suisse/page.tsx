@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   keywords: ["web agency Switzerland", "website development Switzerland", "web developer Switzerland", "digital studio Switzerland", "SME website Switzerland", "web application Switzerland"],
   alternates: { canonical: "https://kah-digital.ch/en/agence-web-suisse" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Web Agency Switzerland — KAH Digital Studio",
     description: "100% remote digital studio. Websites, apps and AI for all of Switzerland. Quotes in CHF possible, Swiss data protection act (FADP) taken into account.",
   },

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["KI Automatisierung KMU", "KI für kleine Unternehmen", "Chatbot KMU", "KI ROI Unternehmen"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/ki-automatisierung-kmu" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "KI-Automatisierung für KMU 2025: Was wirklich funktioniert (und was nicht)",
     description: "Nicht jede KI-Lösung lohnt sich für KMU. Hier sind die 5 Anwendungsfälle mit realistischem ROI-Potenzial — und warum die meisten KI-Projekte scheitern.",
   },

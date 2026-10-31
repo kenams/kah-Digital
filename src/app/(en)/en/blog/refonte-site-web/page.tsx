@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["refonte site web", "renovate a website", "update a website", "refaire son site web", "moderniser site web"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/refonte-site-web" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Website redesign: when and how?",
     description: "7 signs your site needs a redesign, and the method to do it well.",
   },

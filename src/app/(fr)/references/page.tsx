@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://kah-digital.ch/references" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Références — Projets livrés, en ligne | KAH Digital Studio",
     description:
       "Projets réels : site vitrine + réservation, e-commerce Stripe, refonte + RDV automatisé. En ligne et vérifiables.",

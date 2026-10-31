@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["Next.js vs WordPress", "Next.js for business", "WordPress alternative 2025", "best website platform 2025"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/nextjs-vs-wordpress" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Next.js vs WordPress in 2025: Which Is Actually Better for Your Business?",
     description: "WordPress powers 40% of the web. Next.js powers the fastest-growing startups. Here's an honest comparison for business owners who need to make the right choice.",
   },

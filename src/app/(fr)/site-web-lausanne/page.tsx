@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital à distance pour Lausanne et le Vaud. Création de sites web, apps et solutions IA pour indépendants, PME et startups vaudoises. Devis personnalisé sous 24h, adapté au besoin réel.",
   keywords: ["création site web Lausanne", "agence web Lausanne", "site internet Lausanne", "développeur web Lausanne"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Lausanne — KAH Digital Studio",
     description: "Studio digital à distance. Sites, apps et IA pour PME et indépendants vaudois. Devis personnalisé.",
   },

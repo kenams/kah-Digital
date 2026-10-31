@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["site web restaurant", "site internet restaurant", "création site restaurant", "site web bar", "site web pizzeria", "réservation en ligne restaurant"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-restaurant" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Site web pour restaurant : ce qu'il faut vraiment en 2026",
     description: "Ce dont votre restaurant a besoin sur le web pour attirer plus de clients.",
   },

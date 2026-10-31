@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { companyConfig } from "@/config/company";
 import type { Locale } from "@/lib/locales";
 import { getLocalizedPath } from "@/lib/locales";
+import { LOCALE_ROUTES } from "@/lib/locale-routes";
 
 const DEFAULT_SITE_URL = "https://kah-digital.ch";
 const rawSiteUrl = (cleanUrl(process.env.NEXT_PUBLIC_SITE_URL) ?? DEFAULT_SITE_URL).trim().replace(/\/+$/, "");
@@ -84,6 +85,22 @@ export function sanitizePageTitle(title: string) {
   return (cut > 25 ? head.slice(0, cut) : head.replace(/\s+\S*$/, "")).trim();
 }
 
+/** Description sans dépasser ~160 caractères (Google tronque au-delà) : coupée à la fin d'une phrase, sinon au dernier mot. */
+export function sanitizeDescription(description: string) {
+  const text = description.trim();
+  if (text.length <= 170) return text;
+  const head = text.slice(0, 160);
+  const sentence = Math.max(head.lastIndexOf(". "), head.lastIndexOf(" · "), head.lastIndexOf(" — "));
+  if (sentence >= 90) return head.slice(0, sentence).replace(/[.\s·—-]+$/, "") + ".";
+  return head.replace(/\s+\S*$/, "").replace(/[,;:\s]+$/, "") + "…";
+}
+
+/** hreflang uniquement vers les versions qui existent : une alternate en 404 est pire que pas d'alternate. */
+function existingLanguages(path: string) {
+  const exists = (locale: Locale) => path === "/" || LOCALE_ROUTES[locale].includes(path);
+  return (["fr", "en", "de"] as const).filter(exists);
+}
+
 function mergeKeywords(locale: Locale, keywords: string[] = []) {
   return Array.from(new Set([...localeMetadata[locale].keywords, ...keywords].map((value) => value.trim())));
 }
@@ -106,15 +123,13 @@ export function buildPageMetadata({
 
   return {
     title: sanitizePageTitle(title),
-    description,
+    description: sanitizeDescription(description),
     keywords: mergeKeywords(locale, keywords),
     alternates: {
       canonical,
       languages: {
-        fr: getLocalizedPath(path, "fr"),
-        en: getLocalizedPath(path, "en"),
-        de: getLocalizedPath(path, "de"),
-        "x-default": getLocalizedPath(path, "fr"),
+        ...Object.fromEntries(existingLanguages(path).map((l) => [l, getLocalizedPath(path, l)])),
+        "x-default": getLocalizedPath(path, existingLanguages(path)[0] ?? locale),
       },
     },
     openGraph: {
@@ -122,7 +137,7 @@ export function buildPageMetadata({
       locale: content.openGraphLocale,
       alternateLocale: content.alternateLocales,
       title: sanitizePageTitle(title),
-      description,
+      description: sanitizeDescription(description),
       url: canonical,
       siteName: "KAH Digital Studio",
       images: [
@@ -137,7 +152,7 @@ export function buildPageMetadata({
     twitter: {
       card: "summary_large_image",
       title: sanitizePageTitle(title),
-      description,
+      description: sanitizeDescription(description),
       images: ["/og-kah-digital.png"],
     },
   };

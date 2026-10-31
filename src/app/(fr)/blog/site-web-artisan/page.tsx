@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: ["site web artisan", "création site artisan", "site internet artisan", "site web plombier", "site web electricien", "site web menuisier"],
   alternates: { canonical: "https://kah-digital.ch/blog/site-web-artisan" },
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Site web pour artisan : guide complet 2026",
     description: "devis, délais, contenu essentiel. Tout ce qu'un artisan doit savoir avant de créer son site.",
   },

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Création site web Montpellier — KAH Digital Studio | Devis personnalisé",
   description: "Studio digital pour Montpellier. Sites web pour médecins, startups, restaurants et entreprises méditerranéennes. Devis gratuit sous 24h.",
   keywords: ["création site web Montpellier", "agence web Montpellier", "site internet Montpellier", "développeur web Hérault"],
-  openGraph: { title: "Création site web Montpellier — KAH Digital Studio", description: "Studio digital pour entreprises montpelliéraines. Sites, apps. Devis personnalisé." },
+  openGraph: { images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],  title: "Création site web Montpellier — KAH Digital Studio", description: "Studio digital pour entreprises montpelliéraines. Sites, apps. Devis personnalisé." },
   alternates: { canonical: "https://kah-digital.ch/agence-web-montpellier" },
 };
 

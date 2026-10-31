@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Studio digital pour Marseille et la région PACA. Sites web, apps et solutions IA pour PME, restaurateurs et artisans. Devis gratuit sous 24h.",
   keywords: ["création site web Marseille", "agence web Marseille", "site internet Marseille", "développeur web Marseille"],
   openGraph: {
+    images: [{ url: "/og-kah-digital.png", width: 1200, height: 630 }],
     title: "Création site web Marseille — KAH Digital Studio",
     description: "Studio digital pour entreprises marseillaises. Sites, apps, IA. Devis personnalisé.",
   },
