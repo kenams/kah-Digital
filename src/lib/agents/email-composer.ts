@@ -66,7 +66,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — j'ai une suggestion rapide",
     "Question pour {{name}}",
     "{{name}} — retour sur votre présence en ligne",
-    "{{problem}} — {{name}}",
+    "{{name}} — un point repéré sur votre site",
   ],
   en: [
     "{{name}} — I looked at your website",
@@ -74,7 +74,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — quick suggestion",
     "Question for {{name}}",
     "{{name}} — feedback on your online presence",
-    "{{problem}} — {{name}}",
+    "{{name}} — one thing I noticed on your site",
   ],
   de: [
     "{{name}} — ich habe Ihre Website angeschaut",
@@ -82,7 +82,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — kurzer Vorschlag",
     "Frage für {{name}}",
     "{{name}} — Rückmeldung zu Ihrer Online-Präsenz",
-    "{{problem}} — {{name}}",
+    "{{name}} — ein Punkt auf Ihrer Website",
   ],
   es: [
     "{{name}} — vi su sitio web",
@@ -90,7 +90,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — sugerencia rápida",
     "Pregunta para {{name}}",
     "{{name}} — retroalimentación sobre su presencia online",
-    "{{problem}} — {{name}}",
+    "{{name}} — un punto en su sitio web",
   ],
   it: [
     "{{name}} — ho guardato il tuo sito",
@@ -98,7 +98,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — suggerimento rapido",
     "Domanda per {{name}}",
     "{{name}} — feedback sulla tua presenza online",
-    "{{problem}} — {{name}}",
+    "{{name}} — un punto notato sul tuo sito",
   ],
   nl: [
     "{{name}} — ik bekeek uw website",
@@ -106,7 +106,7 @@ const SUBJECTS: Record<string, string[]> = {
     "{{name}} — snelle suggestie",
     "Vraag voor {{name}}",
     "{{name}} — feedback over uw online aanwezigheid",
-    "{{problem}} — {{name}}",
+    "{{name}} — één punt op uw website",
   ],
 };
 
@@ -227,18 +227,16 @@ export async function composeProspectingEmail(
 
   // Piste RGPD : texte déterministe (aucun modèle IA), uniquement ce que l'analyse du code permet d'affirmer.
   if (track === "rgpd") {
-    const finding = audit.problems[0];
-    const names = (finding?.title ?? "Des traceurs").replace(/ sans outil de consentement$/, "");
-    const plural = / et |, /.test(names);
-    const noPolicy = /ni politique de confidentialité/.test(finding?.detail ?? "");
+    // Format « teaser » (règle du 02/11/2026) : on signale qu'un point précis existe, sans nommer
+    // l'outil ni la méthode de vérification — sinon le prospect corrige seul (cas du 01/11).
     const shortName = bName.length > 40 ? `${bName.slice(0, 37)}...` : bName;
-    const rgpdSubject = `Votre site ${shortName} : cookies et consentement des visiteurs`;
+    const rgpdSubject = `Votre site ${shortName} : un point de conformité à vous signaler`;
     const rgpdBody = [
       "Bonjour,",
-      `En regardant le site de ${bName}, j'ai vu que ${names} ${plural ? "sont chargés" : "est chargé"} dès l'arrivée du visiteur, et je n'ai repéré aucun outil de consentement aux cookies${noPolicy ? ", ni politique de confidentialité" : ""}. Vous pouvez le vérifier en ouvrant votre site en navigation privée, puis en regardant les cookies dans les outils du navigateur.`,
-      "La CNIL demande l'accord du visiteur avant ce type de traceur, et elle contrôle régulièrement les sites de professionnels.",
-      "On peut régler ça sans toucher au reste de votre site : bannière de consentement conforme (refuser et accepter à égalité) et politique de confidentialité, 490 € HT, prix fixe, livré sous 3 jours ouvrés. Pour une mise en conformité RGPD complète, nous travaillons avec Vincent L’helgoual’ch, expert cybersécurité et conformité.",
-      "Un échange de 10 minutes ? Répondez simplement à cet email ou appelez le 07 59 55 84 14.",
+      `En regardant le site de ${bName}, j'ai repéré un point précis de conformité RGPD qui concerne vos visiteurs, du type de ceux que la CNIL vérifie sur les sites de professionnels.`,
+      "Je préfère vous le montrer plutôt que l'écrire : 15 minutes au téléphone ou en écran partagé, je vous explique ce que j'ai vu et ce que ça implique. Ensuite vous décidez, sans engagement.",
+      "Si vous voulez qu'on s'en charge : prix fixe dès 490 € HT, sans toucher au reste du site. Pour une conformité RGPD complète, nous travaillons avec Vincent L’helgoual’ch, expert cybersécurité et conformité.",
+      "Un créneau cette semaine ? Répondez simplement à cet email ou appelez le 07 59 55 84 14.",
       "KAH Digital Studio — kah-digital.ch",
     ].join("\n\n");
     return finalizeEmail({ subject: rgpdSubject, body: rgpdBody, lang: "fr", baseUrl, prospectId, landing: baseUrl, unsubUrl, pixelUrl });
@@ -293,7 +291,7 @@ RÈGLES ANTI-IA STRICTES (le texte doit sembler 100% écrit par un humain) :
 - Commencer par une observation directe sur LEUR site, pas une intro générique
 - 1 seule imperfection stylistique légère autorisée (naturel humain)
 - Max 5-6 lignes au total
-- Mentionne 1 seul problème concret (le plus impactant)
+- Évoque qu'un point précis a été repéré sur leur site SANS le détailler, sans nommer d'outil ni dire comment le vérifier (sinon ils corrigent seuls) : propose 15 min pour le montrer
 - CTA = "répondez à cet email" OU "appelez le 07 59 55 84 14" OU "kah-digital.ch" — selon le contexte
 - Zéro prix, zéro promesse vague
 - Signature = "KAH Digital Studio — kah-digital.ch" — jamais de prénom seul

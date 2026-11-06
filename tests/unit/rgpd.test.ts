@@ -47,11 +47,13 @@ test("detectRgpd liste les traceurs directs", () => {
   assert.deepEqual(f.trackers, ["Google Analytics", "le pixel Facebook", "Hotjar"]);
 });
 
-test("le mail RGPD passe le contrôle d'envoi, cite le constat réel et aucune fuite de gabarit", async () => {
+test("le mail RGPD (teaser) passe le contrôle d'envoi, ne donne pas le diagnostic, aucune fuite de gabarit", async () => {
   const a = rgpdAudit(lead, page(`<html><body>${pad}${GA}<form></form></body></html>`))!;
   const mail = await composeProspectingEmail(lead, a, "https://kah-digital.ch", ID);
-  assert.match(mail.subject, /cookies et consentement/);
-  assert.match(mail.textFallback, /Google Analytics est chargé/);
+  assert.match(mail.subject, /point de conformité/);
+  // Règle du 02/11/2026 : ni l'outil, ni la méthode de vérification dans le premier mail.
+  assert.doesNotMatch(mail.subject + mail.textFallback, /Google Analytics|cookie|navigation privée|outils du navigateur|traceur/i);
+  assert.match(mail.textFallback, /15 minutes/);
   assert.match(mail.textFallback, /490 € HT/);
   assert.match(mail.textFallback, /Vincent L’helgoual’ch/);
   assert.doesNotMatch(mail.textFallback, /undefined|null|\{\{|service-local/);
