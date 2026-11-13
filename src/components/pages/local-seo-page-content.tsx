@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Script from "next/script";
 import { FiArrowRight, FiCheck, FiClock, FiMapPin, FiMessageCircle, FiZap } from "react-icons/fi";
 
@@ -17,6 +17,7 @@ export type CityPageData = {
   sectors: string[];
   proofLine: string;
   faq: Array<{ q: string; a: string }>;
+  useCases?: Array<{ title: string; body: string }>;
 };
 
 export const CITY_PAGES: Record<string, CityPageData> = {
@@ -27,6 +28,11 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     intro: "KAH Digital Studio travaille à distance avec les entreprises de Lausanne. Nous créons des sites web haute-performance sur Next.js 15 pour les PME, indépendants et startups vaudoises. Design SaaS-level, Core Web Vitals 95+, SEO technique intégré. Starter dès CHF 290 — Business dès CHF 790 — Système IA complet dès CHF 2'490. Devis gratuit en 24h, sans engagement.",
     sectors: ["Avocats & fiduciaires", "Restaurants & hôtels", "Coachs & thérapeutes", "Startups & scale-ups EPFL", "PME vaudoises", "Médecins & professions libérales"],
     proofLine: "Studio à distance · Lausanne · Réponse 24h · Prix fixe CHF 290 — Sans engagement",
+    useCases: [
+      { title: "Cabinet, fiduciaire, thérapeute", body: "Un site clair qui explique vos services, une prise de rendez-vous en ligne et un formulaire de contact qui arrive directement dans votre boîte." },
+      { title: "Restaurant, hôtel, commerce", body: "Carte ou catalogue à jour, version anglaise pour les visiteurs, lien vers votre fiche Google et bouton d'appel visible sur mobile." },
+      { title: "Startup ou projet en lancement", body: "Une page de lancement rapide avec liste d'attente et suivi des visites, pour tester votre offre avant d'investir davantage." },
+    ],
     faq: [
       { q: "Combien coûte un site web professionnel à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (jusqu'à 6 pages, SEO) dès CHF 790, livré en 5 jours ouvrés. Système complet avec IA dès CHF 2'490. Prix fixe garanti avant de commencer, zéro surprise." },
       { q: "Vous êtes vraiment basés à Lausanne ?", a: "Non : KAH Digital Studio est un studio 100 % à distance. Nous travaillons avec des clients en France et en Suisse, par visioconférence et en ligne — même qualité, même prix." },
@@ -37,15 +43,20 @@ export const CITY_PAGES: Record<string, CityPageData> = {
   "site-web-geneve": {
     city: "Genève", country: "Suisse", region: "Genève", locale: "fr", slug: "site-web-geneve",
     headline: "Création de site web à Genève",
-    subline: "Studio romand proche de Genève — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 290, 5 jours ouvrés. Prix fixe.",
+    subline: "Au service des entreprises genevoises — Next.js 15, multilingue FR/EN/DE, Lighthouse 95+. Dès CHF 290, 5 jours ouvrés. Prix fixe.",
     intro: "KAH Digital Studio accompagne les entreprises genevaises dans leur présence digitale : cabinets d'avocats, fiduciaires, ONG, hôtels, startups, médecins. Sites web haute-performance en français, anglais et allemand. Studio 100 % à distance, nous travaillons avec les entreprises de Genève. Devis gratuit sous 24h, prix fixe, code 100% à vous.",
     sectors: ["Cabinets d'avocats & notaires", "Fiduciaires & consultants", "ONG & organisations internationales", "Hôtels & restauration de luxe", "Startups Geneva Lake", "Médecins & cliniques"],
-    proofLine: "· 45 min de Genève · Multilingue FR/EN/DE · Prix fixe CHF 290 — Réponse 24h",
+    proofLine: "100 % à distance · Multilingue FR/EN/DE · Prix fixe CHF 290 — Réponse 24h",
+    useCases: [
+      { title: "Cabinet d'avocats, fiduciaire", body: "Un site sobre en français et en anglais, des pages par domaine d'expertise et un formulaire de contact confidentiel." },
+      { title: "ONG, association, organisation", body: "Un site multilingue facile à mettre à jour, des pages projets lisibles et un processus adapté à vos validations internes." },
+      { title: "Hôtel, restaurant, clinique", body: "Informations pratiques claires, version anglaise, réservation ou prise de rendez-vous et bouton d'appel visible sur mobile." },
+    ],
     faq: [
       { q: "Combien coûte un site web professionnel à Genève ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO multilingue) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe confirmé avant tout démarrage." },
-      { q: "êtes-vous basés à Genève ?", a: "Non, notre studio travaille 100 % à distance avec les entreprises de Genève et de toute la Suisse romande — même qualité, même prix." },
+      { q: "Êtes-vous basés à Genève ?", a: "Non, notre studio travaille 100 % à distance avec les entreprises de Genève et de toute la Suisse romande — même qualité, même prix." },
       { q: "Faites-vous des sites multilingues pour les entreprises genevoises ?", a: "Oui — français, anglais, allemand et plus. hreflang correct, URLs propres par langue, SEO par langue. Standard dès le plan Business." },
-      { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui. Nous avons l'expérience des secteurs sensibles aux conformités et pouvons adapter notre process à vos contraintes de procurement." },
+      { q: "Travaillez-vous avec des ONG et organisations internationales à Genève ?", a: "Oui, nous pouvons adapter notre process à vos contraintes de conformité, de procurement et de validation interne." },
     ],
   },
   "site-web-fribourg": {
@@ -253,6 +264,11 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     intro: "KAH Digital Studio est votre agence web pour Lausanne, à distance. Nous créons des sites web haute-performance pour les PME, indépendants, startups et professions libérales vaudoises. Travaillant à distance avec la Suisse romande, nous combinons design premium, SEO technique et intégration IA pour donner à votre entreprise une présence digitale qui génère de vrais clients. Starter dès CHF 290 — Business dès CHF 790 — Système IA dès CHF 2'490. Devis gratuit sous 24h.",
     sectors: ["Avocats & fiduciaires vaudois", "Restaurants & hôtels lausannois", "Coachs & thérapeutes", "Startups EPFL & Scale-up", "PME & artisans du Vaud", "Médecins & professions de santé"],
     proofLine: "Agence 100 % à distance · Réponse 24h · Prix fixe CHF 290 · Sans engagement",
+    useCases: [
+      { title: "Cabinet, fiduciaire, thérapeute", body: "Un site clair qui explique vos services, une prise de rendez-vous en ligne et un formulaire de contact qui arrive directement dans votre boîte." },
+      { title: "Restaurant, hôtel, commerce", body: "Carte ou catalogue à jour, version anglaise pour les visiteurs, lien vers votre fiche Google et bouton d'appel visible sur mobile." },
+      { title: "Startup ou projet en lancement", body: "Une page de lancement rapide avec liste d'attente et suivi des visites, pour tester votre offre avant d'investir davantage." },
+    ],
     faq: [
       { q: "Combien coûte une agence web à Lausanne ?", a: "Starter (landing page) dès CHF 290, livré en 5 jours. Business (6 pages, SEO local Lausanne) dès CHF 790. Système IA complet dès CHF 2'490. Prix fixe garanti, zéro surprise." },
       { q: "Avez-vous un bureau à Lausanne ?", a: "Non : KAH Digital Studio travaille 100 % à distance avec des clients en France et en Suisse, dont Lausanne — même qualité, même prix." },
@@ -267,6 +283,11 @@ export const CITY_PAGES: Record<string, CityPageData> = {
     intro: "KAH Digital Studio accompagne les entreprises genevoises dans leur transformation digitale. Cabinets d'avocats, ONG internationales, fiduciaires, hôtels de luxe, cliniques, startups — nous créons des sites web et applications multilingues (FR/EN/DE) adaptés aux exigences du marché genevois. Studio 100 % à distance, nous travaillons avec les entreprises de Genève. Devis gratuit sous 24h, code source 100% à vous.",
     sectors: ["Cabinets d'avocats & notaires", "ONG & organisations internationales", "Fiduciaires & wealth management", "Hôtels & restauration de luxe", "Cliniques & médecins", "Startups Geneva Lake"],
     proofLine: "100 % à distance · Multilingue FR/EN/DE · Prix fixe CHF 290 · Réponse 24h",
+    useCases: [
+      { title: "Cabinet d'avocats, fiduciaire", body: "Un site sobre en français et en anglais, des pages par domaine d'expertise et un formulaire de contact confidentiel." },
+      { title: "ONG, association, organisation", body: "Un site multilingue facile à mettre à jour, des pages projets lisibles et un processus adapté à vos validations internes." },
+      { title: "Hôtel, restaurant, clinique", body: "Informations pratiques claires, version anglaise, réservation ou prise de rendez-vous et bouton d'appel visible sur mobile." },
+    ],
     faq: [
       { q: "Combien coûte une agence web à Genève ?", a: "Starter (landing page) dès CHF 290. Business (6 pages, SEO multilingue) dès CHF 790. Système IA dès CHF 2'490. Prix fixe confirmé avant démarrage." },
       { q: "Êtes-vous basés à Genève ?", a: "Non, notre studio travaille 100 % à distance avec les entreprises de Genève. Même qualité, même prix." },
@@ -557,6 +578,79 @@ export function LocalSeoPageContent({ data }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Use cases */}
+      {data.useCases && data.useCases.length > 0 && (
+        <section className="border-t border-white/[0.06] py-16">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <h2 className="mb-3 text-center text-2xl font-extrabold tracking-tight text-white">
+              Ce que nous mettons en place à {data.city}
+            </h2>
+            <p className="mx-auto mb-10 max-w-2xl text-center text-gray-500">
+              Des exemples concrets selon votre activité. Le contenu exact est défini ensemble lors de l&apos;appel de cadrage.
+            </p>
+            <div className="grid gap-5 sm:grid-cols-3">
+              {data.useCases.map((u) => (
+                <article key={u.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 transition hover:border-blue-500/20">
+                  <h3 className="mb-2 font-bold text-white">{u.title}</h3>
+                  <p className="text-sm leading-relaxed text-gray-400">{u.body}</p>
+                </article>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-sm">
+              <Link href="/projets" className="rounded text-blue-400 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                Voir nos réalisations
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* Remote process */}
+      {isSwiss && (
+        <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <h2 className="mb-10 text-center text-2xl font-extrabold tracking-tight text-white">
+              Comment se déroule un projet à distance
+            </h2>
+            <ol className="grid gap-4 sm:grid-cols-4">
+              {[
+                { t: "Appel de cadrage", b: "20 minutes en visio, gratuit, pour comprendre votre activité et vos objectifs." },
+                { t: "Devis fixe en CHF", b: "Prix, contenu et délai confirmés par écrit sous 24h. Rien ne démarre sans votre accord." },
+                { t: "Points d'étape", b: "Vous suivez l'avancement et validez le site avant sa mise en ligne." },
+                { t: "Mise en ligne", b: "Le site est publié, le code vous appartient et nous vous montrons comment le mettre à jour." },
+              ].map((step, i) => (
+                <li key={step.t} className="rounded-2xl border border-white/[0.07] bg-[#050509] p-5">
+                  <span className="mb-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-[#e0c48e]/40 text-xs font-bold text-[#f3d089]">{i + 1}</span>
+                  <h3 className="mb-1.5 font-bold text-white">{step.t}</h3>
+                  <p className="text-sm leading-relaxed text-gray-400">{step.b}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* IA training */}
+      {isSwiss && (
+        <section className="border-t border-white/[0.06] py-14">
+          <div className="mx-auto flex max-w-4xl flex-col items-start gap-5 rounded-2xl border border-[#e0c48e]/20 bg-[#e0c48e]/[0.04] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <p className="mb-1 text-[11px] font-bold uppercase tracking-widest text-[#f3d089]">Formation IA</p>
+              <h2 className="mb-2 text-xl font-extrabold tracking-tight text-white">Votre équipe veut gagner du temps avec l&apos;IA ?</h2>
+              <p className="max-w-xl text-sm leading-relaxed text-gray-400">
+                Un atelier à distance construit sur vos tâches réelles (mails, devis, comptes rendus), puis un accompagnement pour l&apos;appliquer au quotidien.
+              </p>
+            </div>
+            <Link
+              href="/ia-entreprise"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#e0c48e]/50 bg-[#e0c48e]/10 px-6 py-3 text-sm font-bold text-[#f3d089] transition hover:bg-[#e0c48e]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f3d089]"
+            >
+              Voir les ateliers IA <FiArrowRight size={14} />
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Why us */}
       <section className="border-t border-white/[0.06] bg-white/[0.015] py-16">
