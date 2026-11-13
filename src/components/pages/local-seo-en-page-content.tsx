@@ -47,7 +47,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     sectors: ["FinTech & Banking", "Consulting & Agencies", "SaaS & Tech Startups", "E-Commerce & Retail", "Real Estate", "Legal & Professional Services"],
     proofLine: "Reply within 24h · Fixed price · No lock-in",
     faq: [
-      { q: "Why use a Swiss studio instead of a London agency?", a: "Swiss precision at a fraction of London agency rates. You talk directly to the founder — no account manager relay. Fixed price, 14-day delivery, 100% code ownership. No monthly retainers." },
+      { q: "Why use an independent studio instead of a London agency?", a: "Senior-level work at a fraction of London agency rates. You talk directly to the founder — no account manager relay. Fixed price, 14-day delivery, 100% code ownership. No monthly retainers." },
       { q: "How much does a business website cost in London?", a: "Starter from $290 (landing page, 5 days). Business from $790 (up to 6 pages, SEO, 5 business days). Vertical AI Agent from $2,490 (full system with AI chatbot). Fixed price, no surprises." },
       { q: "What's included in the Business plan?", a: "Up to 6 pages, full technical SEO, SaaS-level premium design, animations, contact form, Core Web Vitals 95+, 3 revisions, 2 months support, delivered in 5 business days." },
       { q: "Do you deliver the source code?", a: "Yes, 100%. Code, domain, hosting — everything is yours on delivery. No vendor lock-in, no monthly fees, no dependency of any kind." },
@@ -82,7 +82,7 @@ const BASE_EN_CITY_PAGES: Record<string, EnCity> = {
     proofLine: "Reply within 24h · Fixed price · 100% ownership",
     faq: [
       { q: "What does a business website cost in New York?", a: "Starter from $290 (landing page, 5 days). Business from $790 (6 pages, SEO, 5 business days). Vertical AI Agent from $2,490 (full system, AI chatbot, 28 days). Fixed price, zero surprises." },
-      { q: "Why work with a Swiss studio instead of a NYC agency?", a: "Swiss execution quality, without NYC agency pricing. You work directly with the founder. Fixed price, fast turnaround, 100% yours. No retainers, no lock-in." },
+      { q: "Why work with an independent studio instead of a NYC agency?", a: "Senior-level execution, without NYC agency pricing. You work directly with the founder. Fixed price, fast turnaround, 100% yours. No retainers, no lock-in." },
       { q: "Can you build a SaaS MVP for a New York startup?", a: "Yes. A pilot V1 in 7 days on a scoped perimeter, on Next.js 15 + Supabase + TypeScript. The same stack as well-funded startups. Scalable from day one, no rewrite in 6 months." },
       { q: "Do you handle SEO for the US market?", a: "Yes, full technical SEO, structured data, Core Web Vitals 95+, clean URLs. Included from the Business plan. Optimised for Google US." },
     ],

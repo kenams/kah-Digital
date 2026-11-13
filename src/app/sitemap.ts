@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/data/portfolio";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
 import { SITE_URL } from "@/lib/shared-metadata";
+import { NOINDEX_SET } from "@/lib/seo-noindex";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -73,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/pilotes/sitewatch",
     "/pilotes/relancecash",
     "/pilotes/scopelock",
-  ].map((path) => ({
+  ].filter((path) => !NOINDEX_SET.has(path)).map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
     changeFrequency: (path.includes("agence-web") || path.includes("site-web-"))
@@ -154,7 +155,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/blog/how-to-choose-ai-agency",
     "/en/blog/website-redesign-roi",
     "/en/blog/nextjs-vs-wordpress",
-  ].map((path) => ({
+  ].filter((path) => !NOINDEX_SET.has(path)).map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,
     changeFrequency: (path.includes("agency") || path.includes("development")) ? ("weekly" as const) : ("monthly" as const),

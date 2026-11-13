@@ -456,7 +456,7 @@ export function LocalSeoPageContent({ data }: Props) {
           {isSwiss && (
             <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Studio basé en Suisse — Places disponibles cette semaine
+              Au service des entreprises suisses — Places disponibles cette semaine
             </div>
           )}
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-gray-300">

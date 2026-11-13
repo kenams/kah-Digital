@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { isAdminUser } from "@/lib/auth";
+import { NOINDEX_SET } from "@/lib/seo-noindex";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.SUPABASE_ANON_KEY;
@@ -66,6 +67,9 @@ function nextResponseWithLocale(request: NextRequest) {
     })
   );
   response.headers.set("content-language", locale);
+  if (NOINDEX_SET.has(request.nextUrl.pathname.replace(/\/+$/, ""))) {
+    response.headers.set("x-robots-tag", "noindex, follow");
+  }
   return response;
 }
 
