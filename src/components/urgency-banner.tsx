@@ -24,7 +24,7 @@ export function UrgencyBanner() {
     setShow(localStorage.getItem(STORAGE_KEY) !== "1");
   }, []);
 
-  if (!show) return null;
+  if (!show || /(?:^|\/)kahly\/?$/.test(pathname)) return null;
 
   const msg =
     locale === "en"

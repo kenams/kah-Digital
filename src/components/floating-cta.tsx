@@ -54,6 +54,8 @@ export function FloatingCTA() {
   const priceLine =
     locale === "en" ? `From ${from} · 5-day delivery` : locale === "de" ? `Ab ${from} · 5 Tage` : `Dès ${from} · livré en 5 jours`;
 
+  if (/(?:^|\/)kahly\/?$/.test(pathname)) return null;
+
   return (
     <div
       className={`pointer-events-none fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500 ${
