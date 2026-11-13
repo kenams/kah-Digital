@@ -3,7 +3,7 @@ import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-pa
 
 export const metadata: Metadata = {
   title: "Création site web Genève | Devis personnalisé",
-  description: "Studio digital proche de Genève. Sites web professionnels, apps et solutions IA pour entreprises et indépendants genevois.",
+  description: "Studio digital au service des entreprises genevoises. Sites web professionnels, apps et solutions IA pour entreprises et indépendants genevois.",
   keywords: ["création site web Genève", "agence web Genève", "site internet Genève", "développeur web Genève"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
