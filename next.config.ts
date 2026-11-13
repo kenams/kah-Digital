@@ -38,6 +38,28 @@ const nextConfig: NextConfig = {
         destination: "/links",
         permanent: true,
       },
+      // Anciennes URL signalées en 404 par Google Search Console (13/11/2026) : projets retirés
+      // du portfolio et pages DE/FR déplacées. 301 vers la page la plus proche.
+      ...[
+        "featness",
+        "dropigo",
+        "ashanti-beauty",
+        "tontine-app",
+        "vellio-shop",
+        "spotfinder-toulouse",
+        "immortal-arena",
+        "kah-support",
+        "ruby-gallery",
+        "ante",
+      ].flatMap((slug) => [
+        { source: `/projets/${slug}`, destination: "/projets", permanent: true },
+        { source: `/en/projets/${slug}`, destination: "/en/projets", permanent: true },
+        { source: `/de/projets/${slug}`, destination: "/de/projets", permanent: true },
+      ]),
+      { source: "/de/agence-web-marseille", destination: "/agence-web-marseille", permanent: true },
+      { source: "/de/agence-web-zurich", destination: "/de/webentwicklung-zuerich", permanent: true },
+      { source: "/ki-agentur-muenchen", destination: "/de/ki-agentur-muenchen", permanent: true },
+      { source: "/de/factures", destination: "/factures", permanent: true },
     ];
   },
   turbopack: {
