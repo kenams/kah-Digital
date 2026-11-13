@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/agence-ia",
     "/cybersecurite",
     "/agents-ia",
+    "/kahly",
     "/projets",
     "/lexique",
     // Pages SEO locales — priorité haute
@@ -96,6 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/en/agence-ia",
     "/en/cybersecurite",
     "/en/agents-ia",
+    "/en/kahly",
     "/en/projets",
     "/en/site-web-geneve",
     "/en/site-web-lausanne",
@@ -178,6 +180,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/de/agence-ia",
     "/de/cybersecurite",
     "/de/agents-ia",
+    "/de/kahly",
     // DE city pages — SEO DACH + international
     "/de/webentwicklung-zuerich",
     "/de/webentwicklung-bern",

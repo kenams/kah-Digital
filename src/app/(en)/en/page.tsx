@@ -1,4 +1,5 @@
 import { buildPageMetadata } from "@/lib/shared-metadata";
+import { KahlyBand } from "@/components/kahly/kahly-band";
 import { HeroSection } from "@/components/hero-section";
 import { AiSystemsSection } from "@/components/ai-systems-section";
 import { TrustBar } from "@/components/trust-bar";
@@ -120,6 +121,7 @@ export default function HomePageEn() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
+      <KahlyBand locale="en" />
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />

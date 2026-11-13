@@ -24,6 +24,15 @@ type Service = {
 
 const SERVICES: Service[] = [
   {
+    id: "kahly", emoji: "K",
+    label: { fr: "Assistant KAHLY", en: "KAHLY assistant", de: "KAHLY-Assistent" },
+    shortDesc: { fr: "Un assistant adapté à vos outils et tâches", en: "An assistant tailored to your tools and tasks", de: "Ein Assistent für Ihre Werkzeuge und Aufgaben" },
+    scopeLabel: { fr: "Démonstration personnalisée", en: "Personalised demonstration", de: "Persönliche Vorführung" },
+    delayLabel: { fr: "Périmètre et délai à définir", en: "Scope and timing to agree", de: "Umfang und Termin nach Absprache" },
+    projectType: { fr: "KAHLY — demande de démonstration", en: "KAHLY — demonstration request", de: "KAHLY — Vorführungsanfrage" },
+    budget: "Sur devis / Custom quote / Auf Offerte",
+  },
+  {
     id: "landing",
     emoji: "🚀",
     label:      { fr: "Landing page",         en: "Landing page", de: "Landing Page" },
@@ -265,10 +274,12 @@ const COPY = {
 
 export function SmartQuoteForm({
   locale = "fr",
+  fixedService,
   defaultCompany = "",
   defaultSite = "",
 }: {
   locale?: FormLocale;
+  fixedService?: "kahly";
   defaultCompany?: string;
   defaultSite?: string;
 }) {
@@ -276,20 +287,21 @@ export function SmartQuoteForm({
   const c = COPY[locale];
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedService, setSelectedService] = useState<string | null>(fixedService ?? null);
   const defaultMessage = defaultSite ? (locale === "en" ? `My current site: ${defaultSite}. ` : locale === "de" ? `Meine aktuelle Website: ${defaultSite}. ` : `Mon site actuel : ${defaultSite}. `) : "";
   const [form, setForm] = useState({ name: "", email: "", companyName: defaultCompany, phone: "", message: defaultMessage, timeline: "" });
   // Les boutons de la page cybersécurité arrivent ici avec ?service=cyber : on présélectionne le service.
   useEffect(() => {
     const wanted = new URLSearchParams(window.location.search).get("service");
-    if (wanted && SERVICES.some((x) => x.id === wanted)) setSelectedService(wanted);
-  }, []);
+    if (!fixedService && wanted && SERVICES.some((x) => x.id === wanted)) setSelectedService(wanted);
+  }, [fixedService]);
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [serverMessage, setServerMessage] = useState("");
 
   const service = SERVICES.find((s) => s.id === selectedService);
+  const selectedBudget = service?.id === "kahly" ? { fr: "Sur devis", en: "Custom quote", de: "Auf Offerte" }[locale] : service?.budget;
 
   function update(key: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -310,7 +322,7 @@ export function SmartQuoteForm({
         phone: form.phone.trim() || undefined,
         projectType: service?.projectType[locale === "de" ? "en" : locale] ?? "Other",
         goal: form.message.trim() || `Quote request: ${service?.label[locale === "de" ? "en" : locale]}`,
-        budget: service?.budget ?? "To be defined",
+        budget: selectedBudget ?? "To be defined",
         timeline: form.timeline || "Not specified",
         message: form.message.trim() || undefined,
         turnstileToken: captchaToken,
@@ -350,7 +362,7 @@ export function SmartQuoteForm({
       )}
 
       {/* ── Step 1 : Service ── */}
-      <div>
+      {!fixedService && <div>
         <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white/40">{c.step1}</p>
         <h2 className="mb-5 text-xl font-bold text-white">{c.step1Title}</h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -395,13 +407,13 @@ export function SmartQuoteForm({
             </div>
           </div>
         )}
-      </div>
+      </div>}
 
       {/* ── Step 2 : Details + Recap ── */}
       <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
         <div className="space-y-5">
           <div>
-            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white/40">{c.step2}</p>
+            {!fixedService && <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white/40">{c.step2}</p>}
             <h2 className="mb-4 text-xl font-bold text-white">{c.step2Title}</h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
@@ -538,7 +550,7 @@ export function SmartQuoteForm({
               {c.submitting}
             </>
           ) : (
-            c.submit
+            fixedService === "kahly" ? { fr: "Envoyer ma demande de démonstration", en: "Send my demonstration request", de: "Vorführung anfragen" }[locale] : c.submit
           )}
         </button>
 

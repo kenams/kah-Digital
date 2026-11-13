@@ -64,6 +64,7 @@ export function SiteFooter() {
         links: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
+          { label: "KAHLY", href: "/kahly" },
           { label: "Formation et IA en entreprise", href: "/ia-entreprise" },
           { label: "Commander mon site", href: "/commander" },
           { label: "Site qui se met à jour par message", href: "/pulse" },
@@ -117,6 +118,7 @@ export function SiteFooter() {
         links: [
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
+          { label: "KAHLY", href: "/en/kahly" },
           { label: "Order my website", href: "/en/commander" },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Quote", href: "/en/devis" },
@@ -166,6 +168,7 @@ export function SiteFooter() {
         links: [
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
+          { label: "KAHLY", href: "/de/kahly" },
           { label: "Website bestellen", href: "/de/commander" },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Offerte", href: "/de/devis" },

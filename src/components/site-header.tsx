@@ -27,6 +27,7 @@ export function SiteHeader() {
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
           { label: "AI Training", href: "/en/ia-entreprise", highlight: true },
+          { label: "KAHLY", href: "/en/kahly" },
           { label: "AI Agents", href: "/en/agents-ia" },
           { label: "Cybersecurity", href: "/en/cybersecurite" },
           { label: "Portfolio", href: "/en/projets" },
@@ -47,6 +48,7 @@ export function SiteHeader() {
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
           { label: "KI-Schulung", href: "/de/ia-entreprise", highlight: true },
+          { label: "KAHLY", href: "/de/kahly" },
           { label: "KI-Agenten", href: "/de/agents-ia" },
           { label: "Cybersicherheit", href: "/de/cybersecurite" },
           { label: "Referenzen", href: "/de/projets" },
@@ -67,6 +69,7 @@ export function SiteHeader() {
           { label: "Offres", href: "/offres" },
           { label: "Créer mon entreprise", href: "/creation-entreprise" },
           { label: "Formation IA", href: "/ia-entreprise", highlight: true },
+          { label: "KAHLY", href: "/kahly" },
           { label: "Agents IA", href: "/agents-ia" },
           { label: "Cybersécurité", href: "/cybersecurite" },
           { label: "Pilotes SaaS", href: "/pilotes" },
@@ -166,7 +169,7 @@ export function SiteHeader() {
               // Sous 1536px la barre déborde (9 liens + langues + CTA) : on masque les
               // liens secondaires (accueil = logo, références, blog, création d'entreprise) jusqu'à 1680px.
               const active = isActive(link.href);
-              const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise)$/.test(link.href) || (locale === "de" && /\/devis$/.test(link.href)); // DE : « Offerte » = doublon du bouton « Kostenlos anfragen » (/de/devis)
+              const secondary = link.href === homeHref || /\/(references|blog|creation-entreprise|agents-ia)$/.test(link.href) || (locale === "de" && /\/devis$/.test(link.href)); // DE : « Offerte » = doublon du bouton « Kostenlos anfragen » (/de/devis)
               return (
               <Link
                 key={link.href}
