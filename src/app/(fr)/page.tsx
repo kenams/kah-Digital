@@ -7,6 +7,7 @@ import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 import { CyberBandSection } from "@/components/cyber-band-section";
 import { PilotBandSection } from "@/components/pilot-band-section";
+import { IaBandSection } from "@/components/ia-band-section";
 
 // Nettoyage homepage 2026-08-02 (demande explicite de Kenams : "c'est
 // brouillon [...] on ne sait pas ce que je fais, site web ? appli ? IA ?
@@ -127,6 +128,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       <HeroSection />
+      <IaBandSection />
       <AiSystemsSection />
       <PilotBandSection />
       <TrustBar />

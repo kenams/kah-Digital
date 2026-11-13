@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendQuoteActivity } from "@/lib/admin-activity-store";
 import { handlePackOrderCompleted } from "@/lib/pack-order-notify";
+import { handleIaOfferCompleted } from "@/lib/ia-offer-notify";
 import { computeNextPaymentStatus, getQuotePaymentStatusLabel } from "@/lib/quote-payments";
 import { getQuoteRecord, isSupabaseConfigured, updateQuoteRecord } from "@/lib/quote-store";
 import { getStripeClient, getStripeWebhookSecret, isStripeConfigured } from "@/lib/stripe";
@@ -27,6 +28,11 @@ export async function POST(request: NextRequest) {
     // Commandes de packs en ligne (/commander) : alertes + e-mails, sans dépendre de Supabase.
     if (event.type === "checkout.session.completed" && event.data.object.metadata?.paymentType === "pack_order") {
       await handlePackOrderCompleted(event.data.object);
+      return NextResponse.json({ ok: true });
+    }
+
+    // Offres IA payées via Payment Link : alerte e-mail, sans dépendre de Supabase.
+    if (event.type === "checkout.session.completed" && (await handleIaOfferCompleted(event.data.object))) {
       return NextResponse.json({ ok: true });
     }
 

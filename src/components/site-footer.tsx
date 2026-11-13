@@ -64,6 +64,7 @@ export function SiteFooter() {
         links: [
           { label: "Accueil", href: "/" },
           { label: "Offres", href: "/offres" },
+          { label: "Formation et IA en entreprise", href: "/ia-entreprise" },
           { label: "Commander mon site", href: "/commander" },
           { label: "Site qui se met à jour par message", href: "/pulse" },
           { label: "Devenir partenaire", href: "/partenaires" },

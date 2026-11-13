@@ -69,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/references",
     "/mentions-legales",
     "/pilotes",
+    "/ia-entreprise",
     "/pilotes/sitewatch",
     "/pilotes/relancecash",
     "/pilotes/scopelock",
