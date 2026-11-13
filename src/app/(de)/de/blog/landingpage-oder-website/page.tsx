@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landingpage oder Website: was passt zu Ihnen? — KAH Digital Studio",
+  title: "Landingpage oder Website: was passt zu Ihnen?",
   description: "Landingpage oder Visitenkarten-Website: was ist der Unterschied, was kostet was und für welches Ziel? Ein Leitfaden zur Wahl der passenden Option für Ihre Situation.",
   keywords: ["landing page vs site vitrine", "Unterschied Landingpage Visitenkarten-Website", "quand choisir landing page", "Landingpage oder Website"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/landingpage-oder-website" },

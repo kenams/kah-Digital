@@ -79,8 +79,8 @@ const baseMetadata = {
 /** Titre sans la marque en suffixe ; au-delà de 70 caractères, coupé au dernier séparateur (Google tronque vers 60). */
 export function sanitizePageTitle(title: string) {
   const base = title.replace(/\s*\|\s*KAH Digital Studio\s*$/i, "").trim();
-  if (base.length <= 70) return base;
-  const head = base.slice(0, 66);
+  if (base.length <= 65) return base;
+  const head = base.slice(0, 63);
   const cut = Math.max(head.lastIndexOf(" — "), head.lastIndexOf(" | "), head.lastIndexOf(" · "), head.lastIndexOf(": "), head.lastIndexOf(" - "));
   return (cut > 25 ? head.slice(0, cut) : head.replace(/\s+\S*$/, "")).trim();
 }
@@ -88,8 +88,8 @@ export function sanitizePageTitle(title: string) {
 /** Description sans dépasser ~160 caractères (Google tronque au-delà) : coupée à la fin d'une phrase, sinon au dernier mot. */
 export function sanitizeDescription(description: string) {
   const text = description.trim();
-  if (text.length <= 170) return text;
-  const head = text.slice(0, 160);
+  if (text.length <= 165) return text;
+  const head = text.slice(0, 158);
   const sentence = Math.max(head.lastIndexOf(". "), head.lastIndexOf(" · "), head.lastIndexOf(" — "));
   if (sentence >= 90) return head.slice(0, sentence).replace(/[.\s·—-]+$/, "") + ".";
   return head.replace(/\s+\S*$/, "").replace(/[,;:\s]+$/, "") + "…";

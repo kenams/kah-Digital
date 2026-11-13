@@ -6,6 +6,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 import { CyberBandSection } from "@/components/cyber-band-section";
+import { IaBandSection } from "@/components/ia-band-section";
 // Nettoyage 2026-08-02 — voir (fr)/page.tsx pour le détail.
 
 export const metadata = buildPageMetadata({
@@ -121,6 +122,7 @@ export default function HomePageDe() {
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
+      <IaBandSection locale="de" />
       <CyberBandSection />
       <FAQSection />
       <CTASection />

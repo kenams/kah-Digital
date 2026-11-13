@@ -3,7 +3,7 @@ import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-pa
 
 export const metadata: Metadata = {
   title: "Création site web Metz — KAH Digital Studio | Devis personnalisé",
-  description: "Studio digital pour Metz et le Grand Est. Sites web, apps et solutions digitales pour PME, indépendants et entreprises transfrontalières. Devis personnalisé sous 24h, adapté au besoin réel.",
+  description: "Studio digital pour Metz et le Grand Est. Sites web, apps et solutions digitales pour PME, indépendants et entreprises transfrontalières.",
   keywords: ["création site web Metz", "agence web Metz", "site internet Metz", "développeur web Grand Est", "agence digitale Metz"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

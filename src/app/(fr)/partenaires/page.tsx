@@ -9,7 +9,7 @@ const mailto =
 export const metadata: Metadata = {
   title: "Devenir partenaire | KAH Digital Studio",
   description:
-    "Comptables, courtiers, associations de commerçants, fédérations d'artisans : recommandez un site web à vos clients et touchez 10 % du prix du site, ou offrez-leur 10 % de remise.",
+    "Comptables, courtiers, associations, fédérations d'artisans : recommandez un site web à vos clients et touchez 10 % du prix, ou offrez-leur 10 % de remise.",
   alternates: { canonical: url },
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

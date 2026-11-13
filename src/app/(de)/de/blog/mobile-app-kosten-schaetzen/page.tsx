@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "So schätzen Sie die Kosten einer Mobile-App 2026 — KAH Digital Studio",
+  title: "So schätzen Sie die Kosten einer Mobile-App 2026",
   description: "Planungskriterien für eine Mobile-App 2026: Visitenkarten-App, MVP, native App oder React Native. Ein Leitfaden zur individuellen Offerte.",
   keywords: ["estimation application mobile", "devis application mobile", "App-Kosten schätzen", "individuelle Mobile-App-Entwicklung", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/de/blog/mobile-app-kosten-schaetzen" },

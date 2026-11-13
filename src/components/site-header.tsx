@@ -26,7 +26,8 @@ export function SiteHeader() {
         nav: [
           { label: "Home", href: "/en" },
           { label: "Offers", href: "/en/offres" },
-          { label: "AI Agents", href: "/en/agents-ia", highlight: true },
+          { label: "AI Training", href: "/en/ia-entreprise", highlight: true },
+          { label: "AI Agents", href: "/en/agents-ia" },
           { label: "Cybersecurity", href: "/en/cybersecurite" },
           { label: "Portfolio", href: "/en/projets" },
           { label: "Order", href: "/en/commander", accent: true },
@@ -45,7 +46,8 @@ export function SiteHeader() {
         nav: [
           { label: "Startseite", href: "/de" },
           { label: "Angebote", href: "/de/offres" },
-          { label: "KI-Agenten", href: "/de/agents-ia", highlight: true },
+          { label: "KI-Schulung", href: "/de/ia-entreprise", highlight: true },
+          { label: "KI-Agenten", href: "/de/agents-ia" },
           { label: "Cybersicherheit", href: "/de/cybersecurite" },
           { label: "Referenzen", href: "/de/projets" },
           { label: "Bestellen", href: "/de/commander", accent: true },

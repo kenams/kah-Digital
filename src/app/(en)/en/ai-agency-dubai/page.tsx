@@ -3,7 +3,7 @@ import { LocalSeoEnPageContent, EN_CITY_PAGES } from "@/components/pages/local-s
 
 export const metadata: Metadata = {
   title: "AI Agency Dubai — GPT-4 Agents & Automation for UAE",
-  description: "AI agency Dubai: multilingual GPT-4 agents (Arabic/English), lead qualification, 24/7 chatbots, CRM automation for UAE businesses. Free audit within 24h. Deploy in 10 days.",
+  description: "AI agency Dubai: multilingual GPT-4 agents (Arabic/English), lead qualification, 24/7 chatbots, CRM automation for UAE businesses. Free audit within 24h.",
   keywords: ["AI agency Dubai", "AI automation UAE", "GPT-4 agents Dubai", "chatbot development Dubai", "AI consulting UAE", "business automation Dubai"],
   alternates: { canonical: "https://kah-digital.ch/en/ai-agency-dubai" },
 };

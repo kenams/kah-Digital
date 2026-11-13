@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "How to estimate the cost of a mobile app in 2026 — KAH Digital Studio",
+  title: "How to estimate the cost of a mobile app in 2026",
   description: "scoping criteria for a mobile app in 2026: showcase app, MVP, native app or React Native. A guide to getting a custom quote.",
   keywords: ["estimation application mobile", "devis application mobile", "how to estimate an app cost", "custom mobile app development", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/application-mobile-cout" },

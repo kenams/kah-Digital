@@ -6,7 +6,7 @@ import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 export const metadata: Metadata = {
   title: "Lokales SEO für KMU: 2026 auf der ersten Google-Seite erscheinen",
   description:
-    "Kompletter Leitfaden zu lokalem SEO für KMU: Google Business Profile, Kundenbewertungen, lokale Seiten, Schema-Markup. Die konkreten Massnahmen, damit Ihre lokalen Kunden Sie finden.",
+    "Kompletter Leitfaden zu lokalem SEO für KMU: Google Business Profile, Kundenbewertungen, lokale Seiten, Schema-Markup.",
   keywords: [
     "seo local pme",
     "lokale Suchmaschinenoptimierung Unternehmen",

@@ -6,7 +6,7 @@ import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 export const metadata: Metadata = {
   title: "SEO local pour PME : apparaître en 1ère page Google en 2026",
   description:
-    "Guide complet SEO local pour PME : Google Business Profile, avis clients, pages locales, balises schema. Les actions concrètes pour que vos clients locaux vous trouvent.",
+    "Guide complet SEO local pour PME : Google Business Profile, avis clients, pages locales, balises schema.",
   keywords: [
     "seo local pme",
     "référencement local entreprise",

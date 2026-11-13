@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Webagentur Schweiz — KAH Digital Studio | Zürich · Bern · Basel · Lausanne",
+  title: "Webagentur Schweiz | Zürich · Bern · Basel · Lausanne",
   description: "Digitalstudio, 100 % auf Distanz. Websites, Apps und KI-Lösungen für KMU, Startups und Selbstständige in der West-, Deutsch- und Südschweiz. Offerte innert 24h.",
   keywords: ["Webagentur Schweiz", "Website erstellen Schweiz", "Webentwickler Schweiz", "Digitalstudio Schweiz", "Website KMU Schweiz", "Webanwendung Schweiz"],
   alternates: { canonical: "https://kah-digital.ch/de/webagentur-schweiz" },

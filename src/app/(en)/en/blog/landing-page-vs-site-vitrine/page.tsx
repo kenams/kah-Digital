@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs showcase site: which to choose? — KAH Digital Studio",
+  title: "Landing page vs showcase site: which to choose?",
   description: "Landing page or showcase site: what is the difference, what does each cost, and for which goal? A guide to choosing the right option for your situation.",
   keywords: ["landing page vs site vitrine", "landing page vs showcase site difference", "quand choisir landing page", "landing page or website"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/landing-page-vs-site-vitrine" },

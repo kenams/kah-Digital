@@ -3,8 +3,8 @@ import Link from "next/link";
 import { FiArrowRight, FiCheck, FiMapPin, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Agence web Suisse — KAH Digital Studio | Lausanne · Genève · Zurich · Berne",
-  description: "Studio digital 100 % à distance. Création de sites web, apps et solutions IA pour PME, startups et indépendants en Suisse romande, alémanique et tessinoise. Devis en 24h.",
+  title: "Agence web Suisse | Lausanne · Genève · Zurich · Berne",
+  description: "Studio digital 100 % à distance. Création de sites web, apps et solutions IA pour PME, startups et indépendants en Suisse romande, alémanique et tessinoise.",
   keywords: ["agence web suisse", "création site web suisse", "développeur web suisse", "studio digital suisse", "site internet suisse pme", "application web suisse"],
   alternates: { canonical: "https://kah-digital.ch/agence-web-suisse" },
   openGraph: {

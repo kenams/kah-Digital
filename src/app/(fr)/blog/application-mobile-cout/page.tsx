@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "comment estimer une application mobile en 2026 ? — KAH Digital Studio",
+  title: "comment estimer une application mobile en 2026 ?",
   description: "critères de cadrage pour une app mobile en 2026 : application vitrine, MVP, application native ou React Native. Guide pour obtenir un devis personnalisé.",
   keywords: ["estimation application mobile", "devis application mobile", "comment estimer une app", "développement application mobile sur mesure", "MVP application mobile"],
   alternates: { canonical: "https://kah-digital.ch/blog/application-mobile-cout" },

@@ -2,8 +2,8 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Grenoble — KAH Digital Studio | Devis personnalisé",
-  description: "Studio digital pour Grenoble et l'Isère. Sites web, apps et solutions digitales pour startups deeptech, PME et indépendants. Devis personnalisé sous 24h, adapté au besoin réel.",
+  title: "Création site web Grenoble | Devis personnalisé",
+  description: "Studio digital pour Grenoble et l'Isère. Sites web, apps et solutions digitales pour startups deeptech, PME et indépendants.",
   keywords: ["création site web Grenoble", "agence web Grenoble", "site internet Grenoble", "développeur web Grenoble", "agence digitale Isère"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

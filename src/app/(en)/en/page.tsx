@@ -6,6 +6,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { FAQSection } from "@/components/faq-section";
 import { CTASection } from "@/components/cta-section";
 import { CyberBandSection } from "@/components/cyber-band-section";
+import { IaBandSection } from "@/components/ia-band-section";
 // Nettoyage 2026-08-02 — voir (fr)/page.tsx pour le détail : même
 // simplification appliquée ici pour rester cohérent entre les 3 langues.
 
@@ -122,6 +123,7 @@ export default function HomePageEn() {
       <AiSystemsSection />
       <TrustBar />
       <PricingSection />
+      <IaBandSection locale="en" />
       <CyberBandSection />
       <FAQSection />
       <CTASection />

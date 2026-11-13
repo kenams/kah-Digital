@@ -4,7 +4,7 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiX } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Landing page vs site vitrine : lequel choisir ? — KAH Digital Studio",
+  title: "Landing page vs site vitrine : lequel choisir ?",
   description: "Landing page ou site vitrine : quelle différence, quel Périmètre, pour quel objectif ? Guide pour choisir la bonne option selon votre situation.",
   keywords: ["landing page vs site vitrine", "différence landing page site vitrine", "quand choisir landing page", "landing page ou site web"],
   alternates: { canonical: "https://kah-digital.ch/blog/landing-page-vs-site-vitrine" },

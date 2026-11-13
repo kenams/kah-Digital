@@ -3,7 +3,7 @@ import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-pa
 
 export const metadata: Metadata = {
   title: "Création site web Paris — KAH Digital Studio | Devis personnalisé",
-  description: "Studio digital franco-suisse. Création de sites web, apps et solutions IA pour freelances, PME et startups parisiennes. Devis personnalisé sous 24h, adapté au besoin réel.",
+  description: "Studio digital franco-suisse. Création de sites web, apps et solutions IA pour freelances, PME et startups parisiennes.",
   keywords: ["création site web Paris", "agence web Paris", "site internet Paris", "développeur web Paris freelance"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

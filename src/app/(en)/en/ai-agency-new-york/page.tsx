@@ -3,7 +3,7 @@ import { LocalSeoEnPageContent, EN_CITY_PAGES } from "@/components/pages/local-s
 
 export const metadata: Metadata = {
   title: "AI Agency New York — GPT-4 Agents & Automation for NYC",
-  description: "AI agency New York: custom GPT-4 agents, lead qualification automation, 24/7 support chatbots, CRM workflows. 10-day deployment, ROI from month one. Free AI audit within 24h.",
+  description: "AI agency New York: custom GPT-4 agents, lead qualification automation, 24/7 support chatbots, CRM workflows. 10-day deployment, ROI from month one.",
   keywords: ["AI agency New York", "AI automation NYC", "GPT-4 agents New York", "chatbot development NYC", "AI consulting New York", "business AI automation US"],
   alternates: { canonical: "https://kah-digital.ch/en/ai-agency-new-york" },
 };

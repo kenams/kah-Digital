@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { ProjectDetailPageContent } from "@/components/pages/project-detail-page-content";
 import { portfolioProjects } from "@/data/portfolio";
 import { portfolioProjectsEn } from "@/data/portfolio.en";
-import { buildNoIndexMetadata } from "@/lib/shared-metadata";
+import { buildNoIndexMetadata, sanitizeDescription } from "@/lib/shared-metadata";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -20,17 +20,17 @@ export async function generateMetadata({ params }: ProjectPageProps) {
     return buildNoIndexMetadata({
       locale: "fr",
       path: `/projets/${slug}`,
-      title: `${project.name} | KAH Digital Studio`,
-      description: project.shortDescription,
+      title: `${project.name} — Réalisation web | KAH Digital Studio`,
+      description: sanitizeDescription(project.shortDescription),
     });
   }
 
   const ogImage = project.mockups?.primary ?? "/og-kah-studio.png";
-  const title = `${project.name} | KAH Digital Studio`;
+  const title = `${project.name} — Réalisation web | KAH Digital Studio`;
 
   return {
     title,
-    description: project.shortDescription,
+    description: sanitizeDescription(project.shortDescription),
     alternates: {
       canonical: `/projets/${slug}`,
       // hreflang EN uniquement si la fiche anglaise existe (sinon 404)
@@ -40,13 +40,13 @@ export async function generateMetadata({ params }: ProjectPageProps) {
       type: "article",
       url: `/projets/${slug}`,
       title,
-      description: project.shortDescription,
+      description: sanitizeDescription(project.shortDescription),
       images: [{ url: ogImage, width: 1200, height: 900, alt: `${project.name} mockup` }],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: project.shortDescription,
+      description: sanitizeDescription(project.shortDescription),
       images: [ogImage],
     },
   };

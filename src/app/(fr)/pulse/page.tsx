@@ -8,7 +8,7 @@ const url = "https://kah-digital.ch/pulse";
 export const metadata: Metadata = {
   title: "Site web qui se met à jour par message + rappels de RDV",
   description:
-    "Écrivez « fermé lundi » ou « plat du jour : … » : votre site se met à jour en quelques secondes. Rappels de rendez-vous et demandes d'avis Google automatiques. Dès 99 €/mois.",
+    "Écrivez « fermé lundi » ou « plat du jour : … » : votre site se met à jour en quelques secondes. Rappels de rendez-vous et demandes d'avis Google automatiques.",
   alternates: { canonical: url },
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

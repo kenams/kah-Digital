@@ -3,8 +3,8 @@ import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "KAH Digital Studio Blog — Tipps zu Website, SEO und Digitalem für KMU",
-  description: "Praxisleitfäden zu Website-Erstellung, Offerten, Relaunch und SEO für KMU und Selbstständige. Von KAH Digital Studio, einem Digitalstudio auf Distanz für Frankreich und die Schweiz.",
+  title: "Blog — Tipps zu Website, SEO und Digitalem für KMU",
+  description: "Praxisleitfäden zu Website-Erstellung, Offerten, Relaunch und SEO für KMU und Selbstständige, von KAH Digital Studio (Frankreich und Schweiz).",
   alternates: { canonical: "https://kah-digital.ch/de/blog" },
 };
 
@@ -83,7 +83,7 @@ const ARTICLES = [
   },
   {
     slug: "ki-automatisierung-kmu",
-    title: "KI-Automatisierung für KMU 2025: Was wirklich funktioniert (und was nicht)",
+    title: "KI-Automatisierung für KMU: was wirklich funktioniert",
     excerpt: "Die 5 Anwendungsfälle mit realistischem ROI-Potenzial — und warum die meisten KI-Projekte scheitern.",
     readTime: "6 Min.",
     date: "2025",

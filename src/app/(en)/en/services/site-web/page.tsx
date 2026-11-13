@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/shared-metadata";
 export const metadata: Metadata = buildPageMetadata({
   locale: "en",
   path: "/services/site-web",
-  title: "Business websites",
+  title: "Business Website Design & Development | KAH Digital Studio",
   description:
     "Showcase websites, corporate websites, and custom presentation platforms for French-speaking, English-speaking, and international companies.",
 });

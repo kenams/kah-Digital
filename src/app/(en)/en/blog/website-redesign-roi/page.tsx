@@ -4,13 +4,13 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Website Redesign ROI: What to Realistically Expect (With Real Numbers)",
+  title: "Website Redesign ROI: What to Realistically Expect",
   description: "A website redesign costs money. Here's what it should return — conversion rate benchmarks, load time impact, and how to measure ROI in 90 days.",
   keywords: ["website redesign ROI", "website redesign results", "how much does a website redesign cost", "website conversion rate improvement"],
   alternates: { canonical: "https://kah-digital.ch/en/blog/website-redesign-roi" },
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
-    title: "Website Redesign ROI: What to Realistically Expect (With Real Numbers)",
+    title: "Website Redesign ROI: What to Realistically Expect",
     description: "A website redesign costs money. Here's what it should return — conversion rate benchmarks, load time impact, and how to measure ROI in 90 days.",
   },
 };
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Website Redesign ROI: What to Realistically Expect (With Real Numbers)",
+  "headline": "Website Redesign ROI: What to Realistically Expect",
   "datePublished": "2026-05-20",
   "dateModified": "2026-05-20",
   "author": { "@type": "Organization", "name": "KAH Digital Studio" },

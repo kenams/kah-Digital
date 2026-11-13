@@ -8,8 +8,9 @@ const handled = new Set<string>();
 /** Paiement d'une offre IA (Payment Link Stripe) → e-mail d'alerte à Kenams. Renvoie false si ce n'est pas une offre IA. */
 export async function handleIaOfferCompleted(session: Stripe.Checkout.Session): Promise<boolean> {
   const linkId = typeof session.payment_link === "string" ? session.payment_link : session.payment_link?.id;
-  const offer = iaOfferByPaymentLink(linkId);
-  if (!offer) return false;
+  const match = iaOfferByPaymentLink(linkId);
+  if (!match) return false;
+  const { offer, locale } = match;
   if (handled.has(session.id)) return true;
   handled.add(session.id);
 
@@ -17,7 +18,8 @@ export async function handleIaOfferCompleted(session: Stripe.Checkout.Session): 
   const company = session.custom_fields?.find((f) => f.key === "entreprise")?.text?.value ?? "";
   const paid = ((session.amount_total ?? 0) / 100).toLocaleString("fr-FR", { minimumFractionDigits: 2 });
   const rows: [string, string][] = [
-    ["Offre", `${offer.name} (${formatIaPrice(offer)})`],
+    ["Offre", `${offer.copy.fr.name} (${formatIaPrice(offer)})`],
+    ["Langue du client", locale.toUpperCase()],
     ["Montant payé", `${paid} ${(session.currency ?? "eur").toUpperCase()}`],
     ["Nom", d?.name ?? ""],
     ["Entreprise", company],
@@ -29,6 +31,6 @@ export async function handleIaOfferCompleted(session: Stripe.Checkout.Session): 
     .filter(([, v]) => v)
     .map(([k, v]) => `<tr><td><strong>${escapeHtml(k)}</strong></td><td>${escapeHtml(v)}</td></tr>`)
     .join("")}</table><p>À faire : contacter le client sous 48 h ouvrées pour fixer la date.</p>`;
-  await sendAdminEmail(`💰 Réservation IA : ${offer.name} — ${d?.name ?? d?.email ?? "client"}`, html);
+  await sendAdminEmail(`💰 Réservation IA : ${offer.copy.fr.name} — ${d?.name ?? d?.email ?? "client"}`, html);
   return true;
 }

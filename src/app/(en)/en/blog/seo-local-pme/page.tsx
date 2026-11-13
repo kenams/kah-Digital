@@ -4,9 +4,9 @@ import Script from "next/script";
 import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Local SEO for small businesses: reaching Google's first page in 2026",
+  title: "Local SEO for Small Businesses: Reach Google's First Page",
   description:
-    "A complete local SEO guide for small businesses: Google Business Profile, customer reviews, local pages, schema markup. The concrete actions that help local customers find you.",
+    "A complete local SEO guide for small businesses: Google Business Profile, customer reviews, local pages, schema markup.",
   keywords: [
     "seo local pme",
     "local business SEO",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://kah-digital.ch/en/blog/seo-local-pme" },
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
-    title: "Local SEO for small businesses: reaching Google's first page in 2026",
+    title: "Local SEO for Small Businesses: Reach Google's First Page",
     description:
       "The concrete actions that help your local customers find you on Google — without an expensive SEO agency.",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Local SEO for small businesses: reaching Google's first page in 2026",
+  headline: "Local SEO for Small Businesses: Reach Google's First Page",
   datePublished: "2026-05-04",
   dateModified: "2026-05-04",
   author: { "@type": "Organization", name: "KAH Digital Studio" },

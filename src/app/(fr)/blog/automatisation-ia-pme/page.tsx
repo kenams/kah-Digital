@@ -6,7 +6,7 @@ import { FiArrowRight, FiCheck, FiMessageCircle } from "react-icons/fi";
 export const metadata: Metadata = {
   title: "Automatisation IA pour PME : 5 exemples concrets en 2026",
   description:
-    "Découvrez comment les PME utilisent l'automatisation IA pour qualifier des leads, automatiser leur reporting et réduire les tâches répétitives. 5 exemples types de ce qu'on peut automatiser, avec les objectifs à viser.",
+    "Découvrez comment les PME utilisent l'automatisation IA pour qualifier des leads, automatiser leur reporting et réduire les tâches répétitives.",
   keywords: [
     "automatisation ia pme",
     "automatisation intelligence artificielle entreprise",

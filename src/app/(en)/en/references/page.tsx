@@ -6,7 +6,7 @@ import { FiArrowRight, FiCheck, FiExternalLink, FiMessageCircle } from "react-ic
 export const metadata: Metadata = {
   title: "References — Delivered projects, live online | KAH Digital Studio",
   description:
-    "Real projects delivered by KAH Digital Studio: showcase site with online booking, Stripe e-commerce shop, redesign with automated appointment booking. Everything is live — open it and judge for yourself.",
+    "Real projects delivered by KAH Digital Studio: showcase site with online booking, Stripe e-commerce shop, redesign with automated appointment booking.",
   keywords: [
     "web agency references",
     "KAH Digital Studio website projects",

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Agence web Genève — KAH Digital Studio | Création site web dès CHF 290",
-  description: "Agence web pour entreprises genevoises. Sites web multilingues FR/EN/DE, apps et solutions IA. Cabinets d'avocats, ONG, fiduciaires, hôtels. Prix fixe CHF 290, devis sous 24h.",
+  title: "Agence web Genève | Création site web dès CHF 290",
+  description: "Agence web pour entreprises genevoises. Sites web multilingues FR/EN/DE, apps et solutions IA. Cabinets d'avocats, ONG, fiduciaires, hôtels.",
   keywords: ["agence web Genève", "création site web Genève", "site internet Genève", "développeur web Genève", "agence digitale Genève"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],

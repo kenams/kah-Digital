@@ -3,8 +3,8 @@ import Link from "next/link";
 import { FiArrowRight, FiClock } from "react-icons/fi";
 
 export const metadata: Metadata = {
-  title: "Blog KAH Digital Studio — Conseils sites web, SEO et digital pour PME",
-  description: "Guides pratiques sur la création de site web, Les formats, la refonte et le SEO pour PME et indépendants. Par KAH Digital Studio, studio digital à distance (France & Suisse).",
+  title: "Blog — Conseils sites web, SEO et digital pour PME",
+  description: "Guides pratiques sur la création de site web, Les formats, la refonte et le SEO pour PME et indépendants.",
   alternates: { canonical: "https://kah-digital.ch/blog" },
 };
 

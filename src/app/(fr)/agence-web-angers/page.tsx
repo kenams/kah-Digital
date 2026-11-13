@@ -2,8 +2,8 @@
 import { LocalSeoPageContent, CITY_PAGES } from "@/components/pages/local-seo-page-content";
 
 export const metadata: Metadata = {
-  title: "Création site web Angers — KAH Digital Studio | Devis personnalisé",
-  description: "Studio digital pour Angers et la Maine-et-Loire. Sites web, apps et solutions digitales pour startups, PME et indépendants angevins. Devis personnalisé sous 24h, adapté au besoin réel.",
+  title: "Création site web Angers | Devis personnalisé",
+  description: "Studio digital pour Angers et la Maine-et-Loire. Sites web, apps et solutions digitales pour startups, PME et indépendants angevins.",
   keywords: ["création site web Angers", "agence web Angers", "site internet Angers", "développeur web Maine-et-Loire", "agence digitale Angers"],
   openGraph: {
     images: [{ url: "/og-kah-studio.png", width: 1200, height: 630 }],
