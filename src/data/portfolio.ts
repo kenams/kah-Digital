@@ -127,26 +127,26 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "kah-workforce",
     name: "KAH Workforce",
-    type: "Agent IA vertical / Chef de cabinet pour artistes indépendants",
+    type: "Agent IA vertical / Chef de cabinet pour indépendants",
     tagline:
-      "Le produit phare de KAH Digital Studio — un agent IA branché sur le business d'un artiste indépendant, de bout en bout.",
+      "Le produit phare de KAH Digital Studio — une équipe IA qui trie tes mails et prépare tes décisions chaque jour.",
     shortDescription:
-      "Chef de cabinet IA autonome pour artistes indépendants : contrats, tournées, réseaux, royalties et décisions courantes gérés sans intervention manuelle.",
+      "Chef de cabinet IA pour indépendants : mails triés par urgence, réponses préparées, agenda, comptabilité et échéances juridiques suivis au même endroit.",
     description:
-      "KAH Workforce n'est pas un chatbot posé sur un site — c'est un agent IA vertical qui connaît le métier d'artiste indépendant de bout en bout. Contrats, dates de tournée, réseaux sociaux, royalties, relances : l'agent agit à la place de l'artiste sur les décisions courantes, avec mémoire persistante et intégration à ses outils réels. C'est la preuve en production du positionnement KAH Digital Studio : des agents IA verticaux, pas des sites de plus.",
+      "KAH Workforce n'est pas un chatbot posé sur un site : c'est une équipe d'agents IA qui travaille sur le vrai quotidien d'un indépendant. L'Email Manager classe les messages par urgence et prépare les réponses, l'Agenda extrait les rendez-vous, le Comptable suit revenus et factures, le Juridique repère les échéances. Chaque jour, un briefing clair : quelques décisions à prendre, rien n'est envoyé sans validation.",
     challenge:
-      "Donner à un artiste indépendant, sans équipe de management, l'équivalent d'un chef de cabinet disponible 24h/24 — capable de suivre son business réel, pas juste de répondre à des questions génériques.",
+      "Donner à un indépendant sans assistant l'équivalent d'un chef de cabinet : savoir en quelques secondes ce qui demande vraiment son attention, au lieu de trier lui-même des dizaines de mails.",
     solution:
       "Un agent IA vertical pensé pour un métier précis, avec une mémoire persistante et un pilotage quotidien sans friction — l'architecture technique détaillée reste réservée aux échanges commerciaux.",
-    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
     result:
-      "Agent IA vertical en production, chef de cabinet autonome pour artistes indépendants — le produit qui illustre le positionnement KAH Digital Studio.",
+      "Agent IA vertical en production : briefing quotidien, décisions triées par urgence, réponses prêtes à envoyer en un clic après validation.",
     timeline: "En développement continu",
     deliverables: [
-      "Agent IA vertical intégré aux outils réels de l'artiste",
-      "Suivi contrats, tournées et royalties",
-      "Décisions courantes déléguées",
-      "Mémoire persistante et pilotage 24h/24",
+      "Tri des mails par urgence et réponses préparées",
+      "Briefing quotidien et décisions classées",
+      "Agenda, comptabilité et échéances juridiques suivis",
+      "Envoi uniquement après validation",
     ],
     metrics: [
       { label: "Disponibilité", value: "24h/24" },

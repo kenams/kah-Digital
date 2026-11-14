@@ -21,7 +21,7 @@ const COPY = {
     eyebrow: "Agents IA sur mesure · KAH Digital Studio",
     title: "Des agents IA qui travaillent",
     titleAccent: "pendant que vous dormez.",
-    intro: "KAH Digital Studio conçoit des agents IA packagés, opérationnels en 10 jours. Prospection, support, devis, casting — chaque agent est formé sur votre métier et livré avec le code source. Preuve que ça marche en production : KAH Workforce, notre agent vertical sur-mesure pour artistes indépendants. Résultats mesurables dès J+30 ou on corrige gratuitement.",
+    intro: "KAH Digital Studio conçoit des agents IA packagés, opérationnels en 10 jours. Prospection, support, devis, casting — chaque agent est formé sur votre métier et livré avec le code source. Preuve que ça marche en production : KAH Workforce, notre agent vertical sur-mesure pour indépendants. Résultats mesurables dès J+30 ou on corrige gratuitement.",
     cta: "Réserver ma démo gratuite",
     ctaSub: "Réponse sous 2h · Sans engagement · Démo sur votre cas concret",
     ctaSecondary: "Voir les tarifs",

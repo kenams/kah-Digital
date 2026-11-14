@@ -6,24 +6,24 @@ export const portfolioProjectsDe: PortfolioProject[] = [
     name: "KAH Workforce",
     type: "Vertikaler KI-Agent / Kabinettschef für Selbstständige",
     tagline:
-      "Das Vorzeigeprodukt von KAH Digital Studio — ein KI-Agent, der Ende-zu-Ende in das Geschäft eines unabhängigen Künstlers eingebettet ist.",
+      "Das Vorzeigeprodukt von KAH Digital Studio — ein KI-Team, das Ihre E-Mails sortiert und Ihre Entscheidungen jeden Tag vorbereitet.",
     shortDescription:
-      "Autonomer KI-Kabinettschef für Selbstständige: Verträge, Tourdaten, Social Media, Tantiemen und alltägliche Entscheidungen ohne manuellen Aufwand.",
+      "KI-Kabinettschef für Selbstständige: E-Mails nach Dringlichkeit sortiert, Antworten vorbereitet, Termine, Buchhaltung und rechtliche Fristen an einem Ort.",
     description:
-      "KAH Workforce ist kein Chatbot auf einer Website — es ist ein vertikaler KI-Agent, der den Job eines unabhängigen Künstlers Ende-zu-Ende kennt. Verträge, Tourdaten, Social Media, Tantiemen, Follow-ups: Der Agent handelt anstelle des Künstlers bei alltäglichen Entscheidungen, mit persistentem Gedächtnis und Integration in seine echten Tools. Das ist der Live-Beweis für die Positionierung von KAH Digital Studio: vertikale KI-Agenten, keine weitere Website.",
+      "KAH Workforce ist kein Chatbot auf einer Website, sondern ein Team von KI-Agenten für den echten Arbeitsalltag von Selbstständigen. Der Email Manager sortiert Nachrichten nach Dringlichkeit und entwirft Antworten, der Kalender-Agent erkennt Termine, die Buchhaltung verfolgt Einnahmen und Rechnungen, der Rechts-Agent erkennt Fristen. Jeden Tag ein klares Briefing: wenige Entscheidungen, nichts wird ohne Freigabe gesendet.",
     challenge:
-      "Einem unabhängigen Künstler ohne Management-Team das Äquivalent eines rund um die Uhr verfügbaren Kabinettschefs geben — fähig, sein echtes Geschäft zu verfolgen, nicht nur generische Fragen zu beantworten.",
+      "Selbstständigen ohne Assistenz das Äquivalent eines Kabinettschefs geben: in Sekunden wissen, was wirklich Aufmerksamkeit braucht, statt Dutzende E-Mails selbst zu sortieren.",
     solution:
       "Ein vertikaler KI-Agent für einen einzigen Job, mit persistentem Gedächtnis und reibungsloser täglicher Steuerung — die genaue technische Architektur bleibt Verkaufsgesprächen vorbehalten.",
-    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
     result:
-      "Ein vertikaler KI-Agent live im Einsatz, ein autonomer Kabinettschef für Selbstständige — das Produkt, das die Positionierung von KAH Digital Studio verkörpert.",
+      "Vertikaler KI-Agent live im Einsatz: tägliches Briefing, Entscheidungen nach Dringlichkeit, Antworten nach Freigabe mit einem Klick versendbar.",
     timeline: "Laufende Entwicklung",
     deliverables: [
-      "Vertikaler KI-Agent, integriert in die echten Tools des Künstlers",
-      "Verfolgung von Verträgen, Touren und Tantiemen",
-      "Alltägliche Entscheidungen delegiert",
-      "Persistentes Gedächtnis und 24/7-Steuerung",
+      "E-Mail-Sortierung nach Dringlichkeit mit Antwortentwürfen",
+      "Tägliches Briefing und priorisierte Entscheidungen",
+      "Termine, Buchhaltung und rechtliche Fristen im Blick",
+      "Versand nur nach Freigabe",
     ],
     metrics: [
       { label: "Verfügbarkeit", value: "24/7" },

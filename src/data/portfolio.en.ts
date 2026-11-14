@@ -96,26 +96,26 @@ export const portfolioProjectsEn: PortfolioProject[] = [
   {
     slug: "kah-workforce",
     name: "KAH Workforce",
-    type: "Vertical AI agent / Chief-of-staff for independent artists",
+    type: "Vertical AI agent / Chief-of-staff for independents",
     tagline:
-      "KAH Digital Studio's flagship product — an AI agent wired into an independent artist's business, end to end.",
+      "KAH Digital Studio's flagship product — an AI team that sorts your email and prepares your decisions every day.",
     shortDescription:
-      "Autonomous AI chief-of-staff for independent professionals: contracts, tour dates, socials, royalties, and everyday decisions handled without manual work.",
+      "AI chief-of-staff for independents: email sorted by urgency, replies drafted, calendar, bookkeeping and legal deadlines tracked in one place.",
     description:
-      "KAH Workforce isn't a chatbot bolted onto a website — it's a vertical AI agent that knows the independent artist's job end to end. Contracts, tour dates, social media, royalties, follow-ups: the agent acts in the artist's place on everyday decisions, with persistent memory and integration into their real tools. This is the live proof of KAH Digital Studio's positioning: vertical AI agents, not another website.",
+      "KAH Workforce isn't a chatbot bolted onto a website: it's a team of AI agents working on an independent professional's real day-to-day. The Email Manager ranks messages by urgency and drafts replies, the Calendar agent extracts appointments, the Accountant tracks income and invoices, the Legal agent spots deadlines. Every day, one clear briefing: a few decisions to make, nothing is sent without approval.",
     challenge:
-      "Give an independent artist, without a management team, the equivalent of a chief-of-staff available 24/7 — able to track their real business, not just answer generic questions.",
+      "Give an independent professional without an assistant the equivalent of a chief-of-staff: know in seconds what really needs attention instead of sorting dozens of emails by hand.",
     solution:
       "A vertical AI agent built for one job, with persistent memory and frictionless daily piloting — the detailed technical architecture stays reserved for sales conversations.",
-    stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Stripe", "Vercel"],
     result:
-      "A vertical AI agent live in production, an autonomous chief-of-staff for independent professionals — the product that embodies KAH Digital Studio's positioning.",
+      "Vertical AI agent live in production: daily briefing, decisions ranked by urgency, replies ready to send in one click after approval.",
     timeline: "Ongoing development",
     deliverables: [
-      "Vertical AI agent integrated with the artist's real tools",
-      "Contract, tour and royalty tracking",
-      "Everyday decisions delegated",
-      "Persistent memory and 24/7 piloting",
+      "Email triage by urgency with drafted replies",
+      "Daily briefing and ranked decisions",
+      "Calendar, bookkeeping and legal deadlines tracked",
+      "Sending only after approval",
     ],
     metrics: [
       { label: "Availability", value: "24/7" },

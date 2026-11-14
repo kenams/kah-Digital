@@ -4,8 +4,8 @@ const PRODUCTS = [
   {
     emoji: "🎤",
     name: "KAH Workforce",
-    tagline: "Chef de cabinet IA pour artistes indépendants",
-    desc: "Agent IA vertical branché sur le business d'un artiste, de bout en bout : contrats, tournées, réseaux, royalties, décisions courantes. Il agit, pas juste il répond.",
+    tagline: "Chef de cabinet IA pour indépendants",
+    desc: "Une équipe IA qui trie tes mails par urgence, prépare tes réponses et suit agenda, compta et échéances juridiques. Chaque jour, quelques décisions claires — rien n'est envoyé sans ta validation.",
     tags: ["Vertical AI Agent", "Next.js", "Claude", "Supabase", "Stripe"],
     url: "https://kah-workforce.vercel.app",
     metrics: [
