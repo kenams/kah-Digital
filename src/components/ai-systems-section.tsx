@@ -9,9 +9,9 @@ const SYSTEMS = [
     icon: FiCpu,
     color: "text-emerald-400",
     bg: "bg-emerald-500/10 border-emerald-500/20",
-    fr: { title: "Agent IA vertical sur mesure", desc: "Branché sur un seul métier, de bout en bout — comme KAH Workforce pour les artistes. Il agit pour vous, 24h/24." },
-    en: { title: "Custom Vertical AI Agent", desc: "Wired into one job, end to end — like KAH Workforce for artists. It acts for you, 24/7." },
-    de: { title: "Individueller vertikaler KI-Agent", desc: "Ende-zu-Ende auf einen Job spezialisiert — wie KAH Workforce für Künstler. Er handelt für Sie, 24/7." },
+    fr: { title: "Agent IA vertical sur mesure", desc: "Branché sur un seul métier, de bout en bout — comme KAH Workforce pour les indépendants. Il agit pour vous, 24h/24." },
+    en: { title: "Custom Vertical AI Agent", desc: "Wired into one job, end to end — like KAH Workforce for independents. It acts for you, 24/7." },
+    de: { title: "Individueller vertikaler KI-Agent", desc: "Ende-zu-Ende auf einen Job spezialisiert — wie KAH Workforce für Selbstständige. Er handelt für Sie, 24/7." },
   },
   {
     icon: FiZap,

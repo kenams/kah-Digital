@@ -4,11 +4,11 @@ export const portfolioProjectsDe: PortfolioProject[] = [
   {
     slug: "kah-workforce",
     name: "KAH Workforce",
-    type: "Vertikaler KI-Agent / Kabinettschef für unabhängige Künstler",
+    type: "Vertikaler KI-Agent / Kabinettschef für Selbstständige",
     tagline:
       "Das Vorzeigeprodukt von KAH Digital Studio — ein KI-Agent, der Ende-zu-Ende in das Geschäft eines unabhängigen Künstlers eingebettet ist.",
     shortDescription:
-      "Autonomer KI-Kabinettschef für unabhängige Künstler: Verträge, Tourdaten, Social Media, Tantiemen und alltägliche Entscheidungen ohne manuellen Aufwand.",
+      "Autonomer KI-Kabinettschef für Selbstständige: Verträge, Tourdaten, Social Media, Tantiemen und alltägliche Entscheidungen ohne manuellen Aufwand.",
     description:
       "KAH Workforce ist kein Chatbot auf einer Website — es ist ein vertikaler KI-Agent, der den Job eines unabhängigen Künstlers Ende-zu-Ende kennt. Verträge, Tourdaten, Social Media, Tantiemen, Follow-ups: Der Agent handelt anstelle des Künstlers bei alltäglichen Entscheidungen, mit persistentem Gedächtnis und Integration in seine echten Tools. Das ist der Live-Beweis für die Positionierung von KAH Digital Studio: vertikale KI-Agenten, keine weitere Website.",
     challenge:
@@ -17,7 +17,7 @@ export const portfolioProjectsDe: PortfolioProject[] = [
       "Ein vertikaler KI-Agent für einen einzigen Job, mit persistentem Gedächtnis und reibungsloser täglicher Steuerung — die genaue technische Architektur bleibt Verkaufsgesprächen vorbehalten.",
     stack: ["Next.js", "TypeScript", "Claude", "Supabase", "Stripe", "Vercel"],
     result:
-      "Ein vertikaler KI-Agent live im Einsatz, ein autonomer Kabinettschef für unabhängige Künstler — das Produkt, das die Positionierung von KAH Digital Studio verkörpert.",
+      "Ein vertikaler KI-Agent live im Einsatz, ein autonomer Kabinettschef für Selbstständige — das Produkt, das die Positionierung von KAH Digital Studio verkörpert.",
     timeline: "Laufende Entwicklung",
     deliverables: [
       "Vertikaler KI-Agent, integriert in die echten Tools des Künstlers",

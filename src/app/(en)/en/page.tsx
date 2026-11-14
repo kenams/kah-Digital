@@ -20,7 +20,7 @@ export const metadata = buildPageMetadata({
   keywords: [
     "vertical AI agent",
     "AI agency Switzerland", "AI agency France",
-    "AI chief of staff for artists",
+    "AI chief of staff for independents",
     "business process AI automation",
     "AI agent for musicians",
     "KAH Workforce",
@@ -37,7 +37,7 @@ const faqJsonLd = {
       name: "What is a vertical AI agent?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A vertical AI agent is wired into one job, end to end — unlike generic ChatGPT or Claude. It knows your process, your tools, your vocabulary, and acts in your place (admin, follow-ups, everyday decisions). Live example: KAH Workforce, an AI chief-of-staff for independent artists.",
+        text: "A vertical AI agent is wired into one job, end to end — unlike generic ChatGPT or Claude. It knows your process, your tools, your vocabulary, and acts in your place (admin, follow-ups, everyday decisions). Live example: KAH Workforce, an AI chief-of-staff for independent professionals.",
       },
     },
     {
@@ -103,7 +103,7 @@ const organizationJsonLd = {
     "KAH Digital Studio builds business websites with online booking and custom AI agents for independents and small businesses. Fixed price, delivered in days. Serving France and Switzerland.",
   serviceType: [
     "Vertical AI Agents",
-    "AI Chief of Staff for Artists",
+    "AI Chief of Staff for Independents",
     "Business Process Automation",
     "Custom AI Agents",
     "Premium Web Platforms",

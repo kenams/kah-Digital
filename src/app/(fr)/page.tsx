@@ -28,7 +28,7 @@ export const metadata = buildPageMetadata({
   keywords: [
     "agent IA vertical",
     "agence IA Suisse", "agence IA France",
-    "chef de cabinet IA artiste",
+    "chef de cabinet IA indépendant",
     "automatisation métier IA",
     "AI agent for musicians",
     "KAH Workforce",
@@ -45,7 +45,7 @@ const faqJsonLd = {
       name: "Qu'est-ce qu'un agent IA vertical ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Un agent IA vertical est branché sur un seul métier, du début à la fin — contrairement à ChatGPT ou Claude génériques. Il connaît vos process, vos outils, votre vocabulaire, et agit à votre place (admin, suivi, relances, décisions courantes). Exemple en production : KAH Workforce, chef de cabinet IA pour artistes indépendants.",
+        text: "Un agent IA vertical est branché sur un seul métier, du début à la fin — contrairement à ChatGPT ou Claude génériques. Il connaît vos process, vos outils, votre vocabulaire, et agit à votre place (admin, suivi, relances, décisions courantes). Exemple en production : KAH Workforce, chef de cabinet IA pour indépendants.",
       },
     },
     {
@@ -111,7 +111,7 @@ const organizationJsonLd = {
     "KAH Digital Studio crée des sites vitrines avec prise de rendez-vous en ligne et des agents IA sur mesure pour indépendants et PME. Prix fixe, livré en quelques jours. Clients en France et en Suisse.",
   serviceType: [
     "Vertical AI Agents",
-    "AI Chief of Staff for Artists",
+    "AI Chief of Staff for Independents",
     "Business Process Automation",
     "Custom AI Agents",
     "Premium Web Platforms",

@@ -19,7 +19,7 @@ export const metadata = buildPageMetadata({
   keywords: [
     "vertikaler KI-Agent",
     "KI Agentur Schweiz", "KI Agentur Frankreich",
-    "KI-Kabinettschef für Künstler",
+    "KI-Kabinettschef für Selbstständige",
     "Business-Prozess-KI-Automatisierung",
     "KI-Agent für Musiker",
     "KAH Workforce",
@@ -36,7 +36,7 @@ const faqJsonLd = {
       name: "Was ist ein vertikaler KI-Agent?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ein vertikaler KI-Agent ist Ende-zu-Ende auf einen einzigen Job spezialisiert — im Gegensatz zu generischem ChatGPT oder Claude. Er kennt Ihre Prozesse, Ihre Tools, Ihr Vokabular und handelt für Sie (Verwaltung, Follow-ups, alltägliche Entscheidungen). Live-Beispiel: KAH Workforce, ein KI-Kabinettschef für unabhängige Künstler.",
+        text: "Ein vertikaler KI-Agent ist Ende-zu-Ende auf einen einzigen Job spezialisiert — im Gegensatz zu generischem ChatGPT oder Claude. Er kennt Ihre Prozesse, Ihre Tools, Ihr Vokabular und handelt für Sie (Verwaltung, Follow-ups, alltägliche Entscheidungen). Live-Beispiel: KAH Workforce, ein KI-Kabinettschef für Selbstständige.",
       },
     },
     {
@@ -102,7 +102,7 @@ const organizationJsonLd = {
     "KAH Digital Studio baut Websites mit Online-Terminbuchung und massgeschneiderte KI-Agenten für Selbstständige und KMU. Fester Preis, Lieferung in wenigen Tagen. Kunden in Frankreich und der Schweiz.",
   serviceType: [
     "Vertical AI Agents",
-    "AI Chief of Staff for Artists",
+    "AI Chief of Staff for Independents",
     "Business Process Automation",
     "Custom AI Agents",
     "Premium Web Platforms",
