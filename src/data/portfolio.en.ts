@@ -259,7 +259,7 @@ export const portfolioProjectsEn: PortfolioProject[] = [
       secondary: "#15382d",
       accent: "#d4af37",
     },
-    website: "https://mine-alert-kenams.vercel.app/",
+    website: "https://minealert.kah-digital.ch/",
     mockups: {
       primary: "/mockups/minealert.svg",
       gallery: ["/mockups/minealert.svg"],
