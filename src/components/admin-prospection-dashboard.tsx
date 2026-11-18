@@ -64,7 +64,9 @@ type BatchStats = { id: string; createdAt?: string; runAt?: string; slot: string
 type DailyStat = { date: string; sent: number; opened: number; clicked: number; replied: number };
 
 type LiveStats = {
-  stats: { total: number; sent: number; opened: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
+  stats: { total: number; sent: number; opened: number; openedRaw?: number; clicked: number; replied: number; noEmail: number; j3Sent: number; j7Sent: number; openRate: number; clickRate: number; replyRate: number };
+  statsSince?: string | null;
+  manual?: { contacted: number; replied: number; optOut: number; campaigns: Array<{ campaign: string; contacted: number; replied: number; optOut: number }> };
   dailyStats?: DailyStat[];
   batches: BatchStats[];
   hotProspects: Array<{ id: string; businessName: string | null; website: string; email: string | null; status: string; openedAt: string | null; clickedAt: string | null; sector: string | null; country: string | null; draftReply: string | null }>;
@@ -245,6 +247,8 @@ export function ProspectionDashboard() {
   const [reauditLoading, setReauditLoading] = useState(false);
   const [reauditMsg, setReauditMsg] = useState<string | null>(null);
 
+  const [resettingStats, setResettingStats] = useState(false);
+
   const fetchLiveStats = useCallback(async () => {
     const res = await fetch("/api/prospection/stats");
     const data = await res.json() as LiveStats;
@@ -263,6 +267,20 @@ export function ProspectionDashboard() {
       };
     });
   }, []);
+
+  const handleResetStats = useCallback(async () => {
+    if (!window.confirm("Remettre les compteurs à zéro ? L'historique des prospects est conservé (aucun double envoi).")) return;
+    setResettingStats(true);
+    try {
+      const res = await fetch("/api/prospection/stats/reset", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await fetchLiveStats();
+    } catch (error) {
+      window.alert(`Remise à zéro impossible : ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      setResettingStats(false);
+    }
+  }, [fetchLiveStats]);
 
   useEffect(() => {
     void fetchLiveStats();
@@ -651,9 +669,10 @@ export function ProspectionDashboard() {
           <div className="mx-auto max-w-7xl flex flex-wrap gap-6 text-sm">
             {[
               { label: "📤 Envoyés", value: liveStats.stats.sent, color: "text-white" },
-              { label: "👁 Ouverts", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
+              { label: "👁 Ouverts (humains)", value: `${liveStats.stats.opened} (${liveStats.stats.openRate}%)`, color: "text-blue-400" },
               { label: "🖱 Cliqués", value: `${liveStats.stats.clicked} (${liveStats.stats.clickRate}%)`, color: "text-orange-400" },
-              { label: "🔥 Chauds", value: `${liveStats.stats.replied} (${liveStats.stats.replyRate}%)`, color: "text-emerald-400" },
+              { label: "💬 Réponses", value: `${liveStats.stats.replied} (${liveStats.stats.replyRate}%)`, color: "text-emerald-400" },
+              { label: "✍️ Manuels (Agent KAH)", value: liveStats.manual ? `${liveStats.manual.contacted} · ${liveStats.manual.replied} rép.` : "—", color: "text-cyan-300" },
               { label: "🔁 Relances J+1/J+3", value: liveStats.stats.j3Sent, color: "text-violet-400" },
               { label: "🔁 Relances J+5", value: liveStats.stats.j7Sent, color: "text-pink-400" },
               { label: "⚠️ Sans email", value: liveStats.stats.noEmail, color: "text-yellow-400" },
@@ -664,6 +683,17 @@ export function ProspectionDashboard() {
                 <span className="text-gray-500">{s.label}</span>
               </div>
             ))}
+            <div className="ml-auto flex items-center gap-3 text-xs text-gray-500">
+              <span>{liveStats.statsSince ? `Compteurs depuis le ${new Date(liveStats.statsSince).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}` : "Compteurs depuis le début"}</span>
+              <button
+                type="button"
+                onClick={() => void handleResetStats()}
+                disabled={resettingStats}
+                className="rounded-lg border border-white/15 px-3 py-1.5 font-semibold text-gray-300 transition hover:bg-white/10 disabled:opacity-50"
+              >
+                {resettingStats ? "Remise à zéro…" : "Remettre à zéro"}
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -681,17 +711,17 @@ export function ProspectionDashboard() {
                 <p className="text-xs font-bold text-blue-300 uppercase tracking-wider mb-2">📖 Comment lire ces chiffres ?</p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 text-xs text-gray-400">
                   <div className="flex gap-2"><span>📤</span><span><strong className="text-white">Envoyés</strong> — emails partis via Resend (pas dans Gmail Envoyés)</span></div>
-                  <div className="flex gap-2"><span>👁</span><span><strong className="text-white">Ouverts</strong> — la personne a ouvert l&apos;email</span></div>
+                  <div className="flex gap-2"><span>👁</span><span><strong className="text-white">Ouverts</strong> — ouvertures plus de 2 min après l&apos;envoi (filtres anti-spam exclus)</span></div>
                   <div className="flex gap-2"><span>🖱</span><span><strong className="text-white">Cliqués</strong> — a cliqué un lien dans l&apos;email → lead chaud !</span></div>
-                  <div className="flex gap-2"><span>🔥</span><span><strong className="text-white">Chauds</strong> — prospects qui ont cliqué (≠ vraie réponse Gmail)</span></div>
+                  <div className="flex gap-2"><span>💬</span><span><strong className="text-white">Réponses</strong> — vraies réponses reçues dans Gmail, détectées automatiquement</span></div>
                 </div>
-                <p className="mt-2 text-xs text-yellow-400/80">⚠️ Une vraie réponse email arrive dans <strong>kahdigital42@gmail.com</strong> directement — ce tableau ne la capture pas.</p>
+                <p className="mt-2 text-xs text-gray-500">Les réponses de la boîte Gmail KAH sont relevées à chaque passage du robot (même adresse ou même domaine que le prospect). La prospection manuelle d&apos;Agent KAH (campagnes pilotes, cyber) est comptée à part.</p>
               </div>
 
               {/* ─ Stats par jour ─ */}
               {liveStats.dailyStats && liveStats.dailyStats.length > 0 && (
                 <div className="rounded-2xl border border-white/[0.07] bg-[#13141a] p-5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">📅 Activité par jour (30 derniers jours)</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">📅 Activité par jour (30 derniers jours max)</p>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead>
@@ -700,7 +730,7 @@ export function ProspectionDashboard() {
                           <th className="pb-2 text-right font-medium">📤 Envoyés</th>
                           <th className="pb-2 text-right font-medium">👁 Ouverts</th>
                           <th className="pb-2 text-right font-medium">🖱 Cliqués</th>
-                          <th className="pb-2 text-right font-medium">🔥 Chauds</th>
+                          <th className="pb-2 text-right font-medium">💬 Réponses</th>
                           <th className="pb-2 text-right font-medium">Taux ouv.</th>
                         </tr>
                       </thead>
@@ -785,6 +815,21 @@ export function ProspectionDashboard() {
                 </div>
               )}
 
+              {liveStats.manual && liveStats.manual.campaigns.length > 0 && (
+                <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-cyan-300">✍️ Prospection manuelle Agent KAH</p>
+                  <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                    {liveStats.manual.campaigns.map((c) => (
+                      <div key={c.campaign} className="rounded-xl border border-white/8 bg-gray-900/70 p-3">
+                        <div className="text-xs capitalize text-gray-500">{c.campaign}</div>
+                        <div className="mt-1 text-sm font-bold text-white">{c.contacted} contactés</div>
+                        <div className="text-xs text-gray-400">{c.replied} réponse{c.replied > 1 ? "s" : ""} · {c.optOut} désinscrit{c.optOut > 1 ? "s" : ""}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* ─ Funnel Analytics ─ */}
               <div className="rounded-2xl border border-white/8 bg-gray-900/60 p-5">
                 <h2 className="mb-4 text-sm font-semibold text-gray-300 uppercase tracking-wider flex items-center gap-2">
@@ -795,7 +840,7 @@ export function ProspectionDashboard() {
                     { label: "📤 Envoyés", value: liveStats.stats.sent, max: liveStats.stats.sent, color: "bg-gray-400", pct: null },
                     { label: "👁 Ouverts", value: liveStats.stats.opened, max: liveStats.stats.sent, color: "bg-blue-500", pct: liveStats.stats.openRate },
                     { label: "🖱 Cliqués", value: liveStats.stats.clicked, max: liveStats.stats.sent, color: "bg-orange-500", pct: liveStats.stats.clickRate },
-                    { label: "🔥 Chauds (ont cliqué)", value: liveStats.stats.replied, max: liveStats.stats.sent, color: "bg-emerald-500", pct: liveStats.stats.replyRate },
+                    { label: "💬 Réponses", value: liveStats.stats.replied, max: liveStats.stats.sent, color: "bg-emerald-500", pct: liveStats.stats.replyRate },
                   ].map((step) => (
                     <div key={step.label}>
                       <div className="flex items-center justify-between text-xs mb-1">
@@ -828,7 +873,7 @@ export function ProspectionDashboard() {
                       bench: "Objectif ≥ 5%",
                     },
                     {
-                      label: "Chauds",
+                      label: "Réponses",
                       value: `${liveStats.stats.replyRate}%`,
                       color: liveStats.stats.replyRate >= 3 ? "text-emerald-400" : liveStats.stats.replyRate >= 1 ? "text-yellow-400" : "text-orange-400",
                       score: liveStats.stats.replyRate >= 3 ? "🟢 Très bon" : liveStats.stats.replyRate >= 1 ? "🟡 Normal" : "🟠 Peu",

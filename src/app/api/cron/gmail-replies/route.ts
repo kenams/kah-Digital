@@ -17,6 +17,19 @@ function getSupabase() {
   );
 }
 
+// Domaines partagés (messageries grand public, anti-spam à challenge) : jamais de rapprochement par domaine.
+const SHARED_DOMAINS = [
+  "gmail.com", "googlemail.com", "outlook.", "hotmail.", "live.", "yahoo.", "orange.fr", "wanadoo.fr", "free.fr",
+  "sfr.fr", "neuf.fr", "laposte.net", "icloud.com", "me.com", "bluewin.ch", "gmx.", "proton.me", "protonmail.com",
+  "sunrise.ch", "hispeed.ch", "bbox.fr", "mailinblack.com", "kah-digital.ch",
+];
+
+function professionalDomain(email: string): string | null {
+  const domain = email.split("@")[1]?.toLowerCase().trim();
+  if (!domain || SHARED_DOMAINS.some((shared) => domain === shared || domain.endsWith(`.${shared}`) || (shared.endsWith(".") && domain.startsWith(shared)))) return null;
+  return domain;
+}
+
 async function checkGmailReplies(): Promise<{
   checked: number;
   matched: number;
@@ -44,10 +57,13 @@ async function checkGmailReplies(): Promise<{
   let checked = 0;
 
   try {
-    await client.mailboxOpen("INBOX");
+    // « Tous les messages » : les filtres Gmail archivent une partie des réponses hors de la boîte de réception.
+    const boxes = await client.list();
+    const allMail = boxes.find((box) => box.specialUse === "\\All")?.path ?? "INBOX";
+    await client.mailboxOpen(allMail);
 
-    // Cherche les emails reçus dans les dernières 48h
-    const since = new Date(Date.now() - 48 * 60 * 60 * 1000);
+    // Fenêtre de 7 jours : rattrape une réponse même si un passage du robot a sauté.
+    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const messages = (await client.search({ since }, { uid: true })) as number[] | false;
     const messageUids = Array.isArray(messages) ? messages : [];
 
@@ -59,9 +75,12 @@ async function checkGmailReplies(): Promise<{
     const fromAddresses: string[] = [];
     const messageData: Array<{ uid: number; from: string; subject: string }> = [];
 
-    for await (const msg of client.fetch(messageUids.slice(-100), { envelope: true })) {
+    for await (const msg of client.fetch(messageUids.slice(-400), { envelope: true })) {
       const from = msg.envelope?.from?.[0]?.address?.toLowerCase() ?? "";
-      if (from) {
+      const subject = msg.envelope?.subject ?? "";
+      // Les absences et réponses automatiques ne sont pas de vraies réponses.
+      const autoReply = /(absen|out of office|automatic reply|auto(matische)?[- ]?(reply|antwort)|réponse automatique|abwesen|accusé de réception)/i.test(subject);
+      if (from && !autoReply) {
         fromAddresses.push(from);
         messageData.push({
           uid: msg.uid,
@@ -76,22 +95,48 @@ async function checkGmailReplies(): Promise<{
       return { checked, matched: 0, newReplies: [] };
     }
 
-    // Cherche dans Supabase les prospects avec ces emails qui n'ont pas encore repliedAt
+    // Un prospect répond souvent depuis une autre adresse du même domaine (contact@ → prenom@).
+    const fromDomains = new Set(fromAddresses.map(professionalDomain).filter((d): d is string => Boolean(d)));
+    const findMatch = (email: string | null) => {
+      const lower = (email ?? "").toLowerCase();
+      if (!lower) return undefined;
+      const domain = professionalDomain(lower);
+      return messageData.find((m) => m.from === lower) ?? (domain && fromDomains.has(domain) ? messageData.find((m) => professionalDomain(m.from) === domain) : undefined);
+    };
+
     const supabase = getSupabase();
-    const { data: prospects } = await supabase
+
+    // Prospection manuelle (campagnes pilotes et cyber d'Agent KAH).
+    const { data: manualProspects } = await supabase
+      .from("pilot_prospects")
+      .select("id, email, status")
+      .not("contacted_at", "is", null)
+      .is("replied_at", null)
+      .range(0, 4999);
+    for (const manual of manualProspects ?? []) {
+      if (manual.status === "opposition" || !findMatch(manual.email)) continue;
+      await supabase
+        .from("pilot_prospects")
+        .update({ replied_at: new Date().toISOString(), status: manual.status === "contacte" ? "repondu" : manual.status, updated_at: new Date().toISOString() })
+        .eq("id", manual.id);
+    }
+
+    const { data: candidates } = await supabase
       .from("prospects")
       .select("id, email, businessName, website, repliedAt, status")
-      .in("email", fromAddresses)
+      .not("sentAt", "is", null)
       .is("repliedAt", null)
-      .eq("status", "sent");
+      .in("status", ["sent", "clicked"])
+      .range(0, 9999);
+    const prospects = (candidates ?? []).filter((prospect) => findMatch(prospect.email));
 
-    if (!prospects || prospects.length === 0) {
+    if (prospects.length === 0) {
       return { checked, matched: 0, newReplies: [] };
     }
 
     // Pour chaque prospect matché, marquer comme replied
     for (const prospect of prospects) {
-      const match = messageData.find((m) => m.from === (prospect.email ?? "").toLowerCase());
+      const match = findMatch(prospect.email);
       if (!match) continue;
 
       await supabase

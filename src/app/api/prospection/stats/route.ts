@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { isAdminUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSendBudget } from "@/lib/prospection-safety";
 
 type ProspectStatRow = {
   status: string | null;
@@ -46,6 +47,33 @@ async function fetchBatches(supabase: ReturnType<typeof getSupabase>) {
   return runAtRes.error ? createdAtRes : runAtRes;
 }
 
+export const STATS_SINCE_KEY = "prospection_stats_since";
+// Une ouverture dans les 2 minutes qui suivent l'envoi vient d'un filtre anti-spam, pas d'une personne.
+const HUMAN_OPEN_DELAY_MS = 120_000;
+
+function isHumanOpen(row: { sentAt: string | null; openedAt: string | null }) {
+  if (!row.openedAt || !row.sentAt) return false;
+  return new Date(row.openedAt).getTime() - new Date(row.sentAt).getTime() >= HUMAN_OPEN_DELAY_MS;
+}
+
+function isReplied(row: { status: string | null; repliedAt: string | null }) {
+  return Boolean(row.repliedAt) || row.status === "replied";
+}
+
+async function fetchAllProspects(supabase: ReturnType<typeof getSupabase>, since: string | null) {
+  // Pagination : Supabase plafonne une requête à 1 000 lignes.
+  const rows: ProspectStatRow[] = [];
+  for (let from = 0; from < 20_000; from += 1000) {
+    let query = supabase.from("prospects").select("status, openedAt, clickedAt, repliedAt, sentAt, email, createdAt").range(from, from + 999);
+    if (since) query = query.or(`createdAt.gte.${since},sentAt.gte.${since}`);
+    const { data, error } = await query;
+    if (error || !data) break;
+    rows.push(...(data as ProspectStatRow[]));
+    if (data.length < 1000) break;
+  }
+  return rows;
+}
+
 function hoursSince(value: string | null) {
   if (!value) return null;
   return Math.round((Date.now() - new Date(value).getTime()) / 36_000) / 100;
@@ -70,6 +98,10 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const supabase = getSupabase();
+  const { data: sinceRow } = await supabase.from("app_settings").select("value").eq("key", STATS_SINCE_KEY).maybeSingle();
+  const statsSince = sinceRow?.value && !Number.isNaN(Date.parse(sinceRow.value)) ? new Date(sinceRow.value).toISOString() : null;
+  const since30d = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+  const dailyFrom = statsSince && statsSince > since30d ? statsSince : since30d;
   const since24h = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
   const [
@@ -83,8 +115,9 @@ export async function GET(req: Request) {
     sent24hRes,
     blockedCountRes,
     dailyRawRes,
+    manualRes,
   ] = await Promise.all([
-    supabase.from("prospects").select("status, openedAt, clickedAt, repliedAt, sentAt, email, createdAt"),
+    fetchAllProspects(supabase, statsSince),
     fetchBatches(supabase),
     supabase.from("prospects")
       .select("id, businessName, website, email, status, openedAt, clickedAt, repliedAt, sentAt, sector, country, audit, draftReply")
@@ -99,7 +132,10 @@ export async function GET(req: Request) {
       .limit(10),
     supabase.from("prospects")
       .select("followup1SentAt, followup2SentAt")
-      .or("followup1SentAt.not.is.null,followup2SentAt.not.is.null"),
+      .or(statsSince
+        ? `followup1SentAt.gte.${statsSince},followup2SentAt.gte.${statsSince}`
+        : "followup1SentAt.not.is.null,followup2SentAt.not.is.null")
+      .range(0, 9999),
     supabase.from("prospects")
       .select("createdAt, status, sentAt")
       .order("createdAt", { ascending: false })
@@ -119,12 +155,18 @@ export async function GET(req: Request) {
       .eq("status", "rejected"),
     supabase.from("prospects")
       .select("sentAt, openedAt, clickedAt, repliedAt")
-      .gte("sentAt", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
-      .not("sentAt", "is", null),
+      .gte("sentAt", dailyFrom)
+      .not("sentAt", "is", null)
+      .range(0, 9999),
+    (() => {
+      let query = supabase.from("pilot_prospects").select("campaign, status, contacted_at, replied_at").range(0, 9999);
+      if (statsSince) query = query.or(`contacted_at.gte.${statsSince},replied_at.gte.${statsSince}`);
+      return query;
+    })(),
   ]);
 
-  const prospects = (prospectsRes.data ?? []) as ProspectStatRow[];
-  const followups = followupRes.data ?? [];
+  const prospects = prospectsRes;
+  const followups = (followupRes.data ?? []) as Array<{ followup1SentAt: string | null; followup2SentAt: string | null }>;
   const batches = (batchesRes.data ?? []) as BatchRow[];
   const latestBatch = batches[0] ?? null;
   const latestBatchAt = getBatchDate(latestBatch);
@@ -132,6 +174,11 @@ export async function GET(req: Request) {
   const staleBatchHours = hoursSince(latestBatchAt);
   const recentErrors = batches.flatMap((batch) => getErrors(batch.errors)).slice(0, 6);
   const warnings: string[] = [];
+
+  const budget = await getSendBudget(supabase, 1).catch(() => null);
+  if (budget?.paused && budget.reason) {
+    warnings.push(`Envois en pause : ${budget.reason}. Reprise automatique quand le taux repasse sous le seuil.`);
+  }
 
   if (batchesRes.error) {
     warnings.push("Historique des batches inaccessible.");
@@ -155,6 +202,24 @@ export async function GET(req: Request) {
 
   // Daily breakdown — last 30 days
   type DailyRow = { sentAt: string | null; openedAt: string | null; clickedAt: string | null; repliedAt: string | null };
+  // Prospection manuelle (Agent KAH : campagnes pilotes et cyber envoyées depuis Gmail).
+  type ManualRow = { campaign: string | null; status: string | null; contacted_at: string | null; replied_at: string | null };
+  const manualRows = (manualRes.data ?? []) as ManualRow[];
+  const manualByCampaign = new Map<string, { contacted: number; replied: number; optOut: number }>();
+  for (const row of manualRows) {
+    const key = row.campaign ?? "autre";
+    if (!manualByCampaign.has(key)) manualByCampaign.set(key, { contacted: 0, replied: 0, optOut: 0 });
+    const m = manualByCampaign.get(key)!;
+    if (row.contacted_at && (!statsSince || row.contacted_at >= statsSince)) m.contacted++;
+    if (row.replied_at || row.status === "refus" || row.status === "interesse" || row.status === "repondu") m.replied++;
+    if (row.status === "opposition") m.optOut++;
+  }
+  const manual = {
+    contacted: Array.from(manualByCampaign.values()).reduce((sum, m) => sum + m.contacted, 0),
+    replied: Array.from(manualByCampaign.values()).reduce((sum, m) => sum + m.replied, 0),
+    optOut: Array.from(manualByCampaign.values()).reduce((sum, m) => sum + m.optOut, 0),
+    campaigns: Array.from(manualByCampaign.entries()).map(([campaign, counts]) => ({ campaign, ...counts })),
+  };
   const dailyMap = new Map<string, { sent: number; opened: number; clicked: number; replied: number }>();
   for (const row of (dailyRawRes.data ?? []) as DailyRow[]) {
     if (!row.sentAt) continue;
@@ -162,7 +227,7 @@ export async function GET(req: Request) {
     if (!dailyMap.has(day)) dailyMap.set(day, { sent: 0, opened: 0, clicked: 0, replied: 0 });
     const d = dailyMap.get(day)!;
     d.sent++;
-    if (row.openedAt) d.opened++;
+    if (isHumanOpen(row)) d.opened++;
     if (row.clickedAt) d.clicked++;
     if (row.repliedAt) d.replied++;
   }
@@ -170,15 +235,17 @@ export async function GET(req: Request) {
     .map(([date, counts]) => ({ date, ...counts }))
     .sort((a, b) => b.date.localeCompare(a.date));
 
+  const sentRows = prospects.filter((prospect) => prospect.sentAt && (!statsSince || prospect.sentAt >= statsSince));
   const stats = {
     total: prospects.length,
-    sent: prospects.filter((prospect) => prospect.sentAt).length,
-    opened: prospects.filter((prospect) => prospect.openedAt).length,
-    clicked: prospects.filter((prospect) => prospect.clickedAt).length,
-    replied: prospects.filter((prospect) => prospect.status === "replied").length,
-    noEmail: prospects.filter((prospect) => !prospect.email && !prospect.sentAt).length,
-    j3Sent: followups.filter((prospect) => prospect.followup1SentAt).length,
-    j7Sent: followups.filter((prospect) => prospect.followup2SentAt).length,
+    sent: sentRows.length,
+    opened: sentRows.filter(isHumanOpen).length,
+    openedRaw: sentRows.filter((prospect) => prospect.openedAt).length,
+    clicked: sentRows.filter((prospect) => prospect.clickedAt).length,
+    replied: sentRows.filter(isReplied).length,
+    noEmail: prospects.filter((prospect) => prospect.status === "no_email" || (!prospect.email && !prospect.sentAt)).length,
+    j3Sent: followups.filter((prospect) => prospect.followup1SentAt && (!statsSince || prospect.followup1SentAt >= statsSince)).length,
+    j7Sent: followups.filter((prospect) => prospect.followup2SentAt && (!statsSince || prospect.followup2SentAt >= statsSince)).length,
     openRate: 0,
     clickRate: 0,
     replyRate: 0,
@@ -192,6 +259,8 @@ export async function GET(req: Request) {
 
   return NextResponse.json({
     stats,
+    statsSince,
+    manual,
     dailyStats,
     batches,
     hotProspects: hotRes.data ?? [],
