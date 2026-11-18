@@ -59,7 +59,10 @@ async function checkGmailReplies(): Promise<{
   try {
     // « Tous les messages » : les filtres Gmail archivent une partie des réponses hors de la boîte de réception.
     const boxes = await client.list();
-    const allMail = boxes.find((box) => box.specialUse === "\\All")?.path ?? "INBOX";
+    const allMail =
+      boxes.find((box) => box.specialUse === "\\All" || box.flags?.has("\\All"))?.path ??
+      boxes.find((box) => ["[Gmail]/All Mail", "[Gmail]/Tous les messages", "[Google Mail]/All Mail"].includes(box.path))?.path ??
+      "INBOX";
     await client.mailboxOpen(allMail);
 
     // Fenêtre de 7 jours : rattrape une réponse même si un passage du robot a sauté.
@@ -75,7 +78,7 @@ async function checkGmailReplies(): Promise<{
     const fromAddresses: string[] = [];
     const messageData: Array<{ uid: number; from: string; subject: string }> = [];
 
-    for await (const msg of client.fetch(messageUids.slice(-400), { envelope: true })) {
+    for await (const msg of client.fetch(messageUids.slice(-400), { envelope: true }, { uid: true })) {
       const from = msg.envelope?.from?.[0]?.address?.toLowerCase() ?? "";
       const subject = msg.envelope?.subject ?? "";
       // Les absences et réponses automatiques ne sont pas de vraies réponses.
