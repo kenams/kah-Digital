@@ -611,13 +611,13 @@ export function ProspectionDashboard() {
           <div>
             <h1 className="text-xl font-bold flex items-center gap-2">
               Prospection IA
-              {liveStats && liveStats.hotProspects.length > 0 && (
-                <span className="animate-pulse rounded-full bg-red-500 px-2 py-0.5 text-xs font-bold">
-                  {liveStats.hotProspects.filter((p) => p.clickedAt).length} chaud
+              {liveStats && liveStats.stats.replied > 0 && (
+                <span className="animate-pulse rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-bold">
+                  {liveStats.stats.replied} réponse{liveStats.stats.replied > 1 ? "s" : ""}
                 </span>
               )}
             </h1>
-            <p className="text-sm text-gray-400">Autonome — 30 emails/jour · 3 crons (11h, 16h & 00h) · relances J+1/J+3/J+5/J+10 · multilingue</p>
+            <p className="text-sm text-gray-400">Autonome — 8 emails/jour max · 4 passages en semaine (9h, 12h, 15h, 18h) · relances automatiques · pause auto si trop de rebonds</p>
           </div>
           <div className="flex items-center gap-3">
             <button
