@@ -42,6 +42,20 @@ export function evaluateBounces(sent: number, bounced: number): { tripped: boole
   return { tripped: bounced >= BOUNCE_MIN_COUNT && rate > BOUNCE_MAX_RATE, rate };
 }
 
+// Reprise prudente : sans nouveaux envois, le taux de rebonds ne baisse jamais et la pause
+// durerait 14 jours. Après 72 h sans rebond, on teste à petit volume ; le moindre rebond
+// relance une pause de 72 h. Le seuil du coupe-circuit, lui, ne change pas.
+export const PROBE_COOLDOWN_MS = 72 * 3600_000;
+export const PROBE_DAILY_CAP = 2;
+
+export function evaluateProbe(nowMs: number, lastBounceAt: string | null, sentToday: number): { allowed: number; resumeAt: number | null } {
+  const last = lastBounceAt ? Date.parse(lastBounceAt) : NaN;
+  if (Number.isFinite(last) && nowMs - last < PROBE_COOLDOWN_MS) {
+    return { allowed: 0, resumeAt: last + PROBE_COOLDOWN_MS };
+  }
+  return { allowed: Math.max(0, PROBE_DAILY_CAP - sentToday), resumeAt: null };
+}
+
 export function dailyCap(): number {
   const n = Number(process.env.PROSPECTION_DAILY_CAP);
   return Number.isFinite(n) && n >= 0 ? Math.floor(n) : DEFAULT_DAILY_CAP;
@@ -64,12 +78,19 @@ export async function getSendBudget(supabase: SupabaseClient, wantedThisRun: num
 
   const { tripped, rate } = evaluateBounces(sentRecent ?? 0, bouncedRecent ?? 0);
   if (tripped) {
+    const { data: lastBounce } = await supabase
+      .from("prospects").select("bouncedAt").not("bouncedAt", "is", null)
+      .order("bouncedAt", { ascending: false }).limit(1).maybeSingle();
+    const probe = evaluateProbe(Date.now(), lastBounce?.bouncedAt ?? null, sentToday ?? 0);
+    const why = `coupe-circuit: ${bouncedRecent} rebonds/plaintes sur ${sentRecent} envois en ${BOUNCE_WINDOW_DAYS} j (${(rate * 100).toFixed(1)} %)`;
     return {
       ...base,
       sentToday: sentToday ?? 0,
-      allowed: 0,
-      paused: true,
-      reason: `coupe-circuit: ${bouncedRecent} rebonds/plaintes sur ${sentRecent} envois en ${BOUNCE_WINDOW_DAYS} j (${(rate * 100).toFixed(1)} %)`,
+      allowed: Math.min(wantedThisRun, probe.allowed),
+      paused: probe.allowed === 0,
+      reason: probe.resumeAt
+        ? `${why}, reprise prudente à partir du ${new Date(probe.resumeAt).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}`
+        : `${why}, reprise prudente : ${PROBE_DAILY_CAP} envois/jour, nouvelle pause au moindre rebond`,
     };
   }
 

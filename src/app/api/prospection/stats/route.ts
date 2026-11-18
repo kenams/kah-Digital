@@ -176,8 +176,8 @@ export async function GET(req: Request) {
   const warnings: string[] = [];
 
   const budget = await getSendBudget(supabase, 1).catch(() => null);
-  if (budget?.paused && budget.reason) {
-    warnings.push(`Envois en pause : ${budget.reason}. Reprise automatique quand le taux repasse sous le seuil.`);
+  if (budget?.reason && (budget.paused || budget.reason.startsWith("coupe-circuit"))) {
+    warnings.push(`${budget.paused ? "Envois en pause" : "Envois limités"} : ${budget.reason}.`);
   }
 
   if (batchesRes.error) {

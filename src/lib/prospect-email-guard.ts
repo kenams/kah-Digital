@@ -32,6 +32,9 @@ export function looksLikeArtifactEmail(email: string): boolean {
   const labels = domain.split(".");
   const tld = labels[labels.length - 1] ?? "";
   if (FILE_EXTENSIONS.has(tld)) return true;
+  // Numéros de version et noms techniques (ex. pinia@2.1.7.prod) : jamais une vraie boîte.
+  if (!/^[a-z]{2,}$/.test(tld) || labels.some((l) => /^\d+$/.test(l))) return true;
+  if (["prod", "local", "internal", "invalid", "example", "test", "localhost"].includes(tld)) return true;
   if (labels.some((l) => /^\d+x\d+/.test(l) || /^o\d{8,}$/.test(l))) return true;
   if (/^[a-f0-9]{16,}$/.test(local)) return true;
   // Identifiant aléatoire : alphanumérique, long, avec de nombreuses alternances chiffre/lettre.
@@ -46,7 +49,7 @@ const THIRD_PARTY_DOMAINS = [
   "cloudbeds.com", "wix.com", "wixsite.com", "sentry", "godaddy.com", "ovh.", "gandi.net",
   "hostinger.", "squarespace.com", "shopify.com", "jimdo.com", "weebly.com", "semrush.com",
   "booksy.com", "planity.com", "treatwell.", "fresha.com", "doctolib.", "mindbody", "calendly.com",
-  "pagesjaunes.", "tripadvisor.", "yelp.", "facebook.com", "instagram.com", "google.com", "groupon.",
+  "pagesjaunes.", "tripadvisor.", "techaro.", "justifit.", "yelp.", "facebook.com", "instagram.com", "google.com", "groupon.",
 ];
 
 export function isPlaceholderEmail(email: string | null | undefined): boolean {

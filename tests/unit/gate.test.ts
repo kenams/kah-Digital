@@ -74,3 +74,22 @@ test("clic de scanner : juste après le premier mail OU après une relance (rég
   assert.equal(isScannerClick(now, ["2026-10-27T09:10:00Z"]), false); // 13 min après : humain
   assert.equal(isScannerClick(now, [undefined, null]), false);
 });
+
+test("reprise prudente : pause 72 h après le dernier rebond, puis 2 envois/jour", async () => {
+  const { evaluateProbe, PROBE_DAILY_CAP } = await import("../../src/lib/prospection-safety");
+  const now = Date.parse("2026-11-20T12:00:00Z");
+  const recent = evaluateProbe(now, "2026-11-19T12:00:00Z", 0);
+  assert.equal(recent.allowed, 0);
+  assert.equal(recent.resumeAt, Date.parse("2026-11-22T12:00:00Z"));
+  assert.equal(evaluateProbe(now, "2026-11-16T12:00:00Z", 0).allowed, PROBE_DAILY_CAP);
+  assert.equal(evaluateProbe(now, "2026-11-16T12:00:00Z", 2).allowed, 0);
+  assert.equal(evaluateProbe(now, null, 1).allowed, PROBE_DAILY_CAP - 1);
+});
+
+test("adresses techniques rejetées (version, faux domaine)", async () => {
+  const { looksLikeArtifactEmail, isPlaceholderEmail } = await import("../../src/lib/prospect-email-guard");
+  assert.equal(looksLikeArtifactEmail("pinia@2.1.7.prod"), true);
+  assert.equal(looksLikeArtifactEmail("contact@cabinet-dupont.fr"), false);
+  assert.equal(looksLikeArtifactEmail("info@studio.ch"), false);
+  assert.equal(isPlaceholderEmail("sales@techaro.lol"), true);
+});
