@@ -4,6 +4,7 @@
 
 import { resolveMx, resolve4 } from "node:dns/promises";
 import { isProspectableLead } from "@/lib/prospect-email-guard";
+import { isStrictEmail } from "@/lib/cold-recipient";
 
 export type GateInput = {
   to: string;
@@ -86,6 +87,8 @@ export async function domainCanReceiveMail(email: string, timeoutMs = 5000): Pro
 
 export async function checkSendable(input: GateInput, opts: { skipDns?: boolean } = {}): Promise<{ ok: boolean; reasons: string[] }> {
   const reasons = checkContent(input);
+
+  if (!isStrictEmail(input.to)) reasons.push("adresse mal formée");
 
   const fit = isProspectableLead({ website: input.website, email: input.to });
   if (!fit.ok) reasons.push(`cible: ${fit.reason}`);

@@ -1,3 +1,4 @@
+import { assertColdRecipient } from "@/lib/cold-recipient";
 /**
  * Follow-up kah-support-prospects
  * J+3 : pas répondu → relance courte
@@ -92,6 +93,7 @@ function buildFollowup2Html(firstName: string, company: string): string {
 }
 
 async function sendEmail(to: string, subject: string, html: string) {
+  await assertColdRecipient(to);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -99,7 +101,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "KAH Digital Studio <contact@kah-digital.ch>",
+      from: "KAH Digital Studio <contact@go.kah-digital.ch>",
       to: [to],
       reply_to: ["kahdigital42@gmail.com"],
       subject,

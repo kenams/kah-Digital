@@ -1,3 +1,4 @@
+import { assertColdRecipient } from "@/lib/cold-recipient";
 /**
  * Prospection Vellio — créateurs de contenu lifestyle/déco/design
  * Angle : programme d'affiliation (10% sur chaque vente générée)
@@ -12,7 +13,7 @@ import { isAdminUser } from "@/lib/auth";
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
 
-const FROM = "Vellio <contact@kah-digital.ch>";
+const FROM = "Vellio <contact@go.kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
 const APP_URL = "https://vellio-shop.vercel.app";
 
@@ -85,6 +86,7 @@ function buildVellioAffiliate(p: VProspect) {
 }
 
 async function sendEmail(to: string, subject: string, html: string) {
+  await assertColdRecipient(to);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },

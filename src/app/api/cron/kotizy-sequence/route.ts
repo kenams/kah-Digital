@@ -1,3 +1,4 @@
+import { assertColdRecipient } from "@/lib/cold-recipient";
 /**
  * Séquence prospection Kotizy — 2 emails
  * Cible : organisateurs de tontines, leaders d'associations diaspora, chefs de communautés africaines
@@ -11,7 +12,7 @@ import { isAdminUser } from "@/lib/auth";
 export const maxDuration = 120;
 export const dynamic = "force-dynamic";
 
-const FROM = "Kotizy <contact@kah-digital.ch>";
+const FROM = "Kotizy <contact@go.kah-digital.ch>";
 const REPLY_TO = "kahdigital42@gmail.com";
 const APP_URL = "https://tontineapp-web.vercel.app";
 
@@ -127,6 +128,7 @@ function buildKotizyJ5(p: KProspect) {
 }
 
 async function sendEmail(to: string, subject: string, html: string) {
+  await assertColdRecipient(to);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },

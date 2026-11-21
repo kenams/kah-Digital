@@ -6,7 +6,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export const DEFAULT_DAILY_CAP = 8;
 export const BOUNCE_WINDOW_DAYS = 14;
 export const BOUNCE_MIN_COUNT = 2;      // au moins 2 rebonds/plaintes…
-export const BOUNCE_MAX_RATE = 0.08;    // …et plus de 8 % des envois récents
+export const BOUNCE_MAX_RATE = 0.04;    // …et plus de 4 % des envois récents (seuil de suspension des fournisseurs ; sain < 2 %)
 
 export type SendBudget = {
   allowed: number;

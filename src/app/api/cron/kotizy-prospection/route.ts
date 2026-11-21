@@ -1,3 +1,4 @@
+import { assertColdRecipient } from "@/lib/cold-recipient";
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
@@ -86,8 +87,11 @@ export async function GET(req: NextRequest) {
           .single();
         if (existing) continue;
 
+        try { await assertColdRecipient(email); } catch { continue; }
+
         await resend.emails.send({
-          from: "Kotizy <noreply@kah-digital.ch>",
+          from: "Kotizy <contact@go.kah-digital.ch>",
+          replyTo: "kahdigital42@gmail.com",
           to: email,
           subject: "Gérez votre tontine en ligne — Kotizy",
           html: EMAIL_TEMPLATE(text.slice(0, 50)),
